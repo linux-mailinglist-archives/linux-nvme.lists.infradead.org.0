@@ -2,47 +2,47 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28878B25A
-	for <lists+linux-nvme@lfdr.de>; Sat, 27 Apr 2019 03:40:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E7169B25B
+	for <lists+linux-nvme@lfdr.de>; Sat, 27 Apr 2019 03:41:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0iezKpaWz3MPWdDmXj4XrKzuWc2dlGvDniYXeCTNflA=; b=plLHC9l8ETQo2D
-	pZdpH1u/q5kkbl0NlQhxqlposvizh4AZOMvOkDTnw3lrCNq65SI7w3odydNOBdkOwLDParx19H8Pt
-	WtHILsARi8bM6QpyU/t4No/h2OR2+FHpOtEfuxb0s/ecWumgbnx7qN46/yDfT/UIAj3d6lDbL7xrY
-	x/nlAJ2hLRXI3NmAmBmV9sZPSf3Eq0708UsI3XSgG1G1tPo+jn4w71EuTd18w+QO59hhGBCuigPLA
-	NJ1OX3Ku0QjEiIqJrUFrwtuM8mbX1daYcwxD6w5+1uUdMduD9lGDXD2PfOb40MbqhPMtx1hflEuvi
-	qO4ULzkB14U7Iu2j7+3Q==;
+	List-Owner; bh=thpFiJ1fUKHOa59OW0LQ9xQFqrFnVzEf9JhyXsU+kE4=; b=Ed+abcjRbO8nry
+	ze4A1XsK2Dpa2PndVQbqtNLbZgs+k8xldOsq+jsxvbC7m09bSbXR1eMdi2V/j1vHPqSdZhkjCORXR
+	WH/OH5APjW3CREGtQF+OHNMXrE809aKEU/ny0f+tDQqS8JrYUw6G7b+9+OFjO87I2EU4c6ymqVPdu
+	bteobcplTJ9Oo1DGl/TOhnSIeaBt+ZDrXq2Y3lwPZAWYYa2o/eC56+e8oEDqJ95NR0lXXclHyvdPC
+	DGp+W+ZlTDyENLn29H45Yt0MAyVthfbK9HMVn2cLsMlHobYXry16K/Zk3GA9fffNUZDhLjhJ7Jvyn
+	oaJJLG0VV7PeERZIpOUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hKCKd-000095-M5; Sat, 27 Apr 2019 01:40:47 +0000
+	id 1hKCKl-0000KT-A9; Sat, 27 Apr 2019 01:40:55 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hKCKN-0008Kw-Rd
- for linux-nvme@lists.infradead.org; Sat, 27 Apr 2019 01:40:35 +0000
+ id 1hKCKP-0008N7-2I
+ for linux-nvme@lists.infradead.org; Sat, 27 Apr 2019 01:40:43 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B3F9C214C6;
- Sat, 27 Apr 2019 01:40:30 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0B9C920873;
+ Sat, 27 Apr 2019 01:40:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1556329231;
- bh=p+aXHuwqfHDP4jNwEfxEX6x821K7Z+8P5fw+XIIOcLs=;
+ s=default; t=1556329232;
+ bh=pji9eGaxH/X0GZkD+7aHYcmisf1Su2LAxCrVksBlXJM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=HWD1Zu/L/VSbUiizXxgSjHOhHOY/nd4g5dbIEmiy9FqnrnoVnJbslGZpdBhLSDg8E
- A/nILIY9s0NFlCSbF2RAXMP6JBbqwWDBcQerg/PCArJ/cSzORuYG7DTfFdkmU+CsAj
- RLxn7D4/2eyeDLPhb76FZVz5N38KUalOebPIKa4Q=
+ b=kiMLqgHQOfneYRb8Ki84daLZlbr19YeS49xak6ECpR9CMzSn7myQZxgEo0O3Uz0ck
+ wAmWQDOYHxA1MOlDp3tbrzaDmhpScjfoRT/Gin2hQwiQuno5l+ioLpZRYlXEu+meXf
+ XShrgN1fx0U1+fzt35Kc5rCm+zrtO4KO22YczqkY=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.0 69/79] nvme-fc: correct csn initialization and
- increments on error
-Date: Fri, 26 Apr 2019 21:38:28 -0400
-Message-Id: <20190427013838.6596-69-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.0 70/79] nvmet: fix discover log page when offsets
+ are used
+Date: Fri, 26 Apr 2019 21:38:29 -0400
+Message-Id: <20190427013838.6596-70-sashal@kernel.org>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190427013838.6596-1-sashal@kernel.org>
 References: <20190427013838.6596-1-sashal@kernel.org>
@@ -50,8 +50,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190426_184032_355607_14510945 
-X-CRM114-Status: GOOD (  18.20  )
+X-CRM114-CacheID: sfid-20190426_184033_642780_97A88F80 
+X-CRM114-Status: GOOD (  16.86  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -79,103 +79,202 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, James Smart <jsmart2021@gmail.com>,
- Dick Kennedy <dick.kennedy@broadcom.com>, Christoph Hellwig <hch@lst.de>,
- linux-nvme@lists.infradead.org
+Cc: Keith Busch <keith.busch@intel.com>, Sasha Levin <sashal@kernel.org>,
+ Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: James Smart <jsmart2021@gmail.com>
+From: Keith Busch <keith.busch@intel.com>
 
-[ Upstream commit 67f471b6ed3b09033c4ac77ea03f92afdb1989fe ]
+[ Upstream commit d808b7f759b50acf0784ce6230ffa63e12ef465d ]
 
-This patch fixes a long-standing bug that initialized the FC-NVME
-cmnd iu CSN value to 1. Early FC-NVME specs had the connection starting
-with CSN=1. By the time the spec reached approval, the language had
-changed to state a connection should start with CSN=0.  This patch
-corrects the initialization value for FC-NVME connections.
+The nvme target hadn't been taking the Get Log Page offset parameter
+into consideration, and so has been returning corrupted log pages when
+offsets are used. Since many tools, including nvme-cli, split the log
+request to 4k, we've been breaking discovery log responses when more
+than 3 subsystems exist.
 
-Additionally, in reviewing the transport, the CSN value is assigned to
-the new IU early in the start routine. It's possible that a later dma
-map request may fail, causing the command to never be sent to the
-controller.  Change the location of the assignment so that it is
-immediately prior to calling the lldd. Add a comment block to explain
-the impacts if the lldd were to additionally fail sending the command.
+Fix the returned data by internally generating the entire discovery
+log page and copying only the requested bytes into the user buffer. The
+command log page offset type has been modified to a native __le64 to
+make it easier to extract the value from a command.
 
-Signed-off-by: Dick Kennedy <dick.kennedy@broadcom.com>
-Signed-off-by: James Smart <jsmart2021@gmail.com>
-Reviewed-by: Ewan D. Milne <emilne@redhat.com>
+Signed-off-by: Keith Busch <keith.busch@intel.com>
+Tested-by: Minwoo Im <minwoo.im@samsung.com>
+Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+Reviewed-by: Hannes Reinecke <hare@suse.com>
+Reviewed-by: James Smart <james.smart@broadcom.com>
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/fc.c | 20 +++++++++++++++-----
- 1 file changed, 15 insertions(+), 5 deletions(-)
+ drivers/nvme/target/admin-cmd.c |  5 +++
+ drivers/nvme/target/discovery.c | 68 ++++++++++++++++++++++-----------
+ drivers/nvme/target/nvmet.h     |  1 +
+ include/linux/nvme.h            |  9 ++++-
+ 4 files changed, 58 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
-index c37d5bbd72ab..8625b73d94bf 100644
---- a/drivers/nvme/host/fc.c
-+++ b/drivers/nvme/host/fc.c
-@@ -1857,7 +1857,7 @@ nvme_fc_init_queue(struct nvme_fc_ctrl *ctrl, int idx)
- 	memset(queue, 0, sizeof(*queue));
- 	queue->ctrl = ctrl;
- 	queue->qnum = idx;
--	atomic_set(&queue->csn, 1);
-+	atomic_set(&queue->csn, 0);
- 	queue->dev = ctrl->dev;
- 
- 	if (idx > 0)
-@@ -1899,7 +1899,7 @@ nvme_fc_free_queue(struct nvme_fc_queue *queue)
- 	 */
- 
- 	queue->connection_id = 0;
--	atomic_set(&queue->csn, 1);
-+	atomic_set(&queue->csn, 0);
+diff --git a/drivers/nvme/target/admin-cmd.c b/drivers/nvme/target/admin-cmd.c
+index 11baeb14c388..8fdae510c5ac 100644
+--- a/drivers/nvme/target/admin-cmd.c
++++ b/drivers/nvme/target/admin-cmd.c
+@@ -32,6 +32,11 @@ u32 nvmet_get_log_page_len(struct nvme_command *cmd)
+ 	return len;
  }
  
- static void
-@@ -2195,7 +2195,6 @@ nvme_fc_start_fcp_op(struct nvme_fc_ctrl *ctrl, struct nvme_fc_queue *queue,
++u64 nvmet_get_log_page_offset(struct nvme_command *cmd)
++{
++	return le64_to_cpu(cmd->get_log_page.lpo);
++}
++
+ static void nvmet_execute_get_log_page_noop(struct nvmet_req *req)
  {
- 	struct nvme_fc_cmd_iu *cmdiu = &op->cmd_iu;
- 	struct nvme_command *sqe = &cmdiu->sqe;
--	u32 csn;
- 	int ret, opstate;
+ 	nvmet_req_complete(req, nvmet_zero_sgl(req, 0, req->data_len));
+diff --git a/drivers/nvme/target/discovery.c b/drivers/nvme/target/discovery.c
+index d2cb71a0b419..389c1a90197d 100644
+--- a/drivers/nvme/target/discovery.c
++++ b/drivers/nvme/target/discovery.c
+@@ -139,54 +139,76 @@ static void nvmet_set_disc_traddr(struct nvmet_req *req, struct nvmet_port *port
+ 		memcpy(traddr, port->disc_addr.traddr, NVMF_TRADDR_SIZE);
+ }
+ 
++static size_t discovery_log_entries(struct nvmet_req *req)
++{
++	struct nvmet_ctrl *ctrl = req->sq->ctrl;
++	struct nvmet_subsys_link *p;
++	struct nvmet_port *r;
++	size_t entries = 0;
++
++	list_for_each_entry(p, &req->port->subsystems, entry) {
++		if (!nvmet_host_allowed(p->subsys, ctrl->hostnqn))
++			continue;
++		entries++;
++	}
++	list_for_each_entry(r, &req->port->referrals, entry)
++		entries++;
++	return entries;
++}
++
+ static void nvmet_execute_get_disc_log_page(struct nvmet_req *req)
+ {
+ 	const int entry_size = sizeof(struct nvmf_disc_rsp_page_entry);
+ 	struct nvmet_ctrl *ctrl = req->sq->ctrl;
+ 	struct nvmf_disc_rsp_page_hdr *hdr;
++	u64 offset = nvmet_get_log_page_offset(req->cmd);
+ 	size_t data_len = nvmet_get_log_page_len(req->cmd);
+-	size_t alloc_len = max(data_len, sizeof(*hdr));
+-	int residual_len = data_len - sizeof(*hdr);
++	size_t alloc_len;
+ 	struct nvmet_subsys_link *p;
+ 	struct nvmet_port *r;
+ 	u32 numrec = 0;
+ 	u16 status = 0;
++	void *buffer;
++
++	/* Spec requires dword aligned offsets */
++	if (offset & 0x3) {
++		status = NVME_SC_INVALID_FIELD | NVME_SC_DNR;
++		goto out;
++	}
  
  	/*
-@@ -2210,8 +2209,6 @@ nvme_fc_start_fcp_op(struct nvme_fc_ctrl *ctrl, struct nvme_fc_queue *queue,
+ 	 * Make sure we're passing at least a buffer of response header size.
+ 	 * If host provided data len is less than the header size, only the
+ 	 * number of bytes requested by host will be sent to host.
+ 	 */
+-	hdr = kzalloc(alloc_len, GFP_KERNEL);
+-	if (!hdr) {
++	down_read(&nvmet_config_sem);
++	alloc_len = sizeof(*hdr) + entry_size * discovery_log_entries(req);
++	buffer = kzalloc(alloc_len, GFP_KERNEL);
++	if (!buffer) {
++		up_read(&nvmet_config_sem);
+ 		status = NVME_SC_INTERNAL;
+ 		goto out;
+ 	}
  
- 	/* format the FC-NVME CMD IU and fcp_req */
- 	cmdiu->connection_id = cpu_to_be64(queue->connection_id);
--	csn = atomic_inc_return(&queue->csn);
--	cmdiu->csn = cpu_to_be32(csn);
- 	cmdiu->data_len = cpu_to_be32(data_len);
- 	switch (io_dir) {
- 	case NVMEFC_FCP_WRITE:
-@@ -2269,11 +2266,24 @@ nvme_fc_start_fcp_op(struct nvme_fc_ctrl *ctrl, struct nvme_fc_queue *queue,
- 	if (!(op->flags & FCOP_FLAGS_AEN))
- 		blk_mq_start_request(op->rq);
+-	down_read(&nvmet_config_sem);
++	hdr = buffer;
+ 	list_for_each_entry(p, &req->port->subsystems, entry) {
++		char traddr[NVMF_TRADDR_SIZE];
++
+ 		if (!nvmet_host_allowed(p->subsys, ctrl->hostnqn))
+ 			continue;
+-		if (residual_len >= entry_size) {
+-			char traddr[NVMF_TRADDR_SIZE];
+-
+-			nvmet_set_disc_traddr(req, req->port, traddr);
+-			nvmet_format_discovery_entry(hdr, req->port,
+-					p->subsys->subsysnqn, traddr,
+-					NVME_NQN_NVME, numrec);
+-			residual_len -= entry_size;
+-		}
++
++		nvmet_set_disc_traddr(req, req->port, traddr);
++		nvmet_format_discovery_entry(hdr, req->port,
++				p->subsys->subsysnqn, traddr,
++				NVME_NQN_NVME, numrec);
+ 		numrec++;
+ 	}
  
-+	cmdiu->csn = cpu_to_be32(atomic_inc_return(&queue->csn));
- 	ret = ctrl->lport->ops->fcp_io(&ctrl->lport->localport,
- 					&ctrl->rport->remoteport,
- 					queue->lldd_handle, &op->fcp_req);
+ 	list_for_each_entry(r, &req->port->referrals, entry) {
+-		if (residual_len >= entry_size) {
+-			nvmet_format_discovery_entry(hdr, r,
+-					NVME_DISC_SUBSYS_NAME,
+-					r->disc_addr.traddr,
+-					NVME_NQN_DISC, numrec);
+-			residual_len -= entry_size;
+-		}
++		nvmet_format_discovery_entry(hdr, r,
++				NVME_DISC_SUBSYS_NAME,
++				r->disc_addr.traddr,
++				NVME_NQN_DISC, numrec);
+ 		numrec++;
+ 	}
  
- 	if (ret) {
-+		/*
-+		 * If the lld fails to send the command is there an issue with
-+		 * the csn value?  If the command that fails is the Connect,
-+		 * no - as the connection won't be live.  If it is a command
-+		 * post-connect, it's possible a gap in csn may be created.
-+		 * Does this matter?  As Linux initiators don't send fused
-+		 * commands, no.  The gap would exist, but as there's nothing
-+		 * that depends on csn order to be delivered on the target
-+		 * side, it shouldn't hurt.  It would be difficult for a
-+		 * target to even detect the csn gap as it has no idea when the
-+		 * cmd with the csn was supposed to arrive.
-+		 */
- 		opstate = atomic_xchg(&op->state, FCPOP_STATE_COMPLETE);
- 		__nvme_fc_fcpop_chk_teardowns(ctrl, op, opstate);
+@@ -198,8 +220,8 @@ static void nvmet_execute_get_disc_log_page(struct nvmet_req *req)
+ 
+ 	up_read(&nvmet_config_sem);
+ 
+-	status = nvmet_copy_to_sgl(req, 0, hdr, data_len);
+-	kfree(hdr);
++	status = nvmet_copy_to_sgl(req, 0, buffer + offset, data_len);
++	kfree(buffer);
+ out:
+ 	nvmet_req_complete(req, status);
+ }
+diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
+index 3e4719fdba85..d253c45c1aa6 100644
+--- a/drivers/nvme/target/nvmet.h
++++ b/drivers/nvme/target/nvmet.h
+@@ -436,6 +436,7 @@ u16 nvmet_copy_from_sgl(struct nvmet_req *req, off_t off, void *buf,
+ u16 nvmet_zero_sgl(struct nvmet_req *req, off_t off, size_t len);
+ 
+ u32 nvmet_get_log_page_len(struct nvme_command *cmd);
++u64 nvmet_get_log_page_offset(struct nvme_command *cmd);
+ 
+ extern struct list_head *nvmet_ports;
+ void nvmet_port_disc_changed(struct nvmet_port *port,
+diff --git a/include/linux/nvme.h b/include/linux/nvme.h
+index bbcc83886899..7ba0368f16e6 100644
+--- a/include/linux/nvme.h
++++ b/include/linux/nvme.h
+@@ -975,8 +975,13 @@ struct nvme_get_log_page_command {
+ 	__le16			numdl;
+ 	__le16			numdu;
+ 	__u16			rsvd11;
+-	__le32			lpol;
+-	__le32			lpou;
++	union {
++		struct {
++			__le32 lpol;
++			__le32 lpou;
++		};
++		__le64 lpo;
++	};
+ 	__u32			rsvd14[2];
+ };
  
 -- 
 2.19.1
