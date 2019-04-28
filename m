@@ -2,51 +2,36 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81732B5ED
-	for <lists+linux-nvme@lfdr.de>; Sun, 28 Apr 2019 14:04:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5668BB5EE
+	for <lists+linux-nvme@lfdr.de>; Sun, 28 Apr 2019 14:05:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cz+s11/BKQeaoFDI36AIHKUKmCDCuXcV7lV8Wo+Am3I=; b=lMst27rLYe8JZr
-	vESe9f7aBeHXxqNG5UG0voBB+Ft2d/QZ3qrG6mx27ZtY+qc+RBZF9KluXqf0tGq96Mt5jPR0O0OQm
-	D5X8ZT/Ufo5qZvu9UXtZ4wwsyXOUL9nBRIGb3uBdtxgVIIbUVQL7Ad7uAvDD4sDXSAnNOSB/7fyK8
-	3nq9E4IbCVuH+toU9iHxf3/f2eAHGB5zqo8MBPc/+vZoz31TEpSGXXAUba3Heldw8QvhGwV7IWbRq
-	fKpcPKOCxMrZtBybyW18mvVkklSNqxfkF8Oj98JDnOjCLRl4fBjJHe7TVW2pSz9MCiFUG/r0RPpYy
-	Bn+omsCD1oZy6T7uZtlg==;
+	List-Owner; bh=R4BvV7YKmWFg2IOu/SmBlGfqc7l9zkjhR6vsC4Rx0oA=; b=Od4H69peQM/bu7
+	dJwm/4mzjqFVEU2CVqyUsiKnSWGUe1m3nCc2d4AjssMVQn7EOrvHkiJGEjUbFLOlBcsRMePM9KlvW
+	ZLrg7WVTNImLBC9RbRLqTMxECAEqpTNc31haD8bWdAsrrCyXjISgv3DaTbiHbw6z4JSg9qyPYedBb
+	kCbwwHa8H5Js4RrK+XzEzedmlrd9j0GCPWpsIRBL65M/ctx0qArJqdwSMO16qoDFtFzX33BRjRItl
+	YjO6+P3pUk48/Wr25TSFyD98qu2Vy0LSeB9keF8yGz5RylQW+gGpPg987z6/fGtxHp3dIITxTS4y4
+	KAOc4W6FNniNgBftZgyw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hKiXo-0002cP-Nt; Sun, 28 Apr 2019 12:04:32 +0000
-Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hKiXj-0002bK-E0
- for linux-nvme@lists.infradead.org; Sun, 28 Apr 2019 12:04:29 +0000
-Received: by newverein.lst.de (Postfix, from userid 2407)
- id 749C968B05; Sun, 28 Apr 2019 14:04:05 +0200 (CEST)
-Date: Sun, 28 Apr 2019 14:04:05 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Ming Lei <ming.lei@redhat.com>
-Subject: Re: [PATCH V4 1/3] lib/sg_pool.c: improve APIs for allocating sg pool
-Message-ID: <20190428120405.GA4281@lst.de>
-References: <20190428073932.9898-1-ming.lei@redhat.com>
- <20190428073932.9898-2-ming.lei@redhat.com>
+	id 1hKiZ4-00040e-2o; Sun, 28 Apr 2019 12:05:50 +0000
+Received: from hch by bombadil.infradead.org with local (Exim 4.90_1 #2 (Red
+ Hat Linux)) id 1hKiZ0-00040V-Kj; Sun, 28 Apr 2019 12:05:46 +0000
+Date: Sun, 28 Apr 2019 05:05:46 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+Subject: Re: [PATCH 1/2] nvme: improve logging
+Message-ID: <20190428120546.GB9759@infradead.org>
+References: <20190425024041.17657-1-chaitanya.kulkarni@wdc.com>
+ <20190425024041.17657-2-chaitanya.kulkarni@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190428073932.9898-2-ming.lei@redhat.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190428_050427_620777_5FE1E4D2 
-X-CRM114-Status: UNSURE (   5.81  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
+In-Reply-To: <20190425024041.17657-2-chaitanya.kulkarni@wdc.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,22 +43,46 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-block@vger.kernel.org, Hannes Reinecke <hare@suse.com>,
- Bart Van Assche <bvanassche@acm.org>,
- "Martin K . Petersen" <martin.petersen@oracle.com>, netdev@vger.kernel.org,
- "Ewan D . Milne" <emilne@redhat.com>,
- James Bottomley <James.Bottomley@HansenPartnership.com>,
- Chuck Lever <chuck.lever@oracle.com>, linux-nvme@lists.infradead.org,
- linux-scsi@vger.kernel.org, Christoph Hellwig <hch@lst.de>,
- Sagi Grimberg <sagi@grimberg.me>
+Cc: hare@suse.com, linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Looks good:
+On Wed, Apr 24, 2019 at 07:40:40PM -0700, Chaitanya Kulkarni wrote:
+> Currently nvme is very reluctant if it comes to logging anything,
+> _unless_ it's an ANA AEN. So this patch tries to remedy this by
+> decreasing the priority for the ANA AEN logging message, and improve
+> the logging when calling nvme_reset_ctrl().
+> 
+> Signed-off-by: Hannes Reinecke <hare@suse.com>
+> Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 
-Reviewed-by: Christoph Hellwig <hch@lst.de>
+If this is originally from Hannes it also needs a From: tag in the
+body so that git attribute it to him.
+
+Also please add a changelog vs Hannes v1 in the cover letter.
+
+> +static const char *nvme_ctrl_state_name(struct nvme_ctrl *ctrl)
+> +{
+> +	static const char *const state_name[] = {
+> +		[NVME_CTRL_NEW]		= "new",
+> +		[NVME_CTRL_LIVE]	= "live",
+> +		[NVME_CTRL_ADMIN_ONLY]	= "only-admin",
+> +		[NVME_CTRL_RESETTING]	= "resetting",
+> +		[NVME_CTRL_CONNECTING]	= "connecting",
+> +		[NVME_CTRL_DELETING]	= "deleting",
+> +		[NVME_CTRL_DEAD]	= "dead",
+> +	};
+
+Can we move this array outside the function?  Yes, with the static
+it doesn't really make a difference, but it just feels nicer to me.
+
+> +	const char *state_name = nvme_ctrl_state_name(ctrl);
+>  
+> +	return sprintf(buf, "%s\n", state_name);
+
+I don't think we even need the state_name local variable here.
 
 _______________________________________________
 Linux-nvme mailing list
