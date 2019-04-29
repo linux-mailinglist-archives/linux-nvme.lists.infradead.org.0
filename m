@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7853CDABA
-	for <lists+linux-nvme@lfdr.de>; Mon, 29 Apr 2019 05:25:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C34B2DABB
+	for <lists+linux-nvme@lfdr.de>; Mon, 29 Apr 2019 05:25:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,59 +11,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=3EjfEzjObzmN14aflDxq6/Z0DGb+GX4HwefrZF0IprY=; b=t57jGboFwINvZ8VpVAVruYOAkA
-	nx2rNn5vOJi7YwRkP5yAcvS7PQ7GJ11O7C73LOm5KZ4AwEECHTtnZIRPltALyGwR/XqWhpDWwK+Nw
-	RPq0hqldOJrlyTNo5BFCB8a8d6ITgWA/fgtkvfdlzGdVhy69uLCQD8WEoUgH7hTO12OH7ywwyCPjK
-	bUFQ40kpmzn6s6jytI4Y1omkHtEQv9LaUjAihSzPnoA1xajY3jxElaSRwFnaTBorkYc5ssNggWfQ4
-	/V/C+EcOdv2BWYsaIN/HgPwgAtFnreWjhfk8QARU3DZvJKtZ/h9G61wPm6qlYdymBV/no9KK1rb4I
-	V8NODAXQ==;
+	bh=PPlbseDeJw9IF2CUdSOKLm3LmEu90KPynYFNDWJlNPA=; b=eyHsNkyiEDvn9KBnjmyxFWM97e
+	MgBPItnjAF4/bDBUwK4Zr8xC4Ui003oVnTVHF4b4U3eW0LGz5KJETcZfe9hZSH/mSpW1/O3aJo+lm
+	PTXye1+31YwgCXeHS1PcNMar/nIucSmRTus4XMiHhU9mmWYQTaEvkvE7+IqpmlQSbZ+tRvvMBUOfi
+	q7AsEk2w4/1e9oBR2HtrkGZM8PDRkz2M1Lg6NMT0AUP0Yn6/ln6ViOah3voHJp14sA/GVSd4xPuyn
+	YRTmHAhh8wgu9q/0XeFTAFUbZJriz5vG71N4nXg0OZpted2RsPME7Gpm+//qt0dm7p8qyVpGk7s6Q
+	dLIuD1Iw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hKwub-0002nu-0t; Mon, 29 Apr 2019 03:25:01 +0000
+	id 1hKwup-0002z8-Uk; Mon, 29 Apr 2019 03:25:16 +0000
 Received: from esa5.hgst.iphmx.com ([216.71.153.144])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hKwuQ-0002kS-Cs
- for linux-nvme@lists.infradead.org; Mon, 29 Apr 2019 03:24:51 +0000
+ id 1hKwuQ-0002ki-Rx
+ for linux-nvme@lists.infradead.org; Mon, 29 Apr 2019 03:24:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
  t=1556508291; x=1588044291;
  h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=NxDXf7cbkmIE4ldEMZZmgq7J6gPSPqMlXk+2wxz2lZg=;
- b=J73v26gVRJkWmVhpUYpTf12wMss9mo1Zupjubx9CVePAZTS5zJa6a9AW
- 85JU7pAb4/i/RwWZclXRC6RVQnK/7S0TaIT/ZW5D+6XeJcf4vxt2bJwD3
- 2f68FXgPvmsO1ACxw4v7MeeNOpd6SeOgixlcE6Px75QPVmLRp6fbEBAY+
- 6bHvDJ9KIZi++VSI91RTPV7FKxhQHrZFLYg3yB8FrnrKlYXW/um1HJU/g
- htU5Z8kPSrpl7ivItLHclkliYNwC/mFyFyTFtNCAqGDR3oYLubSyBx68d
- snaV9MXFCL9ye0El7fxZUakfPgLmvPEWNofwjBV6n0oPCLe/Kgy3xW4Ws Q==;
-X-IronPort-AV: E=Sophos;i="5.60,408,1549900800"; d="scan'208";a="108245361"
+ bh=6WHco+6xubchRXh3TwIkzlXZ8puobDfjwO2QNkByY9w=;
+ b=oAnd0v98vYCmCQelf6htRhcWDEkDxaZmv+Zvyw6cJ7rClFFv6Xu65qyw
+ XWak2vko3spM+wehkyqBTwpTduTPTxDBohtSc8Q5pCAk10UXvABrsJo+b
+ mks+Uaff5kHhxR2BrWpVomupPAv/Yr7mU5kklWWECuMD2Z2mb2AfsLuVd
+ X/PyC94Dyk4kmr9Sg7rCGOQnSUA+E0tDX3yJgcPnxoVO5Ixvxz8hykrtE
+ pRSM2zllH9JtfpZYt9Y9G7kjI896VHB8fn1P4c/f0TjcwRNSJ6kmdRVoz
+ 9RKmueBSxzlp+gABEyNvtx9Cg4ADIbN9HARM8Cz5qea/AaYohLDQlGLoE A==;
+X-IronPort-AV: E=Sophos;i="5.60,408,1549900800"; d="scan'208";a="108245364"
 Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
  ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 29 Apr 2019 11:24:48 +0800
-IronPort-SDR: EJsRLCnA0riPe14zorqIsxJRHlJ3VXNa5c+VeY6KXF0LfnBLuGIAJ6zrGttWFVUQ3jgUA6g7RH
- kWcZMuu7kSba4wJ65mvOUWMulTIXTZls9FDkrGd8q+AL0AlgUQNcMxGjGSC/xaXlQLg31qpMIz
- w0Kp+LFq5go78cKomzC74LhLGE4PFw/OSc2Z4vhcBmY9qsj5MNbykLvAVaxoUz/8st3AmyfJH6
- LqaYvgyUWUsIB9np1RWBuz9WIqblSfbQ2Z9pnaEP5V+5XtJmF6p0C4jofaU/fV0/MsptKyhxtg
- UjkqNwkRDUVbVU8puRLPvhza
+ by ob1.hgst.iphmx.com with ESMTP; 29 Apr 2019 11:24:50 +0800
+IronPort-SDR: p/DBcp3v/OlYEyTNu5Wlt5rGYwUbFxmBB1mEhW6r/phngctmKz0603LejF6tlRgsXBWgI6YATu
+ WDaFC8Q6lJ0PHCqCTuqMb6k0Zw/ZR2pariRN57Ik2U/paMTzs+aHes2nyguxm1FBifuiCMpTRG
+ abduAqU03nxTJoEe/IU/PG4dXZFz6lPUFPWAHZQr5AQlG7E/5+na21sbdaEeCgklfw7UcxM6kD
+ 2lyN8+BycvsfZd9P064A97BjemsRh/I9TNYmxHQ37rxllqozWh998oURLfIyV7rDgNMKf6TLwc
+ dtBq51KVdMW9NzSg3tt8g0eU
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep01.wdc.com with ESMTP; 28 Apr 2019 20:01:11 -0700
-IronPort-SDR: OWXHgFTDtZoD+AtgQgCia+/cvR94QBnzbvRMl09viYglqKdYufBBtrwXN7z3rwgj0arepHWMCM
- oUfZLwBlJdj+e4Id6d3NmWyCOFx9wjLZ7OOEJBCJCOdMuSyj1JHwkp+Q96xa0huWOH9c5VWM55
- KoXMNoT1o0UHXrhdRvqv9VVxjtEE5cfX+FlxMvC3vhs+Z50vdnBtkQ+8Wp3Lo4c6xJkrUo1zSx
- S2YS9xK2MXu7nLtl7bU1eHclfuAnk3hgbdCnqwwOgxV8VG1AcNVID0FSBann9WNQg6ZKbxIOpG
- 8Ws=
+ by uls-op-cesaep01.wdc.com with ESMTP; 28 Apr 2019 20:01:13 -0700
+IronPort-SDR: mW59FB2bUkUaj5tcwTrjLfb/cpfBkPI5WCXyitLF9VGzxlSXcB8EghrLUXq9KEsEGzwDPs2MQg
+ dQPzfoWEdE2lImg7W+ev38SypLTDhuo353OYf3J5oY5iyIn+Jjy0SmASj0hUplmGxw3sEbUCU7
+ RO2t0aSx6392u7KuDdCDok2XC3r1YuFtY4z93cWPyN1Dy+iIIcyAjDxXkgYLJu1e1ozeAii/Hh
+ eXDyTAvK6eq+NpBbwa3nqKvknoDvOKGfI/eivXPK1EvVep/yU9g5hycGrBASjBW+4Sy1ybRgS+
+ ulA=
 Received: from qemu.hgst.com ([10.202.65.140])
- by uls-op-cesaip01.wdc.com with ESMTP; 28 Apr 2019 20:24:48 -0700
+ by uls-op-cesaip01.wdc.com with ESMTP; 28 Apr 2019 20:24:50 -0700
 From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH V2 1/3] nvme: introduce nvme-ctrl state name string array
-Date: Sun, 28 Apr 2019 20:24:40 -0700
-Message-Id: <20190429032442.5923-2-chaitanya.kulkarni@wdc.com>
+Subject: [PATCH V2 2/3] nvme: improve logging
+Date: Sun, 28 Apr 2019 20:24:41 -0700
+Message-Id: <20190429032442.5923-3-chaitanya.kulkarni@wdc.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20190429032442.5923-1-chaitanya.kulkarni@wdc.com>
 References: <20190429032442.5923-1-chaitanya.kulkarni@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190428_202450_545344_362A95B8 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20190428_202451_014980_7A2C5D44 
+X-CRM114-Status: GOOD (  13.14  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -99,36 +99,95 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Hannes Reinecke <hare@suse.com>
 
-This patch intoduces nvme-ctrl state name array which is used inthe the
-later patch to improve the logging of the ctrl state.
+Currently nvme is very reluctant if it comes to logging anything,
+_unless_ it's an ANA AEN. So this patch tries to remedy this by
+decreasing the priority for the ANA AEN logging message, and improve
+the logging when calling nvme_reset_ctrl().
+
+Also, print ctrl state transition info.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 ---
- drivers/nvme/host/nvme.h | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ drivers/nvme/host/core.c | 41 ++++++++++++++++++++++------------------
+ 1 file changed, 23 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 527d64545023..01a36bbafed6 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -146,6 +146,16 @@ enum nvme_ctrl_state {
- 	NVME_CTRL_DEAD,
- };
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 3dd043aa6d1f..c17e731f53e3 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -94,6 +94,13 @@ static void nvme_put_subsystem(struct nvme_subsystem *subsys);
+ static void nvme_remove_invalid_namespaces(struct nvme_ctrl *ctrl,
+ 					   unsigned nsid);
  
-+static const char *const nvme_ctrl_state_name[] = {
-+	[NVME_CTRL_NEW]         = "new",
-+	[NVME_CTRL_LIVE]        = "live",
-+	[NVME_CTRL_ADMIN_ONLY]  = "only-admin",
-+	[NVME_CTRL_RESETTING]   = "resetting",
-+	[NVME_CTRL_CONNECTING]  = "connecting",
-+	[NVME_CTRL_DELETING]    = "deleting",
-+	[NVME_CTRL_DEAD]        = "dead",
-+};
++static const char *nvme_get_ctrl_state_name(unsigned int state)
++{
++	if ((unsigned int) state < ARRAY_SIZE(nvme_ctrl_state_name))
++		return nvme_ctrl_state_name[state];
++	return "unknown";
++}
 +
- struct nvme_ctrl {
- 	bool comp_seen;
- 	enum nvme_ctrl_state state;
+ static void nvme_set_queue_dying(struct nvme_ns *ns)
+ {
+ 	/*
+@@ -119,10 +126,16 @@ static void nvme_queue_scan(struct nvme_ctrl *ctrl)
+ 
+ int nvme_reset_ctrl(struct nvme_ctrl *ctrl)
+ {
+-	if (!nvme_change_ctrl_state(ctrl, NVME_CTRL_RESETTING))
++	if (!nvme_change_ctrl_state(ctrl, NVME_CTRL_RESETTING)) {
++		dev_warn(ctrl->device, "cannot reset ctrl in state %s\n",
++				nvme_get_ctrl_state_name(ctrl->state));
+ 		return -EBUSY;
+-	if (!queue_work(nvme_reset_wq, &ctrl->reset_work))
++	}
++	if (!queue_work(nvme_reset_wq, &ctrl->reset_work)) {
++		dev_dbg(ctrl->device, "ctrl reset already queued\n");
+ 		return -EBUSY;
++	}
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(nvme_reset_ctrl);
+@@ -370,8 +383,13 @@ bool nvme_change_ctrl_state(struct nvme_ctrl *ctrl,
+ 		break;
+ 	}
+ 
+-	if (changed)
++	if (changed) {
+ 		ctrl->state = new_state;
++		dev_info(ctrl->device, "state change from (%s -> %s)\n",
++				nvme_get_ctrl_state_name(new_state),
++					nvme_get_ctrl_state_name(ctrl->state));
++
++	}
+ 
+ 	spin_unlock_irqrestore(&ctrl->lock, flags);
+ 	if (changed && ctrl->state == NVME_CTRL_LIVE)
+@@ -2960,21 +2978,8 @@ static ssize_t nvme_sysfs_show_state(struct device *dev,
+ 				     char *buf)
+ {
+ 	struct nvme_ctrl *ctrl = dev_get_drvdata(dev);
+-	static const char *const state_name[] = {
+-		[NVME_CTRL_NEW]		= "new",
+-		[NVME_CTRL_LIVE]	= "live",
+-		[NVME_CTRL_ADMIN_ONLY]	= "only-admin",
+-		[NVME_CTRL_RESETTING]	= "resetting",
+-		[NVME_CTRL_CONNECTING]	= "connecting",
+-		[NVME_CTRL_DELETING]	= "deleting",
+-		[NVME_CTRL_DEAD]	= "dead",
+-	};
+-
+-	if ((unsigned)ctrl->state < ARRAY_SIZE(state_name) &&
+-	    state_name[ctrl->state])
+-		return sprintf(buf, "%s\n", state_name[ctrl->state]);
+-
+-	return sprintf(buf, "unknown state\n");
++
++	return sprintf(buf, "%s\n", nvme_get_ctrl_state_name(ctrl->state));
+ }
+ 
+ static DEVICE_ATTR(state, S_IRUGO, nvme_sysfs_show_state, NULL);
 -- 
 2.17.0
 
