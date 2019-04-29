@@ -2,66 +2,68 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 970CEDAB9
-	for <lists+linux-nvme@lfdr.de>; Mon, 29 Apr 2019 05:25:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7853CDABA
+	for <lists+linux-nvme@lfdr.de>; Mon, 29 Apr 2019 05:25:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=HpYuIZz7Wvu7TQyZqanhJ9JArPp4NEx9kFdaErJwFbM=; b=pdg
-	leq+Kt11iBxtFhB0tbqVg9lyuIL7gXC2knPDw1e4yDqDGuOoOdGSPnRnkWfwws9Wh0ELzdPfjTZMy
-	+0LYJeDLsQoRMJ5KOqEw/UzC5XpdLFsZ8BP64/uyg0+x9lbdUfErTdnSfLwWGcQJCPpGIRMUDo5oP
-	B52AosGkWmOJhKwc6JOqtB9Axn03EsP8px1/VmzdTwGQRtMnzNMSjLoaNqLEzeJBOiku/k9fEbaf8
-	ykl7m7bqCF5JT+cmJJaovI+TQg6FrBrCwza5Iy+jIhGqQcauNohcGH9UCziHmfbs+nkKuVyyMtqJe
-	6ktRcvdYR8ae9vWPTm/t/q4Z6uCaEOA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=3EjfEzjObzmN14aflDxq6/Z0DGb+GX4HwefrZF0IprY=; b=t57jGboFwINvZ8VpVAVruYOAkA
+	nx2rNn5vOJi7YwRkP5yAcvS7PQ7GJ11O7C73LOm5KZ4AwEECHTtnZIRPltALyGwR/XqWhpDWwK+Nw
+	RPq0hqldOJrlyTNo5BFCB8a8d6ITgWA/fgtkvfdlzGdVhy69uLCQD8WEoUgH7hTO12OH7ywwyCPjK
+	bUFQ40kpmzn6s6jytI4Y1omkHtEQv9LaUjAihSzPnoA1xajY3jxElaSRwFnaTBorkYc5ssNggWfQ4
+	/V/C+EcOdv2BWYsaIN/HgPwgAtFnreWjhfk8QARU3DZvJKtZ/h9G61wPm6qlYdymBV/no9KK1rb4I
+	V8NODAXQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hKwuU-0002ld-Ku; Mon, 29 Apr 2019 03:24:54 +0000
+	id 1hKwub-0002nu-0t; Mon, 29 Apr 2019 03:25:01 +0000
 Received: from esa5.hgst.iphmx.com ([216.71.153.144])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hKwuP-0002kP-TN
+ id 1hKwuQ-0002kS-Cs
  for linux-nvme@lists.infradead.org; Mon, 29 Apr 2019 03:24:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1556508290; x=1588044290;
- h=from:to:cc:subject:date:message-id;
- bh=eBQohAzgRnXiMgPCvX6ctaoCxY1Y79it9SdnTWg5Hkw=;
- b=gAcLyB38SeN+Fh+E7NPz30F1DYaLBvkUCAHZuwvm/QN/1C8TuqkPRNEw
- UFbbWH5n9hMnmf7yBhcHsM2Dj4c1QAoZyq8KtrshNDkXop63osCZQYp+I
- E9arobgB5YzmSPNxOmgo6iggRxRN0KI4hG596vcbBJ5hRv9r1lzYqQqfj
- fRKY/iF0RNxUGl1r667u3kMVnfElpVh2dg0Ic5HojzIsNKW15ZBDURCvP
- G+nRxkN38Cf0wgVzoDB0PAgzMox/f7wpyvkPs3dQ4UQ4aWlN5xCW8BMLZ
- xTBG6S5O76R0Q5LNGO2pdSrR9jSkGFnCc/zYLymPiOJ6okTGsc+D0zLUM g==;
-X-IronPort-AV: E=Sophos;i="5.60,408,1549900800"; d="scan'208";a="108245359"
+ t=1556508291; x=1588044291;
+ h=from:to:cc:subject:date:message-id:in-reply-to: references;
+ bh=NxDXf7cbkmIE4ldEMZZmgq7J6gPSPqMlXk+2wxz2lZg=;
+ b=J73v26gVRJkWmVhpUYpTf12wMss9mo1Zupjubx9CVePAZTS5zJa6a9AW
+ 85JU7pAb4/i/RwWZclXRC6RVQnK/7S0TaIT/ZW5D+6XeJcf4vxt2bJwD3
+ 2f68FXgPvmsO1ACxw4v7MeeNOpd6SeOgixlcE6Px75QPVmLRp6fbEBAY+
+ 6bHvDJ9KIZi++VSI91RTPV7FKxhQHrZFLYg3yB8FrnrKlYXW/um1HJU/g
+ htU5Z8kPSrpl7ivItLHclkliYNwC/mFyFyTFtNCAqGDR3oYLubSyBx68d
+ snaV9MXFCL9ye0El7fxZUakfPgLmvPEWNofwjBV6n0oPCLe/Kgy3xW4Ws Q==;
+X-IronPort-AV: E=Sophos;i="5.60,408,1549900800"; d="scan'208";a="108245361"
 Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
  ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 29 Apr 2019 11:24:46 +0800
-IronPort-SDR: aC8lFlb5uuMz8KF2q/pZ2eariTlh1+/mnWdQMxiSLAOarufjajFWBIPf2/a2rvLOI5CY1q2r/h
- Z0njDp/aNDe2DZJ4K77RzHfXoJiAtGa059MZUMB0k24SOfrWP972H0WmXMhmPgqw8D1KkhqYRx
- AvlYmBHlhFSogchdwilf2wQj+tCOCwYp6gWKajGhxZz1nQCJNCOs36/KNF5H9gcRr2YAT7bw7c
- eIDrmlu6UpbJ6ZB/rg7hffiqjlkUreObtnHBr7nUTZfEkj4qqS0OV4D+Q1Jx9ghliIoaiRwdp3
- IxK5KZmXbfpVn5IVfA6VFsQY
+ by ob1.hgst.iphmx.com with ESMTP; 29 Apr 2019 11:24:48 +0800
+IronPort-SDR: EJsRLCnA0riPe14zorqIsxJRHlJ3VXNa5c+VeY6KXF0LfnBLuGIAJ6zrGttWFVUQ3jgUA6g7RH
+ kWcZMuu7kSba4wJ65mvOUWMulTIXTZls9FDkrGd8q+AL0AlgUQNcMxGjGSC/xaXlQLg31qpMIz
+ w0Kp+LFq5go78cKomzC74LhLGE4PFw/OSc2Z4vhcBmY9qsj5MNbykLvAVaxoUz/8st3AmyfJH6
+ LqaYvgyUWUsIB9np1RWBuz9WIqblSfbQ2Z9pnaEP5V+5XtJmF6p0C4jofaU/fV0/MsptKyhxtg
+ UjkqNwkRDUVbVU8puRLPvhza
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep01.wdc.com with ESMTP; 28 Apr 2019 20:01:09 -0700
-IronPort-SDR: TA+1l9FeB4MLs0iXORvWlgQ8KeXwkdKhYjKgz1xcJMgL8jGXnWcUrnfAruGQBnHKYeZ7dFPBv2
- ruf6IDq2aB9L5KVnYiRiFWsnjIHLI5wjiOhM1mx6Rqiw9I71RehUQFE4bcpiK6yW7YyjnEzB1D
- BdRt3GiAzf+UoS1xgLkoxoWT28Wq2KAin+64DnlWzxID/gectRWpIoSHbnB2SnDBhqgIFdw1wF
- Tcelz4g5LwQqjY4hpk7CICT9EFtL883k8ChDzVPfaPWVaRRjAmQwLrW2Rbjvi7oy4vUGO9J57r
- tkg=
+ by uls-op-cesaep01.wdc.com with ESMTP; 28 Apr 2019 20:01:11 -0700
+IronPort-SDR: OWXHgFTDtZoD+AtgQgCia+/cvR94QBnzbvRMl09viYglqKdYufBBtrwXN7z3rwgj0arepHWMCM
+ oUfZLwBlJdj+e4Id6d3NmWyCOFx9wjLZ7OOEJBCJCOdMuSyj1JHwkp+Q96xa0huWOH9c5VWM55
+ KoXMNoT1o0UHXrhdRvqv9VVxjtEE5cfX+FlxMvC3vhs+Z50vdnBtkQ+8Wp3Lo4c6xJkrUo1zSx
+ S2YS9xK2MXu7nLtl7bU1eHclfuAnk3hgbdCnqwwOgxV8VG1AcNVID0FSBann9WNQg6ZKbxIOpG
+ 8Ws=
 Received: from qemu.hgst.com ([10.202.65.140])
- by uls-op-cesaip01.wdc.com with ESMTP; 28 Apr 2019 20:24:46 -0700
+ by uls-op-cesaip01.wdc.com with ESMTP; 28 Apr 2019 20:24:48 -0700
 From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 0/3] nvme: improve logging
-Date: Sun, 28 Apr 2019 20:24:39 -0700
-Message-Id: <20190429032442.5923-1-chaitanya.kulkarni@wdc.com>
+Subject: [PATCH V2 1/3] nvme: introduce nvme-ctrl state name string array
+Date: Sun, 28 Apr 2019 20:24:40 -0700
+Message-Id: <20190429032442.5923-2-chaitanya.kulkarni@wdc.com>
 X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20190429032442.5923-1-chaitanya.kulkarni@wdc.com>
+References: <20190429032442.5923-1-chaitanya.kulkarni@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190428_202450_061760_F849758F 
-X-CRM114-Status: UNSURE (   7.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190428_202450_545344_362A95B8 
+X-CRM114-Status: GOOD (  10.85  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -95,33 +97,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-These code changes are originally posted by
-Hannes Reinecke <hare@suse.com> :-
-http://lists.infradead.org/pipermail/linux-nvme/2019-April/023336.html
+From: Hannes Reinecke <hare@suse.com>
 
-I've added all the comments posted on this patch-series along with my
-signoff to the patches. Please keep my sign off if Hannes is okay
-with it.
+This patch intoduces nvme-ctrl state name array which is used inthe the
+later patch to improve the logging of the ctrl state.
 
-Regards,
--Chaitanya
+Signed-off-by: Hannes Reinecke <hare@suse.com>
+Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+---
+ drivers/nvme/host/nvme.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-Changes from V1:
-1. Move the NVMe ctrl state array of string to the header file whee
-   all controller states are defined.
-2. Remvoe extra state_name variable and use the
-   nvme_get_ctrl_state_name() when reporting the ctrl state.
-3. Add "nvme-mp" prefix to the debug message for multipating code. 
-Chaitanya Kulkarni (3):
-  nvme: introduce nvme-ctrl state name string array
-  nvme: improve logging
-  nvme-multipath: improve logging
-
- drivers/nvme/host/core.c      | 41 ++++++++++++++++++++---------------
- drivers/nvme/host/multipath.c |  5 ++++-
- drivers/nvme/host/nvme.h      | 10 +++++++++
- 3 files changed, 37 insertions(+), 19 deletions(-)
-
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 527d64545023..01a36bbafed6 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -146,6 +146,16 @@ enum nvme_ctrl_state {
+ 	NVME_CTRL_DEAD,
+ };
+ 
++static const char *const nvme_ctrl_state_name[] = {
++	[NVME_CTRL_NEW]         = "new",
++	[NVME_CTRL_LIVE]        = "live",
++	[NVME_CTRL_ADMIN_ONLY]  = "only-admin",
++	[NVME_CTRL_RESETTING]   = "resetting",
++	[NVME_CTRL_CONNECTING]  = "connecting",
++	[NVME_CTRL_DELETING]    = "deleting",
++	[NVME_CTRL_DEAD]        = "dead",
++};
++
+ struct nvme_ctrl {
+ 	bool comp_seen;
+ 	enum nvme_ctrl_state state;
 -- 
 2.17.0
 
