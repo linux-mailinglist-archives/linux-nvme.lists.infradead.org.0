@@ -2,67 +2,65 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63726EC94
-	for <lists+linux-nvme@lfdr.de>; Tue, 30 Apr 2019 00:12:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0991AEC99
+	for <lists+linux-nvme@lfdr.de>; Tue, 30 Apr 2019 00:14:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=fmJ16cirfVw6VuJAXuWnYnozZ6TeSd88Y0n2KNuDM6E=; b=U294MbaCgJ4S2q
-	2obMDcy6G6rxA+ZtD9+A4THqoWynLIGfm++HxnA57XhxKS89b63+rA+esTRM57zJtF0Mh3sgN0Vog
-	Bm1LXCmPTBRKucRZpx3lIJ0tegLy4FD4eGgjnw8rvewnRKKDyzhzHbmjQB75HyvpfnLRmVIl8n8Te
-	tJsPJRyq6z7AatXBwXGJkAuOz7TQTd+oEDBdRXClJNWuTDdauynG1cp6rUt9f6h8VUdXK+ztB+GcO
-	BAoVWKa/6yUzJHMrVg97S8JDTOp3VMfjQWSnjNIJqlaAktqKck/f2a0A1TNHGn1nQMZ884wjlTK15
-	XBZURpwWGM5QmXcrQd6Q==;
+	List-Owner; bh=e90wKQ2ryvWKjcVCjOun+cjWJRsaSqU0flqY+lUHmnc=; b=gblWSqXyVhpIby
+	umcQ82E6zwnTkcZSC18w5DDtbVJJZwOp1Orbmsjc7TZFRsQUaEy9XkZ4EPqgIzLPzS9pl79aYUM3V
+	dVQudtqMU46tL1bSMCPSpitgZp+G6DdpxrEIsB1oE4ViSiaZoOlPb42TbnMphZLSFo0qmVLP2M1pm
+	TVVk1W2tCD8B6LnrflWNsANrIXQJvKUGTMjq3MfKx4V4OsZWBEtuurlMEBuuu3u31jHpUKjdrTwe8
+	tXml4Tt9l8p8YoFJZiOde4pKTHgoSSlWpWq3FziGOCZw2wNcuVDtv+Ii9M2LU6V3JEyvLSxYIaZk5
+	zdi8FeDHMb+/UfjD8VuA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hLEVR-000841-9O; Mon, 29 Apr 2019 22:12:13 +0000
+	id 1hLEXW-000074-Lm; Mon, 29 Apr 2019 22:14:22 +0000
 Received: from esa4.hgst.iphmx.com ([216.71.154.42])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hLEVM-00083d-Jj
- for linux-nvme@lists.infradead.org; Mon, 29 Apr 2019 22:12:10 +0000
+ id 1hLEXR-00006e-9U
+ for linux-nvme@lists.infradead.org; Mon, 29 Apr 2019 22:14:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1556575929; x=1588111929;
+ t=1556576057; x=1588112057;
  h=from:to:cc:subject:date:message-id:references:
  content-transfer-encoding:mime-version;
- bh=8w4XI+MkEw5Sc/3eZZXz7cRjl6zlse4a4z8xuzpfXlc=;
- b=dbJyq2NFZGXUkh+rH1nKVTp99GlOp83w3/Mn6f4yqnyVVp77x4eLXuxS
- Mh6sUCFHhvsGkL5Gl9uTKSUoxWKrYYqq48GC1MQfuQUCG5dyXWmBCjuAG
- 0en44tkg3e+2cmSDVVRAQ8mUHsZvM4RKUivxg8mpy3BLUUU8UJRIQI2Rq
- YEKUj4H5ax1jCxivUbYwSMgMfSrgxOJ37BDdNMXBOZrKHD39YK9HYOs7k
- A34XzFdOuMnnVSNvm5Q93OKxWEPuiaeyWh47Vn2Wj3PuUu2YYUVoV6liu
- 0+xiWyUsEwZwGWtmRrrKHN/X+IEDWfllKlLfDgm4MQiLrRFKOcVevh/2Q Q==;
-X-IronPort-AV: E=Sophos;i="5.60,411,1549900800"; d="scan'208";a="107111112"
-Received: from mail-co1nam05lp2050.outbound.protection.outlook.com (HELO
- NAM05-CO1-obe.outbound.protection.outlook.com) ([104.47.48.50])
- by ob1.hgst.iphmx.com with ESMTP; 30 Apr 2019 06:12:08 +0800
+ bh=H6/2My/oBeyEMr8knKbYDg9V3p8RV6oSDaRpUlofUbs=;
+ b=Jubp7V1DaeXK/Ea0NRYWZFBjpklbuYTOFVb9j3gsvTAEsZHJyzbwne/n
+ 4YZXZ0MxWhvaj5nSjWFUb6rHHnRWfKvRA7LPLZVIFPg7uyP1u/RTG4FgZ
+ hfyMiuiMlk7feWRvZcUZeAraLwcdZLa3hevoYDUI+cQwOKFZytJQCiJhz
+ RP5oh6+ssfxaqTfFBujOvguVbumOGW4OcZRb0FNradX2CkDTJEhfYrhTm
+ PDZo0CzRKLQ+UhQPs13Y/ZDZ9aXqOKcsWBy1M4Y+0ZyGrOwLlXcYL8UVq
+ +1GqADBybGeIn5j45C6Wmg/LwR0NpHsVRCpqx5kWTVmVr/eU4A/G+1Un/ w==;
+X-IronPort-AV: E=Sophos;i="5.60,411,1549900800"; d="scan'208";a="107111305"
+Received: from mail-by2nam03lp2059.outbound.protection.outlook.com (HELO
+ NAM03-BY2-obe.outbound.protection.outlook.com) ([104.47.42.59])
+ by ob1.hgst.iphmx.com with ESMTP; 30 Apr 2019 06:14:17 +0800
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P0f/6w/xN42pomsdBvkRIb02z7O1iayxpMO//u6/os8=;
- b=nAEJ5lX0v4a1+CrWQIFwbDRgcD+KCVNZC722dlLHtlARZc4uegRBpU9q1sjEaOqQXd7GAsKmEwmtkU99XC09mLbVhgmEARkcXhKBBKDm9mQqds6YW0fgcE73q2CXlvGXvgneDxph8BTqZ41RiFJ4zFX87cbSHBPbu18aipkNd/s=
+ bh=NZpaWikFzYerIERmLP0LjFEuWIYEN7VdqdPQaRV/5tQ=;
+ b=XvGiixCUbgcshpLNI89CwEteCc6k6OmU3YC/ooVqErcpHQAYLYA/TKTCVr3X0QHriIVeUaqk3CH8mfkHOyTtdh2SyoAB6/phkMJpnqEcMuZ9buqDuTZa4RiRJ4jZWSjrVjq5B7wP3kfGRW4v7ydN6XW8OuEfU3k+pcfnKogmEwk=
 Received: from SN6PR04MB4527.namprd04.prod.outlook.com (52.135.120.25) by
- SN6PR04MB5438.namprd04.prod.outlook.com (20.178.6.16) with Microsoft SMTP
+ SN6PR04MB4319.namprd04.prod.outlook.com (52.135.72.27) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1835.15; Mon, 29 Apr 2019 22:12:06 +0000
+ 15.20.1835.15; Mon, 29 Apr 2019 22:14:15 +0000
 Received: from SN6PR04MB4527.namprd04.prod.outlook.com
  ([fe80::c4f:1604:178c:d974]) by SN6PR04MB4527.namprd04.prod.outlook.com
  ([fe80::c4f:1604:178c:d974%5]) with mapi id 15.20.1835.015; Mon, 29 Apr 2019
- 22:12:06 +0000
+ 22:14:15 +0000
 From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: "Heitke, Kenneth" <kenneth.heitke@intel.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH V2 1/3] nvme: introduce nvme-ctrl state name string array
-Thread-Topic: [PATCH V2 1/3] nvme: introduce nvme-ctrl state name string array
-Thread-Index: AQHU/jsbSpPrZgEDa0m7M4oze4sBGg==
-Date: Mon, 29 Apr 2019 22:12:06 +0000
-Message-ID: <SN6PR04MB452783333EA5F5FE1190294886390@SN6PR04MB4527.namprd04.prod.outlook.com>
-References: <20190429032442.5923-1-chaitanya.kulkarni@wdc.com>
- <20190429032442.5923-2-chaitanya.kulkarni@wdc.com>
- <067b8ef5-abea-2bc8-9da5-a39ac3b54a1b@intel.com>
+To: Minwoo Im <minwoo.im.dev@gmail.com>
+Subject: Re: [PATCH] nvmet: fix ptr_ret.cocci warnings
+Thread-Topic: [PATCH] nvmet: fix ptr_ret.cocci warnings
+Thread-Index: AQHU/rUi/X3mcWJFukeNj8Wd9t7TxQ==
+Date: Mon, 29 Apr 2019 22:14:15 +0000
+Message-ID: <SN6PR04MB45271D793C898E527914578086390@SN6PR04MB4527.namprd04.prod.outlook.com>
+References: <201904300131.gB7Qr2Ik%lkp@intel.com>
+ <20190429175734.GA20932@lkp-kbuild08>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -71,35 +69,35 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
 x-originating-ip: [199.255.45.63]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e944923a-fba6-4b75-5531-08d6ccefb740
+x-ms-office365-filtering-correlation-id: 641456d2-10ed-436e-939f-08d6ccf00441
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
- SRVR:SN6PR04MB5438; 
-x-ms-traffictypediagnostic: SN6PR04MB5438:
+ SRVR:SN6PR04MB4319; 
+x-ms-traffictypediagnostic: SN6PR04MB4319:
 x-ms-exchange-purlcount: 1
 wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <SN6PR04MB54388FDD698CEEA3E06DCEF886390@SN6PR04MB5438.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:639;
+x-microsoft-antispam-prvs: <SN6PR04MB4319DC226DCD341472F2E54486390@SN6PR04MB4319.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:327;
 x-forefront-prvs: 0022134A87
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(366004)(376002)(39860400002)(136003)(396003)(346002)(199004)(189003)(74316002)(305945005)(316002)(2906002)(9686003)(8936002)(2501003)(7696005)(229853002)(478600001)(14454004)(55016002)(91956017)(25786009)(76116006)(8676002)(110136005)(7736002)(71190400001)(71200400001)(86362001)(81166006)(72206003)(76176011)(966005)(81156014)(6306002)(256004)(6116002)(6506007)(3846002)(486006)(102836004)(66066001)(6246003)(97736004)(54906003)(33656002)(26005)(64756008)(66946007)(5660300002)(68736007)(66476007)(4326008)(53936002)(73956011)(66446008)(6436002)(186003)(476003)(52536014)(446003)(53546011)(66556008)(99286004);
- DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB5438;
+ SFS:(10019020)(366004)(136003)(396003)(39860400002)(376002)(346002)(189003)(199004)(54906003)(72206003)(25786009)(476003)(7696005)(71190400001)(33656002)(99286004)(81156014)(316002)(52536014)(8936002)(6916009)(53936002)(966005)(71200400001)(5660300002)(486006)(2906002)(81166006)(478600001)(6306002)(9686003)(55016002)(66066001)(68736007)(97736004)(76176011)(4326008)(6506007)(102836004)(53546011)(8676002)(6246003)(446003)(66446008)(186003)(6436002)(64756008)(14454004)(74316002)(7736002)(66476007)(76116006)(229853002)(73956011)(66946007)(91956017)(3846002)(305945005)(6116002)(256004)(66556008)(86362001)(14444005)(26005);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB4319;
  H:SN6PR04MB4527.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
+ PTR:InfoNoRecords; MX:1; A:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: L2x2RILKJz0y80kuchHD0/MGdA/r+6dNnGa34q8wSsDgMPy4MjNGYvjJVUk7YoUR2XeBwGtfAV/FWE4MkytOVXKxVTtgF9rJuxoTuiPDYkM/THRofQC3hCORiiBbx64SdRL1CmYKzzFaeH5GFtIpd5JE82qgR9frojW8L236A7k4xMqleq7ahgbyDX6BfHACzlLOdpA7D1YAthBFbJ4egc9ph2/oPG6OlRAchgwvAP+z0eFPoov9XWZVK+d6W9FbvC6ZABCxFx05tGg131rIzXUJyJJE6KLeDkcqRQrXCsQm9h6baQpi8m3DmlONOvw6Z+/jzT10ljeAFKl5kZXkfq1e+WkBckVNyDBXsmktFvbSa4G9cKzMWoxg2aZZ280aDXB86Alx21eEIs4p1ZbfLNYEB7uw0+YvaPy22LbTwj0=
+x-microsoft-antispam-message-info: 0hCbZ+afmIGFj+tbpcvvV+k6ggVxdXgLn2t4rf8WmsS59CR0nKe9/13dLpZ/qIxjPNmIzNsF2mBaO2HhI6QX+CMVQ7BxmOKJudgP3LO8Ig7R/SXeje6ciaHDmnkfhoCp2zB6PraLR9G1Nzq2+/vxF2T/HItEz7ubgoyxS5VZYjZ6/DIztJMz7aoKqg+g1TmlovWRZyaARWeZt6wEhJCOteACOiv8VohPSKLjo5MFa5BEOqixFu5Modp2Boz2mpOYcXbExLMWLAD1jBHhkPbxyNqE3aIJvHkLeFhf+hgdm5Rwh8VTD76GI8bh+C1p6OiHdgYtzobFkJ2Xprvio1mtPNc2i8XwbsZwLakTvEOhUdYaBOcMh07tZp4S8XbKHKDiPhUKYdy8z3IieeqT6CB2+pgB/fr0HYn6lqvAUAURePw=
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e944923a-fba6-4b75-5531-08d6ccefb740
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Apr 2019 22:12:06.1729 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 641456d2-10ed-436e-939f-08d6ccf00441
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Apr 2019 22:14:15.4177 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB5438
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4319
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190429_151208_795496_8426BB29 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20190429_151417_369498_6C0CC6BE 
+X-CRM114-Status: GOOD (  14.39  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -126,63 +124,54 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "hare@suse.com" <hare@suse.com>, "hch@lst.de" <hch@lst.de>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Christoph Hellwig <hch@lst.de>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 04/29/2019 10:41 AM, Heitke, Kenneth wrote:
+Hi Minwoo,
+
+Can you please resend this patch with the suggested change ?
+
+On 04/29/2019 10:58 AM, kbuild test robot wrote:
+> From: kbuild test robot <lkp@intel.com>
+>
+> drivers/nvme/target/discovery.c:375:1-3: WARNING: PTR_ERR_OR_ZERO can be used
 >
 >
-> On 4/28/2019 9:24 PM, Chaitanya Kulkarni wrote:
->> From: Hannes Reinecke <hare@suse.com>
->>
->> This patch intoduces nvme-ctrl state name array which is used inthe the
-> s/intoduces /introduces/
-> s/inthe/in the/
+>   Use PTR_ERR_OR_ZERO rather than if(IS_ERR(...)) + PTR_ERR
 >
->> later patch to improve the logging of the ctrl state.
->>
->> Signed-off-by: Hannes Reinecke <hare@suse.com>
->> Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
->> ---
->>    drivers/nvme/host/nvme.h | 10 ++++++++++
->>    1 file changed, 10 insertions(+)
->>
->> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
->> index 527d64545023..01a36bbafed6 100644
->> --- a/drivers/nvme/host/nvme.h
->> +++ b/drivers/nvme/host/nvme.h
->> @@ -146,6 +146,16 @@ enum nvme_ctrl_state {
->>    	NVME_CTRL_DEAD,
->>    };
->>
->> +static const char *const nvme_ctrl_state_name[] = {
->> +	[NVME_CTRL_NEW]         = "new",
->> +	[NVME_CTRL_LIVE]        = "live",
->> +	[NVME_CTRL_ADMIN_ONLY]  = "only-admin",
->> +	[NVME_CTRL_RESETTING]   = "resetting",
->> +	[NVME_CTRL_CONNECTING]  = "connecting",
->> +	[NVME_CTRL_DELETING]    = "deleting",
->> +	[NVME_CTRL_DEAD]        = "dead",
->> +};
+> Generated by: scripts/coccinelle/api/ptr_ret.cocci
 >
-> I haven't been paying attention if this was bought up before but won't
-> this create multiple copies of this data for every source file the
-> includes the header file?
-Yes, we did discuss this.
+> Fixes: 6b7e631b927c ("nvmet: return a specified error it subsys_alloc fails")
+> CC: Minwoo Im <minwoo.im.dev@gmail.com>
+> Signed-off-by: kbuild test robot <lkp@intel.com>
+> ---
 >
->> +
->>    struct nvme_ctrl {
->>    	bool comp_seen;
->>    	enum nvme_ctrl_state state;
->>
+> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+> head:   3d17a1de96a233cf89bfbb5a77ebb1a05c420681
+> commit: 6b7e631b927ca1266b2695307ab71ed7764af75e [9188/10649] nvmet: return a specified error it subsys_alloc fails
 >
-> _______________________________________________
-> Linux-nvme mailing list
-> Linux-nvme@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-nvme
+>   discovery.c |    4 +---
+>   1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> --- a/drivers/nvme/target/discovery.c
+> +++ b/drivers/nvme/target/discovery.c
+> @@ -372,9 +372,7 @@ int __init nvmet_init_discovery(void)
+>   {
+>   	nvmet_disc_subsys =
+>   		nvmet_subsys_alloc(NVME_DISC_SUBSYS_NAME, NVME_NQN_DISC);
+> -	if (IS_ERR(nvmet_disc_subsys))
+> -		return PTR_ERR(nvmet_disc_subsys);
+> -	return 0;
+> +	return PTR_ERR_OR_ZERO(nvmet_disc_subsys);
+>   }
+>
+>   void nvmet_exit_discovery(void)
 >
 
 
