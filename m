@@ -2,59 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B497BE960
-	for <lists+linux-nvme@lfdr.de>; Mon, 29 Apr 2019 19:41:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 306AAE993
+	for <lists+linux-nvme@lfdr.de>; Mon, 29 Apr 2019 19:58:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9V3PaZE/GA2qyEeFrwNX4bdzVabNyNz8LL/nWuSk2Vo=; b=KPJiLjdbTpdgHm7ZMTEZ7zA8t
-	lgXPNpaP5k5A5hzUeOxCJIb15kCsk5+H+xvy6WsqOG87WX3PNVcD7bnMy24e7tkuJWPFbL2FrkuxA
-	Kyu1BYOgONfVQUs/vvK++d1lPb0hPaf65ZINbGtF/5xsndUY9N8+aqa5R2tOHVXIh3CaNcmV04WWp
-	wGHLrhGWpZtGCgzCaDlPTkaU8l9bdAKnI9GR9sugO6z5K+fDvly4zWIescoVFQpnlWQkxJXiriXOx
-	aA683DzpfViFCEGkgP3zDkQM5V6ZfvgnT+pP1Gn6kj2in7R5+9kwPYraZejYh4ceZs8fFBPNsZKWL
-	8XVvDs/2g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xZZW1vqVmAZ9FfHSnMvxxMXU4i8jcF2ge8voUBu1VZk=; b=LwBmxnDt3H6yPU
+	trvSS0/Mzi7xU0mzmvRQ2DxVfgpwjY0NcI9UKusIbuiUJfUwjO8m+Wst/0ifWSvJN8yq5POBH1mU9
+	L2hACpZFFuvH6puR2MaWVKSQbQnOBYNU5PJLF3Ta3xHxQVEmE3dmYhgxhDd6nLbboa4UYnJfLrp4f
+	O3aHUt0whFHRFx9/V1WObuZx3F4So/ByO+q3Re14v+GSlLJpJZEMZDZUugwJefwMQeLCp5zLbwZAQ
+	H3mgzc87qofVFpRVkGe5IGC5WknD2YSZnzbPxopDOxZReQ3MC5SOGQyPasWfmERwB/hsXphuSySH7
+	24LBzbQxhzHbFshi4mng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hLAH3-0007Xy-54; Mon, 29 Apr 2019 17:41:05 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1hLAXo-0005yR-Ly; Mon, 29 Apr 2019 17:58:24 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hLAGt-0007Pk-84
- for linux-nvme@lists.infradead.org; Mon, 29 Apr 2019 17:40:58 +0000
+ id 1hLAXi-0005y3-V1
+ for linux-nvme@lists.infradead.org; Mon, 29 Apr 2019 17:58:20 +0000
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2019 10:40:54 -0700
-X-IronPort-AV: E=Sophos;i="5.60,410,1549958400"; d="scan'208";a="138470197"
-Received: from unknown (HELO [10.232.112.165]) ([10.232.112.165])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/AES128-SHA;
- 29 Apr 2019 10:40:53 -0700
-Subject: Re: [PATCH V2 1/3] nvme: introduce nvme-ctrl state name string array
-To: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
- linux-nvme@lists.infradead.org
-References: <20190429032442.5923-1-chaitanya.kulkarni@wdc.com>
- <20190429032442.5923-2-chaitanya.kulkarni@wdc.com>
-From: "Heitke, Kenneth" <kenneth.heitke@intel.com>
-Message-ID: <067b8ef5-abea-2bc8-9da5-a39ac3b54a1b@intel.com>
-Date: Mon, 29 Apr 2019 11:40:52 -0600
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 29 Apr 2019 10:58:17 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.60,410,1549958400"; d="scan'208";a="166123195"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 29 Apr 2019 10:58:15 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hLAXf-000FyE-7Q; Tue, 30 Apr 2019 01:58:15 +0800
+Date: Tue, 30 Apr 2019 01:57:34 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Minwoo Im <minwoo.im.dev@gmail.com>
+Subject: [PATCH] nvmet: fix ptr_ret.cocci warnings
+Message-ID: <20190429175734.GA20932@lkp-kbuild08>
+References: <201904300131.gB7Qr2Ik%lkp@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190429032442.5923-2-chaitanya.kulkarni@wdc.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <201904300131.gB7Qr2Ik%lkp@intel.com>
+X-Patchwork-Hint: ignore
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190429_104055_743285_E5CB1C29 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20190429_105819_045961_A172BBE7 
+X-CRM114-Status: GOOD (  13.26  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.151 listed in list.dnswl.org]
+ medium trust [134.134.136.31 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
@@ -67,56 +68,49 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: hare@suse.com, hch@lst.de
+Cc: .@lkp-kbuild08, Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, kbuild-all@01.org,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+From: kbuild test robot <lkp@intel.com>
+
+drivers/nvme/target/discovery.c:375:1-3: WARNING: PTR_ERR_OR_ZERO can be used
 
 
-On 4/28/2019 9:24 PM, Chaitanya Kulkarni wrote:
-> From: Hannes Reinecke <hare@suse.com>
-> 
-> This patch intoduces nvme-ctrl state name array which is used inthe the
-s/intoduces /introduces/
-s/inthe/in the/
+ Use PTR_ERR_OR_ZERO rather than if(IS_ERR(...)) + PTR_ERR
 
-> later patch to improve the logging of the ctrl state.
-> 
-> Signed-off-by: Hannes Reinecke <hare@suse.com>
-> Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-> ---
->   drivers/nvme/host/nvme.h | 10 ++++++++++
->   1 file changed, 10 insertions(+)
-> 
-> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-> index 527d64545023..01a36bbafed6 100644
-> --- a/drivers/nvme/host/nvme.h
-> +++ b/drivers/nvme/host/nvme.h
-> @@ -146,6 +146,16 @@ enum nvme_ctrl_state {
->   	NVME_CTRL_DEAD,
->   };
->   
-> +static const char *const nvme_ctrl_state_name[] = {
-> +	[NVME_CTRL_NEW]         = "new",
-> +	[NVME_CTRL_LIVE]        = "live",
-> +	[NVME_CTRL_ADMIN_ONLY]  = "only-admin",
-> +	[NVME_CTRL_RESETTING]   = "resetting",
-> +	[NVME_CTRL_CONNECTING]  = "connecting",
-> +	[NVME_CTRL_DELETING]    = "deleting",
-> +	[NVME_CTRL_DEAD]        = "dead",
-> +};
+Generated by: scripts/coccinelle/api/ptr_ret.cocci
 
-I haven't been paying attention if this was bought up before but won't 
-this create multiple copies of this data for every source file the 
-includes the header file?
+Fixes: 6b7e631b927c ("nvmet: return a specified error it subsys_alloc fails")
+CC: Minwoo Im <minwoo.im.dev@gmail.com>
+Signed-off-by: kbuild test robot <lkp@intel.com>
+---
 
-> +
->   struct nvme_ctrl {
->   	bool comp_seen;
->   	enum nvme_ctrl_state state;
-> 
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+head:   3d17a1de96a233cf89bfbb5a77ebb1a05c420681
+commit: 6b7e631b927ca1266b2695307ab71ed7764af75e [9188/10649] nvmet: return a specified error it subsys_alloc fails
+
+ discovery.c |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+--- a/drivers/nvme/target/discovery.c
++++ b/drivers/nvme/target/discovery.c
+@@ -372,9 +372,7 @@ int __init nvmet_init_discovery(void)
+ {
+ 	nvmet_disc_subsys =
+ 		nvmet_subsys_alloc(NVME_DISC_SUBSYS_NAME, NVME_NQN_DISC);
+-	if (IS_ERR(nvmet_disc_subsys))
+-		return PTR_ERR(nvmet_disc_subsys);
+-	return 0;
++	return PTR_ERR_OR_ZERO(nvmet_disc_subsys);
+ }
+ 
+ void nvmet_exit_discovery(void)
 
 _______________________________________________
 Linux-nvme mailing list
