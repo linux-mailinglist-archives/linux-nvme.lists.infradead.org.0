@@ -2,55 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 756B5E93F
-	for <lists+linux-nvme@lfdr.de>; Mon, 29 Apr 2019 19:36:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B497BE960
+	for <lists+linux-nvme@lfdr.de>; Mon, 29 Apr 2019 19:41:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T5Yus2k+nmNLmECRxoufpHvs0LT2r8XCR80uc6Qd17o=; b=VuV9NRyuEXEkyr
-	7Dk7rw08doXMA4+qRIBTDLXbtzrtmLUnnZJQZ6vzPZEoOZaZTtcrNFrrVz8Uptvxeyufxz+ANCWJJ
-	jZbk2PlB7bR822v/mUS2ehu/+dB1/5UW2HbYd8CS57eH1papnSxflGjxaOzGqr3NFS6iORDatPbXh
-	+Gczdomcnpwjt/O8s7WFaWkoZFk7VwVI5KVaUDU278EONRs1Pifs8h6o7XvK4RdT3/vHn5z3pJAn6
-	s4bhNYaoBy+LewxidBTIj3xd2YUyLllk4nGFXGb+OGtaDBfqtK02FT1chiqselu4xCy0ePjySRBv5
-	jK9xxtGM+D4rFW5SaC7A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=9V3PaZE/GA2qyEeFrwNX4bdzVabNyNz8LL/nWuSk2Vo=; b=KPJiLjdbTpdgHm7ZMTEZ7zA8t
+	lgXPNpaP5k5A5hzUeOxCJIb15kCsk5+H+xvy6WsqOG87WX3PNVcD7bnMy24e7tkuJWPFbL2FrkuxA
+	Kyu1BYOgONfVQUs/vvK++d1lPb0hPaf65ZINbGtF/5xsndUY9N8+aqa5R2tOHVXIh3CaNcmV04WWp
+	wGHLrhGWpZtGCgzCaDlPTkaU8l9bdAKnI9GR9sugO6z5K+fDvly4zWIescoVFQpnlWQkxJXiriXOx
+	aA683DzpfViFCEGkgP3zDkQM5V6ZfvgnT+pP1Gn6kj2in7R5+9kwPYraZejYh4ceZs8fFBPNsZKWL
+	8XVvDs/2g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hLAC9-0003pi-MK; Mon, 29 Apr 2019 17:36:01 +0000
-Received: from linux.microsoft.com ([13.77.154.182])
- by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hLABj-0003O8-Au
- for linux-nvme@lists.infradead.org; Mon, 29 Apr 2019 17:35:37 +0000
-Received: from localhost.corp.microsoft.com (unknown [167.220.2.135])
- by linux.microsoft.com (Postfix) with ESMTPSA id 73CEE30C2979;
- Mon, 29 Apr 2019 10:35:34 -0700 (PDT)
-From: Edmund Nadolski <ednadols@linux.microsoft.com>
-To: linux-nvme@lists.infradead.org,
-	ednadols@linux.microsoft.com
-Subject: [PATCH 2/2] nvme: add clarifying comments and fix some typos
-Date: Mon, 29 Apr 2019 10:35:33 -0700
-Message-Id: <20190429173533.10366-3-ednadols@linux.microsoft.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190429173533.10366-1-ednadols@linux.microsoft.com>
-References: <20190429173533.10366-1-ednadols@linux.microsoft.com>
+	id 1hLAH3-0007Xy-54; Mon, 29 Apr 2019 17:41:05 +0000
+Received: from mga17.intel.com ([192.55.52.151])
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hLAGt-0007Pk-84
+ for linux-nvme@lists.infradead.org; Mon, 29 Apr 2019 17:40:58 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 29 Apr 2019 10:40:54 -0700
+X-IronPort-AV: E=Sophos;i="5.60,410,1549958400"; d="scan'208";a="138470197"
+Received: from unknown (HELO [10.232.112.165]) ([10.232.112.165])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/AES128-SHA;
+ 29 Apr 2019 10:40:53 -0700
+Subject: Re: [PATCH V2 1/3] nvme: introduce nvme-ctrl state name string array
+To: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+ linux-nvme@lists.infradead.org
+References: <20190429032442.5923-1-chaitanya.kulkarni@wdc.com>
+ <20190429032442.5923-2-chaitanya.kulkarni@wdc.com>
+From: "Heitke, Kenneth" <kenneth.heitke@intel.com>
+Message-ID: <067b8ef5-abea-2bc8-9da5-a39ac3b54a1b@intel.com>
+Date: Mon, 29 Apr 2019 11:40:52 -0600
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <20190429032442.5923-2-chaitanya.kulkarni@wdc.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190429_103535_410098_3D8F099D 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -8.0 (--------)
+X-CRM114-CacheID: sfid-20190429_104055_743285_E5CB1C29 
+X-CRM114-Status: GOOD (  15.97  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-8.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
- white-list
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [192.55.52.151 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
- Match
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,104 +67,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: hare@suse.com, hch@lst.de
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Add comment descriptions for struct fields per NVMe spec.
 
-Signed-off-by: Edmund Nadolski <ednadols@linux.microsoft.com>
----
- drivers/nvme/host/nvme.h | 32 ++++++++++++++++----------------
- drivers/nvme/host/pci.c  |  2 +-
- 2 files changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 527d64545023..61736d1ef15e 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -177,7 +177,7 @@ struct nvme_ctrl {
- 	u16 cntlid;
- 
- 	u32 ctrl_config;
--	u16 mtfa;
-+	u16 mtfa;		/* maximum time for firmware activation */
- 	u32 queue_count;
- 
- 	u64 cap;
-@@ -185,23 +185,23 @@ struct nvme_ctrl {
- 	u32 max_hw_sectors;
- 	u32 max_segments;
- 	u16 crdt[3];
--	u16 oncs;
--	u16 oacs;
--	u16 nssa;
-+	u16 oncs;		/* optional nvm command support */
-+	u16 oacs;		/* optional admin command support */
-+	u16 nssa;		/* nvme subsystem streams available */
- 	u16 nr_streams;
- 	u32 max_namespaces;
- 	atomic_t abort_limit;
--	u8 vwc;
--	u32 vs;
--	u32 sgls;
--	u16 kas;
--	u8 npss;
--	u8 apsta;
--	u32 oaes;
-+	u8 vwc;			/* volatile write cache */
-+	u32 vs;			/* version */
-+	u32 sgls;		/* scatter gather list support */
-+	u16 kas;		/* keep alive support */
-+	u8 npss;		/* number of power states supported */
-+	u8 apsta;		/* autonomous power state transition */
-+	u32 oaes;		/* optional asynchronous events supported */
- 	u32 aen_result;
--	u32 ctratt;
-+	u32 ctratt;		/* controller attribute */
- 	unsigned int shutdown_timeout;
--	unsigned int kato;
-+	unsigned int kato;	/* keep alive timeout */
- 	bool subsystem;
- 	unsigned long quirks;
- 	struct nvme_id_power_state psd[32];
-@@ -231,8 +231,8 @@ struct nvme_ctrl {
- 	bool apst_enabled;
- 
- 	/* PCIe only: */
--	u32 hmpre;
--	u32 hmmin;
-+	u32 hmpre;	/* host memory buffer preferred size */
-+	u32 hmmin;	/* host memory buffer minimum size */
- 	u32 hmminds;
- 	u16 hmmaxd;
- 
-@@ -290,7 +290,7 @@ struct nvme_ns_ids {
- /*
-  * Anchor structure for namespaces.  There is one for each namespace in a
-  * NVMe subsystem that any of our controllers can see, and the namespace
-- * structure for each controller is chained of it.  For private namespaces
-+ * structure for each controller is chained off it.  For private namespaces
-  * there is a 1:1 relation to our namespace structures, that is ->list
-  * only ever has a single entry for private namespaces.
-  */
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index c1eecde6b853..368371c5cafc 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -227,7 +227,7 @@ struct nvme_iod {
- };
- 
- /*
-- * Check we didin't inadvertently grow the command struct
-+ * Check we didn't inadvertently grow the command struct
-  */
- static inline void _nvme_check_size(void)
- {
--- 
-2.20.1
+On 4/28/2019 9:24 PM, Chaitanya Kulkarni wrote:
+> From: Hannes Reinecke <hare@suse.com>
+> 
+> This patch intoduces nvme-ctrl state name array which is used inthe the
+s/intoduces /introduces/
+s/inthe/in the/
 
+> later patch to improve the logging of the ctrl state.
+> 
+> Signed-off-by: Hannes Reinecke <hare@suse.com>
+> Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+> ---
+>   drivers/nvme/host/nvme.h | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
+> 
+> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+> index 527d64545023..01a36bbafed6 100644
+> --- a/drivers/nvme/host/nvme.h
+> +++ b/drivers/nvme/host/nvme.h
+> @@ -146,6 +146,16 @@ enum nvme_ctrl_state {
+>   	NVME_CTRL_DEAD,
+>   };
+>   
+> +static const char *const nvme_ctrl_state_name[] = {
+> +	[NVME_CTRL_NEW]         = "new",
+> +	[NVME_CTRL_LIVE]        = "live",
+> +	[NVME_CTRL_ADMIN_ONLY]  = "only-admin",
+> +	[NVME_CTRL_RESETTING]   = "resetting",
+> +	[NVME_CTRL_CONNECTING]  = "connecting",
+> +	[NVME_CTRL_DELETING]    = "deleting",
+> +	[NVME_CTRL_DEAD]        = "dead",
+> +};
+
+I haven't been paying attention if this was bought up before but won't 
+this create multiple copies of this data for every source file the 
+includes the header file?
+
+> +
+>   struct nvme_ctrl {
+>   	bool comp_seen;
+>   	enum nvme_ctrl_state state;
+> 
 
 _______________________________________________
 Linux-nvme mailing list
