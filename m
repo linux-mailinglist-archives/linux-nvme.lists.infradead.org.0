@@ -2,40 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1533510092
-	for <lists+linux-nvme@lfdr.de>; Tue, 30 Apr 2019 22:09:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D09A10093
+	for <lists+linux-nvme@lfdr.de>; Tue, 30 Apr 2019 22:09:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fPdar65lI1ePXgXb5g42DOtWd91hGus1bYD+QR+pAj8=; b=STCHs/AgyoBGnc
-	Lo2P/QsJ0NZKhGweaRtnUNgjfqvbsrq3sMKqpx/QnqmUCZacXwjmztXkRQl5sZUJWTTEmPyHZTnLY
-	qhR+NTg8TW7KlF/gmUdXltgIb2olReXTPYHNfYRj8EKiZBttQGNFbKom6RaHLoLsouj8289Qr56Kl
-	hs+v9ktX5eI+06w1Nd5NE0URNQOogOmzYs0zEsU5v1TjMRvyAQ93PocOoU0I2U1e8h83DCDDuPp8O
-	MRgh9GfMPFV9/SPeL5KUBg5bR+8E+hpXv+y+RsxTvoGWuYWrIwtxmR+4W+PGWUR0EtVWeofMZK4Rh
-	arevEChvbJ+jnOj0P3rg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HmNTpwEReumDSWP4HEBRmDEveyh7BIBR8yvY95rJTIQ=; b=jVzT+PL/SeHczs
+	iEQHkYkhSi15kZDoPviAY4jm/Xf9lbrdDoFxjG3A7fp1bKqbbE/IZeWvmXs9aJnzfntP4bsP5LEG0
+	2MRBdEatOz1cTKsx/fSNiFB11Dj/qd/rddNDi/CSCsw3FgMuBkkOfdUdgjbYE0uny+4At8KKyXvJ/
+	01e+0gZ0nj+YSN9SOKcykm+EM+vj1wkENBTpk9REvkUiqSqA70hOohDmRu9ZOFSztMdUJqBVoC446
+	YPYXnzJVdpG1QFP+j3yKUX3Db6NXKv31giO72skUBu6JOpuaPAQhG2UkZpZsfzbOcTamJHZfORG8Z
+	ljOwAb8uH90Z1UYyC9Cw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hLZ3v-00032V-Py; Tue, 30 Apr 2019 20:09:11 +0000
+	id 1hLZ41-00035b-61; Tue, 30 Apr 2019 20:09:17 +0000
 Received: from linux.microsoft.com ([13.77.154.182])
  by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hLZ3q-00031Y-VZ
+ id 1hLZ3q-00031X-Vv
  for linux-nvme@lists.infradead.org; Tue, 30 Apr 2019 20:09:08 +0000
 Received: from localhost.corp.microsoft.com (unknown [167.220.2.135])
- by linux.microsoft.com (Postfix) with ESMTPSA id A28983022B50
+ by linux.microsoft.com (Postfix) with ESMTPSA id B80403022D42
  for <linux-nvme@lists.infradead.org>; Tue, 30 Apr 2019 13:09:05 -0700 (PDT)
 From: Edmund Nadolski <ednadols@linux.microsoft.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2 0/2] nvme: some cleanup
-Date: Tue, 30 Apr 2019 13:09:03 -0700
-Message-Id: <20190430200905.28341-1-ednadols@linux.microsoft.com>
+Subject: [PATCH v2 1/2] nvme: nvme_set_queue_count should use descriptive
+ macros
+Date: Tue, 30 Apr 2019 13:09:04 -0700
+Message-Id: <20190430200905.28341-2-ednadols@linux.microsoft.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190430200905.28341-1-ednadols@linux.microsoft.com>
+References: <20190430200905.28341-1-ednadols@linux.microsoft.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190430_130907_033852_F49F6DF4 
-X-CRM114-Status: UNSURE (   5.85  )
+X-CRM114-CacheID: sfid-20190430_130907_042945_AA8DC18C 
+X-CRM114-Status: UNSURE (   9.33  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -8.0 (--------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -64,25 +67,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This series clarifies the code intent by adding some macros and fixing
-a few miscellaneous typos.
+Implement macros to set/get the number of submission and/or completion
+queues requested by the Set Features command. This replaces the bit
+masking/shifting code and reflects the field names used in the spec.
 
-v2 changes:
- - Move typo fixes into separate patch.
- - Drop struct member comments.
- - Clarify changelog remarks.
-
-Edmund Nadolski (2):
-  nvme: nvme_set_queue_count should use descriptive macros
-  nvme: fix some typos
-
+Signed-off-by: Edmund Nadolski <ednadols@linux.microsoft.com>
+---
  drivers/nvme/host/core.c | 8 ++++++--
- drivers/nvme/host/nvme.h | 2 +-
- drivers/nvme/host/pci.c  | 2 +-
- 3 files changed, 8 insertions(+), 4 deletions(-)
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 3dd043aa6d1f..b3804dbdcc30 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1132,9 +1132,13 @@ static int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword
+ 	return ret;
+ }
+ 
++#define SET_NUMQ(nsqr, ncqr)	(((nsqr) - 1) | (((ncqr) - 1) << 16))
++#define GET_NSQA(dw)		(((dw) & 0xffff) + 1)
++#define GET_NCQA(dw)		(((dw) >> 16) + 1)
++
+ int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count)
+ {
+-	u32 q_count = (*count - 1) | ((*count - 1) << 16);
++	u32 q_count = SET_NUMQ(*count, *count);
+ 	u32 result;
+ 	int status, nr_io_queues;
+ 
+@@ -1152,7 +1156,7 @@ int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count)
+ 		dev_err(ctrl->device, "Could not set queue count (%d)\n", status);
+ 		*count = 0;
+ 	} else {
+-		nr_io_queues = min(result & 0xffff, result >> 16) + 1;
++		nr_io_queues = min(GET_NSQA(result), GET_NCQA(result));
+ 		*count = min(*count, nr_io_queues);
+ 	}
+ 
 -- 
 2.20.1
+
 
 _______________________________________________
 Linux-nvme mailing list
