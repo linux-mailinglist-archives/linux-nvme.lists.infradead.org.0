@@ -2,48 +2,40 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDBE0F082
-	for <lists+linux-nvme@lfdr.de>; Tue, 30 Apr 2019 08:37:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4662DF0AA
+	for <lists+linux-nvme@lfdr.de>; Tue, 30 Apr 2019 08:44:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IW0w4RNNZi2SAbME6mD9nFrvgUjtT62KCfFuFLvBM+M=; b=hEcGTqjkMSBC4OUg5BWHAEdi5
-	Mz2dyA5cQhaIS2f1hOop0oYXjEknjE1U90seN5ogQpzibhNyGZNk50PSToWi5aTSBbiRBiQ2WmtRE
-	DfozUW649ajzB1q0TuiOsIwwqUy0NajTSlJZvuGpJlmRO2cso84n0ZWELOfQqWZ+5PnKQUMdiNVWi
-	XkmGi3lM3I2Gpei0oE8nqqVaUnqcfi8NDz1fcBNAGMXu6/IWAbRCFhSK9Hn6sPX16yEGYzHJvxR2e
-	jKFKExUIQz3W9fAdrl6G5t0bmc3C717M1odd0jVqgEOUvEWj1u0F6B3tQPdjh2NH8xrk7WsjB9720
-	1AAGczrvg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=UBa0tcrjB/VnXKpi2d5aBJf8Gf4svOHhlXaOAmmd6XU=; b=iSL
+	PJ9eFgYLwiQi5iTB2mMxgUNeWtOfXrq1LLnG/IIcqc8yL5rkoSiTAhVeJ/eDcgi0d7WzW9/VnIZvO
+	xe5zsHob3IpUZiupfkGTEGMt75WgsQ1Ue2ZlSlhJKHJL2QEVSQ2ei+Hk6OxDgAAxPqwPzpeUp4SI4
+	jXwUOC0ZxOqbG9MxnLq1roIoT2r4GNMiDhpWS9l3QSBF98JRlhLlIQlPOtOg2gwcl5bUx1qw8jKpz
+	nRpy284D6nk3imOrAjNnBOnSXUsA7yl5f/7rZX60gdLf50apo1+6SD+3pzfjXVWCHDWh3k+HrFX+a
+	2gYsXBNlpsoINRXQLtvrGh95uJ9ckIA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hLMOP-00034p-6p; Tue, 30 Apr 2019 06:37:29 +0000
+	id 1hLMUx-0005G4-52; Tue, 30 Apr 2019 06:44:15 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hLMOK-00034E-It
- for linux-nvme@lists.infradead.org; Tue, 30 Apr 2019 06:37:25 +0000
+ id 1hLMUr-0005Fb-VL
+ for linux-nvme@lists.infradead.org; Tue, 30 Apr 2019 06:44:11 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 08770AC70;
- Tue, 30 Apr 2019 06:37:23 +0000 (UTC)
-Subject: Re: [PATCH nvme-cli rfc] fabrics: support default connect/discover
- args
-To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
-References: <20190429225338.6866-1-sagi@grimberg.me>
- <493df3a7-6d25-9fd1-57ff-addbf37fcf22@suse.de>
- <785558d1-519d-78c1-0a1b-7517f771c1e2@grimberg.me>
+ by mx1.suse.de (Postfix) with ESMTP id 536ACAC70;
+ Tue, 30 Apr 2019 06:44:05 +0000 (UTC)
 From: Hannes Reinecke <hare@suse.de>
-Message-ID: <b4f9b6e4-f0b4-312f-1eeb-4c292a8f9af1@suse.de>
-Date: Tue, 30 Apr 2019 08:37:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <785558d1-519d-78c1-0a1b-7517f771c1e2@grimberg.me>
-Content-Language: en-US
+To: Keith Busch <keith.busch@intel.com>
+Subject: [PATCH nvme-cli] nvme_fc auto-connect scripts
+Date: Tue, 30 Apr 2019 08:43:59 +0200
+Message-Id: <20190430064359.24905-1-hare@suse.de>
+X-Mailer: git-send-email 2.16.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190429_233724_768695_383E4487 
-X-CRM114-Status: GOOD (  21.83  )
+X-CRM114-CacheID: sfid-20190429_234410_305957_B64EF43D 
+X-CRM114-Status: GOOD (  12.39  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -63,46 +55,118 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>,
- Johannes Thumshirn <jthumshirn@suse.de>, Christoph Hellwig <hch@lst.de>,
- James Smart <james.smart@broadcom.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Hannes Reinecke <hare@suse.com>, Simon Schricker <sschricker@suse.com>,
+ Sagi Grimberg <sagi@grimberg.me>, James Smart <james.smart@broadcom.com>,
+ linux-nvme@lists.infradead.org, Hannes Reinecke <hare@suse.de>,
+ Christoph Hellwig <hch@lst.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gNC8zMC8xOSA3OjU0IEFNLCBTYWdpIEdyaW1iZXJnIHdyb3RlOgo+IAo+PiBJIGRvIGxpa2Ug
-dGhlIGlkZWEsIGJ1dCBub3QgbmVjZXNzYXJpbHkgdGhlIG5hbWluZy4KPj4gQ2FuJ3Qgd2UganVz
-dCBjYWxsIGl0ICdkZWZhdWx0LmNvbmYnID8KPiAKPiBJdCdzIG5vdCBhcyBzZWxmLWV4cGxhbmF0
-b3J5LCBidXQgSSdtIGZpbmUgd2l0aCBkZWZhdWx0LmNvbmYuLi4KPiAKPj4gV2hhdCBhYm91dCBw
-cmVjZWRlbmNlPwo+PiBJIHdvdWxkIGhhdmUgZXhwZWN0ZWQgdGhhdCB3ZSBzaG91bGQgaGF2ZQo+
-Pgo+PiBkZWZhcmdzLmNvbmYKPj4gZGlzY292ZXJ5LmNvbmYKPj4gPGNtZGxpbmU+Cj4+Cj4+IElz
-IHRoYXQgdGhlIGNhc2U/Cj4gCj4gRWZmZWN0aXZlbHkgeWVzLCBidXQgZGVmYXJncyBkb2VzIG5v
-dCBhbGxvdyB0cmFuc3BvcnQsdHJhZGRyLHRyc3ZjaWQsbnFuCj4gcGFyYW1ldGVycyAod2hpY2gg
-ZG9uJ3QgbWFrZSBzZW5zZSksIGFuZCBkaXNjb3ZlcnkuY29uZiBpcyBkZXNpZ25lZCB0bwo+IGhv
-bGQgZXhhY3RseSB0aG9zZS4gU28gaW4gcHJhY3RpY2UgdGhleSBzaG91bGQgbm90IG92ZXJsYXAu
-Cj4gClVoLW9oLiBJIF9kb18ga25vdyBvZiBjYXNlcyB3aGVyZSBkaXNjb3ZlcnkuY29uZiBpcyB1
-c2VkIGZvciBwcmVjaXNlbHkgCnRoaXMgcHVycG9zZSwgaWUgaG9sZGluZyBfYWxsXyBhcmd1bWVu
-dHMuCkFuZCBpbiB0aGUgYWJzZW5zZSBvZiBhbnkgb3RoZXIgd2F5IGV4aXN0aW5nIGltcGxlbWVu
-dGF0aW9ucyB3aWxsIGJlIAp1c2luZyBhIHZlcnkgc2ltaWxhciB0aGluZy4KCj4gQWxzbywgd2Ug
-b25seSBnbyB0byBkaXNjb3ZlcnkuY29uZiBpZiB3ZSBkaWQgbm90IGdldCBhIHRyYW5zcG9ydCt0
-cmFkZHIKPiAod2hpY2ggYXJlIG1hbmRhdG9yeSkuIFNvIGl0cyBub3QgZXhhY3RseSB0aGUgb3Jk
-ZXIgeW91IG1lbnRpb25lZCwgbW9yZQo+IGxpa2U6Cj4gCj4gZGVmYXJncy5jb25mCj4gPGNtZGxp
-bmU+Cj4gaWYgdHJhbnNwb3J0K3RyYWRkciBub3QgZ2l2ZW4KPiBkaXNjb3ZlcnkuY29uZgo+IApI
-b3cgdmVyeSBjdXJpb3VzIC4uLgpJIHdvdWxkIGhhdmUgZXhwZWN0ZWQgdGhhdCBhbnkgY29tbWFu
-ZC1saW5lIGFyZ3Mgd291bGQgb3ZlcndyaXRlIGFueSAKYXJndW1lbnRzIGdpdmVuIGluIHRoZSBj
-b25maWd1cmF0aW9uIGZpbGVzLgpCdXQgZ2l2ZW4gdGhhdCBkaXNjb3ZlcnkuY29uZiBjYW4gY29u
-dGFpbiBzZXZlcmFsIGxpbmVzIEkgY2FuIHNlZSB0aGUgCnByb2JsZW0uCgpIb3dldmVyLCB0byBj
-bGVhbiB0aGluZ3MgdXAgd2Ugc2hvdWxkIGJlIHVwZGF0aW5nIHRoZSBwYXJzZXIgdG8gaWdub3Jl
-IApvciBldmVuIGNhbGwgYW4gZXJyb3IgaWYgd2UgZmluZCBhIGxpbmUgaW4gZGlzY292ZXJ5LmNv
-bmYgd2hpY2ggZG9lcyBub3QgCnNwZWNpZnkgdHJhbnNwb3J0K3RyYWRkci4KSnVzdCB0byBhdm9p
-ZCBjb25mdXNpb24uCgo+PiBBbmQgc2hvdWxkbid0IHdlIGRvY3VtZW50IHRoYXQgc29tZXdoZXJl
-Pwo+IFdoZXJlIHdvdWxkIGJlIHRoZSBwbGFjZSB0byB1cGRhdGUgdGhpcz8KbWFucGFnZT8KCkNo
-ZWVycywKCkhhbm5lcwotLSAKRHIuIEhhbm5lcyBSZWluZWNrZQkJICAgVGVhbWxlYWQgU3RvcmFn
-ZSAmIE5ldHdvcmtpbmcKaGFyZUBzdXNlLmRlCQkJICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1
-MyA2ODgKU1VTRSBMSU5VWCBHbWJILCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJlcmcKR0Y6
-IEZlbGl4IEltZW5kw7ZyZmZlciwgTWFyeSBIaWdnaW5zLCBTcmkgUmFzaWFoCkhSQiAyMTI4NCAo
-QUcgTsO8cm5iZXJnKQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZt
-ZQo=
+Here's a set of script to enable FC-NVMe autoconnect, based on
+the initial posting from James Smart.
+FC-NVMe already generates an uevent whenever a new FC-NVMe remote
+port is registered, so we can create an udev rule to parse this
+event and start connecting to it.
+
+The problem here is that the 'nvme connect-all' call might be taking
+some time or might even stall altogether, so we cannot call it
+directly from the udev rule. Rather, the udev rule starts a systemd
+service, which then calls 'nvme connect-all' as a 'simple' service.
+With this approach we are insulated from any stalls in udev rules.
+Additionally we can implement a boot service to restart any missed
+connections attempts.
+
+To stop autoconnect an additional nvmefc-connect.target has been
+added, which will instruct systemd to cancel all outstanding
+autoconnect services.
+
+Cc: James Smart <james.smart@broadcom.com>
+Signed-off-by: Simon Schricker <sschricker@suse.com>
+Signed-off-by: Hannes Reinecke <hare@suse.com>
+---
+ nvme-fc-autoconnect/70-nvmefc-autoconnect.conf      |  1 +
+ nvme-fc-autoconnect/70-nvmefc-autoconnect.rules     |  8 ++++++++
+ nvme-fc-autoconnect/nvmefc-boot-connections.service |  9 +++++++++
+ nvme-fc-autoconnect/nvmefc-connect.target           |  2 ++
+ nvme-fc-autoconnect/nvmefc-connect@.service         | 13 +++++++++++++
+ 5 files changed, 33 insertions(+)
+ create mode 100644 nvme-fc-autoconnect/70-nvmefc-autoconnect.conf
+ create mode 100644 nvme-fc-autoconnect/70-nvmefc-autoconnect.rules
+ create mode 100644 nvme-fc-autoconnect/nvmefc-boot-connections.service
+ create mode 100644 nvme-fc-autoconnect/nvmefc-connect.target
+ create mode 100644 nvme-fc-autoconnect/nvmefc-connect@.service
+
+diff --git a/nvme-fc-autoconnect/70-nvmefc-autoconnect.conf b/nvme-fc-autoconnect/70-nvmefc-autoconnect.conf
+new file mode 100644
+index 0000000..b92d94f
+--- /dev/null
++++ b/nvme-fc-autoconnect/70-nvmefc-autoconnect.conf
+@@ -0,0 +1 @@
++install_items+="/usr/lib/udev/rules.d/70-nvmefc-autoconnect.rules"
+diff --git a/nvme-fc-autoconnect/70-nvmefc-autoconnect.rules b/nvme-fc-autoconnect/70-nvmefc-autoconnect.rules
+new file mode 100644
+index 0000000..aa4f9bf
+--- /dev/null
++++ b/nvme-fc-autoconnect/70-nvmefc-autoconnect.rules
+@@ -0,0 +1,8 @@
++#
++# nvme_fc: udev event to automatically scan (via discovery controller)
++#   new FC nvme remote ports and auto-connect to the subsystems they report.
++#
++
++ACTION=="change", SUBSYSTEM=="fc", ENV{FC_EVENT}=="nvmediscovery", \
++  ENV{NVMEFC_HOST_TRADDR}=="*",  ENV{NVMEFC_TRADDR}=="*", \
++  RUN+="/usr/bin/systemctl --no-block start nvmefc-connect@--host-traddr=$env{NVMEFC_HOST_TRADDR}\\x20--traddr=$env{NVMEFC_TRADDR}.service"
+diff --git a/nvme-fc-autoconnect/nvmefc-boot-connections.service b/nvme-fc-autoconnect/nvmefc-boot-connections.service
+new file mode 100644
+index 0000000..aa35c15
+--- /dev/null
++++ b/nvme-fc-autoconnect/nvmefc-boot-connections.service
+@@ -0,0 +1,9 @@
++[Unit]
++Description=Auto-connect to subsystems on FC-NVME devices during boot
++
++[Service]
++Type=oneshot
++ExecStart=/bin/sh -c "echo add > /sys/class/fc/fc_udev_device/nvme_discovery"
++
++[Install]
++WantedBy=default.target
+diff --git a/nvme-fc-autoconnect/nvmefc-connect.target b/nvme-fc-autoconnect/nvmefc-connect.target
+new file mode 100644
+index 0000000..953c0b7
+--- /dev/null
++++ b/nvme-fc-autoconnect/nvmefc-connect.target
+@@ -0,0 +1,2 @@
++[Unit]
++Description=All instances of nvme-fc-autoconnect daemon
+diff --git a/nvme-fc-autoconnect/nvmefc-connect@.service b/nvme-fc-autoconnect/nvmefc-connect@.service
+new file mode 100644
+index 0000000..a8ff271
+--- /dev/null
++++ b/nvme-fc-autoconnect/nvmefc-connect@.service
+@@ -0,0 +1,13 @@
++#
++# Unit file used by 70-nvmefc-autoconnect.rules.
++#
++
++[Unit]
++Description=Auto-connect to subsystems on FC-NVME devices
++After=syslog.target
++PartOf=nvmefc-connect.target
++Requires=nvmefc-connect.target
++
++[Service]
++Type=simple
++ExecStart=/bin/sh -c "/usr/sbin/nvme connect-all --transport=fc `/usr/bin/echo -e '%i'`"
+-- 
+2.16.4
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
