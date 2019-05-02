@@ -2,54 +2,59 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE2CE1194C
-	for <lists+linux-nvme@lfdr.de>; Thu,  2 May 2019 14:48:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 45FBD119A9
+	for <lists+linux-nvme@lfdr.de>; Thu,  2 May 2019 15:03:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BVp24GEA0pCU6YirQ63NQIfOY9qmQkhvT8SSmccnI2s=; b=KyGSdk6jdYirke
-	YFqgOgfw0Igj8hYtNmUd85P6ceMTmQMKK/s3Yeu1JSizLuEXmBumICbBEAwqzJXRgbpzMELMdwS1t
-	pSK/jvQCp23+T2sfYKYAvzb/AiQilxa1UvcHXMhmZ2ABXcRYDo+3vvokiPSEZvsQ5lPA0KbizrJOI
-	BgRGwCstFD0AMzYy2cNLubgwGmmhXkdCivRRGIUtKUMDzJ43EF+oJjTbSYLBdIWstG0ho0+C7vTzd
-	T/s61X4KQRR6MQzbZlvx/jH8ukxgKLf6hinPBVkqaI2T63C9uw+F9Gi2Lvk+s+02jUsW9qghvCc+H
-	EeL7YmsERd71mUnOhhtQ==;
+	List-Owner; bh=MPQ5BrWYH0eXU6jyCdYvmNh64ZMJvKBL13UpelBj2Fw=; b=OFLaPcpHpkkos3
+	YhCjEQd6zFveb8oG9JcSnjs2sOn6P2knDEXVbaKSAUUyngbgRLRTET12Ye8JUYjOPNYrwZ2BYPc2k
+	OIjTLRpxKgcYKfKrX4wKn/5yLkG0qIoVfBTSJDYK2bZMOe7K+gE+LkS837jXElBFyrizcHvr0Tlu2
+	Mu8G7PwerrykGKKKN3v21tygCW2Cn8IehTqMuU+UttNIxe4E444fpFIa3Sh3Y/Rq38IZd0WF3LHZ7
+	NiegazkWYgQpop4E8IkKMwGtS7OmtxXiUrlTikzldI+tFY6wOWHFSGslTX84Pubznai4BeTcrOV5J
+	taXFDGtsrsPFoqFtE8Aw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMB7z-0008LR-Kq; Thu, 02 May 2019 12:47:55 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2]
- helo=sipsolutions.net)
+	id 1hMBMs-0005oM-0M; Thu, 02 May 2019 13:03:18 +0000
+Received: from mga11.intel.com ([192.55.52.93])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMB7u-0008Kx-V9
- for linux-nvme@lists.infradead.org; Thu, 02 May 2019 12:47:52 +0000
-Received: by sipsolutions.net with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <johannes@sipsolutions.net>)
- id 1hMB7s-0000qc-KI; Thu, 02 May 2019 14:47:48 +0200
-Message-ID: <f0f772e5e33519dac93672be26fa7995f8109721.camel@sipsolutions.net>
-Subject: Re: [PATCH 2/4] devcoredump: allow to create several coredump files
- in one device
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Akinobu Mita <akinobu.mita@gmail.com>, linux-nvme@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-Date: Thu, 02 May 2019 14:47:47 +0200
-In-Reply-To: <1556787561-5113-3-git-send-email-akinobu.mita@gmail.com>
- (sfid-20190502_105944_673346_AEC5725E)
+ id 1hMBMn-0005nQ-F3
+ for linux-nvme@lists.infradead.org; Thu, 02 May 2019 13:03:14 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 May 2019 06:03:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.60,421,1549958400"; d="scan'208";a="147550129"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga003.jf.intel.com with ESMTP; 02 May 2019 06:03:07 -0700
+Date: Thu, 2 May 2019 06:57:23 -0600
+From: Keith Busch <keith.busch@intel.com>
+To: Akinobu Mita <akinobu.mita@gmail.com>
+Subject: Re: [PATCH 0/4] nvme-pci: support device coredump
+Message-ID: <20190502125722.GA28470@localhost.localdomain>
 References: <1556787561-5113-1-git-send-email-akinobu.mita@gmail.com>
- <1556787561-5113-3-git-send-email-akinobu.mita@gmail.com>
- (sfid-20190502_105944_673346_AEC5725E)
-X-Mailer: Evolution 3.28.5 (3.28.5-2.fc28) 
-Mime-Version: 1.0
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1556787561-5113-1-git-send-email-akinobu.mita@gmail.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190502_054751_010003_912DD215 
-X-CRM114-Status: GOOD (  11.71  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190502_060313_514392_B15502F9 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [192.55.52.93 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,73 +66,28 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Jens Axboe <axboe@fb.com>,
- Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>
+Cc: Sagi Grimberg <sagi@grimberg.me>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
+ Johannes Berg <johannes@sipsolutions.net>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, 2019-05-02 at 17:59 +0900, Akinobu Mita wrote:
+On Thu, May 02, 2019 at 05:59:17PM +0900, Akinobu Mita wrote:
+> This enables to capture snapshot of controller information via device
+> coredump machanism, and it helps diagnose and debug issues.
 > 
->  static void devcd_del(struct work_struct *wk)
->  {
->  	struct devcd_entry *devcd;
-> +	int i;
->  
->  	devcd = container_of(wk, struct devcd_entry, del_wk.work);
->  
-> +	for (i = 0; i < devcd->num_files; i++) {
-> +		device_remove_bin_file(&devcd->devcd_dev,
-> +				       &devcd->files[i].bin_attr);
-> +	}
+> The nvme device coredump is triggered before resetting the controller
+> caused by I/O timeout, and creates the following coredump files.
+> 
+> - regs: NVMe controller registers, including each I/O queue doorbell
+>         registers, in nvme-show-regs style text format.
 
-Not much value in the braces?
+You're supposed to treat queue doorbells as write-only. Spec says:
 
-> +static struct devcd_entry *devcd_alloc(struct dev_coredumpm_bulk_data *files,
-> +				       int num_files, gfp_t gfp)
-> +{
-> +	struct devcd_entry *devcd;
-> +	int i;
-> +
-> +	devcd = kzalloc(sizeof(*devcd), gfp);
-> +	if (!devcd)
-> +		return NULL;
-> +
-> +	devcd->files = kcalloc(num_files, sizeof(devcd->files[0]), gfp);
-> +	if (!devcd->files) {
-> +		kfree(devcd);
-> +		return NULL;
-> +	}
-> +	devcd->num_files = num_files;
-
-IMHO it would be nicer to allocate all of this in one struct, i.e. have
-
-struct devcd_entry {
-	...
-	struct devcd_file files[];
-}
-
-(and then use struct_size())
-
-> @@ -309,7 +339,41 @@ void dev_coredumpm(struct device *dev, struct module *owner,
->   put_module:
->  	module_put(owner);
->   free:
-> -	free(data);
-> +	for (i = 0; i < num_files; i++)
-> +		files[i].free(files[i].data);
-> +}
-
-and then you don't need to do all this kind of thing to free
-
-Otherwise looks fine. I'd worry a bit that existing userspace will only
-capture the 'data' file, rather than a tarball of all files, but I guess
-that's something you'd have to work out then when actually desiring to
-use multiple files.
-
-johannes
-
+  The host should not read the doorbell registers. If a doorbell register
+  is read, the value returned is vendor specific.
 
 _______________________________________________
 Linux-nvme mailing list
