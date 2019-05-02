@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F1401186B
-	for <lists+linux-nvme@lfdr.de>; Thu,  2 May 2019 13:49:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 69C671186C
+	for <lists+linux-nvme@lfdr.de>; Thu,  2 May 2019 13:49:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,41 +11,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=GKbAtvgSUmArMsf2JBFmogt5k9Aka98/w5Rwarq5PEc=; b=ijEB8/oPHXxFhDija0MSVIu733
-	5J0vsCGBVQt85I498GhdAPnqdexypKZ977RdnZi3TemyEJBRGS+Ewb5KtLFZuHoTVAFjGdLwRubzo
-	67erHxymKED9bxJ2KcJ+ksryRjn16mhev+5/YbV4r6VSEJH2s+svK5kz+VMjpZ7wwVvvoyVJadZ4I
-	qTvqdjRaZloAcOHz0jCUJEHJjY9Vj2ldAlghfwSZhE525HwLUZjJ8hrVtjAcdPwihMdEEerS/2apU
-	edh2CyD8uNZ8osd5oh68j56J4L8E3e8ixbx1R6uWMGhU1slK9JNSxv2lQGPozInXXGg6dqkGDvFT7
-	THVM++lw==;
+	bh=ItoUyJstzx1oaShohWH1sQCq4hdLejMjtcBP5rTR5Tw=; b=lVim7xUlHsLhi7Zc/+D39LnBc+
+	l2KBVBFf5M4KbJeW5Bpk5z1n2dWgqk6FaST0zt+ctdpNtHmxRjxkQ9BIp4ptyFyFMuaW2fZQwFi0C
+	eZnSsFy2eKNQmj3J3J7Q3UkC9WH7UH5bM8e09N7MTAiHVCHmRdEWrphK1iRhx8pBvEFiAPBFyz0Tz
+	MYk60qltyDlssZ5zhrS2ad9nIZ2V0I7FwWlpvxYji86s4P6RQX4OlW/U4RGSQr0WQBW1yMP4Bk/G+
+	IfjaL9VVD5dyNxekrw9uzXpqjm95gVaKTNByejBEPKEEEQwhIGoVqFFmYlG5mUCVhAGt7gDQs4uU8
+	N5OAMsag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMADB-0000f4-Bf; Thu, 02 May 2019 11:49:13 +0000
+	id 1hMADK-0000vM-KM; Thu, 02 May 2019 11:49:22 +0000
 Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMACq-0000O9-BT
- for linux-nvme@lists.infradead.org; Thu, 02 May 2019 11:48:59 +0000
+ id 1hMACv-0000TS-79
+ for linux-nvme@lists.infradead.org; Thu, 02 May 2019 11:49:17 +0000
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id AE9B581224;
- Thu,  2 May 2019 11:48:51 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id C60D73082E8E;
+ Thu,  2 May 2019 11:48:56 +0000 (UTC)
 Received: from maximlenovopc.usersys.redhat.com (unknown [10.35.206.58])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EAC608AD86;
- Thu,  2 May 2019 11:48:46 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 13D2417DDF;
+ Thu,  2 May 2019 11:48:51 +0000 (UTC)
 From: Maxim Levitsky <mlevitsk@redhat.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2 04/10] nvme/core: add NVME_CTRL_SUSPENDED controller state
-Date: Thu,  2 May 2019 14:47:55 +0300
-Message-Id: <20190502114801.23116-5-mlevitsk@redhat.com>
+Subject: [PATCH v2 05/10] nvme/pci: use the NVME_CTRL_SUSPENDED state
+Date: Thu,  2 May 2019 14:47:56 +0300
+Message-Id: <20190502114801.23116-6-mlevitsk@redhat.com>
 In-Reply-To: <20190502114801.23116-1-mlevitsk@redhat.com>
 References: <20190502114801.23116-1-mlevitsk@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Thu, 02 May 2019 11:48:51 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.46]); Thu, 02 May 2019 11:48:57 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190502_044852_694980_277BC9C8 
-X-CRM114-Status: GOOD (  14.77  )
+X-CRM114-CacheID: sfid-20190502_044857_586125_E89DB9ED 
+X-CRM114-Status: GOOD (  16.02  )
 X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.0 points)
@@ -84,68 +84,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This state will be used by a controller that is going to
-suspended state, and will later be used by mdev
-framework to detect this and flush its queues
+When enteriing low power state, the nvme
+driver will now inform the core with the NVME_CTRL_SUSPENDED state
+which will allow mdev driver to act on this information
 
 Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
 ---
- drivers/nvme/host/core.c | 15 +++++++++++++++
- drivers/nvme/host/nvme.h |  1 +
- 2 files changed, 16 insertions(+)
+ drivers/nvme/host/pci.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 2e11d014d514..22db0c51a0bf 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -317,6 +317,19 @@ bool nvme_change_ctrl_state(struct nvme_ctrl *ctrl,
- 		switch (old_state) {
- 		case NVME_CTRL_NEW:
- 		case NVME_CTRL_RESETTING:
-+		case NVME_CTRL_CONNECTING:
-+		case NVME_CTRL_SUSPENDED:
-+			changed = true;
-+			/* FALLTHRU */
-+		default:
-+			break;
-+		}
-+		break;
-+	case NVME_CTRL_SUSPENDED:
-+		switch (old_state) {
-+		case NVME_CTRL_NEW:
-+		case NVME_CTRL_LIVE:
-+		case NVME_CTRL_RESETTING:
- 		case NVME_CTRL_CONNECTING:
- 			changed = true;
- 			/* FALLTHRU */
-@@ -329,6 +342,7 @@ bool nvme_change_ctrl_state(struct nvme_ctrl *ctrl,
- 		case NVME_CTRL_NEW:
- 		case NVME_CTRL_LIVE:
- 		case NVME_CTRL_ADMIN_ONLY:
-+		case NVME_CTRL_SUSPENDED:
- 			changed = true;
- 			/* FALLTHRU */
- 		default:
-@@ -351,6 +365,7 @@ bool nvme_change_ctrl_state(struct nvme_ctrl *ctrl,
- 		case NVME_CTRL_ADMIN_ONLY:
- 		case NVME_CTRL_RESETTING:
- 		case NVME_CTRL_CONNECTING:
-+		case NVME_CTRL_SUSPENDED:
- 			changed = true;
- 			/* FALLTHRU */
- 		default:
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 527d64545023..d040eb00e880 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -139,6 +139,7 @@ static inline u16 nvme_req_qid(struct request *req)
- enum nvme_ctrl_state {
- 	NVME_CTRL_NEW,
- 	NVME_CTRL_LIVE,
-+	NVME_CTRL_SUSPENDED,
- 	NVME_CTRL_ADMIN_ONLY,    /* Only admin queue live */
- 	NVME_CTRL_RESETTING,
- 	NVME_CTRL_CONNECTING,
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 1c844c66ecaa..282f28c851c1 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -2406,7 +2406,8 @@ static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown)
+ 		u32 csts = readl(dev->bar + NVME_REG_CSTS);
+ 
+ 		if (dev->ctrl.state == NVME_CTRL_LIVE ||
+-		    dev->ctrl.state == NVME_CTRL_RESETTING)
++		    dev->ctrl.state == NVME_CTRL_RESETTING ||
++		    dev->ctrl.state == NVME_CTRL_SUSPENDED)
+ 			nvme_start_freeze(&dev->ctrl);
+ 		dead = !!((csts & NVME_CSTS_CFS) || !(csts & NVME_CSTS_RDY) ||
+ 			pdev->error_state  != pci_channel_io_normal);
+@@ -2852,6 +2853,9 @@ static int nvme_suspend(struct device *dev)
+ 	struct pci_dev *pdev = to_pci_dev(dev);
+ 	struct nvme_dev *ndev = pci_get_drvdata(pdev);
+ 
++	if (!nvme_change_ctrl_state(&ndev->ctrl, NVME_CTRL_SUSPENDED))
++		WARN_ON(1);
++
+ 	nvme_dev_disable(ndev, true);
+ 	return 0;
+ }
 -- 
 2.17.2
 
