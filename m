@@ -2,43 +2,40 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBE1A12F58
-	for <lists+linux-nvme@lfdr.de>; Fri,  3 May 2019 15:38:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C900812FE5
+	for <lists+linux-nvme@lfdr.de>; Fri,  3 May 2019 16:15:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=mVTOg3wgTlKG5XyMmWKLckWuxQvEoPk4CxQ1siMtcB4=; b=aCYVca0VcN/s/+PHmhTq5U6Djj
-	hyI4YyTuVzUmVYPdyAD8i7uxXg6VUXxcpYMyRx1ecTqIqH5e17RO+93VWLqEPUNnzJ7f6/Y8PSgbZ
-	9vT4k+N3HncbOa7BRe6CV4KhNvMFT7T+qCZjKWhiqeDBPjPYgqJ+6rssR/z7OdZ7Bt1f72JwztZMa
-	ZxdzlerhiLjVGt+mPN0EQVZS9uUNXILcNDRSAd/dSKoupJ5kMU8+3FeuFi+SnI7nL7ahPsD+saL4U
-	GqvXz5aa73CYf52+CeMSQurdxGIa9Zi414ghUSg84fReLc668GC0RlpZVTM7pAErmhaI+xBB0jYod
-	7TKJhiUw==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=IjPiyIfVihJlQRp/pGK7wChR+ImFqwT7S3gl/yen92U=; b=r0l
+	ZhiPQ7WMgb75F0TsvwmfeXUMhZOtU33KFv5ufdzwvQTIO4Xu3BoOpfzVxc+kOEGb0HFi6eIagvfPo
+	CWpNyVNjXA0YrXjwHCPnAlkqgBpGqf9bosjNPsaPCC/dR+vINmkbhSPieSkD9aktl8k1k2yon7Top
+	N4v0NPWxpkRK3DExjxvKEjTnyHbScGk0DsCVCoV/fu0gCnvii8LKq2PmzFOZaFKc1nRE3oYV3eSXW
+	zdeRtGrRvf63K2/V3rLqhIwgr1Vb5xZ4kN8+bRqVITCsFefZK/okofmmRSp0m4oGRpsNj6/szW2pn
+	SGEY+h2csO57Io5yCafScdunUAS9KWQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMYO6-0005mo-F3; Fri, 03 May 2019 13:38:06 +0000
+	id 1hMYy5-0004YR-JO; Fri, 03 May 2019 14:15:17 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMYNk-0005Qj-NU
- for linux-nvme@lists.infradead.org; Fri, 03 May 2019 13:37:46 +0000
+ id 1hMYy1-0004Y3-66
+ for linux-nvme@lists.infradead.org; Fri, 03 May 2019 14:15:14 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 73F18AD5D;
- Fri,  3 May 2019 13:37:43 +0000 (UTC)
+ by mx1.suse.de (Postfix) with ESMTP id 63591AEA0;
+ Fri,  3 May 2019 14:15:11 +0000 (UTC)
 From: Hannes Reinecke <hare@suse.de>
-To: Christoph Hellwig <hch@lst.de>
-Subject: [PATCHv3 2/2] nvme: validate cntlid during controller initialisation
-Date: Fri,  3 May 2019 15:37:36 +0200
-Message-Id: <20190503133736.111201-3-hare@suse.de>
+To: James Smart <james.smart@broadcom.com>
+Subject: [PATCH] nvme-fc: trace sq head updates
+Date: Fri,  3 May 2019 16:14:59 +0200
+Message-Id: <20190503141459.111641-1-hare@suse.de>
 X-Mailer: git-send-email 2.16.4
-In-Reply-To: <20190503133736.111201-1-hare@suse.de>
-References: <20190503133736.111201-1-hare@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190503_063744_913258_5134E5C2 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20190503_071513_380158_C3D5F70B 
+X-CRM114-Status: GOOD (  11.09  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -58,84 +55,72 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
+Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
+ Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>,
+ John Meneghini <john.meneghini@netapp.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Hannes Reinecke <hare@suse.com>
-
-The CNTLID value is required to be unique, and we do rely on this
-for correct operation. So reject any controller for which a non-unique
-CNTLID has been detected.
+FC-NVMe has some detailed rules if and when SQ head pointer updates
+should be send, but the spec is a tad unclear about the values.
+So add tracing to the FC-NVMe driver to track this.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- drivers/nvme/host/core.c | 32 ++++++++++++++++++++++++++++++--
- 1 file changed, 30 insertions(+), 2 deletions(-)
+ drivers/nvme/host/fc.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index cd16d98d1f1a..dc74f7ba6f4a 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -2358,6 +2358,23 @@ static int nvme_active_ctrls(struct nvme_subsystem *subsys)
- 	return count;
- }
+diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
+index 6d8451356eac..755c93a0c664 100644
+--- a/drivers/nvme/host/fc.c
++++ b/drivers/nvme/host/fc.c
+@@ -12,6 +12,7 @@
  
-+static bool nvme_duplicate_cntlid(struct nvme_subsystem *subsys,
-+				  struct nvme_ctrl *ctrl)
-+{
-+	struct nvme_ctrl *tmp;
-+	bool ret = false;
-+
-+	list_for_each_entry(tmp, &subsys->ctrls, subsys_entry) {
-+		if (tmp == ctrl)
-+			continue;
-+		if (tmp->cntlid == ctrl->cntlid) {
-+			ret = true;
-+			break;
-+		}
-+	}
-+	return ret;
-+}
-+
- static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- {
- 	struct nvme_subsystem *subsys, *found;
-@@ -2411,6 +2428,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+ #include "nvme.h"
+ #include "fabrics.h"
++#include "trace.h"
+ #include <linux/nvme-fc-driver.h>
+ #include <linux/nvme-fc.h>
  
- 		__nvme_release_subsystem(subsys);
- 		subsys = found;
-+		ret = 0;
- 	} else {
- 		ret = device_add(&subsys->dev);
- 		if (ret) {
-@@ -2434,10 +2452,20 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+@@ -35,7 +36,8 @@ struct nvme_fc_queue {
+ 	u32			qnum;
+ 	u32			rqcnt;
+ 	u32			seqno;
+-
++	u16			sq_head;
++	u16			sq_tail;
+ 	u64			connection_id;
+ 	atomic_t		csn;
+ 
+@@ -1653,6 +1655,7 @@ nvme_fc_fcpio_done(struct nvmefc_fcp_req *req)
+ 			status = cpu_to_le16(NVME_SC_INTERNAL << 1);
+ 			goto done;
+ 		}
++		queue->sq_head = cpu_to_le16(cqe->sq_head);
+ 		result = cqe->result;
+ 		status = cqe->status;
+ 		break;
+@@ -1675,6 +1678,8 @@ nvme_fc_fcpio_done(struct nvmefc_fcp_req *req)
  	}
  
- 	mutex_lock(&subsys->lock);
--	list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
-+	if (!nvme_duplicate_cntlid(subsys, ctrl))
-+		list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
-+	else {
-+		dev_err(ctrl->device,
-+			"Duplicate cntlid %u, rejecting\n",
-+			ctrl->cntlid);
-+		ctrl->subsys = NULL;
-+		sysfs_remove_link(&subsys->dev.kobj, dev_name(ctrl->device));
-+		nvme_put_subsystem(subsys);
-+		ret = -EINVAL;
-+	}
- 	mutex_unlock(&subsys->lock);
+ 	__nvme_fc_fcpop_chk_teardowns(ctrl, op, opstate);
++	trace_nvme_sq(rq, queue->sq_head,
++		      queue->sq_tail % ctrl->ctrl.sqsize);
+ 	nvme_end_request(rq, status, result);
  
--	return 0;
-+	return ret;
+ check_error:
+@@ -2215,6 +2220,7 @@ nvme_fc_start_fcp_op(struct nvme_fc_ctrl *ctrl, struct nvme_fc_queue *queue,
+ 	op->fcp_req.rcv_rsplen = 0;
+ 	op->fcp_req.status = NVME_SC_SUCCESS;
+ 	op->fcp_req.sqid = cpu_to_le16(queue->qnum);
++	queue->sq_tail++;
  
- out_unlock:
- 	mutex_unlock(&nvme_subsystems_lock);
+ 	/*
+ 	 * validate per fabric rules, set fields mandated by fabric spec
 -- 
 2.16.4
 
