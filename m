@@ -2,59 +2,50 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D166112D59
-	for <lists+linux-nvme@lfdr.de>; Fri,  3 May 2019 14:18:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8DFCF12D5E
+	for <lists+linux-nvme@lfdr.de>; Fri,  3 May 2019 14:19:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YRKUD/vyOAjzYfBQwqs5O7HtTBrqWsLgUf395xfTGzs=; b=W9Pa/0pB1F2X12
-	w80MpWIRXaPBJmCzKXFQE5B6oI+bqnU/WZC4j5RuBoSBNyEv2kNlYYg+yEgF7BYaL3ctaM1lvldLe
-	gt6DAkj8/duZMog+PmUoGtC0P3xhPePOa4YkxB0ysH+6bI9w9IpoWf121AvYivgYnlyTgpei1H5Nq
-	WZOblaMOTD/lCZx2BWmJ/MH/S1L88fEPwTyaHNKOF4f0K0Ks4l2pPKh0r7c/mh8coTQQ1Ze24uXKL
-	qERWgIOkbp3gXOa48XYvWm84rwDINK3VPJ6n3Ove5IChLJFECFarJBDzRRRYTfceKeG9vqRN/Mcrd
-	DJxvDjwICR1ZNSlLYKPQ==;
+	List-Owner; bh=tHbTa9Ej0XDbKfrS05Z3lMhqCaPwZ8DsOcWgESfMLdw=; b=HAWa67A6t4cAaE
+	iSVN/F5O8MzBf6v2poTnd7K2PYKxUSjOt4Ekzd/00k+8yy5qm6n1vTkYkYqIPNoUXfBlMuf0mj9z0
+	4kThjV800pvQHROu4drlP+UB+TV526dHwlEqZn3auJRA11pSpuh4ZxCBxAUmYq6OzEgCbz83uAy1c
+	jsufI/rIwChStJA9SwYPNebuVe7O0YSo4gqVizYbU/PwZG1VNFKqk5T6H8uIzPJUid5a1Y6EoeAri
+	DcirF0dqaX7+RrNz9Y2iU+vLnRFFFenu1DoMfgdlHivAzak3qe+yDtdsfiKYG52jhwFuw5OfmOTXp
+	wkkjN+lKuHnOO+/vjfsA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMX8v-0007Eg-L0; Fri, 03 May 2019 12:18:21 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1hMX9c-0007Qj-H8; Fri, 03 May 2019 12:19:04 +0000
+Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMX8q-0007EB-7c
- for linux-nvme@lists.infradead.org; Fri, 03 May 2019 12:18:17 +0000
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 May 2019 05:18:15 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,425,1549958400"; d="scan'208";a="167227563"
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by fmsmga002.fm.intel.com with ESMTP; 03 May 2019 05:18:14 -0700
-Date: Fri, 3 May 2019 06:12:32 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Akinobu Mita <akinobu.mita@gmail.com>
-Subject: Re: [PATCH 0/4] nvme-pci: support device coredump
-Message-ID: <20190503121232.GB30013@localhost.localdomain>
-References: <1556787561-5113-1-git-send-email-akinobu.mita@gmail.com>
- <20190502125722.GA28470@localhost.localdomain>
- <CAC5umygdADGrYeJy=F53Mm4bNPHmo+WY4SD3HFSRqi_cLrz9jw@mail.gmail.com>
+ id 1hMX9X-0007QM-HC
+ for linux-nvme@lists.infradead.org; Fri, 03 May 2019 12:19:00 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id E4F0B68AFE; Fri,  3 May 2019 14:18:38 +0200 (CEST)
+Date: Fri, 3 May 2019 14:18:38 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Maxim Levitsky <mlevitsk@redhat.com>
+Subject: Re: [PATCH v2 00/10] RFC: NVME MDEV
+Message-ID: <20190503121838.GA21041@lst.de>
+References: <20190502114801.23116-1-mlevitsk@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAC5umygdADGrYeJy=F53Mm4bNPHmo+WY4SD3HFSRqi_cLrz9jw@mail.gmail.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+In-Reply-To: <20190502114801.23116-1-mlevitsk@redhat.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190503_051816_334431_26406946 
-X-CRM114-Status: GOOD (  14.48  )
-X-Spam-Score: -1.3 (-)
+X-CRM114-CacheID: sfid-20190503_051859_726551_2C12F41C 
+X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [134.134.136.20 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,37 +57,33 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
- LKML <linux-kernel@vger.kernel.org>, linux-nvme@lists.infradead.org,
- Keith Busch <keith.busch@intel.com>, Johannes Berg <johannes@sipsolutions.net>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Fam Zheng <fam@euphon.net>, Keith Busch <keith.busch@intel.com>,
+ Sagi Grimberg <sagi@grimberg.me>, kvm@vger.kernel.org,
+ Wolfram Sang <wsa@the-dreams.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Liang Cunming <cunming.liang@intel.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, "David S . Miller" <davem@davemloft.net>,
+ Jens Axboe <axboe@fb.com>, Alex Williamson <alex.williamson@redhat.com>,
+ Kirti Wankhede <kwankhede@nvidia.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Liu Changpeng <changpeng.liu@intel.com>,
+ "Paul E . McKenney " <paulmck@linux.ibm.com>, Amnon Ilan <ailan@redhat.com>,
+ Christoph Hellwig <hch@lst.de>, John Ferlan <jferlan@redhat.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gRnJpLCBNYXkgMDMsIDIwMTkgYXQgMTI6Mzg6MDhQTSArMDkwMCwgQWtpbm9idSBNaXRhIHdy
-b3RlOgo+IDIwMTnlubQ15pyIMuaXpSjmnKgpIDIyOjAzIEtlaXRoIEJ1c2NoIDxrZWl0aC5idXNj
-aEBpbnRlbC5jb20+Ogo+ID4gT24gVGh1LCBNYXkgMDIsIDIwMTkgYXQgMDU6NTk6MTdQTSArMDkw
-MCwgQWtpbm9idSBNaXRhIHdyb3RlOgo+ID4gPiBUaGlzIGVuYWJsZXMgdG8gY2FwdHVyZSBzbmFw
-c2hvdCBvZiBjb250cm9sbGVyIGluZm9ybWF0aW9uIHZpYSBkZXZpY2UKPiA+ID4gY29yZWR1bXAg
-bWFjaGFuaXNtLCBhbmQgaXQgaGVscHMgZGlhZ25vc2UgYW5kIGRlYnVnIGlzc3Vlcy4KPiA+ID4K
-PiA+ID4gVGhlIG52bWUgZGV2aWNlIGNvcmVkdW1wIGlzIHRyaWdnZXJlZCBiZWZvcmUgcmVzZXR0
-aW5nIHRoZSBjb250cm9sbGVyCj4gPiA+IGNhdXNlZCBieSBJL08gdGltZW91dCwgYW5kIGNyZWF0
-ZXMgdGhlIGZvbGxvd2luZyBjb3JlZHVtcCBmaWxlcy4KPiA+ID4KPiA+ID4gLSByZWdzOiBOVk1l
-IGNvbnRyb2xsZXIgcmVnaXN0ZXJzLCBpbmNsdWRpbmcgZWFjaCBJL08gcXVldWUgZG9vcmJlbGwK
-PiA+ID4gICAgICAgICByZWdpc3RlcnMsIGluIG52bWUtc2hvdy1yZWdzIHN0eWxlIHRleHQgZm9y
-bWF0Lgo+ID4KPiA+IFlvdSdyZSBzdXBwb3NlZCB0byB0cmVhdCBxdWV1ZSBkb29yYmVsbHMgYXMg
-d3JpdGUtb25seS4gU3BlYyBzYXlzOgo+ID4KPiA+ICAgVGhlIGhvc3Qgc2hvdWxkIG5vdCByZWFk
-IHRoZSBkb29yYmVsbCByZWdpc3RlcnMuIElmIGEgZG9vcmJlbGwgcmVnaXN0ZXIKPiA+ICAgaXMg
-cmVhZCwgdGhlIHZhbHVlIHJldHVybmVkIGlzIHZlbmRvciBzcGVjaWZpYy4KPiAKPiBPSy4gIEkn
-bGwgZXhjbHVkZSB0aGUgZG9vcmJlbGwgcmVnaXN0ZXJzIGZyb20gcmVnaXN0ZXIgZHVtcC4gIEl0
-IHdpbGwgd29yawo+IG91dCB3aXRob3V0IHRoZSBpbmZvcm1hdGlvbiBpZiB3ZSBoYXZlIHNuYXBz
-aG90IG9mIHRoZSBxdWV1ZXMuCgpDb3VsZCB5b3UgYWN0dWFsbHkgZXhwbGFpbiBob3cgdGhlIHJl
-c3QgaXMgdXNlZnVsPyBJIHBlcnNvbmFsbHkgaGF2ZQpuZXZlciBlbmNvdW50ZXJlZCBhbiBpc3N1
-ZSB3aGVyZSBrbm93aW5nIHRoZXNlIHZhbHVlcyB3b3VsZCBoYXZlIGhlbHBlZDoKZXZlcnkgZGV2
-aWNlIHRpbWVvdXQgYWx3YXlzIG5lZWRlZCBkZXZpY2Ugc3BlY2lmaWMgaW50ZXJuYWwgZmlybXdh
-cmUKbG9ncyBpbiBteSBleHBlcmllbmNlLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtbnZtZQo=
+I simply don't get the point of this series.
+
+MDEV is an interface for exposing parts of a device to a userspace
+program / VM.  But that this series appears to do is to expose a
+purely software defined nvme controller to userspace.  Which in
+principle is a good idea, but we have a much better framework for that,
+which is called vhost.
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
