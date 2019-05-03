@@ -2,53 +2,123 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6AB461339D
-	for <lists+linux-nvme@lfdr.de>; Fri,  3 May 2019 20:30:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E01A7133D2
+	for <lists+linux-nvme@lfdr.de>; Fri,  3 May 2019 21:01:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=Yo/70c0VIuFXdgR5PwhLAsLodfIOYubxXoDO2/Sy/hQ=; b=BAK
-	2Ydm3v5YpT2HDd1N6r/Rf2XGr/PnKWoeQVwCozdkmpFz9d21RwujBbL8b7LHGQXFU+GZllHsN9yPs
-	hT/xZos/Fuz7Uu/v3SKRn8iwLATaUsxdddsR0R2P/XCxmCqUYT6dYN5vsbmP04kELfTvvgnDJXMsE
-	HMJkmB0E21jFmsO+az1U2wKWiQlyEW4aT/F2uk1VJP+6PRZTXFzeeODz49probxaBAb7OWL/6nl8L
-	i6oYOGrw0iIhzVTD6HxXyA2usdmrzy51d7eAaTEtMsIOeW4A+TxTIOAwFR5VDh5QnI5kdwjR6mVBx
-	TUXXAPpQ+I+rQyT9kUa6p4JH1bhrtFw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=wfBA9eQmlxtsUwjkLJLKR8XqonCVDfLdYsk0VaqCy2E=; b=BH4In/FOCxSxR5ksAISOiHQ+c
+	U2uqiyBA8kVqAZAnKBWz/vGi0opv9TQWZ0sqXvM+LB2cFFeMHV5uIhvGdvXBmEORbX7LWGFuALNev
+	TJKxfCOScbh+7wNYZfRiuOTb+NYXOq8oBF4GBI20K6Mt7HeTKPyl4SH/nhUnsgU6wVTVkaQ7+ifqH
+	DKnmdJP2331vyZjrl/clQA8lXpQAj3OCH1x3czOwlFUnZphDdyzMmiZB4GlilwciGdxeI0HHXtN0w
+	TkXDnBh2HXUyA109TUzbjOkjQpDLKfZMVvt8urGnO0shGBIZu8Z0/MRmEZQwz8caOui8Wo5/Q8+4x
+	7zSRs5IGA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMcxJ-0005V1-UA; Fri, 03 May 2019 18:30:45 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1hMdR3-0002oK-ED; Fri, 03 May 2019 19:01:29 +0000
+Received: from mail-eopbgr30063.outbound.protection.outlook.com ([40.107.3.63]
+ helo=EUR03-AM5-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMcxE-0005Ud-Qk
- for linux-nvme@lists.infradead.org; Fri, 03 May 2019 18:30:42 +0000
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 May 2019 11:30:39 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,426,1549958400"; d="scan'208";a="141040119"
-Received: from unknown (HELO vmd-mono-rhel6p7.lm.intel.com) ([10.232.116.108])
- by orsmga006.jf.intel.com with ESMTP; 03 May 2019 11:30:39 -0700
-From: Jon Derrick <jonathan.derrick@intel.com>
-To: Omar Sondoval <osandov@osandov.com>
-Subject: [PATCH] blktests: Use old variable check for Bash <4.2
-Date: Fri,  3 May 2019 12:28:28 -0600
-Message-Id: <1556908108-16475-1-git-send-email-jonathan.derrick@intel.com>
-X-Mailer: git-send-email 1.7.1
+ id 1hMdQy-0002no-LJ
+ for linux-nvme@lists.infradead.org; Fri, 03 May 2019 19:01:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=G5rmKY/ryyqvCzcofiGq32JWwfZXN1f8sSMf9ymEfmQ=;
+ b=VRpg/Yqh0hd9jbFvpjeuTHFZufDbSnOGTlAloIDMqI5ZLBH9lFqgQ52ZqrHREBMR0otCUlK6Iv0+9cFk47KChyXKdwPPhnNuQ/549GcFxaZ8JMBLNJeNK86ereqXm4d8QyN1p4kPiLSggtgrYadcRTaVHtNJqRfzp2LwOcHZjOc=
+Received: from VI1PR0501CA0016.eurprd05.prod.outlook.com
+ (2603:10a6:800:92::26) by VI1PR0502MB4061.eurprd05.prod.outlook.com
+ (2603:10a6:803:25::21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1856.11; Fri, 3 May
+ 2019 19:01:16 +0000
+Received: from VE1EUR03FT023.eop-EUR03.prod.protection.outlook.com
+ (2a01:111:f400:7e09::201) by VI1PR0501CA0016.outlook.office365.com
+ (2603:10a6:800:92::26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1856.11 via Frontend
+ Transport; Fri, 3 May 2019 19:01:16 +0000
+Authentication-Results: spf=pass (sender IP is 193.47.165.134)
+ smtp.mailfrom=mellanox.com; davemloft.net; dkim=none (message not signed)
+ header.d=none; davemloft.net; dmarc=pass action=none header.from=mellanox.com; 
+Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
+ 193.47.165.134 as permitted sender)
+ receiver=protection.outlook.com; 
+ client-ip=193.47.165.134; helo=mtlcas13.mtl.com;
+Received: from mtlcas13.mtl.com (193.47.165.134) by
+ VE1EUR03FT023.mail.protection.outlook.com (10.152.18.133) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.1856.11 via Frontend Transport; Fri, 3 May 2019 19:01:14 +0000
+Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4; Fri, 3 May 2019 22:01:13
+ +0300
+Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Fri,
+ 3 May 2019 22:01:13 +0300
+Received: from [172.16.0.54] (172.16.0.54) by MTLCAS01.mtl.com (10.0.8.71)
+ with Microsoft SMTP Server (TLS) id 14.3.301.0; Fri, 3 May 2019 22:00:59
+ +0300
+Subject: Re: [PATCH v2 06/10] nvme/core: add mdev interfaces
+To: Christoph Hellwig <hch@infradead.org>, Maxim Levitsky <mlevitsk@redhat.com>
+References: <20190502114801.23116-1-mlevitsk@redhat.com>
+ <20190502114801.23116-7-mlevitsk@redhat.com>
+ <20190503122902.GA5081@infradead.org>
+From: Max Gurtovoy <maxg@mellanox.com>
+Message-ID: <d1c0c7ae-1a7d-06e5-d8bb-765a7fd5e41d@mellanox.com>
+Date: Fri, 3 May 2019 22:00:54 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <20190503122902.GA5081@infradead.org>
+Content-Language: en-US
+X-Originating-IP: [172.16.0.54]
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:193.47.165.134; IPV:NLI; CTRY:IL; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(136003)(39860400002)(346002)(396003)(376002)(2980300002)(199004)(189003)(31686004)(26005)(77096007)(230700001)(6246003)(229853002)(67846002)(53546011)(2906002)(186003)(305945005)(16526019)(6306002)(50466002)(64126003)(70586007)(966005)(7736002)(478600001)(70206006)(11346002)(446003)(110136005)(58126008)(486006)(2616005)(54906003)(476003)(126002)(316002)(16576012)(336012)(6116002)(4326008)(86362001)(81166006)(5660300002)(76176011)(106002)(31696002)(81156014)(356004)(6666004)(2486003)(23676004)(65956001)(47776003)(7416002)(8676002)(4744005)(8936002)(65826007)(3846002)(36756003)(65806001)(3940600001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR0502MB4061; H:mtlcas13.mtl.com; FPR:;
+ SPF:Pass; LANG:en; PTR:mail13.mellanox.com; A:1; MX:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ff93b9a1-2b4e-495b-0884-08d6cff9b7b8
+X-Microsoft-Antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4709054)(2017052603328)(7193020);
+ SRVR:VI1PR0502MB4061; 
+X-MS-TrafficTypeDiagnostic: VI1PR0502MB4061:
+X-MS-Exchange-PUrlCount: 1
+X-Microsoft-Antispam-PRVS: <VI1PR0502MB4061D957FC2EB182C173BF90B6350@VI1PR0502MB4061.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Forefront-PRVS: 0026334A56
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Message-Info: DGddPswefKoHsVgWtC7pnM5lSpWMOv75Oc/NluAwqS56HkPDM/c2drjGZroZ6m91Z7v5SRzJ7rt+UflzPbm3hHC9sgrdGgH1KJAddQ1cP/QLwBogeN947+AA3opIcmlLuvwvU1DHlEdBNmtvXtQ6FT/+q6vDC5QjFm0KtykIPVlomZEloPWrfaktmYBsqJq8VIA1iYmdTaBD9PxZ4Otr6fk/WoHefeaJaaIRPOfbTjrPIkmcYAZEprdxaPRdhm0I5rw5MqaDqLJuYKM+uFlqA7niMIv+Pmo65jGy3ebUDrAT/CIvwYmrjNIpzg5tIHUiv+jGygEVhGcWaSVh/zSuG/t7ruG03SONQnBGb5Lgx8DelSixm/MJGnAvcQ9rEz+PBBlm/nBXGvQctY6glxtT4hRuovmcYcVtHTDAUzTP5VM=
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 May 2019 19:01:14.9096 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ff93b9a1-2b4e-495b-0884-08d6cff9b7b8
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.134];
+ Helo=[mtlcas13.mtl.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0502MB4061
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190503_113040_918701_E8A5C207 
-X-CRM114-Status: GOOD (  12.44  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190503_120124_757161_56BD879B 
+X-CRM114-Status: GOOD (  12.81  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [134.134.136.24 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.3.63 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,172 +130,51 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jon Derrick <jonathan.derrick@intel.com>, linux-nvme@lists.infradead.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Fam Zheng <fam@euphon.net>, kvm@vger.kernel.org,
+ Wolfram Sang <wsa@the-dreams.de>, linux-nvme@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Keith Busch <keith.busch@intel.com>, Kirti
+ Wankhede <kwankhede@nvidia.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ "Paul E . McKenney" <paulmck@linux.ibm.com>, Christoph Hellwig <hch@lst.de>,
+ Sagi Grimberg <sagi@grimberg.me>, Liang
+ Cunming <cunming.liang@intel.com>, Jens Axboe <axboe@fb.com>, Alex
+ Williamson <alex.williamson@redhat.com>, John Ferlan <jferlan@redhat.com>,
+ Liu Changpeng <changpeng.liu@intel.com>, Jens Axboe <axboe@kernel.dk>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Amnon
+ Ilan <ailan@redhat.com>, "David S . Miller" <davem@davemloft.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Bash 4.2 and above supports -v variable checks, which returns true for
-set or null. Instead use an older bashism that is compatible with bash
-4.1 and earlier but only returns true if the variable is set non-null.
-This inherently adds a sanity check in case of null variables.
 
-Signed-off-by: Jon Derrick <jonathan.derrick@intel.com>
----
- check         |   20 ++++++++++----------
- common/cgroup |    2 +-
- common/fio    |    2 +-
- common/rc     |    2 +-
- tests/meta/rc |    4 ++--
- 5 files changed, 15 insertions(+), 15 deletions(-)
+On 5/3/2019 3:29 PM, Christoph Hellwig wrote:
+> On Thu, May 02, 2019 at 02:47:57PM +0300, Maxim Levitsky wrote:
+>> If the mdev device driver also sets the
+>> NVME_F_MDEV_DMA_SUPPORTED, the mdev core will
+>> dma map all the guest memory into the nvme device,
+>> so that nvme device driver can use dma addresses as passed
+>> from the mdev core driver
+> We really need a proper block layer interface for that so that
+> uring or the nvme target can use pre-mapping as well.
 
-diff --git a/check b/check
-index a623892..add8f7e 100755
---- a/check
-+++ b/check
-@@ -196,7 +196,7 @@ _output_status() {
- 
- 	if (( RUN_FOR_ZONED )); then zoned=" (zoned) "; fi
- 
--	if [[ -v DESCRIPTION ]]; then
-+	if [[ "${DESCRIPTION:-}" ]]; then
- 		printf '%-60s' "${test}${zoned}($DESCRIPTION)"
- 	else
- 		printf '%-60s' "${test}${zoned}"
-@@ -233,7 +233,7 @@ _output_notrun() {
- }
- 
- _output_last_test_run() {
--	if [[ -v TEST_DEV ]]; then
-+	if [[ "${TEST_DEV:-}" ]]; then
- 		_output_status "$TEST_NAME => $(basename "$TEST_DEV")" ""
- 	else
- 		_output_status "$TEST_NAME" ""
-@@ -258,7 +258,7 @@ _output_test_run() {
- 		tput cuu $((${#LAST_TEST_RUN[@]} - 3))
- 	fi
- 
--	if [[ -v TEST_DEV ]]; then
-+	if [[ "${TEST_DEV:-}" ]]; then
- 		_output_status "$TEST_NAME => $(basename "$TEST_DEV")" "${TEST_RUN["status"]}ed"
- 	else
- 		_output_status "$TEST_NAME" "${TEST_RUN["status"]}ed"
-@@ -288,7 +288,7 @@ _output_test_run() {
- }
- 
- _cleanup() {
--	if [[ -v TMPDIR ]]; then
-+	if [[ "${TMPDIR:-}" ]]; then
- 		rm -rf "$TMPDIR"
- 		unset TMPDIR
- 	fi
-@@ -300,7 +300,7 @@ _cleanup() {
- 		unset TEST_DEV_QUEUE_SAVED["$key"]
- 	done
- 
--	if [[ -v RESTORE_CPUS_ONLINE ]]; then
-+	if [[ "${RESTORE_CPUS_ONLINE:-}" ]]; then
- 		local cpu
- 		for cpu in "${!CPUS_ONLINE_SAVED[@]}"; do
- 			echo "${CPUS_ONLINE_SAVED["$cpu"]}" >"/sys/devices/system/cpu/cpu$cpu/online"
-@@ -659,18 +659,18 @@ fi
- : "${QUICK_RUN:=0}"
- : "${RUN_ZONED_TESTS:=0}"
- : "${OUTPUT:=results}"
--if [[ -v EXCLUDE ]] && ! declare -p EXCLUDE | grep -q '^declare -a'; then
-+if [[ "${EXCLUDE:-}" ]] && ! declare -p EXCLUDE | grep -q '^declare -a'; then
- 	# If EXCLUDE was not defined as an array, convert it to one.
- 	# shellcheck disable=SC2190,SC2206
- 	EXCLUDE=($EXCLUDE)
--elif [[ ! -v EXCLUDE ]]; then
-+elif [[ ! "${EXCLUDE:-}" ]]; then
- 	EXCLUDE=()
- fi
--if [[ -v TEST_DEVS ]] && ! declare -p TEST_DEVS | grep -q '^declare -a'; then
-+if [[ "${TEST_DEVS:-}" ]] && ! declare -p TEST_DEVS | grep -q '^declare -a'; then
- 	# If TEST_DEVS was not defined as an array, convert it to one.
- 	# shellcheck disable=SC2206
- 	TEST_DEVS=($TEST_DEVS)
--elif [[ ! -v TEST_DEVS ]]; then
-+elif [[ ! "${TEST_DEVS:-}" ]]; then
- 	TEST_DEVS=()
- fi
- 
-@@ -709,7 +709,7 @@ while true; do
- 	esac
- done
- 
--if [[ $QUICK_RUN -ne 0 && ! -v TIMEOUT ]]; then
-+if [[ $QUICK_RUN -ne 0 && ! "${TIMEOUT:-}" ]]; then
- 	_error "QUICK_RUN specified without TIMEOUT"
- fi
- 
-diff --git a/common/cgroup b/common/cgroup
-index 554ebf7..c34bffd 100644
---- a/common/cgroup
-+++ b/common/cgroup
-@@ -22,7 +22,7 @@ _init_cgroup2()
- 
- _exit_cgroup2()
- {
--	if [[ -v CGROUP2_DIR ]]; then
-+	if [[ "${CGROUP2_DIR:-}" ]]; then
- 		find "$CGROUP2_DIR" -type d -delete
- 		unset CGROUP2_DIR
- 	fi
-diff --git a/common/fio b/common/fio
-index 2b4f6e2..2e81b26 100644
---- a/common/fio
-+++ b/common/fio
-@@ -161,7 +161,7 @@ _fio_perf() {
- _run_fio() {
- 	local args=("--output=$TMPDIR/fio_perf" "--output-format=terse" "--terse-version=4" "--group_reporting=1")
- 
--	if [[ -v TIMEOUT ]]; then
-+	if [[ "${TIMEOUT:-}" ]]; then
- 		args+=("--runtime=$TIMEOUT")
- 	fi
- 
-diff --git a/common/rc b/common/rc
-index 71e27c3..5dd2c95 100644
---- a/common/rc
-+++ b/common/rc
-@@ -15,7 +15,7 @@ shopt -s extglob
- # for TIMEOUT / number of subtests.
- _divide_timeout() {
- 	local num_tests="$1"
--	if [[ -v TIMEOUT ]]; then
-+	if [[ "${TIMEOUT:-}" ]]; then
- 		((TIMEOUT = (TIMEOUT + num_tests - 1) / num_tests))
- 	fi
- }
-diff --git a/tests/meta/rc b/tests/meta/rc
-index da584d6..093edd1 100644
---- a/tests/meta/rc
-+++ b/tests/meta/rc
-@@ -7,7 +7,7 @@
- . common/rc
- 
- group_requires() {
--	if [[ -v META_REQUIRES_SKIP ]]; then
-+	if [[ "${META_REQUIRES_SKIP:-}" ]]; then
- 		SKIP_REASON="META_REQUIRES_SKIP was set"
- 		return 1
- 	fi
-@@ -15,7 +15,7 @@ group_requires() {
- }
- 
- group_device_requires() {
--	if [[ -v META_DEVICE_REQUIRES_SKIP ]]; then
-+	if [[ "${META_DEVICE_REQUIRES_SKIP:-}" ]]; then
- 		SKIP_REASON="META_DEVICE_REQUIRES_SKIP was set"
- 		return 1
- 	fi
--- 
-1.7.1
+I think we can also find a way to use nvme-mdev for the target offload 
+p2p feature.
 
+Don't see a big difference of taking NVMe queue and namespace/partition 
+to guest OS or to P2P since IO is issued by external entity and pooled 
+outside the pci driver.
+
+thoughts ?
+
+
+>
+> _______________________________________________
+> Linux-nvme mailing list
+> Linux-nvme@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-nvme
 
 _______________________________________________
 Linux-nvme mailing list
