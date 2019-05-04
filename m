@@ -2,74 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99CE21397F
-	for <lists+linux-nvme@lfdr.de>; Sat,  4 May 2019 13:39:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D78413A91
+	for <lists+linux-nvme@lfdr.de>; Sat,  4 May 2019 16:21:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=F08awXjU/NVQ8JY3d/522EQo58qBM0XgUP/AuoQsjTE=; b=WsO
-	ScveqDB1GcHWf9pRaZKZ53k/ABhXUjZFwW48Xk5E1NePY9JQr32374u6+97LWW3cBg3yTVO2R2V2N
-	4ivBd45bEtsoUULJJ81CYk+COrUbqYeaidVa14BM0pZWNPaDwjyNH6FMIgljRXCKS8Vp0Nht0UZ6i
-	L/2mxB5/JSdweVIIXXyJCA0Dl9DeUJiN5lspQ00wrY4vF5X4un3o459pNWE1EP1hD2phbjYCAPTN1
-	8Jbw3biFrW2OAhBUZjh44R1Q+Bab8auJtmYSMsbtwESc2ubSXeqYOUMrTB7y9TKii/XnOCmRpzon5
-	UDo21pbJKqpH6nzJWI0rSm5ovrdE34A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=VlN0yb9IZF0Msq5dARIfsYU7FyNNsSQxWItKqSZaqsw=; b=XPbD/DV27UTIUtP3YsIFZlXNe
+	CGsoMD7MJ5kJk2ZoTCVpC49duqN/o7VXX6ZCdRIY0P2L0KmsgnUk4ZGvT4LRkIxBZ1BHaQqD/2nas
+	zCLa1vtkNWG7sE37fCucxi/5D9i/wLrNrHC5OVW6VxfUXFnPYtBkF+5WmWFfSR68+nCFRk6cWto0H
+	ZX1F5Mla9q9xPtwRqiXBZ7quMQtHFzVdEMddFOSwulRfSa44//ESA0cDyP7ROki2TCa4VffZqIYOm
+	qIaivEl3MtAeDQlmRvCj3+vxUzUdorHo0KrnZIFOCQSiUmpgrUtJZ5httVTVBmkI84QUI2bpdjsrA
+	dtmSkMsVQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hMt18-0007Le-PM; Sat, 04 May 2019 11:39:46 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1hMvXK-0002N7-0q; Sat, 04 May 2019 14:21:10 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hMt13-0007LH-HO
- for linux-nvme@lists.infradead.org; Sat, 04 May 2019 11:39:43 +0000
-Received: by mail-pl1-x643.google.com with SMTP id a59so3993241pla.5
- for <linux-nvme@lists.infradead.org>; Sat, 04 May 2019 04:39:39 -0700 (PDT)
+ id 1hMvXD-0002Ma-Vg
+ for linux-nvme@lists.infradead.org; Sat, 04 May 2019 14:21:05 +0000
+Received: by mail-pl1-x642.google.com with SMTP id o5so4101781pls.12
+ for <linux-nvme@lists.infradead.org>; Sat, 04 May 2019 07:21:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=nnFMBo+p9x5MQfKCTg27aN002MiY027jJD/RWFN1tQk=;
- b=JGE3fqWbeex0m2IwyagM1ppZOOESW5n6rMkZFPPde36wsIJjmalsRrkFhS83uL1UeY
- IvjvGu2QyPRy8GrgR7j36aHzUbs6UGdVQnPI7qw4+kOr+UCfbYuD26dzwzOJo9WszRAx
- Sav4p2K7FGAxHQdv7Hk3e5V+czHsaY5xaiKg7PtW8q47LxdY9mkTA0AUhg9o75Se8X/Y
- 9hF9TkAEBG+xOIh/zSHAOvpRoasxaF4x77cISO4Itp74Kax3IwC8QzMQj3O4iyoCqkQB
- 0L/ETswVRoojWHMqmJ4qbklUWjhVV02mc1ne3wrAcj1hxRa9wPrLnFQxrrhf0ofRqd6C
- d6Hw==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=fY3tGJWJwaBK14dfm7k6EcTPTV2wk075L6tfnhV2zu0=;
+ b=fGAvTKdsyCynnyMvbip8otzBjklLTRfcrWTFMytK2gotxJYNsoBGBImuiut2Etmrpe
+ uMOZMZ4qDklIGnSUlsehr/U6Bpc3klcNjdArVk7j4Yo3EzGgGrMDzUtWC9ClkXbUb9B/
+ D6jnwcfJ5JcRerCBcljdKk507+pkhLINLtNxe+BGw4tN+eG4BH2AgRCxFFiiF2qHkVow
+ lB6f7ZhbRm864LYgQiFCt5HFgGwv2jFZvMRHWStJB0xXmvirfkM3I2NSUF6O+xmoQR/g
+ gIPemg+M8f1T8U0r8Etppdjv4+aj1/jyibphM+sSFnr+f3tpb0YSaOzXYBHdYI74kn+9
+ +jFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=nnFMBo+p9x5MQfKCTg27aN002MiY027jJD/RWFN1tQk=;
- b=Yy+8tL2UIz+9tYKGe9Bbi8O67HDjKKPY2UuCXXxsaPj8sVKTn9YL6vrCQGEcdI5CjQ
- B/f3rFNsEI2xGhIkTRDV/q+KQkm9WJafyvURAv1tLBZ/T8B2qMHs4LuiVnz9t73UmIRg
- jIk0ns65QMZOXGQQ6EYuEHDoCA7MVaWXpNZuo0UOaS4fRhwm+QECCEJCuM9btEdNLEkI
- ABWo95g6F1ZYFYkHGSqIIkIOBQcKV7dPTN2aKlhwyFv8gbhPSK9TL1ke6V1L13DXDoYf
- bXiMp3jwpGclSaAFiBDo1wK+Rs8ZmOL5nj649JrIZ0UPkTZgd8Pf4FzYGsxy5nMP7ItK
- /dgA==
-X-Gm-Message-State: APjAAAX3pxJUHiYlIg8/jDDCKOSDh/znZ2EV+MIgtCjLoc0GxqMJapoH
- bCgryBR8dM2vaAHz/VMtpoue6zcJI7c=
-X-Google-Smtp-Source: APXvYqwQzzsTgzip+Kh/MVxIdUm2vTBlBVYK5PZ6GqpSiPu7TqcKOIrGOEnUee5EBj4XpBb/gT8S7w==
-X-Received: by 2002:a17:902:bb0d:: with SMTP id
- l13mr17979845pls.141.1556969978197; 
- Sat, 04 May 2019 04:39:38 -0700 (PDT)
-Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id p7sm6003341pgn.64.2019.05.04.04.39.35
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=fY3tGJWJwaBK14dfm7k6EcTPTV2wk075L6tfnhV2zu0=;
+ b=I1Xf9PH/wXkxaPKy9b4lcyJwb3PPQMwFGDZXJtyocsxDwc2j44GMZBJ1ePnvuo2eDI
+ SBrv+XaxX7K640R9qHkqo9Vlq3hYGsdGBWc5DJm7ITHlYyBpp7Ihx13wivdElmanT3s3
+ rAwOgS/O1jX7TU05OgTK/O7BMdI+bWmeWbFkd8jwZAkeYOdG8xP0SEUAwxrVnmrzFObT
+ WqkmrdQ7T9KLvLdKi5xFEanTm0C+lwzYzPul3nUobdX60oBhkfl/YWquY4GmV3mg5uJ+
+ YBrPjfVF0ZuzSVf2g+ArO0Bs4gDS5BICkVsDqtha85A5yfmLoOjvkWQ+CWnNQmIhuju2
+ +jgg==
+X-Gm-Message-State: APjAAAUDvc5D4CttR6z4liZ+VfwkhVwOxoziZWVZH14oSCdKy+gpkuY8
+ E18fxAnWaZkqoHejcQxKVIutt4Rv4U4=
+X-Google-Smtp-Source: APXvYqzASqCynY6/6qqMneGyNUQY/wggCnBall1xdExFxwdtgFyaFhZehMCkS7APNlPCsxA+x0jvRQ==
+X-Received: by 2002:a17:902:b081:: with SMTP id
+ p1mr18948550plr.110.1556979659639; 
+ Sat, 04 May 2019 07:20:59 -0700 (PDT)
+Received: from [192.168.0.6] ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id j12sm12655390pgg.79.2019.05.04.07.20.56
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 04 May 2019 04:39:37 -0700 (PDT)
+ Sat, 04 May 2019 07:20:58 -0700 (PDT)
+Subject: Re: [PATCHv3 2/2] nvme: validate cntlid during controller
+ initialisation
+To: Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
+References: <20190503133736.111201-1-hare@suse.de>
+ <20190503133736.111201-3-hare@suse.de>
 From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH] nvme-pci: Fix queue_count to consider nr_possible_cpu
-Date: Sat,  4 May 2019 20:39:23 +0900
-Message-Id: <20190504113923.32316-1-minwoo.im.dev@gmail.com>
-X-Mailer: git-send-email 2.17.1
+Message-ID: <1624cd68-f64e-d255-2f6e-5c1436699778@gmail.com>
+Date: Sat, 4 May 2019 23:20:54 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <20190503133736.111201-3-hare@suse.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190504_043941_607373_9A8C53D4 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20190504_072104_046758_E641A6DF 
+X-CRM114-Status: GOOD (  18.20  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -92,54 +102,70 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Jens Axboe <axboe@fb.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, Christoph Hellwig <hch@lst.de>,
- Sagi Grimberg <sagi@grimberg.me>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The parameter should be set with the updated count 'n' instead of
-'val' itself.  The local variable 'cnt' is sized in 6bytes because nvme
-supports up to 65536 io queues.
+Hi Hannes,
 
-Fixes: 3b6592f70("nvme: utilize two queue maps, one for reads and one
-for writes")
-Cc: Keith Busch <keith.busch@intel.com>
-Cc: Jens Axboe <axboe@fb.com>
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Sagi Grimberg <sagi@grimberg.me>
-Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
----
- drivers/nvme/host/pci.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+I think this patch looks good. but I have a simple query here.
 
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 3e4fb891a95a..d3be3193d023 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -147,6 +147,7 @@ static int io_queue_depth_set(const char *val, const struct kernel_param *kp)
- static int queue_count_set(const char *val, const struct kernel_param *kp)
- {
- 	int n, ret;
-+	char cnt[6];
- 
- 	ret = kstrtoint(val, 10, &n);
- 	if (ret)
-@@ -154,7 +155,8 @@ static int queue_count_set(const char *val, const struct kernel_param *kp)
- 	if (n > num_possible_cpus())
- 		n = num_possible_cpus();
- 
--	return param_set_int(val, kp);
-+	sprintf(cnt, "%d", n);
-+	return param_set_int(cnt, kp);
- }
- 
- static inline unsigned int sq_idx(unsigned int qid, u32 stride)
--- 
-2.17.1
+On 5/3/19 10:37 PM, Hannes Reinecke wrote:
+> @@ -2434,10 +2452,20 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+>   	}
+>   
+>   	mutex_lock(&subsys->lock);
+> -	list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
+> +	if (!nvme_duplicate_cntlid(subsys, ctrl))
+> +		list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
+> +	else {
+> +		dev_err(ctrl->device,
+> +			"Duplicate cntlid %u, rejecting\n",
+> +			ctrl->cntlid);
+> +		ctrl->subsys = NULL;
+> +		sysfs_remove_link(&subsys->dev.kobj, dev_name(ctrl->device));
+> +		nvme_put_subsystem(subsys);
+
+Does it(nvme_put_subsystem()) really need to be here?  I think explicit
+"put" for the subsystem is always good, but right above this code, we
+can see the comment when sysfs link has been failed:
+
+if (sysfs_create_link(&subsys->dev.kobj, &ctrl->device->kobj,
+                 dev_name(ctrl->device))) {
+         dev_err(ctrl->device,
+                 "failed to create sysfs link from subsystem.\n");
+         /* the transport driver will eventually put the subsystem */
+         return -EINVAL;
+}
+
+I'm not pretty sure where the exactly the comment says, but I can see
+the nvme_destroy_subsystem() would be invoked from the transport
+drivers (e.g. pci, rdma, etc)
+
+In case of nvme-pci, nvme_remove_dead_ctrl() will do the "put".  For
+nvme-rdma, nvme_rdma_create_ctrl() will do the "put".
+
+Did you do just explicit "put" for the subsystem OR does it really need
+to be here with any other reason?
+
+I'm just asking why there is a difference between code above it and this
+patch.  If you don't mind, please let me know if I'm wrong here. :)
+
+Thanks,
+
+> +		ret = -EINVAL;
+> +	}
+>   	mutex_unlock(&subsys->lock);
+>   
+> -	return 0;
+> +	return ret;
+>   
+>   out_unlock:
+>   	mutex_unlock(&nvme_subsystems_lock);
+> 
 
 
 _______________________________________________
