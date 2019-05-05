@@ -2,63 +2,106 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 560AF13C81
-	for <lists+linux-nvme@lfdr.de>; Sun,  5 May 2019 03:11:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 56D6313D13
+	for <lists+linux-nvme@lfdr.de>; Sun,  5 May 2019 06:19:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:Date:Message-ID:
+	In-Reply-To:To:From:Subject:Mime-Version:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/EnBlMXrjQWDGSi/nHruJxJi1o2mNIX7O1W6pkq7Oeg=; b=gX0FIDFiYcL7DV
-	WDXSguMabxC5RgVeSEphWzm+QJQigmasYuWkics7PSOGPXnXrJN8hYKepMvKutvEfL6rHk+lyE8xp
-	CLnG62AMIS0nSbZw7hgY8f6/w1MYHkPrsglTUvesjDF8QHwYovRSqFUEx/mHEL0U6vrhlCq4qWaY1
-	idJfHPDW9SfshyZeebhbCNL7yEcLd6vG04nsdh970dALlAW0zoynl5RtzUYhdr2crIPcwiuwJC3bP
-	gAyaSbvZ0BQ3XZvU1uLyUKhHLF+sGN3tPuoGoaFX6hnNf6MXSaySKpnAR50oZfeN150EaPD/Yt3UJ
-	b5oOTdXIUfvpIWiv7ukQ==;
+	List-Owner; bh=crsROmOyAbJJprAwHkuzYUA1YJFoA1Hbi01Vxc/4mdg=; b=S0yA+mxe7rrlOn
+	oXi0IYepBVoUMTksTtpZ157U3szv6S5uotdcZNUiQ1BzYrB1o9AUFnGfA/4snadONVgb547fl6cZc
+	HXHyX5IPRC8hDthsdPi39vV2D9BeYiyBL6Z7aX+vbxxRTxCn4XVE6a1iNgOaIUOpdj1WXQT1m02KO
+	nLHYHrFhqJffUQiTtEUHA1kAGT+7c16+PjRJSItg4E9IFhuXNzOUm/z4Hvdi7SEo8DQ5hKpzw/bn9
+	4LsxI5JKlNGnjAi3DarN7VLfuc7LHmlF5HCpw3rzyf5PhuE7suAzBdmk2/YunqgaWWQ0092aZv0A7
+	dt3XYkJDY/xi4U7tewKQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hN5g3-0005yJ-Oy; Sun, 05 May 2019 01:10:51 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
+	id 1hN8cB-00031g-Oo; Sun, 05 May 2019 04:19:03 +0000
+Received: from mailout4.samsung.com ([203.254.224.34])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hN5fl-0005xW-Ql
- for linux-nvme@lists.infradead.org; Sun, 05 May 2019 01:10:36 +0000
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 3A231CA1F5;
- Sun,  5 May 2019 01:10:32 +0000 (UTC)
-Received: from ming.t460p (ovpn-8-16.pek2.redhat.com [10.72.8.16])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0B03C60C18;
- Sun,  5 May 2019 01:10:23 +0000 (UTC)
-Date: Sun, 5 May 2019 09:10:18 +0800
-From: Ming Lei <ming.lei@redhat.com>
-To: James Bottomley <James.Bottomley@HansenPartnership.com>,
- linux-scsi@vger.kernel.org,
- "Martin K . Petersen" <martin.petersen@oracle.com>
-Subject: Re: [PATCH V4 0/3] scsi: core: avoid big pre-allocation for sg list
-Message-ID: <20190505011017.GD655@ming.t460p>
-References: <20190428073932.9898-1-ming.lei@redhat.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190428073932.9898-1-ming.lei@redhat.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.38]); Sun, 05 May 2019 01:10:32 +0000 (UTC)
+ id 1hN8c4-00031N-BP
+ for linux-nvme@lists.infradead.org; Sun, 05 May 2019 04:18:58 +0000
+Received: from epcas2p2.samsung.com (unknown [182.195.41.54])
+ by mailout4.samsung.com (KnoxPortal) with ESMTP id
+ 20190505041852epoutp04742a76dbda94b06e6757534f96915a38~brnlB6_Xr2498124981epoutp04D
+ for <linux-nvme@lists.infradead.org>; Sun,  5 May 2019 04:18:52 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
+ 20190505041852epoutp04742a76dbda94b06e6757534f96915a38~brnlB6_Xr2498124981epoutp04D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1557029932;
+ bh=E4zjdvHEN8/GOyTl7h27lPTq2QGihgmpqVo6gVMRaSc=;
+ h=Subject:Reply-To:From:To:In-Reply-To:Date:References:From;
+ b=pjghEUoAIt3zv2kh/zcGcHuRSL0Le4bg5nCf8K3Z501CSqnBGpTqeRkJVF1Ov3J8t
+ OYNtYW8pm/FoVB7XxWWPeGi/hjdluABOMCSWTN+9MxRF6s4mgrp7OOe5KMyuZHQtmv
+ 4zN4+/ZJf2NvEyZ5cpbKlmmaJ44tfvbsfhSXUEEo=
+Received: from epsmges2p3.samsung.com (unknown [182.195.40.191]) by
+ epcas2p1.samsung.com (KnoxPortal) with ESMTP id
+ 20190505041849epcas2p1ae2fe02d8d6d739c633c7bc4ec8764bb~brni1M7PA2738827388epcas2p1N;
+ Sun,  5 May 2019 04:18:49 +0000 (GMT)
+X-AuditID: b6c32a47-14bff7000000106e-3f-5cce6428cc30
+Received: from epcas2p1.samsung.com ( [182.195.41.53]) by
+ epsmges2p3.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 49.23.04206.8246ECC5; Sun,  5 May 2019 13:18:48 +0900 (KST)
+Mime-Version: 1.0
+Subject: RE: [PATCH 1/2] nvme/pci: init shadow doorbell after each reset
+From: Minwoo Im <minwoo.im@samsung.com>
+To: Maxim Levitsky <mlevitsk@redhat.com>, "linux-nvme@lists.infradead.org"
+ <linux-nvme@lists.infradead.org>
+X-Priority: 3
+X-Content-Kind-Code: NORMAL
+In-Reply-To: <20190502113134.20835-2-mlevitsk@redhat.com>
+X-Drm-Type: N,general
+X-Msg-Generator: Mail
+X-Msg-Type: PERSONAL
+X-Reply-Demand: N
+Message-ID: <20190505041848epcms2p3de08067d150ff7dfb78a80fe4fea5f4d@epcms2p3>
+Date: Sun, 05 May 2019 13:18:48 +0900
+X-CMS-MailID: 20190505041848epcms2p3de08067d150ff7dfb78a80fe4fea5f4d
+X-Sendblock-Type: AUTO_CONFIDENTIAL
+CMS-TYPE: 102P
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrDKsWRmVeSWpSXmKPExsWy7bCmqa5GyrkYg+tL+S3mL3vKbrH72Qom
+ ByaPzUvqPd7vu8oWwBSVY5ORmpiSWqSQmpecn5KZl26r5B0c7xxvamZgqGtoaWGupJCXmJtq
+ q+TiE6DrlpkDNF5JoSwxpxQoFJBYXKykb2dTlF9akqqQkV9cYquUWpCSU2BoWKBXnJhbXJqX
+ rpecn2tlaGBgZApUmZCT8W5ZTMFs1orV6x+wNDAuYeli5OSQEDCRODDzHDuILSSwg1Hi3Eug
+ OAcHr4CgxN8dwiBhYQEPidY5TWBhIQF5iR+vDCDCmhLvdp9hBbHZBNQlGqa+ApsoIpAr8Wn/
+ VKjpvBIz2p9C2dIS25dvZQSxOQUsJTYtXMcIEReVuLn6LTuM/f7YfKi4iETrvbPMELagxIOf
+ uxlBTpAQkJC4984OwqyX2LLCoouRC8hsYZS48WYtVKu+ROPzj2BreQV8JSZsb2EDsVkEVCVe
+ nHoENdJF4vyTh2DnMwN9tf3tHGaQmcxAb63fpQ8xXlniyC0WiAo+iY7Df9lhntox7wkThK0s
+ 8fHQIaiJkhLLL71mg7A9JPq6tjCCnCYksJ5RouX+RtYJjPKzEEE7C8niWQiLFzAyr2IUSy0o
+ zk1PLTYqMEaOy02M4JSl5b6Dcds5n0OMAhyMSjy8G3afjRFiTSwrrsw9xCjBwawkwhv38VSM
+ EG9KYmVValF+fFFpTmrxIUZToP8nMkuJJucD02leSbyhqZGZmYGlqYWpmZGFkjjvQ+m50UIC
+ 6YklqdmpqQWpRTB9TBycUg2Mkmd6Xyjd3tlpvG23OidLUsqzwLb0DQnCR57ym3g3n9OZPVmK
+ SWDifM1JtqleSuyV52cH6kWeeK0xp1p3HbvvifPhl3vb3jzbOMvioV7mA/2ve7VzzDJKIs53
+ T4sxjpfh0GHOeVlg2sjPI1ZbrBBtGHGjagXTj6rFB712366fK+jxxvPPz2tKLMUZiYZazEXF
+ iQC8oNb4bwMAAA==
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20190502113150epcas4p2a4a2a783b46411ed0895978811545c73
+References: <20190502113134.20835-2-mlevitsk@redhat.com>
+ <20190502113134.20835-1-mlevitsk@redhat.com>
+ <CGME20190502113150epcas4p2a4a2a783b46411ed0895978811545c73@epcms2p3>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190504_181033_888267_C2379F41 
-X-CRM114-Status: GOOD (  19.45  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190504_211856_718765_8306485A 
+X-CRM114-Status: GOOD (  15.02  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
+ high trust [203.254.224.34 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,82 +113,32 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
- netdev@vger.kernel.org, "Ewan D . Milne" <emilne@redhat.com>,
- linux-block@vger.kernel.org, Chuck Lever <chuck.lever@oracle.com>,
- linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
- Bart Van Assche <bvanassche@acm.org>
+Reply-To: minwoo.im@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Sun, Apr 28, 2019 at 03:39:29PM +0800, Ming Lei wrote:
-> Hi,
+> -----Original Message-----
+> From: Linux-nvme [mailto:linux-nvme-bounces@lists.infradead.org] On
+> Behalf Of Maxim Levitsky
+> Sent: Thursday, May 02, 2019 8:32 PM
+> To: linux-nvme@lists.infradead.org
+> Subject: [PATCH 1/2] nvme/pci: init shadow doorbell after each reset
 > 
-> Since supporting to blk-mq, big pre-allocation for sg list is introduced,
-> this way is very unfriendly wrt. memory consumption.
+> The spec states
+> "The settings are not retained across a Controller Level Reset"
+> Therefore the driver must enable the shadow doorbell,
+> after each reset.
 > 
-> There were Red Hat internal reports that some scsi_debug based tests
-> can't be run any more because of too big pre-allocation.
+> This was caught while testing the nvme driver over
+> upcoming nvme-mdev device
 > 
-> Also lpfc users commplained that 1GB+ ram is pre-allocatd for single
-> HBA.
-> 
-> sg_alloc_table_chained() is improved to support variant size of 1st
-> pre-allocated SGL in the 1st patch as suggested by Christoph.
-> 
-> The other two patches try to address this issue by allocating sg list runtime,
-> meantime pre-allocating one or two inline sg entries for small IO. This
-> ways follows NVMe's approach wrt. sg list allocation.
-> 
-> V4:
-> 	- add parameter to sg_alloc_table_chained()/sg_free_table_chained()
-> 	directly, and update current callers
-> 
-> V3:
-> 	- improve sg_alloc_table_chained() to accept variant size of
-> 	the 1st pre-allocated SGL
-> 	- applies the improved sg API to address the big pre-allocation
-> 	issue
-> 
-> V2:
-> 	- move inline sg table initializetion into one helper
-> 	- introduce new helper for getting inline sg
-> 	- comment log fix
-> 
-> 
-> Ming Lei (3):
->   lib/sg_pool.c: improve APIs for allocating sg pool
->   scsi: core: avoid to pre-allocate big chunk for protection meta data
->   scsi: core: avoid to pre-allocate big chunk for sg list
-> 
->  drivers/nvme/host/fc.c            |  7 ++++---
->  drivers/nvme/host/rdma.c          |  7 ++++---
->  drivers/nvme/target/loop.c        |  4 ++--
->  drivers/scsi/scsi_lib.c           | 31 ++++++++++++++++++++++---------
->  include/linux/scatterlist.h       | 11 +++++++----
->  lib/scatterlist.c                 | 36 +++++++++++++++++++++++-------------
->  lib/sg_pool.c                     | 37 +++++++++++++++++++++++++++----------
->  net/sunrpc/xprtrdma/svc_rdma_rw.c |  5 +++--
->  8 files changed, 92 insertions(+), 46 deletions(-)
-> 
-> Cc: Christoph Hellwig <hch@lst.de>
-> Cc: Bart Van Assche <bvanassche@acm.org>
-> Cc: Ewan D. Milne <emilne@redhat.com>
-> Cc: Hannes Reinecke <hare@suse.com>
-> Cc: Sagi Grimberg <sagi@grimberg.me>
-> Cc: Chuck Lever <chuck.lever@oracle.com>
-> Cc: netdev@vger.kernel.org
-> Cc: linux-nvme@lists.infradead.org
+> Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
 
-Hi Martin,
+It looks good to me.
 
-Could you consider to merge this patchset to 5.2 if you are fine?
-
-
-Thanks,
-Ming
+Reviewed-by: Minwoo Im <minwoo.im@samsung.com>
 
 _______________________________________________
 Linux-nvme mailing list
