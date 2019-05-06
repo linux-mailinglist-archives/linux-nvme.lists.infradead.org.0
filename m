@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E583415492
-	for <lists+linux-nvme@lfdr.de>; Mon,  6 May 2019 21:47:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E81A15493
+	for <lists+linux-nvme@lfdr.de>; Mon,  6 May 2019 21:47:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,68 +11,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=9i+yH2Cfk5w9AlJrNxoRhCmB2PTpRTRRbgeKMfWAXvM=; b=YF9oyrqs4L55FXhpBgIMgD5URP
-	EJoV6nqJjevN7wh22xmxBn1d4Pkk8g/uol/M6Ka5TioLIujKck/OcjZMdnf2f5NFLI6X/YSSDpVIb
-	0xAs0KlnGJDIrsPIrNueyTWD8nkHxj9ze72ADLwjffuOQtcaE84ZOL21JtlO9ke48hd3gMZkv9jhN
-	z2kVFVOyMreYIArz1+axnE7ktGnwQHAwCJc1ynC1OBrqucJEuQhH5dUiyd2RPs1jWXzpOvjRoqD40
-	zv7pl0EMOjc7sfgm4VB0bjMHOXdQ92eQ7T0FbJZzQw6ZycRFI1FTKD5Zjm01E9P4vJhfBjtEGwqOf
-	8qvYykzA==;
+	bh=DfRuHTqYUZlY2glptq2/h/9lT5nFp6zHE8Sz/Dbv4v8=; b=jv7ksnArRGxmU1UvxWdTZP5wS6
+	VYVzSb6VE4QQwym31FQsERKityct6+WinDHjo9MGWPWv1QiBfRlIptvVuIj1TSgD1B5rALQH4yWS8
+	utsngpVW06kWYGrvuIyAFWeR33N6Pz6kmV8sNfNY672CNsqtwN6whkh9N61ZDxmGMJS8v1txCfAA8
+	ZLPJLjfBysbKZ7LDF9neBFP8pxxDy5svl9BZ8k9g2ueqnSroMXwCIC0MvQQjsdsZyoS97P5hW3L6M
+	iUp4//ERoxhJ7GqRZa5RNu+IsiCrvo7w5J9ppvZ4iScALiqvdb4Plx2JOQK3bsfOz3+Woj+uQc+GD
+	tsUwBu9g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNjZy-0006IH-Bu; Mon, 06 May 2019 19:47:14 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1hNja6-0006RA-70; Mon, 06 May 2019 19:47:22 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNjZq-0006Fb-GS
- for linux-nvme@lists.infradead.org; Mon, 06 May 2019 19:47:08 +0000
-Received: by mail-pl1-x644.google.com with SMTP id y3so6893778plp.0
- for <linux-nvme@lists.infradead.org>; Mon, 06 May 2019 12:47:06 -0700 (PDT)
+ id 1hNjZv-0006JD-7F
+ for linux-nvme@lists.infradead.org; Mon, 06 May 2019 19:47:16 +0000
+Received: by mail-pg1-x541.google.com with SMTP id i21so6964153pgi.12
+ for <linux-nvme@lists.infradead.org>; Mon, 06 May 2019 12:47:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=LxI7s+V++JAUvOzarfFiJnaM3JwJCysE+CC40eBNLc8=;
- b=L9mo2ZtWo9HJQzhMbAinAsW5jcS/H0KKNKhPc0urqJX0iDh++fQKAe+p3E3RrjasGD
- NMX6hOHzgIHHAY+VHBp1i9vkCX2lErQcANrD3b0zv/idC+C/HyHoNz1Z5hKxTIhmS9oZ
- lJHQQFJSyhtLoEYH1f1AMb7ob9esBDfdLlea3WiuDQpqI2JaZapL9iflDTdQEFQgukqP
- fTaY2iwRsE1gcxAmQMWTyH195kXpc3wxEQSQAztWsn1LfYiQahE7014a3EL+5Zz0VRA1
- LVAzUG/O9dIBbLsYJVXy4f6qSGZTADa6tLYtPpvk34gWkd0vthF8ed4AnAHPsh40+uym
- hGZA==
+ bh=qz/lwHzM3vI6i135CS0cfyiTRLR0qQskMcT6jYxW1aw=;
+ b=Rga/Mg23WuhjUu+mLs4TyxlJ+/0k0DoJF93AR8bAjD3Jnt2uUDR1Dl+jjhTiwhTaWs
+ IW+PrVFmNuFnn9VHilZNoFf5ro3QPDLKql4croZcbjv90Y9klQHuJYofsEYA+nHgLJYS
+ EWkU0PewLZtjnwiVklengvR9UuV6aXB97C3+uF9l5PYEd4t5D1t/EhBOUTRFIbyDNd81
+ GEMxdgf8smeLQvcyGaHdYp5cD17z/y34j4xiyrctj9vMWfzGfnU4tGOu2/acLzMOJkO2
+ QsorPCFoh3qS/0tBcZmQSMc38eE4M76Xw2qWdcAs9bkZILZdCKTyPW0FKb06H0qJVBUm
+ wf6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=LxI7s+V++JAUvOzarfFiJnaM3JwJCysE+CC40eBNLc8=;
- b=qqmLsnQIokiOJpq+OLEdqJABC8XN3drFcp277DBwEco+5RG6pnG6RT3nv1gVjFpFMM
- Q4tMrli2Y0zBHiPb6RNK4Co5Vm7ZXbLK6x3Z+wSuOvrJJWtjsi+dgfNvLbBpKx48lZag
- LhGTS8IrYXanvr4w6gNdtZ8HLD0hHFje+Xr0FMWl7FbXoLSnJhtd7kXkh3Ltcr4dPGCz
- t+DMrFKzCsrdNPDcYxv4LpX5/dMcyOaGIR72gIFqLl8LvMehKFcahz3bk2G2ZXdSZe9H
- YnhaKE0JmUXVavKa/VP2BBGXVhaRH3LR3C9iSW5vNWCZLhm7nYEWK8usgDCNiJWlK6V4
- 0FuQ==
-X-Gm-Message-State: APjAAAVWUKXu4/lf7DusoSnRtXutRhTQNXBU+Io2Mq+IpFF0IhuWbMNd
- hP+uwhTqU1MdKC4t/7vTB2ZjlhfAdqY=
-X-Google-Smtp-Source: APXvYqxKhiA/82Zd0Q1yPS8uj+9OiWdh8KY/tfTN0E/or2v+Rfm27fZAuF9P5Rhsat1ZQfbPYH4VJw==
-X-Received: by 2002:a17:902:2a:: with SMTP id 39mr34546594pla.64.1557172025573; 
- Mon, 06 May 2019 12:47:05 -0700 (PDT)
+ bh=qz/lwHzM3vI6i135CS0cfyiTRLR0qQskMcT6jYxW1aw=;
+ b=O9hWfiQYoH+ulkwgG787GznrBfp456M65V6yu6N6FbmkstXMXycBs4YatguJEcXXtW
+ TS4zniINzkrjZUsfudzNYZCSdC7Aw8BSFA8pRCmHg4nwE8+DMwK3Dp9SjmnD0pn2np3u
+ b5OT3hRBWTY9AMahXlq8lDEqofViCYhocFEnMf//y8RdBaYdha1naK8uD/nuwLnDIGM5
+ wHKPZFBvuc27nVo1x8U1XbCtv1tgFVIpAZVJuTYZ7eg5tnwvJtsbhTf6cS+dulYvrIhD
+ 2kJ9D51qW/BKtI5Gal4mcW80oGYUC+tKTkE+oE3orjxsVhLhg6lB9ohm7314kNYe+OaU
+ tiGw==
+X-Gm-Message-State: APjAAAXJIAjSTwG0YepQ2h3na+n2iZjucuu1dvPsw12YEBAKlDIXL+34
+ 3ILHVnL939+o+gAzVoPNv+hu0HWOPXU=
+X-Google-Smtp-Source: APXvYqzPcksmr4mCH1DbFnrDXzhQ0YarsVfuWOF1znbgItPwCBCdldfT4yd5leTwcglWdhccUHj87A==
+X-Received: by 2002:a65:500d:: with SMTP id f13mr35786050pgo.250.1557172030269; 
+ Mon, 06 May 2019 12:47:10 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id b18sm7140073pfp.32.2019.05.06.12.47.02
+ by smtp.gmail.com with ESMTPSA id b18sm7140073pfp.32.2019.05.06.12.47.07
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 06 May 2019 12:47:04 -0700 (PDT)
+ Mon, 06 May 2019 12:47:09 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 1/2] nvme: Introduce nvme_is_fabrics to check fabrics cmd
-Date: Tue,  7 May 2019 04:46:43 +0900
-Message-Id: <20190506194644.11109-2-minwoo.im.dev@gmail.com>
+Subject: [PATCH V2 2/2] nvme-trace: Add support to trace fabrics command
+Date: Tue,  7 May 2019 04:46:44 +0900
+Message-Id: <20190506194644.11109-3-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190506194644.11109-1-minwoo.im.dev@gmail.com>
 References: <20190506194644.11109-1-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190506_124706_549946_A28EA5B5 
-X-CRM114-Status: GOOD (  16.98  )
+X-CRM114-CacheID: sfid-20190506_124711_867644_1271F917 
+X-CRM114-Status: GOOD (  16.62  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -105,100 +105,193 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This patch introduce a nvme_is_fabrics() inline function to check
-whether or not the given command structure is for fabrics.
+This patch supports fabrics command decoded in trace.  Fabrics commands
+are to be decoded with (opcode, fctype) pair.
+
+Now the core driver traces command in a single place of a single place
+nvme_setup_cmd() so that it might be easier if we checks whether the
+given command is for fabrics or not in that place.
+
+NVMe-oF spec 1.0a contains authentication-related commands also, but now
+we don't have any implementation for them so that we can just skip them
+in this patch.
+
+Changes to V1:
+  - fabrics commands should also be decoded, not just showing that it's
+    a fabrics command. (Christoph)
+  - do not make it within nvme admin commands (Chaitanya)
 
 Cc: Keith Busch <keith.busch@intel.com>
 Cc: Jens Axboe <axboe@fb.com>
 Cc: Christoph Hellwig <hch@lst.de>
 Cc: Sagi Grimberg <sagi@grimberg.me>
-Cc: James Smart <james.smart@broadcom.com>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- drivers/nvme/host/fabrics.c       | 2 +-
- drivers/nvme/target/core.c        | 2 +-
- drivers/nvme/target/fabrics-cmd.c | 2 +-
- drivers/nvme/target/fc.c          | 2 +-
- include/linux/nvme.h              | 7 ++++++-
- 5 files changed, 10 insertions(+), 5 deletions(-)
+ drivers/nvme/host/core.c  |  7 +++-
+ drivers/nvme/host/trace.c | 67 +++++++++++++++++++++++++++++++++++++++
+ drivers/nvme/host/trace.h | 37 +++++++++++++++++++++
+ 3 files changed, 110 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/host/fabrics.c b/drivers/nvme/host/fabrics.c
-index 592d1e61ef7e..931995f2dbc3 100644
---- a/drivers/nvme/host/fabrics.c
-+++ b/drivers/nvme/host/fabrics.c
-@@ -578,7 +578,7 @@ bool __nvmf_check_ready(struct nvme_ctrl *ctrl, struct request *rq,
- 	switch (ctrl->state) {
- 	case NVME_CTRL_NEW:
- 	case NVME_CTRL_CONNECTING:
--		if (req->cmd->common.opcode == nvme_fabrics_command &&
-+		if (nvme_is_fabrics(req->cmd) &&
- 		    req->cmd->fabrics.fctype == nvme_fabrics_type_connect)
- 			return true;
- 		break;
-diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
-index 7734a6acff85..da2ea97042af 100644
---- a/drivers/nvme/target/core.c
-+++ b/drivers/nvme/target/core.c
-@@ -871,7 +871,7 @@ bool nvmet_req_init(struct nvmet_req *req, struct nvmet_cq *cq,
- 		status = nvmet_parse_connect_cmd(req);
- 	else if (likely(req->sq->qid != 0))
- 		status = nvmet_parse_io_cmd(req);
--	else if (req->cmd->common.opcode == nvme_fabrics_command)
-+	else if (nvme_is_fabrics(req->cmd))
- 		status = nvmet_parse_fabrics_cmd(req);
- 	else if (req->sq->ctrl->subsys->type == NVME_NQN_DISC)
- 		status = nvmet_parse_discovery_cmd(req);
-diff --git a/drivers/nvme/target/fabrics-cmd.c b/drivers/nvme/target/fabrics-cmd.c
-index 3b9f79aba98f..d16b55ffe79f 100644
---- a/drivers/nvme/target/fabrics-cmd.c
-+++ b/drivers/nvme/target/fabrics-cmd.c
-@@ -268,7 +268,7 @@ u16 nvmet_parse_connect_cmd(struct nvmet_req *req)
- {
- 	struct nvme_command *cmd = req->cmd;
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index cd16d98d1f1a..eeda3ce9afaa 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -733,7 +733,12 @@ blk_status_t nvme_setup_cmd(struct nvme_ns *ns, struct request *req,
+ 	}
  
--	if (cmd->common.opcode != nvme_fabrics_command) {
-+	if (!nvme_is_fabrics(cmd)) {
- 		pr_err("invalid command 0x%x on unconnected queue.\n",
- 			cmd->fabrics.opcode);
- 		req->error_loc = offsetof(struct nvme_common_command, opcode);
-diff --git a/drivers/nvme/target/fc.c b/drivers/nvme/target/fc.c
-index 508661af0f50..a59c5a013a5c 100644
---- a/drivers/nvme/target/fc.c
-+++ b/drivers/nvme/target/fc.c
-@@ -1806,7 +1806,7 @@ nvmet_fc_prep_fcp_rsp(struct nvmet_fc_tgtport *tgtport,
- 	 */
- 	rspcnt = atomic_inc_return(&fod->queue->zrspcnt);
- 	if (!(rspcnt % fod->queue->ersp_ratio) ||
--	    sqe->opcode == nvme_fabrics_command ||
-+	    nvme_is_fabrics((struct nvme_command *) sqe) ||
- 	    xfr_length != fod->req.transfer_len ||
- 	    (le16_to_cpu(cqe->status) & 0xFFFE) || cqewd[0] || cqewd[1] ||
- 	    (sqe->flags & (NVME_CMD_FUSE_FIRST | NVME_CMD_FUSE_SECOND)) ||
-diff --git a/include/linux/nvme.h b/include/linux/nvme.h
-index c40720cb59ac..ab5e9392b42d 100644
---- a/include/linux/nvme.h
-+++ b/include/linux/nvme.h
-@@ -1165,6 +1165,11 @@ struct nvme_command {
- 	};
- };
+ 	cmd->common.command_id = req->tag;
+-	trace_nvme_setup_cmd(req, cmd);
++
++	if (likely(!nvme_is_fabrics(cmd)))
++		trace_nvme_setup_cmd(req, cmd);
++	else
++		trace_nvme_setup_fabrics_cmd(req, cmd);
++
+ 	return ret;
+ }
+ EXPORT_SYMBOL_GPL(nvme_setup_cmd);
+diff --git a/drivers/nvme/host/trace.c b/drivers/nvme/host/trace.c
+index 5f24ea7a28eb..0e027a49e3a1 100644
+--- a/drivers/nvme/host/trace.c
++++ b/drivers/nvme/host/trace.c
+@@ -135,6 +135,73 @@ const char *nvme_trace_parse_nvm_cmd(struct trace_seq *p,
+ 	}
+ }
  
-+static inline bool nvme_is_fabrics(struct nvme_command *cmd)
++static const char *nvme_trace_fabrics_property_set(struct trace_seq *p, u8 *spc)
 +{
-+	return cmd->common.opcode == nvme_fabrics_command;
++	const char *ret = trace_seq_buffer_ptr(p);
++	u8 attrib = spc[0];
++	u32 ofst = get_unaligned_le32(spc + 4);
++	u64 value = get_unaligned_le64(spc + 8);
++
++	trace_seq_printf(p, "attrib=%u, ofst=0x%x, value=0x%llx",
++				attrib, ofst, value);
++	trace_seq_putc(p, 0);
++
++	return ret;
 +}
 +
- struct nvme_error_slot {
- 	__le64		error_count;
- 	__le16		sqid;
-@@ -1186,7 +1191,7 @@ static inline bool nvme_is_write(struct nvme_command *cmd)
- 	 *
- 	 * Why can't we simply have a Fabrics In and Fabrics out command?
- 	 */
--	if (unlikely(cmd->common.opcode == nvme_fabrics_command))
-+	if (unlikely(nvme_is_fabrics(cmd)))
- 		return cmd->fabrics.fctype & 1;
- 	return cmd->common.opcode & 1;
- }
++static const char *nvme_trace_fabrics_connect(struct trace_seq *p, u8 *spc)
++{
++	const char *ret = trace_seq_buffer_ptr(p);
++	u16 recfmt = get_unaligned_le16(spc);
++	u16 qid = get_unaligned_le16(spc + 2);
++	u16 sqsize = get_unaligned_le16(spc + 4);
++	u8 cattr = spc[6];
++	u32 kato = get_unaligned_le32(spc + 8);
++
++	trace_seq_printf(p, "recfmt=%u, qid=%u, sqsize=%u, cattr=%u, kato=%u",
++				recfmt, qid, sqsize, cattr, kato);
++	trace_seq_putc(p, 0);
++
++	return ret;
++}
++
++static const char *nvme_trace_fabrics_property_get(struct trace_seq *p, u8 *spc)
++{
++	const char *ret = trace_seq_buffer_ptr(p);
++	u8 attrib = spc[0];
++	u32 ofst = get_unaligned_le32(spc + 4);
++
++	trace_seq_printf(p, "attrib=%u, ofst=0x%x", attrib, ofst);
++	trace_seq_putc(p, 0);
++
++	return ret;
++}
++
++static const char *nvme_trace_fabrics_common(struct trace_seq *p, u8 *spc)
++{
++	const char *ret = trace_seq_buffer_ptr(p);
++
++	trace_seq_printf(p, "spcecific=%*ph", 24, spc);
++	trace_seq_putc(p, 0);
++
++	return ret;
++}
++
++const char *nvme_trace_parse_fabrics_cmd(struct trace_seq *p,
++					 u8 fctype, u8 *spc)
++{
++	switch (fctype) {
++	case nvme_fabrics_type_property_set:
++		return nvme_trace_fabrics_property_set(p, spc);
++	case nvme_fabrics_type_connect:
++		return nvme_trace_fabrics_connect(p, spc);
++	case nvme_fabrics_type_property_get:
++		return nvme_trace_fabrics_property_get(p, spc);
++	default:
++		return nvme_trace_fabrics_common(p, spc);
++	}
++}
++
+ const char *nvme_trace_disk_name(struct trace_seq *p, char *name)
+ {
+ 	const char *ret = trace_seq_buffer_ptr(p);
+diff --git a/drivers/nvme/host/trace.h b/drivers/nvme/host/trace.h
+index 97d3c77365b8..fa3a20007b56 100644
+--- a/drivers/nvme/host/trace.h
++++ b/drivers/nvme/host/trace.h
+@@ -57,8 +57,17 @@
+ 		nvme_opcode_name(nvme_cmd_resv_acquire),	\
+ 		nvme_opcode_name(nvme_cmd_resv_release))
+ 
++#define nvme_fabrics_type_name(type)	{ type, #type }
++#define show_nvm_fabrics_type_name(val)					\
++	__print_symbolic(val,						\
++		nvme_fabrics_type_name(nvme_fabrics_type_property_set),	\
++		nvme_fabrics_type_name(nvme_fabrics_type_connect),	\
++		nvme_fabrics_type_name(nvme_fabrics_type_property_get))
++
+ #define show_opcode_name(qid, opcode)					\
+ 	(qid ? show_nvm_opcode_name(opcode) : show_admin_opcode_name(opcode))
++#define show_fabric_type_name(type)					\
++	show_nvm_fabrics_type_name(type)
+ 
+ const char *nvme_trace_parse_admin_cmd(struct trace_seq *p, u8 opcode,
+ 		u8 *cdw10);
+@@ -70,6 +79,12 @@ const char *nvme_trace_parse_nvm_cmd(struct trace_seq *p, u8 opcode,
+ 	 nvme_trace_parse_nvm_cmd(p, opcode, cdw10) : 		\
+ 	 nvme_trace_parse_admin_cmd(p, opcode, cdw10))
+ 
++const char *nvme_trace_parse_fabrics_cmd(struct trace_seq *p,
++		u8 fctype, u8 *spc);
++
++#define parse_nvmf_cmd(fctype, spc)				\
++	nvme_trace_parse_fabrics_cmd(p, fctype, spc)
++
+ const char *nvme_trace_disk_name(struct trace_seq *p, char *name);
+ #define __print_disk_name(name)				\
+ 	nvme_trace_disk_name(p, name)
+@@ -118,6 +133,28 @@ TRACE_EVENT(nvme_setup_cmd,
+ 		      parse_nvme_cmd(__entry->qid, __entry->opcode, __entry->cdw10))
+ );
+ 
++TRACE_EVENT(nvme_setup_fabrics_cmd,
++	    TP_PROTO(struct request *req, struct nvme_command *cmd),
++	    TP_ARGS(req, cmd),
++	    TP_STRUCT__entry(
++		__field(int, ctrl_id)
++		__field(u16, cid)
++		__field(u8, fctype)
++		__array(u8, spc, 24)
++	    ),
++	    TP_fast_assign(
++		__entry->ctrl_id = nvme_req(req)->ctrl->instance;
++		__entry->cid = cmd->fabrics.command_id;
++		__entry->fctype = cmd->fabrics.fctype;
++		memcpy(__entry->spc, &cmd->fabrics.ts,
++			sizeof(__entry->spc));
++	    ),
++	    TP_printk("nvme%d: cmdid=%u, cmd=(%s %s)",
++		      __entry->ctrl_id, __entry->cid,
++		      show_fabric_type_name(__entry->fctype),
++		      parse_nvmf_cmd(__entry->fctype, __entry->spc))
++);
++
+ TRACE_EVENT(nvme_complete_rq,
+ 	    TP_PROTO(struct request *req),
+ 	    TP_ARGS(req),
 -- 
 2.17.1
 
