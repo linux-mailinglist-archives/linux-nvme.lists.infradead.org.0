@@ -2,95 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1EF99151C8
-	for <lists+linux-nvme@lfdr.de>; Mon,  6 May 2019 18:38:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 12169151E7
+	for <lists+linux-nvme@lfdr.de>; Mon,  6 May 2019 18:49:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zV2wz+9vHodxx8zz+/ARTALd5hWqFUlNoMUw5EKAxVU=; b=E2lR7U66ZjDhTht5x78awcnyg
-	YP0x2+PhIwsQ1YZaI3ssL6oapyjdU9tsaUMBzpCVO/ynOhHu5lu9IujBOuMRpTG5NxcoHJnE8B2Y8
-	YNCV2DCKSN6Vfel+zIm6AVu7s5WHuIhrE0a7e1xDG7CWp0vQT87udjBCwpBbRh0qAI/w/BdcS/BGD
-	hgtGMcSYaP4+sVLkCu7pwHGGmu8XOuMsBeNikVrlV7u6V2ihQfinKZhAjcJEpPJF7mmsciOrrYfjC
-	B8tK12rBUOWajse+g0oR2tDzLdLNP7DnSJV/RHDvBr1E+TBFSDfSkfp74KphbonLKzCduKnsZLrc1
-	05QKnCK2Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QrM3HM3wJ2MXPUQr/CbTh8G+FEU3QrVExC3Ajr6lIuk=; b=RYiSe6caf+12ly
+	6FkKnepHWqRr3kDT0wTTv89RLZUUoY5AgJeI36QDayX5qCBst75aU4LouCtDqIxwUi1uxPinvowsy
+	lZJ1oCA4oi0N7m7T+8hJoeUZ0xjGqjvtArhY4+rgl65Qp0TvyKDNGIcCkQI52CWu1OB0vBSkRUnD3
+	IcBlxi32ikYLAbgUNK0jtrG8iXSSJG4kHVIComgllvC6Ijr79lHdNjzltVP/Wnm0e37PjhWyB9CIb
+	tE1XW4sQatQO9SNkEPyWiqi5O5y8NiRaNCf9g721ezJ5GH5J9HLc6Is3IX5I3ukmx/TakCaOYqgJK
+	SiE9DwCA9T0VTQT4blRA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNgdM-0004hT-PM; Mon, 06 May 2019 16:38:32 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1hNgnf-00089C-73; Mon, 06 May 2019 16:49:11 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNgdG-0004gm-VD
- for linux-nvme@lists.infradead.org; Mon, 06 May 2019 16:38:28 +0000
-Received: by mail-pf1-x441.google.com with SMTP id z26so7058450pfg.6
- for <linux-nvme@lists.infradead.org>; Mon, 06 May 2019 09:38:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=W3tyqiwSrG5uqKuXmhCbfkfXOGDKRU1cvNSJPUYJVdE=;
- b=s6J8bnqd3KHv8WkEguYkHy0P4cACy9yLewGgNg80b5znbZztQxYrEOdKg4D3rkz5gV
- wenAXNSyTGF8hE7vwprQoTPXW+VsSyL4wPOH1nxFJS2/SZbsi+z4V6OkSqRGvkOLC6sh
- L4yPgY3Tt1nOMH7oSH+MaugxPmB/s+h0rjaGERR3CW/qTY7H9scJoW9kwscVv9bBfT8e
- 1hWQ8UanYjyBEFa+CXmshzl/gQUh2yo1nWdLjKJDAvPYDCBl0urcPuzPU4p25KNuRT53
- UzqYIChfJIMDV1MHwJUfrv69GKcrPzSI+IqNbe1yNXxBKvnhfe4OtLGLMMxekvosCmV8
- 07vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=W3tyqiwSrG5uqKuXmhCbfkfXOGDKRU1cvNSJPUYJVdE=;
- b=EWjlCuLuH9k+/yhGr3GkGSk2ayfEvr6VvRpOU70QUn2HasQJZoGtP400RjyKL5hBSq
- i7+f25mIfWGIcwmpwU0yCeN4lWOc2xIcxvbbmvAw4YRweuYb8MCwbkxEyj6KIwudf/qD
- kdZ+pA11fwIeIKnXPV6LrgdC5gZ3yr/nXLlsVEt/41HHfoaGCei6nb8t27QWXYUE3jA3
- bxEdmc9XXRhFdKpxhg79u3MY0c1kPfgYB8EyyKqVBWCxhkhCDrmswjS+0KOdDZHtd0zy
- AxQpb98hDzIWLsF7pwNP4OinvAPj+uXpQQGIZyB82uakWlAppq4ixLL6Nij+D4EMaHnk
- 2P5g==
-X-Gm-Message-State: APjAAAUC6g8N2DkaqJNmS00Gx9BFt5Y6YJKBPpJTA2ZWEQYGhXWCZUR4
- v2YTdAsj1j+PkIx/r3Nq4WiPlB7V5s0=
-X-Google-Smtp-Source: APXvYqwCqAY9JWv8s2W6kEqNZ2DSsWZpTo3BVNMpoe60rP4Aog8S/eUlHFsI95ZAzin3z/qpXyRQgw==
-X-Received: by 2002:aa7:8e50:: with SMTP id d16mr33692555pfr.227.1557160705787; 
- Mon, 06 May 2019 09:38:25 -0700 (PDT)
-Received: from [192.168.0.6] ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id y8sm14438016pgk.20.2019.05.06.09.38.23
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 06 May 2019 09:38:24 -0700 (PDT)
-Subject: Re: [PATCH 1/3] nvme: 002: fix nvmet pass data with loop
-To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Omar Sandoval <osandov@osandov.com>
-References: <20190505150611.15776-1-minwoo.im.dev@gmail.com>
- <20190505150611.15776-2-minwoo.im.dev@gmail.com>
- <SN6PR04MB45274C423AA7C3CC3DBB5ED586300@SN6PR04MB4527.namprd04.prod.outlook.com>
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-Message-ID: <a66b775f-9a5f-fefc-ae29-c86678e66463@gmail.com>
-Date: Tue, 7 May 2019 01:38:22 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ id 1hNgnX-00087v-VG
+ for linux-nvme@lists.infradead.org; Mon, 06 May 2019 16:49:05 +0000
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 May 2019 09:49:03 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.60,438,1549958400"; d="scan'208";a="230002448"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga001.jf.intel.com with ESMTP; 06 May 2019 09:49:01 -0700
+Date: Mon, 6 May 2019 10:43:25 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: [PATCH v2 00/10] RFC: NVME MDEV
+Message-ID: <20190506164325.GB2219@localhost.localdomain>
+References: <20190502114801.23116-1-mlevitsk@redhat.com>
+ <20190503121838.GA21041@lst.de>
+ <e8f6981863bdbba89adcba1c430083e68546ac1a.camel@redhat.com>
+ <20190506125752.GA5288@lst.de>
 MIME-Version: 1.0
-In-Reply-To: <SN6PR04MB45274C423AA7C3CC3DBB5ED586300@SN6PR04MB4527.namprd04.prod.outlook.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20190506125752.GA5288@lst.de>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190506_093827_005528_BD0F2A7D 
-X-CRM114-Status: GOOD (  10.97  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190506_094904_215409_8500A6CE 
+X-CRM114-Status: GOOD (  17.55  )
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [134.134.136.31 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,21 +67,47 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Cc: Fam Zheng <fam@euphon.net>, Jens Axboe <axboe@fb.com>,
+ Sagi Grimberg <sagi@grimberg.me>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ Wolfram Sang <wsa@the-dreams.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Liang,
+ Cunming" <cunming.liang@intel.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Maxim Levitsky <mlevitsk@redhat.com>, "Busch, Keith" <keith.busch@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Kirti Wankhede <kwankhede@nvidia.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Liu,
+ Changpeng" <changpeng.liu@intel.com>,
+ "Paul E . McKenney" <paulmck@linux.ibm.com>, Amnon Ilan <ailan@redhat.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ John Ferlan <jferlan@redhat.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 5/7/19 1:25 AM, Chaitanya Kulkarni wrote:
-> We need to get rid of the string comparison here.
-Chaitanya,
+On Mon, May 06, 2019 at 05:57:52AM -0700, Christoph Hellwig wrote:
+> > However, similar to the (1), when the driver will support the devices with
+> > hardware based passthrough, it will have to dedicate a bunch of queues to the
+> > guest, configure them with the appropriate PASID, and then let the guest useA
+> > these queues directly.
+> 
+> We will not let you abuse the nvme queues for anything else.  We had
+> that discussion with the mellanox offload and it not only unsafe but
+> also adds way to much crap to the core nvme code for corner cases.
+> 
+> Or to put it into another way:  unless your paravirt interface requires
+> zero specific changes to the core nvme code it is not acceptable at all.
 
-Do you mean that test case bash script should check the result of output 
-and return some error value instead of zero instead of *.out comparison ?
+I agree we shouldn't specialize generic queues for this, but I think
+it is worth revisiting driver support for assignable hardware resources
+iff the specification defines it.
 
-Thanks,
+Until then, you can always steer processes to different queues by
+assigning them to different CPUs.
 
 _______________________________________________
 Linux-nvme mailing list
