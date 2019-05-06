@@ -2,81 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7F3715476
-	for <lists+linux-nvme@lfdr.de>; Mon,  6 May 2019 21:33:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E469A1548B
+	for <lists+linux-nvme@lfdr.de>; Mon,  6 May 2019 21:42:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=mBcfK8506CxroJZcam9sDhy2+Q+WXJBK0qQHC+fSE5A=; b=LpA
-	LfwwvF35o0gKhsp4Gu26FloSZbdAMh+4+L5HCdeiCD6U4H+H2wfH6DaS17tV1hUdOwwh9dlLEwHvU
-	i4+B/hSa6TMFvya8xIdaCFfcU4vlor3ZwhODA5hkH/RGCiXdEat7JvpR4NTqEbIUxGV7VLDqoUkVB
-	Xl7vAAudAUm0Ax2OtbUivC4G0R8ubWVBcriiofbtIeLqMzJ7iUXuqRiR5pjWJ6ZFjDUyRP3Xb8vhi
-	3QT+XZeYwq6p/t2+3ORXDGnB5iBodSMynakxaTyDcGV4b6tVkddCIL0zfcA8koFDFF5HdrYBzebgC
-	QJagdKPiWYAa2ylTOZTCV/67R4me/Zg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ClNwVAO7+x8vjhO0SZ4bv/HbpqoTypDoidRRBqu4X0s=; b=DP4ODbHDdctFRf
+	XFscgHP6hzOeMk0PC/VAP4QwDOMxqbJxu1I8DT2sS73PuxklzpxQcz4GiOcgRsDkA2SyT53gHMR/H
+	m04d3fp0kGzuAaKhmYJrWaTb54H2OoalX19nUyp9IbipNOY1dQdUX0RFx0e/4o7VUJ9b9xwc/OAQ6
+	fsypDQswbGQMLQ3U4ODEtez+0Ke4kUWQYAcDJCVY/YRX0W39Hqv0h5Y0cDQPT7+nzngxskRqkEQoh
+	/6559vV7k43/aOHWC7OOYyBo3ZDul6nu+Lu4zt9HjwxNU8WW3dogqlizGT4EPNFYzfz6pA3w3zEwr
+	fsHyDIm9OZZrOtP3ljzA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNjMe-0001lc-Oe; Mon, 06 May 2019 19:33:28 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1hNjVg-0004g2-0g; Mon, 06 May 2019 19:42:48 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNjMZ-0001lD-Kf
- for linux-nvme@lists.infradead.org; Mon, 06 May 2019 19:33:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557171204; x=1588707204;
- h=from:to:cc:subject:date:message-id;
- bh=DCQF7k62oJhOhpX+FG2F1UYGZMHrrNg2DPenI1O3bx0=;
- b=O0LQEMkDdFAujGkf5H+97obwUWHy7HNDY0uMM3iqK7lF7xms7S1HHxfc
- XmgRovnS+7tnAnnJHE2gpZiSUqNhmsDk3tPEOFG0ISxlaaIm7mVsoo/0b
- bd1HG5oHocgxib+KHlHGPDeU0pDBB9FVaDlxYUVhngGe0Bpno/NnTiqq7
- VtnxHZ+j25IAkiOL1yRjl2B+K3LRw1pFDxk8uypXizdnlQzAbXrx8gAxk
- ZMl9XH2KQe12T/tEWcYjxcq7EZdTe5jpbW4JE2u0jLT6T/cz0ehX803mM
- k6cw13v1zZ9tdu2pDqdFNOFWu+UbRXcChO4cN1YSsgsil9UMvuBOP6Epa w==;
-X-IronPort-AV: E=Sophos;i="5.60,439,1549900800"; d="scan'208";a="112584967"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 07 May 2019 03:33:22 +0800
-IronPort-SDR: csqNDcmtJ7DuFDhZ4jbSnlvQR4Us4Al8jEjvAGAt1AgALztFnJdQvyYa+HJYxvLhRXl7v+ITcG
- 2VOZnwheIzVfQ8SdGOu7xBvHCrRC+6fDCzye1Dw7f/rBCRgZxp7C5gEFazUmS64fQAVAP8G9pJ
- 2jQjbmx+xFidV5Sqp338S9eZWqBAbnslq/Lr72ixpR50aZUPeOnRZopkH9ixFT87UoXF/TW3qz
- KtOt4A6dnhpb7lOAkZAupGQp1Ah+J/SHluqrsMF4m8qc/m7rhrs7jcCaMK+cdc8z0gayAoMwvp
- jqTJEluZJs9v4t+SsK8OXMAZ
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep02.wdc.com with ESMTP; 06 May 2019 12:11:38 -0700
-IronPort-SDR: GkZOsylvn2HTHxFV8KTDKxq9RCe6YhFnrq2hy4f8Rz3CDQ4h7cIYxcPY+J/o+j0AeHDixre7iU
- eA5qyrXeOyWTlOvF5TlV6YL1mgM43evtG8GjmiDWhJB6Z5LbpqXEtP59jaF7E61+j0nAwWqmjv
- MloxRk4Rxshk3NHVF7D3dRJtHA4wlDCaJIRx2RCq5O18KD7nbiRtBDYMIfkGcngEAfdnrw2f4T
- GUBZl6rISG2rapRBEB3Cb00LBIcAhcesFlqDnfyz9CaY6BiCFg35vxxgj4R+Eg4CewKQh/GrXj
- m6I=
-Received: from qemu.hgst.com ([10.202.65.140])
- by uls-op-cesaip02.wdc.com with ESMTP; 06 May 2019 12:33:22 -0700
-From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH] nvme-core: trace discovery log change AEN
-Date: Mon,  6 May 2019 12:33:20 -0700
-Message-Id: <20190506193320.30884-1-chaitanya.kulkarni@wdc.com>
-X-Mailer: git-send-email 2.17.0
+ id 1hNjVa-0004fh-7u
+ for linux-nvme@lists.infradead.org; Mon, 06 May 2019 19:42:43 +0000
+Received: by mail-pg1-x544.google.com with SMTP id h17so995365pgv.0
+ for <linux-nvme@lists.infradead.org>; Mon, 06 May 2019 12:42:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=osandov-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=yFCnQiGZ3Rv5q9D/GMPQsB9QhpcHsTWXAJRt474rTFc=;
+ b=hQz56nPyhNZWboLLGIDnGmrDAFrOxxMZNBUwim2giwa2jWRVAhncjkPyYfQJLkMbF5
+ j1Ts2/RDddhxclNyV3IvuCIttvnLhT3/odL8BFwc5Tk7EkmAgPJ9EtWgriOMCMq9Pjxm
+ Y3J8w0K+xvEGK6xdb5JT3Wru5MUwCKa6lyY1GWanaV5X4bJZiRHbWt0MiV/ydbiaRFE5
+ Ti3CgDYEccjJ83ya1OcCxONlbr2o4O+DXCypmB+giccmbSf1j7R617EKF277Kv2InzMr
+ 7qw+Y2OJXxDPf10V0mQZbve0FqHde+cTDRG8GaTJmMgpG8jRrz7ImKozIVzUII5A8Y54
+ ILlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=yFCnQiGZ3Rv5q9D/GMPQsB9QhpcHsTWXAJRt474rTFc=;
+ b=gnEjUOiSJUBS2RQphvTWinIJjIGEqmJf+eh8WHN0sGMso6Ex+2ot3DhGJdXbj0rplS
+ y8PH3mSdt+LeDxX4r4U9q57vyfQ/LBBHj9cfbawoqQPIjUsK0ZDEUkhsqzqhBp1vFIBo
+ F9tChme9SfyJaM77OQx9WxUTZGBi1eyhSTMPtnyw8mMeTII6oJkh0D7BR4a6RhuV47rW
+ aZKsnaf6N0WTzV1oTewn5ynQM1RvhMFnDvpXDkzJQpVbDP98vGLH/7a1wvyck1UpmWTu
+ MPAedsRDPr6LPrjdVqRYZq6SD9tDVGMHHewvRGAisRMbud05viU8wLb/E1CQ0qRsnz14
+ 440Q==
+X-Gm-Message-State: APjAAAWSLHNrxC09nERb1vk+NGVM2AAhGG8R3+pSrUPQQ3RopoOeS7s1
+ nebEi0L8+xv1AHBEJtaJCZez/JJzsp4=
+X-Google-Smtp-Source: APXvYqzVbWV+ibaFwHGXs3GK9oNt+7VaoP0kW5tSU0KkXQRuqNgcxSkBs5yDL63n4UQMxhBcUVgBkg==
+X-Received: by 2002:a62:160b:: with SMTP id 11mr35436965pfw.88.1557171760499; 
+ Mon, 06 May 2019 12:42:40 -0700 (PDT)
+Received: from vader ([2620:10d:c090:200::2:cf4])
+ by smtp.gmail.com with ESMTPSA id a129sm14139147pfa.152.2019.05.06.12.42.39
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 06 May 2019 12:42:39 -0700 (PDT)
+Date: Mon, 6 May 2019 12:42:39 -0700
+From: Omar Sandoval <osandov@osandov.com>
+To: Jon Derrick <jonathan.derrick@intel.com>
+Subject: Re: [PATCH] blktests: Use old variable check for Bash <4.2
+Message-ID: <20190506194239.GB20450@vader>
+References: <1556908108-16475-1-git-send-email-jonathan.derrick@intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1556908108-16475-1-git-send-email-jonathan.derrick@intel.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190506_123323_712104_A71EBD10 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190506_124242_335046_BEECF8D2 
+X-CRM114-Status: GOOD (  10.90  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ [list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,50 +91,28 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-MIME-Version: 1.0
+Cc: linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This patch allows the user to trace discovery log change notification.
+On Fri, May 03, 2019 at 12:28:28PM -0600, Jon Derrick wrote:
+> Bash 4.2 and above supports -v variable checks, which returns true for
+> set or null. Instead use an older bashism that is compatible with bash
+> 4.1 and earlier but only returns true if the variable is set non-null.
+> This inherently adds a sanity check in case of null variables.
 
-Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
----
- drivers/nvme/host/core.c  | 3 +++
- drivers/nvme/host/trace.h | 1 +
- 2 files changed, 4 insertions(+)
+Bart previous sent a patch for supporting bash 4.1, and according to
+him, there were some further changes required:
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index cd16d98d1f1a..32e12ee42785 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -3615,6 +3615,9 @@ static void nvme_handle_aen_notice(struct nvme_ctrl *ctrl, u32 result)
- 		trace_nvme_async_event(ctrl, aer_notice_type);
- 		queue_work(nvme_wq, &ctrl->fw_act_work);
- 		break;
-+	case NVME_AER_NOTICE_DISC_CHANGED:
-+		trace_nvme_async_event(ctrl, aer_notice_type);
-+		break;
- #ifdef CONFIG_NVME_MULTIPATH
- 	case NVME_AER_NOTICE_ANA:
- 		trace_nvme_async_event(ctrl, aer_notice_type);
-diff --git a/drivers/nvme/host/trace.h b/drivers/nvme/host/trace.h
-index 97d3c77365b8..f2fda5fb01fb 100644
---- a/drivers/nvme/host/trace.h
-+++ b/drivers/nvme/host/trace.h
-@@ -165,6 +165,7 @@ TRACE_EVENT(nvme_async_event,
- 		__entry->ctrl_id, __entry->result,
- 		__print_symbolic(__entry->result,
- 		aer_name(NVME_AER_NOTICE_NS_CHANGED),
-+		aer_name(NVME_AER_NOTICE_DISC_CHANGED).
- 		aer_name(NVME_AER_NOTICE_ANA),
- 		aer_name(NVME_AER_NOTICE_FW_ACT_STARTING),
- 		aer_name(NVME_AER_ERROR),
--- 
-2.17.0
+https://github.com/osandov/blktests/pull/42
 
+Either Bart's list of missing features was too big, or this patch isn't
+enough to support 4.1. If it's the latter, then this is a no-go, because
+Bart's change was too intrusive to be worth the hassle. If it's the
+former, then this change isn't quite as bad, but I'm still not excited
+about supporting a 10 year old version of Bash.
 
 _______________________________________________
 Linux-nvme mailing list
