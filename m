@@ -2,60 +2,54 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 278D514725
-	for <lists+linux-nvme@lfdr.de>; Mon,  6 May 2019 11:04:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09EF514885
+	for <lists+linux-nvme@lfdr.de>; Mon,  6 May 2019 12:48:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ozNk5dCAn8blqYgrJjHnW7YmttqyWDo7SG3AwDDpMrY=; b=Ym6Lx4pO1nPeWl
-	dK5iAO5zK8n30a3+b0O2HmuujZvStgLCyUJ+XsaCe9zkLUc4eKcdKskL+E/Ja62kahaXf6vXe524l
-	MYrOMbz2MBan5ayXEIarGCg6I9FIQq9a7HB7Vs6W53gF6uM2bfJgNij9jTQNoyjxilzBIXi57muyg
-	XAozXXyRbFR/B46aC/TDyf8xdfzyEpNClwEgNKXYvy7xJb0qfhRKo7Bc28T2+iVcnolfaPz+RxKY1
-	I5FnzOLrL4m6K7cQ0pYUaPzAqe6q9kjW6D+DSmYYTbInQBgi238k+OJuTwkN0wWi6bNRY+Om+t+Jj
-	PlPU+l0h5B1BbLUi6vmw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=xslQuVKh6ftDc5N/Uk04j6V3YImRVrLTEocIEDsgViI=; b=ois
+	sj4Ofak5iEkEUhviqxNmllPkBDFWbazn2EhmDwMnrtdIIpI6F9/nZQ9TSuQuP/r34d7dML/aMhERN
+	1IYgNi0exBnH5WdSZsUjQYT1aFwxmXfJ8yXHT3N99mjSGGHY0UnaRGfbsq58GjZSgXbdtyUituP/9
+	51NxAnx3BTupACUcUHJOATXz8wMstV+Cp+EMwD6zQAJ/BWvuMLApF8QiE0+tu6NUy6ku4agbDAwaG
+	495Cj38mZPp236LetyMRTnYjzL90BROa8eAhg1gF/LwwZLmqrBoyg8v615aPu2xhFtFnIInPcl3hy
+	rp+3iayp6ELCf9/OO2cYOCMFy2aQHGg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNZXw-0004z2-Q7; Mon, 06 May 2019 09:04:28 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNZXm-0004sy-AC
- for linux-nvme@lists.infradead.org; Mon, 06 May 2019 09:04:22 +0000
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7DD605945B;
- Mon,  6 May 2019 09:04:17 +0000 (UTC)
-Received: from maximlenovopc.usersys.redhat.com (unknown [10.35.206.20])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D03F55F9D4;
- Mon,  6 May 2019 09:04:04 +0000 (UTC)
-Message-ID: <e8f6981863bdbba89adcba1c430083e68546ac1a.camel@redhat.com>
-Subject: Re: [PATCH v2 00/10] RFC: NVME MDEV
-From: Maxim Levitsky <mlevitsk@redhat.com>
-To: Christoph Hellwig <hch@lst.de>
-Date: Mon, 06 May 2019 12:04:06 +0300
-In-Reply-To: <20190503121838.GA21041@lst.de>
-References: <20190502114801.23116-1-mlevitsk@redhat.com>
- <20190503121838.GA21041@lst.de>
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.39]); Mon, 06 May 2019 09:04:17 +0000 (UTC)
+	id 1hNbAK-0003fS-D6; Mon, 06 May 2019 10:48:12 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hNbAE-0003f3-9U
+ for linux-nvme@lists.infradead.org; Mon, 06 May 2019 10:48:08 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ maxg@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 6 May 2019 13:47:56 +0300
+Received: from r-vnc08.mtr.labs.mlnx (r-vnc08.mtr.labs.mlnx [10.208.0.121])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x46Alt0v002117;
+ Mon, 6 May 2019 13:47:55 +0300
+From: Max Gurtovoy <maxg@mellanox.com>
+To: hch@lst.de, sagi@grimberg.me, linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme-rdma: remove redundant reference between ib_device and
+ tagset
+Date: Mon,  6 May 2019 13:47:55 +0300
+Message-Id: <1557139675-2469-1-git-send-email-maxg@mellanox.com>
+X-Mailer: git-send-email 1.7.8.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190506_020419_734886_BD0EFD03 
-X-CRM114-Status: GOOD (  18.89  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190506_034806_741277_EF8BD6E8 
+X-CRM114-Status: GOOD (  13.01  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [193.47.165.129 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,71 +61,126 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Jens Axboe <axboe@fb.com>,
- Sagi Grimberg <sagi@grimberg.me>, kvm@vger.kernel.org,
- Wolfram Sang <wsa@the-dreams.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Liang Cunming <cunming.liang@intel.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, linux-nvme@lists.infradead.org,
- linux-kernel@vger.kernel.org, Keith Busch <keith.busch@intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Kirti Wankhede <kwankhede@nvidia.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Liu Changpeng <changpeng.liu@intel.com>,
- "Paul E . McKenney" <paulmck@linux.ibm.com>, Amnon Ilan <ailan@redhat.com>,
- "David S . Miller" <davem@davemloft.net>, John Ferlan <jferlan@redhat.com>
+Cc: Max Gurtovoy <maxg@mellanox.com>, israelr@mellanox.com, dmilburn@redhat.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, 2019-05-03 at 14:18 +0200, Christoph Hellwig wrote:
-> I simply don't get the point of this series.
-> 
-> MDEV is an interface for exposing parts of a device to a userspace
-> program / VM.  But that this series appears to do is to expose a
-> purely software defined nvme controller to userspace.  Which in
-> principle is a good idea, but we have a much better framework for that,
-> which is called vhost.
+In the past, before adding f41725bb ("nvme-rdma: Use mr pool") commit,
+we needed a reference on the ib_device as long as the tagset
+was alive, as the MRs in the request structures needed a valid ib_device.
+Now, we allocate/deallocate MR pool per QP and consume on demand.
 
-Let me explain the reasons for choosing the IO interfaces as I did:
+Also remove nvme_rdma_free_tagset function and use blk_mq_free_tag_set
+instead, as it unneeded anymore.
 
-1. Frontend interface (the interface that faces the guest/userspace/etc):
+This commit also fixes a memory leakage and possible segmentation fault.
+When configuring the system with NIC teaming (aka bonding), we use 1
+network interface to create an HA connection to the target side. In case
+one connection breaks down, nvme-rdma driver will get notification from
+rdma-cm layer that underlying address was change and will start error
+recovery process. During this process, we'll reconnect to the target
+via the second interface in the bond without destroying the tagset.
+This will cause a leakage of the initial rdma device (ndev) and miscount
+in the reference count of the new created rdma device (new ndev). In
+the final destruction (or in another error flow), we'll get a warning
+dump from the ib_dealloc_pd that we still have inflight MR's related to
+that pd. This happens becasue of the miscount of the reference tag of
+the rdma device and causing access violation to it's elements (some
+queues are not destroyed yet).
 
-VFIO/mdev is just way to expose a (partially) software defined PCIe device to a
-guest.
+Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+Signed-off-by: Israel Rukshin <israelr@mellanox.com>
+---
+ drivers/nvme/host/rdma.c | 34 +++++-----------------------------
+ 1 file changed, 5 insertions(+), 29 deletions(-)
 
-Vhost on the other hand is an interface that is hardcoded and optimized for
-virtio. It can be extended to be pci generic, but why to do so if we already
-have VFIO.
-
-So the biggest advantage of using VFIO _currently_ is that I don't add any new
-API/ABI to the kernel, and neither the userspace (qemu) needs to learn to use a
-new API. 
-
-It also worth noting that VFIO supports nesting out of box, so I don't need to
-worry about it (vhost has to deal with that on the protocol level using its
-IOTLB facility).
-
-On top of that, it is expected that newer hardware will support the PASID based
-device subdivision, which will allow us to _directly_ pass through the
-submission queues of the device and _force_ us to use the NVME protocol for the
-frontend.
-
-2. Backend interface (the connection to the real nvme device):
-
-Currently the backend interface _doesn't have_ to allocate a dedicated queue and
-bypass the block layer. It can use the block submit_bio/blk_poll as I
-demonstrate in the last patch in the series. Its 2x slower though.
-
-However, similar to the (1), when the driver will support the devices with
-hardware based passthrough, it will have to dedicate a bunch of queues to the
-guest, configure them with the appropriate PASID, and then let the guest use
-these queues directly.
-
-
-Best regards,
-	Maxim Levitsky
+diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+index 794b08e60acc..40a5a98e4aa1 100644
+--- a/drivers/nvme/host/rdma.c
++++ b/drivers/nvme/host/rdma.c
+@@ -697,15 +697,6 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+ 	return ret;
+ }
+ 
+-static void nvme_rdma_free_tagset(struct nvme_ctrl *nctrl,
+-		struct blk_mq_tag_set *set)
+-{
+-	struct nvme_rdma_ctrl *ctrl = to_rdma_ctrl(nctrl);
+-
+-	blk_mq_free_tag_set(set);
+-	nvme_rdma_dev_put(ctrl->device);
+-}
+-
+ static struct blk_mq_tag_set *nvme_rdma_alloc_tagset(struct nvme_ctrl *nctrl,
+ 		bool admin)
+ {
+@@ -744,24 +735,9 @@ static struct blk_mq_tag_set *nvme_rdma_alloc_tagset(struct nvme_ctrl *nctrl,
+ 
+ 	ret = blk_mq_alloc_tag_set(set);
+ 	if (ret)
+-		goto out;
+-
+-	/*
+-	 * We need a reference on the device as long as the tag_set is alive,
+-	 * as the MRs in the request structures need a valid ib_device.
+-	 */
+-	ret = nvme_rdma_dev_get(ctrl->device);
+-	if (!ret) {
+-		ret = -EINVAL;
+-		goto out_free_tagset;
+-	}
++		return ERR_PTR(ret);
+ 
+ 	return set;
+-
+-out_free_tagset:
+-	blk_mq_free_tag_set(set);
+-out:
+-	return ERR_PTR(ret);
+ }
+ 
+ static void nvme_rdma_destroy_admin_queue(struct nvme_rdma_ctrl *ctrl,
+@@ -769,7 +745,7 @@ static void nvme_rdma_destroy_admin_queue(struct nvme_rdma_ctrl *ctrl,
+ {
+ 	if (remove) {
+ 		blk_cleanup_queue(ctrl->ctrl.admin_q);
+-		nvme_rdma_free_tagset(&ctrl->ctrl, ctrl->ctrl.admin_tagset);
++		blk_mq_free_tag_set(ctrl->ctrl.admin_tagset);
+ 	}
+ 	if (ctrl->async_event_sqe.data) {
+ 		nvme_rdma_free_qe(ctrl->device->dev, &ctrl->async_event_sqe,
+@@ -847,7 +823,7 @@ static int nvme_rdma_configure_admin_queue(struct nvme_rdma_ctrl *ctrl,
+ 		blk_cleanup_queue(ctrl->ctrl.admin_q);
+ out_free_tagset:
+ 	if (new)
+-		nvme_rdma_free_tagset(&ctrl->ctrl, ctrl->ctrl.admin_tagset);
++		blk_mq_free_tag_set(ctrl->ctrl.admin_tagset);
+ out_free_async_qe:
+ 	nvme_rdma_free_qe(ctrl->device->dev, &ctrl->async_event_sqe,
+ 		sizeof(struct nvme_command), DMA_TO_DEVICE);
+@@ -862,7 +838,7 @@ static void nvme_rdma_destroy_io_queues(struct nvme_rdma_ctrl *ctrl,
+ {
+ 	if (remove) {
+ 		blk_cleanup_queue(ctrl->ctrl.connect_q);
+-		nvme_rdma_free_tagset(&ctrl->ctrl, ctrl->ctrl.tagset);
++		blk_mq_free_tag_set(ctrl->ctrl.tagset);
+ 	}
+ 	nvme_rdma_free_io_queues(ctrl);
+ }
+@@ -903,7 +879,7 @@ static int nvme_rdma_configure_io_queues(struct nvme_rdma_ctrl *ctrl, bool new)
+ 		blk_cleanup_queue(ctrl->ctrl.connect_q);
+ out_free_tag_set:
+ 	if (new)
+-		nvme_rdma_free_tagset(&ctrl->ctrl, ctrl->ctrl.tagset);
++		blk_mq_free_tag_set(ctrl->ctrl.tagset);
+ out_free_io_queues:
+ 	nvme_rdma_free_io_queues(ctrl);
+ 	return ret;
+-- 
+2.16.3
 
 
 _______________________________________________
