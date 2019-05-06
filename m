@@ -2,109 +2,94 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 79C351560F
-	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 00:38:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6731715610
+	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 00:38:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=LwqUix/Gsrs36r3aH0hyHFcBABVo9ZstfLDZ2PkD97A=; b=ouJ0YfX29/aCor
-	LQgREzhuunQYOcmLTGr/P/cukR0np81XqIXeCCQYnN5cbl60BTbJ3nsTkyqmScJABY8yZRj/MOSYW
-	X0dHIFPh935nJb3buKoB+smOsnMY0sjaz8M1mjBhJOHZhVVWkSdHArhUJNH8FPBLJhdOWYMLd2GoN
-	ib95XMfi0WYaoe85Y2PgvI2tRtDs6a+uPK9dmAapNWrmqyr3SMBJoeiW0nBKgcd7AXtoFL7s9HsNP
-	F34x8Y/bYcCMajFjIErRgq1bv4QyDL8y5JbkoA2Ug+vohQZxoGps+pUVm0FkrA23fhdgj2MnAPl4D
-	+zLt07VToGe5k7pKo9Kg==;
+	List-Archive:List-Unsubscribe:List-Id:Content-ID:MIME-Version:References:
+	Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=x64W0+6p3ZcK8NOHi9FiAzxE8Hpf3Gq/kK5rbiUhN+g=; b=ULEWzzssmjoO5x
+	HSfj9H8bB9PX+5RRIm1yJJcBithIwnYmmJVB2l0qYeM0BKGQGuFtRWQ3/apmP7/YaMO+Nwqs85qyJ
+	+JKqo/+VH3PP/arGoSroVTgYKUckckAKh1+W3ZCX84dMP1/nkf+n7ufpjtMw57pClWBORtgNVgSbC
+	+/l7KDqyyYd7pzVOtXuf8kHqwizIa0FlWEz/NeDioqPY37UeBAk/56cwRKXFj9TuOgb4NcAAdVAiq
+	n729PFG+wjA+SodWGokNQXe05feKVAP43T3B+9Hp5wVPNP3J+BgveVp24LY9v645z58YLkT/QFMks
+	VfJIP7/KJSp1eFl2ToYg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNmFS-0007VB-BU; Mon, 06 May 2019 22:38:14 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1hNmFx-0007lH-8U; Mon, 06 May 2019 22:38:45 +0000
+Received: from mx0b-0016f401.pphosted.com ([67.231.156.173])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNmFM-0007Ur-Pv
- for linux-nvme@lists.infradead.org; Mon, 06 May 2019 22:38:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557182289; x=1588718289;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=KsMTuct/zI6DXPOhy6w1/Oi7n4LPiZzhBO/8UGYowk4=;
- b=Ziuw4TOK2cExK8Pbx40am1me46/7naGcJtTBKLTvqYURpjA5wYAcRhFM
- 35UyqiJqN56/vum5+e4XnjWSHShN/plhrcaQod4LwsCgJSAaUA2BXVA2G
- WYG8hmCZQ77D5RelMj7bRG2KNei+m8HZKpITOC0n6wsEdaeEorcoQqpVY
- CSLJ16gybmUvUKhA01x4z9ULxV21qITJGkKMDuvfONDXPTcg4+AP0XW5E
- 4+wnFj/4fuEPsfl6nIeq3ZVHlRr8Mpu/zkJKlaEHA+3vcC6DAsoES6HBm
- 36NnOqynodbxHiRvlgYE5zenHoJuSJEZ7V3S6mqcUaWk5yfCcDzIfckJD w==;
-X-IronPort-AV: E=Sophos;i="5.60,439,1549900800"; d="scan'208";a="108859858"
-Received: from mail-by2nam01lp2050.outbound.protection.outlook.com (HELO
- NAM01-BY2-obe.outbound.protection.outlook.com) ([104.47.34.50])
- by ob1.hgst.iphmx.com with ESMTP; 07 May 2019 06:38:07 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=diSX6B6upHTSKmwKmoKYCvLFItjp7qei7QJo0K3lYWQ=;
- b=oNMakQLS3hvYzxs0wQzNIySRGn2zzY4Ev7j68GKb1hbMwWmDygZdKybsHpQ7BnQYbm++Yvx8iIJQ5Rm7tA0ickaD0dA3uuuyC8bfRLNC7ZiobHFIpOmBUiNCftkv538dkymoIWrVbF38FGzDIhAczknpE+YoH0hPlTYx3czZXqE=
-Received: from SN6PR04MB4527.namprd04.prod.outlook.com (52.135.120.25) by
- SN6PR04MB4207.namprd04.prod.outlook.com (52.135.71.145) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1856.11; Mon, 6 May 2019 22:38:04 +0000
-Received: from SN6PR04MB4527.namprd04.prod.outlook.com
- ([fe80::c4f:1604:178c:d974]) by SN6PR04MB4527.namprd04.prod.outlook.com
- ([fe80::c4f:1604:178c:d974%5]) with mapi id 15.20.1856.012; Mon, 6 May 2019
- 22:38:04 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Minwoo Im <minwoo.im.dev@gmail.com>, "linux-nvme@lists.infradead.org"
- <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH V2 2/2] nvme-trace: Add support to trace fabrics command
-Thread-Topic: [PATCH V2 2/2] nvme-trace: Add support to trace fabrics command
-Thread-Index: AQHVBESL9SiFN5ZsuEC9b6iAfIF22w==
-Date: Mon, 6 May 2019 22:38:04 +0000
-Message-ID: <SN6PR04MB4527A10184AEF3DDCC23CB0886300@SN6PR04MB4527.namprd04.prod.outlook.com>
-References: <20190506194644.11109-1-minwoo.im.dev@gmail.com>
- <20190506194644.11109-3-minwoo.im.dev@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.45.63]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 25c16380-6c09-4864-d48a-08d6d2738129
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
- SRVR:SN6PR04MB4207; 
-x-ms-traffictypediagnostic: SN6PR04MB4207:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <SN6PR04MB42079EC3CD77553DDF10654C86300@SN6PR04MB4207.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:3513;
-x-forefront-prvs: 0029F17A3F
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(366004)(136003)(376002)(346002)(396003)(39860400002)(189003)(199004)(54906003)(76176011)(8676002)(8936002)(110136005)(316002)(66066001)(102836004)(256004)(14444005)(186003)(86362001)(229853002)(81156014)(81166006)(53546011)(478600001)(2501003)(5660300002)(53936002)(14454004)(9686003)(6506007)(4326008)(66476007)(64756008)(55016002)(66446008)(66556008)(68736007)(76116006)(446003)(2906002)(73956011)(91956017)(476003)(6436002)(6246003)(66946007)(72206003)(486006)(305945005)(7696005)(99286004)(26005)(6116002)(71190400001)(52536014)(33656002)(7736002)(25786009)(3846002)(71200400001)(74316002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB4207;
- H:SN6PR04MB4527.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: zp0hHLsDmiy5H53gMdd68CoyPVW6fNOiCfGTYz2wOcQrCVerlMAsUVorbfHP0WNODRi642BK6oEA/LflgEqhaUITcap990pV24uXcQF00SxK/FwA16XiFQHtFrEigO8fLyKlxk5ngMU+kifC6MJrzp0kxH6WmDscky7gBLFEmrsAn3Z6i+Q9c/JSUzk8cE8myXmcSwFwXtl6lEnlRrpuxEdqEuN6ECiMNi9ORZOiIE2283tODZniiszCzE881lIcDbyeiFud909mT465kYWvWJUO2vqDRVr5Jw6Zthp2eYI3fxg+bwN9vnZJcZdg8l+JBUcuY7qU+oxTtwL7LPttYXLGy0B7yN40P9AyMXJpTqFya3xj0iGSTLYRzEUdD2W/0wsSyJPhl6IiGAGim49ehw/nqxJ2w7TBZZmws1ty0AY=
+ id 1hNmFq-0007kh-M9
+ for linux-nvme@lists.infradead.org; Mon, 06 May 2019 22:38:40 +0000
+Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
+ by mx0b-0016f401.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x46MU4IS030297; Mon, 6 May 2019 15:38:28 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
+ h=date : from : to :
+ cc : subject : in-reply-to : message-id : references : mime-version :
+ content-type : content-id; s=pfpt0818;
+ bh=POjvimBm6H62mJv2zwcML8pMUZ6l8gkdNinAjC7BMlU=;
+ b=PZWbHZ8erraZa1mlwlJvRpmqn6/iiT/97fCor0gZdBpfJgdBSIWm2RVZ4FjC/ts3Tc9n
+ R3stTe6kXAoWI8w/NhNEfmXIbziJbQbw8H8UN82y7ZTdaUloRD/7vEoRQ9bjB6RgKc7R
+ kFsrz/qDdJx/Oy27W1u73gYUMAogdtSvlNXtPnCPdXe3MZHIcjVnSmmwAooT+EH2fqpT
+ mr1n3hinBg27IO2KySOSCxzdrlaVM3DUAsT4+ncYrgJqJI7mLqvIjcmBxSq6JrEP0RUU
+ oTqxubKobqN8kGyWVuFOc7tNw0dv1neAa7mqmJ8z+5CRD+BYvmHofMXPB4gPHDdc+5Ph DQ== 
+Received: from sc-exch02.marvell.com ([199.233.58.182])
+ by mx0b-0016f401.pphosted.com with ESMTP id 2satncgsn8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
+ Mon, 06 May 2019 15:38:28 -0700
+Received: from SC-EXCH01.marvell.com (10.93.176.81) by SC-EXCH02.marvell.com
+ (10.93.176.82) with Microsoft SMTP Server (TLS) id 15.0.1367.3; Mon, 6 May
+ 2019 15:38:26 -0700
+Received: from maili.marvell.com (10.93.176.43) by SC-EXCH01.marvell.com
+ (10.93.176.81) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
+ Transport; Mon, 6 May 2019 15:38:26 -0700
+Received: from mvluser05.qlc.com (unknown [10.112.10.135])
+ by maili.marvell.com (Postfix) with ESMTP id 647353F703F;
+ Mon,  6 May 2019 15:38:26 -0700 (PDT)
+Received: from localhost (aeasi@localhost)
+ by mvluser05.qlc.com (8.14.4/8.14.4/Submit) with ESMTP id x46McODM012168;
+ Mon, 6 May 2019 15:38:25 -0700
+X-Authentication-Warning: mvluser05.qlc.com: aeasi owned process doing -bs
+Date: Mon, 6 May 2019 15:38:24 -0700
+From: Arun Easi <aeasi@marvell.com>
+X-X-Sender: aeasi@mvluser05.qlc.com
+To: James Smart <james.smart@broadcom.com>
+Subject: Re: [PATCH nvme-cli rfc 0/6] Support discovery log change events
+In-Reply-To: <3b7117cf-db69-01a3-d286-a2f98f3e8f5b@broadcom.com>
+Message-ID: <alpine.LRH.2.21.9999.1905061528390.19585@mvluser05.qlc.com>
+References: <20190223023257.21227-1-sagi@grimberg.me>
+ <d4012891-8bc7-00cf-ab96-7828270d25af@suse.de>
+ <e7423c76-6425-4020-2074-b977fc87866f@grimberg.me>
+ <d1742744-1109-e7e8-3586-fca6556c803b@broadcom.com>
+ <d7bbfc2a-92ea-315d-bbd6-cd3847449f7b@grimberg.me>
+ <3b524b54-8f13-24f5-4367-34a4d02c59b3@broadcom.com>
+ <5c64286b-3fbf-9dfe-ef8a-3f72e630f11d@broadcom.com>
+ <a4f8ca74-7777-9e80-3209-ef9ce27ad2d8@suse.de>
+ <44f637f2-0c0d-cef4-05b3-c5e67ec907bb@grimberg.me>
+ <f0e112f7-0db5-4928-0859-8b3b6b797432@grimberg.me>
+ <9d0e3080-baa7-6f55-2548-097523bb3a83@suse.de>
+ <03163041-9b14-3662-edb8-1d69f20f681f@grimberg.me>
+ <f4594084-4f2a-33ca-77b4-d7075bbb12af@broadcom.com>
+ <2a08f760-0aeb-d788-3210-72ec9d6eb9bc@grimberg.me>
+ <3b7117cf-db69-01a3-d286-a2f98f3e8f5b@broadcom.com>
+User-Agent: Alpine 2.21.9999 (LRH 334 2019-03-29)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 25c16380-6c09-4864-d48a-08d6d2738129
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2019 22:38:04.8027 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4207
+Content-ID: <alpine.LRH.2.21.9999.1905061530101.19585@mvluser05.qlc.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-05-06_12:, , signatures=0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190506_153808_951447_2DAB8EEF 
-X-CRM114-Status: GOOD (  23.45  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190506_153838_844980_4C849249 
+X-CRM114-Status: GOOD (  16.06  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [67.231.156.173 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -124,217 +109,44 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- James Smart <james.smart@broadcom.com>, Jens Axboe <axboe@fb.com>,
- Christoph Hellwig <hch@lst.de>, Minwoo Im <minwoo.im@samsung.com>
+Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
+ Hannes Reinecke <hare@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This look okay me with some minor comments, but it does not cover the 
-target side tracing. In fact on the target side we have many components
-such as discovery/multipath/port/async events etc.
+Hi James,
 
-On 05/06/2019 12:47 PM, Minwoo Im wrote:
-> This patch supports fabrics command decoded in trace.  Fabrics commands
-> are to be decoded with (opcode, fctype) pair.
->
-> Now the core driver traces command in a single place of a single place
-> nvme_setup_cmd() so that it might be easier if we checks whether the
-> given command is for fabrics or not in that place.
->
-> NVMe-oF spec 1.0a contains authentication-related commands also, but now
-> we don't have any implementation for them so that we can just skip them
-> in this patch.
->
-> Changes to V1:
->    - fabrics commands should also be decoded, not just showing that it's
->      a fabrics command. (Christoph)
->    - do not make it within nvme admin commands (Chaitanya)
->
-> Cc: Keith Busch <keith.busch@intel.com>
-> Cc: Jens Axboe <axboe@fb.com>
-> Cc: Christoph Hellwig <hch@lst.de>
-> Cc: Sagi Grimberg <sagi@grimberg.me>
-> Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
-> ---
->   drivers/nvme/host/core.c  |  7 +++-
->   drivers/nvme/host/trace.c | 67 +++++++++++++++++++++++++++++++++++++++
->   drivers/nvme/host/trace.h | 37 +++++++++++++++++++++
->   3 files changed, 110 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index cd16d98d1f1a..eeda3ce9afaa 100644
-> --- a/drivers/nvme/host/core.c
-> +++ b/drivers/nvme/host/core.c
-> @@ -733,7 +733,12 @@ blk_status_t nvme_setup_cmd(struct nvme_ns *ns, struct request *req,
->   	}
->
->   	cmd->common.command_id = req->tag;
-> -	trace_nvme_setup_cmd(req, cmd);
-> +
-> +	if (likely(!nvme_is_fabrics(cmd)))
-Do we really need likely here ? Isn't this branch should be guarded by 
-trace config ? what if trace is not configured ?
-> +		trace_nvme_setup_cmd(req, cmd);
-> +	else
-> +		trace_nvme_setup_fabrics_cmd(req, cmd);
-> +
->   	return ret;
->   }
->   EXPORT_SYMBOL_GPL(nvme_setup_cmd);
-> diff --git a/drivers/nvme/host/trace.c b/drivers/nvme/host/trace.c
-> index 5f24ea7a28eb..0e027a49e3a1 100644
-> --- a/drivers/nvme/host/trace.c
-> +++ b/drivers/nvme/host/trace.c
-> @@ -135,6 +135,73 @@ const char *nvme_trace_parse_nvm_cmd(struct trace_seq *p,
->   	}
->   }
->
-> +static const char *nvme_trace_fabrics_property_set(struct trace_seq *p, u8 *spc)
-> +{
-> +	const char *ret = trace_seq_buffer_ptr(p);
-> +	u8 attrib = spc[0];
-> +	u32 ofst = get_unaligned_le32(spc + 4);
-please use name "offset" here.
-> +	u64 value = get_unaligned_le64(spc + 8);
-> +
-> +	trace_seq_printf(p, "attrib=%u, ofst=0x%x, value=0x%llx",
-> +				attrib, ofst, value);
-> +	trace_seq_putc(p, 0);
-> +
-> +	return ret;
-> +}
-> +
-> +static const char *nvme_trace_fabrics_connect(struct trace_seq *p, u8 *spc)
-> +{
-> +	const char *ret = trace_seq_buffer_ptr(p);
-> +	u16 recfmt = get_unaligned_le16(spc);
-> +	u16 qid = get_unaligned_le16(spc + 2);
-> +	u16 sqsize = get_unaligned_le16(spc + 4);
-> +	u8 cattr = spc[6];
-> +	u32 kato = get_unaligned_le32(spc + 8);
-> +
-> +	trace_seq_printf(p, "recfmt=%u, qid=%u, sqsize=%u, cattr=%u, kato=%u",
-> +				recfmt, qid, sqsize, cattr, kato);
-> +	trace_seq_putc(p, 0);
-> +
-> +	return ret;
-> +}
-> +
-> +static const char *nvme_trace_fabrics_property_get(struct trace_seq *p, u8 *spc)
-> +{
-> +	const char *ret = trace_seq_buffer_ptr(p);
-> +	u8 attrib = spc[0];
-> +	u32 ofst = get_unaligned_le32(spc + 4);
-Same here offset.
-> +
-> +	trace_seq_printf(p, "attrib=%u, ofst=0x%x", attrib, ofst);
-> +	trace_seq_putc(p, 0);
-> +
-> +	return ret;
-> +}
-> +
-> +static const char *nvme_trace_fabrics_common(struct trace_seq *p, u8 *spc)
-> +{
-> +	const char *ret = trace_seq_buffer_ptr(p);
-> +
-> +	trace_seq_printf(p, "spcecific=%*ph", 24, spc);
-Please avoid magic numbers "24", see following comment.
-> +	trace_seq_putc(p, 0);
-> +
-> +	return ret;
-> +}
-> +
-> +const char *nvme_trace_parse_fabrics_cmd(struct trace_seq *p,
-> +					 u8 fctype, u8 *spc)
-> +{
-> +	switch (fctype) {
-> +	case nvme_fabrics_type_property_set:
-> +		return nvme_trace_fabrics_property_set(p, spc);
-> +	case nvme_fabrics_type_connect:
-> +		return nvme_trace_fabrics_connect(p, spc);
-> +	case nvme_fabrics_type_property_get:
-> +		return nvme_trace_fabrics_property_get(p, spc);
-> +	default:
-> +		return nvme_trace_fabrics_common(p, spc);
-> +	}
-> +}
-> +
->   const char *nvme_trace_disk_name(struct trace_seq *p, char *name)
->   {
->   	const char *ret = trace_seq_buffer_ptr(p);
-> diff --git a/drivers/nvme/host/trace.h b/drivers/nvme/host/trace.h
-> index 97d3c77365b8..fa3a20007b56 100644
-> --- a/drivers/nvme/host/trace.h
-> +++ b/drivers/nvme/host/trace.h
-> @@ -57,8 +57,17 @@
->   		nvme_opcode_name(nvme_cmd_resv_acquire),	\
->   		nvme_opcode_name(nvme_cmd_resv_release))
->
-> +#define nvme_fabrics_type_name(type)	{ type, #type }
-> +#define show_nvm_fabrics_type_name(val)					\
-> +	__print_symbolic(val,						\
-> +		nvme_fabrics_type_name(nvme_fabrics_type_property_set),	\
-> +		nvme_fabrics_type_name(nvme_fabrics_type_connect),	\
-> +		nvme_fabrics_type_name(nvme_fabrics_type_property_get))
-> +
->   #define show_opcode_name(qid, opcode)					\
->   	(qid ? show_nvm_opcode_name(opcode) : show_admin_opcode_name(opcode))
-> +#define show_fabric_type_name(type)					\
-> +	show_nvm_fabrics_type_name(type)
->
->   const char *nvme_trace_parse_admin_cmd(struct trace_seq *p, u8 opcode,
->   		u8 *cdw10);
-> @@ -70,6 +79,12 @@ const char *nvme_trace_parse_nvm_cmd(struct trace_seq *p, u8 opcode,
->   	 nvme_trace_parse_nvm_cmd(p, opcode, cdw10) : 		\
->   	 nvme_trace_parse_admin_cmd(p, opcode, cdw10))
->
-> +const char *nvme_trace_parse_fabrics_cmd(struct trace_seq *p,
-> +		u8 fctype, u8 *spc);
-> +
-> +#define parse_nvmf_cmd(fctype, spc)				\
-> +	nvme_trace_parse_fabrics_cmd(p, fctype, spc)
-> +
->   const char *nvme_trace_disk_name(struct trace_seq *p, char *name);
->   #define __print_disk_name(name)				\
->   	nvme_trace_disk_name(p, name)
-> @@ -118,6 +133,28 @@ TRACE_EVENT(nvme_setup_cmd,
->   		      parse_nvme_cmd(__entry->qid, __entry->opcode, __entry->cdw10))
->   );
->
-> +TRACE_EVENT(nvme_setup_fabrics_cmd,
-> +	    TP_PROTO(struct request *req, struct nvme_command *cmd),
-> +	    TP_ARGS(req, cmd),
-> +	    TP_STRUCT__entry(
-> +		__field(int, ctrl_id)
-> +		__field(u16, cid)
-> +		__field(u8, fctype)
-> +		__array(u8, spc, 24)
-Can you please just declare a macro and replace 24 ? (I think we need to 
-replace in the nvme_setup_cmd() also, please double check.
-> +	    ),
-> +	    TP_fast_assign(
-> +		__entry->ctrl_id = nvme_req(req)->ctrl->instance;
-> +		__entry->cid = cmd->fabrics.command_id;
-> +		__entry->fctype = cmd->fabrics.fctype;
-> +		memcpy(__entry->spc, &cmd->fabrics.ts,
-> +			sizeof(__entry->spc));
-> +	    ),
-> +	    TP_printk("nvme%d: cmdid=%u, cmd=(%s %s)",
-Do we need to differentiate between fabrics and local NVMe ctrl when
-reporting ?
-> +		      __entry->ctrl_id, __entry->cid,
-> +		      show_fabric_type_name(__entry->fctype),
-> +		      parse_nvmf_cmd(__entry->fctype, __entry->spc))
-> +);
-> +
->   TRACE_EVENT(nvme_complete_rq,
->   	    TP_PROTO(struct request *req),
->   	    TP_ARGS(req),
->
+On Fri, 26 Apr 2019, 1:14pm, James Smart wrote:
 
+> On 4/26/2019 12:10 PM, Sagi Grimberg wrote:
+> >
+> > Given that FC does not need a persistent discovery controller to get the
+> > event, its fine that it will create a temporary discovery controller.
+> > Given that FC and IP do different things, we can separate them. But what
+> > I wanted to understand, is if I export a second subsystem on the same
+> > FC port, will it generate an FC event?
+> 
+> Well - FC does have an RSCN notification to cause the rescan of the FC 
+> port, if the FC port as the NVME Discovery attribute, but Christoph 
+> rejected the 3 patches about a year ago. I'll be reposting it. So the 
+> answer should eventually be - yes, it will get an FC event if the 
+> subsystem list at the FC port changes.
+> 
+
+So, just wondering, for the case of subsystem addition to an existing FC 
+port, is it recommended or mandated in the spec that the target FC port 
+send out a RSCN? The RSCN should be from the target FC port, not the 
+switch, right? I could not find such a reference in the FC-NVME spec 
+version I have (r1.15).
+
+On a related note, from a FC LLDD perspective, then, are they required to 
+invoke nvme_fc_rescan_remoteport() upon RSCN reception?
+
+Regards,
+-Arun
 
 _______________________________________________
 Linux-nvme mailing list
