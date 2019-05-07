@@ -2,74 +2,78 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F1931688D
-	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 18:59:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 01E0C1688E
+	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 18:59:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=v+PsCk/HCe8OGMBuYQN1t8TsN6L/ktNpZfQ2GvL4+Y4=; b=iFK
-	7mwVquQl080pNPuXJknak80LaVdnTsySm4kaY/SuyxeYZUOxFn5905THdpezuZRDAc+zUXgBVuf9f
-	nSrOMqVWMVipcC2iei/CPHHSRu+D108a2JGwMPx2puE1mG6d3SbqriinC2dZiC4kmnt5WjSQuRO57
-	0bGH8BCwkhHDWKj9cGLn/cVSxpI6sDFccq+GglxZxSuWHLwhvqficNQ2MWhAl0eLjLxzW7BPvomeV
-	vwEiCAS8rUQod4YEv6Nd6So3Sse37EHBI4b0FgtY/Etia3YIXbzVhsl8Q+WtJO9cUoqe3i2mzYYz0
-	T3A7sRGKVflVBVBjhtyD5mLyo4I/56g==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=FOEafn3zWCyMKp9r8r6dzeUPT/xKoaEKCuOA+W0nLOY=; b=Bzjl8JmQbyoadXXXuSl72LmsHn
+	cXedLRv54N2xaxDEvB6XL48Gko34+50wzvYlrAXMt4yPGAVNaKqBRm+HAOnGyEUWH6P8SAvSjKnh9
+	UOf/vYfntW7vJDRVYmd82qlhCjO2ZQ4lf6CewNArPyUyx5a+mRooNynsJD66PTDjMcH/7yvaWDs3A
+	ltYGvCVSB0nTXiAzRhQpPZYT+4jRYUyuklf67dSl23HWPqCmjah1jkb7iDVppBzqyBO59PQgsov6h
+	2vh+CivvoXovoGjNE1IH9qzr1gTW+EguN4sWeuO4zfc7jOVZRWHSuMc7Ro/2HUGnguDGsorrPcweE
+	kmwd6nNA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hO3Qe-0007JF-RD; Tue, 07 May 2019 16:58:56 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1hO3Qp-0007RS-9X; Tue, 07 May 2019 16:59:07 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hO3QY-0007IG-Sp
- for linux-nvme@lists.infradead.org; Tue, 07 May 2019 16:58:52 +0000
-Received: by mail-pf1-x441.google.com with SMTP id n19so416609pfa.1
- for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 09:58:50 -0700 (PDT)
+ id 1hO3Qb-0007Ie-E5
+ for linux-nvme@lists.infradead.org; Tue, 07 May 2019 16:58:54 +0000
+Received: by mail-pg1-x542.google.com with SMTP id t187so4480350pgb.13
+ for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 09:58:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=F24W/VQdFijjB1XGiNkd+uOp8FfAnZYn7ACk/HniCPU=;
- b=Y3Zmc4Ma29TBsmGOUgwg/jPSIzCpH5JEVkNVRIChv+DGVQRwMrPtv4fU/OV5Zdqg9f
- FcehhvuCbJIP6W7xn1UQf2RtbFurlNLSOfo3waSOoI+iEzAhS4wVBuUDBGw6EE1qs1s9
- npyy0aEHaXXEASHaz9KQnjcDzqfp/6zt7R3RfSmuCrWlT1/jxrf5HKdPj6xkST6pOWeG
- SBc2d/bOIDuYHF0tItNJenK6BszLfEBCVBmMIP0prNNeLj9FBjlKD9wO+j/teKWtt7ko
- 4KdClyUwrPURGOmeyinrZyvb1wTKNHdl4XLw5WynCm/dfPtgQ+dLTLXsrGA3xN5D/eaD
- zfVQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=yCv8sSMR6ScKjEy1rfKWXGO+DU+5zcc2adHgmKc5Xg8=;
+ b=MbQxKye7rA//CkI9bEGuRwPAFkJISCOT4QAqjGufCOelreGxFdXLEZcRtwrcr/bvmn
+ 5F8SCUFRLBYgFUOndqdEsgbFiQCyk3BAF+glzr8cWI49YTy12LnWHKErN20OhtXqlOTK
+ jUPUYtC31fYoW8RLeI9pWHBT+kN1iMHh/Qh/nBkCTNfNTyD0ZBDTE9v5swEddHPAiBp5
+ fTyMkrRmy2KlbWlaGSKuE88RQGhhaCYQg4yDvsKRfjrh1ANSoheFZ3uExna2UEn5jxyy
+ OstuX6uCMHAxWF7VTPw776bKcU5k+SpegZh+Pa8Une6s9XSM4f54lWCsOBpF9iv1lXMD
+ xgCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=F24W/VQdFijjB1XGiNkd+uOp8FfAnZYn7ACk/HniCPU=;
- b=EDzjXgQ0MExGmDkq95nNIVfC+xHoCycNFWcf7t+owFnKroybB8S9Q/hqRAIdJI+2B4
- ETfRDhekJZ2FHX5dFIJQmjqeNEgEV3NsMsrDTQQ1HYsMYwyPGpWIuF1m2c+VHT70DIfI
- I/bBNaMSPNQv5NMTH5qBmkNZsbhUpwPWcCWZZ8xp5i7fp1QWQGTLLsutLqnzZGwu7PkZ
- 16GI1kl4z81M0kuFLwpCjWPb9VC+R9M8nZhRw2WUob69+Cmfkr2/5oEAqMxvQ5gles+/
- sLJ23qDQAW6x6Wbb2oZK/83C2fngOwA2g5MduYyUHd1mfwPO3rS2R5fggevPz9APYkbN
- eBag==
-X-Gm-Message-State: APjAAAXszT1jdYPBOINhg8v3XcKn6vEse+mT906RGG8TCFqjrzfTCMKj
- Dk1T1C9DK5gg2/UbYYdfRjc9UMRD
-X-Google-Smtp-Source: APXvYqyIg1w1Fe7zxUiHrffJfT0aPJd66Jea9lk8GVdzXmRZC1nVbx0EGEdiR0579yTPC1RZ60b+LQ==
-X-Received: by 2002:a63:fe0a:: with SMTP id p10mr39874187pgh.86.1557248329585; 
- Tue, 07 May 2019 09:58:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=yCv8sSMR6ScKjEy1rfKWXGO+DU+5zcc2adHgmKc5Xg8=;
+ b=I/wTjfMsBr9bO2qkk4cR7uDxbuWtHGSHbC/h04m4l6jy/lf0FMwnHf0hV3IdTC38vJ
+ AwdbjjLUOa7bJFCYlGmzFhGSyULkuoqKtkfhoF8F1QCCF1cFcOhk7nvN8UeLsrsXL2VF
+ j62z8WBTyXZAaG1LkWPnQtYvwa5yniwF0k/Qog34fDOgtJOYPGhY+n2vED90oojKn5ts
+ imJ01YP0c8zDCsx4gqR+zA0LG638a85u/TMbcy1ivq+2CsXI7NjgvI9Ar2we8dw8rTPE
+ oePec7Tg+rYXOpyjnxA5gn7TZ+IGuvW9GDrg7YxohJfeWP6wvSc/ZkNN/D5RydU6zecx
+ FZHg==
+X-Gm-Message-State: APjAAAUtQLoJ+f9PuOWCNw9BlBpvzt5XerR/p3u+8WmlUy4m2QTM9j3C
+ j0tXTNj9xV/sfT0jbEgtDMXW1H8G
+X-Google-Smtp-Source: APXvYqy3RvniSsGhL6GQuYhBIGPKuJeK5+qo9p8zgaZO6UBphnwJmO5t/7I7TYPdO3EnicMp8ubK7A==
+X-Received: by 2002:a63:2d41:: with SMTP id t62mr41260420pgt.113.1557248332851; 
+ Tue, 07 May 2019 09:58:52 -0700 (PDT)
 Received: from mita-MS-7A45.lan ([240f:34:212d:1:1b24:991b:df50:ea3f])
- by smtp.gmail.com with ESMTPSA id r12sm18140093pfn.144.2019.05.07.09.58.46
+ by smtp.gmail.com with ESMTPSA id r12sm18140093pfn.144.2019.05.07.09.58.49
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Tue, 07 May 2019 09:58:48 -0700 (PDT)
+ Tue, 07 May 2019 09:58:52 -0700 (PDT)
 From: Akinobu Mita <akinobu.mita@gmail.com>
 To: linux-nvme@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/7] nvme-pci: support device coredump
-Date: Wed,  8 May 2019 01:58:27 +0900
-Message-Id: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
+Subject: [PATCH v2 1/7] devcoredump: use memory_read_from_buffer
+Date: Wed,  8 May 2019 01:58:28 +0900
+Message-Id: <1557248314-4238-2-git-send-email-akinobu.mita@gmail.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
+References: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190507_095850_956701_4DBB2A42 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20190507_095853_472649_AA267F03 
+X-CRM114-Status: GOOD (  14.89  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -102,56 +106,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This enables to capture snapshot of controller information via device
-coredump machanism, and it helps diagnose and debug issues.
-
-The nvme device coredump is triggered when command timeout occurs, and
-creates the following coredump files.
-
- - regs: NVMe controller registers (00h to 4Fh)
- - sq<qid>: Submission queue
- - cq<qid>: Completion queue
- - telemetry-ctrl-log: Telemetry controller-initiated log (if available)
- - data: Empty
-
-(I don't have the NVMe device that supports telemetry log page for now, so
-capturing telemetry log is untested.)
-
-The device coredump mechanism currently allows drivers to create only a
-single coredump file, so this also provides a new function that allows
-drivers to create several device coredump files in one crashed device.
-
-* v2
-- Add Reviewed-by tag.
-- Add patch to fix typo in comment
-- Remove unneeded braces.
-- Allocate device_entry followed by an array of devcd_file elements.
-- Add telemetry log page definisions
-- Add facility to check log page attributes
-- Exclude the doorbell registers from register dump.
-- Save controller registers in a binary format instead of a text format.
-- Create an empty 'data' file in the device coredump.
-- Save telemetry controller-initiated log if available
-- Make coredump procedure into two phases (before resetting controller and
-  after resetting as soon as admin queue is available).
-
-Akinobu Mita (7):
-  devcoredump: use memory_read_from_buffer
-  devcoredump: fix typo in comment
-  devcoredump: allow to create several coredump files in one device
-  nvme.h: add telemetry log page definisions
-  nvme: add facility to check log page attributes
-  nvme-pci: add device coredump support
-  nvme-pci: trigger device coredump on command timeout
-
- drivers/base/devcoredump.c  | 168 ++++++++++------
- drivers/nvme/host/Kconfig   |   1 +
- drivers/nvme/host/core.c    |   2 +
- drivers/nvme/host/nvme.h    |   1 +
- drivers/nvme/host/pci.c     | 460 ++++++++++++++++++++++++++++++++++++++++++--
- include/linux/devcoredump.h |  33 ++++
- include/linux/nvme.h        |  25 +++
- 7 files changed, 617 insertions(+), 73 deletions(-)
+Use memory_read_from_buffer() to simplify devcd_readv().
 
 Cc: Johannes Berg <johannes@sipsolutions.net>
 Cc: Keith Busch <keith.busch@intel.com>
@@ -159,6 +114,37 @@ Cc: Jens Axboe <axboe@fb.com>
 Cc: Christoph Hellwig <hch@lst.de>
 Cc: Sagi Grimberg <sagi@grimberg.me>
 Cc: Minwoo Im <minwoo.im.dev@gmail.com>
+Reviewed-by: Johannes Berg <johannes@sipsolutions.net>
+Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
+---
+* v2
+- Add Reviewed-by tag.
+
+ drivers/base/devcoredump.c | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/drivers/base/devcoredump.c b/drivers/base/devcoredump.c
+index f1a3353..3c960a6 100644
+--- a/drivers/base/devcoredump.c
++++ b/drivers/base/devcoredump.c
+@@ -164,16 +164,7 @@ static struct class devcd_class = {
+ static ssize_t devcd_readv(char *buffer, loff_t offset, size_t count,
+ 			   void *data, size_t datalen)
+ {
+-	if (offset > datalen)
+-		return -EINVAL;
+-
+-	if (offset + count > datalen)
+-		count = datalen - offset;
+-
+-	if (count)
+-		memcpy(buffer, ((u8 *)data) + offset, count);
+-
+-	return count;
++	return memory_read_from_buffer(buffer, count, &offset, data, datalen);
+ }
+ 
+ static void devcd_freev(void *data)
 -- 
 2.7.4
 
