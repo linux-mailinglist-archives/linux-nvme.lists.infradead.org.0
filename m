@@ -2,80 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89A8D16890
-	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 18:59:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 422E716892
+	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 18:59:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2d3GelZdJ04GuYHdEX15qFpI2huDRbJ1pf4l/XLiK+U=; b=uCmNAGssAlREig
-	sa9OIGZB0wEoLozvEo5HUxgFGfdyyBujuNWb/psTD6XbIfJnEvGO/qizg/qK3ZNIwX3kNnp2fyr19
-	vaLVulhCRKVo+QpfuIft/f/5mdAWOvIhYL5YvHCqYzPV4xucqG/F4EDHaS1ZhTS12fQKTzSh+jr8t
-	ga4p09AeWg4tFQmjDVs/0K62Ky7xOYRVkQLBSjiLwUUnAP8bkOYoyaSW6Eu+njP6UabEiVbroSizB
-	OxVl9mqhLXyDXAnBbbWNqwmywytJrGU4CJKoPUQZIrqVWZzifyt9QTcqICcvxnWI6wtJKyjV4gO7i
-	hHZlR5fOwDBbsGPOh62w==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=QU6ldNGdj1hcRqHIuEjU/wwHh6SqaoPGiTi7VZE1Z14=; b=qr0P/BXwX/A8UiNUaPo145TS6+
+	A9AqZGKrFC/BUQvN3f0cTso9jxJlPaa0jFk1ONtMmBTz722oyQG5JBqplKBUFNJjEBqarHv3qMyaq
+	30U9Z46w22Lt790UxP6AP4fYZz4xMLV3CQbUiLbKC2UMimBZybLeP/RnWPIcEkM3nXo8Q5qyrOSlZ
+	okBY+ycK8CWeDGUJr+BoeV7lqlyIXrYUGCFGNsRf0MQeBwORDJstGh2g0AjkTBC8RhmFt9l1sM4ud
+	kMZlFCnn83mmaKdQwqkDSgEEY9PB7BqrfOLBBaO4tWf0f/BdCwWR/SuDeIoOQmTvEx2ifKOjYlM2h
+	vOUNmvkg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hO3R5-0007o4-20; Tue, 07 May 2019 16:59:23 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hO3RP-0008B1-3f; Tue, 07 May 2019 16:59:43 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hO3Qk-0007Vs-TL
- for linux-nvme@lists.infradead.org; Tue, 07 May 2019 16:59:10 +0000
-Received: by mail-pl1-x642.google.com with SMTP id w24so8488550plp.2
- for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 09:59:02 -0700 (PDT)
+ id 1hO3Qo-0007aG-9z
+ for linux-nvme@lists.infradead.org; Tue, 07 May 2019 16:59:16 +0000
+Received: by mail-pf1-x442.google.com with SMTP id z26so8963407pfg.6
+ for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 09:59:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=xkDmKHN/t0FLLqvqBKew99AjKdIrGt8ctiEpmuZPQEg=;
- b=mL/DwRZ6NNE/tDrfyJO92P34yidij+IBavjnpFg+vLE7NxYbAdRI3A3VMvYhslLP+M
- nzJpelgOI5WlnMSUiO2DLDiObsStnF75NA5K4GOPR2Tpf+Mte7AeN7m9u/GkN1tkj/BA
- ioJAXF1PTTz56OYBYzX4N0FBnJtVbr/5AaT9pmbrAyIIdbgWmPJvFlXLcV14BAJyA0Rz
- 6edAUUl/bt2Lpp5VTwHKdXY226DIe11A2NmQRFKad4Vq37ZUnT9N8mOH7YS6tKEWWlvT
- lxcCLHwCrgm9u2hi7xdJyey5Fz+2mmlkZCtuWAgSPr2pP9tw7C3PR0P9oK7glcguRLgT
- Ec2A==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=HpUfowzPkPP+EimE58t16S3r0XExpxfBQEdnNQKh3Bc=;
+ b=g9xny6JgesQKFtGTi5kEK7/Ikcq8NsKELmngrvHowFn6ojZtnzg4X+UR9s9XHsOLMK
+ atxUuP/jBO/XQjlM7YFRyNAGG/kHQaIs20geCqyOQm31bLMI0iu881uzXAL5fKgtw9rk
+ 3rrZtE2h8ztC+6lUMMaT4V3RS/P6d9ItRnxVAi8//paxzCDECnQ1ZiZjhtn0NM/9+4Cn
+ WQjWg6SfxsX2gqxeYz8u4h2YXhCVX4/wEk3g9yO2h/jvCUQDyIFKl9CP0O6JrhwzFMHP
+ 8ZrIEQ1DZnzNVLUaglA2DyxvaYR4khxGLgEumI2+2DCx+CV6hcM5H+xewdX6v8gdk4Ue
+ O7HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=xkDmKHN/t0FLLqvqBKew99AjKdIrGt8ctiEpmuZPQEg=;
- b=XCdb7a1xnf/CuB2qneKOj6neUTR8F8XSTm0eOP+cvC5IjOY9zVMc83F11u6DK320ul
- rdfFnghXfFg+7psvtE7ok3A2LHVuj4/yu6YYW6+vtCYXBaf8lDA0UQcKbwPDm+7Luedf
- lH7cm9L5reIOEzPjM7zhDF4oikGpuIyHpRObn5sS1wEbz+4gebPoGrqWmQeAvJrLNndT
- OsVZ+yM5K9g9UQirhjxrGoNkB2jOrBPSm5WlUy5Y1sMYYYB41Jyly6NMuhNM6DO3FsMg
- gRM/FqZin8LtjRMCqFVZhh6x8Bj2+nD1gNIEiQQCaVqCYH2tdDpjLZQp3ficRPMBKfmO
- DuPQ==
-X-Gm-Message-State: APjAAAVUmVQkePtWOEwwRerFVPHsogVwWhsCRWYZyIwqLDuti223CRHy
- jrWZfUSEReLV0jJ8gXvIKTZR4yxl
-X-Google-Smtp-Source: APXvYqxJ+EQKiVy218dYR7Dm20kGmAZ+GmsLMjRTyqSTJFjZWJoq+O3itK0N2nmenAgyxxLL9dUu9Q==
-X-Received: by 2002:a17:902:b606:: with SMTP id
- b6mr5432879pls.100.1557248342269; 
- Tue, 07 May 2019 09:59:02 -0700 (PDT)
+ :references;
+ bh=HpUfowzPkPP+EimE58t16S3r0XExpxfBQEdnNQKh3Bc=;
+ b=XMKOBFMK5RC8FxZNbb0ExGyB8RKzUUDwDl6E5CLJq/bCR4eRRxIvwPxQ9nXjh+irim
+ 5bh8/+6IJTvjTKgvJ0RXoyaD+FplugJ+eTnZkKUEXMLvnP1TgCuBnjxuMAYZvZroY1ZM
+ ifIRotYV6gh4+B71AyLdxv6q9LFJ+4r5FgfrLpc3zWken+zaZYuHuSWoBQuEQckBQg5L
+ eegzefQxSiqZH5fsdynwTC74oOvRcJNjSxGQWqkYitgN+jZ/9qor20jNj1oo07EOHix9
+ 3hj1q+2Fg479qIzpwXa3FvlLKgX0bBFQhOVnAccRjKMvzHjNmUt4SQO0qWftqThlj7K5
+ szzw==
+X-Gm-Message-State: APjAAAX70iY6HETSJpmdjOl0yLqT+nsCE5M4g194I+s+p72u+nPWFKY6
+ FM+B1KHLE9Dj/55wB1eb0Q3L/yfV
+X-Google-Smtp-Source: APXvYqyuqnN4Vgezd5EXk0WeM5ZmcTumZxABQ40n/nV8S+B8o9TKIPvDyqx6/SaAXGHOoeGiSmm4dw==
+X-Received: by 2002:a63:3190:: with SMTP id
+ x138mr28837539pgx.402.1557248345314; 
+ Tue, 07 May 2019 09:59:05 -0700 (PDT)
 Received: from mita-MS-7A45.lan ([240f:34:212d:1:1b24:991b:df50:ea3f])
- by smtp.gmail.com with ESMTPSA id r12sm18140093pfn.144.2019.05.07.09.58.59
+ by smtp.gmail.com with ESMTPSA id r12sm18140093pfn.144.2019.05.07.09.59.02
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Tue, 07 May 2019 09:59:01 -0700 (PDT)
+ Tue, 07 May 2019 09:59:04 -0700 (PDT)
 From: Akinobu Mita <akinobu.mita@gmail.com>
 To: linux-nvme@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 4/7] nvme.h: add telemetry log page definisions
-Date: Wed,  8 May 2019 01:58:31 +0900
-Message-Id: <1557248314-4238-5-git-send-email-akinobu.mita@gmail.com>
+Subject: [PATCH v2 5/7] nvme: add facility to check log page attributes
+Date: Wed,  8 May 2019 01:58:32 +0900
+Message-Id: <1557248314-4238-6-git-send-email-akinobu.mita@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
 References: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
-MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190507_095903_550422_1AB39D0A 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20190507_095906_851657_8BFB46E0 
+X-CRM114-Status: GOOD (  13.39  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -102,42 +101,74 @@ Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
  Akinobu Mita <akinobu.mita@gmail.com>, Keith Busch <keith.busch@intel.com>,
  Minwoo Im <minwoo.im.dev@gmail.com>, Johannes Berg <johannes@sipsolutions.net>,
  Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Q29weSB0ZWxlbWV0cnkgbG9nIHBhZ2UgZGVmaW5pc2lvbnMgZnJvbSBudm1lLWNsaS4KCkNjOiBK
-b2hhbm5lcyBCZXJnIDxqb2hhbm5lc0BzaXBzb2x1dGlvbnMubmV0PgpDYzogS2VpdGggQnVzY2gg
-PGtlaXRoLmJ1c2NoQGludGVsLmNvbT4KQ2M6IEplbnMgQXhib2UgPGF4Ym9lQGZiLmNvbT4KQ2M6
-IENocmlzdG9waCBIZWxsd2lnIDxoY2hAbHN0LmRlPgpDYzogU2FnaSBHcmltYmVyZyA8c2FnaUBn
-cmltYmVyZy5tZT4KQ2M6IE1pbndvbyBJbSA8bWlud29vLmltLmRldkBnbWFpbC5jb20+ClNpZ25l
-ZC1vZmYtYnk6IEFraW5vYnUgTWl0YSA8YWtpbm9idS5taXRhQGdtYWlsLmNvbT4KLS0tCiogdjIK
-LSBOZXcgcGF0Y2ggaW4gdGhpcyB2ZXJzaW9uLgoKIGluY2x1ZGUvbGludXgvbnZtZS5oIHwgMjMg
-KysrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAyMyBpbnNlcnRpb25zKCsp
-CgpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51eC9udm1lLmggYi9pbmNsdWRlL2xpbnV4L252bWUu
-aAppbmRleCBjNDA3MjBjLi41MjE3ZmU0IDEwMDY0NAotLS0gYS9pbmNsdWRlL2xpbnV4L252bWUu
-aAorKysgYi9pbmNsdWRlL2xpbnV4L252bWUuaApAQCAtMzk2LDYgKzM5NiwyOCBAQCBlbnVtIHsK
-IAlOVk1FX05JRFRfVVVJRAkJPSAweDAzLAogfTsKIAorLyogRGVyaXZlZCBmcm9tIDEuM2EgRmln
-dXJlIDEwMTogR2V0IExvZyBQYWdlIOKAkyBUZWxlbWV0cnkgSG9zdAorICogLUluaXRpYXRlZCBM
-b2cgKExvZyBJZGVudGlmaWVyIDA3aCkKKyAqLworc3RydWN0IG52bWVfdGVsZW1ldHJ5X2xvZ19w
-YWdlX2hkciB7CisJX191OCAgICBscGk7IC8qIExvZyBwYWdlIGlkZW50aWZpZXIgKi8KKwlfX3U4
-ICAgIHJzdmRbNF07CisJX191OCAgICBpZWVfb3VpWzNdOworCV9fbGUxNiAgZGFsYjE7IC8qIERh
-dGEgYXJlYSAxIGxhc3QgYmxvY2sgKi8KKwlfX2xlMTYgIGRhbGIyOyAvKiBEYXRhIGFyZWEgMiBs
-YXN0IGJsb2NrICovCisJX19sZTE2ICBkYWxiMzsgLyogRGF0YSBhcmVhIDMgbGFzdCBibG9jayAq
-LworCV9fdTggICAgcnN2ZDFbMzY4XTsgLyogVE9ETyB2ZXJpZnkgKi8KKwlfX3U4ICAgIGN0cmxh
-dmFpbDsgLyogQ29udHJvbGxlciBpbml0aWF0ZWQgZGF0YSBhdmFpbD8qLworCV9fdTggICAgY3Ry
-bGRnbjsgLyogQ29udHJvbGxlciBpbml0aWF0ZWQgdGVsZW1ldHJ5IERhdGEgR2VuICMgKi8KKwlf
-X3U4ICAgIHJzbmlkZW50WzEyOF07CisJLyogV2UnbGwgaGF2ZSB0byBkb3VibGUgZmV0Y2ggc28g
-d2UgY2FuIGdldCB0aGUgaGVhZGVyLAorCSAqIHBhcnNlIGRhbGIxLT4zIGRldGVybWluZSBob3cg
-bXVjaCBzaXplIHdlIG5lZWQgZm9yIHRoZQorCSAqIGxvZyB0aGVuIGFsbG9jIGJlbG93LiBPciBq
-dXN0IGRvIGEgc2Vjb25kYXJ5IG5vbi1zdHJ1Y3QKKwkgKiBhbGxvY2F0aW9uLgorCSAqLworCV9f
-dTggICAgdGVsZW1ldHJ5X2RhdGFhcmVhWzBdOworfTsKKwogc3RydWN0IG52bWVfc21hcnRfbG9n
-IHsKIAlfX3U4CQkJY3JpdGljYWxfd2FybmluZzsKIAlfX3U4CQkJdGVtcGVyYXR1cmVbMl07CkBA
-IC04MzIsNiArODU0LDcgQEAgZW51bSB7CiAJTlZNRV9MT0dfRldfU0xPVAk9IDB4MDMsCiAJTlZN
-RV9MT0dfQ0hBTkdFRF9OUwk9IDB4MDQsCiAJTlZNRV9MT0dfQ01EX0VGRkVDVFMJPSAweDA1LAor
-CU5WTUVfTE9HX1RFTEVNRVRSWV9DVFJMCT0gMHgwOCwKIAlOVk1FX0xPR19BTkEJCT0gMHgwYywK
-IAlOVk1FX0xPR19ESVNDCQk9IDB4NzAsCiAJTlZNRV9MT0dfUkVTRVJWQVRJT04JPSAweDgwLAot
-LSAKMi43LjQKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1udm1lIG1haWxpbmcgbGlzdApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
+This provides a facility to check whether the controller supports the
+telemetry log pages and log page offset field for the Get Log Page
+command.
+
+Cc: Johannes Berg <johannes@sipsolutions.net>
+Cc: Keith Busch <keith.busch@intel.com>
+Cc: Jens Axboe <axboe@fb.com>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Cc: Minwoo Im <minwoo.im.dev@gmail.com>
+Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
+---
+* v2
+- New patch in this version.
+
+ drivers/nvme/host/core.c | 1 +
+ drivers/nvme/host/nvme.h | 1 +
+ include/linux/nvme.h     | 2 ++
+ 3 files changed, 4 insertions(+)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 6265d92..42f09d6 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -2580,6 +2580,7 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+ 	} else
+ 		ctrl->shutdown_timeout = shutdown_timeout;
+ 
++	ctrl->lpa = id->lpa;
+ 	ctrl->npss = id->npss;
+ 	ctrl->apsta = id->apsta;
+ 	prev_apst_enabled = ctrl->apst_enabled;
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 527d645..8711c71 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -195,6 +195,7 @@ struct nvme_ctrl {
+ 	u32 vs;
+ 	u32 sgls;
+ 	u16 kas;
++	u8 lpa;
+ 	u8 npss;
+ 	u8 apsta;
+ 	u32 oaes;
+diff --git a/include/linux/nvme.h b/include/linux/nvme.h
+index 5217fe4..c1c4ca5 100644
+--- a/include/linux/nvme.h
++++ b/include/linux/nvme.h
+@@ -294,6 +294,8 @@ enum {
+ 	NVME_CTRL_OACS_DIRECTIVES		= 1 << 5,
+ 	NVME_CTRL_OACS_DBBUF_SUPP		= 1 << 8,
+ 	NVME_CTRL_LPA_CMD_EFFECTS_LOG		= 1 << 1,
++	NVME_CTRL_LPA_EXTENDED_DATA		= 1 << 2,
++	NVME_CTRL_LPA_TELEMETRY_LOG		= 1 << 3,
+ };
+ 
+ struct nvme_lbaf {
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
