@@ -2,117 +2,80 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1CD116AC6
-	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 20:55:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4853C16C2D
+	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 22:26:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lMEs5jQNjWi/wPmS3/ZsD8yrUKpxzGGQFuLKw/mEono=; b=HEkTC48u4XkOFaNoPew1vt2gN
-	vstTO/2aAS9jgALenmSAIK4LCpCTmaVs0Z92gTgEZU0Fqne7+NluYj7grYWQdOyuRaz2t44O6j/hS
-	LSFMcVxTJ+PXV+WqkoxNZ5xZ+fGeMI1tlg8zWqYBzJV6bHwyWMunspGfsdfsJmHXz90cnIsffeJbO
-	vHrjzUfU0JvMQ1uiB7dFAfAtq7GEtW57YPNyMVC8LyAwTwuafmVivvWKatpnxqUszU6VF5xzkVj59
-	wlF6ZEbzGSRNYTKGvUag5LpEmol6jRT1Xwa/yNvV8woDLdma81Ou4uVRLIZnbdwfhur6IuDj6TgR0
-	KEFkZnkmw==;
+	 bh=apRs+706UdaNyh33CtKT3vwGUYhYD/XLN3Ha2VT2jB8=; b=NtJFYtz808FdokHp7gubU+FyP
+	VusjDmOlGKMwbDTJEjOtLVnx4rcYIuwAhHpSptXUPjja5KuMW6Ajecc1Uueev8u/p8FlCr9lWyORW
+	3KezUYq6hgblsGj3KO2VH/DcmUZXZSVsqHRhPYoopQ484XrvRLhmDAd4Pa3Wi0bfenb3Y/fz5Pjcw
+	tNUO6ujnkUD84A5uKcrE1L3+qKgqxYvXH+YN+WSjPsjCLvOIn02eiemOEOyjM5RQ1EtsZe6NqiBU6
+	QFgwk8S9/U/pUKygsziGxy8RoJVOTOzI/Re9fVrS88fIRgb68JvAt20I+ensaP7d8hMq+flHt60f/
+	0EXZCDSYw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hO5FC-0007Tv-UI; Tue, 07 May 2019 18:55:14 +0000
-Received: from mail-eopbgr70088.outbound.protection.outlook.com ([40.107.7.88]
- helo=EUR04-HE1-obe.outbound.protection.outlook.com)
+	id 1hO6fr-0006s2-9E; Tue, 07 May 2019 20:26:51 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hO5F7-0006dx-6F
- for linux-nvme@lists.infradead.org; Tue, 07 May 2019 18:55:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RfklpcPDFOtv6BfATkS9rAGUWpiY778/PP/IiuOkmO8=;
- b=FRf39es0qnRjNAcCq7CDnKUiY4dHR3B/xxJDFrJcpfe3gDF+9eswWxaObJ5Y4BvSzBeh2noHwrFJoawLI7dYP8YFn4CGqdVaehuRWMBxTxICMyqVNpMOivD0QNpeZn1dh1tMOLpRee7JkWwIF1/nNBr76kS5aNRASR9YdrLjQto=
-Received: from DB6PR05CA0021.eurprd05.prod.outlook.com (2603:10a6:6:14::34) by
- AM6PR05MB6421.eurprd05.prod.outlook.com (2603:10a6:20b:bb::14) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1856.10; Tue, 7 May 2019 18:55:02 +0000
-Received: from DB5EUR03FT027.eop-EUR03.prod.protection.outlook.com
- (2a01:111:f400:7e0a::207) by DB6PR05CA0021.outlook.office365.com
- (2603:10a6:6:14::34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1856.10 via Frontend
- Transport; Tue, 7 May 2019 18:55:02 +0000
-Authentication-Results: spf=pass (sender IP is 193.47.165.134)
- smtp.mailfrom=mellanox.com; lists.infradead.org; dkim=none (message not
- signed) header.d=none;lists.infradead.org; dmarc=pass action=none
- header.from=mellanox.com;
-Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
- 193.47.165.134 as permitted sender)
- receiver=protection.outlook.com; 
- client-ip=193.47.165.134; helo=mtlcas13.mtl.com;
-Received: from mtlcas13.mtl.com (193.47.165.134) by
- DB5EUR03FT027.mail.protection.outlook.com (10.152.20.121) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.1856.11 via Frontend Transport; Tue, 7 May 2019 18:55:02 +0000
-Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4; Tue, 7 May 2019 21:55:01
- +0300
-Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Tue,
- 7 May 2019 21:55:01 +0300
-Received: from [172.16.0.179] (172.16.0.179) by MTLCAS01.mtl.com (10.0.8.71)
- with Microsoft SMTP Server (TLS) id 14.3.301.0; Tue, 7 May 2019 21:54:28
- +0300
-Subject: Re: [PATCH nvme-cli rfc 4/6] fabrics: add --quiet option
-To: James Smart <james.smart@broadcom.com>, <linux-nvme@lists.infradead.org>
-References: <20190223023257.21227-1-sagi@grimberg.me>
- <20190223023257.21227-5-sagi@grimberg.me>
- <58b674a5-a40e-c0b1-2b89-2fdc89d8efa0@mellanox.com>
- <2437d298-a26d-924f-281e-d20a97cee4c0@broadcom.com>
-From: Max Gurtovoy <maxg@mellanox.com>
-Message-ID: <b540cb48-c248-e81e-0bc5-28b6b8a10cd6@mellanox.com>
-Date: Tue, 7 May 2019 21:54:27 +0300
+ id 1hO6fm-0006ri-S6
+ for linux-nvme@lists.infradead.org; Tue, 07 May 2019 20:26:48 +0000
+Received: by mail-pf1-x444.google.com with SMTP id 10so9245750pfo.5
+ for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 13:26:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=+PXd1fniL8KOQu6ii/Zu7UlUTJ9g1ys1tqY7xx12ucM=;
+ b=PQvlk3rBGdGR+ODjUqIpr+6vY8uInvddIZcy0yoe2GHLribNjxEmhZkhpyitdOHeJz
+ tuUKhFnzJMZi8eXhEeqzagWajnuqwMuIMMw4iEiYBiZICsJxXD2zWT2OvzXAEjLmzXVv
+ LgFVeJ5CgU13NwBsMS2qBhy6JfP+kIIao9Eac=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=+PXd1fniL8KOQu6ii/Zu7UlUTJ9g1ys1tqY7xx12ucM=;
+ b=ibKYk69c5fPwjBhKk5wc1FondWkCf+ytjZJPTElG0mSGvisXvCCm5/Q/nu3Ez7gyfr
+ wp1z1QWftXvy+JC5N2AYNn1zGApLAAQrwKe5Hm8U6HaM80cB/RYHkeMcZDJLLhxqtWd7
+ NHayfyme1Hd7hyCAUw6+8Aoe3OtQCW77brxwjv69pvHsPcOEX8kWQdt8uM68P1VYBIlf
+ NtLmli9PNyWwLSW6/IWeZhpy/Xbsq9UNzyLhu6aXTfjMINW4Ou0sLC+27zSb0BxHG8X5
+ AXazuo/0j8y8TqUCLkQWaEHrnRmtsD1rUE1dHoarDm4FovNoUNrOkz0ITwOdcW4UxlRM
+ oTBA==
+X-Gm-Message-State: APjAAAWDg0bRa8VGUUXSjaGF4JuctkwpJQlr34NgTe3frZIvZJO4V4Ev
+ XSG/yT4ooEpUcR8F8h/1mnOlejTaLH0=
+X-Google-Smtp-Source: APXvYqy+l9poLBd5v/wHS9dYdKCcZ7yxUIHRWQbRE/4rQ6GyuYqp25u7Nt7a4MeTscivthxmn/AdyA==
+X-Received: by 2002:a65:6116:: with SMTP id z22mr2196836pgu.50.1557260805956; 
+ Tue, 07 May 2019 13:26:45 -0700 (PDT)
+Received: from [10.69.37.149] ([192.19.223.250])
+ by smtp.gmail.com with ESMTPSA id k26sm17399887pfi.136.2019.05.07.13.26.44
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 07 May 2019 13:26:45 -0700 (PDT)
+Subject: Re: [PATCH nvme-cli rfc 5/5] nvmf auto-connect scripts
+To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
+References: <20190504000456.3888-1-jsmart2021@gmail.com>
+ <20190504000456.3888-6-jsmart2021@gmail.com>
+From: James Smart <james.smart@broadcom.com>
+Message-ID: <fd4af817-3a90-380b-b485-81b44c12c8e9@broadcom.com>
+Date: Tue, 7 May 2019 13:26:43 -0700
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <2437d298-a26d-924f-281e-d20a97cee4c0@broadcom.com>
+In-Reply-To: <20190504000456.3888-6-jsmart2021@gmail.com>
 Content-Language: en-US
-X-Originating-IP: [172.16.0.179]
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:193.47.165.134; IPV:NLI; CTRY:IL; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(346002)(136003)(376002)(39860400002)(396003)(2980300002)(199004)(189003)(305945005)(65826007)(8936002)(336012)(3846002)(31686004)(70206006)(8676002)(229853002)(70586007)(26005)(230700001)(2906002)(53546011)(446003)(11346002)(16526019)(7736002)(81156014)(486006)(186003)(77096007)(81166006)(2616005)(476003)(126002)(110136005)(106002)(64126003)(58126008)(36756003)(50466002)(6116002)(5660300002)(4744005)(47776003)(16576012)(65956001)(65806001)(356004)(316002)(31696002)(76176011)(2486003)(67846002)(478600001)(6246003)(23676004)(86362001)(3940600001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM6PR05MB6421; H:mtlcas13.mtl.com; FPR:;
- SPF:Pass; LANG:en; PTR:mail13.mellanox.com; A:1; MX:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 8f182ba8-876f-44e2-cf4d-08d6d31d8308
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4709054)(2017052603328)(7193020);
- SRVR:AM6PR05MB6421; 
-X-MS-TrafficTypeDiagnostic: AM6PR05MB6421:
-X-Microsoft-Antispam-PRVS: <AM6PR05MB642125144BEC71E65D8CDCD4B6310@AM6PR05MB6421.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:254;
-X-Forefront-PRVS: 0030839EEE
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: o7OjGqQe4quUiMzM3Mh5afT587hPXlNWzylY7zOttTZjRL7iEWb7jQ+7JmWPXpS+6DR9JAX+rLMBDXIGyjSOWHht12k4tRVTCVlWEgnYYRjEfuDe2oPsZR0x56UHZeccuETH75COiT8kxxowrRwnTOVi7F46XQK3IqFaCorT9PMOnbvZr66Ls9QsgshyPoPTXorZjXPcXckqTFbG/MhVXWeBQU7kdEkqhw7rEcOwbr95QaAQMWMGrkZNWvUx8BA+dcWu1lmiOFOVkhczevEzCEEXqxxa/ftKV7JAe9rW4yGHk5VnP0vR19ECXFXG6GIZ5tJ7gChzUdV7I60LnGPehHGR2FO55l5paP+Str/nhvAMD78nWgg/xOhqJe6UJHBaKyOBJaPX5zOz0KLiw/OAplE8BADlKBuNZq8bFCC1ZmE=
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 May 2019 18:55:02.3377 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8f182ba8-876f-44e2-cf4d-08d6d31d8308
-X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.134];
- Helo=[mtlcas13.mtl.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR05MB6421
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190507_115509_290290_211BDE04 
-X-CRM114-Status: UNSURE (   8.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190507_132646_917340_A637A77C 
+X-CRM114-Status: GOOD (  10.66  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.7.88 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -121,6 +84,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -132,32 +96,39 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Hannes Reinecke <hare@suse.com>, Simon Schricker <sschricker@suse.com>,
+ Sagi Grimberg <sagi@grimberg.me>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-On 5/7/2019 8:12 PM, James Smart wrote:
->
->
-> On 5/7/2019 2:35 AM, Max Gurtovoy wrote:
->>
->> (and also example can be added to commit message :) )
->>
->
-> wow, all these examples. What fun is that. What's left to the 
-> developer to go figure out ? :)
-
-well I'm thinking about non-developers that can get added value from 
-good examples.
-
-
->
-> -- james
->
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+Cj4gKyMgRXZlbnRzIGZyb20gcGVyc2lzdGVudCBkaXNjb3ZlcnkgY29udHJvbGxlcnMgb3IgbnZt
+ZS1mYyB0cmFuc3BvcnQgZXZlbnRzCj4gK0FDVElPTj09ImNoYW5nZSIsIFNVQlNZU1RFTT09Im52
+bWUiLCBFTlZ7TlZNRV9FVkVOVH09PSJkaXNjb3ZlcnkiLFwKPiArICBFTlZ7TlZNRV9DVExSX05B
+TUV9PT0iKiIsIEVOVntOVk1FX1RSVFlQRX09PSIqIiwgRU5We05WTUVfVFJBRERSfT09IioiLCBc
+Cj4gKyAgRU5We05WTUVfVFJTVkNJRH09PSIqIiwgRU5We05WTUVfSE9TVF9UUkFERFJ9PT0iKiIs
+IFwKPiArICBSVU4rPSIvdXNyL2Jpbi9zeXN0ZW1jdGwgLS1uby1ibG9jayBzdGFydCBudm1mLWNv
+bm5lY3RALS1kZXZpY2U9JGVudntOVk1FX0NUTFJfTkFNRX1cdC0tdHJhbnNwb3J0PSRlbnZ7TlZN
+RV9UUlRZUEV9XHQtLXRyYWRkcj0kZW52e05WTUVfVFJBRERSfVx0LS10cnN2Y2lkPSRlbnZ7TlZN
+RV9UUlNWQ0lEfVx0LS1ob3N0LXRyYWRkcj0kZW52e05WTUVfSE9TVF9UUkFERFJ9LnNlcnZpY2Ui
+Cj4gKwo+ICsjIG52bWUtZmMgdHJhbnNwb3J0IGdlbmVyYXRlZCBldmVudHMgKG9sZC1zdHlsZSBm
+b3IgY29tcGF0aWJpbGl0eSkKPiArQUNUSU9OPT0iY2hhbmdlIiwgU1VCU1lTVEVNPT0iZmMiLCBF
+TlZ7RkNfRVZFTlR9PT0ibnZtZWRpc2NvdmVyeSIsIFwKPiArICBFTlZ7TlZNRUZDX0hPU1RfVFJB
+RERSfT09IioiLCAgRU5We05WTUVGQ19UUkFERFJ9PT0iKiIsIFwKPiArICBSVU4rPSIvdXNyL2Jp
+bi9zeXN0ZW1jdGwgLS1uby1ibG9jayBzdGFydCBudm1mLWNvbm5lY3RALS1kZXZpY2U9bm9uZVx0
+LS10cmFuc3BvcnQ9ZmNcdC0tdHJhZGRyPSRlbnZ7TlZNRUZDX1RSQUREUn1cdC0tdHJzdmNpZD1u
+b25lXHQtLWhvc3QtdHJhZGRyPSRlbnZ7TlZNRUZDX0hPU1RfVFJBRERSfS5zZXJ2aWNlIgo+CgpJ
+IGFzc3VtZSwgdGhhdCB3ZSBzaG91bGQgYmUgYWRkaW5nIC0tcXVpZXQgdG8gdGhlIGFib3ZlIGxp
+bmVzLsKgIE5vIG5lZWQgCnRvIGdldCBpdCBmcm9tIHRoZSBldmVudC7CoCBBZ3JlZSA/CgpBbmQg
+d2Ugd291bGQgbm90IGFkZCAtLXBlcnNpc3RlbnQuwqDCoCBXaGljaCBtYWtlcyBtZSBhc3N1bWUg
+LS1wZXJzaXN0ZW50IAp3b3VsZCBiZSBsZWZ0IHRvIG1hbnVhbC9zY3JpcHRlZCBjYWxscyBvciBw
+b3NzaWJseSBwdWxsZWQgaW4gYnkgdGhlIAoiZGVmYXVsdHMiIGZpbGUgd2Ugd2VyZSBkaXNjdXNz
+aW5nLsKgwqDCoCBTbywgdGhlIGxpbnV4IHBvbGljeSBpcyBvdXIgCmRlZmF1bHQgZGlzY292ZXJ5
+IGNvbnRyb2xsZXIgaXMgbm9uLXBlcnNpc3RlbnQgYW5kIHJlcXVpcmVzIGFkbWluIAphY3Rpb25z
+IHRvIGVuYWJsZSB0aGUgcGVyc2lzdGVudCBvcHRpb24gLSBhcyBvcHBvc2VkIHRvIC0gbG9va2lu
+ZyBhdCAKSWRlbnRpZnlDb250cm9sbGVyOktBUyB0byBkZWNpZGUgaWYgS0FUTyBpcyBzdXBwb3J0
+ZWQsIGFuZCBpZiBzbywgbWFrZSAKdGhlIGNvbm5lY3Rpb24gcGVyc2lzdGVudCA/CgotLSBqYW1l
+cwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
