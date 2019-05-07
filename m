@@ -2,59 +2,94 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1AD9168DF
-	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 19:13:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D1495168DD
+	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 19:12:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TzQk/vICyodw0QqiS7qcxWwdvukqQ77T/ez+YjtYO5U=; b=l50MU6trcJi2zO
-	FfEUuumzVn81UVhsYC/KGV3YzRcF7S+arvLLZNt4klaCqRGx8KtqKf8KGmeB16Dd1yMDTPNtL6p9d
-	Ptt2RvSDK2BTROej8TtjmMJvQYMgRXLGItrkCzz7w+FvkSrh0efxs2qoGSIbIaoiPQtQHP+0yXAoK
-	ACfjPtz9KSV5vDeQsev/GB6ClFZjIJyWOIl82V2dU7aelmZU+G7iwznp+7r+MtXTDpvySJeyg+yx3
-	XPE/8A+MJQeF59Ch4mNvWN7z+KTnmQpl05WrDNhWGV+tU2dgBJhnAzR74adTMloaX+bFwFcvqTvHC
-	3DiXjx899gvhwe1WqjHQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=bg23D92fNvw90lRsgpbmtNxiAhxbnG3i4bvQCgAEehY=; b=F6uOpQ0X2LFP4Yl7BJvFEj5IC
+	BeEcbDsrDr+AGWsg/lwZbZBju2O6HfCGefAn9HH83FZ9/YxgCUOYnNRd6FaIfsivqtRP6CpmTz+/O
+	f4kYgiXQeu5nwj4kkk+U2U8iu++Q0uZsphQOsTOH6DzDwkTDqW0wQVMK6iz66/YVvO8YoM/eSnyMY
+	tdPvIlKCyd9xcvluZJcfD13AEVunGsexJA5K+BklJ2BIijUngaFRPUs01NG17oEC3A6/XPY6A+VRT
+	yb76UsRxF6Vu6d15WN98ESj13S2SdMOHLBnej1uNnT0UB9V5Kd+sAWHs5v9zMpXjdPtyzaWcwQ4TC
+	ivLJZDZ5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hO3eV-00052K-2f; Tue, 07 May 2019 17:13:15 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1hO3dz-0004i9-Cq; Tue, 07 May 2019 17:12:43 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hO3eP-000520-N2
- for linux-nvme@lists.infradead.org; Tue, 07 May 2019 17:13:11 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 07 May 2019 10:13:09 -0700
-X-ExtLoop1: 1
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga006.jf.intel.com with ESMTP; 07 May 2019 10:13:08 -0700
-Date: Tue, 7 May 2019 11:07:34 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Akinobu Mita <akinobu.mita@gmail.com>
-Subject: Re: [PATCH v2 6/7] nvme-pci: add device coredump support
-Message-ID: <20190507170733.GA6783@localhost.localdomain>
-References: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
- <1557248314-4238-7-git-send-email-akinobu.mita@gmail.com>
+ id 1hO3dv-0004hr-A9
+ for linux-nvme@lists.infradead.org; Tue, 07 May 2019 17:12:40 +0000
+Received: by mail-pl1-x641.google.com with SMTP id bi2so8485300plb.13
+ for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 10:12:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-transfer-encoding:content-language;
+ bh=9ZEDjUv81kAlsPP95P3KqnhnmnGZWHcTOJ9KZTYPNrM=;
+ b=JtHarFNt7EFbXLQEb9+q5+Src3VgZ0XmKw6lw0vkIlXXRUfMdrClGLklQUiw/H9nOX
+ niSzw2BN3TRApCX20ekSEKeOuyFx0N9kt7f8D+C5UnqAaFTSLw+u5PN/BpMm0cU8QcE8
+ 0+rkANi6jbN8Rf8/YPq6oeh2EemFfEXVMyTm0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=9ZEDjUv81kAlsPP95P3KqnhnmnGZWHcTOJ9KZTYPNrM=;
+ b=KJiOp3Nrc4jP+PgBfR565t7NYjB6D5ZDrdIUtVls5GX87a3CbSzwCFxKbBVXULW7Jo
+ YoBu7HK8IP3IyeN8iUHfxhupwyyTpa68prFX1MGFZ87NB4ODLtMH4XFNzg/9rD2QT5HQ
+ GFnIDCY1isB9HejZ4ZVne7CiuO3+bVw/yPULr3J7UZdJfIlzSinq1RIf9N+OR4NPcFTw
+ kq0sbN3j9kvSEcheMbY8Pz+57BUVx9t6i89jr5+DGJWsTXIy4upJaOqB9H8itIpp6dKj
+ /3jC9r4YlbHONKE+8W5vPEWzJOfXkQkFcL3Y7uwDSxQ3KZflmVFBv47MspXdcLwP/5gx
+ 5Ozw==
+X-Gm-Message-State: APjAAAU+GYIY+VkA3FDMO7nedTs3EnE6CxsjH2m0OKFS+nBzpdLo7u5P
+ gNgfD85pOUkuiCpWjNJPLV/EFolYR5ZVjYdmTZ47IZQKOKOAWkvrMys8YVXo590BN1tMwfk/yvz
+ tYte49ByNSo1rxRSjuduxUdU2tU7fXhUm5uHd7oeWrumNPGJG3dmUPCK9F0hpl7YRPdqycEi45h
+ lBVlZGlQ==
+X-Google-Smtp-Source: APXvYqzasqlW4YLtoQrPGXFZ7kyF7y3PJo4layXBo7F2e5gHGARfMIXTP4O2mX0S8KHXiSZUywd2zA==
+X-Received: by 2002:a17:902:1105:: with SMTP id
+ d5mr41770933pla.311.1557249158243; 
+ Tue, 07 May 2019 10:12:38 -0700 (PDT)
+Received: from [10.69.37.149] ([192.19.223.250])
+ by smtp.gmail.com with ESMTPSA id y10sm19877555pfm.27.2019.05.07.10.12.35
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 07 May 2019 10:12:37 -0700 (PDT)
+Subject: Re: [PATCH nvme-cli rfc 4/6] fabrics: add --quiet option
+To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org
+References: <20190223023257.21227-1-sagi@grimberg.me>
+ <20190223023257.21227-5-sagi@grimberg.me>
+ <58b674a5-a40e-c0b1-2b89-2fdc89d8efa0@mellanox.com>
+From: James Smart <james.smart@broadcom.com>
+Message-ID: <2437d298-a26d-924f-281e-d20a97cee4c0@broadcom.com>
+Date: Tue, 7 May 2019 10:12:33 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1557248314-4238-7-git-send-email-akinobu.mita@gmail.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+In-Reply-To: <58b674a5-a40e-c0b1-2b89-2fdc89d8efa0@mellanox.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190507_101310_341902_74C74A9D 
-X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-CacheID: sfid-20190507_101239_359731_20BDB3A6 
+X-CRM114-Status: UNSURE (   8.86  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.3 (-)
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.120 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,33 +101,23 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- Keith Busch <keith.busch@intel.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Johannes Berg <johannes@sipsolutions.net>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, May 08, 2019 at 01:58:33AM +0900, Akinobu Mita wrote:
-> +static void nvme_coredump(struct device *dev)
-> +{
-> +	struct nvme_dev *ndev = dev_get_drvdata(dev);
-> +
-> +	mutex_lock(&ndev->shutdown_lock);
-> +
-> +	nvme_coredump_prologue(ndev);
-> +	nvme_coredump_epilogue(ndev);
-> +
-> +	mutex_unlock(&ndev->shutdown_lock);
-> +}
 
-This is a bit of a mine field. The shutdown_lock is held when reclaiming
-requests that didn't see a response. If you're holding it here and your
-telemetry log page times out, we're going to deadlock. And since the
-controller is probably in a buggered state when you try to retrieve one,
-I would guess an unrecoverable timeout is the most likely outcome.
+
+On 5/7/2019 2:35 AM, Max Gurtovoy wrote:
+>
+> (and also example can be added to commit message :) )
+>
+
+wow, all these examples. What fun is that. What's left to the developer 
+to go figure out ? :)
+
+-- james
+
 
 _______________________________________________
 Linux-nvme mailing list
