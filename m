@@ -2,83 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A50716899
-	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 18:59:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CAAC6168B0
+	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 19:04:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=sJyn3Ly5P7k7iXbksm4BXp/wqlfFcUX/S2GodiYLVdg=; b=gRGQ59Q5hjqsbVHQ2YAXaM2Wp6
-	bZ2zpPlPm5rTECPGM2smh8ZPWuXf+yxX4tpSXRjSJcHZWz+eM86moKUnXJKKZ9l6muc7gFflJXP1S
-	TB+vUvy2gXJSSH/JRRHV4ECSVTMW89T3IoabF8ZER9gR7uWq4LD/GHpYJzPhJm3deeDIj44U1Tw4L
-	1uuMAI5KfkiqZsqinIJFWrYbcmvCgE6oRAfhW2GtFUR5K1IO33t4eQ9nl2NQlxtQzbIHoQ3pm/CxA
-	1Tj9bOeoA8PPtOH9+IItN98wDrVq43tblN8WuBYyrtiRMxaNhj8A1htayAdIWuTFPfwkgPLYvr89h
-	/9wwBFPg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=7sm78eOqfbWwe3L60vqo8Rk+KZbceo3PNEixU4YhIN0=; b=HOv2cMauZqehK4EkT5KjS5wpN
+	hZypOMKCJzgqwgtsfT1buAg22eHMeX5qLzECIN6Xct+K+0VkJUfSO15NHasRpvgn7/nlbSYpb08KI
+	P9nZPme9uF6ww+7rODS7wLIMnBO900CDn3eYSS4GT+JQPr7QhIGhq/WWN3fx94OM2xw0/GUWK3UD2
+	FibeOi6scysImFJGq114WatHrxpS4XlNPsGLkZYyWRoRVGmEjyvSS0e+gxmmYKmUeXs+WOBCKPVTp
+	3WaD/YhDM0TEDvAC5EIbaxNTPsuMvgmzbL2WQZTOmKeiCg8AdD7d0gIe1glSavIJUqV/mMfnC8Cqi
+	BkRQVL2jw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hO3Ra-0008Or-1M; Tue, 07 May 2019 16:59:54 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hO3Vn-0001fr-Ui; Tue, 07 May 2019 17:04:15 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hO3Qu-0007jZ-Cp
- for linux-nvme@lists.infradead.org; Tue, 07 May 2019 16:59:47 +0000
-Received: by mail-pl1-x642.google.com with SMTP id a5so3534732pls.12
- for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 09:59:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=k+izu/4NAQhuOqK71jybIxMy36M1jkAicxA/bCcXC8o=;
- b=daC1FLv2qV7ms0f53DCm1/ESSLNjYad3dx8z6Fn434ELLWYMBC20Hkv7lmiq7Ee1rw
- XXUSOqq0NSHXS+dhuIJCsdMpRnRt9mEZANysxRA9Lu1CQVN9vszHr7ZPGTTKEgo8ic00
- LeijExqB3ExTY1paGiidgFW3UcGWt9g+OeBSk4JkhRVGUppPNrIvzM4IJzgg4ffDBh4N
- wZt9wx4hAWD5fnxYyiJ0cIzifyQYSEOk6cNXfmXn0OczjiHpC5AAlsUxpctbMaNWiYQR
- RszKsujhBEtW8fzcO8tkFE87HA7PO8x6vulSDjxCh6Z69lGuQY86lumxgT2+yIemv1fR
- efYA==
+ id 1hO3Vi-0001fQ-9s
+ for linux-nvme@lists.infradead.org; Tue, 07 May 2019 17:04:11 +0000
+Received: by mail-pg1-x544.google.com with SMTP id h17so2633567pgv.0
+ for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 10:04:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-transfer-encoding:content-language;
+ bh=H62YLszHgnlsrqbiAhgMLmynoqOxnNmRv6RVgPeQrPk=;
+ b=CFFuGaOzjrh8VR+Q0AFQImFLu0NUtRFQvOBk+a7WayK8RPzdhCBS5mSfonKUtV9wUe
+ YPFd/0SD0SjxMNs4Fzcr6vvC9hbHr7FDdE+37HaXyqqrvIfegus4Uh4JxeVbi3MveMOM
+ 3IGhcif2aaN7jUpeQdSzIna6iIogI8u17Atlo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=k+izu/4NAQhuOqK71jybIxMy36M1jkAicxA/bCcXC8o=;
- b=klFaJKANCCnH5Xagxof4cL/aoxBR8RHPerBiY4lZ6q5rNMsbno6Ud50NxZRrY7yIUW
- gBkhn7mHi4xGOtUbmZ1+74fc7t4u+L/NJQ4CDb/RRWFPkb8JRSnFpchdXAIigHh5NVce
- SdL4VpqBVb6D8UAdIPFQCTaAQt30E7cuh+ShnDMLdXplVIo8l8fXS+3oJz3yB9F6G2IO
- emOsRy62g9mpbYmC5l2MFh9TqyE0KgttMF7qOdVNlRBxD37uatg1XVBQM8DVhw/RfBsi
- 2qruBJnA5UuqxuhFlE5RoZeLn2X/vMDqoBhzcH58MMxoIbzkR+/JS2Voy70Yuqr+2+Aq
- IDmQ==
-X-Gm-Message-State: APjAAAUYEqV5JQ6ON7FfTwo3VRocpOJJjn9z7yVqDzzu293+/vXWeaMl
- Y/wZsqLVDQFHGXAmy5WRBafphOYV
-X-Google-Smtp-Source: APXvYqyg11zHHV0VT25um5kq05FEx9CIxdUeQSu1MM5NK+921+GDeWHyLR3vBtX8qBQVI9QuFfuYOg==
-X-Received: by 2002:a17:902:822:: with SMTP id
- 31mr40550818plk.41.1557248351802; 
- Tue, 07 May 2019 09:59:11 -0700 (PDT)
-Received: from mita-MS-7A45.lan ([240f:34:212d:1:1b24:991b:df50:ea3f])
- by smtp.gmail.com with ESMTPSA id r12sm18140093pfn.144.2019.05.07.09.59.08
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Tue, 07 May 2019 09:59:10 -0700 (PDT)
-From: Akinobu Mita <akinobu.mita@gmail.com>
-To: linux-nvme@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 7/7] nvme-pci: trigger device coredump on command timeout
-Date: Wed,  8 May 2019 01:58:34 +0900
-Message-Id: <1557248314-4238-8-git-send-email-akinobu.mita@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
-References: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=H62YLszHgnlsrqbiAhgMLmynoqOxnNmRv6RVgPeQrPk=;
+ b=S6BnmvJcyjA4AXr5vdVSVN5UiZ0bCTAe8UQCIDZ9PyNrwR2k6Qeg57f0R09sUUUeTa
+ AylARQCGJ8EYwk5Zhqs+9oIqkLCwJEMctaZJUtlUEQsC95Qwpz6HMDn6QXfVJP8QAHi2
+ c7EC8HKbr6WK0sJhEa3RpIytatfjLcnHpOh3Md6gvd6xxfAjanK68WMSaTM3Pcs8ITbr
+ zcJFI+bovgNDMJwtqyepOnmDbD9Bj7SuavdaauSRFifoAdXR0xybb2oDsJpBL4OxSzzf
+ 3w0aNekq4ZnmfbWtC6K12cqFSzMqSIYSCQAtypk5DdDuTcGoDXK0W4PeIL33DpF0Tpal
+ C5Fg==
+X-Gm-Message-State: APjAAAW6aZSWi/igA5CIxDh4OQFGDoTmhA/aiJd0fl4eCxj+f0f6N4xF
+ c+NwqTOvDM8WyAKO0rrlraXBIQti41aOB25hXdX4++ZAQtNIFjyaU3r4rk2btiSfdVY9K/PtRVS
+ M5QPkKK25Qo5vTPS9MYI1Hb35xrS1dYelI4utjBCQOss79oTRa0QgNSs6jDf3kaB6waiI0D/S45
+ ee9Joa6w==
+X-Google-Smtp-Source: APXvYqw50IeocK/sVA60vzZc3ySOG35vTTx74ZeAGrT7zHtv6J8BbG28Rga991csX6+tgklw91apbg==
+X-Received: by 2002:a63:530d:: with SMTP id h13mr39906022pgb.77.1557248649049; 
+ Tue, 07 May 2019 10:04:09 -0700 (PDT)
+Received: from [10.69.37.149] ([192.19.223.250])
+ by smtp.gmail.com with ESMTPSA id s32sm21206959pgm.19.2019.05.07.10.04.08
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 07 May 2019 10:04:08 -0700 (PDT)
+Subject: Re: [PATCH nvme-cli rfc 1/6] fabrics: ignore arguments that pass in
+ "none"
+To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org
+References: <20190223023257.21227-1-sagi@grimberg.me>
+ <20190223023257.21227-2-sagi@grimberg.me>
+ <cd812103-3023-4563-2be8-3d22e85e5389@mellanox.com>
+From: James Smart <james.smart@broadcom.com>
+Message-ID: <52aaf112-3460-9fd7-62d4-9a6530b8de48@broadcom.com>
+Date: Tue, 7 May 2019 10:04:07 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <cd812103-3023-4563-2be8-3d22e85e5389@mellanox.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190507_095912_711942_91EB663B 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20190507_100410_357684_D09C7FF6 
+X-CRM114-Status: GOOD (  17.87  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (akinobu.mita[at]gmail.com)
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -86,6 +88,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,197 +100,61 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
- Akinobu Mita <akinobu.mita@gmail.com>, Keith Busch <keith.busch@intel.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, Johannes Berg <johannes@sipsolutions.net>,
- Christoph Hellwig <hch@lst.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This enables the nvme driver to trigger a device coredump when command
-timeout occurs, and it helps diagnose and debug issues.
-
-This can be tested with fail_io_timeout fault injection.
-
-	# echo 1 > /sys/kernel/debug/fail_io_timeout/probability
-	# echo 1 > /sys/kernel/debug/fail_io_timeout/times
-	# echo 1 > /sys/block/nvme0n1/io-timeout-fail
-	# dd if=/dev/nvme0n1 of=/dev/null
-
-Cc: Johannes Berg <johannes@sipsolutions.net>
-Cc: Keith Busch <keith.busch@intel.com>
-Cc: Jens Axboe <axboe@fb.com>
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Sagi Grimberg <sagi@grimberg.me>
-Cc: Minwoo Im <minwoo.im.dev@gmail.com>
-Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
----
-- Make coredump procedure into two phases (before resetting controller and
-  after resetting as soon as admin queue is available).
-
- drivers/nvme/host/pci.c | 35 ++++++++++++++++++++++-------------
- 1 file changed, 22 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 4684a86..4ff918f 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -87,9 +87,12 @@ MODULE_PARM_DESC(poll_queues, "Number of queues to use for polled IO.");
- struct nvme_dev;
- struct nvme_queue;
- 
--static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown);
-+static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown, bool dump);
- static bool __nvme_disable_io_queues(struct nvme_dev *dev, u8 opcode);
- 
-+static int nvme_coredump_prologue(struct nvme_dev *dev);
-+static void nvme_coredump_epilogue(struct nvme_dev *dev);
-+
- /*
-  * Represents an NVM Express device.  Each nvme_dev is a PCI function.
-  */
-@@ -1289,7 +1292,7 @@ static enum blk_eh_timer_return nvme_timeout(struct request *req, bool reserved)
- 	 */
- 	if (nvme_should_reset(dev, csts)) {
- 		nvme_warn_reset(dev, csts);
--		nvme_dev_disable(dev, false);
-+		nvme_dev_disable(dev, false, true);
- 		nvme_reset_ctrl(&dev->ctrl);
- 		return BLK_EH_DONE;
- 	}
-@@ -1316,7 +1319,7 @@ static enum blk_eh_timer_return nvme_timeout(struct request *req, bool reserved)
- 		dev_warn_ratelimited(dev->ctrl.device,
- 			 "I/O %d QID %d timeout, disable controller\n",
- 			 req->tag, nvmeq->qid);
--		nvme_dev_disable(dev, false);
-+		nvme_dev_disable(dev, false, true);
- 		nvme_req(req)->flags |= NVME_REQ_CANCELLED;
- 		return BLK_EH_DONE;
- 	default:
-@@ -1332,7 +1335,7 @@ static enum blk_eh_timer_return nvme_timeout(struct request *req, bool reserved)
- 		dev_warn(dev->ctrl.device,
- 			 "I/O %d QID %d timeout, reset controller\n",
- 			 req->tag, nvmeq->qid);
--		nvme_dev_disable(dev, false);
-+		nvme_dev_disable(dev, false, true);
- 		nvme_reset_ctrl(&dev->ctrl);
- 
- 		nvme_req(req)->flags |= NVME_REQ_CANCELLED;
-@@ -2399,7 +2402,7 @@ static void nvme_pci_disable(struct nvme_dev *dev)
- 	}
- }
- 
--static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown)
-+static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown, bool dump)
- {
- 	bool dead = true;
- 	struct pci_dev *pdev = to_pci_dev(dev->dev);
-@@ -2424,6 +2427,9 @@ static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown)
- 			nvme_wait_freeze_timeout(&dev->ctrl, NVME_IO_TIMEOUT);
- 	}
- 
-+	if (dump)
-+		nvme_coredump_prologue(dev);
-+
- 	nvme_stop_queues(&dev->ctrl);
- 
- 	if (!dead && dev->ctrl.queue_count > 0) {
-@@ -2491,7 +2497,7 @@ static void nvme_remove_dead_ctrl(struct nvme_dev *dev, int status)
- 	dev_warn(dev->ctrl.device, "Removing after probe failure status: %d\n", status);
- 
- 	nvme_get_ctrl(&dev->ctrl);
--	nvme_dev_disable(dev, false);
-+	nvme_dev_disable(dev, false, false);
- 	nvme_kill_queues(&dev->ctrl);
- 	if (!queue_work(nvme_wq, &dev->remove_work))
- 		nvme_put_ctrl(&dev->ctrl);
-@@ -2513,7 +2519,7 @@ static void nvme_reset_work(struct work_struct *work)
- 	 * moving on.
- 	 */
- 	if (dev->ctrl.ctrl_config & NVME_CC_ENABLE)
--		nvme_dev_disable(dev, false);
-+		nvme_dev_disable(dev, false, false);
- 
- 	mutex_lock(&dev->shutdown_lock);
- 	result = nvme_pci_enable(dev);
-@@ -2550,6 +2556,8 @@ static void nvme_reset_work(struct work_struct *work)
- 	if (result)
- 		goto out;
- 
-+	nvme_coredump_epilogue(dev);
-+
- 	if (dev->ctrl.oacs & NVME_CTRL_OACS_SEC_SUPP) {
- 		if (!dev->ctrl.opal_dev)
- 			dev->ctrl.opal_dev =
-@@ -2612,6 +2620,7 @@ static void nvme_reset_work(struct work_struct *work)
-  out_unlock:
- 	mutex_unlock(&dev->shutdown_lock);
-  out:
-+	nvme_coredump_epilogue(dev);
- 	nvme_remove_dead_ctrl(dev, result);
- }
- 
-@@ -2802,7 +2811,7 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- static void nvme_reset_prepare(struct pci_dev *pdev)
- {
- 	struct nvme_dev *dev = pci_get_drvdata(pdev);
--	nvme_dev_disable(dev, false);
-+	nvme_dev_disable(dev, false, false);
- }
- 
- static void nvme_reset_done(struct pci_dev *pdev)
-@@ -2814,7 +2823,7 @@ static void nvme_reset_done(struct pci_dev *pdev)
- static void nvme_shutdown(struct pci_dev *pdev)
- {
- 	struct nvme_dev *dev = pci_get_drvdata(pdev);
--	nvme_dev_disable(dev, true);
-+	nvme_dev_disable(dev, true, false);
- }
- 
- /*
-@@ -2831,14 +2840,14 @@ static void nvme_remove(struct pci_dev *pdev)
- 
- 	if (!pci_device_is_present(pdev)) {
- 		nvme_change_ctrl_state(&dev->ctrl, NVME_CTRL_DEAD);
--		nvme_dev_disable(dev, true);
-+		nvme_dev_disable(dev, true, false);
- 		nvme_dev_remove_admin(dev);
- 	}
- 
- 	flush_work(&dev->ctrl.reset_work);
- 	nvme_stop_ctrl(&dev->ctrl);
- 	nvme_remove_namespaces(&dev->ctrl);
--	nvme_dev_disable(dev, true);
-+	nvme_dev_disable(dev, true, false);
- 	nvme_release_cmb(dev);
- 	nvme_free_host_mem(dev);
- 	nvme_dev_remove_admin(dev);
-@@ -2855,7 +2864,7 @@ static int nvme_suspend(struct device *dev)
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct nvme_dev *ndev = pci_get_drvdata(pdev);
- 
--	nvme_dev_disable(ndev, true);
-+	nvme_dev_disable(ndev, true, false);
- 	return 0;
- }
- 
-@@ -3307,7 +3316,7 @@ static pci_ers_result_t nvme_error_detected(struct pci_dev *pdev,
- 	case pci_channel_io_frozen:
- 		dev_warn(dev->ctrl.device,
- 			"frozen state error detected, reset controller\n");
--		nvme_dev_disable(dev, false);
-+		nvme_dev_disable(dev, false, false);
- 		return PCI_ERS_RESULT_NEED_RESET;
- 	case pci_channel_io_perm_failure:
- 		dev_warn(dev->ctrl.device,
--- 
-2.7.4
-
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+CgpPbiA1LzcvMjAxOSAyOjE3IEFNLCBNYXggR3VydG92b3kgd3JvdGU6Cj4KPiBPbiAyLzIzLzIw
+MTkgNDozMiBBTSwgU2FnaSBHcmltYmVyZyB3cm90ZToKPj4gQXMgd2Ugd2FudCB0byBzdXBwb3J0
+IGRpc2NvdmVyeSB1ZXZlbnRzIG92ZXIgZGlmZmVyZW50Cj4+IHRyYW5zcG9ydHMsIHdlIHdhbnQg
+dG8gYWxsb3cgdGhlIGtlcm5lbCB0byBwcm92aWRlIG1pc3NpbmcKPj4gaW5mb3JtYXRpb24gaW4g
+dGhlIGZvcm0gb2Ygbm9uZSBhbmQgaGF2ZSBudm1lLWNsaSBwcm9wZXJseQo+PiBpZ25vcmUgaXQu
+Cj4+Cj4+IE9uZSBleGFtcGxlIGlzIHRoZSBob3N0X3RyYWRkci4gSWYgaXQgaXMgbm90IHNldCAo
+d2hpY2ggbWVhbnMKPj4gdGhhdCB0aGUgZGVmYXVsdCByb3V0ZSBkZXRlcm1pbmVkIHRoZSBob3N0
+IGFkZHJlc3MpIHdlIHdpbGwKPj4gd2FudCB0byBkbyB0aGUgc2FtZSBmb3IgbmV3bHkgZGlzY292
+ZXJlZCBjb250cm9sbGVycy4KPj4KPj4gU28gYWxsb3cgdXNlcnMgdG8gcGFzcyAnbm9uZScgYXJn
+dW1lbnRzIGFzIHdlbGwuCj4KPiBjYW4geW91IHBsZWFzZSBhZGQgYW4gZXhhbXBsZSBmb3IgdGhl
+IGNvbW1hbmQgaW4gdGhlIGNvbW1pdCBtZXNzYWdlID8KPgoKeWVzLCBJIHdpbGwgaW4gdGhlIHJl
+cG9zdC4gVGhlIHJlYWwgaW50ZXJlc3RpbmcgY2FzZSB3aWxsIGNvbWUgZnJvbSB0aGUgCnVldmVu
+dCwgd2hpY2ggd2lsbCBwYXNzIHRoZSBhZGRyZXNzIGFyZ3VtZW50IHRvIHRoZSB1ZGV2IGV2ZW50
+IHNldCB0byAKIm5vbmUiLiBUaGVyZWZvcmUgdGhlIGV2ZW50OgogwqAgK0FDVElPTj09ImNoYW5n
+ZSIsIFNVQlNZU1RFTT09Im52bWUiLCBFTlZ7TlZNRV9FVkVOVH09PSJkaXNjb3ZlcnkiLFwKIMKg
+ICvCoCBFTlZ7TlZNRV9DVExSX05BTUV9PT0iKiIsIEVOVntOVk1FX1RSVFlQRX09PSIqIiwgCkVO
+VntOVk1FX1RSQUREUn09PSIqIiwgXAogwqAgK8KgIEVOVntOVk1FX1RSU1ZDSUR9PT0iKiIsIEVO
+VntOVk1FX0hPU1RfVFJBRERSfT09IioiLCBcCiDCoCArwqAgUlVOKz0iL3Vzci9iaW4vc3lzdGVt
+Y3RsIC0tbm8tYmxvY2sgc3RhcnQgCm52bWYtY29ubmVjdEAtLWRldmljZT0kZW52e05WTUVfQ1RM
+Ul9OQU1FfVx0LS10cmFuc3BvcnQ9JGVudntOVk1FX1RSVFlQRX1cdC0tIAp0cmFkZHI9JGVudntO
+Vk1FX1RSQUREUn1cdC0tdHJzdmNpZD0kZW52e05WTUVfVFJTVkNJRH1cdC0taG9zdC10cmFkZHI9
+JGVudntOVk1FX0hPU1RfVFJBRERSfS5zZXJ2aWNlIgoKd2lsbCByZXN1bHQgaW46CiIvdXNyL2Jp
+bi9zeXN0ZW1jdGwgLS1uby1ibG9jayBzdGFydCAKbnZtZi1jb25uZWN0QC0tZGV2aWNlPW52bWU1
+XHQtLXRyYW5zcG9ydD1ub25lXHQtLSAKdHJhZGRyPW5vbmVcdC0tdHJzdmNpZD1ub25lXHQtLWhv
+c3QtdHJhZGRyPW5vbmUuc2VydmljZSIKb3IKIi91c3IvYmluL3N5c3RlbWN0bCAtLW5vLWJsb2Nr
+IHN0YXJ0IApudm1mLWNvbm5lY3RALS1kZXZpY2U9bm9uZVx0LS10cmFuc3BvcnQ9ZmNcdC0tIAp0
+cmFkZHI9bm46YWEtYmItY2MtZGQtMDAtMTEtMjItMzMtcG46YWEtYmItY2MtZGQtMDAtMTEtMjIt
+MzNcdC0tdHJzdmNpZD1ub25lXHQtLWhvc3QtdHJhZGRyPW5uOmFhLWJiLWNjLWRkLTAwLTExLTIy
+LTM0LXBuOmFhLWJiLWNjLWRkLTAwLTExLTIyLTM0LnNlcnZpY2UiCgpvciBzaW1pbGFyLgoKCj4K
+Pj4KPj4gU2lnbmVkLW9mZi1ieTogU2FnaSBHcmltYmVyZyA8c2FnaUBncmltYmVyZy5tZT4KPj4g
+LS0tCj4+IMKgIGZhYnJpY3MuYyB8IDggKysrKy0tLS0KPj4gwqAgMSBmaWxlIGNoYW5nZWQsIDQg
+aW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2ZhYnJpY3Mu
+YyBiL2ZhYnJpY3MuYwo+PiBpbmRleCBmNWNkMjEyN2RiMDUuLmFkOWExNWU3MjA3MCAxMDA2NDQK
+Pj4gLS0tIGEvZmFicmljcy5jCj4+ICsrKyBiL2ZhYnJpY3MuYwo+PiBAQCAtNTY1LDcgKzU2NSw3
+IEBAIGFkZF9hcmd1bWVudChjaGFyICoqYXJnc3RyLCBpbnQgKm1heF9sZW4sIGNoYXIgCj4+ICph
+cmdfc3RyLCBjaGFyICphcmcpCj4+IMKgIHsKPj4gwqDCoMKgwqDCoCBpbnQgbGVuOwo+PiDCoCAt
+wqDCoMKgIGlmIChhcmcpIHsKPj4gK8KgwqDCoCBpZiAoYXJnICYmIHN0cmNtcChhcmcsICJub25l
+IikpIHsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIGxlbiA9IHNucHJpbnRmKCphcmdzdHIsICptYXhf
+bGVuLCAiLCVzPSVzIiwgYXJnX3N0ciwgYXJnKTsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIGlmIChs
+ZW4gPCAwKQo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gLUVJTlZBTDsKPj4g
+QEAgLTY1OCwxNCArNjU4LDE0IEBAIHJldHJ5Ogo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJu
+IC1FSU5WQUw7Cj4+IMKgwqDCoMKgwqAgcCArPSBsZW47Cj4+IMKgIC3CoMKgwqAgaWYgKGNmZy5o
+b3N0bnFuKSB7Cj4+ICvCoMKgwqAgaWYgKGNmZy5ob3N0bnFuICYmIHN0cmNtcChjZmcuaG9zdG5x
+biwgIm5vbmUiKSkgewo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgbGVuID0gc3ByaW50ZihwLCAiLGhv
+c3RucW49JXMiLCBjZmcuaG9zdG5xbik7Cj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAobGVuIDwg
+MCkKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIC1FSU5WQUw7Cj4+IMKgwqDC
+oMKgwqDCoMKgwqDCoCBwICs9IGxlbjsKPj4gwqDCoMKgwqDCoCB9Cj4+IMKgIC3CoMKgwqAgaWYg
+KGNmZy5ob3N0aWQpIHsKPj4gK8KgwqDCoCBpZiAoY2ZnLmhvc3RpZCAmJiBzdHJjbXAoY2ZnLmhv
+c3RucW4sICJub25lIikpIHsKPgo+IGMmcCBidWcgaGVyZSA/CgpZZXMuIHRoYXQgd2FzIHRoZXJl
+IGluIHRoZSBvcmlnaW5hbC4gSSB0aG91Z2h0IEkgZml4ZWQgdGhhdC4KCi0tIGphbWVzCgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBt
+YWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
