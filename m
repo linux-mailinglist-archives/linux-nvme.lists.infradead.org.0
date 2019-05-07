@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01E0C1688E
-	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 18:59:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98F1F1688F
+	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 18:59:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,69 +11,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=FOEafn3zWCyMKp9r8r6dzeUPT/xKoaEKCuOA+W0nLOY=; b=Bzjl8JmQbyoadXXXuSl72LmsHn
-	cXedLRv54N2xaxDEvB6XL48Gko34+50wzvYlrAXMt4yPGAVNaKqBRm+HAOnGyEUWH6P8SAvSjKnh9
-	UOf/vYfntW7vJDRVYmd82qlhCjO2ZQ4lf6CewNArPyUyx5a+mRooNynsJD66PTDjMcH/7yvaWDs3A
-	ltYGvCVSB0nTXiAzRhQpPZYT+4jRYUyuklf67dSl23HWPqCmjah1jkb7iDVppBzqyBO59PQgsov6h
-	2vh+CivvoXovoGjNE1IH9qzr1gTW+EguN4sWeuO4zfc7jOVZRWHSuMc7Ro/2HUGnguDGsorrPcweE
-	kmwd6nNA==;
+	bh=W1WRNr+wZ6Bae3riimJLoKDjZ2lb/uoKhx5+qvc2dKc=; b=X+gn7SuMVAuJ04DtLmluc72Zsg
+	V/ZFeWgBdnvZL/IGjP/MIGYWa/4ZMcxA6JphWoDlwZUY4otMayaaaahxI8aAZHwYNvor0cusOPeQh
+	CchKn0qWS+i8aelwH5oo0D20AB6OafHx02+HuHYGoxZxKt7tAgfPZH464L12RuLJJN79021hNRzPU
+	Mg42FTOviKAK4QXTBfS8pSSX26JO0gCK6DqtWR11eEJ9uzZpvh6FVinKdHxoZ0NxMhbOqcxQlu+Bt
+	4KIuznc7KUAF2MTWvJIi/i5E7LnZQa8XEH4w5x5Ey0c5uZ1bfIjiqYyNSTnuRYiux4BsjSBWgYwXk
+	6+Dctjcw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hO3Qp-0007RS-9X; Tue, 07 May 2019 16:59:07 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1hO3Qx-0007iG-Ch; Tue, 07 May 2019 16:59:15 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hO3Qb-0007Ie-E5
- for linux-nvme@lists.infradead.org; Tue, 07 May 2019 16:58:54 +0000
-Received: by mail-pg1-x542.google.com with SMTP id t187so4480350pgb.13
- for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 09:58:53 -0700 (PDT)
+ id 1hO3Qe-0007MB-SH
+ for linux-nvme@lists.infradead.org; Tue, 07 May 2019 16:59:09 +0000
+Received: by mail-pf1-x442.google.com with SMTP id y13so8951912pfm.11
+ for <linux-nvme@lists.infradead.org>; Tue, 07 May 2019 09:58:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=yCv8sSMR6ScKjEy1rfKWXGO+DU+5zcc2adHgmKc5Xg8=;
- b=MbQxKye7rA//CkI9bEGuRwPAFkJISCOT4QAqjGufCOelreGxFdXLEZcRtwrcr/bvmn
- 5F8SCUFRLBYgFUOndqdEsgbFiQCyk3BAF+glzr8cWI49YTy12LnWHKErN20OhtXqlOTK
- jUPUYtC31fYoW8RLeI9pWHBT+kN1iMHh/Qh/nBkCTNfNTyD0ZBDTE9v5swEddHPAiBp5
- fTyMkrRmy2KlbWlaGSKuE88RQGhhaCYQg4yDvsKRfjrh1ANSoheFZ3uExna2UEn5jxyy
- OstuX6uCMHAxWF7VTPw776bKcU5k+SpegZh+Pa8Une6s9XSM4f54lWCsOBpF9iv1lXMD
- xgCg==
+ bh=O3F7bdzCJVvXWFJraTuep0VKxXgWnuSEosT9JtZwBl0=;
+ b=OtMY5pBCve9l9++jLockjsXtTUN3BkfdYW7oPEAh0dYgmTcA/93NWuCEUP11bOFiSo
+ c0pg3aKoNwBbSCINAka02TpSDyp6ItYTYEoFjOnyKi/UqGZ8DyxNNfktPjOff5gJelqV
+ uXHar6beyiLocJ35FJ7YuNCGC0xlsslYwEb+vyvzk4XGCpgwq0hVVSdKHNo2nuP8Busr
+ CRx49DluRN5LyjrUqUExJrvA5mg0S2jsG7mJcHENfF+KREUM5Lty2vLjvs9mCzrowniq
+ D3y1xd/7CRfzJPxPcP/dwqgonOUjc+cWPtysmdiOGqRRF3ifgbK8acwCCrryEFVSuY/3
+ enzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=yCv8sSMR6ScKjEy1rfKWXGO+DU+5zcc2adHgmKc5Xg8=;
- b=I/wTjfMsBr9bO2qkk4cR7uDxbuWtHGSHbC/h04m4l6jy/lf0FMwnHf0hV3IdTC38vJ
- AwdbjjLUOa7bJFCYlGmzFhGSyULkuoqKtkfhoF8F1QCCF1cFcOhk7nvN8UeLsrsXL2VF
- j62z8WBTyXZAaG1LkWPnQtYvwa5yniwF0k/Qog34fDOgtJOYPGhY+n2vED90oojKn5ts
- imJ01YP0c8zDCsx4gqR+zA0LG638a85u/TMbcy1ivq+2CsXI7NjgvI9Ar2we8dw8rTPE
- oePec7Tg+rYXOpyjnxA5gn7TZ+IGuvW9GDrg7YxohJfeWP6wvSc/ZkNN/D5RydU6zecx
- FZHg==
-X-Gm-Message-State: APjAAAUtQLoJ+f9PuOWCNw9BlBpvzt5XerR/p3u+8WmlUy4m2QTM9j3C
- j0tXTNj9xV/sfT0jbEgtDMXW1H8G
-X-Google-Smtp-Source: APXvYqy3RvniSsGhL6GQuYhBIGPKuJeK5+qo9p8zgaZO6UBphnwJmO5t/7I7TYPdO3EnicMp8ubK7A==
-X-Received: by 2002:a63:2d41:: with SMTP id t62mr41260420pgt.113.1557248332851; 
- Tue, 07 May 2019 09:58:52 -0700 (PDT)
+ bh=O3F7bdzCJVvXWFJraTuep0VKxXgWnuSEosT9JtZwBl0=;
+ b=WzhYdlAVOlSIL1Tckfh31XQfTSt61UNfINPoE3qPY4MaOR0rVsPKGXO4gX3f0mVVxO
+ 5bNhNnwsvCMFTffrll+IZPGXVkWNyOwG73XUfba7ii+4IK0BsGGS8HuJeuz2CEBOsNBy
+ /A369W8VjU7xzy6R066lSHnpcN2tzL9tbGab8K7tV+baD3PQy6rn8jCRFCxR2L2oQkCj
+ kEmErN7+OrcdULxlfT+pHZ0no/94Gty49aBKagw+8gr4bxhjG6/DcqL9bA4C9dG4bbFp
+ 2bT4vH5QxLtT95EQ9bCModL8/o3urC8GGGYqevkkYGc5o3AnfdCatYyA6ArBrmgFWVlf
+ x5+w==
+X-Gm-Message-State: APjAAAUAcqoGnjxlLyjNxXxWSC4WZjCUh5IqtHxOzxkRGc9pE2JZUFKm
+ 9y8JioQKdTgwwPJ2fl6DUJtVZZKd
+X-Google-Smtp-Source: APXvYqy7UEeAGiQO6c3HCRaC+GO0QSzUNg75f1Nl9sihob97Wg+kpW2IdWtx7ktPjr9ApscZfh7yLw==
+X-Received: by 2002:a63:8e4b:: with SMTP id k72mr8953049pge.428.1557248335921; 
+ Tue, 07 May 2019 09:58:55 -0700 (PDT)
 Received: from mita-MS-7A45.lan ([240f:34:212d:1:1b24:991b:df50:ea3f])
- by smtp.gmail.com with ESMTPSA id r12sm18140093pfn.144.2019.05.07.09.58.49
+ by smtp.gmail.com with ESMTPSA id r12sm18140093pfn.144.2019.05.07.09.58.53
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Tue, 07 May 2019 09:58:52 -0700 (PDT)
+ Tue, 07 May 2019 09:58:55 -0700 (PDT)
 From: Akinobu Mita <akinobu.mita@gmail.com>
 To: linux-nvme@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 1/7] devcoredump: use memory_read_from_buffer
-Date: Wed,  8 May 2019 01:58:28 +0900
-Message-Id: <1557248314-4238-2-git-send-email-akinobu.mita@gmail.com>
+Subject: [PATCH v2 2/7] devcoredump: fix typo in comment
+Date: Wed,  8 May 2019 01:58:29 +0900
+Message-Id: <1557248314-4238-3-git-send-email-akinobu.mita@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
 References: <1557248314-4238-1-git-send-email-akinobu.mita@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190507_095853_472649_AA267F03 
-X-CRM114-Status: GOOD (  14.89  )
+X-CRM114-CacheID: sfid-20190507_095857_258160_0E2240B9 
+X-CRM114-Status: GOOD (  14.50  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -106,7 +106,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Use memory_read_from_buffer() to simplify devcd_readv().
+s/dev_coredumpmsg/dev_coredumpsg/
 
 Cc: Johannes Berg <johannes@sipsolutions.net>
 Cc: Keith Busch <keith.busch@intel.com>
@@ -114,37 +114,27 @@ Cc: Jens Axboe <axboe@fb.com>
 Cc: Christoph Hellwig <hch@lst.de>
 Cc: Sagi Grimberg <sagi@grimberg.me>
 Cc: Minwoo Im <minwoo.im.dev@gmail.com>
-Reviewed-by: Johannes Berg <johannes@sipsolutions.net>
 Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
 ---
 * v2
-- Add Reviewed-by tag.
+- New patch in this version.
 
- drivers/base/devcoredump.c | 11 +----------
- 1 file changed, 1 insertion(+), 10 deletions(-)
+ drivers/base/devcoredump.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/base/devcoredump.c b/drivers/base/devcoredump.c
-index f1a3353..3c960a6 100644
+index 3c960a6..e42d0b5 100644
 --- a/drivers/base/devcoredump.c
 +++ b/drivers/base/devcoredump.c
-@@ -164,16 +164,7 @@ static struct class devcd_class = {
- static ssize_t devcd_readv(char *buffer, loff_t offset, size_t count,
- 			   void *data, size_t datalen)
- {
--	if (offset > datalen)
--		return -EINVAL;
--
--	if (offset + count > datalen)
--		count = datalen - offset;
--
--	if (count)
--		memcpy(buffer, ((u8 *)data) + offset, count);
--
--	return count;
-+	return memory_read_from_buffer(buffer, count, &offset, data, datalen);
- }
+@@ -314,7 +314,7 @@ void dev_coredumpm(struct device *dev, struct module *owner,
+ EXPORT_SYMBOL_GPL(dev_coredumpm);
  
- static void devcd_freev(void *data)
+ /**
+- * dev_coredumpmsg - create device coredump that uses scatterlist as data
++ * dev_coredumpsg - create device coredump that uses scatterlist as data
+  * parameter
+  * @dev: the struct device for the crashed device
+  * @table: the dump data
 -- 
 2.7.4
 
