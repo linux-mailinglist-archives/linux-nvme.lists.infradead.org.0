@@ -2,49 +2,47 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03BB215D49
-	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 08:20:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E19B15DE5
+	for <lists+linux-nvme@lfdr.de>; Tue,  7 May 2019 09:08:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pFgXSkT+gMZ9qw4jj18ZtUwzu4OBiXPZPz5FHjddbPY=; b=sZTFJQSVRWZvpP
-	apHZQynkwD25/3MeLnK4s9MoNQhoHl5Rrsvx31M2yhR2mrNF5Q9g98/LZ7e/47embrPWzO76MnfLJ
-	kNL3V9JmPet0BCGMdTdDW+K0NjLPViOnwtRFJNM3vi4bgcUR2qeg21ZDCTmc0kPZTcBwirIUsvfpn
-	7lIpvbJW31+WB3cZIXAPvO8NAEJbz9d7j9UHMRQBcc96EP8dOF8MJGI7kEVrD++xy0uBqhZkD92aX
-	JhN+JSjBpFGdj6BiQnItCiXd9R5BCUL4kceycTURONgkjdVth1YRExYI6OpknSEHM5QG7+TH4POXE
-	uiaoHiCtiNKdaCLBTlqg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=PaA7T4kb0eI77vK30a3Zs60bVLvYZslncdxAW4p0lyA=; b=TTPs4BXX1IFw3JqVM/PLTBKE4
+	jRtc9iFZnwrBprw0pkdA2rYPFTBh6JZXWmc9H26AMpn6y8nq3uwBJzU8g58MERJeVREr6SpJi5FSh
+	Q6kzPbsSXFve3s/Kfqk003WnMoIit5D2wl0L2uZlSn1qK0gsgtZjV9j1weCdUpyDaDWZmOPMmEImb
+	I89uxc0GBPFOb5N9qU25CFnS/RyeScEU+/IKv6zFtBLzlzC0dI2mSszwGrYT0EPcSZFYo4AX6TFyN
+	Yq9HJzbjq9VFk4SV0TH6HJ1o1ZEfezR78xXto3MlbxkQFbSGF+FGEuFnP6B9F1pYImsaDb7auEvZS
+	CWgolufig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hNtT7-0002Ye-AT; Tue, 07 May 2019 06:20:49 +0000
+	id 1hNuCw-0006iC-UD; Tue, 07 May 2019 07:08:10 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hNtT2-0002YA-6R
- for linux-nvme@lists.infradead.org; Tue, 07 May 2019 06:20:45 +0000
+ id 1hNuCs-0006hq-Bc
+ for linux-nvme@lists.infradead.org; Tue, 07 May 2019 07:08:07 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 70BC7AD2C;
- Tue,  7 May 2019 06:20:35 +0000 (UTC)
-Date: Tue, 7 May 2019 08:20:34 +0200
-From: Johannes Thumshirn <jthumshirn@suse.de>
-To: Minwoo Im <minwoo.im.dev@gmail.com>
-Subject: Re: [PATCH 1/3] nvme: 002: fix nvmet pass data with loop
-Message-ID: <20190507062034.GA3748@x250>
-References: <20190505150611.15776-1-minwoo.im.dev@gmail.com>
- <20190505150611.15776-2-minwoo.im.dev@gmail.com>
- <SN6PR04MB45274C423AA7C3CC3DBB5ED586300@SN6PR04MB4527.namprd04.prod.outlook.com>
- <a66b775f-9a5f-fefc-ae29-c86678e66463@gmail.com>
- <SN6PR04MB45272BEB18B3ADD95DCB42AE86300@SN6PR04MB4527.namprd04.prod.outlook.com>
- <cfa4d48d-ce13-0ace-cf5c-a3d0d1f4cca7@gmail.com>
+ by mx1.suse.de (Postfix) with ESMTP id 94F82AD2C;
+ Tue,  7 May 2019 07:08:03 +0000 (UTC)
+Subject: Re: [PATCH nvme-cli rfc 1/5] fabrics: ignore arguments that pass in
+ "none"
+To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
+References: <20190504000456.3888-1-jsmart2021@gmail.com>
+ <20190504000456.3888-2-jsmart2021@gmail.com>
+From: Hannes Reinecke <hare@suse.de>
+Message-ID: <7269d1a0-f93c-6026-b7b8-76cbebe6174f@suse.de>
+Date: Tue, 7 May 2019 09:08:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cfa4d48d-ce13-0ace-cf5c-a3d0d1f4cca7@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20190504000456.3888-2-jsmart2021@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190506_232044_384067_0154DF13 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20190507_000806_543164_4E2E66E0 
+X-CRM114-Status: GOOD (  18.02  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -64,32 +62,31 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
- Omar Sandoval <osandov@osandov.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, May 07, 2019 at 01:54:09AM +0900, Minwoo Im wrote:
-> If Johannes who wrote these tests agrees to not check output result from
-> nvme-cli, I'll get rid of them.
-
-Yes agreed. In the beginning I though of validating the nvme-cli output but
-this would grow more and more filters, which makes it impractical.
-
--- =
-
-Johannes Thumshirn                            SUSE Labs Filesystems
-jthumshirn@suse.de                                +49 911 74053 689
-SUSE LINUX GmbH, Maxfeldstr. 5, 90409 N=FCrnberg
-GF: Felix Imend=F6rffer, Mary Higgins, Sri Rasiah
-HRB 21284 (AG N=FCrnberg)
-Key fingerprint =3D EC38 9CAB C2C4 F25D 8600 D0D0 0393 969D 2D76 0850
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNS80LzE5IDI6MDQgQU0sIEphbWVzIFNtYXJ0IHdyb3RlOgo+IEFzIHdlIHdhbnQgdG8gc3Vw
+cG9ydCBkaXNjb3ZlcnkgdWV2ZW50cyBvdmVyIGRpZmZlcmVudAo+IHRyYW5zcG9ydHMsIHdlIHdh
+bnQgdG8gYWxsb3cgdGhlIGtlcm5lbCB0byBwcm92aWRlIG1pc3NpbmcKPiBpbmZvcm1hdGlvbiBp
+biB0aGUgZm9ybSBvZiBub25lIGFuZCBoYXZlIG52bWUtY2xpIHByb3Blcmx5Cj4gaWdub3JlIGl0
+Lgo+IAo+IE9uZSBleGFtcGxlIGlzIHRoZSBob3N0X3RyYWRkci4gSWYgaXQgaXMgbm90IHNldCAo
+d2hpY2ggbWVhbnMKPiB0aGF0IHRoZSBkZWZhdWx0IHJvdXRlIGRldGVybWluZWQgdGhlIGhvc3Qg
+YWRkcmVzcykgd2Ugd2lsbAo+IHdhbnQgdG8gZG8gdGhlIHNhbWUgZm9yIG5ld2x5IGRpc2NvdmVy
+ZWQgY29udHJvbGxlcnMuCj4gCj4gU28gYWxsb3cgdXNlcnMgdG8gcGFzcyAnbm9uZScgYXJndW1l
+bnRzIGFzIHdlbGwuCj4gCj4gU2lnbmVkLW9mZi1ieTogU2FnaSBHcmltYmVyZyA8c2FnaUBncmlt
+YmVyZy5tZT4KPiBTaWduZWQtb2ZmLWJ5OiBKYW1lcyBTbWFydCA8anNtYXJ0MjAyMUBnbWFpbC5j
+b20+Cj4gLS0tCj4gUGF0Y2ggb3JpZ2luYXRlZCBmcm9tIFNhZ2kgaW4gYW4gUkZDCj4gRml4ZWQg
+dHlwbyBpbiBTYWdpJ3MgcGF0Y2ggb24gY2ZnLmhvc3RpZAo+IC0tLQo+ICAgZmFicmljcy5jIHwg
+OCArKysrLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlv
+bnMoLSkKPiAKUmV2aWV3ZWQtYnk6IEhhbm5lcyBSZWluZWNrZSA8aGFyZUBzdXNlLmNvbT4KCkNo
+ZWVycywKCkhhbm5lcwotLSAKRHIuIEhhbm5lcyBSZWluZWNrZQkJICAgVGVhbWxlYWQgU3RvcmFn
+ZSAmIE5ldHdvcmtpbmcKaGFyZUBzdXNlLmRlCQkJICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1
+MyA2ODgKU1VTRSBMSU5VWCBHbWJILCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJlcmcKR0Y6
+IEZlbGl4IEltZW5kw7ZyZmZlciwgTWFyeSBIaWdnaW5zLCBTcmkgUmFzaWFoCkhSQiAyMTI4NCAo
+QUcgTsO8cm5iZXJnKQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZt
+ZQo=
