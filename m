@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A6F317FEF
-	for <lists+linux-nvme@lfdr.de>; Wed,  8 May 2019 20:37:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 19C3217FF0
+	for <lists+linux-nvme@lfdr.de>; Wed,  8 May 2019 20:37:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,59 +11,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=Dejn3iFvZCLZX02xotYkgjPgzKLSlHei5ueaWnSmDEU=; b=ucd3uRa6WGeyNG74UO4HMZR2lt
-	NSl1xowAfA/4Z4z3tcPa09mD+HFRxQQY3YNE2lpVu8aAPVe5Sj0LZpgTEprPBqNa9pnGeu6ji6kt/
-	M6vLCAzm7MCeFxi7AhQgEHhE7IflLx4xZV7Te3J77d1eLlnQwbrl/BHFbS/0Vs1XdwHnimlMhBzcp
-	y/gjgkAVQh/OUufxtmSG1RfRkhURkTZ5Syn3IQsew+6GrR2zMcVJ4yo/dIM+t+qsKPtApOmDsyDWA
-	Otll6YpE/QXP7upiKdeO0jkIpmGpMBOH/fiF1oHc3JmyiNj2MfQtd0Z0GFw95mLTOgKhzrmPLn3wA
-	W6Z8pHUg==;
+	bh=6Q9nOVH8cNvv+0clC1Joa04+mdvjCbs//k6Ss02Ci7c=; b=qKo03bR+2WPaAFWazoaATwUtwp
+	6CJYYUYvlGHxBge71L445hhorD7X4Yxew+yXBUGZDOMrcAY5JuP6zFuR1FrDa6/vvTCQsliEhw2ho
+	3Z4bnkcJQQrXSbMynbZ4h5Y8BgYaGTVzxRuqscAk6PpGIufDqPFRYf7UVo83yRLhQv+ceEfXdtTbo
+	SjbHUPRRP3iGdoCfJOOV0L3o/t5LgNX/xvYuPzvDcds0Mq+VB52CD0SxvTeex0wAxEiQ7cX8SiHp5
+	kADsSSL8mErn7VK7pFdgGwHWymIQEAuwtEzOcjGtEPOlX/Tk5Q1v6uBS3GqvquHnLYwFcqtMqjFoL
+	Pqyly60g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hORQy-0004gj-6V; Wed, 08 May 2019 18:36:52 +0000
+	id 1hORR4-0004k3-Jo; Wed, 08 May 2019 18:36:58 +0000
 Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hORQs-0004fv-Vd
- for linux-nvme@lists.infradead.org; Wed, 08 May 2019 18:36:48 +0000
+ id 1hORQu-0004fv-Et
+ for linux-nvme@lists.infradead.org; Wed, 08 May 2019 18:36:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557340607; x=1588876607;
+ t=1557340608; x=1588876608;
  h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=foh7KP35GUiHgustRUa6eqDSPyC8HKiyNsdaCqaBXOw=;
- b=ift3jafj5nyXFjWZO+Ykx6LRpgncjlnuA3EMKDn+ciV2blxH3yqdGPU/
- q9o0XeIpIMDfZzFDylLmYzwAzRSUdFh242fefhBwuyJEQGzUMQTpQ6A62
- jEDr+V0ApgoL97/kRffil8P290zSUThMzV9YDS7iL9gCcAXuIpqwsyTGJ
- OFo7603zDKgUlSaWOhTLFgQ6Btp2uKhP2ao5fYwSlQFAVVZMA8ITaPqQ7
- v4/xqLIEsxqzrB6+vlaZNYHiVDuza3Zmi14mi6krJ3t2w/ExY2qK8pesc
- nO7qMlnbNu80jYLgkfH4segVoXTlc4/olm3IHohUEnPQCQ4MPWz8yc+A2 Q==;
-X-IronPort-AV: E=Sophos;i="5.60,446,1549900800"; d="scan'208";a="109543224"
+ bh=gLSIB9+d0kqhKgSpwGBml0oDiHV90smri3YupPvZbs8=;
+ b=F3HvhrZ0RE1OM6BfzRZZ5DjCxClR7JTOW/5HyAmVp87MkUiZKpeWb65i
+ hHUoCdzGEiKLAC6HIw17Hd5nUZKXUukzkBKK0/QMSvYi9DzHOrVJfIM8I
+ 71T8c/5zAx6R9Pen1uw6z2uaWSW18hrPe5NS+ZBkIIofF3HmPGWjOZ4bT
+ 2PjNpaBeI1OZKxpxbANtAAHh4ES3tdlPAJ22WBVJGrE14t2EaL46Twd6n
+ eNPor4jXwbS+64qe6fPK9HVNo0XxNnow7bFbmpHN3416TZImb1LeYz4Kx
+ bIBNfPtjdfdF55Npfhoq6q0cwAjNcg4J25MXsm5fh6hNNLjSFWquClzNy Q==;
+X-IronPort-AV: E=Sophos;i="5.60,446,1549900800"; d="scan'208";a="109543226"
 Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 09 May 2019 02:36:43 +0800
-IronPort-SDR: kj3YtkF8wfJdZ/C6PSTo25/3NRsWmcFVS86glRNqiFTYkZzJV0iGH3hsB/F38cMyxYdl3bU4U1
- JijdOGUMPFd/0UkdsQm2E6uIEETJ2WE68qqkftZMlAQhWufRDJt3z4ZYh1t8id+KmSn9YLptco
- GJpF2WujURCbpnFd9QTyUplkoCKmz875pXsVaLZlab/5x3WvupNCzTnrhVbi6p7ReRKVuWq8Ys
- urHxUPEbxoTrF9gluZ8t9rqquJ1PX0moarlCFVvCPZYg3duCZTOd3aOo/tfZ9d8Y2uhtQXuDLo
- 4Mk066QQIFXXyWdh8FUKm7aH
+ by ob1.hgst.iphmx.com with ESMTP; 09 May 2019 02:36:44 +0800
+IronPort-SDR: B/G2W0bsPM72xx4vALhl5KnqfFLvpSrJib87YwG7WyQ6lC2nhW2kPQdOiBoXUMXECcwyJGw7P1
+ AMD+1kgW5G7IEOjoV5JsSFmkl8H5snh7j2zr2ejeUUtb2vpGf8Hz0KInWt9cwk/AdOfpZ81wJ+
+ 5L0gsrUu+FfeQcPrpeYrUDWbrnj24liPQAV2I4kfERBhAhHG9j4O5+5e0zcLBS2aAy5i5tIawC
+ ZwQgF7LScJQqQHZMljpzBBEXKRl3BpVeCHfQNeiwW8nnQsmbh/AtBL0BeC2b+jMK3J/RmyhGpa
+ mZ7sKFrLGT2b4gm53i14CQ6j
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP; 08 May 2019 11:14:56 -0700
-IronPort-SDR: KcA0asDO7UHAoFBnS9O1kX0MVEKfmEdMmTcnuiqa2Se4Bcn2aha0tO9PKd8bF5HWDcrUCP5vzp
- zZJrmsS0Hyf7R9qQr9vHTd0HESEY6zHbZgYK3z7iIRhSIrjzHuhZGfN+t7vmtEyvpCDqjL2SG2
- 3gmtK33trGds8UeVwjOZTJWHheVNd5JCKBcWIpg4XffQAj/dqoJnWiEnQwo8epmThJrfrMsAQm
- hGLTI2+jrJjODbQSyIN0YlivlKNojmYmx5VAtX+XJWH4PjB/mGAZAyO3HJfbrLJmTvDtPaQlhF
- Z5o=
+ by uls-op-cesaep02.wdc.com with ESMTP; 08 May 2019 11:14:57 -0700
+IronPort-SDR: Tg38hEeOTH0P3E0IHNAqe4vl1+G9oOiguH7VxB4maM/XyyBTcW6Yy7eKXn/fwxTpWTf0gFAc8Q
+ Lm76BFCCdtP3iU/tGJlcmRYA/2DeslaoklfYEckQoj4o6Jc+JNFQJXgSRCCGRKEABHHWB7QnVk
+ 7uvcQvGEXadgBRzig0UAvRfl/2SXreXb/Sxld3CIoavuYdUPU3m0wIDGQw5WBskhMXwKIWcZ3w
+ n2teF6TmRAyU9bijpNGMp/UzhELtgpPv3rCX6qPhjm7b3eqyMVBnqI7WJqdvbx2CEzscPDyXcx
+ 5m4=
 Received: from qemu.hgst.com ([10.202.65.140])
- by uls-op-cesaip01.wdc.com with ESMTP; 08 May 2019 11:36:43 -0700
+ by uls-op-cesaip01.wdc.com with ESMTP; 08 May 2019 11:36:45 -0700
 From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 1/3] nvme: introduce and use RAE bit macro
-Date: Wed,  8 May 2019 11:36:32 -0700
-Message-Id: <20190508183634.4682-2-chaitanya.kulkarni@wdc.com>
+Subject: [PATCH 2/3] nvme: add sanitize log identifier
+Date: Wed,  8 May 2019 11:36:33 -0700
+Message-Id: <20190508183634.4682-3-chaitanya.kulkarni@wdc.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20190508183634.4682-1-chaitanya.kulkarni@wdc.com>
 References: <20190508183634.4682-1-chaitanya.kulkarni@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190508_113647_088684_EC72F554 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20190508_113648_533165_5723D086 
+X-CRM114-Status: GOOD (  10.31  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -97,43 +97,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Introduce a macro instead of hardcoding RAE bit value in several places.
-Also this uses RAE bit macro and removes the open coding in the NVMeOF
-target. This is a preparation patch for filtering out the NVMe user
-commands.
+Introduce sanitize log page identifier which is used in next patch.
 
 Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 ---
- drivers/nvme/target/nvmet.h | 2 +-
- include/linux/nvme.h        | 2 ++
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ include/linux/nvme.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index c25d88fc9dec..47d9f5838828 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -343,7 +343,7 @@ struct nvmet_async_event {
- 
- static inline void nvmet_clear_aen_bit(struct nvmet_req *req, u32 bn)
- {
--	int rae = le32_to_cpu(req->cmd->common.cdw10) & 1 << 15;
-+	int rae = le32_to_cpu(req->cmd->common.cdw10) & NVME_LOG_PAGE_RAE;
- 
- 	if (!rae)
- 		clear_bit(bn, &req->sq->ctrl->aen_masked);
 diff --git a/include/linux/nvme.h b/include/linux/nvme.h
-index c40720cb59ac..d439c129d8af 100644
+index d439c129d8af..35381d689936 100644
 --- a/include/linux/nvme.h
 +++ b/include/linux/nvme.h
-@@ -840,6 +840,8 @@ enum {
+@@ -835,6 +835,7 @@ enum {
+ 	NVME_LOG_ANA		= 0x0c,
+ 	NVME_LOG_DISC		= 0x70,
+ 	NVME_LOG_RESERVATION	= 0x80,
++	NVME_LOG_SANITIZE       = 0x81,
+ 	NVME_FWACT_REPL		= (0 << 3),
+ 	NVME_FWACT_REPL_ACTV	= (1 << 3),
  	NVME_FWACT_ACTV		= (2 << 3),
- };
- 
-+#define NVME_LOG_PAGE_RAE	(1 << 15)
-+
- /* NVMe Namespace Write Protect State */
- enum {
- 	NVME_NS_NO_WRITE_PROTECT = 0,
 -- 
 2.17.0
 
