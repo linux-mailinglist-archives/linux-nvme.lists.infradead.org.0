@@ -2,118 +2,52 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12B4C18011
-	for <lists+linux-nvme@lfdr.de>; Wed,  8 May 2019 20:52:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 28B4B1801F
+	for <lists+linux-nvme@lfdr.de>; Wed,  8 May 2019 21:00:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=btoJAVwUh2t8GOY3ywE9v+JmN6+T9LI1ZocJjrqE2Hk=; b=aqaALbtmbyoaeD
-	C5se0yhvBk3tng/Wl0d8AuoVz8T8whu5IBxZCHXSYIGSmjHI9AslqdO/fUBxZPilhmdWXK4PWzqHe
-	pBNThabmgd5eVeFWCDL+5b2IFBjHAk9sLA0alec3WTvVqe7AgYGnG+XyGRIissj0k8jZ95CNn7+u0
-	CVxBBT7sKb839Hmd0XuOyjNYLlQOE2l4yYBX6pVWayFsWYpsAzQ0LsbnmAu1t04kBrWMnPO2t9GDQ
-	YKv27966YB4Hg8w7FJLxup7Uzgi7B68tydtIYTMvVyDXn3nHU5ogSwXMTmzJQuBFKmt2NjfvsigbY
-	9ZIxyuih5oJZZbMer2Rg==;
+	References:List-Owner; bh=DVTZffG94niunpoe6yAgAEVkzurL18YLZIWSOEEzsdY=; b=XKc
+	wYegwiEAWnUJYoYNSAV/cmvtEWbEOi/WFiIBUCZjMXC6GVnRvlZspraJ2usltd3OMnsroNuJBHin8
+	FWqEx2o+byLITBdTZjwE5Cf6lg+2KGBuARGEsfK7PyxyyTWGNGz1fRpX2fhrs1N73wxytzVHS1657
+	Y22Vg2gRR5qo4tb8tChTDlF9Elf2G7ppWqsT1w1VpR9rxf34f0zFBNEkFY7EAZibvw8w+eL2IPYNn
+	JbNUjCZIcDBR0p/Y6PTzzYARbXIKqvUjtq5CliVUMGKjlVVRGH90Z4UT1YYvMQ9gypN3K5HiNPoEb
+	ulBbuACGoao92sAFRoWEvErPOlNRcyg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hORfc-00034M-JX; Wed, 08 May 2019 18:52:00 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1hORns-0006Tl-8O; Wed, 08 May 2019 19:00:32 +0000
+Received: from youngberry.canonical.com ([91.189.89.112])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hORfX-00033z-Fn
- for linux-nvme@lists.infradead.org; Wed, 08 May 2019 18:51:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557341516; x=1588877516;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=R/7qvHIdeg1+8JZD07HOTA4tIYzX8Q1g93jjlHqZDTg=;
- b=kywvLS1obpcOlrOku2QrgFuy7gJ6E1y+4NniKdpU/6T8kxi0ZqmfaFNk
- 33kRjeB5uVU168yoajTzLhojQcaFoGAJu+alezE9Uz1TAKaRoNFfCOR2L
- nwocuSE51OUE01q04uhhrHT6bOavGuxXpYkZVejullmtkha2SJTKj2Wxz
- pdpGq0HIuRA9ieN2l5K39WmMWr8D9Ry3ocAUavuyhCd820y/vd2wnN6er
- 0l7YS+aThD36+X/Bbr1xt56O/yjnzElGelw5Ij25aWKpzj+5DXoqF/EUn
- 5ilskHoTh1bz6YCpDk+rHK/urvvuOeMCJ0kZLgCDsL4X8wgefTtIDFGPC w==;
-X-IronPort-AV: E=Sophos;i="5.60,447,1549900800"; d="scan'208";a="112768877"
-Received: from mail-bn3nam01lp2050.outbound.protection.outlook.com (HELO
- NAM01-BN3-obe.outbound.protection.outlook.com) ([104.47.33.50])
- by ob1.hgst.iphmx.com with ESMTP; 09 May 2019 02:51:53 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tYVh8iF/qyCiomUN4p/7k92IANIKLLjxzVDIos9JNVk=;
- b=MuTFnL8iF1KLPF9UXfM1QzDyysYDn9techDfMpeaf65HKwDmg1c5OCUK1qpqjOoMdvTlF5u2u6+YEvc+f59L/YD7lfx2hPI49TpaxYMW05KY9CQ2h7M4aFJxJEcjpqugwYVs2Y32LXSeDuNkrCbUsPWz/j5Su67V3TtrcvEUBCo=
-Received: from SN6PR04MB4527.namprd04.prod.outlook.com (52.135.120.25) by
- SN6PR04MB4782.namprd04.prod.outlook.com (52.135.122.152) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1856.11; Wed, 8 May 2019 18:51:52 +0000
-Received: from SN6PR04MB4527.namprd04.prod.outlook.com
- ([fe80::c4f:1604:178c:d974]) by SN6PR04MB4527.namprd04.prod.outlook.com
- ([fe80::c4f:1604:178c:d974%5]) with mapi id 15.20.1856.012; Wed, 8 May 2019
- 18:51:52 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Christoph Hellwig <hch@lst.de>, "hare@suse.de" <hare@suse.de>
-Subject: Re: [PATCH, RFC 2/2] nvme: validate cntlid during controller
- initialisation
-Thread-Topic: [PATCH, RFC 2/2] nvme: validate cntlid during controller
- initialisation
-Thread-Index: AQHVBXN9G+/jvfeUfUmJx7XzNB9zeQ==
-Date: Wed, 8 May 2019 18:51:51 +0000
-Message-ID: <SN6PR04MB45279ACEF3572C4F1F00ADF586320@SN6PR04MB4527.namprd04.prod.outlook.com>
-References: <20190508075508.28552-1-hch@lst.de>
- <20190508075508.28552-2-hch@lst.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.45.63]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 7b366db5-2b51-4175-04e9-08d6d3e63be8
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
- SRVR:SN6PR04MB4782; 
-x-ms-traffictypediagnostic: SN6PR04MB4782:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <SN6PR04MB4782BC10CE408868DCB9102286320@SN6PR04MB4782.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:3513;
-x-forefront-prvs: 0031A0FFAF
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(346002)(396003)(136003)(376002)(39860400002)(366004)(189003)(199004)(305945005)(33656002)(7736002)(53936002)(74316002)(9686003)(110136005)(316002)(86362001)(256004)(14444005)(2501003)(3846002)(6116002)(52536014)(14454004)(72206003)(478600001)(91956017)(76116006)(2906002)(73956011)(66946007)(66476007)(66556008)(64756008)(66446008)(53546011)(446003)(6506007)(5660300002)(476003)(26005)(186003)(102836004)(25786009)(71190400001)(71200400001)(6246003)(66066001)(4326008)(55016002)(68736007)(229853002)(6436002)(15650500001)(486006)(99286004)(8936002)(81166006)(81156014)(8676002)(7696005)(76176011);
- DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB4782;
- H:SN6PR04MB4527.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: aEPv66VyymBFYmOfuxEnA8KuKQUQIcbvRXfDD2nBvIElvUydv/Awn6h3ACwW3oaAcEF5qG3B69apf7vEVI9OrmbZ5iLDRTfGdi+zs2lwaff6DWyUYINgpuz63hFq0mVhlHYV3Cxs92peuW8bsue+UgJK+yJc8k5r2xVZ+ALXAepicsHfKwerxSfTKrn2D1WmulnFvdbE6GSjFlwxhE9OdHq+n91HRKxOzIXjRDYT3iUI56AHvvEJGNm6cJza02u/OewV7dUdwJpHwEOWMIHAAupjvM8u5Q97ai3RjHOCt4T4boeZ+VwzGwJmVf3KR8FvbJzyTw1Jz9INvf8kSgiIajVE1VXYd1fSdoLGrIwmhDItynaI+yMLcw0SLo9qsRijePsHgiX5DJe71SlmsYsfjTJP625M/mtFBME4GkclfsA=
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7b366db5-2b51-4175-04e9-08d6d3e63be8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 May 2019 18:51:51.9683 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4782
+ id 1hORnm-0006SZ-T4
+ for linux-nvme@lists.infradead.org; Wed, 08 May 2019 19:00:29 +0000
+Received: from 61-220-137-37.hinet-ip.hinet.net ([61.220.137.37]
+ helo=localhost)
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.76) (envelope-from <kai.heng.feng@canonical.com>)
+ id 1hORnL-0001aA-PC; Wed, 08 May 2019 19:00:00 +0000
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+To: keith.busch@intel.com,
+	axboe@fb.com,
+	hch@lst.de,
+	sagi@grimberg.me
+Subject: [PATCH] nvme-pci: Use non-operational power state instead of D3 on
+ Suspend-to-Idle
+Date: Thu,  9 May 2019 02:59:55 +0800
+Message-Id: <20190508185955.11406-1-kai.heng.feng@canonical.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190508_115155_563229_E94CE080 
-X-CRM114-Status: GOOD (  18.12  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190508_120027_082785_ACA83BDD 
+X-CRM114-Status: GOOD (  19.43  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [91.189.89.112 listed in list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -125,90 +59,269 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Cc: Kai-Heng Feng <kai.heng.feng@canonical.com>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Mario Limonciello <mario.limonciello@dell.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 05/08/2019 12:56 AM, Christoph Hellwig wrote:
-> The CNTLID value is required to be unique, and we do rely on this
-> for correct operation. So reject any controller for which a non-unique
-> CNTLID has been detected.
->
-> Based on a patch from Hannes Reinecke.
->
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> ---
->   drivers/nvme/host/core.c | 41 +++++++++++++++++++++++-----------------
->   1 file changed, 24 insertions(+), 17 deletions(-)
->
-> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index 4f4ffcce7416..ce258cbdc642 100644
-> --- a/drivers/nvme/host/core.c
-> +++ b/drivers/nvme/host/core.c
-> @@ -2341,18 +2341,33 @@ static const struct attribute_group *nvme_subsys_attrs_groups[] = {
->   	NULL,
->   };
->
-> -static int nvme_active_ctrls(struct nvme_subsystem *subsys)
-> +static bool nvme_validate_cntlid(struct nvme_subsystem *subsys,
-> +		struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
->   {
-> -	int count = 0;
-> -	struct nvme_ctrl *ctrl;
-> +	struct nvme_ctrl *tmp;
->
-> -	list_for_each_entry(ctrl, &subsys->ctrls, subsys_entry) {
-> -		if (ctrl->state != NVME_CTRL_DELETING &&
-> -		    ctrl->state != NVME_CTRL_DEAD)
-> -			count++;
-> +	list_for_each_entry(tmp, &subsys->ctrls, subsys_entry) {
-> +		if (ctrl->state == NVME_CTRL_DELETING ||
-> +		    ctrl->state == NVME_CTRL_DEAD)
-nvme_change_ctrl_state() is using spinlock to protect the ctrl->state.
-Do we need to protect above check with the spinlock ?
-> +			continue;
-> +
-> +		if (tmp->cntlid == ctrl->cntlid) {
-> +			dev_err(ctrl->device,
-> +				"Duplicate cntlid %u, rejecting\n",
-> +				ctrl->cntlid);
-> +			return false;
-> +		}
-> +
-> +		if ((id->cmic & (1 << 1)) ||
-> +		    (ctrl->opts && ctrl->opts->discovery_nqn))
-> +		    	continue;
-> +
-> +		dev_err(ctrl->device,
-> +			"Subsystem does not support multiple controllers\n");
-> +		return false;
->   	}
->
-> -	return count;
-> +	return true;
->   }
->
->   static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
-> @@ -2395,15 +2410,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
->   		__nvme_release_subsystem(subsys);
->   		subsys = found;
->
-> -		/*
-> -		 * Verify that the subsystem actually supports multiple
-> -		 * controllers, else bail out.
-> -		 */
-> -		if (!(ctrl->opts && ctrl->opts->discovery_nqn) &&
-> -		    nvme_active_ctrls(found) && !(id->cmic & (1 << 1))) {
-> -			dev_err(ctrl->device,
-> -				"ignoring ctrl due to duplicate subnqn (%s).\n",
-> -				subsys->subnqn);
-> +		if (!nvme_validate_cntlid(subsys, ctrl, id)) {
->   			ret = -EINVAL;
->   			goto out_put_subsystem;
->   		}
->
+Several NVMes consume lots of power during Suspend-to-Idle.
+
+According to the NVMe vendors, APST should be used and there are two
+things that should be prevented:
+- Controller shutdown (CC.SHN)
+- PCI D3
+
+I think that's because the Windows Modern Standby design document [1]
+states below as a requirement:
+"
+Akin to AHCI PCIe SSDs, NVMe SSDs need to provide the host with a
+non-operational power state that is comparable to DEVSLP (<5mW draw,
+<100ms exit latency) in order to allow the host to perform appropriate
+transitions into Modern Standby. Should the NVMe SSD not expose such a
+non-operational power state, autonomous power state transitions (APST)
+is the only other option to enter Modern Standby successfully.
+"
+
+D3 wasn't mentioned at all, though for some vendors D3 still put the
+device into a low power state, others disable APST after trasition to
+D3.
+
+So instead of disabling NVMe controller in suspend callback we do the
+following instead:
+- Make sure all IRQs are quiesced
+- Stop all queues
+- Prevent the device entering D3
+- Use memory barrier to make sure DMA operations are flushed on HMB devices
+
+This patch has been verified on several different NVMes:
+- Intel
+- Hynix
+- LiteOn
+- Micron
+- WDC
+- Samsung
+- Tohiba
+
+With the new suspend routine, the laptop I tested use roughly 0.8W
+under Suspend-to-Idle, and resume time is faster than the original
+D3 scheme.
+
+The only one exception so far is Toshiba XG5, which works with the old
+suspend routine, so introduce a new quirk for XG5.
+We are working with Toshiba to root cause the issue on XG5.
+
+[1] https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/part-selection#ssd-storage
+
+Tested-by: Lucien Kao <Lucien_kao@compal.com>
+Tested-by: Mice Lin <mice_lin@wistron.com>
+Tested-by: Jason Tan <LiangChuan.Tan@wdc.com>
+Tested-by: Cody Liu (codyliu) <codyliu@micron.com>
+Tested-by: Theodore Ts'o <tytso@mit.edu>
+Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
+Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+---
+ drivers/nvme/host/core.c |   8 +++
+ drivers/nvme/host/nvme.h |   8 +++
+ drivers/nvme/host/pci.c  | 102 +++++++++++++++++++++++++++++++++++++--
+ 3 files changed, 115 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index a6644a2c3ef7..929db749da98 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -3903,6 +3903,14 @@ static inline void _nvme_check_size(void)
+ 	BUILD_BUG_ON(sizeof(struct nvme_directive_cmd) != 64);
+ }
+ 
++void nvme_enter_deepest(struct nvme_ctrl *ctrl)
++{
++	int ret = nvme_set_features(ctrl, NVME_FEAT_POWER_MGMT, ctrl->npss,
++				    NULL, 0, NULL);
++	if (ret)
++		dev_warn(ctrl->device, "failed to set deepest non-operational state (%d)\n", ret);
++}
++EXPORT_SYMBOL_GPL(nvme_enter_deepest);
+ 
+ static int __init nvme_core_init(void)
+ {
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 5ee75b5ff83f..ea40a83314ae 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -92,6 +92,11 @@ enum nvme_quirks {
+ 	 * Broken Write Zeroes.
+ 	 */
+ 	NVME_QUIRK_DISABLE_WRITE_ZEROES		= (1 << 9),
++
++	/*
++	 * Use D3 on S2I regardless of NPSS.
++	 */
++	NVME_QUIRK_USE_D3_ON_S2I		= (1 << 10),
+ };
+ 
+ /*
+@@ -229,6 +234,7 @@ struct nvme_ctrl {
+ 	/* Power saving configuration */
+ 	u64 ps_max_latency_us;
+ 	bool apst_enabled;
++	bool suspend_to_idle;
+ 
+ 	/* PCIe only: */
+ 	u32 hmpre;
+@@ -467,6 +473,8 @@ int nvme_delete_ctrl(struct nvme_ctrl *ctrl);
+ int nvme_get_log(struct nvme_ctrl *ctrl, u32 nsid, u8 log_page, u8 lsp,
+ 		void *log, size_t size, u64 offset);
+ 
++void nvme_enter_deepest(struct nvme_ctrl *ctrl);
++
+ extern const struct attribute_group *nvme_ns_id_attr_groups[];
+ extern const struct block_device_operations nvme_ns_head_ops;
+ 
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 3e4fb891a95a..dea42b41f9a8 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -23,6 +23,7 @@
+ #include <linux/io-64-nonatomic-lo-hi.h>
+ #include <linux/sed-opal.h>
+ #include <linux/pci-p2pdma.h>
++#include <linux/suspend.h>
+ 
+ #include "trace.h"
+ #include "nvme.h"
+@@ -2828,12 +2829,98 @@ static void nvme_remove(struct pci_dev *pdev)
+ }
+ 
+ #ifdef CONFIG_PM_SLEEP
++static void nvme_do_suspend_to_idle(struct pci_dev *pdev)
++{
++	struct nvme_dev *ndev = pci_get_drvdata(pdev);
++
++	pdev->dev_flags |= PCI_DEV_FLAGS_NO_D3;
++	ndev->ctrl.suspend_to_idle = true;
++
++	nvme_start_freeze(&ndev->ctrl);
++	nvme_wait_freeze_timeout(&ndev->ctrl, NVME_IO_TIMEOUT);
++	nvme_stop_queues(&ndev->ctrl);
++
++	nvme_enter_deepest(&ndev->ctrl);
++
++	if (ndev->ctrl.queue_count > 0) {
++		nvme_disable_io_queues(ndev);
++		nvme_poll_irqdisable(&ndev->queues[0], -1);
++	}
++
++	nvme_suspend_io_queues(ndev);
++	nvme_suspend_queue(&ndev->queues[0]);
++	pci_free_irq_vectors(pdev);
++
++	blk_mq_tagset_busy_iter(&ndev->tagset, nvme_cancel_request, &ndev->ctrl);
++	blk_mq_tagset_busy_iter(&ndev->admin_tagset, nvme_cancel_request, &ndev->ctrl);
++
++	/* Make sure all HMB DMA operations are done */
++	mb();
++}
++
++static int nvme_do_resume_from_idle(struct pci_dev *pdev)
++{
++	struct nvme_dev *ndev = pci_get_drvdata(pdev);
++	int result;
++
++	pdev->dev_flags &= ~PCI_DEV_FLAGS_NO_D3;
++	ndev->ctrl.suspend_to_idle = false;
++
++	result = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
++	if (result < 0)
++		goto out;
++
++	result = nvme_pci_configure_admin_queue(ndev);
++	if (result)
++		goto out;
++
++	result = nvme_alloc_admin_tags(ndev);
++	if (result)
++		goto out;
++
++	ndev->ctrl.max_hw_sectors = NVME_MAX_KB_SZ << 1;
++	ndev->ctrl.max_segments = NVME_MAX_SEGS;
++	mutex_unlock(&ndev->shutdown_lock);
++
++	result = nvme_init_identify(&ndev->ctrl);
++	if (result)
++		goto out;
++
++	result = nvme_setup_io_queues(ndev);
++	if (result)
++		goto out;
++
++	if (ndev->online_queues < 2) {
++		dev_warn(ndev->ctrl.device, "IO queues not created\n");
++		nvme_kill_queues(&ndev->ctrl);
++		nvme_remove_namespaces(&ndev->ctrl);
++	} else {
++		nvme_start_queues(&ndev->ctrl);
++		nvme_wait_freeze(&ndev->ctrl);
++		nvme_dev_add(ndev);
++		nvme_unfreeze(&ndev->ctrl);
++	}
++
++	nvme_start_ctrl(&ndev->ctrl);
++
++	return 0;
++
++ out:
++	nvme_remove_dead_ctrl(ndev, result);
++	return result;
++}
++
+ static int nvme_suspend(struct device *dev)
+ {
+ 	struct pci_dev *pdev = to_pci_dev(dev);
+ 	struct nvme_dev *ndev = pci_get_drvdata(pdev);
+ 
+-	nvme_dev_disable(ndev, true);
++	if (IS_ENABLED(CONFIG_ACPI) && pm_suspend_via_s2idle() &&
++	    ndev->ctrl.npss && !(ndev->ctrl.quirks & NVME_QUIRK_USE_D3_ON_S2I))
++		nvme_do_suspend_to_idle(pdev);
++	else
++		nvme_dev_disable(ndev, true);
++
+ 	return 0;
+ }
+ 
+@@ -2841,9 +2928,16 @@ static int nvme_resume(struct device *dev)
+ {
+ 	struct pci_dev *pdev = to_pci_dev(dev);
+ 	struct nvme_dev *ndev = pci_get_drvdata(pdev);
++	int result = 0;
+ 
+-	nvme_reset_ctrl(&ndev->ctrl);
+-	return 0;
++	if (ndev->ctrl.suspend_to_idle) {
++		result = nvme_do_resume_from_idle(pdev);
++		if (result)
++			dev_warn(dev, "failed to resume from idle state (%d)\n", result);
++	} else
++		nvme_reset_ctrl(&ndev->ctrl);
++
++	return result;
+ }
+ #endif
+ 
+@@ -2921,6 +3015,8 @@ static const struct pci_device_id nvme_id_table[] = {
+ 	{ PCI_VDEVICE(INTEL, 0x5845),	/* Qemu emulated controller */
+ 		.driver_data = NVME_QUIRK_IDENTIFY_CNS |
+ 				NVME_QUIRK_DISABLE_WRITE_ZEROES, },
++	{ PCI_DEVICE(0x1179, 0x0116),	/* Toshiba XG5 */
++		.driver_data = NVME_QUIRK_USE_D3_ON_S2I, },
+ 	{ PCI_DEVICE(0x1bb1, 0x0100),   /* Seagate Nytro Flash Storage */
+ 		.driver_data = NVME_QUIRK_DELAY_BEFORE_CHK_RDY, },
+ 	{ PCI_DEVICE(0x1c58, 0x0003),	/* HGST adapter */
+-- 
+2.17.1
 
 
 _______________________________________________
