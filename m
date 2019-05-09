@@ -2,55 +2,93 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A2EE1852B
-	for <lists+linux-nvme@lfdr.de>; Thu,  9 May 2019 08:13:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 28B591853A
+	for <lists+linux-nvme@lfdr.de>; Thu,  9 May 2019 08:16:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fLtwWWRS9IinZQVzZVHssi+kXseXBRISoUFp5DxJdIg=; b=etfCoHwd77UNtN
-	oS+YGPu/N4HG3JwXhfzvFg3O0CtSe5UrM+y3hG+cGkCEtS1hHzXLxovGhAHkykQWgGPw87tadYfcu
-	XjUZUfm/fbY8lKI7enjgCmlLM5C4NCD+7fUV+mtP5v+dXYy7R93zQWoy+Vucgx4CL4Egg5z5cDg50
-	TAKdA83nWIiYg8Nr3jR6XJa922upTbemOO37Kthe7RlOV+hJ2Rp30IDELJuICOhiTBguUYPeQdlkR
-	IdaiNBYeY2Pvl0UQ9l0OxfNE/A4/UZFNvCwf3CeWb+hZngSt0rOhfvpMBHFE0Xa28arB/P70W3BnC
-	jFuhUZvSvgAtLmNW50kw==;
+	List-Owner; bh=iBUvKN1abCN8q/84ZRMEG6gSWOCkqAUGZgfaLfg1Db4=; b=or3yjMkPS7JBN3
+	B6EVDDWtws5fE4zVqX+c6DQsOx1qD/tp+lSrsH7nA93T38HAvS7uzCt2VOrPH/oZZ46jd9jRPlYJf
+	J7Bm+sEc9LDrLmEEClwC0QHyUVIX9+VHZ5Z6KRj6cYJsOUxCitoeCJPLjwuGilP3a48cl2GzL+Kju
+	YZ1OjRQtZMWcQqxI8QK+hif2ClZjimK2wVjg0x4bcmrI7CcZsTbiUwCT/slj0A7byARgEu6ZS7Nlo
+	eKU1vcZcGN18o519858pG9QrGwWL3J+TzpojtZjHrak+VdkBjZXpBdWZPA6xXKZDUqUGKWREZPcsk
+	qtqT7rsVfnRVqGBVLLoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hOcIp-0007vH-7g; Thu, 09 May 2019 06:13:11 +0000
-Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
+	id 1hOcLf-0001E0-Bu; Thu, 09 May 2019 06:16:07 +0000
+Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hOcId-0007uU-OC
- for linux-nvme@lists.infradead.org; Thu, 09 May 2019 06:13:01 +0000
-Received: by newverein.lst.de (Postfix, from userid 2407)
- id C038667358; Thu,  9 May 2019 08:12:37 +0200 (CEST)
-Date: Thu, 9 May 2019 08:12:37 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Mario.Limonciello@dell.com
-Subject: Re: [PATCH] nvme-pci: Use non-operational power state instead of
- D3 on Suspend-to-Idle
-Message-ID: <20190509061237.GA15229@lst.de>
-References: <20190508185955.11406-1-kai.heng.feng@canonical.com>
- <20190508191624.GA8365@localhost.localdomain>
- <3CDA9F13-B17C-456F-8CE1-3A63C6E0DC8F@canonical.com>
- <f8a043b00909418bad6adcdb62d16e6e@AUSX13MPC105.AMER.DELL.COM>
- <20190508195159.GA1530@lst.de>
- <b43f2c0078f245398101fa9a40cfc2dc@AUSX13MPC105.AMER.DELL.COM>
+ id 1hOcLR-0001DK-I2
+ for linux-nvme@lists.infradead.org; Thu, 09 May 2019 06:15:55 +0000
+Received: by mail-lf1-x141.google.com with SMTP id d8so655637lfb.8
+ for <linux-nvme@lists.infradead.org>; Wed, 08 May 2019 23:15:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pjL8S2b1N9RGB5Ej3tVGHssLMN/kO9+k5oaDAxobLrw=;
+ b=PNlaPYua3Padp4UXiYdn7sRzUEoyqaJEnymtiHO5jiT8Kr4Fcfe0TSy2Pbf2SjXc4V
+ MLeDiDMc8hUCnwUVyt78Fz1K+CQJJUtGfN7qeciKijkQwqY3KnO3NnskmHcY8TmpnD5T
+ w+vTTP8XhwR+mTXQULq3NeIYa0jBu3NPrz+C+87ALra7ZBjS2mKaAQKpCr92cwNyHsnx
+ Axoavui20MvVCZkBJH8kkV0NhU7ZaVqTd2puEK3OtGfniQu756j8BjQO7Dkrpgog1F81
+ xSnqVLW6dnkv96jkReJ1xA1GdoaBBdIJr7iE9gobNTuunjL0sZX07sImUQ49CpzWKzFF
+ k/OQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pjL8S2b1N9RGB5Ej3tVGHssLMN/kO9+k5oaDAxobLrw=;
+ b=WuxdV+U9pURHcsEEon0L/Fg85uJTeaQ7v4fWUrajqyExwgu1LuitPrHe+xyJnY0UCq
+ ECRwgzsMgShrnHYxhKRLA8DKCaD4L41ciiZClK125uT8Fbf8oKYlYRocYK+gzZXgyo5M
+ 6lltkRy0XaDPjuHuDVM+o+NDsbI3rDWYSwzPwRR5aLSoNpALQyx7NfhsqrjxtsW4/Tl6
+ hC0jFOWr/ZuyVsbsXY9We8+Yp38/v1Vf5ksOT0KJoLGzBZ9dyGUkI9KwyrAP87iry8sb
+ UiG+/R7hXo/rVz9oFudx9O2ufk2awQIhgEtm8fCuGFhGumqeKgBI9uy1ESPmwTC/pg4V
+ c7IA==
+X-Gm-Message-State: APjAAAVRP18ODoUEkvJcpQKVqoC9nX/rg2xnOyc80rpzjvE5cOnR+qdC
+ 2VZnJLV/hxuLoYECrwWui5YgIa9n3Dj+4j+I6Fo=
+X-Google-Smtp-Source: APXvYqxMLmq4PiNfx2RlO492eAwLG0dIA9iTL4CjA/V6Ux8VFdsFh0aOY1se89IZfU+hxOcsTAQ1Em3hIHy4jx3gzuk=
+X-Received: by 2002:a19:4bc5:: with SMTP id y188mr1354149lfa.24.1557382551452; 
+ Wed, 08 May 2019 23:15:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <b43f2c0078f245398101fa9a40cfc2dc@AUSX13MPC105.AMER.DELL.COM>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+References: <20190505150611.15776-1-minwoo.im.dev@gmail.com>
+ <20190505150611.15776-2-minwoo.im.dev@gmail.com>
+ <SN6PR04MB45274C423AA7C3CC3DBB5ED586300@SN6PR04MB4527.namprd04.prod.outlook.com>
+ <a66b775f-9a5f-fefc-ae29-c86678e66463@gmail.com>
+ <SN6PR04MB45272BEB18B3ADD95DCB42AE86300@SN6PR04MB4527.namprd04.prod.outlook.com>
+ <cfa4d48d-ce13-0ace-cf5c-a3d0d1f4cca7@gmail.com>
+ <SN6PR04MB4527FAD8076A5A5610F6B66786300@SN6PR04MB4527.namprd04.prod.outlook.com>
+ <c86fe09e-9964-123a-bc17-e9b9e6a80856@gmail.com>
+ <SN6PR04MB45273CEE5FE1DDF38677980F86300@SN6PR04MB4527.namprd04.prod.outlook.com>
+ <CAA7jztfU+AdUHp5xo8ssjgvXiBFBXJt0PyQTNA8VQU-T-SpKQA@mail.gmail.com>
+ <SN6PR04MB4527510BF05DCBF27E0B6D2F86330@SN6PR04MB4527.namprd04.prod.outlook.com>
+In-Reply-To: <SN6PR04MB4527510BF05DCBF27E0B6D2F86330@SN6PR04MB4527.namprd04.prod.outlook.com>
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+Date: Thu, 9 May 2019 15:15:39 +0900
+Message-ID: <CAA7jztcSAOTrPkiN+bDW5i7E1E0MA+xhU=6iZ-nEUy1YT2c1AQ@mail.gmail.com>
+Subject: Re: [PATCH 1/3] nvme: 002: fix nvmet pass data with loop
+To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190508_231259_942714_0ADC2C8E 
-X-CRM114-Status: GOOD (  18.96  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190508_231554_034010_CB28828C 
+X-CRM114-Status: GOOD (  21.82  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
+ no trust [2a00:1450:4864:20:0:0:0:141 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,75 +100,67 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@fb.com, sagi@grimberg.me, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, keith.busch@intel.com,
- kai.heng.feng@canonical.com, kbusch@kernel.org, hch@lst.de
+Cc: "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
+ Keith Busch <keith.busch@intel.com>, Omar Sandoval <osandov@osandov.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, May 08, 2019 at 08:28:30PM +0000, Mario.Limonciello@dell.com wrote:
-> You might think this would be adding runtime_suspend/runtime_resume
-> callbacks, but those also get called actually at runtime which is not
-> the goal here.  At runtime, these types of disks should rely on APST which
-> should calculate the appropriate latencies around the different power states.
-> 
-> This code path is only applicable in the suspend to idle state, which /does/
-> call suspend/resume functions associated with dev_pm_ops.  There isn't
-> a dedicated function in there for use only in suspend to idle, which is
-> why pm_suspend_via_s2idle() needs to get called.
+> Isn't this unsigned ? as pointed out by Keith ?
+>
+> $ cat a.c
+> int main(void)
+> {
+>         return -1;
+> }
+> $ gcc a.c -o a
+> $ ./a
+> $ echo $?
+> 255
+>
+> May be I'm missing something here ?
 
-The problem is that it also gets called for others paths:
+I meant that the program returns in a signed value, but it's going to be
+parsed in 8bits which is unix style, I think.  Sorry for being unclear.
+That's not enough to hold nvme status value at all.
 
-#ifdef CONFIG_PM_SLEEP
-#define SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn) \
-        .suspend = suspend_fn, \
-	.resume = resume_fn, \
-	.freeze = suspend_fn, \
-	.thaw = resume_fn, \
-	.poweroff = suspend_fn, \
-	.restore = resume_fn,
-#else
-else
-#define SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn)
-#endif
+> >
+> > If you have any idea about it, Please let me know.  By the way, I really do
+> > agree with what you mentioned about the return value.  If it's possible,
+> > I would like to too :)
+>
+> How about we instead of returning the NVMe Status we map the NVMe Status
+> of the program to the error code and in-turn return that error code ?
+>
+> The above is true only when command is successfully submitted from the
+> program i.e. no errno is set by any library calls and failed in the
+> completion queue entry with NVMe Status != NVME_SC_SUCCESS.
+>
+> For your reference In kernel we already do this detailed mapping where :-
+>
+> 1. Please refer to the drivers/nvme/target/core.c file where we map the
+> errno_to_nvme_status(), the reverse mapping of that function can be done
+> with nvme_status_to_errno(). Of course you will have to add more cases
+> and do in-detail reverse error mapping from NVMe status to errno and
+> return that errno.
+> 2. nvme_error_status() we map NVMe Status to block layer status.
+> 3. blk_status_to_errno() we map the block layer status to the errno.
+>
+> With the help of 1, 2 and 3 you can reverse map the NVMe Status to errno
+> and add that mapper function for nvme-cli which will be consistent with
+> the kernel NVMe status to errno mapping.
+>
+> Now you might find some cases where you cannot map all the status codes
+> to errno and for those default cases you may end up using something like
+> EIO, this is still better way than having to return 0.
 
-#define SIMPLE_DEV_PM_OPS(name, suspend_fn, resume_fn) \
-const struct dev_pm_ops name = { \
-	SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn) \
-}
+Got your point. To make this discussion short, I think we need to make it
+in nvme-cli first.  Let me have a discussion on the following link:
+https://github.com/linux-nvme/nvme-cli/pull/492
 
-And at least for poweroff this new code seems completely wrong, even
-for freeze it looks rather borderline.
-
-And more to the points - if these "modern MS standby" systems are
-becoming common, which it looks they are, we need support in the PM core
-for those instead of working around the decisions in low-level drivers.
-
-> SIMPLE_DEV_PM_OPS normally sets the same function for suspend and
-> freeze (hibernate), so to avoid any changes to the hibernate case it seems
-> to me that there needs to be a new nvme_freeze() that calls into the existing
-> nvme_dev_disable for the freeze pm op and nvme_thaw() that calls into the
-> existing nvme_reset_ctrl for the thaw pm op.
-
-At least, yes.
-
-> 
-> > enterprise class NVMe devices
-> > that don't do APST and don't really do different power states at
-> > all in many cases.
-> 
-> Enterprise class NVMe devices that don't do APST - do they typically
-> have a non-zero value for ndev->ctrl.npss?
-> 
-> If not, they wouldn't enter this new codepath even if the server entered into S2I.
-
-No, devices that do set NPSS will have at least some power states
-per definition, although they might not be too useful.  I suspect checking
-APSTA might be safer, but if we don't want to rely on APST we should
-check for a power state supporting the condition that the MS document
-quoted in the original document supports.
+Thanks,
 
 _______________________________________________
 Linux-nvme mailing list
