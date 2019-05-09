@@ -2,93 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28B591853A
-	for <lists+linux-nvme@lfdr.de>; Thu,  9 May 2019 08:16:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F5E91853E
+	for <lists+linux-nvme@lfdr.de>; Thu,  9 May 2019 08:16:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iBUvKN1abCN8q/84ZRMEG6gSWOCkqAUGZgfaLfg1Db4=; b=or3yjMkPS7JBN3
-	B6EVDDWtws5fE4zVqX+c6DQsOx1qD/tp+lSrsH7nA93T38HAvS7uzCt2VOrPH/oZZ46jd9jRPlYJf
-	J7Bm+sEc9LDrLmEEClwC0QHyUVIX9+VHZ5Z6KRj6cYJsOUxCitoeCJPLjwuGilP3a48cl2GzL+Kju
-	YZ1OjRQtZMWcQqxI8QK+hif2ClZjimK2wVjg0x4bcmrI7CcZsTbiUwCT/slj0A7byARgEu6ZS7Nlo
-	eKU1vcZcGN18o519858pG9QrGwWL3J+TzpojtZjHrak+VdkBjZXpBdWZPA6xXKZDUqUGKWREZPcsk
-	qtqT7rsVfnRVqGBVLLoA==;
+	List-Owner; bh=sKL1TJTW7ZOdfNdle+zBVM5sdQS/+4ScICP6CFpbK/Y=; b=mxeVkL84UfsxSv
+	F2cGw/XpzQhR88XjQhpWjAG0N5qR+rQ8L+AOGQyVcsTRHxN/G11FTMi5YLKmI+bPHNhsj3Lze3j+w
+	LfTeW92tQsJOrhCfmjWneoD2Ww9d5Wc36uH5iL9/glhhoB/nSgFUgqx2xJv8YI5L1onHQYHtOtijA
+	WEJkdCQiDr6vuftBsHySmlAE/PCj99eZVLByX+0JoWUiMrlmuYttwmJ6pT48tPwnNsxIz8osSNtjj
+	8ZFq5HkCfFTfTCjb1AihHmPAmLckYrXJ1GzSviARml6aSkMlW2FZoUc3pYtHiK/yDvvVnDATzrm4O
+	MdX9GB7faUvK8beDhlGg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hOcLf-0001E0-Bu; Thu, 09 May 2019 06:16:07 +0000
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141])
+	id 1hOcLz-0001Nw-7d; Thu, 09 May 2019 06:16:27 +0000
+Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hOcLR-0001DK-I2
- for linux-nvme@lists.infradead.org; Thu, 09 May 2019 06:15:55 +0000
-Received: by mail-lf1-x141.google.com with SMTP id d8so655637lfb.8
- for <linux-nvme@lists.infradead.org>; Wed, 08 May 2019 23:15:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pjL8S2b1N9RGB5Ej3tVGHssLMN/kO9+k5oaDAxobLrw=;
- b=PNlaPYua3Padp4UXiYdn7sRzUEoyqaJEnymtiHO5jiT8Kr4Fcfe0TSy2Pbf2SjXc4V
- MLeDiDMc8hUCnwUVyt78Fz1K+CQJJUtGfN7qeciKijkQwqY3KnO3NnskmHcY8TmpnD5T
- w+vTTP8XhwR+mTXQULq3NeIYa0jBu3NPrz+C+87ALra7ZBjS2mKaAQKpCr92cwNyHsnx
- Axoavui20MvVCZkBJH8kkV0NhU7ZaVqTd2puEK3OtGfniQu756j8BjQO7Dkrpgog1F81
- xSnqVLW6dnkv96jkReJ1xA1GdoaBBdIJr7iE9gobNTuunjL0sZX07sImUQ49CpzWKzFF
- k/OQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=pjL8S2b1N9RGB5Ej3tVGHssLMN/kO9+k5oaDAxobLrw=;
- b=WuxdV+U9pURHcsEEon0L/Fg85uJTeaQ7v4fWUrajqyExwgu1LuitPrHe+xyJnY0UCq
- ECRwgzsMgShrnHYxhKRLA8DKCaD4L41ciiZClK125uT8Fbf8oKYlYRocYK+gzZXgyo5M
- 6lltkRy0XaDPjuHuDVM+o+NDsbI3rDWYSwzPwRR5aLSoNpALQyx7NfhsqrjxtsW4/Tl6
- hC0jFOWr/ZuyVsbsXY9We8+Yp38/v1Vf5ksOT0KJoLGzBZ9dyGUkI9KwyrAP87iry8sb
- UiG+/R7hXo/rVz9oFudx9O2ufk2awQIhgEtm8fCuGFhGumqeKgBI9uy1ESPmwTC/pg4V
- c7IA==
-X-Gm-Message-State: APjAAAVRP18ODoUEkvJcpQKVqoC9nX/rg2xnOyc80rpzjvE5cOnR+qdC
- 2VZnJLV/hxuLoYECrwWui5YgIa9n3Dj+4j+I6Fo=
-X-Google-Smtp-Source: APXvYqxMLmq4PiNfx2RlO492eAwLG0dIA9iTL4CjA/V6Ux8VFdsFh0aOY1se89IZfU+hxOcsTAQ1Em3hIHy4jx3gzuk=
-X-Received: by 2002:a19:4bc5:: with SMTP id y188mr1354149lfa.24.1557382551452; 
- Wed, 08 May 2019 23:15:51 -0700 (PDT)
+ id 1hOcLm-0001NQ-GX
+ for linux-nvme@lists.infradead.org; Thu, 09 May 2019 06:16:15 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id 5765367358; Thu,  9 May 2019 08:15:55 +0200 (CEST)
+Date: Thu, 9 May 2019 08:15:55 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCH, RFC 2/2] nvme: validate cntlid during controller
+ initialisation
+Message-ID: <20190509061555.GB15229@lst.de>
+References: <20190508075508.28552-1-hch@lst.de>
+ <20190508075508.28552-2-hch@lst.de>
+ <20190508142814.GB7113@localhost.localdomain>
 MIME-Version: 1.0
-References: <20190505150611.15776-1-minwoo.im.dev@gmail.com>
- <20190505150611.15776-2-minwoo.im.dev@gmail.com>
- <SN6PR04MB45274C423AA7C3CC3DBB5ED586300@SN6PR04MB4527.namprd04.prod.outlook.com>
- <a66b775f-9a5f-fefc-ae29-c86678e66463@gmail.com>
- <SN6PR04MB45272BEB18B3ADD95DCB42AE86300@SN6PR04MB4527.namprd04.prod.outlook.com>
- <cfa4d48d-ce13-0ace-cf5c-a3d0d1f4cca7@gmail.com>
- <SN6PR04MB4527FAD8076A5A5610F6B66786300@SN6PR04MB4527.namprd04.prod.outlook.com>
- <c86fe09e-9964-123a-bc17-e9b9e6a80856@gmail.com>
- <SN6PR04MB45273CEE5FE1DDF38677980F86300@SN6PR04MB4527.namprd04.prod.outlook.com>
- <CAA7jztfU+AdUHp5xo8ssjgvXiBFBXJt0PyQTNA8VQU-T-SpKQA@mail.gmail.com>
- <SN6PR04MB4527510BF05DCBF27E0B6D2F86330@SN6PR04MB4527.namprd04.prod.outlook.com>
-In-Reply-To: <SN6PR04MB4527510BF05DCBF27E0B6D2F86330@SN6PR04MB4527.namprd04.prod.outlook.com>
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-Date: Thu, 9 May 2019 15:15:39 +0900
-Message-ID: <CAA7jztcSAOTrPkiN+bDW5i7E1E0MA+xhU=6iZ-nEUy1YT2c1AQ@mail.gmail.com>
-Subject: Re: [PATCH 1/3] nvme: 002: fix nvmet pass data with loop
-To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+Content-Disposition: inline
+In-Reply-To: <20190508142814.GB7113@localhost.localdomain>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190508_231554_034010_CB28828C 
-X-CRM114-Status: GOOD (  21.82  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190508_231614_698821_BD0D6F1E 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:141 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ no trust [213.95.11.211 listed in list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,67 +60,34 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
- Keith Busch <keith.busch@intel.com>, Omar Sandoval <osandov@osandov.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Cc: Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
+ hare@suse.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> Isn't this unsigned ? as pointed out by Keith ?
->
-> $ cat a.c
-> int main(void)
-> {
->         return -1;
-> }
-> $ gcc a.c -o a
-> $ ./a
-> $ echo $?
-> 255
->
-> May be I'm missing something here ?
+On Wed, May 08, 2019 at 08:28:14AM -0600, Keith Busch wrote:
+> On Wed, May 08, 2019 at 09:55:08AM +0200, Christoph Hellwig wrote:
+> > +	list_for_each_entry(tmp, &subsys->ctrls, subsys_entry) {
+> > +		if (ctrl->state == NVME_CTRL_DELETING ||
+> > +		    ctrl->state == NVME_CTRL_DEAD)
+> > +			continue;
+> > +
+> > +		if (tmp->cntlid == ctrl->cntlid) {
+> > +			dev_err(ctrl->device,
+> > +				"Duplicate cntlid %u, rejecting\n",
+> > +				ctrl->cntlid);
+> 
+> Patch looks great, but let's make this print more informative by showing
+> tmp's device name too:
+> 
+> 			dev_err(ctrl->device,
+> 				"Duplicate cntlid %u with %s, rejecting\n",
+> 				ctrl->cntlid, dev_name(tmp->device));
 
-I meant that the program returns in a signed value, but it's going to be
-parsed in 8bits which is unix style, I think.  Sorry for being unclear.
-That's not enough to hold nvme status value at all.
-
-> >
-> > If you have any idea about it, Please let me know.  By the way, I really do
-> > agree with what you mentioned about the return value.  If it's possible,
-> > I would like to too :)
->
-> How about we instead of returning the NVMe Status we map the NVMe Status
-> of the program to the error code and in-turn return that error code ?
->
-> The above is true only when command is successfully submitted from the
-> program i.e. no errno is set by any library calls and failed in the
-> completion queue entry with NVMe Status != NVME_SC_SUCCESS.
->
-> For your reference In kernel we already do this detailed mapping where :-
->
-> 1. Please refer to the drivers/nvme/target/core.c file where we map the
-> errno_to_nvme_status(), the reverse mapping of that function can be done
-> with nvme_status_to_errno(). Of course you will have to add more cases
-> and do in-detail reverse error mapping from NVMe status to errno and
-> return that errno.
-> 2. nvme_error_status() we map NVMe Status to block layer status.
-> 3. blk_status_to_errno() we map the block layer status to the errno.
->
-> With the help of 1, 2 and 3 you can reverse map the NVMe Status to errno
-> and add that mapper function for nvme-cli which will be consistent with
-> the kernel NVMe status to errno mapping.
->
-> Now you might find some cases where you cannot map all the status codes
-> to errno and for those default cases you may end up using something like
-> EIO, this is still better way than having to return 0.
-
-Got your point. To make this discussion short, I think we need to make it
-in nvme-cli first.  Let me have a discussion on the following link:
-https://github.com/linux-nvme/nvme-cli/pull/492
-
-Thanks,
+Sure.  The printk was taken 1:1 from the existing code, but I could
+improve it.
 
 _______________________________________________
 Linux-nvme mailing list
