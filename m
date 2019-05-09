@@ -2,81 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 414FC194C9
-	for <lists+linux-nvme@lfdr.de>; Thu,  9 May 2019 23:40:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 19430194CC
+	for <lists+linux-nvme@lfdr.de>; Thu,  9 May 2019 23:43:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L29Pm4kIikbDAdxjV/AcfIKeGoi6U7XMmE90CXTSyK8=; b=WUrZ20ru6tBQ39
-	qjFLN61bXc09/oAV4fEo4XW0oqP5twiN7kPjJG2HcJr4/DGIYux1/z/80Osb1s6sJg/fHtGwCZEe+
-	G9/Q0JLjAgzJWMtIuKXOr1J3P9TOIlqLT1wfJYvRHf3BfFzOxj7denm5FCP83kl7Ruc4AgWIdI3fV
-	4U6oQdh/BroErFwjkcYuwUoUCGGoFoXvWUfYrD6NQ27fRgQPRL+9IiQIa8ZOJ5j7eIQ4h2c4c66/D
-	o/Mj3AH9gJ5v3yAWKy/DnYwbfuwlnjYEKkz+SwCPDatJQfWE4xgSOH5Q/3dhaS80Be68phLv3JEs2
-	jz2/8FrfhGXiOSQd6t7g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=6fmib6kX5W5Y4jC84g3r18uuJT68ULViAT4wfPLt38g=; b=Tb9S4+9hhTL8sGlVliAMMzTxy
+	utQ+nbZ5DRaKArTRJhYXz/F9BfgWUT+45y0bzdHkoTyHc8AxLaaWhGmtRrbhLnHUN7VqodyDEASCh
+	e2kaEG1oDsZOCk3NIWxypVSFyc1/jVvk4cLvWSGYIW252HROLopR/YMsFOPqXmDy7PM6NTEbYU1bp
+	jbzisv1xKed2N8s5Sressf6YVrEbyy4fZVBfue6JTBC4se0aBhXcFywvdHBpUR0nDjMzqnDTLZmUE
+	KnGWJqL34qSLgOe58DfBh1SA/XgQr8tWPwYEdyW9X1YLvHdXjBvDYFg7BcZEe4bpdrnJy+bR+AqDa
+	ilP5eEXFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hOqlu-000101-EA; Thu, 09 May 2019 21:40:10 +0000
-Received: from mail-oi1-f194.google.com ([209.85.167.194])
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hOqln-0000MM-I2
- for linux-nvme@lists.infradead.org; Thu, 09 May 2019 21:40:04 +0000
-Received: by mail-oi1-f194.google.com with SMTP id 203so3037263oid.13
- for <linux-nvme@lists.infradead.org>; Thu, 09 May 2019 14:40:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rWqUG/1Q13/Mgi8WYJUSOwOl7Nvw/G1FqiVogS2PJUU=;
- b=BVr3j4tncY0L62Jo26/n5qhUInqyNqfks4YEKRpvHgc7MjYOqBwioh/cTamf92cQ/j
- na3ebhQNBjMrTdylbk7phyGuTlFi5XAH1j1mz2MMTjiLEGcY0LMj0PH5+mrj0zv+y9Zi
- Z1Db68oz2hZwVcHi7fvTGUjUAgmc8+cBA+yCsAU6Wo1gTEKQk4/O9YXn4JS4V5A5swns
- BTmIkycUtyMWXd8BavzTUqxsnIRP3bWc4ydTSCya+Smd0KWx3a4hnIRnJdlo7m1SHdMW
- M8ov/R9HBabeQ+SlMATM4sQEc+O/YOqdb2xV9EH19ANLp5roB0eeLd4uR0wIkg4KXBcf
- t7uA==
-X-Gm-Message-State: APjAAAV8/FQkbiFegaDy+MWyNAO87NFI16yHpc4uOxL6+uxccBv6UTmX
- VBTvJ2jkisXSw8kKfwe3sfwX0mafMxJ6qf9wBCU=
-X-Google-Smtp-Source: APXvYqyKl5SlkcDFgO5vnRTd1pL4AcZ5QulP6DrlxtnNmeZsn1LLArtlg5CH58bHUEjFNoX4LuDOC98A5i+IaWekgTQ=
-X-Received: by 2002:aca:f4c3:: with SMTP id s186mr2791143oih.68.1557438002008; 
- Thu, 09 May 2019 14:40:02 -0700 (PDT)
+	id 1hOqop-0001zU-7W; Thu, 09 May 2019 21:43:11 +0000
+Received: from linux.microsoft.com ([13.77.154.182])
+ by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hOqoj-0001z5-Sq
+ for linux-nvme@lists.infradead.org; Thu, 09 May 2019 21:43:07 +0000
+Received: from localhost.localdomain (unknown [131.107.160.135])
+ by linux.microsoft.com (Postfix) with ESMTPSA id 8A0B4208956A;
+ Thu,  9 May 2019 14:43:04 -0700 (PDT)
+Subject: Re: [PATCH, RFC 1/2] nvme: change locking for the per-subsystem
+ controller list
+To: Christoph Hellwig <hch@lst.de>
+References: <20190508075508.28552-1-hch@lst.de>
+ <6b9497da-a1d1-84ed-f59c-ef602297a2aa@linux.microsoft.com>
+ <20190509061716.GD15229@lst.de>
+From: Edmund Nadolski <ednadols@linux.microsoft.com>
+Message-ID: <dc2d70e6-3607-a4f2-c8a7-a41220ea5085@linux.microsoft.com>
+Date: Thu, 9 May 2019 14:43:04 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <064701C3-2BD4-4D93-891D-B7FBB5040FC4@canonical.com>
- <CAJZ5v0ggMwpJt=XWXu4gU51o8y4BpJ4KZ5RKzfk3+v8GGb-QbQ@mail.gmail.com>
- <A4DD2E9F-054E-4D4B-9F77-D69040EBE120@canonical.com>
- <20190509095601.GA19041@lst.de>
- <225CF4F7-C8E1-4C66-B362-97E84596A54E@canonical.com>
- <20190509103142.GA19550@lst.de>
- <AB325926-0D77-4851-8E8A-A10599756BF9@canonical.com>
- <31b7d7959bf94c15a04bab0ced518444@AUSX13MPC101.AMER.DELL.COM>
- <20190509192807.GB9675@localhost.localdomain>
- <CAJZ5v0ivyByegTMzqdvxqRM2kyjcWmg-LktuwpQJETjMCzGJiw@mail.gmail.com>
- <20190509211608.GC9675@localhost.localdomain>
-In-Reply-To: <20190509211608.GC9675@localhost.localdomain>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Thu, 9 May 2019 23:39:50 +0200
-Message-ID: <CAJZ5v0geQV2Z4SdnisPKgEKJY0kypjgd9bRmwaYvf2pp0Rw4dg@mail.gmail.com>
-Subject: Re: [PATCH] nvme-pci: Use non-operational power state instead of D3
- on Suspend-to-Idle
-To: Keith Busch <kbusch@kernel.org>
+In-Reply-To: <20190509061716.GD15229@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190509_144003_601818_20A7305E 
-X-CRM114-Status: GOOD (  20.43  )
-X-Spam-Score: 0.3 (/)
+X-CRM114-CacheID: sfid-20190509_144305_956650_279FA030 
+X-CRM114-Status: GOOD (  12.74  )
+X-Spam-Score: -8.0 (--------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.3 points)
+ Content analysis details:   (-8.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.194 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (rjwysocki[at]gmail.com)
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
+ -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
+ Match
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,65 +65,41 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>,
- Rafael Wysocki <rafael.j.wysocki@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- Mario Limonciello <Mario.Limonciello@dell.com>,
- Linux PM <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>, Jens Axboe <axboe@fb.com>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
+Cc: hare@suse.de, linux-nvme@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, May 9, 2019 at 11:21 PM Keith Busch <kbusch@kernel.org> wrote:
->
-> On Thu, May 09, 2019 at 10:54:04PM +0200, Rafael J. Wysocki wrote:
-> > On Thu, May 9, 2019 at 9:33 PM Keith Busch <kbusch@kernel.org> wrote:
-> > >  #include <linux/io-64-nonatomic-lo-hi.h>
-> > > @@ -2851,6 +2852,8 @@ static int nvme_suspend(struct device *dev)
-> > >         struct pci_dev *pdev = to_pci_dev(dev);
-> > >         struct nvme_dev *ndev = pci_get_drvdata(pdev);
-> > >
-> > > +       if (!pm_suspend_via_firmware())
-> > > +               return nvme_set_power(&ndev->ctrl, ndev->ctrl.npss);
-> >
-> > You probably want to call pci_save_state(pdev) in the branch above to
-> > prevent pci_pm_suspend_noirq() from calling pci_prepare_to_sleep()
-> > going forward, so I would write this routine as
-> >
-> > if (pm_suspend_via_firmware()) {
-> >         nvme_dev_disable(ndev, true);
-> >         return 0;
-> > }
-> >
-> > pci_save_state(pdev)
-> > return nvme_set_power(&ndev->ctrl, ndev->ctrl.npss);
->
-> Ah, good point. I'll make sure that's added and will wait to see hear if
-> there's any other feedback.
->
-> I am trying to test the paths by faking out PS capabilities, and have
-> a question on how to force each:
->
-> Running "rtcwake -m freeze ...", that takes the !pm_suspend_via_firmware()
-> path as I expected.
->
-> But trying to test the original path, I thought using "-m mem" would
-> have been a suspend via firmware, but that is still returning false.
->
-> Is that expected?
+On 5/8/19 11:17 PM, Christoph Hellwig wrote:
+> On Wed, May 08, 2019 at 09:47:42AM -0700, Edmund Nadolski wrote:
+>>> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+>>> index eebaeadaa800..4f4ffcce7416 100644
+>>> --- a/drivers/nvme/host/core.c
+>>> +++ b/drivers/nvme/host/core.c
+>>> @@ -2346,13 +2346,11 @@ static int nvme_active_ctrls(struct nvme_subsystem *subsys)
+>>>   	int count = 0;
+>>>   	struct nvme_ctrl *ctrl;
+>>>   -	mutex_lock(&subsys->lock);
+>>>   	list_for_each_entry(ctrl, &subsys->ctrls, subsys_entry) {
+>>>   		if (ctrl->state != NVME_CTRL_DELETING &&
+>>>   		    ctrl->state != NVME_CTRL_DEAD)
+>>>   			count++;
+>>>   	}
+>>> -	mutex_unlock(&subsys->lock);
+>>>     	return count;
+>>>   }
+>>
+>> Would lockdep_assert_held(&nvme_subsystems_lock); be beneficial here?
+> 
+> It certainly would not hurt, although it seems a little overkill for
+> a trivial helper with a single caller.
 
-Yes, if s2idle is the default on that platform.  You should be able to
-switch over to S3 by writing "deep" into /sys/power/mem_sleep as long
-as it is supported on that platform at all.
+True, the thought is that it would be indicative that subsys->lock is not
+needed in this context.
 
-> I've only tried this on one platform so far, so might
-> just be this particular one is missing a firmware capability.
+Ed
 
-You can check that by looking into /sys/power/mem_sleep (if there is
-only "[s2idle]" in there, S3 is not supported).
 
 _______________________________________________
 Linux-nvme mailing list
