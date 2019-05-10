@@ -2,68 +2,42 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDA0819FF8
-	for <lists+linux-nvme@lfdr.de>; Fri, 10 May 2019 17:17:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CD441A063
+	for <lists+linux-nvme@lfdr.de>; Fri, 10 May 2019 17:42:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ALIfzaBR0nRIMsgZSeqBK7ZRk2pt3bbi1tZlCmd8Sdg=; b=RWxtYbOEWBwK6O
-	4npvZ1UW8PrH0ufFbU3aVR7ZrvFKDqwIEoZQS/5OW6b1jDxhgzIPt3bQGiByOLFmUEeE+IJhqLDvP
-	AXASIYq9dplnlBgBS1DMyPwsdeGGghgEP1KHJQafD+P7XTTREr7t5XzZbzEZt5DQE+KZx/OYzfiH1
-	ah/sJkY87XZquHk2LD50cwWZ8C1kE5+fkfCYsOKhJTQcxHCxoEOhE8ZdQ5o68qf9V+rehztInRTgS
-	qYUJmPJN9xXcV3yDelm0MyhADyKGZf7ALFm5Por01B9WhgmzbslEu0N2gXbFw5/N/QV9VRsBvzWOr
-	fGssgpMC9kHzvIhSgCpw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KXDD2KliOHN/9BUm8GXgb6xnI/+KQ5W5jz93CHLBIao=; b=XSP+HKdPdf65Y0
+	P4zn+Kkq/e2fRBqRN69qRo0xZDFMLGqca9F4/mJ5R2yqUoZpOdPljBud15UzD5rldeKI0BrXcUR4H
+	P062DaWxiMAk171BxIZfvBt26XP8iLj7KcfxRKaBR+Ypb6Z4g+uK1zOVoM4a3iHHzAe0ludqfGhU6
+	fca2B8wJhgz0jBMJzselDlO0NLWk1kZg+7Xv+qY6kc33bXvWnwva6VTiIFLFSvsvwoWEpAuKQUV1A
+	J86DWoB9kx6tvLFVz+vZj5DX0j78rVLyZG8xtl2GZZOnWRRKZ4LKZiz/uM+8wh9+FFaAX/kWNPWbl
+	ExZXjuT8GnXQggPwNxcQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hP7H5-0003ii-I9; Fri, 10 May 2019 15:17:27 +0000
-Received: from youngberry.canonical.com ([91.189.89.112])
+	id 1hP7fN-0004f9-Pn; Fri, 10 May 2019 15:42:33 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hP7H0-0003hz-Fd
- for linux-nvme@lists.infradead.org; Fri, 10 May 2019 15:17:23 +0000
-Received: from mail-pl1-f200.google.com ([209.85.214.200])
- by youngberry.canonical.com with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.76) (envelope-from <kai.heng.feng@canonical.com>)
- id 1hP7Gx-0006x7-VD
- for linux-nvme@lists.infradead.org; Fri, 10 May 2019 15:17:20 +0000
-Received: by mail-pl1-f200.google.com with SMTP id g6so3842229plp.18
- for <linux-nvme@lists.infradead.org>; Fri, 10 May 2019 08:17:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=9ksYfkmpkpH6va/jl6WUWe9ADNC1rlHcm4W2AWAcxsI=;
- b=m5Qt2R55c9akycAM4bS7YQbWtDnU6zkwPUGUDkWP8chXPRbT3vQUb7gW7nvma38xZt
- FHfq/kCvbGmeCWM6lrRx6CQsIVv/BrGwCa28eofnkdPOHJLo4CSOntWAir/qtFTymniY
- BiPcUUzK1Bp5gQeFdVuCZ5+PaX3ruyxV6uCfdaBkWEa5a1w/7YtBq509AWFnhs9UXXGU
- AWWvM1+elhQ30VM7k+pxu0oXLp0CGVEd/dKmLHR+I2+JHoJW92o7bnp/BfbV8vrpD3Jb
- Ke3MmyT8Bd+ikILRvf3TLC5ZuoBniZo1De6Rx+08EBuL6o1Dv9o4X/dAbC8pbLula8l+
- EmOw==
-X-Gm-Message-State: APjAAAWCXa7awnmCeS0knKsO5GkPuS9fXPEZvunVPFxrha7uY/VFRpbn
- /bGoRa42Ddxu/x9Vp/qt0CKqmnmNJesj6LPXPX5l2PJIU4ZA+LQDIUFT5gs2mTyPIkDkW0164vz
- 6KZZnFINNv07JAZEdJ+/S65hS97pJwjQaDk2Kh+hNGymj
-X-Received: by 2002:a63:d408:: with SMTP id a8mr14221499pgh.184.1557501438679; 
- Fri, 10 May 2019 08:17:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyh/Bshj4Iu4LZ0+PAJP0YH+FOpi9SNU4iCGkiuMtOOEWfwyyXrJlCA2wUcsW2TXEFDfy/FnA==
-X-Received: by 2002:a63:d408:: with SMTP id a8mr14221469pgh.184.1557501438481; 
- Fri, 10 May 2019 08:17:18 -0700 (PDT)
-Received: from [192.168.1.220] (220-133-187-190.HINET-IP.hinet.net.
- [220.133.187.190])
- by smtp.gmail.com with ESMTPSA id s79sm11301512pfa.31.2019.05.10.08.17.16
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 10 May 2019 08:17:17 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.8\))
+ id 1hP7fJ-0004eH-4Y
+ for linux-nvme@lists.infradead.org; Fri, 10 May 2019 15:42:30 +0000
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 10 May 2019 08:42:27 -0700
+X-ExtLoop1: 1
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by fmsmga004.fm.intel.com with ESMTP; 10 May 2019 08:42:26 -0700
+Date: Fri, 10 May 2019 09:36:58 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Kai Heng Feng <kai.heng.feng@canonical.com>
 Subject: Re: [PATCH] nvme-pci: Use non-operational power state instead of D3
  on Suspend-to-Idle
-From: Kai Heng Feng <kai.heng.feng@canonical.com>
-In-Reply-To: <20190510140209.GG9675@localhost.localdomain>
-Date: Fri, 10 May 2019 23:18:52 +0800
-Message-Id: <D2D197AF-0072-42AC-A844-8D6BC9677949@canonical.com>
-References: <20190509095601.GA19041@lst.de>
- <225CF4F7-C8E1-4C66-B362-97E84596A54E@canonical.com>
- <20190509103142.GA19550@lst.de>
+Message-ID: <20190510153658.GI9675@localhost.localdomain>
+References: <20190509103142.GA19550@lst.de>
  <AB325926-0D77-4851-8E8A-A10599756BF9@canonical.com>
  <31b7d7959bf94c15a04bab0ced518444@AUSX13MPC101.AMER.DELL.COM>
  <20190509192807.GB9675@localhost.localdomain>
@@ -71,20 +45,23 @@ References: <20190509095601.GA19041@lst.de>
  <20190509215409.GD9675@localhost.localdomain>
  <495d76c66aec41a8bfbbf527820f8eb9@AUSX13MPC101.AMER.DELL.COM>
  <BC5EB1D0-8718-48B3-ACAB-F7E5571D821D@canonical.com>
- <20190510140209.GG9675@localhost.localdomain>
-To: Keith Busch <kbusch@kernel.org>
-X-Mailer: Apple Mail (2.3445.104.8)
+ <CAJZ5v0jAcX-Q2twygKoKvmx2H6tneHWimmH+c2GsYitHK5-knw@mail.gmail.com>
+ <54E4999C-DBE8-4FC1-8E82-17FEDFDA9CA6@canonical.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <54E4999C-DBE8-4FC1-8E82-17FEDFDA9CA6@canonical.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190510_081722_658414_9DCAA51B 
-X-CRM114-Status: UNSURE (   9.37  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190510_084229_234629_447CA687 
+X-CRM114-Status: GOOD (  17.58  )
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [91.189.89.112 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [134.134.136.100 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,31 +73,94 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "Busch, Keith" <keith.busch@intel.com>, "Wysocki,
- Rafael J" <rafael.j.wysocki@intel.com>, "sagi@grimberg.me" <sagi@grimberg.me>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- "rafael@kernel.org" <rafael@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- "axboe@fb.com" <axboe@fb.com>, "hch@lst.de" <hch@lst.de>,
- "Mario.Limonciello@dell.com" <Mario.Limonciello@dell.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Keith Busch <keith.busch@intel.com>,
+ Rafael Wysocki <rafael.j.wysocki@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Linux PM <linux-pm@vger.kernel.org>,
+ Mario Limonciello <Mario.Limonciello@dell.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>, Jens Axboe <axboe@fb.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Cgo+IE9uIE1heSAxMCwgMjAxOSwgYXQgMTA6MDIgUE0sIEtlaXRoIEJ1c2NoIDxrYnVzY2hAa2Vy
-bmVsLm9yZz4gd3JvdGU6Cj4gCj4gT24gVGh1LCBNYXkgMDksIDIwMTkgYXQgMTE6MDU6NDJQTSAt
-MDcwMCwgS2FpLUhlbmcgRmVuZyB3cm90ZToKPj4gWWVzLCB0aGF04oCZIHdoYXQgSSB3YXMgdG9s
-ZCBieSB0aGUgTlZNZSB2ZW5kb3IsIHNvIGFsbCBJIGtub3cgaXMgdG8gaW1wb3NlIGEgIAo+PiBt
-ZW1vcnkgYmFycmllci4KPj4gSWYgbWIoKSBzaG91bGRu4oCZdCBiZSB1c2VkIGhlcmUsIHdoYXTi
-gJlzIHRoZSBjb3JyZWN0IHZhcmlhbnQgdG8gdXNlIGluIHRoaXMgIAo+PiBjb250ZXh0Pwo+IAo+
-IEknbSBhZnJhaWQgdGhlIHJlcXVpcmVtZW50IGlzIHN0aWxsIG5vdCBjbGVhciB0byBtZS4gQUZB
-SUssIGFsbCBvdXIKPiBiYXJyaWVycyByb3V0aW5lcyBlbnN1cmUgZGF0YSBpcyB2aXNpYmxlIGVp
-dGhlciBiZXR3ZWVuIENQVXMsIG9yIGJldHdlZW4KPiBDUFUgYW5kIGRldmljZXMuIFRoZSBDUFUg
-bmV2ZXIgYWNjZXNzZXMgSE1CIG1lbW9yeSwgc28gdGhlcmUgbXVzdCBiZSBzb21lCj4gb3RoZXIg
-cmVhc29uaW5nIGlmIHRoaXMgYmFycmllciBpcyBhIHJlYWwgcmVxdWlyZW1lbnQgZm9yIHRoaXMg
-ZGV2aWNlLgoKU3VyZSwgSeKAmWxsIGFzayB2ZW5kb3Igd2hhdCB0aGF0IE1lbVJkIGlzIGZvci4K
-CkthaS1IZW5nCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+On Fri, May 10, 2019 at 11:15:05PM +0800, Kai Heng Feng wrote:
+> Sorry, I should mention that I use a slightly modified drivers/nvme/host/pci.c:
+> 
+> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+> index 3e4fb891a95a..ece428ce6876 100644
+> --- a/drivers/nvme/host/pci.c
+> +++ b/drivers/nvme/host/pci.c
+> @@ -18,6 +18,7 @@
+>  #include <linux/mutex.h>
+>  #include <linux/once.h>
+>  #include <linux/pci.h>
+> +#include <linux/suspend.h>
+>  #include <linux/t10-pi.h>
+>  #include <linux/types.h>
+>  #include <linux/io-64-nonatomic-lo-hi.h>
+> @@ -2833,6 +2834,11 @@ static int nvme_suspend(struct device *dev)
+>         struct pci_dev *pdev = to_pci_dev(dev);
+>         struct nvme_dev *ndev = pci_get_drvdata(pdev);
+>  
+> +       if (!pm_suspend_via_firmware()) {
+> +               nvme_set_power(&ndev->ctrl, ndev->ctrl.npss);
+> +               pci_save_state(pdev);
+> +       }
+> +
+>         nvme_dev_disable(ndev, true);
+
+This won't work because you're falling through to nvme_dev_disable after
+setting the power, so the resume side would certainly fail.
+
+This is what you'd want:
+
+       if (!pm_suspend_via_firmware()) {
+               pci_save_state(pdev);
+               return nvme_set_power(&ndev->ctrl, ndev->ctrl.npss);
+       }
+
+>         return 0;
+>  }
+> @@ -2842,6 +2848,10 @@ static int nvme_resume(struct device *dev)
+>         struct pci_dev *pdev = to_pci_dev(dev);
+>         struct nvme_dev *ndev = pci_get_drvdata(pdev);
+>  
+> +       if (!pm_resume_via_firmware()) {
+> +               return nvme_set_power(&ndev->ctrl, 0);
+> +       }
+> +
+>         nvme_reset_ctrl(&ndev->ctrl);
+>         return 0;
+> }
+> 
+> Does pci_save_state() here enough to prevent the device enter to D3?
+
+Yes, saving the state during suspend will prevent pci pm from assuming
+control over this device's power. It's a bit non-intuitive as Christoph
+mentioned, so we'll need to make that clear in the comments. For
+reference, here's the relevant part in pci-driver.c:
+
+---
+static int pci_pm_suspend_noirq(struct device *dev)
+{
+...
+
+	if (!pci_dev->state_saved) {
+		pci_save_state(pci_dev);
+		if (pci_power_manageable(pci_dev))
+			pci_prepare_to_sleep(pci_dev);
+	}
+...
+}
+--
+
+So by saving the state in our suspend callback, pci will skip
+pci_prepare_to_sleep(), which is what's setting your device most likely
+to a D3hot, undermining our nvme power state setting.
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
