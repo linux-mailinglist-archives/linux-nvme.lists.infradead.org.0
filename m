@@ -2,64 +2,69 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 79C7A1A2D1
-	for <lists+linux-nvme@lfdr.de>; Fri, 10 May 2019 20:05:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D40E61A2D9
+	for <lists+linux-nvme@lfdr.de>; Fri, 10 May 2019 20:12:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
 	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=8/4lW9ju6MX1sx/o+5s0La9Zb7Io6pl9N41FDZbqguQ=; b=p6+pml+GWkyug8
-	ldUqJtAj49GoQNc6CEpB/KlNLoQiTwlaglnBJ7lnk/X9dq5ZL7zhJZMRVM3oyfFRNISXRhnHjadVm
-	p3q2REgwcOPU7BW+37OWiexiG9Ba2Qwa9C/x7UooOIxVBob7krE40BIVi2+xsgyooRs+3vhlDczOz
-	tLsmn74wdyFVYXOFMh+K4N35aP3rsaE87CUClx6FFpVZR7PD53Bxs5c7Z6KmlVR3696Frji8IBamI
-	gZLGqZPZPMXID/rJG0hs2D/CiduUkZGlW0GY7hy8ReFneQbRmtRvUpq9EA8vyg2rOa5TJc9FpK6nM
-	tSDeHVC733PxiQZUPAuw==;
+	List-Owner; bh=cB5bkLRdqS2AhDXKQNfX3RcpFnbnQvWWKg+y86BcIlU=; b=J4ER7XyWP5xT20
+	eQohTH+Zf/yMIoFY1Zd6LMTNYHsgrgKq4EgUNfa48Vpz6NqFa83UDQ/I2BxPmNJaPrSgCMYluukux
+	GRvp4x+56L5tpCTFYAiTvZDbfO4JPbm4zcwoX2UlfW5ARR8ELreJW6pHXFm+BJqdpEwU/Ho6+jP6d
+	LIn6XxcvFfqYdxLB7b3t/0NwLwbfE2VXcKXz85bN4h/3nHh/2iLCoILfkihLs0flI03JjMzJjgaW8
+	FlxyenTF+ocwndnNEwBV4Golh2aKw6wMrZCRvs4UjThrBYLWt8hyiL4XI6JuoZca7b8v5sZ8qEAaN
+	IDnUIgdkO5QFkiVTzAYg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hP9tj-0004bg-Ot; Fri, 10 May 2019 18:05:31 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1hPA0O-0006JY-Oy; Fri, 10 May 2019 18:12:24 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hP9te-0004bF-RP
- for linux-nvme@lists.infradead.org; Fri, 10 May 2019 18:05:28 +0000
+ id 1hPA0J-0006J7-6n
+ for linux-nvme@lists.infradead.org; Fri, 10 May 2019 18:12:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557511527; x=1589047527;
+ t=1557511940; x=1589047940;
  h=from:to:subject:date:message-id:references:
  content-transfer-encoding:mime-version;
- bh=gwNgah+3IJk4ljv46kIEDAT1f1FKYpeAWk9oz/kZi0g=;
- b=KwzKOVNSdwU9Mc6E9XqNHVa1mGEmVJZWSJU/k1uOiLq22S7bGDYhNe/A
- UysI2qX08OkzC8IPQHsMAgpnnPT2lXOIxx3SGlwJ5XeD/cFRCKOCtFFNd
- XiR6Ie+29cfQ0xaGSWmbknZf14Lu2LRYtkZkKNtcc6bjez8oNtRKV+qOy
- 7PR3pg9Ts1Rb6UmzFwPOgf/gN8kX3Qo2mxXfyskEi5uFjyas3/kHSkN3O
- y2yejGSW+Shkc6P6vPvZDQVgvBb8p2Q4XT+jxtimymumXIJk0TyCirUNb
- AS2JWUnaeuBJM0DrEcX2XXYnGk9xcRL16llTjMoW6eAyf32dtnrC67L2s A==;
-X-IronPort-AV: E=Sophos;i="5.60,454,1549900800"; d="scan'208";a="108008214"
-Received: from mail-sn1nam01lp2058.outbound.protection.outlook.com (HELO
- NAM01-SN1-obe.outbound.protection.outlook.com) ([104.47.32.58])
- by ob1.hgst.iphmx.com with ESMTP; 11 May 2019 02:05:24 +0800
+ bh=e7J/SwLEEsRQqYlQvbOwiI2h+XQO0d8U3B9A0Axt6oM=;
+ b=qg27m9PFnn/erwL0Iixdko3a/ocOVzzsRsU3yopLRhzhIcr0lnYuiNP/
+ izBw/HRoc4/QV7t3K5xE8wufz/mLMYKrC1IZ32OZYwYo1kx1Zh6boIG3N
+ +U5vY1FAy8nAtRYsbYFz3a03UR+abVBrXoGY6yPZuYeCv3aYZmtHNgPqk
+ oW93SgaR7tqOiFxsU4NweLfZqb6pCRBnZib/z3Y7iLQoug48lhmmEIHu2
+ lxCs4jjDoCRQGaTsHoPyWontFIlkvfpRIzpj7SB+6E/QKX8CP2SxJV/q4
+ 6GaNpZOZWDxN5yxINsmJZ7d00Sbf6UNTa/usnUmDClHHWTUMZp7+/DxzT A==;
+X-IronPort-AV: E=Sophos;i="5.60,454,1549900800"; d="scan'208";a="112947776"
+Received: from mail-cys01nam02lp2050.outbound.protection.outlook.com (HELO
+ NAM02-CY1-obe.outbound.protection.outlook.com) ([104.47.37.50])
+ by ob1.hgst.iphmx.com with ESMTP; 11 May 2019 02:12:18 +0800
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=T5mGJcQ/YCk5YDHpi2XaEH3vpBZWd9tQZjxqqA88h4k=;
- b=Yo7uTKt3MstIo92BLpo0LtqEfStJ7sHQe2YBqUbdcK1HLc4wXpGmFo5Btit6EQn3T+niP2Hm0WsOIUkCo9qwDcP1kcsmDmdUJ/qvyJBZz+d5RLaba+OpIaf/IfomRJxTpnOo39DUmAE30nZEFkMjH6za0WTBWb9cDeB4K5g1gXc=
+ bh=UQN+ThFflXFXOX+klfBVTsiu5RQYrurtLRKhT59qRMY=;
+ b=J1wWA0kJALs/s5Z4pkAWdoWkQoVYxNMseBfayfF1xORyvNx5htnqWLGwLVmDt5UJDFFE2b1YgfMZJxbVJkMBjLJB0idPbP6/rkd+z+cdWQdKIqGS+1jXaqw8Dq5vaVZNLYxRc0vjPP19sKkRMw8jgQbsus1hD9FGx1o7IZ/j7Ww=
 Received: from SN6PR04MB4527.namprd04.prod.outlook.com (52.135.120.25) by
- SN6PR04MB4669.namprd04.prod.outlook.com (52.135.122.83) with Microsoft SMTP
+ SN6PR04MB4847.namprd04.prod.outlook.com (52.135.122.209) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1878.22; Fri, 10 May 2019 18:05:22 +0000
+ 15.20.1878.22; Fri, 10 May 2019 18:12:14 +0000
 Received: from SN6PR04MB4527.namprd04.prod.outlook.com
  ([fe80::c4f:1604:178c:d974]) by SN6PR04MB4527.namprd04.prod.outlook.com
  ([fe80::c4f:1604:178c:d974%5]) with mapi id 15.20.1856.012; Fri, 10 May 2019
- 18:05:22 +0000
+ 18:12:14 +0000
 From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH 0/3] nvme-core: add user command filter
-Thread-Topic: [PATCH 0/3] nvme-core: add user command filter
-Thread-Index: AQHVBcz6NLAgsk8/L0+Ngp1zc0Y/Rw==
-Date: Fri, 10 May 2019 18:05:22 +0000
-Message-ID: <SN6PR04MB45272218338D99D53202D70B860C0@SN6PR04MB4527.namprd04.prod.outlook.com>
-References: <20190508183634.4682-1-chaitanya.kulkarni@wdc.com>
+To: John Donnelly <John.P.Donnelly@Oracle.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Subject: Re: [PATCHv3 2/2] nvme: validate cntlid during controller
+ initialisation
+Thread-Topic: [PATCHv3 2/2] nvme: validate cntlid during controller
+ initialisation
+Thread-Index: AQHVAbVyFI2aZaG8d0COLcvDkmxGHQ==
+Date: Fri, 10 May 2019 18:12:14 +0000
+Message-ID: <SN6PR04MB45274F1821B5D809E34AE9AF860C0@SN6PR04MB4527.namprd04.prod.outlook.com>
+References: <20190503133736.111201-1-hare@suse.de>
+ <20190503133736.111201-3-hare@suse.de>
+ <6e3b55d1-abfa-a67b-f2d4-fe083f3ce37c@Oracle.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -68,41 +73,42 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
 x-originating-ip: [199.255.45.63]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 98091565-c5fb-4609-85cb-08d6d5721249
+x-ms-office365-filtering-correlation-id: a12e485a-68f0-4c6a-6de7-08d6d5730770
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
- SRVR:SN6PR04MB4669; 
-x-ms-traffictypediagnostic: SN6PR04MB4669:
+ SRVR:SN6PR04MB4847; 
+x-ms-traffictypediagnostic: SN6PR04MB4847:
+x-ms-exchange-purlcount: 1
 wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <SN6PR04MB46695F3737C9C21C375714B7860C0@SN6PR04MB4669.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4941;
+x-microsoft-antispam-prvs: <SN6PR04MB48473F8D2B96F0B50933B6DB860C0@SN6PR04MB4847.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5797;
 x-forefront-prvs: 0033AAD26D
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(376002)(396003)(39860400002)(366004)(136003)(346002)(199004)(189003)(6246003)(305945005)(53936002)(33656002)(8936002)(25786009)(2501003)(81156014)(81166006)(8676002)(71200400001)(71190400001)(68736007)(256004)(7736002)(76176011)(6506007)(2351001)(53546011)(99286004)(7696005)(102836004)(2906002)(3846002)(6116002)(476003)(486006)(446003)(74316002)(186003)(26005)(52536014)(86362001)(66066001)(6916009)(5660300002)(4744005)(72206003)(6436002)(5640700003)(14454004)(9686003)(91956017)(316002)(76116006)(73956011)(64756008)(66946007)(55016002)(66556008)(66476007)(229853002)(66446008)(478600001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB4669;
+ SFS:(10019020)(346002)(366004)(39860400002)(396003)(136003)(376002)(189003)(199004)(55016002)(26005)(186003)(66556008)(64756008)(66946007)(66476007)(73956011)(6436002)(68736007)(6306002)(71190400001)(76116006)(2501003)(91956017)(229853002)(33656002)(66446008)(9686003)(7736002)(71200400001)(446003)(486006)(476003)(66066001)(110136005)(305945005)(6506007)(72206003)(25786009)(14454004)(8676002)(8936002)(7696005)(74316002)(14444005)(99286004)(256004)(316002)(86362001)(966005)(2906002)(81166006)(81156014)(6116002)(3846002)(478600001)(102836004)(5660300002)(53936002)(6246003)(53546011)(76176011)(52536014);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB4847;
  H:SN6PR04MB4527.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
+ PTR:InfoNoRecords; MX:1; A:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: PjvvPj8cNIwL6ThVjjIo2FcjkK7eAnYacIpzJK2HV/EvCL3UzLl60HOeINKMv6wm9oMytRD9MlRuKu+cVYohKK+uXNHPlXWvoMA6F1YuQVjqGd0yQaftKgdHiD2iVh/HEU/shdyMJ0mN0lx4Kau/RCpVog84vnSHigz7psZcGvVJN/cUD2TP33QyfiJviYEHdwNPQfj/ueG79eRoghD7rG9GsNGwSkh50uvRtpu4IzsCbchIAxT1v+Ua7j8QXR7lxDOfCn3Vi8eG2kKtvitWop2NS/9VzZk8pbq8++nN82vHCQI8HHnnUmBitY4SfeHMz6nwl7MxrnL5P37LXMQngrkpckSiCneo8lUXmUtdAwyQ6h5UK/RbPyVxU+pAF8dIQT/LRtrhEHzb9Kum39SNPMuhyW38emv7GBhy9khgG68=
+x-microsoft-antispam-message-info: OoilmYjtvwTZ2Eyc4DH+itYj+sy9T+YuGmUwyFxZxzmujaY4d/fRiPu7RKcSr5Htz+8wdOsHYFI3OaSYf8aecVBTUuXdB4wuJhrl3vLNwqE3U0BY/VDqcx7W0v0uV7e8NMmeorRQMNxMaqHlqJ219vYRpsSd0Hdeo7LKnluTkNfPmNMdwoWWI3a56Hp9WmK65siZZ3Y25HYUKPq3nG3PogrKbuf0Wd8jx54M09y/UXOtuKgmP80WK46coIHfznHxd96AhkIzmuVVnDc3sOIU9rxqPVbu3SO27ONAsJ5oPwCMehmZhd9l/evOD3EWQpH2xfvrrbpVbGYpjOUlJ+OJetmGkRkIpP6LcHFi1v4K/CEhnUqunrEQl8aFVzOJXtsMY+3hteplOG9wv40Zx/IOuBdpXLNAumpeLMhoW7TsW3Q=
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 98091565-c5fb-4609-85cb-08d6d5721249
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 May 2019 18:05:22.8579 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a12e485a-68f0-4c6a-6de7-08d6d5730770
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 May 2019 18:12:14.0676 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4669
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4847
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190510_110527_007512_D3912F8D 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20190510_111219_267925_97849897 
+X-CRM114-Status: GOOD (  14.96  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.42 listed in list.dnswl.org]
+ medium trust [216.71.153.141 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -127,28 +133,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Gentle ping.
+Thanks John for reply. If you are interested you can always add tests to 
+blktests framework here is link of the project :-
 
-On 05/08/2019 11:36 AM, Chaitanya Kulkarni wrote:
-> This patch-series adds a filter to allow only certain user commands.
-> Right now we use this infrastructure to prevent the user get log page
-> commands where RAE bit is cleared. We only allow get log pages to be
-> read with RAE == 0 where we issue the uevent to the userspace so that
-> user can clear the log pages.
+https://github.com/osandov/blktests.
+
+On 05/10/2019 07:52 AM, John Donnelly wrote:
+> On 5/3/19 8:37 AM, Hannes Reinecke wrote:
+>> From: Hannes Reinecke <hare@suse.com>
+>>
+>> The CNTLID value is required to be unique, and we do rely on this
+>> for correct operation. So reject any controller for which a non-unique
+>> CNTLID has been detected.
+>>
+>> Signed-off-by: Hannes Reinecke <hare@suse.com>
+>> ---
+>>    drivers/nvme/host/core.c | 32 ++++++++++++++++++++++++++++++--
+>>    1 file changed, 30 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+>> index cd16d98d1f1a..dc74f7ba6f4a 100644
+>> --- a/drivers/nvme/host/core.c
+>> +++ b/drivers/nvme/host/core.c
+>> @@ -2358,6 +2358,23 @@ static int nvme_active_ctrls(struct nvme_subsystem *subsys)
+>>    	return count;
+>>    }
+>>
+>> +static bool nvme_duplicate_cntlid(struct nvme_subsystem *subsys,
+>> +				  struct nvme_ctrl *ctrl)
+>> +{
+>> +	struct nvme_ctrl *tmp;
+>> +	bool ret = false;
+>> +
+>> +	list_for_each_entry(tmp, &subsys->ctrls, subsys_entry) {
+>> +		if (tmp == ctrl)
+>> +			continue;
+>> +		if (tmp->cntlid == ctrl->cntlid) {
+>> +			ret = true;
+>> +			break;
+>> +		}
+>> +	}
+>> +	return ret;
+>> +}
+>> +
+>>    static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+>>    {
+>>    	struct nvme_subsystem *subsys, *found;
+>> @@ -2411,6 +2428,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+>>
+>>    		__nvme_release_subsystem(subsys);
+>>    		subsys = found;
+>> +		ret = 0;
+>>    	} else {
+>>    		ret = device_add(&subsys->dev);
+>>    		if (ret) {
+>> @@ -2434,10 +2452,20 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+>>    	}
+>>
+>>    	mutex_lock(&subsys->lock);
+>> -	list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
+>> +	if (!nvme_duplicate_cntlid(subsys, ctrl))
+>> +		list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
+>> +	else {
+>> +		dev_err(ctrl->device,
+>> +			"Duplicate cntlid %u, rejecting\n",
+>> +			ctrl->cntlid);
+>> +		ctrl->subsys = NULL;
+>> +		sysfs_remove_link(&subsys->dev.kobj, dev_name(ctrl->device));
+>> +		nvme_put_subsystem(subsys);
+>> +		ret = -EINVAL;
+>> +	}
+>>    	mutex_unlock(&subsys->lock);
+>>
+>> -	return 0;
+>> +	return ret;
+>>
+>>    out_unlock:
+>>    	mutex_unlock(&nvme_subsystems_lock);
+>>
 >
-> Here we white list the log pages which are only allowed when RAE == 0.
-> We also allow Vendor Specific log pages irrespective of the RAE.
+> Hello,
 >
-> Chaitanya Kulkarni (3):
->    nvme: introduce and use RAE bit macro
->    nvme: add sanitize log identifier
->    nvme-core: add filter for user commands
+> I am interested in testing this series when they are finalized. I
+> believe I have a test scenario for it that was discovered using the
+> recent nvme-cli.1.8.1 release.
 >
->   drivers/nvme/host/core.c    | 64 ++++++++++++++++++++++++++++++++++---
->   drivers/nvme/target/nvmet.h |  2 +-
->   include/linux/nvme.h        |  3 ++
->   3 files changed, 64 insertions(+), 5 deletions(-)
->
+
 
 
 _______________________________________________
