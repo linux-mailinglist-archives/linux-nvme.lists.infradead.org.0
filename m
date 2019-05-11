@@ -2,82 +2,110 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA6971A94B
-	for <lists+linux-nvme@lfdr.de>; Sat, 11 May 2019 21:38:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 683B61A99F
+	for <lists+linux-nvme@lfdr.de>; Sat, 11 May 2019 23:50:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=sTDM9Pdk+2sYcpvjcOA+7p916l2PV3f+iln+vWIXLl4=; b=Z8THgaOX56eVP+cgMx0M924iM4
-	TSDylqGaNoedjWuajE/a7ClveBfshrLrwpGfzml6SetuZm1G6uOoFSlkI9ars67v3jDY/Lq6uXGXk
-	EfqsvpfiQkfLsbQa3y2E5+uzohXTa3BauqXKZn+2pMK0ChwjBXYTOeTYNlAuD02EaTQ6cfLNIH32g
-	hIkH59mm3gy4gzqA77/FKxplzJsvM9+2AmkI1Ft5K2pffvjhX4IHqrIyM4zvbe7wmLMVcesi8ynaS
-	JeqtBUwCyxDvaB+MNWiq8vQSOvgsOpw8Djw9Ev/ACPLBUQmZaVNY7d84s+Op9WxKNdfaqVK8c/saB
-	y39sayag==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=qyXnt5P7yYcUOgItWRG9u+acYMeg4wEVlzIDRRvO5bk=; b=DvyC/JEy4/A1KR
+	o0kM3fzvCWWztjPfGHipdx8GfoyN0JcbFumoObdH3P2u8fWgcRlLW3Xxnwo0Ccm5DgOLShO0cHzZn
+	Twz+GvNqUs0xcfM3tMzm3825UE3ryrgN1eKVFk8EccVirjIvIArbLYNgyp1fYHUpYu96N6y6kzBwk
+	5ALzq5pGL9vWMpJsxwfv272IejzO2U9W6BfqPyO70upN5KWlsz9OAo6dtYFiiMZRMPlMi3YwIiPQK
+	arBbOwWAVR/9PNrBYeNUurPviRSIyndmMkqGCNw3r9p3W6SYQs5tDP577M3jCGwutPa0bvc2cD5V9
+	lMXjXc+g4CfB8KSJHgNg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hPXoo-0002bm-Fp; Sat, 11 May 2019 19:38:02 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hPZss-00019v-Q2; Sat, 11 May 2019 21:50:22 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPXoQ-0002J7-Jz
- for linux-nvme@lists.infradead.org; Sat, 11 May 2019 19:37:49 +0000
-Received: by mail-pl1-x642.google.com with SMTP id bi2so4374405plb.13
- for <linux-nvme@lists.infradead.org>; Sat, 11 May 2019 12:37:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=FQtqXNk8zMr2te4f5nTqznp1Yg/FXhEgALlfGwbSVpM=;
- b=uCa8DHwvjQD8PAJaVEkacVj//bkXgrl4eSB/maFQsn7ugBakhFMB9fhk8spZulbJD0
- aWj18CyJ2NAUrFT2edblFXGhoWwHqq1Vc9TJsgureHfmlsTaoJQwugwCmfW7K8PwsOAo
- 0HP+kC6RIEjdsDQM41Plee21h+g7e7ynNDcoFKjWff8RTYk4Jlq/P/xtFPI0D2SJgnhL
- h4ZQ1Iud/YzusyHXHD+WdofUY083mh3bf6971zI+EXlla56/KGPcwbzpLrdZ+Rni8Gw7
- Nx5R+NotwNYhnz92qBZhk7faChGBgzxVYdGyhs0XquetXmdy+VZZTumisaBXNrsUUf0l
- 57Ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=FQtqXNk8zMr2te4f5nTqznp1Yg/FXhEgALlfGwbSVpM=;
- b=fIwMYCmHIoQYnq4HEgsqTMIJsWZAG+AfI1yQySC8LW+d4Wl4hmseFhOI3Z/7trOscz
- 26YVmAwAlEXDlHgl9LW4TqqBaB2nP2ieBaX3fUYOsD/6W/qC/OHilHpwmN1HLMVnm0km
- QsszHrCZLGbNVI6dqi3b1BChd8v9jcdVuYll/nmhUnJsbilyb+ykV24rZefwhoEXcgli
- xjLEreNwoyK8rO6iFt/BLkKMekKZT2/6fcDhSX53OoLa/TlBNeR2oTwCUt3sml2px/oX
- nVInPiDYkMuipBg3ikFEW5m3HMTKnuI0Lfi4rcs25q1ruq3saTeu7Vaa0wI6vqRToBuL
- 3cgg==
-X-Gm-Message-State: APjAAAV7NFE1RJ0wFoW99WcM1h8EuBHWEL3lSmhLbAI7Pj+AZWZqJNdA
- 3drn7dsY6GFs9B+bSV0OwzkSDLPAee4=
-X-Google-Smtp-Source: APXvYqyfTLSVTNfxHC6R0GBwYcD2tO5TD8V86BcFFCItfdJScOIFTNSdgioqcbgscZQR2TY6aayR9g==
-X-Received: by 2002:a17:902:7205:: with SMTP id
- ba5mr22103152plb.285.1557603457657; 
- Sat, 11 May 2019 12:37:37 -0700 (PDT)
-Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id a9sm10878883pgw.72.2019.05.11.12.37.35
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 11 May 2019 12:37:36 -0700 (PDT)
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH RFC 4/4] fabrics: Return errno mapped for fabrics error status
-Date: Sun, 12 May 2019 04:37:13 +0900
-Message-Id: <20190511193713.29516-5-minwoo.im.dev@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190511193713.29516-1-minwoo.im.dev@gmail.com>
-References: <20190511193713.29516-1-minwoo.im.dev@gmail.com>
+ id 1hPZso-00019X-AR
+ for linux-nvme@lists.infradead.org; Sat, 11 May 2019 21:50:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1557611419; x=1589147419;
+ h=from:to:cc:subject:date:message-id:references:
+ content-transfer-encoding:mime-version;
+ bh=7hKu0tQ2tf+t5YX9hAeo3vQ/M/gRuDuyoe4wVUYPAG8=;
+ b=EVTxGM+kPGDzfQtphTY/9Ffoi/2uwyvBOWOUTrDKSQJtEymXwVSwIAXg
+ ApIZxVfwDjoAy1viU6N7aBKLHIYmXxkL8cThlyFlSvVUKH6BMTH7zGuAG
+ M+2GXwFrnC/M1d++XazZmzaOk3cWWwgGo75fxGGHKoKzKnG7LzcbQjpME
+ zLNFOqg50aALwE8/xfvrWmPrCbBDx6CfA/PPZlAYei3EtVtvajewxcttQ
+ g/DzAdQiNTbKY2Hg9Nwd3rXVslF9RhlvhV5V1mgaCJly6tR6zcS4EbEPn
+ XTsrx/VMOSMfLHFRMMYWs+Cp8irOyOM4iQmvDm67Ny/hMyHjeOUZUgx0B Q==;
+X-IronPort-AV: E=Sophos;i="5.60,459,1549900800"; d="scan'208";a="113004991"
+Received: from mail-dm3nam03lp2052.outbound.protection.outlook.com (HELO
+ NAM03-DM3-obe.outbound.protection.outlook.com) ([104.47.41.52])
+ by ob1.hgst.iphmx.com with ESMTP; 12 May 2019 05:50:14 +0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=sWUw40FVdws9H5luLhKFdrHSebWs1igYaU4u0RvIWC4=;
+ b=nbbTnENCYGJuRy1OHgRbpHbniFaLyRLyq2vn/hmBg0+a5+8N7MPxoAsKiFDxhjWHE9TAznDfwOfd4efTZFNaVkAs0OJeSXpBGHAJQGvDpB5X6biNZ9o1Z5CkRiwQ0h3+iMpN3NkgsPZdlIMuED5hjNRcp7YjtHnNgiL/guJklho=
+Received: from SN6PR04MB4527.namprd04.prod.outlook.com (52.135.120.25) by
+ SN6PR04MB3887.namprd04.prod.outlook.com (52.135.81.152) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.1878.22; Sat, 11 May 2019 21:50:12 +0000
+Received: from SN6PR04MB4527.namprd04.prod.outlook.com
+ ([fe80::c4f:1604:178c:d974]) by SN6PR04MB4527.namprd04.prod.outlook.com
+ ([fe80::c4f:1604:178c:d974%5]) with mapi id 15.20.1856.016; Sat, 11 May 2019
+ 21:50:12 +0000
+From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+To: Minwoo Im <minwoo.im.dev@gmail.com>, "linux-nvme@lists.infradead.org"
+ <linux-nvme@lists.infradead.org>
+Subject: Re: [PATCH 2/2] nvme-fabrics: Remove unused argument
+Thread-Topic: [PATCH 2/2] nvme-fabrics: Remove unused argument
+Thread-Index: AQHVB/+IHbli+LEaWkKsxL03w3YExA==
+Date: Sat, 11 May 2019 21:50:12 +0000
+Message-ID: <SN6PR04MB4527A361940ECE60AFE846E5860D0@SN6PR04MB4527.namprd04.prod.outlook.com>
+References: <20190511134255.6790-1-minwoo.im.dev@gmail.com>
+ <20190511134255.6790-3-minwoo.im.dev@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
+x-originating-ip: [2605:e000:3e45:f500:1052:134a:6e3b:f2ba]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 047af226-02fe-4c0f-e63c-08d6d65aa4f0
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
+ SRVR:SN6PR04MB3887; 
+x-ms-traffictypediagnostic: SN6PR04MB3887:
+wdcipoutbound: EOP-TRUE
+x-microsoft-antispam-prvs: <SN6PR04MB38875570906E2B06950E61CE860D0@SN6PR04MB3887.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:119;
+x-forefront-prvs: 00342DD5BC
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(136003)(346002)(366004)(376002)(39860400002)(396003)(199004)(189003)(64756008)(8676002)(81156014)(53936002)(86362001)(66476007)(53546011)(6506007)(81166006)(8936002)(102836004)(256004)(66446008)(316002)(6116002)(7736002)(9686003)(486006)(476003)(2906002)(6246003)(305945005)(99286004)(74316002)(76176011)(72206003)(54906003)(7696005)(478600001)(46003)(73956011)(14454004)(186003)(52536014)(91956017)(66946007)(446003)(25786009)(4326008)(66556008)(6436002)(76116006)(71200400001)(71190400001)(55016002)(5660300002)(110136005)(33656002)(2501003)(229853002)(68736007);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB3887;
+ H:SN6PR04MB4527.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: pcZRMqZyAuxPGzZq3jtld8+bE7n05uArZ2YNVz2QsLPgqj2mGqHKhpaeWqa46+KST/mEvnjYdxoHr2oHkPJFhfXdkC3BRJ9kvj+KBGBWHblHWczjdrrDQulEW/3ZGx9Ff1DdWs2eezYP962o6nCcO9gifSRVpF6+eI1Ov12uH3XvSsXTtXUCi8MxOOL2lkEucUk3pNX05Zcx8w1izc78O2Zy4OIj2d2/RB/sDmluUhIjneBZZUv4DlHRT5RAgeb9oWUAaa3p89bCZkuD09rOERK8K9pu9dx5i9K3BOdwFwQtD7QNWGjNzn+PagTEaIJ3ORZOU0pr6fgQs+82753cxBHMJcadh9W5b4xdan+dibPgOvli8ntVyK3cWYrMYZzjuk/ZxMEfBxuYN0dF5Bzprc6EZM3XSg6/JGb+97QLfk8=
+MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 047af226-02fe-4c0f-e63c-08d6d65aa4f0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 May 2019 21:50:12.0854 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB3887
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190511_123738_880998_186F8E7F 
-X-CRM114-Status: GOOD (  17.11  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190511_145018_444779_5F98594B 
+X-CRM114-Status: GOOD (  16.44  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.153.141 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -96,139 +124,49 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>
-MIME-Version: 1.0
+Cc: Keith Busch <keith.busch@intel.com>, Jens Axboe <axboe@fb.com>,
+ Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-If discover has been failed due to a nvme status, it will be returned to
-main() with mapped value for fabrics get log page command.
+Variable "count" use removed by  any commit ?
 
-Now connect command related status cannot be added in this patch because
-kernel is not currently returning the nvme status, it's instead
-returning -EIO if fails.  errno for connect command can be added once
-kernel is ready to return the proper value for nvme status.
+Or it is been like that since the introduction of this function ?
 
-Cc: Keith Busch <keith.busch@intel.com>
-Cc: Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>
-Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
----
- fabrics.c | 24 ++++++++++++++++++++----
- 1 file changed, 20 insertions(+), 4 deletions(-)
+On 5/11/19 6:43 AM, Minwoo Im wrote:
+> The variable 'count' is not currently used by nvmf_create_ctrl(), so
+> remove it.
+>
+> Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+> ---
+>  drivers/nvme/host/fabrics.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/nvme/host/fabrics.c b/drivers/nvme/host/fabrics.c
+> index 592d1e61ef7e..5838f7cd53ac 100644
+> --- a/drivers/nvme/host/fabrics.c
+> +++ b/drivers/nvme/host/fabrics.c
+> @@ -978,7 +978,7 @@ EXPORT_SYMBOL_GPL(nvmf_free_options);
+>  				 NVMF_OPT_DISABLE_SQFLOW)
+>  
+>  static struct nvme_ctrl *
+> -nvmf_create_ctrl(struct device *dev, const char *buf, size_t count)
+> +nvmf_create_ctrl(struct device *dev, const char *buf)
+>  {
+>  	struct nvmf_ctrl_options *opts;
+>  	struct nvmf_transport_ops *ops;
+> @@ -1073,7 +1073,7 @@ static ssize_t nvmf_dev_write(struct file *file, const char __user *ubuf,
+>  		goto out_unlock;
+>  	}
+>  
+> -	ctrl = nvmf_create_ctrl(nvmf_device, buf, count);
+> +	ctrl = nvmf_create_ctrl(nvmf_device, buf);
+>  	if (IS_ERR(ctrl)) {
+>  		ret = PTR_ERR(ctrl);
+>  		goto out_unlock;
 
-diff --git a/fabrics.c b/fabrics.c
-index 511de06..ad61b07 100644
---- a/fabrics.c
-+++ b/fabrics.c
-@@ -35,6 +35,7 @@
- 
- #include "parser.h"
- #include "nvme-ioctl.h"
-+#include "nvme-status.h"
- #include "fabrics.h"
- 
- #include "nvme.h"
-@@ -295,7 +296,7 @@ enum {
- };
- 
- static int nvmf_get_log_page_discovery(const char *dev_path,
--		struct nvmf_disc_rsp_page_hdr **logp, int *numrec)
-+		struct nvmf_disc_rsp_page_hdr **logp, int *numrec, int *status)
- {
- 	struct nvmf_disc_rsp_page_hdr *log;
- 	unsigned int hdr_size;
-@@ -328,6 +329,7 @@ static int nvmf_get_log_page_discovery(const char *dev_path,
- 
- 	error = nvme_discovery_log(fd, log, hdr_size);
- 	if (error) {
-+		*status = (error > 0) ? nvme_status_to_errno(error, true) : error;
- 		error = DISC_GET_NUMRECS;
- 		goto out_free_log;
- 	}
-@@ -366,6 +368,8 @@ static int nvmf_get_log_page_discovery(const char *dev_path,
- 		 */
- 		error = nvme_discovery_log(fd, log, log_size);
- 		if (error) {
-+			*status = (error > 0) ?
-+				nvme_status_to_errno(error, true) : error;
- 			error = DISC_GET_LOG;
- 			goto out_free_log;
- 		}
-@@ -379,6 +383,8 @@ static int nvmf_get_log_page_discovery(const char *dev_path,
- 		genctr = le64_to_cpu(log->genctr);
- 		error = nvme_discovery_log(fd, log, hdr_size);
- 		if (error) {
-+			*status = (error > 0) ?
-+				nvme_status_to_errno(error, true) : error;
- 			error = DISC_GET_LOG;
- 			goto out_free_log;
- 		}
-@@ -849,6 +855,7 @@ static int do_discover(char *argstr, bool connect)
- 	struct nvmf_disc_rsp_page_hdr *log = NULL;
- 	char *dev_name;
- 	int instance, numrec = 0, ret, err;
-+	int status = 0;
- 
- 	instance = add_ctrl(argstr);
- 	if (instance < 0)
-@@ -856,7 +863,7 @@ static int do_discover(char *argstr, bool connect)
- 
- 	if (asprintf(&dev_name, "/dev/nvme%d", instance) < 0)
- 		return -errno;
--	ret = nvmf_get_log_page_discovery(dev_name, &log, &numrec);
-+	ret = nvmf_get_log_page_discovery(dev_name, &log, &numrec, &status);
- 	free(dev_name);
- 	err = remove_ctrl(instance);
- 	if (err)
-@@ -874,9 +881,11 @@ static int do_discover(char *argstr, bool connect)
- 	case DISC_GET_NUMRECS:
- 		fprintf(stderr,
- 			"Get number of discovery log entries failed.\n");
-+		ret = status;
- 		break;
- 	case DISC_GET_LOG:
- 		fprintf(stderr, "Get discovery log entries failed.\n");
-+		ret = status;
- 		break;
- 	case DISC_NO_LOG:
- 		fprintf(stdout, "No discovery log entries to fetch.\n");
-@@ -885,6 +894,7 @@ static int do_discover(char *argstr, bool connect)
- 	case DISC_NOT_EQUAL:
- 		fprintf(stderr,
- 		"Numrec values of last two get discovery log page not equal\n");
-+		ret = DISC_OK;
- 		break;
- 	default:
- 		fprintf(stderr, "Get discovery log page failed: %d\n", ret);
-@@ -989,15 +999,21 @@ int discover(const char *desc, int argc, char **argv, bool connect)
- 	cfg.nqn = NVME_DISC_SUBSYS_NAME;
- 
- 	if (!cfg.transport && !cfg.traddr) {
--		return discover_from_conf_file(desc, argstr,
-+		ret = discover_from_conf_file(desc, argstr,
- 				command_line_options, connect);
-+		if (ret > 0)
-+			ret = nvme_status_to_errno(ret, true);
- 	} else {
- 		ret = build_options(argstr, BUF_SIZE);
- 		if (ret)
- 			return ret;
- 
--		return do_discover(argstr, connect);
-+		ret = do_discover(argstr, connect);
-+		if (ret > 0)
-+			ret = nvme_status_to_errno(ret, true);
- 	}
-+
-+	return ret;
- }
- 
- int connect(const char *desc, int argc, char **argv)
--- 
-2.17.1
 
 
 _______________________________________________
