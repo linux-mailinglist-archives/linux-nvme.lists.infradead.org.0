@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B61A01A801
-	for <lists+linux-nvme@lfdr.de>; Sat, 11 May 2019 15:43:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C1C821A802
+	for <lists+linux-nvme@lfdr.de>; Sat, 11 May 2019 15:43:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,68 +11,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=C0+z6A0b0gjhu2LPcY4TBVR2nC35Tv+MevenvMEBf1I=; b=ZaqBINl79hBigbC51R/O23Tplw
-	yrU7exwDp05XeZmwqjPDVuHSeAI79MjOGBZwDW9VAGJGHtLW99+5pudxpx76B2VOc+7wufAP4slcH
-	iHN0SE5aKOUDcrlu56pXJMJqEhWMvX2pTeZ2CQAjOSoyNXtS5S0M0beGUcyhKQG/UBPcqOX29euoC
-	0GaFl65Q88/ZbHMfnlKJGbVXvKe8Q8Cw5DD+IGygL8P01zwdYpVGN8AkFNUjp+ie7mrdoQaWGjYyY
-	Jp8nqyw7ZHpd60k7zI1IPvNx9W+lx970TWjZa9HvLcTFfq6ghW1rvU4KMxsPzEbfvRh5Cqt57gtpu
-	xwm6BKCA==;
+	bh=LFa7dcKkZ0Bt/AEy+uG3CDNxsqw3XphiOWeTLTj6e2I=; b=hKrkC53EoiI4DOqFvTRJ4O6dXs
+	Rea31M4sj/nLRZ2/jMOHUOAW3ORb6lctiTc1dVfbx3SsLkS4RRyvj6rDrSlcgC7k0sL37aI+E3kRk
+	BWFCGaRZYZkxZYN/1HlGy7oIp6O2190wKBA07K1Em3+3QkCZFGtQz9sJdQnL5YIc63XHf7UaLfsJP
+	FUIHeRk4i0Q0eHHh3suEy2cZkDgu7GkSqsRts9Dr/cjZTODpe5P7A/4SbSaTD4NtOQyX6/ZAB+9X8
+	PR1y5YsEmp0nUTyhMSWtyU51Ld9Y79XMLtqM/NjMUyqHLR9rl+Cpx4VkFmuPKvU2DsoGBWOfg5SB8
+	24XJwyhg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hPSHc-0002sd-IU; Sat, 11 May 2019 13:43:24 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1hPSHk-000332-3v; Sat, 11 May 2019 13:43:32 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPSHT-0002nW-4Z
- for linux-nvme@lists.infradead.org; Sat, 11 May 2019 13:43:17 +0000
-Received: by mail-pf1-x444.google.com with SMTP id 13so4716525pfw.9
- for <linux-nvme@lists.infradead.org>; Sat, 11 May 2019 06:43:15 -0700 (PDT)
+ id 1hPSHX-0002sU-Kz
+ for linux-nvme@lists.infradead.org; Sat, 11 May 2019 13:43:22 +0000
+Received: by mail-pl1-x641.google.com with SMTP id n8so4141484plp.10
+ for <linux-nvme@lists.infradead.org>; Sat, 11 May 2019 06:43:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=axdCBtR1ddGQT02q59ylJWeVCOQt/lb7/Zwjpjlw9qg=;
- b=Cff0uX+J4oaMgRHjmIZVGFSBbUWwqrC1DFvbngx9Yob7moV72GBDAW6ZgFCsL4O6gE
- BFLJtaYsLdaXNeC3Svp/O3ixFRvGuzwskUoHhcyi3XUAJ3riMli370A1IFUUNYdkaOQ5
- ykqveWFWuqRJq0mAY0Zn/xMKZtbSYxGPXno5vq2t52ownPCeMXjjRoZUzUGDGX3N2BH2
- x1KuThXXuabsI1HBBUVlmO+0pen2tRcsxdB0XFIE+XBpzy8lKVsMpmlfbtQf3OuCeBaQ
- 7Pw5NMGb0o8UprgaSkTRdHNoqGgiedjVHF3Ca7FbsYFnybN0xxrdHy9Hj8nF4/LqSJDV
- IEeg==
+ bh=cUagCBrJBgjUY3jk6a8d4Yc9R8N5U2nU0KTPwP+hh94=;
+ b=jU0F3u02CPIyPxX1yfQkm76FfSb70zNYtquXbq4ECENBZUR2LAtTEbxFTEgYjEBhVO
+ qZEYXEdNRt+Ec7kSlsPZRSSG3GNW3LWVQEn4BQE6y/wf+cI/0MKHgIibIFhcGuWJS2jf
+ w89j4DMDSjVf5b0QApJLhG79Rjd2iHnm7dhj9/jGQMH2yGvoyqPvorv8iAATMXX1zAAH
+ R6iqSQHiHV2uSdSN9qF4/YFtKN+4nHzWNpR/ulHQbC1gfeyIjXk3Sbkvxp6YajfSzQpU
+ /fyb4jfr4+Z20P8MqH6dxhexbDq0GZI2MU0tMPJhvcSH6yBPc/7UK+sE5gBQFkBxigV4
+ qeuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=axdCBtR1ddGQT02q59ylJWeVCOQt/lb7/Zwjpjlw9qg=;
- b=OCOBydE4f0ww8BTYjKY6OT22o+cOHmBnmglOxDKOT80EXDQyLA9e7R9qqzJPVEDPc+
- JX8lMD0fgRfiFHd23JFgdYkoASEErligcHGw+6O08dEh2RxanilZup8LjJHQPL4M7aW+
- lp0axAQnh5zoh0Yb2im6zYurdK750tAMYszAz5lWh+CJwgifNMBRp6PrNjW0PSIMDtuF
- XBf/MBJrgQ4UD+eDS6FnRpofiQFKhzsYCTXVU7Hrl9snTq/7NFKYKXEErPhLky726lJj
- EHVxEK3l8VanUii9ia9hcwm3g2Zw0F6nmqnlY+1C+SHAOb95dEmOW10oRjKji1PkXH4C
- uX8Q==
-X-Gm-Message-State: APjAAAUGCxRCrQ7sVMN3ead3RNyMohHchl6kFn/i6lXgmO204MmRsWDh
- 5TlLa6L/Z5FEN8lUygEKKJ2VGcdefu0=
-X-Google-Smtp-Source: APXvYqwH536ErKHbQ2BSz+ElfS6QddwFU2JYgcm/YnlYsjhi/F2+tz398p1F33sYF9IDSKE3f7DYFA==
-X-Received: by 2002:a63:8949:: with SMTP id v70mr21153690pgd.196.1557582194164; 
- Sat, 11 May 2019 06:43:14 -0700 (PDT)
+ bh=cUagCBrJBgjUY3jk6a8d4Yc9R8N5U2nU0KTPwP+hh94=;
+ b=nt2xzJGjy33HQ+hEpLRiTPzPeksGQRQqn2eEWkI8BEZmsPWytQFgpZy9JFEHySfJDr
+ GH/qjQICFBVh1f6glnNVosrjBjD9x6t/SPS9ClJDbMDgZxbXR6xskvvn/9bq4u65ltLE
+ 8MQhPpHNDUa6vpYyl0XTGmSkiFSt7Ms7x/al6FfQ0ZvhPyEguMSDnewPHTC63FvoQ78r
+ tY9jof8vTwOWSDFJxfygkrk/MeIod5m+vob5QShTS/Hj0v2j8AtRH5TPvti6vG/seQeG
+ /3c2iafVA95Yhcl3Y4JvcbShAEODjHZVcroQEO2u+XqdBPJOF/4f83kKJj/dOW83KIUx
+ np0Q==
+X-Gm-Message-State: APjAAAVueSGhS62jzT5OzzzC/AHDVphQbm2nVJekg3A5lNPn0QnFIOt9
+ fvRU1URan/oxB3kj09YHC+4kSBKp6G0=
+X-Google-Smtp-Source: APXvYqxUMAOvtJpZh9Qqesmk8KHdiZ0B74NL+cacycn7DswOY0O0hUu4Q2H4+g8gF/OtrN6uQGyfnA==
+X-Received: by 2002:a17:902:9f85:: with SMTP id
+ g5mr15170880plq.29.1557582198441; 
+ Sat, 11 May 2019 06:43:18 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id i17sm11118004pfo.103.2019.05.11.06.43.11
+ by smtp.gmail.com with ESMTPSA id i17sm11118004pfo.103.2019.05.11.06.43.15
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 11 May 2019 06:43:13 -0700 (PDT)
+ Sat, 11 May 2019 06:43:17 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 1/2] nvme: Fix typos in nvme status code values
-Date: Sat, 11 May 2019 22:42:54 +0900
-Message-Id: <20190511134255.6790-2-minwoo.im.dev@gmail.com>
+Subject: [PATCH 2/2] nvme-fabrics: Remove unused argument
+Date: Sat, 11 May 2019 22:42:55 +0900
+Message-Id: <20190511134255.6790-3-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190511134255.6790-1-minwoo.im.dev@gmail.com>
 References: <20190511134255.6790-1-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190511_064315_360047_BCC3F747 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20190511_064319_906521_19B1510E 
+X-CRM114-Status: GOOD (  13.04  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -104,31 +105,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Fix typos in enumeration names for nvme status:
-  s/ACIVATE/ACTIVATE
-  s/INSUFFICENT/INSUFFICIENT
+The variable 'count' is not currently used by nvmf_create_ctrl(), so
+remove it.
 
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- include/linux/nvme.h | 4 ++--
+ drivers/nvme/host/fabrics.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/linux/nvme.h b/include/linux/nvme.h
-index c40720cb59ac..8028adacaff3 100644
---- a/include/linux/nvme.h
-+++ b/include/linux/nvme.h
-@@ -1246,9 +1246,9 @@ enum {
- 	NVME_SC_FW_NEEDS_SUBSYS_RESET	= 0x110,
- 	NVME_SC_FW_NEEDS_RESET		= 0x111,
- 	NVME_SC_FW_NEEDS_MAX_TIME	= 0x112,
--	NVME_SC_FW_ACIVATE_PROHIBITED	= 0x113,
-+	NVME_SC_FW_ACTIVATE_PROHIBITED	= 0x113,
- 	NVME_SC_OVERLAPPING_RANGE	= 0x114,
--	NVME_SC_NS_INSUFFICENT_CAP	= 0x115,
-+	NVME_SC_NS_INSUFFICIENT_CAP	= 0x115,
- 	NVME_SC_NS_ID_UNAVAILABLE	= 0x116,
- 	NVME_SC_NS_ALREADY_ATTACHED	= 0x118,
- 	NVME_SC_NS_IS_PRIVATE		= 0x119,
+diff --git a/drivers/nvme/host/fabrics.c b/drivers/nvme/host/fabrics.c
+index 592d1e61ef7e..5838f7cd53ac 100644
+--- a/drivers/nvme/host/fabrics.c
++++ b/drivers/nvme/host/fabrics.c
+@@ -978,7 +978,7 @@ EXPORT_SYMBOL_GPL(nvmf_free_options);
+ 				 NVMF_OPT_DISABLE_SQFLOW)
+ 
+ static struct nvme_ctrl *
+-nvmf_create_ctrl(struct device *dev, const char *buf, size_t count)
++nvmf_create_ctrl(struct device *dev, const char *buf)
+ {
+ 	struct nvmf_ctrl_options *opts;
+ 	struct nvmf_transport_ops *ops;
+@@ -1073,7 +1073,7 @@ static ssize_t nvmf_dev_write(struct file *file, const char __user *ubuf,
+ 		goto out_unlock;
+ 	}
+ 
+-	ctrl = nvmf_create_ctrl(nvmf_device, buf, count);
++	ctrl = nvmf_create_ctrl(nvmf_device, buf);
+ 	if (IS_ERR(ctrl)) {
+ 		ret = PTR_ERR(ctrl);
+ 		goto out_unlock;
 -- 
 2.17.1
 
