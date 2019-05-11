@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A69341A948
-	for <lists+linux-nvme@lfdr.de>; Sat, 11 May 2019 21:37:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B39E01A949
+	for <lists+linux-nvme@lfdr.de>; Sat, 11 May 2019 21:37:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,69 +11,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=o66ulU7FiOC1aWNfdl7KTkBSu++OBldER2vv9yT+OS4=; b=HVTrg5vIvQTJbTcKDRMhNb+WTS
-	hFcAfNwY1bqAOqA64v49KOZHT7WI4rxBhw8yP9peZliY9IJvjk7uKZIJz18XSmBmfIftmDyGY08lb
-	kubg92EqovZufjcm2PgK3Lo9ALC1E2WyAwvZqJsBzZ1thKRzOcbk9tue0Re/xVUg0ih2Sh+LOCCWw
-	Wx8WObjcb2j04MuuUlFcAS/MtmSsfRQXtSq/NJsexHF0+UDcQvjdFTwL4shL+U5kHfJwx+pgPPaNu
-	GOrRsZAyBrHbE9qkOzqeJVMrhc9AimKLLUCxSxQBt2J9MLCsvoPLVsHmQrdhe0UJtqk8LfcFZdD0j
-	xlif5V9A==;
+	bh=EFgah4k4OX+ub85CdLSNSQr4jdQvLIsCdXxdnV1QGhk=; b=qq09MIyxsV4uLVEJykiTDSwuuZ
+	XIY5Mb6n930Q1yx9jUAwLattOv9Jkk4RyjUy3QwHE5yAxU4vl8RoG62UWHdYU9QQBX5gIqSAF9hqm
+	sCRDD2Nx6ti+/yBm7SQ8yFvEUkxOdAjZ7ndBx4xLc8rxK4eVGuCPpZ1QXaPygbxdELZc+isxzFGOP
+	8J06zQBKQHVWiJAyLH0Ya0k02LwC0Ak7sC7+tyy9Clo+ri669VyzWvmiVkp2y2kVpzddJlyND+5rn
+	GWwLhQBRE+Ln8YuC4sCFspu1Sjq7hvFfVbilgcamCh0bsmZBn86LPRRKsx34e0cEhlKnDbI/4YVxl
+	y7kMMm1Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hPXoP-000293-AV; Sat, 11 May 2019 19:37:37 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hPXoX-0002KC-6f; Sat, 11 May 2019 19:37:45 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPXoF-00023R-FX
- for linux-nvme@lists.infradead.org; Sat, 11 May 2019 19:37:29 +0000
-Received: by mail-pl1-x642.google.com with SMTP id b3so4393482plr.7
- for <linux-nvme@lists.infradead.org>; Sat, 11 May 2019 12:37:27 -0700 (PDT)
+ id 1hPXoI-00027Q-M0
+ for linux-nvme@lists.infradead.org; Sat, 11 May 2019 19:37:32 +0000
+Received: by mail-pl1-x643.google.com with SMTP id g5so4403859plt.2
+ for <linux-nvme@lists.infradead.org>; Sat, 11 May 2019 12:37:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=/T3sQnKKLHp+1TzrDc3tXUHXpM2rJq0HtOqQxPmcxhI=;
- b=vHXouokejFtimzyKZbT7cgFz7OFUXXOz4Ip58/DsMAImwySFGghxe7LMtvhE/cJNGx
- 317JJZl9f9PsHgwLugJnDibVsNDPlPk8pesCIgM9RVYTUaOYdZPt6vGjs4ijLZG83ynB
- FrOMrQTyKgDZimxTaEJn3I15lSoZt/RV9f4/Y8RQ4aDkZ6oeyT20EXxkgJG4KYg7t7X8
- WMfDkvSZQliHT6u7cLxZvvfqMgv/3LEeEEiWu5wJbqwRSMHFdTj3yQJc0XNa+cZjUCOn
- xz5XJwwcWuDVNHj3oVLbqvv9p6arfMeaNBR713q6cflniXz6gRziAbVMhlIwCK61ENOh
- Utrw==
+ bh=C6nTGST1hHSlFAz2Ov07l9lOPF3ajk8E7m7r7Sh7KdU=;
+ b=jDaSc00k4pLiLEL/+Ftj2yuU8zZEwJl7m+JphOj6+wtxA65EpXJoq7OcfCgHC7PpjB
+ ZGpWu/4X9W6HBfLTGVoeC/2/9fW2N8O2mbkWgD8Kx/M8WaYOUnda299/5MsyBgzjUopp
+ KMsghjUrcslLaMsFvQBlAzyrVvhJuq8UVPixyMxEX4e2wP+grxcqNhfH9DQP7Q1azwNJ
+ tYop24K5qEgi28RBmbXZHg1XXEntvXU9/wviYv+b7R8qRJInDwOZ/LyeLoYKHa/I1uog
+ ldvyqbh1i1P7YtuC9EBpKeyf1iyrBMwfyxBuD8AXlYe6+uVxiN3JegtR+stx8gtv6wof
+ bhZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=/T3sQnKKLHp+1TzrDc3tXUHXpM2rJq0HtOqQxPmcxhI=;
- b=ot6cgO880+MYrCjCQcBlsm1JTjWrD3L+2vpbL00wGvqwPNY01yP6kifpP8npCMievV
- sFilbJTfzkfbtKtuxp1ZQH1F+1a4Xg68UNeg8NbvlGCHuNzSQJ5yIQxbDtA0tGcW3X/r
- S0nPWGi0juvT2sL2kP1ZdBMlz7wtk0L3Qb/8+Xs+JTyERUvXP4TfB+hPNlLjzUUqH0H/
- /pm7j8qL4opAyNs3V3aVUz9A6f9QyvlfIzktgyGBOm3Xo9IsRFQzrBTFZAFvxkJItn1C
- zlR5C858ExoMuesPEo5z4WILKoHpdHNJ4gTYrLSKzIRatowy8iF1xRRTcmdGA3jdKhaN
- Wtvg==
-X-Gm-Message-State: APjAAAVZ4xY7lvwZBVfXwiwSdgCFBHMrX2IJQjwt4bzCtgHSHcOh9Jb9
- 4nSs3jUMjIXowwuKLE0l/jLFN3xJojA=
-X-Google-Smtp-Source: APXvYqz7iurShn1Gki96UdZH6Sp/f4028kEoVAZ8A+K5ATIr9OC8Q/uRy9R1sImJqNxUptH/zEGrsA==
-X-Received: by 2002:a17:902:8e87:: with SMTP id
- bg7mr12922426plb.281.1557603446578; 
- Sat, 11 May 2019 12:37:26 -0700 (PDT)
+ bh=C6nTGST1hHSlFAz2Ov07l9lOPF3ajk8E7m7r7Sh7KdU=;
+ b=M/f7dUgR8LmO8QhBShY7HO3HzM6NpNf32OTpRoNqw8P7xDhKXf0qWXxMKUfOB0z4dW
+ ckw76ktoMdZ8R4A8cfysvWRSHNWBDhW4H9PaxfqtbMr40kXcWV8Vyql43pWQB6F08GaC
+ RVqHITk+Xkyo/gcPI0Z2Mz8ewd8qs8uIgpxLdA0pUrNWoaYoE+4LM8FZG9fqoPsi6+os
+ 0C3EMt6YCtS9mqJO4MZ6tZ0o1bIFCsgoAezPcaruT/SnVJWKKIH5ldhiYKIIggR6o6Ne
+ Abu05fuvPVX4nx/tIKTEAuAW3h/kfUgk62i5DVsaQMk2b4QyS9SjIWu/LHP3aYwaGQyn
+ mUEw==
+X-Gm-Message-State: APjAAAVtY/GtgR+RCEy67S9IO1cGqa5Plrsuf36daGrNGgnGtV5dwQEP
+ Q+R59Rh7GV81SYiHDbVwSui+QOXhzNs=
+X-Google-Smtp-Source: APXvYqxI24erACLasr3UtKQN67ETkhgXtdwyk57B7Hlqoi/0DFp9AidceGr132LHpU5RXbcN4JG5Wg==
+X-Received: by 2002:a17:902:8f98:: with SMTP id
+ z24mr9846720plo.101.1557603449621; 
+ Sat, 11 May 2019 12:37:29 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id a9sm10878883pgw.72.2019.05.11.12.37.24
+ by smtp.gmail.com with ESMTPSA id a9sm10878883pgw.72.2019.05.11.12.37.27
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 11 May 2019 12:37:25 -0700 (PDT)
+ Sat, 11 May 2019 12:37:28 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 1/4] nvme.h: Fix typos in status code values
-Date: Sun, 12 May 2019 04:37:10 +0900
-Message-Id: <20190511193713.29516-2-minwoo.im.dev@gmail.com>
+Subject: [PATCH RFC 2/4] nvme-status: Introduce nvme status module to map errno
+Date: Sun, 12 May 2019 04:37:11 +0900
+Message-Id: <20190511193713.29516-3-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190511193713.29516-1-minwoo.im.dev@gmail.com>
 References: <20190511193713.29516-1-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190511_123727_612249_187929B5 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20190511_123730_750491_B1F92395 
+X-CRM114-Status: GOOD (  17.37  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -97,54 +97,223 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Keith Busch <keith.busch@intel.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+ Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Fix typos in status code value.  linux/nvme.h in kernel project is going
-to be fixed soon or later.
+Background:
+  It's not enough to return the nvme status value in main() because it's
+allowed to be in 8bits, but nvme status is indicated in 16bits.  So we
+has not been able to figure out what kind of nvme status has been
+returned by return value.
 
+  This patch introduces nvme-status module that manages mapping between
+nvme status and errno.  It's not possible to make 1:1 mapping relations,
+but we can map it as a groups.
+
+All the internal errors which has been returned in a negative value will
+be returned with ECOMM that indicates communication errors.  In this
+case, we can see what happened via stderr.
+
+Cc: Keith Busch <keith.busch@intel.com>
+Cc: Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- linux/nvme.h | 4 ++--
- nvme-print.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ Makefile      |   3 +-
+ linux/nvme.h  |   6 +++
+ nvme-status.c | 127 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ nvme-status.h |  14 ++++++
+ 4 files changed, 149 insertions(+), 1 deletion(-)
+ create mode 100644 nvme-status.c
+ create mode 100644 nvme-status.h
 
+diff --git a/Makefile b/Makefile
+index 4bfbebb..1e50a65 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,7 +32,8 @@ override CFLAGS += -DNVME_VERSION='"$(NVME_VERSION)"'
+ NVME_DPKG_VERSION=1~`lsb_release -sc`
+ 
+ OBJS := argconfig.o suffix.o parser.o nvme-print.o nvme-ioctl.o \
+-	nvme-lightnvm.o fabrics.o json.o nvme-models.o plugin.o
++	nvme-lightnvm.o fabrics.o json.o nvme-models.o plugin.o \
++	nvme-status.o
+ 
+ PLUGIN_OBJS :=					\
+ 	plugins/intel/intel-nvme.o		\
 diff --git a/linux/nvme.h b/linux/nvme.h
-index 2c840b9..c99b438 100644
+index c99b438..5ca7442 100644
 --- a/linux/nvme.h
 +++ b/linux/nvme.h
-@@ -1365,9 +1365,9 @@ enum {
- 	NVME_SC_FW_NEEDS_SUBSYS_RESET	= 0x110,
- 	NVME_SC_FW_NEEDS_RESET		= 0x111,
- 	NVME_SC_FW_NEEDS_MAX_TIME	= 0x112,
--	NVME_SC_FW_ACIVATE_PROHIBITED	= 0x113,
-+	NVME_SC_FW_ACTIVATE_PROHIBITED	= 0x113,
- 	NVME_SC_OVERLAPPING_RANGE	= 0x114,
--	NVME_SC_NS_INSUFFICENT_CAP	= 0x115,
-+	NVME_SC_NS_INSUFFICIENT_CAP	= 0x115,
- 	NVME_SC_NS_ID_UNAVAILABLE	= 0x116,
- 	NVME_SC_NS_ALREADY_ATTACHED	= 0x118,
- 	NVME_SC_NS_IS_PRIVATE		= 0x119,
-diff --git a/nvme-print.c b/nvme-print.c
-index c038355..0ce88d4 100644
---- a/nvme-print.c
-+++ b/nvme-print.c
-@@ -1801,9 +1801,9 @@ const char *nvme_status_to_string(__u32 status)
- 	case NVME_SC_FW_NEEDS_SUBSYS_RESET:	return "FW_NEEDS_SUBSYSTEM_RESET: The firmware commit was successful, however, activation of the firmware image requires an NVM Subsystem";
- 	case NVME_SC_FW_NEEDS_RESET:		return "FW_NEEDS_RESET: The firmware commit was successful; however, the image specified does not support being activated without a reset";
- 	case NVME_SC_FW_NEEDS_MAX_TIME:		return "FW_NEEDS_MAX_TIME_VIOLATION: The image specified if activated immediately would exceed the Maximum Time for Firmware Activation (MTFA) value reported in Identify Controller. To activate the firmware, the Firmware Commit command needs to be re-issued and the image activated using a reset";
--	case NVME_SC_FW_ACIVATE_PROHIBITED:	return "FW_ACTIVATION_PROHIBITED: The image specified is being prohibited from activation by the controller for vendor specific reasons";
-+	case NVME_SC_FW_ACTIVATE_PROHIBITED:	return "FW_ACTIVATION_PROHIBITED: The image specified is being prohibited from activation by the controller for vendor specific reasons";
- 	case NVME_SC_OVERLAPPING_RANGE:		return "OVERLAPPING_RANGE: This error is indicated if the firmware image has overlapping ranges";
--	case NVME_SC_NS_INSUFFICENT_CAP:	return "NS_INSUFFICIENT_CAPACITY: Creating the namespace requires more free space than is currently available. The Command Specific Information field of the Error Information Log specifies the total amount of NVM capacity required to create the namespace in bytes";
-+	case NVME_SC_NS_INSUFFICIENT_CAP:	return "NS_INSUFFICIENT_CAPACITY: Creating the namespace requires more free space than is currently available. The Command Specific Information field of the Error Information Log specifies the total amount of NVM capacity required to create the namespace in bytes";
- 	case NVME_SC_NS_ID_UNAVAILABLE:		return "NS_ID_UNAVAILABLE: The number of namespaces supported has been exceeded";
- 	case NVME_SC_NS_ALREADY_ATTACHED:	return "NS_ALREADY_ATTACHED: The controller is already attached to the namespace specified";
- 	case NVME_SC_NS_IS_PRIVATE:		return "NS_IS_PRIVATE: The namespace is private and is already attached to one controller";
+@@ -1307,6 +1307,12 @@ static inline bool nvme_is_write(struct nvme_command *cmd)
+ 	return cmd->common.opcode & 1;
+ }
+ 
++enum {
++	NVME_SCT_GENERIC		= 0x0,
++	NVME_SCT_CMD_SPECIFIC		= 0x1,
++	NVME_SCT_MEDIA			= 0x2,
++};
++
+ enum {
+ 	/*
+ 	 * Generic Command Status:
+diff --git a/nvme-status.c b/nvme-status.c
+new file mode 100644
+index 0000000..63511a5
+--- /dev/null
++++ b/nvme-status.c
+@@ -0,0 +1,127 @@
++#include <linux/types.h>
++#include <stdbool.h>
++#include <errno.h>
++
++#include "nvme.h"
++#include "nvme-status.h"
++
++/*
++ * nvme_status_to_errno - It converts given status to errno mapped
++ * @status: nvme status field in completion queue entry
++ * @fabrics: true if given status is for fabrics
++ *
++ * Notes: This function can handle generic command status only.
++ */
++__u8 nvme_status_to_errno(__u16 status, bool fabrics)
++{
++	__u8 sct = nvme_status_type(status);
++
++	/*
++	 * The actual status code is enough with masking 0xff, but we need to
++	 * cover status code type which is 3bits with 0x7ff.
++	 */
++	status &= 0x7ff;
++
++	if (sct == NVME_SCT_GENERIC) {
++		switch (status) {
++		case NVME_SC_INVALID_OPCODE:
++		case NVME_SC_INVALID_FIELD:
++		case NVME_SC_INVALID_NS:
++		case NVME_SC_SGL_INVALID_LAST:
++		case NVME_SC_SGL_INVALID_COUNT:
++		case NVME_SC_SGL_INVALID_DATA:
++		case NVME_SC_SGL_INVALID_METADATA:
++		case NVME_SC_SGL_INVALID_TYPE:
++		case NVME_SC_SGL_INVALID_OFFSET:
++		case NVME_SC_SGL_INVALID_SUBTYPE:
++			return EINVAL;
++		case NVME_SC_CMDID_CONFLICT:
++			return EADDRINUSE;
++		case NVME_SC_DATA_XFER_ERROR:
++		case NVME_SC_INTERNAL:
++		case NVME_SC_SANITIZE_FAILED:
++			return EIO;
++		case NVME_SC_POWER_LOSS:
++		case NVME_SC_ABORT_REQ:
++		case NVME_SC_ABORT_QUEUE:
++		case NVME_SC_FUSED_FAIL:
++		case NVME_SC_FUSED_MISSING:
++			return EWOULDBLOCK;
++		case NVME_SC_CMD_SEQ_ERROR:
++			return EILSEQ;
++		case NVME_SC_SANITIZE_IN_PROGRESS:
++			return EINPROGRESS;
++		case NVME_SC_NS_WRITE_PROTECTED:
++		case NVME_SC_NS_NOT_READY:
++		case NVME_SC_RESERVATION_CONFLICT:
++			return EACCES;
++		case NVME_SC_LBA_RANGE:
++			return EREMOTEIO;
++		case NVME_SC_CAP_EXCEEDED:
++			return ENOSPC;
++		}
++	} else if (sct == NVME_SCT_CMD_SPECIFIC && !fabrics) {
++		switch (status) {
++		case NVME_SC_CQ_INVALID:
++		case NVME_SC_QID_INVALID:
++		case NVME_SC_QUEUE_SIZE:
++		case NVME_SC_FIRMWARE_SLOT:
++		case NVME_SC_FIRMWARE_IMAGE:
++		case NVME_SC_INVALID_VECTOR:
++		case NVME_SC_INVALID_LOG_PAGE:
++		case NVME_SC_INVALID_FORMAT:
++		case NVME_SC_INVALID_QUEUE:
++		case NVME_SC_NS_INSUFFICIENT_CAP:
++		case NVME_SC_NS_ID_UNAVAILABLE:
++		case NVME_SC_CTRL_LIST_INVALID:
++		case NVME_SC_BAD_ATTRIBUTES:
++		case NVME_SC_INVALID_PI:
++			return EINVAL;
++		case NVME_SC_ABORT_LIMIT:
++		case NVME_SC_ASYNC_LIMIT:
++			return EDQUOT;
++		case NVME_SC_FW_NEEDS_CONV_RESET:
++		case NVME_SC_FW_NEEDS_SUBSYS_RESET:
++		case NVME_SC_FW_NEEDS_MAX_TIME:
++			return ERESTART;
++		case NVME_SC_FEATURE_NOT_SAVEABLE:
++		case NVME_SC_FEATURE_NOT_CHANGEABLE:
++		case NVME_SC_FEATURE_NOT_PER_NS:
++		case NVME_SC_FW_ACTIVATE_PROHIBITED:
++		case NVME_SC_NS_IS_PRIVATE:
++		case NVME_SC_BP_WRITE_PROHIBITED:
++		case NVME_SC_READ_ONLY:
++			return EPERM;
++		case NVME_SC_OVERLAPPING_RANGE:
++		case NVME_SC_NS_NOT_ATTACHED:
++			return ENOSPC;
++		case NVME_SC_NS_ALREADY_ATTACHED:
++			return EALREADY;
++		case NVME_SC_THIN_PROV_NOT_SUPP:
++		case NVME_SC_ONCS_NOT_SUPPORTED:
++			return EOPNOTSUPP;
++		}
++	} else if (sct == NVME_SCT_CMD_SPECIFIC && fabrics) {
++		switch (status) {
++		case NVME_SC_CONNECT_FORMAT:
++		case NVME_SC_CONNECT_INVALID_PARAM:
++			return EINVAL;
++		case NVME_SC_CONNECT_CTRL_BUSY:
++			return EBUSY;
++		case NVME_SC_CONNECT_RESTART_DISC:
++			return ERESTART;
++		case NVME_SC_CONNECT_INVALID_HOST:
++			return ECONNREFUSED;
++		case NVME_SC_DISCOVERY_RESTART:
++			return EAGAIN;
++		case NVME_SC_AUTH_REQUIRED:
++			return EPERM;
++		}
++	}
++
++	/*
++	 * Media, integrity related status, and the others will be mapped to
++	 * EIO.
++	 */
++	return EIO;
++}
+diff --git a/nvme-status.h b/nvme-status.h
+new file mode 100644
+index 0000000..094132b
+--- /dev/null
++++ b/nvme-status.h
+@@ -0,0 +1,14 @@
++#include <linux/types.h>
++#include <stdbool.h>
++
++/*
++ * nvme_status_type - It gives SCT(Status Code Type) in status field in
++ *                    completion queue entry.
++ * @status: status field located at DW3 in completion queue entry
++ */
++static inline __u8 nvme_status_type(__u16 status)
++{
++	return (status & 0x700) >> 8;
++}
++
++__u8 nvme_status_to_errno(__u16 status, bool fabrics);
 -- 
 2.17.1
 
