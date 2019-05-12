@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78DE51ADE1
-	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 20:59:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA6B31ADE3
+	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 20:59:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,59 +11,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=wmq/Hs89AsSTb+UHW5gw8XvBgyrHbcrvkDoSedj050M=; b=WvGiuqGgC8JH87zRcGx33tBB3i
-	ZtlZdGeWeR3kXQZY9kj5pjP+fZwLbq7e4rJbm2oMQGKCpjhxmtPbe+aG8BbMOkaA23g+E1aJKs+ao
-	Xzlp0nVkNM5rrUUNxoPY6f1SFjpu3VH8yVEtytntyv6qFg78k1PZGYydiMEVGXSldOd8WifQki6hR
-	1B6JJ3Jaf4V99RQu3I6jWs3ZuxI0qEJbzGPNdIGmG8RHjzCNQs0mX/nA+1uHOnjDo31uIxTZNhFif
-	LIMsrkUiC5pcjhfDjg7kfEaCgX5Pw0YFAIN3OuBTLDxQkQMpOallMmFiS9BTXsk4maZUmmNX8/wQx
-	HF95VBRQ==;
+	bh=ae1OqGJ36LpFVb6lJ2DNXVjYE1wy/DBuTUnMpQefdto=; b=Y4qa7DBv1ymGfloO/6VHJI+iVv
+	FakOF4+cFDEP5s4FXmtyL/D3FdFRrgLZmoYmestmcWNCi0RnJnBsgj41UUyVhEzkijizyr9n/Fe5D
+	Xv0Fx6Ms3aWonorJbKIMwWC7ckkk4JQuiSy4YF5tBeBgf1KKSt/LVzLv1rH0zCoVNydzQ40fgwHV6
+	v3/XX65/kraO5kL6TcCzuCYrz7Wef35CUmEch9826LG65tRW1oihk8cRSufdsVrlS2ne5s0WQp57x
+	y1CAeOCx/JaKsXqf27vvSnA4wooCt5XghB4C1RUT47oUbSRBnwQkyXTL7/DllOO9KBmlj+0RnLwCI
+	sjYgWDmA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hPtgl-0005jX-E8; Sun, 12 May 2019 18:59:11 +0000
+	id 1hPth4-000637-6N; Sun, 12 May 2019 18:59:30 +0000
 Received: from esa2.hgst.iphmx.com ([68.232.143.124])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPtgR-0005Qf-O3
- for linux-nvme@lists.infradead.org; Sun, 12 May 2019 18:59:05 +0000
+ id 1hPtgW-0005YE-R7
+ for linux-nvme@lists.infradead.org; Sun, 12 May 2019 18:59:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557687606; x=1589223606;
+ t=1557687614; x=1589223614;
  h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=cCALKi0qNvbTkTU/9YLcdoqyBk5xzpXclwRitKywb40=;
- b=Ou/gPZE00JllVbFnaxmbwby+diU+jcO9oaayLWM7htJCPlW+D3HBDo4N
- 3MC+H2d4iabJ2suyRTh3Kfk9ivoAwImMPXJzlk+hhleeqAdQG+EW1Heq/
- rJj/aWOcyhVULFpMeZbv9NHpMPkqUUxj2Asc31GVb15ZJiLSY84UQ0d2F
- ci5g5eZ807qz9DsU8ObX8FGzp8KoiKGWHUuVfUq7jRwtLqsEdPrfNu5/7
- OHAfQogMAfI6NBpst6qC0J7yFGtevJhRMywBNy3zD6WJMHobwo977dAxH
- xsoNTTHcIwpykzBW9UQWO50RRbsRqUDRbXuniei6Xi3Ugc8z1klwDcLPQ g==;
-X-IronPort-AV: E=Sophos;i="5.60,462,1549900800"; d="scan'208";a="207452165"
+ bh=kzsFsTIqqb710oucq0aqW6p08KabZ0rpd8HJTFI9l/Y=;
+ b=aia9E/j9WBZcTuZ6/THziq+kj4V5AQta7qpkQuoibKixsP3A7kknZdOW
+ lgfOFx1r8uRNcoDrzqg7e71/Dw/+YNqn1L0rCBc5/EPOFQle1eKxNSH9I
+ T2d0725BpQG4/hWMX8r3dAql70GmebCSxTkO5wVpxUnGRw2iVe6IyiFFu
+ Yp3j/aWX2Viakr9bgjBqaCbMXdDVkjh4R7e5sXyljndJwjqN7At5r22xd
+ PYM1wMYv5csEKryR7svvG+lK6XfPmujwJIqR2qmu51yHF5o3VtGV5yaPe
+ 9L58B3VofvwchyrEoTmP7qRKHZUTuEp081IlnhgjfUH7YwmHAnnyG717a g==;
+X-IronPort-AV: E=Sophos;i="5.60,462,1549900800"; d="scan'208";a="207452170"
 Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 13 May 2019 03:00:05 +0800
-IronPort-SDR: jWzJMN4oBxx1O+qwm8+SYX6VjFQ75Zemk/Qp3bJ/Ux5U2BA8Sv3cR5uhQRkNz4yjeKuzBdySvV
- 4PEefbx0OhMgb5O+LfFSgYpNuZRaEl8x/UVbDp266pcZBnAOXRu5YpscURu09g2pNuhJVYBmcj
- 4ADz9VILn6NDWB4Ed9/eDOn9zOSC4MAKVtqZaIEFs7R4HrE/ltEzn29+l/1YAmTnhvvpR6gaa3
- ZFC0quP6P54Yg+uk3bbRJAK0v7wPHkzUmSwSHUTLKftl2mvOUUZNc1+hZ3B+mpCq+iBqBp4vaE
- SFSP9jnsYGaoLt/HYN5WcKrm
+ by ob1.hgst.iphmx.com with ESMTP; 13 May 2019 03:00:13 +0800
+IronPort-SDR: ztwPjQbLIIYftX9mE4uTQ5U8wEK4a+QkFT0jKDpw1bKRpEv21cTz/xQ3zeBgFy3AIRvLYWrRc1
+ VraeF71Ccm2s7RQFVtRrCqLnZWqQuj3CYJxi5MBY17BWWAIOfpf8Y8X9NOGBbmNvl6pX/TkP5F
+ yA4Fk/X7FIvmuKot+xq7X3I4K0mQC6XPiMLq18kLYQxuGINiOZjnoNhDtDdfYHecPJHZ0A12FX
+ xAVDkIECht14zA+I7W1Uo6YhuSVsaZq7pW1aqn1ljQfyyM6pmd7RI0j3bok97Br+wxy4uOuS/n
+ KcoX8EfAluONFIIWFeRFGVAo
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP; 12 May 2019 11:36:54 -0700
-IronPort-SDR: sbrHgO4beb5YbCIrpQcVCLjBjlYaArZqDAGh6PGKys28Pq21hTKqdQx4HNWPhMlDYK5hBU62A9
- eFyMpDGt/2Y551oNPrQg2i14E8iSMkYl38d0xoFBbuzzim7eVAAsh7eivJkGw48KsYj3qgKy/I
- fhDYhYQls3idnzolEGyZY+UoJBTf4lQK0n8T/ofumDSkhcAmGNmXwhJKsTwP1Pz/YLgvO+ONxJ
- GIsM7Tojjg4wPnn+dxQuKcqE/RWMTzGfmVcnETiCkjsDESp1FJ/D6K2NuSEGzMy5nbTjkdp+8c
- nqU=
+ by uls-op-cesaep02.wdc.com with ESMTP; 12 May 2019 11:36:59 -0700
+IronPort-SDR: DDPBJ+Ryo+/I0PXdawMhzOJ1dmIkUkQ3KtK7V/H5RHUGR4yiqC2wIZPr13aZc5ViARV+Ekc/QL
+ I61m9qRruwGYxXdTe8G2kxNBYYgmIx4sZbzDemKdb8e8X8eX5XzthNL5XIg1maSBxdaF43w6SU
+ A1DpV6c2RVj++hwx0/K23BYg5weeMeFRJ2pj2DBAHZBJWOkiwDQ2c4T+w8B8ijeY4aqJeZY6HK
+ o7PxWT83G+sDDS6ln7MWr1WXUQprZPRP2qnRBK/BZefpgzMxjjngjNox/QvxAldE0elvR5iBn9
+ byM=
 Received: from qemuexp.hgst.com (HELO qemu.hgst.com) ([10.202.65.140])
- by uls-op-cesaip01.wdc.com with ESMTP; 12 May 2019 11:58:51 -0700
+ by uls-op-cesaip01.wdc.com with ESMTP; 12 May 2019 11:58:56 -0700
 From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 4/6] nvme-cli: use uniform if .. else format
-Date: Sun, 12 May 2019 11:58:18 -0700
-Message-Id: <20190512185820.20098-5-chaitanya.kulkarni@wdc.com>
+Subject: [PATCH 5/6] nvme-cli: use uniform if .. else format
+Date: Sun, 12 May 2019 11:58:19 -0700
+Message-Id: <20190512185820.20098-6-chaitanya.kulkarni@wdc.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20190512185820.20098-1-chaitanya.kulkarni@wdc.com>
 References: <20190512185820.20098-1-chaitanya.kulkarni@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190512_115852_262251_E7840631 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20190512_115857_347690_F9C7E9D2 
+X-CRM114-Status: GOOD (  11.57  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -99,33 +99,23 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 ---
- nvme.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ nvme-models.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/nvme.c b/nvme.c
-index 220fb18..971a926 100644
---- a/nvme.c
-+++ b/nvme.c
-@@ -212,8 +212,7 @@ static int get_smart_log(int argc, char **argv, struct command *cmd, struct plug
- 			json_smart_log(&smart_log, cfg.namespace_id, devicename);
- 		else
- 			show_smart_log(&smart_log, cfg.namespace_id, devicename);
--	}
--	else if (err > 0)
-+	} else if (err > 0)
- 		show_nvme_status(err);
- 	else
- 		perror("smart log");
-@@ -2244,8 +2243,7 @@ static int virtual_mgmt(int argc, char **argv, struct command *cmd, struct plugi
- 	err = nvme_virtual_mgmt(fd, cfg.cdw10, cfg.cdw11, &result);
- 	if (!err) {
- 		printf("success, Number of Resources allocated:%#x\n", result);
--	}
--	else if (err > 0) {
-+	} else if (err > 0) {
- 		show_nvme_status(err);
- 	} else
- 		perror("virt-mgmt");
+diff --git a/nvme-models.c b/nvme-models.c
+index 5006f7a..f90ab95 100644
+--- a/nvme-models.c
++++ b/nvme-models.c
+@@ -259,8 +259,7 @@ static FILE *open_pci_ids(void)
+ 	if ((pci_ids_path = getenv("PCI_IDS_PATH")) != NULL) {
+ 		if ((fp = fopen(pci_ids_path, "r")) != NULL) {
+ 			return fp;
+-		}
+-		else {
++		} else {
+ 			/* fail if user provided environment variable but could not open */
+ 			perror(pci_ids_path);
+ 			return NULL;
 -- 
 2.17.0
 
