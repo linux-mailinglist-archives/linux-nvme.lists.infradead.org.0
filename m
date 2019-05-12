@@ -2,93 +2,80 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04E0E1ACA1
-	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 16:31:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A94F1ACA5
+	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 16:34:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xOt5y40wjpR+ZV8WCvyRqZXqImSVyXUvP8iIlVdLb6M=; b=W/rG4l8kAKIU1E
-	j4CRGNHJ4xFY+hAKuz7FytxrCN4VyvRN5ZyupJJMKDhqrbllI14+WYEwWk012pjG43vw92i7Xm5sL
-	5vQUN6hiRw4yulwlNJpHQuDh+Nx7W87gleiHgBPdqE/NpE3fXIkRZN50X11/tlh+cwTHJJybK+9Y4
-	VIiwOLy3Ac6iDJOG4QhWA6Qi33WVQDX0C4qFkgBg/Vw2YRtz0DkTiAWLmKqLaVliUcioZh2GoNUZL
-	jh/JTcaOxO5eBrdXEZQyfnBJHRl9TQIQedGFjmkD4NV853I00rB6auIufgXhQ2B3FlL8xck3XbEeG
-	BLnZa1iJ1Bcw4KqfBJeg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=nBPFdZoVZL5iia8UcxO28TQ6cxPdceJCnVueZ9/SKjM=; b=klrjr6T94nkpLN9BhGbsbZo11
+	VpvWqPTiOYGkr7JVxDG329nKsW6S+2Y7zBijMnedItBfqEAVHLkYbIxNCdgHSjV0ZtHzAUh84Zsa6
+	6PnI2bgKeALPcroIgmL3ipJcedWBf4/6xyk76sY9SkyMDjvtLMRCjr0/VVf39FM8sx9UG1sXw8Tp0
+	0IEczi/iqCEmIUIk0mF0iqzL4pe/gkRBgvJm6+ztf1D3mSpjL9rskSC05zdU7YtlBluSQmGvHuIbM
+	oKCIcVtHvUWiCdhcylE6zNzDjhiWGpg+HdnMgHyP4HT0qmwSTFMXhf3ei8Ebb+liAjFpkB1hDL7MI
+	UYVzwyyhQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hPpVM-0004OL-UT; Sun, 12 May 2019 14:31:08 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1hPpYJ-0004dT-VI; Sun, 12 May 2019 14:34:11 +0000
+Received: from mail-wm1-f66.google.com ([209.85.128.66])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPpVH-0004Nc-Cp
- for linux-nvme@lists.infradead.org; Sun, 12 May 2019 14:31:04 +0000
-Received: by mail-pl1-x644.google.com with SMTP id w7so5117867plz.1
- for <linux-nvme@lists.infradead.org>; Sun, 12 May 2019 07:31:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=8MmPir51Pep1QquiMlNrOGRX1Y2TZtpKY9viaAkjkQI=;
- b=rhWhYEal8pAMHfedEvpe/VBQbVlKLqFtXxiQi/XHXYuwxAEt9D0juekW4ZFobDtJXQ
- 44oh2TGhUvx6yE/t+ilpT/WGKb0/DTK+h2WOhXvxp8TTaIkkeW+cKK4y7p+dSW7tmY5o
- ktiEfu0TC5Ll2KqXN1KEHgdtYaIzNAohjSs5RsxOiKeOjZjnust9Vn9J3p1V2q5GVsvD
- vJM2pOAkNyUS7obCx76y1hN6YownFya1JANnazvaCz/y3t2hlyUv3z8uSoCOxwFr1Inr
- f3Ef8OXBgVB+ArWaaaLwqXAjynxcN7FgSAr9r8xloN1WhGyu/+2QxvCUMkRMghxMcpoY
- kuvA==
+ id 1hPpYF-0004d9-G5
+ for linux-nvme@lists.infradead.org; Sun, 12 May 2019 14:34:08 +0000
+Received: by mail-wm1-f66.google.com with SMTP id q15so7314316wmj.0
+ for <linux-nvme@lists.infradead.org>; Sun, 12 May 2019 07:34:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=8MmPir51Pep1QquiMlNrOGRX1Y2TZtpKY9viaAkjkQI=;
- b=EY9TvIgv29L9/nDclMQXh8maSY0iHVs3kM/sISP0CzCM7fPxa1TUoElrAT8IYV4Dx8
- 21TkjRd/mh1FuYj4zRR1TEbQJCw9l6IjoZl8f0dAxIAIxjjk3Sy6ehGydG7Wh9NQFc0I
- MMQ/wDFKdozKOx/FCkwuD2DhEGnsTwOOLNQs/BTt5ZE4+Bs4ZDKeDtubsewKjrAqqAWh
- dfY0JkK67YaQCsDiMs3d+WzmgVDPVzKMbMiw57HmqNmKc1acw8epimRJdW3D9eZs81w+
- Anfy0pIaMnAkJhANda/Ltl1OFxgl1fkJBDaA2oJvnJw6+BwclP7Rg1GfEbe+2vdif1b0
- 43Wg==
-X-Gm-Message-State: APjAAAXpyzLek68toCLLZj67skxPgF3nxaik6v/G2NOw5bXc0cAdfdEJ
- BqrZc3RB6ZmvpzACIlN4zBU=
-X-Google-Smtp-Source: APXvYqyHv4eu6dOl7ANFLZc88b1efraMSjQavaCvSp5oLIBuxCMPX9SS9p4rYP6iiwoMUxxTzZ0OmQ==
-X-Received: by 2002:a17:902:7594:: with SMTP id
- j20mr25677961pll.78.1557671461643; 
- Sun, 12 May 2019 07:31:01 -0700 (PDT)
-Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id z187sm15546976pfb.132.2019.05.12.07.31.00
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 12 May 2019 07:31:00 -0700 (PDT)
-Date: Sun, 12 May 2019 23:30:58 +0900
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=opR4X5SmjYgiPNH3JawKfnbS9NWBfn0uzbl47S80FYI=;
+ b=Q/k48CanKPdiRRevGGydxAIje4WSyh+ZQddLZLUJz6j3pRyFBYwxbwHAxqzS5AOyqT
+ NCDzEVbvTo9LfVbBP/GLfbDpnxa2ygc6ywTUj3lj1auGjaHG1DUZwagM8gFuIWfs3yIs
+ 9/mVKmqPQTMP6x7FZeJG4z23omEFZp88GeWEYEWMa/aVxX++1bE57JA/Ro1kKZDwMV2i
+ KVhEDjOeZXI0ZKLNotHxe4adP1Xr4sS4qOXMSLqu/RSyK/BxTo7VaRJgZhHnCh0hKLUB
+ rq0NNTeBojvKHIy6uh6n7S5fAcylqhi8iKirNykEDgvbRQ3ENLEQR60ZIfvHbaaEv5MZ
+ IITw==
+X-Gm-Message-State: APjAAAUzKqkYR6IhIyrhhugI0r3laJAfKD5X0m+CHYDFjOWkQ2VqwFRI
+ CvvaVgqQPfbaeLEgfeUnp6Y=
+X-Google-Smtp-Source: APXvYqyUtZ/+lZiGS4U9OG78QMCAF2idckf7O3CD4JvxAXJKPTmOWf18PhP4AKCdIKLdW1SZ9cJTUg==
+X-Received: by 2002:a1c:c7c8:: with SMTP id x191mr4359561wmf.126.1557671645856; 
+ Sun, 12 May 2019 07:34:05 -0700 (PDT)
+Received: from [192.168.81.52] (bzq-219-42-90.isdn.bezeqint.net.
+ [62.219.42.90])
+ by smtp.gmail.com with ESMTPSA id e12sm1980146wrs.8.2019.05.12.07.34.04
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 12 May 2019 07:34:05 -0700 (PDT)
 Subject: Re: [PATCH] nvme/pci: Use host managed power state for suspend
-Message-ID: <20190512143056.GA7761@minwooim-desktop>
+To: Christoph Hellwig <hch@lst.de>, Keith Busch <keith.busch@intel.com>
 References: <20190510212937.11661-1-keith.busch@intel.com>
- <SN6PR04MB452735778FD952AA838E78C9860E0@SN6PR04MB4527.namprd04.prod.outlook.com>
+ <20190511072258.GB14764@lst.de>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <efc9d481-d2cf-93bc-b640-849892421941@grimberg.me>
+Date: Sun, 12 May 2019 07:34:03 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <SN6PR04MB452735778FD952AA838E78C9860E0@SN6PR04MB4527.namprd04.prod.outlook.com>
-User-Agent: Mutt/1.10.1 (ed9d7727) (2018-07-16)
+In-Reply-To: <20190511072258.GB14764@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190512_073103_457985_555BB96A 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190512_073407_545575_A2D66A94 
+X-CRM114-Status: GOOD (  13.57  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
- [list.dnswl.org]
+ no trust [209.85.128.66 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ provider (sagigrim[at]gmail.com)
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,39 +87,51 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Mario Limonciello <Mario.Limonciello@dell.com>,
+Cc: Mario Limonciello <Mario.Limonciello@dell.com>,
  linux-pm <linux-pm@vger.kernel.org>, Rafael Wysocki <rafael@kernel.org>,
- lkml <linux-kernel@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- Keith Busch <keith.busch@intel.com>,
- Kai Heng Feng <kai.heng.feng@canonical.com>,
- "hange-folder>?" <toggle-mailboxes@minwooim-desktop>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
+ lkml <linux-kernel@vger.kernel.org>, linux-nvme@lists.infradead.org,
+ Kai Heng Feng <kai.heng.feng@canonical.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> > +	union nvme_result res;
-> > +	int ret;
-> > +
-> > +	if (!result)
-> > +		return -EINVAL;
-> > +
-> > +	memset(&c, 0, sizeof(c));
-> > +	c.features.opcode = nvme_admin_get_features;
-> > +	c.features.fid = cpu_to_le32(NVME_FEAT_POWER_MGMT);
-> > +
-> > +	ret = __nvme_submit_sync_cmd(ctrl->admin_q, &c, &res,
-> > +			NULL, 0, 0, NVME_QID_ANY, 0, 0, false);
-> > +	if (ret >= 0)
-> > +		*result = le32_to_cpu(res.u32);
-> May be add a check for result here in above if before deref pointer :-
-> 	if (ret >= 0 && result)
-> 
 
-'result' already has been checked in a few lines above.
+>> +int nvme_set_power(struct nvme_ctrl *ctrl, unsigned ps)
+>> +{
+>> +	return nvme_set_features(ctrl, NVME_FEAT_POWER_MGMT, ps, NULL, 0, NULL);
+>> +}
+>> +EXPORT_SYMBOL_GPL(nvme_set_power);
+>> +
+>> +int nvme_get_power(struct nvme_ctrl *ctrl, u32 *result)
+>> +{
+>> +	struct nvme_command c;
+>> +	union nvme_result res;
+>> +	int ret;
+>> +
+>> +	if (!result)
+>> +		return -EINVAL;
+>> +
+>> +	memset(&c, 0, sizeof(c));
+>> +	c.features.opcode = nvme_admin_get_features;
+>> +	c.features.fid = cpu_to_le32(NVME_FEAT_POWER_MGMT);
+>> +
+>> +	ret = __nvme_submit_sync_cmd(ctrl->admin_q, &c, &res,
+>> +			NULL, 0, 0, NVME_QID_ANY, 0, 0, false);
+>> +	if (ret >= 0)
+>> +		*result = le32_to_cpu(res.u32);
+>> +	return ret;
+>> +}
+>> +EXPORT_SYMBOL_GPL(nvme_get_power);
+> 
+> At this point I'd rather see those in the PCIe driver.  While the
+> power state feature is generic in the spec I don't see it actually
+> being used anytime anywhere else any time soon.
+> 
+> But maybe we can add a nvme_get_features helper ala nvme_set_features
+> in the core to avoid a little boilerplate code for the future?
+
++1 on this comment.
 
 _______________________________________________
 Linux-nvme mailing list
