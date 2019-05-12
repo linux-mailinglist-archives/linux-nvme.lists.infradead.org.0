@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0A3A1ACDD
-	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 17:55:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 56AF91ACE1
+	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 17:55:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,70 +11,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=OWRz+z4iHFWI7ygAA7SQTgEcsuyEWZ30kbZ/AeRnLYA=; b=jpcklCbY1ZCOz4eDF72Slo0XOw
-	/uleTXwdYMOCdKuUDdzv3Hjnx78gTwI+oox47tFmLrEC3N00phEcaQ4rOXIdK8MtQHpOR5zVcykxG
-	PVpOyuVurFFXgbub8rkjRnTZjVRQPqV4cp5iDHiErXQY9DdhZkSSR2AGRMkLTullumIBjQl54pYj+
-	cqrJiFHeCM85jLYgIcY4AXPj6UJSlPVX6nF1mfaPShfsqT9D/lcdNMNfC5G7HlRUf4kinDV56Y75d
-	4ulDVuHHTZn1hC7UlV7NN2Mu8HEJWJqV7jcOoKoxoj33YYYqNOoHhYoOuv7eDeg/cpiR8BTY+1sJS
-	01SetQOQ==;
+	bh=21nyIvu0vWt31zO3DacMc1cIButyw2YD4Z0Z9viKVKw=; b=ItUWh40nuDHFqNiWuq3UcNXmeH
+	AF0J7LykWKNIWCf78nVsjyX3NsymO+qnYulVPUPXU4CkesFO4Y9+OA1wnZvwFBfgCwoSXaH4CXpJG
+	zWfXEb6qSIBo8/gHwOYwS+6HedoU0wdy8YoeotVrtxudWu9Vg9+ejq1OvHMC3N5kxXSFK1L96CqZB
+	fI9e2nr/AXl8Ho7F9kvzYyh6thPmLIuAOMqilKkQuiyA4GpwhtQMv5PKlFNOAto0T/zfKqzU5cJyx
+	0TgZMQn2o2YOMqc0qpPjdGq9+GVWgSd2IC4WA/t0G3m6myRTDIM15y9cHDICnmwEWGOWqYAOlB0Fs
+	ArcCR6IQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hPqoi-0000rk-RM; Sun, 12 May 2019 15:55:12 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1hPqou-00022Z-1G; Sun, 12 May 2019 15:55:24 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPqoL-0000J5-2y
- for linux-nvme@lists.infradead.org; Sun, 12 May 2019 15:55:02 +0000
-Received: by mail-pf1-x443.google.com with SMTP id 13so5801175pfw.9
- for <linux-nvme@lists.infradead.org>; Sun, 12 May 2019 08:54:48 -0700 (PDT)
+ id 1hPqoN-0000Ns-E9
+ for linux-nvme@lists.infradead.org; Sun, 12 May 2019 15:55:05 +0000
+Received: by mail-pf1-x442.google.com with SMTP id z28so5818582pfk.0
+ for <linux-nvme@lists.infradead.org>; Sun, 12 May 2019 08:54:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=/T6slGtirlNBQjteyXLnYngCOCai+AykFmC6WhR/XFI=;
- b=uqQJQ/mp3DME/+Jc3Kmcqp44PDgILdA79aeHJzxG25Y8z0QKTf7Iotv2uur33liLp3
- 6RkElbQAlehqBrfSsnlM4nfAhlpd2LmmijI/6+2Ij1jqvITSy8TniYq9YpE+A0hndvfv
- 7cn0flFrTAIfyLYiTQE59wZsVzg1F5KJKPn3b01g2I7lUFYz63p68Xk+lZviL7vPCbeP
- RTQULhDVjkoVUnyQzso6rgkzMFoaBZ1aotz/1a4cg2bGZHhFmStUscb1O3UK1SlROuOH
- nbdItSOg1K6VTtheOlkxrQtx0jfFhNyU7p1UzCL51WnQlnypb+diPW+RtdAx14YuOn2e
- ranA==
+ bh=d2wWJz4YMrtwlEJecuuUCAduDMfeNvXVgccKamh1L2Q=;
+ b=HTyF8V1iLjPVxWHbZrbWrT5ZaAU4mLUUHpZIcejE7e9hY0xzp+108g1aABAR2PpEDY
+ 8uWGlXfcIjem/w4djblB78fN/3fnWfukobhZ9J8uuYyhMwEuyDm+PP1c+VfkG4mJNgw1
+ f2bR7qdWIgGUQbyYzd120QyA4Is98EqOVYY3Q54LyOzkZRe+Mnu4BwYCjwJoOt05/Q55
+ 7uDUOpg6E3LZNgsQONUlaiV1XwFPvFd29eGU2fXe4qHtkCZyuU7YYBUEl8Xr5Ga9GKKJ
+ jsxv/C8j05CN9Oq3RiF2lUuUWvrvMiTSMWJntkP6+S+pr0OYdWRitmmeeQuZhYY1C18v
+ qU4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=/T6slGtirlNBQjteyXLnYngCOCai+AykFmC6WhR/XFI=;
- b=fJmK08z6kJ2xo0sG4ZmYv7qWb3rDWFp3eJBWmiRLlfmHJ+OUPLxAdi+DDJrAGLBuiW
- SePWTLNmwdQvXuHJr7yi84fi15quzQa2rgpGwGlr17nqEjpK6ml3ALfw/lz9sCIzue62
- S505xXefwpYCiPK5VceqH+rJyxZOyLi6ieV2RXFXkkkNx8LJq3ivMCA7jlpPbwf8IlMd
- 5uS+KB6b4jH+UL+hwb+Jzm66aILuc32UXo6NEJldtqq+MpReKxijSKw6tGR/RoORF0t9
- 9lAHnzCip5Z0z1mSgSzESN5afVcls2fVUTc/0AEXo+M9vzrk05iKcJXgfszqprsuHTrx
- PKqA==
-X-Gm-Message-State: APjAAAX0puTwqdk32oqv9Jj9uixvxxPoTR01GMZaSE5o165x2M/vDcY9
- nzedyC98n9QjNS6pqspuOBZcIBnT
-X-Google-Smtp-Source: APXvYqyE5bSy2ez3BtZthzfjflznsej9zC7mSG3kW5JnDj75TTQ2UtzSsrzMrndgA/sPiT3NDFHGzA==
-X-Received: by 2002:a62:ee05:: with SMTP id e5mr26294810pfi.117.1557676487619; 
- Sun, 12 May 2019 08:54:47 -0700 (PDT)
+ bh=d2wWJz4YMrtwlEJecuuUCAduDMfeNvXVgccKamh1L2Q=;
+ b=OX5Uu8dfVKl45UgicG/NEG+kPBguv6XUB0Pw9w7uCbE7gI0AqBqZ6o3bHHHx2P7Hu6
+ wjcTT16fO2AxWqgjlH7L81rQl0+r5Uwr5hDbHiT4QwCdIzKpRSQSolZIbysRXRKmT2O5
+ Kj0rGKtfiXfJ/Jkt9GpXt4MP8lTNA+ao7Po0v7y8QoIwzNzw+FlSBtfEkRnyF4OT3/5z
+ LcV3T0kvD/jKFdY6GCWAQ6Oa+UkUSmCwDiHr2JPucDDv+gyvIyur1WGuyX6qEU1fctqv
+ 14D7nGZbB3XJMci3VSNZRWYD2T25piTKwegn25Loc99UT82tjCBVYXib8qK9RPFU91d+
+ I3jg==
+X-Gm-Message-State: APjAAAWEdr8BX0dNrQ2aZk2dJMw+Ja8ngOD3CmeEWkz34mpzVY/26ark
+ eP9IKRVqp3vBdfVdPO6mcC7+2KjT
+X-Google-Smtp-Source: APXvYqzBUPLt00KkhehGsTxNtdxkDAU5B9QsWEqMfdCFnVl++gjx41xIRjsfCsqqGnGEyfkPFHcNZg==
+X-Received: by 2002:a63:1a03:: with SMTP id a3mr26445478pga.412.1557676490807; 
+ Sun, 12 May 2019 08:54:50 -0700 (PDT)
 Received: from mita-MS-7A45.lan ([240f:34:212d:1:918e:f7e4:1728:3f45])
- by smtp.gmail.com with ESMTPSA id v2sm4470058pgr.2.2019.05.12.08.54.44
+ by smtp.gmail.com with ESMTPSA id v2sm4470058pgr.2.2019.05.12.08.54.47
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Sun, 12 May 2019 08:54:47 -0700 (PDT)
+ Sun, 12 May 2019 08:54:50 -0700 (PDT)
 From: Akinobu Mita <akinobu.mita@gmail.com>
 To: linux-nvme@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 3/7] devcoredump: allow to create several coredump files in
- one device
-Date: Mon, 13 May 2019 00:54:13 +0900
-Message-Id: <1557676457-4195-4-git-send-email-akinobu.mita@gmail.com>
+Subject: [PATCH v3 4/7] nvme: add basic facility to get telemetry log page
+Date: Mon, 13 May 2019 00:54:14 +0900
+Message-Id: <1557676457-4195-5-git-send-email-akinobu.mita@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1557676457-4195-1-git-send-email-akinobu.mita@gmail.com>
 References: <1557676457-4195-1-git-send-email-akinobu.mita@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190512_085449_770394_B12DBDD5 
-X-CRM114-Status: GOOD (  25.83  )
+X-CRM114-CacheID: sfid-20190512_085451_986092_D874EA17 
+X-CRM114-Status: GOOD (  14.88  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -108,13 +107,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The device coredump mechanism currently allows drivers to create only a
-single coredump file.  If there are several binary blobs to dump, we need
-to define a binary format or conver to text format in order to put them
-into a single coredump file.
+This adds the required definisions to get telemetry log page.
+The telemetry log page structure and identifier are copied from nvme-cli.
 
-This provides a new function that allows drivers to create several device
-coredump files in one crashed device.
+We also need a facility to check log page attributes in order to know
+the controller supports the telemetry log pages and log page offset field
+for the Get Log Page command.  The telemetry data area could be larger
+than maximum data transfer size, so we may need to split into multiple
+transfers with incremental page offset.
 
 Cc: Johannes Berg <johannes@sipsolutions.net>
 Cc: Keith Busch <keith.busch@intel.com>
@@ -126,323 +126,90 @@ Cc: Kenneth Heitke <kenneth.heitke@intel.com>
 Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
 ---
 * v3
-- No change since v2
+- Merge 'add telemetry log page definisions' patch and 'add facility to
+  check log page attributes' patch
+- Copy struct nvme_telemetry_log_page_hdr from the latest nvme-cli
+- Add BUILD_BUG_ON for the size of struct nvme_telemetry_log_page_hdr
 
- drivers/base/devcoredump.c  | 155 ++++++++++++++++++++++++++++++--------------
- include/linux/devcoredump.h |  33 ++++++++++
- 2 files changed, 139 insertions(+), 49 deletions(-)
+ drivers/nvme/host/core.c |  2 ++
+ drivers/nvme/host/nvme.h |  1 +
+ include/linux/nvme.h     | 17 +++++++++++++++++
+ 3 files changed, 20 insertions(+)
 
-diff --git a/drivers/base/devcoredump.c b/drivers/base/devcoredump.c
-index e42d0b5..4dd6dba 100644
---- a/drivers/base/devcoredump.c
-+++ b/drivers/base/devcoredump.c
-@@ -25,16 +25,20 @@ static bool devcd_disabled;
- /* if data isn't read by userspace after 5 minutes then delete it */
- #define DEVCD_TIMEOUT	(HZ * 60 * 5)
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index a6644a2..0cea2a8 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -2585,6 +2585,7 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+ 	} else
+ 		ctrl->shutdown_timeout = shutdown_timeout;
  
--struct devcd_entry {
--	struct device devcd_dev;
--	void *data;
--	size_t datalen;
--	struct module *owner;
-+struct devcd_file {
-+	struct bin_attribute bin_attr;
- 	ssize_t (*read)(char *buffer, loff_t offset, size_t count,
- 			void *data, size_t datalen);
- 	void (*free)(void *data);
-+};
-+
-+struct devcd_entry {
-+	struct device devcd_dev;
-+	struct module *owner;
- 	struct delayed_work del_wk;
- 	struct device *failing_dev;
-+	int num_files;
-+	struct devcd_file files[];
++	ctrl->lpa = id->lpa;
+ 	ctrl->npss = id->npss;
+ 	ctrl->apsta = id->apsta;
+ 	prev_apst_enabled = ctrl->apst_enabled;
+@@ -3898,6 +3899,7 @@ static inline void _nvme_check_size(void)
+ 	BUILD_BUG_ON(sizeof(struct nvme_id_ctrl) != NVME_IDENTIFY_DATA_SIZE);
+ 	BUILD_BUG_ON(sizeof(struct nvme_id_ns) != NVME_IDENTIFY_DATA_SIZE);
+ 	BUILD_BUG_ON(sizeof(struct nvme_lba_range_type) != 64);
++	BUILD_BUG_ON(sizeof(struct nvme_telemetry_log_page_hdr) != 512);
+ 	BUILD_BUG_ON(sizeof(struct nvme_smart_log) != 512);
+ 	BUILD_BUG_ON(sizeof(struct nvme_dbbuf) != 64);
+ 	BUILD_BUG_ON(sizeof(struct nvme_directive_cmd) != 64);
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 5ee75b5..7f6f1fc 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -195,6 +195,7 @@ struct nvme_ctrl {
+ 	u32 vs;
+ 	u32 sgls;
+ 	u16 kas;
++	u8 lpa;
+ 	u8 npss;
+ 	u8 apsta;
+ 	u32 oaes;
+diff --git a/include/linux/nvme.h b/include/linux/nvme.h
+index c40720c..8c0b29d 100644
+--- a/include/linux/nvme.h
++++ b/include/linux/nvme.h
+@@ -294,6 +294,8 @@ enum {
+ 	NVME_CTRL_OACS_DIRECTIVES		= 1 << 5,
+ 	NVME_CTRL_OACS_DBBUF_SUPP		= 1 << 8,
+ 	NVME_CTRL_LPA_CMD_EFFECTS_LOG		= 1 << 1,
++	NVME_CTRL_LPA_EXTENDED_DATA		= 1 << 2,
++	NVME_CTRL_LPA_TELEMETRY_LOG		= 1 << 3,
  };
  
- static struct devcd_entry *dev_to_devcd(struct device *dev)
-@@ -45,8 +49,14 @@ static struct devcd_entry *dev_to_devcd(struct device *dev)
- static void devcd_dev_release(struct device *dev)
- {
- 	struct devcd_entry *devcd = dev_to_devcd(dev);
-+	int i;
-+
-+	for (i = 0; i < devcd->num_files; i++) {
-+		struct devcd_file *file = &devcd->files[i];
-+
-+		file->free(file->bin_attr.private);
-+	}
- 
--	devcd->free(devcd->data);
- 	module_put(devcd->owner);
- 
- 	/*
-@@ -64,9 +74,14 @@ static void devcd_dev_release(struct device *dev)
- static void devcd_del(struct work_struct *wk)
- {
- 	struct devcd_entry *devcd;
-+	int i;
- 
- 	devcd = container_of(wk, struct devcd_entry, del_wk.work);
- 
-+	for (i = 0; i < devcd->num_files; i++)
-+		device_remove_bin_file(&devcd->devcd_dev,
-+				       &devcd->files[i].bin_attr);
-+
- 	device_del(&devcd->devcd_dev);
- 	put_device(&devcd->devcd_dev);
- }
-@@ -75,10 +90,11 @@ static ssize_t devcd_data_read(struct file *filp, struct kobject *kobj,
- 			       struct bin_attribute *bin_attr,
- 			       char *buffer, loff_t offset, size_t count)
- {
--	struct device *dev = kobj_to_dev(kobj);
--	struct devcd_entry *devcd = dev_to_devcd(dev);
-+	struct devcd_file *file =
-+		container_of(bin_attr, struct devcd_file, bin_attr);
- 
--	return devcd->read(buffer, offset, count, devcd->data, devcd->datalen);
-+	return file->read(buffer, offset, count, bin_attr->private,
-+			  bin_attr->size);
- }
- 
- static ssize_t devcd_data_write(struct file *filp, struct kobject *kobj,
-@@ -93,25 +109,6 @@ static ssize_t devcd_data_write(struct file *filp, struct kobject *kobj,
- 	return count;
- }
- 
--static struct bin_attribute devcd_attr_data = {
--	.attr = { .name = "data", .mode = S_IRUSR | S_IWUSR, },
--	.size = 0,
--	.read = devcd_data_read,
--	.write = devcd_data_write,
--};
--
--static struct bin_attribute *devcd_dev_bin_attrs[] = {
--	&devcd_attr_data, NULL,
--};
--
--static const struct attribute_group devcd_dev_group = {
--	.bin_attrs = devcd_dev_bin_attrs,
--};
--
--static const struct attribute_group *devcd_dev_groups[] = {
--	&devcd_dev_group, NULL,
--};
--
- static int devcd_free(struct device *dev, void *data)
- {
- 	struct devcd_entry *devcd = dev_to_devcd(dev);
-@@ -157,7 +154,6 @@ static struct class devcd_class = {
- 	.name		= "devcoredump",
- 	.owner		= THIS_MODULE,
- 	.dev_release	= devcd_dev_release,
--	.dev_groups	= devcd_dev_groups,
- 	.class_groups	= devcd_class_groups,
+ struct nvme_lbaf {
+@@ -396,6 +398,20 @@ enum {
+ 	NVME_NIDT_UUID		= 0x03,
  };
  
-@@ -234,30 +230,55 @@ static ssize_t devcd_read_from_sgtable(char *buffer, loff_t offset,
- 				  offset);
- }
- 
-+static struct devcd_entry *devcd_alloc(struct dev_coredumpm_bulk_data *files,
-+				       int num_files, gfp_t gfp)
-+{
-+	struct devcd_entry *devcd;
-+	int i;
-+
-+	devcd = kzalloc(struct_size(devcd, files, num_files), gfp);
-+	if (!devcd)
-+		return NULL;
-+
-+	devcd->num_files = num_files;
-+
-+	for (i = 0; i < devcd->num_files; i++) {
-+		struct devcd_file *file = &devcd->files[i];
-+
-+		sysfs_bin_attr_init(&file->bin_attr);
-+		file->bin_attr.attr.name = files[i].name;
-+
-+		file->bin_attr.attr.mode = 0600;
-+		file->bin_attr.size = files[i].datalen;
-+		file->bin_attr.private = files[i].data;
-+		file->bin_attr.read = devcd_data_read;
-+		file->bin_attr.write = devcd_data_write;
-+
-+		file->read = files[i].read;
-+		file->free = files[i].free;
-+	}
-+
-+	return devcd;
-+}
-+
- /**
-- * dev_coredumpm - create device coredump with read/free methods
-+ * dev_coredumpm_bulk - create a number of device coredump files
-  * @dev: the struct device for the crashed device
-  * @owner: the module that contains the read/free functions, use %THIS_MODULE
-- * @data: data cookie for the @read/@free functions
-- * @datalen: length of the data
-  * @gfp: allocation flags
-- * @read: function to read from the given buffer
-- * @free: function to free the given buffer
-+ * @files: the configuration of device coredump files
-+ * @num_files: the number of device coredump files to create
-  *
-- * Creates a new device coredump for the given device. If a previous one hasn't
-- * been read yet, the new coredump is discarded. The data lifetime is determined
-- * by the device coredump framework and when it is no longer needed the @free
-- * function will be called to free the data.
-+ * This function allows drivers to create several device coredump files in
-+ * one crashed device.
-  */
--void dev_coredumpm(struct device *dev, struct module *owner,
--		   void *data, size_t datalen, gfp_t gfp,
--		   ssize_t (*read)(char *buffer, loff_t offset, size_t count,
--				   void *data, size_t datalen),
--		   void (*free)(void *data))
-+void dev_coredumpm_bulk(struct device *dev, struct module *owner, gfp_t gfp,
-+			struct dev_coredumpm_bulk_data *files, int num_files)
- {
- 	static atomic_t devcd_count = ATOMIC_INIT(0);
- 	struct devcd_entry *devcd;
- 	struct device *existing;
-+	int i;
- 
- 	if (devcd_disabled)
- 		goto free;
-@@ -272,15 +293,11 @@ void dev_coredumpm(struct device *dev, struct module *owner,
- 	if (!try_module_get(owner))
- 		goto free;
- 
--	devcd = kzalloc(sizeof(*devcd), gfp);
-+	devcd = devcd_alloc(files, num_files, gfp);
- 	if (!devcd)
- 		goto put_module;
- 
- 	devcd->owner = owner;
--	devcd->data = data;
--	devcd->datalen = datalen;
--	devcd->read = read;
--	devcd->free = free;
- 	devcd->failing_dev = get_device(dev);
- 
- 	device_initialize(&devcd->devcd_dev);
-@@ -292,6 +309,12 @@ void dev_coredumpm(struct device *dev, struct module *owner,
- 	if (device_add(&devcd->devcd_dev))
- 		goto put_device;
- 
-+	for (i = 0; i < devcd->num_files; i++) {
-+		if (device_create_bin_file(&devcd->devcd_dev,
-+					   &devcd->files[i].bin_attr))
-+			/* nothing - some files will be missing */;
-+	}
-+
- 	if (sysfs_create_link(&devcd->devcd_dev.kobj, &dev->kobj,
- 			      "failing_device"))
- 		/* nothing - symlink will be missing */;
-@@ -309,7 +332,41 @@ void dev_coredumpm(struct device *dev, struct module *owner,
-  put_module:
- 	module_put(owner);
-  free:
--	free(data);
-+	for (i = 0; i < num_files; i++)
-+		files[i].free(files[i].data);
-+}
-+EXPORT_SYMBOL_GPL(dev_coredumpm_bulk);
-+
-+/**
-+ * dev_coredumpm - create device coredump with read/free methods
-+ * @dev: the struct device for the crashed device
-+ * @owner: the module that contains the read/free functions, use %THIS_MODULE
-+ * @data: data cookie for the @read/@free functions
-+ * @datalen: length of the data
-+ * @gfp: allocation flags
-+ * @read: function to read from the given buffer
-+ * @free: function to free the given buffer
-+ *
-+ * Creates a new device coredump for the given device. If a previous one hasn't
-+ * been read yet, the new coredump is discarded. The data lifetime is determined
-+ * by the device coredump framework and when it is no longer needed the @free
-+ * function will be called to free the data.
-+ */
-+void dev_coredumpm(struct device *dev, struct module *owner,
-+		   void *data, size_t datalen, gfp_t gfp,
-+		   ssize_t (*read)(char *buffer, loff_t offset, size_t count,
-+				   void *data, size_t datalen),
-+		   void (*free)(void *data))
-+{
-+	struct dev_coredumpm_bulk_data bulk_data = {
-+		.name = "data",
-+		.data = data,
-+		.datalen = datalen,
-+		.read = read,
-+		.free = free,
-+	};
-+
-+	dev_coredumpm_bulk(dev, owner, gfp, &bulk_data, 1);
- }
- EXPORT_SYMBOL_GPL(dev_coredumpm);
- 
-diff --git a/include/linux/devcoredump.h b/include/linux/devcoredump.h
-index 269521f..9addb6f 100644
---- a/include/linux/devcoredump.h
-+++ b/include/linux/devcoredump.h
-@@ -65,6 +65,26 @@ static inline void _devcd_free_sgtable(struct scatterlist *table)
- 	kfree(delete_iter);
- }
- 
-+/**
-+ * struct dev_coredumpm_bulk_data - Data used for dev_coredumpm_bulk
-+ *
-+ * @name: coredump file name
-+ * @data: data cookie for the @read/@free functions
-+ * @datalen: length of the data
-+ * @read: function to read from the given buffer
-+ * @free: function to free the given buffer
-+ *
-+ * An array of this structure is passed as argument to dev_coredumpm_bulk, and
-+ * used to describe each device coredump.
-+ */
-+struct dev_coredumpm_bulk_data {
-+	char *name;
-+	void *data;
-+	size_t datalen;
-+	ssize_t (*read)(char *buffer, loff_t offset, size_t count,
-+			void *data, size_t datalen);
-+	void (*free)(void *data);
++struct nvme_telemetry_log_page_hdr {
++	__u8    lpi; /* Log page identifier */
++	__u8    rsvd[4];
++	__u8    iee_oui[3];
++	__le16  dalb1; /* Data area 1 last block */
++	__le16  dalb2; /* Data area 2 last block */
++	__le16  dalb3; /* Data area 3 last block */
++	__u8    rsvd1[368];
++	__u8    ctrlavail; /* Controller initiated data avail?*/
++	__u8    ctrldgn; /* Controller initiated telemetry Data Gen # */
++	__u8    rsnident[128];
++	__u8    telemetry_dataarea[0];
 +};
- 
- #ifdef CONFIG_DEV_COREDUMP
- void dev_coredumpv(struct device *dev, void *data, size_t datalen,
-@@ -76,6 +96,9 @@ void dev_coredumpm(struct device *dev, struct module *owner,
- 				   void *data, size_t datalen),
- 		   void (*free)(void *data));
- 
-+void dev_coredumpm_bulk(struct device *dev, struct module *owner, gfp_t gfp,
-+			struct dev_coredumpm_bulk_data *files, int num_files);
 +
- void dev_coredumpsg(struct device *dev, struct scatterlist *table,
- 		    size_t datalen, gfp_t gfp);
- #else
-@@ -95,6 +118,16 @@ dev_coredumpm(struct device *dev, struct module *owner,
- 	free(data);
- }
- 
-+static inline
-+void dev_coredumpm_bulk(struct device *dev, struct module *owner, gfp_t gfp,
-+			struct dev_coredumpm_bulk_data *files, int num_files)
-+{
-+	int i;
-+
-+	for (i = 0; i < num_files; i++)
-+		files[i].free(files[i].data);
-+}
-+
- static inline void dev_coredumpsg(struct device *dev, struct scatterlist *table,
- 				  size_t datalen, gfp_t gfp)
- {
+ struct nvme_smart_log {
+ 	__u8			critical_warning;
+ 	__u8			temperature[2];
+@@ -832,6 +848,7 @@ enum {
+ 	NVME_LOG_FW_SLOT	= 0x03,
+ 	NVME_LOG_CHANGED_NS	= 0x04,
+ 	NVME_LOG_CMD_EFFECTS	= 0x05,
++	NVME_LOG_TELEMETRY_CTRL	= 0x08,
+ 	NVME_LOG_ANA		= 0x0c,
+ 	NVME_LOG_DISC		= 0x70,
+ 	NVME_LOG_RESERVATION	= 0x80,
 -- 
 2.7.4
 
