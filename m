@@ -2,105 +2,94 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6AB781AB1E
-	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 09:50:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 866241AC49
+	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 15:09:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=U5EP2+iZXAiMKlE1GQVcgWWjGQznQZ+1UINpx+QMRDo=; b=t0lN2ERe1MNYLF1Z9AJ6AL2shH
-	MZI4tfrXTn8a6VTTobpwCBaQDat0B67tSGEzfQYS9FRgoF9ZqKBay9EYezblLCqRxchD78ql8PcH3
-	CgZleoLebRv4aWT8Ol6a6ZuvVpHa7ABeapbPi0Evu9tHma/FipGXMGuaWfAgb6Gam8FT3FBI+WZGt
-	lUGFWQaMFOBEut64+p1rR44ZZUxzPQM5UI+qM82FMmyFFoPXcqFNI2fWmNKNp3iKslJGvqvjsWub/
-	DbjGiAobNl8+3iqI5yUWYbJiy429sVcSXt/q+Uw9+xHU1iM/LEiZE+rg9bzdDvSKdAeToCz22XJRn
-	JE7Wm1Zw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=lgG8MsoUmuu/PnF4CHhIEBUBbBwsBYTIxw0uuwz3Fcg=; b=fPv7z10A/Oq5VRVs5MLMtIXj6
+	5lskmiEqWR64we7nEAkrUPAks3POZW1rN7QRpaCgCNMUe7tEqJIX7qigRMCPJpHgRNgizwAmRxxcn
+	D6UKlgw/iIySSIsaA0VzMf84XTnJ2fQ1aO4dHJR85it2divCYdtoJVU2ZNNsVBCrXhlGEa0j/EJ23
+	yfdOJuTqyCV6fb6V07R66haX4tmdXZJtrdJMJMeX91uA25hrV3mOMw0E1U8vuI4PiELt5AbEJoc7g
+	m2DR6a0WLYgG6UzNy8H29R2tLzWlWsYTK86OWhUkq/u3ri6u0uawtGSZA22+dHYclIqskXjIMdJ+/
+	WTnA6Ii4A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hPjFz-0007wf-MZ; Sun, 12 May 2019 07:50:51 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1hPoEC-0003jp-9d; Sun, 12 May 2019 13:09:20 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPjFv-0007tw-U6
- for linux-nvme@bombadil.infradead.org; Sun, 12 May 2019 07:50:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Message-Id:Date:
- Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=tJij42jMZNA/RCdgMXUgkIF3wZNG+3vGAUeH3k8Od1M=; b=oz8lVNrPef3ptEIz2VZlEw+Pk
- L8Cgzqymh9/H4jbWLtq3L4LVlBAVpwOPtWyGU2xCc2S/uHH6iXg1UJe7q5wxqQ8LXNgrSuT8tSZi3
- dczvQ8ER+ZPV3j8ZdWs0c11GuOZiI8WDeKQ0toVuZUYPb/v9YSIB4PnGsu/qfuwdbG989rj+DS4k/
- +BHmGJ4ckZBSnVkOlOlMOqO2qICF+12oGUvS/ZMt0rmEb3vEXQIcUvBirvFaOU9Rfw3KgGNpk8tlr
- pmj7vmWdVxRBZLcslMWaR/wYRWkMUJnrmwOLck/0Ji5w6CKb7lVwdkiyT/1k3g1odVIUyo2utoGCf
- c4jB/OpMA==;
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
- by casper.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPj0e-0001Vz-09
- for linux-nvme@lists.infradead.org; Sun, 12 May 2019 07:35:02 +0000
-Received: by mail-pf1-x442.google.com with SMTP id s11so5454867pfm.12
- for <linux-nvme@lists.infradead.org>; Sun, 12 May 2019 00:34:57 -0700 (PDT)
+ id 1hPoE7-0003jO-L4
+ for linux-nvme@lists.infradead.org; Sun, 12 May 2019 13:09:17 +0000
+Received: by mail-pf1-x444.google.com with SMTP id z26so5685659pfg.6
+ for <linux-nvme@lists.infradead.org>; Sun, 12 May 2019 06:09:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=tJij42jMZNA/RCdgMXUgkIF3wZNG+3vGAUeH3k8Od1M=;
- b=jluMCum4vO8FQf/7J8/CkknphoGKgcgI4VBYWDQsVhDgqpV+Too559TBFyjD7zgKfu
- D/dlYX3Vnf5VANGEd5jbgwkCC5rZFEmiw6PFiOz0THlFzn+xs3oItl5V19YTeUM5gZVN
- nt5Q0U3YiA3vbcQQB78/r/4/p3OOzUgQoB69iY8+Emg9soNLx4cTawwvY+x+nniwQnLO
- ZOzUOBM0I4GprAO0P4XrZK6FBNcaW+/7nGE6v3DglLYvgJzYaRweXOW/fdcHg9SkEt8m
- vjistPIYyz4TNNfTSfGr11muGKmZOTN58F9eic++xC9dbbSOQLhPMzX0JMuVa37TyzrA
- 43lw==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=9INzTHj97jlyE0VhsfFSMVk6Lg66fDTSu8XBnWbA9DU=;
+ b=EeKoA9la9lv4sf17wY/a2TrIrM99xZ6UD00obI/+bszmzsVMK1ZV8AKkGDTuHh+ygF
+ sjn2nDxEqiTRhg5LETfoD/tL15SFGOtIaSdc0qRMe5QAAmzM8IQrFj1+BCdb0AHjaOdP
+ 2XTU4ACamswuXCw+P/jez4Q8uepSMrt7SoJYCgy8YhZ8hnKL4j2p/7sg/tOE4Gxd8gRs
+ +TwyNv8Il1HYpdQCtmbWkjHCsNN+wzyZWaVdSN9wFD6H1Ka+PHVznXLTku/vLDlvuKH2
+ yPo/dQk4dSONDZ0HW2a3kr4fBXwLkoBsXwh8chzyPbkXVenReCFT+7dQXU1h9vfenb4f
+ DGIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=tJij42jMZNA/RCdgMXUgkIF3wZNG+3vGAUeH3k8Od1M=;
- b=Gp2TdzFD2o6axJGwhYA/TxL/0YgZRXutYGk33Iw19d4NZQV6rbcsRNlKwL8ldjdlNT
- ZJKJzs6s/D6SITxwM5iUXQa/b4vDNJ+azvZZ6X5tjN7KBWkhUAMN6ilcg6vS4lSXWC0M
- QTU9z++sN++BXpTXZY6zt5FWDkeqC+MgEn+QkY8u0BLFsc6mKirMGibaHASQZ7o/tPKt
- 5tdS7THzwuTAz7uj0PPWtJTvOh1pRzEVbaI1XUJFMXw/jtvRs1GQ36Bz6uA5QNCrOa69
- hSO6NKjpefhQNdP4p+4uWWqqPs05yGJ13S8xuIK/HMNQE5+cjds1ubs0iQs/JMTeXk4G
- prug==
-X-Gm-Message-State: APjAAAVzlVOyPfc8L4RU9vMDs6a7gL+ELT8uYkE/e2TGfujr6eyO+S6D
- j+aBg42pY5buXYYY6yX7PEg=
-X-Google-Smtp-Source: APXvYqyXFF+l9d400wplio9bVT1xUhp00uJ5v9kGooX1hdRRHjXQl6akdG0V24q0/XfqeJ0du2xMHw==
-X-Received: by 2002:a65:42c3:: with SMTP id l3mr466019pgp.372.1557646496098;
- Sun, 12 May 2019 00:34:56 -0700 (PDT)
-Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id e123sm5492242pgc.29.2019.05.12.00.34.53
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9INzTHj97jlyE0VhsfFSMVk6Lg66fDTSu8XBnWbA9DU=;
+ b=fDOyigIYqtIJCH242A00MyGTLRnFgoLrMl5X/XeHnl2H9qJT8ADRIdAITC4wF4iKab
+ zExPd6UWQez8TCuaoZP5LR+kN8GEXjl4dRQsYtfoV/KKqRBNm6ibXdgQDfsaZh11ddtQ
+ I/GZxGDGJm/PqIAiwX7lnCkoT43mWYdglDEgFB9rK/QhYJOPG2BICwLJBWy5PChLCHam
+ xqyDKiuEOjZxIVyXSBHVodsL54M7OdnOIWuadR9nVGPrql+uNfsfVkmA7OxA3jykGRwZ
+ bGFCEZ7bb5R2+FkQCrxqnyAJXXi0LkE2U7u/fOOaQBZyG1YvcZonAInn3A99bop1mby8
+ 41wA==
+X-Gm-Message-State: APjAAAVsCb3TJIyyX0WMir3J3jPrGojsGWGEYWimPfpESp3yP3kmfOWo
+ a8h3+yEvnahbH+Yznlw3oDE=
+X-Google-Smtp-Source: APXvYqyFmWQJH33IFhLsWw8immWLIy7LaZ3tl5B210tjSpQUYuE4Tue5tmLviCkvgxkJXezivEYOHA==
+X-Received: by 2002:a62:2b82:: with SMTP id
+ r124mr18900843pfr.235.1557666554822; 
+ Sun, 12 May 2019 06:09:14 -0700 (PDT)
+Received: from [192.168.0.6] ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id 10sm13142490pfh.14.2019.05.12.06.09.12
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 12 May 2019 00:34:55 -0700 (PDT)
+ Sun, 12 May 2019 06:09:13 -0700 (PDT)
+Subject: Re: [PATCH] nvme-pci: Fix queue_count to consider nr_possible_cpu
+To: Christoph Hellwig <hch@lst.de>
+References: <20190504113923.32316-1-minwoo.im.dev@gmail.com>
+ <20190508071456.GA21604@lst.de>
 From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: linux-kernel@vger.kernel.org,
-	linux-nvme@lists.infradead.org
-Subject: [PATCH V3 5/5] nvme-trace: Add tracing for req_comp in target
-Date: Sun, 12 May 2019 16:34:13 +0900
-Message-Id: <20190512073413.32050-6-minwoo.im.dev@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190512073413.32050-1-minwoo.im.dev@gmail.com>
-References: <20190512073413.32050-1-minwoo.im.dev@gmail.com>
+Message-ID: <0ea5caaf-be54-d0d6-49f7-a47de00711fd@gmail.com>
+Date: Sun, 12 May 2019 22:09:09 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <20190508071456.GA21604@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190512_083500_172165_2F93D275 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20190512_060915_686935_D0AAF375 
+X-CRM114-Status: GOOD (  18.92  )
 X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
- Content analysis details:   (-0.2 points, 5.0 required)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,152 +101,69 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
- James Smart <james.smart@broadcom.com>, Keith Busch <keith.busch@intel.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, Christoph Hellwig <hch@lst.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Keith Busch <keith.busch@intel.com>, Jens Axboe <axboe@fb.com>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-We can have the common tracing code with different event entries.
-  - nvme_complete_rq
-  - nvmet_req_complete
 
-This patch updates existing TRACE_EVENT to a template to provide a
-common tracing interface.
+> This just looks weird.  If we ant to limit the number why not
+> get rid of all these param_ops stuff and just verify the
+> number in nvme_calc_irq_sets without all that boilerplate code?
+> 
 
-We can have it as a common code because most of the fields need to be
-printed out for both host and target system.
+Hi Christoph,
 
-Cc: Keith Busch <keith.busch@intel.com>
-Cc: Jens Axboe <axboe@fb.com>
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Sagi Grimberg <sagi@grimberg.me>
-Cc: James Smart <james.smart@broadcom.com>
-Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
----
- drivers/nvme/host/core.c   |  2 +-
- drivers/nvme/target/core.c |  3 +++
- drivers/nvme/trace.c       |  1 +
- drivers/nvme/trace.h       | 51 ++++++++++++++++++++++++++++++--------
- 4 files changed, 45 insertions(+), 12 deletions(-)
+Thanks for your review on this.  Module parameters which are with 
+param_ops are currently the following two things, as you know:
+	(1) write_queues
+	(2) poll_queues
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 39e49e9948c3..f377ed039a83 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -260,7 +260,7 @@ void nvme_complete_rq(struct request *req)
- {
- 	blk_status_t status = nvme_error_status(req);
- 
--	trace_nvme_complete_rq(req);
-+	trace_nvme_complete_rq(NVME_TRACE_HOST, req);
- 
- 	if (nvme_req(req)->ctrl->kas)
- 		nvme_req(req)->ctrl->comp_seen = true;
-diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
-index 10b3b3767f91..0f184abe432f 100644
---- a/drivers/nvme/target/core.c
-+++ b/drivers/nvme/target/core.c
-@@ -690,6 +690,9 @@ static void __nvmet_req_complete(struct nvmet_req *req, u16 status)
- 
- 	if (unlikely(status))
- 		nvmet_set_error(req, status);
-+
-+	trace_nvmet_req_complete(NVME_TRACE_TARGET, req);
-+
- 	if (req->ns)
- 		nvmet_put_namespace(req->ns);
- 	req->ops->queue_response(req);
-diff --git a/drivers/nvme/trace.c b/drivers/nvme/trace.c
-index 8fe2dcee6a42..8071b60ec71d 100644
---- a/drivers/nvme/trace.c
-+++ b/drivers/nvme/trace.c
-@@ -222,3 +222,4 @@ EXPORT_TRACEPOINT_SYMBOL_GPL(nvme_async_event);
- EXPORT_TRACEPOINT_SYMBOL_GPL(nvme_sq);
- 
- EXPORT_TRACEPOINT_SYMBOL_GPL(nvmet_req_init);
-+EXPORT_TRACEPOINT_SYMBOL_GPL(nvmet_req_complete);
-diff --git a/drivers/nvme/trace.h b/drivers/nvme/trace.h
-index afda9c2ab4a1..0674bb85ac66 100644
---- a/drivers/nvme/trace.h
-+++ b/drivers/nvme/trace.h
-@@ -181,9 +181,9 @@ DEFINE_EVENT(nvme__cmd_begin, nvmet_req_init,
- 	TP_ARGS(type, req, cmd)
- );
- 
--TRACE_EVENT(nvme_complete_rq,
--	    TP_PROTO(struct request *req),
--	    TP_ARGS(req),
-+DECLARE_EVENT_CLASS(nvme__cmd_end,
-+	    TP_PROTO(enum nvme_trace_type type, void *req),
-+	    TP_ARGS(type, req),
- 	    TP_STRUCT__entry(
- 		__array(char, disk, DISK_NAME_LEN)
- 		__field(int, ctrl_id)
-@@ -195,20 +195,49 @@ TRACE_EVENT(nvme_complete_rq,
- 		__field(u16, status)
- 	    ),
- 	    TP_fast_assign(
--		__entry->ctrl_id = nvme_req(req)->ctrl->instance;
--		__entry->qid = nvme_req_qid(req);
--		__entry->cid = req->tag;
--		__entry->result = le64_to_cpu(nvme_req(req)->result.u64);
--		__entry->retries = nvme_req(req)->retries;
--		__entry->flags = nvme_req(req)->flags;
--		__entry->status = nvme_req(req)->status;
--		__assign_disk_name(__entry->disk, req->rq_disk);
-+		if (type != NVME_TRACE_TARGET) {
-+			struct request *req = (struct request *) req;
-+
-+			__entry->ctrl_id = nvme_req(req)->ctrl->instance;
-+			__entry->qid = nvme_req_qid(req);
-+			__entry->cid = req->tag;
-+			__entry->result =
-+					le64_to_cpu(nvme_req(req)->result.u64);
-+			__entry->retries = nvme_req(req)->retries;
-+			__entry->flags = nvme_req(req)->flags;
-+			__entry->status = nvme_req(req)->status;
-+			__assign_disk_name(__entry->disk, req->rq_disk);
-+		} else {
-+			struct nvmet_ctrl *ctrl = nvmet_req_to_ctrl(req);
-+			struct nvmet_cq *cq = ((struct nvmet_req *) req)->cq;
-+			struct nvme_completion *cqe =
-+					((struct nvmet_req *) req)->cqe;
-+			struct nvmet_ns *ns = ((struct nvmet_req *) req)->ns;
-+
-+			__entry->ctrl_id = ctrl ? ctrl->cntlid : 0;
-+			__entry->qid = cq->qid;
-+			__entry->cid = cqe->command_id;
-+			__entry->result = cqe->result.u64;
-+			__entry->flags = 0;
-+			__entry->status = cqe->status >> 1;
-+			__assign_disk_name(__entry->disk, ns ?
-+						ns->bdev->bd_disk : NULL);
-+		}
- 	    ),
- 	    TP_printk("nvme%d: %sqid=%d, cmdid=%u, res=%llu, retries=%u, flags=0x%x, status=%u",
- 		      __entry->ctrl_id, __print_disk_name(__entry->disk),
- 		      __entry->qid, __entry->cid, __entry->result,
- 		      __entry->retries, __entry->flags, __entry->status)
-+);
-+
-+DEFINE_EVENT(nvme__cmd_end, nvme_complete_rq,
-+	TP_PROTO(enum nvme_trace_type type, void *req),
-+	TP_ARGS(type, req)
-+);
- 
-+DEFINE_EVENT(nvme__cmd_end, nvmet_req_complete,
-+	TP_PROTO(enum nvme_trace_type type, void *req),
-+	TP_ARGS(type, req)
- );
- 
- #define aer_name(aer) { aer, #aer }
--- 
-2.17.1
+If those two things are used in nvme_setup_irqs() and 
+nvme_calc_irq_sets() only, then we can remove param_ops things and go 
+like what you mentioned.  However, before preparing irq sets of them, 
+the following function is invoked to find out proper nr_io_queues by 
+referring those modules params.
 
+static unsigned int max_io_queues(void)
+{
+	return num_possible_cpus() + write_queues + poll_queues;
+}
+
+if max_io_queues() gives nr_io_queues in a too large value, we need to 
+do something to fit it to proper value in nvme_setup_irqs() or 
+nvme_calc_irq_sets() which might be also boilerplate code.
+
+Please see the below code and give your comment on it.  I guess it also 
+looks not that really good :(
+
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 2a8708c9ac18..28e43627da5a 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -2073,6 +2073,16 @@ static int nvme_setup_irqs(struct nvme_dev *dev, 
+unsigned int nr_io_queues)
+  	 * Poll queues don't need interrupts, but we need at least one IO
+  	 * queue left over for non-polled IO.
+  	 */
++	if (poll_queues > num_possible_cpus()) {
++		poll_queues = num_possible_cpus();
++		nr_io_queues = max_io_queues();
++	}
++
++	if (write_queues > num_possible_cpus()) {
++		write_queues = num_possible_cpus();
++		nr_io_queues = max_io_queues();
++	}
++
+  	this_p_queues = poll_queues;
+  	if (this_p_queues >= nr_io_queues) {
+  		this_p_queues = nr_io_queues - 1;
+
+
+Thanks,
 
 _______________________________________________
 Linux-nvme mailing list
