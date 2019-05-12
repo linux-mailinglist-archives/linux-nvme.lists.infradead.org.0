@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94A2A1ADDE
-	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 20:58:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4582C1ADDF
+	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 20:59:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,59 +11,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=gGhZNVFyglOX3peb7z4xNCpBZwddKAmKowBB63tlMOw=; b=HOH9Cwsg2DsA+G3za0H+dpBUMZ
-	vSkEi8ekMUGTH+K3JyBCj4AWazzN1JUnlBjWA8ACZhdNmMgz2lznIVh9c15BVIrTjnM7oNwJoqD7e
-	FxdJ9nLFWKX886/rU7x2G4tlFNAekllXiiU1B8wWoByZ0eYRXdxuvpNjzc5JsNfE913P6jHpTK6tk
-	1oMqDnP/f4MCfgaRFIoPL7KV6QZiW+ivWoCQ8AwNlimiJ+EW1HNaz/ThIT4AuiXL5UnvHPP/eI+/e
-	ZvXymXRhvSh/XRfjJ8ayyUqFmOVE21rwx8qUuto7da38SXdJtjcoR26MFh360JLa1k33A5as9LD6g
-	y49RMzIQ==;
+	bh=/elSAy3l10y+1UTzc9VCa8TOKiM+4P/yUa7I1I2K2as=; b=M3Au9BdmAQr65HpSsHKBvbrwMf
+	nX/hSI8/BzuLtU7kfp8cjihpFu3k0Ov6eWaldurnCAsHytxdV3K5Ugbty3W/HXXSZCa7zKHrmqCCI
+	kfcgM+AQV/XaPsJPQFL5x5jdQoMj3NG6CLkqUX7+sC2d2xf6AUEflxEGtzqkGaD4quog3WzZv4P/I
+	oYGoBv0U5AOK8khC99u3rEw3q9ccmgNtPS5cAHudPp+wSYLt+JAfH5yoFhKl9YnvirIxlaPa1409F
+	sGY8yk/TPrCzvkuR78LG/8PZTHC68sUF0NIWbL3J54BSC0ylBSNxKN3edn5WWGfk5SEIjMiKcgBP/
+	DmTBogLA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hPtgO-0005BE-E7; Sun, 12 May 2019 18:58:48 +0000
+	id 1hPtgV-0005N4-Nx; Sun, 12 May 2019 18:58:55 +0000
 Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPtgD-00058M-6o
- for linux-nvme@lists.infradead.org; Sun, 12 May 2019 18:58:38 +0000
+ id 1hPtgH-00058M-6t
+ for linux-nvme@lists.infradead.org; Sun, 12 May 2019 18:58:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557687517; x=1589223517;
+ t=1557687521; x=1589223521;
  h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=ncpSb8BrcuFELtq1ScyetNg+UwZklxI6TtXfsCvrWG8=;
- b=dUYnqm/ZjqBQimshdBRuacWJoZWIjNAGpAerJcDIg9Z49HNaWQdQ0TQ8
- aT1ly5o3zbNGttETc3MblywcF76a/lpxBgksM9MnkPwJgZueKCZhU3iAn
- Xu5s4kfc5FwpA3IioQBzJGXyNFdnsvhguVQswav6aPgGo1odRSRxdNgf3
- mGNco7YQ0CcY6NpmJH2oSqQ/ZDkdjdr74g19q3UTZeDWWzcE000kTB/1l
- zBHMpvEWOueK4nktSd/gN4cffP0LH4QVVE3AOKnGqv+41vfcK+Ds+V2sk
- TBqfHPRuWNH+aH1ZFi8fg52OSt700zMnW4peIy0y3yLRhxdWIELHxZ18Y A==;
-X-IronPort-AV: E=Sophos;i="5.60,462,1549900800"; d="scan'208";a="214151051"
+ bh=TKZU9g0+AX8eyUcdyp36mxk0sor0RdkzH6izRLP5Qf4=;
+ b=O7aIaHbKQDuHUaUGCKCI768bh3/rP915tKQz7IL8OpQIsUIjxj1CaEMn
+ V/TUKiqwaBrPyja/Pr6M0Nw/IvEYW1+VUOMUpwo0bJd3hY6mMJp4YIGaD
+ PRpG61aTKqSkb5x6EmyIyCGyagYwLD2I6E9m7w59xLpPD4og8i9eP5EjA
+ 4xcnGfJNn09SH8ADH9A5/UzAmBHgaGwGTzSU+/jnIlM3qXSVNcrDgKz8l
+ F8byvWdjE420PhQzT/nHIXLGXFgWXWRWYbduMSCVN5wCMXEVxsyR00Gi5
+ b9kN77j57aVqtxI+aB/yZbLsqeyc077IpYrlOp+uIZOxbeedV2fEaQiL6 A==;
+X-IronPort-AV: E=Sophos;i="5.60,462,1549900800"; d="scan'208";a="214151054"
 Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
  ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 13 May 2019 02:58:37 +0800
-IronPort-SDR: c7JzluhjUcE95BU+3mS04fUMSm+TUuvZ9mKyw5n3bBoeCl0//MWiDyW+o2gEYcjrdYKdmh6cHp
- 7BHlTU0e3mejyn2PtGqOfeu44xp+9z5wwvF5V4PSIMgpCC7cAm4Htl8V4R+4eXg8WTAva8M6SY
- vzagYxqYCdxGsNBXuE30e6KR9U7bMQL850a/K5LdjRiDoEKQXMHU1vONKbxODCbtcy71uvfn9l
- skW7CxmmITHDBYHEhMO/aj0Mk/sfhOQZQeXT7ax5v/T0uSTta2VscnJnNZEM53colP/sr0aZCm
- 2F39KUNDwQf/JEODKYbAwmqg
+ by ob1.hgst.iphmx.com with ESMTP; 13 May 2019 02:58:41 +0800
+IronPort-SDR: b5qvGQU/WT1tyQusWZr2yiEeJGDd13GcYxvGlTg4JTaw6uEevAXfKItMK5O4/OHeIuOG1i8t+q
+ E/ofcVDeeEhgqWlcchSCT25ONAF7hdfiZng36xM9hUttZ83j03uFd0flm1eToKPoViX1ZOMPFJ
+ Y/2iiA6lZG1RTWO+ghYtvIAXBHRSolZwOtsn4FS3k+1Pom5sYmqDaNcAIrifS+uitwMC2bYd2f
+ BbZsOSCZWBM/2BYjhWrGjtUqeXpBcc33Q5/fWybIs6SHHuq9b7uzJTUovkQpxcgmY8Mlktq26o
+ dcRNVla5rmJw2b9fYCO30cDG
 Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep01.wdc.com with ESMTP; 12 May 2019 11:34:32 -0700
-IronPort-SDR: 6a6VJ/WFdFquCYaAtzHjzL1ug6SR8USruXgR008bDTmpEdCGUALkGUpiYbvbwTVsBrb395Ri3k
- AqZIRMb6tpcD7ER1ZdwGkZciKn23Z1SzjG7p4A9ID7DzCoEqAmEbsvOku0llFFsmBjaCdhmZmt
- Da6IaMysymYXwlanBIpjvsiqG4p0Uqrg2E2Y/Aio1tvh03VzQHbiu9IA795usr9zW/9csA1gsB
- FeAArhgWEXm9kmejb1B5ISVHj4NZBf62yKbq/yZZFdoq00FL2tcCY7wp/uozhuSBC5CvJu3jW0
- UAs=
+ by uls-op-cesaep01.wdc.com with ESMTP; 12 May 2019 11:34:36 -0700
+IronPort-SDR: oxIuXuJn18z5BN+yoT3lI/wYTmEkaAHOCciz+7c3FHZ2MKHtOWbnD67o1/93lR6TrKhZpP54ZB
+ K9IeTp94kMH8vTnbNCCxh7a4UPb4TQ9fzXJ8kaBAvYFKChwHZ5aJ/hVJjiNklEXMWS8dtedq3W
+ pOV4w2tkEFWUqGmxv29LwLo6H0Ol9843f8c3KMs97/Lg28Ik1mxEJR5mGIBOYc15N1WOsUFz9l
+ jhsVwX1AYX4S+eh+/CIZ3M6aV5CsG+7DaO9xD5hbepxEcTv02ddPaWhBm8gJXn23hq4JEABlf+
+ P+Y=
 Received: from qemuexp.hgst.com (HELO qemu.hgst.com) ([10.202.65.140])
- by uls-op-cesaip01.wdc.com with ESMTP; 12 May 2019 11:58:37 -0700
+ by uls-op-cesaip01.wdc.com with ESMTP; 12 May 2019 11:58:41 -0700
 From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 1/6] nvme-cli: cmbloc code cleanup
-Date: Sun, 12 May 2019 11:58:15 -0700
-Message-Id: <20190512185820.20098-2-chaitanya.kulkarni@wdc.com>
+Subject: [PATCH 2/6] nvme-cli: code cleanup adjust if statement
+Date: Sun, 12 May 2019 11:58:16 -0700
+Message-Id: <20190512185820.20098-3-chaitanya.kulkarni@wdc.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20190512185820.20098-1-chaitanya.kulkarni@wdc.com>
 References: <20190512185820.20098-1-chaitanya.kulkarni@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190512_115837_256064_839A15DF 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20190512_115841_631635_DA248C06 
+X-CRM114-Status: GOOD (  11.45  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -97,34 +97,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This patch removes the unnecessary else condition which is out of
-format anyway.
-
 Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 ---
- nvme-print.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ nvme-ioctl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/nvme-print.c b/nvme-print.c
-index c038355..d9512c8 100644
---- a/nvme-print.c
-+++ b/nvme-print.c
-@@ -3031,12 +3031,11 @@ static void show_registers_cmbloc(__u32 cmbloc, __u32 cmbsz)
- {
- 	if (cmbsz == 0) {
- 		printf("\tController Memory Buffer feature is not supported\n\n");
-+		return;
- 	}
--	else {
--		printf("\tOffset                 (OFST): %x (See cmbsz.szu for granularity)\n",
-+	printf("\tOffset                 (OFST): %x (See cmbsz.szu for granularity)\n",
- 			(cmbloc & 0xfffff000) >> 12);
--		printf("\tBase Indicator Register (BIR): %x\n\n", cmbloc & 0x00000007 );
--	}
-+	printf("\tBase Indicator Register (BIR): %x\n\n", cmbloc & 0x00000007 );
- }
+diff --git a/nvme-ioctl.c b/nvme-ioctl.c
+index 242a01f..f3a56dc 100644
+--- a/nvme-ioctl.c
++++ b/nvme-ioctl.c
+@@ -563,7 +563,7 @@ static int nvme_property(int fd, __u8 fctype, __le32 off, __le64 *value, __u8 at
  
- static const char *nvme_register_szu_to_string(__u8 szu)
+ 	if (fctype == nvme_fabrics_type_property_get){
+ 		cmd.nsid = nvme_fabrics_type_property_get;
+-	} else if(fctype == nvme_fabrics_type_property_set) {
++	} else if (fctype == nvme_fabrics_type_property_set) {
+ 		cmd.nsid = nvme_fabrics_type_property_set;
+ 		cmd.cdw12 = *value;
+ 	} else {
 -- 
 2.17.0
 
