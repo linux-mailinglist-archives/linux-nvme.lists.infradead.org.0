@@ -2,99 +2,62 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9561F1ADE2
-	for <lists+linux-nvme@lfdr.de>; Sun, 12 May 2019 20:59:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E95C31B027
+	for <lists+linux-nvme@lfdr.de>; Mon, 13 May 2019 08:15:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=6avTKCYmPoR3th7r1+VpoAdF/hcyBmnIbUffh2WH+P0=; b=bXnr4U5WtGFyDu4dr2meEAmf6k
-	YCWV6R4froghGnBJ5Glo+4A6+S3PTJs4bGDyxWXGx5rmTD35dTWvQms4oyVHOp/a7a81BM4eO6jaX
-	+dPwiPOar22cdiFWDNC1tE/5xfxgZQeVh/aluOoOY/G+FDojFvIE6CD/MoG+OOmNE4bQtyS2VB2UG
-	7Ic4/zdqlAw28Ljw4/6pdZ5cO3c+PzEEIIwWOHZ2wUWk1Lso44Rin93nDfowP/0kR/LHeRZPU0jKk
-	2O4+tf9mwdUimOEV9wDxLsgIF/oUBtA/SC+8v3jw8+uOIR6zC/RqudROyJtnRfL44VQx7BMHa64jK
-	SPnR16tw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=On19xuJhBDZXD35zUQrHmKNiBr+xINJbEWCevojYDTo=; b=cDhPI6tkA9u0iD68WJDsJv1XJ
+	0qx1KEeS4JezRV3LgA66LcJBqjLANeT2NRCiV7kYTxPTKr6egVgKNTMGEubEngws0d2YT4ARXX/zf
+	bk//ES4WIxjZMamBUKVSE2ehqEyQVxMr/ia+Dn+6+jm2tSpKCnj8flKIYevDezgy/DJVK3ZHK3/VK
+	4HE84glLlea59xrnE2J8SCltuXNo0jBDGTlwpmrtC6ogGHZVcHeGguiCzxUNt2H97bMk8Kg9pda5D
+	z9qffYUbjFVptUlBQvXbiEEmbKs5Ty5fNtdnMbLlvecMbzTN6oJ4rxfpRKjcWyLvEsAU+Kyac5A45
+	AWhUSKlOA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hPtgw-0005u8-Tu; Sun, 12 May 2019 18:59:22 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1hQ4Ey-0007dD-Gv; Mon, 13 May 2019 06:15:12 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPtgk-0005la-9l
- for linux-nvme@bombadil.infradead.org; Sun, 12 May 2019 18:59:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Message-Id:Date:
- Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=lD52FjNHFY7BqsGNDTvZ5c7HvMyPOjvYEFhcy4XRWdA=; b=jeHedPNn81iMyKotpMGjrWNnz
- kVdAjB9HNoe2Z6KrwduPH39xmzZyIatkaCcVSAOp5tJiEYvV/ZIRn9C/iXAOSZKKf8NzOsN8oJWa5
- eyAN+WuT1YiEICkO9YFhgJ0PoDtQ1QsEVmHeYRhyi2cXMLG5AVS3sg5sa6HzxBsi+EilKmQ/Z4Kvt
- GzNlSoveAmzC3xxsjpvGjMuc5UVYgZNsHelCfkAP5IhkWNV1rQ8J1Id2Ir3yf5wGrolFgacoAOjeA
- kKpUC+G0qpoYZHD1Y4WFtcG3Da7XW/3Z4Kvz11+fVuq3Gh+Te5wDCddL4cXMYioZxbALjaApmD+Hi
- FKU5V+jPQ==;
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
- by casper.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hPtge-0005Nt-5a
- for linux-nvme@lists.infradead.org; Sun, 12 May 2019 18:59:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557687625; x=1589223625;
- h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=LGszpRao7xcLbAMuznCtXwvd/dm3ZDrHmgrdqH/hyIQ=;
- b=msN6tGqfY02W1Dj5JG797iSyI8JB8582TgyhzaEj3uQOJEJHpvxL7926
- 3W8VQvFry6WzlNO/5DAYctW8Ve4oDXqCR9VuRnWXH3BYQCmR1ofQVEVgn
- f3KbZn9Wj+EfNOYY0ewkTuCtaYbsk45Wt+JAqFdoGph5AOObbvTeUA8/j
- x0t8fqjnqeyd4JFr4asHtJihz6ZX/fZ3XjiTluPVi/7czQU5aiqxm7x/4
- n/XG/jSXERvCSw56qvSgA4OnlbbrD0aDkdHfR2ViRlP0sYNI7nIyW7C61
- WBXaIp41AaXZVyWQwHpQMJh38HNAMZIIli6dmrm9c01yFIHIU1DO2io2X w==;
-X-IronPort-AV: E=Sophos;i="5.60,462,1549900800"; d="scan'208";a="207452174"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 13 May 2019 03:00:18 +0800
-IronPort-SDR: 3OY14OOiovdl2EM164i01cIdKFol68tzJ50SvIhu6+wdS5lkwwJJK+qMgNNGYwLrpi+vy4MELh
- EnDlcEhonddQhS+zoZ2TDE0EEohtl7atu8BdSD6YiBfYDyUVM6fRGRPNQOuzPGCFVserM4KFLg
- Kcfovtmi3JoiHWx5fFyGWB2mgOXGxLUABXdTcCLi9vvigW68RzBx9Dq02F3++B1qbvHIbshFNw
- 35TGu9ebGWWXpF/427YjVrv4cX1Yizroz5HVGbvSoUvHcxMP4+zNM5yuwsTqy1QMW7CGcGxHph
- k/lPypPwtQxUtQvAJPrAo3Pj
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP; 12 May 2019 11:37:03 -0700
-IronPort-SDR: QpvpH+Ky00fnnJyHHszvvv+GtknNUhaMdGznHiV/pJB6l/6mR5x+EPa4CSWoNkCItHeu8xu4F1
- sY8BPnXYqAfztWHoWejDe3q+KpqweKAciDt/ifwFoXHxaXWug7CKvxIRjpKS7snzENSuqXoBVj
- A0UNuNuuCQt3iIt0w+CiRdYpoQOWNlHpTsFnjg9CGGOblG+BrSFTIOBiEVLVXZ2QQAngzGwyE6
- wd2bXitDEIbFudnwZoz/YMK1/cJd9yYtdg14oSwrSUXVEbmRbt8wYoqLUG1ucIN500ROh1n+Li
- tlk=
-Received: from qemuexp.hgst.com (HELO qemu.hgst.com) ([10.202.65.140])
- by uls-op-cesaip01.wdc.com with ESMTP; 12 May 2019 11:58:59 -0700
-From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH 6/6] nvme-cli: use uniform if .. else format
-Date: Sun, 12 May 2019 11:58:20 -0700
-Message-Id: <20190512185820.20098-7-chaitanya.kulkarni@wdc.com>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20190512185820.20098-1-chaitanya.kulkarni@wdc.com>
-References: <20190512185820.20098-1-chaitanya.kulkarni@wdc.com>
+ id 1hQ4Es-0006Yg-Id
+ for linux-nvme@lists.infradead.org; Mon, 13 May 2019 06:15:08 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id EAE71AC3F;
+ Mon, 13 May 2019 06:15:01 +0000 (UTC)
+Subject: Re: [PATCH nvme-cli rfc 3/5] fabrics: allow discover to address
+ discovery controller by persistent name
+To: Sagi Grimberg <sagi@grimberg.me>, James Smart <james.smart@broadcom.com>, 
+ James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
+References: <20190504000456.3888-1-jsmart2021@gmail.com>
+ <20190504000456.3888-4-jsmart2021@gmail.com>
+ <28e1e9a8-671d-e3ff-6111-7561e0f56fa9@suse.de>
+ <1154a16f-222e-7a28-96c0-3a22052e2bef@broadcom.com>
+ <f51f039e-24f2-d01f-2ae1-9f86c99e00e2@suse.de>
+ <3f84d637-4d04-45e1-ce49-59238c2aaea8@broadcom.com>
+ <c3bf6edd-91fc-74d5-29a3-093fa57d561f@suse.de>
+ <689b9665-5f93-1ccc-3e6b-41436b769b09@grimberg.me>
+From: Hannes Reinecke <hare@suse.de>
+Message-ID: <e29ecf45-4b14-22a1-e161-df37e4166301@suse.de>
+Date: Mon, 13 May 2019 08:15:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <689b9665-5f93-1ccc-3e6b-41436b769b09@grimberg.me>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190512_195904_837090_A6CD9DE7 
-X-CRM114-Status: GOOD (  10.29  )
-X-Spam-Score: -2.5 (--)
-X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
- Content analysis details:   (-2.5 points, 5.0 required)
+X-CRM114-CacheID: sfid-20190512_231506_818393_C0D02A1E 
+X-CRM114-Status: GOOD (  15.35  )
+X-Spam-Score: -2.3 (--)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,37 +69,36 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
----
- nvme-lightnvm.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/nvme-lightnvm.c b/nvme-lightnvm.c
-index 37bd24b..ee21d6b 100644
---- a/nvme-lightnvm.c
-+++ b/nvme-lightnvm.c
-@@ -459,8 +459,7 @@ int lnvm_do_id_ns(int fd, int nsid, unsigned int flags)
- 			d_raw((unsigned char *)&nvm_id, sizeof(nvm_id));
- 		else
- 			show_lnvm_id_ns(&nvm_id, flags);
--	}
--	else if (err > 0)
-+	} else if (err > 0)
- 		fprintf(stderr, "NVMe Status:%s(%x) NSID:%d\n",
- 			nvme_status_to_string(err), err, nsid);
- 	return err;
--- 
-2.17.0
-
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNS8xMi8xOSA1OjA4IFBNLCBTYWdpIEdyaW1iZXJnIHdyb3RlOgo+IAo+PiBZb3UncmUgdGFs
+a2luZyBhYm91dCBkaXNjb3ZlcnkgcmVmZXJyYWxzLCByaWdodD8KPj4gSW4gdGhpcyBjYXNlIEkn
+ZCBnbyB3aXRoIGNhc2UgYSksIGFuZCBzaW1wbHkgY3JlYXRlIG5vbi1wZXJzaXN0ZW50IAo+PiBj
+b25uZWN0aW9uLgo+PiBSZWFzb25pbmcgaXMgdGhhdCBpZiB0aGUgYWRtaW4gd2FudHMgdG8gaGF2
+ZSBhIHBlcnNpc3RlbnQgZGlzY292ZXJ5IGhlIAo+PiBzaG91bGQgYmUgZW5zdXJpbmcgdGhhdCB0
+aGlzIHNlY29uZGFyeSBjb250cm9sbGVyIGlzIGZvdW5kIGR1cmluZyAKPj4gaW5pdGFsIGRpc2Nv
+dmVyeSAoaWUgd2l0aCB0aGUgYWJvdmVtZW50aW9uZWQgc3lzdGVtZCBib290IHNlcnZpY2UpLgo+
+Pgo+PiAoQW5kIGRpc2NvdmVyeSByZWZlcnJhbHMgYXJlIHRyaWNreSBhbnl3YXk7IEkndmUgY3Jl
+YXRlZCB0d28gZGlzY292ZXJ5IAo+PiBjb250cm9sbGVycyBlYWNoIGhhdmluZyBhIHJlZmVyZW5j
+ZSB0byB0aGUgb3RoZXIgbmljZSBpbiBvcmRlciB0byBoYXZlIAo+PiBhIGZhaWxvdmVyIHNjZW5h
+cmlvLCBidXQgZW5kZWQgdXAgd2l0aCBhIGxvb3BpbmcgbnZtZSBjb25uZWN0LWFsbCAuLi4gCj4+
+IG5lZWQgdG8gc2VuZCBhIHBhdGNoIGZvciB0aGF0LikKPiAKPiBIbW0uLi4KPiAKPiBJIHNlZSB0
+d28gb3B0aW9ucyBoZXJlOgo+IDEuIGNyZWF0ZSBuZXcgdHJhbnNpZW50IGRpc2NvdmVyeSBjb250
+cm9sbGVyIGZvciBlYWNoIHJlZmVycmFsIGFzIHdlIGRvCj4gdG9kYXkuCj4gMi4gbWFrZSAtLXBl
+cnNpc3RlbnQgZm9sbG93IHJlZmVycmFscyBzdWNoIHRoYXQgd2UgaGF2ZSBwZXJzaXN0ZW50Cj4g
+ZGV2aWNlIGZvciBlYWNoIGFuZCB0aGVuIHdlIHNraXAgcmVmZXJyYWxzIGFzIHdlIHdpbGwgZXhw
+ZWN0IGV2ZW50cwo+IGNvbWluZyBmcm9tIHRoZW0uLi4KPiAKPiBJIHdvdWxkIHN1Z2dlc3QgKDEp
+IGFzIGl0cyBzaW1wbGVyLgoKU2FtZSBoZXJlLgpBIHBlcnNpc3RlbnQgY29ubmVjdGlvbiBpcyBw
+cmV0dHkgbXVjaCBhbiBhZG1pbiBjaG9pY2UsIGFuZCB3ZSBjYW5ub3QgCmFuZCBzaG91bGQgbm90
+IG91dC1ndWVzcyB0aGUgYWRtaW4gaGVyZS4KSWYgdGhlIGFkbWluIHdhbnRzIHRvIHVzZSBwZXJz
+aXN0ZW50IGNvbm5lY3Rpb25zIGhlIHNob3VsZCBiZSBjcmVhdGluZyBvbmUuCgpDaGVlcnMsCgpI
+YW5uZXMKLS0gCkRyLiBIYW5uZXMgUmVpbmVja2UJCSAgIFRlYW1sZWFkIFN0b3JhZ2UgJiBOZXR3
+b3JraW5nCmhhcmVAc3VzZS5kZQkJCSAgICAgICAgICAgICAgICs0OSA5MTEgNzQwNTMgNjg4ClNV
+U0UgTElOVVggR21iSCwgTWF4ZmVsZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnCkdGOiBGZWxpeCBJ
+bWVuZMO2cmZmZXIsIE1hcnkgSGlnZ2lucywgU3JpIFJhc2lhaApIUkIgMjEyODQgKEFHIE7DvHJu
+YmVyZykKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
