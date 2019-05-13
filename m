@@ -2,72 +2,102 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAF4E1BC28
-	for <lists+linux-nvme@lfdr.de>; Mon, 13 May 2019 19:46:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D83191BC87
+	for <lists+linux-nvme@lfdr.de>; Mon, 13 May 2019 20:01:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=IOHp1ABpZbahzBPQSd8e9wYPQ/4QWP3r+yqhSK7yXsg=; b=t4v
-	owz8HxHeGribk8iVAgF6rja7MzL+CnbddvChhH0CsYxlq2ukbiyJUm9eCcp+E16EyTOuUghHai+/V
-	6QJ7CYRiTC+vwdpVQzR3Txt9vyxXo28DaQSR5iJMxkbJu6uCgVpwx6MqnFD8GhrdAQ9SeJdUcE+pv
-	ca4KiQjxya4fNcVicSwjZDg4VmgXcC7wRFSGY2UkFMe57HEC0jieGZiTzAq0AdZuDn0TyeEyf/Nhj
-	Dy9o8Intr4C9h5bUNksdddOhzLL8r313RtCceWXM70aMdf/KB8RnT5JTIr+h7EYJLKGAod2302V0h
-	dkxRGaQdufmH7Uj3PApkjqVd8axl8OA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qqyudhr0oikwXTuT7eViTqpZNs57/gE0OQc4HAfmIm0=; b=E/fBCFGFLEgZdt
+	2s2Q+YyhSDwN7Avccj3/Hrf/eKG/lGAS4Y+9EhEt4yxnKPelelWlTNwDr/BagVUaGaQL3Kfavd1Hf
+	fh8zM9ISYTdwMN4uG4m2PJdPzdrbqSQDHbNO+Bj/yGGGq1aJTZf8RNVVyxxpIZtj1e3Kp4IsPsyy6
+	PXhiDBUb0GwXnP1dX8dBvcnLeIzcWpJRqE36AtGL5/siHMivvj8ilmW111bvB0mdWk1BAgOTVWmdx
+	PTEL6csY87wshx+TVAKcMNKKcpRPZEKoQsLrrm4fbQcPZpYJliqLuYztpWDiTRTOiriGX/bAQ3wVT
+	cGy2D+XEv0G1Cf1wefrg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQF1n-0005gs-FF; Mon, 13 May 2019 17:46:19 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1hQFGo-0003ez-Ve; Mon, 13 May 2019 18:01:50 +0000
+Received: from mx0b-00154904.pphosted.com ([148.163.137.20])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQF1i-0005gK-KV
- for linux-nvme@lists.infradead.org; Mon, 13 May 2019 17:46:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557769598; x=1589305598;
- h=from:to:cc:subject:date:message-id;
- bh=WI7Tjvea4i+qMcLNXeH3RFeVvIyJqXnZQjI0Ehvjfyw=;
- b=iL8MJyWDNVJzaaIdtX5jRlyjCxPFPGcIIYloer1ommZwW65vN631WxWn
- qgUY7LZWM0oFimIWkkrgYHISV02WZqT6n9pQS/NMrEfGu+9o+JkhISaL2
- Ptz0JqveP8o0R4OCvif5tSlK6nIZMAW4lzDvrr1AWes0o34Ihc/bWH/OI
- XhWIid5jgQYGu3Hd1s1Ae1nUvQ1XKfKufRUz8HTsNASqFVIV6FFKYu1Tm
- Vzbrf0ftPvy2T4DuoX9ZGBEv0MngUBJydRGANwIvi0pIbZqawgLEDMmrR
- JyTzQqK+A1Cv7DjRpFJeJWoSDSvmsuQGIkHgaZkqGk1EDRDVnZYslO1mk g==;
-X-IronPort-AV: E=Sophos;i="5.60,465,1549900800"; d="scan'208";a="207538249"
-Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 14 May 2019 01:46:27 +0800
-IronPort-SDR: UQk0JtqMj7CJFC2r8/KZhh5IVFvnUKWfFl6iQQ6stlatEqouYo0X525UIMKSutqUzpNos2D6Jn
- YhHt0PDYAyXSm5aswLg7WYcpjEhupiwu9t/TX1LP9n0rtLF3C7ec+NCDTuukutLh262m6E5CIA
- DjC3uDP/HI1n02CkZ4f0jBG41aZdRNdnVdJSpmGmPNhLh0C83/CE4G0shqJi/+1PX5+aMGJZqG
- XHMxvd0YJNKSKxzfcl9mUbXB4VEid2aXXz6pmD34Fz08XGUvdbBQMFksPP2jfjhC7dIsWeRE8c
- diA2g6ebrm8pDebWvrr/zqb2
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep01.wdc.com with ESMTP; 13 May 2019 10:21:57 -0700
-IronPort-SDR: Cim13pVAFybwg2B+6JuCCblKJ1LE8RKqGJj3XtLlsqepr0ZBqCjC60uCT6+5OdTDcFGJzJdWjV
- a+Ypn3iqwhy3+2FMkFcrtb67LvDwnMUeeR5zU44eX4sQyNVhw2+QSYvHzq2BgKo8VzB0MR9nGT
- yePCK64ZChP3IkV4/1MyeKw7f9xU9yapeVp3XO1P6nfiVFdsNxaeyA5yhmhc8PA1VhXPyiZPsb
- LsRMZDv9+/lnB7P+/4SzSHkMNJqpWBxxSJDQwE07CpuhW/zUpxNqbvNmtW9cwXHxr3gxrOQQUi
- FoM=
-Received: from qemu.hgst.com ([10.202.65.140])
- by uls-op-cesaip01.wdc.com with ESMTP; 13 May 2019 10:46:07 -0700
-From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH V2] nvme-core: trace all async notice events
-Date: Mon, 13 May 2019 10:46:05 -0700
-Message-Id: <20190513174605.9017-1-chaitanya.kulkarni@wdc.com>
-X-Mailer: git-send-email 2.17.0
+ id 1hQFGj-0003e8-9z
+ for linux-nvme@lists.infradead.org; Mon, 13 May 2019 18:01:47 +0000
+Received: from pps.filterd (m0170398.ppops.net [127.0.0.1])
+ by mx0b-00154904.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x4DHxfTB014439
+ for <linux-nvme@lists.infradead.org>; Mon, 13 May 2019 14:01:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
+ h=from : to : cc :
+ subject : date : message-id : references : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=smtpout1;
+ bh=7RQwiZOU3P8AwjFWtnYhWR2+zaHJysmliJcO7wy13CY=;
+ b=r+teCQ/g7haRS7P0Yv5+MKvoTeZ+p3BR12R9BX+7nXGrAHYDAZ2NxYvLKf/vK/12uY/9
+ Xl6Y8y3lMuMdkTOluMSz753mDRG9/IxDEPlMB6LegYPWdMQUCbJmCxHHzetnpw+OC8Fc
+ 1UsiFt1YnS5F3owHEenLoY3KiLprfcS428dyfeVKFImm1FDrTGRyWNgQ/n+XvN0fYZMi
+ ze9kbv0C+XAWanAqOa7d2xLKJdyFPkxUywUkO6VWYgpX7ed7VaswHI06O+1RPeZAQ8rE
+ PJtYAiuNzcFpD+sdhdgdFZx222vUSiqlEYJ0IB3KbCWsk77D2Q+0dS5l96TSUWL8VjVG iQ== 
+Received: from mx0b-00154901.pphosted.com (mx0b-00154901.pphosted.com
+ [67.231.157.37])
+ by mx0b-00154904.pphosted.com with ESMTP id 2sdsm85s3g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-nvme@lists.infradead.org>; Mon, 13 May 2019 14:01:42 -0400
+Received: from pps.filterd (m0144103.ppops.net [127.0.0.1])
+ by mx0b-00154901.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x4DHwZhB100937
+ for <linux-nvme@lists.infradead.org>; Mon, 13 May 2019 14:01:42 -0400
+Received: from ausc60ps301.us.dell.com (ausc60ps301.us.dell.com
+ [143.166.148.206])
+ by mx0b-00154901.pphosted.com with ESMTP id 2sfc7ps3bv-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
+ for <linux-nvme@lists.infradead.org>; Mon, 13 May 2019 14:01:42 -0400
+X-LoopCount0: from 10.166.132.134
+X-IronPort-AV: E=Sophos;i="5.60,349,1549951200"; d="scan'208";a="1293478792"
+From: <Mario.Limonciello@dell.com>
+To: <hch@lst.de>
+Subject: RE: [PATCH] nvme/pci: Use host managed power state for suspend
+Thread-Topic: [PATCH] nvme/pci: Use host managed power state for suspend
+Thread-Index: AQHVB3g9crBQ5iluoUuygL0xp1WIm6ZlFnpAgAQIfyCAAFjOAP//rwFAgABWXgD//93q8A==
+Date: Mon, 13 May 2019 18:01:39 +0000
+Message-ID: <df020e90e8b54244b37910a2a7965671@AUSX13MPC105.AMER.DELL.COM>
+References: <20190510212937.11661-1-keith.busch@intel.com>
+ <0080aaff18e5445dabca509d4113eca8@AUSX13MPC105.AMER.DELL.COM>
+ <955722d8fc16425dbba0698c4806f8fd@AUSX13MPC105.AMER.DELL.COM>
+ <20190513143754.GE15318@localhost.localdomain>
+ <7ab8274ef1ce46fcae54a50abc76ae4a@AUSX13MPC105.AMER.DELL.COM>
+ <20190513145708.GA25897@lst.de>
+In-Reply-To: <20190513145708.GA25897@lst.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.143.18.86]
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-05-13_10:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=860 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1810050000 definitions=main-1905130123
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=958 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1905130123
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190513_104614_710184_3F339BFA 
-X-CRM114-Status: GOOD (  11.96  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190513_110145_518014_F29C460A 
+X-CRM114-Status: GOOD (  20.18  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.137.20 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -76,6 +106,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,77 +118,57 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-MIME-Version: 1.0
+Cc: sagi@grimberg.me, rafael@kernel.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
+ keith.busch@intel.com, kai.heng.feng@canonical.com, kbusch@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This patch removes the tracing of the NVMe Async events out of the
-switch so that it can trace all the events including the ones which
-are not handled in the nvme_handle_aen_notice(). The events which
-are not handled in the nvme_handle_aen_notice() such as 
-NVME_AER_NOTICE_DISC_CHANGED corresponding event identifier needs
-to be added in the drivers/nvme/host/trace.h so that it can stringify
-the AER .
 
-Reviewed-by: Johannes Thumshirn <jthumshirn@suse.de>
-Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
----
-Changes since V1:-
 
-1. Move trace_nvme_async_event() outside of switch (hch@lst.de)
-2. Change the subject line from. 
-   "nvme-core: trace discovery log change AEN" ->
-    "nvme-core: trace all async notice events".
-3. Add missing notice disc changes identifier in the trace.h.
----
- drivers/nvme/host/core.c  | 5 ++---
- drivers/nvme/host/trace.h | 1 +
- 2 files changed, 3 insertions(+), 3 deletions(-)
+> -----Original Message-----
+> From: Christoph Hellwig <hch@lst.de>
+> Sent: Monday, May 13, 2019 9:57 AM
+> To: Limonciello, Mario
+> Cc: kbusch@kernel.org; keith.busch@intel.com; hch@lst.de; sagi@grimberg.me;
+> linux-nvme@lists.infradead.org; rafael@kernel.org; linux-kernel@vger.kernel.org;
+> linux-pm@vger.kernel.org; kai.heng.feng@canonical.com
+> Subject: Re: [PATCH] nvme/pci: Use host managed power state for suspend
+> 
+> 
+> [EXTERNAL EMAIL]
+> 
+> On Mon, May 13, 2019 at 02:54:49PM +0000, Mario.Limonciello@dell.com wrote:
+> > The Intel DMA controller suspend callbacks in drivers/dma/idma64.c look to me
+> to
+> > turn off the controller.
+> 
+> How is that relevant?  That thing is neither a NVMe controller, nor
+> even an PCIe device..
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index eebaeadaa800..f22925b5eeca 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -3604,19 +3604,18 @@ static void nvme_handle_aen_notice(struct nvme_ctrl *ctrl, u32 result)
- {
- 	u32 aer_notice_type = (result & 0xff00) >> 8;
- 
-+	trace_nvme_async_event(ctrl, aer_notice_type);
-+
- 	switch (aer_notice_type) {
- 	case NVME_AER_NOTICE_NS_CHANGED:
--		trace_nvme_async_event(ctrl, aer_notice_type);
- 		set_bit(NVME_AER_NOTICE_NS_CHANGED, &ctrl->events);
- 		nvme_queue_scan(ctrl);
- 		break;
- 	case NVME_AER_NOTICE_FW_ACT_STARTING:
--		trace_nvme_async_event(ctrl, aer_notice_type);
- 		queue_work(nvme_wq, &ctrl->fw_act_work);
- 		break;
- #ifdef CONFIG_NVME_MULTIPATH
- 	case NVME_AER_NOTICE_ANA:
--		trace_nvme_async_event(ctrl, aer_notice_type);
- 		if (!ctrl->ana_log_buf)
- 			break;
- 		queue_work(nvme_wq, &ctrl->ana_work);
-diff --git a/drivers/nvme/host/trace.h b/drivers/nvme/host/trace.h
-index 97d3c77365b8..e71502d141ed 100644
---- a/drivers/nvme/host/trace.h
-+++ b/drivers/nvme/host/trace.h
-@@ -167,6 +167,7 @@ TRACE_EVENT(nvme_async_event,
- 		aer_name(NVME_AER_NOTICE_NS_CHANGED),
- 		aer_name(NVME_AER_NOTICE_ANA),
- 		aer_name(NVME_AER_NOTICE_FW_ACT_STARTING),
-+		aer_name(NVME_AER_NOTICE_DISC_CHANGED),
- 		aer_name(NVME_AER_ERROR),
- 		aer_name(NVME_AER_SMART),
- 		aer_name(NVME_AER_CSS),
--- 
-2.17.0
+When using HMB the SSD will be writing to some memory mapped region.  Writing to
+that region would use DMA to access host memory, no?
+If the DMA controller is not functional writing to that region won't work properly as 
+it can't access that memory.
 
+> 
+> > And NVME spec made it sound to me that while in a low power state it shouldn't
+> > be available if the memory isn't available.
+> >
+> > NVME spec in 8.9:
+> >
+> > "Host software should request that the controller release the
+> > assigned ranges prior to a shutdown event, a Runtime D3 event, or any other
+> event
+> > that requires host software to reclaim the assigned ranges."
+> 
+> The last part of the quoted text is the key - if the assigned range
+> is reclaimed, that is the memory is going to be used for something else,
+> we need to release the ranges.  But we do not release the ranges,
+> as we want to keep the memory in use so that we can quickly use it
+> again.
 
 _______________________________________________
 Linux-nvme mailing list
