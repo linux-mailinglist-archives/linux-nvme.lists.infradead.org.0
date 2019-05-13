@@ -2,66 +2,65 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE6821B9B0
-	for <lists+linux-nvme@lfdr.de>; Mon, 13 May 2019 17:15:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 492221B9BA
+	for <lists+linux-nvme@lfdr.de>; Mon, 13 May 2019 17:16:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=ymXyHWVLOJlMmPVsi+VVNB+dsg9XF8HC40PGrT4K/5c=; b=PqDDbDF8s0gNwh
-	FLoBX9ycE36rApXRdkmacOrXJKFKf+Z7D5iNrQ5KEs32CVNJ+ge8K8MUZrEwoaGrUD+t4HmMT+Nkp
-	ixtQDfEG7lxwmrla1gE1Wg3WoSf9PJvIeMr0BcVaDAw0YVdRq2dKoHi5S/kUsLYaJ4T+vfyyiM1v1
-	QCcwL105tbj3SmAUauUrP0EWbhPiIZHtwu5hjpMOuY9fXY8HxytqQjOAuq4L0OLZhvJgat8lHpXeL
-	PuSkJ64vB8pQFAbGaPaPX76nFIkTlu71R9/88l/wOMIZ7hY3HWno/Cx7TOsQCnNoacwT/RDlltK/I
-	+kwTQEpo0sgM0h6C/5hw==;
+	List-Owner; bh=NPUfoWBleSodD4J+52zXhQDcfqmgcNPqKqyPyAFMdUM=; b=DD2evg0Omr7Aap
+	YY0MWoQHXUkwIQbq+2irBLFm6qcQ71/YGd3mT/mXUl4g0m2qP4rMqO0QhCyn6UvAxjgZd4qTNfuw0
+	d7XjMKqDJoanuo+2QYIdVHHHuK9QbwV0E3y//mEJkuFREd8/tWo7HCEh4kzCeDTKMOOf9174r3kbJ
+	e1xAT1yvNyZ42iRorwvD9aYdpu0NiXb+ECfplw2j5rT1Oy6BeeDe0Iflmw9yZXGed2qX8YsM1z+9O
+	He/3SLITNkffQGXGUKs2uVDmmUN06KMRPDMha0oTcE4XaHQhPtIizLVNSRFf5y3g1/p1msQwERdGx
+	E8q82AvSF2LDPGx1rhPw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQCg8-0007Bs-9Q; Mon, 13 May 2019 15:15:48 +0000
+	id 1hQCgl-0007j9-4M; Mon, 13 May 2019 15:16:27 +0000
 Received: from esa4.hgst.iphmx.com ([216.71.154.42])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQCg2-0007BO-LK
- for linux-nvme@lists.infradead.org; Mon, 13 May 2019 15:15:44 +0000
+ id 1hQCgf-0007i8-96
+ for linux-nvme@lists.infradead.org; Mon, 13 May 2019 15:16:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557760543; x=1589296543;
+ t=1557760581; x=1589296581;
  h=from:to:cc:subject:date:message-id:references:
  content-transfer-encoding:mime-version;
- bh=I8G5f/O5zapgk1XvmjaRJiea8zzoGjszdM1qSSEVHVA=;
- b=p02TT8byB0HX4dRUuCDmyTxThPAEf/r+TTxsT8qtQtB08GhHDNBWgamK
- ixI5EcgDnYtDIUKI/Qlk2sfL38beEaa7QAAoqZnw+21Ihdz7cHxGO4x72
- eSzor8zqZxAG3advKM/lDLF4a/K/9OumkL6QqeIhJRIstNIgrgfY2/pzL
- XjK9dISUTddU6MRtbTZgdCql+0un3sOatjO0QIFhKwBsGQ3G9/g4bh4fn
- vFXiCvw0kDMPpXD2MUSV8ipaKxPYW9MXrnR8IADZpGJ4g8fH748mkA9F7
- 0182EKbLLqVggmi1uCB1ySEM6bJsNr5r/mFThr4K6FsUWhBRppaoLdJus g==;
-X-IronPort-AV: E=Sophos;i="5.60,465,1549900800"; d="scan'208";a="108154483"
-Received: from mail-co1nam05lp2051.outbound.protection.outlook.com (HELO
- NAM05-CO1-obe.outbound.protection.outlook.com) ([104.47.48.51])
- by ob1.hgst.iphmx.com with ESMTP; 13 May 2019 23:15:40 +0800
+ bh=nTB6GGjUtpFLS1URLoSfzZQ6IBdQhcDq44UmoUAiVhY=;
+ b=insghXuRR40AYk1W+NPPDPdMbPzXsraqfUcv0vmGHZx+4+AsAfRxces+
+ 0LxUtCcZ2WFPUbUOb2xb6c0qKJXv505P7MtjP/LGJ2efbTNt1Apsmn5ge
+ 0F+2jMpc0R2sHZI1ZvASzmC8TvEWZ9fWbXM6r9v8hprfsgTVOVAKVACDP
+ HJ4uLWwqw2RRkC2Dc0DUCF+pH7S2MDs4btWVJgJTmqtckWlMNglY/9Z20
+ biIcevRB8CUwiehYMn0Sai4McLDFQpGRhNJiv9NOA3Td1elH/ozbZSE5F
+ JqiBJqjWVlEm2zGJhOaBgeVw7y9OADdp82+YeBvyat9EFjT4Z/9pGgMdZ g==;
+X-IronPort-AV: E=Sophos;i="5.60,465,1549900800"; d="scan'208";a="108154532"
+Received: from mail-co1nam05lp2059.outbound.protection.outlook.com (HELO
+ NAM05-CO1-obe.outbound.protection.outlook.com) ([104.47.48.59])
+ by ob1.hgst.iphmx.com with ESMTP; 13 May 2019 23:16:21 +0800
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mYUDmNQSorSz2gMka97W2UQ8vrgRFDPUeAouVX0AfME=;
- b=cu8F5LQtT8E0CzdegheE6WJPTewKp2tPQc9P/2ScnWL+nGzyASDtHFAF/1q47d90a/9itZb1i8RExVO2c+L0lZnuPM1UiJ7cNRlHvRipdQeeoW3eb8pgQpJ/g+MTOvlwij+wlfbEcE91D8GuPNdix+iSbPu1bBRDhCCFOOXbWVw=
+ bh=Tmj1X9bKOu0NvVnfpKMovpRu85Q5LuYzAE76U1bTuL4=;
+ b=RYJm6yawjC3fiuoJc6QZuXbvnoLe2l1lVMVFvjL/R7xILji5idJXle+AFzj3kruJOhchbMEpfjxP/pFC/AlUdl4I+7reQMZyHd/mvzzdVwKhya7LRBf/2v2EqenickoY3qVBlLaTmwmfL1Mp1LXVmTJYUxUO5UBrzU7C9TdGC84=
 Received: from SN6PR04MB4527.namprd04.prod.outlook.com (52.135.120.25) by
  SN6PR04MB3935.namprd04.prod.outlook.com (52.135.82.12) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1878.20; Mon, 13 May 2019 15:15:37 +0000
+ 15.20.1878.20; Mon, 13 May 2019 15:16:19 +0000
 Received: from SN6PR04MB4527.namprd04.prod.outlook.com
  ([fe80::c4f:1604:178c:d974]) by SN6PR04MB4527.namprd04.prod.outlook.com
  ([fe80::c4f:1604:178c:d974%5]) with mapi id 15.20.1878.024; Mon, 13 May 2019
- 15:15:37 +0000
+ 15:16:19 +0000
 From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
 To: Christoph Hellwig <hch@lst.de>, "hare@suse.de" <hare@suse.de>
-Subject: Re: [PATCH 1/2] nvme: change locking for the per-subsystem controller
- list
-Thread-Topic: [PATCH 1/2] nvme: change locking for the per-subsystem
- controller list
-Thread-Index: AQHVCVTB0TXy3AF0T0m7Zy7yIf6hgw==
-Date: Mon, 13 May 2019 15:15:37 +0000
-Message-ID: <SN6PR04MB4527D9CE64D51E7A1786DDB8860F0@SN6PR04MB4527.namprd04.prod.outlook.com>
-References: <20190513062510.756-1-hch@lst.de> <20190513062510.756-2-hch@lst.de>
+Subject: Re: [PATCH 2/2] nvme: validate cntlid during controller initialisation
+Thread-Topic: [PATCH 2/2] nvme: validate cntlid during controller
+ initialisation
+Thread-Index: AQHVCVTEX7Pxb+t0CEGE3uiBHL/kvw==
+Date: Mon, 13 May 2019 15:16:19 +0000
+Message-ID: <SN6PR04MB45270478B09DF4C9516B2280860F0@SN6PR04MB4527.namprd04.prod.outlook.com>
+References: <20190513062510.756-1-hch@lst.de> <20190513062510.756-3-hch@lst.de>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -70,34 +69,34 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
 x-originating-ip: [199.255.45.63]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 72cad0eb-8e38-4e26-55b5-08d6d7b5da89
+x-ms-office365-filtering-correlation-id: d678e8f6-dc36-4202-f0b3-08d6d7b5f38c
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
  SRVR:SN6PR04MB3935; 
 x-ms-traffictypediagnostic: SN6PR04MB3935:
 wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <SN6PR04MB393524F1F482CC1C0D7E7967860F0@SN6PR04MB3935.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-microsoft-antispam-prvs: <SN6PR04MB393592A38C5317E4C8D4A806860F0@SN6PR04MB3935.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:751;
 x-forefront-prvs: 0036736630
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(396003)(346002)(136003)(376002)(366004)(39860400002)(199004)(189003)(66066001)(55016002)(52536014)(71190400001)(71200400001)(5660300002)(68736007)(14454004)(486006)(446003)(14444005)(6436002)(256004)(476003)(66446008)(64756008)(110136005)(2906002)(7696005)(76176011)(7736002)(3846002)(66556008)(99286004)(305945005)(6116002)(66476007)(66946007)(73956011)(74316002)(4326008)(76116006)(72206003)(91956017)(53546011)(6506007)(229853002)(25786009)(102836004)(9686003)(86362001)(8676002)(81156014)(186003)(81166006)(53936002)(33656002)(6246003)(2501003)(478600001)(8936002)(26005)(316002);
+ SFS:(10019020)(396003)(346002)(136003)(376002)(366004)(39860400002)(199004)(189003)(15650500001)(66066001)(55016002)(52536014)(71190400001)(71200400001)(5660300002)(68736007)(14454004)(486006)(446003)(14444005)(6436002)(256004)(476003)(66446008)(64756008)(110136005)(2906002)(7696005)(76176011)(7736002)(3846002)(66556008)(99286004)(305945005)(6116002)(66476007)(66946007)(73956011)(74316002)(4326008)(76116006)(72206003)(91956017)(53546011)(6506007)(229853002)(25786009)(102836004)(9686003)(86362001)(8676002)(81156014)(186003)(81166006)(53936002)(33656002)(6246003)(2501003)(478600001)(8936002)(26005)(316002);
  DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB3935;
  H:SN6PR04MB4527.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; A:1; MX:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 9FWc4pJVMaN3TwT6d6rdmVZOZSuJ+ZeO+/lR8TlDS6+JCp7R8GRmqCxdRHRgnqmEUJ6ikGZ6pte4fv2mV+rdfRfDViMIc2/yH5gt7fpGw1FSug+0138qR/hTTS3bpC7IEM8jUJpQdZOi3VMnCh3+Wxg1xSmz8Kys0PL8eulVXmbbdAFF7zp6lSF7nivFjyfch43VDwFAMPaD3esOwlIpM3AR7cZs8JQUptr6v5B+5c1VGysNVcjrcyDW8RF3RdR2gDtZs1mmEDEh9LrURfWBnAEMOa5WPaSHWVd9efmbiyOe0zJZq1xQDqwkCPyzEZEoJj6VMlxbG8nK9EeuUwud/jYU29Y76nhF80Ec6ZPNMv6SDWPhm/laxfm0hYQX5POqriEd3CeJb0WjOCU4EpNgc3SPFZyMJULti7FXMTIXrx4=
+x-microsoft-antispam-message-info: 2nnO2D8DV8jt7fhaswy83ddLQ+5gREP1ZXDKMO+zopOlaz9tbib1eWJenV7OzDrqG3PBNE8IrrIFmjuPOTw2Uekp36kszhQvL2RKxWeErg4t+YudMVzi0fibdtZbxIGIuKPKAsF/RY1DI8tCpukxSuCqjHl4TE/+YACcaa3ap3O8nQU8LKz3Eh7NlAhVeuR5JrXQOrQgsUUHib3fTYLJthVWpGNd2zycIrzK7TZffj3rH2aU1Yudq0kPmwLLhROSi1eZgnAC3ZXqLS8wfRTToA+gLNZG7aMhkuQC70ZSHbzEvpNWo3KQ4oK6R+aFoqGvIgczrghA1Hw7iONhOJQc7czhgmN38Dh3X9Ocsd+IbcUJS1cAW9Cx60z7fXvFxOgpsP/R1XsfN+F0mc0H27S3hinFsw0Nx/1Li08GKqSW8fg=
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 72cad0eb-8e38-4e26-55b5-08d6d7b5da89
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 May 2019 15:15:37.3248 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d678e8f6-dc36-4202-f0b3-08d6d7b5f38c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 May 2019 15:16:19.3645 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB3935
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190513_081542_740718_AF34C829 
-X-CRM114-Status: GOOD (  19.96  )
+X-CRM114-CacheID: sfid-20190513_081621_359930_0831DF18 
+X-CRM114-Status: GOOD (  18.64  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -133,105 +132,82 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>.
 
 On 05/12/2019 11:26 PM, Christoph Hellwig wrote:
-> Life becomes a lot simpler if we just use the global
-> nvme_subsystems_lock to protect this list.  Given that it is only
-> accessed during controller probing and removal that isn't a scalability
-> problem either.
+> The CNTLID value is required to be unique, and we do rely on this
+> for correct operation. So reject any controller for which a non-unique
+> CNTLID has been detected.
+>
+> Based on a patch from Hannes Reinecke.
 >
 > Signed-off-by: Christoph Hellwig <hch@lst.de>
 > ---
->   drivers/nvme/host/core.c | 32 ++++++++++++++------------------
->   1 file changed, 14 insertions(+), 18 deletions(-)
+>   drivers/nvme/host/core.c | 41 +++++++++++++++++++++++-----------------
+>   1 file changed, 24 insertions(+), 17 deletions(-)
 >
 > diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index eebaeadaa800..70a2bc01e41e 100644
+> index 70a2bc01e41e..09a1d5ca872f 100644
 > --- a/drivers/nvme/host/core.c
 > +++ b/drivers/nvme/host/core.c
-> @@ -2346,13 +2346,13 @@ static int nvme_active_ctrls(struct nvme_subsystem *subsys)
->   	int count = 0;
->   	struct nvme_ctrl *ctrl;
+> @@ -2341,20 +2341,35 @@ static const struct attribute_group *nvme_subsys_attrs_groups[] = {
+>   	NULL,
+>   };
 >
-> -	mutex_lock(&subsys->lock);
-> +	lockdep_assert_held(&nvme_subsystems_lock);
+> -static int nvme_active_ctrls(struct nvme_subsystem *subsys)
+> +static bool nvme_validate_cntlid(struct nvme_subsystem *subsys,
+> +		struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+>   {
+> -	int count = 0;
+> -	struct nvme_ctrl *ctrl;
+> +	struct nvme_ctrl *tmp;
+>
+>   	lockdep_assert_held(&nvme_subsystems_lock);
+>
+> -	list_for_each_entry(ctrl, &subsys->ctrls, subsys_entry) {
+> -		if (ctrl->state != NVME_CTRL_DELETING &&
+> -		    ctrl->state != NVME_CTRL_DEAD)
+> -			count++;
+> +	list_for_each_entry(tmp, &subsys->ctrls, subsys_entry) {
+> +		if (ctrl->state == NVME_CTRL_DELETING ||
+> +		    ctrl->state == NVME_CTRL_DEAD)
+> +			continue;
 > +
->   	list_for_each_entry(ctrl, &subsys->ctrls, subsys_entry) {
->   		if (ctrl->state != NVME_CTRL_DELETING &&
->   		    ctrl->state != NVME_CTRL_DEAD)
->   			count++;
+> +		if (tmp->cntlid == ctrl->cntlid) {
+> +			dev_err(ctrl->device,
+> +				"Duplicate cntlid %u with %s, rejecting\n",
+> +				ctrl->cntlid, dev_name(tmp->device));
+> +			return false;
+> +		}
+> +
+> +		if ((id->cmic & (1 << 1)) ||
+> +		    (ctrl->opts && ctrl->opts->discovery_nqn))
+> +		    	continue;
+> +
+> +		dev_err(ctrl->device,
+> +			"Subsystem does not support multiple controllers\n");
+> +		return false;
 >   	}
-> -	mutex_unlock(&subsys->lock);
 >
->   	return count;
+> -	return count;
+> +	return true;
 >   }
-> @@ -2394,6 +2394,9 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
->   	mutex_lock(&nvme_subsystems_lock);
->   	found = __nvme_find_get_subsystem(subsys->subnqn);
->   	if (found) {
-> +		__nvme_release_subsystem(subsys);
-> +		subsys = found;
-> +
->   		/*
->   		 * Verify that the subsystem actually supports multiple
->   		 * controllers, else bail out.
-> @@ -2402,14 +2405,10 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
->   		    nvme_active_ctrls(found) && !(id->cmic & (1 << 1))) {
->   			dev_err(ctrl->device,
->   				"ignoring ctrl due to duplicate subnqn (%s).\n",
-> -				found->subnqn);
-> -			nvme_put_subsystem(found);
-> +				subsys->subnqn);
+>
+>   static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+> @@ -2397,15 +2412,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+>   		__nvme_release_subsystem(subsys);
+>   		subsys = found;
+>
+> -		/*
+> -		 * Verify that the subsystem actually supports multiple
+> -		 * controllers, else bail out.
+> -		 */
+> -		if (!(ctrl->opts && ctrl->opts->discovery_nqn) &&
+> -		    nvme_active_ctrls(found) && !(id->cmic & (1 << 1))) {
+> -			dev_err(ctrl->device,
+> -				"ignoring ctrl due to duplicate subnqn (%s).\n",
+> -				subsys->subnqn);
+> +		if (!nvme_validate_cntlid(subsys, ctrl, id)) {
 >   			ret = -EINVAL;
-> -			goto out_unlock;
-> +			goto out_put_subsystem;
+>   			goto out_put_subsystem;
 >   		}
-> -
-> -		__nvme_release_subsystem(subsys);
-> -		subsys = found;
->   	} else {
->   		ret = device_add(&subsys->dev);
->   		if (ret) {
-> @@ -2421,23 +2420,20 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
->   		list_add_tail(&subsys->entry, &nvme_subsystems);
->   	}
->
-> -	ctrl->subsys = subsys;
-> -	mutex_unlock(&nvme_subsystems_lock);
-> -
->   	if (sysfs_create_link(&subsys->dev.kobj, &ctrl->device->kobj,
->   			dev_name(ctrl->device))) {
->   		dev_err(ctrl->device,
->   			"failed to create sysfs link from subsystem.\n");
-> -		/* the transport driver will eventually put the subsystem */
-> -		return -EINVAL;
-> +		goto out_put_subsystem;
->   	}
->
-> -	mutex_lock(&subsys->lock);
-> +	ctrl->subsys = subsys;
->   	list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
-> -	mutex_unlock(&subsys->lock);
-> -
-> +	mutex_unlock(&nvme_subsystems_lock);
->   	return 0;
->
-> +out_put_subsystem:
-> +	nvme_put_subsystem(subsys);
->   out_unlock:
->   	mutex_unlock(&nvme_subsystems_lock);
->   	put_device(&subsys->dev);
-> @@ -3695,10 +3691,10 @@ static void nvme_free_ctrl(struct device *dev)
->   	__free_page(ctrl->discard_page);
->
->   	if (subsys) {
-> -		mutex_lock(&subsys->lock);
-> +		mutex_lock(&nvme_subsystems_lock);
->   		list_del(&ctrl->subsys_entry);
-> -		mutex_unlock(&subsys->lock);
->   		sysfs_remove_link(&subsys->dev.kobj, dev_name(ctrl->device));
-> +		mutex_unlock(&nvme_subsystems_lock);
->   	}
->
->   	ctrl->ops->free_ctrl(ctrl);
 >
 
 
