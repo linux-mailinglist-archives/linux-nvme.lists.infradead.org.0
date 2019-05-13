@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E0FE1BF8F
-	for <lists+linux-nvme@lfdr.de>; Tue, 14 May 2019 00:43:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8EB8A1BF90
+	for <lists+linux-nvme@lfdr.de>; Tue, 14 May 2019 00:44:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,68 +11,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=VH8dWWd+iyIHCbDXZi0hqaMFw5N1IuWYFBwyUM8LiUY=; b=q6H8M4B69pCDe8jJsivZ46eQAv
-	2bhTVzJSUnKO14fp1B4MGdQjDz9qXelW/LGYcr6y4qiJtBmZJ3WGE7Yb1CpM36njGhJvS1Jvsjm97
-	howttwvvI113yTnguqYUM5KPkXLDD5NhQwL/20AzfwRKSpunlm+yLIrhJQx2vDARpQ/s8hyDUXn6H
-	aAE7xTfYVb7frTDxL2cxecIAl57PG5xxNlK8TO4m47PVyKpkGALnd/hyPE/U2fEuH3czaG4mzjngn
-	qwA25CcRawcgTp1wdIRxs03CttoCRMGvQyJ7gIvhHeGoGaT25RtHgj1VFZCI25Ae3YXxCufZz1Cmv
-	dgsyO0JA==;
+	bh=pP04U5QIQCqSHr5lA+VMifUSBZIKTldwZKrDt9ZX5YY=; b=qaUybus08nf+3kQcdVOF4nPIeL
+	9XIyXXkuOpYCi/ZHV4BeO3lCVx1j0ySUaD1sLrPl5gF2pHU9TWqlvhsmu68QjK2BSSWBYZVmUnCuN
+	Jtwa3ALFfMmMTM16HHxKSVg1n/k3CyZu1y7r1asuIY2HYRui7NiQXhZ8/ZkptvvPXRWKreVN4J4S0
+	661PReR9FN+ssxl/uiEAld4d1NpUTjzO0CaPhpaHSQyGYIiYoWQ4O3qoCNIjXlIVV1QNYypNmX/Zr
+	oxlGvF0n1oiGCW3KcyRZ5Br0mCpFZcplQo4MRipZd0JlnklZoZgG+Gai8OSpfQ0o30sSERpepYH11
+	8pFvfjuQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQJfe-0007Ma-Bb; Mon, 13 May 2019 22:43:46 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1hQJfl-0007Xe-60; Mon, 13 May 2019 22:43:53 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQJfT-0007IZ-MH
- for linux-nvme@lists.infradead.org; Mon, 13 May 2019 22:43:36 +0000
-Received: by mail-pg1-x541.google.com with SMTP id a3so7515801pgb.3
- for <linux-nvme@lists.infradead.org>; Mon, 13 May 2019 15:43:35 -0700 (PDT)
+ id 1hQJfV-0007Jc-H1
+ for linux-nvme@lists.infradead.org; Mon, 13 May 2019 22:43:39 +0000
+Received: by mail-pl1-x644.google.com with SMTP id g5so7193001plt.2
+ for <linux-nvme@lists.infradead.org>; Mon, 13 May 2019 15:43:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=VQxlyEJbmk2REmlNP8v5phLYKqPSpGA8Y0sfxGAoOR0=;
- b=M6MuDT+hEY2DPcbTnjOQlb1EXqbVSCMAIBcJ1f68lltgz2UkjqgGE+Cn5KpJgwJz2b
- m5If5HQ99TlSwOHlHVqUZovNuwq3q3XKda+rlaYa1Livb39YSay8XTjIH3xzJmlFB5mD
- jKsi93dumlmV7Q0FkNTajkfJsALcywk+7qt0mPuAMZalehx56/941XXXzN2L7rtuU/3S
- QSniAd1lRLPVK6sJjdzsZaESNSv7uYnpm5FACwq6RzbnU+cefrOkaTVoHfchxJcM82Ip
- jOaxEG/e2f/XO8IEhQffFDAAPP/reCsb5nM8/JFPGLj6ZeLmmfu1FKzP2MnZyohyHdDq
- DMmA==
+ bh=nP7Rr96WNa0Pnk7hfmDbMX39dvA96ffgLEU/w3XQyuw=;
+ b=LWAHUbgFSLOa0aoaPztCt93xyHH+YgO/KE6gbSpzTq2NB9cMzgwgI9qHeNRA4EBH00
+ MSnMZX+rRgMufJD9uNil8t1BbE+NC1NL/luCKX24bOMYuZaRutQKLcgHYfuTO5oIREB1
+ rL7AecDR+OPw5ZrBHzlreQrvoIDyIa696WMvjvidXjY1FuQFrr36XHwRZ7SJv08Y10Ab
+ S7iq1N626JyMAXDIOq4PIuG40nG6Szvy6+OpYgC7AzV2d1rQEJMicBQzhbnJPx2JkekP
+ Xh2z1X11vUT0Wy1/ySzes82RgQmG8HGAo2mPDaGnbkUjDQCJLjulDC7F0gqnu70vO+Jn
+ gIug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=VQxlyEJbmk2REmlNP8v5phLYKqPSpGA8Y0sfxGAoOR0=;
- b=NN1N5TFvCoo1C0TVL6pf5u0uMLDuvo0PWurQrxw7WFyVCg0oxgtYlt7ytiKwJzG7Ax
- hs74JARFenQ0QNXRkO/2AcpJ2n6mi7FVlgGvl3cazaZARssgLPngcQTRod84dkvfK4v5
- /EOcQWTl44hip3YQSEC6d+/vUqky0d7O/WtDWHdqfV5nVXMUN/62/eLdDC3h7b3Hyk7q
- UhCyc1o3Cx/l3Bfz4myxVVQrqsr0XP4VBzouTAF3l87MjJExuMZb8KhScSs39ri71D/K
- IruDfTCTxPQ5cE3Nl+qlZDi1eoOn4sPVRBav1EJs1p8ECLV22Zu8nrOe0+/vdixCIqbs
- H3dQ==
-X-Gm-Message-State: APjAAAX3tHxqpPdhRpwx5boMFOld6Ue8eFBVPFkhKyeTMJzwPmt6B6Cj
- LPVVXt/gBLXVpWkqCEB4xypBD8+V
-X-Google-Smtp-Source: APXvYqwFAQpwe9z01FtnOsEP5yOO6vOQXn5Xg51EthWxs04LiNfkovLpJqPtW8RR6tSO+W9y6efIKw==
-X-Received: by 2002:a63:ed03:: with SMTP id d3mr34369180pgi.7.1557787414663;
- Mon, 13 May 2019 15:43:34 -0700 (PDT)
+ bh=nP7Rr96WNa0Pnk7hfmDbMX39dvA96ffgLEU/w3XQyuw=;
+ b=K6Zl2l+68665vk6sRPa03KmzE3o2GGDHss/XAwtpeGdIojpVchnAbsYND+gHLbrFK9
+ upUp5YNd8TV/u1HbUinmqSzvQdAPoSAdZFGoVd6EO0dghfhTjYC30NvL01sAkDfwKv0V
+ fvLwnBcnrmXud4sARuDYgWJ68CxglybbDgylvO8ES2kas6MkWTVH07IYP7RlBPDkOS4Z
+ KQMAxEKjdn7un/rsCo2Kkn6F5yQ5eOOmTN/l6Irqex7I9pCZtFDaoJ5TjEUauZLwUdoR
+ NdnStRtJLd6fIdBfKvnKSsQZC6Q5U57m0iiuIf75Chzo+3nZPdTDi7Hc8JBmr7pLoLQd
+ aamA==
+X-Gm-Message-State: APjAAAXWGjmUpb3DHPBX0aB7JLjCIADxifaouwOO1oOjw2lTLWzNxBIR
+ wuYosu7mKgWwTHlqfNTvVNsdeGVv
+X-Google-Smtp-Source: APXvYqwwcNlkHDyowL7+Zm21qxE+Qbxo4W+4TV+xBpyG8QBwLCSStBW6S/W/geoCZvFH3/bra3gu6w==
+X-Received: by 2002:a17:902:9a83:: with SMTP id
+ w3mr34398348plp.241.1557787416929; 
+ Mon, 13 May 2019 15:43:36 -0700 (PDT)
 Received: from pallmd1.broadcom.com ([192.19.223.250])
- by smtp.gmail.com with ESMTPSA id g188sm20299309pfc.151.2019.05.13.15.43.32
+ by smtp.gmail.com with ESMTPSA id g188sm20299309pfc.151.2019.05.13.15.43.34
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Mon, 13 May 2019 15:43:34 -0700 (PDT)
+ Mon, 13 May 2019 15:43:36 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 1/7] nvmet: add transport discovery change op
-Date: Mon, 13 May 2019 15:43:08 -0700
-Message-Id: <20190513224314.24169-2-jsmart2021@gmail.com>
+Subject: [PATCH 2/7] nvmet_fc: add transport discovery change event callback
+ support
+Date: Mon, 13 May 2019 15:43:09 -0700
+Message-Id: <20190513224314.24169-3-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.13.7
 In-Reply-To: <20190513224314.24169-1-jsmart2021@gmail.com>
 References: <20190513224314.24169-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190513_154335_726265_D2CAE97E 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20190513_154337_776618_42DADC50 
+X-CRM114-Status: GOOD (  13.88  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (jsmart2021[at]gmail.com)
@@ -104,79 +106,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Some transports, such as FC-NVME, support discovery controller change
-events without the use of a persistent discovery controller. FC receives
-events via RSCN from the FC Fabric Controller or subsystem FC port.
-
-This patch adds a nvmet transport op that is called whenever a
-discovery change event occurs in the nvmet layer.
-
-To facilitate the callback without adding another layer to cross into
-core.c to reference the transport ops, the port structure snapshots
-the transport ops when the port is enabled and clears them when disabled.
+This patch adds support for the nvmet discovery_change transport op.
+In turn, the transport adds it's own LLDD api callback discovery_event
+op to request the LLDD to generate an RSCN for the discovery change.
 
 Signed-off-by: James Smart <jsmart2021@gmail.com>
 ---
- drivers/nvme/target/core.c      | 2 ++
- drivers/nvme/target/discovery.c | 4 ++++
- drivers/nvme/target/nvmet.h     | 2 ++
- 3 files changed, 8 insertions(+)
+ drivers/nvme/target/fc.c       | 11 +++++++++++
+ include/linux/nvme-fc-driver.h |  6 ++++++
+ 2 files changed, 17 insertions(+)
 
-diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
-index 7734a6acff85..43e8c4adc1f4 100644
---- a/drivers/nvme/target/core.c
-+++ b/drivers/nvme/target/core.c
-@@ -311,6 +311,7 @@ int nvmet_enable_port(struct nvmet_port *port)
- 		port->inline_data_size = 0;
- 
- 	port->enabled = true;
-+	port->tr_ops = ops;
- 	return 0;
+diff --git a/drivers/nvme/target/fc.c b/drivers/nvme/target/fc.c
+index 508661af0f50..1f252c9a953a 100644
+--- a/drivers/nvme/target/fc.c
++++ b/drivers/nvme/target/fc.c
+@@ -2549,6 +2549,16 @@ nvmet_fc_remove_port(struct nvmet_port *port)
+ 	kfree(pe);
  }
  
-@@ -321,6 +322,7 @@ void nvmet_disable_port(struct nvmet_port *port)
- 	lockdep_assert_held(&nvmet_config_sem);
- 
- 	port->enabled = false;
-+	port->tr_ops = NULL;
- 
- 	ops = nvmet_transports[port->disc_addr.trtype];
- 	ops->remove_port(port);
-diff --git a/drivers/nvme/target/discovery.c b/drivers/nvme/target/discovery.c
-index 5baf269f3f8a..8efca26b4776 100644
---- a/drivers/nvme/target/discovery.c
-+++ b/drivers/nvme/target/discovery.c
-@@ -41,6 +41,10 @@ void nvmet_port_disc_changed(struct nvmet_port *port,
- 		__nvmet_disc_changed(port, ctrl);
- 	}
- 	mutex_unlock(&nvmet_disc_subsys->lock);
++static void
++nvmet_fc_discovery_chg(struct nvmet_port *port)
++{
++	struct nvmet_fc_port_entry *pe = port->priv;
++	struct nvmet_fc_tgtport *tgtport = pe->tgtport;
 +
-+	/* If transport can signal change, notify transport */
-+	if (port->tr_ops && port->tr_ops->discovery_chg)
-+		port->tr_ops->discovery_chg(port);
- }
- 
- static void __nvmet_subsys_disc_changed(struct nvmet_port *port,
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index c25d88fc9dec..dc270944bb25 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -140,6 +140,7 @@ struct nvmet_port {
- 	void				*priv;
- 	bool				enabled;
- 	int				inline_data_size;
-+	const struct nvmet_fabrics_ops	*tr_ops;
++	if (tgtport && tgtport->ops->discovery_event)
++		tgtport->ops->discovery_event(&tgtport->fc_target_port);
++}
++
+ static const struct nvmet_fabrics_ops nvmet_fc_tgt_fcp_ops = {
+ 	.owner			= THIS_MODULE,
+ 	.type			= NVMF_TRTYPE_FC,
+@@ -2557,6 +2567,7 @@ static const struct nvmet_fabrics_ops nvmet_fc_tgt_fcp_ops = {
+ 	.remove_port		= nvmet_fc_remove_port,
+ 	.queue_response		= nvmet_fc_fcp_nvme_cmd_done,
+ 	.delete_ctrl		= nvmet_fc_delete_ctrl,
++	.discovery_chg		= nvmet_fc_discovery_chg,
  };
  
- static inline struct nvmet_port *to_nvmet_port(struct config_item *item)
-@@ -277,6 +278,7 @@ struct nvmet_fabrics_ops {
- 	void (*disc_traddr)(struct nvmet_req *req,
- 			struct nvmet_port *port, char *traddr);
- 	u16 (*install_queue)(struct nvmet_sq *nvme_sq);
-+	void (*discovery_chg)(struct nvmet_port *port);
- };
+ static int __init nvmet_fc_init_module(void)
+diff --git a/include/linux/nvme-fc-driver.h b/include/linux/nvme-fc-driver.h
+index 2bb349035431..5bbcb7afef39 100644
+--- a/include/linux/nvme-fc-driver.h
++++ b/include/linux/nvme-fc-driver.h
+@@ -797,6 +797,11 @@ struct nvmet_fc_target_port {
+  *       nvmefc_tgt_fcp_req.
+  *       Entrypoint is Optional.
+  *
++ * @discovery_event:  Called by the transport to generate an RSCN
++ *       change notifications to NVME initiators. The RSCN notifications
++ *       should cause the initiator to rescan the discovery controller
++ *       on the targetport.
++ *
+  * @max_hw_queues:  indicates the maximum number of hw queues the LLDD
+  *       supports for cpu affinitization.
+  *       Value is Mandatory. Must be at least 1.
+@@ -838,6 +843,7 @@ struct nvmet_fc_target_template {
+ 				struct nvmefc_tgt_fcp_req *fcpreq);
+ 	void (*defer_rcv)(struct nvmet_fc_target_port *tgtport,
+ 				struct nvmefc_tgt_fcp_req *fcpreq);
++	void (*discovery_event)(struct nvmet_fc_target_port *tgtport);
  
- #define NVMET_MAX_INLINE_BIOVEC	8
+ 	u32	max_hw_queues;
+ 	u16	max_sgl_segments;
 -- 
 2.13.7
 
