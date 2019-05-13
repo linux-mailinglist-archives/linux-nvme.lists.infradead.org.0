@@ -2,36 +2,52 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 104711B049
-	for <lists+linux-nvme@lfdr.de>; Mon, 13 May 2019 08:26:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EFA751B04A
+	for <lists+linux-nvme@lfdr.de>; Mon, 13 May 2019 08:26:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XjHcemjAzqfoBTdKEwtMCJK2iceTJsfBcPMMPtei9K4=; b=rUL5mHFk/AYPLW
-	KISCWWQfeOl03ABEUy/d9WgEAenPW7RBjxer4cyHoAgXETx0eH+DW26ZBLRi3Hf+1F874TzDHMzz4
-	8n+pC8Mz1LoZSA/mMKNN5n9tHlsY9mWTjexY/T1KtyNlwchtu0SkCaAOWmyN8kTLAClEcOi6p62H6
-	AhHect7rqHwlrUZWDCD9M33pb7x0RuSr9M05N0TZhOOHjOef8uwnpTJnwP1meJhLttIIfTJLaM8KL
-	Vcyt/KclduHqVe6nnz1A+M919Gyu1vchhr95SWcxnu8aV58jnt2iPsM1NyFcl8hneMKsc6re5Xzcu
-	fMDcirHy2V94ygJ/SerA==;
+	List-Owner; bh=gtVLL6LkL5Ks+T1NQhkXlBf1TC5Dt72+fTu7hE8gwKA=; b=Gt32ZZr78bvkLw
+	uijx+BjL6/ypOUkQztb8QiYNufzZICO9hlEvEy0OovhcOfKxqpGDQPOPRNYLtATheLeQkYoQxFSEy
+	32AA5A1HH6la/W+smRmWcC+80fWggg0G5nNhblwD77EIwB8zC0daWrrdWjFPh1H0aTwO8pXJFngLb
+	ugqCTIibRK3t2aYxPM1bnS60RnGRcD/2WkEzfONxJgGiLdzqCyyjv5BIo0oUP1CycGvaElqrVK/bk
+	XBHLjL9OilzJUlvcFOi4/Rh6+eqYZTYe9Owaej0fMsH4FdTaCJ4QMb4mRZ3df6ZYcAgectrRbfpkh
+	k0g05XTjp+aJK7l3qeyQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQ4Pc-0003Np-Lh; Mon, 13 May 2019 06:26:12 +0000
-Received: from 089144210233.atnat0019.highway.a1.net ([89.144.210.233]
- helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQ4PP-0003BI-Ck; Mon, 13 May 2019 06:25:59 +0000
+	id 1hQ4QA-0003gQ-Dr; Mon, 13 May 2019 06:26:46 +0000
+Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hQ4Q4-0003fd-FN
+ for linux-nvme@lists.infradead.org; Mon, 13 May 2019 06:26:42 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id 7D8CE68AA6; Mon, 13 May 2019 08:26:15 +0200 (CEST)
+Date: Mon, 13 May 2019 08:26:15 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: hare@suse.de
-Subject: [PATCH 2/2] nvme: validate cntlid during controller initialisation
-Date: Mon, 13 May 2019 08:25:10 +0200
-Message-Id: <20190513062510.756-3-hch@lst.de>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190513062510.756-1-hch@lst.de>
-References: <20190513062510.756-1-hch@lst.de>
+To: Ming Lei <ming.lei@redhat.com>
+Subject: Re: [PATCH] nvme-pci: fix single segment detection
+Message-ID: <20190513062615.GA18152@lst.de>
+References: <20190509110409.19647-1-hch@lst.de>
+ <20190509112410.GA20711@ming.t460p> <20190509123406.GB21483@lst.de>
+ <20190509133120.GA22059@ming.t460p>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190509133120.GA22059@ming.t460p>
+User-Agent: Mutt/1.5.17 (2007-11-01)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190512_232640_658415_AECA9300 
+X-CRM114-Status: UNSURE (   6.62  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,91 +59,18 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-nvme@lists.infradead.org
+Cc: Jens Axboe <axboe@kernel.dk>, axboe@fb.com, sagi@grimberg.me,
+ linux-nvme@lists.infradead.org, keith.busch@intel.com,
+ linux-block@vger.kernel.org, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The CNTLID value is required to be unique, and we do rely on this
-for correct operation. So reject any controller for which a non-unique
-CNTLID has been detected.
+So actually, after running out ways to make any of my complex block
+layer fix ideas work I have a simple fix for the block layer now.
 
-Based on a patch from Hannes Reinecke.
-
-Signed-off-by: Christoph Hellwig <hch@lst.de>
----
- drivers/nvme/host/core.c | 41 +++++++++++++++++++++++-----------------
- 1 file changed, 24 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 70a2bc01e41e..09a1d5ca872f 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -2341,20 +2341,35 @@ static const struct attribute_group *nvme_subsys_attrs_groups[] = {
- 	NULL,
- };
- 
--static int nvme_active_ctrls(struct nvme_subsystem *subsys)
-+static bool nvme_validate_cntlid(struct nvme_subsystem *subsys,
-+		struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- {
--	int count = 0;
--	struct nvme_ctrl *ctrl;
-+	struct nvme_ctrl *tmp;
- 
- 	lockdep_assert_held(&nvme_subsystems_lock);
- 
--	list_for_each_entry(ctrl, &subsys->ctrls, subsys_entry) {
--		if (ctrl->state != NVME_CTRL_DELETING &&
--		    ctrl->state != NVME_CTRL_DEAD)
--			count++;
-+	list_for_each_entry(tmp, &subsys->ctrls, subsys_entry) {
-+		if (ctrl->state == NVME_CTRL_DELETING ||
-+		    ctrl->state == NVME_CTRL_DEAD)
-+			continue;
-+
-+		if (tmp->cntlid == ctrl->cntlid) {
-+			dev_err(ctrl->device,
-+				"Duplicate cntlid %u with %s, rejecting\n",
-+				ctrl->cntlid, dev_name(tmp->device));
-+			return false;
-+		}
-+
-+		if ((id->cmic & (1 << 1)) ||
-+		    (ctrl->opts && ctrl->opts->discovery_nqn))
-+		    	continue;
-+
-+		dev_err(ctrl->device,
-+			"Subsystem does not support multiple controllers\n");
-+		return false;
- 	}
- 
--	return count;
-+	return true;
- }
- 
- static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
-@@ -2397,15 +2412,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 		__nvme_release_subsystem(subsys);
- 		subsys = found;
- 
--		/*
--		 * Verify that the subsystem actually supports multiple
--		 * controllers, else bail out.
--		 */
--		if (!(ctrl->opts && ctrl->opts->discovery_nqn) &&
--		    nvme_active_ctrls(found) && !(id->cmic & (1 << 1))) {
--			dev_err(ctrl->device,
--				"ignoring ctrl due to duplicate subnqn (%s).\n",
--				subsys->subnqn);
-+		if (!nvme_validate_cntlid(subsys, ctrl, id)) {
- 			ret = -EINVAL;
- 			goto out_put_subsystem;
- 		}
--- 
-2.20.1
-
+Lets see if is acceptable..
 
 _______________________________________________
 Linux-nvme mailing list
