@@ -2,32 +2,32 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 561BB1B048
-	for <lists+linux-nvme@lfdr.de>; Mon, 13 May 2019 08:26:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 104711B049
+	for <lists+linux-nvme@lfdr.de>; Mon, 13 May 2019 08:26:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XeWThInoMf40SZBEiex6cUFourgaCjb7w28hANy6/kQ=; b=abHx8S+I/6zzG0
-	SxCHgDyeso0ByA09MGt2vuoKbAGA8/QnMTnrynBLZ9Lulp16QW1VVhMM8fJL4BB74z3AagOS7Pm6x
-	D8CEM7Zl/9RTQCUIF5RX3nnR8gI7VvxBHp+OEPebSW/8iSA9eSBuhiVSQOWxcxmJyBAL3puB6MlSq
-	NeLkYUllNQ/m2RD4WbY00PxgEW/ogyPiU8OsKFeHv7f1cP5DpafSOnTsjvodPZVwf6eVJ6vyEFLAi
-	apYXH0uPuWltgLkXQGmtaoCKSvgM/RKElqoOuhfWslNKsmFeHnvI462w38nOEb7Z4BMzZvpepMnTx
-	q1OkyOvRByXUDz9SgLeA==;
+	List-Owner; bh=XjHcemjAzqfoBTdKEwtMCJK2iceTJsfBcPMMPtei9K4=; b=rUL5mHFk/AYPLW
+	KISCWWQfeOl03ABEUy/d9WgEAenPW7RBjxer4cyHoAgXETx0eH+DW26ZBLRi3Hf+1F874TzDHMzz4
+	8n+pC8Mz1LoZSA/mMKNN5n9tHlsY9mWTjexY/T1KtyNlwchtu0SkCaAOWmyN8kTLAClEcOi6p62H6
+	AhHect7rqHwlrUZWDCD9M33pb7x0RuSr9M05N0TZhOOHjOef8uwnpTJnwP1meJhLttIIfTJLaM8KL
+	Vcyt/KclduHqVe6nnz1A+M919Gyu1vchhr95SWcxnu8aV58jnt2iPsM1NyFcl8hneMKsc6re5Xzcu
+	fMDcirHy2V94ygJ/SerA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQ4PV-0003Cb-AV; Mon, 13 May 2019 06:26:05 +0000
+	id 1hQ4Pc-0003Np-Lh; Mon, 13 May 2019 06:26:12 +0000
 Received: from 089144210233.atnat0019.highway.a1.net ([89.144.210.233]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQ4PM-00038v-Qe; Mon, 13 May 2019 06:25:57 +0000
+ id 1hQ4PP-0003BI-Ck; Mon, 13 May 2019 06:25:59 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: hare@suse.de
-Subject: [PATCH 1/2] nvme: change locking for the per-subsystem controller list
-Date: Mon, 13 May 2019 08:25:09 +0200
-Message-Id: <20190513062510.756-2-hch@lst.de>
+Subject: [PATCH 2/2] nvme: validate cntlid during controller initialisation
+Date: Mon, 13 May 2019 08:25:10 +0200
+Message-Id: <20190513062510.756-3-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190513062510.756-1-hch@lst.de>
 References: <20190513062510.756-1-hch@lst.de>
@@ -49,105 +49,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Life becomes a lot simpler if we just use the global
-nvme_subsystems_lock to protect this list.  Given that it is only
-accessed during controller probing and removal that isn't a scalability
-problem either.
+The CNTLID value is required to be unique, and we do rely on this
+for correct operation. So reject any controller for which a non-unique
+CNTLID has been detected.
+
+Based on a patch from Hannes Reinecke.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/nvme/host/core.c | 32 ++++++++++++++------------------
- 1 file changed, 14 insertions(+), 18 deletions(-)
+ drivers/nvme/host/core.c | 41 +++++++++++++++++++++++-----------------
+ 1 file changed, 24 insertions(+), 17 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index eebaeadaa800..70a2bc01e41e 100644
+index 70a2bc01e41e..09a1d5ca872f 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -2346,13 +2346,13 @@ static int nvme_active_ctrls(struct nvme_subsystem *subsys)
- 	int count = 0;
- 	struct nvme_ctrl *ctrl;
+@@ -2341,20 +2341,35 @@ static const struct attribute_group *nvme_subsys_attrs_groups[] = {
+ 	NULL,
+ };
  
--	mutex_lock(&subsys->lock);
-+	lockdep_assert_held(&nvme_subsystems_lock);
+-static int nvme_active_ctrls(struct nvme_subsystem *subsys)
++static bool nvme_validate_cntlid(struct nvme_subsystem *subsys,
++		struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+ {
+-	int count = 0;
+-	struct nvme_ctrl *ctrl;
++	struct nvme_ctrl *tmp;
+ 
+ 	lockdep_assert_held(&nvme_subsystems_lock);
+ 
+-	list_for_each_entry(ctrl, &subsys->ctrls, subsys_entry) {
+-		if (ctrl->state != NVME_CTRL_DELETING &&
+-		    ctrl->state != NVME_CTRL_DEAD)
+-			count++;
++	list_for_each_entry(tmp, &subsys->ctrls, subsys_entry) {
++		if (ctrl->state == NVME_CTRL_DELETING ||
++		    ctrl->state == NVME_CTRL_DEAD)
++			continue;
 +
- 	list_for_each_entry(ctrl, &subsys->ctrls, subsys_entry) {
- 		if (ctrl->state != NVME_CTRL_DELETING &&
- 		    ctrl->state != NVME_CTRL_DEAD)
- 			count++;
++		if (tmp->cntlid == ctrl->cntlid) {
++			dev_err(ctrl->device,
++				"Duplicate cntlid %u with %s, rejecting\n",
++				ctrl->cntlid, dev_name(tmp->device));
++			return false;
++		}
++
++		if ((id->cmic & (1 << 1)) ||
++		    (ctrl->opts && ctrl->opts->discovery_nqn))
++		    	continue;
++
++		dev_err(ctrl->device,
++			"Subsystem does not support multiple controllers\n");
++		return false;
  	}
--	mutex_unlock(&subsys->lock);
  
- 	return count;
+-	return count;
++	return true;
  }
-@@ -2394,6 +2394,9 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 	mutex_lock(&nvme_subsystems_lock);
- 	found = __nvme_find_get_subsystem(subsys->subnqn);
- 	if (found) {
-+		__nvme_release_subsystem(subsys);
-+		subsys = found;
-+
- 		/*
- 		 * Verify that the subsystem actually supports multiple
- 		 * controllers, else bail out.
-@@ -2402,14 +2405,10 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 		    nvme_active_ctrls(found) && !(id->cmic & (1 << 1))) {
- 			dev_err(ctrl->device,
- 				"ignoring ctrl due to duplicate subnqn (%s).\n",
--				found->subnqn);
--			nvme_put_subsystem(found);
-+				subsys->subnqn);
+ 
+ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+@@ -2397,15 +2412,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+ 		__nvme_release_subsystem(subsys);
+ 		subsys = found;
+ 
+-		/*
+-		 * Verify that the subsystem actually supports multiple
+-		 * controllers, else bail out.
+-		 */
+-		if (!(ctrl->opts && ctrl->opts->discovery_nqn) &&
+-		    nvme_active_ctrls(found) && !(id->cmic & (1 << 1))) {
+-			dev_err(ctrl->device,
+-				"ignoring ctrl due to duplicate subnqn (%s).\n",
+-				subsys->subnqn);
++		if (!nvme_validate_cntlid(subsys, ctrl, id)) {
  			ret = -EINVAL;
--			goto out_unlock;
-+			goto out_put_subsystem;
+ 			goto out_put_subsystem;
  		}
--
--		__nvme_release_subsystem(subsys);
--		subsys = found;
- 	} else {
- 		ret = device_add(&subsys->dev);
- 		if (ret) {
-@@ -2421,23 +2420,20 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 		list_add_tail(&subsys->entry, &nvme_subsystems);
- 	}
- 
--	ctrl->subsys = subsys;
--	mutex_unlock(&nvme_subsystems_lock);
--
- 	if (sysfs_create_link(&subsys->dev.kobj, &ctrl->device->kobj,
- 			dev_name(ctrl->device))) {
- 		dev_err(ctrl->device,
- 			"failed to create sysfs link from subsystem.\n");
--		/* the transport driver will eventually put the subsystem */
--		return -EINVAL;
-+		goto out_put_subsystem;
- 	}
- 
--	mutex_lock(&subsys->lock);
-+	ctrl->subsys = subsys;
- 	list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
--	mutex_unlock(&subsys->lock);
--
-+	mutex_unlock(&nvme_subsystems_lock);
- 	return 0;
- 
-+out_put_subsystem:
-+	nvme_put_subsystem(subsys);
- out_unlock:
- 	mutex_unlock(&nvme_subsystems_lock);
- 	put_device(&subsys->dev);
-@@ -3695,10 +3691,10 @@ static void nvme_free_ctrl(struct device *dev)
- 	__free_page(ctrl->discard_page);
- 
- 	if (subsys) {
--		mutex_lock(&subsys->lock);
-+		mutex_lock(&nvme_subsystems_lock);
- 		list_del(&ctrl->subsys_entry);
--		mutex_unlock(&subsys->lock);
- 		sysfs_remove_link(&subsys->dev.kobj, dev_name(ctrl->device));
-+		mutex_unlock(&nvme_subsystems_lock);
- 	}
- 
- 	ctrl->ops->free_ctrl(ctrl);
 -- 
 2.20.1
 
