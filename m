@@ -2,105 +2,51 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E30A1C075
-	for <lists+linux-nvme@lfdr.de>; Tue, 14 May 2019 04:06:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 346431C1C4
+	for <lists+linux-nvme@lfdr.de>; Tue, 14 May 2019 07:21:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UMSPJJiB+Bj957nc8AyTvf+9jqm47gf4T0OhoM9vsNI=; b=RNxIvfJemHiF5/
-	c/5wGIqN3kSpzc72JFT/vNamlggXCHtsoDr0DkEFjOVnyemwsW20CQATIgAll5lqZ2xwHcvPMRDUK
-	wIk2FPeKed83/A5gm0mEkPmRmxUc1lR4b9fFmCbV7JQc4pDA2IB7YifULa7HE2eSOlWuSRzB08Yy5
-	O7eaZ3GyueGt6r4wKZshWD7RhRJvmX0ochxFomTs0KSZkKrxcTG1hF1I3MhkrUN2iUTEebrUpawen
-	EvvV9hnHGnIBlnTreozK0YYdZbkx2pLQiWXLe6FM1hVdTYwj2+aKoF5Wu/NSUfPUs1J7dNLhKckeC
-	gAtPEl1i7jHg+F+qoP5g==;
+	List-Owner; bh=vjaqp4xxuA2nmzudfB5v6uPqRopMcWBwVhXyry9rH+M=; b=nETi8ICOFqor7W
+	OO/9FyMB4Dlm7JUWWp+SvQGDgYyV7goAFWSpiCui1mHXCM6jRGEXdEjyYCExdT9WEkR17WhmGMvkP
+	sp3FerOJZc0PWu2JpNuTA5JJh+fINMrNLU0y4vEK6qCP3l7iJPN3iVhZ9MS6tgv9sY6RflGIjKW3e
+	AYpDxhXPI7icX7SfoIUo+0z0pgAHwTJzKtiKGhXa72MB9H6pcbWwpn7aARjx+ahaLeED+ATcEKq+L
+	PdAgwf2acYnJJEzzTXBJC/nXGWLO2jVBRGwsa+DDGOYXRg6BPayaAJZHoUCyqM9FN+YkgolxZdAzb
+	DfW5wPBj/u3Rcao5p94g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQMq0-000302-7p; Tue, 14 May 2019 02:06:40 +0000
-Received: from userp2120.oracle.com ([156.151.31.85])
+	id 1hQPrz-0005BS-6H; Tue, 14 May 2019 05:20:55 +0000
+Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQMpv-0002zh-MB
- for linux-nvme@lists.infradead.org; Tue, 14 May 2019 02:06:37 +0000
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4E245Vk163757;
- Tue, 14 May 2019 02:06:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : references : date : in-reply-to : message-id : mime-version :
- content-type; s=corp-2018-07-02;
- bh=eBHxKNkRR5Ce1ucgVDEmtR8ENRjTgp/1bnfgKwmBg2Y=;
- b=NTJ9LWVQ6Kn7nMkCJU9mdk4aIXr4+qCp7wdj48YUSGlSO4vTz6WKQpGwtykL2KJsmC/x
- PRuHKi2bLR5mPjPqnvp8amsZ5qyRI5cS6vEQtnneQqqQINGVm9zdgm7vhZvnH3VHuTjs
- Ra0a4P5fz0QdmfxK0ebLMZsxGJeotUVryl3UwbKRJQcAi1Mi2CsEOK9WmXx3LnucoQRz
- W27p5pBK5CpJ6zYCfzJhAvR9FpCNfth2PcyxYLtwCKfmHJZ4DFr5AntSoDsHhlWxQs5i
- Oo0phlnpLRcW80H7QIEPNNHKAfqJgk33P30G1DS+xDsc5i8CQLz3oAwj5t1ldB15YoED gw== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2sdq1qana9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 14 May 2019 02:06:22 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4E25Gc3042362;
- Tue, 14 May 2019 02:06:21 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 2sdmeatf9k-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 14 May 2019 02:06:21 +0000
-Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x4E26GEF006926;
- Tue, 14 May 2019 02:06:17 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 13 May 2019 19:06:16 -0700
-To: Ming Lei <ming.lei@redhat.com>
-Subject: Re: [PATCH V4 0/3] scsi: core: avoid big pre-allocation for sg list
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-References: <20190428073932.9898-1-ming.lei@redhat.com>
-Date: Mon, 13 May 2019 22:06:13 -0400
-In-Reply-To: <20190428073932.9898-1-ming.lei@redhat.com> (Ming Lei's message
- of "Sun, 28 Apr 2019 15:39:29 +0800")
-Message-ID: <yq1a7fpg57u.fsf@oracle.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
+ id 1hQPru-0005B3-C4
+ for linux-nvme@lists.infradead.org; Tue, 14 May 2019 05:20:52 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id 4177C68AFE; Tue, 14 May 2019 07:20:28 +0200 (CEST)
+Date: Tue, 14 May 2019 07:20:27 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Adam Carter <adamcarter3@gmail.com>
+Subject: Re: PROBLEM: call trace triggered in 5.1.1 in
+ drivers/nvme/host/pci.c, 5.0.11 ok
+Message-ID: <20190514052027.GB6294@lst.de>
+References: <CAC=wYCGgPQPjUUjQTZh4H7b8WRQFGmbKCBRAq75g1BXjBR0L0Q@mail.gmail.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9256
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905140013
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9256
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905140013
+Content-Disposition: inline
+In-Reply-To: <CAC=wYCGgPQPjUUjQTZh4H7b8WRQFGmbKCBRAq75g1BXjBR0L0Q@mail.gmail.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190513_190635_858211_235AC5E4 
-X-CRM114-Status: GOOD (  15.64  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190513_222050_562911_A382CA71 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [156.151.31.85 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,38 +58,21 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-block@vger.kernel.org, Hannes Reinecke <hare@suse.com>,
- Bart Van Assche <bvanassche@acm.org>,
- "Martin K . Petersen" <martin.petersen@oracle.com>, netdev@vger.kernel.org,
- "Ewan D . Milne" <emilne@redhat.com>,
- James Bottomley <James.Bottomley@HansenPartnership.com>,
- Chuck Lever <chuck.lever@oracle.com>, linux-nvme@lists.infradead.org,
- linux-scsi@vger.kernel.org, Christoph Hellwig <hch@lst.de>,
- Sagi Grimberg <sagi@grimberg.me>
+Cc: keith.busch@intel.com, axboe@fb.com, hch@lst.de,
+ linux-nvme@lists.infradead.org, sagi@grimberg.me
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+Hi Adam,
 
-Ming,
+thanks for the report!
 
-> Since supporting to blk-mq, big pre-allocation for sg list is
-> introduced, this way is very unfriendly wrt. memory consumption.
+> [  145.788972] ------------[ cut here ]------------
 
-Applied to 5.3/scsi-queue with some clarifications to the commit
-descriptions.
-
-I am not entirely sold on 1 for the inline protection SGL size. NVMe
-over PCIe is pretty constrained thanks to the metadata pointer whereas
-SCSI DIX uses a real SGL for the PI. Consequently, straddling a page is
-not that uncommon for large, sequential I/Os.
-
-But let's try it out. If performance suffers substantially, we may want
-to bump it to 2.
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+Actually despite that "cut here" marker the most relevant information
+is just above that.   Can you just then the full output from dmesg?
 
 _______________________________________________
 Linux-nvme mailing list
