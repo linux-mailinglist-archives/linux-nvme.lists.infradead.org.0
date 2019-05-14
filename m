@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A51231E440
-	for <lists+linux-nvme@lfdr.de>; Tue, 14 May 2019 23:59:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A3AD11E441
+	for <lists+linux-nvme@lfdr.de>; Tue, 14 May 2019 23:59:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,62 +11,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=gHAwQJ/OCQimsqiORQRe0C+Vr14sPgrkYOBGI8K9Trw=; b=Rqk9Id5zIKUBNFwQoj/HOTV+gx
-	HcnGxBf2WNgATGWms/1oAIjtYhqZnLyXxzmaDmwLAubqzIhNDPPdSTSkDKUZ0ep63pcBAeXr96Da2
-	y/t3MtL/3/9Wwkp10PmqskClRYOA1k7vm0c3c85fg0+5GjGlwkxZCqPMEAPiY+2laEWkGNg76JOgE
-	XGW2ObzrOVBduiXpWmfl4BSAKCZTKnRfjHo/h8VqpaoYW965xiq4xYJSP5ROQK1f6nObpHwmnfhQ4
-	RNXtJLkRmmoqDhE2Gs2TBMxBsJNMUUzQQa48T3iOBL1twE5Ladr/rot/s7jM1gLH1QKCNGod+jEHe
-	HEwNNcsQ==;
+	bh=4OwAUrFW5xzA5Tmzis1xDutJAdmnJj+jiVAl+OYxVb4=; b=dgRTlRMDdvURL8DMh5T9RVrDdw
+	hUmdnfX+OJLJBcx9TVyVu5MG16HlbGiwrlGrJ7QKUYnNi/Zg8nY4KBqdaAzT7du88eGxldPvWlaJ7
+	NVmkuB/3O4e5V+3TL4UNQdX32RLSW2tY5Fk+pUDMbOyvP68n6yqpvY0Mj0mi7XXdUNF0HRsEpgm3n
+	ELWxMeqy6rprnl9JM+8dB7/4slXS+8mI+0tMc4chzZ6MgR6GVYNuBGEPrl9G2y0w17ZhN25f3R3lb
+	65N2t6hE/mJuGjwa7e0pofQv8Rj01BW8EOmUy/+D7y9CBj5qycchvdUklQEObmHNgtO8Y9ZRvdeQE
+	cBPiG59g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQfS5-0000O4-FC; Tue, 14 May 2019 21:59:13 +0000
+	id 1hQfSE-0000ZD-0w; Tue, 14 May 2019 21:59:22 +0000
 Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQfRG-0007wO-T1
- for linux-nvme@lists.infradead.org; Tue, 14 May 2019 21:58:28 +0000
-Received: by mail-pf1-x442.google.com with SMTP id g3so202588pfi.4
- for <linux-nvme@lists.infradead.org>; Tue, 14 May 2019 14:58:22 -0700 (PDT)
+ id 1hQfRH-0007xa-Mi
+ for linux-nvme@lists.infradead.org; Tue, 14 May 2019 21:58:35 +0000
+Received: by mail-pf1-x442.google.com with SMTP id v80so204038pfa.3
+ for <linux-nvme@lists.infradead.org>; Tue, 14 May 2019 14:58:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=5BkBJo5sOhZKu6MsKySCWIVvNqSl39cxYbfVt+42XVM=;
- b=hMoXlFisApWIXbHSQ7uFtPv7yXZTPQ2MnzEuv/LU0b+yyV32/uHrEuF5Lom79yod47
- fTF/5jKunmhISJyc7aV6az2M9jJsVHbyUfUFnVTaY/JWBH7CJcjx6mp4rp5UBfnCtQrS
- ox1bD9cuN9qLvJNg77TYJ1L/UsCbuiFfWB/KPVUjXKHrVSwugBCcPOhkKpl0NQJTzyYI
- XkYQ+FLa9Fz23NpRZ7m13xQMRfzuB4zRX6KyoX4D6W8LzPRmFeGD7RsUunucJL3ec5oB
- 2cS/YJRqfTf+8CnB9JTgUchst3igfaAtqpa9nx73dIRkJ/25MPijm5C033O4ihNajvYG
- vJVg==
+ bh=dDoHechCjP8tKP3ZVyPmA2+UV2Bso+a5oEffyYhZyvs=;
+ b=gT+GC4C1HqXZBBO+gfxlthHfNP8mJR5QxhR8wRZNLmrtFyR0UjY6mxmGVjRrypVlpO
+ w2LXJd7DKOipGXIu5O20TlCZ8/3eudQnpqPb8PgKoeDEpVoZ8K8o2TA58I+yqrT3dPp9
+ pu2S7z+yCxU9NLrMBWwMfHU/oAMg5/xEFpSlVwV/ouI/jyxl4D9KCOv8nWbWYB8HCM72
+ S9hGaxWEggel1/ln7mQXpchWsugIsDlvY3LREDLFRqVgF7+t2FEWVgUUqvezghXs3YYh
+ /4KbdtfHJ3l+izadGck2LORfcnCiL9J0XQC4we/J3ObdtPEq2UzaHuKrWzJF6o5OYAfw
+ CnYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=5BkBJo5sOhZKu6MsKySCWIVvNqSl39cxYbfVt+42XVM=;
- b=HpmA05x8tMhS3yzqRENx8e2p/V74AS+gFAxkol4WiCYPERCuJpWAX5Fi9QegZFJJLv
- H/MWXmI9eSJp+sX6MjeioKe1bpbfm4QZasuQLPc/h/e76/3H1Yt+9RRjvykFO9ofVydz
- jEtwWmKn3cRoxf0F1DhebQoM7OUYiIyvlV9vUcPVF2BhFYeHGONqIy2Gpt5lbQAptCxR
- VMSMxkjDtFlJKeokLpkchKYozs83dm5ARg1dyX0GsqV8zvC5vM64XAMJU+eqEZzREsnk
- 8F2YuXGR7npBNY4gCR0uiIiWGeAgbw9KXRPowCZniORlHdldP7ovIjmgMueDENicYq6b
- nWSQ==
-X-Gm-Message-State: APjAAAWvmedRX2v68R0BWbxA1trRWs4yUDN1JCOueZzwR+kMLWwB5N/O
- XLIMN4GV1jXGblZGuRPIpYPCh9ns
-X-Google-Smtp-Source: APXvYqym4+1CRgEj7vg5C95YkxeJ7NWYnTR7Knza7X/UG7N512mBL6Iv+poUZAy9Slin93S+F1Oolg==
-X-Received: by 2002:a62:125c:: with SMTP id a89mr43148848pfj.93.1557871102060; 
- Tue, 14 May 2019 14:58:22 -0700 (PDT)
+ bh=dDoHechCjP8tKP3ZVyPmA2+UV2Bso+a5oEffyYhZyvs=;
+ b=nZMz1Ki77WL2fvtW4nGT8JofaeXINR5Rcen+s5ddZd0XeXKYMCg6mE9hnE/pib6ICF
+ 6iheagHFdC/OQ5ywNGbtWvvV/IMnHxxepSlgTTTY6P5L3jKucTVu3tOP2hKf/psErPLr
+ sXt8OW4FvDAhpBydVrLceLMtIWu0rW/8owPEZJjP75q+mUMzknperFcK5EYSMevJZV1R
+ JrLHbNdG9DzwbUok9OGz+zCdLgzWpG6mg7LLAin2KjyPg7kI/gqZ6wBcA2PN6XVGcbPh
+ EAgA9hwBaEKSOqhx7/UwoZOaknJLPRklHdY6ZKnrU6ZaaXisD5KZncs1BDofivOmuyDc
+ FLqw==
+X-Gm-Message-State: APjAAAX4LrSHNLUq740/m7rgUjtO86Bk7kN0LqellH6ixVaEBEAsDn1u
+ 2MlZ6NAZ8Vp8a8MlCeW8rlVGAp8Y
+X-Google-Smtp-Source: APXvYqzaxnErsBtWsHbJkICdPNYin+xAqGm6RKqrRmHDMfI/8I9MNU6i1KL/W0A8g9edOmQhUDqBZw==
+X-Received: by 2002:a63:1a03:: with SMTP id a3mr40594253pga.412.1557871103020; 
+ Tue, 14 May 2019 14:58:23 -0700 (PDT)
 Received: from os42.localdomain ([192.19.223.250])
- by smtp.gmail.com with ESMTPSA id o6sm120917pfa.88.2019.05.14.14.58.21
+ by smtp.gmail.com with ESMTPSA id o6sm120917pfa.88.2019.05.14.14.58.22
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Tue, 14 May 2019 14:58:21 -0700 (PDT)
+ Tue, 14 May 2019 14:58:22 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2 6/7] lpfc: Add support for translating an RSCN rcv into a
- discovery rescan
-Date: Tue, 14 May 2019 14:58:07 -0700
-Message-Id: <20190514215808.10572-7-jsmart2021@gmail.com>
+Subject: [PATCH v2 7/7] lpfc: Add sysfs interface to post NVME RSCN
+Date: Tue, 14 May 2019 14:58:08 -0700
+Message-Id: <20190514215808.10572-8-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.13.7
 In-Reply-To: <20190514215808.10572-1-jsmart2021@gmail.com>
 References: <20190514215808.10572-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190514_145823_339442_9A2BEBC7 
-X-CRM114-Status: GOOD (  16.72  )
+X-CRM114-CacheID: sfid-20190514_145824_219817_0585C758 
+X-CRM114-Status: GOOD (  15.62  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
@@ -106,114 +105,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This patch updates RSCN receive processing to check for the remote
-port being an NVME port, and if so, invoke the nvme_fc callback to
-rescan the remote port.  The rescan will generate a discovery udev
-event.
+To support scenarios which aren't bound to nvmetcli add port scenarios,
+which is currently where the nvmet_fc transport invokes the discovery
+event callbacks, a syfs attribute is added to lpfc which can be written
+to cause an RSCN to be generated for the nport.
 
 Signed-off-by: Dick Kennedy <dick.kennedy@broadcom.com>
 Signed-off-by: James Smart <jsmart2021@gmail.com>
 Reviewed-by: Hannes Reinecke <hare@suse.com>
-
 ---
-v2: correct rport role to check for nvme discovery not just nvme target
----
- drivers/scsi/lpfc/lpfc_crtn.h |  2 ++
- drivers/scsi/lpfc/lpfc_els.c  |  5 +++++
- drivers/scsi/lpfc/lpfc_nvme.c | 44 +++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 51 insertions(+)
+ drivers/scsi/lpfc/lpfc.h      |  1 +
+ drivers/scsi/lpfc/lpfc_attr.c | 60 +++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 61 insertions(+)
 
-diff --git a/drivers/scsi/lpfc/lpfc_crtn.h b/drivers/scsi/lpfc/lpfc_crtn.h
-index 4b8eb9107b85..866374801140 100644
---- a/drivers/scsi/lpfc/lpfc_crtn.h
-+++ b/drivers/scsi/lpfc/lpfc_crtn.h
-@@ -557,6 +557,8 @@ void lpfc_ras_stop_fwlog(struct lpfc_hba *phba);
- int lpfc_check_fwlog_support(struct lpfc_hba *phba);
+diff --git a/drivers/scsi/lpfc/lpfc.h b/drivers/scsi/lpfc/lpfc.h
+index 9246e0212a86..5ef0efb830d2 100644
+--- a/drivers/scsi/lpfc/lpfc.h
++++ b/drivers/scsi/lpfc/lpfc.h
+@@ -820,6 +820,7 @@ struct lpfc_hba {
+ 	uint32_t cfg_use_msi;
+ 	uint32_t cfg_auto_imax;
+ 	uint32_t cfg_fcp_imax;
++	uint32_t cfg_force_rscn;
+ 	uint32_t cfg_cq_poll_threshold;
+ 	uint32_t cfg_cq_max_proc_limit;
+ 	uint32_t cfg_fcp_cpu_map;
+diff --git a/drivers/scsi/lpfc/lpfc_attr.c b/drivers/scsi/lpfc/lpfc_attr.c
+index ce3e541434dc..8b09e82ddfcf 100644
+--- a/drivers/scsi/lpfc/lpfc_attr.c
++++ b/drivers/scsi/lpfc/lpfc_attr.c
+@@ -4912,6 +4912,64 @@ static DEVICE_ATTR(lpfc_req_fw_upgrade, S_IRUGO | S_IWUSR,
+ 		   lpfc_request_firmware_upgrade_store);
  
- /* NVME interfaces. */
-+void lpfc_nvme_rescan_port(struct lpfc_vport *vport,
-+			   struct lpfc_nodelist *ndlp);
- void lpfc_nvme_unregister_port(struct lpfc_vport *vport,
- 			struct lpfc_nodelist *ndlp);
- int lpfc_nvme_register_port(struct lpfc_vport *vport,
-diff --git a/drivers/scsi/lpfc/lpfc_els.c b/drivers/scsi/lpfc/lpfc_els.c
-index c9a40e05edcc..c8b305c1aafb 100644
---- a/drivers/scsi/lpfc/lpfc_els.c
-+++ b/drivers/scsi/lpfc/lpfc_els.c
-@@ -6329,6 +6329,8 @@ lpfc_rscn_recovery_check(struct lpfc_vport *vport)
- 			continue;
- 		}
- 
-+		if (ndlp->nlp_fc4_type & NLP_FC4_NVME)
-+			lpfc_nvme_rescan_port(vport, ndlp);
- 
- 		lpfc_disc_state_machine(vport, ndlp, NULL,
- 					NLP_EVT_DEVICE_RECOVERY);
-@@ -6440,6 +6442,9 @@ lpfc_els_rcv_rscn(struct lpfc_vport *vport, struct lpfc_iocbq *cmdiocb,
- 				 "2024 pt2pt RSCN %08x Data: x%x x%x\n",
- 				 *lp, vport->fc_flag, payload_len);
- 		lpfc_els_rsp_acc(vport, ELS_CMD_ACC, cmdiocb, ndlp, NULL);
-+
-+		if (ndlp->nlp_fc4_type & NLP_FC4_NVME)
-+			lpfc_nvme_rescan_port(vport, ndlp);
- 		return 0;
- 	}
- 
-diff --git a/drivers/scsi/lpfc/lpfc_nvme.c b/drivers/scsi/lpfc/lpfc_nvme.c
-index 1aa00d2c3f74..e6c945e29557 100644
---- a/drivers/scsi/lpfc/lpfc_nvme.c
-+++ b/drivers/scsi/lpfc/lpfc_nvme.c
-@@ -2399,6 +2399,50 @@ lpfc_nvme_register_port(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp)
- #endif
- }
- 
-+/**
-+ * lpfc_nvme_rescan_port - Check to see if we should rescan this remoteport
+ /**
++ * lpfc_force_rscn_store
 + *
-+ * If the ndlp represents an NVME Target, that we are logged into,
-+ * ping the NVME FC Transport layer to initiate a device rescan
-+ * on this remote NPort.
-+ */
-+void
-+lpfc_nvme_rescan_port(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp)
++ * @dev: class device that is converted into a Scsi_host.
++ * @attr: device attribute, not used.
++ * @buf: unused string
++ * @count: unused variable.
++ *
++ * Description:
++ * Force the switch to send a RSCN to all other NPorts in our zone
++ * If we are direct connect pt2pt, build the RSCN command ourself
++ * and send to the other NPort. Not supported for private loop.
++ *
++ * Returns:
++ * 0      - on success
++ * -EIO   - if command is not sent
++ **/
++static ssize_t
++lpfc_force_rscn_store(struct device *dev, struct device_attribute *attr,
++		      const char *buf, size_t count)
 +{
-+#if (IS_ENABLED(CONFIG_NVME_FC))
-+	struct lpfc_nvme_rport *rport;
-+	struct nvme_fc_remote_port *remoteport;
++	struct Scsi_Host *shost = class_to_shost(dev);
++	struct lpfc_vport *vport = (struct lpfc_vport *)shost->hostdata;
++	int i;
 +
-+	rport = ndlp->nrport;
-+
-+	lpfc_printf_vlog(vport, KERN_INFO, LOG_NVME_DISC,
-+			 "6170 Rescan NPort DID x%06x type x%x "
-+			 "state x%x rport %p\n",
-+			 ndlp->nlp_DID, ndlp->nlp_type, ndlp->nlp_state, rport);
-+	if (!rport)
-+		goto input_err;
-+	remoteport = rport->remoteport;
-+	if (!remoteport)
-+		goto input_err;
-+
-+	/* Only rescan if we are an NVME target in the MAPPED state */
-+	if (remoteport->port_role & FC_PORT_ROLE_NVME_DISCOVERY &&
-+	    ndlp->nlp_state == NLP_STE_MAPPED_NODE) {
-+		nvme_fc_rescan_remoteport(remoteport);
-+
-+		lpfc_printf_vlog(vport, KERN_ERR, LOG_NVME_DISC,
-+				 "6172 NVME rescanned DID x%06x "
-+				 "port_state x%x\n",
-+				 ndlp->nlp_DID, remoteport->port_state);
-+	}
-+	return;
-+input_err:
-+	lpfc_printf_vlog(vport, KERN_ERR, LOG_NVME_DISC,
-+			 "6169 State error: lport %p, rport%p FCID x%06x\n",
-+			 vport->localport, ndlp->rport, ndlp->nlp_DID);
-+#endif
++	i = lpfc_issue_els_rscn(vport, 0);
++	if (i)
++		return -EIO;
++	return strlen(buf);
 +}
 +
- /* lpfc_nvme_unregister_port - unbind the DID and port_role from this rport.
++/*
++ * lpfc_force_rscn: Force an RSCN to be sent to all remote NPorts
++ * connected to  the HBA.
++ *
++ * Value range is any ascii value
++ */
++static int lpfc_force_rscn;
++module_param(lpfc_force_rscn, int, 0644);
++MODULE_PARM_DESC(lpfc_force_rscn,
++		 "Force an RSCN to be sent to all remote NPorts");
++lpfc_param_show(force_rscn)
++
++/**
++ * lpfc_force_rscn_init - Force an RSCN to be sent to all remote NPorts
++ * @phba: lpfc_hba pointer.
++ * @val: unused value.
++ *
++ * Returns:
++ * zero if val saved.
++ **/
++static int
++lpfc_force_rscn_init(struct lpfc_hba *phba, int val)
++{
++	return 0;
++}
++static DEVICE_ATTR_RW(lpfc_force_rscn);
++
++/**
+  * lpfc_fcp_imax_store
   *
-  * There is no notion of Devloss or rport recovery from the current
+  * @dev: class device that is converted into a Scsi_host.
+@@ -5911,6 +5969,7 @@ struct device_attribute *lpfc_hba_attrs[] = {
+ 	&dev_attr_lpfc_nvme_oas,
+ 	&dev_attr_lpfc_nvme_embed_cmd,
+ 	&dev_attr_lpfc_fcp_imax,
++	&dev_attr_lpfc_force_rscn,
+ 	&dev_attr_lpfc_cq_poll_threshold,
+ 	&dev_attr_lpfc_cq_max_proc_limit,
+ 	&dev_attr_lpfc_fcp_cpu_map,
+@@ -6958,6 +7017,7 @@ lpfc_get_cfgparam(struct lpfc_hba *phba)
+ 	lpfc_nvme_oas_init(phba, lpfc_nvme_oas);
+ 	lpfc_nvme_embed_cmd_init(phba, lpfc_nvme_embed_cmd);
+ 	lpfc_fcp_imax_init(phba, lpfc_fcp_imax);
++	lpfc_force_rscn_init(phba, lpfc_force_rscn);
+ 	lpfc_cq_poll_threshold_init(phba, lpfc_cq_poll_threshold);
+ 	lpfc_cq_max_proc_limit_init(phba, lpfc_cq_max_proc_limit);
+ 	lpfc_fcp_cpu_map_init(phba, lpfc_fcp_cpu_map);
 -- 
 2.13.7
 
