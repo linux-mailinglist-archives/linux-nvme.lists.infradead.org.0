@@ -2,80 +2,54 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20ACF1C458
-	for <lists+linux-nvme@lfdr.de>; Tue, 14 May 2019 10:04:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 861FC1C6B2
+	for <lists+linux-nvme@lfdr.de>; Tue, 14 May 2019 12:12:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HNKkOlAD/5mMO763ym9AlwXotq/GTQcxCQCMzbboFVg=; b=UBi7MfKXCqTvmK
-	XT3Ri/9MOsVmBRrxURokbZfgpchdp+MeEz3YkXypt8LOkR26juEfxLBRfdNbM8CuAtUne1kIhTto0
-	57oqYRHHr0jUnEpQtcG+Ucip9EWNlCosL/U+pWAtUcrcjI763y7wR6p8NzM3TTl7PB+3vIeFtNqFG
-	w8LmISDRTPRLM48H2J9y+unlfvdX5yu4Uj86tXuWhdu2nnHjRYv3fCgEJd0/1YUiynIRCRfJk0k2Q
-	xLkotK1J49vYSeP5dKenPfVuz5qE4zgC2bWagzxQys/hPqMKff0bipz8bxL89uueEioRN4Xqa3xn6
-	DavVZGEjnG3PnAsWMqjA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=kL2FWbrPQNIv4tvC16mtbzUSO0yBw9IQBWvsF1APWpc=; b=EFhMhK5ydb1cuG7QX9BhU9eGo
+	vaArIt7iJSrmh5g1EwikcrI0PngAiCQ0DWfeFDVqqjxx2C6c0R5ve76vNpsFWwzCeXYRBXm5VxQMW
+	6NNrdVLlFJtDepO7QZzcuVra5l+2G/UW6IwdrfN/CV6ReiBQv06edazus6Ona75FxgxR56kVouvoi
+	BLWk9J/P69onsQ5+cd5a2ZS1/yG4TZEiHxqiN1hXi7tr+u6zcsFBiq81XjlC7ZaQPG3pVI1XjNUj+
+	9aFym7aDxrAs5SJaNkcuIR4oiJNRvlgbnOgj05jbcVoynxH2hbmDpfwZLyvg9d+LCLro3shTn2BP/
+	+7oKDDMJg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQSQV-00028a-6c; Tue, 14 May 2019 08:04:43 +0000
-Received: from mail-ot1-f66.google.com ([209.85.210.66])
+	id 1hQUPw-0002qy-9b; Tue, 14 May 2019 10:12:16 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQSQO-00027n-8c
- for linux-nvme@lists.infradead.org; Tue, 14 May 2019 08:04:39 +0000
-Received: by mail-ot1-f66.google.com with SMTP id l17so14405187otq.1
- for <linux-nvme@lists.infradead.org>; Tue, 14 May 2019 01:04:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kB17CNIkNudo9lQqUE06/YkvGevRbJzz0AoPJPb6ktc=;
- b=LRd2+Xf9uEvuk7GAHzcDses02Q4X8zwnXPYkjyzGCiB6rlBNs4oe6RuC9sk5DfSKjr
- 50OvpMfxrzo661kBDAy+Jn8NKtAkSozmiFiao4zBQCmipuLnF2HpK9s4OtJiIaAr8vQY
- Vrz5nZnvXz/C4P5o0GwC6JMYIPs85zpZ8Ta/1FsSchSHqLvOOcOhjbcNxeEMAPx6jFNP
- RnW/K4PPjktRiC97oVNRd/Q6uv7kRDCvmYTBAc6kqg5z9z3Y2MUWZDE0uofjSIb5422r
- HwUbxwhEszC7L/XETukyGYZXcv2RIOfUXUffPjE9l3iRG4ptlx5HvdO5OejyJPJkPRCD
- U4nw==
-X-Gm-Message-State: APjAAAW8tQcaWD3sqb6W/xVeh1S4eZqBFrgBBNi2NJ2qZ+y7xPuHpOyf
- A7DcPAb7V/knBhyTE28KayTbGmOjiqG5ljdzRjw=
-X-Google-Smtp-Source: APXvYqxWif0G6pQHhcU4KlJ5vC6KPXRlOORPDLaMZI5cz8NUcPo2oZliCB12ipxHoYjnRvcTjRrFXRhyFfoFmxezLIc=
-X-Received: by 2002:a9d:5912:: with SMTP id t18mr14859091oth.252.1557821074817; 
- Tue, 14 May 2019 01:04:34 -0700 (PDT)
+ id 1hQUPr-0002qS-S2
+ for linux-nvme@lists.infradead.org; Tue, 14 May 2019 10:12:13 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 00691AFA1;
+ Tue, 14 May 2019 10:12:07 +0000 (UTC)
+Subject: Re: [PATCH 1/7] nvmet: add transport discovery change op
+To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
+References: <20190513224314.24169-1-jsmart2021@gmail.com>
+ <20190513224314.24169-2-jsmart2021@gmail.com>
+From: Hannes Reinecke <hare@suse.de>
+Message-ID: <3ea977e2-0b26-6b8f-63b4-c54fbe801dc2@suse.de>
+Date: Tue, 14 May 2019 12:12:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20190510212937.11661-1-keith.busch@intel.com>
- <0080aaff18e5445dabca509d4113eca8@AUSX13MPC105.AMER.DELL.COM>
- <955722d8fc16425dbba0698c4806f8fd@AUSX13MPC105.AMER.DELL.COM>
- <20190513143741.GA25500@lst.de>
- <b12ff66f8c224e4199ff1b90ed6bc393@AUSX13MPC105.AMER.DELL.COM>
- <20190513145522.GA15421@localhost.localdomain>
- <d69ff7154191492eaa8f55535a7effa5@AUSX13MPC105.AMER.DELL.COM>
- <20190513150458.GA15437@localhost.localdomain>
-In-Reply-To: <20190513150458.GA15437@localhost.localdomain>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Tue, 14 May 2019 10:04:22 +0200
-Message-ID: <CAJZ5v0g3cCYK3rAQn09pCr7LMrRr=zQy_ceaEB5AKhVx604YgA@mail.gmail.com>
-Subject: Re: [PATCH] nvme/pci: Use host managed power state for suspend
-To: Keith Busch <kbusch@kernel.org>
+In-Reply-To: <20190513224314.24169-2-jsmart2021@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190514_010437_704117_356E1E66 
-X-CRM114-Status: GOOD (  20.94  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190514_031212_053441_22AF6C67 
+X-CRM114-Status: GOOD (  17.87  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.66 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (rjwysocki[at]gmail.com)
- 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.66 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,61 +61,33 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Linux PM <linux-pm@vger.kernel.org>,
- Mario Limonciello <Mario.Limonciello@dell.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>,
- Keith Busch <keith.busch@intel.com>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: martin.petersen@oracle.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, May 13, 2019 at 5:10 PM Keith Busch <kbusch@kernel.org> wrote:
->
-> On Mon, May 13, 2019 at 03:05:42PM +0000, Mario.Limonciello@dell.com wrote:
-> > This system power state - suspend to idle is going to freeze threads.
-> > But we're talking a multi threaded kernel.  Can't there be a timing problem going
-> > on then too?  With a disk flush being active in one task and the other task trying
-> > to put the disk into the deepest power state.  If you don't freeze the queues how
-> > can you guarantee that didn't happen?
->
-> But if an active data flush task is running, then we're not idle and
-> shouldn't go to low power.
-
-To be entirely precise, system suspend prevents user space from
-running while it is in progress.  It doesn't do that to kernel
-threads, at least not by default, though, so if there is a kernel
-thread flushing the data, it needs to be stopped or suspended somehow
-directly in the system suspend path.  [And yes, system suspend (or
-hibernation) may take place at any time so long as all user space can
-be prevented from running then (by means of the tasks freezer).]
-
-However, freezing the queues from a driver ->suspend callback doesn't
-help in general and the reason why is hibernation.  Roughly speaking,
-hibernation works in two steps, the first of which creates a snapshot
-image of system memory and the second one writes that image to
-persistent storage.  Devices are resumed between the two steps in
-order to make it possible to do the write, but that would unfreeze the
-queues and let the data flusher run.  If it runs, it may cause the
-memory snapshot image that has just been created to become outdated
-and restoring the system memory contents from that image going forward
-may cause corruption to occur.
-
-Thus freezing the queues from a driver ->suspend callback should not
-be relied on for correctness if the same callback is used for system
-suspend and hibernation, which is the case here.  If doing that
-prevents the system from crashing, it is critical to find out why IMO,
-as that may very well indicate a broader issue, not necessarily in the
-driver itself.
-
-But note that even if the device turns out to behave oddly, it still
-needs to be handled, unless it may be prevented from shipping to users
-in that shape.  If it ships, users will face the odd behavior anyway.
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNS8xNC8xOSAxMjo0MyBBTSwgSmFtZXMgU21hcnQgd3JvdGU6Cj4gU29tZSB0cmFuc3BvcnRz
+LCBzdWNoIGFzIEZDLU5WTUUsIHN1cHBvcnQgZGlzY292ZXJ5IGNvbnRyb2xsZXIgY2hhbmdlCj4g
+ZXZlbnRzIHdpdGhvdXQgdGhlIHVzZSBvZiBhIHBlcnNpc3RlbnQgZGlzY292ZXJ5IGNvbnRyb2xs
+ZXIuIEZDIHJlY2VpdmVzCj4gZXZlbnRzIHZpYSBSU0NOIGZyb20gdGhlIEZDIEZhYnJpYyBDb250
+cm9sbGVyIG9yIHN1YnN5c3RlbSBGQyBwb3J0Lgo+IAo+IFRoaXMgcGF0Y2ggYWRkcyBhIG52bWV0
+IHRyYW5zcG9ydCBvcCB0aGF0IGlzIGNhbGxlZCB3aGVuZXZlciBhCj4gZGlzY292ZXJ5IGNoYW5n
+ZSBldmVudCBvY2N1cnMgaW4gdGhlIG52bWV0IGxheWVyLgo+IAo+IFRvIGZhY2lsaXRhdGUgdGhl
+IGNhbGxiYWNrIHdpdGhvdXQgYWRkaW5nIGFub3RoZXIgbGF5ZXIgdG8gY3Jvc3MgaW50bwo+IGNv
+cmUuYyB0byByZWZlcmVuY2UgdGhlIHRyYW5zcG9ydCBvcHMsIHRoZSBwb3J0IHN0cnVjdHVyZSBz
+bmFwc2hvdHMKPiB0aGUgdHJhbnNwb3J0IG9wcyB3aGVuIHRoZSBwb3J0IGlzIGVuYWJsZWQgYW5k
+IGNsZWFycyB0aGVtIHdoZW4gZGlzYWJsZWQuCj4gCj4gU2lnbmVkLW9mZi1ieTogSmFtZXMgU21h
+cnQgPGpzbWFydDIwMjFAZ21haWwuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9udm1lL3RhcmdldC9j
+b3JlLmMgICAgICB8IDIgKysKPiAgIGRyaXZlcnMvbnZtZS90YXJnZXQvZGlzY292ZXJ5LmMgfCA0
+ICsrKysKPiAgIGRyaXZlcnMvbnZtZS90YXJnZXQvbnZtZXQuaCAgICAgfCAyICsrCj4gICAzIGZp
+bGVzIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+IApJIGxpa2UgdGhlIGlkZWEsIGFuZCBzb21l
+dGhpbmcgbGlrZSB0aGlzIGlzIGluIGZhY3QgcmVxdWlyZWQgd2hlbiAKcmVzdGFydGluZyBudm1l
+dGNsaS4KClJldmlld2VkLWJ5OiBIYW5uZXMgUmVpbmVja2UgPGhhcmVAc3VzZS5jb20+CgpDaGVl
+cnMsCgpIYW5uZXMKLS0gCkRyLiBIYW5uZXMgUmVpbmVja2UJCSAgIFRlYW1sZWFkIFN0b3JhZ2Ug
+JiBOZXR3b3JraW5nCmhhcmVAc3VzZS5kZQkJCSAgICAgICAgICAgICAgICs0OSA5MTEgNzQwNTMg
+Njg4ClNVU0UgTElOVVggR21iSCwgTWF4ZmVsZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnCkdGOiBG
+ZWxpeCBJbWVuZMO2cmZmZXIsIE1hcnkgSGlnZ2lucywgU3JpIFJhc2lhaApIUkIgMjEyODQgKEFH
+IE7DvHJuYmVyZykKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
