@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 822D01F8D2
-	for <lists+linux-nvme@lfdr.de>; Wed, 15 May 2019 18:42:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DC7121F8D4
+	for <lists+linux-nvme@lfdr.de>; Wed, 15 May 2019 18:42:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,19 +11,19 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=Ub8Y/Z+083euRtDiz304RiRWFX+MVO7popsH26Lidg0=; b=NbLaBtshkfheJ0fGeBUiiDF2ZC
-	TPCXe09ezNP6FUGAAfoVCG4WGVL3OFQjIuG9iy1/mz9HIALqqeKYAZe0mnysf7nkX9X00qF3p5VbO
-	3Yq3iPby9hv5WUILGsrcKvj128SMlbw6UT10ZWCvSKuxLhq6WkTgei1bJhHEutg6ca7RQ+3YfPBZ7
-	QckjlK44UufE6ZWu5VEzK+udkNYOfJOpMWIMCV4uk6J2Kk/7sZfWiY94v2HctadVJ1/T5pFq1lKA8
-	XgZqIQxOvl1SO5ObXQ7SAAdoxGKzK7bfR+9ZxslQIKWQ3qUyav9j7cVsD+Qu10FDSmHAE8WuKHyBC
-	GBWugt2w==;
+	bh=8SGHdiE8YlMd+Rdfy2aR0QD51Flp8vzkfr6u9RNs+p0=; b=YSOTGKIaAjrWposqBbi2NQ7TlB
+	YOlaXo23T63deRpyLb/3xKF/wubftNPkRFGUNO/GN+fCum1tTpgQVeB2/dOgzO8R/19xeUPCkb4aT
+	mnERa4YVdkH9IHJejcG/AhbsvqylpELoxAhQsz90UcAUnNPfpViNiEh8iB9nS3e9UGvbxurvYyQi/
+	2mTEhEPi2s00NSz9VoN/JXs15ZvvaJWWH7T75QVb8bvoOuxNMDGG9+uDJWHcoxi8hotJRUsRPi/fe
+	TIfZ+yWNOg2KhnelIudJXzbApqa04Dy2GhFtW4TgeXV1A3MYXKuWJkbvOFzQ1sdxinzqP0mBlLz0R
+	NXvoAJNQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQwyv-00074m-5R; Wed, 15 May 2019 16:42:17 +0000
+	id 1hQwzA-0007Ns-Dq; Wed, 15 May 2019 16:42:32 +0000
 Received: from mga05.intel.com ([192.55.52.43])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQwyV-0006gB-N9
- for linux-nvme@lists.infradead.org; Wed, 15 May 2019 16:41:53 +0000
+ id 1hQwyX-0006fd-0j
+ for linux-nvme@lists.infradead.org; Wed, 15 May 2019 16:41:57 +0000
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
@@ -35,15 +35,15 @@ Received: from unknown (HELO localhost.lm.intel.com) ([10.232.112.69])
 From: Keith Busch <keith.busch@intel.com>
 To: Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
  linux-nvme@lists.infradead.org
-Subject: [PATCH 5/6] nvme: Export get and set features
-Date: Wed, 15 May 2019 10:36:24 -0600
-Message-Id: <20190515163625.21776-5-keith.busch@intel.com>
+Subject: [PATCHv2 6/6] nvme-pci: Use host managed power state for suspend
+Date: Wed, 15 May 2019 10:36:25 -0600
+Message-Id: <20190515163625.21776-6-keith.busch@intel.com>
 X-Mailer: git-send-email 2.13.6
 In-Reply-To: <20190515163625.21776-1-keith.busch@intel.com>
 References: <20190515163625.21776-1-keith.busch@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190515_094151_761726_5E3E576D 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20190515_094153_238470_FCA7CFBD 
+X-CRM114-Status: GOOD (  16.68  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -63,84 +63,161 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Rafael Wysocki <rafael@kernel.org>
+Cc: Keith Busch <keith.busch@intel.com>,
+ Kai Heng Feng <kai.heng.feng@canonical.com>,
+ Mario Limonciello <Mario.Limonciello@dell.com>,
+ Rafael Wysocki <rafael@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Future use intends to make use of features, so export these functions. And
-since their implementation is identical except for the opcode, provide
-a new convenience function that implement each.
+The nvme pci driver prepares its devices for power loss during suspend
+by shutting down the controllers. The power setting is deferred to
+pci driver's power management before the platform removes power. The
+suspend-to-idle mode, however, does not remove power.
 
+NVMe devices that implement host managed power settings can achieve
+lower power and better transition latencies than using generic PCI power
+settings. Try to use this feature if the platform is not involved with
+the suspend. If successful, restore the previous power state on resume.
+
+Cc: Mario Limonciello <Mario.Limonciello@dell.com>
+Cc: Kai Heng Feng <kai.heng.feng@canonical.com>
 Signed-off-by: Keith Busch <keith.busch@intel.com>
 ---
- drivers/nvme/host/core.c | 22 +++++++++++++++++++---
- drivers/nvme/host/nvme.h |  4 ++++
- 2 files changed, 23 insertions(+), 3 deletions(-)
+v1 -> v2:
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index a116ea037f83..f2411d50e764 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -1113,15 +1113,15 @@ static struct nvme_id_ns *nvme_identify_ns(struct nvme_ctrl *ctrl,
- 	return id;
+  Split prep patches for the get features
+
+  Ensure queued and dispatch IO completes before attempting to set the low
+  power state. This also required a sync to ensure that nothing timed
+  out or reset the controller while we attempted the intermittent queue freeze.
+
+  Disable HMB if enabled. It is not clear this should be necessary except
+  through empirical reports.
+
+ drivers/nvme/host/pci.c | 80 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 80 insertions(+)
+
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 599065ed6a32..42d5c6369803 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -18,6 +18,7 @@
+ #include <linux/mutex.h>
+ #include <linux/once.h>
+ #include <linux/pci.h>
++#include <linux/suspend.h>
+ #include <linux/t10-pi.h>
+ #include <linux/types.h>
+ #include <linux/io-64-nonatomic-lo-hi.h>
+@@ -116,6 +117,7 @@ struct nvme_dev {
+ 	u32 cmbsz;
+ 	u32 cmbloc;
+ 	struct nvme_ctrl ctrl;
++	u32 last_ps;
+ 
+ 	mempool_t *iod_mempool;
+ 
+@@ -2829,11 +2831,87 @@ static void nvme_remove(struct pci_dev *pdev)
  }
  
--static int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
--		      void *buffer, size_t buflen, u32 *result)
-+static int nvme_features(struct nvme_ctrl *dev, u8 op, unsigned fid,
-+		unsigned dword11, void *buffer, size_t buflen, u32 *result)
+ #ifdef CONFIG_PM_SLEEP
++static int nvme_deep_state(struct nvme_dev *dev)
++{
++	struct pci_dev *pdev = to_pci_dev(dev->dev);
++	struct nvme_ctrl *ctrl = &dev->ctrl;
++	int ret = -EBUSY;;
++
++	nvme_start_freeze(ctrl);
++	nvme_wait_freeze(ctrl);
++	nvme_sync_queues(ctrl);
++
++	if (ctrl->state != NVME_CTRL_LIVE &&
++	    ctrl->state != NVME_CTRL_ADMIN_ONLY)
++		goto unfreeze;
++
++	if (dev->host_mem_descs) {
++		ret = nvme_set_host_mem(dev, 0);
++		if (ret < 0)
++			goto unfreeze;
++	}
++
++	dev->last_ps = 0;
++	ret = nvme_get_features(ctrl, NVME_FEAT_POWER_MGMT, 0, NULL, 0,
++				&dev->last_ps);
++	if (ret < 0)
++		goto unfreeze;
++
++	ret = nvme_set_features(ctrl, NVME_FEAT_POWER_MGMT, dev->ctrl.npss,
++				NULL, 0, NULL);
++	if (ret < 0)
++		goto unfreeze;
++
++	if (ret) {
++		/*
++		 * Clearing npss forces a controller reset on resume. The
++		 * correct value will be resdicovered then.
++		 */
++		ctrl->npss = 0;
++		nvme_dev_disable(dev, true);
++		ret = 0;
++		goto unfreeze;
++	}
++
++	/*
++	 * A saved state prevents pci pm from generically controlling the
++	 * device's power. We're using protocol specific settings so we don't
++	 * want pci interfering.
++	 */
++	pci_save_state(pdev);
++unfreeze:
++	nvme_unfreeze(ctrl);
++	return ret;
++}
++
++static int nvme_make_operational(struct nvme_dev *dev)
++{
++	struct nvme_ctrl *ctrl = &dev->ctrl;
++	int ret;
++
++	ret = nvme_set_features(ctrl, NVME_FEAT_POWER_MGMT, dev->last_ps,
++				NULL, 0, NULL);
++	if (ret)
++		goto reset;
++
++	if (dev->host_mem_descs) {
++		ret = nvme_setup_host_mem(dev);
++		if (ret)
++			goto reset;
++	}
++	return 0;
++reset:
++	nvme_reset_ctrl(ctrl);
++	return 0;
++}
++
+ static int nvme_suspend(struct device *dev)
  {
- 	struct nvme_command c;
- 	union nvme_result res;
- 	int ret;
+ 	struct pci_dev *pdev = to_pci_dev(dev);
+ 	struct nvme_dev *ndev = pci_get_drvdata(pdev);
  
- 	memset(&c, 0, sizeof(c));
--	c.features.opcode = nvme_admin_set_features;
-+	c.features.opcode = op;
- 	c.features.fid = cpu_to_le32(fid);
- 	c.features.dword11 = cpu_to_le32(dword11);
- 
-@@ -1132,6 +1132,22 @@ static int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword
- 	return ret;
++	if (!pm_suspend_via_firmware() && ndev->ctrl.npss)
++		return nvme_deep_state(ndev);
+ 	nvme_dev_disable(ndev, true);
+ 	return 0;
  }
+@@ -2843,6 +2921,8 @@ static int nvme_resume(struct device *dev)
+ 	struct pci_dev *pdev = to_pci_dev(dev);
+ 	struct nvme_dev *ndev = pci_get_drvdata(pdev);
  
-+int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
-+		      void *buffer, size_t buflen, u32 *result)
-+{
-+	return nvme_features(dev, nvme_admin_set_features, fid, dword11, buffer,
-+			     buflen, result);
-+}
-+EXPORT_SYMBOL_GPL(nvme_set_features);
-+
-+int nvme_get_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
-+		      void *buffer, size_t buflen, u32 *result)
-+{
-+	return nvme_features(dev, nvme_admin_get_features, fid, dword11, buffer,
-+			     buflen, result);
-+}
-+EXPORT_SYMBOL_GPL(nvme_get_features);
-+
- int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count)
- {
- 	u32 q_count = (*count - 1) | ((*count - 1) << 16);
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 55553d293a98..90aa38c588ed 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -459,6 +459,10 @@ int __nvme_submit_sync_cmd(struct request_queue *q, struct nvme_command *cmd,
- 		union nvme_result *result, void *buffer, unsigned bufflen,
- 		unsigned timeout, int qid, int at_head,
- 		blk_mq_req_flags_t flags, bool poll);
-+int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
-+		      void *buffer, size_t buflen, u32 *result);
-+int nvme_get_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
-+		      void *buffer, size_t buflen, u32 *result);
- int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count);
- void nvme_stop_keep_alive(struct nvme_ctrl *ctrl);
- int nvme_reset_ctrl(struct nvme_ctrl *ctrl);
++	if (!pm_resume_via_firmware() && ndev->ctrl.npss)
++		return nvme_make_operational(ndev);
+ 	nvme_reset_ctrl(&ndev->ctrl);
+ 	return 0;
+ }
 -- 
 2.14.4
 
