@@ -2,109 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3138E1FB35
-	for <lists+linux-nvme@lfdr.de>; Wed, 15 May 2019 21:43:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BDC321FC55
+	for <lists+linux-nvme@lfdr.de>; Wed, 15 May 2019 23:39:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aur7fAdjgq6XeBY9voOrV5egTjWpDE5o0HhvPku3xe4=; b=MeNjRCU915Ur3z
-	jGRUwfNKrhi0KlXrMuxOwCe6ovLA3LngLC6+TbV0j4eyiRNJ4+s4xE2kQDaWM/NhMfhtEzryrBNkK
-	1cBzppKkDGphUCZr+tKONsrYCbNMGcz7jsg0LbVead28PNjm9/VYC5QosofTCiolf/E+nWtfCDZTA
-	e8iYxArLHNA5XN7cSuyDR5ZC0nFeXzP2LYWMKSPqgPBly24XAOTbvzhxpgGrrfin+eAm6zdL3QsuN
-	dSSNTPsOL9guJr/5QR8QDfFu3CF9x95PUvWBGGpwfVGfvPaEj01f+wm/Lj+TrVA797fofUw9jvvLa
-	LeDJ3aMluT5mjTcdSJzw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=j3sEajFOCcoqVLOziNYREdYYSx/nTTwUUCbYqtSOQnE=; b=R79
+	gLtNIfbp/V4FIG4AtjYlWXa64iCFdjGrzYEqNY4+EmJvoEij/fnvNUDzcDfrvC2kzLb/h20dZVZIk
+	2OZanDjV4adxQtYBPLQxcrI1A3XzJvnNVRYBQzvzKCdGCYywwHSz8b0y1TOJiCE2S4xov1+TWSedw
+	mgs/C2v4n7OprBjedpjbtl0dG5ctKLBuNKcoAADOV8zV7pUz1q2Dx35v8sQJMV6RYPGJYjqN4obBM
+	xuD7wRikbTogyNQ2TI7noBWFYgK0X/g/bvQU4KnOn7vGMCqVIBVWg2F8fDA306vj3yTqq7yIxHsY1
+	rxJ7ud3eOxXGmSuED71laI4raq0dodg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hQzoF-0008VF-Lq; Wed, 15 May 2019 19:43:27 +0000
-Received: from mx0a-00154904.pphosted.com ([148.163.133.20])
+	id 1hR1cL-0007uS-Ke; Wed, 15 May 2019 21:39:17 +0000
+Received: from mga09.intel.com ([134.134.136.24])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hQzoA-0008Uo-5Y
- for linux-nvme@lists.infradead.org; Wed, 15 May 2019 19:43:23 +0000
-Received: from pps.filterd (m0170393.ppops.net [127.0.0.1])
- by mx0a-00154904.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x4FJZE71020981
- for <linux-nvme@lists.infradead.org>; Wed, 15 May 2019 15:43:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=smtpout1;
- bh=hiNC7wsZI8JDtaW4rvnGq8XVxekCgez/eE170i9sOvY=;
- b=mPs8cbapiKqOg1K3srRoxSQYUsEkMZFFNxFzG+oNZedjrzFLTQItIOIvTaFB4+zny0gD
- OKpntuxNXKjpqeK+4DscnmapXHC9LS7vSONf1KqjeZJ9u83hi6QYtVBMu42yUUur4YWW
- fph5JjFOIQjTIiTK9cJeHYG138kCa4wLw+CqcfG5wF2v1vDWfOwQrfxutYKnEJo2lFWw
- gayTgYR9muPz2OE4ysWDCUO+CKOWALp7iKMBgKvafz6SbsJdUeateex7/ngnAuJfgyxT
- WVvfBrZKlgI1ub+N0LHqQwOS6tj9vlfH8+l+W/g3nYi52X72FmrQULNDlW/1Hgf4TxZ9 jw== 
-Received: from mx0a-00154901.pphosted.com (mx0a-00154901.pphosted.com
- [67.231.149.39])
- by mx0a-00154904.pphosted.com with ESMTP id 2sg1fjmmb5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
- for <linux-nvme@lists.infradead.org>; Wed, 15 May 2019 15:43:20 -0400
-Received: from pps.filterd (m0134746.ppops.net [127.0.0.1])
- by mx0a-00154901.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x4FJeOtb055947
- for <linux-nvme@lists.infradead.org>; Wed, 15 May 2019 15:43:20 -0400
-Received: from ausxipps306.us.dell.com (AUSXIPPS306.us.dell.com
- [143.166.148.156])
- by mx0a-00154901.pphosted.com with ESMTP id 2sgp9y2yrp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
- for <linux-nvme@lists.infradead.org>; Wed, 15 May 2019 15:43:20 -0400
-X-LoopCount0: from 10.166.132.132
-X-IronPort-AV: E=Sophos;i="5.60,349,1549951200"; d="scan'208";a="310815841"
-From: <Mario.Limonciello@dell.com>
-To: <kbusch@kernel.org>
-Subject: RE: [PATCHv2 6/6] nvme-pci: Use host managed power state for suspend
-Thread-Topic: [PATCHv2 6/6] nvme-pci: Use host managed power state for suspend
-Thread-Index: AQHVCz0dhbbBUhQLLk2d9tGe3EmpNaZsks7QgABU5gD//63agA==
-Date: Wed, 15 May 2019 19:43:16 +0000
-Message-ID: <67e9643567c94a168c64e791ce41e9ec@AUSX13MPC105.AMER.DELL.COM>
-References: <20190515163625.21776-1-keith.busch@intel.com>
- <20190515163625.21776-6-keith.busch@intel.com>
- <f3d7281f020844828161b2387732cc42@AUSX13MPC105.AMER.DELL.COM>
- <20190515193415.GA22079@localhost.localdomain>
-In-Reply-To: <20190515193415.GA22079@localhost.localdomain>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [143.166.24.60]
-MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-05-15_14:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=767 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1810050000 definitions=main-1905150119
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=871 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905150119
+ id 1hR1cF-0007u7-R9
+ for linux-nvme@lists.infradead.org; Wed, 15 May 2019 21:39:13 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 15 May 2019 14:39:10 -0700
+X-ExtLoop1: 1
+Received: from unknown (HELO localhost.lm.intel.com) ([10.232.112.69])
+ by orsmga001.jf.intel.com with ESMTP; 15 May 2019 14:39:09 -0700
+From: Keith Busch <keith.busch@intel.com>
+To: Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme@lists.infradead.org
+Subject: [PATCH RFC] nvme: Common subsys and controller instances IDA
+Date: Wed, 15 May 2019 15:33:51 -0600
+Message-Id: <20190515213351.22190-1-keith.busch@intel.com>
+X-Mailer: git-send-email 2.13.6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190515_124322_318356_C91E7C86 
-X-CRM114-Status: GOOD (  16.23  )
-X-Spam-Score: -0.9 (/)
+X-CRM114-CacheID: sfid-20190515_143911_923362_C32CE857 
+X-CRM114-Status: GOOD (  14.07  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.9 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.133.20 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [134.134.136.24 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,45 +60,83 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: sagi@grimberg.me, rafael@kernel.org, linux-nvme@lists.infradead.org,
- keith.busch@intel.com, kai.heng.feng@canonical.com, hch@lst.de
+Cc: Keith Busch <keith.busch@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> -----Original Message-----
-> From: Keith Busch <kbusch@kernel.org>
-> Sent: Wednesday, May 15, 2019 2:34 PM
-> To: Limonciello, Mario
-> Cc: keith.busch@intel.com; hch@lst.de; sagi@grimberg.me; linux-
-> nvme@lists.infradead.org; rafael@kernel.org; kai.heng.feng@canonical.com
-> Subject: Re: [PATCHv2 6/6] nvme-pci: Use host managed power state for
-> suspend
-> 
-> 
-> [EXTERNAL EMAIL]
-> 
-> On Wed, May 15, 2019 at 07:33:45PM +0000, Mario.Limonciello@dell.com
-> wrote:
-> > > +static int nvme_deep_state(struct nvme_dev *dev) {
-> > > +	struct pci_dev *pdev = to_pci_dev(dev->dev);
-> > > +	struct nvme_ctrl *ctrl = &dev->ctrl;
-> > > +	int ret = -EBUSY;;
-> >
-> > Looks like a small typographical error with the double ;;
-> 
-> Good eye. I won't respin for that just yet. :)
-> 
-> Just fyi, I accidently didn't explicitly CC you on patches 1-5, and most of those
-> are necessary for patch 6/6 to compile. They whole series is on the mailing list
-> though.
+The controller char device name used to be a subset of all its
+namespace block device names, but that's not true when we name block
+devices for their parent subsystem. It's long been the case that the
+numerals appended to our device handles are simply the first unique
+number available. They do not have any more significance in relations
+to other devices with simpler numeric prefixes.
 
-Yes I noticed this, and at least one of those needs stuff in -next.
-Do you feel this is going to be valuable to test on something earlier via backports
-(such as 4.19 LTS), or do you want to see results directly on -next?
+However, this disconnect has led to some very unfortunate situations
+where people assume the old behavior, and accidently have lost data
+because they issue admin commands to the wrong device. For example,
+I want to format /dev/nvme0n1 and /dev/nvme0n2, so I'll run:
 
-The series pretty much applies to 4.19 after backporting 2d4bcc16481ebc395b2d6220804a1ef2531e5ede
+  # nvme format /dev/nvme0
+
+to hit up all namespaces attached to nvme0. The problem is that nvme0's
+namespaces may not even be those desired namespaces, and now I've lost
+data on devices I wished to preserve.
+
+So here's a solution that no one will like: pull subsystem and controller
+instances from the same IDA so that there won't be any namespace block
+devices with a matching controller handle name. While this does nothing
+to clear up device relationships, this will force the user to think
+really hard about what they're doing and avoid such mistakes.
+
+Signed-off-by: Keith Busch <keith.busch@intel.com>
+---
+ drivers/nvme/host/core.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index a6644a2c3ef7..1d17732267f0 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -80,7 +80,6 @@ EXPORT_SYMBOL_GPL(nvme_reset_wq);
+ struct workqueue_struct *nvme_delete_wq;
+ EXPORT_SYMBOL_GPL(nvme_delete_wq);
+ 
+-static DEFINE_IDA(nvme_subsystems_ida);
+ static LIST_HEAD(nvme_subsystems);
+ static DEFINE_MUTEX(nvme_subsystems_lock);
+ 
+@@ -2247,7 +2246,7 @@ static void nvme_init_subnqn(struct nvme_subsystem *subsys, struct nvme_ctrl *ct
+ 
+ static void __nvme_release_subsystem(struct nvme_subsystem *subsys)
+ {
+-	ida_simple_remove(&nvme_subsystems_ida, subsys->instance);
++	ida_simple_remove(&nvme_instance_ida, subsys->instance);
+ 	kfree(subsys);
+ }
+ 
+@@ -2366,7 +2365,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+ 	subsys = kzalloc(sizeof(*subsys), GFP_KERNEL);
+ 	if (!subsys)
+ 		return -ENOMEM;
+-	ret = ida_simple_get(&nvme_subsystems_ida, 0, 0, GFP_KERNEL);
++	ret = ida_simple_get(&nvme_instance_ida, 0, 0, GFP_KERNEL);
+ 	if (ret < 0) {
+ 		kfree(subsys);
+ 		return ret;
+@@ -3958,7 +3957,6 @@ static int __init nvme_core_init(void)
+ 
+ static void __exit nvme_core_exit(void)
+ {
+-	ida_destroy(&nvme_subsystems_ida);
+ 	class_destroy(nvme_subsys_class);
+ 	class_destroy(nvme_class);
+ 	unregister_chrdev_region(nvme_chr_devt, NVME_MINORS);
+-- 
+2.14.4
+
 
 _______________________________________________
 Linux-nvme mailing list
