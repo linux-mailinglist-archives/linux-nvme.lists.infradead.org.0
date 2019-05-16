@@ -2,92 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C3BC209B8
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 16:32:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A7057209E5
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 16:39:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D0vjQ9V/TZ1EyW3LGSuofAZikSOh6zKWU6oGrZzfORU=; b=PQ3LwYN6Bpn+T+
-	PFONSlU5vqfz2OLva7GC+xfu4RliLrn85Uhc7I/5QWGLS/xe4KxrrZknIz7RCORJV+76s1j+qOsTk
-	IfXjZx6beZ43l1yjVXH5WqqzClOP6gNrehIfoG5FvnxmvO78A7/msPGoEEvm1BoIuMfl709vDtz9z
-	R6cIvCinR76TOxm2hrorXuEgHs9am4QRztjC5s+5AK4b+wWpvMmF0WVpA13P/T0e2NGI5jyHfocAB
-	yUDutxcY2MeKMEyCHPfNENO7p0cUAnCBM3G005tZjF8NKIM15HQ/Ygrh+iXgtfirem1cvsxY8fYJB
-	szCVZugq2hMN1DLKSxHw==;
+	List-Owner; bh=Ww+bZGP5AdTQtDCi1u/dgI4RHji2kaIdSqr5yCKFmnw=; b=Jwaap8egeNZqh8
+	6L26C1xuprBIWUTwmDW5Ry7AluOS9iORQNH0N2zyqaNM/8XlQ6Q0dPNlsKeg1oQ4gDza38VMT2sP+
+	4c7tvs4zubTmcPeoLyBsvxH2iCoz4zrF+qBbFAea+YH5gJft/Ha2KUXwQsI4oBoReCETQJH4mxsUZ
+	72htRAgT5jmaZftP/3trH08jEl6bNp1WN0EhEjOFWNMrcQMC7aE5Xmv3zhspFcR+x1UwULtBYt7Cb
+	KzTtoma7HnEB4Ex5DjBqm8TjxoYktWQFxulEn/23GxaIKlydE/3w+JkFib/A1yUK6vXpnmWIf2OTl
+	PdU0KlEzZAO67ArJGhFQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRHQo-0003WX-AQ; Thu, 16 May 2019 14:32:26 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1hRHXM-00069l-QE; Thu, 16 May 2019 14:39:12 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRHQg-0003Pv-1n
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 14:32:20 +0000
-Received: by mail-pg1-x542.google.com with SMTP id d30so1657637pgm.7
- for <linux-nvme@lists.infradead.org>; Thu, 16 May 2019 07:32:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=USTSvosZQUwlXRNslyvBhxvhMTuh+Dka6Kqkcn0/koE=;
- b=HDZ5DESSf2+w/sQOh+tvO5tlHvqP3VAIAW1HMBygMxEriMoQQsX3DYKC5JS+EvaxMc
- Q0X9rMfzmuaoaEclHD0L7pHm9HVAmpuEngUAqRD7DkAY51M/oWYYLdpiKVLictrefpjW
- 9gtLsWXzgLMJqYmwxZY8M3nTQCf0t+/kiMTFT6C83NzLY0G9dzkKAn4Mpu2ElkOp8ebQ
- IBdFpCovUnBnQHztto6/2JYntlnCTta8FBytwMW2knLxKLGtSPUYIDkLeTv+zsscznyL
- KCsq8X6uWZBiEWKCT8kgjlQOqnOPytvbFBOePLYdq05KpT7yx1Sk4iJ8JVALNyz4zD8v
- KP+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=USTSvosZQUwlXRNslyvBhxvhMTuh+Dka6Kqkcn0/koE=;
- b=XskBKILnXxdPiFBn40lQL9bIRbYp536djcDBRZqDOWXt4L+d9aXMntqcZOD7OIQhSe
- uHR3vPVSPAEmDcDnPbIcMEMq+6U+33Hqc69FL4qyCK1omjZhYZG+1iQLPrCobCbIPd4G
- mh7MmRfhBscUszuEKplJdYskIvOonFrejaT8x+y5nBUSLBGqaxWk5q22TXT8AVGuimxU
- a64IERBwo6d1QPgQfA8H/AG4dLzWICvc5i8NMqfgvdLtR2wtgO07uavTsXKqpQRoSlgo
- 3FGuXacZ6yO9KAtINAxBucC2+iiEosxXZVtSb/Qpp8MRC/HMJSSu3rE+7/29yeZWnubb
- Vkjw==
-X-Gm-Message-State: APjAAAXOcMj2pbyUhirMKrEmjIscwgEDzQoWdgM4FA0n5hVbjiaq4GtT
- 3fyRHC2MTaQ+gj9yfmwOi0c=
-X-Google-Smtp-Source: APXvYqwCpI4XV53P0/CJGDU6R6OJTH8Uh6keGYXPsieiQpLG8032FEf/PC6zQYVpJaJ17vwm6ROlJQ==
-X-Received: by 2002:aa7:880f:: with SMTP id c15mr56520046pfo.100.1558017137148; 
- Thu, 16 May 2019 07:32:17 -0700 (PDT)
-Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id f28sm12694022pfk.104.2019.05.16.07.32.15
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 16 May 2019 07:32:16 -0700 (PDT)
-Date: Thu, 16 May 2019 23:32:14 +0900
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Akinobu Mita <akinobu.mita@gmail.com>
-Subject: Re: [PATCH 1/2] nvme: add thermal zone infrastructure
-Message-ID: <20190516143212.GE24001@minwooim-desktop>
-References: <1557933437-4693-1-git-send-email-akinobu.mita@gmail.com>
- <1557933437-4693-2-git-send-email-akinobu.mita@gmail.com>
+ id 1hRHXI-00069O-8g
+ for linux-nvme@lists.infradead.org; Thu, 16 May 2019 14:39:09 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 May 2019 07:39:07 -0700
+X-ExtLoop1: 1
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga006.jf.intel.com with ESMTP; 16 May 2019 07:39:06 -0700
+Date: Thu, 16 May 2019 08:33:51 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Ming Lei <ming.lei@redhat.com>
+Subject: Re: [PATCH 2/6] nvme-pci: Don't disable on timeout in reset state
+Message-ID: <20190516143351.GE23333@localhost.localdomain>
+References: <20190515163625.21776-1-keith.busch@intel.com>
+ <20190515163625.21776-2-keith.busch@intel.com>
+ <20190516030708.GB16342@ming.t460p>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1557933437-4693-2-git-send-email-akinobu.mita@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <20190516030708.GB16342@ming.t460p>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_073218_276382_2E7D8D67 
-X-CRM114-Status: GOOD (  13.91  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190516_073908_314607_E54500E8 
+X-CRM114-Status: GOOD (  22.74  )
+X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
- [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [192.55.52.115 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,66 +67,71 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-pm@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>,
- linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
- Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: "Busch, Keith" <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Christoph Hellwig <hch@lst.de>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Rafael Wysocki <rafael@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> +	if (sensor < 0 || sensor > 8)
-> +		return -EINVAL;
+On Wed, May 15, 2019 at 08:07:09PM -0700, Ming Lei wrote:
+> On Wed, May 15, 2019 at 10:36:21AM -0600, Keith Busch wrote:
+> > The driver doesn't dispatch commands that it needs to wait for in the reset
+> > state anymore. If a timeout occurs in this state, the reset work is
+> > already disabling the controller, so just reset the request's timer.
+> > 
+> > Signed-off-by: Keith Busch <keith.busch@intel.com>
+> > ---
+> >  drivers/nvme/host/pci.c | 3 ++-
+> >  1 file changed, 2 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+> > index d4e442160048..c72755311ffa 100644
+> > --- a/drivers/nvme/host/pci.c
+> > +++ b/drivers/nvme/host/pci.c
+> > @@ -1298,13 +1298,14 @@ static enum blk_eh_timer_return nvme_timeout(struct request *req, bool reserved)
+> >  		shutdown = true;
+> >  		/* fall through */
+> >  	case NVME_CTRL_CONNECTING:
+> > -	case NVME_CTRL_RESETTING:
+> >  		dev_warn_ratelimited(dev->ctrl.device,
+> >  			 "I/O %d QID %d timeout, disable controller\n",
+> >  			 req->tag, nvmeq->qid);
+> >  		nvme_dev_disable(dev, shutdown);
+> >  		nvme_req(req)->flags |= NVME_REQ_CANCELLED;
+> >  		return BLK_EH_DONE;
+> > +	case NVME_CTRL_RESETTING:
+> > +		return BLK_EH_RESET_TIMER;
+> >  	default:
+> >  		break;
+> >  	}
+> 
+> RESET follows controller shutdown(via nvme_dev_disable()), the only
+> possible timeout should be on admin requests staggered between shutdown
+> and changing to NVME_CTRL_CONNECTING, given admin queue isn't frozen.
+> 
+> And the admin queue should be fully workable after it is unquiesced
+> by nvme_alloc_admin_tags(), so if timeout happens after nvme_alloc_admin_tags(),
+> I guess these requests should be handled as in NVME_CTRL_CONNECTING.
 
-Does we really need to check the negative case here ?  Am I missing
-something in this context ?  If we really want to check it in this
-level, can we check the invalid case in the following function?
+Yep, the only timeouts here should be requests that we've already
+reclaimed, or are about to reclaim, via nvme_dev_disable called
+from either another timeout work or directly in the reset_work. And
+nvme_dev_disable handles its timeout, so we don't need timeout work to
+unblock it. Either way, we're never blocked in the RESETTING state.
 
-> +static struct thermal_zone_device *
-> +nvme_thermal_zone_register(struct nvme_ctrl *ctrl, int sensor)
-> +{
-> +	struct thermal_zone_device *tzdev;
-> +	char type[THERMAL_NAME_LENGTH];
-> +	int ret;
-> +
-> +	snprintf(type, sizeof(type), "nvme_temp%d", sensor);
+> Another related problem is about handling timeout in NVME_CTRL_CONNECTING, and
+> the following failure still can be observed:
+> 
+> [ 1078.775969] nvme nvme0: I/O 20 QID 0 timeout, disable controller
+> [ 1078.791730] nvme nvme0: Identify Controller failed (-4)
+> [ 1078.792538] nvme nvme0: Removing after probe failure status: -5
 
-Before preparing "nvme_temp%d", maybe we can make it sure here. :)
-What do you say?
-
-> +int nvme_thermal_zones_register(struct nvme_ctrl *ctrl)
-> +{
-> +	struct nvme_smart_log *log;
-> +	int ret;
-> +	int i;
-> +
-> +	log = kzalloc(sizeof(*log), GFP_KERNEL);
-> +	if (!log)
-> +		return -ENOMEM;
-> +
-> +	ret = nvme_get_log(ctrl, NVME_NSID_ALL, NVME_LOG_SMART, 0,
-> +			   log, sizeof(*log), 0);
-> +	if (ret) {
-> +		ret = ret > 0 ? -EINVAL : ret;
-> +		goto free_log;
-> +	}
-> +
-> +	for (i = 0; i < ARRAY_SIZE(ctrl->tzdev); i++) {
-> +		struct thermal_zone_device *tzdev;
-> +
-> +		if (i && !le16_to_cpu(log->temp_sensor[i - 1]))
-> +			continue;
-> +		if (ctrl->tzdev[i])
-> +			continue;
-> +
-> +		tzdev = nvme_thermal_zone_register(ctrl, i);
-> +		if (!IS_ERR(tzdev))
-> +			ctrl->tzdev[i] = tzdev;
-
-Quenstion here. Are we okay not to print some warnings here in case
-of error returned?
+Right, we will fail the controller if it fails to produce a response to
+any initialization commands. It's either that, or try the same thing
+atateain, but I haven't seen much support for doing the latter.
 
 _______________________________________________
 Linux-nvme mailing list
