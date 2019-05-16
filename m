@@ -2,41 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35CEB20168
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 10:38:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 28BAB20169
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 10:38:06 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=cUKSB5vBYxpqDMPuaIqprDzCQyMPnKyAG1lAY6UmmfY=; b=gxK
-	q0EagMliYMq/qKEcbcZFBUbPJ0/Q/lpbsGbdu8OPDQLmLYp0kjHJ6bsZdxnpzGqj1AMyZsTOjgRju
-	nOOp+gcAiJuEviPVXhOoh3jw3Rb99WDOatzWq1TKQfFt0R294VBSML1iR8r0L4I6YGO3dsGxYNzqc
-	BRv5JgavSV9vMqXWSKUvzczoZH8XbwJmuXz+t1lxPFUeV2njtFkMlJ1XX4x4J2eu4Sf1HVPV97ZIw
-	w6iXsXFv+mGbnhb+dwrHBiMNQcWx71k2jLomi6d6kalFEp4yQJV1ULCRSzuUNPTXTipsBaG3tD0Zl
-	2wlFXK2HsRppFS2EcUVsQ8UGKenhSmg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=vCZTtPDHTWqhPbbGcT/YkT2fbYFP7uYJsoVOXp8OkOg=; b=jloPssj43c1yRkedorhUuYLeDC
+	13waV2EnE2nbHPMYFtq2aO5/vKdnTocMrvgwsZe7drxiFc2SU8V882OAQHufWDQo4SVWhm2KyBymi
+	ryfCw/GPIL8Axqs3mweQPvlHLUuqD9aNqv4y4Cfg0M1YnkGlaFajyIFeuQf2xpNWiU3E5yX2OrjgG
+	P2OjwQSdqSvrvWWFKfuRkgYmntpRzndS4JfZt35/1TaYQvf8/ZuUuHAWeMvo/tTffL+5QYDWSIlE6
+	OHdAsImhIFReSm8HeBCAgXXGz4KbfQq16TRTd4ieNIdWl8REJfPtGrIFMXCZRxSZ8pDDte/0idCTn
+	xvpvgB5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRBth-00037M-0C; Thu, 16 May 2019 08:37:53 +0000
+	id 1hRBtm-0003B0-H8; Thu, 16 May 2019 08:37:58 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRBtb-00035m-0i
+ id 1hRBtb-00035l-0g
  for linux-nvme@lists.infradead.org; Thu, 16 May 2019 08:37:48 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 15699AE2C;
+ by mx1.suse.de (Postfix) with ESMTP id 18411AEBC;
  Thu, 16 May 2019 08:37:45 +0000 (UTC)
 From: Hannes Reinecke <hare@suse.de>
 To: Christoph Hellwig <hch@lst.de>
-Subject: [PATCH 0/3] nvme-fc: track state change failures
-Date: Thu, 16 May 2019 10:37:37 +0200
-Message-Id: <20190516083740.95894-1-hare@suse.de>
+Subject: [PATCH 1/3] nvme: separate out nvme_ctrl_state_name()
+Date: Thu, 16 May 2019 10:37:38 +0200
+Message-Id: <20190516083740.95894-2-hare@suse.de>
 X-Mailer: git-send-email 2.16.4
+In-Reply-To: <20190516083740.95894-1-hare@suse.de>
+References: <20190516083740.95894-1-hare@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_013747_208064_C6557CC5 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190516_013747_204010_38BAE29F 
+X-CRM114-Status: GOOD (  12.44  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -57,31 +59,90 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
+Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
  James Smart <james.smart@broadcom.com>, linux-nvme@lists.infradead.org,
- Sagi Grimberg <sagi@grimberg.me>
+ Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi all,
+Separate out nvme_ctrl_state_name() to return the controller state
+as a string.
 
-this patchset improves logging in the nvme-fc driver if expcected
-state changes fail, and fixes up one case where a failed state change
-might lead to a stuck controller.
-
-Hannes Reinecke (3):
-  nvme: separate out nvme_ctrl_state_name()
-  nvme-fc: track state change failures during reconnect
-  nvme-fc: fail reconnect if state change fails
-
+Signed-off-by: Hannes Reinecke <hare@suse.com>
+---
  drivers/nvme/host/core.c | 36 +++++++++++++++++++++++-------------
- drivers/nvme/host/fc.c   | 23 +++++++++++++++++------
  drivers/nvme/host/nvme.h |  1 +
- 3 files changed, 41 insertions(+), 19 deletions(-)
+ 2 files changed, 24 insertions(+), 13 deletions(-)
 
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index c2e4fa694f79..2632276458f5 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -380,6 +380,25 @@ bool nvme_change_ctrl_state(struct nvme_ctrl *ctrl,
+ }
+ EXPORT_SYMBOL_GPL(nvme_change_ctrl_state);
+ 
++static const char *const nvme_ctrl_state_names[] = {
++	[NVME_CTRL_NEW]		= "new",
++	[NVME_CTRL_LIVE]	= "live",
++	[NVME_CTRL_ADMIN_ONLY]	= "only-admin",
++	[NVME_CTRL_RESETTING]	= "resetting",
++	[NVME_CTRL_CONNECTING]	= "connecting",
++	[NVME_CTRL_DELETING]	= "deleting",
++	[NVME_CTRL_DEAD]	= "dead",
++};
++
++const char *nvme_ctrl_state_name(struct nvme_ctrl *ctrl)
++{
++	if ((unsigned)ctrl->state < ARRAY_SIZE(nvme_ctrl_state_names) &&
++	    nvme_ctrl_state_names[ctrl->state])
++		return nvme_ctrl_state_names[ctrl->state];
++	return NULL;
++}
++EXPORT_SYMBOL_GPL(nvme_ctrl_state_name);
++
+ static void nvme_free_ns_head(struct kref *ref)
+ {
+ 	struct nvme_ns_head *head =
+@@ -2989,19 +3008,10 @@ static ssize_t nvme_sysfs_show_state(struct device *dev,
+ 				     char *buf)
+ {
+ 	struct nvme_ctrl *ctrl = dev_get_drvdata(dev);
+-	static const char *const state_name[] = {
+-		[NVME_CTRL_NEW]		= "new",
+-		[NVME_CTRL_LIVE]	= "live",
+-		[NVME_CTRL_ADMIN_ONLY]	= "only-admin",
+-		[NVME_CTRL_RESETTING]	= "resetting",
+-		[NVME_CTRL_CONNECTING]	= "connecting",
+-		[NVME_CTRL_DELETING]	= "deleting",
+-		[NVME_CTRL_DEAD]	= "dead",
+-	};
+-
+-	if ((unsigned)ctrl->state < ARRAY_SIZE(state_name) &&
+-	    state_name[ctrl->state])
+-		return sprintf(buf, "%s\n", state_name[ctrl->state]);
++	const char *state_name = nvme_ctrl_state_name(ctrl);
++
++	if (state_name)
++		return sprintf(buf, "%s\n", state_name);
+ 
+ 	return sprintf(buf, "unknown state\n");
+ }
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 5ee75b5ff83f..b3b13e465dc6 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -419,6 +419,7 @@ void nvme_complete_rq(struct request *req);
+ bool nvme_cancel_request(struct request *req, void *data, bool reserved);
+ bool nvme_change_ctrl_state(struct nvme_ctrl *ctrl,
+ 		enum nvme_ctrl_state new_state);
++const char *nvme_ctrl_state_name(struct nvme_ctrl *ctrl);
+ int nvme_disable_ctrl(struct nvme_ctrl *ctrl, u64 cap);
+ int nvme_enable_ctrl(struct nvme_ctrl *ctrl, u64 cap);
+ int nvme_shutdown_ctrl(struct nvme_ctrl *ctrl);
 -- 
 2.16.4
 
