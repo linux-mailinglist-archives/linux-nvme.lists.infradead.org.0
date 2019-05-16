@@ -2,43 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D4441FF7C
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 08:26:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 462821FF80
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 08:26:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TEXsQEXWNgdl6Hdxu8GKWSBXbrFhQNvbKSse8GXdYLE=; b=db6yqL6ATFw0Fj
-	PXS1vQgwK8KUKZbnVXFk9wvMJwYd0IZQdl7JZG99LCu/+B3FeOFh6bk0NL4yO/dvMBdrEt4hZJ6G6
-	tRW7JBvDpypwpOlf1gaGB/PyfihimpSQLfBcbEVAY0KO0lp1VEVNCfMrEkoAXlHnbjFl8+nuGpusu
-	TnTzuqa1fezRKeYLKBhOOY4pDueYOQ9tUBgUN+Zzm79hBJ+XtC8hOYVOnI9X3MQayw4Fdj78nWQ8q
-	JHgJAudJ47FvOVyY1s5AIjPa6+uWbB6BNy9scvOsJ1cTIf8B4kmvJDnx6PjTV9BICSbUSjLcNDEg9
-	ZMk2pp0tf5ht3OdrWbqA==;
+	List-Owner; bh=RTGf+pnoKoGyVORD5+c/av2spxy5qAxfg3UEKnRokd0=; b=E+nsG53WmbeXUR
+	zknvRlFzmDoF0zoVjmztv4Ill5ld4fFTSRIoNOuyjQ184QoV1Xp0XKKQRvr3+GegBE3/WQlz7853V
+	9mORTcAs0ZTHEJB+OnBJsIkeRnqwEyjqkF+815nM4JCc5/WJJ7rxoiPzy9AOKhjAxnPNPmmIwhP3r
+	AwE9WSsZQTb57OkGPFBu29CuwOF5W0n/cHiiMo7MlmfJRl7kRrFD/KrjjF/AaLBcfO73IZZdAW1md
+	WfmE/Ix0pZuYXCBMELoH4N+oCG5KJBf537gXXKjzETN3qWh05GXnEV+5KYgQ3gsa7knj9jWybewgf
+	Fg1Nmm79Vuvw3D47DXWQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hR9q2-000716-Op; Thu, 16 May 2019 06:25:58 +0000
+	id 1hR9qq-0007CS-Aj; Thu, 16 May 2019 06:26:48 +0000
 Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hR9px-00070j-GF
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 06:25:55 +0000
+ id 1hR9ql-0007C5-4d
+ for linux-nvme@lists.infradead.org; Thu, 16 May 2019 06:26:44 +0000
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id E529D67358; Thu, 16 May 2019 08:25:28 +0200 (CEST)
-Date: Thu, 16 May 2019 08:25:28 +0200
+ id ABA6467358; Thu, 16 May 2019 08:26:22 +0200 (CEST)
+Date: Thu, 16 May 2019 08:26:22 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Keith Busch <keith.busch@intel.com>
-Subject: Re: [PATCHv2 6/6] nvme-pci: Use host managed power state for suspend
-Message-ID: <20190516062528.GA29930@lst.de>
+Subject: Re: [PATCH 5/6] nvme: Export get and set features
+Message-ID: <20190516062622.GB29930@lst.de>
 References: <20190515163625.21776-1-keith.busch@intel.com>
- <20190515163625.21776-6-keith.busch@intel.com>
+ <20190515163625.21776-5-keith.busch@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190515163625.21776-6-keith.busch@intel.com>
+In-Reply-To: <20190515163625.21776-5-keith.busch@intel.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190515_232553_690824_CBE525D7 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20190515_232643_334221_5E6AC9E9 
+X-CRM114-Status: UNSURE (   5.79  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -57,72 +58,18 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Mario Limonciello <Mario.Limonciello@dell.com>,
- Rafael Wysocki <rafael@kernel.org>, linux-nvme@lists.infradead.org,
- Kai Heng Feng <kai.heng.feng@canonical.com>, Christoph Hellwig <hch@lst.de>
+Cc: Rafael Wysocki <rafael@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ linux-nvme@lists.infradead.org, Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
->  
->  #ifdef CONFIG_PM_SLEEP
-> +static int nvme_deep_state(struct nvme_dev *dev)
-> +{
-> +	struct pci_dev *pdev = to_pci_dev(dev->dev);
-> +	struct nvme_ctrl *ctrl = &dev->ctrl;
-> +	int ret = -EBUSY;;
-> +
-> +	nvme_start_freeze(ctrl);
-> +	nvme_wait_freeze(ctrl);
-> +	nvme_sync_queues(ctrl);
-> +
-> +	if (ctrl->state != NVME_CTRL_LIVE &&
-> +	    ctrl->state != NVME_CTRL_ADMIN_ONLY)
-> +		goto unfreeze;
-> +
-> +	if (dev->host_mem_descs) {
-> +		ret = nvme_set_host_mem(dev, 0);
-> +		if (ret < 0)
-> +			goto unfreeze;
-> +	}
+> +static int nvme_features(struct nvme_ctrl *dev, u8 op, unsigned fid,
+> +		unsigned dword11, void *buffer, size_t buflen, u32 *result)
 
-I've still not heard an explanation of anyone why we need to disable
-the HMB here. Even if there are states where we have to disable it
-we need to restrict it to just those system power states where we have
-to, as reclaiming and recreating the HMB is very costly for the device.
-
-> +	if (ret) {
-> +		/*
-> +		 * Clearing npss forces a controller reset on resume. The
-> +		 * correct value will be resdicovered then.
-> +		 */
-> +		ctrl->npss = 0;
-> +		nvme_dev_disable(dev, true);
-
-Can't we just reuse the nvme_dev_disable call in the caller?
-
-> +	if (dev->host_mem_descs) {
-> +		ret = nvme_setup_host_mem(dev);
-> +		if (ret)
-> +			goto reset;
-> +	}
-
-This call could/should set the Memory Return bit in the Set Features
-call to enable the HMB.
-
->  static int nvme_suspend(struct device *dev)
->  {
->  	struct pci_dev *pdev = to_pci_dev(dev);
->  	struct nvme_dev *ndev = pci_get_drvdata(pdev);
->  
-> +	if (!pm_suspend_via_firmware() && ndev->ctrl.npss)
-> +		return nvme_deep_state(ndev);
-
-And this still needs a comment why we try to just meddle with the
-power state and queues instead of turning the device off only if
-not suspended via firmware.
+Nitpick:  an we call this something like
+__nvme_getset_features?
 
 _______________________________________________
 Linux-nvme mailing list
