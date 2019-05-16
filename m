@@ -2,80 +2,78 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 713BE20CE0
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 18:25:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C796220D38
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 18:41:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HljHOv36o9mnHeD3FclDRvKCeClbjdM599no/UXda7g=; b=AY/TnmLgNeB6rCPOGD7GP+bXv
-	yWgGIrjR+P+bLKPBVwN+tApid1vGYCseUDvlr34wKMHD1ITpPLvyqPTLjNeeCWVVB4+W8/Ivq2JrK
-	kSDN6GhwjRs6EDZUboc/y377SPKqmhbKy+nydF5nmwt9Llpba5bUotUGBm4e2X5y7DzXo22dSLEH2
-	qDC0DdEm5shEbmJKo8wQniW0Mt3msI6mAFuwiMGe904pSzXgZqq8AY/lFNyAVB/wYR2uRa5vTlMyG
-	F+99TOURjixeXZlkpuJ0Dl57QLskzxscS/9tgMFbjh4p83ySxkV1IFNyB9/zC8j55AXmkujsPDyIh
-	qvuBwLKJg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=JXpmudy3/X0UBZln8+CWSeYUM269MtH6bvEOqB2dQys=; b=JlG
+	8T+vdQE9ilPv7wm3QCIEoUkxfMbe/yQEywn8BZ7ZJUSSfwdvEphqwYaNGg50Qx7d89ABFCsE6pQlL
+	7bjWZY+txilCfOVkCbs/yAZRrxCsdKlhc/HZzo9jyhXxwdeOLkYG5UhQ+M6+aJCEuZpmb2IyraOoA
+	zcoXhVqkcJQbYx9QuSuBLQS7clxfFxbaDQLnQGz59EHQaT3FgQKBmFN9CtDLXbOmvyL+mr90v4E1t
+	kKH8NPtSPUNMBl+HjQPCpcds4hTaguusLMMMcdgPw1/ORXU+b6VLD3So3gW9QD/QRNOG+EXKL/oMA
+	tgRKdHym09+PrpuKlQV3Ml4npG1083g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRJBu-0006wW-F7; Thu, 16 May 2019 16:25:10 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1hRJRT-0007sl-5c; Thu, 16 May 2019 16:41:15 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRJBo-0006S5-P4
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 16:25:06 +0000
-Received: by mail-pf1-x441.google.com with SMTP id u17so2106232pfn.7
- for <linux-nvme@lists.infradead.org>; Thu, 16 May 2019 09:25:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=9chZIbIxeDDmWL0C2HSSHL6Ai31ZinXEhmEgrUhdz7k=;
- b=HnyumAC6KcNjQFnBmaFalwYfYUReLxV4kMVE6y9qZzyy8dcXd1mKvnl0T2M65QSCcD
- Hg7Z7D9WMHC7DxlXmaVrCyHxvhGVoxN7RQ25rUfWkSZ0XFCWXWsxDvv/wETW3zgEF+KP
- NICsqv/t81T7uvP3DK1pRxb+gQ7zQuw2G+EEY=
+ id 1hRJQu-0007Ii-Hw
+ for linux-nvme@lists.infradead.org; Thu, 16 May 2019 16:40:44 +0000
+Received: by mail-pl1-x643.google.com with SMTP id w7so1909716plz.1
+ for <linux-nvme@lists.infradead.org>; Thu, 16 May 2019 09:40:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=iWj5jX+wLHJqt8TwsFWV/uO25f6wwUsC7/NYkme4xE4=;
+ b=MmWWWp55jd71Blvh4MqWtQMMjLIOBIdJrt5yIamNH+Qtdb5xlSFFdw6fZGs9TZv7px
+ C0Vioxvh9B5/oYA4/zH21CU0eTe8wg9UQoC9MeGRKl9QrK8biauL6crYsvrbFBOJh/nC
+ NnUAKJRAZNnhwgCWZv0guoJr5M62dL0hlQz/o105Ydk2At6riS4qPR018dwx9IxTAyHq
+ gm+WdqZuEOi9JpfLqxFg5cKUdw7Z9Advx5ReAviKIzsZpCXVsNQ+p3sZ/3290VesAW8X
+ q26n8+otXxp608gnn1XwMq1tQlg+ymFjzPfdxjh5/0iWSkdRVOgUgmoKyeCUvA1HuD1j
+ 46kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=9chZIbIxeDDmWL0C2HSSHL6Ai31ZinXEhmEgrUhdz7k=;
- b=qiu03EXrTUr/jTG/Z0R4IZDkAU+AkJ43jF/+odJH5Mu3GE94wa5J0QNDUWmdnIZaJL
- MeSNLcoZrpR1E9l/FVgrGtbESGR5j0VlkGlVJPU56BOUWKpdryvz6MB6B2os7g3Sbita
- 5kANZfbxTccagImqWsISD9XUi8Y8hPm+ckSMZZEltymK9huAIfPzT+MRkjHFIwbTgCwx
- AG1F4g/XgeXnuC8K2c7xNM6UvSqyjYDFm+dtsnsXpu870ns7XY80L4Q7IRkpqOPdRc8w
- UUTIDdyod/FleJj7fu/FuV8wRbGnOzMF1p47ImKeqIfVd2+OmYRGhPqdNxbEfarlahf5
- LmQA==
-X-Gm-Message-State: APjAAAUz1FqlNb/NU9YBsWyvcWvIv6JWbgjN69D0QEeqbmLLBN/8W1d6
- W6Xrst3u7FlkP5jq69NNST3VfdP6TUU=
-X-Google-Smtp-Source: APXvYqw6hyLoQh7/iaYzgRmMleqq2xWNLgiksmkYU0qYiud5Ote9LXSkSsj6S8l+u8VbqUKHocb0vA==
-X-Received: by 2002:a63:b70f:: with SMTP id t15mr49052195pgf.351.1558023904248; 
- Thu, 16 May 2019 09:25:04 -0700 (PDT)
-Received: from [10.69.37.149] ([192.19.223.250])
- by smtp.gmail.com with ESMTPSA id 127sm8055931pfc.159.2019.05.16.09.25.03
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 16 May 2019 09:25:03 -0700 (PDT)
-Subject: Re: [PATCH 3/3] nvme-fc: fail reconnect if state change fails
-To: Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
-References: <20190516083740.95894-1-hare@suse.de>
- <20190516083740.95894-4-hare@suse.de>
-From: James Smart <james.smart@broadcom.com>
-Message-ID: <9f09edd0-bf71-61ed-7bcb-3c9e87d454a5@broadcom.com>
-Date: Thu, 16 May 2019 09:25:02 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <20190516083740.95894-4-hare@suse.de>
-Content-Language: en-US
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=iWj5jX+wLHJqt8TwsFWV/uO25f6wwUsC7/NYkme4xE4=;
+ b=U4YjLG5U9EH7mb+u1wuTziTB6BTmaOlqK0bvRSfzM6dl7NgC/QtkzQgg+iIFhnqzo+
+ /aPW6K44SHUx7e754F19xeHfdLZK10d2s6mEGKnFrhJR3ZmYVCV4rKOLo7Mqd2yi8Seb
+ sqOPhEJJbiRiCL7VewBtd2N/ZbhhICl9cHghxFtF8rp6NdHMvr6YLB6tm1Z6Rx1Z7tUu
+ xFvNB0mWa2HhjHlzNDxSEzLF6aCTOawCLVl7p6fozLHojWDLa5qoF7wRihtVJHSBt0gt
+ RPWBn+UWza+NIwjqohuPRBgZuYn39URg9dEV0wCi3h1zJGRGJqdIMO4Dp7E52LB3ZDZZ
+ k/zg==
+X-Gm-Message-State: APjAAAXZgYkNLIHv6b8jc4sZclhWXN1j5G8lTrFmN8TOAOr82pch/B6U
+ 4LmyYmhBIxQNrgsCIa2sDvLBJ1Y4
+X-Google-Smtp-Source: APXvYqxRtAywIBjSkq88MePYqGdzRL6XA1smCjuXwBvvDfeEm9v9O/M4DdMjSa+FsufaZx5jKoTCng==
+X-Received: by 2002:a17:902:8698:: with SMTP id
+ g24mr53392101plo.151.1558024839658; 
+ Thu, 16 May 2019 09:40:39 -0700 (PDT)
+Received: from mita-MS-7A45.lan ([240f:34:212d:1:25a3:512f:3aff:cdaa])
+ by smtp.gmail.com with ESMTPSA id o7sm9860603pfp.168.2019.05.16.09.40.37
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Thu, 16 May 2019 09:40:38 -0700 (PDT)
+From: Akinobu Mita <akinobu.mita@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme-cli: add kernel-doc comment for struct
+ telemetry_log_page_hdr
+Date: Fri, 17 May 2019 01:40:28 +0900
+Message-Id: <1558024828-9356-1-git-send-email-akinobu.mita@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_092504_824904_AEFCA15A 
-X-CRM114-Status: GOOD (  18.41  )
+X-CRM114-CacheID: sfid-20190516_094040_606374_56D7E442 
+X-CRM114-Status: GOOD (  11.36  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (akinobu.mita[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -85,7 +83,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,45 +94,83 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Keith Busch <keith.busch@intel.com>, Akinobu Mita <akinobu.mita@gmail.com>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
+ Bart Van Assche <bvanassche@acm.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-CgpPbiA1LzE2LzIwMTkgMTozNyBBTSwgSGFubmVzIFJlaW5lY2tlIHdyb3RlOgo+IElmIHRoZSBm
-aW5hbCBzdGF0ZSBjaGFuZ2UgdG8gTElWRSBpbiBudm1lX2ZjX2NyZWF0ZV9hc3NvY2lhdGlvbigp
-Cj4gZmFpbHMgdGhlIGNvbnRyb2xsZXIgaXMgbm90IG9wZXJhdGlvbmFsIGFzIG5vIEkvTyBpcyBw
-b3NzaWJsZS4KPiBTbyB3ZSBzaG91bGQgYmUgcmV0dXJuaW5nIGFuIGVycm9yIGhlcmUgdG8gcmVz
-Y2hlZHVsZSByZWNvbm5lY3QuCj4KPiBTaWduZWQtb2ZmLWJ5OiBIYW5uZXMgUmVpbmVja2UgPGhh
-cmVAc3VzZS5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL252bWUvaG9zdC9mYy5jIHwgMTQgKysrKysr
-KysrKy0tLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAxMCBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9u
-cygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbnZtZS9ob3N0L2ZjLmMgYi9kcml2ZXJzL252
-bWUvaG9zdC9mYy5jCj4gaW5kZXggZTVjODFiYTJiN2ExLi45ZjkzMDBjYmRiNjIgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9udm1lL2hvc3QvZmMuYwo+ICsrKyBiL2RyaXZlcnMvbnZtZS9ob3N0L2Zj
-LmMKPiBAQCAtMjYyMCw3ICsyNjIwLDYgQEAgbnZtZV9mY19jcmVhdGVfYXNzb2NpYXRpb24oc3Ry
-dWN0IG52bWVfZmNfY3RybCAqY3RybCkKPiAgIHsKPiAgIAlzdHJ1Y3QgbnZtZl9jdHJsX29wdGlv
-bnMgKm9wdHMgPSBjdHJsLT5jdHJsLm9wdHM7Cj4gICAJaW50IHJldDsKPiAtCWJvb2wgY2hhbmdl
-ZDsKPiAgIAo+ICAgCSsrY3RybC0+Y3RybC5ucl9yZWNvbm5lY3RzOwo+ICAgCj4gQEAgLTI3MjUs
-MTIgKzI3MjQsMTkgQEAgbnZtZV9mY19jcmVhdGVfYXNzb2NpYXRpb24oc3RydWN0IG52bWVfZmNf
-Y3RybCAqY3RybCkKPiAgIAkJCWdvdG8gb3V0X3Rlcm1fYWVuX29wczsKPiAgIAl9Cj4gICAKPiAt
-CWNoYW5nZWQgPSBudm1lX2NoYW5nZV9jdHJsX3N0YXRlKCZjdHJsLT5jdHJsLCBOVk1FX0NUUkxf
-TElWRSk7Cj4gKwlpZiAobnZtZV9jaGFuZ2VfY3RybF9zdGF0ZSgmY3RybC0+Y3RybCwgTlZNRV9D
-VFJMX0xJVkUpKSB7Cj4gKwkJaWYgKGN0cmwtPmN0cmwuc3RhdGUgIT0gTlZNRV9DVFJMX0RFTEVU
-SU5HKSB7CmlzIHRoaXMgZWFzaWVyIHRvIGFycmFuZ2UgYXM6CiDCoMKgwqAgaWYgKG52bWVfY2hh
-bmdlX2N0cmxfc3RhdGUoLi4uKSAmJgogwqDCoMKgwqDCoMKgwqDCoCBjdHJsLT5jdHJsLnN0YXRl
-ICE9IE5WTUVfQ1RSTF9ERUxFVElORykgewoKPiArCQkJZGV2X2VycihjdHJsLT5jdHJsLmRldmlj
-ZSwKPiArCQkJCSJOVk1FLUZDeyVkfTogZXJyb3JfcmVjb3Zlcnk6IENvdWxkbid0IGNoYW5nZSAi
-Cj4gKwkJCQkic3RhdGUgZnJvbSAlcyB0byBMSVZFXG4iLCBjdHJsLT5jbnVtLAo+ICsJCQkJbnZt
-ZV9jdHJsX3N0YXRlX25hbWUoJmN0cmwtPmN0cmwpKTsKPiArCQkJcmV0dXJuIC1FQUdBSU47Cj4g
-KwkJfQo+ICsJfQo+ICAgCj4gICAJY3RybC0+Y3RybC5ucl9yZWNvbm5lY3RzID0gMDsKPiAgIAo+
-IC0JaWYgKGNoYW5nZWQpCj4gLQkJbnZtZV9zdGFydF9jdHJsKCZjdHJsLT5jdHJsKTsKPiArCW52
-bWVfc3RhcnRfY3RybCgmY3RybC0+Y3RybCk7CgpJIGRvbid0IHRoaW5rIHlvdSB3YW50IHRvIGVs
-aW1pbmF0ZSB0aGlzIGNoZWNrIC0geW91IGRvbid0IHdhbnQgdG8gY2FsbCAKbnZtZV9zdGFydF9j
-dHJsKCkgaWYgc3RhdGUgZGlkIHRyYW5zaXRpb24gdG8gREVMRVRJTkcuIFlvdSB3YW50IHRvIApj
-b250aW51ZSBvdXQgdG8gcmVsZWFzZSB0aGUgY3JlYXRlIHRocmVhZCwgYnV0IHRoZSBkZWxldGUg
-d29yayB3aWxsIGJlIApjb21pbmcgYWxvbmcgc2hvcnRseS4KCi0tIGphbWVzCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5n
-IGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+This adds the kernel-doc data structure comment for struct
+telemetry_log_page_hdr.
+
+This also replaces spaces with tabs to align the structure fields.
+
+Cc: Keith Busch <keith.busch@intel.com>
+Cc: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+Cc: Bart Van Assche <bvanassche@acm.org>
+Suggested-by: Bart Van Assche <bvanassche@acm.org>
+Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
+---
+ linux/nvme.h | 37 ++++++++++++++++++++++++++-----------
+ 1 file changed, 26 insertions(+), 11 deletions(-)
+
+diff --git a/linux/nvme.h b/linux/nvme.h
+index 2c840b9..cac4d19 100644
+--- a/linux/nvme.h
++++ b/linux/nvme.h
+@@ -426,18 +426,33 @@ struct nvme_id_nvmset {
+ 	struct nvme_nvmset_attr_entry	ent[NVME_MAX_NVMSET];
+ };
+ 
++/**
++ * struct nvme_telemetry_log_page_hdr - structure for telemetry log page
++ * @lpi: Log page identifier
++ * @iee_oui: IEEE OUI Identifier
++ * @dalb1: Data area 1 last block
++ * @dalb2: Data area 2 last block
++ * @dalb3: Data area 3 last block
++ * @ctrlavail: Controller initiated data available
++ * @ctrldgn: Controller initiated telemetry Data Generation Number
++ * @rsnident: Reason Identifier
++ * @telemetry_dataarea: Contains telemetry data block
++ *
++ * This structure can be used for both telemetry host-initiated log page
++ * and controller-initiated log page.
++ */
+ struct nvme_telemetry_log_page_hdr {
+-	__u8    lpi; /* Log page identifier */
+-	__u8    rsvd[4];
+-	__u8    iee_oui[3];
+-	__le16  dalb1; /* Data area 1 last block */
+-	__le16  dalb2; /* Data area 2 last block */
+-	__le16  dalb3; /* Data area 3 last block */
+-	__u8    rsvd1[368];
+-	__u8    ctrlavail; /* Controller initiated data avail?*/
+-	__u8    ctrldgn; /* Controller initiated telemetry Data Gen # */
+-	__u8    rsnident[128];
+-	__u8    telemetry_dataarea[0];
++	__u8	lpi;
++	__u8	rsvd[4];
++	__u8	iee_oui[3];
++	__le16	dalb1;
++	__le16	dalb2;
++	__le16	dalb3;
++	__u8	rsvd1[368];
++	__u8	ctrlavail;
++	__u8	ctrldgn;
++	__u8	rsnident[128];
++	__u8	telemetry_dataarea[0];
+ };
+ 
+ struct nvme_endurance_group_log {
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
