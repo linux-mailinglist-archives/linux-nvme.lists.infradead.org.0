@@ -2,78 +2,83 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0ED58209B0
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 16:30:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C3BC209B8
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 16:32:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kBQma8y6clce1UIW7/pSGZzMh1vCmRqWCL6wDQm9QpE=; b=pl1w0j6EmI/Mur
-	2wgnXu8S9DmiWmtFQ/JuLQMk0gcudmhQTAwtEo4xmZNMK5F7ZnI9XfibqKsZ5VFq39FQUdbHd1jra
-	tS1Cntk8oJ416BIZBWNh0rZeRgKrAxu1Hi1HqmLWyqVxKoTibe14H35cMdctkO6GbzPjRxruIstsD
-	wXjHMStz2MrWFSCLbFjrh9eFcEnrVlrsBqbSFJzGv/PM3ATnGbhTjAGZDDF7rJUlzGNpeFxF6Llgp
-	Bf6pn0ha6x2wZyo480oAZ1b1vtMLmDy4E6x8DPMzpshbPThMJASHCP4X6EONT1eT4x26DCf+b0Msv
-	hUN1y+K62mNhn0eF9bdw==;
+	List-Owner; bh=D0vjQ9V/TZ1EyW3LGSuofAZikSOh6zKWU6oGrZzfORU=; b=PQ3LwYN6Bpn+T+
+	PFONSlU5vqfz2OLva7GC+xfu4RliLrn85Uhc7I/5QWGLS/xe4KxrrZknIz7RCORJV+76s1j+qOsTk
+	IfXjZx6beZ43l1yjVXH5WqqzClOP6gNrehIfoG5FvnxmvO78A7/msPGoEEvm1BoIuMfl709vDtz9z
+	R6cIvCinR76TOxm2hrorXuEgHs9am4QRztjC5s+5AK4b+wWpvMmF0WVpA13P/T0e2NGI5jyHfocAB
+	yUDutxcY2MeKMEyCHPfNENO7p0cUAnCBM3G005tZjF8NKIM15HQ/Ygrh+iXgtfirem1cvsxY8fYJB
+	szCVZugq2hMN1DLKSxHw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRHOw-0003AX-OY; Thu, 16 May 2019 14:30:30 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1hRHQo-0003WX-AQ; Thu, 16 May 2019 14:32:26 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRHOo-00038x-9t
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 14:30:23 +0000
-Received: by mail-pf1-x444.google.com with SMTP id g9so1932721pfo.11
- for <linux-nvme@lists.infradead.org>; Thu, 16 May 2019 07:30:22 -0700 (PDT)
+ id 1hRHQg-0003Pv-1n
+ for linux-nvme@lists.infradead.org; Thu, 16 May 2019 14:32:20 +0000
+Received: by mail-pg1-x542.google.com with SMTP id d30so1657637pgm.7
+ for <linux-nvme@lists.infradead.org>; Thu, 16 May 2019 07:32:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=F3WBfCSGQ1S3ZrQi1vnb+tms40ACrCS3PRWnR27giHQ=;
- b=cavoVWjIaqV5ouirIMGCShuXCwnx+MV6zz/TwIIsXu2SnKUvZBC6CpiS89z7USmoTZ
- pCQGNCupE7Ks3CiI0jn9NzF3Escj/nqBru1YAcj7oRLUIezVvlzYO2NxfAu3FfXSu0fa
- pz8UFDHcFj3Bfjp0LqkJyMI663jc0FhUTWZoTO0lJtR793mOLC3DOqaUAn6y4uI9OmXX
- i0BM2Ncx1zqDMkwdNEz8T/PuSBRQGiC1HNGbvQlWnGkWrDTySxvJe35I78y7pNd4JOQj
- CHz5wCIbciapYj7+c+ySg+ezZUvabZEkIgpWZV53hq/ka+JzSV6XWMm2693hhAzvByLi
- aTCw==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=USTSvosZQUwlXRNslyvBhxvhMTuh+Dka6Kqkcn0/koE=;
+ b=HDZ5DESSf2+w/sQOh+tvO5tlHvqP3VAIAW1HMBygMxEriMoQQsX3DYKC5JS+EvaxMc
+ Q0X9rMfzmuaoaEclHD0L7pHm9HVAmpuEngUAqRD7DkAY51M/oWYYLdpiKVLictrefpjW
+ 9gtLsWXzgLMJqYmwxZY8M3nTQCf0t+/kiMTFT6C83NzLY0G9dzkKAn4Mpu2ElkOp8ebQ
+ IBdFpCovUnBnQHztto6/2JYntlnCTta8FBytwMW2knLxKLGtSPUYIDkLeTv+zsscznyL
+ KCsq8X6uWZBiEWKCT8kgjlQOqnOPytvbFBOePLYdq05KpT7yx1Sk4iJ8JVALNyz4zD8v
+ KP+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=F3WBfCSGQ1S3ZrQi1vnb+tms40ACrCS3PRWnR27giHQ=;
- b=kziV5wM3JYzPioIHtPkj+FsFMiIav3sh2ctzcqD/uuYmMv0aQAx+jCWcuQbljVs7Ck
- bIsUgWkXoLEN1oJieuDhlO6YvsfOgXwJDRZqpOjGErFpEesGxQZmEQYuL5BLBUuAcDU4
- A1vN/y18YJruCA2YTp4fuFceDSCtQr5EMuBzOTLnJbm7gqoLzu5t6DxxoIU0Z65qfDsf
- nAdjS77kWcqFK6QJWac1+YmS6UjZhfo1pEpRtTztX/RVdPxbB6yuSTdq5DPGglrLslSa
- B1hBzqIHxAvg3SCJB3moz7Vb0tnWGsbIJNC/lgARcT2YlGFdf1Qx5sfs6GeUcmBQwhT6
- /wvg==
-X-Gm-Message-State: APjAAAXrpA/tdz105sFzqblaE9unYMMF6LEbN2Jtxsf783QIioqPqXid
- 49b9ENJH5qRvL6+ZTRMVY4R6sAOgFXgGgaW0e7s=
-X-Google-Smtp-Source: APXvYqyA3NGdQGXPE0C8VJRcA+O0oqHudMt1eEMQNr6iPXuk0bxJXjV+Wkp7pmV2UWzeVLphRKHf99oQuNw8d6gm4+Q=
-X-Received: by 2002:a62:1a51:: with SMTP id a78mr53158071pfa.133.1558017021738; 
- Thu, 16 May 2019 07:30:21 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=USTSvosZQUwlXRNslyvBhxvhMTuh+Dka6Kqkcn0/koE=;
+ b=XskBKILnXxdPiFBn40lQL9bIRbYp536djcDBRZqDOWXt4L+d9aXMntqcZOD7OIQhSe
+ uHR3vPVSPAEmDcDnPbIcMEMq+6U+33Hqc69FL4qyCK1omjZhYZG+1iQLPrCobCbIPd4G
+ mh7MmRfhBscUszuEKplJdYskIvOonFrejaT8x+y5nBUSLBGqaxWk5q22TXT8AVGuimxU
+ a64IERBwo6d1QPgQfA8H/AG4dLzWICvc5i8NMqfgvdLtR2wtgO07uavTsXKqpQRoSlgo
+ 3FGuXacZ6yO9KAtINAxBucC2+iiEosxXZVtSb/Qpp8MRC/HMJSSu3rE+7/29yeZWnubb
+ Vkjw==
+X-Gm-Message-State: APjAAAXOcMj2pbyUhirMKrEmjIscwgEDzQoWdgM4FA0n5hVbjiaq4GtT
+ 3fyRHC2MTaQ+gj9yfmwOi0c=
+X-Google-Smtp-Source: APXvYqwCpI4XV53P0/CJGDU6R6OJTH8Uh6keGYXPsieiQpLG8032FEf/PC6zQYVpJaJ17vwm6ROlJQ==
+X-Received: by 2002:aa7:880f:: with SMTP id c15mr56520046pfo.100.1558017137148; 
+ Thu, 16 May 2019 07:32:17 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id f28sm12694022pfk.104.2019.05.16.07.32.15
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 16 May 2019 07:32:16 -0700 (PDT)
+Date: Thu, 16 May 2019 23:32:14 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: Akinobu Mita <akinobu.mita@gmail.com>
+Subject: Re: [PATCH 1/2] nvme: add thermal zone infrastructure
+Message-ID: <20190516143212.GE24001@minwooim-desktop>
 References: <1557933437-4693-1-git-send-email-akinobu.mita@gmail.com>
- <1557933437-4693-3-git-send-email-akinobu.mita@gmail.com>
- <20190515170320.GA21663@localhost.localdomain>
-In-Reply-To: <20190515170320.GA21663@localhost.localdomain>
-From: Akinobu Mita <akinobu.mita@gmail.com>
-Date: Thu, 16 May 2019 23:30:10 +0900
-Message-ID: <CAC5umyi97O+-4Dpspx-mouSReJBxqDXvigxw-SzDSa4BeEM9Ng@mail.gmail.com>
-Subject: Re: [PATCH 2/2] nvme-pci: support thermal zone
-To: Keith Busch <kbusch@kernel.org>
+ <1557933437-4693-2-git-send-email-akinobu.mita@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1557933437-4693-2-git-send-email-akinobu.mita@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_073022_355364_3688EADD 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20190516_073218_276382_2E7D8D67 
+X-CRM114-Status: GOOD (  13.91  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (akinobu.mita[at]gmail.com)
+ provider (minwoo.im.dev[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -94,39 +99,68 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-pm@vger.kernel.org, Jens Axboe <axboe@fb.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-nvme@lists.infradead.org,
+Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-pm@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
  Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>,
  Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-MjAxOeW5tDXmnIgxNuaXpSjmnKgpIDI6MDggS2VpdGggQnVzY2ggPGtidXNjaEBrZXJuZWwub3Jn
-PjoKPgo+IE9uIFRodSwgTWF5IDE2LCAyMDE5IGF0IDEyOjE3OjE3QU0gKzA5MDAsIEFraW5vYnUg
-TWl0YSB3cm90ZToKPiA+IFRoaXMgZW5hYmxlcyB0byB1c2UgdGhlcm1hbCB6b25lIGludGVyZmFj
-ZXMgZm9yIE5WTWUKPiA+IHRlbXBlcmF0dXJlIHNlbnNvcnMuCj4gPgo+ID4gQ2M6IFpoYW5nIFJ1
-aSA8cnVpLnpoYW5nQGludGVsLmNvbT4KPiA+IENjOiBFZHVhcmRvIFZhbGVudGluIDxlZHViZXp2
-YWxAZ21haWwuY29tPgo+ID4gQ2M6IERhbmllbCBMZXpjYW5vIDxkYW5pZWwubGV6Y2Fub0BsaW5h
-cm8ub3JnPgo+ID4gQ2M6IEtlaXRoIEJ1c2NoIDxrZWl0aC5idXNjaEBpbnRlbC5jb20+Cj4gPiBD
-YzogSmVucyBBeGJvZSA8YXhib2VAZmIuY29tPgo+ID4gQ2M6IENocmlzdG9waCBIZWxsd2lnIDxo
-Y2hAbHN0LmRlPgo+ID4gQ2M6IFNhZ2kgR3JpbWJlcmcgPHNhZ2lAZ3JpbWJlcmcubWU+Cj4gPiBT
-aWduZWQtb2ZmLWJ5OiBBa2lub2J1IE1pdGEgPGFraW5vYnUubWl0YUBnbWFpbC5jb20+Cj4gPiAt
-LS0KPiA+ICBkcml2ZXJzL252bWUvaG9zdC9wY2kuYyB8IDUgKysrKysKPiA+ICAxIGZpbGUgY2hh
-bmdlZCwgNSBpbnNlcnRpb25zKCspCj4gPgo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbnZtZS9o
-b3N0L3BjaS5jIGIvZHJpdmVycy9udm1lL2hvc3QvcGNpLmMKPiA+IGluZGV4IGZhZDUzOTUuLjg4
-YTI1ZGMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL252bWUvaG9zdC9wY2kuYwo+ID4gKysrIGIv
-ZHJpdmVycy9udm1lL2hvc3QvcGNpLmMKPiA+IEBAIC0yNDcwLDYgKzI0NzAsNyBAQCBzdGF0aWMg
-dm9pZCBudm1lX3BjaV9mcmVlX2N0cmwoc3RydWN0IG52bWVfY3RybCAqY3RybCkKPiA+ICAgICAg
-IGlmIChkZXYtPmN0cmwuYWRtaW5fcSkKPiA+ICAgICAgICAgICAgICAgYmxrX3B1dF9xdWV1ZShk
-ZXYtPmN0cmwuYWRtaW5fcSk7Cj4gPiAgICAgICBrZnJlZShkZXYtPnF1ZXVlcyk7Cj4gPiArICAg
-ICBudm1lX3RoZXJtYWxfem9uZXNfdW5yZWdpc3RlcigmZGV2LT5jdHJsKTsKPgo+IFRoaXMgdW5y
-ZWdpc3RlciBzaG91bGQgcHJvYmFibHkgZ28gaW4gdGhlIG52bWVfcmVtb3ZlKCkgcmF0aGVyIHRo
-YW4gaW4KPiB0aGUgbGFzdCByZWZlcmVuY2UgcmVsZWFzZS4KCllvdSBhcmUgcmlnaHQuICBJdCBp
-cyB0b28gbGF0ZSB0byB1bnJlZ2lzdGVyIGFuZCBpdCBjYXVzZWQgYSBsb3Qgb2YKc3lzZnNfcmVt
-b3ZlX2xpbmsoKSBmYWlsdXJlcyB3aGVuIHJlbW92aW5nIGRyaXZlci4KCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0
-CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+> +	if (sensor < 0 || sensor > 8)
+> +		return -EINVAL;
+
+Does we really need to check the negative case here ?  Am I missing
+something in this context ?  If we really want to check it in this
+level, can we check the invalid case in the following function?
+
+> +static struct thermal_zone_device *
+> +nvme_thermal_zone_register(struct nvme_ctrl *ctrl, int sensor)
+> +{
+> +	struct thermal_zone_device *tzdev;
+> +	char type[THERMAL_NAME_LENGTH];
+> +	int ret;
+> +
+> +	snprintf(type, sizeof(type), "nvme_temp%d", sensor);
+
+Before preparing "nvme_temp%d", maybe we can make it sure here. :)
+What do you say?
+
+> +int nvme_thermal_zones_register(struct nvme_ctrl *ctrl)
+> +{
+> +	struct nvme_smart_log *log;
+> +	int ret;
+> +	int i;
+> +
+> +	log = kzalloc(sizeof(*log), GFP_KERNEL);
+> +	if (!log)
+> +		return -ENOMEM;
+> +
+> +	ret = nvme_get_log(ctrl, NVME_NSID_ALL, NVME_LOG_SMART, 0,
+> +			   log, sizeof(*log), 0);
+> +	if (ret) {
+> +		ret = ret > 0 ? -EINVAL : ret;
+> +		goto free_log;
+> +	}
+> +
+> +	for (i = 0; i < ARRAY_SIZE(ctrl->tzdev); i++) {
+> +		struct thermal_zone_device *tzdev;
+> +
+> +		if (i && !le16_to_cpu(log->temp_sensor[i - 1]))
+> +			continue;
+> +		if (ctrl->tzdev[i])
+> +			continue;
+> +
+> +		tzdev = nvme_thermal_zone_register(ctrl, i);
+> +		if (!IS_ERR(tzdev))
+> +			ctrl->tzdev[i] = tzdev;
+
+Quenstion here. Are we okay not to print some warnings here in case
+of error returned?
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
