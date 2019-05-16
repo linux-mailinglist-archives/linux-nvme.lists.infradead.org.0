@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE8CA1FE02
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 05:21:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CB68D1FE04
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 05:22:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,59 +11,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=hJyDF9qf1bMCvSLsflY1Sse4HSzGNrbekuogXDp8QBU=; b=I8O1lbQwE7X6hLAW02SW/17VCD
-	OQE4RVt88J2GNid12HLNAm/TUt8jDrAr1BAS32PG7Fy7EZFPyJnfNLKnUsGRkZvZzDY7CYszPvDEj
-	2iSm53NA09QfUmPnb8oRmot3+W5sBcRhElYU4muHyDzIb8gsJ6qiJugowklaPfYUSjkU8CAyhyU7f
-	xH/esrE79zErnhhMLcKAPOyRt/7IICeePalovN/YmAdR2LROzNW8vbniAJogadxfm6UVj4Zrv04HA
-	59U2x6yTUayxVfrX8YkgsoFvR/56J2u+7CUwPWC+aKMteEn7H+i0jFbZb8+8mOoo+unCXXXGdxkvR
-	2OPQKbkA==;
+	bh=Uz2aOSJGcQVDHoAYj4qx7qb2wXbZzStBiDcKgN8+L+Q=; b=dU1yMjfsURar9VDCclQa+1yYTV
+	KzBSBImiN3oJF6LahuhT0A17qrUR7NYPHLUcI2MJFFC+PoCi56hDJCHEfnzhL5I8+eX97ll+6CtNB
+	vm88nlYfFUVMzu7qLI6odccYzL+1TcjeKOqbAwlDTai3vvn4d36LFUSt5HgUYNFSdx/xH+ZrJ5BGJ
+	P4Hod+RfkwmRlquDmrqChJOnHvii1OfmSy32MMtnff9YqZWst6EF550067BEpYzOJ3ANupFlqAvr1
+	JjsOZMNoiduUejuHtmdTOAinYxzg8ld9H/+QUFwhm1zh2A0fWq0Awyj9eeSX8HRNCmsJahSg4FknN
+	tjSdm7ew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hR6xb-0005Cr-8h; Thu, 16 May 2019 03:21:35 +0000
+	id 1hR6y1-0005dX-Nu; Thu, 16 May 2019 03:22:01 +0000
 Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hR6xR-000572-F2
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 03:21:26 +0000
+ id 1hR6xm-0005Wz-Qr
+ for linux-nvme@lists.infradead.org; Thu, 16 May 2019 03:21:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557976885; x=1589512885;
+ t=1557976906; x=1589512906;
  h=from:to:cc:subject:date:message-id:in-reply-to: references;
- bh=xo53zKuoZp/ok9gFI3EfqnNbxU7HNs4+GdbIZY2PAGk=;
- b=GYSkEq9IpUH3RVmdb3WfuthEEeqBNHDNLdNLN7f+Sa8ldePYcoH4DNBE
- 53Uzx5ims3HlPETE2Aq23ilJ99mPlAYfJOAlYp5Xt6ON3uzYU3zXujTeY
- bwAjifTnNd6sLWv7Ya1Otkn5Z8ea3otIo1RYjj1JqDut5+5iih2+WAXEg
- tvpnq6syEI/zrKel/hRkuQ9R61ejpfMfYPnfbOK9UNaPYldXaa0EUyI2k
- qzj4TLmohM/YYvHJHUX7cNr5RAwJ0Di7p+YKoN1lu1t8un1d8+QhhSb3O
- TfDBUqOnztr85CvodBTRDPQ7N8IQMgNXC+EZBK8mEH09uLrH9BXzOn9GF Q==;
-X-IronPort-AV: E=Sophos;i="5.60,475,1549900800"; d="scan'208";a="214490448"
+ bh=pZlZ5SOHrLItXEK0mZ1UX+dB+cCVanYSXqo7zToXUe4=;
+ b=Cm06J4i9izOH4Md7xVY0JkSfjHJeNauo8Fp/p000PmRsWOLR58R+kZEP
+ p3g3G0fKYzOQdQaz8hqesPV3mS/qFDoLJtEoEC4zQItfNk+a/L9vq5lwY
+ I1r17i5LWt/EeMGCs4pctTkfvnlIBu0wPOjUbxpenkpGPw8B3Uff2Gcef
+ bVCiHxrEnyA8+GXal9U5irpbpH2D3W54BCPZVWiV/DY0tPUC++cE3h4CP
+ 53adl6rSyMhUFLCxZx9LFnQ9miT9otB0pJGmGVQBGQ/U4LCav+PwjNdod
+ 79D8+UGhGISeYVTbmFr46c6jqURgoWzyWJL+IMKMRssOJPyNak6OvEJjD A==;
+X-IronPort-AV: E=Sophos;i="5.60,475,1549900800"; d="scan'208";a="214490454"
 Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 16 May 2019 11:21:25 +0800
-IronPort-SDR: n5WGnjV3KfTX6mYFAVs7wliQH37Uc270uZ64CcNRO5ZmSJNLDvT5qB5fCm8cMm9rXOoZDkxFvM
- 5BLwQliEAS8/3wKlle2wX+MS5ThwO2OD9lJy0rv7JkZuQWhkU1fW5DJWuBa95HhZPAlVlhVOtv
- lEmzZePoOPU/ogXWNHHPwOEkvF/x2VnyRbpHkbMhL9RDkv3nUhx0XNkBbdpKj8QVLN++Avip79
- I3DSmEhmYvQd0XCsq5BAs6LZZfSujMLWjYWVzw5VYo//aal5VJ+xpUTvqFVkoUKsLltD0zGQfy
- 2xZhnUnp7ndwXcUU3FGCqatI
+ by ob1.hgst.iphmx.com with ESMTP; 16 May 2019 11:21:27 +0800
+IronPort-SDR: ZoUer1ucT1PKsVKgY4kJLKMrJskmtVc0glKGSz3lQw5LQq0lPLcx/fg7erPb/HSwkNozYSoFA9
+ nL6EmQ/xyFEvzLg3fn7K6IE4ijGIOlwM0cUKKQVQ+CuyBcmmCC4vBWPGo1mIogUTiuR6uArYP1
+ /2/DKtJGgaF65g4uT1Dxrp27BqRksAZvO14MSKKrsEcGKEoTWoC1TRJkWDZE9KvSl6p4W2DhbV
+ sP/wt9SzDvwzGB8fMkHo+sWil11+EbXXnNXDkzzBz1vZU4DHDLE8gCepLcPFaFMwaQHIcQJg2j
+ PMUEfUyTYbLBOY99BumgP4uc
 Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep02.wdc.com with ESMTP; 15 May 2019 19:59:19 -0700
-IronPort-SDR: gZKf6j0HK7RoiRHsb93Kvs9MAuL/EiEcbrq5Ixgj22jMJ4F1wBdEYbS7NpMlldVB3UJgDXKb4b
- hZAszmaCuoRUVjsziZVAXkeR8mUhSFv7d9UOTVG3u3W/JeX48UMdsuSBiN63qkzL0oBqIKPPAi
- j9Xq72+aS+NQ8XbaGKo2nZGUyhqb4XH+utrc92XvFy0pPbrFjh44RyZpEmlQa5kcHaPqiV1ow3
- gyMDPnw7QWhzSTzbalDNlsCsHar6FC45cEwCmJzDj1cbfklBjiYwJKYa2POTwKTAbqz5ekLP/6
- +as=
+ by uls-op-cesaep02.wdc.com with ESMTP; 15 May 2019 19:59:22 -0700
+IronPort-SDR: 2tRYBwOK+hNbMKJssr9h23eG9aSiNFqRYWI6IvKiVMPB+p6CNG6DfRxQxWCu02sMPHc1a4ne2D
+ uNDEICyGLAxAJ2T1fM3gGevz6ZnUJRL8EsAYfaH4R2ttsyDCwYimUKD14ghoCbi5UWAKtXGzL3
+ 5rKHOJBrVo+uwL62KkQGifWBn2XEOT9DRIviP06Es9vyFwaoU0lSqeyZ3Twjxjb9vmySIR2XAk
+ igRfPN3e9Y0hFAPd/Cnw+SN68is6XCv1Y0Wi6k/dU9ZS5Uv8LVbe0+Sa5z2/SFLoNCB6kHsSDT
+ CAI=
 Received: from qemu.hgst.com ([10.202.65.140])
- by uls-op-cesaip02.wdc.com with ESMTP; 15 May 2019 20:21:25 -0700
+ by uls-op-cesaip02.wdc.com with ESMTP; 15 May 2019 20:21:28 -0700
 From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 To: linux-nvme@lists.infradead.org
-Subject: [RFC PATCH 1/4] nvmet: add iopriority definitions for port
-Date: Wed, 15 May 2019 20:21:05 -0700
-Message-Id: <20190516032109.13048-2-chaitanya.kulkarni@wdc.com>
+Subject: [PATCH] nvmet: get rid of extra line in the tcp code
+Date: Wed, 15 May 2019 20:21:06 -0700
+Message-Id: <20190516032109.13048-3-chaitanya.kulkarni@wdc.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20190516032109.13048-1-chaitanya.kulkarni@wdc.com>
 References: <20190516032109.13048-1-chaitanya.kulkarni@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190515_202125_612558_7A9A190C 
-X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-CacheID: sfid-20190515_202146_983534_B9787759 
+X-CRM114-Status: UNSURE (   9.79  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -99,28 +99,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This patch adds iopriority class and value per port which gets
-initialized from the user through configfs.
+This is a code cleanup patch, it doesn't change any functionality,
+It removes the extra line at the end of the function.
 
 Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 ---
- drivers/nvme/target/nvmet.h | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/nvme/target/tcp.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index c25d88fc9dec..b81b1501cf55 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -140,6 +140,9 @@ struct nvmet_port {
- 	void				*priv;
- 	bool				enabled;
- 	int				inline_data_size;
-+	u8				ioprio_class;
-+	u8				ioprio_value;
-+	u16				ioprio;
- };
+diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
+index 69b83fa0c76c..f019af264081 100644
+--- a/drivers/nvme/target/tcp.c
++++ b/drivers/nvme/target/tcp.c
+@@ -557,7 +557,6 @@ static int nvmet_try_send_data(struct nvmet_tcp_cmd *cmd)
+ 	}
  
- static inline struct nvmet_port *to_nvmet_port(struct config_item *item)
+ 	return 1;
+-
+ }
+ 
+ static int nvmet_try_send_response(struct nvmet_tcp_cmd *cmd,
 -- 
 2.17.0
 
