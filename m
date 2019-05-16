@@ -2,83 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F4F620D55
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 18:48:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AD5B20D6C
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 18:51:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+0zUCfaPe54IsBe1UhuDlWPUJ/bbT/x7dI4qdWWrwtM=; b=MarpxxcKWhieO/
-	gp5A7q/TZqayrzYZSM6j4bsSsOmLV9L7LoobpWzshjlD3nd8TAfYIR7dVGpR/KaMqq7K0+D9UYACJ
-	q5JwFxBRO3a3qtdjunCYW3Hf1Wlm+2qzo5lvkijoay7WthqmKLGE1EWTiwnBOsdDVagZ95L80IvFr
-	EbdsMKjismbyIqGNDKHE5P5Xkvk4wZW7T7RACMMfWI4s1FSpqDY41sGFup6M7UNCsS2KJFZiCPv/u
-	plOSfOIpJOEgrzsdL2fYWPtCg2awJJlsl68plOyvJYPxyNPBAJRLtrnib2oTvOwcokFhr2l/wNOdf
-	ih88vxOnrO428t1id/NA==;
+	List-Owner; bh=C/4ERMsCgqYTvfkTIi6OSRFCxd5HU7VUyo6pG+ugomg=; b=XKFMnsHif/H7iJ
+	bT9Wg0rmKV4nnsqjb7k0o9oudVlmMWtSGZS+hrKg1KbD5zil5gMmZ8R+OHD4jfsdRe5FMvsYnVs+C
+	7aVB9Jz+XxsljrM43jSXcXLFLKPaKOWOiKCuERDeCoAS38NQ23NZVUTYoEvaBNXX53xuBOehXeM+/
+	fQLilMp2npAPPORJCad0k7QPiG6nRixt0bjIgajaXZK9HjMuYizj8+VWXoDEMwumovtyjkWVHFvN8
+	fiey/0G6uaDtJf/dm6ePjelZo18oPuWPhKC75WXaFwII5//ucujXQr9SdFQgGaN+iLZyEVu/yIeWS
+	hJkR7j+fOw13LXikHoAg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRJYN-0002hS-54; Thu, 16 May 2019 16:48:23 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1hRJbg-00052g-5q; Thu, 16 May 2019 16:51:48 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRJYI-0002gU-7A
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 16:48:19 +0000
-Received: by mail-pf1-x443.google.com with SMTP id c6so2130605pfa.10
- for <linux-nvme@lists.infradead.org>; Thu, 16 May 2019 09:48:17 -0700 (PDT)
+ id 1hRJba-00052H-FF
+ for linux-nvme@lists.infradead.org; Thu, 16 May 2019 16:51:44 +0000
+Received: by mail-pg1-x543.google.com with SMTP id 145so1837979pgg.9
+ for <linux-nvme@lists.infradead.org>; Thu, 16 May 2019 09:51:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=xGzOdEjbkXQI4XN5U9fk3ggStqgmR5/EE4ixhly3O2A=;
- b=Bu0Qn4kktWsD3rAV1GUd3JeYgoHJy5Xy55l8u9PsPgiqlneSxFPvzvxLfoLgM89pOW
- 1n1Y8ArrxGdys3wg+GHraGMinlicbCuIIFmc3NDk187p7cjfJXyq7Yzy+6kAGsvGTLCC
- D+Ny8OPi8JMucEPU+wI1awvKVfL4KXzEmoziGasIyMtoEKkTMPuHGvqSfD3a/i9Cm3g5
- heZZSZf+vEB7Il04F16l3g2xTH+tgo0hFrZj01evzTu+QvHeRWZJtIKwmgkMfwEsBjha
- H0s2ChNcFMT2IBTDaSxuyyi/YbPFAPtlxvjRPsSIXA+BbELDk3aylFHO3L/9uYnLQQG/
- hCiw==
+ :content-disposition:in-reply-to:user-agent;
+ bh=ObCtZFbSDNhky5YScW0KGVgZqfUpXNtMiEwUErGi5jc=;
+ b=j7wfxPqpNwoS3DsGAsc46v2MUJhCVlw5wKxHM9Gdz0N7J2QSz3/n+hcfmR9lH79MJC
+ OqWXJg6F2YhWdPTLHhXKIuMFgTCUm8mCHCkDYOlMwJvnKqpbTDB5MWZYT0kxKL/6obt2
+ wi5Rx+aJJD3pB2+IoWNw0ZpALgCxPLvzQwrzScMbhqcitXCu/2PusS2HAWbUZpf+zfYL
+ tWQQjdiGigERlL/LhPZfkbX5pXoWbqStl45cLjHK5K5EgJRnHYDMKjYXSRcQhEV/9sGJ
+ q2MxDUhfmuUnT2GGsLVf7B0p+bnbkZDKvXt3k1DNK1dtDLax97uSA53pbFQ+MGP9qznw
+ lCSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=xGzOdEjbkXQI4XN5U9fk3ggStqgmR5/EE4ixhly3O2A=;
- b=UK1tqKx3VjLMh/Hpuk4kXw3LsoqlLGu3r8658u5f1OP9WGDSHEqnZqNCRYafWcGBIL
- nHskTi444Qvm5GUA+ydlVcMQmwiq/XtYwgmEdPNZHOFgRUjYgeeipVGIa8lDCbmPJ8Md
- AXPtAhiHcltcCn6giK4+l7TGuqH6ZhFaf8xz6YMPC6uG1yCoDe0cj70JgucOK+0hfTm/
- WAu2qtMOzwqmjrCD9AmrplgwLFw0TFWKAcUUF6IaulUX7GEotlK4zy9AGoqgh7NWO0mc
- RQjdMd86EgFjmkwzj5vwY9XDxrJRl+rHeGXS2ZaNJk2ie2SFrUs1uUkRnm5ysd5F3Lyn
- Ng6w==
-X-Gm-Message-State: APjAAAVXDejaIcpkJOZPOZofIvhV3rmB7Dwg1cj6ShQfasG3XlWqxHTu
- R5/8GOzk+xyuSUpoJDZQfio=
-X-Google-Smtp-Source: APXvYqzil0ehZc90CSqN+2Pmtn8vNBmPO90h4w8n8jHTQZYQTOuEdi+W+6QpL8RYioHUuG01uoCPiA==
-X-Received: by 2002:a63:9a52:: with SMTP id e18mr50918024pgo.335.1558025297166; 
- Thu, 16 May 2019 09:48:17 -0700 (PDT)
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=ObCtZFbSDNhky5YScW0KGVgZqfUpXNtMiEwUErGi5jc=;
+ b=YdAVjJKxYD0mXP1ze/WaM7Lp+sVo4FDuKwqV2SLAk5v/elDMaM7tOHgMVIX6y3GqRY
+ ShfhLxmrdc4/QNzBU7c4qDbIVasB7nBXPXWir1/RsTx6vKXtgcugS0WegNYShndbLsOE
+ n+LtjXBkd0VYKuPEzlUNyxZKk7WfRtkCVImXVXfMDg5PDeZnG0yMlPzza/mT1r8QYYIb
+ RDZ1a4S2a2ZCQPW6IDVxXrKumaPaj3JZqNpPCTQmdXZGFYLaieU2RIjTqbQfQZhPJTLP
+ hSg+pJz19JdJFFYJd8BkF91EX3vwCMpMBN5+uYViQXLYXJLuwaLqNJwgiggRokSgDGia
+ WOvQ==
+X-Gm-Message-State: APjAAAWKBQ8q1N7W0F5nRvoFeaKqa9vj2pzxq26RI0gnc8O58vXbSFle
+ qDQAJceksneD88djLLWcTkk=
+X-Google-Smtp-Source: APXvYqzFJV84bQeBum8uGFqzSZnbEsTzyRuhl7PRd2/Sr+NiLDPwiMYDVK6T10Tw19Lkt1cL2UGpUg==
+X-Received: by 2002:a63:6196:: with SMTP id
+ v144mr52008586pgb.235.1558025501991; 
+ Thu, 16 May 2019 09:51:41 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id q193sm9884262pfc.52.2019.05.16.09.48.15
+ by smtp.gmail.com with ESMTPSA id r29sm1217530pga.62.2019.05.16.09.51.40
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 16 May 2019 09:48:16 -0700 (PDT)
-Date: Fri, 17 May 2019 01:48:13 +0900
+ Thu, 16 May 2019 09:51:41 -0700 (PDT)
+Date: Fri, 17 May 2019 01:51:38 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Akinobu Mita <akinobu.mita@gmail.com>
-Subject: Re: [PATCH 1/2] nvme: add thermal zone infrastructure
-Message-ID: <20190516164811.GF24001@minwooim-desktop>
-References: <1557933437-4693-1-git-send-email-akinobu.mita@gmail.com>
- <1557933437-4693-2-git-send-email-akinobu.mita@gmail.com>
- <20190516143212.GE24001@minwooim-desktop>
- <CAC5umyjxxWzCgyMOS=Q7BBBJY+n6xD1dg49fQ0W5okPh58Z1Kw@mail.gmail.com>
+Subject: Re: [PATCH] nvme-cli: remove unused NVME_AER_NOTICE_*
+Message-ID: <20190516165137.GG24001@minwooim-desktop>
+References: <1558024889-9474-1-git-send-email-akinobu.mita@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAC5umyjxxWzCgyMOS=Q7BBBJY+n6xD1dg49fQ0W5okPh58Z1Kw@mail.gmail.com>
+In-Reply-To: <1558024889-9474-1-git-send-email-akinobu.mita@gmail.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_094818_287112_5837D5CC 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20190516_095142_518306_BC71C8E0 
+X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
@@ -102,59 +100,33 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-pm@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>,
- linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
- Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Keith Busch <keith.busch@intel.com>, linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gMTktMDUtMTcgMDE6MTc6MzEsIEFraW5vYnUgTWl0YSB3cm90ZToKPiAyMDE55bm0NeaciDE2
-5pelKOacqCkgMjM6MzIgTWlud29vIEltIDxtaW53b28uaW0uZGV2QGdtYWlsLmNvbT46Cj4gPgo+
-ID4gPiArICAgICBpZiAoc2Vuc29yIDwgMCB8fCBzZW5zb3IgPiA4KQo+ID4gPiArICAgICAgICAg
-ICAgIHJldHVybiAtRUlOVkFMOwo+ID4KPiA+IERvZXMgd2UgcmVhbGx5IG5lZWQgdG8gY2hlY2sg
-dGhlIG5lZ2F0aXZlIGNhc2UgaGVyZSA/ICBBbSBJIG1pc3NpbmcKPiA+IHNvbWV0aGluZyBpbiB0
-aGlzIGNvbnRleHQgPyAgSWYgd2UgcmVhbGx5IHdhbnQgdG8gY2hlY2sgaXQgaW4gdGhpcwo+ID4g
-bGV2ZWwsIGNhbiB3ZSBjaGVjayB0aGUgaW52YWxpZCBjYXNlIGluIHRoZSBmb2xsb3dpbmcgZnVu
-Y3Rpb24/Cj4gCj4gVGhlIG5lZ2F0aXZlIGNhc2Ugc2hvdWxkIG5ldmVyIGhhcHBlbiwgc28gaXQg
-Y2FuIGJlIGp1c3QgcmVtb3ZlZC4KCkNvb2wuCgo+IAo+ID4gPiArc3RhdGljIHN0cnVjdCB0aGVy
-bWFsX3pvbmVfZGV2aWNlICoKPiA+ID4gK252bWVfdGhlcm1hbF96b25lX3JlZ2lzdGVyKHN0cnVj
-dCBudm1lX2N0cmwgKmN0cmwsIGludCBzZW5zb3IpCj4gPiA+ICt7Cj4gPiA+ICsgICAgIHN0cnVj
-dCB0aGVybWFsX3pvbmVfZGV2aWNlICp0emRldjsKPiA+ID4gKyAgICAgY2hhciB0eXBlW1RIRVJN
-QUxfTkFNRV9MRU5HVEhdOwo+ID4gPiArICAgICBpbnQgcmV0Owo+ID4gPiArCj4gPiA+ICsgICAg
-IHNucHJpbnRmKHR5cGUsIHNpemVvZih0eXBlKSwgIm52bWVfdGVtcCVkIiwgc2Vuc29yKTsKPiA+
-Cj4gPiBCZWZvcmUgcHJlcGFyaW5nICJudm1lX3RlbXAlZCIsIG1heWJlIHdlIGNhbiBtYWtlIGl0
-IHN1cmUgaGVyZS4gOikKPiA+IFdoYXQgZG8geW91IHNheT8KPiAKPiBUaGUgbnZtZV90aGVybWFs
-X3pvbmVfcmVnaXN0ZXIoKSBpcyBvbmx5IGNhbGxlZCBmcm9tCj4gbnZtZV90aGVybWFsX3pvbmVz
-X3JlZ2lzdGVyKCkgd2hpY2ggaXMgZGVmaW5lZCBqdXN0IGJlbG93LCBhbmQgaXQncyB2ZXJ5Cj4g
-Y2xlYXIgdGhhdCB0aGUgdmFsdWUgb2YgJ3NlbnNvcicgaXMgZnJvbSAwIHRvIEFSUkFZX1NJWkUo
-Y3RybC0+dHpkZXYpIC0gMS4KCklmIHNvLCB3ZSBkb24ndCBuZWVkIHRvIGNoZWNrIHRoZSBuZWdh
-dGl2ZSBjYXNlIGFib3ZlIHRoZXJlLgoKPiAKPiA+ID4gK2ludCBudm1lX3RoZXJtYWxfem9uZXNf
-cmVnaXN0ZXIoc3RydWN0IG52bWVfY3RybCAqY3RybCkKPiA+ID4gK3sKPiA+ID4gKyAgICAgc3Ry
-dWN0IG52bWVfc21hcnRfbG9nICpsb2c7Cj4gPiA+ICsgICAgIGludCByZXQ7Cj4gPiA+ICsgICAg
-IGludCBpOwo+ID4gPiArCj4gPiA+ICsgICAgIGxvZyA9IGt6YWxsb2Moc2l6ZW9mKCpsb2cpLCBH
-RlBfS0VSTkVMKTsKPiA+ID4gKyAgICAgaWYgKCFsb2cpCj4gPiA+ICsgICAgICAgICAgICAgcmV0
-dXJuIC1FTk9NRU07Cj4gPiA+ICsKPiA+ID4gKyAgICAgcmV0ID0gbnZtZV9nZXRfbG9nKGN0cmws
-IE5WTUVfTlNJRF9BTEwsIE5WTUVfTE9HX1NNQVJULCAwLAo+ID4gPiArICAgICAgICAgICAgICAg
-ICAgICAgICAgbG9nLCBzaXplb2YoKmxvZyksIDApOwo+ID4gPiArICAgICBpZiAocmV0KSB7Cj4g
-PiA+ICsgICAgICAgICAgICAgcmV0ID0gcmV0ID4gMCA/IC1FSU5WQUwgOiByZXQ7Cj4gPiA+ICsg
-ICAgICAgICAgICAgZ290byBmcmVlX2xvZzsKPiA+ID4gKyAgICAgfQo+ID4gPiArCj4gPiA+ICsg
-ICAgIGZvciAoaSA9IDA7IGkgPCBBUlJBWV9TSVpFKGN0cmwtPnR6ZGV2KTsgaSsrKSB7Cj4gPiA+
-ICsgICAgICAgICAgICAgc3RydWN0IHRoZXJtYWxfem9uZV9kZXZpY2UgKnR6ZGV2Owo+ID4gPiAr
-Cj4gPiA+ICsgICAgICAgICAgICAgaWYgKGkgJiYgIWxlMTZfdG9fY3B1KGxvZy0+dGVtcF9zZW5z
-b3JbaSAtIDFdKSkKPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgIGNvbnRpbnVlOwo+ID4gPiAr
-ICAgICAgICAgICAgIGlmIChjdHJsLT50emRldltpXSkKPiA+ID4gKyAgICAgICAgICAgICAgICAg
-ICAgIGNvbnRpbnVlOwo+ID4gPiArCj4gPiA+ICsgICAgICAgICAgICAgdHpkZXYgPSBudm1lX3Ro
-ZXJtYWxfem9uZV9yZWdpc3RlcihjdHJsLCBpKTsKPiA+ID4gKyAgICAgICAgICAgICBpZiAoIUlT
-X0VSUih0emRldikpCj4gPiA+ICsgICAgICAgICAgICAgICAgICAgICBjdHJsLT50emRldltpXSA9
-IHR6ZGV2Owo+ID4KPiA+IFF1ZW5zdGlvbiBoZXJlLiBBcmUgd2Ugb2theSBub3QgdG8gcHJpbnQg
-c29tZSB3YXJuaW5ncyBoZXJlIGluIGNhc2UKPiA+IG9mIGVycm9yIHJldHVybmVkPwo+IAo+IEkn
-bSBnb2luZyB0byBwcmludCB3YXJuaW5nIGluIGNhc2Ugb2YgdGhlcm1hbF96b25lX2RldmljZV9y
-ZWdpc3RlcigpIGVycm9yLgo+IEZvciBzeXNmc19jcmVhdGVfbGluaygpIGVycm9yLCB0aGUgd2Fy
-bmluZyBpcyBwcmludGVkIGJ5IHRoZSBmdW5jdGlvbgo+IGl0c2VsZi4KClNvdW5kcyBncmVhdC4K
-ClRoYW5rcywKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+> diff --git a/linux/nvme.h b/linux/nvme.h
+> index cac4d19..13fa52a 100644
+> --- a/linux/nvme.h
+> +++ b/linux/nvme.h
+> @@ -589,9 +589,6 @@ enum {
+>  	NVME_AER_SMART			= 1,
+>  	NVME_AER_CSS			= 6,
+>  	NVME_AER_VS			= 7,
+> -	NVME_AER_NOTICE_NS_CHANGED	= 0x0002,
+> -	NVME_AER_NOTICE_ANA		= 0x0003,
+> -	NVME_AER_NOTICE_FW_ACT_STARTING = 0x0102,
+>  };
+
+It looks like we can sync-up the header files sooner or later from the
+kernel code to avoid kind of conflicts you mentioned.
+
+Anyway,
+
+Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
