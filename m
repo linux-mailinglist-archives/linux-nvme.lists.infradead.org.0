@@ -2,60 +2,36 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BDB320B4C
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 17:31:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E5D120B9D
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 17:54:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yOUs+3+GCkNEnf3QIXhMLWnPYXSOaDcFMyCQUZqGSuI=; b=JOSoSXQ2QgmRvZ
-	ix+HWZbcFSPQRp12cmYVA8mFIkgoph+UP3PjYhJAMdfy1Titc129pUl+JZi2OeJNtm7PxB7DR3b0k
-	E01dQyK1TXqJbi10veWJR3nGoY8EQjni3yi8FZnLFvJJyiACicuuuLQipJ8Ok6VM7ufm0DnvoJowd
-	XqjRzhDdFNsLGr6tkX2V1Yqwz6ylHVBjIWrxMFrIP4l4uL63VUhIxDW4D2ByaRiQPlYkjdVAluvWP
-	8BS4uQtjE+g5k3gshezskX9SXE2oFEvuO92V6m/TNDz5ct/7ozfkgeAyClKO1mn8Nj+a8jGyqEpv4
-	TM5BPkTGd9m92CC8hD8Q==;
+	List-Owner; bh=AAIiT+zzPO0cK38ik8+NCyTeDvKO/QcPF1sdDDsbtBA=; b=EmYiwArKvJafsG
+	06Opkh0oqYmz5GVWQMhKhzcjd1kU4TdlUhy54KUbx1DxY1me15fOnCrPoNuSQxirji6Kif25tKvLZ
+	tVnpnOe8uEgSP/lLzgeZaCyliNUolIT0y38tOAIL/JaQNzH71S0pIpyshjWVQdhWRGulH14RdSNAZ
+	Q9cnAK878HEfpa35uNo94+1B9jwTFrRskpDKlj8TLFQUKJ9oOvzQyQyHMLpasFZksPD+22W0Ub8Or
+	e5jaitDaidHCyHsYbMH/SGI8aPAcC4V27a2gcMTSm3CDTF2Eh3CuIPiTketBMBSa3XXLvO0U1FIwQ
+	37aCz2nhIUvdYd+MEfmw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRIME-0005cg-Hg; Thu, 16 May 2019 15:31:46 +0000
-Received: from mga18.intel.com ([134.134.136.126])
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRIM7-0005bS-Ui
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 15:31:41 +0000
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 May 2019 08:31:38 -0700
-X-ExtLoop1: 1
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by fmsmga004.fm.intel.com with ESMTP; 16 May 2019 08:31:38 -0700
-Date: Thu, 16 May 2019 09:26:23 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Akinobu Mita <akinobu.mita@gmail.com>
-Subject: Re: [PATCH 1/2] nvme: add thermal zone infrastructure
-Message-ID: <20190516152622.GC23416@localhost.localdomain>
-References: <1557933437-4693-1-git-send-email-akinobu.mita@gmail.com>
- <1557933437-4693-2-git-send-email-akinobu.mita@gmail.com>
- <20190515191518.GA21916@localhost.localdomain>
- <CAC5umyhh7eNHa4D9sndsoB7EgTJZTEL9OTd=a+7x817XvPZ_eQ@mail.gmail.com>
+	id 1hRIhl-0007d4-6X; Thu, 16 May 2019 15:54:01 +0000
+Received: from hch by bombadil.infradead.org with local (Exim 4.90_1 #2 (Red
+ Hat Linux)) id 1hRIhg-0007cL-DE; Thu, 16 May 2019 15:53:56 +0000
+Date: Thu, 16 May 2019 08:53:56 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: Issue with namespace delete
+Message-ID: <20190516155356.GA26104@infradead.org>
+References: <f215cfd2-c0ce-34ff-bc8b-4a577a73372e@intel.com>
+ <20190516151130.GB23416@localhost.localdomain>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAC5umyhh7eNHa4D9sndsoB7EgTJZTEL9OTd=a+7x817XvPZ_eQ@mail.gmail.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_083140_035863_02161966 
-X-CRM114-Status: GOOD (  15.88  )
-X-Spam-Score: -1.3 (-)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [134.134.136.126 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+In-Reply-To: <20190516151130.GB23416@localhost.localdomain>
+User-Agent: Mutt/1.9.2 (2017-12-15)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,31 +43,113 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-pm@vger.kernel.org, Jens Axboe <axboe@fb.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-nvme@lists.infradead.org,
- Keith Busch <keith.busch@intel.com>, Zhang Rui <rui.zhang@intel.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: "Busch, Keith" <keith.busch@intel.com>, "Heitke,
+ Kenneth" <kenneth.heitke@intel.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, May 17, 2019 at 12:22:51AM +0900, Akinobu Mita wrote:
-> > Since this routine is intended for use in the device initialization path,
-> > the error returns are extra important. We have used < 0 to indicate we
-> > need to abandon initialization because we won't be able communicate with
-> > the device if we proceed. Since thermal reporting is not mandatory to
-> > manage our controllers, out-of-memory or a device that doesn't support
-> > SMART should just return 0. We should only halt init if the controller
-> > is unresponsive here.
+On Thu, May 16, 2019 at 09:11:30AM -0600, Keith Busch wrote:
+> You may have avoided this if you send the ioctl through the controller
+> char dev rather than the namespace block dev handle.
 > 
-> Make sense.  I'll change the return type to void, and print warning in
-> case of some errors as Minwoo said in other reply.
+> I'm not sure what the best way to fix this might be right now.
 
-Oh, still needs to be an 'int' return, but just suppress non-fatal
-errors by returning 0. If the 'nvme_get_log' times out, though, we need
-to return that error since the caller will need to abort initialization.
+We could try something like the changes below, although they are
+completely untested for now and will need to be split up into
+a few patches:
+
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index a6644a2c3ef7..537cbef5bc4a 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1362,9 +1362,14 @@ static struct nvme_ns *nvme_get_ns_from_disk(struct gendisk *disk,
+ {
+ #ifdef CONFIG_NVME_MULTIPATH
+ 	if (disk->fops == &nvme_ns_head_ops) {
++		struct nvme_ns *ns;
++
+ 		*head = disk->private_data;
+ 		*srcu_idx = srcu_read_lock(&(*head)->srcu);
+-		return nvme_find_path(*head);
++		ns = nvme_find_path(*head);
++		if (!ns)
++			srcu_read_unlock(&(*head)->srcu, *srcu_idx);
++		return ns;
+ 	}
+ #endif
+ 	*head = NULL;
+@@ -1384,8 +1389,6 @@ static int nvme_ns_ioctl(struct nvme_ns *ns, unsigned cmd, unsigned long arg)
+ 	case NVME_IOCTL_ID:
+ 		force_successful_syscall_return();
+ 		return ns->head->ns_id;
+-	case NVME_IOCTL_ADMIN_CMD:
+-		return nvme_user_cmd(ns->ctrl, NULL, (void __user *)arg);
+ 	case NVME_IOCTL_IO_CMD:
+ 		return nvme_user_cmd(ns->ctrl, ns, (void __user *)arg);
+ 	case NVME_IOCTL_SUBMIT_IO:
+@@ -1395,9 +1398,6 @@ static int nvme_ns_ioctl(struct nvme_ns *ns, unsigned cmd, unsigned long arg)
+ 		if (ns->ndev)
+ 			return nvme_nvm_ioctl(ns, cmd, arg);
+ #endif
+-		if (is_sed_ioctl(cmd))
+-			return sed_ioctl(ns->ctrl->opal_dev, cmd,
+-					 (void __user *) arg);
+ 		return -ENOTTY;
+ 	}
+ }
+@@ -1405,16 +1405,30 @@ static int nvme_ns_ioctl(struct nvme_ns *ns, unsigned cmd, unsigned long arg)
+ static int nvme_ioctl(struct block_device *bdev, fmode_t mode,
+ 		unsigned int cmd, unsigned long arg)
+ {
++	void __user *argp = (void __user *)arg;
+ 	struct nvme_ns_head *head = NULL;
++	struct nvme_ctrl *ctrl = NULL;
+ 	struct nvme_ns *ns;
+-	int srcu_idx, ret;
++	int srcu_idx, ret = 0;
+ 
+ 	ns = nvme_get_ns_from_disk(bdev->bd_disk, &head, &srcu_idx);
+ 	if (unlikely(!ns))
+-		ret = -EWOULDBLOCK;
++		return -EWOULDBLOCK;
++
++	if (cmd == NVME_IOCTL_ADMIN_CMD || is_sed_ioctl(cmd))
++		ctrl = nvme_get_ctrl(ns->ctrl);
+ 	else
+ 		ret = nvme_ns_ioctl(ns, cmd, arg);
+ 	nvme_put_ns_from_disk(head, srcu_idx);
++
++	if (ctrl) {
++		if (cmd == NVME_IOCTL_ADMIN_CMD)
++			return nvme_user_cmd(ctrl, NULL, argp);
++		if (is_sed_ioctl(cmd))
++			return sed_ioctl(ctrl->opal_dev, cmd, argp);
++		nvme_put_ctrl(ctrl);
++	}
++
+ 	return ret;
+ }
+ 
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 5ee75b5ff83f..86625767da8b 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -405,9 +405,10 @@ static inline void nvme_end_request(struct request *req, __le16 status,
+ 	blk_mq_complete_request(req);
+ }
+ 
+-static inline void nvme_get_ctrl(struct nvme_ctrl *ctrl)
++static inline struct nvme_ctrl *nvme_get_ctrl(struct nvme_ctrl *ctrl)
+ {
+ 	get_device(ctrl->device);
++	return ctrl;
+ }
+ 
+ static inline void nvme_put_ctrl(struct nvme_ctrl *ctrl)
 
 _______________________________________________
 Linux-nvme mailing list
