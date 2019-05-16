@@ -2,108 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F61020A88
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 16:59:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 32DCD20AEA
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 17:17:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3qvwJHfBI8p8jfbfdS1SgJjJKK3OGD/E3vpklRRDjPQ=; b=LYgIsslVvOXQ69
-	4WC0v/rQ8SM+22HzNsGAkyNeEVG46yo6NPKzjnOFiWJOO1BKtkzc1lC99ne3rG1JwC2arTsKdO9IH
-	3JFf8GB/uaMpojIupKKZ4f8oEUzmljUqEEB+bx4R2s5QwbMK1HvyuVq9wpKhUS3p56ZSJ1PDM1v1v
-	51bkbimpqzBHZYIxo+GQytRIak7+IalTjn86psidFiMAlENZlGxCR2mpbucehle+qL7pc19JEG3TI
-	mmolfWaUNjeatKa9491NJtm6PBniygayjbk2TZwHf4FCD/fc1Zz3Ghn5InstF7nCENxnWA6lIsPGp
-	w7OH3qcruh16pVHnuK+g==;
+	List-Owner; bh=vYqef5oe+aiuWNpLuuRy8MtdmPyOjhsLZT67igR2E8E=; b=bXSadRg12CBuHz
+	CxAQlS5IkgYq1CcHT57JkfduDpCyPo5qgINitcNvJ66Y28duTb66LCE+OVAhDQWZNOEfTSM5CV69h
+	68fD4LD4dFWLyv4r5kCwkZiO0mVw+B0qMKL5FEyi67vJEEhff0pluRSYmD1qnVWCz5ZoQ8fw+rGiC
+	JgGRv7gPvQ+eHVO4P+aZqhvs3YVm4CeH3WUvffvm0Zbiu+MuSHBqsZ1MitIFUyugJA33bBiHIaR7t
+	Uyl05z0IxYFNcMPusf9HwX3HwNas/4tvuUKldMvGQLQXS4Wcxx7hvGTSBmOvgs0fNxxjA+WgLMfSg
+	G5rbodH/hGbFTP6qJOQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRHql-0007tW-2a; Thu, 16 May 2019 14:59:15 +0000
-Received: from aserp2130.oracle.com ([141.146.126.79])
+	id 1hRI7p-0007vT-VC; Thu, 16 May 2019 15:16:53 +0000
+Received: from mga05.intel.com ([192.55.52.43])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRHqg-0007tB-6L
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 14:59:11 +0000
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4GEwqA0164944;
- Thu, 16 May 2019 14:58:52 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : references : date : in-reply-to : message-id : mime-version :
- content-type; s=corp-2018-07-02;
- bh=fqGtfO6id67rQy1OZ3kUwhnbYMRxo4E7KMPLVXBiHus=;
- b=B3J1oPkN1r/P2wEu81Esq9oRJbKsRPZCOC9et0Vc1ZKQzJCh9k6q0NDZPq9hc3bfMOp7
- 1LICcPjSTaI3A4IJxrdo9NmHX9lQACI2B9xWGvRSVqSztGoCE6iOizeMlKVfOMrQogjF
- d3Wo98VMs/vs3oOW99t/3QtA8zSCBvG2t2k+uV6g4bRIg1NTurIcxEpX67ajhR63nGR1
- aZQih7DbZTmhpwI20SWJQqlMsyaVMlbuKFoWhH1WWgsFis7BNmwW/yrHEifKOOr08QYE
- XFe08ZWgyn7jLtU9XFAnPNuEq3e3V8MlkmpnLff8/o0C8YVlIJesseEmYHkh8AqzUezw cQ== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2130.oracle.com with ESMTP id 2sdkwe46ye-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 16 May 2019 14:58:52 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4GEvnMY003381;
- Thu, 16 May 2019 14:58:47 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3020.oracle.com with ESMTP id 2sggdt7x79-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 16 May 2019 14:58:47 +0000
-Received: from abhmp0013.oracle.com (abhmp0013.oracle.com [141.146.116.19])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x4GEwjwQ017321;
- Thu, 16 May 2019 14:58:45 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 16 May 2019 07:58:45 -0700
-To: Keith Busch <kbusch@kernel.org>
-Subject: Re: [PATCH RFC] nvme: Common subsys and controller instances IDA
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-References: <20190515213351.22190-1-keith.busch@intel.com>
- <20190516064651.GA30234@lst.de>
- <1f0e7049-c926-98e0-3624-0d24eb45cd87@suse.de>
- <20190516144452.GB23372@localhost.localdomain>
-Date: Thu, 16 May 2019 10:58:43 -0400
-In-Reply-To: <20190516144452.GB23372@localhost.localdomain> (Keith Busch's
- message of "Thu, 16 May 2019 08:44:52 -0600")
-Message-ID: <yq17eaqbg4c.fsf@oracle.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
+ id 1hRI7l-0007v0-Rw
+ for linux-nvme@lists.infradead.org; Thu, 16 May 2019 15:16:51 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 May 2019 08:16:46 -0700
+X-ExtLoop1: 1
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga005.jf.intel.com with ESMTP; 16 May 2019 08:16:45 -0700
+Date: Thu, 16 May 2019 09:11:30 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: "Heitke, Kenneth" <kenneth.heitke@intel.com>
+Subject: Re: Issue with namespace delete
+Message-ID: <20190516151130.GB23416@localhost.localdomain>
+References: <f215cfd2-c0ce-34ff-bc8b-4a577a73372e@intel.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9258
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905160096
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9258
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905160096
+Content-Disposition: inline
+In-Reply-To: <f215cfd2-c0ce-34ff-bc8b-4a577a73372e@intel.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_075910_354965_F71FBA80 
-X-CRM114-Status: GOOD (  12.86  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190516_081649_924699_2A981E87 
+X-CRM114-Status: GOOD (  15.22  )
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [141.146.126.79 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ medium trust [192.55.52.43 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,35 +65,49 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "Busch, Keith" <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- Hannes Reinecke <hare@suse.de>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- Christoph Hellwig <hch@lst.de>
+Cc: "Busch, Keith" <keith.busch@intel.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+On Wed, May 15, 2019 at 06:23:53PM -0700, Heitke, Kenneth wrote:
+> I have been doing some namespace testing with Ubuntu 18.04 (kernel 
+> 4.15.0-43-generic). I'm running into an issue with namespace deletes 
+> where the driver seems to hang.
+> 
+> [  363.484013]  synchronize_srcu+0x57/0xdc
+> [  363.484016]  nvme_ns_remove+0xcc/0x180 [nvme_core]
+> [  363.484018]  nvme_remove_invalid_namespaces+0xb1/0xe0 [nvme_core]
+> [  363.484020]  nvme_user_cmd+0x282/0x370 [nvme_core]
+> [  363.484022]  nvme_ioctl+0xd0/0x1d0 [nvme_core]
+> [  363.484024]  blkdev_ioctl+0x3b8/0x980
+> [  363.484025]  block_ioctl+0x3d/0x50
+> [  363.484027]  do_vfs_ioctl+0xa8/0x620
+> [  363.484028]  ? ptrace_notify+0x5b/0x90
+> [  363.484030]  ? syscall_trace_enter+0x7b/0x2c0
+> [  363.484031]  SyS_ioctl+0x7a/0x90
+> [  363.484032]  do_syscall_64+0x73/0x130
+> [  363.484033]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
+> 
+> I don't understand RCUs very well but I found the following in the 
+> documentation
+> 
+> "Note that it is illegal to call synchronize_srcu from the corresponding 
+> SRCU read-side critical section; doing so will result in deadlock."
+> 
+> I noticed in the driver that when multi-path is enabled, the context for 
+> ioctl calls would be in a read-side critical section 
+> (nvme_get_ns_from_disk) and I believe that the synchronize_srcu() call 
+> is made in the same context.
 
-Keith,
+Yeah, you're right.
 
->> to keep in line with the other symlinks in /dev/disk/by-id/ The
->> controller symlinks don't really fall into this category, though; we
->> could create a 'nvme' subdirectory (much like MD does), and create
->> symlinks in there.
->
-> Cool, I would also like to see persistent char dev names, but I wasn't
-> sure where they'd go. If we can make our own 'nvme' subdirectory,
-> that'd be great.
+You may have avoided this if you send the ioctl through the controller
+char dev rather than the namespace block dev handle.
 
-Should be fine. As long as /dev/disk stays intact.
-
-It would be really nice to have a clear indication of
-subsys/controller/namespace relationships. So much confusion as a result
-of the current approach...
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+I'm not sure what the best way to fix this might be right now.
 
 _______________________________________________
 Linux-nvme mailing list
