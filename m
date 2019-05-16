@@ -2,73 +2,70 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2AD5B20D6C
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 18:51:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3220320DD5
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 19:24:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C/4ERMsCgqYTvfkTIi6OSRFCxd5HU7VUyo6pG+ugomg=; b=XKFMnsHif/H7iJ
-	bT9Wg0rmKV4nnsqjb7k0o9oudVlmMWtSGZS+hrKg1KbD5zil5gMmZ8R+OHD4jfsdRe5FMvsYnVs+C
-	7aVB9Jz+XxsljrM43jSXcXLFLKPaKOWOiKCuERDeCoAS38NQ23NZVUTYoEvaBNXX53xuBOehXeM+/
-	fQLilMp2npAPPORJCad0k7QPiG6nRixt0bjIgajaXZK9HjMuYizj8+VWXoDEMwumovtyjkWVHFvN8
-	fiey/0G6uaDtJf/dm6ePjelZo18oPuWPhKC75WXaFwII5//ucujXQr9SdFQgGaN+iLZyEVu/yIeWS
-	hJkR7j+fOw13LXikHoAg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7F8qQUpMmdA+4X7dHeYzltzhrwtEWuqnBxQ6HkOKp3E=; b=slWxGsMWN5+AtW
+	Rg8D07Dx7ApjYGVAYd/aT1H3PtPwfZmKncEbNJL7Nz1Ag4nFiG8XnXgcQHZkNQsNXWeIFtuOciO37
+	dTYY9hmp8bOpYyMYG7Cj9vkXDYAbBjHQrBMYWZfvC4MHsJ9at7OHR0liZc5iwfvdLAZPYD2p5z6jk
+	wnvaCXZENYlHwPu3RqzS48pq/zzDtntUoqSyhUWiignqaCozFC1CDTNDjyNp+cnxjBrhxglnnyRk0
+	i5FrF0JahNDjCMWUg/TuhcGkr9IZZlMmy6PZnuQB0zVykcvc+GWcrPhDINeJ7NRh8dV36JhWx554O
+	Dhzptkf/dWEzZJJiDrqw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRJbg-00052g-5q; Thu, 16 May 2019 16:51:48 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1hRK6z-0000H6-Q2; Thu, 16 May 2019 17:24:09 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRJba-00052H-FF
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 16:51:44 +0000
-Received: by mail-pg1-x543.google.com with SMTP id 145so1837979pgg.9
- for <linux-nvme@lists.infradead.org>; Thu, 16 May 2019 09:51:42 -0700 (PDT)
+ id 1hRK6u-0000Gk-PY
+ for linux-nvme@lists.infradead.org; Thu, 16 May 2019 17:24:05 +0000
+Received: by mail-pl1-x642.google.com with SMTP id f12so1944640plt.8
+ for <linux-nvme@lists.infradead.org>; Thu, 16 May 2019 10:24:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=ObCtZFbSDNhky5YScW0KGVgZqfUpXNtMiEwUErGi5jc=;
- b=j7wfxPqpNwoS3DsGAsc46v2MUJhCVlw5wKxHM9Gdz0N7J2QSz3/n+hcfmR9lH79MJC
- OqWXJg6F2YhWdPTLHhXKIuMFgTCUm8mCHCkDYOlMwJvnKqpbTDB5MWZYT0kxKL/6obt2
- wi5Rx+aJJD3pB2+IoWNw0ZpALgCxPLvzQwrzScMbhqcitXCu/2PusS2HAWbUZpf+zfYL
- tWQQjdiGigERlL/LhPZfkbX5pXoWbqStl45cLjHK5K5EgJRnHYDMKjYXSRcQhEV/9sGJ
- q2MxDUhfmuUnT2GGsLVf7B0p+bnbkZDKvXt3k1DNK1dtDLax97uSA53pbFQ+MGP9qznw
- lCSg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kj6LLGGVVXRY7MkY1LRjt1HNaJL23AJvl079KfA+HS4=;
+ b=KegFiu3W5YpAz674s6hHvaeNyAxkfnyXibtW1Jyh42ymf1dCa+7kMX/xunnxC2pVtp
+ vJWOJKRVEDA8g3RGLAV751kBBcwFn0JIBeAPDhF1fq9jyMi8L4EzKw5xMev5vlfc6Ll+
+ YLsuAQzgeiFtF1awVezoIes8XNUe3KJPrmqn3Cy9rfyYUuIvE59zFBNkTKHXif74vI+2
+ tD/huxN02svzUXtcd5zJBGIMcfo1seB/RENTZYFF6N+bQv92KZRJVAvIgA9AibrGxA1v
+ 3Lo1qn5JcdK8IP86grBbJ/UsbUdsgI9mJnG8MsUwoJD2uwSr1MYWj09cc2v9JQlqq7KJ
+ r54g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ObCtZFbSDNhky5YScW0KGVgZqfUpXNtMiEwUErGi5jc=;
- b=YdAVjJKxYD0mXP1ze/WaM7Lp+sVo4FDuKwqV2SLAk5v/elDMaM7tOHgMVIX6y3GqRY
- ShfhLxmrdc4/QNzBU7c4qDbIVasB7nBXPXWir1/RsTx6vKXtgcugS0WegNYShndbLsOE
- n+LtjXBkd0VYKuPEzlUNyxZKk7WfRtkCVImXVXfMDg5PDeZnG0yMlPzza/mT1r8QYYIb
- RDZ1a4S2a2ZCQPW6IDVxXrKumaPaj3JZqNpPCTQmdXZGFYLaieU2RIjTqbQfQZhPJTLP
- hSg+pJz19JdJFFYJd8BkF91EX3vwCMpMBN5+uYViQXLYXJLuwaLqNJwgiggRokSgDGia
- WOvQ==
-X-Gm-Message-State: APjAAAWKBQ8q1N7W0F5nRvoFeaKqa9vj2pzxq26RI0gnc8O58vXbSFle
- qDQAJceksneD88djLLWcTkk=
-X-Google-Smtp-Source: APXvYqzFJV84bQeBum8uGFqzSZnbEsTzyRuhl7PRd2/Sr+NiLDPwiMYDVK6T10Tw19Lkt1cL2UGpUg==
-X-Received: by 2002:a63:6196:: with SMTP id
- v144mr52008586pgb.235.1558025501991; 
- Thu, 16 May 2019 09:51:41 -0700 (PDT)
-Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id r29sm1217530pga.62.2019.05.16.09.51.40
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 16 May 2019 09:51:41 -0700 (PDT)
-Date: Fri, 17 May 2019 01:51:38 +0900
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kj6LLGGVVXRY7MkY1LRjt1HNaJL23AJvl079KfA+HS4=;
+ b=fuZUSM8M3n54NGqBklRTW0nnuTJ2RZLjvXdwl8rFAPq/3XUh84mjZ2E0p5e9iHvNHL
+ CCU7JeqTB9folfmF0CZ8krFqDf0nXmZpYsWAxuxT/UnU7l/K8geo5NAWP5XzdTHmNfAT
+ VhnGk5kcHVbG5UVnaKU9SAedfuECAGUeAdUqjL+6At/vVG2/oJJswCGqy5hbCXZK3FTj
+ jZmRIeZt60U/Ijs7p1zQRfIOkP3EwsKxa71NvRt45PEYZoCOtZO/OvMbRDGTeQ0xTpu4
+ sDAzzuwS5N+btR+SfKWUb6qOFOrqpH5juviIjxoOBP1HdcOMvJhbDAg8ZdLH16wid9Nz
+ 2QDQ==
+X-Gm-Message-State: APjAAAUsKyW2WyNaPiNr4ZyKeVSy7XEcOv4JCY7wjPIvOtTZQSHj7Wi+
+ DrwpVBdCXxPTdXtRPnrBLJzjLFO/3Ow=
+X-Google-Smtp-Source: APXvYqyWGFKGxm0vw2QbTmxxToHgiZvlHlVpu3AroDk3iQU6Nhx6kIij6UfFevG90mEKLoLBLH59lA==
+X-Received: by 2002:a17:902:2bca:: with SMTP id
+ l68mr49564820plb.301.1558027443511; 
+ Thu, 16 May 2019 10:24:03 -0700 (PDT)
+Received: from localhost.localdomain ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id h13sm7321721pfo.98.2019.05.16.10.24.01
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 16 May 2019 10:24:02 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Akinobu Mita <akinobu.mita@gmail.com>
-Subject: Re: [PATCH] nvme-cli: remove unused NVME_AER_NOTICE_*
-Message-ID: <20190516165137.GG24001@minwooim-desktop>
-References: <1558024889-9474-1-git-send-email-akinobu.mita@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH 0/2] nvme-cli: fix disconnect-all for pcie tp
+Date: Fri, 17 May 2019 02:23:48 +0900
+Message-Id: <20190516172350.11864-1-minwoo.im.dev@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1558024889-9474-1-git-send-email-akinobu.mita@gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_095142_518306_BC71C8E0 
-X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-CacheID: sfid-20190516_102404_857495_A1734C52 
+X-CRM114-Status: UNSURE (   9.42  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -76,7 +73,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
@@ -100,31 +97,28 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, linux-nvme@lists.infradead.org
+Cc: Keith Busch <keith.busch@intel.com>, Minwoo Im <minwoo.im.dev@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> diff --git a/linux/nvme.h b/linux/nvme.h
-> index cac4d19..13fa52a 100644
-> --- a/linux/nvme.h
-> +++ b/linux/nvme.h
-> @@ -589,9 +589,6 @@ enum {
->  	NVME_AER_SMART			= 1,
->  	NVME_AER_CSS			= 6,
->  	NVME_AER_VS			= 7,
-> -	NVME_AER_NOTICE_NS_CHANGED	= 0x0002,
-> -	NVME_AER_NOTICE_ANA		= 0x0003,
-> -	NVME_AER_NOTICE_FW_ACT_STARTING = 0x0102,
->  };
+The first patch fixes that it tries to delete_controller even it's a
+controller with PCIe transport type.  If so, the rest of the controller
+with fabrics type might not be disconnected properly.
 
-It looks like we can sync-up the header files sooner or later from the
-kernel code to avoid kind of conflicts you mentioned.
+The second one is just a trivial clean-up patch.
 
-Anyway,
+Minwoo Im (2):
+  nvme-cli: don't try to disconnect for ctrl with pcie transport
+  nvme-cli: remove unnecessary initialize of local var
 
-Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+ fabrics.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+-- 
+2.21.0
+
 
 _______________________________________________
 Linux-nvme mailing list
