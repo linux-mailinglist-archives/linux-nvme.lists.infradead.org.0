@@ -2,116 +2,62 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 927E21FE07
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 05:22:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE23A1FE2F
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 May 2019 05:34:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=lVXuOxabqvYMIwQ91k+5/wk6/uwf6xdMIl0LEdAkJAM=; b=pxPJWWhh1LeE9Y
-	Lt4Cz+PfBDdeSR70sxPb7zDv4OgYH68N5b3APwo8Q7GAj3r4SOpmoOgDZhXd7yCxBN4n4TAeD6634
-	S5O0IWR2hvAXbkebUmOLVBsI4Le0CXmKuI1jA4Ac/Tt/ccjCuPvFrrhHEZ6S900fTNK09UYI45Mg3
-	WU4kfhR11HCm11z9S5fxfoRYJBJsQFOgpPcxAojLio3nSLLCKilRu1/7h0wcFmjWdnOyHmb9npdNw
-	3lBozssYGaF04u0ULvMtV7Zmp7J/W1p6tph8NTn+6XATjIe9LwVouyHh6X1xeqxAs6JnntsUPBvvo
-	PsiKIxnY2W/bjXStVmnQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Eu2l/W5llyV/4StmyM0FtzB12pfQp4T98T3YiDuxSgM=; b=BfrB3aHJug6JS5
+	RJZCPLlmV4RSjTTLUyrc6axPKHyM3fDz5z9zVJGuEi1rrb47Gk0ZW81zMpARCbFLD92f8T5jd0/W8
+	Ed0Z677V/FVnxYkHhjEq+equ+ASgH2j7ji5LXHRGN9KuT7cv7lvkiwYxgxNbrQJiGiwMaSJRfpP7G
+	EMV2NZgn+e+qn9dNVzvZMYMAuqPk0/Du++vXA04uXD1ylRnNT+ncnQ65fr/2zD+aUckIjrP5T7rV1
+	gpgyY9kkkGeY5Yr5vIG3gkXIdGNpBWRrfTz0Xe7XZyuRc4wTimDF6F+3ZxV7DcgbTeLkt1ky6iRdd
+	k1HUlp/s9d+otahbWBew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hR6ya-0006DA-PJ; Thu, 16 May 2019 03:22:36 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1hR79v-0003Dy-1K; Thu, 16 May 2019 03:34:19 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hR6yS-0006CF-E4
- for linux-nvme@lists.infradead.org; Thu, 16 May 2019 03:22:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1557976948; x=1589512948;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=gvQSm21k4MKNyJIemRR8e4JEGDD0ziaIigFDo8gBY+4=;
- b=Gz2rr7g0HjZtnIOsswnd8rZ2yYx1aJEFTOOw3xSbDihbZVvsQJRRWfjV
- A5v3gwADff4UjH/q2NjqmWWIDtEg21cmUKCM9VA+U4ofWMNv1ju1x51Cc
- 0FOfx6AtSZOcJ7PQH8F4yf4TwbuP9x34JgsIsCsQTL80V29voQnOazJdg
- YbP4uAoZApzXC0YL1tjPNTTE1eYSsRbSceH7zVwBEGMhE0e9K+y2PjQPi
- Hyz9+QC+1vJUoGERn6cTVq0RhaLpLxXLVaG1WIKhXn+1tCzVqcVQybl9C
- mlzTNyCTKFmUalXenC8yOohVZclFyKTIsGw87b926iLv9g1fMjnckyk+V g==;
-X-IronPort-AV: E=Sophos;i="5.60,475,1549900800"; d="scan'208";a="110084231"
-Received: from mail-by2nam05lp2059.outbound.protection.outlook.com (HELO
- NAM05-BY2-obe.outbound.protection.outlook.com) ([104.47.50.59])
- by ob1.hgst.iphmx.com with ESMTP; 16 May 2019 11:22:23 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=G86YxvpmlNmk4nnPoTZKpXtWDAj+cuYlA2/OZB1sx/U=;
- b=QrEVwjZCzA1rmBIiwhB/NNrg3wCiWr5Uuf8cIjdXIh6RdJ0COTi9TCumY6o5INvBAd5r3Dr3P034mZYDsycv20OOxImQwaTxBlBWBpjUAbywMCJHJieSA8IFjWIUSiEwzmwo9Jq3BAyChdEeAheidJYW++qp9+66GkoER/CBEg4=
-Received: from SN6PR04MB4527.namprd04.prod.outlook.com (52.135.120.25) by
- SN6PR04MB4400.namprd04.prod.outlook.com (52.135.72.153) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1878.22; Thu, 16 May 2019 03:22:22 +0000
-Received: from SN6PR04MB4527.namprd04.prod.outlook.com
- ([fe80::c4f:1604:178c:d974]) by SN6PR04MB4527.namprd04.prod.outlook.com
- ([fe80::c4f:1604:178c:d974%5]) with mapi id 15.20.1878.024; Thu, 16 May 2019
- 03:22:22 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH] nvmet: get rid of extra line in the tcp code
-Thread-Topic: [PATCH] nvmet: get rid of extra line in the tcp code
-Thread-Index: AQHVC5Z3fvDuxD4u7kuVQJ6Y15coEA==
-Date: Thu, 16 May 2019 03:22:21 +0000
-Message-ID: <SN6PR04MB4527A95E95B73029A2D5D89B860A0@SN6PR04MB4527.namprd04.prod.outlook.com>
-References: <20190516032109.13048-1-chaitanya.kulkarni@wdc.com>
- <20190516032109.13048-3-chaitanya.kulkarni@wdc.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.44.250]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f95710bb-55de-4450-925a-08d6d9adb5b4
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
- SRVR:SN6PR04MB4400; 
-x-ms-traffictypediagnostic: SN6PR04MB4400:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <SN6PR04MB44005127DF7E232AD16A863A860A0@SN6PR04MB4400.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-forefront-prvs: 0039C6E5C5
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(136003)(346002)(39860400002)(366004)(396003)(376002)(189003)(199004)(3846002)(52536014)(76176011)(72206003)(6116002)(91956017)(305945005)(53546011)(316002)(6916009)(7736002)(33656002)(186003)(74316002)(76116006)(55016002)(9686003)(81156014)(102836004)(2351001)(229853002)(2906002)(25786009)(6506007)(53936002)(4326008)(54906003)(6246003)(81166006)(5660300002)(8676002)(6436002)(26005)(68736007)(7696005)(5640700003)(86362001)(14444005)(256004)(2501003)(8936002)(478600001)(99286004)(71200400001)(71190400001)(476003)(14454004)(486006)(66556008)(66446008)(66476007)(73956011)(66946007)(64756008)(446003)(66066001)(4744005)(26583001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:SN6PR04MB4400;
- H:SN6PR04MB4527.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: ttZKLEI81o6FzsGF9xNpzkPURFXPjcwjFsinHV1b8ZjHn6+7UtV8HPyPZBa7i1ORHY5PaiLTaR6BRV6KHSW7buyF6Qxm4+j6TDfsLJIT1yLWuPns8FAj3J7QFwyFjh1kJYb4QYxJgvCS5qqFgCzNLZBdUb5lceqhWkulRvP860l7tiBU+ziE89kUUpuPzakwgppbRCB08is4ohajwb97iL7rF489bReK6fvvWowzd8h1RinIbHcT5i4U+2RtMQjKwMjocITO46Z3TVfVg3dDYDfYL842byBPsg0uhByxTOfxOcF0XAmLlMNZ++bekxUP0a68nyRLFpGkK7wjY5NtkBy0gAM6qAzepAU6ZcJB6wCoIO6h5iImdLQ8w/Y2W6l0buVY+rcED6jkSBGHD/7EO7cl/ZcD+VlX+UDsCURNnuM=
+ id 1hR79q-0003Dc-Nw
+ for linux-nvme@lists.infradead.org; Thu, 16 May 2019 03:34:16 +0000
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 1EEEDC057F2F;
+ Thu, 16 May 2019 03:34:14 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-22.pek2.redhat.com [10.72.8.22])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A3A2960126;
+ Thu, 16 May 2019 03:34:08 +0000 (UTC)
+Date: Thu, 16 May 2019 11:34:00 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Keith Busch <keith.busch@intel.com>
+Subject: Re: [PATCH 4/6] nvme-pci: Sync queues on reset
+Message-ID: <20190516033358.GD16342@ming.t460p>
+References: <20190515163625.21776-1-keith.busch@intel.com>
+ <20190515163625.21776-4-keith.busch@intel.com>
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f95710bb-55de-4450-925a-08d6d9adb5b4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 May 2019 03:22:21.8802 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4400
+Content-Disposition: inline
+In-Reply-To: <20190515163625.21776-4-keith.busch@intel.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.32]); Thu, 16 May 2019 03:34:14 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190515_202228_682153_BEF0FDAD 
-X-CRM114-Status: GOOD (  16.59  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190515_203414_800603_F0803D4C 
+X-CRM114-Status: GOOD (  18.68  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,38 +69,79 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "jthumshirn@suse.de" <jthumshirn@suse.de>, "hch@lst.de" <hch@lst.de>,
- "sagi@grimberg.me" <sagi@grimberg.me>
+Cc: Rafael Wysocki <rafael@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ linux-nvme@lists.infradead.org, Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Please ignore this patch, sorry for the noise.
-
-On 5/15/19 8:21 PM, Chaitanya Kulkarni wrote:
-> This is a code cleanup patch, it doesn't change any functionality,
-> It removes the extra line at the end of the function.
+On Wed, May 15, 2019 at 10:36:23AM -0600, Keith Busch wrote:
+> A controller with multiple namespaces may have multiple request_queues
+> with their own timeout work. If a live controller fails with IO
+> outstanding to diffent namespaces, each request queue may attempt to
+> disable and reset the controller in different threads. Synchronize each
+> queue prior to starting the controller to ensure there no previously
+> scheduled timeout work is running.
 > 
-> Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+> Signed-off-by: Keith Busch <keith.busch@intel.com>
 > ---
->   drivers/nvme/target/tcp.c | 1 -
->   1 file changed, 1 deletion(-)
+>  drivers/nvme/host/core.c | 12 ++++++++++++
+>  drivers/nvme/host/nvme.h |  1 +
+>  drivers/nvme/host/pci.c  |  1 +
+>  3 files changed, 14 insertions(+)
 > 
-> diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-> index 69b83fa0c76c..f019af264081 100644
-> --- a/drivers/nvme/target/tcp.c
-> +++ b/drivers/nvme/target/tcp.c
-> @@ -557,7 +557,6 @@ static int nvmet_try_send_data(struct nvmet_tcp_cmd *cmd)
->   	}
->   
->   	return 1;
-> -
->   }
->   
->   static int nvmet_try_send_response(struct nvmet_tcp_cmd *cmd,
-> 
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index d7de0642c832..a116ea037f83 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -3880,6 +3880,18 @@ void nvme_start_queues(struct nvme_ctrl *ctrl)
+>  }
+>  EXPORT_SYMBOL_GPL(nvme_start_queues);
+>  
+> +
+> +void nvme_sync_queues(struct nvme_ctrl *ctrl)
+> +{
+> +	struct nvme_ns *ns;
+> +
+> +	down_read(&ctrl->namespaces_rwsem);
+> +	list_for_each_entry(ns, &ctrl->namespaces, list)
+> +		blk_sync_queue(ns->queue);
+> +	up_read(&ctrl->namespaces_rwsem);
+> +}
+> +EXPORT_SYMBOL_GPL(nvme_sync_queues);
+> +
+>  /*
+>   * Check we didn't inadvertently grow the command structure sizes:
+>   */
+> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+> index 5ee75b5ff83f..55553d293a98 100644
+> --- a/drivers/nvme/host/nvme.h
+> +++ b/drivers/nvme/host/nvme.h
+> @@ -441,6 +441,7 @@ void nvme_complete_async_event(struct nvme_ctrl *ctrl, __le16 status,
+>  void nvme_stop_queues(struct nvme_ctrl *ctrl);
+>  void nvme_start_queues(struct nvme_ctrl *ctrl);
+>  void nvme_kill_queues(struct nvme_ctrl *ctrl);
+> +void nvme_sync_queues(struct nvme_ctrl *ctrl);
+>  void nvme_unfreeze(struct nvme_ctrl *ctrl);
+>  void nvme_wait_freeze(struct nvme_ctrl *ctrl);
+>  void nvme_wait_freeze_timeout(struct nvme_ctrl *ctrl, long timeout);
+> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+> index 8df176ffcbc1..599065ed6a32 100644
+> --- a/drivers/nvme/host/pci.c
+> +++ b/drivers/nvme/host/pci.c
+> @@ -2492,6 +2492,7 @@ static void nvme_reset_work(struct work_struct *work)
+>  	 */
+>  	if (dev->ctrl.ctrl_config & NVME_CC_ENABLE)
+>  		nvme_dev_disable(dev, false);
+> +	nvme_sync_queues(&dev->ctrl);
 
+Looks fine:
+
+Reviewed-by: Ming Lei <ming.lei@redhat.com>
+
+Thanks, 
+Ming
 
 _______________________________________________
 Linux-nvme mailing list
