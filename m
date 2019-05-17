@@ -2,52 +2,61 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C70C213CF
-	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 08:43:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C5CB213FB
+	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 09:07:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=tdcki7AhSNBbiKDOEU6dj8E5WDX9xIEQm4kq9c8rtmQ=; b=ENsnXayguV9eVq+zxx5DtxxmD1
-	hVJK8pSCMP58nX1YMGIH8DT+35H8eRIeHMAHjgi2GfBJg5/bupcwxat0LFYatY9EsZrEU402NCmmD
-	uENkD9rgbcSnjDmbR2QgBmkxAPU7RkEkOzXpRhnYthTQebCHpk97PDBf8bmCF25+wpYAvDoDPjHM8
-	gyHV9GC+NEDHudWRH5GCOuoRhRi3P/elYD0/OH+SKcb3Kiz1uZCwVuiUsIIwpVOckrp+GbjCOwtvi
-	RVQoMbML3hQj/xXis7f8SW/xiS2dKvuxZDpZ2XaDRjOZnyHIGD66hhl/7XxqZh3PZBTpEk2/bOdKv
-	IPnbvljA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=c4hRxbGWzV/GZfWWMFdTTrJgYZlZ+5d4jCgo7suTPvM=; b=GGc
+	H3I+L81QqCScKkX69bdHzgw/Xx/h0VQWl0gX4HOUk6JJMXJ2zxjXWJJvYo3RipbMfGiUIoX67/AGP
+	miUnLsXlvInZAaI2XAUOOU3STiLGFbXTXNkVYl5dW5Gr2UaI+OuFGkFQ6vEA6M22bJViiRyU1EaGG
+	sa5U3uoCsUP6PIWmjT9tOFrOz0NoiCdx0eBw4OWymyuWTRf2wRUkRr+f1LIPGW/W5vIDVkTTDfNes
+	b+zKExQzfdMjG0PhM2Fxf0aBPwUsaTNUiD6Mkn2LLeZmu6lk67aAf4PRyANw3cp8Lsuz5wkyF6F3o
+	+oBhvLrNyx5H9mBET1txFevqWTb0RYw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRWaD-0006Qs-6D; Fri, 17 May 2019 06:43:09 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1hRWxI-0007DG-Qv; Fri, 17 May 2019 07:07:00 +0000
+Received: from smtpbg297.qq.com ([184.105.67.100] helo=smtpproxy21.qq.com)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRWa7-0006P2-CF
- for linux-nvme@lists.infradead.org; Fri, 17 May 2019 06:43:04 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 9CA01AEFF;
- Fri, 17 May 2019 06:42:58 +0000 (UTC)
-From: Hannes Reinecke <hare@suse.de>
-To: Christoph Hellwig <hch@lst.de>
-Subject: [PATCH 3/3] nvme-fc: fail reconnect if state change fails
-Date: Fri, 17 May 2019 08:42:54 +0200
-Message-Id: <20190517064254.95561-4-hare@suse.de>
-X-Mailer: git-send-email 2.16.4
-In-Reply-To: <20190517064254.95561-1-hare@suse.de>
-References: <20190517064254.95561-1-hare@suse.de>
+ id 1hRWxE-0007CK-3j
+ for linux-nvme@lists.infradead.org; Fri, 17 May 2019 07:06:57 +0000
+X-QQ-mid: bizesmtp6t1558076698tb2se918y
+Received: from localhost.localdomain (unknown [218.76.23.26])
+ by esmtp6.qq.com (ESMTP) with 
+ id ; Fri, 17 May 2019 15:04:48 +0800 (CST)
+X-QQ-SSF: 01400000000000H0HG32B00A0000000
+X-QQ-FEAT: cEiBA8c+CrMUAvBZUbu+tVgMV1D2i6pAvpNrRwu5R4jPcrEQw0qUY6lmMveSF
+ IsHhRH6FnFK1Nl07GWmT31ZHiFHiJU2SpnMGQxJd4eb0qEobhwEtVxVwywCSz7wMUFr7pAm
+ +lvQF4rQmRSIejTZvbrg/ojc0Qe+PyI582iZy3ikStEOtGKAwGpG447fFwCcbA1n5dY4sEn
+ c6/0n45W5y8IDfe57AoQhRMz81+v31CNHshHM6nte/igmD7E1IxNTS38sWwVnOwcL/9/Vck
+ x/MVgssj1sDQ7/+MNWuJLngKJ9yVvy/UG3NGg4qp8bHGyRcIKeutGZ+vA=
+X-QQ-GoodBg: 2
+From: xiaolinkui <xiaolinkui@kylinos.cn>
+To: hch@lst.de,
+	sagi@grimberg.me
+Subject: [PATCH] nvme: target: use struct_size() in kmalloc()
+Date: Fri, 17 May 2019 15:03:35 +0800
+Message-Id: <1558076615-8576-1-git-send-email-xiaolinkui@kylinos.cn>
+X-Mailer: git-send-email 2.7.4
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtp:kylinos.cn:qybgforeign:qybgforeign1
+X-QQ-Bgrelay: 1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_234303_567902_C2F46B71 
-X-CRM114-Status: GOOD (  11.73  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190517_000656_153143_59D91577 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [184.105.67.100 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,61 +68,55 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
- James Smart <james.smart@broadcom.com>, linux-nvme@lists.infradead.org,
- Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>
+Cc: xiaolinkui@kylinos.cn, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-If the final state change to LIVE in nvme_fc_create_association()
-fails the controller is not operational as no I/O is possible.
-So we should be returning an error here to reschedule reconnect.
-Additionally it should only be called while in CONNECTING state, so
-add a check for this, too.
+Use struct_size() to keep code sample.
+One of the more common cases of allocation size calculations is finding
+the size of a structure that has a zero-sized array at the end, along
+with memory for some number of elements for that array. For example:
 
-Signed-off-by: Hannes Reinecke <hare@suse.com>
+struct foo {
+    int stuff;
+    struct boo entry[];
+};
+
+instance = kmalloc(sizeof(struct foo) + count * sizeof(struct boo), GFP_KERNEL);
+
+Instead of leaving these open-coded and prone to type mistakes, we can
+now use the new struct_size() helper:
+
+instance = kmalloc(struct_size(instance, entry, count), GFP_KERNEL);
+
+Signed-off-by: xiaolinkui <xiaolinkui@kylinos.cn>
 ---
- drivers/nvme/host/fc.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ drivers/nvme/target/admin-cmd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
-index e5c81ba2b7a1..a8ef62512d9a 100644
---- a/drivers/nvme/host/fc.c
-+++ b/drivers/nvme/host/fc.c
-@@ -2624,6 +2624,14 @@ nvme_fc_create_association(struct nvme_fc_ctrl *ctrl)
+diff --git a/drivers/nvme/target/admin-cmd.c b/drivers/nvme/target/admin-cmd.c
+index 9f72d51..6f9f830 100644
+--- a/drivers/nvme/target/admin-cmd.c
++++ b/drivers/nvme/target/admin-cmd.c
+@@ -248,8 +248,8 @@ static void nvmet_execute_get_log_page_ana(struct nvmet_req *req)
+ 	u16 status;
  
- 	++ctrl->ctrl.nr_reconnects;
- 
-+	if (ctrl->ctrl.state != NVME_CTRL_CONNECTING) {
-+		dev_info(ctrl->ctrl.device,
-+			 "NVME-FC{%d}: state %s cancelled new "
-+			 "association attempt\n",
-+			 ctrl->cnum, nvme_ctrl_state_name(&ctrl->ctrl));
-+		return -ENODEV;
-+	}
-+
- 	if (ctrl->rport->remoteport.port_state != FC_OBJSTATE_ONLINE)
- 		return -ENODEV;
- 
-@@ -2726,6 +2734,13 @@ nvme_fc_create_association(struct nvme_fc_ctrl *ctrl)
- 	}
- 
- 	changed = nvme_change_ctrl_state(&ctrl->ctrl, NVME_CTRL_LIVE);
-+	if (!changed && ctrl->ctrl.state != NVME_CTRL_DELETING) {
-+		dev_err(ctrl->ctrl.device,
-+			"NVME-FC{%d}: error_recovery: Couldn't change "
-+			"state from %s to LIVE\n", ctrl->cnum,
-+			nvme_ctrl_state_name(&ctrl->ctrl));
-+		return -EAGAIN;
-+	}
- 
- 	ctrl->ctrl.nr_reconnects = 0;
+ 	status = NVME_SC_INTERNAL;
+-	desc = kmalloc(sizeof(struct nvme_ana_group_desc) +
+-			NVMET_MAX_NAMESPACES * sizeof(__le32), GFP_KERNEL);
++	desc = kmalloc(struct_size(desc, nsids, NVMET_MAX_NAMESPACES),
++			GFP_KERNEL);
+ 	if (!desc)
+ 		goto out;
  
 -- 
-2.16.4
+2.7.4
+
+
 
 
 _______________________________________________
