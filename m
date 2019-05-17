@@ -2,47 +2,67 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0963F21621
-	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 11:18:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D0C921630
+	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 11:23:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JgPCWvcEwMHXTr9rGQmrfD8vLRfDjwIDvzYq866/7BE=; b=RyyBKw4E12MKwS
-	xObezN/O0DWVen5H19MiwdV9S9McivlUen2TYkdXOjJ6gtwVsX86C1+7RzxOnhU3i4F85lENdIHaa
-	oV1rBviLWiqBPomRq4RXoMrhIvIvLY6flVM7FapaTT0mUuFd/TLrPdORuCwqlMqw7zjJlz3vTODl8
-	6Ym2fowidUi4q3BNUAgFf/GETM84UmoQalsez65mgpPSWzSvWOyIp9Z+heUMtJt0D52kcLHEMWtnX
-	jf3+A2egeN6LZH/IMaUxOaaBJBFoXeUPHEhM1ilpa4KzQGdtKvYVRgD/iYUkZ4vPxeh8JYooc+VHn
-	T4Q7401qggXM1gQIr/UQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:References:Message-Id:Date:In-Reply-To:From:
+	Subject:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=IGirciQgr+XZKns/1/bhO19UkiFVC15ScxtFq4b7LTM=; b=hMKkNjFq0YwSAUfP7ieVdYOXS
+	Xc5xE3CDlSxAFwW1u8IgAFe+NSd/DxAwioOKP0FUDbdQ7mw9c0Trmq4rjF9vzHuXV2802bvgezpkJ
+	+/mou9CmO6nZg+TNJzGf9lgVhxf6a3WGzntlZRUVFjGTknFlhBBYRdra69+pPCwldbITaJs5lMfcD
+	VrDFEdYDBtR9w1FJ7fVZm0izd+HzvuRgYKu5hSrWu8FBB1QcCm5BvmCFmQD37ZeirGbUD9NDDN+ac
+	98i9NbZC86ZV9oMoR2okHT3GIAt3DWClGA5JFD0sZNoNMZxkrUhXYY7c62Q0JrsCMn+KSZzS8d7qs
+	Z5BDsO5DA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRZ0E-0005l5-HB; Fri, 17 May 2019 09:18:10 +0000
-Received: from mail-oi1-f180.google.com ([209.85.167.180])
+	id 1hRZ53-0007yt-7B; Fri, 17 May 2019 09:23:09 +0000
+Received: from youngberry.canonical.com ([91.189.89.112])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRZ08-0005jm-1N
- for linux-nvme@lists.infradead.org; Fri, 17 May 2019 09:18:05 +0000
-Received: by mail-oi1-f180.google.com with SMTP id u199so4660404oie.5
- for <linux-nvme@lists.infradead.org>; Fri, 17 May 2019 02:18:03 -0700 (PDT)
+ id 1hRZ4w-0007yH-WA
+ for linux-nvme@lists.infradead.org; Fri, 17 May 2019 09:23:04 +0000
+Received: from mail-pg1-f200.google.com ([209.85.215.200])
+ by youngberry.canonical.com with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.76) (envelope-from <kai.heng.feng@canonical.com>)
+ id 1hRZ4u-0001ZK-1B
+ for linux-nvme@lists.infradead.org; Fri, 17 May 2019 09:23:00 +0000
+Received: by mail-pg1-f200.google.com with SMTP id f8so4065513pgp.9
+ for <linux-nvme@lists.infradead.org>; Fri, 17 May 2019 02:22:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=EsQIFGnEF8GVKyUFfBGQp+VJPR6qRYhzsJ2HH7I05O8=;
- b=exkiUrrKeFncHMdpTTu3DsdY35kFimIZ/rE0HakWr/ZVUAr6ioZIlzZ2AOpyZxsLDp
- CQwYRywyW0O8RG0+z+dVOxfryTUNftvrN7c5nRtGyC+GJ0SEpY0FtZdFoXsTY95ti/jy
- pY0dy0g7S5/CwRCWM33sKwX1pdSppeP8GkhJC6H+H+MnQZZKHQs4zNKx0TDtP9i0bZeb
- kTCsasvBdwdrBkzUjY2vvYiyovTCJ3VDjVRpW6QrMHkppGPsnfqemvSUTXWLEzhdkUx/
- cTezRtbmDEOoCY2GOAqgObM3OUY4UL9Zh9m1Wm90qrZNuSU8R16Hm1a2x5CbfmfLCiMY
- 3BLQ==
-X-Gm-Message-State: APjAAAX8LxWgeAL4UZuw8Xmjbn+5GM7hDDd2HjVTkGvgRj/liIsT4KxY
- S0Y3mf4dGZL5MGqm0gNN8b2qPTFY0bjF3nibmpw=
-X-Google-Smtp-Source: APXvYqxJjoGkqlPyeNip+l9XeDKE6mZ42eN5TNb7kCbsn+6A22uS5p2LQOrpWqWJ74rSQxduhtFfjMX/scDVpC511g8=
-X-Received: by 2002:aca:f444:: with SMTP id s65mr13324775oih.115.1558084682999; 
- Fri, 17 May 2019 02:18:02 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190515163625.21776-6-keith.busch@intel.com>
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=S+YPFrdQY2NUZJDeJcfry4XR1bc0Jzzi2DWsTIsHUbo=;
+ b=WcnQp66yLinBxcUpY5S3gUOu4vYszbSYAs1LNL0jAeVBNNLPfMqdvdvG3L1TGU30Ng
+ vNtYU/yOYvWcQOwfdrWHddpbaxr//k/g7TiNdJnZTy+E8VcmjkZvSqI+wF4OGRIfAy+5
+ i5q5plGqHVxd92eNfpaeP5f6p89iW1AG31/x1HkFB/EynczZag+ZMzdRi0oxMvuMF0sY
+ sJSfk1qXSVXgdZu/Db3h3/b1D2+PEDDWkcJQ9AU1Gs7kyAaSYoi+rB9SKloOpUD7yyXR
+ hhu+R7Eg7gRET5qY2pZWaflr1nl9ZribzpLz1RpmTLiSFOR9ZSAFssV/3vUp095IeEfY
+ Y/Sg==
+X-Gm-Message-State: APjAAAWmBWYkh/WKX19Y6WpjptYy91taXk8mEpXnoawu9/sv8JyFqF1z
+ 1z16pT5tZjPVXPBE7atXcLIHUkg4wf25CPOMZxGR11/PqdtLWOkAYFHoyMwDaO0xHvBBrOzdunK
+ Z3uN5Z02a2H400NTxl8AL1uMkm2nXbBfDvCT+6a3WQtGK
+X-Received: by 2002:a62:470e:: with SMTP id u14mr60276559pfa.31.1558084978594; 
+ Fri, 17 May 2019 02:22:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyuw0NeP48kpR1JjW2nxDuDs+JFRpSfRwFrH0HipKIo4pUMvQM+fcEdl8hfapF26AHiFHSU0Q==
+X-Received: by 2002:a62:470e:: with SMTP id u14mr60276530pfa.31.1558084978241; 
+ Fri, 17 May 2019 02:22:58 -0700 (PDT)
+Received: from 2001-b011-380f-14b9-f46d-a5b2-b013-c5ad.dynamic-ip6.hinet.net
+ (2001-b011-380f-14b9-f46d-a5b2-b013-c5ad.dynamic-ip6.hinet.net.
+ [2001:b011:380f:14b9:f46d:a5b2:b013:c5ad])
+ by smtp.gmail.com with ESMTPSA id d15sm24893650pfm.186.2019.05.17.02.22.56
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 17 May 2019 02:22:57 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.8\))
+Subject: Re: [PATCHv2 6/6] nvme-pci: Use host managed power state for suspend
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+In-Reply-To: <CAJZ5v0j0V10BYrME=KU1AJXGDMRUFFHiZEHQnsXhNJGPZKBSUw@mail.gmail.com>
+Date: Fri, 17 May 2019 17:22:54 +0800
+Message-Id: <E72968DB-907D-41F9-BD51-5D7672659802@canonical.com>
+References: <20190515163625.21776-1-keith.busch@intel.com>
+ <20190515163625.21776-6-keith.busch@intel.com>
  <CAJZ5v0iC44O_gLMHnLui+tH+BuHKJzh_WC7PV3JFJwhj041=1A@mail.gmail.com>
  <20190516142657.GD23333@localhost.localdomain>
  <70235CA3-0FBB-4A06-996F-647A0D95C6D0@canonical.com>
@@ -52,31 +72,20 @@ References: <20190515163625.21776-6-keith.busch@intel.com>
  <20190516203950.GB23853@localhost.localdomain>
  <CAJZ5v0hZSiQuuq2+P+uLd3uE=ruuTW+5DmAdjqcr39=7poUe-g@mail.gmail.com>
  <CAJZ5v0j0V10BYrME=KU1AJXGDMRUFFHiZEHQnsXhNJGPZKBSUw@mail.gmail.com>
- <20190517090521.GA15509@lst.de>
-In-Reply-To: <20190517090521.GA15509@lst.de>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Fri, 17 May 2019 11:17:52 +0200
-Message-ID: <CAJZ5v0iL+ERE4Yy5yO8U2no194sRkvqNZHh5HsZXKvvHbxtk+g@mail.gmail.com>
-Subject: Re: [PATCHv2 6/6] nvme-pci: Use host managed power state for suspend
-To: Christoph Hellwig <hch@lst.de>
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+X-Mailer: Apple Mail (2.3445.104.8)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190517_021804_082622_F48B716A 
-X-CRM114-Status: GOOD (  13.89  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190517_022303_177284_347CB9B4 
+X-CRM114-Status: GOOD (  18.46  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.180 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (rjwysocki[at]gmail.com)
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [91.189.89.112 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,50 +99,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Sagi Grimberg <sagi@grimberg.me>,
  Mario Limonciello <Mario.Limonciello@dell.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
  linux-nvme <linux-nvme@lists.infradead.org>,
- Keith Busch <keith.busch@intel.com>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, Keith Busch <kbusch@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Keith Busch <keith.busch@intel.com>, Keith Busch <kbusch@kernel.org>,
+ Christoph Hellwig <hch@lst.de>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="yes"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, May 17, 2019 at 11:05 AM Christoph Hellwig <hch@lst.de> wrote:
->
-> On Fri, May 17, 2019 at 10:39:19AM +0200, Rafael J. Wysocki wrote:
-> > I forgot about one thing which is relevant here, sorry about that.
->
-> While we got your attention, let me repeat two questions / requests
-> that seem to have got lost:
->
->  (1) in what system power states are the devices not allowed to
->      every use DMA to access host memory?  Disabling the host memory
->      buffer for NVMe devices can be somewhat expensive, so we'd prefer
->      to only do that if we really have to
-
-AFAICS, using DMA while creating a hibernation snapshot image of
-memory would not be a good idea, so the host memory buffer should be
-disabled during the "freeze" stage or hibernation (and it can be
-re-enabled when that stage is complete).
-
-Other than this I don't see hard reasons for disabling DMA transfers
-unless that it a prerequisite for putting the device into D3.
-
->  (2) can we get some good kerneldoc comments for
->      pm_suspend_via_firmware and pm_suspend_via_s2idle explaining
->      when exactly they will return true, and how a driver can make
->      use of these facts?
-
-I suppose so. :-)
-
-That's in my list of things to do in fact.
-
->  Right now these appear a little too much black magic to be useful
-
-Fair enough.
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+YXQgMTY6MzksIFJhZmFlbCBKLiBXeXNvY2tpIDxyYWZhZWxAa2VybmVsLm9yZz4gd3JvdGU6Cgo+
+IE9uIFRodSwgTWF5IDE2LCAyMDE5IGF0IDEwOjU2IFBNIFJhZmFlbCBKLiBXeXNvY2tpIDxyYWZh
+ZWxAa2VybmVsLm9yZz4gIAo+IHdyb3RlOgo+PiBPbiBUaHUsIE1heSAxNiwgMjAxOSBhdCAxMDo0
+NSBQTSBLZWl0aCBCdXNjaCA8a2J1c2NoQGtlcm5lbC5vcmc+IHdyb3RlOgo+Pj4gT24gVGh1LCBN
+YXkgMTYsIDIwMTkgYXQgMTA6MjU6NDdQTSArMDIwMCwgUmFmYWVsIEouIFd5c29ja2kgd3JvdGU6
+Cj4+Pj4gT24gVGh1LCBNYXkgMTYsIDIwMTkgYXQgOTo0MyBQTSBLZWl0aCBCdXNjaCA8a2J1c2No
+QGtlcm5lbC5vcmc+IHdyb3RlOgo+Pj4+PiBJZiB3ZSdyZSBnb2luZyB0byByZXBsYWNlIG91ciBT
+SU1QTEVfREVWX1BNX09QUyBhcyBSYWZhZWwgc3VnZ2VzdHMsCj4+Pj4+IG1pZ2h0IGFzIHdlbGwg
+YWRkIGEgLnN1c3BlbmRfbm9pcnEgY2FsbGJhY2suIFdlIGNhbiBqdXN0IHNhdmUgdGhlCj4+Pj4+
+IHN0YXRlIGFnYWluIHRvIHdvcmsgYXJvdW5kIHRoaXMgdG9vLgo+Pj4+Cj4+Pj4gUmVsYXgsIHBy
+ZXR0eSBwbGVhc2UuICBTYXZpbmcgdGhlIHN0YXRlIGFnYWluIHNob3VsZG4ndCBiZSBuZWNlc3Nh
+cnkuCj4+Pj4KPj4+PiBMZXQncyBmaXJzdCB1bmRlcnN0YW5kIHdoYXQncyBnb2luZyBvbi4KPj4+
+Cj4+PiBIYWgsIG9rYXkgZmFpciBlbm91Z2guCj4+Pgo+Pj4gRldJVywgSSd2ZSB0cmllZCBjdXJy
+ZW50IG1haW5saW5lIG9uIHR3byBkaWZmZXJlbnQgcGxhdGZvcm1zIGFuZCBJIHNlZQo+Pj4gb25s
+eSB0aGUgZXhwZWN0ZWQgbnVtYmVyIG9mIGNhbGxzIHRvIHBjaV9wbV9zdXNwZW5kX25vaXJxLCBz
+byBldmVyeXRoaW5nCj4+PiB3b3JrcyBmb3IgbWUuCj4+Cj4+IEFuZCBJIGRvbid0IHNlZSB3aHkg
+aXQgbWlnaHQgbm90IHdvcmsgYW55d2hlcmUgZWxzZSBvdGhlciB0aGFuIGEKPj4ga2VybmVsIHNv
+dXJjZSBoYWNrZWQgaW50byBwaWVjZXMgb3IgYSBwbGF0Zm9ybSB3aXRoIGZ1bmRhbWVudGFsCj4+
+IHByb2JsZW1zLiA6LSkKPgo+IEkgZm9yZ290IGFib3V0IG9uZSB0aGluZyB3aGljaCBpcyByZWxl
+dmFudCBoZXJlLCBzb3JyeSBhYm91dCB0aGF0Lgo+Cj4gSWYgdGhlcmUgaXMgYSBzcHVyaW91cyBF
+QyB3YWtldXAgZHVyaW5nIHMyaWRsZSwgcGNpX3BtX3N1c3BlbmRfbm9pcnEoKQo+ICp3aWxsKiBi
+ZSBydW4gYWdhaW4gYWZ0ZXIgcGNpX3BtX3Jlc3VtZV9ub2lycSgpIHdpdGhvdXQgZ29pbmcgdGhy
+b3VnaAo+IHRoZSBlbnRpcmUgc3lzdGVtIHJlc3VtZSBhbmQgbmV4dCBzdXNwZW5kLiAgSW4gdGhh
+dCBjYXNlIHRoZSBzZWNvbmQKPiBpdGVyYXRpb24gb2YgcGNpX3BtX3N1c3BlbmRfbm9pcnEoKSB3
+aWxsIHB1dCB0aGUgZGV2aWNlIGludG8gRDMsIGlmCj4gdGhhdCdzIHRoZSB0YXJnZXQgcG93ZXIg
+c3RhdGUgb2YgdGhlIGRldmljZSBhcyBkZXRlcm1pbmVkIGJ5Cj4gcGNpX3ByZXBhcmVfdG9fc2xl
+ZXAoKSwgYmVjYXVzZSBwY2lfcG1fcmVzdW1lX25vaXJxKCkgY2FsbHMKPiBwY2lfcmVzdG9yZV9z
+dGF0ZSgpIHdoaWNoIGNsZWFycyBzdGF0ZV9zYXZlZC4KPgo+IFRoYXQncyBub3Qgd2hhdCBhcHBl
+YXJzIHRvIGhhcHBlbiBvbiB0aGUgdGVzdCBwbGF0Zm9ybSBhcyBwZXIgdGhlCj4gcG9zdGVkIGxv
+ZywgYnV0IG5ldmVydGhlbGVzcyBpdCBjYW4gaGFwcGVuLgoKVGhlIHBhdGNoIE1hcmlvIHBvaW50
+ZWQgc29sdmVzIHRoZSBpc3N1ZSBmb3IgdGhlIHRlc3QgcGxhdGZvcm0gSSB1c2VkLgoKSeKAmXZl
+IHRlc3RlZCBhIGRvemVuIE5WTWVzLCBhbGwgb2YgdGhlbSB3b3JrIHByb3Blcmx5IHdpdGggS2Vp
+dGjigJlzIHBhdGNoICAKc2VyaWVzLCBvbmNlIHRoZSBMUElUIGZpeCBpcyBhcHBsaWVkLgoKPgo+
+IEFyZ3VhYmx5LCB0aGUgZHJpdmVyIHNob3VsZCBub3QgbmVlZCB0byB3b3JyeSBhYm91dCB0aGF0
+LCBzbyB0aGF0Cj4gbmVlZHMgdG8gYmUgYWRkcmVzc2VkIGluIHRoZSBQQ0kgY29yZSBJTU8uCj4K
+PiBUaGUgYXR0YWNoZWQgcGF0Y2ggc2hvdWxkIGhlbHAgKG5vdCBpbmxpbmUgdG8gYXZvaWQgZ21h
+aWwtaW5kdWNlZAo+IHdoaXRlIHNwYWNlIGRhbWFnZSkuCj4KPiBJIHdpbGwgcG9zdCBpdCBwcm9w
+ZXJseSB3aXRoIGEgY2hhbmdlbG9nIHNob3J0bHkuCj4gPHBjaS1wbS1za2lwLW5vaXJxLnBhdGNo
+PgoKU2luY2UgdGhlIHBhdGNoIE1hcmlvIHN1Z2dlc3RlZCBzb2x2ZXMgdGhlIGlzc3VlLCBkbyB5
+b3Ugc3RpbGwgd2FudCBtZSB0byAgCnRlc3QgdGhpcyBwYXRjaD8KCkthaS1IZW5nCgoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52bWUgbWFp
+bGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
