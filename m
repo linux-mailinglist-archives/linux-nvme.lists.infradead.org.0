@@ -2,54 +2,62 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C316A211FA
-	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 04:25:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B93192120F
+	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 04:32:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Wbwzb4yEa2wV0fNVQWyHuEloFhXQt/PyinGDJN9aiDY=; b=eUgZWJCeoaI7i+
-	wUxmcivU2uZhFy8lTIH1Y5FhK5y9Wv/zc4N9Nl5v5fDF4uC3Q5c0XiPl8vB8ZWX7YHH7mtJzN/oIe
-	b7Twb3+qignwcpPo+WHUx+z+brZST/iIBWqbvKr5lgvs8nb+79pUMzt3yZ9sbvYOMlumhVYm2wKJb
-	I73cPtGpEnbnN4oilNiTBRyylNI6IJsERH3e+rdkFLEdmkHCewx2G2o7VIs/16Xt8udC4/By6YsVF
-	N7BPTepz1QpHcNyAeSFtclJbHDrauhPfFq4T69ZHSqOxH9toEUVHsqn1o41aNUB4DynbBSmbv9cQN
-	e4XM9G0h0sq0KZQYYAWA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qvoZqVH7qij6mrI6rycTazCVd7WnZ9LTWNzsnS+OEYQ=; b=FcCE+1eew/JC57
+	/KATFOOXoRN6KSvTY3yYCxTpfDJX6m7B/hWPtGilMBvanyZWj7vANnh5HmvWFxf/vtsfP5Wrs5CTi
+	d3GAJPqae2pziGLHobp2SjreNncRH5bIDhmz/uG+PWyweNMFK/jh0V90iPkNObneyb93j/98kiMPQ
+	MGTRlEkQWMDOL8CT1O73WXlI96LhpH6gpRuAPQYLAz0Cem6C5pnPAUwkjyGzYht9W3SVvCzVCDojz
+	960SEczBRlaSFe9igCTn4Lgfs49gNzwNkf3TJEjJ/0pcIA3DRXpcYu2iWIRp7ofyCRN4N9/CuQOuk
+	TmPGCwYb6gvNYogw3ygQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRSYe-00067h-3q; Fri, 17 May 2019 02:25:16 +0000
-Received: from szxga06-in.huawei.com ([45.249.212.32] helo=huawei.com)
+	id 1hRSfi-0008FK-DT; Fri, 17 May 2019 02:32:34 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRSYY-00067J-Do
- for linux-nvme@lists.infradead.org; Fri, 17 May 2019 02:25:11 +0000
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 4B30B7953B1B153A8576;
- Fri, 17 May 2019 10:25:05 +0800 (CST)
-Received: from huawei.com (10.90.53.225) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Fri, 17 May 2019
- 10:25:00 +0800
-From: Yufen Yu <yuyufen@huawei.com>
-To: <hch@lst.de>, <sagi@grimberg.me>, <keith.busch@intel.com>,
- <linux-nvme@lists.infradead.org>
-Subject: [PATCH v2] nvme: fix memory leak for power latency tolerance req
-Date: Fri, 17 May 2019 10:30:07 +0800
-Message-ID: <20190517023007.140656-1-yuyufen@huawei.com>
-X-Mailer: git-send-email 2.16.2.dirty
+ id 1hRSfa-0008Eo-85
+ for linux-nvme@lists.infradead.org; Fri, 17 May 2019 02:32:29 +0000
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6209C30821C1;
+ Fri, 17 May 2019 02:32:16 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-21.pek2.redhat.com [10.72.8.21])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C094C5E1A2;
+ Fri, 17 May 2019 02:32:06 +0000 (UTC)
+Date: Fri, 17 May 2019 10:31:58 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCH 3/6] nvme-pci: Unblock reset_work on IO failure
+Message-ID: <20190517023156.GB6201@ming.t460p>
+References: <20190515163625.21776-1-keith.busch@intel.com>
+ <20190515163625.21776-3-keith.busch@intel.com>
+ <20190516031333.GC16342@ming.t460p>
+ <20190516141435.GB23333@localhost.localdomain>
 MIME-Version: 1.0
-X-Originating-IP: [10.90.53.225]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <20190516141435.GB23333@localhost.localdomain>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.47]); Fri, 17 May 2019 02:32:23 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190516_192510_693607_D2FCD712 
-X-CRM114-Status: UNSURE (   8.72  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190516_193228_418323_83BCF559 
+X-CRM114-Status: GOOD (  17.23  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [45.249.212.32 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -63,45 +71,57 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: luto@kernel.org
+Cc: "Busch, Keith" <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Christoph Hellwig <hch@lst.de>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Rafael Wysocki <rafael@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-nvme_init_ctrl() initialize latency tolerance controls and
-kzalloc structdev_pm_qos_request 'req' in nvme_init_ctrl().
-The only way to free the 'req' is nvme_init_identify(), when
-apst is disable and prev_apst is enable.
+On Thu, May 16, 2019 at 08:14:36AM -0600, Keith Busch wrote:
+> On Wed, May 15, 2019 at 08:13:35PM -0700, Ming Lei wrote:
+> > On Wed, May 15, 2019 at 10:36:22AM -0600, Keith Busch wrote:
+> > > +		nvme_change_ctrl_state(&dev->ctrl, NVME_CTRL_DELETING);
+> > > +		/* fall through */
+> > > +	case NVME_CTRL_DELETING:
+> > >  		dev_warn_ratelimited(dev->ctrl.device,
+> > >  			 "I/O %d QID %d timeout, disable controller\n",
+> > >  			 req->tag, nvmeq->qid);
+> > > -		nvme_dev_disable(dev, shutdown);
+> > > +		nvme_dev_disable(dev, true);
+> > >  		nvme_req(req)->flags |= NVME_REQ_CANCELLED;
+> > >  		return BLK_EH_DONE;
+> > >  	case NVME_CTRL_RESETTING:
+> > 
+> > Then the controller is dead, and can't work any more together with data
+> > loss. I guess this way is too violent from user view.
+> 
+> Indeed, it is a bit harsh; however, it is definitely better than having a
+> stuck controller unable to make forward progress.
 
-But, prev_apst is disable when device probe, and we will
-miss to free it when the device does't support APST.
+The controller may be stuck at the exact time, and in theory any sane
+hardware should be capable of being resetted to its normal state by
+software.
 
-To fix the problem, we need to hide latency tolerance and
-free 'req' in nvme_uninit_ctrl().
+The current issue is that NVMe driver is stuck when timeout happens
+during reset.
 
-Fixes: c5552fde102fc("nvme: Enable autonomous power state transitions")
-Suggested-by: Keith Busch <keith.busch@intel.com>
-Signed-off-by: Yufen Yu <yuyufen@huawei.com>
----
- drivers/nvme/host/core.c | 1 +
- 1 file changed, 1 insertion(+)
+> We may be able to do
+> better, but I think this patch is a step in the right direction.
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 15d114787d6a..e13670dcf590 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -3687,6 +3687,7 @@ EXPORT_SYMBOL_GPL(nvme_start_ctrl);
- 
- void nvme_uninit_ctrl(struct nvme_ctrl *ctrl)
- {
-+	dev_pm_qos_hide_latency_tolerance(ctrl->device);
- 	cdev_device_del(&ctrl->cdev, ctrl->device);
- }
- EXPORT_SYMBOL_GPL(nvme_uninit_ctrl);
--- 
-2.16.2.dirty
+Fare enough, this patch at least makes NVMe driver not stuck together
+with cost of data loss and device removal, so
 
+	Reviewed-by: Ming Lei <ming.lei@redhat.com>
+
+And we might have to support timeout during reset in future for making
+NVMe system more reliable, cause timeout handling is the final guard.
+
+
+Thanks,
+Ming
 
 _______________________________________________
 Linux-nvme mailing list
