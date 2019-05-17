@@ -2,34 +2,35 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F124F2168A
-	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 11:48:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 88CC62168B
+	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 11:48:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jCOmB0yNSAVaS3Wi0Hbp0pgEXpIT2GVTFk61pYftZT8=; b=BdFAwXu1fG2Lrr
-	JgeFTTE1W9K+EBVeZE9qqtAAk0TstyI1vpP5asdfH4KDlOEpxYJpMgx75N95U2VvIgbTjsjtaonWB
-	HKz/x+2gxgQ3bAtXC2JG0ug9T7Abz8YSVefFVC0PVkSkhRv2ZhYIJGzmOSZRKX8MdZ48O5lqbEh08
-	kXO07z1yJz4NrHLvUnmdeQ2HVDxtgf1c/smNXlqCIgl6YS06KmkgnDdss+Dnq8RsuMtW0CgEoOrDe
-	aS89KvZw6sSISS6LqsGQa9uk/d47Ji1PFx4PPqbNuLAiQia01ap0S0j4S5cA3kOpbLZBo45kHorMs
-	Xi4M9UTMWSmZJ7JtYpfw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vKQbxDdN+7A68WxEajL/v49uiKi498mC6dYvrZxc/XI=; b=AC+pOfi0WJY2/s
+	IagApWQMH+g0OX0Hq78p08JHCpJrj+6Vrrv/LGpN3SxbQQ1lCsGe30Xa6CYN+78YRAIDdUISSrnY2
+	1RtPZmldBSnd2NUVl0Ob/Sudbzp3XMy4KW0GhytTqNNuOzeOYMY1OgRRkvEwPyjVrpfkXxmY7sCKB
+	aVBkUxos2PAhvGUX8aIsg/WSH2isu5R/CJcQn4a8WSF78lvlpU/Dg9kz6LIb9z/kaJ5KVXA3jHGtF
+	xQMq2EQCnw15/w+HSvxpkE0h+tlvUnDQCfJgni2wQwUmhGyPLmX/J/42Sge9+LQEXoWk0lc3sMvGD
+	jF1REASYI6/2DnrMWUCw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRZTc-0000Tz-Mo; Fri, 17 May 2019 09:48:32 +0000
+	id 1hRZTh-0000Z4-O6; Fri, 17 May 2019 09:48:37 +0000
 Received: from 089144210233.atnat0019.highway.a1.net ([89.144.210.233]
  helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRZTW-0000TT-IL; Fri, 17 May 2019 09:48:27 +0000
+ id 1hRZTZ-0000Tr-BI; Fri, 17 May 2019 09:48:29 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 1/4] nvme: fix srcu locking on error return in
- nvme_get_ns_from_disk
-Date: Fri, 17 May 2019 11:47:33 +0200
-Message-Id: <20190517094736.14504-1-hch@lst.de>
+Subject: [PATCH 2/4] nvme: remove the ifdef around nvme_nvm_ioctl
+Date: Fri, 17 May 2019 11:47:34 +0200
+Message-Id: <20190517094736.14504-2-hch@lst.de>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190517094736.14504-1-hch@lst.de>
+References: <20190517094736.14504-1-hch@lst.de>
 MIME-Version: 1.0
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
@@ -49,50 +50,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-If we can't get a namespace don't leak the SRCU lock.  nvme_ioctl was
-working around this, but nvme_pr_command wasn't handling this properly.
-Just do what callers would usually expect.
+We already have a proper stub if lightnvm is not enabled, so don't bother
+with the ifdef.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 Reviewed-by: Keith Busch <keith.busch@intel.com>
 Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 ---
- drivers/nvme/host/core.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ drivers/nvme/host/core.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 7da80f375315..63146060df66 100644
+index 63146060df66..66ca17898282 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -1361,9 +1361,14 @@ static struct nvme_ns *nvme_get_ns_from_disk(struct gendisk *disk,
- {
- #ifdef CONFIG_NVME_MULTIPATH
- 	if (disk->fops == &nvme_ns_head_ops) {
-+		struct nvme_ns *ns;
-+
- 		*head = disk->private_data;
- 		*srcu_idx = srcu_read_lock(&(*head)->srcu);
--		return nvme_find_path(*head);
-+		ns = nvme_find_path(*head);
-+		if (!ns)
-+			srcu_read_unlock(&(*head)->srcu, *srcu_idx);
-+		return ns;
- 	}
- #endif
- 	*head = NULL;
-@@ -1410,9 +1415,9 @@ static int nvme_ioctl(struct block_device *bdev, fmode_t mode,
- 
- 	ns = nvme_get_ns_from_disk(bdev->bd_disk, &head, &srcu_idx);
- 	if (unlikely(!ns))
--		ret = -EWOULDBLOCK;
--	else
--		ret = nvme_ns_ioctl(ns, cmd, arg);
-+		return -EWOULDBLOCK;
-+
-+	ret = nvme_ns_ioctl(ns, cmd, arg);
- 	nvme_put_ns_from_disk(head, srcu_idx);
- 	return ret;
- }
+@@ -1395,10 +1395,8 @@ static int nvme_ns_ioctl(struct nvme_ns *ns, unsigned cmd, unsigned long arg)
+ 	case NVME_IOCTL_SUBMIT_IO:
+ 		return nvme_submit_io(ns, (void __user *)arg);
+ 	default:
+-#ifdef CONFIG_NVM
+ 		if (ns->ndev)
+ 			return nvme_nvm_ioctl(ns, cmd, arg);
+-#endif
+ 		if (is_sed_ioctl(cmd))
+ 			return sed_ioctl(ns->ctrl->opal_dev, cmd,
+ 					 (void __user *) arg);
 -- 
 2.20.1
 
