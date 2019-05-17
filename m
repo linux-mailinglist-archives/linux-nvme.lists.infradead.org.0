@@ -2,93 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B47C8214FE
-	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 09:59:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9645121574
+	for <lists+linux-nvme@lfdr.de>; Fri, 17 May 2019 10:39:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GJ/NdXHm+Ojk9xFitdMbmD/ULSHbgAwcBQ1ObNfCFsg=; b=uoEMeOJM0pycKT
-	6btla8Ag6D3Aaox9noxpF8JUNQwE70d1v0eXubaJDgfyEX/KJTosV2Ie9944SyVLomJaq/U2JFoPV
-	8Ys1djJTz9nVlBugfRbNYcZmzZqJ2NR15uTNMrdbe6ov/cQR1qcg1ofZijjonC8DoYgqIJQMObxlc
-	qCDvWqPdg+lW8uFtxgx6lxTaVthGIuWXK2JV/DVrsO1VBxGbuLVvrNWE8NIeh0LFtVSvQwKx5LNEM
-	I9uH9+azzRGAhN8b3+r0vNCpYCkDAvILrP4xjn+uLdXv3/cybN86Tmd6tim/ypOHkZ0OfZ+C8AVJH
-	KHgLG7clGre4q1EL6UOA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
+	Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=mAPSxq8fio2YZkIAMEPZvlqUbXi5UWBzAsPij1qRrjg=; b=TVdsZyov6eLMsmaPSDRrL9fCa
+	3uWL5z3Y+VwSvtBFuzptMk3EwAZx2+CbDfy8q/sCFl/9tjBideU56O1W+RqCjOksTKulybfko0q43
+	VpRUULi4OL5ljJpv0MLdhoSqNjTxrbvx3Z2wUipRc4IE8SFCMFzWlxp9H2nYFEJmaZ8stSTC587zj
+	3Qb1OP779et1tE4rG9i6drFC+e+QNIP5WzpzHipjTwzGdwiXl5+BcQvwn8JCbssdnwZ7fGMtmDn0B
+	+B+gvD5aas2Rl478WRWJ52a9oA/cJcYkwiNtp3DRfbWTawCTfqR8TJ/oEfDPsvKzu1GTCjYZkRzfx
+	evVsWECdw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRXlr-0006dv-C8; Fri, 17 May 2019 07:59:15 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1hRYOv-0005Xr-De; Fri, 17 May 2019 08:39:37 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRXlm-0006dK-47
- for linux-nvme@lists.infradead.org; Fri, 17 May 2019 07:59:11 +0000
-Received: by mail-pf1-x443.google.com with SMTP id u17so3290503pfn.7
- for <linux-nvme@lists.infradead.org>; Fri, 17 May 2019 00:59:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=HgsQGVzNxq5CuLq5XZwk3WlCgHq5StJ5M9lW3XTub0o=;
- b=CdBK0OfQ2DGBE3EpeMYjPhLsgainBOvUkUOqB27Y4iWuV2Ar/EQnD/qjB9/RDchBxb
- E+oDcypdaa30tDj+5sfx8FBtfJQRdFsMQuSGiCFhopgadD9z9YaWU/5zwDQZ0WbY6d9W
- iXSsnixqXFympcT7chlZpOfNEpmpmEdyQmOol0UC9ToxdR7T4WUSXrNZx47Qb/gFEk3c
- QZg5SW48zLo/FjUgQDWXEnK5cVOF2oKW1ttcrPz1qQkrsLkQ0zQ7pRUMPQ8/9EHFiGZ9
- r6pVqKNG0y8LJ26xF5iP9F0CphJuaCvUySB7/IrX977upxxoOax7MARQZw5OMx5iIqbX
- Fy6A==
+ id 1hRYOp-0005XF-SY
+ for linux-nvme@lists.infradead.org; Fri, 17 May 2019 08:39:33 +0000
+Received: by mail-ot1-f68.google.com with SMTP id c3so6033973otr.3
+ for <linux-nvme@lists.infradead.org>; Fri, 17 May 2019 01:39:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=HgsQGVzNxq5CuLq5XZwk3WlCgHq5StJ5M9lW3XTub0o=;
- b=U19jVdAXxz8JxRiBNOlJtKBsLFfOT7fgBgGBpY2Mx7FE6AOhXg1dubp1O+LpiN3XHs
- zfAV9yMR/e5xj5r1yXq3JVPdLNc7qfH61XXjkjra1z90F+gmbpWmZ1KLypfvDg7rFnNN
- C9teQqeAGBLQsGu+M7v2Ga2xJRWs5x+LFlwtA1mI7F+22dX5L7TxPUdD93N/0NaCxwu9
- usbmqdeDjOLtD9MgPDz1su3SvIvrTd5jXhWpP99wpvWwWRSECivMp1Bgh1lAfoHzkDDn
- txk9HOOdepBre2POYYwLQkrAOCR7YaOxrPknodOfbI0p2LNocc6AmxUn9iV6scSv7VUl
- Hiew==
-X-Gm-Message-State: APjAAAX79HdJOfC1DLKCUnBrKH7a4kLBJHzWPRkV0TK6pTPhyS6aK30N
- 0GQXFtdfDubdY9AcTk7/pDM=
-X-Google-Smtp-Source: APXvYqwgjqmvNqVXDwYu3wG4Vlxf8+xwAAC93HnSPfL8D71NjlJKsARkCsZMk/T1rXDy1JRZG6v6bA==
-X-Received: by 2002:aa7:910e:: with SMTP id 14mr29807720pfh.153.1558079949051; 
- Fri, 17 May 2019 00:59:09 -0700 (PDT)
-Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id w4sm8957633pfi.87.2019.05.17.00.59.07
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 17 May 2019 00:59:08 -0700 (PDT)
-Date: Fri, 17 May 2019 16:59:05 +0900
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Hannes Reinecke <hare@suse.de>
-Subject: Re: [PATCH 1/3] nvme: separate out nvme_ctrl_state_name()
-Message-ID: <20190517075904.GA26359@minwooim-desktop>
-References: <20190517064254.95561-1-hare@suse.de>
- <20190517064254.95561-2-hare@suse.de>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=k3SMUjKH+55mD4cbLFISodsaAuBtdcQos+/b++LIQsE=;
+ b=WtyPYLILboMjGt/Iq7Iu8D885S47MemHSgMNby0a2C1XRLKsBoWL7zC5qT+BGe6S3i
+ nbsqPxwy08b+fTW8Rc5palQuMy8NHmUsQDEfjEX/zh5aNPMVUBpZ39WIBblwWErinA66
+ NYUQ88X3AL2tfTByjkvYBlYbIUi9RooPNEErKeeO0iHSwaVKsWIYrqgHhQoBaNGLzFGU
+ ZjJYTJF1Q6e4+gnJ5FT+oz6Q3lCdFJvnKNluLRtrzMlHAf/jT88skNwhqIRdoVQb9+8h
+ UVYoeye0ABe1WP2Xs2LEU6MFMfyAHG6pxpVS7myp8wFSYfEGFIjPJUOS0RoaFAPy/fG4
+ oxIQ==
+X-Gm-Message-State: APjAAAXmjahXRUBL6p0f32toGP2JxjCY2TScysTUdbEikFEJsnrfgorF
+ 8mG0q+QLiOeKqehRcfm2G+0RIAY+5v0JGwMyegQ=
+X-Google-Smtp-Source: APXvYqxZC4jqjMrfMmJBTgmD8yXAPvdRqDrDoJVBohouDuIPJ18oBvPbJRyGdCydri6QAuebh8IJ8HSLFBKk2U/7NAk=
+X-Received: by 2002:a9d:6b98:: with SMTP id b24mr3578656otq.189.1558082370568; 
+ Fri, 17 May 2019 01:39:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190517064254.95561-2-hare@suse.de>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+References: <20190515163625.21776-1-keith.busch@intel.com>
+ <20190515163625.21776-6-keith.busch@intel.com>
+ <CAJZ5v0iC44O_gLMHnLui+tH+BuHKJzh_WC7PV3JFJwhj041=1A@mail.gmail.com>
+ <20190516142657.GD23333@localhost.localdomain>
+ <70235CA3-0FBB-4A06-996F-647A0D95C6D0@canonical.com>
+ <64e8e0252a4042b99dd3d0def15b1780@AUSX13MPC105.AMER.DELL.COM>
+ <20190516193822.GA23853@localhost.localdomain>
+ <CAJZ5v0gBQVjy70CbA6CzkkjsGQYGeO6fDjJimvadM5_oq=3qeA@mail.gmail.com>
+ <20190516203950.GB23853@localhost.localdomain>
+ <CAJZ5v0hZSiQuuq2+P+uLd3uE=ruuTW+5DmAdjqcr39=7poUe-g@mail.gmail.com>
+In-Reply-To: <CAJZ5v0hZSiQuuq2+P+uLd3uE=ruuTW+5DmAdjqcr39=7poUe-g@mail.gmail.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Fri, 17 May 2019 10:39:19 +0200
+Message-ID: <CAJZ5v0j0V10BYrME=KU1AJXGDMRUFFHiZEHQnsXhNJGPZKBSUw@mail.gmail.com>
+Subject: Re: [PATCHv2 6/6] nvme-pci: Use host managed power state for suspend
+To: Keith Busch <kbusch@kernel.org>
+Content-Type: multipart/mixed; boundary="0000000000003aa52f058911528d"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190517_005910_241711_C1A2DB32 
-X-CRM114-Status: UNSURE (   7.26  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190517_013931_932909_5861B9B5 
+X-CRM114-Status: GOOD (  25.89  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
- [list.dnswl.org]
+ no trust [209.85.210.68 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.68 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
+ provider (rjwysocki[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,22 +91,115 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
- James Smart <james.smart@broadcom.com>, linux-nvme@lists.infradead.org,
- Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ Mario Limonciello <Mario.Limonciello@dell.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>,
+ Keith Busch <keith.busch@intel.com>,
+ Kai-Heng Feng <kai.heng.feng@canonical.com>, Christoph Hellwig <hch@lst.de>
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi Hannes,
+--0000000000003aa52f058911528d
+Content-Type: text/plain; charset="UTF-8"
 
-Thanks for applying my review point on this.
-This looks good to me.
+On Thu, May 16, 2019 at 10:56 PM Rafael J. Wysocki <rafael@kernel.org> wrote:
+>
+> On Thu, May 16, 2019 at 10:45 PM Keith Busch <kbusch@kernel.org> wrote:
+> >
+> > On Thu, May 16, 2019 at 10:25:47PM +0200, Rafael J. Wysocki wrote:
+> > > On Thu, May 16, 2019 at 9:43 PM Keith Busch <kbusch@kernel.org> wrote:
+> > > > If we're going to replace our SIMPLE_DEV_PM_OPS as Rafael suggests,
+> > > > might as well add a .suspend_noirq callback. We can just save the
+> > > > state again to work around this too.
+> > >
+> > > Relax, pretty please.  Saving the state again shouldn't be necessary.
+> > >
+> > > Let's first understand what's going on.
+> >
+> > Hah, okay fair enough.
+> >
+> > FWIW, I've tried current mainline on two different platforms and I see
+> > only the expected number of calls to pci_pm_suspend_noirq, so everything
+> > works for me.
+>
+> And I don't see why it might not work anywhere else other than a
+> kernel source hacked into pieces or a platform with fundamental
+> problems. :-)
 
-Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+I forgot about one thing which is relevant here, sorry about that.
+
+If there is a spurious EC wakeup during s2idle, pci_pm_suspend_noirq()
+*will* be run again after pci_pm_resume_noirq() without going through
+the entire system resume and next suspend.  In that case the second
+iteration of pci_pm_suspend_noirq() will put the device into D3, if
+that's the target power state of the device as determined by
+pci_prepare_to_sleep(), because pci_pm_resume_noirq() calls
+pci_restore_state() which clears state_saved.
+
+That's not what appears to happen on the test platform as per the
+posted log, but nevertheless it can happen.
+
+Arguably, the driver should not need to worry about that, so that
+needs to be addressed in the PCI core IMO.
+
+The attached patch should help (not inline to avoid gmail-induced
+white space damage).
+
+I will post it properly with a changelog shortly.
+
+--0000000000003aa52f058911528d
+Content-Type: text/x-patch; charset="US-ASCII"; name="pci-pm-skip-noirq.patch"
+Content-Disposition: attachment; filename="pci-pm-skip-noirq.patch"
+Content-Transfer-Encoding: base64
+Content-ID: <f_jvrtwzfo0>
+X-Attachment-Id: f_jvrtwzfo0
+
+LS0tCiBkcml2ZXJzL3BjaS9wY2ktZHJpdmVyLmMgfCAgIDE3ICsrKysrKysrKysrKysrKystCiBp
+bmNsdWRlL2xpbnV4L3BjaS5oICAgICAgfCAgICAxICsKIDIgZmlsZXMgY2hhbmdlZCwgMTcgaW5z
+ZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKSW5kZXg6IGxpbnV4LXBtL2RyaXZlcnMvcGNpL3Bj
+aS1kcml2ZXIuYwo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09Ci0tLSBsaW51eC1wbS5vcmlnL2RyaXZlcnMvcGNpL3BjaS1k
+cml2ZXIuYworKysgbGludXgtcG0vZHJpdmVycy9wY2kvcGNpLWRyaXZlci5jCkBAIC03MzQsNiAr
+NzM0LDggQEAgc3RhdGljIGludCBwY2lfcG1fc3VzcGVuZChzdHJ1Y3QgZGV2aWNlCiAJc3RydWN0
+IHBjaV9kZXYgKnBjaV9kZXYgPSB0b19wY2lfZGV2KGRldik7CiAJY29uc3Qgc3RydWN0IGRldl9w
+bV9vcHMgKnBtID0gZGV2LT5kcml2ZXIgPyBkZXYtPmRyaXZlci0+cG0gOiBOVUxMOwogCisJcGNp
+X2Rldi0+c2tpcF9idXNfcG0gPSBmYWxzZTsKKwogCWlmIChwY2lfaGFzX2xlZ2FjeV9wbV9zdXBw
+b3J0KHBjaV9kZXYpKQogCQlyZXR1cm4gcGNpX2xlZ2FjeV9zdXNwZW5kKGRldiwgUE1TR19TVVNQ
+RU5EKTsKIApAQCAtODI3LDcgKzgyOSwyMCBAQCBzdGF0aWMgaW50IHBjaV9wbV9zdXNwZW5kX25v
+aXJxKHN0cnVjdCBkCiAJCX0KIAl9CiAKLQlpZiAoIXBjaV9kZXYtPnN0YXRlX3NhdmVkKSB7CisJ
+aWYgKHBjaV9kZXYtPnNraXBfYnVzX3BtKSB7CisJCS8qCisJCSAqIFRoZSBmdW5jdGlvbiBpcyBy
+dW5uaW5nIGZvciB0aGUgc2Vjb25kIHRpbWUgaW4gYSByb3cgd2l0aG91dAorCQkgKiBnb2luZyB0
+aHJvdWdoIGZ1bGwgcmVzdW1lLCB3aGljaCBpcyBwb3NzaWJsZSBvbmx5IGR1cmluZworCQkgKiBz
+dXNwZW5kLXRvLWlkbGUgaW4gYSBzcHVyaW91cyB3YWtldXAgY2FzZS4gIE1vcmVvdmVyLCB0aGUK
+KwkJICogZGV2aWNlIHdhcyBvcmlnaW5hbGx5IGxlZnQgaW4gRDAsIHNvIGl0cyBwb3dlciBzdGF0
+ZSBzaG91bGQKKwkJICogbm90IGJlIGNoYW5nZWQgaGVyZSBhbmQgdGhlIGRldmljZSByZWdpc3Rl
+ciB2YWx1ZXMgc2F2ZWQKKwkJICogb3JpZ2luYWxseSBzaG91bGQgYmUgcmVzdG9yZWQgb24gcmVz
+dW1lIGFnYWluLgorCQkgKi8KKwkJcGNpX2Rldi0+c3RhdGVfc2F2ZWQgPSB0cnVlOworCX0gZWxz
+ZSBpZiAocGNpX2Rldi0+c3RhdGVfc2F2ZWQpIHsKKwkJaWYgKHBjaV9kZXYtPmN1cnJlbnRfc3Rh
+dGUgPT0gUENJX0QwKQorCQkJcGNpX2Rldi0+c2tpcF9idXNfcG0gPSB0cnVlOworCX0gZWxzZSB7
+CiAJCXBjaV9zYXZlX3N0YXRlKHBjaV9kZXYpOwogCQlpZiAocGNpX3Bvd2VyX21hbmFnZWFibGUo
+cGNpX2RldikpCiAJCQlwY2lfcHJlcGFyZV90b19zbGVlcChwY2lfZGV2KTsKSW5kZXg6IGxpbnV4
+LXBtL2luY2x1ZGUvbGludXgvcGNpLmgKPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQotLS0gbGludXgtcG0ub3JpZy9pbmNs
+dWRlL2xpbnV4L3BjaS5oCisrKyBsaW51eC1wbS9pbmNsdWRlL2xpbnV4L3BjaS5oCkBAIC0zNDQs
+NiArMzQ0LDcgQEAgc3RydWN0IHBjaV9kZXYgewogCQkJCQkJICAgRDNjb2xkLCBub3Qgc2V0IGZv
+ciBkZXZpY2VzCiAJCQkJCQkgICBwb3dlcmVkIG9uL29mZiBieSB0aGUKIAkJCQkJCSAgIGNvcnJl
+c3BvbmRpbmcgYnJpZGdlICovCisJdW5zaWduZWQgaW50CXNraXBfYnVzX3BtOjE7CS8qIEludGVy
+bmFsOiBTa2lwIGJ1cy1sZXZlbCBQTSAqLwogCXVuc2lnbmVkIGludAlpZ25vcmVfaG90cGx1Zzox
+OwkvKiBJZ25vcmUgaG90cGx1ZyBldmVudHMgKi8KIAl1bnNpZ25lZCBpbnQJaG90cGx1Z191c2Vy
+X2luZGljYXRvcnM6MTsgLyogU2xvdEN0bCBpbmRpY2F0b3JzCiAJCQkJCQkgICAgICBjb250cm9s
+bGVkIGV4Y2x1c2l2ZWx5IGJ5Cg==
+--0000000000003aa52f058911528d
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-nvme mailing list
 Linux-nvme@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-nvme
+
+--0000000000003aa52f058911528d--
+
