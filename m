@@ -2,81 +2,83 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3680220E2
-	for <lists+linux-nvme@lfdr.de>; Sat, 18 May 2019 02:22:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C8B1C22134
+	for <lists+linux-nvme@lfdr.de>; Sat, 18 May 2019 04:11:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7nGCtu4p42kiD5VcjxusQ0Bt18bLHiexTd784o9hlzU=; b=ixFmjiOEisdu8T
-	0GvpIgpa8F29f4Sr9zdACYCfL/Ef1ehSv6pZffytxNbVN49IBq+sG16izCwFS+ppZRbl+kRUHo9/z
-	fSop6Cdoy+zUnYTzlmR/EFbI8TqKhqt9z/ZVi7n2gjkClUrmjhKyzD/4M3/naiROUf+3qlCbOEMpg
-	ZxWXH7v10qO1T4Tr9W5rNKOjf7G7i2BVC5z+1dvEWr7sNo1ZPgiX5VfGqibV/nfcLgKSD7W2fClzm
-	Ma2hCwdthfsRSL1Tv57F0ezd7+wS6H/KCUFWwDfxeA8jfbp8ifQU2kD+e3a6dkqwyYhuJmnT3gecU
-	Jg3tNcMyhVbmn3Hy+B3w==;
+	List-Owner; bh=6RG/AseFlYiXzzQIWd6DAk06OoXv6ea25wjyqnJrsbM=; b=jGUMEJJx9GnVcJ
+	XcsbPNbTCawUU+Q4QsAtLYlUqrI+h4xZhjiymlnTC/34ZMiEMXylNSMICg/zQD5RCHwd/b3fb8+WS
+	spAJxGfdrAe5vNgnMrDqavUH08P6hQTzhsJWOcu3erRaCYcmU3mcmqIiWIr5BhFl4Old6qUL3q3mN
+	5JUyy1oAQzA3yUiCVf/ltBk2Q6By1qBd0Y7ZOoPfp6NHDwXKi5LApiucOnO26R8LYFzt/q108mrTl
+	63IJ2rr4VPip3MPt77lValqsdvrWdDrVeC5lAp/ExpM6Y6tZ3c60WwnDTwDgI8UrJDHCg515HqBA5
+	RVzz6M44WYmB0wX/k2FQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hRn6p-0000K6-7P; Sat, 18 May 2019 00:21:55 +0000
-Received: from mx0b-0016f401.pphosted.com ([67.231.156.173])
+	id 1hRooi-0001ou-Ka; Sat, 18 May 2019 02:11:20 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hRn6j-0000Jm-8W
- for linux-nvme@lists.infradead.org; Sat, 18 May 2019 00:21:50 +0000
-Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
- by mx0b-0016f401.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x4I06Eid019505; Fri, 17 May 2019 17:21:40 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
- h=date : from : to :
- cc : subject : in-reply-to : message-id : references : mime-version :
- content-type; s=pfpt0818; bh=TLHhUpPk7KTsRbgfg/D02iB/kv94CNcmrcCN2wRQ94Q=;
- b=xZeBUoKbkrQUCOk2jjrcXkTX48ak4/HqGmm9pwSTNSHdO8umnW1SCb0YkorppSYrluG6
- GcF8X7BwnZ6zIiKrs/l0NCOHXgt6vnUdtHOMGeKyMOPOoFbj/8vaUsf4Bd1vYfPyg5/Z
- 4r+W3qfVDY7y+ZzSSDR0Z6rzbKIgD0bGLf5BfDOL9oKxXAr6FlAEIO4VhAeSLu0Uvlzp
- jVvqxmAZagtj5Ttqi37WehIFxC2OOUpd8JvXW7jCHxLFcEIGIVA94XfgWclKLvJviRlE
- 2Ws0RjvX70sDlLoO30Fa90n8HSE5u88iFKPouaEYokxDtNQCngTkJTseRdoOqyXL9hB9 ig== 
-Received: from sc-exch04.marvell.com ([199.233.58.184])
- by mx0b-0016f401.pphosted.com with ESMTP id 2shv92jydx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
- Fri, 17 May 2019 17:21:40 -0700
-Received: from SC-EXCH01.marvell.com (10.93.176.81) by SC-EXCH04.marvell.com
- (10.93.176.84) with Microsoft SMTP Server (TLS) id 15.0.1367.3; Fri, 17 May
- 2019 17:21:39 -0700
-Received: from maili.marvell.com (10.93.176.43) by SC-EXCH01.marvell.com
- (10.93.176.81) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
- Transport; Fri, 17 May 2019 17:21:39 -0700
-Received: from mvluser05.qlc.com (unknown [10.112.10.135])
- by maili.marvell.com (Postfix) with ESMTP id E9F9C3F703F;
- Fri, 17 May 2019 17:21:38 -0700 (PDT)
-Received: from localhost (aeasi@localhost)
- by mvluser05.qlc.com (8.14.4/8.14.4/Submit) with ESMTP id x4I0LcUx017639;
- Fri, 17 May 2019 17:21:38 -0700
-X-Authentication-Warning: mvluser05.qlc.com: aeasi owned process doing -bs
-Date: Fri, 17 May 2019 17:21:38 -0700
-From: Arun Easi <aeasi@marvell.com>
-X-X-Sender: aeasi@mvluser05.qlc.com
-To: Hannes Reinecke <hare@suse.de>
-Subject: Re: [PATCH 3/3] nvme-fc: fail reconnect if state change fails
-In-Reply-To: <alpine.LRH.2.21.9999.1905171715520.19585@mvluser05.qlc.com>
-Message-ID: <alpine.LRH.2.21.9999.1905171721040.9636@mvluser05.qlc.com>
-References: <20190516083740.95894-1-hare@suse.de>
- <20190516083740.95894-4-hare@suse.de>
- <alpine.LRH.2.21.9999.1905171715520.19585@mvluser05.qlc.com>
-User-Agent: Alpine 2.21.9999 (LRH 334 2019-03-29)
+ id 1hRood-0001ob-TT
+ for linux-nvme@lists.infradead.org; Sat, 18 May 2019 02:11:17 +0000
+Received: by mail-pf1-x442.google.com with SMTP id q17so4520951pfq.8
+ for <linux-nvme@lists.infradead.org>; Fri, 17 May 2019 19:11:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=3SCAm5Zq9a15xoviAUKhscfgnMAxTPYSbJX8WFIfcjg=;
+ b=cnUkpa8qykQ7tjdrALnTLaclTy77uEWIIjyivQXtf9+SsSFt++IJfV58eu93EKs9xO
+ i/+4c8YlTUzEx6aGuaTjA3YhdGYvPNRN71+3mSR1NS/DrQvjqOrwzfjkjiOyvXaoNpnV
+ OhcawlAb+e8fcfyk+YFkasD9XGm3a5hUDt6GE3nrLiwaoYtz5Z7Y0MTgWb/zgK6UdbEu
+ axX9PcI6k9tmC5RVjWlPfyRzy757+glaDpJqyW/boIx0Gsn6sVlRwnEkRXi5NUelTki/
+ MF6qiP6ir9zkO9TQl9M1fd9j99hxcLOT0csZD9nh1tx5uCr9l6V2n+N+9HuN9eM1GobY
+ eZrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=3SCAm5Zq9a15xoviAUKhscfgnMAxTPYSbJX8WFIfcjg=;
+ b=PCUAkE4kMaQLhuagntuoYgwoCCaw5b7w5KIO0gVSHIIWg1Li+BsWlfjQuYlXcByQWv
+ NjCq0t15TpL3TpMAP+wNlJ9SomCGRwUA8Kfrfblaz3PK/6Udrc6AlUw4M6vzlaygNoQk
+ QWQJcO0c9wKiyeXRguql1qcK/vmqtqqzXXpSNNAvMEfci3aNkDmkjHtR+j6BE3RT36Cx
+ l2rFX/xWYjetIF4EEbhnVMmuqk/OgCY94Ztr/sslyLnPqn/SiT6m3WHmcVpZfBD9mhyo
+ hWuTxBq8cRf+u2xQEuI/mFy/S5Agl33tUv+/QouPUJRt9atzU67//Wm9JBGKWhX6xw/H
+ nd8A==
+X-Gm-Message-State: APjAAAWrim8hx/CsW5T/MJbd5AQYtfvnBO7THly1LGBVFNCLwA1Wk+a/
+ YOkvrD/Iwxy8e1jzYMlxUBK8hWmgSRI=
+X-Google-Smtp-Source: APXvYqzQpjdy3zs5XkesNR4PzH2qhrX91Y70oIRG6MnzjnEhVI8/xVqvP/vj7Gnr1eIhJgKw6qfxFA==
+X-Received: by 2002:aa7:95bb:: with SMTP id a27mr53430791pfk.30.1558145474092; 
+ Fri, 17 May 2019 19:11:14 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id f36sm9535206pgb.76.2019.05.17.19.11.12
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 17 May 2019 19:11:13 -0700 (PDT)
+Date: Sat, 18 May 2019 11:11:10 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: Re: [PATCH V2 0/4] nvme-cli: Introduce nvme-status mapping with errno
+Message-ID: <20190518021107.GA31204@minwooim-desktop>
+References: <20190513170342.9497-1-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-05-17_15:, , signatures=0
+Content-Disposition: inline
+In-Reply-To: <20190513170342.9497-1-minwoo.im.dev@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190517_172149_420917_263AD42C 
-X-CRM114-Status: GOOD (  20.02  )
-X-Spam-Score: -0.9 (/)
+X-CRM114-CacheID: sfid-20190517_191115_953033_0EB6F22A 
+X-CRM114-Status: GOOD (  10.81  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.9 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [67.231.156.173 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -96,79 +98,37 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
- James Smart <james.smart@broadcom.com>, linux-nvme@lists.infradead.org,
- Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <keith.busch@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Please ignore the comment. I see that v2 already has addressed this.
+On 19-05-14 02:03:38, Minwoo Im wrote:
+> Hi,
+> 
+> This patchset introduces nvme-status module to manage mapping
+> relationships between nvme error status and errno.  It cannot be
+> directly mapped in 1:1, but we can figure out what kind of errors
+> happended by the return value of nvme-cli.
+> 
+> NVMe status fields are 16bits to indicate, but UNIX return value from
+> main() will be parsed in 8bits so that we need to do something about
+> return value to indicate nvme error status.
+> 
+> Please review.
+> Thanks,
+> 
+> Changes to previous C1:
+>   - make switch-case inline in nvme-status (Chaitanya)
+> 
+> Minwoo Im (4):
+>   nvme.h: Fix typos in status code values
+>   nvme-status: Introduce nvme status module to map errno
+>   nvme: Return errno mapped for nvme error status
+>   fabrics: Return errno mapped for fabrics error status
 
-Regards,
--Arun
-
-On Fri, 17 May 2019, 5:18pm, Arun Easi wrote:
-
-> On Thu, 16 May 2019, 1:37am, Hannes Reinecke wrote:
-> 
-> > If the final state change to LIVE in nvme_fc_create_association()
-> > fails the controller is not operational as no I/O is possible.
-> > So we should be returning an error here to reschedule reconnect.
-> > 
-> > Signed-off-by: Hannes Reinecke <hare@suse.com>
-> > ---
-> >  drivers/nvme/host/fc.c | 14 ++++++++++----
-> >  1 file changed, 10 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
-> > index e5c81ba2b7a1..9f9300cbdb62 100644
-> > --- a/drivers/nvme/host/fc.c
-> > +++ b/drivers/nvme/host/fc.c
-> > @@ -2620,7 +2620,6 @@ nvme_fc_create_association(struct nvme_fc_ctrl *ctrl)
-> >  {
-> >  	struct nvmf_ctrl_options *opts = ctrl->ctrl.opts;
-> >  	int ret;
-> > -	bool changed;
-> >  
-> >  	++ctrl->ctrl.nr_reconnects;
-> >  
-> > @@ -2725,12 +2724,19 @@ nvme_fc_create_association(struct nvme_fc_ctrl *ctrl)
-> >  			goto out_term_aen_ops;
-> >  	}
-> >  
-> > -	changed = nvme_change_ctrl_state(&ctrl->ctrl, NVME_CTRL_LIVE);
-> > +	if (nvme_change_ctrl_state(&ctrl->ctrl, NVME_CTRL_LIVE)) {
-> 
-> Should not this be !nvme_change_ctrl_state()?
-> 
-> Regards,
-> -Arun
-> > +		if (ctrl->ctrl.state != NVME_CTRL_DELETING) {
-> > +			dev_err(ctrl->ctrl.device,
-> > +				"NVME-FC{%d}: error_recovery: Couldn't change "
-> > +				"state from %s to LIVE\n", ctrl->cnum,
-> > +				nvme_ctrl_state_name(&ctrl->ctrl));
-> > +			return -EAGAIN;
-> > +		}
-> > +	}
-> >  
-> >  	ctrl->ctrl.nr_reconnects = 0;
-> >  
-> > -	if (changed)
-> > -		nvme_start_ctrl(&ctrl->ctrl);
-> > +	nvme_start_ctrl(&ctrl->ctrl);
-> >  
-> >  	return 0;	/* Success */
-> >  
-> > 
-> 
-> _______________________________________________
-> Linux-nvme mailing list
-> Linux-nvme@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-nvme
-> 
+Ping :)
 
 _______________________________________________
 Linux-nvme mailing list
