@@ -2,85 +2,72 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF0102281A
-	for <lists+linux-nvme@lfdr.de>; Sun, 19 May 2019 19:56:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C2A02281C
+	for <lists+linux-nvme@lfdr.de>; Sun, 19 May 2019 19:57:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pyh8AV7+kNBTFnN+unc7FN7WU39qG16pJ97YLFx+rmM=; b=Mz//z4zdQKdly2
-	IPu08D79lJnH0Ds+PMd45M7fHahcaq5SK651PYdEsUM4rZncmFBiVwMQY1DXR67plCqzArrPt8bdE
-	uVc9xEmMbmYMXRJ34HRG830N6mtzSDnq7nViFdTB5tnRuudgpHeJ8vP/xA0086RKlGqJDEBOHVUUF
-	af3WvNbQdEkgp4ZVJOHu0blBOf7I7yqRDYE1AsK6+2tBgbapA2ZKZgICD5xuc1ZWw+WkSNyWSwezN
-	vM3JgYPf7+y+D1NWgg9Jt5mxGyuQSKIUCTHTCV2VNbW5EMia9ZX3xWR1XeDpRAp9ttkL4nzgolnCS
-	uMIsd5FX4JhExrHHAgIA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=+tRNCv1qKU/R6K0LSstlBIsNEgzwwe0Dj+HfKZsG4nY=; b=XQ/
+	osuJfVoPqM1G0NpiqHnO77vYbLpHhdMoUY354BGrhNRS5pEcdY/iUgfRtT2DbsqHZusmTpNudOLAw
+	uxkptqFT6CtcxoJ9g5jRIkKvahDmRmiK/fbR+GKkU4sVP0p6JPs4AbuX+JIzibOlW5i5f0IUprdbo
+	lHsrRmaUON4RQLpodpaunS+WAd+edcU7/tTTr5RrXGhm3mbp422rYAs45PmPw82Ia7HTXqq5ELn5U
+	9HDUuUSfwAbDRl9xrJ4RvocBVeeGZ1hRN9nSMR80oDkkS+tySx1GRFuIbhnOmOPFZsXYE20vuVILf
+	pyPYDXCkj824y5uiMx4O0UaLq1jNWxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hSQ2e-0005jD-Ne; Sun, 19 May 2019 17:56:12 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1hSQ3U-0005um-O9; Sun, 19 May 2019 17:57:04 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hSQ2a-0005ir-8T
- for linux-nvme@lists.infradead.org; Sun, 19 May 2019 17:56:09 +0000
-Received: by mail-pf1-x444.google.com with SMTP id q17so6063163pfq.8
- for <linux-nvme@lists.infradead.org>; Sun, 19 May 2019 10:56:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=4gohrqo3snVesqqK9FYN3tfzBk3BgKnOc9RXJs5UweY=;
- b=Rs6MZxnFryBnJDHsTNDQ7/OPI/jG2Dsn7AWFAIeg50Ef8R+ChGZw8dp/yBktHsaG8H
- bxksdK8bLQX4cs9MyXfTztp0tbZN7QXLYcxFeM/Km6doz4yxjA64IxxG9AecpkM191QZ
- pp19DpDLCj7I9YEvYkDldMpNDKqP0D8T5nLYaa8iO3BGkywWj68e0/6vnrxlSSlcruZn
- MkBP0502X8HDxfa/td+gHfveFP0FUn9SKAnawtDdTvD+0JG4PTLZ1m9NzFORcjFp94eE
- tEeaH+1/oKzNiRNU4yhxTvX6H36wqjEDpYdw5WHDLnqQ1oQkLBqeRPAyV9vsYdRgYn5A
- n0FA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=4gohrqo3snVesqqK9FYN3tfzBk3BgKnOc9RXJs5UweY=;
- b=JSS9vOxmfaVV3JidtH1Iks1fZg/RxABykvVLRAD11RjQ+Sj3f4TnzLZxMMKf8GWGQ2
- gka8jNDQmcV3kVo/umIT35mBaYur2bT3qPjHbiH9jrMT0GOZQh70e9XJ7DIS/hsDzqzg
- 7E7L522K7aqAcGATm2BV1pF7F2nzTRPnAKkj+OAmHklgUeD9wzLqqBAgG2Dg1amR1BV2
- T1WEgGD7LHUu8DR/ssnUCANR7gfXcvFHFJVhhEQyz6cPZJWcnm1cyoh7S72GsjI1YNlo
- WDomiQgwPrSQuH3gYKOUZOVOzdT/wx43M9OSIk9XtkhKVR9G/kE/8Q5ztD8soSzxbYc7
- AaLw==
-X-Gm-Message-State: APjAAAV42Pkq+D9K9ocbVTyXs2Hqr1wI0V2XScxrCn2NNHdTxys3XWs+
- 8Dz7SVvo5XLXsveW1Hr+3so=
-X-Google-Smtp-Source: APXvYqzLzWB8uX0hUjGzHnVucb1oNZKxrw0I3MxmB2eWve7hdQLjOD7hXqZIR1rcyU1PyUAyJeGG5w==
-X-Received: by 2002:a63:6cc5:: with SMTP id h188mr9600704pgc.105.1558288567793; 
- Sun, 19 May 2019 10:56:07 -0700 (PDT)
-Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id n13sm19455460pgh.6.2019.05.19.10.56.06
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 19 May 2019 10:56:07 -0700 (PDT)
-Date: Mon, 20 May 2019 02:56:03 +0900
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-Subject: Re: [PATCH V2 2/4] nvme-status: Introduce nvme status module to map
- errno
-Message-ID: <20190519175602.GB10876@minwooim-desktop>
-References: <20190513170342.9497-1-minwoo.im.dev@gmail.com>
- <20190513170342.9497-3-minwoo.im.dev@gmail.com>
- <BYAPR04MB5749007DAA9F804D6385FF8F86050@BYAPR04MB5749.namprd04.prod.outlook.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <BYAPR04MB5749007DAA9F804D6385FF8F86050@BYAPR04MB5749.namprd04.prod.outlook.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+ id 1hSQ3P-0005uN-Gk
+ for linux-nvme@lists.infradead.org; Sun, 19 May 2019 17:57:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1558288620; x=1589824620;
+ h=from:to:cc:subject:date:message-id;
+ bh=/OSR+FTDUbrSXi2fn6kukkpy+VZIzbq+IGi5XoWiJgM=;
+ b=Bg7P2BICvYR8+lrueX1+3wuBDZzfVUVoBXyeClnqIWmqD8y/1Lcoa+du
+ pJDCsSHtbqKjgBJKb+bG9r1PoAECxnrsrUsFpgLXkbGO1M+OMquPfEgOp
+ xBG937CSAGE700eGGEQtjHuuGLLQUxWXyZiUiXXAv7Sch+QAKeNCI+nJV
+ /Cu0jfjAw4qldOWR8v2BYck8WuOpqstmRRegdMOIydMfpfBEcHq2nymA2
+ t7GNiNv76oHcq795bcOD6nPtn/et0Hpx5htvm6MSbIvRflD8MwvpL3YZp
+ Tys35u6qKMlWhT+6syVUFsA3yaKz+b23eNPpuiDOisZdCNMmWhmSxBn2d g==;
+X-IronPort-AV: E=Sophos;i="5.60,488,1549900800"; d="scan'208";a="110304027"
+Received: from uls-op-cesaip02.wdc.com (HELO uls-op-cesaep02.wdc.com)
+ ([199.255.45.15])
+ by ob1.hgst.iphmx.com with ESMTP; 20 May 2019 01:56:57 +0800
+IronPort-SDR: bFw2Lb4TJcOZ4n04qYyxOQkjDx98SonLkejyYnYlkjXqjlFJm1udNovbE+i7TaJosNsBXctQw7
+ bMuDhA7Ah5CDs5i7XACzds0qKevKI/lkrStXH2FR6Q3Zsc7j+1xFPo6MC3mWzPF0g672A0bY5O
+ x5hPYCtv3QyGybBMdWVc6/gWaly8mAPu8qvvBqI/zcj+x95wMrQhVIelvkWqxtrNPt/oOPVl+M
+ HlwBrLOoknkhufVSvC82z7denLmE2otjzkA2azS8a3hVaXVl0ZPi8ypbHMdg3Y6bOFFiwH7xTn
+ Anpx0L735psW1U9oWCjUnaa2
+Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
+ by uls-op-cesaep02.wdc.com with ESMTP; 19 May 2019 10:34:45 -0700
+IronPort-SDR: XjbnqbZ0r67py6bcwbdG70N3QkxZcotZ2UnyUgMXRBpoKsH1S7o37fLHSBq9QaLSayWlrOhu5N
+ Xwa7gBDZpIode/T6hyqO3xeRAAhF32dYl3C+rWRNODLuzN8mS+Ei8a01FT64FIyhvUarfNNsnb
+ 8A0no17ioNNvZCkEvf+bn2oY5lyzmmtULWBXgu0hOydW1xwLjuC7xyo0P/FwLTulybSduOCPdR
+ pgVOhFVRNR2+kV8+RA61UbeLRiMsXJvdXos2dLfdZK5Ry3t+Edj2lHvx47+SETrRD/G4VZO3gF
+ eao=
+Received: from qemu.hgst.com ([10.202.65.140])
+ by uls-op-cesaip02.wdc.com with ESMTP; 19 May 2019 10:56:57 -0700
+From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme-cli: close fd before return
+Date: Sun, 19 May 2019 10:56:42 -0700
+Message-Id: <20190519175642.31815-1-chaitanya.kulkarni@wdc.com>
+X-Mailer: git-send-email 2.17.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190519_105608_302483_946B312E 
-X-CRM114-Status: GOOD (  16.99  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190519_105659_608397_DEE6F7E8 
+X-CRM114-Status: GOOD (  11.21  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.45 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -101,44 +88,54 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Cc: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-05-19 17:42:19, Chaitanya Kulkarni wrote:
-> On 05/13/2019 10:04 AM, Minwoo Im wrote:
-> > Background:
-> >    It's not enough to return the nvme status value in main() because it's
-> > allowed to be in 8bits, but nvme status is indicated in 16bits.  So we
-> > has not been able to figure out what kind of nvme status has been
-> > returned by return value.
-> >
-> >    This patch introduces nvme-status module that manages mapping between
-> > nvme status and errno.  It's not possible to make 1:1 mapping relations,
-> > but we can map it as a groups.
-> >
-> > All the internal errors which has been returned in a negative value will
-> > be returned with ECOMM that indicates communication errors.  In this
-> > case, we can see what happened via stderr.
-> 
-> I didn't understand this as I don't see ECOMM in this patch, also when 
-> you mentioned internal errors are you referring to the  NVME_SC_INTERNAL 
-> ? in that case in this patch NVME_SC_INTERNAL is mapped to the EIO. Can 
-> you please explain ?
+Instead of returning on the erro use existing close_fd label before
+we return in create_ns() and format().
 
-Nice catch, Thanks, really.  I didn't make ECOMM errno included to this
-patchset.  NVME_SC_INTERNAL will be mapped to EIO to make it
-distinguished from ECOMM which indicates the internal linux errno.  All
-the error status from nvme except cases defined in the following
-switch-case will be mapped to EIO.
+Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+---
+ nvme.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Will make this patch return ECOMM in case of internal linux error which
-will be given in a negative value with the previos commit.
+diff --git a/nvme.c b/nvme.c
+index e0f7552..d6e5b21 100644
+--- a/nvme.c
++++ b/nvme.c
+@@ -1216,7 +1216,7 @@ static int create_ns(int argc, char **argv, struct command *cmd, struct plugin *
+ 				fprintf(stderr, "identify failed\n");
+ 				show_nvme_status(err);
+ 			}
+-			return err;
++			goto close_fd;
+ 		}
+ 		for (i = 0; i < 16; ++i) {
+ 			if ((1 << ns.lbaf[i].ds) == cfg.bs && ns.lbaf[i].ms == 0) {
+@@ -1245,6 +1245,7 @@ static int create_ns(int argc, char **argv, struct command *cmd, struct plugin *
+ 	else
+ 		perror("create namespace");
+ 
++ close_fd:
+ 	close(fd);
+ 
+ 	return err;
+@@ -3198,7 +3199,7 @@ static int format(int argc, char **argv, struct command *cmd, struct plugin *plu
+ 				fprintf(stderr, "identify failed\n");
+ 				show_nvme_status(err);
+ 			}
+-			return err;
++			goto close_fd;
+ 		}
+ 		prev_lbaf = ns.flbas & 0xf;
+ 
+-- 
+2.17.0
 
-Thanks,
 
 _______________________________________________
 Linux-nvme mailing list
