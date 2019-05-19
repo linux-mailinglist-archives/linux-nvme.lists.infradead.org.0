@@ -2,123 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED5A4223FE
-	for <lists+linux-nvme@lfdr.de>; Sat, 18 May 2019 17:53:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 205CF2270B
+	for <lists+linux-nvme@lfdr.de>; Sun, 19 May 2019 17:07:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qNTZhBFqczgCXmbnrbma5gUz/3iMXpsAfTn7yH6Ok6M=; b=SYp7jhCCgkhyRj
-	54XWGwyKFEHwQ87rrJWqTsOAa9Ln6NpOGNG2503WAqnoSUr1PlkGt4u7LD+s3YYY7UtbzGd2ki7xP
-	bTXPGcHjqPp3lPcAF+Zvfgh/J5xImKoeFzXMNKfXSGXqR0LHxnUmoFkgQ9qYhwhDXdmgfOO+Gos+a
-	bi1DqW9SJ3EfQSsDK8BHtUrlBGQ6hMpRGk4bqrhziOnlO7+RUxc0rStEzaovl6Wv6eyQCnTbh+SJ7
-	NYEPGCKQUYAb4b6xqeBhdS93nZINXiUKLvheobnkYu/MIDZrudqFSxRMv+1uiMP+lMyMWwoSNBCg8
-	oKfrqTPiNacAo4VU+XWw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=dXVHndlcs0AnUCER55pd9FK26fkz0x2C/NCp4PBiuis=; b=o+L
+	rp/+HKBY0ort552iPsmzkAHElM+lF9a+5B2aS5GU07BGItCsopeZp0F0iThWjuY4c6s8ZfJ7kxG+F
+	Hzsu/Mlb05FDaIFUjXSWaqglps9hE8q+YCRJ/6/8yRrq5iqNoxU5Ui8Utd5YHt+4x61ALL0/wLj7G
+	M28RUdWKHkCMGBgMBGuPzySBxhz+36ekQQgIEGY6LRVoVp0IuitUAEKA/NCzzyv/TGyj1q4fudPLV
+	qIog+dCuWQrH25iyDRxpq9uNvNJGArv2/Qh156wSHqgdB4jBxLcKguW21Duj4VU59VcB0TWp/ZkJh
+	MAK/R64rX3Z2g84jP9CKDV+WZE0jrYQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hS1e5-0003j7-T0; Sat, 18 May 2019 15:53:13 +0000
-Received: from gateway31.websitewelcome.com ([192.185.144.218])
+	id 1hSNPH-0004hB-Q6; Sun, 19 May 2019 15:07:23 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hS1dz-0003iR-U2
- for linux-nvme@lists.infradead.org; Sat, 18 May 2019 15:53:09 +0000
-Received: from cm12.websitewelcome.com (cm12.websitewelcome.com [100.42.49.8])
- by gateway31.websitewelcome.com (Postfix) with ESMTP id 3CA89AE360
- for <linux-nvme@lists.infradead.org>; Sat, 18 May 2019 10:52:54 -0500 (CDT)
-Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
- id S1dmhGtVPiQerS1dmhtQCh; Sat, 18 May 2019 10:52:54 -0500
-X-Authority-Reason: nr=8
-Received: from [189.250.88.202] (port=34780 helo=[192.168.1.76])
- by gator4166.hostgator.com with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.91)
- (envelope-from <gustavo@embeddedor.com>)
- id 1hS1dl-000hEL-QU; Sat, 18 May 2019 10:52:53 -0500
-Subject: Re: [PATCH] nvme: target: use struct_size() in kmalloc()
-To: xiaolinkui <xiaolinkui@kylinos.cn>, hch@lst.de, sagi@grimberg.me
-References: <1558076615-8576-1-git-send-email-xiaolinkui@kylinos.cn>
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=gustavo@embeddedor.com; keydata=
- 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
- VtSixD1uOgytAP7RWS474w==
-Message-ID: <b6df7288-9b44-145a-f8be-b2ada6dcd360@embeddedor.com>
-Date: Sat, 18 May 2019 10:52:52 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <1558076615-8576-1-git-send-email-xiaolinkui@kylinos.cn>
-Content-Language: en-US
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 189.250.88.202
-X-Source-L: No
-X-Exim-ID: 1hS1dl-000hEL-QU
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: ([192.168.1.76]) [189.250.88.202]:34780
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 9
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
+ id 1hSNPA-0004gO-Lm
+ for linux-nvme@lists.infradead.org; Sun, 19 May 2019 15:07:18 +0000
+Received: by mail-pl1-x642.google.com with SMTP id f12so5517074plt.8
+ for <linux-nvme@lists.infradead.org>; Sun, 19 May 2019 08:07:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=7U4GWlu3NhNM+H5m0c8v1GRLQbRyHo7s1euACcIsXE0=;
+ b=hZ2jJ1lV41sUooh+QYN+pA+yjuoXiY4VHfZYxskGzaKOZWy5Hw1p68M40Y6IB0E7PN
+ c1JJmnhOQ/bS2iqdMwdNSbNd3dF7sv9qdvZ60VgXvxQzqKET3bT9IEsI9AlGelCvIdwc
+ FwTyMi+7VtJNS4CBAY9fuIAESaBJOfW3mXLXM+exlywXR3DbxUdlRCjGrGP1cse3W8OJ
+ zgjuS0BfZkTC58mdJJDxxa6Y2WzWXZQQANIcTA0hlshoz02yScOS6CKxbedXg8BeIwB3
+ d5rEtDwouKwJXxsyYa8b/JSTsVdk1c25ACqkMd6JGS4LSGni7rzBChpOh93kAyAP4kOK
+ 4NqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=7U4GWlu3NhNM+H5m0c8v1GRLQbRyHo7s1euACcIsXE0=;
+ b=QWg/r7XWXdJxxwStU8aE8OGZSf4JH9XZPK2aCUy0rsD/ruxy2hlJWV/YErn7+YcTpX
+ ImTBkTADDiNQKQnznkVEEJno6QLSwogPxJGfW0kkKLF8DiuBvW0h/M9HFQ6zN1uSSu54
+ d1tk0+vmH5i0GhejBeFO2kX3iT1LgPeJ/ewf+i44CuTvpbbZfdGEn4HU8VfNrV5u6nA+
+ fw1ETjveNBEd6hCXEYOYWiSdOpKjMxx0IFVf76Px5gUvvmyJEVdB+/kue8bdSqnoJlSV
+ LPOFuZZMiHayCyola93Ym9tQG0G9aGLCh5jfqvjYBtNkPOJo1waipwTiiLWn9DfcdjF+
+ 45eA==
+X-Gm-Message-State: APjAAAX8jkuzOuZIBgX6cJY71zUd2WHYhXUSPd+Wc7njIgLun89s5IP7
+ qCA1sDduN1B46afLADcPdWnkj6R0
+X-Google-Smtp-Source: APXvYqyayPBWTYNdQszcQhIMFK+aS0ZvpndSym28CO3lemv+V5G3d3inoDU6heKFHo+0JAyJ5HeyNQ==
+X-Received: by 2002:a17:902:108a:: with SMTP id
+ c10mr70960833pla.48.1558278435099; 
+ Sun, 19 May 2019 08:07:15 -0700 (PDT)
+Received: from mita-MS-7A45.lan ([240f:34:212d:1:5085:bb4a:e3a8:fc9d])
+ by smtp.gmail.com with ESMTPSA id g17sm2441105pfb.56.2019.05.19.08.07.12
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Sun, 19 May 2019 08:07:14 -0700 (PDT)
+From: Akinobu Mita <akinobu.mita@gmail.com>
+To: linux-nvme@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v4 0/7] nvme-pci: support device coredump
+Date: Mon, 20 May 2019 00:06:51 +0900
+Message-Id: <1558278418-5702-1-git-send-email-akinobu.mita@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190518_085308_058021_BF0C28E0 
-X-CRM114-Status: GOOD (  16.00  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190519_080716_716108_64C1F6BE 
+X-CRM114-Status: GOOD (  15.75  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [192.185.144.218 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
+ no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (akinobu.mita[at]gmail.com)
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -130,66 +94,98 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org
+Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
+ Kenneth Heitke <kenneth.heitke@intel.com>,
+ Akinobu Mita <akinobu.mita@gmail.com>, Keith Busch <keith.busch@intel.com>,
+ Minwoo Im <minwoo.im.dev@gmail.com>, Johannes Berg <johannes@sipsolutions.net>,
+ Christoph Hellwig <hch@lst.de>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+This enables to collect snapshot of controller information via device
+coredump mechanism.  The nvme device coredump is triggered when command
+timeout occurs, and can also be triggered by writing sysfs attribute.
 
+After finishing the nvme device coredump, the following files are created.
 
-On 5/17/19 2:03 AM, xiaolinkui wrote:
-> Use struct_size() to keep code sample.
+ - regs: NVMe controller registers (00h to 4Fh)
+ - sq<qid>: Submission queue
+ - cq<qid>: Completion queue
+ - telemetry-ctrl-log: Telemetry controller-initiated log (if available)
+ - data: Empty
 
-What do you mean by that?
+The device coredump mechanism currently allows drivers to create only a
+single coredump file, so this also provides a new function that allows
+drivers to create several device coredump files in one crashed device.
 
-> One of the more common cases of allocation size calculations is finding
-> the size of a structure that has a zero-sized array at the end, along
-> with memory for some number of elements for that array. For example:
-> 
-> struct foo {
->     int stuff;
->     struct boo entry[];
-> };
-> 
-> instance = kmalloc(sizeof(struct foo) + count * sizeof(struct boo), GFP_KERNEL);
-> 
-> Instead of leaving these open-coded and prone to type mistakes, we can
-> now use the new struct_size() helper:
-> 
-> instance = kmalloc(struct_size(instance, entry, count), GFP_KERNEL);
-> 
+* v4
+- Add Reviewed-by tags
+- Add nvme_get_telemetry_log() to nvme core module.
+- Copy struct nvme_telemetry_log_page_hdr from the latest nvme-cli
+- Use bio_vec instead of sg_table to store telemetry log page
+- Make nvme_coredump_logs() return error if the device didn't produce
+  a response.
+- Abandon the reset if nvme_coredump_logs() returns error code
 
-How did you find this code?
+* v3
+- Merge 'add telemetry log page definisions' patch and 'add facility to
+  check log page attributes' patch
+- Copy struct nvme_telemetry_log_page_hdr from the latest nvme-cli
+- Add BUILD_BUG_ON for the size of struct nvme_telemetry_log_page_hdr
+- Fix typo s/machanism/mechanism/ in commit log
+- Fix max transfer size calculation for get log page
+- Add function comments
+- Extract 'enable to trigger device coredump by hand' patch
+- Don't try to get telemetry log when admin queue is not available
+- Avoid deadlock in .coredump callback
 
-If you used a tool like Coccinelle, mention it in the changelog text.
+* v2
+- Add Reviewed-by tag.
+- Add patch to fix typo in comment
+- Remove unneeded braces.
+- Allocate device_entry followed by an array of devcd_file elements.
+- Add telemetry log page definisions
+- Add facility to check log page attributes
+- Exclude the doorbell registers from register dump.
+- Save controller registers in a binary format instead of a text format.
+- Create an empty 'data' file in the device coredump.
+- Save telemetry controller-initiated log if available
+- Make coredump procedure into two phases (before resetting controller and
+  after resetting as soon as admin queue is available).
 
-Did you compile it?
+Akinobu Mita (7):
+  devcoredump: use memory_read_from_buffer
+  devcoredump: fix typo in comment
+  devcoredump: allow to create several coredump files in one device
+  nvme: add basic facilities to get telemetry log page
+  nvme-pci: add device coredump infrastructure
+  nvme-pci: trigger device coredump on command timeout
+  nvme-pci: enable to trigger device coredump by hand
 
---
-Gustavo
+ drivers/base/devcoredump.c  | 168 ++++++++++------
+ drivers/nvme/host/Kconfig   |   1 +
+ drivers/nvme/host/core.c    |  59 ++++++
+ drivers/nvme/host/nvme.h    |   3 +
+ drivers/nvme/host/pci.c     | 473 ++++++++++++++++++++++++++++++++++++++++++--
+ include/linux/devcoredump.h |  33 ++++
+ include/linux/nvme.h        |  32 +++
+ 7 files changed, 696 insertions(+), 73 deletions(-)
 
-> Signed-off-by: xiaolinkui <xiaolinkui@kylinos.cn>
-> ---
->  drivers/nvme/target/admin-cmd.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/nvme/target/admin-cmd.c b/drivers/nvme/target/admin-cmd.c
-> index 9f72d51..6f9f830 100644
-> --- a/drivers/nvme/target/admin-cmd.c
-> +++ b/drivers/nvme/target/admin-cmd.c
-> @@ -248,8 +248,8 @@ static void nvmet_execute_get_log_page_ana(struct nvmet_req *req)
->  	u16 status;
->  
->  	status = NVME_SC_INTERNAL;
-> -	desc = kmalloc(sizeof(struct nvme_ana_group_desc) +
-> -			NVMET_MAX_NAMESPACES * sizeof(__le32), GFP_KERNEL);
-> +	desc = kmalloc(struct_size(desc, nsids, NVMET_MAX_NAMESPACES),
-> +			GFP_KERNEL);
->  	if (!desc)
->  		goto out;
->  
-> 
+Cc: Johannes Berg <johannes@sipsolutions.net>
+Cc: Keith Busch <keith.busch@intel.com>
+Cc: Jens Axboe <axboe@fb.com>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Cc: Minwoo Im <minwoo.im.dev@gmail.com>
+Cc: Kenneth Heitke <kenneth.heitke@intel.com>
+Cc: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+-- 
+2.7.4
+
 
 _______________________________________________
 Linux-nvme mailing list
