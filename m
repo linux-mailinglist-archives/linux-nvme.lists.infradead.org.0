@@ -2,111 +2,99 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53AD122981
-	for <lists+linux-nvme@lfdr.de>; Mon, 20 May 2019 02:21:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C5FBE22984
+	for <lists+linux-nvme@lfdr.de>; Mon, 20 May 2019 02:28:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=adXcCSPKs9Nsoeup9QTSMbcLtvlRmX0mJ5lmE1LFwlw=; b=P/lj8lehC2DEuj
-	w2FJv8DMzRe+ECW1bU4FqvVLi+E698XW8lXEZYGT5ABj0SKHNxDbkerUZmjfGUMIes5nm5BbuDq2d
-	Kesxucl3mGB5/RnK/I5S5w9f3w3FdLfjG6JQxlbMp3Uxm0ny17yOSdsvIllXl3JnGAl/LUwnHPIlF
-	Eq/JvJsRasByjQqVt7Tc+zNoA8UGm2qEetxmXZzzMrhahlgrPfjiJQ0G0BlqejRPa+zvFIb6R5kOY
-	dk0FCeajaNhgO7IamNiGtu27n4mu9lBcblNNl8dQut3Ju8YFYJy9t1sZHiQhJjdy93Zy9vH04OMZ6
-	lsvqPYaUbLpPKkQydRgg==;
+	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:Date:Message-ID:
+	In-Reply-To:To:From:Subject:Mime-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=B+X/bF9qvmi309twjmVy7DIor7Unp8/vEIqyQuKp/xU=; b=dJwOub0CcQiCJg
+	/z3sRmnOWf7jjoTIsqUi0BqqdHo0gSIc94q0CUdJxDKHSGQoEb78zmKgjT6V6vYn+u7R0Ngm+RGLU
+	xW6xz2BVER43wdAEWfQnhQ1QUPigLxoE5d3E6sG5EA2fPDW5isvNLT09gaQWEJlqa4t4NvIki1W39
+	HbaVEilfjXAyu0rIfGOeu+iUCs8aWJH0yZY9Vxr9b8EOmFPL78X4iLWEHf2z8zNKQ8ZX3h3tqm9D+
+	XCfMp6eYH5z6DBSaN5oCl4dQX1L9g6vgZ+W4hrIbcO4MAhwA7I7uRMTmZ8JQihA9y9E86/hcnPp4J
+	9dfc0usoRgE04T9QxfvQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hSW33-0006xW-RJ; Mon, 20 May 2019 00:21:01 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1hSWAE-00008l-58; Mon, 20 May 2019 00:28:26 +0000
+Received: from mailout4.samsung.com ([203.254.224.34])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hSW2x-0006wW-Q8
- for linux-nvme@lists.infradead.org; Mon, 20 May 2019 00:20:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1558311698; x=1589847698;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=HSPEdzbH2p1/kJMR17ODs84RAxdnzhw3nxyDQVwbNfs=;
- b=VaTcFOZgY0GO2Af96OS6IaOlpNjWywlwCbyyLStE1jVAWaFuLdqu2LyI
- s0LPrmidccSNDXl/H/etmSWuB2uP6wT/eKZD8VmnnWx8mL/DIZVhKZ1qz
- 47SAHL7qPqNGaFx6V4GDBOMYuqGN5RsRcdcXd4pg4PR2/NWkDFHDVakST
- bZWC25i/jJGTZeAJa2kdGsmW+xKkAiFFnlnIlsCvpz5R1CTcNoQLZRlOO
- oNbwVIDyj/YAHr487ZK5zQRe2o+WqabQmOxv0HuaL550XADH6T6n/jipY
- wAyf9Q0ZMc//qaz+/5SwtjsT1uS3zp7ZRgAgZNyum7V/zSibQb4X51bsk g==;
-X-IronPort-AV: E=Sophos;i="5.60,489,1549900800"; d="scan'208";a="208071788"
-Received: from mail-sn1nam02lp2056.outbound.protection.outlook.com (HELO
- NAM02-SN1-obe.outbound.protection.outlook.com) ([104.47.36.56])
- by ob1.hgst.iphmx.com with ESMTP; 20 May 2019 08:21:29 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NeQlvdlpmPOeS9iZ5+Yg+kBS4D7yWh8nOaoKEpyA4E4=;
- b=jEgv92cNohQR8ILyZhVXyY3fir8ughAwXI8Q7zHtutVW750Ox3Oyd6/ST9t0Qpy/7/F5ZqSdlsHGwOWADqL1UIPrqeMciDe5v81lK7wAAN1cgFPoJ3/z4wL32EFhZF71Ezl/MzpJVFaPJoz1/52RUWqnMH9eeuuqvugyqVA5ON4=
-Received: from BN8PR04MB5747.namprd04.prod.outlook.com (20.179.74.153) by
- BN8PR04MB5988.namprd04.prod.outlook.com (20.178.214.216) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1900.18; Mon, 20 May 2019 00:20:46 +0000
-Received: from BN8PR04MB5747.namprd04.prod.outlook.com
- ([fe80::8d57:1897:2466:e956]) by BN8PR04MB5747.namprd04.prod.outlook.com
- ([fe80::8d57:1897:2466:e956%7]) with mapi id 15.20.1900.020; Mon, 20 May 2019
- 00:20:46 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Minwoo Im <minwoo.im.dev@gmail.com>
+ id 1hSWA7-00008K-Rd
+ for linux-nvme@lists.infradead.org; Mon, 20 May 2019 00:28:22 +0000
+Received: from epcas2p4.samsung.com (unknown [182.195.41.56])
+ by mailout4.samsung.com (KnoxPortal) with ESMTP id
+ 20190520002813epoutp04b4796f6322ccc60cd06bd79ce2fb6436~gPJfChsW42299922999epoutp04F
+ for <linux-nvme@lists.infradead.org>; Mon, 20 May 2019 00:28:13 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
+ 20190520002813epoutp04b4796f6322ccc60cd06bd79ce2fb6436~gPJfChsW42299922999epoutp04F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1558312093;
+ bh=0NBbga+wgFAIWWdIC8hexKEdQ3ZMiejoZlGDxsj4G8U=;
+ h=Subject:Reply-To:From:To:CC:In-Reply-To:Date:References:From;
+ b=bpH2AkXolGSSWXe30afvogMhNkSPOrjoTe7LURfc83FFiqnSwrQTW+vQCCJzaF5DP
+ mzModk3J+TgrS0jO3w2Usussx+Hzq899Ylu08ra6jaoAfMYWum12UptSvVSofyp8+A
+ jPTO+iclMi0obAoRYTtzMNa5uBy7kJahEYVu/8mI=
+Received: from epsmges2p1.samsung.com (unknown [182.195.40.184]) by
+ epcas2p4.samsung.com (KnoxPortal) with ESMTP id
+ 20190520002810epcas2p4cec9a2c69340251a33491f62dc3046f3~gPJcBA1V_2968329683epcas2p4_;
+ Mon, 20 May 2019 00:28:10 +0000 (GMT)
+X-AuditID: b6c32a45-d5fff70000001063-c9-5ce1f495c040
+Received: from epcas2p3.samsung.com ( [182.195.41.55]) by
+ epsmges2p1.samsung.com (Symantec Messaging Gateway) with SMTP id
+ AF.88.04195.594F1EC5; Mon, 20 May 2019 09:28:05 +0900 (KST)
+Mime-Version: 1.0
 Subject: Re: [PATCH] nvme-cli: close fd before return
-Thread-Topic: [PATCH] nvme-cli: close fd before return
-Thread-Index: AQHVDmxB/sHGndfBjk6f7qvAb2Tu+A==
-Date: Mon, 20 May 2019 00:20:46 +0000
-Message-ID: <BN8PR04MB57474B1D9FD8DC489487336986060@BN8PR04MB5747.namprd04.prod.outlook.com>
-References: <20190519175642.31815-1-chaitanya.kulkarni@wdc.com>
+From: Minwoo Im <minwoo.im@samsung.com>
+To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, Minwoo Im
+ <minwoo.im.dev@gmail.com>, Minwoo Im <minwoo.im@samsung.com>
+X-Priority: 3
+X-Content-Kind-Code: NORMAL
+In-Reply-To: <BN8PR04MB57474B1D9FD8DC489487336986060@BN8PR04MB5747.namprd04.prod.outlook.com>
+X-Drm-Type: N,general
+X-Msg-Generator: Mail
+X-Msg-Type: PERSONAL
+X-Reply-Demand: N
+Message-ID: <20190520002805epcms2p747debe2606f1a42a2b27a6d665f5612d@epcms2p7>
+Date: Mon, 20 May 2019 09:28:05 +0900
+X-CMS-MailID: 20190520002805epcms2p747debe2606f1a42a2b27a6d665f5612d
+X-Sendblock-Type: AUTO_CONFIDENTIAL
+CMS-TYPE: 102P
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrNKsWRmVeSWpSXmKPExsWy7bCmue7ULw9jDFa/VrSYdfs1i8X8ZU/Z
+ LX51cls8O32A2YHFY+esu+wem5fUe/RtWcXo0X6gmymAJSrHJiM1MSW1SCE1Lzk/JTMv3VbJ
+ OzjeOd7UzMBQ19DSwlxJIS8xN9VWycUnQNctMwdoo5JCWWJOKVAoILG4WEnfzqYov7QkVSEj
+ v7jEVim1ICWnwNCwQK84Mbe4NC9dLzk/18rQwMDIFKgyISfj6oSpzAVrmCuOH7/B3MB4gamL
+ kZNDQsBEYu/bgyxdjFwcQgI7GCWe7VoFlODg4BUQlPi7QxikRljAVKKt6ykjSFhIQF7ixysD
+ iLCmxLvdZ1hBbDYBdYmGqa9YQGwRgVqJd6uPgJUzC7hKrDmbBbGJV2JG+1MWCFtaYvvyrYwg
+ NqdArMT17TPYIOKiEjdXv2WHsd8fm88IYYtItN47ywxhC0o8+LkbbLyEgITEvXd2EGa9xJYV
+ FiB/SAi0MErceLMWqlVfovH5R7C1vAK+En1vroHZLAKqEnMOTYKqcZHobL4NNp4Z6MHtb+cw
+ Q1yvKbF+lz7EeGWJI7dYICr4JDoO/2WHeWrHvCfQoFSW+HjoENSRkhLLL72GespDYvXfOWD1
+ QgJtTBK7N4ZMYFSYhQjkWUj2zkLYu4CReRWjWGpBcW56arFRgSFyvG5iBCc8LdcdjDPO+Rxi
+ FOBgVOLh/TDlYYwQa2JZcWXuIUYJDmYlEV5j9fsxQrwpiZVVqUX58UWlOanFhxhNgd6fyCwl
+ mpwPTMZ5JfGGpkZmZgaWphamZkYWSuK8m7lvxggJpCeWpGanphakFsH0MXFwSjUwJu8qKY6a
+ yWBt279OsafO1eX+NaG5xzfElM+eZL340Cl5yfeTzt+wLFu3pL6vap3o5OUmQddavtdMn79p
+ 6gTpj/IN4XLz3BxkDypOvnbI0DSm9H7etJmfFi921lH/MWf34re7A1a8El7qMqPgTsPNmx99
+ ln6XP34361nPEsNyvfwyxv31Z1pO2CmxFGckGmoxFxUnAgAUVK9xjgMAAA==
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20190520002113epcas4p345b92c6d82619b92478af81e81392266
+References: <BN8PR04MB57474B1D9FD8DC489487336986060@BN8PR04MB5747.namprd04.prod.outlook.com>
+ <20190519175642.31815-1-chaitanya.kulkarni@wdc.com>
  <20190519184553.GC10876@minwooim-desktop>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.44.175]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0abf79b2-41ea-4f72-88bc-08d6dcb90158
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
- SRVR:BN8PR04MB5988; 
-x-ms-traffictypediagnostic: BN8PR04MB5988:
-x-ms-exchange-purlcount: 3
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <BN8PR04MB5988EDD1F75DF80761908EB186060@BN8PR04MB5988.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4125;
-x-forefront-prvs: 004395A01C
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(39850400004)(376002)(136003)(396003)(366004)(346002)(199004)(189003)(486006)(68736007)(6116002)(66066001)(3846002)(25786009)(256004)(14444005)(7736002)(4326008)(53936002)(6246003)(316002)(446003)(476003)(33656002)(74316002)(6916009)(86362001)(478600001)(966005)(72206003)(2906002)(186003)(55016002)(14454004)(6306002)(9686003)(26005)(91956017)(76116006)(73956011)(6436002)(229853002)(52536014)(66946007)(66476007)(66556008)(64756008)(66446008)(8936002)(305945005)(7696005)(5660300002)(102836004)(99286004)(81166006)(76176011)(8676002)(81156014)(71200400001)(71190400001)(6506007)(53546011);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BN8PR04MB5988;
- H:BN8PR04MB5747.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: aIf5ynsBK8leuK97vQEOVXxf6fDZPBhrwu9C5T3GDugkVakqT87gdHcdqgXhkC7xphMwnnF/o8/zg3qRgTegUJqcbXAp4jCPHabR3wyoxshQRtj/6R09Ua+MFD4BZ3Jt68VhiQ7V4pnmCoiu8KEyQy1VgnNmSLpcL9JOxXhYXsEUMgFBso9oM/ou7Bwb6KaQYSR13arFkodJusMoc/d38cNfqXuD/nPmxIsRJa4/yck8Qm0ZbBvlYCGrmP9ztbV34kthm1CK88ZBCkdwU91mkLUKWB4BlZdUCjR3mHHwLLgo71Ka9evRJZZVsNq88kHzsd3awjj+AgOY39GdToUNu47PwCvBz4uAXLoIjRIQalFlwSPyrrWgjvevhNAcY9oyroQtLQNllBHaMJAVEK2Dz4nmoLlcbM4zNfRPNabw7vw=
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0abf79b2-41ea-4f72-88bc-08d6dcb90158
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 May 2019 00:20:46.7064 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR04MB5988
+ <CGME20190520002113epcas4p345b92c6d82619b92478af81e81392266@epcms2p7>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190519_172055_957999_A0187479 
-X-CRM114-Status: GOOD (  14.31  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190519_172820_231314_66E35BE7 
+X-CRM114-Status: GOOD (  14.24  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [203.254.224.34 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -114,6 +102,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -125,58 +114,22 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Reply-To: minwoo.im@samsung.com
 Cc: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This only covers the code path for nvme commands failure and not the 
-errno codes ans thi ps mainly to make all the nvme error and return 
-codes consistent.
+> This only covers the code path for nvme commands failure and not the
+> errno codes ans thi ps mainly to make all the nvme error and return
+> codes consistent.
 
-On 5/19/19 11:46 AM, Minwoo Im wrote:
-> This kind of patches are already in Github PR:
->    https://github.com/linux-nvme/nvme-cli/pull/490
-> 
->> @@ -1216,7 +1216,7 @@ static int create_ns(int argc, char **argv, struct command *cmd, struct plugin *
->>   				fprintf(stderr, "identify failed\n");
->>   				show_nvme_status(err);
->>   			}
->> -			return err;
->> +			goto close_fd;
->>   		}
->>   		for (i = 0; i < 16; ++i) {
->>   			if ((1 << ns.lbaf[i].ds) == cfg.bs && ns.lbaf[i].ms == 0) {
->> @@ -1245,6 +1245,7 @@ static int create_ns(int argc, char **argv, struct command *cmd, struct plugin *
->>   	else
->>   		perror("create namespace");
->>   
->> + close_fd:
->>   	close(fd);
->>   
->>   	return err;
-> 
-> If this patch wants to free the leaked file descriptor in case of
-> errors, it needs to cover more parts than it shows above.
-> You can see the patch for the create_ns() from:
->    https://github.com/linux-nvme/nvme-cli/pull/490/commits/b0c8a309266c2daf6ebadf9ab14884c6954765a1
-> 
->> @@ -3198,7 +3199,7 @@ static int format(int argc, char **argv, struct command *cmd, struct plugin *plu
->>   				fprintf(stderr, "identify failed\n");
->>   				show_nvme_status(err);
->>   			}
->> -			return err;
->> +			goto close_fd;
->>   		}
->>   		prev_lbaf = ns.flbas & 0xf;
-> 
-> It also needs to be coverted with more parts to close the leaked file
-> descriptor.
-> You can see the patch for the format() from:
->    https://github.com/linux-nvme/nvme-cli/pull/490/commits/e3c487c6d9c145ba0b90d4ef227510b4faa33e98
-> 
+I think I don't agree with that.  If you want to fix the leaked fd before
+returning directly, then it should make it go to close_fd for the EINVAL
+cases without adding -(negative) on it.
 
+I think the PR can be merged regardless to errno update now, though.
 
 _______________________________________________
 Linux-nvme mailing list
