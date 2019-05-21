@@ -2,119 +2,51 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5134025697
-	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 19:23:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5885125699
+	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 19:25:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=0RB/ja5Y2fEHTeoUFUqHjxoDiHus9LeX/Cu04ciUYOw=; b=LAS/QO2KEMqjRv
-	t3j6IxxK0N5x7lsRHyu4vNulJPqpaT1tQPHaQLgNZRJLjuR41dU6n1vAPXp/GqF6d62X3XJr6p5Hp
-	D/V9ZnN89PGQsQAFNxYXC6RWdnF/NnZTTg/SHG80y2hGqZOmzm5wP9uA2kKqW15PP1GFgIMvtvhZ2
-	7UHXZF5lwgE9cRiMCFW0xf5yte2l+JYndAWD3kD8WLGIGI6a8S2TxeQqpgODJo/9/9Gng9SFonYeO
-	50E8cj1eT0dkgdz7Ni5F87K6TAvoZtI+X2vZKBn5b7yp66haWlIL0ehVuhsCD7g+42FhlTGuD2I9c
-	aKFfYpRu36JpPnSzgjAQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HUQkywewiDggmBwUEXI0KgxNGJvTqp8Dm10n8DbCyrs=; b=i3i15GnYHRMxh6
+	ZOqbqIytPXMZu3mkjWjLdWhNLCL+KZPjtvG6SvbzBnxPPoH8n2QVPwKWjRoie6TgX+vQOev/UVf4i
+	EPAWoQL/MBXWCUi36EDTaPTBkOMQvD83Ab8ZpIC04rONuZScw6AG/TmW+kxUwZWtCiTp8eg5cpcAv
+	pFNZz2iaZ0nOTwq/MOm8MwZk45BhfWWs5kEtYXVOdNdEr8zlHiEtYDiXjWWlWS+Msk8BX/tmoJngw
+	7y0/8zxsaJ6qYtrt2oSl1882hg4HZVqpMm8ZdDJnYw1U3YXPCP8f+BZelFC0wXGla3KtY3n3Tups1
+	HLi7l8gmiVWGp4jft5Rw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hT8UC-0002cp-Ey; Tue, 21 May 2019 17:23:36 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1hT8Vy-00049N-Ct; Tue, 21 May 2019 17:25:26 +0000
+Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hT8U3-0002bb-8f
- for linux-nvme@lists.infradead.org; Tue, 21 May 2019 17:23:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1558459407; x=1589995407;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=5Xv7McQjhNv3tV3VfoBIauyEwFi92aj5337LhxFzpno=;
- b=lnrv6aw16CfJVksGq4lk7wK8MP2cXJHHx5GihK81HUnxPnGhBBeweEaX
- RZc7DycWizVYnn5fMhSqL7Dc74AKo8YKzaxhDZXdK0KVAhtRqzxQV8Kdy
- wJ51ev6D65FQXN2ouMYFzJumsn+mvTXNGwLjuSYne+fQX/vYhMCxEBe0j
- UgNvHKnPIvOXqXVTGcXMTEvEMC7iFuCybuv0K1qt0uuxMf0E9ZVnBgM26
- /bBu6fbcqf+icxqwmYYCj6vEZC2G1Rhc6CGz3VSgN2PulL7exCdQHEhir
- 8YUdbjINoAn6toT2W5+fnbLTcIbfGiMWHTBY81nHZn58dcFt8BrsbZXmu g==;
-X-IronPort-AV: E=Sophos;i="5.60,495,1549900800"; d="scan'208";a="113714443"
-Received: from mail-cys01nam02lp2055.outbound.protection.outlook.com (HELO
- NAM02-CY1-obe.outbound.protection.outlook.com) ([104.47.37.55])
- by ob1.hgst.iphmx.com with ESMTP; 22 May 2019 01:23:24 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=IKFpdTpIPrTtwGEKQqm8I1ZatHPIM4VQdAenSqAMPn0=;
- b=yQDV3ltvbhPxRQdP4FHvL1cYkRwQois2Nd+t0ffBE2sUnMbZNjRJuEqEBedEKJqqUIYJaJAXXUnPxb1oiXddGgq7gtpJAV5iEOsPPZt7hcq9/R7VxAcoKd9veyiagTgOj8/u+BjySJdjObUPJWz3cLDPMOlo3FQiFBQHOu9kI9c=
-Received: from DM6PR04MB5754.namprd04.prod.outlook.com (20.179.52.22) by
- DM6PR04MB4652.namprd04.prod.outlook.com (20.176.105.217) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1922.15; Tue, 21 May 2019 17:23:20 +0000
-Received: from DM6PR04MB5754.namprd04.prod.outlook.com
- ([fe80::749c:e0fc:238:5c6d]) by DM6PR04MB5754.namprd04.prod.outlook.com
- ([fe80::749c:e0fc:238:5c6d%4]) with mapi id 15.20.1900.020; Tue, 21 May 2019
- 17:23:20 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Akinobu Mita <akinobu.mita@gmail.com>, "linux-nvme@lists.infradead.org"
- <linux-nvme@lists.infradead.org>, "linux-pm@vger.kernel.org"
- <linux-pm@vger.kernel.org>
-Subject: Re: [PATCH v2 1/4] nvme: Export get and set features
-Thread-Topic: [PATCH v2 1/4] nvme: Export get and set features
-Thread-Index: AQHVD+7yPLaHS3C2sUacWM+7/ICPTg==
-Date: Tue, 21 May 2019 17:23:20 +0000
-Message-ID: <DM6PR04MB57543310310DD72F98E361AD86070@DM6PR04MB5754.namprd04.prod.outlook.com>
-References: <1558454649-28783-1-git-send-email-akinobu.mita@gmail.com>
- <1558454649-28783-2-git-send-email-akinobu.mita@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.44.250]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f0b65af0-8da8-4223-96da-08d6de110533
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
- SRVR:DM6PR04MB4652; 
-x-ms-traffictypediagnostic: DM6PR04MB4652:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <DM6PR04MB4652C3D32F3F58F3ED2F98FA86070@DM6PR04MB4652.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1923;
-x-forefront-prvs: 0044C17179
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(346002)(366004)(396003)(136003)(376002)(39860400002)(199004)(189003)(8676002)(52536014)(5660300002)(81166006)(110136005)(99286004)(81156014)(76176011)(7696005)(7736002)(316002)(8936002)(53546011)(74316002)(2201001)(102836004)(71200400001)(6116002)(86362001)(2906002)(66066001)(6246003)(3846002)(71190400001)(53936002)(72206003)(486006)(446003)(6436002)(9686003)(229853002)(2501003)(55016002)(6506007)(25786009)(14454004)(476003)(33656002)(68736007)(91956017)(14444005)(64756008)(66446008)(66556008)(66476007)(76116006)(66946007)(73956011)(305945005)(26005)(4326008)(186003)(478600001)(256004);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR04MB4652;
- H:DM6PR04MB5754.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: a8IxN8xGEPH1GD2DuSU5ayGubMfqbxQ2fpzSplSmSKr0F0rleRfBALcxblxBGu/eSQrSQZOEv4JDOBL2uX91Yy5/cXjefcsqHX3XqgBqoLqiaiglttYeB5xEAT42FC+/lN5juTTzhfXEZh7oDWKln2gq2DxUQgqe62ERy+Zcy5BM9W9uTQLFtKvq9mZWQl0iUiXiZQekTROHUOqzF631YmoMpNYb6YDp0LC3jtjqdnURrHT7OkIvN2PoYflYI0rHdNHTXR9wZ3HceHrFUjv8qSnBoLSNxg3MGaSKJag84c6UlxRHwsfKcSnhuxElIYwKm5d+ZAbgAOBG4TDePCk23QL7KiYe03h7WemGiiY/EQJT5WldYaBVUhrgFi1NRdgLppbFxppXaVAmKQJtg6NwH0/56Et995Ez72akJjFbscM=
+ id 1hT8Vt-00048k-39
+ for linux-nvme@lists.infradead.org; Tue, 21 May 2019 17:25:22 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id 5D54068AFE; Tue, 21 May 2019 19:24:53 +0200 (CEST)
+Date: Tue, 21 May 2019 19:24:53 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Keith Busch <keith.busch@intel.com>
+Subject: Re: [PATCH] nvme-pci: use blk-mq mapping for unmanaged irqs
+Message-ID: <20190521172453.GA9938@lst.de>
+References: <20190521171745.4061-1-keith.busch@intel.com>
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f0b65af0-8da8-4223-96da-08d6de110533
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 May 2019 17:23:20.0382 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB4652
+Content-Disposition: inline
+In-Reply-To: <20190521171745.4061-1-keith.busch@intel.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190521_102330_989749_581FA856 
-X-CRM114-Status: GOOD (  15.65  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190521_102521_287925_73A8BA66 
+X-CRM114-Status: GOOD (  17.88  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -126,151 +58,84 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ivan Chavero <ichavero@chavero.com.mx>, Christoph Hellwig <hch@lst.de>,
+ linux-nvme@lists.infradead.org, Sagi Grimberg <sagi@grimberg.me>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 5/21/19 9:05 AM, Akinobu Mita wrote:
-> From: Keith Busch <keith.busch@intel.com>
->
-> Future use intends to make use of features, so export these functions. And
-> since their implementation is identical except for the opcode, provide
-> a new convenience function that implement each.
->
+On Tue, May 21, 2019 at 11:17:45AM -0600, Keith Busch wrote:
+> If a device is providing a single IRQ vector, the IO queue will share that
+> vector with the admin queue with a 0 offset. This is an unmanaged vector,
+> so does not have a valid PCI IRQ affinity. Avoid trying to use managed
+> affinity in this case and let blk-mq set up the cpu-queue mapping instead.
+> Otherwise we'd hit the following warning when the device is using MSI:
+> =
+
+>  WARNING: CPU: 4 PID: 7 at drivers/pci/msi.c:1272 pci_irq_get_affinity+0x=
+66/0x80
+>  Modules linked in: nvme nvme_core serio_raw
+>  CPU: 4 PID: 7 Comm: kworker/u16:0 Tainted: G        W         5.2.0-rc1+=
+ #494
+>  Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.12.1-0=
+-ga5cab58e9a3f-prebuilt.qemu.org 04/01/2014
+>  Workqueue: nvme-reset-wq nvme_reset_work [nvme]
+>  RIP: 0010:pci_irq_get_affinity+0x66/0x80
+>  Code: 0b 31 c0 c3 83 e2 10 48 c7 c0 b0 83 35 91 74 2a 48 8b 87 d8 03 00 =
+00 48 85 c0 74 0e 48 8b 50 30 48 85 d2 74 05 39 70 14 77 05 <0f> 0b 31 c0 c=
+3 48 63 f6 48 8d 04 76 48 8d 04 c2 f3 c3 48 8b 40 30
+>  RSP: 0000:ffffb5abc01d3cc8 EFLAGS: 00010246
+>  RAX: ffff9536786a39c0 RBX: 0000000000000000 RCX: 0000000000000080
+>  RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffff9536781ed000
+>  RBP: ffff95367346a008 R08: ffff95367d43f080 R09: ffff953678c07800
+>  R10: ffff953678164800 R11: 0000000000000000 R12: 0000000000000000
+>  R13: ffff9536781ed000 R14: 00000000ffffffff R15: ffff95367346a008
+>  FS:  0000000000000000(0000) GS:ffff95367d400000(0000) knlGS:000000000000=
+0000
+>  CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+>  CR2: 00007fdf814a3ff0 CR3: 000000001a20f000 CR4: 00000000000006e0
+>  DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+>  DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+>  Call Trace:
+>   blk_mq_pci_map_queues+0x37/0xd0
+>   nvme_pci_map_queues+0x80/0xb0 [nvme]
+>   blk_mq_alloc_tag_set+0x133/0x2f0
+>   nvme_reset_work+0x105d/0x1590 [nvme]
+>   process_one_work+0x291/0x530
+>   worker_thread+0x218/0x3d0
+>   ? process_one_work+0x530/0x530
+>   kthread+0x111/0x130
+>   ? kthread_park+0x90/0x90
+>   ret_from_fork+0x1f/0x30
+>  ---[ end trace 74587339d93c83c0 ]---
+> =
+
+> Fixes: 22b5560195bd6 ("nvme-pci: Separate IO and admin queue IRQ vectors")
+> Reported-by: Iv=E1n Chavero <ichavero@chavero.com.mx>
 > Signed-off-by: Keith Busch <keith.busch@intel.com>
 > ---
->  drivers/nvme/host/core.c | 22 +++++++++++++++++++---
->  drivers/nvme/host/nvme.h |  4 ++++
->  2 files changed, 23 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index d352145..c04df80 100644
-> --- a/drivers/nvme/host/core.c
-> +++ b/drivers/nvme/host/core.c
-> @@ -1113,15 +1113,15 @@ static struct nvme_id_ns *nvme_identify_ns(struct nvme_ctrl *ctrl,
->  	return id;
->  }
->  
-> -static int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
-> -		      void *buffer, size_t buflen, u32 *result)
-> +static int nvme_features(struct nvme_ctrl *dev, u8 op, unsigned fid,
-> +		unsigned dword11, void *buffer, size_t buflen, u32 *result)
+>  drivers/nvme/host/pci.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> =
 
-Your patch is generating warnings, can we please avoid these warnings ?
+> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+> index 599065ed6a32..f562154551ce 100644
+> --- a/drivers/nvme/host/pci.c
+> +++ b/drivers/nvme/host/pci.c
+> @@ -464,7 +464,7 @@ static int nvme_pci_map_queues(struct blk_mq_tag_set =
+*set)
+>  		 * affinity), so use the regular blk-mq cpu mapping
+>  		 */
+>  		map->queue_offset =3D qoff;
+> -		if (i !=3D HCTX_TYPE_POLL)
+> +		if (i !=3D HCTX_TYPE_POLL && offset)
 
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#28: FILE: drivers/nvme/host/core.c:1116:
-+static int nvme_features(struct nvme_ctrl *dev, u8 op, unsigned fid,
+Shouldn't be something like
 
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#29: FILE: drivers/nvme/host/core.c:1117:
-+        unsigned dword11, void *buffer, size_t buflen, u32 *result)
+		if (i !=3D HCTX_TYPE_POLL && map->nr_queues > 1)
 
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#45: FILE: drivers/nvme/host/core.c:1135:
-+int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned
-dword11,
-
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#45: FILE: drivers/nvme/host/core.c:1135:
-+int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned
-dword11,
-
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#53: FILE: drivers/nvme/host/core.c:1143:
-+int nvme_get_features(struct nvme_ctrl *dev, unsigned fid, unsigned
-dword11,
-
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#53: FILE: drivers/nvme/host/core.c:1143:
-+int nvme_get_features(struct nvme_ctrl *dev, unsigned fid, unsigned
-dword11,
-
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#72: FILE: drivers/nvme/host/nvme.h:462:
-+int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned
-dword11,
-
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#72: FILE: drivers/nvme/host/nvme.h:462:
-+int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned
-dword11,
-
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#74: FILE: drivers/nvme/host/nvme.h:464:
-+int nvme_get_features(struct nvme_ctrl *dev, unsigned fid, unsigned
-dword11,
-
-WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-#74: FILE: drivers/nvme/host/nvme.h:464:
-+int nvme_get_features(struct nvme_ctrl *dev, unsigned fid, unsigned
-dword11,
-
-total: 0 errors, 10 warnings, 50 lines checked
-
-NOTE: For some of the reported defects, checkpatch may be able to
-      mechanically convert to the typical style using --fix or
---fix-inplace.
-
-0001-nvme-fix-memory-leak-for-power-latency-tolerance.patch has style
-problems, please review.
-
-NOTE: If any of the errors are false positives, please report
-      them to the maintainer, see CHECKPATCH in MAINTAINERS.
-
->  {
->  	struct nvme_command c;
->  	union nvme_result res;
->  	int ret;
->  
->  	memset(&c, 0, sizeof(c));
-> -	c.features.opcode = nvme_admin_set_features;
-> +	c.features.opcode = op;
->  	c.features.fid = cpu_to_le32(fid);
->  	c.features.dword11 = cpu_to_le32(dword11);
->  
-> @@ -1132,6 +1132,22 @@ static int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword
->  	return ret;
->  }
->  
-> +int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
-> +		      void *buffer, size_t buflen, u32 *result)
-> +{
-> +	return nvme_features(dev, nvme_admin_set_features, fid, dword11, buffer,
-> +			     buflen, result);
-> +}
-> +EXPORT_SYMBOL_GPL(nvme_set_features);
-> +
-> +int nvme_get_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
-> +		      void *buffer, size_t buflen, u32 *result)
-> +{
-> +	return nvme_features(dev, nvme_admin_get_features, fid, dword11, buffer,
-> +			     buflen, result);
-> +}
-> +EXPORT_SYMBOL_GPL(nvme_get_features);
-> +
->  int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count)
->  {
->  	u32 q_count = (*count - 1) | ((*count - 1) << 16);
-> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-> index 56bba7a..bb673b8 100644
-> --- a/drivers/nvme/host/nvme.h
-> +++ b/drivers/nvme/host/nvme.h
-> @@ -459,6 +459,10 @@ int __nvme_submit_sync_cmd(struct request_queue *q, struct nvme_command *cmd,
->  		union nvme_result *result, void *buffer, unsigned bufflen,
->  		unsigned timeout, int qid, int at_head,
->  		blk_mq_req_flags_t flags, bool poll);
-> +int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
-> +		      void *buffer, size_t buflen, u32 *result);
-> +int nvme_get_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
-> +		      void *buffer, size_t buflen, u32 *result);
->  int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count);
->  void nvme_stop_keep_alive(struct nvme_ctrl *ctrl);
->  int nvme_reset_ctrl(struct nvme_ctrl *ctrl);
-
-
+instead?
 
 _______________________________________________
 Linux-nvme mailing list
