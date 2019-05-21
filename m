@@ -2,64 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8842D25364
-	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 17:04:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5843E254D4
+	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 18:05:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PSrXL5rRG6tIykRrxBlDaC3EksMwaCBTRxUFjsfHrEo=; b=s+ABuzkZ90IPoV
-	5Xgy2qGotX+oK68BfWv90EhNGjLtPUsewSKU5aZG60rQJH5BTu4xCbql8fuo+JdoypxUqhdig7Gmo
-	4DO67ey73RNtfQYf6dV/kSNFec+T+5byoIFHkcOojUK026+QnPwH1d9C88mwVQi1kMsuIvkBKBryv
-	LOCMLTK0+FCk+dboFVVB2CX6akD5nPvrCTpUArEYd2udMfeEYBJNM3dLvHiliIgEDKpxljCTmoGre
-	JdQdgklmxHKeHbt7cA0bT77bTPduP0IlmWGSZ6/T3HjXgyQjVN5ViSJrqly9re0NEaelSfzF4VHtC
-	2Z2ffPsdfbcUXgmz2m8Q==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=kWNPgwtrPX+YNj6J/9kdDCYas4YKsm9e6GI8SXbUX+w=; b=knZ
+	jhCbEWwRHXzGj00NWcqyYxTic5B+DXAASBagfgTnYrIDgdVAuWiP5jmlskh+PPZLtfGQ1WKVCyPmh
+	1hry5pZq5fxPv5EhzJQZdh7D0br4vdeYSDgwHaPz2skUW09X2lfFCL9/4rDrWaV5R0R9DW6rJtF+W
+	VrHtJc6FvpI1w5A1radUAdyR4qnl62YnZvXKE/769Xt1Ioi9JMeD7AdOUA0Ps/szc362ngz55xp9d
+	MThZ915WfBLaGeHmIqgkjxUiaAJr2Fh3paQ9csGiSwQk5znxdJRQCe/fOtwPbb5zKnjGO+Pqh5vrZ
+	xpTQg7V79Fmke7v7a+Xx2AsFE+LMSLQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hT6J0-0000Mv-SO; Tue, 21 May 2019 15:03:54 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1hT7G2-0001y8-8G; Tue, 21 May 2019 16:04:54 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hT6It-0000HY-LA
- for linux-nvme@lists.infradead.org; Tue, 21 May 2019 15:03:49 +0000
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 21 May 2019 08:03:46 -0700
-X-ExtLoop1: 1
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga004.jf.intel.com with ESMTP; 21 May 2019 08:03:45 -0700
-Date: Tue, 21 May 2019 08:58:40 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Max Gurtovoy <maxg@mellanox.com>
-Subject: Re: [PATCH RFC] nvme: Common subsys and controller instances IDA
-Message-ID: <20190521145840.GC1639@localhost.localdomain>
-References: <20190515213351.22190-1-keith.busch@intel.com>
- <20190516064651.GA30234@lst.de>
- <1f0e7049-c926-98e0-3624-0d24eb45cd87@suse.de>
- <20190516144452.GB23372@localhost.localdomain>
- <yq17eaqbg4c.fsf@oracle.com>
- <040beeb5-d328-d5b0-f165-51bbd40f4c23@mellanox.com>
- <20190521143540.GB1639@localhost.localdomain>
- <55f15756-0385-f9c4-a916-079a6b12a5c1@mellanox.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <55f15756-0385-f9c4-a916-079a6b12a5c1@mellanox.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+ id 1hT7Fd-0001Xl-9Y
+ for linux-nvme@lists.infradead.org; Tue, 21 May 2019 16:04:48 +0000
+Received: by mail-pl1-x635.google.com with SMTP id gn7so4495654plb.10
+ for <linux-nvme@lists.infradead.org>; Tue, 21 May 2019 09:04:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=nk+/ciJTmIcBRGNtwKGKAlhXjyIqj/WCax4ZAyWNJvI=;
+ b=n8itc6KpW9b62d7kZTafU9Be8Rh6F3YYh0MblP5v2Rd3atB0SxQyAo+DvmdmP+IL0R
+ Ti0i4Ry9D7v/OBhYDoRsK6Zs8SnwsSMrz8XebxeNVkjS1CV0YwkyjX13IlgXGUOw3B6V
+ nVL7MAFl0h/IGpEO72nqYRMyhRLiUo1DAxWluV6a8BPXmpHArCgujY7t/5xCJdgj3CBP
+ EjtSZWYrcWw/AxoepLPYIFWeeLk1gY+Kj1C5bG+f7d8yAgbS3zoVVd1ua8RcV5bM6CTf
+ sEvp7jpYUF3HV8J5wPHuL+khaX2bVmtd+9JJ8ddmZl/TlXVI24O76xeFZ8ERRHZrQwGF
+ n4cg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=nk+/ciJTmIcBRGNtwKGKAlhXjyIqj/WCax4ZAyWNJvI=;
+ b=i2hs/3PslPaNyZw+oiDwJum60QqJyxiCl1qrN4dFSC4XYqhAqY9cxgm1wVoMouzgTA
+ NyKeq3FXCEtCT3iv3plLMU73K8XLP4lKwG02C1QMv22+jXM37PVK8SmCSDVZ52ZA3lBg
+ OMPCFvRZZygT+fzijw6Ainv3YKPA3rN2Ckw7IaX2tl6KsIRRwGg8R3Fk1WIGQlLcxMf5
+ rBmBfNJe0ASV/rcg9OFsXYINcW+RTCN5HfVIlrHhPDTWs4p3KtAq4VekSuv7uYOiyyCt
+ LieC+nMldRU1YxNT1SSLOi1elC8TBniwxORDGmkqDTODCGrWblMbRYjHuUGBYkBHyaSf
+ jmzg==
+X-Gm-Message-State: APjAAAXHv47RjhXJBvWlP8ETLfEPx6RKbw2bFORivXJJ8D2vpxrSE9BU
+ MvK6J7HT44B4xiNYmYUmkx0gyUSvEVI=
+X-Google-Smtp-Source: APXvYqxRakC6491Var96axSgPs7513lbbFuXi1FP2lOh833bGTyI8P9IlnxdSUuvQR3n5FsuxgeA6A==
+X-Received: by 2002:a17:902:1021:: with SMTP id
+ b30mr45020517pla.324.1558454667844; 
+ Tue, 21 May 2019 09:04:27 -0700 (PDT)
+Received: from mita-MS-7A45.lan ([240f:34:212d:1:9cd0:73e8:b74a:624e])
+ by smtp.gmail.com with ESMTPSA id j5sm28954786pfa.15.2019.05.21.09.04.22
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Tue, 21 May 2019 09:04:27 -0700 (PDT)
+From: Akinobu Mita <akinobu.mita@gmail.com>
+To: linux-nvme@lists.infradead.org,
+	linux-pm@vger.kernel.org
+Subject: [PATCH v2 0/4] nvme: add thermal zone devices
+Date: Wed, 22 May 2019 01:04:05 +0900
+Message-Id: <1558454649-28783-1-git-send-email-akinobu.mita@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190521_080348_268650_C7CDF457 
-X-CRM114-Status: GOOD (  16.63  )
-X-Spam-Score: -4.0 (----)
+X-CRM114-CacheID: sfid-20190521_090430_045970_0F530AEE 
+X-CRM114-Status: GOOD (  13.77  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-4.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [134.134.136.24 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:635 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (akinobu.mita[at]gmail.com)
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,58 +94,77 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>, "Busch,
- Keith" <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
+Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, Jens Axboe <axboe@fb.com>,
+ Kenneth Heitke <kenneth.heitke@intel.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Akinobu Mita <akinobu.mita@gmail.com>, Eduardo Valentin <edubezval@gmail.com>,
+ Minwoo Im <minwoo.im.dev@gmail.com>, Zhang Rui <rui.zhang@intel.com>,
  Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, May 21, 2019 at 05:51:25PM +0300, Max Gurtovoy wrote:
-> =
+The NVMe controller reports up to nine temperature values in the SMART /
+Health log page (the composite temperature and temperature sensor 1 through
+temperature sensor 8).
+The temperature threshold feature (Feature Identifier 04h) configures the
+asynchronous event request command to complete when the temperature is
+crossed its corresponding temperature threshold.
 
-> On 5/21/2019 5:35 PM, Keith Busch wrote:
-> > On Tue, May 21, 2019 at 02:54:53AM -0700, Max Gurtovoy wrote:
-> > > maybe we can improve it and print also the namespace during the "nvme
-> > > list-subsys" command.
-> > > =
+This provide these temperatures and thresholds via thermal zone devices.
 
-> > > something like:
-> > > =
+* v2
+- s/correspoinding/corresponding/ typo in commit log
+- Borrowed nvme_get_features() from Keith's patch
+- Temperature threshold notification is splitted into another patch
+- Change the data type of 'sensor' to unsigned
+- Add BUILD_BUG_ON for the array size of tzdev member in nvme_ctrl
+- Add WARN_ON_ONCE for paranoid checks
+- Fix off-by-one error in nvme_get_temp
+- Validate 'sensor' where the value is actually used
+- Define and utilize two enums related to the temperature threshold feature
+- Remove hysteresis value for this trip point and don't utilize the under
+  temperature threshold
+- Print error message for thermal_zone_device_register() failure
+- Add function comments for nvme_thermal_zones_{,un}register
+- Suppress non-fatal errors from nvme_thermal_zones_register()
+- Add comment about implemented temperature sensors 
+- Instead of creating a new 'thermal_work', append async smart event's
+  action to the existing async_event_work
+- Add comment for tzdev member in nvme_ctrl
+- Call nvme_thermal_zones_unregister() earlier than the last reference
+  release
 
-> > > [root@server50 ~]# nvme list-subsys
-> > > nvme-subsys0 - NQN=3Dtestsubsystem_0
-> > > \
-> > >   =A0+- nvme0 rdma traddr=3D11.212.140.146 trsvcid=3D4420
-> > >   =A0\
-> > >   =A0 +- nvme0n1 SN=3Dcf8bbff661502c51 Model=3DLinux
-> > >   =A0 +- nvme0n2 SN=3Dcf8bbff661502c51 Model=3DLinux
-> > > =
+Akinobu Mita (3):
+  nvme: add thermal zone infrastructure
+  nvme: notify thermal framework when temperature threshold events occur
+  nvme-pci: support thermal zone
 
-> > > =
+Keith Busch (1):
+  nvme: Export get and set features
 
-> > > and we'll get subsys/ctrl/ns relations in 1 cmd.
-> > > =
+ drivers/nvme/host/core.c | 317 ++++++++++++++++++++++++++++++++++++++++++++++-
+ drivers/nvme/host/nvme.h |  31 +++++
+ drivers/nvme/host/pci.c  |   5 +
+ include/linux/nvme.h     |  12 ++
+ 4 files changed, 362 insertions(+), 3 deletions(-)
 
-> > > thoughts ?
-> > Yes, this is very useful! I'd like to add this as soon as possible.
-> > Do you have a patch, or is this just an example?  The only change I'd
-> > recommend is remove SN and Model since those are controller properties
-> > rather than from the namespace.
-> =
+Cc: Zhang Rui <rui.zhang@intel.com>
+Cc: Eduardo Valentin <edubezval@gmail.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Keith Busch <keith.busch@intel.com>
+Cc: Jens Axboe <axboe@fb.com>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Cc: Minwoo Im <minwoo.im.dev@gmail.com>
+Cc: Kenneth Heitke <kenneth.heitke@intel.com>
+Cc: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+-- 
+2.7.4
 
-> This is just an example but I can prepare something in a couple of days.
-> =
-
-> Let me know what do you prefer (and which attrs to print there)
-
-Let's just get the namespace handles (ex nvme0n1) displaying with each
-of their controllers within a subsystem. Showing just this relationship
-will be immediately helpful. We can can add verbose flags to get more
-details in the future.
 
 _______________________________________________
 Linux-nvme mailing list
