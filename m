@@ -2,86 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B883F25588
-	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 18:25:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DCD98255BA
+	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 18:37:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RONkqkJNWqKgdBtsKuTb3RMUjOSSJj10ZIxvqMeRUWs=; b=ZVNUkv9OT9RJvR6AR79muGTqq
-	b4xw4jAJZzWUG2wildRBcZCFqrqNintX5gXs+9euSa0/6AfbmFEQVWbB+V+/NUYoXu1yPbT2dpQBv
-	7BeEatv8WyPxJ14XKc3y8XQszyXlS8NMCXLpOrQvTci3SxjNJ/tt2LNsgrlxb6/HEuqSZLUV+6Tjy
-	Vdl7xgaPz1UPoE2tNsX5fbvD8XDOTyV+bpg02OLijtOZD4CKTJPPC/Su/PTYq4o848CoSRvPfs5n6
-	tAhVEJDoFO/XFuPGO4ceoN0LVIgLKHHQlhvVzBFC4be3JvDf6pdiX22ZlfqeFQ5ftA+hIbGRpZ3x9
-	fUYKb+olQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=inP8vSdStgKAr4FOVSwO/uTuspezH8ydA7frotLD0/Q=; b=TUtwxsbB0sfKwW
+	+NDRY7s1dS7ILTF4r68r3wCQ2HCwVvMeecuI4U178M4KBlOIjNdek49bOsSa3KeAIb9o6Nc/r0DYF
+	E8CJafStpP3SZIRbn/6KjylEmbCD9KxpLoMO9LNJsM4GzQwGy0q2dsaC4RsoF0/sd0w4B6W6bOYde
+	akIoKjZ6yve26Y4xrDVd62CVOxUPxMpv8EJ7LOgfNenNbP/tNMVU/ZQUnaDpPSk/WYmt6qUuDZCAt
+	ywadrI1kuo9G1N4tsE+bhhMqjv2X2kmKS6eYAZtQeyvQLVi/q8hp5Vz7LetA+FlgNKBH1f+59jvnk
+	3EcC4zv71nypcZ7tjgfQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hT7Zh-00064x-VL; Tue, 21 May 2019 16:25:13 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1hT7lM-0001Vz-Pr; Tue, 21 May 2019 16:37:16 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hT7Zc-0005mA-RD
- for linux-nvme@lists.infradead.org; Tue, 21 May 2019 16:25:10 +0000
-Received: by mail-pf1-x441.google.com with SMTP id v80so9336162pfa.3
- for <linux-nvme@lists.infradead.org>; Tue, 21 May 2019 09:25:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=fKLyoSwnJZDm73oldw7KQ56qfMb48Oua14jElC/0g2I=;
- b=Q2yGYLPGv38yQfLnDYjGcWMbFBdxJBm3YmvD72CBYRlNwbgzLFJFDnLokVSWpsMYK/
- tg5M41zxMHJaFigiku0uy3VKTKg3QQNCLDBl7ACHFIT67F1nRz07I2AkgD27WmnzyWl4
- cj9IkVCMWJAM6q5RR1dx3+yPNb3lPhK8bAN5s=
+ id 1hT7lG-0001VP-QB
+ for linux-nvme@lists.infradead.org; Tue, 21 May 2019 16:37:12 +0000
+Received: by mail-pf1-x431.google.com with SMTP id s11so9331269pfm.12
+ for <linux-nvme@lists.infradead.org>; Tue, 21 May 2019 09:37:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zmW1OLxFCYv8lt/Kpd03gVt5CS1eavqW6lxikwcohME=;
+ b=b7ed1afhOY9qA77bG4Kb+wxt8kNWZBwoxzOZ9It5178sJUBzXJVpzoOqvGIdCmOsMk
+ 17TbLHh8RdAcO8fJl2/9KhpPPEARzQDVo40ITlSbWoTYf7YMpYqfvyHhgPY9cRdghHI+
+ v/3bO6E0k7A0sRiE9EH/O2yN8iEkf3Ef5I5aMdE5t1634hsUV0/q3Kt5j/MaOfI8sjld
+ tgR6B0HTMDRBXKCeq5M3rHgxPQkYVocJo+PpYvkhMwTOSjYOaghFcZaXrD2TW1qLwBP/
+ 04LbjdcrQDi7aa9rNC3+7eHCUErrnpU1Lla7nsA689dOaA4TasNwtwz8e0hjU741fVYu
+ 2rsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=fKLyoSwnJZDm73oldw7KQ56qfMb48Oua14jElC/0g2I=;
- b=ttbVtW36jlPxSWE8gIPN0acAfWEV00foUQwwee42bC+pOm6OfJV0lTOWO+1zF4A9H7
- NOsMlXaRDWtm97MKJ3o/3pf5MVM1E4XMETfoOzUKQVZOfwcYLU6hMqsOXwYoDymIgFg/
- sVbb9FV16tjdMEOtJdC8pjq+FNEmkcjEDdEDsic82kcSyVQ6S+wvM9IPzJD7l7msQzX2
- kToetwZ1lFmIBwNe+uOy/kaDf3ZHHmWzLlVsgUGArY34sCC98vSZMv+zE75ZwUnD0DKM
- 5nK3leeFCq3ekLx1zqf46MTz4f7TyXWR6N3mX+9autOMXAY9S2J94AitiurEf9RVFRmj
- kNig==
-X-Gm-Message-State: APjAAAUFmfL3QW7xXx8FEcN8pc5udMM3BCfQgP7X4QFLXmsohXDq6cOQ
- HDsxdQy07KOncNo7W+46fPJnLrVR6N3RjIA6/6L++W5uz7vtz6p/im7Y+R5mkPq7S9mUwNb/8X9
- tHvVNNPU0Z7Y4mUd33RUm4mULnAhM+GvYbEPNs0AKwfoAfvMYP3JE7H3S3dli5nzyFdxWv9Xivq
- MOf8Sj4w==
-X-Google-Smtp-Source: APXvYqydzwTtXaxbYSusGtqXDxtC/6Nl3KXEx3QmfJUuuIgZhGzhMeAjSZd4cQnaAURGNIMx4sAidQ==
-X-Received: by 2002:a62:6585:: with SMTP id
- z127mr49058760pfb.179.1558455907077; 
- Tue, 21 May 2019 09:25:07 -0700 (PDT)
-Received: from [10.69.37.149] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id x10sm31899209pfj.136.2019.05.21.09.25.03
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zmW1OLxFCYv8lt/Kpd03gVt5CS1eavqW6lxikwcohME=;
+ b=t/PvzvzWm8aw+9Xi9l+sNV3NGLUqsIcTnL2LDWmStuQip7dgiRjSCYAHEGUYy7dfIq
+ pyJVpuBaOW5Mkant7fRxWJhvvU1iGxlYXJJi2Yo4Px5fUDlafLJnaVRPJNJpV6u6QiJl
+ /xaRUzoGHQev2F1GLPXLmllA3Ddakum01mgTvo+enPk5VLfsd2zEF0t1Y75s87wcOcBb
+ hVs2/ofCU0YJl2nhuJYiW9gkBNirx4PNy7FMQmSBiW9Q9axgxuz61hOUjplFiu9vdJAI
+ 3Vbn8DNBVOMMy8rFh5DZjK7Sh9b/tlaj4LFi2hk6vDInlL0fyjmqs97hBemmvzuWFcWU
+ Ywmg==
+X-Gm-Message-State: APjAAAVyjSMXy/Fawp/kJdEiqXpiiq+QEAz+5kCznvROhJnU2ULPtVAv
+ jLe57EL3PMBkyz4rhNG4zcst0tV0qoM=
+X-Google-Smtp-Source: APXvYqxfEufJStdaCRWa4sLFgat8dwgh3jCtDzsfeCJJfnSJnN1zl1tMVDuAM2jVsNgiMYLtQXYdkw==
+X-Received: by 2002:aa7:81d1:: with SMTP id c17mr69253397pfn.174.1558456628987; 
+ Tue, 21 May 2019 09:37:08 -0700 (PDT)
+Received: from localhost.localdomain ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id r11sm24460731pgb.31.2019.05.21.09.37.07
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 21 May 2019 09:25:05 -0700 (PDT)
-Subject: Re: [PATCH 4/4] nvme-fc: align nvme_fc_delete_association() with exit
- path
-To: Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
-References: <20190520063624.50338-1-hare@suse.de>
- <20190520063624.50338-5-hare@suse.de>
-From: James Smart <james.smart@broadcom.com>
-Message-ID: <20485830-ae6a-eae1-32f3-940ca2cc1bf3@broadcom.com>
-Date: Tue, 21 May 2019 09:25:00 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ Tue, 21 May 2019 09:37:08 -0700 (PDT)
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH V4 0/3] nvme-cli: Introduce nvme-status mapping with errno
+Date: Wed, 22 May 2019 01:36:56 +0900
+Message-Id: <20190521163659.24577-1-minwoo.im.dev@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-In-Reply-To: <20190520063624.50338-5-hare@suse.de>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190521_092508_896061_66F417DB 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20190521_093710_875460_C3F38657 
+X-CRM114-Status: GOOD (  10.88  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:431 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -89,7 +84,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,40 +95,58 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Keith Busch <keith.busch@intel.com>, Minwoo Im <minwoo.im.dev@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-CgpPbiA1LzE5LzIwMTkgMTE6MzYgUE0sIEhhbm5lcyBSZWluZWNrZSB3cm90ZToKPiBudm1lX2Zj
-X2RlbGV0ZV9hc3NvY2lhdGlvbigpIHNob3VsZCBhbGlnbiB3aXRoIHRoZSBleGl0IHBhdGggaW4K
-PiBudm1lX2ZjX2NyZWF0ZV9hc3NvY2lhdGlvbigpIHRvIGVuc3VyZSB3ZSBhcmUgYWJsZSB0byBo
-YW5kbGUgdGhlCj4gZmFpbHVyZSBjYXNlIHByb3Blcmx5Lgo+Cj4gU2lnbmVkLW9mZi1ieTogSGFu
-bmVzIFJlaW5lY2tlIDxoYXJlQHN1c2UuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9udm1lL2hvc3Qv
-ZmMuYyB8IDEwICsrKysrLS0tLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKyks
-IDUgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9udm1lL2hvc3QvZmMuYyBi
-L2RyaXZlcnMvbnZtZS9ob3N0L2ZjLmMKPiBpbmRleCA3MWIyMjEzOWU3OGIuLmVkOWY0YWZmYmUx
-MCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL252bWUvaG9zdC9mYy5jCj4gKysrIGIvZHJpdmVycy9u
-dm1lL2hvc3QvZmMuYwo+IEBAIC0yODM2LDYgKzI4MzYsMTEgQEAgbnZtZV9mY19kZWxldGVfYXNz
-b2NpYXRpb24oc3RydWN0IG52bWVfZmNfY3RybCAqY3RybCkKPiAgIAljdHJsLT5mbGFncyAmPSB+
-RkNDVFJMX1RFUk1JTzsKPiAgIAlzcGluX3VubG9ja19pcnEoJmN0cmwtPmxvY2spOwo+ICAgCj4g
-KwlpZiAoY3RybC0+Y3RybC50YWdzZXQpIHsKPiArCQludm1lX2ZjX2RlbGV0ZV9od19pb19xdWV1
-ZXMoY3RybCk7Cj4gKwkJbnZtZV9mY19mcmVlX2lvX3F1ZXVlcyhjdHJsKTsKPiArCX0KPiArCj4g
-ICAJbnZtZV9mY190ZXJtX2Flbl9vcHMoY3RybCk7Cj4gICAKPiAgIAkvKgo+IEBAIC0yODQ3LDEx
-ICsyODUyLDYgQEAgbnZtZV9mY19kZWxldGVfYXNzb2NpYXRpb24oc3RydWN0IG52bWVfZmNfY3Ry
-bCAqY3RybCkKPiAgIAlpZiAoY3RybC0+YXNzb2NpYXRpb25faWQpCj4gICAJCW52bWVfZmNfeG10
-X2Rpc2Nvbm5lY3RfYXNzb2MoY3RybCk7Cj4gICAKPiAtCWlmIChjdHJsLT5jdHJsLnRhZ3NldCkg
-ewo+IC0JCW52bWVfZmNfZGVsZXRlX2h3X2lvX3F1ZXVlcyhjdHJsKTsKPiAtCQludm1lX2ZjX2Zy
-ZWVfaW9fcXVldWVzKGN0cmwpOwo+IC0JfQo+IC0KPiAgIAlfX252bWVfZmNfZGVsZXRlX2h3X3F1
-ZXVlKGN0cmwsICZjdHJsLT5xdWV1ZXNbMF0sIDApOwo+ICAgCW52bWVfZmNfZnJlZV9xdWV1ZSgm
-Y3RybC0+cXVldWVzWzBdKTsKPiAgIAoKbm8uwqAgVGhpcyBpcyByZW1vdmluZyB0aGUgdW5kZXJs
-eWluZyBxdWV1ZXMgd2hpbGUgYmxrLW1xIGlzIHN0aWxsIHRyeWluZyAKdG8gc3VibWl0IHRvIHRo
-ZW0gLSBjYXVzaW5nIHlldCBhIGRpZmZlcmVudCBzZXQgb2YgaXNzdWVzIGFzIHRoZSBkcml2ZXIg
-CndpbGwgaGF2ZSByZWxlYXNlZCBjb250ZXh0cyBidXQgdGhlIGNhbGxkb3ducyBhcmUgc3RpbGwg
-aGFwcGVuaW5nLiBZZXQgCmFub3RoZXIgZGlmZmVyZW50IHNldCBvZiBpc3N1ZXMgd291bGQgbGlr
-ZWx5IGFwcGVhci7CoMKgIG5vIG5lZWQgZm9yIHRoaXMgCnJlb3JnLgoKLS0gamFtZXMKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1udm1lIG1h
-aWxpbmcgbGlzdApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
+Hi,
+
+This patchset introduces nvme-status module to manage mapping
+relationships between nvme error status and errno.  It cannot be
+directly mapped in 1:1, but we can figure out what kind of errors
+happended by the return value of nvme-cli.
+
+NVMe status fields are 16bits to indicate, but UNIX return value from
+main() will be parsed in 8bits so that we need to do something about
+return value to indicate nvme error status.
+
+Please review.
+Thanks,
+
+Changes to previous V3:
+  - Fix to return 0 when given error is 0 which means success. (Chaitanya)
+
+Changes to previous V2:
+  - do not overwrite the err local variable, instead returning the
+    converted errno mapped directly.
+  - return ECOMM in case of linux internal err which indicates the
+    negative values from in the middle of the subcommand.
+
+Changes to previous V1:
+  - make switch-case inline in nvme-status (Chaitanya)
+
+Minwoo Im (3):
+  nvme-status: Introduce nvme status module to map errno
+  nvme: Return errno mapped for nvme error status
+  fabrics: Return errno mapped for fabrics error status
+
+ Makefile      |   3 +-
+ fabrics.c     |  18 ++++--
+ linux/nvme.h  |   6 ++
+ nvme-status.c | 155 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ nvme-status.h |  14 +++++
+ nvme.c        | 108 ++++++++++++++---------------------
+ 6 files changed, 233 insertions(+), 71 deletions(-)
+ create mode 100644 nvme-status.c
+ create mode 100644 nvme-status.h
+
+-- 
+2.21.0
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
