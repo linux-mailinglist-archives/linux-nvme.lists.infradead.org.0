@@ -2,53 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE8B624FFD
-	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 15:20:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A532D251E5
+	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 16:25:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=eb7FCcttj3pkBbg53UAO+gSgLqwM/ruQAPTbJjHw2MQ=; b=fhw
-	bzhTXuSEjodub5BspZPrtC2GyPmAuybvALY9AT5cIfXmhyl2Pe0vCHOFOFPcBkGaGrD8P4VF5Empj
-	1IMucJcZTLpZ9sogwrp/1AmsLnKdXMpEdWQahTROahcX28gLRaXM5IDKSBH+tEwfh9OVoH33Ghyiy
-	EBGSvGVzTQIbQQsTdF8AdsKRIARlPIvaEpJA9R6mGkGRPMV4uapCUwoYt9fvZxEpBrvaRiOUdJB9t
-	pSQoDvhv03YXXpFbctbTW/Y9yz+xsBcKAEnQKJKoGg2LrC4GaoRXWyvUCPh4krsNzSBGIM4Ej2Nqb
-	jO3ke1CfAe1B3oRMbNmq/IEx+NbkWCA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6tsu0e+HyqlAjMyl7oTzIDk0g/HnWl7tv+VL75uKlR8=; b=q1dSXI4kUch3R/
+	qo8aNU1ukkpgpO4f9Izt3TnnoiDaTN935EpPBBVbupF10cSFwHPhHN5LDZvVFbvQ+EEtjVrmTolyO
+	v2dP9JgkBbaxNfU/XAHGYjqYuZ2mc4RmuoOn4D0PkgSPGn1ZKIqjTdVN83pwfwr2Whravel71v+h7
+	L+cBBvGe9z5qrECjGwFzjdBtIrKXfs/Xj+ZWFLQLWehr0PHeRHkJPQXo3nxlcQ9btTMaqPLrg+LB0
+	oJuj6Ndi/5wS03FTbWv4qSynpPpxR4nBVPb0lvLeVUaoO9PPls98mfPse/FZqBMsMXHJF0uMcoHs4
+	k/ht54HN8yluU0PwhmhA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hT4ge-0003um-L1; Tue, 21 May 2019 13:20:12 +0000
-Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hT4gY-0003Ek-HN
- for linux-nvme@lists.infradead.org; Tue, 21 May 2019 13:20:08 +0000
-Received: from Internal Mail-Server by MTLPINE2 (envelope-from
- maxg@mellanox.com)
- with ESMTPS (AES256-SHA encrypted); 21 May 2019 16:19:57 +0300
-Received: from r-vnc08.mtr.labs.mlnx (r-vnc08.mtr.labs.mlnx [10.208.0.121])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4LDJvua014589;
- Tue, 21 May 2019 16:19:57 +0300
-From: Max Gurtovoy <maxg@mellanox.com>
-To: linux-nvme@lists.infradead.org, sagi@grimberg.me, hch@lst.de
-Subject: [PATCH 1/1] nvme-rdma: Add association between ctrl and transport dev
-Date: Tue, 21 May 2019 16:19:56 +0300
-Message-Id: <1558444796-5190-1-git-send-email-maxg@mellanox.com>
-X-Mailer: git-send-email 1.7.8.2
+	id 1hT5hj-0005Y6-Tb; Tue, 21 May 2019 14:25:23 +0000
+Received: from mga14.intel.com ([192.55.52.115])
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hT5he-0005XI-C1
+ for linux-nvme@lists.infradead.org; Tue, 21 May 2019 14:25:19 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 21 May 2019 07:25:12 -0700
+X-ExtLoop1: 1
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by fmsmga007.fm.intel.com with ESMTP; 21 May 2019 07:25:12 -0700
+Date: Tue, 21 May 2019 08:20:01 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: =?iso-8859-1?Q?Iv=E1n?= Chavero <ichavero@chavero.com.mx>
+Subject: Re: nvme drive kernel 5.0 problem
+Message-ID: <20190521142000.GA350@localhost.localdomain>
+References: <4a0dda5365f24e7223d1672233d7f1ac64640d31.camel@chavero.com.mx>
+ <CACVXFVPXGKQ9UD6P5RsF5j8yry+1LuLrUeb4F6o74=uGK4Ak4Q@mail.gmail.com>
+ <a640a0768d19aedee71a1abad7817a3a71291851.camel@chavero.com.mx>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <a640a0768d19aedee71a1abad7817a3a71291851.camel@chavero.com.mx>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190521_062006_990894_B3071206 
-X-CRM114-Status: GOOD (  12.09  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190521_072518_427519_C3EE82CA 
+X-CRM114-Status: GOOD (  17.75  )
+X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [193.47.165.129 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [192.55.52.115 listed in list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,145 +67,94 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: shlomin@mellanox.com, maxg@mellanox.com, israelr@mellanox.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ming Lei <tom.leiming@gmail.com>,
+ linux-nvme <linux-nvme@lists.infradead.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-RDMA transport ctrl holds a reference to it's underlaying transport
-device, so we need to make sure that this reference is valid. Use kref
-object to enforce that.
+On Mon, May 20, 2019 at 05:12:46PM -0500, Iv=E1n Chavero wrote:
+> > Not see this issue with 5.1 kernel, may be addressed by the following
+> > patches:
+> > =
 
-This commit fixes possible segmentation fault that may happen during
-reconnection + device removal flow that was caused by removing the ref
-count between block layer tagsets and the transport device.
+> > 4e6b26d23dc1 PCI/MSI: Remove obsolete sanity checks for multiple
+> > interrupt sets
+> > a6a309edba13 genirq/affinity: Remove the leftovers of the original
+> > set support
+> > 612b72862b4d nvme-pci: Simplify interrupt allocation
+> > c66d4bd110a1 genirq/affinity: Add new callback for (re)calculating
+> > interrupt sets
+> > 9cfef55bb57e genirq/affinity: Store interrupt sets size in struct
+> > irq_affinity
+> > 0145c30e896d genirq/affinity: Code consolidation
+> > =
 
-Fixes: 87fd125344d6 ("nvme-rdma: remove redundant reference between ib_device and tagset")
+> > =
 
-Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+> i've tested with the 5.1.3 Fedora kernel and still got the same
+> behaviour.
+> =
+
+> I think this might be relevant to solve the problem but i'm not sure:
+> =
+
+> [    2.394967] Workqueue: nvme-reset-wq nvme_reset_work [nvme]
+> =
+
+> [    2.394982] Call Trace:
+> [    2.394986]  blk_mq_pci_map_queues+0x30/0xc0
+> [    2.394990]  nvme_pci_map_queues+0x80/0xb0 [nvme]
+> [    2.394993]  blk_mq_alloc_tag_set+0x11c/0x2c0
+> [    2.394996]  nvme_reset_work+0xfd6/0x1515 [nvme]
+> [    2.395000]  ? __switch_to_asm+0x40/0x70
+> [    2.395001]  ? __switch_to_asm+0x34/0x70
+> [    2.395003]  ? __switch_to_asm+0x40/0x70
+> [    2.395005]  ? __switch_to_asm+0x34/0x70
+> [    2.395007]  process_one_work+0x19d/0x380
+> [    2.395010]  worker_thread+0x1db/0x3b0
+> [    2.395011]  kthread+0xfb/0x130
+> [    2.395013]  ? process_one_work+0x380/0x380
+> [    2.395014]  ? kthread_park+0x90/0x90
+> [    2.395016]  ret_from_fork+0x35/0x40
+> [    2.395018] ---[ end trace 3af2b3afa977ff9e ]---
+> =
+
+> =
+
+> I think this is a timing problem because the other partitions don't get
+> mounted ro.
+> =
+
+> What could i do to make this work? I'm stuck in kernel 4.16.11 and i
+> would really like to use latest kernel.
+
+The warning in itself is not necessarily fatal and may not explain why
+the filesystem is having issues. It should just mean that you've only
+a single MSI interrupt vector sharing with the admin queue, so it's an
+unmanagged vector, creating this warning. It should otherwise be usable.
+
+The following should work around the warning assuming the vector count
+is really what's creating your warning: managed irqs should always have
+an offset, so no offset should mean no pci irq affinity.
+
 ---
- drivers/nvme/host/rdma.c | 51 ++++++++++++++++++++++++++++++++++++++----------
- 1 file changed, 41 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
-index f383146..07eddfb 100644
---- a/drivers/nvme/host/rdma.c
-+++ b/drivers/nvme/host/rdma.c
-@@ -354,6 +354,21 @@ static int nvme_rdma_dev_get(struct nvme_rdma_device *dev)
- 	return kref_get_unless_zero(&dev->ref);
- }
- 
-+static void nvme_rdma_ctrl_dev_put(struct nvme_rdma_ctrl *ctrl,
-+				   struct nvme_rdma_device *dev)
-+{
-+	ctrl->device = 	NULL;
-+	kref_put(&dev->ref, nvme_rdma_free_dev);
-+}
-+
-+static void nvme_rdma_ctrl_dev_get(struct nvme_rdma_ctrl *ctrl,
-+				   struct nvme_rdma_device *dev)
-+{
-+	kref_get(&dev->ref);
-+	ctrl->device = dev;
-+}
-+
-+
- static struct nvme_rdma_device *
- nvme_rdma_find_get_device(struct rdma_cm_id *cm_id)
- {
-@@ -743,12 +758,16 @@ static struct blk_mq_tag_set *nvme_rdma_alloc_tagset(struct nvme_ctrl *nctrl,
- static void nvme_rdma_destroy_admin_queue(struct nvme_rdma_ctrl *ctrl,
- 		bool remove)
- {
-+	struct nvme_rdma_device *ndev = ctrl->device;
-+
- 	if (remove) {
- 		blk_cleanup_queue(ctrl->ctrl.admin_q);
- 		blk_mq_free_tag_set(ctrl->ctrl.admin_tagset);
-+		/* ctrl releases refcount on device */
-+		nvme_rdma_ctrl_dev_put(ctrl, ctrl->device);
- 	}
- 	if (ctrl->async_event_sqe.data) {
--		nvme_rdma_free_qe(ctrl->device->dev, &ctrl->async_event_sqe,
-+		nvme_rdma_free_qe(ndev->dev, &ctrl->async_event_sqe,
- 				sizeof(struct nvme_command), DMA_TO_DEVICE);
- 		ctrl->async_event_sqe.data = NULL;
- 	}
-@@ -758,23 +777,26 @@ static void nvme_rdma_destroy_admin_queue(struct nvme_rdma_ctrl *ctrl,
- static int nvme_rdma_configure_admin_queue(struct nvme_rdma_ctrl *ctrl,
- 		bool new)
- {
-+	struct ib_device *ibdev;
- 	int error;
- 
- 	error = nvme_rdma_alloc_queue(ctrl, 0, NVME_AQ_DEPTH);
- 	if (error)
- 		return error;
- 
--	ctrl->device = ctrl->queues[0].device;
--	ctrl->ctrl.numa_node = dev_to_node(ctrl->device->dev->dma_device);
-+	ibdev = ctrl->queues[0].device->dev;
-+	ctrl->ctrl.numa_node = dev_to_node(ibdev->dma_device);
-+	ctrl->max_fr_pages = nvme_rdma_get_max_fr_pages(ibdev);
- 
--	ctrl->max_fr_pages = nvme_rdma_get_max_fr_pages(ctrl->device->dev);
--
--	error = nvme_rdma_alloc_qe(ctrl->device->dev, &ctrl->async_event_sqe,
-+	error = nvme_rdma_alloc_qe(ibdev, &ctrl->async_event_sqe,
- 			sizeof(struct nvme_command), DMA_TO_DEVICE);
- 	if (error)
- 		goto out_free_queue;
- 
- 	if (new) {
-+		/* ctrl takes refcount on device */
-+		nvme_rdma_ctrl_dev_get(ctrl, ctrl->queues[0].device);
-+
- 		ctrl->ctrl.admin_tagset = nvme_rdma_alloc_tagset(&ctrl->ctrl, true);
- 		if (IS_ERR(ctrl->ctrl.admin_tagset)) {
- 			error = PTR_ERR(ctrl->ctrl.admin_tagset);
-@@ -786,6 +808,14 @@ static int nvme_rdma_configure_admin_queue(struct nvme_rdma_ctrl *ctrl,
- 			error = PTR_ERR(ctrl->ctrl.admin_q);
- 			goto out_free_tagset;
- 		}
-+	} else if (ctrl->device != ctrl->queues[0].device) {
-+		/* ctrl releases refcount on old device */
-+		nvme_rdma_ctrl_dev_put(ctrl, ctrl->device);
-+		/*
-+		 * underlaying device might change, ctrl takes refcount on
-+		 * new device.
-+		 */
-+		nvme_rdma_ctrl_dev_get(ctrl, ctrl->queues[0].device);
- 	}
- 
- 	error = nvme_rdma_start_queue(ctrl, 0);
-@@ -825,7 +855,9 @@ static int nvme_rdma_configure_admin_queue(struct nvme_rdma_ctrl *ctrl,
- 	if (new)
- 		blk_mq_free_tag_set(ctrl->ctrl.admin_tagset);
- out_free_async_qe:
--	nvme_rdma_free_qe(ctrl->device->dev, &ctrl->async_event_sqe,
-+	if (new)
-+		nvme_rdma_ctrl_dev_put(ctrl, ctrl->device);
-+	nvme_rdma_free_qe(ibdev, &ctrl->async_event_sqe,
- 		sizeof(struct nvme_command), DMA_TO_DEVICE);
- 	ctrl->async_event_sqe.data = NULL;
- out_free_queue:
-@@ -2027,9 +2059,8 @@ static void nvme_rdma_remove_one(struct ib_device *ib_device, void *client_data)
- 	/* Delete all controllers using this device */
- 	mutex_lock(&nvme_rdma_ctrl_mutex);
- 	list_for_each_entry(ctrl, &nvme_rdma_ctrl_list, list) {
--		if (ctrl->device->dev != ib_device)
--			continue;
--		nvme_delete_ctrl(&ctrl->ctrl);
-+		if (ctrl->device && ctrl->device->dev == ib_device)
-+			nvme_delete_ctrl(&ctrl->ctrl);
- 	}
- 	mutex_unlock(&nvme_rdma_ctrl_mutex);
- 
--- 
-1.8.3.1
-
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 2a8708c9ac18..d55e1d92cf59 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -464,7 +464,7 @@ static int nvme_pci_map_queues(struct blk_mq_tag_set *s=
+et)
+ 		 * affinity), so use the regular blk-mq cpu mapping
+ 		 */
+ 		map->queue_offset =3D qoff;
+-		if (i !=3D HCTX_TYPE_POLL)
++		if (i !=3D HCTX_TYPE_POLL && offset)
+ 			blk_mq_pci_map_queues(map, to_pci_dev(dev->dev), offset);
+ 		else
+ 			blk_mq_map_queues(map);
+--
 
 _______________________________________________
 Linux-nvme mailing list
