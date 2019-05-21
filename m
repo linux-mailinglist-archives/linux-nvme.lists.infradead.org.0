@@ -2,43 +2,42 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E75632485F
-	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 08:48:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E00D224863
+	for <lists+linux-nvme@lfdr.de>; Tue, 21 May 2019 08:49:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hlBHSAPLkbFOy4LfWHnlc1qVmYU65quNS4p8stJcUe0=; b=UntFXQkxOZ4omf
-	ZaMT6xfd1Easc7rclAiJklC368JAJIBonWvCa8wwnjpUSTwnyVFZWW6UIaWYnCIpJgAXH7ShETSGk
-	b2JAw941MkWjRM6JM/7BhYnlKH+Pv97mkZgeX+x36gegazyRGv95neBJIL4kqMwljBFQ86+opWY4l
-	M2YNDcgE/dYQ3ojE/zLyHuyTcsUN0hniPW7ZG4E4jWTrBZUozcdBepJO8ZLIHTQnrmBopvEOH7eku
-	LFNmhzT0cOJPWQ4YZ/Xvg+u1wezRE+PnfAClR8jmJL/KXnvsACcYoJaBCxAOZbKXe58Se4Lz3t0sQ
-	D5VRI8dH+P0geN6XjCvQ==;
+	List-Owner; bh=SgVXsRM8nyq8ICljSRkYNbIhlxVgL9zei0pShmBmFlY=; b=KtrGWK8So4E6Gl
+	WyZERW8N6TnGBnlbds/8R/98gOa13HlLRdeJuudF+EygLbcp/aYCpwTaZ6wU9+h4kVc+YAbZ3HviZ
+	MEy0tmbjTOmVioKywFqjHQbsgxwHicgtfCVLN9XwtQqGNkNZJAAWmG11zLIe1Gd8/+p/Es/7NeaH6
+	TcXlnd1KVCGZozJnhkdWJWVEqYgDmZupBTCYis0qrs+V6jRoLCBU8kfbhRjpwKu088JFMrilCA1lr
+	vI8QBZ9gFIO4DtYLvvBNDZLqSR8hg8g+23fXdovSvdxTksCC9bpXXX3SB5lEg49pNMUOvss+0yZvX
+	PnCjxpYUtuAOzcktjmMQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hSyZD-0002bi-Me; Tue, 21 May 2019 06:48:07 +0000
+	id 1hSyar-0002qO-Kl; Tue, 21 May 2019 06:49:49 +0000
 Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hSyZ6-0002bE-Rb
- for linux-nvme@lists.infradead.org; Tue, 21 May 2019 06:48:02 +0000
+ id 1hSyam-0002py-8g
+ for linux-nvme@lists.infradead.org; Tue, 21 May 2019 06:49:45 +0000
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id 1E3FD68B05; Tue, 21 May 2019 08:47:39 +0200 (CEST)
-Date: Tue, 21 May 2019 08:47:38 +0200
+ id 974F668B05; Tue, 21 May 2019 08:49:22 +0200 (CEST)
+Date: Tue, 21 May 2019 08:49:22 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Hannes Reinecke <hare@suse.de>
-Subject: Re: [PATCH 2/4] nvme-fc: track state change failures during reconnect
-Message-ID: <20190521064738.GC30402@lst.de>
-References: <20190520063624.50338-1-hare@suse.de>
- <20190520063624.50338-3-hare@suse.de>
+To: Keith Busch <keith.busch@intel.com>
+Subject: Re: [PATCH] nvme: Fix known effects
+Message-ID: <20190521064922.GE30402@lst.de>
+References: <20190517161346.25102-1-keith.busch@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190520063624.50338-3-hare@suse.de>
+In-Reply-To: <20190517161346.25102-1-keith.busch@intel.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190520_234801_042281_141C2DEE 
-X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-CacheID: sfid-20190520_234944_460748_B826BA25 
+X-CRM114-Status: UNSURE (   5.95  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -60,22 +59,12 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
- Sagi Grimberg <sagi@grimberg.me>
+Cc: Maxim Levitsky <mlevitsk@redhat.com>, Christoph Hellwig <hch@lst.de>,
+ linux-nvme@lists.infradead.org, Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
-
-On Mon, May 20, 2019 at 08:36:22AM +0200, Hannes Reinecke wrote:
-> The nvme-fc driver has several situation under which an expected
-> state transition fails, but doesn't print out any messages if
-> this happens.
-> The patch adds logging for these situations.
-> 
-> Signed-off-by: Hannes Reinecke <hare@suse.com>
-> Reviewed-by: James Smart <james.smart@broadcom.com>
 
 Looks good,
 
