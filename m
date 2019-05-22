@@ -2,56 +2,56 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD0ED26B46
-	for <lists+linux-nvme@lfdr.de>; Wed, 22 May 2019 21:26:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B16B126B8E
+	for <lists+linux-nvme@lfdr.de>; Wed, 22 May 2019 21:28:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=16/bmQHkrK/De/SNtQI5KnPcvZ3RufKPeNxqvVyjpQw=; b=aPiDk7GaYA6Glr
-	E44ZQUo4p+u7DJ7shziO5jxEZK4CWvFkS9BlK3EjuNfckeTgagekWmXgp4Xwn06Mh2hQdIq9dAk38
-	Dk7Fxr3A8oypu0rge7KvjTfsh9w8dn8ifLn2Fu1O82CDB0vQTeCY3IcDoz2b1a7b1X+N3Q52XxRzM
-	n3rZ7Pzc1JCgj/kZS6YevnFRp0LM8ywf7qMrNuszFJjhgCYJ4SjCFF3JTYYMr6/VrGVPDpnL2UZjT
-	Bf0rNsVm49HFmPXNh/ByIl7TjS1SEEvRF4yP/hvbKQ9Gh3EjUB/gBieF4/+7wHGablItu8TfT9+Wm
-	RinHGtWm4OT99eRuXU9w==;
+	List-Owner; bh=OXqZvGTl4vo38Jusr9Q/VYQpRW8kxIRDRrowjYPopzI=; b=JLlxpgU1bpCq4k
+	ZgijBMqwdU+frthDKhxQSy7ulKiK4V8HrwlBPvs6bDeLEvsTamDL3rH/arNq2uMoj2sH3KZ33bJdD
+	RTh36mFVaBahrNmqGwaQ3zq82NIZIaP75Wyx2tlXF0R9AOPruVlpXxz5CGhABCVRGa51U9JNhHUid
+	sjaGCnZ7gPngiJ3HKr7YSbyA4bFexO7lb9fQgW35/xqcU02+MBFqs64HRcZj90wlBxPs52WMdZ2vY
+	g7HQb14AUPfJcvT9V/cpaA4wSVeoS04gNA/QTLzuEpFF9eK2yb1nONV/6rdUE3M4UQUOb2ZDU7q6P
+	0XuhEZ0Hs0E9Fq7Gy/zw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTWsM-0003ZL-BU; Wed, 22 May 2019 19:26:10 +0000
+	id 1hTWuN-0004Oq-In; Wed, 22 May 2019 19:28:15 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTWs5-0003Ly-5F
- for linux-nvme@lists.infradead.org; Wed, 22 May 2019 19:25:54 +0000
+ id 1hTWuI-0004Nw-IQ
+ for linux-nvme@lists.infradead.org; Wed, 22 May 2019 19:28:11 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4492A217F9;
- Wed, 22 May 2019 19:25:52 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8F76F20675;
+ Wed, 22 May 2019 19:28:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1558553152;
- bh=lmU9g21+k0C40muQus4b77NNYcsDPyTrcPmreAglkX8=;
+ s=default; t=1558553290;
+ bh=vFVJuNYDSYKtnIIMZt+kTwaWA2+cmXyBrNjfobrAZeE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=0WN+tFWnCldHJFWb2VXDELux2bdm//DOEhGtqV3bQvwg/TQIe/3bG2FrWlgMe6USz
- fOpjafnhj0sidNSz+ogi4sAhC7Y+4Sj3iDNIk8f9HeT3TMGM0dfepBi5cF1Ex+KZiZ
- LQ2DhF6W2Y71tXVcj40OziXD+OzVJxMwJ2ZIp4pU=
+ b=fiTKZluYZgFhUkKSdwCi4jj7r7G1fJhOHkuvCOqrJC03RYNFAP/NwlEVUIDkFLFTF
+ Jz17dOWG76gkAfrwTGkK7kAHJRjg2FjLRsD7Tnbx91ksqT73nAU/4IFAJtobgnksQO
+ UO7r4tBKFSfBzUWVvhNhGLdVaBrQzUo26RGjeAk8=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.0 080/317] nvme-tcp: fix a NULL deref when an admin
- connect times out
-Date: Wed, 22 May 2019 15:19:41 -0400
-Message-Id: <20190522192338.23715-80-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 062/244] nvme: set 0 capacity if namespace block
+ size exceeds PAGE_SIZE
+Date: Wed, 22 May 2019 15:23:28 -0400
+Message-Id: <20190522192630.24917-62-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190522192338.23715-1-sashal@kernel.org>
-References: <20190522192338.23715-1-sashal@kernel.org>
+In-Reply-To: <20190522192630.24917-1-sashal@kernel.org>
+References: <20190522192630.24917-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190522_122553_211348_B37ED21C 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20190522_122810_619988_DC14F623 
+X-CRM114-Status: GOOD (  11.57  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -80,8 +80,9 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <keith.busch@intel.com>, Sasha Levin <sashal@kernel.org>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
@@ -89,47 +90,46 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Sagi Grimberg <sagi@grimberg.me>
 
-[ Upstream commit 7a42589654ae79e1177f0d74306a02d6cef7bddf ]
+[ Upstream commit 01fa017484ad98fccdeaab32db0077c574b6bd6f ]
 
-If we timeout the admin startup sequence we might not yet have
-an I/O tagset allocated which causes the teardown sequence to crash.
-Make nvme_tcp_teardown_io_queues safe by not iterating inflight tags
-if the tagset wasn't allocated.
+If our target exposed a namespace with a block size that is greater
+than PAGE_SIZE, set 0 capacity on the namespace as we do not support it.
 
-Fixes: 39d57757467b ("nvme-tcp: fix timeout handler")
+This issue encountered when the nvmet namespace was backed by a tempfile.
+
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+Reviewed-by: Keith Busch <keith.busch@intel.com>
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/tcp.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/nvme/host/core.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 5f0a004252422..e71b0058c57bd 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -1686,7 +1686,9 @@ static void nvme_tcp_teardown_admin_queue(struct nvme_ctrl *ctrl,
- {
- 	blk_mq_quiesce_queue(ctrl->admin_q);
- 	nvme_tcp_stop_queue(ctrl, 0);
--	blk_mq_tagset_busy_iter(ctrl->admin_tagset, nvme_cancel_request, ctrl);
-+	if (ctrl->admin_tagset)
-+		blk_mq_tagset_busy_iter(ctrl->admin_tagset,
-+			nvme_cancel_request, ctrl);
- 	blk_mq_unquiesce_queue(ctrl->admin_q);
- 	nvme_tcp_destroy_admin_queue(ctrl, remove);
- }
-@@ -1698,7 +1700,9 @@ static void nvme_tcp_teardown_io_queues(struct nvme_ctrl *ctrl,
- 		return;
- 	nvme_stop_queues(ctrl);
- 	nvme_tcp_stop_io_queues(ctrl);
--	blk_mq_tagset_busy_iter(ctrl->tagset, nvme_cancel_request, ctrl);
-+	if (ctrl->tagset)
-+		blk_mq_tagset_busy_iter(ctrl->tagset,
-+			nvme_cancel_request, ctrl);
- 	if (remove)
- 		nvme_start_queues(ctrl);
- 	nvme_tcp_destroy_io_queues(ctrl, remove);
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 2cdb3032ca0fc..abfb46378cc13 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1480,6 +1480,10 @@ static void nvme_update_disk_info(struct gendisk *disk,
+ 	sector_t capacity = le64_to_cpup(&id->nsze) << (ns->lba_shift - 9);
+ 	unsigned short bs = 1 << ns->lba_shift;
+ 
++	if (ns->lba_shift > PAGE_SHIFT) {
++		/* unsupported block size, set capacity to 0 later */
++		bs = (1 << 9);
++	}
+ 	blk_mq_freeze_queue(disk->queue);
+ 	blk_integrity_unregister(disk);
+ 
+@@ -1490,7 +1494,8 @@ static void nvme_update_disk_info(struct gendisk *disk,
+ 	if (ns->ms && !ns->ext &&
+ 	    (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED))
+ 		nvme_init_integrity(disk, ns->ms, ns->pi_type);
+-	if (ns->ms && !nvme_ns_has_pi(ns) && !blk_get_integrity(disk))
++	if ((ns->ms && !nvme_ns_has_pi(ns) && !blk_get_integrity(disk)) ||
++	    ns->lba_shift > PAGE_SHIFT)
+ 		capacity = 0;
+ 
+ 	set_capacity(disk, capacity);
 -- 
 2.20.1
 
