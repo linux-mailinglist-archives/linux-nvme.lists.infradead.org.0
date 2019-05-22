@@ -2,53 +2,48 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FC2C261B9
-	for <lists+linux-nvme@lfdr.de>; Wed, 22 May 2019 12:25:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7AF0126550
+	for <lists+linux-nvme@lfdr.de>; Wed, 22 May 2019 16:01:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QgT3iuoJVy987r9EasOvpuozxEqFN3iawGluxKASeDQ=; b=A6WyTB0msKnzJr
-	+4VDYjMoYk8GiUFZecp4Ki8BvL1Y/mHMnQ2CExaN+c0i0xl7z3pYDh5jqFSXNJ8ctwIVc41P86fue
-	6AASRrGx9933x6vvXZVbTDMTpSqiQIMJm9meRGSwXOmOwhbSK7UK/2AxH4k0NtCdZ/CDkkouK/JMQ
-	7cODo9ySFJfnVkzK6ttgihcXKjH0ZTEC3K6CjgFT/eW7K+aNC8y+2qIr2rVvKrCyTi33F1OqB9KoD
-	rXb5r1fRvJI79RrAhr7Z3xWnfal5ltOw9xP0oNuPr6aW9lHtPb2OLRV8AcK/8qTLVfKir6Z5jSfng
-	JfekClXhOLyvLhyuMGNA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=jHy8rBK9zCyC6qyQRoQQ8DrcvL7vOCe0iJOv0d3w94c=; b=iXkRuHFO8iuvF2zMxAQA2Xtlh
+	oSifbJR3niXP7MzIxx9H385ybqQDGTush9uUsBGWv7Gky2CCBnxaH1W/zWNaqVIdPCYfyx1g3uirs
+	U/QcHWjeLRF+7qzbxTQEyEm5Ou5sCuK1S7O8y6F8rrWSfxXenIUx+DkIRS+ZxugeiOxtAtldkEzGL
+	SYCdwRISgAugMeSz1CpHbvABiuCO9opUZ3VLE6aCylm8//LkLW4X9HrGTtNrbYUcgskwR7TC2a40n
+	kdEGI2Y/De2cxyOrJ1vcZ+mPtheaXSgTHUpt+nZ37uzI9AgqmJaLcHud4IG/6d1mqZ+MDzYjVJy8C
+	jFv7bxB0w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTORO-0001BH-SN; Wed, 22 May 2019 10:25:46 +0000
+	id 1hTRns-0005U7-3Y; Wed, 22 May 2019 14:01:12 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTORD-0000vY-0u
- for linux-nvme@lists.infradead.org; Wed, 22 May 2019 10:25:39 +0000
+ id 1hTRnj-0005TA-To
+ for linux-nvme@lists.infradead.org; Wed, 22 May 2019 14:01:08 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 35A53AEB6;
- Wed, 22 May 2019 10:25:31 +0000 (UTC)
-Received: by quack2.suse.cz (Postfix, from userid 1000)
- id 804F91E3C5F; Wed, 22 May 2019 12:25:30 +0200 (CEST)
-Date: Wed, 22 May 2019 12:25:30 +0200
-From: Jan Kara <jack@suse.cz>
-To: 'Christoph Hellwig' <hch@infradead.org>
-Subject: Re: [PATCH v5 0/7] Extend write-hint framework, and add write-hint
- for Ext4 journal
-Message-ID: <20190522102530.GK17019@quack2.suse.cz>
-References: <CGME20190425112347epcas2p1f7be48b8f0d2203252b8c9dd510c1b61@epcas2p1.samsung.com>
- <1556191202-3245-1-git-send-email-joshi.k@samsung.com>
- <20190510170249.GA26907@infradead.org>
- <00fb01d50c71$dd358e50$97a0aaf0$@samsung.com>
- <20190520142719.GA15705@infradead.org>
- <20190521082528.GA17709@quack2.suse.cz>
- <20190521082846.GA11024@infradead.org>
+ by mx1.suse.de (Postfix) with ESMTP id 139E1B023;
+ Wed, 22 May 2019 14:01:00 +0000 (UTC)
+Subject: Re: [PATCH 4/4] nvme-fc: align nvme_fc_delete_association() with exit
+ path
+To: James Smart <james.smart@broadcom.com>, Christoph Hellwig <hch@lst.de>
+References: <20190520063624.50338-1-hare@suse.de>
+ <20190520063624.50338-5-hare@suse.de>
+ <20485830-ae6a-eae1-32f3-940ca2cc1bf3@broadcom.com>
+From: Hannes Reinecke <hare@suse.de>
+Message-ID: <6da3909f-cdaa-c6df-81fb-59f71d9f4f30@suse.de>
+Date: Wed, 22 May 2019 16:00:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190521082846.GA11024@infradead.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20485830-ae6a-eae1-32f3-940ca2cc1bf3@broadcom.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190522_032536_012529_744487A1 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20190522_070104_028343_59E53DF4 
+X-CRM114-Status: GOOD (  21.16  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -69,46 +64,52 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jan Kara <jack@suse.cz>, "Martin K. Petersen" <martin.petersen@oracle.com>,
- kanchan <joshi.k@samsung.com>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
- anshul@samsung.com, linux-fsdevel@vger.kernel.org, prakash.v@samsung.com,
- linux-ext4@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue 21-05-19 01:28:46, 'Christoph Hellwig' wrote:
-> On Tue, May 21, 2019 at 10:25:28AM +0200, Jan Kara wrote:
-> > performance benefits for some drives. After all you can just think about it
-> > like RWH_WRITE_LIFE_JOURNAL type of hint available for the kernel...
-> 
-> Except that it actuallys adds a parallel insfrastructure.  A
-> RWH_WRITE_LIFE_JOURNAL would be much more palatable, but someone needs
-> to explain how that is:
-> 
->  a) different from RWH_WRITE_LIFE_SHORT
-
-The problem I have with this is: What does "short" mean? What if
-userspace's notion of short differs from the kernel notion? Also the
-journal block lifetime is somewhat hard to predict. It depends on the size
-of the journal and metadata load on the filesystem so there's big variance.
-So all we really know is that all journal blocks are the same.
-
->  b) would not apply to a log/journal maintained in userspace that works
->     exactly the same
-
-Lifetime of userspace journal/log may be significantly different from the
-lifetime of the filesystem journal. So using the same hint for them does
-not look like a great idea?
-
-								Honza
--- 
-Jan Kara <jack@suse.com>
-SUSE Labs, CR
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNS8yMS8xOSA2OjI1IFBNLCBKYW1lcyBTbWFydCB3cm90ZToKPiAKPiAKPiBPbiA1LzE5LzIw
+MTkgMTE6MzYgUE0sIEhhbm5lcyBSZWluZWNrZSB3cm90ZToKPj4gbnZtZV9mY19kZWxldGVfYXNz
+b2NpYXRpb24oKSBzaG91bGQgYWxpZ24gd2l0aCB0aGUgZXhpdCBwYXRoIGluCj4+IG52bWVfZmNf
+Y3JlYXRlX2Fzc29jaWF0aW9uKCkgdG8gZW5zdXJlIHdlIGFyZSBhYmxlIHRvIGhhbmRsZSB0aGUK
+Pj4gZmFpbHVyZSBjYXNlIHByb3Blcmx5Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBIYW5uZXMgUmVp
+bmVja2UgPGhhcmVAc3VzZS5jb20+Cj4+IC0tLQo+PiDCoCBkcml2ZXJzL252bWUvaG9zdC9mYy5j
+IHwgMTAgKysrKystLS0tLQo+PiDCoCAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCA1
+IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9udm1lL2hvc3QvZmMuYyBi
+L2RyaXZlcnMvbnZtZS9ob3N0L2ZjLmMKPj4gaW5kZXggNzFiMjIxMzllNzhiLi5lZDlmNGFmZmJl
+MTAgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbnZtZS9ob3N0L2ZjLmMKPj4gKysrIGIvZHJpdmVy
+cy9udm1lL2hvc3QvZmMuYwo+PiBAQCAtMjgzNiw2ICsyODM2LDExIEBAIG52bWVfZmNfZGVsZXRl
+X2Fzc29jaWF0aW9uKHN0cnVjdCBudm1lX2ZjX2N0cmwgCj4+ICpjdHJsKQo+PiDCoMKgwqDCoMKg
+IGN0cmwtPmZsYWdzICY9IH5GQ0NUUkxfVEVSTUlPOwo+PiDCoMKgwqDCoMKgIHNwaW5fdW5sb2Nr
+X2lycSgmY3RybC0+bG9jayk7Cj4+ICvCoMKgwqAgaWYgKGN0cmwtPmN0cmwudGFnc2V0KSB7Cj4+
+ICvCoMKgwqDCoMKgwqDCoCBudm1lX2ZjX2RlbGV0ZV9od19pb19xdWV1ZXMoY3RybCk7Cj4+ICvC
+oMKgwqDCoMKgwqDCoCBudm1lX2ZjX2ZyZWVfaW9fcXVldWVzKGN0cmwpOwo+PiArwqDCoMKgIH0K
+Pj4gKwo+PiDCoMKgwqDCoMKgIG52bWVfZmNfdGVybV9hZW5fb3BzKGN0cmwpOwo+PiDCoMKgwqDC
+oMKgIC8qCj4+IEBAIC0yODQ3LDExICsyODUyLDYgQEAgbnZtZV9mY19kZWxldGVfYXNzb2NpYXRp
+b24oc3RydWN0IG52bWVfZmNfY3RybCAKPj4gKmN0cmwpCj4+IMKgwqDCoMKgwqAgaWYgKGN0cmwt
+PmFzc29jaWF0aW9uX2lkKQo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgbnZtZV9mY194bXRfZGlzY29u
+bmVjdF9hc3NvYyhjdHJsKTsKPj4gLcKgwqDCoCBpZiAoY3RybC0+Y3RybC50YWdzZXQpIHsKPj4g
+LcKgwqDCoMKgwqDCoMKgIG52bWVfZmNfZGVsZXRlX2h3X2lvX3F1ZXVlcyhjdHJsKTsKPj4gLcKg
+wqDCoMKgwqDCoMKgIG52bWVfZmNfZnJlZV9pb19xdWV1ZXMoY3RybCk7Cj4+IC3CoMKgwqAgfQo+
+PiAtCj4+IMKgwqDCoMKgwqAgX19udm1lX2ZjX2RlbGV0ZV9od19xdWV1ZShjdHJsLCAmY3RybC0+
+cXVldWVzWzBdLCAwKTsKPj4gwqDCoMKgwqDCoCBudm1lX2ZjX2ZyZWVfcXVldWUoJmN0cmwtPnF1
+ZXVlc1swXSk7Cj4gCj4gbm8uwqAgVGhpcyBpcyByZW1vdmluZyB0aGUgdW5kZXJseWluZyBxdWV1
+ZXMgd2hpbGUgYmxrLW1xIGlzIHN0aWxsIHRyeWluZyAKPiB0byBzdWJtaXQgdG8gdGhlbSAtIGNh
+dXNpbmcgeWV0IGEgZGlmZmVyZW50IHNldCBvZiBpc3N1ZXMgYXMgdGhlIGRyaXZlciAKPiB3aWxs
+IGhhdmUgcmVsZWFzZWQgY29udGV4dHMgYnV0IHRoZSBjYWxsZG93bnMgYXJlIHN0aWxsIGhhcHBl
+bmluZy4gWWV0IAo+IGFub3RoZXIgZGlmZmVyZW50IHNldCBvZiBpc3N1ZXMgd291bGQgbGlrZWx5
+IGFwcGVhci7CoMKgIG5vIG5lZWQgZm9yIHRoaXMgCj4gcmVvcmcuCj4gCkFoLiBIbW0uIFdlbGws
+IEkgdGhvdWdodCBieSBoYXZpbmcgYm90aCBwYXRocyBpZGVudGljYWwgd2UgY2FuIGVuc3VyZSAK
+dGhhdCB0aGUgZXJyb3IgcGF0aCBpbiB0aGUgZmlyc3Qgd291bGQgYWN0dWFsbHkgd29yay4KTm93
+IGl0J3MgcXVpdGUgaGFyZCB0byB0ZXN0LCBsYXQgYWxvbmUgdmFsaWRhdGUuCgpCdXQgaWYgeW91
+IGhhdmUgb2JqZWN0aW9ucyB3ZSBjYW4gc3VyZWx5IGRyb3AgdGhpcyBwYXRjaC4KCkNoZWVycywK
+Ckhhbm5lcwotLSAKRHIuIEhhbm5lcyBSZWluZWNrZQkJICAgVGVhbWxlYWQgU3RvcmFnZSAmIE5l
+dHdvcmtpbmcKaGFyZUBzdXNlLmRlCQkJICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1MyA2ODgK
+U1VTRSBMSU5VWCBHbWJILCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJlcmcKR0Y6IEZlbGl4
+IEltZW5kw7ZyZmZlciwgTWFyeSBIaWdnaW5zLCBTcmkgUmFzaWFoCkhSQiAyMTI4NCAoQUcgTsO8
+cm5iZXJnKQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
