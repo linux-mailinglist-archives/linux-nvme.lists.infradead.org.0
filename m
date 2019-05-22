@@ -2,58 +2,73 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1236926970
-	for <lists+linux-nvme@lfdr.de>; Wed, 22 May 2019 19:53:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E5A5426B44
+	for <lists+linux-nvme@lfdr.de>; Wed, 22 May 2019 21:26:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=CNhNrYquBdPlkbfVsR9rtMxldcP/QZ4gVmXDFpyY3ME=; b=QCM+isX5z/+3YbtNcnIOdalUw7
-	r1OnB9PmCa7Qdva86S3k0xZ4Xhoqrc7Z721kk9yyKSBiqJN+0rKvztBJzQWSbRBHmKfyfJlKBOZiC
-	hfkQYC+K5JcdWnWSR8NyrrfICQPYh9ft/Lo9tYaIGL9PHfReeMjz+0XYjiDiQARV9Cp1ausZlUP4e
-	JndMfEdrOTJ++4NpfOROsmuttw7S1MdSVAwZDRkuahe7Lp6NdUSx+jrIPWMr0s6wfc8QR0K3jZ3K9
-	G2cmsThhQjLpKvrUVfhNTUOuq3QdVA5hkV70Bgb+4MDmdyC4MVHGdaxhsqm4em34jAf5s/xNvRkvV
-	RRvW1Z5Q==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5OivubGtR47omCLLK6Gd879tw7lH8GtLHtitll9dics=; b=bioeqOMNHz7mZ3
+	kPs2Tg0EdipnJXr3C+uBgJ0DJYYvby8Fh5mC3X4DEH8kzQ0JSSrQgTtKch/cLv5xJ58KrQj+JsvG2
+	kovMnEo1+QZyRQMOQHD69jCrWGgjHbS85hMhTOsaHHfCt8R4LPR3Bg9sByZNKxO4odGLZlIP6wKlx
+	un0KvCE25MhQWKdg043pGP4mlIpA1VdJgRJkBmkDGcxNq7/kBe6MVCPJStHdW+rIXZ3VM/xqkWlYj
+	PYf362oWWv6ziUZIN2waS/dPlP3j7eRU+5SUB9P1nA8K1L3bUMtPYfmyT39QgEv7m/BTOh8PGAe5A
+	U/LeMh0Xw5wgX/7wlJYw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTVQr-0002oL-7B; Wed, 22 May 2019 17:53:41 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1hTWs8-0003MV-JT; Wed, 22 May 2019 19:25:56 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTVQU-0002TP-3r
- for linux-nvme@lists.infradead.org; Wed, 22 May 2019 17:53:19 +0000
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 May 2019 10:53:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,500,1549958400"; d="scan'208";a="174471736"
-Received: from unknown (HELO localhost.lm.intel.com) ([10.232.112.69])
- by fmsmga002.fm.intel.com with ESMTP; 22 May 2019 10:53:15 -0700
-From: Keith Busch <keith.busch@intel.com>
-To: Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>,
- linux-nvme@lists.infradead.org, linux-block@vger.kernel.org
-Subject: [PATCH 2/2] nvme: reset request timeouts during fw activation
-Date: Wed, 22 May 2019 11:48:12 -0600
-Message-Id: <20190522174812.5597-3-keith.busch@intel.com>
-X-Mailer: git-send-email 2.13.6
-In-Reply-To: <20190522174812.5597-1-keith.busch@intel.com>
-References: <20190522174812.5597-1-keith.busch@intel.com>
+ id 1hTWs3-0003Kw-51
+ for linux-nvme@lists.infradead.org; Wed, 22 May 2019 19:25:52 +0000
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 221FC2173C;
+ Wed, 22 May 2019 19:25:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1558553150;
+ bh=4zncFK8TGCgEH/vOY6DJh5XX+xKWltKiLhrd6D/Dun4=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=cDalNuwkU3ZTXno6dUgQ1Q046NUZIPis54fYj9Vq4/VANaTrb9l7pCvDo9VJCUCO3
+ 1zFjoCY+eRdTUC22luJyzRWrythkKnXS86dSQTts/zRWvwU3kM2ItLS0qH077GlO0n
+ ZFTkx2pApL+sQh5uF83prcTCYkiLMbQ0PilVQ5y0=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.0 078/317] nvme: set 0 capacity if namespace block
+ size exceeds PAGE_SIZE
+Date: Wed, 22 May 2019 15:19:39 -0400
+Message-Id: <20190522192338.23715-78-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190522192338.23715-1-sashal@kernel.org>
+References: <20190522192338.23715-1-sashal@kernel.org>
+MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190522_105318_202787_F9E1AFFE 
-X-CRM114-Status: GOOD (  10.97  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190522_122551_204103_B4879199 
+X-CRM114-Status: GOOD (  11.76  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.43 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,87 +80,58 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Ming Lei <ming.lei@redhat.com>
-MIME-Version: 1.0
+Cc: Keith Busch <keith.busch@intel.com>, Sasha Levin <sashal@kernel.org>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The nvme controller may pause command processing during firmware
-activation. The driver will quiesce queues during this time, but commands
-dispatched prior to the notification will not be processed until the
-hardware completes this activation.
+From: Sagi Grimberg <sagi@grimberg.me>
 
-We do not want those requests to time out while the hardware is in
-this paused state as we don't expect those commands to complete during
-this time, and that handling will interfere with the firmware activation
-process.
+[ Upstream commit 01fa017484ad98fccdeaab32db0077c574b6bd6f ]
 
-In addition to quiescing the queues, halt timeout detection during the
-paused state and reset the dispatched request deadlines when the hardware
-exists that state. This action applies to IO and admin queues.
+If our target exposed a namespace with a block size that is greater
+than PAGE_SIZE, set 0 capacity on the namespace as we do not support it.
 
-Signed-off-by: Keith Busch <keith.busch@intel.com>
+This issue encountered when the nvmet namespace was backed by a tempfile.
+
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+Reviewed-by: Keith Busch <keith.busch@intel.com>
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/core.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ drivers/nvme/host/core.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 1b7c2afd84cb..37a9a66ada22 100644
+index 4c4413ad3ceb3..5b389fed6d54c 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -89,6 +89,7 @@ static dev_t nvme_chr_devt;
- static struct class *nvme_class;
- static struct class *nvme_subsys_class;
+@@ -1551,6 +1551,10 @@ static void nvme_update_disk_info(struct gendisk *disk,
+ 	sector_t capacity = le64_to_cpup(&id->nsze) << (ns->lba_shift - 9);
+ 	unsigned short bs = 1 << ns->lba_shift;
  
-+static void nvme_reset_queues(struct nvme_ctrl *ctrl);
- static int nvme_revalidate_disk(struct gendisk *disk);
- static void nvme_put_subsystem(struct nvme_subsystem *subsys);
- static void nvme_remove_invalid_namespaces(struct nvme_ctrl *ctrl,
-@@ -3605,6 +3606,11 @@ static void nvme_fw_act_work(struct work_struct *work)
- 				msecs_to_jiffies(admin_timeout * 1000);
++	if (ns->lba_shift > PAGE_SHIFT) {
++		/* unsupported block size, set capacity to 0 later */
++		bs = (1 << 9);
++	}
+ 	blk_mq_freeze_queue(disk->queue);
+ 	blk_integrity_unregister(disk);
  
- 	nvme_stop_queues(ctrl);
-+	nvme_sync_queues(ctrl);
-+
-+	blk_mq_quiesce_queue(ctrl->admin_q);
-+	blk_sync_queue(ctrl->admin_q);
-+
- 	while (nvme_ctrl_pp_status(ctrl)) {
- 		if (time_after(jiffies, fw_act_timeout)) {
- 			dev_warn(ctrl->device,
-@@ -3618,7 +3624,12 @@ static void nvme_fw_act_work(struct work_struct *work)
- 	if (ctrl->state != NVME_CTRL_LIVE)
- 		return;
+@@ -1561,7 +1565,8 @@ static void nvme_update_disk_info(struct gendisk *disk,
+ 	if (ns->ms && !ns->ext &&
+ 	    (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED))
+ 		nvme_init_integrity(disk, ns->ms, ns->pi_type);
+-	if (ns->ms && !nvme_ns_has_pi(ns) && !blk_get_integrity(disk))
++	if ((ns->ms && !nvme_ns_has_pi(ns) && !blk_get_integrity(disk)) ||
++	    ns->lba_shift > PAGE_SHIFT)
+ 		capacity = 0;
  
-+	blk_mq_reset_rqs(ctrl->admin_q);
-+	blk_mq_unquiesce_queue(ctrl->admin_q);
-+
-+	nvme_reset_queues(ctrl);
- 	nvme_start_queues(ctrl);
-+
- 	/* read FW slot information to clear the AER */
- 	nvme_get_fw_slot_info(ctrl);
- }
-@@ -3901,6 +3912,15 @@ void nvme_start_queues(struct nvme_ctrl *ctrl)
- }
- EXPORT_SYMBOL_GPL(nvme_start_queues);
- 
-+static void nvme_reset_queues(struct nvme_ctrl *ctrl)
-+{
-+	struct nvme_ns *ns;
-+
-+	down_read(&ctrl->namespaces_rwsem);
-+	list_for_each_entry(ns, &ctrl->namespaces, list)
-+		blk_mq_reset_rqs(ns->queue);
-+	up_read(&ctrl->namespaces_rwsem);
-+}
- 
- void nvme_sync_queues(struct nvme_ctrl *ctrl)
- {
+ 	set_capacity(disk, capacity);
 -- 
-2.14.4
+2.20.1
 
 
 _______________________________________________
