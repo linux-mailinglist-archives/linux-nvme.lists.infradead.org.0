@@ -2,59 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F314270DB
-	for <lists+linux-nvme@lfdr.de>; Wed, 22 May 2019 22:33:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C3A9272A3
+	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 00:55:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=52vmr1ZEc+xu+2cUELwMfxR1iDdjCH+OiiReKiJPul8=; b=QITggJJsggnKU6
-	4i7L/l1bdWPKBSXm8zcEeuZaUl3B2aDpCn9Q50jZZgVm/Ednd3nHADMLI1g4NjSEJKp4L+p0HqIWT
-	yOeQ2PtOS0tGoI2Scq0bjNABUBmYaHnNbQU3LwTrCUg5yYi1XykJRBujKhVr6Pe625kamRu2peu/n
-	n0m/Xjl2NxYZwo+6G5vpP/oD2ekyyZ7gXkVZKGv0RC0TeUDa2I9tUt2wbym0cGDV5uau6a+5nk44F
-	IP4sBgeFkQ8MRPEOoszoDgxUfUYzXecTW5KgAwizoMyoFLN+nRhBQSny+PvMdYAFGnVm1x7rD6lhk
-	9ttgLLRxrlYC7WRAhT+Q==;
+	List-Owner; bh=qxOaqERvSKciADx3HrW1s6c63JNLK3Knc+YujP6DxLk=; b=uJUgRCPCnTXQ/E
+	EAtPYkU39/xxVqkaKZeV2GtkoT0H3RVvemitrmlgDkY/bYwZJgdsyMdEkYMkKjwo+piENt+AYlI52
+	GZkP1iDHVpLa/k3qARVZY8h8umwlAOm5XEWe3dZcN2FwP8pa7pVjvhV/emaJ+XtPlQRt391+QPYEY
+	okWYRBRF/zSZYngzLw1dChPIBivs4TD/tISYzslSOMS6TimfXlRqH1L4p6Q6hHEmwuvAwr1gUKQ3r
+	0lqZUjHk0PV3Fw0wSO/L8A3wkhUShgtQcEbunj52sLrMvQcepHEZn4vgK45UmF9Mp57qrO4IZY24a
+	9QsezsW2mC4RgTlJN0mA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTXvG-0006Mq-Gc; Wed, 22 May 2019 20:33:14 +0000
+	id 1hTa8Z-0004bO-Es; Wed, 22 May 2019 22:55:07 +0000
 Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTXvB-0006MH-VF
- for linux-nvme@lists.infradead.org; Wed, 22 May 2019 20:33:11 +0000
+ id 1hTa8S-0004JY-OL
+ for linux-nvme@lists.infradead.org; Wed, 22 May 2019 22:55:02 +0000
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 May 2019 13:33:09 -0700
+ 22 May 2019 15:54:59 -0700
 X-ExtLoop1: 1
 Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga002.jf.intel.com with ESMTP; 22 May 2019 13:33:08 -0700
-Date: Wed, 22 May 2019 14:28:05 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Bart Van Assche <bvanassche@acm.org>
-Subject: Re: [PATCH 0/2] Reset timeout for paused hardware
-Message-ID: <20190522202805.GA5781@localhost.localdomain>
-References: <20190522174812.5597-1-keith.busch@intel.com>
- <721e059e-ed88-734c-fea2-3637e6d31f4c@acm.org>
+ by orsmga003.jf.intel.com with ESMTP; 22 May 2019 15:54:58 -0700
+Date: Wed, 22 May 2019 16:49:55 -0600
+From: Keith Busch <keith.busch@intel.com>
+To: Max Gurtovoy <maxg@mellanox.com>
+Subject: Re: [PATCH 9/9] nvme: Retrieve namespaces during list-subsys cmd
+Message-ID: <20190522224955.GC5857@localhost.localdomain>
+References: <1558543193-24752-1-git-send-email-maxg@mellanox.com>
+ <1558543193-24752-10-git-send-email-maxg@mellanox.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <721e059e-ed88-734c-fea2-3637e6d31f4c@acm.org>
+In-Reply-To: <1558543193-24752-10-git-send-email-maxg@mellanox.com>
 User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190522_133310_094004_B1F7DFFA 
-X-CRM114-Status: GOOD (  16.37  )
-X-Spam-Score: -1.3 (-)
+X-CRM114-CacheID: sfid-20190522_155500_809517_31713D92 
+X-CRM114-Status: UNSURE (   7.42  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
  medium trust [192.55.52.136 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,44 +67,41 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, linux-block@vger.kernel.org,
- linux-nvme@lists.infradead.org, Ming Lei <ming.lei@redhat.com>,
- Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>
+Cc: sagi@grimberg.me, martin.petersen@oracle.com,
+ linux-nvme@lists.infradead.org, shlomin@mellanox.com, kbusch@kernel.org,
+ hch@lst.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, May 22, 2019 at 10:20:45PM +0200, Bart Van Assche wrote:
-> On 5/22/19 7:48 PM, Keith Busch wrote:
-> > Hardware may temporarily stop processing commands that have
-> > been dispatched to it while activating new firmware. Some target
-> > implementation's paused state time exceeds the default request expiry,
-> > so any request dispatched before the driver could quiesce for the
-> > hardware's paused state will time out, and handling this may interrupt
-> > the firmware activation.
-> > 
-> > This two-part series provides a way for drivers to reset dispatched
-> > requests' timeout deadline, then uses this new mechanism from the nvme
-> > driver's fw activation work.
+On Wed, May 22, 2019 at 07:39:53PM +0300, Max Gurtovoy wrote:
+> Add an association between subsystems/ctrls/namespaces using
+> "nvme list-subsys" command. Now this command will show the following:
 > 
-> Hi Keith,
+> nvme-subsys4 - NQN=testsubsystem_0
+> \
+>  +- nvme4 rdma traddr=12.212.99.85 trsvcid=4420 live
+>  \
+>   +- nvme4n1
+>   +- nvme4n2
+>   +- nvme4n3
+>  +- nvme5 rdma traddr=12.212.99.85 trsvcid=4420 live
+>  \
+>   +- nvme5n1
+>   +- nvme5n2
+>   +- nvme5n3
 > 
-> Is it essential to modify the block layer to implement this behavior
-> change? Would it be possible to implement this behavior change by
-> modifying the NVMe driver only, e.g. by modifying the nvme_timeout()
-> function and by making that function return BLK_EH_RESET_TIMER while new
-> firmware is being activated?
+> Instead of:
+> ----------------
+> nvme-subsys4 - NQN=testsubsystem_0
+> \
+>  +- nvme4 rdma traddr=12.212.99.85 trsvcid=4420
+>  +- nvme5 rdma traddr=12.212.99.85 trsvcid=4420
 
-Good question.
-
-We can't just do this from nvme_timeout(), though. That introduces races
-between timeout_work and fw_act_work if that fw work clears the
-condition that timeout needs to observe to return RESET_TIMER.
-
-Even if we avoid that race, the rq->deadline needs to be adjusted to
-the current time after the h/w unpause because the time accumulated while
-h/w halted itself should not be counted against the request.
+This is a terrific start. Your output indicates you are not using
+nvme native multipathing, though. Could you retry this command with
+that enabled (I'll try it tomorrow as well)?
 
 _______________________________________________
 Linux-nvme mailing list
