@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66F9B278B3
-	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 11:02:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BE8F278B2
+	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 11:02:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,39 +11,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=3nMgzjDr5si0Xj+2nHF8LKlcEyMj+q+w57kkgiH4gwY=; b=YH21Ik80Ti3xIB8bAfRDRtpLur
-	niwcir2t+C+jpN5oYWV7QaSze2LRFgRdIoS1ZbWR+fVn08zCJXHwlUXwWPKtglYZg6Vz/llvOl2lw
-	OGYUaLNBbpqJ5AQInKx9ZJ7bd8sTmZ/CIUUvbdEkDmG86RB2vGfiy9GGzBV0qn0NOTsHTEYLdXsMO
-	mAaJWvYAfwY5me8ELQRzfY8wkbLZuN+dj5oVRy2i9o20igws2gPGgOSt9WsmBJOkAoR2iay44lq+Z
-	29vGGFcMbFsK6jy0MCqaeZwm/5fVGmzrG3Rhd2mZRvfB6OUh7smQ8YD0SBXpXSUAYjoJ3Ff0pcrJQ
-	1tM/wldg==;
+	bh=RqGK6N/Myrp661lAZdGlSouUoR5khOCXbeQJN323ZXY=; b=sXXepfCQ5aGJBOCHuITXIgG7dm
+	WZbJKxpNp1bMGoxEMFWmkZ7o9wQFxDJwIWklTKZy8s+6HdO+s74EeLv0kkeMDG3U7OeHmpnHab2NP
+	wB+FD7AgbUbivQ00P3OvrNyfo0L1UIU/NzEqIUFnKPf4fJcFrxOhSTPbsTW6+gy0Xg4yefC29/0Iv
+	8LuKLZE+OreGkiY4LDxF2vCd/Z5iHvZF8g8YWc3mjnkInpbU4zBgTcrOPQr5nzMnBIuiIPGfG1eO7
+	Ujq8FAZ3niQewFv4Br80SgLAORODZruEJZbasibv+9n9KtU8NTe8zkl9maVJwegg7M2V7FetiXNId
+	Bkj4qLIw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTjcS-0001RW-9T; Thu, 23 May 2019 09:02:36 +0000
+	id 1hTjcL-0001FG-FB; Thu, 23 May 2019 09:02:29 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTjb0-00086Y-3G
- for linux-nvme@lists.infradead.org; Thu, 23 May 2019 09:01:11 +0000
+ id 1hTjb0-00086b-3w
+ for linux-nvme@lists.infradead.org; Thu, 23 May 2019 09:01:10 +0000
 Received: from Internal Mail-Server by MTLPINE2 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 23 May 2019 12:01:00 +0300
 Received: from r-vnc08.mtr.labs.mlnx (r-vnc08.mtr.labs.mlnx [10.208.0.121])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4N90wUL007383;
- Thu, 23 May 2019 12:00:59 +0300
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4N90wUM007383;
+ Thu, 23 May 2019 12:01:00 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, sagi@grimberg.me,
  hch@lst.de
-Subject: [PATCH 8/9] nvme-print: Rename "Paths" --> "Ctrls" for json output in
- list-subsys
-Date: Thu, 23 May 2019 12:00:57 +0300
-Message-Id: <1558602058-29434-9-git-send-email-maxg@mellanox.com>
+Subject: [PATCH 9/9] nvme: Retrieve namespaces during list-subsys cmd
+Date: Thu, 23 May 2019 12:00:58 +0300
+Message-Id: <1558602058-29434-10-git-send-email-maxg@mellanox.com>
 X-Mailer: git-send-email 1.7.8.2
 In-Reply-To: <1558602058-29434-1-git-send-email-maxg@mellanox.com>
 References: <1558602058-29434-1-git-send-email-maxg@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_020106_655344_4B21388B 
-X-CRM114-Status: UNSURE (   6.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190523_020106_563426_A705479F 
+X-CRM114-Status: GOOD (  12.10  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -74,28 +72,308 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+Add an association between subsystems/ctrls/namespaces using
+"nvme list-subsys" command. Now this command will show the following:
+
+nvme-subsys3 - NQN=nqn.2014.08.org.nvmexpress:80868086CVCQ5234001C400AGN INTEL SSDPEDMW400G4
+\
+ +- nvme0 pcie 0000:08:00.0 live
+ \
+  +- nvme3n1
+nvme-subsys4 - NQN=testsubsystem_0
+\
+ +- nvme4 rdma traddr=1.212.99.85 trsvcid=4420 live
+ \
+  +- nvme4c1n1
+  +- nvme4c1n2
+  +- nvme4c1n3
+ +- nvme5 rdma traddr=1.212.99.85 trsvcid=4420 live
+ \
+  +- nvme4c2n1
+  +- nvme4c2n2
+  +- nvme4c2n3
+
+Instead of:
+----------------
+nvme-subsys3 - NQN=nqn.2014.08.org.nvmexpress:80868086CVCQ5234001C400AGN INTEL SSDPEDMW400G4
+\
+ +- nvme0 pcie 0000:08:00.0
+nvme-subsys4 - NQN=testsubsystem_0
+\
+ +- nvme4 rdma traddr=1.212.99.85 trsvcid=4420
+ +- nvme5 rdma traddr=1.212.99.85 trsvcid=4420
+
+The new json output is (partial):
+--------------------------
+{
+      "Name" : "nvme-subsys4",
+      "NQN" : "testsubsystem_0",
+      "Ctrls" : [
+        {
+          "Name" : "nvme4",
+          "Transport" : "rdma",
+          "Address" : "traddr=1.212.99.85 trsvcid=4420",
+          "State" : "live",
+          "Namespaces" : [
+            {
+              "Name" : "nvme4c1n1"
+            },
+            {
+              "Name" : "nvme4c1n2"
+            },
+            {
+              "Name" : "nvme4c1n3"
+            }
+          ]
+        },
+        {
+          "Name" : "nvme5",
+          "Transport" : "rdma",
+          "Address" : "traddr=1.212.99.85 trsvcid=4420",
+          "State" : "live",
+          "Namespaces" : [
+            {
+              "Name" : "nvme4c2n1"
+            },
+            {
+              "Name" : "nvme4c2n2"
+            },
+            {
+              "Name" : "nvme4c2n3"
+            }
+          ]
+        }
+      ]
+}
+
 Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- nvme-print.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ nvme-print.c |  23 ++++++++++++-
+ nvme.c       | 110 ++++++++++++++++++++++++++++++++++++++++++++---------------
+ nvme.h       |   6 ++++
+ 3 files changed, 111 insertions(+), 28 deletions(-)
 
 diff --git a/nvme-print.c b/nvme-print.c
-index 7e1f9ea..b3f08cf 100644
+index b3f08cf..7625559 100644
 --- a/nvme-print.c
 +++ b/nvme-print.c
-@@ -2904,10 +2904,8 @@ void json_print_nvme_subsystem_list(struct subsys_list_item *slist, int n)
+@@ -2845,8 +2845,15 @@ void json_sanitize_log(struct nvme_sanitize_log_page *sanitize_log, const char *
+ 
+ static void show_nvme_ctrl(struct ctrl_list_item *item)
+ {
++	int i;
++
+ 	printf(" +- %s %s %s %s\n", item->name, item->transport, item->address,
+ 	       item->state);
++	for (i = 0; i < item->ns_num; i++) {
++		if (!i)
++			printf(" \\\n");
++		printf("  +- %s\n", item->namespaces[i].name);
++	}
+ }
+ 
+ 
+@@ -2875,7 +2882,9 @@ void json_print_nvme_subsystem_list(struct subsys_list_item *slist, int n)
+ 	struct json_object *subsystem_attrs;
+ 	struct json_array *paths;
+ 	struct json_object *path_attrs;
+-	int i, j;
++	struct json_array *namespaces;
++	struct json_object *ns_attrs;
++	int i, j, k;
+ 
+ 	root = json_create_object();
+ 	subsystems = json_create_array();
+@@ -2902,6 +2911,18 @@ void json_print_nvme_subsystem_list(struct subsys_list_item *slist, int n)
+ 					slist[i].ctrls[j].address);
+ 			json_object_add_value_string(path_attrs, "State",
  					slist[i].ctrls[j].state);
++
++			namespaces = json_create_array();
++			for (k = 0; k < slist[i].ctrls[j].ns_num; k++) {
++				ns_attrs = json_create_object();
++				json_object_add_value_string(ns_attrs, "Name",
++							     slist[i].ctrls[j].namespaces[k].name);
++				json_array_add_value_object(namespaces, ns_attrs);
++			}
++			if (k)
++				json_object_add_value_array(path_attrs, "Namespaces",
++							    namespaces);
++
  			json_array_add_value_object(paths, path_attrs);
  		}
--		if (j) {
--			json_object_add_value_array(subsystem_attrs, "Paths", paths);
+ 		if (j)
+diff --git a/nvme.c b/nvme.c
+index 227615e..0ab63e8 100644
+--- a/nvme.c
++++ b/nvme.c
+@@ -60,6 +60,9 @@ const char *devicename;
+ 
+ static const char nvme_version_string[] = NVME_VERSION;
+ 
++static void free_ctrl_list_item(struct ctrl_list_item *ctrls);
++static char *get_nvme_ctrl_attr(char *path, const char *attr);
++
+ #define CREATE_CMD
+ #include "nvme-builtin.h"
+ 
+@@ -1309,6 +1312,76 @@ static void *get_registers(void)
+ 
+ static const char *subsys_dir = "/sys/class/nvme-subsystem/";
+ 
++static int scan_ns_filter(const struct dirent *d)
++{
++	int id, cntlid, nsid;
++
++	if (strstr(d->d_name, "nvme")) {
++		if (sscanf(d->d_name, "nvme%dc%dn%d", &id, &cntlid, &nsid) == 3)
++			return 1;
++		if (sscanf(d->d_name, "nvme%dn%d", &id, &nsid) == 2)
++			return 1;
++	}
++
++	return 0;
++}
++
++static int get_nvme_ctrl_info(char *name, char *ctrl_path,
++			      struct ctrl_list_item *item)
++{
++	struct dirent **namespaces;
++	int ret = 0, n, i;
++
++	item->name = strdup(name);
++
++	n = scandir(ctrl_path, &namespaces, scan_ns_filter, alphasort);
++	if (n < 0) {
++		fprintf(stderr, "failed to scan namespace(s).\n");
++		return n;
++	}
++
++	item->namespaces = calloc(n, sizeof(struct ns_list_item));
++	if (!item->namespaces) {
++		ret = -ENOMEM;
++		fprintf(stderr, "failed to allocate controller namespace(s)\n");
++		goto free_namespaces;
++	}
++
++	item->ns_num = n;
++
++	for (i = 0; i < n; i++)
++		item->namespaces[i].name = strdup(namespaces[i]->d_name);
++
++	item->address = get_nvme_ctrl_attr(ctrl_path, "address");
++	if (!item->address) {
++		fprintf(stderr, "failed to get %s address.\n", name);
++		free_ctrl_list_item(item);
++		ret = -EAGAIN;
++		goto free_namespaces;
++	}
++	item->transport = get_nvme_ctrl_attr(ctrl_path, "transport");
++	if (!item->transport) {
++		fprintf(stderr, "failed to get %s transport.\n", name);
++		free_ctrl_list_item(item);
++		ret = -EAGAIN;
++		goto free_namespaces;
++	}
++	item->state = get_nvme_ctrl_attr(ctrl_path, "state");
++	if (!item->state) {
++		fprintf(stderr, "failed to get %s state.\n", name);
++		free_ctrl_list_item(item);
++		ret = -EAGAIN;
++		goto free_namespaces;
++	}
++
++free_namespaces:
++	for (i = 0; i < n; i++)
++		free(namespaces[i]);
++	free(namespaces);
++
++	return ret;
++}
++
+ static char *get_nvme_subsnqn(char *path)
+ {
+ 	char sspath[320];
+@@ -1415,10 +1488,15 @@ static int scan_ctrls_filter(const struct dirent *d)
+ 
+ static void free_ctrl_list_item(struct ctrl_list_item *ctrls)
+ {
++	int i;
++
+ 	free(ctrls->name);
+ 	free(ctrls->transport);
+ 	free(ctrls->address);
+ 	free(ctrls->state);
++	for (i = 0; i < ctrls->ns_num; i++)
++		free(ctrls->namespaces[i].name);
++	free(ctrls->namespaces);
+ }
+ 
+ static int get_nvme_subsystem_info(char *name, char *path,
+@@ -1451,36 +1529,14 @@ static int get_nvme_subsystem_info(char *name, char *path,
+ 	item->nctrls = n;
+ 
+ 	for (i = 0; i < n; i++) {
+-		item->ctrls[ccnt].name = strdup(ctrls[i]->d_name);
+ 
+ 		snprintf(ctrl_path, sizeof(ctrl_path), "%s/%s", path,
+-			 item->ctrls[ccnt].name);
+-
+-		item->ctrls[ccnt].address =
+-				get_nvme_ctrl_attr(ctrl_path, "address");
+-		if (!item->ctrls[ccnt].address) {
+-			fprintf(stderr, "failed to get controller[%d] address.\n", i);
+-			free_ctrl_list_item(&item->ctrls[ccnt]);
+-			continue;
 -		}
 -
-+		if (j)
-+			json_object_add_value_array(subsystem_attrs, "Ctrls", paths);
+-		item->ctrls[ccnt].transport =
+-				get_nvme_ctrl_attr(ctrl_path, "transport");
+-		if (!item->ctrls[ccnt].transport) {
+-			fprintf(stderr, "failed to get controller[%d] transport.\n", i);
+-			free_ctrl_list_item(&item->ctrls[ccnt]);
+-			continue;
+-		}
+-
+-		item->ctrls[ccnt].state =
+-				get_nvme_ctrl_attr(ctrl_path, "state");
+-		if (!item->ctrls[ccnt].state) {
+-			fprintf(stderr, "failed to get controller[%d] state.\n", i);
+-			free_ctrl_list_item(&item->ctrls[ccnt]);
+-			continue;
+-		}
++			 ctrls[i]->d_name);
+ 
+-		ccnt++;
++		ret = get_nvme_ctrl_info(ctrls[i]->d_name, ctrl_path,
++					 &(item->ctrls[ccnt]));
++		if (!ret)
++			ccnt++;
  	}
  
- 	if (i)
+ 	item->nctrls = ccnt;
+diff --git a/nvme.h b/nvme.h
+index 7c444a4..84eaa9f 100644
+--- a/nvme.h
++++ b/nvme.h
+@@ -142,11 +142,17 @@ struct list_item {
+ 	unsigned            block;
+ };
+ 
++struct ns_list_item {
++	char *name;
++};
++
+ struct ctrl_list_item {
+ 	char *name;
+ 	char *address;
+ 	char *transport;
+ 	char *state;
++	int ns_num;
++	struct ns_list_item *namespaces;
+ };
+ 
+ struct subsys_list_item {
 -- 
 1.8.3.1
 
