@@ -2,67 +2,82 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DA70272C9
-	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 01:13:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 545AB274BA
+	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 05:18:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4SsE9EWZyfb8+ppxznAH9bOnjhtD4QWI2hFcESUJJxs=; b=cGaz+10P04mEBD
-	eFcaGMD/ZyR5UnWlTMnlCKejfDVbSSVvzLdR1V17dRdEvAZfvilzC3q1ic7kI3Me+76DkM47UBNaN
-	NFfNW3D7QXp0cJVmhs1ZjWsTC21xsUJZ6DDvfepqdxXy82upJLp5+AQmcj4H1T7ldAzwmm7HSWppO
-	zmW4E3zSO3APbeN9lBLqVOzh//ivJhJn/ZptBQNZplYQPIA6kCuH1rPLcenhaBv+gq3n/fpollYgH
-	XVArgjWfL71MjNYUAdFmMuZ4DeRI712/dHuaK6Tf0cuCmbZgOxcmhlSpG57ebVEWlhnmF2pe/+Oam
-	DqXBhiFL7l5p0XN9eNyQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=EnlpFBr4ldsEYdTWBNvHAUFVmiRjTr9fPn7cEHVgDLQ=; b=Gnqwqhae7zwkQY2KRgKsoWPK7
+	KEJj/hCHeL60unO/pwbqGMfB3XH1DuLP5cn7LAbr4jch60xFiM4JnlMBE2MUtJHC9aK2eTZtviA4/
+	w1Y/Cj8Np+OHkNs9dhxitJdtvr3KO+hPQ80hEdtXrpPLc4FD/g6q1Spuv84tFxNLjUEFo+EwDizRH
+	z7Xw8YA0U+WsDWy95mhVMLyRIpnC5onIwsygm9VJrtpDFK8Il1tiAJoDXt1axDdYqowXyuUNjl2+a
+	6RRJ6T/AgMwOY1KyjUyJfYWLzw8oZF+fDn9xs1f8dNfkZ6SPxA/aBpyhuXgpYgeNpcuaDOOugpoXv
+	2v9p6vDBA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTaQB-00028P-Cq; Wed, 22 May 2019 23:13:19 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1hTeF2-0001JA-VS; Thu, 23 May 2019 03:18:04 +0000
+Received: from mail-pf1-f178.google.com ([209.85.210.178])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTaQ6-00027w-K7
- for linux-nvme@lists.infradead.org; Wed, 22 May 2019 23:13:15 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 May 2019 16:13:13 -0700
-X-ExtLoop1: 1
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga002.jf.intel.com with ESMTP; 22 May 2019 16:13:12 -0700
-Date: Wed, 22 May 2019 17:08:10 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Mario.Limonciello@dell.com
-Subject: Re: [PATCHv2 6/6] nvme-pci: Use host managed power state for suspend
-Message-ID: <20190522230810.GA14049@localhost.localdomain>
-References: <CAJZ5v0hZSiQuuq2+P+uLd3uE=ruuTW+5DmAdjqcr39=7poUe-g@mail.gmail.com>
- <CAJZ5v0j0V10BYrME=KU1AJXGDMRUFFHiZEHQnsXhNJGPZKBSUw@mail.gmail.com>
- <20190517090521.GA15509@lst.de>
- <CAJZ5v0iL+ERE4Yy5yO8U2no194sRkvqNZHh5HsZXKvvHbxtk+g@mail.gmail.com>
- <20190517093516.GA17006@lst.de>
- <CAJZ5v0gLqL7GUjwz5F8=9Fc-W2n3FRzbbB2L8udaXgN4Vsd8-Q@mail.gmail.com>
- <D4CDCA72-A3B8-4717-9ED2-A14254C78963@canonical.com>
- <20190522155253.GA29827@lst.de>
- <20190522160221.GB5393@localhost.localdomain>
- <1558542950751.23268@Dell.com>
+ id 1hTeEy-0001II-4w
+ for linux-nvme@lists.infradead.org; Thu, 23 May 2019 03:18:01 +0000
+Received: by mail-pf1-f178.google.com with SMTP id z28so2424894pfk.0
+ for <linux-nvme@lists.infradead.org>; Wed, 22 May 2019 20:17:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=nWpDQmZNg8zKVk12QskQ7NNS05C4fI/JmZBKLdKyu8Q=;
+ b=pYzbnCQI+96hzjJRGp0w9j1PFUV3BBWI6qIfoE4rJkMDmXupHPrsdwBk33Ow5BwuRb
+ z7eNxqoiBXidEczABbTQqNkV/gbvwBwZxgJewCfCYsGFk6o5xwxcNWWan9G5oIygvyeX
+ aOgau9lpvAafeAvoS2y5pKbIQN44CifwwM/QioZyMI47DW1v4YWlPwbXfX7MmaSjtKRU
+ q4SkIBt0zAtvpOJm/gOS9dNBzjELVBKOVTdtQ4/ta2lOqTd1oyeb0VVUq+atFOvVeLWi
+ qwfm8Wzl9F1YJInpDfhEsaE6PP91DXrhxxo4/4SprTZgL66omwCtg2FMnFQMs2/D8O/R
+ otJA==
+X-Gm-Message-State: APjAAAX76BtdWguDoDBZxQ64QuVFG7Wzit6khs5v95xth0EXK2slfyg+
+ vkYfD32CgrttUSlLjJfxvP7Oh/HR
+X-Google-Smtp-Source: APXvYqzeuIjFYEy0LrT+H/Z9u3ntObHs0/OxR5mqIvn1bW1RuiaccV1bOJPCXssbxGxZcpDzo64JYw==
+X-Received: by 2002:a62:5e42:: with SMTP id s63mr97966801pfb.78.1558581478614; 
+ Wed, 22 May 2019 20:17:58 -0700 (PDT)
+Received: from ?IPv6:2601:647:4800:973f:c906:f7f5:4d80:8bc5?
+ ([2601:647:4800:973f:c906:f7f5:4d80:8bc5])
+ by smtp.gmail.com with ESMTPSA id e6sm46537482pfl.115.2019.05.22.20.17.57
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 22 May 2019 20:17:57 -0700 (PDT)
+Subject: Re: [PATCH] nvmet: get rid of extra line in the tcp code
+To: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+ linux-nvme@lists.infradead.org
+References: <20190515161044.25772-1-chaitanya.kulkarni@wdc.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <3d7daf4d-9bfa-ed4d-67a0-597da8e936a7@grimberg.me>
+Date: Wed, 22 May 2019 20:17:56 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1558542950751.23268@Dell.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+In-Reply-To: <20190515161044.25772-1-chaitanya.kulkarni@wdc.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190522_161314_675059_95C82396 
-X-CRM114-Status: GOOD (  11.18  )
-X-Spam-Score: -4.0 (----)
+X-CRM114-CacheID: sfid-20190522_201800_190713_7C1482F0 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-4.0 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [192.55.52.88 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.178 listed in list.dnswl.org]
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,26 +89,12 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: sagi@grimberg.me, rafael@kernel.org, linux-nvme@lists.infradead.org,
- keith.busch@intel.com, kai.heng.feng@canonical.com, hch@lst.de
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, May 22, 2019 at 04:35:50PM +0000, Mario.Limonciello@dell.com wrote:
-> >I've a branch here that I'll send to the mailing list after some testing
-> >this afternoon
-> 
->  > https://git.kernel.org/pub/scm/linux/kernel/git/kbusch/linux.git/log/?h=nvme-power
-> 
-> Make sure you do your testing with Rafael's patch that keeps the device in D0 across the
-> various suspend steps, I didn't see it obviously on your branch in the last 2 weeks of
-> commits.
-
-Well, I may have picked an unlucky rebase point. I can't run the tests,
-but it doesn't look like it has anything to do with the nvme changes. I'll
-go back to my original stable point and try again tomorrow.
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 
 _______________________________________________
 Linux-nvme mailing list
