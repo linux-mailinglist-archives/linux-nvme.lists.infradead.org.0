@@ -2,66 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD4132813F
-	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 17:32:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C6B228141
+	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 17:32:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kF0ReekLhj0Wh/Uec44In5q59f79ppBLQ6JETzo6g8I=; b=LPekBw9YqRZJKh
-	X8ScgFkjco9QNZwIRwICQMAT1GaTZLOdCw5m7sEWftSVQTzrkquba/yAsqufzciPsklc+qOOkrHLC
-	iToNHrCQ0+D62nkjS8EC7y8L2ER7JeEKsxuaqXiABFrQBz2L0IYPF0qd+Jtwq3uhLaBAJnwqRCMs9
-	rXd5T+9sL+UbD8U3ygif4Y4C3lZjwYzkd4Df5LcHriWyWsR4fY58tG21hz+SXEmFC94Pj6TEndkD+
-	mnC/1/5F36/Ij4HpNRDc3sj71SpZXep7soklbgnffSf9VDYTxeabX10/j/Lf3HEzOOl7I+55kyeiX
-	MyVUhQgZvdvtjS8QEbJg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=SKAsDAVLXSaa/xP+NhZfAYI/4vlink7UpfUsaSQ7MLI=; b=gTB
+	2wvH3vEgo7CLd4UDBlaJqnXFyB9XSY89op3xc5Enl3R/Ru9874E4DYNEe1nK+20MAI8mIAEQNfLrK
+	Nv9GI4U/pesOOruZ/zafONGTtHRLY0N/cF/Zi8GEJnZIRKOysLPZZtzN8MR6sC03m7VH94hpp+oh1
+	AEbE2QN4hDMYK7pc1PuAnmj59HK7PmNmObzH37IYN/HE9flVvS2E/3/8zJCZPZjfL3IPKwW3iHw5i
+	colkoPfaBRvdvP+Ct26w91lDABosKusM2wnLKKsFzcTK0d4zd1xAZBvmpKlj00FCkkKMjYW2U+RCf
+	QCAdt0ojZXp8i7FAU/w6V9ZZre9rEOw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTphe-0007Rm-1G; Thu, 23 May 2019 15:32:22 +0000
-Received: from mga06.intel.com ([134.134.136.31])
+	id 1hTphz-0007de-MG; Thu, 23 May 2019 15:32:43 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTphV-0007Pr-N6
- for linux-nvme@lists.infradead.org; Thu, 23 May 2019 15:32:15 +0000
-X-Amp-Result: UNSCANNABLE
+ id 1hTphu-0007d5-36
+ for linux-nvme@lists.infradead.org; Thu, 23 May 2019 15:32:39 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 May 2019 08:32:12 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 23 May 2019 08:32:37 -0700
 X-ExtLoop1: 1
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga006.jf.intel.com with ESMTP; 23 May 2019 08:32:12 -0700
-Date: Thu, 23 May 2019 09:27:11 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: "Mario.Limonciello@dell.com" <Mario.Limonciello@dell.com>
-Subject: Re: [PATCHv2 6/6] nvme-pci: Use host managed power state for suspend
-Message-ID: <20190523152710.GB14943@localhost.localdomain>
-References: <CAJZ5v0j0V10BYrME=KU1AJXGDMRUFFHiZEHQnsXhNJGPZKBSUw@mail.gmail.com>
- <20190517090521.GA15509@lst.de>
- <CAJZ5v0iL+ERE4Yy5yO8U2no194sRkvqNZHh5HsZXKvvHbxtk+g@mail.gmail.com>
- <20190517093516.GA17006@lst.de>
- <CAJZ5v0gLqL7GUjwz5F8=9Fc-W2n3FRzbbB2L8udaXgN4Vsd8-Q@mail.gmail.com>
- <D4CDCA72-A3B8-4717-9ED2-A14254C78963@canonical.com>
- <20190522155253.GA29827@lst.de>
- <20190522160221.GB5393@localhost.localdomain>
- <1558542950751.23268@Dell.com>
- <20190522230810.GA14049@localhost.localdomain>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190522230810.GA14049@localhost.localdomain>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+Received: from unknown (HELO localhost.lm.intel.com) ([10.232.112.69])
+ by orsmga008.jf.intel.com with ESMTP; 23 May 2019 08:32:37 -0700
+From: Keith Busch <keith.busch@intel.com>
+To: Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme@lists.infradead.org
+Subject: [PATCHv3 1/2] nvme: Export get and set features
+Date: Thu, 23 May 2019 09:27:34 -0600
+Message-Id: <20190523152735.15052-1-keith.busch@intel.com>
+X-Mailer: git-send-email 2.13.6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_083213_802707_159B716A 
-X-CRM114-Status: GOOD (  13.98  )
-X-Spam-Score: -1.3 (-)
+X-CRM114-CacheID: sfid-20190523_083238_179482_A8144600 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [134.134.136.31 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ medium trust [134.134.136.100 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,37 +62,89 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "sagi@grimberg.me" <sagi@grimberg.me>,
- "rafael@kernel.org" <rafael@kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>, "Busch,
- Keith" <keith.busch@intel.com>,
- "kai.heng.feng@canonical.com" <kai.heng.feng@canonical.com>,
- "hch@lst.de" <hch@lst.de>
+Cc: Keith Busch <keith.busch@intel.com>, Rafael Wysocki <rafael@kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, May 22, 2019 at 04:08:10PM -0700, Keith Busch wrote:
-> On Wed, May 22, 2019 at 04:35:50PM +0000, Mario.Limonciello@dell.com wrote:
-> > >I've a branch here that I'll send to the mailing list after some testing
-> > >this afternoon
-> > 
-> >  > https://git.kernel.org/pub/scm/linux/kernel/git/kbusch/linux.git/log/?h=nvme-power
-> > 
-> > Make sure you do your testing with Rafael's patch that keeps the device in D0 across the
-> > various suspend steps, I didn't see it obviously on your branch in the last 2 weeks of
-> > commits.
-> 
-> Well, I may have picked an unlucky rebase point. I can't run the tests,
-> but it doesn't look like it has anything to do with the nvme changes. I'll
-> go back to my original stable point and try again tomorrow.
+Future use intends to make use of both, so export these functions. And
+since their implementation is identical except for the opcode, provide a
+new function that implement both.
 
-Kernel repo was fine, I just had the wrong kconfig that was intended for my
-minimal vm's.
+Signed-off-by: Keith Busch <keith.busch@intel.com>
+---
+Change since v2: Use 'unsigned int' instead of just 'unsiged'
 
-Tests are successful now (though still only faking deeper NPSS), posting
-new series shortly.
+ drivers/nvme/host/core.c | 22 +++++++++++++++++++---
+ drivers/nvme/host/nvme.h |  4 ++++
+ 2 files changed, 23 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index f6879e417386..bf489800bf89 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1113,15 +1113,15 @@ static struct nvme_id_ns *nvme_identify_ns(struct nvme_ctrl *ctrl,
+ 	return id;
+ }
+ 
+-static int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword11,
+-		      void *buffer, size_t buflen, u32 *result)
++static int nvme_features(struct nvme_ctrl *dev, u8 op, unsigned int fid,
++		unsigned int dword11, void *buffer, size_t buflen, u32 *result)
+ {
+ 	struct nvme_command c;
+ 	union nvme_result res;
+ 	int ret;
+ 
+ 	memset(&c, 0, sizeof(c));
+-	c.features.opcode = nvme_admin_set_features;
++	c.features.opcode = op;
+ 	c.features.fid = cpu_to_le32(fid);
+ 	c.features.dword11 = cpu_to_le32(dword11);
+ 
+@@ -1132,6 +1132,22 @@ static int nvme_set_features(struct nvme_ctrl *dev, unsigned fid, unsigned dword
+ 	return ret;
+ }
+ 
++int nvme_set_features(struct nvme_ctrl *dev, unsigned int fid, unsigned int dword11,
++		      void *buffer, size_t buflen, u32 *result)
++{
++	return nvme_features(dev, nvme_admin_set_features, fid, dword11, buffer,
++			     buflen, result);
++}
++EXPORT_SYMBOL_GPL(nvme_set_features);
++
++int nvme_get_features(struct nvme_ctrl *dev, unsigned int fid, unsigned int dword11,
++		      void *buffer, size_t buflen, u32 *result)
++{
++	return nvme_features(dev, nvme_admin_get_features, fid, dword11, buffer,
++			     buflen, result);
++}
++EXPORT_SYMBOL_GPL(nvme_get_features);
++
+ int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count)
+ {
+ 	u32 q_count = (*count - 1) | ((*count - 1) << 16);
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 55553d293a98..c7f6ce548b66 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -459,6 +459,10 @@ int __nvme_submit_sync_cmd(struct request_queue *q, struct nvme_command *cmd,
+ 		union nvme_result *result, void *buffer, unsigned bufflen,
+ 		unsigned timeout, int qid, int at_head,
+ 		blk_mq_req_flags_t flags, bool poll);
++int nvme_set_features(struct nvme_ctrl *dev, unsigned int fid, unsigned int dword11,
++		      void *buffer, size_t buflen, u32 *result);
++int nvme_get_features(struct nvme_ctrl *dev, unsigned int fid, unsigned int dword11,
++		      void *buffer, size_t buflen, u32 *result);
+ int nvme_set_queue_count(struct nvme_ctrl *ctrl, int *count);
+ void nvme_stop_keep_alive(struct nvme_ctrl *ctrl);
+ int nvme_reset_ctrl(struct nvme_ctrl *ctrl);
+-- 
+2.14.4
+
 
 _______________________________________________
 Linux-nvme mailing list
