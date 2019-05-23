@@ -2,52 +2,123 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 099C127786
-	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 09:55:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B0D8C27796
+	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 10:02:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SZWvvpYI7fipt08GM5fLnawwj9fvkmbp71De+r8WvV4=; b=b8WDzjHdqSHp7t
-	5tu8xuf6dAnYHwJ1yGp2MwPBLAlgjNT/Uc/ugtN1f56od44Fh/L9bkBMl5lltnYttviuHkbuAjc9O
-	BukO+3jdvkOO0K6nO1Vit3iFBl98ekjlKW295HWdRpgTO1iYhD2wb65BkkCAtmWOoNnLvgO7zLics
-	sOcsZPVEYkA/bDMyyYobleH7+UfwNn0zMyvy3uC/ia4srgUOldab2h7gHEQRGBgoXA9orX/0881X6
-	7bztWCDyHHGptVbrdrGUesqBNIcp16nGMJDmuVSdGV0xzlY5D8c2jg75wxSvGadiceAJl6yGUhmZy
-	MjWPLK9ac73m/1zYzmKA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=bnv178J6uuGn0h1ZrsWVFELIVIdCrlToUxG4DxlH9RA=; b=aNS3ofW2N4S0NFkzInqXiS+1E
+	XOiGUZVOkPH43weJ7+yA0a6drfJ4HvAmdkiHZlB03EFFtQzYWhmB43fMMRFCoBq4f51d0ae4s/F+/
+	dGEK6FXAkhIfhkD+zX9DLwxZmlf8RLP9YNA2znKS3rz4GgHSLDH8qQ7os8xd5vnqIgjY5+/GB+Fnd
+	s3lOWJ+pHgWB6ME85aHtqpwrqplx7pVARCT6Se+9i6Gl63q9ITmSmbNEWoBK+VvbBh4HwfI61zCaP
+	ibPs0fGRaUicGA0sWvg4n/hP9bNPSzwJHDXtXJUikkejH69NU66ZX/j26X//NJ3AAC/bUlXo808BY
+	DruQxvbUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTiZs-0007tJ-T7; Thu, 23 May 2019 07:55:52 +0000
-Received: from stargate.chelsio.com ([12.32.117.8])
+	id 1hTify-00021M-12; Thu, 23 May 2019 08:02:10 +0000
+Received: from mail-eopbgr50067.outbound.protection.outlook.com ([40.107.5.67]
+ helo=EUR03-VE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTiZn-0007su-7A
- for linux-nvme@lists.infradead.org; Thu, 23 May 2019 07:55:49 +0000
-Received: from localhost (r10.asicdesigners.com [10.192.194.10])
- by stargate.chelsio.com (8.13.8/8.13.8) with ESMTP id x4N7tP0D004115;
- Thu, 23 May 2019 00:55:25 -0700
-Date: Thu, 23 May 2019 00:55:25 -0700
-From: Nirranjan Kirubaharan <nirranjan@chelsio.com>
-To: Max Gurtovoy <maxg@mellanox.com>
-Subject: Re: [PATCH] nvme-rdma: Fix a NULL deref when lesser io queues are
- allocated.
-Message-ID: <20190523075524.GA15479@chelsio.com>
-References: <2936d0e0de627fce13f78fca2ef93960aab0d929.1558534119.git.nirranjan@chelsio.com>
- <bf05c7f8-7a97-5e67-3476-b92c698a23a9@mellanox.com>
+ id 1hTifr-0001wp-PD
+ for linux-nvme@lists.infradead.org; Thu, 23 May 2019 08:02:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5oCC41tlhlFHvOriEIggVra1uLzOlKiax3LM9K2F/kM=;
+ b=FFE7K5Qi5NsWqheC7gLMqt9V8Btqs8bVDcSkMPguh9IWGD/rJfRhxs8fGixV2x6rBK3lWTba35IDoWhO9sNoKibiucvqaT5WuPyZlIelSFYawDNSiHCNfB5rBG7fqw2/tqe1r3awJVImOE++C1BaFKIaDel2Ug1Jp02WlG3C160=
+Received: from HE1PR05CA0348.eurprd05.prod.outlook.com (2603:10a6:7:92::43) by
+ AM0PR05MB6420.eurprd05.prod.outlook.com (2603:10a6:208:13f::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1900.18; Thu, 23 May
+ 2019 08:01:59 +0000
+Received: from AM5EUR03FT021.eop-EUR03.prod.protection.outlook.com
+ (2a01:111:f400:7e08::202) by HE1PR05CA0348.outlook.office365.com
+ (2603:10a6:7:92::43) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1922.17 via Frontend
+ Transport; Thu, 23 May 2019 08:01:59 +0000
+Authentication-Results: spf=pass (sender IP is 193.47.165.134)
+ smtp.mailfrom=mellanox.com; oracle.com; dkim=none (message not signed)
+ header.d=none;oracle.com; dmarc=pass action=none header.from=mellanox.com;
+Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
+ 193.47.165.134 as permitted sender)
+ receiver=protection.outlook.com; 
+ client-ip=193.47.165.134; helo=mtlcas13.mtl.com;
+Received: from mtlcas13.mtl.com (193.47.165.134) by
+ AM5EUR03FT021.mail.protection.outlook.com (10.152.16.105) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.1922.16 via Frontend Transport; Thu, 23 May 2019 08:01:58 +0000
+Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4; Thu, 23 May 2019 11:01:58
+ +0300
+Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Thu,
+ 23 May 2019 11:01:58 +0300
+Received: from [172.16.0.248] (172.16.0.248) by MTLCAS01.mtl.com (10.0.8.71)
+ with Microsoft SMTP Server (TLS) id 14.3.301.0; Thu, 23 May 2019 11:01:54
+ +0300
+Subject: Re: [PATCH 9/9] nvme: Retrieve namespaces during list-subsys cmd
+To: Keith Busch <keith.busch@intel.com>
+References: <1558543193-24752-1-git-send-email-maxg@mellanox.com>
+ <1558543193-24752-10-git-send-email-maxg@mellanox.com>
+ <20190522224955.GC5857@localhost.localdomain>
+From: Max Gurtovoy <maxg@mellanox.com>
+Message-ID: <0c677aa1-aa60-dddd-4a3f-a339545fee63@mellanox.com>
+Date: Thu, 23 May 2019 11:01:54 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <bf05c7f8-7a97-5e67-3476-b92c698a23a9@mellanox.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <20190522224955.GC5857@localhost.localdomain>
+Content-Language: en-US
+X-Originating-IP: [172.16.0.248]
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:193.47.165.134; IPV:NLI; CTRY:IL; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(136003)(376002)(39860400002)(346002)(396003)(2980300002)(199004)(189003)(6916009)(16526019)(186003)(77096007)(336012)(58126008)(16576012)(6246003)(31696002)(7736002)(65956001)(26005)(54906003)(65806001)(47776003)(86362001)(316002)(31686004)(2906002)(2870700001)(229853002)(486006)(8676002)(476003)(126002)(81156014)(5660300002)(11346002)(2616005)(446003)(6116002)(3846002)(8936002)(81166006)(65826007)(36756003)(23676004)(2486003)(305945005)(53546011)(50466002)(70206006)(70586007)(478600001)(64126003)(76176011)(356004)(106002)(107886003)(67846002)(4326008)(3940600001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:AM0PR05MB6420; H:mtlcas13.mtl.com; FPR:;
+ SPF:Pass; LANG:en; PTR:mail13.mellanox.com; A:1; MX:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 9a821e02-ab47-4b44-340f-08d6df54ee97
+X-Microsoft-Antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4709054)(2017052603328)(7193020);
+ SRVR:AM0PR05MB6420; 
+X-MS-TrafficTypeDiagnostic: AM0PR05MB6420:
+X-Microsoft-Antispam-PRVS: <AM0PR05MB64206456766EB8306B62BF09B6010@AM0PR05MB6420.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4714;
+X-Forefront-PRVS: 00462943DE
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Message-Info: ATPaBJcPBOQFaWGvbZA14uu+PoKYgQEmuSoH5zfQjcuivwIrkSII0TRg5zdzJ9iq/93ewbyJlJotxHoo5uag6OWg3F77BMs39sLJk76J3lMD8KkSKXOchgPFLt1L7kCjrbi7NHEk17QFXf5z4q94Nk6j7oOn3KBpmUnc3ShGEJiicrXBW2k56Ur8SKu1XBr9OFYhhJ9vkdfVsto6EV9JvIT2cxQ3ds0taLtcDTZqpDArs6iWbIp6h2WmNOYlVfmA9VPrfkwzXCt1FTKlAH+k+/ik9Hzw3KtPGNm7CyeDQ1AWNC+DpGjhMXTSvYFAGZEUDKIYvLQYfhTQQkGxeKdq92xHnfSfNpeA9eUbKEqpEW2Tek1tjDn5uNP6MRkoOGUZcACQ06oUvDY+vJbMm9jxhweMuaS/YZYhehesuvDBHWM=
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 May 2019 08:01:58.9454 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9a821e02-ab47-4b44-340f-08d6df54ee97
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.134];
+ Helo=[mtlcas13.mtl.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB6420
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_005547_273424_7E0EDD76 
-X-CRM114-Status: GOOD (  14.27  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190523_010203_828312_079A584F 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.5.67 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,108 +130,41 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: bharat@chelsio.com, sagi@grimberg.me, linux-nvme@lists.infradead.org,
+Cc: sagi@grimberg.me, martin.petersen@oracle.com,
+ linux-nvme@lists.infradead.org, shlomin@mellanox.com, kbusch@kernel.org,
  hch@lst.de
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thursday, May 05/23/19, 2019 at 10:21:46 +0300, Max Gurtovoy wrote:
-> 
-> On 5/23/2019 7:51 AM, Nirranjan Kirubaharan wrote:
-> >Return error -ENOMEM when nvmf target allocates lesser
-> >io queues than the number of io queues requested by nvmf
-> >initiator.
-> 
-> why can't we live with lesser queues ?
-
-In nvme_rdma_alloc_io_queues() ctrl->io_queues[] are already filled
-assuming all the requested no of queues will be allocated by the target.
-
-> 
-> I can demand 64K queues and the target might return 4 and it's fine
-> for functionality.
-> 
-> where is the NULL that you see ?
-
-In nvme_rdma_init_request() accessing unallocated queue_idx of
-ctrl->io_queues[] causes NULL deref.
-
-[  703.192172] RIP: 0010:nvme_rdma_init_request+0x31/0x140 [nvme_rdma]
-[  703.192173] Code: 55 31 ed 53 48 8b 47 60 48 89 f3 48 8d 48 08 48 39 cf 0f 84 fb 00 00 00 48 03 28 48 05 f8 02 00 00 be c0 0d 00 00 48 8b 55 20 <4c> 8b 22 48 89 83 28 01 00 00 ba 40 00 00 00 48 8b 3d a9 7b 42 f4
-[  703.192174] RSP: 0018:ffff9c36835bfc38 EFLAGS: 00010282
-[  703.192192] RAX: ffff8eb49c8b92f8 RBX: ffff8eb5a6e50000 RCX: ffff8eb49c8b9008
-[  703.192192] RDX: 0000000000000000 RSI: 0000000000000dc0 RDI: ffff8eb49c8b9008
-[  703.192193] RBP: ffff8eb5ad3c50e0 R08: 00000000119b9400 R09: ffff8eb5831d9520
-[  703.192194] R10: ffffc83e119b9400 R11: ffffc83e119b9800 R12: ffff8eb49c8b9008
-[  703.192194] R13: ffff8eb5831d9480 R14: 0000000000000000 R15: ffff8eb5a6e50000
-[  703.192195] FS:  00007fd6613bb780(0000) GS:ffff8eb5afbc0000(0000) knlGS:0000000000000000
-[  703.192196] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  703.192197] CR2: 0000000000000000 CR3: 00000004646a4005 CR4: 00000000003606e0
-[  703.192197] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[  703.192198] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[  703.192199] Call Trace:
-[  703.192206]  blk_mq_alloc_rqs+0x1f0/0x290
-[  703.192207]  __blk_mq_alloc_rq_map+0x46/0x80
-[  703.192209]  blk_mq_map_swqueue+0x1dd/0x2e0
-[  703.192210]  blk_mq_init_allocated_queue+0x3c8/0x430
-[  703.192211]  blk_mq_init_queue+0x35/0x60
-[  703.192213]  ? nvme_rdma_alloc_tagset+0x1bb/0x330 [nvme_rdma]
-[  703.192214]  nvme_rdma_setup_ctrl+0x420/0x7b0 [nvme_rdma]
-[  703.192215]  nvme_rdma_create_ctrl+0x29a/0x3d8 [nvme_rdma]
-[  703.192218]  nvmf_dev_write+0xa18/0xbff [nvme_fabrics]
-[  703.192222]  vfs_write+0xad/0x1b0
-[  703.192224]  ksys_write+0x5a/0xd0
-[  703.192228]  do_syscall_64+0x5b/0x180
-[  703.192231]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
-[  703.192232] RIP: 0033:0x7fd660cddc60
-[  703.192233] Code: 73 01 c3 48 8b 0d 30 62 2d 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 44 00 00 83 3d 3d c3 2d 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 ee cb 01 00 48 89 04 24
-[  703.192234] RSP: 002b:00007ffe8f58d928 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
-[  703.192235] RAX: ffffffffffffffda RBX: 0000000000000003 RCX: 00007fd660cddc60
-[  703.192236] RDX: 000000000000004d RSI: 00007ffe8f58e9a0 RDI: 0000000000000003
-[  703.192236] RBP: 00007ffe8f58e9a0 R08: 00007ffe8f58e9ed R09: 00007fd660c3b0fd
-[  703.192237] R10: 00000000ffffffff R11: 0000000000000246 R12: 000000000000004d
-[  703.192237] R13: 000000000151a500 R14: 000000000151a600 R15: 00007ffe8f58e9e0
-
-> 
-> 
-> >
-> >Signed-off-by: Nirranjan Kirubaharan <nirranjan@chelsio.com>
-> >Reviewed-by: Potnuri Bharat Teja <bharat@chelsio.com>
-> >---
-> >  drivers/nvme/host/rdma.c | 9 ++++++++-
-> >  1 file changed, 8 insertions(+), 1 deletion(-)
-> >
-> >diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
-> >index f383146e7d0f..187007d136cc 100644
-> >--- a/drivers/nvme/host/rdma.c
-> >+++ b/drivers/nvme/host/rdma.c
-> >@@ -641,7 +641,7 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
-> >  {
-> >  	struct nvmf_ctrl_options *opts = ctrl->ctrl.opts;
-> >  	struct ib_device *ibdev = ctrl->device->dev;
-> >-	unsigned int nr_io_queues;
-> >+	unsigned int nr_io_queues, nr_req_queues;
-> >  	int i, ret;
-> >  	nr_io_queues = min(opts->nr_io_queues, num_online_cpus());
-> >@@ -670,9 +670,16 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
-> >  		nr_io_queues += ctrl->io_queues[HCTX_TYPE_POLL];
-> >  	}
-> >+	nr_req_queues = nr_io_queues;
-> >  	ret = nvme_set_queue_count(&ctrl->ctrl, &nr_io_queues);
-> >  	if (ret)
-> >  		return ret;
-> >+	if (nr_io_queues < nr_req_queues) {
-> >+		dev_err(ctrl->ctrl.device,
-> >+			"alloc queues %u < req no of queues %u",
-> >+			nr_io_queues, nr_req_queues);
-> >+		return -ENOMEM;
-> >+	}
-> >  	ctrl->ctrl.queue_count = nr_io_queues + 1;
-> >  	if (ctrl->ctrl.queue_count < 2)
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+Ck9uIDUvMjMvMjAxOSAxOjQ5IEFNLCBLZWl0aCBCdXNjaCB3cm90ZToKPiBPbiBXZWQsIE1heSAy
+MiwgMjAxOSBhdCAwNzozOTo1M1BNICswMzAwLCBNYXggR3VydG92b3kgd3JvdGU6Cj4+IEFkZCBh
+biBhc3NvY2lhdGlvbiBiZXR3ZWVuIHN1YnN5c3RlbXMvY3RybHMvbmFtZXNwYWNlcyB1c2luZwo+
+PiAibnZtZSBsaXN0LXN1YnN5cyIgY29tbWFuZC4gTm93IHRoaXMgY29tbWFuZCB3aWxsIHNob3cg
+dGhlIGZvbGxvd2luZzoKPj4KPj4gbnZtZS1zdWJzeXM0IC0gTlFOPXRlc3RzdWJzeXN0ZW1fMAo+
+PiBcCj4+ICAgKy0gbnZtZTQgcmRtYSB0cmFkZHI9MTIuMjEyLjk5Ljg1IHRyc3ZjaWQ9NDQyMCBs
+aXZlCj4+ICAgXAo+PiAgICArLSBudm1lNG4xCj4+ICAgICstIG52bWU0bjIKPj4gICAgKy0gbnZt
+ZTRuMwo+PiAgICstIG52bWU1IHJkbWEgdHJhZGRyPTEyLjIxMi45OS44NSB0cnN2Y2lkPTQ0MjAg
+bGl2ZQo+PiAgIFwKPj4gICAgKy0gbnZtZTVuMQo+PiAgICArLSBudm1lNW4yCj4+ICAgICstIG52
+bWU1bjMKPj4KPj4gSW5zdGVhZCBvZjoKPj4gLS0tLS0tLS0tLS0tLS0tLQo+PiBudm1lLXN1YnN5
+czQgLSBOUU49dGVzdHN1YnN5c3RlbV8wCj4+IFwKPj4gICArLSBudm1lNCByZG1hIHRyYWRkcj0x
+Mi4yMTIuOTkuODUgdHJzdmNpZD00NDIwCj4+ICAgKy0gbnZtZTUgcmRtYSB0cmFkZHI9MTIuMjEy
+Ljk5Ljg1IHRyc3ZjaWQ9NDQyMAo+IFRoaXMgaXMgYSB0ZXJyaWZpYyBzdGFydC4gWW91ciBvdXRw
+dXQgaW5kaWNhdGVzIHlvdSBhcmUgbm90IHVzaW5nCj4gbnZtZSBuYXRpdmUgbXVsdGlwYXRoaW5n
+LCB0aG91Z2guIENvdWxkIHlvdSByZXRyeSB0aGlzIGNvbW1hbmQgd2l0aAo+IHRoYXQgZW5hYmxl
+ZCAoSSdsbCB0cnkgaXQgdG9tb3Jyb3cgYXMgd2VsbCk/CgpZdXAgSSdsbCBjb25maWd1cmUgdGhl
+IG5hdGl2ZSBtdWx0aXBhdGguIEJ1dCB3aGF0IGlzIGV4cGVjdGVkID8KCnNob3VsZCB3ZSBwcmlu
+dCBudm1lNGMxbjEvbnZtZTRjMW4yL252bWU0YzFuMyBmb3IgbnZtZTQKCmFuZCBudm1lNGMybjEv
+bnZtZTRjMm4yL252bWU0YzJuMyBmb3IgbnZtZTUgPwoKaWYgc28sIEkgZ3Vlc3MgdGhlIGluZm9y
+bWF0aW9uIG9uIHRoZSAiSU8tYmxlIiBkZXZpY2VzIApudm1lNG4xL252bWU0bjIvbnZtZTRuMyB3
+aWxsIG5vdCBiZSBwcmludGVkLgoKc29tZXRoaW5nIGxpa2U6Cgpudm1lLXN1YnN5czQgLSBOUU49
+dGVzdHN1YnN5c3RlbV8wClwKIMKgKy0gbnZtZTQgcmRtYSB0cmFkZHI9MTIuMjEyLjk5Ljg1IHRy
+c3ZjaWQ9NDQyMCBsaXZlCiDCoFwKIMKgICstIG52bWU0YzFuMQogwqAgKy0gbnZtZTRjMW4yCiDC
+oCArLSBudm1lNGMxbjMKIMKgKy0gbnZtZTUgcmRtYSB0cmFkZHI9MTIuMjEyLjk5Ljg1IHRyc3Zj
+aWQ9NDQyMCBsaXZlCiDCoFwKIMKgICstIG52bWU0YzJuMQogwqAgKy0gbnZtZTRjMm4yCiDCoCAr
+LSBudm1lNGMybjMKCgppZiB0aGlzIGlmIGZpbmUgSSdsbCBzZW5kIGEgVjIgd2l0aCBhIHNtYWxs
+IGZpeC4KCi1NYXguCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZt
+ZQo=
