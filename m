@@ -2,57 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6BE8F278B2
-	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 11:02:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 92C00279FE
+	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 12:04:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=RqGK6N/Myrp661lAZdGlSouUoR5khOCXbeQJN323ZXY=; b=sXXepfCQ5aGJBOCHuITXIgG7dm
-	WZbJKxpNp1bMGoxEMFWmkZ7o9wQFxDJwIWklTKZy8s+6HdO+s74EeLv0kkeMDG3U7OeHmpnHab2NP
-	wB+FD7AgbUbivQ00P3OvrNyfo0L1UIU/NzEqIUFnKPf4fJcFrxOhSTPbsTW6+gy0Xg4yefC29/0Iv
-	8LuKLZE+OreGkiY4LDxF2vCd/Z5iHvZF8g8YWc3mjnkInpbU4zBgTcrOPQr5nzMnBIuiIPGfG1eO7
-	Ujq8FAZ3niQewFv4Br80SgLAORODZruEJZbasibv+9n9KtU8NTe8zkl9maVJwegg7M2V7FetiXNId
-	Bkj4qLIw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ajJuESyUWsjKYHko3VYWrdYiqvMOh1SKJxTM7gw2knU=; b=OhznT4mlrHWC6I
+	MxNQtMxxUwGXPagxTUWI4EyqGLtgWmXR1EHA6rX5TjvobpE+qMIe8g9yBRkAyWRhk4xJAa0kaqnvX
+	v4gkQ8wPdAbHxZx5LcPA3Mqd5RDc32Cq5xRTNVPL6sx/e1S+NTkNVSfesxs0pDZ5xvvLhNS3xGDHe
+	27WW7+qsVM7nI660lu4SJvtjAInZBW0UNb+OUGO6H2rh51WtJJ1EDg+IUSbmDdD5k7pDFIpmDq4sV
+	8L95D+0mitU3sZq0aCypStXyjRZectFPB9vSkGOU/Fy9B3zCB0DYedMcozRbILMWPG5BG0oH5iy4q
+	+lfR5Kj4nL34c7GGqnxw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTjcL-0001FG-FB; Thu, 23 May 2019 09:02:29 +0000
-Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTjb0-00086b-3w
- for linux-nvme@lists.infradead.org; Thu, 23 May 2019 09:01:10 +0000
-Received: from Internal Mail-Server by MTLPINE2 (envelope-from
- maxg@mellanox.com)
- with ESMTPS (AES256-SHA encrypted); 23 May 2019 12:01:00 +0300
-Received: from r-vnc08.mtr.labs.mlnx (r-vnc08.mtr.labs.mlnx [10.208.0.121])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4N90wUM007383;
- Thu, 23 May 2019 12:01:00 +0300
-From: Max Gurtovoy <maxg@mellanox.com>
-To: linux-nvme@lists.infradead.org, kbusch@kernel.org, sagi@grimberg.me,
- hch@lst.de
-Subject: [PATCH 9/9] nvme: Retrieve namespaces during list-subsys cmd
-Date: Thu, 23 May 2019 12:00:58 +0300
-Message-Id: <1558602058-29434-10-git-send-email-maxg@mellanox.com>
-X-Mailer: git-send-email 1.7.8.2
-In-Reply-To: <1558602058-29434-1-git-send-email-maxg@mellanox.com>
-References: <1558602058-29434-1-git-send-email-maxg@mellanox.com>
+	id 1hTka9-0002ob-Sk; Thu, 23 May 2019 10:04:17 +0000
+Received: from mail-ed1-f65.google.com ([209.85.208.65])
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hTka4-0002oB-Pl
+ for linux-nvme@lists.infradead.org; Thu, 23 May 2019 10:04:14 +0000
+Received: by mail-ed1-f65.google.com with SMTP id f37so8348422edb.13
+ for <linux-nvme@lists.infradead.org>; Thu, 23 May 2019 03:04:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=OqWu9K98diHE/z+ycDwbyxcKok8JbJud6vPiwvkFCxI=;
+ b=iztwVAgKrkGzWrHrCA4mrL6/Q3f5MP+0vqDPeSyYaZp9Adx02RlIEP7soE614lvqrL
+ K6xsmfaDIgzRMs38b5rXAjcq/RCi4iMcF4pd/OPDd+2skrZKUtOH9pcbRli+lf5ojVRl
+ 8S8p6sSHjGYp7l8P62bzlty1T2o878+7zeNgnvoCWe8zehDNeRtigBmh1PcVkGUYDKZ2
+ seWHI6dxGGhiS6A1Co59bvGL0abBHOJYq5mnBQpsg8RnM8fx8LgAEncOJADa2pakMEu0
+ Tv+uvUg68Odd2OI1a+IAidM6wNhi0nGe1taGr+FJPO0MU97pYk13aoARU0XUnXqLarug
+ inUA==
+X-Gm-Message-State: APjAAAWdmZyxt0ZX0NpHfgGntTw7IBkHQ0LPoXXQJ9MU3XZACzqaogyr
+ BNQoRtSR1odgCtGoIDOD2+g=
+X-Google-Smtp-Source: APXvYqyITuiw9vIRuHQxE8jW7QXxyRWXQ9vaVzvRpfJ4PdoND8+7Sbsp/oa+1PuCZ9/ZvJgXNmVV9A==
+X-Received: by 2002:a17:906:6a97:: with SMTP id
+ p23mr23240666ejr.203.1558605851029; 
+ Thu, 23 May 2019 03:04:11 -0700 (PDT)
+Received: from [192.168.1.6] (178-117-55-239.access.telenet.be.
+ [178.117.55.239])
+ by smtp.gmail.com with ESMTPSA id j3sm7591001edh.82.2019.05.23.03.04.09
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 23 May 2019 03:04:10 -0700 (PDT)
+Subject: Re: [PATCH 0/2] Reset timeout for paused hardware
+To: Keith Busch <kbusch@kernel.org>
+References: <20190522174812.5597-1-keith.busch@intel.com>
+ <721e059e-ed88-734c-fea2-3637e6d31f4c@acm.org>
+ <20190522202805.GA5781@localhost.localdomain>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <83503209-cc83-7ca6-7775-638800626dfd@acm.org>
+Date: Thu, 23 May 2019 12:04:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <20190522202805.GA5781@localhost.localdomain>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190523_020106_563426_A705479F 
-X-CRM114-Status: GOOD (  12.10  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190523_030412_831389_1559A8BD 
+X-CRM114-Status: GOOD (  18.37  )
+X-Spam-Score: -0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [193.47.165.129 listed in list.dnswl.org]
+ no trust [209.85.208.65 listed in list.dnswl.org]
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (bart.vanassche[at]gmail.com)
+ -0.3 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.208.65 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,318 +92,58 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: shlomin@mellanox.com, maxg@mellanox.com, martin.petersen@oracle.com,
- minwoo.im@samsung.com
-MIME-Version: 1.0
+Cc: Jens Axboe <axboe@kernel.dk>, Keith Busch <keith.busch@intel.com>,
+ linux-nvme@lists.infradead.org, Ming Lei <ming.lei@redhat.com>,
+ linux-block@vger.kernel.org, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Add an association between subsystems/ctrls/namespaces using
-"nvme list-subsys" command. Now this command will show the following:
+On 5/22/19 10:28 PM, Keith Busch wrote:
+> On Wed, May 22, 2019 at 10:20:45PM +0200, Bart Van Assche wrote:
+>> On 5/22/19 7:48 PM, Keith Busch wrote:
+>>> Hardware may temporarily stop processing commands that have
+>>> been dispatched to it while activating new firmware. Some target
+>>> implementation's paused state time exceeds the default request expiry,
+>>> so any request dispatched before the driver could quiesce for the
+>>> hardware's paused state will time out, and handling this may interrupt
+>>> the firmware activation.
+>>>
+>>> This two-part series provides a way for drivers to reset dispatched
+>>> requests' timeout deadline, then uses this new mechanism from the nvme
+>>> driver's fw activation work.
+>>
+>> Hi Keith,
+>>
+>> Is it essential to modify the block layer to implement this behavior
+>> change? Would it be possible to implement this behavior change by
+>> modifying the NVMe driver only, e.g. by modifying the nvme_timeout()
+>> function and by making that function return BLK_EH_RESET_TIMER while new
+>> firmware is being activated?
+> 
+> Good question.
+> 
+> We can't just do this from nvme_timeout(), though. That introduces races
+> between timeout_work and fw_act_work if that fw work clears the
+> condition that timeout needs to observe to return RESET_TIMER.
+> 
+> Even if we avoid that race, the rq->deadline needs to be adjusted to
+> the current time after the h/w unpause because the time accumulated while
+> h/w halted itself should not be counted against the request.
 
-nvme-subsys3 - NQN=nqn.2014.08.org.nvmexpress:80868086CVCQ5234001C400AGN INTEL SSDPEDMW400G4
-\
- +- nvme0 pcie 0000:08:00.0 live
- \
-  +- nvme3n1
-nvme-subsys4 - NQN=testsubsystem_0
-\
- +- nvme4 rdma traddr=1.212.99.85 trsvcid=4420 live
- \
-  +- nvme4c1n1
-  +- nvme4c1n2
-  +- nvme4c1n3
- +- nvme5 rdma traddr=1.212.99.85 trsvcid=4420 live
- \
-  +- nvme4c2n1
-  +- nvme4c2n2
-  +- nvme4c2n3
+Hi Keith,
 
-Instead of:
-----------------
-nvme-subsys3 - NQN=nqn.2014.08.org.nvmexpress:80868086CVCQ5234001C400AGN INTEL SSDPEDMW400G4
-\
- +- nvme0 pcie 0000:08:00.0
-nvme-subsys4 - NQN=testsubsystem_0
-\
- +- nvme4 rdma traddr=1.212.99.85 trsvcid=4420
- +- nvme5 rdma traddr=1.212.99.85 trsvcid=4420
+How about recording the time at which the firmware upgrade finished and
+making nvme_timeout() return RESET_TIMER if either a firmware upgrade is
+in progress or if it has finished less than (request timeout) seconds
+ago? The reason I'm asking this is because I'm concerned that the
+patches you posted would need a careful review to see whether or not
+these trigger new race conditions.
 
-The new json output is (partial):
---------------------------
-{
-      "Name" : "nvme-subsys4",
-      "NQN" : "testsubsystem_0",
-      "Ctrls" : [
-        {
-          "Name" : "nvme4",
-          "Transport" : "rdma",
-          "Address" : "traddr=1.212.99.85 trsvcid=4420",
-          "State" : "live",
-          "Namespaces" : [
-            {
-              "Name" : "nvme4c1n1"
-            },
-            {
-              "Name" : "nvme4c1n2"
-            },
-            {
-              "Name" : "nvme4c1n3"
-            }
-          ]
-        },
-        {
-          "Name" : "nvme5",
-          "Transport" : "rdma",
-          "Address" : "traddr=1.212.99.85 trsvcid=4420",
-          "State" : "live",
-          "Namespaces" : [
-            {
-              "Name" : "nvme4c2n1"
-            },
-            {
-              "Name" : "nvme4c2n2"
-            },
-            {
-              "Name" : "nvme4c2n3"
-            }
-          ]
-        }
-      ]
-}
+Thanks,
 
-Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
----
- nvme-print.c |  23 ++++++++++++-
- nvme.c       | 110 ++++++++++++++++++++++++++++++++++++++++++++---------------
- nvme.h       |   6 ++++
- 3 files changed, 111 insertions(+), 28 deletions(-)
-
-diff --git a/nvme-print.c b/nvme-print.c
-index b3f08cf..7625559 100644
---- a/nvme-print.c
-+++ b/nvme-print.c
-@@ -2845,8 +2845,15 @@ void json_sanitize_log(struct nvme_sanitize_log_page *sanitize_log, const char *
- 
- static void show_nvme_ctrl(struct ctrl_list_item *item)
- {
-+	int i;
-+
- 	printf(" +- %s %s %s %s\n", item->name, item->transport, item->address,
- 	       item->state);
-+	for (i = 0; i < item->ns_num; i++) {
-+		if (!i)
-+			printf(" \\\n");
-+		printf("  +- %s\n", item->namespaces[i].name);
-+	}
- }
- 
- 
-@@ -2875,7 +2882,9 @@ void json_print_nvme_subsystem_list(struct subsys_list_item *slist, int n)
- 	struct json_object *subsystem_attrs;
- 	struct json_array *paths;
- 	struct json_object *path_attrs;
--	int i, j;
-+	struct json_array *namespaces;
-+	struct json_object *ns_attrs;
-+	int i, j, k;
- 
- 	root = json_create_object();
- 	subsystems = json_create_array();
-@@ -2902,6 +2911,18 @@ void json_print_nvme_subsystem_list(struct subsys_list_item *slist, int n)
- 					slist[i].ctrls[j].address);
- 			json_object_add_value_string(path_attrs, "State",
- 					slist[i].ctrls[j].state);
-+
-+			namespaces = json_create_array();
-+			for (k = 0; k < slist[i].ctrls[j].ns_num; k++) {
-+				ns_attrs = json_create_object();
-+				json_object_add_value_string(ns_attrs, "Name",
-+							     slist[i].ctrls[j].namespaces[k].name);
-+				json_array_add_value_object(namespaces, ns_attrs);
-+			}
-+			if (k)
-+				json_object_add_value_array(path_attrs, "Namespaces",
-+							    namespaces);
-+
- 			json_array_add_value_object(paths, path_attrs);
- 		}
- 		if (j)
-diff --git a/nvme.c b/nvme.c
-index 227615e..0ab63e8 100644
---- a/nvme.c
-+++ b/nvme.c
-@@ -60,6 +60,9 @@ const char *devicename;
- 
- static const char nvme_version_string[] = NVME_VERSION;
- 
-+static void free_ctrl_list_item(struct ctrl_list_item *ctrls);
-+static char *get_nvme_ctrl_attr(char *path, const char *attr);
-+
- #define CREATE_CMD
- #include "nvme-builtin.h"
- 
-@@ -1309,6 +1312,76 @@ static void *get_registers(void)
- 
- static const char *subsys_dir = "/sys/class/nvme-subsystem/";
- 
-+static int scan_ns_filter(const struct dirent *d)
-+{
-+	int id, cntlid, nsid;
-+
-+	if (strstr(d->d_name, "nvme")) {
-+		if (sscanf(d->d_name, "nvme%dc%dn%d", &id, &cntlid, &nsid) == 3)
-+			return 1;
-+		if (sscanf(d->d_name, "nvme%dn%d", &id, &nsid) == 2)
-+			return 1;
-+	}
-+
-+	return 0;
-+}
-+
-+static int get_nvme_ctrl_info(char *name, char *ctrl_path,
-+			      struct ctrl_list_item *item)
-+{
-+	struct dirent **namespaces;
-+	int ret = 0, n, i;
-+
-+	item->name = strdup(name);
-+
-+	n = scandir(ctrl_path, &namespaces, scan_ns_filter, alphasort);
-+	if (n < 0) {
-+		fprintf(stderr, "failed to scan namespace(s).\n");
-+		return n;
-+	}
-+
-+	item->namespaces = calloc(n, sizeof(struct ns_list_item));
-+	if (!item->namespaces) {
-+		ret = -ENOMEM;
-+		fprintf(stderr, "failed to allocate controller namespace(s)\n");
-+		goto free_namespaces;
-+	}
-+
-+	item->ns_num = n;
-+
-+	for (i = 0; i < n; i++)
-+		item->namespaces[i].name = strdup(namespaces[i]->d_name);
-+
-+	item->address = get_nvme_ctrl_attr(ctrl_path, "address");
-+	if (!item->address) {
-+		fprintf(stderr, "failed to get %s address.\n", name);
-+		free_ctrl_list_item(item);
-+		ret = -EAGAIN;
-+		goto free_namespaces;
-+	}
-+	item->transport = get_nvme_ctrl_attr(ctrl_path, "transport");
-+	if (!item->transport) {
-+		fprintf(stderr, "failed to get %s transport.\n", name);
-+		free_ctrl_list_item(item);
-+		ret = -EAGAIN;
-+		goto free_namespaces;
-+	}
-+	item->state = get_nvme_ctrl_attr(ctrl_path, "state");
-+	if (!item->state) {
-+		fprintf(stderr, "failed to get %s state.\n", name);
-+		free_ctrl_list_item(item);
-+		ret = -EAGAIN;
-+		goto free_namespaces;
-+	}
-+
-+free_namespaces:
-+	for (i = 0; i < n; i++)
-+		free(namespaces[i]);
-+	free(namespaces);
-+
-+	return ret;
-+}
-+
- static char *get_nvme_subsnqn(char *path)
- {
- 	char sspath[320];
-@@ -1415,10 +1488,15 @@ static int scan_ctrls_filter(const struct dirent *d)
- 
- static void free_ctrl_list_item(struct ctrl_list_item *ctrls)
- {
-+	int i;
-+
- 	free(ctrls->name);
- 	free(ctrls->transport);
- 	free(ctrls->address);
- 	free(ctrls->state);
-+	for (i = 0; i < ctrls->ns_num; i++)
-+		free(ctrls->namespaces[i].name);
-+	free(ctrls->namespaces);
- }
- 
- static int get_nvme_subsystem_info(char *name, char *path,
-@@ -1451,36 +1529,14 @@ static int get_nvme_subsystem_info(char *name, char *path,
- 	item->nctrls = n;
- 
- 	for (i = 0; i < n; i++) {
--		item->ctrls[ccnt].name = strdup(ctrls[i]->d_name);
- 
- 		snprintf(ctrl_path, sizeof(ctrl_path), "%s/%s", path,
--			 item->ctrls[ccnt].name);
--
--		item->ctrls[ccnt].address =
--				get_nvme_ctrl_attr(ctrl_path, "address");
--		if (!item->ctrls[ccnt].address) {
--			fprintf(stderr, "failed to get controller[%d] address.\n", i);
--			free_ctrl_list_item(&item->ctrls[ccnt]);
--			continue;
--		}
--
--		item->ctrls[ccnt].transport =
--				get_nvme_ctrl_attr(ctrl_path, "transport");
--		if (!item->ctrls[ccnt].transport) {
--			fprintf(stderr, "failed to get controller[%d] transport.\n", i);
--			free_ctrl_list_item(&item->ctrls[ccnt]);
--			continue;
--		}
--
--		item->ctrls[ccnt].state =
--				get_nvme_ctrl_attr(ctrl_path, "state");
--		if (!item->ctrls[ccnt].state) {
--			fprintf(stderr, "failed to get controller[%d] state.\n", i);
--			free_ctrl_list_item(&item->ctrls[ccnt]);
--			continue;
--		}
-+			 ctrls[i]->d_name);
- 
--		ccnt++;
-+		ret = get_nvme_ctrl_info(ctrls[i]->d_name, ctrl_path,
-+					 &(item->ctrls[ccnt]));
-+		if (!ret)
-+			ccnt++;
- 	}
- 
- 	item->nctrls = ccnt;
-diff --git a/nvme.h b/nvme.h
-index 7c444a4..84eaa9f 100644
---- a/nvme.h
-+++ b/nvme.h
-@@ -142,11 +142,17 @@ struct list_item {
- 	unsigned            block;
- };
- 
-+struct ns_list_item {
-+	char *name;
-+};
-+
- struct ctrl_list_item {
- 	char *name;
- 	char *address;
- 	char *transport;
- 	char *state;
-+	int ns_num;
-+	struct ns_list_item *namespaces;
- };
- 
- struct subsys_list_item {
--- 
-1.8.3.1
+Bart.
 
 
 _______________________________________________
