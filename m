@@ -2,104 +2,48 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4935E27531
-	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 06:25:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FE1927545
+	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 06:52:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:Date:Message-ID:
-	In-Reply-To:To:From:Subject:Mime-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GmyHRT31PdDe0ikefPrbTgN+E9XB8rbekEv1htcHWyo=; b=r1247IyHosGSeQ
-	hwGRwO+x3BA2LwLcFZSO5HQG1kGaYxT5+ad8KUDHIg1wJ8gMt16971G9N+vAtqcJLg+Y/SvHL4uWP
-	KHGADLWYIPmrRpK960vaRBH6bH0Ii1hjxj93NnuH5dQyEpSNVpgKGPkXaZ2UP+T8JE0Vxz9Z5GCfF
-	OyJXLwRXaDv9qSqWEbEzj0WRW/o2SGrTrMxMq6Qva34wnl0swKvPZSJ4Id+SHkxhD48F/zbjDuGPc
-	GN61YoD0LthoJ8wOb0Az1EFagbWQsUk8Ye+xSKfTKgXaEToMOv8jxjgQqZ1JGkIbSIuExLe8dTXVB
-	kjWZYIgVAeQOYCqC4A4A==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=igt9NJO1SxRAww8WOM1EvOfWkUafI8rdxvgLJKoSnJ0=; b=VoJ
+	uEyrCA+GQHXLVT5q87dhiVsGKK4LJ37Bx3yVduA0h32McQsuq6UNv7q1gB9keiwoCZRHR924/QY60
+	ZqIIpNqWA1ubznHTB3v+7d1i79lvSEeyWDNmY6SfQugiNYDgry/R/C9MhpD41UxNfI6YOWsqE2mMH
+	VQfN5mOIv/Ug3zi/TixH8Yru7L8ZwvYla/YXIXxUqXoXa4R04HHHx4IW6+hgFjg5e2mQ63XgplBvn
+	suRlRb8LbggGJmJRjx9wPUJTz31i5jfTvYYbHNofEpcQbNxkeZdTA37zzbQJjlXcuv5W15W2bhryN
+	yN0lxfNlsaSdzHohxeVjf89Tk2ZBJIw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTfIL-00065K-Si; Thu, 23 May 2019 04:25:33 +0000
-Received: from mailout3.samsung.com ([203.254.224.33])
+	id 1hTfiJ-0005wh-6D; Thu, 23 May 2019 04:52:23 +0000
+Received: from stargate.chelsio.com ([12.32.117.8])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTfIG-00064x-M4
- for linux-nvme@lists.infradead.org; Thu, 23 May 2019 04:25:30 +0000
-Received: from epcas2p1.samsung.com (unknown [182.195.41.53])
- by mailout3.samsung.com (KnoxPortal) with ESMTP id
- 20190523042525epoutp036e1d5b0a140691a0d0099abd0d4ff228~hNUcvi1hp0453904539epoutp03p
- for <linux-nvme@lists.infradead.org>; Thu, 23 May 2019 04:25:25 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
- 20190523042525epoutp036e1d5b0a140691a0d0099abd0d4ff228~hNUcvi1hp0453904539epoutp03p
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1558585525;
- bh=Km1NkyRWuesFbs0EPspgWB/Elu/QKkJ+qYkVSc1HBys=;
- h=Subject:Reply-To:From:To:CC:In-Reply-To:Date:References:From;
- b=Y0qYQOuAqYjlBcibyikCJ14X0eBEM+qcm55sXYq5+lSlbHge+zySCZ3VG7TJrNEr3
- hXwe34s6olswR1qBJoM4vdKRwfNF+I5uqVvhoPWFldNfwKz866OXaC4J7QRs7KA9Oo
- bi+wswgnthqMY8qPWoan/N2JNGaScNT4O9zc2Vrs=
-Received: from epsmges2p4.samsung.com (unknown [182.195.40.190]) by
- epcas2p3.samsung.com (KnoxPortal) with ESMTP id
- 20190523042523epcas2p381ff2fa1717eaa73d9d162b1ef216961~hNUafa03-1244212442epcas2p37;
- Thu, 23 May 2019 04:25:23 +0000 (GMT)
-X-AuditID: b6c32a48-6a1ff7000000106f-dd-5ce620b11148
-Received: from epcas2p1.samsung.com ( [182.195.41.53]) by
- epsmges2p4.samsung.com (Symantec Messaging Gateway) with SMTP id
- F3.A8.04207.1B026EC5; Thu, 23 May 2019 13:25:21 +0900 (KST)
-Mime-Version: 1.0
-Subject: Re: [PATCH V4 0/3] nvme-cli: Introduce nvme-status mapping with errno
-From: Minwoo Im <minwoo.im@samsung.com>
-To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-X-Priority: 3
-X-Content-Kind-Code: NORMAL
-In-Reply-To: <20190521163659.24577-1-minwoo.im.dev@gmail.com>
-X-Drm-Type: N,general
-X-Msg-Generator: Mail
-X-Msg-Type: PERSONAL
-X-Reply-Demand: N
-Message-ID: <20190523042520epcms2p628bb1f47d8e02979fc3edc214cf488c5@epcms2p6>
-Date: Thu, 23 May 2019 13:25:20 +0900
-X-CMS-MailID: 20190523042520epcms2p628bb1f47d8e02979fc3edc214cf488c5
-X-Sendblock-Type: AUTO_CONFIDENTIAL
-CMS-TYPE: 102P
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrIKsWRmVeSWpSXmKPExsWy7bCmqe5GhWcxBqtusVncO/qFyWL+sqfs
- Fr86uR2YPXbOusvusXjPSyaPzUvqA5ijcmwyUhNTUosUUvOS81My89JtlbyD453jTc0MDHUN
- LS3MlRTyEnNTbZVcfAJ03TJzgPYoKZQl5pQChQISi4uV9O1sivJLS1IVMvKLS2yVUgtScgoM
- DQv0ihNzi0vz0vWS83OtDA0MjEyBKhNyMo6fesdcUFPROH06SwNjQhcjJ4eEgInEn9PT2bsY
- uTiEBHYwSmyc1Q3kcHDwCghK/N0hDFIjLBAgseT2ShaQsJCAvMSPVwYQYU2Jd7vPsILYbALq
- Eg1TX7GA2CICrhK7l+5iBLGZBXwk9l1ZzQSxildiRvtTFghbWmL78q1gNZwCthIHn31ihYiL
- Stxc/ZYdxn5/bD4jhC0i0XrvLDOELSjx4OduRpBzJAQkJO69s4Mw6yW2rLAAeURCoIVR4sab
- tVCt+hKNzz+CreUV8JW4eG0/2CoWAVWJ91OmQq11kTiyfgITxMnyEtvfzmEGmckM9OL6XfoQ
- 45Uljtxigajgk+g4/Jcd5qkd855APags8fHQIagjJSWWX3rNBmF7SPxv6IKGMdBps5puM01g
- VJiFCOZZSBbPQli8gJF5FaNYakFxbnpqsVGBCXK8bmIEJzctjx2MB875HGIU4GBU4uHNMH8a
- I8SaWFZcmXuIUYKDWUmE9/SpRzFCvCmJlVWpRfnxRaU5qcWHGE2B/p/ILCWanA9MvHkl8Yam
- RmZmBpamFqZmRhZK4rybuG/GCAmkJ5akZqemFqQWwfQxcXBKNTBqFd1z3aJmY7BX57No57Ub
- PDemzfphyPV92d32hv5Dv5kUv7z0nb9+U9GZV7emTTnOoTWJwdCg64iR0JuuU4ejnmwLkTPx
- vmSX7/FE0N+Rd6Lo/7mnP6YXbf30qtnxLMuaI7PuMsx9EumfVbbfcnmIzsl9t7z/PvVmuvLt
- o+jrmcv/T1uapN7DqsRSnJFoqMVcVJwIAFjyjO+EAwAA
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20190521163721epcas4p4d6e9ae0a49fde40f38fa770406538335
-References: <20190521163659.24577-1-minwoo.im.dev@gmail.com>
- <CGME20190521163721epcas4p4d6e9ae0a49fde40f38fa770406538335@epcms2p6>
+ id 1hTfiD-0005wQ-6A
+ for linux-nvme@lists.infradead.org; Thu, 23 May 2019 04:52:19 +0000
+Received: from localhost (r10.asicdesigners.com [10.192.194.10])
+ by stargate.chelsio.com (8.13.8/8.13.8) with ESMTP id x4N4psxd003189;
+ Wed, 22 May 2019 21:51:54 -0700
+From: Nirranjan Kirubaharan <nirranjan@chelsio.com>
+To: nirranjan@chelsio.com, bharat@chelsio.com, sagi@grimberg.me, hch@lst.de
+Subject: [PATCH] nvme-rdma: Fix a NULL deref when lesser io queues are
+ allocated.
+Date: Wed, 22 May 2019 21:51:47 -0700
+Message-Id: <2936d0e0de627fce13f78fca2ef93960aab0d929.1558534119.git.nirranjan@chelsio.com>
+X-Mailer: git-send-email 1.8.3.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190522_212528_893094_8E1380B4 
-X-CRM114-Status: GOOD (  12.89  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190522_215217_240425_82C7F274 
+X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [203.254.224.33 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,17 +55,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Reply-To: minwoo.im@samsung.com
-Cc: Keith Busch <keith.busch@intel.com>, Minwoo Im <minwoo.im.dev@gmail.com>
+Cc: linux-nvme@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Please do not review on this series yet.  I seems like to fix
-multi-return in the subcommands also.
+Return error -ENOMEM when nvmf target allocates lesser
+io queues than the number of io queues requested by nvmf
+initiator.
 
-Will post V5 soon.
+Signed-off-by: Nirranjan Kirubaharan <nirranjan@chelsio.com>
+Reviewed-by: Potnuri Bharat Teja <bharat@chelsio.com>
+---
+ drivers/nvme/host/rdma.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+index f383146e7d0f..187007d136cc 100644
+--- a/drivers/nvme/host/rdma.c
++++ b/drivers/nvme/host/rdma.c
+@@ -641,7 +641,7 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+ {
+ 	struct nvmf_ctrl_options *opts = ctrl->ctrl.opts;
+ 	struct ib_device *ibdev = ctrl->device->dev;
+-	unsigned int nr_io_queues;
++	unsigned int nr_io_queues, nr_req_queues;
+ 	int i, ret;
+ 
+ 	nr_io_queues = min(opts->nr_io_queues, num_online_cpus());
+@@ -670,9 +670,16 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+ 		nr_io_queues += ctrl->io_queues[HCTX_TYPE_POLL];
+ 	}
+ 
++	nr_req_queues = nr_io_queues;
+ 	ret = nvme_set_queue_count(&ctrl->ctrl, &nr_io_queues);
+ 	if (ret)
+ 		return ret;
++	if (nr_io_queues < nr_req_queues) {
++		dev_err(ctrl->ctrl.device,
++			"alloc queues %u < req no of queues %u",
++			nr_io_queues, nr_req_queues);
++		return -ENOMEM;
++	}
+ 
+ 	ctrl->ctrl.queue_count = nr_io_queues + 1;
+ 	if (ctrl->ctrl.queue_count < 2)
+-- 
+1.8.3.1
+
 
 _______________________________________________
 Linux-nvme mailing list
