@@ -2,87 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3659127505
-	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 06:23:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4935E27531
+	for <lists+linux-nvme@lfdr.de>; Thu, 23 May 2019 06:25:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:Date:Message-ID:
 	In-Reply-To:To:From:Subject:Mime-Version:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9970mRUZdfaJhJurwlu+a6CGdQ4yReQmg2wWwPuExxU=; b=o/K5ZtcN+AQb1F
-	yRl6fGXtb10bvj4XUcmqzWKeSKO4K9La180HfWRrhCIhEyDu0x65VV1kXBYjAvWaLkYmqXQpntadI
-	POH7flDGpHKNjvdlwckiGIeI6ikv8YEsL9TTSEOJYt2ksJCQ60dxs6WOfdSlwSoyxvx1ZXiC+vimg
-	RGyPcsiPc9yYq2OJG9hkNvqJE8vHEWRAWBU0JpKWyyLkUgoQRWx0GpJ3i9wJCBnfaHuCneU/2Kjft
-	z4bt+SrYytd2P+YS6jPqkR8wSCLT/et42lVA8jMSAC2iVYvG4N3PME4KXG0lTeNFppKTFCYQ2roY0
-	lgMQUNPMqJt38rHhKklw==;
+	List-Owner; bh=GmyHRT31PdDe0ikefPrbTgN+E9XB8rbekEv1htcHWyo=; b=r1247IyHosGSeQ
+	hwGRwO+x3BA2LwLcFZSO5HQG1kGaYxT5+ad8KUDHIg1wJ8gMt16971G9N+vAtqcJLg+Y/SvHL4uWP
+	KHGADLWYIPmrRpK960vaRBH6bH0Ii1hjxj93NnuH5dQyEpSNVpgKGPkXaZ2UP+T8JE0Vxz9Z5GCfF
+	OyJXLwRXaDv9qSqWEbEzj0WRW/o2SGrTrMxMq6Qva34wnl0swKvPZSJ4Id+SHkxhD48F/zbjDuGPc
+	GN61YoD0LthoJ8wOb0Az1EFagbWQsUk8Ye+xSKfTKgXaEToMOv8jxjgQqZ1JGkIbSIuExLe8dTXVB
+	kjWZYIgVAeQOYCqC4A4A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hTfFn-0004fH-F1; Thu, 23 May 2019 04:22:55 +0000
+	id 1hTfIL-00065K-Si; Thu, 23 May 2019 04:25:33 +0000
 Received: from mailout3.samsung.com ([203.254.224.33])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hTfFh-0004ex-Sj
- for linux-nvme@lists.infradead.org; Thu, 23 May 2019 04:22:51 +0000
-Received: from epcas2p4.samsung.com (unknown [182.195.41.56])
+ id 1hTfIG-00064x-M4
+ for linux-nvme@lists.infradead.org; Thu, 23 May 2019 04:25:30 +0000
+Received: from epcas2p1.samsung.com (unknown [182.195.41.53])
  by mailout3.samsung.com (KnoxPortal) with ESMTP id
- 20190523042246epoutp03eb18f07e6d348a4d503b69590a5fbce7~hNSILjxBY0149501495epoutp03M
- for <linux-nvme@lists.infradead.org>; Thu, 23 May 2019 04:22:46 +0000 (GMT)
+ 20190523042525epoutp036e1d5b0a140691a0d0099abd0d4ff228~hNUcvi1hp0453904539epoutp03p
+ for <linux-nvme@lists.infradead.org>; Thu, 23 May 2019 04:25:25 +0000 (GMT)
 DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
- 20190523042246epoutp03eb18f07e6d348a4d503b69590a5fbce7~hNSILjxBY0149501495epoutp03M
+ 20190523042525epoutp036e1d5b0a140691a0d0099abd0d4ff228~hNUcvi1hp0453904539epoutp03p
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1558585366;
- bh=bTgVNdh6fXkL1Tsf/kMTdUfmY6/gE9Q2ExbjnKqBhjc=;
+ s=mail20170921; t=1558585525;
+ bh=Km1NkyRWuesFbs0EPspgWB/Elu/QKkJ+qYkVSc1HBys=;
  h=Subject:Reply-To:From:To:CC:In-Reply-To:Date:References:From;
- b=de6Ax7YMrdOv2jU1XOGLjnY3oADarqSq0I35NvYYyniW90nnaK/+Xx4ZhmGKWqVtG
- XzKIzz5byIMoyZhRnjGy8+TSSwcEVQ5NjPW2Blj9AMJjXa6mYUDjM1VQVQ2ctmFdT7
- VTwoECRbBed1YHbu+dOzDjO2D2NaMJFLCt6HZMN4=
-Received: from epsmges2p1.samsung.com (unknown [182.195.40.182]) by
- epcas2p2.samsung.com (KnoxPortal) with ESMTP id
- 20190523042244epcas2p2c4fa7c0c5318981d10070cbf96fa191e~hNSGa_mZE0334703347epcas2p2G;
- Thu, 23 May 2019 04:22:44 +0000 (GMT)
-X-AuditID: b6c32a45-d5fff70000001063-bf-5ce62013db65
-Received: from epcas2p2.samsung.com ( [182.195.41.54]) by
- epsmges2p1.samsung.com (Symantec Messaging Gateway) with SMTP id
- 3B.77.04195.31026EC5; Thu, 23 May 2019 13:22:43 +0900 (KST)
+ b=Y0qYQOuAqYjlBcibyikCJ14X0eBEM+qcm55sXYq5+lSlbHge+zySCZ3VG7TJrNEr3
+ hXwe34s6olswR1qBJoM4vdKRwfNF+I5uqVvhoPWFldNfwKz866OXaC4J7QRs7KA9Oo
+ bi+wswgnthqMY8qPWoan/N2JNGaScNT4O9zc2Vrs=
+Received: from epsmges2p4.samsung.com (unknown [182.195.40.190]) by
+ epcas2p3.samsung.com (KnoxPortal) with ESMTP id
+ 20190523042523epcas2p381ff2fa1717eaa73d9d162b1ef216961~hNUafa03-1244212442epcas2p37;
+ Thu, 23 May 2019 04:25:23 +0000 (GMT)
+X-AuditID: b6c32a48-6a1ff7000000106f-dd-5ce620b11148
+Received: from epcas2p1.samsung.com ( [182.195.41.53]) by
+ epsmges2p4.samsung.com (Symantec Messaging Gateway) with SMTP id
+ F3.A8.04207.1B026EC5; Thu, 23 May 2019 13:25:21 +0900 (KST)
 Mime-Version: 1.0
-Subject: Re: [PATCH 0/2] nvme-cli: fix disconnect-all for pcie tp
+Subject: Re: [PATCH V4 0/3] nvme-cli: Introduce nvme-status mapping with errno
 From: Minwoo Im <minwoo.im@samsung.com>
 To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 X-Priority: 3
 X-Content-Kind-Code: NORMAL
-In-Reply-To: <20190516172350.11864-1-minwoo.im.dev@gmail.com>
+In-Reply-To: <20190521163659.24577-1-minwoo.im.dev@gmail.com>
 X-Drm-Type: N,general
 X-Msg-Generator: Mail
 X-Msg-Type: PERSONAL
 X-Reply-Demand: N
-Message-ID: <20190523042243epcms2p661452370709ce8cfdf38c10a9cf5f637@epcms2p6>
-Date: Thu, 23 May 2019 13:22:43 +0900
-X-CMS-MailID: 20190523042243epcms2p661452370709ce8cfdf38c10a9cf5f637
+Message-ID: <20190523042520epcms2p628bb1f47d8e02979fc3edc214cf488c5@epcms2p6>
+Date: Thu, 23 May 2019 13:25:20 +0900
+X-CMS-MailID: 20190523042520epcms2p628bb1f47d8e02979fc3edc214cf488c5
 X-Sendblock-Type: AUTO_CONFIDENTIAL
 CMS-TYPE: 102P
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0hTYRjG+XZ2OV5Wx3npVQnHkQgF3SZtrmhieGmkhiAE1WCd9ODEsws7
- 0zL/UNOyJMKSQsTSsFwpUmjO5RVmWahFSURqSogmahpCVJpSm2ei//14eB/e53m/D8cky4Iw
- PM9ko60miiGFvnzHYJQqJlD6TSefWlOpp1/95KkbmudE6vXrfomY9kXdlEjb1LvA03Y8LMnE
- zjBHDTSVQ1ultCnbnJNnytWQaVn6JL1SJVfEKA6r40mpiTLSGjI5PTMmNY9x7yGlhRRT4JYy
- KZYlZQlHreYCGy01mFmbhqQtOYxFobDEspSRLTDlxmabjUcUcnmc0j15jjHcW7grsgRe7C1r
- F5WivVUIx4E4BO9b06uQLy4hnAhm1vv5Hl1MBMCmM7AK+eCBxDEoHbMLPLKEiIA/i3JOjoKV
- nlGBh4XEQSi9s8j3cBCRAj2PupGHMSId+j+28jwMhBhqK+f4HIdDl71za8aH0ED9jQkhpwfD
- eOuyaJt/DDUgjoPgyvRbjOMA+LrWg7j0ANMrCRyWwPPHak8RICoQfP7e5rXKoGx+1VsqA/oX
- /T0ynzgA3W0fMM6aDPYWDRc4ArqW67dkzF3wabeMm4iElxN8bmIPXBvcFG1Xct6f9daLhFWX
- yxsxFOxjS0LOqoV/t70Hdueadb4RViNp3c6N63btrdvZ24iwFhRCW1hjLs3GWRS737QdbX21
- 6BQnqn2X7kIEjkh/sSF+TicRUIVskdGFAMfIIPHI8IxOIs6hii7RVrPeWsDQrAsp3e1vYWHB
- 2Wb3xzXZ9AplnEolP6xUK1VxanKfuMNvXCchcikbnU/TFtq67ePhPmGl6FaN4/ITv8kLZH3h
- QPlMXsn01dA17dmNYnPGaOXbU2tLt6N/NYs/sarfgpsP+lhc9sx3KfWLTnTib5aDSayY/FDo
- G/1aXh5CRi349Q6snI6nF5pOEvM1x9v/9KVFxrJTDY6i8KH9DG/mYtT56nh98bA53z68kTSf
- 4Gjkd1IjMpLPGihFNGZlqf/to6SUgAMAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrIKsWRmVeSWpSXmKPExsWy7bCmqe5GhWcxBqtusVncO/qFyWL+sqfs
+ Fr86uR2YPXbOusvusXjPSyaPzUvqA5ijcmwyUhNTUosUUvOS81My89JtlbyD453jTc0MDHUN
+ LS3MlRTyEnNTbZVcfAJ03TJzgPYoKZQl5pQChQISi4uV9O1sivJLS1IVMvKLS2yVUgtScgoM
+ DQv0ihNzi0vz0vWS83OtDA0MjEyBKhNyMo6fesdcUFPROH06SwNjQhcjJ4eEgInEn9PT2bsY
+ uTiEBHYwSmyc1Q3kcHDwCghK/N0hDFIjLBAgseT2ShaQsJCAvMSPVwYQYU2Jd7vPsILYbALq
+ Eg1TX7GA2CICrhK7l+5iBLGZBXwk9l1ZzQSxildiRvtTFghbWmL78q1gNZwCthIHn31ihYiL
+ Stxc/ZYdxn5/bD4jhC0i0XrvLDOELSjx4OduRpBzJAQkJO69s4Mw6yW2rLAAeURCoIVR4sab
+ tVCt+hKNzz+CreUV8JW4eG0/2CoWAVWJ91OmQq11kTiyfgITxMnyEtvfzmEGmckM9OL6XfoQ
+ 45Uljtxigajgk+g4/Jcd5qkd855APags8fHQIagjJSWWX3rNBmF7SPxv6IKGMdBps5puM01g
+ VJiFCOZZSBbPQli8gJF5FaNYakFxbnpqsVGBCXK8bmIEJzctjx2MB875HGIU4GBU4uHNMH8a
+ I8SaWFZcmXuIUYKDWUmE9/SpRzFCvCmJlVWpRfnxRaU5qcWHGE2B/p/ILCWanA9MvHkl8Yam
+ RmZmBpamFqZmRhZK4rybuG/GCAmkJ5akZqemFqQWwfQxcXBKNTBqFd1z3aJmY7BX57No57Ub
+ PDemzfphyPV92d32hv5Dv5kUv7z0nb9+U9GZV7emTTnOoTWJwdCg64iR0JuuU4ejnmwLkTPx
+ vmSX7/FE0N+Rd6Lo/7mnP6YXbf30qtnxLMuaI7PuMsx9EumfVbbfcnmIzsl9t7z/PvVmuvLt
+ o+jrmcv/T1uapN7DqsRSnJFoqMVcVJwIAFjyjO+EAwAA
 DLP-Filter: Pass
 X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20190516172415epcas4p4c4e3f6ce4d62a28cf4632f3fa766e861
-References: <20190516172350.11864-1-minwoo.im.dev@gmail.com>
- <CGME20190516172415epcas4p4c4e3f6ce4d62a28cf4632f3fa766e861@epcms2p6>
+X-CMS-RootMailID: 20190521163721epcas4p4d6e9ae0a49fde40f38fa770406538335
+References: <20190521163659.24577-1-minwoo.im.dev@gmail.com>
+ <CGME20190521163721epcas4p4d6e9ae0a49fde40f38fa770406538335@epcms2p6>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190522_212250_285654_6B08C526 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20190522_212528_893094_8E1380B4 
+X-CRM114-Status: GOOD (  12.89  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -118,7 +118,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Gentle ping here.
+Please do not review on this series yet.  I seems like to fix
+multi-return in the subcommands also.
+
+Will post V5 soon.
 
 _______________________________________________
 Linux-nvme mailing list
