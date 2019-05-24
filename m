@@ -2,36 +2,56 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47E8A28FDA
-	for <lists+linux-nvme@lfdr.de>; Fri, 24 May 2019 06:10:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D8E829022
+	for <lists+linux-nvme@lfdr.de>; Fri, 24 May 2019 06:44:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Pcqh4J7ZGQ8OfATK6u7bNOh8QlWkp8wBcnjM6xZ2Ed8=; b=by3zayDFuP6YG5n2tGfszCjdNb
-	3uJmfzuM6NPOCgAG5VCy8c6zq7VAytSueD0gNvBDC2mBi7MTpSwYxGAV+DoPBAa+isIIJKvelVzig
-	XMlDwu+Nsy8xrY2Sh/Yhv4rLa3BhE66R6tob+ncSIvORIaQAlSzpMN2kM85il0yRa71VuBjCK+1Pr
-	9r5QGLcl6Er10/otblIru7r4kE7ulZepI8boEXyVmX18CISYTiCYyrxwcLVC0LA7Rg8qaq4h2XrFt
-	OC9WQ2eFm9GNf7f4WFqHY/yFAbF5X1SrE3bFj+sCMALAGlKJBDbsTq9I+mbC3r6Sg5MzjS3qf+p7N
-	QaIZvXQA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Amnk4mFvMWkBA9w+oSgeWc1uI3bwbr4ughAduMS0WPc=; b=SvdsPLyp+Vt3v5
+	e2ukYWf2P3CGSniOGcQH8u4uXUWaJvdxi1S+GKSIpc/hBGKeWwelCiv4EZ/jNSYiZCb8B9R579Fkt
+	uCHXA3+OPSzw6d0R+hswMStgePvLprBC1m+SlakLeNNPOJ3r216xF8caNlDOHL7Vs8p2LN5DgPN+6
+	Nt+v3W/nJGNbBBLPhvw2mUhTPIumGMZx8huCvEmmqtyLdexbp55ymnMivkvhArAmOQFJRvkBtW6AT
+	qme0HYdofqJR6m66biKemj3I/CZBL46uKyXMBZ1K1OPRO/w91knv99p9fZoBcahg6PsDA4mModsXC
+	NE4we/0OoYDc0E3HLo2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hU1X6-0002o4-DL; Fri, 24 May 2019 04:10:16 +0000
-Received: from [2601:647:4800:973f:c906:f7f5:4d80:8bc5]
- (helo=bombadil.infradead.org)
- by bombadil.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hU1Wu-00024m-Jl; Fri, 24 May 2019 04:10:04 +0000
-From: Sagi Grimberg <sagi@grimberg.me>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH 2/2] nvme-tcp: fix queue mapping when queue count is limited
-Date: Thu, 23 May 2019 21:10:04 -0700
-Message-Id: <20190524041004.23200-2-sagi@grimberg.me>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190524041004.23200-1-sagi@grimberg.me>
-References: <20190524041004.23200-1-sagi@grimberg.me>
+	id 1hU23r-0004Os-Bl; Fri, 24 May 2019 04:44:07 +0000
+Received: from stargate.chelsio.com ([12.32.117.8])
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hU23l-0004OY-M6
+ for linux-nvme@lists.infradead.org; Fri, 24 May 2019 04:44:03 +0000
+Received: from localhost (r10.asicdesigners.com [10.192.194.10])
+ by stargate.chelsio.com (8.13.8/8.13.8) with ESMTP id x4O4hhtU010806;
+ Thu, 23 May 2019 21:43:43 -0700
+Date: Thu, 23 May 2019 21:43:43 -0700
+From: Nirranjan Kirubaharan <nirranjan@chelsio.com>
+To: Max Gurtovoy <maxg@mellanox.com>
+Subject: Re: [PATCH] nvme-rdma: Fix a NULL deref when lesser io queues are
+ allocated.
+Message-ID: <20190524044341.GA5129@chelsio.com>
+References: <2936d0e0de627fce13f78fca2ef93960aab0d929.1558534119.git.nirranjan@chelsio.com>
+ <bf05c7f8-7a97-5e67-3476-b92c698a23a9@mellanox.com>
+ <20190523075524.GA15479@chelsio.com>
+ <06d347cc-7df6-c2b3-2edf-88a53db3c12d@mellanox.com>
+ <20190523114157.GA9479@chelsio.com>
+ <033ac067-29b1-30ff-6ad0-5e13510649bd@mellanox.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <033ac067-29b1-30ff-6ad0-5e13510649bd@mellanox.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190523_214401_750002_B3E53B24 
+X-CRM114-Status: GOOD (  23.19  )
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -43,142 +63,351 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
- james.r.harris@intel.com
-MIME-Version: 1.0
+Cc: bharat@chelsio.com, sagi@grimberg.me, linux-nvme@lists.infradead.org,
+ hch@lst.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-When the controller supports less queues than requested, we
-should make sure that queue mapping does the right thing and
-not assume that all queues are available. This fixes a crash
-when the controller supports less queues than requested.
+On Thursday, May 05/23/19, 2019 at 17:35:09 +0300, Max Gurtovoy wrote:
+> I'll take deeper look on it next week but please try the new attached patch
+This new patch holds good for the minimal testing I did, with target allocating
+lesser queues.
 
-The rules are:
-1. if no write queues are requested, we assign the available queues
-   to the default queue map. The default and read queue maps share the
-   existing queues.
-2. if write queues are requested:
-  - first make sure that read queue map gets the requested
-    nr_io_queues count
-  - then grant the default queue map the minimum between the requested
-    nr_write_queues and the remaining queues. If there are no available
-    queues to dedicate to the default queue map, fallback to (1) and
-    share all the queues in the existing queue map.
+> 
+> On 5/23/2019 2:41 PM, Nirranjan Kirubaharan wrote:
+> >On Thursday, May 05/23/19, 2019 at 14:14:25 +0300, Max Gurtovoy wrote:
+> >>I see.
+> >>
+> >>probably we need to review again read/write/poll queues patches.
+> >>
+> >>can you try the attached untested patch ?
+> >Using the attached patch, it works if I dont use the write/poll queues,
+> >even when target allocates lesser queues.
+> >
+> >I see the below panic, if I use poll queues with target allocating
+> >less than the requested queues.
+> >
+> >[161557.300219] RIP: 0010:blk_mq_map_queues+0x92/0xa0
+> >[161557.312476] Code: 39 05 26 76 02 01 0f 46 c3 39 d8 74 19 89 c0 41 8b 04 84 43 89 04 bc eb a3 5b 5d 41 5c 41 5d 41 5e 31 c0 41 5f c3 89 d8 31 d2 <f7> f5 41 03 55 0c 43 89 14 bc eb 86 66 90 66 66 66 66 90 55 b8 ff
+> >[161557.347031] RSP: 0018:ffffa04fc3d57ce8 EFLAGS: 00010246
+> >[161557.360280] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+> >[161557.375517] RDX: 0000000000000000 RSI: 0000000000000008 RDI: ffff924d47c11810
+> >[161557.390701] RBP: 0000000000000000 R08: 0000000000000000 R09: ffff924f143451e0
+> >[161557.405828] R10: ffff924d47c03980 R11: 0000000000000000 R12: ffff924f143451e0
+> >[161557.420882] R13: ffff924f14af4028 R14: 0000000000010120 R15: 0000000000000000
+> >[161557.435919] FS:  00007f4566a31740(0000) GS:ffff92506fa00000(0000) knlGS:0000000000000000
+> >[161557.451938] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> >[161557.465622] CR2: 00007ffdf1ef99d8 CR3: 000000042213a000 CR4: 00000000000006f0
+> >[161557.480765] Call Trace:
+> >[161557.491147]  nvme_rdma_map_queues+0x9e/0xc0 [nvme_rdma]
+> >[161557.504360]  blk_mq_alloc_tag_set+0x1bd/0x2d0
+> >[161557.516666]  nvme_rdma_alloc_tagset+0xd6/0x2a0 [nvme_rdma]
+> >[161557.530108]  nvme_rdma_setup_ctrl+0x362/0x7a0 [nvme_rdma]
+> >[161557.543410]  nvme_rdma_create_ctrl+0x29a/0x3d8 [nvme_rdma]
+> >[161557.556754]  nvmf_dev_write+0xa18/0xbff [nvme_fabrics]
+> >[161557.569687]  vfs_write+0xad/0x1b0
+> >[161557.580718]  ksys_write+0x55/0xd0
+> >[161557.591689]  do_syscall_64+0x5b/0x1b0
+> >[161557.602941]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+> >[161557.615575] RIP: 0033:0x7f4566536c60
+> >[161557.626678] Code: 73 01 c3 48 8b 0d 30 62 2d 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 44 00 00 83 3d 3d c3 2d 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 ee cb 01 00 48 89 04 24
+> >[161557.661257] RSP: 002b:00007ffdf1ef99d8 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+> >[161557.676897] RAX: ffffffffffffffda RBX: 0000000000000003 RCX: 00007f4566536c60
+> >[161557.692124] RDX: 000000000000005c RSI: 00007ffdf1efae70 RDI: 0000000000000003
+> >[161557.707378] RBP: 00007ffdf1efae70 R08: 0000000000000000 R09: 00007f45664940fd
+> >[161557.722648] R10: 00007ffdf1ef95a0 R11: 0000000000000246 R12: 000000000000005c
+> >[161557.737848] R13: 0000000000000037 R14: 000000000000000b R15: 000000000064f5e0
+> >
+> >>On 5/23/2019 10:55 AM, Nirranjan Kirubaharan wrote:
+> >>>On Thursday, May 05/23/19, 2019 at 10:21:46 +0300, Max Gurtovoy wrote:
+> >>>>On 5/23/2019 7:51 AM, Nirranjan Kirubaharan wrote:
+> >>>>>Return error -ENOMEM when nvmf target allocates lesser
+> >>>>>io queues than the number of io queues requested by nvmf
+> >>>>>initiator.
+> >>>>why can't we live with lesser queues ?
+> >>>In nvme_rdma_alloc_io_queues() ctrl->io_queues[] are already filled
+> >>>assuming all the requested no of queues will be allocated by the target.
+> >>>
+> >>>>I can demand 64K queues and the target might return 4 and it's fine
+> >>>>for functionality.
+> >>>>
+> >>>>where is the NULL that you see ?
+> >>>In nvme_rdma_init_request() accessing unallocated queue_idx of
+> >>>ctrl->io_queues[] causes NULL deref.
+> >>>
+> >>>[  703.192172] RIP: 0010:nvme_rdma_init_request+0x31/0x140 [nvme_rdma]
+> >>>[  703.192173] Code: 55 31 ed 53 48 8b 47 60 48 89 f3 48 8d 48 08 48 39 cf 0f 84 fb 00 00 00 48 03 28 48 05 f8 02 00 00 be c0 0d 00 00 48 8b 55 20 <4c> 8b 22 48 89 83 28 01 00 00 ba 40 00 00 00 48 8b 3d a9 7b 42 f4
+> >>>[  703.192174] RSP: 0018:ffff9c36835bfc38 EFLAGS: 00010282
+> >>>[  703.192192] RAX: ffff8eb49c8b92f8 RBX: ffff8eb5a6e50000 RCX: ffff8eb49c8b9008
+> >>>[  703.192192] RDX: 0000000000000000 RSI: 0000000000000dc0 RDI: ffff8eb49c8b9008
+> >>>[  703.192193] RBP: ffff8eb5ad3c50e0 R08: 00000000119b9400 R09: ffff8eb5831d9520
+> >>>[  703.192194] R10: ffffc83e119b9400 R11: ffffc83e119b9800 R12: ffff8eb49c8b9008
+> >>>[  703.192194] R13: ffff8eb5831d9480 R14: 0000000000000000 R15: ffff8eb5a6e50000
+> >>>[  703.192195] FS:  00007fd6613bb780(0000) GS:ffff8eb5afbc0000(0000) knlGS:0000000000000000
+> >>>[  703.192196] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> >>>[  703.192197] CR2: 0000000000000000 CR3: 00000004646a4005 CR4: 00000000003606e0
+> >>>[  703.192197] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+> >>>[  703.192198] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+> >>>[  703.192199] Call Trace:
+> >>>[  703.192206]  blk_mq_alloc_rqs+0x1f0/0x290
+> >>>[  703.192207]  __blk_mq_alloc_rq_map+0x46/0x80
+> >>>[  703.192209]  blk_mq_map_swqueue+0x1dd/0x2e0
+> >>>[  703.192210]  blk_mq_init_allocated_queue+0x3c8/0x430
+> >>>[  703.192211]  blk_mq_init_queue+0x35/0x60
+> >>>[  703.192213]  ? nvme_rdma_alloc_tagset+0x1bb/0x330 [nvme_rdma]
+> >>>[  703.192214]  nvme_rdma_setup_ctrl+0x420/0x7b0 [nvme_rdma]
+> >>>[  703.192215]  nvme_rdma_create_ctrl+0x29a/0x3d8 [nvme_rdma]
+> >>>[  703.192218]  nvmf_dev_write+0xa18/0xbff [nvme_fabrics]
+> >>>[  703.192222]  vfs_write+0xad/0x1b0
+> >>>[  703.192224]  ksys_write+0x5a/0xd0
+> >>>[  703.192228]  do_syscall_64+0x5b/0x180
+> >>>[  703.192231]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+> >>>[  703.192232] RIP: 0033:0x7fd660cddc60
+> >>>[  703.192233] Code: 73 01 c3 48 8b 0d 30 62 2d 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 44 00 00 83 3d 3d c3 2d 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 ee cb 01 00 48 89 04 24
+> >>>[  703.192234] RSP: 002b:00007ffe8f58d928 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+> >>>[  703.192235] RAX: ffffffffffffffda RBX: 0000000000000003 RCX: 00007fd660cddc60
+> >>>[  703.192236] RDX: 000000000000004d RSI: 00007ffe8f58e9a0 RDI: 0000000000000003
+> >>>[  703.192236] RBP: 00007ffe8f58e9a0 R08: 00007ffe8f58e9ed R09: 00007fd660c3b0fd
+> >>>[  703.192237] R10: 00000000ffffffff R11: 0000000000000246 R12: 000000000000004d
+> >>>[  703.192237] R13: 000000000151a500 R14: 000000000151a600 R15: 00007ffe8f58e9e0
+> >>>
+> >>>>>Signed-off-by: Nirranjan Kirubaharan <nirranjan@chelsio.com>
+> >>>>>Reviewed-by: Potnuri Bharat Teja <bharat@chelsio.com>
+> >>>>>---
+> >>>>>  drivers/nvme/host/rdma.c | 9 ++++++++-
+> >>>>>  1 file changed, 8 insertions(+), 1 deletion(-)
+> >>>>>
+> >>>>>diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+> >>>>>index f383146e7d0f..187007d136cc 100644
+> >>>>>--- a/drivers/nvme/host/rdma.c
+> >>>>>+++ b/drivers/nvme/host/rdma.c
+> >>>>>@@ -641,7 +641,7 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+> >>>>>  {
+> >>>>>  	struct nvmf_ctrl_options *opts = ctrl->ctrl.opts;
+> >>>>>  	struct ib_device *ibdev = ctrl->device->dev;
+> >>>>>-	unsigned int nr_io_queues;
+> >>>>>+	unsigned int nr_io_queues, nr_req_queues;
+> >>>>>  	int i, ret;
+> >>>>>  	nr_io_queues = min(opts->nr_io_queues, num_online_cpus());
+> >>>>>@@ -670,9 +670,16 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+> >>>>>  		nr_io_queues += ctrl->io_queues[HCTX_TYPE_POLL];
+> >>>>>  	}
+> >>>>>+	nr_req_queues = nr_io_queues;
+> >>>>>  	ret = nvme_set_queue_count(&ctrl->ctrl, &nr_io_queues);
+> >>>>>  	if (ret)
+> >>>>>  		return ret;
+> >>>>>+	if (nr_io_queues < nr_req_queues) {
+> >>>>>+		dev_err(ctrl->ctrl.device,
+> >>>>>+			"alloc queues %u < req no of queues %u",
+> >>>>>+			nr_io_queues, nr_req_queues);
+> >>>>>+		return -ENOMEM;
+> >>>>>+	}
+> >>>>>  	ctrl->ctrl.queue_count = nr_io_queues + 1;
+> >>>>>  	if (ctrl->ctrl.queue_count < 2)
+> >>diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+> >>index 5a4ad25..d0cc981 100644
+> >>--- a/drivers/nvme/host/rdma.c
+> >>+++ b/drivers/nvme/host/rdma.c
+> >>@@ -641,7 +641,8 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+> >>  {
+> >>  	struct nvmf_ctrl_options *opts = ctrl->ctrl.opts;
+> >>  	struct ib_device *ibdev = ctrl->device->dev;
+> >>-	unsigned int nr_io_queues;
+> >>+	unsigned int nr_io_queues, nr_req_queues;
+> >>+	unsigned int default_queues, poll_queues = 0, write_queues = 0;
+> >>  	int i, ret;
+> >>  	nr_io_queues = min(opts->nr_io_queues, num_online_cpus());
+> >>@@ -651,29 +652,38 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+> >>  	 * optimal locality so we don't need more queues than
+> >>  	 * completion vectors.
+> >>  	 */
+> >>-	nr_io_queues = min_t(unsigned int, nr_io_queues,
+> >>-				ibdev->num_comp_vectors);
+> >>+	default_queues = nr_io_queues = min_t(unsigned int, nr_io_queues,
+> >>+					      ibdev->num_comp_vectors);
+> >>-	if (opts->nr_write_queues) {
+> >>-		ctrl->io_queues[HCTX_TYPE_DEFAULT] =
+> >>-				min(opts->nr_write_queues, nr_io_queues);
+> >>-		nr_io_queues += ctrl->io_queues[HCTX_TYPE_DEFAULT];
+> >>-	} else {
+> >>-		ctrl->io_queues[HCTX_TYPE_DEFAULT] = nr_io_queues;
+> >>-	}
+> >>-
+> >>-	ctrl->io_queues[HCTX_TYPE_READ] = nr_io_queues;
+> >>-
+> >>-	if (opts->nr_poll_queues) {
+> >>-		ctrl->io_queues[HCTX_TYPE_POLL] =
+> >>-			min(opts->nr_poll_queues, num_online_cpus());
+> >>-		nr_io_queues += ctrl->io_queues[HCTX_TYPE_POLL];
+> >>-	}
+> >>+	if (opts->nr_write_queues)
+> >>+		write_queues = min(opts->nr_write_queues, default_queues);
+> >>+	if (opts->nr_poll_queues)
+> >>+		poll_queues = min(opts->nr_poll_queues, num_online_cpus());
+> >>+	nr_io_queues += write_queues + poll_queues;
+> >>+	nr_req_queues = nr_io_queues;
+> >>  	ret = nvme_set_queue_count(&ctrl->ctrl, &nr_io_queues);
+> >>  	if (ret)
+> >>  		return ret;
+> >>+	if (nr_req_queues <= nr_io_queues) {
+> >>+		/* set the queues according to host demand */
+> >>+		ctrl->io_queues[HCTX_TYPE_READ] = nr_req_queues - poll_queues;
+> >>+		if (write_queues)
+> >>+			ctrl->io_queues[HCTX_TYPE_DEFAULT] = write_queues;
+> >>+		else
+> >>+			ctrl->io_queues[HCTX_TYPE_DEFAULT] =
+> >>+					nr_req_queues - poll_queues;
+> >>+		if (poll_queues)
+> >>+			ctrl->io_queues[HCTX_TYPE_POLL] = poll_queues;
+> >>+
+> >>+	} else {
+> >>+		/* set the queues according to controller capability */
+> >>+		ctrl->io_queues[HCTX_TYPE_DEFAULT] = nr_io_queues;
+> >>+		ctrl->io_queues[HCTX_TYPE_READ] = nr_io_queues;
+> >>+		ctrl->io_queues[HCTX_TYPE_POLL] = 0;
+> >>+	}
+> >>+
+> >>  	ctrl->ctrl.queue_count = nr_io_queues + 1;
+> >>  	if (ctrl->ctrl.queue_count < 2)
+> >>  		return 0;
 
-Also, provide a log indication on how we constructed the different
-queue maps.
-
-Reported-by: Harris, James R <james.r.harris@intel.com>
-Cc: <stable@vger.kernel.org> # v5.0+
-Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
----
- drivers/nvme/host/tcp.c | 57 ++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 50 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 2b107a1d152b..08a2501b9357 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -111,6 +111,7 @@ struct nvme_tcp_ctrl {
- 	struct work_struct	err_work;
- 	struct delayed_work	connect_work;
- 	struct nvme_tcp_request async_req;
-+	u32			io_queues[HCTX_MAX_TYPES];
- };
- 
- static LIST_HEAD(nvme_tcp_ctrl_list);
-@@ -1564,6 +1565,35 @@ static unsigned int nvme_tcp_nr_io_queues(struct nvme_ctrl *ctrl)
- 	return nr_io_queues;
- }
- 
-+static void nvme_tcp_set_io_queues(struct nvme_ctrl *nctrl,
-+		unsigned int nr_io_queues)
-+{
-+	struct nvme_tcp_ctrl *ctrl = to_tcp_ctrl(nctrl);
-+	struct nvmf_ctrl_options *opts = nctrl->opts;
-+
-+	if (opts->nr_write_queues && opts->nr_io_queues < nr_io_queues) {
-+		/*
-+		 * separate read/write queues
-+		 * hand out dedicated default queues only after we have
-+		 * sufficient read queues.
-+		 */
-+		ctrl->io_queues[HCTX_TYPE_READ] = opts->nr_io_queues;
-+		nr_io_queues -= ctrl->io_queues[HCTX_TYPE_READ];
-+		ctrl->io_queues[HCTX_TYPE_DEFAULT] =
-+			min(opts->nr_write_queues, nr_io_queues);
-+		nr_io_queues -= ctrl->io_queues[HCTX_TYPE_DEFAULT];
-+	} else {
-+		/*
-+		 * shared read/write queues
-+		 * either no write queues were requested, or we don't have
-+		 * sufficient queue count to have dedicated default queues.
-+		 */
-+		ctrl->io_queues[HCTX_TYPE_DEFAULT] =
-+			min(opts->nr_io_queues, nr_io_queues);
-+		nr_io_queues -= ctrl->io_queues[HCTX_TYPE_DEFAULT];
-+	}
-+}
-+
- static int nvme_tcp_alloc_io_queues(struct nvme_ctrl *ctrl)
- {
- 	unsigned int nr_io_queues;
-@@ -1581,6 +1611,8 @@ static int nvme_tcp_alloc_io_queues(struct nvme_ctrl *ctrl)
- 	dev_info(ctrl->device,
- 		"creating %d I/O queues.\n", nr_io_queues);
- 
-+	nvme_tcp_set_io_queues(ctrl, nr_io_queues);
-+
- 	return __nvme_tcp_alloc_io_queues(ctrl);
- }
- 
-@@ -2089,23 +2121,34 @@ static blk_status_t nvme_tcp_queue_rq(struct blk_mq_hw_ctx *hctx,
- static int nvme_tcp_map_queues(struct blk_mq_tag_set *set)
- {
- 	struct nvme_tcp_ctrl *ctrl = set->driver_data;
-+	struct nvmf_ctrl_options *opts = ctrl->ctrl.opts;
- 
--	set->map[HCTX_TYPE_DEFAULT].queue_offset = 0;
--	set->map[HCTX_TYPE_READ].nr_queues = ctrl->ctrl.opts->nr_io_queues;
--	if (ctrl->ctrl.opts->nr_write_queues) {
-+	if (opts->nr_write_queues && ctrl->io_queues[HCTX_TYPE_READ]) {
- 		/* separate read/write queues */
- 		set->map[HCTX_TYPE_DEFAULT].nr_queues =
--				ctrl->ctrl.opts->nr_write_queues;
-+			ctrl->io_queues[HCTX_TYPE_DEFAULT];
-+		set->map[HCTX_TYPE_DEFAULT].queue_offset = 0;
-+		set->map[HCTX_TYPE_READ].nr_queues =
-+			ctrl->io_queues[HCTX_TYPE_READ];
- 		set->map[HCTX_TYPE_READ].queue_offset =
--				ctrl->ctrl.opts->nr_write_queues;
-+			ctrl->io_queues[HCTX_TYPE_DEFAULT];
- 	} else {
--		/* mixed read/write queues */
-+		/* shared read/write queues */
- 		set->map[HCTX_TYPE_DEFAULT].nr_queues =
--				ctrl->ctrl.opts->nr_io_queues;
-+			ctrl->io_queues[HCTX_TYPE_DEFAULT];
-+		set->map[HCTX_TYPE_DEFAULT].queue_offset = 0;
-+		set->map[HCTX_TYPE_READ].nr_queues =
-+			ctrl->io_queues[HCTX_TYPE_DEFAULT];
- 		set->map[HCTX_TYPE_READ].queue_offset = 0;
- 	}
- 	blk_mq_map_queues(&set->map[HCTX_TYPE_DEFAULT]);
- 	blk_mq_map_queues(&set->map[HCTX_TYPE_READ]);
-+
-+	dev_info(ctrl->ctrl.device,
-+		"mapped %d/%d default/read queues.\n",
-+		ctrl->io_queues[HCTX_TYPE_DEFAULT],
-+		ctrl->io_queues[HCTX_TYPE_READ]);
-+
- 	return 0;
- }
- 
--- 
-2.17.1
+> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+> index 5ee75b5..f924451 100644
+> --- a/drivers/nvme/host/nvme.h
+> +++ b/drivers/nvme/host/nvme.h
+> @@ -247,6 +247,9 @@ struct nvme_ctrl {
+>  
+>  	struct page *discard_page;
+>  	unsigned long discard_page_busy;
+> +
+> +	unsigned int nr_write_queues;
+> +	unsigned int nr_poll_queues;
+>  };
+>  
+>  enum nvme_iopolicy {
+> diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+> index 5a4ad25..5e90e92 100644
+> --- a/drivers/nvme/host/rdma.c
+> +++ b/drivers/nvme/host/rdma.c
+> @@ -641,39 +641,56 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+>  {
+>  	struct nvmf_ctrl_options *opts = ctrl->ctrl.opts;
+>  	struct ib_device *ibdev = ctrl->device->dev;
+> -	unsigned int nr_io_queues;
+> +	unsigned int nr_io_queues, nr_req_queues;
+> +	unsigned int default_queues, poll_queues = 0, write_queues = 0;
+>  	int i, ret;
+>  
+> -	nr_io_queues = min(opts->nr_io_queues, num_online_cpus());
+> +	default_queues = min(opts->nr_io_queues, num_online_cpus());
+>  
+>  	/*
+>  	 * we map queues according to the device irq vectors for
+>  	 * optimal locality so we don't need more queues than
+>  	 * completion vectors.
+>  	 */
+> -	nr_io_queues = min_t(unsigned int, nr_io_queues,
+> -				ibdev->num_comp_vectors);
+> +	default_queues = min_t(unsigned int, default_queues,
+> +			       ibdev->num_comp_vectors);
+>  
+> -	if (opts->nr_write_queues) {
+> -		ctrl->io_queues[HCTX_TYPE_DEFAULT] =
+> -				min(opts->nr_write_queues, nr_io_queues);
+> -		nr_io_queues += ctrl->io_queues[HCTX_TYPE_DEFAULT];
+> -	} else {
+> -		ctrl->io_queues[HCTX_TYPE_DEFAULT] = nr_io_queues;
+> -	}
+> -
+> -	ctrl->io_queues[HCTX_TYPE_READ] = nr_io_queues;
+> -
+> -	if (opts->nr_poll_queues) {
+> -		ctrl->io_queues[HCTX_TYPE_POLL] =
+> -			min(opts->nr_poll_queues, num_online_cpus());
+> -		nr_io_queues += ctrl->io_queues[HCTX_TYPE_POLL];
+> -	}
+> +	if (opts->nr_write_queues)
+> +		write_queues = min(opts->nr_write_queues, default_queues);
+> +	if (opts->nr_poll_queues)
+> +		poll_queues = min(opts->nr_poll_queues, num_online_cpus());
+>  
+> +	nr_io_queues = default_queues + write_queues + poll_queues;
+> +	nr_req_queues = nr_io_queues;
+>  	ret = nvme_set_queue_count(&ctrl->ctrl, &nr_io_queues);
+>  	if (ret)
+>  		return ret;
+>  
+> +	if (nr_req_queues <= nr_io_queues) {
+> +		/* set the queues according to host demand */
+> +		ctrl->io_queues[HCTX_TYPE_READ] =
+> +				nr_req_queues - poll_queues - write_queues;
+> +		if (write_queues) {
+> +			ctrl->io_queues[HCTX_TYPE_DEFAULT] = write_queues;
+> +			ctrl->ctrl.nr_write_queues = write_queues;
+> +		} else {
+> +			ctrl->io_queues[HCTX_TYPE_DEFAULT] =
+> +					ctrl->io_queues[HCTX_TYPE_READ];
+> +		}
+> +		if (poll_queues) {
+> +			ctrl->io_queues[HCTX_TYPE_POLL] = poll_queues;
+> +			ctrl->ctrl.nr_poll_queues = poll_queues;
+> +		}
+> +		nr_io_queues = nr_req_queues;
+> +	} else {
+> +		/* set the queues according to controller capability */
+> +		ctrl->io_queues[HCTX_TYPE_DEFAULT] = nr_io_queues;
+> +		ctrl->io_queues[HCTX_TYPE_READ] = nr_io_queues;
+> +		ctrl->io_queues[HCTX_TYPE_POLL] = 0;
+> +		ctrl->ctrl.nr_write_queues = 0;
+> +		ctrl->ctrl.nr_poll_queues = 0;
+> +	}
+> +
+>  	ctrl->ctrl.queue_count = nr_io_queues + 1;
+>  	if (ctrl->ctrl.queue_count < 2)
+>  		return 0;
+> @@ -739,7 +756,7 @@ static struct blk_mq_tag_set *nvme_rdma_alloc_tagset(struct nvme_ctrl *nctrl,
+>  		set->driver_data = ctrl;
+>  		set->nr_hw_queues = nctrl->queue_count - 1;
+>  		set->timeout = NVME_IO_TIMEOUT;
+> -		set->nr_maps = nctrl->opts->nr_poll_queues ? HCTX_MAX_TYPES : 2;
+> +		set->nr_maps = nctrl->nr_poll_queues ? HCTX_MAX_TYPES : 2;
+>  	}
+>  
+>  	ret = blk_mq_alloc_tag_set(set);
+> @@ -1791,8 +1808,7 @@ static int nvme_rdma_map_queues(struct blk_mq_tag_set *set)
+>  	set->map[HCTX_TYPE_DEFAULT].queue_offset = 0;
+>  	set->map[HCTX_TYPE_DEFAULT].nr_queues =
+>  			ctrl->io_queues[HCTX_TYPE_DEFAULT];
+> -	set->map[HCTX_TYPE_READ].nr_queues = ctrl->io_queues[HCTX_TYPE_READ];
+> -	if (ctrl->ctrl.opts->nr_write_queues) {
+> +	if (ctrl->ctrl.nr_write_queues) {
+>  		/* separate read/write queues */
+>  		set->map[HCTX_TYPE_READ].queue_offset =
+>  				ctrl->io_queues[HCTX_TYPE_DEFAULT];
+> @@ -1800,17 +1816,19 @@ static int nvme_rdma_map_queues(struct blk_mq_tag_set *set)
+>  		/* mixed read/write queues */
+>  		set->map[HCTX_TYPE_READ].queue_offset = 0;
+>  	}
+> +	set->map[HCTX_TYPE_READ].nr_queues = ctrl->io_queues[HCTX_TYPE_READ];
+> +
+>  	blk_mq_rdma_map_queues(&set->map[HCTX_TYPE_DEFAULT],
+>  			ctrl->device->dev, 0);
+>  	blk_mq_rdma_map_queues(&set->map[HCTX_TYPE_READ],
+>  			ctrl->device->dev, 0);
+>  
+> -	if (ctrl->ctrl.opts->nr_poll_queues) {
+> +	if (ctrl->ctrl.nr_poll_queues) {
+>  		set->map[HCTX_TYPE_POLL].nr_queues =
+>  				ctrl->io_queues[HCTX_TYPE_POLL];
+>  		set->map[HCTX_TYPE_POLL].queue_offset =
+>  				ctrl->io_queues[HCTX_TYPE_DEFAULT];
+> -		if (ctrl->ctrl.opts->nr_write_queues)
+> +		if (ctrl->ctrl.nr_write_queues)
+>  			set->map[HCTX_TYPE_POLL].queue_offset +=
+>  				ctrl->io_queues[HCTX_TYPE_READ];
+>  		blk_mq_map_queues(&set->map[HCTX_TYPE_POLL]);
 
 
 _______________________________________________
