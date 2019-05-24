@@ -2,62 +2,61 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E3BC2A01B
-	for <lists+linux-nvme@lfdr.de>; Fri, 24 May 2019 22:49:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E5962A038
+	for <lists+linux-nvme@lfdr.de>; Fri, 24 May 2019 23:10:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tt2oV1tbvDq8FiZBRtMrkFmEINsVGAUjy0HX9tyCkRM=; b=ge4vtenbOoX4vL
-	w5Qe1tiuZ6V31lVjCVvmYB8c4Plmi6OOE8XS1xwhmN5EOlCX9+wt6EMjeU9FrgVcqPfHWbNcaFaM7
-	wIN06I0ZUwMltJD+EiQTHftYwGnIksx2Qsa4TNpVZdcvGR1n6pASOpGaPzkIT/8NOp4L6sSTDn8tr
-	roBXnQ7uYcODkFbxY/LiUGAnQTeX0lio3AkY1koCfdVa6BI0DMd55zESMWv608GKv8T3dUKj5ioTi
-	vqRGz0WL2/ml2IuFy3LcYyQyuRDT8WSQQhUy7eyqT3M4C2sEf096Z2wXbDdMz583TIIsvwhKicneX
-	fQDTmI5izIgSZs7E00DQ==;
+	List-Owner; bh=Q/f6OU31vlt1PAVXymlM9RvdqleGJe1XKDtGjo5Uz7w=; b=gRPjyTL+KTgKrk
+	9I41Izultftk3yoEzlDT8EUCwIz3UNylFIU+CjhCNoHWRxG+xGiibheVQnvcVztrk+uq3QvJXbPWr
+	ofAbEQozeu9OH9VBMonycFaWgo8Zg9sJVGPQP2Ol1iy99LDciXfAIajY2coCcxjttXhAEebvEN2Qh
+	OZozsvZMF3DuY/c+H83IwzGyUOZ9Uw+YA2GffZHID5XQwzGmaqJp34VR5EO7vEpXE590Jsv0y7kfr
+	5yA9erBb4Zqvq2189tT8zkSni07AK2/5nlbw4lUsC1H5xnLbir3e7vAZ1pTbACXwLuM+Lm9NAJz+3
+	9QAtYK3Ppm6yzrcjpKxw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hUH8R-00063z-1D; Fri, 24 May 2019 20:49:51 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1hUHSA-00049z-8C; Fri, 24 May 2019 21:10:14 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hUH8K-00062w-PM
- for linux-nvme@lists.infradead.org; Fri, 24 May 2019 20:49:45 +0000
+ id 1hUHRz-0003Tn-6d
+ for linux-nvme@lists.infradead.org; Fri, 24 May 2019 21:10:07 +0000
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 24 May 2019 13:49:44 -0700
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 24 May 2019 14:10:00 -0700
 X-ExtLoop1: 1
 Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga008.jf.intel.com with ESMTP; 24 May 2019 13:49:43 -0700
-Date: Fri, 24 May 2019 14:44:44 -0600
+ by fmsmga001.fm.intel.com with ESMTP; 24 May 2019 14:10:00 -0700
+Date: Fri, 24 May 2019 15:05:02 -0600
 From: Keith Busch <kbusch@kernel.org>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH v2] nvme: fix memory leak for power latency tolerance req
-Message-ID: <20190524204444.GB17321@localhost.localdomain>
-References: <20190517023007.140656-1-yuyufen@huawei.com>
- <0becf386-c4f5-b0f9-2d5f-84da0e58226c@redhat.com>
- <20190517183614.GB25092@localhost.localdomain>
- <258cd66e-9d54-6e5b-0dd5-9dbf0ba84dd8@grimberg.me>
+Subject: Re: [RFC PATCH] nvme: Ignore timeouts while a PCIe reset is pending
+Message-ID: <20190524210501.GA17343@localhost.localdomain>
+References: <20190522003741.26755-1-kenneth.heitke@intel.com>
+ <20190522192656.GB5486@localhost.localdomain>
+ <20190522200918.GC5486@localhost.localdomain>
+ <e01d7206-dc2c-b3cf-548a-4cb5ffc5bd19@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <258cd66e-9d54-6e5b-0dd5-9dbf0ba84dd8@grimberg.me>
+In-Reply-To: <e01d7206-dc2c-b3cf-548a-4cb5ffc5bd19@grimberg.me>
 User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190524_134944_840078_5856B5A3 
-X-CRM114-Status: UNSURE (   8.18  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.3 (-)
+X-CRM114-CacheID: sfid-20190524_141003_779466_13A93C56 
+X-CRM114-Status: GOOD (  13.81  )
+X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
+ Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.136 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [192.55.52.115 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,24 +68,34 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Yufen Yu <yuyufen@huawei.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>, "Busch,
- Keith" <keith.busch@intel.com>, David Milburn <dmilburn@redhat.com>,
- "luto@kernel.org" <luto@kernel.org>, "hch@lst.de" <hch@lst.de>
+Cc: axboe@fb.com, Kenneth Heitke <kenneth.heitke@intel.com>, hch@lst.de,
+ linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, May 24, 2019 at 01:20:08AM -0700, Sagi Grimberg wrote:
+On Thu, May 23, 2019 at 11:45:28PM -0700, Sagi Grimberg wrote:
+> Keith,
 > 
-> > Thanks, applied for 5.2
+> > I think we should do the above anyway, but it isn't going to help if
+> > commands dispatched outside disabling timeout. This should fix that.
+> > Note, we never needed to have a sync'ed reset on reset_done(), but
+> > this makes it necessary.
 > 
-> This should probably be sent to stable as well...
+> With async reset on reset_done() what guarantees that nvme_dev_disable
+> does not run concurrently with another context of nvme_reset_work? both
+> mangle with the same queues assuming that they are not running
+> concurrently.
+> 
+> quick archive browse got me to:
+> http://lists.infradead.org/pipermail/linux-nvme/2017-December/014599.html
+> 
+> discussion on my patch, but I think that it was a side effect from
+> ming's tests..
 
-Want to place bets on if stable-bot auto-selects it? :)
-
-But yes, should apply to 4.14+.
+Oh, you're right. I think Ming must have been writing to the pc reset
+repeatedly, in which case this proposal will have a problem coordinating.
 
 _______________________________________________
 Linux-nvme mailing list
