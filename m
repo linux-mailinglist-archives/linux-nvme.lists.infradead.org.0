@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D184C29FCE
-	for <lists+linux-nvme@lfdr.de>; Fri, 24 May 2019 22:25:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D44ED29FD0
+	for <lists+linux-nvme@lfdr.de>; Fri, 24 May 2019 22:26:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,19 +11,19 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=iVpj2eI/ezGofSPxyanSZbgB99WXMFdvtYq1itbuypg=; b=Xp3lRMo0QriwVd4MofEt2gCTFj
-	9a056LIEELBHBXRbpFYUYHcJYgTCu4yOr8OsMIEK3jHfjcLwmfrhMDe8hZ+bkMfiOnrT27tWRXg77
-	lz9DNIowtmi4wgHtHRvTkx3qBrX2jIFFpSp25elWgi20VCwh131LFrMWEzaDQNIX0rLQsFMvYQxuS
-	87K8MBTjwdUzTUhe/4DdbgP0ixvcvC/8020asVFlVfLWDijER2/IlbUK2ikKQ+lfaehcxYop9SMEs
-	mUI3Di4XKfrxJRkwl7kdNM8/LDL3eXnSsfvyeExDaYEKyCl63FNHRm7EZViPNP0CzSBGOJCYJeu+U
-	R6ywQ37g==;
+	bh=Z/VsLXUZTLVxqJXh3cAq5iGd3VTjX6Ur/2JQJTRxZRE=; b=MIN7CdB6F7TqKcxflgOFoWac34
+	nGvzaY+7svhP96ylLq3elBDKN9XCGmzl/XDXEYZXN63z2VTCMAyfTSWE8k6sy/qdLCjMhtIVXXG+7
+	pFuMKm4zOwSfgbcsR1R+qszrBtXBrM99iDz7Ar50UhNfSrxuV+leHJi3qjKenKWoXRQSKdsxuNKTe
+	UQF3wfIvASouZ0g8Ze7uRXRAEzyI5df7mFZRe4CrRZQAQYky8NgJLnv07ytEhR9nRZygIW9Zvb5t8
+	JE6kHqxCT1xAyCJoFMoYahpBLoFlLL2KuoeDZS6ZWMliE+h94RnRzqJrJLhQZ+VHJOrqO2O5elqA+
+	94L1TXAg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hUGlB-00068U-OR; Fri, 24 May 2019 20:25:49 +0000
+	id 1hUGlO-0006KR-Sv; Fri, 24 May 2019 20:26:02 +0000
 Received: from mga11.intel.com ([192.55.52.93])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hUGl7-00067L-1J
- for linux-nvme@lists.infradead.org; Fri, 24 May 2019 20:25:46 +0000
+ id 1hUGl8-00067G-73
+ for linux-nvme@lists.infradead.org; Fri, 24 May 2019 20:25:47 +0000
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
@@ -35,15 +35,15 @@ Received: from unknown (HELO localhost.lm.intel.com) ([10.232.112.69])
 From: Keith Busch <keith.busch@intel.com>
 To: Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
  linux-nvme@lists.infradead.org
-Subject: [PATCH 1/3] nvme-pci: reset timeout when processing is paused
-Date: Fri, 24 May 2019 14:20:34 -0600
-Message-Id: <20190524202036.17265-2-keith.busch@intel.com>
+Subject: [PATCH 2/3] nvme: rearm fw notification in admin only state
+Date: Fri, 24 May 2019 14:20:35 -0600
+Message-Id: <20190524202036.17265-3-keith.busch@intel.com>
 X-Mailer: git-send-email 2.13.6
 In-Reply-To: <20190524202036.17265-1-keith.busch@intel.com>
 References: <20190524202036.17265-1-keith.busch@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190524_132545_085649_993EBB7E 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20190524_132546_289055_78D7FBA0 
+X-CRM114-Status: GOOD (  11.27  )
 X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.0 points)
@@ -74,28 +74,28 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Keith Busch <kbusch@kernel.org>
 
-Do not escalate request timeout handling if the controller has
-temporary paused command processing. We do not expect requests to
-complete during this transient state, so just reset the timer.
+Getting the firmware log is an admin command, so admin-only or live
+states are valid to rearm the activation notice.
 
 Signed-off-by: Keith Busch <kbusch@kernel.org>
 ---
- drivers/nvme/host/pci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/nvme/host/core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index f562154551ce..101e20522374 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -1263,7 +1263,7 @@ static enum blk_eh_timer_return nvme_timeout(struct request *req, bool reserved)
- 	 * the recovery mechanism will surely fail.
- 	 */
- 	mb();
--	if (pci_channel_offline(to_pci_dev(dev->dev)))
-+	if (pci_channel_offline(to_pci_dev(dev->dev)) || (csts & NVME_CSTS_PP))
- 		return BLK_EH_RESET_TIMER;
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 1b7c2afd84cb..96dac2292897 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -3615,7 +3615,8 @@ static void nvme_fw_act_work(struct work_struct *work)
+ 		msleep(100);
+ 	}
  
- 	/*
+-	if (ctrl->state != NVME_CTRL_LIVE)
++	if (ctrl->state != NVME_CTRL_LIVE &&
++	    ctrl->state != NVME_CTRL_ADMIN_ONLY)
+ 		return;
+ 
+ 	nvme_start_queues(ctrl);
 -- 
 2.14.4
 
