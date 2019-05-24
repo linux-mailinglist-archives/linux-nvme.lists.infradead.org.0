@@ -2,58 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05E3B29FD1
-	for <lists+linux-nvme@lfdr.de>; Fri, 24 May 2019 22:26:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 23A6229FFA
+	for <lists+linux-nvme@lfdr.de>; Fri, 24 May 2019 22:40:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=GA+sG6FP+uDj4keBFZ5Actw9uLmN1oueYFAKxNwxOCQ=; b=A94XjPPDtAGvINhwyoWfbYIrWL
-	rqwU18vmkDpFVV5QqokiVNlzH/G2wtgHZqFAiH+XlXHtjlJ1XkL8mjNJiahoi4ioD7IX/bivZjQNW
-	fITijlRUmH0iIlhoJYRgVtltVGqTFBDqFTfKh3+Ljzr4ECX7fB9wA9t/WdfcIfAnoV509AY5gbr96
-	f1MtXZ/Eg7tLqzyXZCqnUFeJHXoMpCo1wa4QjWqTeFGj1C5ceokFXf4knHRRkHAr6vyyaRce/Hbzj
-	9qmg/YiCRzB7C54Mrm/GxpIdqGLSQfwSmdI2dk5G+xAMi3NO/6uf3K8YlhUqpAH318wuKeFnizV/q
-	jXUg7I1Q==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JPcUW1seH2q8x5HCiX7Gxrmo20kQk+BA4kfSenr5jOY=; b=TuUwxFJRmnAjrX
+	/j1UcQ6+PDfLmtkCI4EtVUZe9xt+d0TcD6rjpkJfrjPddn9I7oyeuN50VTDtqHLpaMSEKORGkKbuI
+	ZXXcRuQo9HDv46iFWVIV8aEhsjWlPTMIP57rkidv2Fyr4seTCHbXkreYoV5iWND3hZrEcvjBfnTfJ
+	Ti9ev9sn3qMAESbQlGh5oL12IL8bReUXFmIIH1lloVSQ1LUSGvHz72P9ipGZq4ezlFCY0FtZiZtfe
+	7pf2lJzXfqWVC9QK1gnfpOx5vKq5tsW86Mw+4RDT87r/rOkXqqJOdiw8WXO36ybD035Kf9Gp4HBhd
+	G0NIaxOJS5KIedxJq1jg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hUGlW-0006Uv-Su; Fri, 24 May 2019 20:26:12 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1hUGz4-0002RQ-7m; Fri, 24 May 2019 20:40:10 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hUGl8-00067L-77
- for linux-nvme@lists.infradead.org; Fri, 24 May 2019 20:25:47 +0000
-X-Amp-Result: SKIPPED(no attachment in message)
+ id 1hUGyo-0002Kh-Oy
+ for linux-nvme@lists.infradead.org; Fri, 24 May 2019 20:39:57 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 24 May 2019 13:25:44 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 24 May 2019 13:39:53 -0700
 X-ExtLoop1: 1
-Received: from unknown (HELO localhost.lm.intel.com) ([10.232.112.69])
- by orsmga007.jf.intel.com with ESMTP; 24 May 2019 13:25:44 -0700
-From: Keith Busch <keith.busch@intel.com>
-To: Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org
-Subject: [PATCH 3/3] nvme: quiesce admin queue for fw activation
-Date: Fri, 24 May 2019 14:20:36 -0600
-Message-Id: <20190524202036.17265-4-keith.busch@intel.com>
-X-Mailer: git-send-email 2.13.6
-In-Reply-To: <20190524202036.17265-1-keith.busch@intel.com>
-References: <20190524202036.17265-1-keith.busch@intel.com>
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by fmsmga005.fm.intel.com with ESMTP; 24 May 2019 13:39:52 -0700
+Date: Fri, 24 May 2019 14:34:54 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Hannes Reinecke <hare@suse.de>
+Subject: Re: [PATCH 1/4] nvme: separate out nvme_ctrl_state_name()
+Message-ID: <20190524203454.GA17321@localhost.localdomain>
+References: <20190520063624.50338-1-hare@suse.de>
+ <20190520063624.50338-2-hare@suse.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190520063624.50338-2-hare@suse.de>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190524_132546_279714_AB9EFC26 
-X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-CacheID: sfid-20190524_133955_059040_A934C9DA 
+X-CRM114-Status: UNSURE (   8.25  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.0 (-----)
+X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [192.55.52.93 listed in list.dnswl.org]
+ high trust [192.55.52.115 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,54 +67,26 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, Bart Van Assche <bvanassche@acm.org>,
- Ming Lei <ming.lei@redhat.com>
-MIME-Version: 1.0
+Cc: "Busch, Keith" <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
+ Christoph Hellwig <hch@lst.de>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Keith Busch <kbusch@kernel.org>
+On Sun, May 19, 2019 at 11:36:21PM -0700, Hannes Reinecke wrote:
+> Separate out nvme_ctrl_state_name() to return the controller state
+> as a string.
+> 
+> Signed-off-by: Hannes Reinecke <hare@suse.com>
+> Reviewed-by: James Smart <james.smart@broadcom.com>
+> Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
 
-The controller's admin queue processing is paused during firmware
-activation, just like IO queues. Quiesce these, and inform the syslog
-this uncommon event is happening.
+LGTM
 
-Signed-off-by: Keith Busch <kbusch@kernel.org>
----
- drivers/nvme/host/core.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 96dac2292897..5a6d27823f7f 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -3604,7 +3604,10 @@ static void nvme_fw_act_work(struct work_struct *work)
- 		fw_act_timeout = jiffies +
- 				msecs_to_jiffies(admin_timeout * 1000);
- 
-+	dev_info(ctrl->device, "processing paused for fw activation\n");
- 	nvme_stop_queues(ctrl);
-+	blk_mq_quiesce_queue(ctrl->admin_q);
-+
- 	while (nvme_ctrl_pp_status(ctrl)) {
- 		if (time_after(jiffies, fw_act_timeout)) {
- 			dev_warn(ctrl->device,
-@@ -3619,7 +3622,10 @@ static void nvme_fw_act_work(struct work_struct *work)
- 	    ctrl->state != NVME_CTRL_ADMIN_ONLY)
- 		return;
- 
-+	dev_info(ctrl->device, "processing resumed\n");
-+	blk_mq_unquiesce_queue(ctrl->admin_q);
- 	nvme_start_queues(ctrl);
-+
- 	/* read FW slot information to clear the AER */
- 	nvme_get_fw_slot_info(ctrl);
- }
--- 
-2.14.4
-
+Reviewed-by: Keith Busch <kbusch@kernel.org>
 
 _______________________________________________
 Linux-nvme mailing list
