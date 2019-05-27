@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77C282B1C1
-	for <lists+linux-nvme@lfdr.de>; Mon, 27 May 2019 12:02:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 605CF2B1C3
+	for <lists+linux-nvme@lfdr.de>; Mon, 27 May 2019 12:03:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,37 +11,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=sP6Zz/twoTj+WGO8k4t5O6O+gQaaBUKufY77Gr3+Rgg=; b=DaC7xk/WLp7HMtaD4AVioOOObs
-	57ozumTdktSmDdJMcn2DxgyzHBIea+v6xIjwslGjsWXI/Bc8xDJwLZnAtiuniv163nMyjSYVJnlhQ
-	Bli0P/e6UtRlpXoN2oR9XrJesi67fT40Yf73dVWEHeZ/LS6r+aboRrzNUGqF0snxFJfzFZ0ZixIrK
-	xGc5c3/Nl7KTbkE9cRKT/lStr4TYOtkUj/A9dFutjhyufI7J/lfFBbtwAHJ6F3RedPkJG8T2sETPK
-	3zijwVrnqejjuQc+36vmBfXBp0kLPo1J/yZW7WtaPSPH07tMFTYo9RnO3O+MjeP9IN5R1aIkRaJK0
-	kTpLpUEQ==;
+	bh=3nMgzjDr5si0Xj+2nHF8LKlcEyMj+q+w57kkgiH4gwY=; b=ff1iersrVTjuYTCBts1Yv7meTq
+	oY4a4QvoVBMB8amUOFQhiZSHz1M7hrb3nWtqJOL7sI782EWr8oz35H4U/wAmhSMSJQLotKSOYpMiD
+	3RvVNVBZC/DqY0fHATCuqN7as2MxSPs6zcMFz9EFhfgi9kmyfkflTBbOsVwDCE8Sfs+7rO76MUB+y
+	KruxFBAhclKVvf9Q9uuhtZqGu9+a4bSy2bfHTpk7djgS4Di2GNaea8OKFyvp63kkGOkHX8zXwLe/d
+	y8LkSs+9ehJ8OTeu1kbm/X/ukTL/FKsv42vl6e2X9bC3N7Ag5tXO14s0c51dScPMofv2BeO1I+UkP
+	cpzLxTxQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVCSx-0006CZ-In; Mon, 27 May 2019 10:02:51 +0000
+	id 1hVCT6-0006KT-Bf; Mon, 27 May 2019 10:03:00 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVCS9-0005DX-I2
- for linux-nvme@lists.infradead.org; Mon, 27 May 2019 10:02:05 +0000
+ id 1hVCSA-0005EN-QQ
+ for linux-nvme@lists.infradead.org; Mon, 27 May 2019 10:02:07 +0000
 Received: from Internal Mail-Server by MTLPINE2 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 27 May 2019 13:01:51 +0300
 Received: from r-vnc08.mtr.labs.mlnx (r-vnc08.mtr.labs.mlnx [10.208.0.121])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4RA1oEk021932;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4RA1oEl021932;
  Mon, 27 May 2019 13:01:51 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, sagi@grimberg.me,
  hch@lst.de
-Subject: [PATCH 7/9] nvme-print: Introduce show_nvme_ctrl helper
-Date: Mon, 27 May 2019 13:01:48 +0300
-Message-Id: <1558951310-31066-8-git-send-email-maxg@mellanox.com>
+Subject: [PATCH 8/9] nvme-print: Rename "Paths" --> "Ctrls" for json output in
+ list-subsys
+Date: Mon, 27 May 2019 13:01:49 +0300
+Message-Id: <1558951310-31066-9-git-send-email-maxg@mellanox.com>
 X-Mailer: git-send-email 1.7.8.2
 In-Reply-To: <1558951310-31066-1-git-send-email-maxg@mellanox.com>
 References: <1558951310-31066-1-git-send-email-maxg@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190527_030202_238378_B3B39CD6 
-X-CRM114-Status: UNSURE (   6.86  )
+X-CRM114-CacheID: sfid-20190527_030203_763645_0876FBCA 
+X-CRM114-Status: UNSURE (   6.65  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -73,49 +74,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This is a preparation patch for adding namespaces attribute for each
-controller.
-
-Reviewed-by: Minwoo Im <minwoo.im@samsung.com>
 Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- nvme-print.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+ nvme-print.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/nvme-print.c b/nvme-print.c
-index 7316117..7e1f9ea 100644
+index 7e1f9ea..b3f08cf 100644
 --- a/nvme-print.c
 +++ b/nvme-print.c
-@@ -2843,6 +2843,13 @@ void json_sanitize_log(struct nvme_sanitize_log_page *sanitize_log, const char *
- 	json_free_object(root);
- }
- 
-+static void show_nvme_ctrl(struct ctrl_list_item *item)
-+{
-+	printf(" +- %s %s %s %s\n", item->name, item->transport, item->address,
-+	       item->state);
-+}
-+
-+
- static void show_nvme_subsystem(struct subsys_list_item *item)
- {
- 	int i;
-@@ -2850,13 +2857,8 @@ static void show_nvme_subsystem(struct subsys_list_item *item)
- 	printf("%s - NQN=%s\n", item->name, item->subsysnqn);
- 	printf("\\\n");
- 
--	for (i = 0; i < item->nctrls; i++) {
--		printf(" +- %s %s %s %s\n", item->ctrls[i].name,
--				item->ctrls[i].transport,
--				item->ctrls[i].address,
--				item->ctrls[i].state);
--	}
+@@ -2904,10 +2904,8 @@ void json_print_nvme_subsystem_list(struct subsys_list_item *slist, int n)
+ 					slist[i].ctrls[j].state);
+ 			json_array_add_value_object(paths, path_attrs);
+ 		}
+-		if (j) {
+-			json_object_add_value_array(subsystem_attrs, "Paths", paths);
+-		}
 -
-+	for (i = 0; i < item->nctrls; i++)
-+		show_nvme_ctrl(&item->ctrls[i]);
- }
++		if (j)
++			json_object_add_value_array(subsystem_attrs, "Ctrls", paths);
+ 	}
  
- void show_nvme_subsystem_list(struct subsys_list_item *slist, int n)
+ 	if (i)
 -- 
 1.8.3.1
 
