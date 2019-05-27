@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 937022B1BB
-	for <lists+linux-nvme@lfdr.de>; Mon, 27 May 2019 12:02:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 71F6B2B1BA
+	for <lists+linux-nvme@lfdr.de>; Mon, 27 May 2019 12:02:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,37 +11,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=l6jvJIcBjKreaFB33o77sKnjOgDxaFL+DJoVZGHC4SY=; b=IMPWYzslFej4GSpDk1jZCIAWzi
-	BBuomFwOElQFar8bLTt2oBr3Sev1z206MGPaDflAIi0ZSiPBFxxVCWuP3smWGoIh97RkVRfFk5KiB
-	4M3Gzph62K9ldvTZYxRxbecRWLwMV2FYZqemvhMu+acMV5eLmkm0nLOc+nVqTl1JAi46J4FOBeyyM
-	HMmkbQyL2BkBHoW6/mRUFs4jDQSzhsqLhsQhcFv8JdPIuLNvxOcH21p/39jG+qBH2NF/v6oupqGdE
-	Lek5W1JKIsbxUiBSNA9kw3Dru9W6LYT/mM+2C/trIbzQnLyH181Z4/VqeVupcexMavBlgUgOG46jW
-	lRvuMw3Q==;
+	bh=GG9xw2gO67qIn3dqjk9vhbvkGPs/nQgD1ddbsejD2eQ=; b=FRXCota9+ZPWb+/l/4cXF+cx86
+	qYgS1R71YWS6V6Qdl4DuBQQyijCecxLGCunKeeG0KMfeUIX7nwgeFM+WEbTMJOGcHjlLn3n66xYd2
+	PQYj/VaLu1TeMEYXn9vrN0cw0PSHUAxNOPmlXOMXFzEbglMOVOm7++laI4M3o4sa6d4JOBLMJYAL1
+	dAWvTSu0RcJ87wbbT2KMoWaynrwQxPhADNYlgKQ03+f/7M2yuAlKLQfZXFJnbXA6FyaE2MbSrLpmm
+	xc+EdT1kMIZPP8c1pub+8f41FmbRGc5USvKCSlayzbFFB6InNpE09jrmweMQFBNHzS8X5Ls7fSoC6
+	5I98TLqQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVCSf-0005p9-SS; Mon, 27 May 2019 10:02:33 +0000
+	id 1hVCSY-0005dr-RF; Mon, 27 May 2019 10:02:26 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVCS5-00059v-6v
+ id 1hVCS5-0005Ai-3k
  for linux-nvme@lists.infradead.org; Mon, 27 May 2019 10:02:00 +0000
 Received: from Internal Mail-Server by MTLPINE2 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 27 May 2019 13:01:50 +0300
 Received: from r-vnc08.mtr.labs.mlnx (r-vnc08.mtr.labs.mlnx [10.208.0.121])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4RA1oEf021932;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4RA1oEg021932;
  Mon, 27 May 2019 13:01:50 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, sagi@grimberg.me,
  hch@lst.de
-Subject: [PATCH 2/9] nvme: update description for "nvme list" command
-Date: Mon, 27 May 2019 13:01:43 +0300
-Message-Id: <1558951310-31066-3-git-send-email-maxg@mellanox.com>
+Subject: [PATCH 3/9] fabrics: Fix memory leak of subsys list
+Date: Mon, 27 May 2019 13:01:44 +0300
+Message-Id: <1558951310-31066-4-git-send-email-maxg@mellanox.com>
 X-Mailer: git-send-email 1.7.8.2
 In-Reply-To: <1558951310-31066-1-git-send-email-maxg@mellanox.com>
 References: <1558951310-31066-1-git-send-email-maxg@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190527_030158_052349_17A52A21 
-X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-CacheID: sfid-20190527_030158_054265_FB584B7E 
+X-CRM114-Status: UNSURE (   6.06  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -73,29 +73,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The "nvme list" command doesn't get any device handle as an input
-argument. This operation prints out a basic information for all NVMe
-namespaces in the system.
-
 Reviewed-by: Minwoo Im <minwoo.im@samsung.com>
 Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- nvme.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ fabrics.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/nvme.c b/nvme.c
-index 9d763f5..3310abd 100644
---- a/nvme.c
-+++ b/nvme.c
-@@ -1801,7 +1801,7 @@ static int list(int argc, char **argv, struct command *cmd, struct plugin *plugi
- 	struct list_item *list_items;
- 	unsigned int list_cnt = 0;
- 	int fmt, ret, fd, i, n;
--	const char *desc = "Retrieve basic information for the given device";
-+	const char *desc = "Retrieve basic information for all NVMe namespaces";
- 	struct config {
- 		char *output_format;
- 	};
+diff --git a/fabrics.c b/fabrics.c
+index 511de06..b42a3ce 100644
+--- a/fabrics.c
++++ b/fabrics.c
+@@ -1203,5 +1203,6 @@ int disconnect_all(const char *desc, int argc, char **argv)
+ 		}
+ 	}
+ out:
++	free_subsys_list(slist, subcnt);
+ 	return ret;
+ }
 -- 
 1.8.3.1
 
