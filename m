@@ -2,44 +2,46 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82B722B1B4
-	for <lists+linux-nvme@lfdr.de>; Mon, 27 May 2019 12:02:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B96062B1B5
+	for <lists+linux-nvme@lfdr.de>; Mon, 27 May 2019 12:02:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=9wRuVHDwBF14EOBpn2TwYWu/lX1WiX/ZA0avBrVuE0M=; b=t3c
-	LjtnuduXesyKfwCmSnBpPRjO1CPhBtuLaOWWsN7SP+ZUDts7hbvo2aLtAtnYENy8MputxjgaG6RkF
-	eqmIxoWeLtjlsIA5638XgH7NvHi01/ADOhk+QlIrC5+CAjiqapP8Y0pLK912heP78gasqeDq28fmx
-	rHti8YXDOVGWE87o/4HtC650GIHwoBTJLtkuAN2awIGgG2mvLW2aXa3ILS8pQKtxo6XyLgCxo62LL
-	Gs5Gg6AHFLwjbIxoYn2OH7/JM2n/B55hRJgzwaRklifb/PkE9FkGhtq44prqy644/MoBK9oH5lLOR
-	WwlUWX0tBF/yJgxPootom6HR9pm5oyg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=aeQ2XB1wndtIwqNO4HbO1QCLaPH42PJ63MNhX37YBmg=; b=X/DO2WsYKhaZeqfkIcMpjz7lfa
+	OBPw1BkZ3tOxf26WzapQlOoRmKDsrHxKJiIByNEYcwdGK0AwFcjNUJy3awNFIwNCqZ452T39yQLPQ
+	bjIHIGkyaDQEVVtZTUo+RWlKRk2sshIKaae0MUucgCUrLDvZi1qpdKRJmkTK2KZjagBPseStnYX7U
+	1EL4S5HgkQBVJhV0dp/to6JVYrCUCy0ydcUtzOhiGHeQJ8u7uVuuidt9CX2jEuo14yCaNz5IBuOwV
+	JDQtORN2h8exYbikX2qYefNCcgzLC+bcz3S1Hc5TL0HhkPFPEzgtxCqX3gXxxM7p7hV45Za2c5lvI
+	GZQQEhYg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVCSB-0005DD-4G; Mon, 27 May 2019 10:02:03 +0000
+	id 1hVCSI-0005GT-1W; Mon, 27 May 2019 10:02:10 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVCS5-00059t-1P
+ id 1hVCS5-00059u-1P
  for linux-nvme@lists.infradead.org; Mon, 27 May 2019 10:01:58 +0000
 Received: from Internal Mail-Server by MTLPINE2 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 27 May 2019 13:01:50 +0300
 Received: from r-vnc08.mtr.labs.mlnx (r-vnc08.mtr.labs.mlnx [10.208.0.121])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4RA1oEd021932;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x4RA1oEe021932;
  Mon, 27 May 2019 13:01:50 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, sagi@grimberg.me,
  hch@lst.de
-Subject: [PATCH v3 0/9] Add Subsystem/Ctrl/Namespace relations (nvme-cli)
-Date: Mon, 27 May 2019 13:01:41 +0300
-Message-Id: <1558951310-31066-1-git-send-email-maxg@mellanox.com>
+Subject: [PATCH 1/9] nvme: update list-ns nsid option
+Date: Mon, 27 May 2019 13:01:42 +0300
+Message-Id: <1558951310-31066-2-git-send-email-maxg@mellanox.com>
 X-Mailer: git-send-email 1.7.8.2
+In-Reply-To: <1558951310-31066-1-git-send-email-maxg@mellanox.com>
+References: <1558951310-31066-1-git-send-email-maxg@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190527_030157_545752_2C3544BA 
-X-CRM114-Status: UNSURE (   6.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190527_030157_486136_B098EFDA 
+X-CRM114-Status: GOOD (  11.30  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -70,43 +72,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This patchset introduce few small bug fixes for memory leaks, improve
-coding style, improve code readability and mainly focus on the "nvme list-subsys"
-command. This command will show the whole NVM subsystem list (same as "nvme list"
-does for namespaces).
-The patchset ends with adding namespaces entry per each ctrl in the system.
-Actually, at first stage, we'll print only the namespace handle (nvme0n1 for
-example). Later on, we can add more attribute per demand (uuid, nguid, capacity,
-etc...).
+This commit updates the optional nsid argument to define the wanted
+nsid for start, instead of starting from nsid + 1. E.g. in case we've
+wanted to get the list of namespaces starting from 1, before this
+commit, we used the "--namespace-id=0" option. Nsid 0 is not valid in
+NVMe spec, thus change it to start counting from the given nsid.
 
-Changes from V2:
- - Added one more Reviewed-by sign (thanks Minwoo Im)
- - Added debug print for invalid nsid (proposed by Kenneth)
- - Updated the output for native NVMe multipath device to print "head" instead
-   of hidden devices (proposed by Keith and Christopth)
+Reviewed-by: Minwoo Im <minwoo.im@samsung.com>
+Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+---
+ nvme.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
-Changes from V1:
- - Added Reviewed-by sign (thanks Minwoo Im)
- - Added check for invalid nsid (proposed by Minwoo Im)
- - Fixed the output for native NVMe multipath
-
-Max Gurtovoy (9):
-  nvme: update list-ns nsid option
-  nvme: update description for "nvme list" command
-  fabrics: Fix memory leak of subsys list
-  nvme-print: fix json object memory leak
-  nvme: fix coding style issue
-  nvme: update list-subsys command to show the entire list
-  nvme-print: Introduce show_nvme_ctrl helper
-  nvme-print: Rename "Paths" --> "Ctrls" for json output in list-subsys
-  nvme: Retrieve namespaces during list-subsys cmd
-
- fabrics.c    |   6 +-
- nvme-print.c |  52 ++++++----
- nvme.c       | 305 ++++++++++++++++++++++++++---------------------------------
- nvme.h       |   9 +-
- 4 files changed, 181 insertions(+), 191 deletions(-)
-
+diff --git a/nvme.c b/nvme.c
+index 9819fcb..9d763f5 100644
+--- a/nvme.c
++++ b/nvme.c
+@@ -950,9 +950,9 @@ close_fd:
+ 
+ static int list_ns(int argc, char **argv, struct command *cmd, struct plugin *plugin)
+ {
+-	const char *desc = "For the specified device, show the "\
+-		"namespace list in a NVMe subsystem, optionally starting with a given namespace";
+-	const char *namespace_id = "namespace number returned list should to start after";
++	const char *desc = "For the specified controller handle, show the "\
++		"namespace list in the associated NVMe subsystem, optionally starting with a given nsid.";
++	const char *namespace_id = "first nsid returned list should start from";
+ 	const char *all = "show all namespaces in the subsystem, whether attached or inactive";
+ 	int err, i, fd;
+ 	__u32 ns_list[1024];
+@@ -963,7 +963,7 @@ static int list_ns(int argc, char **argv, struct command *cmd, struct plugin *pl
+ 	};
+ 
+ 	struct config cfg = {
+-		.namespace_id = 0,
++		.namespace_id = 1,
+ 	};
+ 
+ 	const struct argconfig_commandline_options command_line_options[] = {
+@@ -976,7 +976,14 @@ static int list_ns(int argc, char **argv, struct command *cmd, struct plugin *pl
+ 	if (fd < 0)
+ 		return fd;
+ 
+-	err = nvme_identify_ns_list(fd, cfg.namespace_id, !!cfg.all, ns_list);
++	if (!cfg.namespace_id) {
++		err = -EINVAL;
++		fprintf(stderr, "invalid nsid parameter\n");
++		goto close_fd;
++	}
++
++	err = nvme_identify_ns_list(fd, cfg.namespace_id - 1, !!cfg.all,
++				    ns_list);
+ 	if (!err) {
+ 		for (i = 0; i < 1024; i++)
+ 			if (ns_list[i])
+@@ -987,6 +994,7 @@ static int list_ns(int argc, char **argv, struct command *cmd, struct plugin *pl
+ 	else
+ 		perror("id namespace list");
+ 
++close_fd:
+ 	close(fd);
+ 
+ 	return err;
 -- 
 1.8.3.1
 
