@@ -2,91 +2,127 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC81B2B99F
-	for <lists+linux-nvme@lfdr.de>; Mon, 27 May 2019 19:55:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8CB4C2C5C0
+	for <lists+linux-nvme@lfdr.de>; Tue, 28 May 2019 13:51:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oY4Xk/odn98i6H2Z7QuZaTmG2sY4aeOUDlAr9z5HVZk=; b=SFxm0CKm5+XwiO
-	Rnwnxm1lATrJyAcEZSsZp6AovViDLA0rWdNHv4Aq4X9X+jYUXMF8MJAxj40oG4j70kbbjebf+WPga
-	I7tZkPcJw23s5PZrcrFNwHDkRrOJie7f9LLfos9UWr+rg7jmHLEpd459U+wylVd0pRBukxLmBvsi8
-	/GhaohriCopWS5tpy+JyLG25ZH0Lsb4JciIFfbAhq+64CrVsYQFAMRDA2dxc9lJStNt+Byf3XMAeU
-	AZETjR9sq1fp4DrEk29Qn82tgDph+xdQ+wqD8nyC5PLXpWwBUty0XESbsWdeoLh6rkNbmnrqPDwCI
-	Dn+IkX41HaBRrnjvtbSw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ICn+LTvmX5AcmsaGwFzAc8maJALazIvWNsSBZWOSQOU=; b=E/9nEKd870ySxlzyqN9lcRk/A
+	blAUa9LB2CicHO3ujEQcQVaowAcu7oN61lLQrXJ5UL7UTm45AnTxlWUOWfS5wJozQ2gSbVPUmrL1X
+	IS5MvwGzG5o91X6leFcH/S2qZp1whx2Q64JyqdNRoc31IoYsYP2j0F83PyhxgKiFaiU5NArCMbQVq
+	L5XBQ+oH27htijVv/6lV+4uOYUTkm87bOf6SY2UgSuBNYfyemRJa2EQhtSvbrfg06D/33pyUpUlkb
+	4EWT47ouv+PTccWA6qLq7m5MIS8n5edlpaEpYGfJKSsO08bJIdOKGaX/o5zLpJ3ycUPN1MFm21+SR
+	WhAnTzHNg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVJpp-0004S4-Kd; Mon, 27 May 2019 17:54:57 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1hVadP-0004Yn-W6; Tue, 28 May 2019 11:51:16 +0000
+Received: from mail-am5eur03on0617.outbound.protection.outlook.com
+ ([2a01:111:f400:fe08::617]
+ helo=EUR03-AM5-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVJpH-0003qp-44
- for linux-nvme@lists.infradead.org; Mon, 27 May 2019 17:54:42 +0000
-Received: by mail-pg1-x543.google.com with SMTP id f25so9435746pgv.10
- for <linux-nvme@lists.infradead.org>; Mon, 27 May 2019 10:54:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=BwTUuXxH9VQdFyTNpR2EFWyPYUacdmTIk+EuRBn+Bvc=;
- b=dLeMslA2RppyxUIuSvYYW7q9bPepqzquSAC84w4+u2H/4zY/NoR92nudKz7qs2qyP4
- DuOIvZOmxrVfWR4bS46cgahm2G+XPp4fseuLZwDGK/ze+TgSgEral3GWcbMdoNlkpvih
- 14y6YoAPWeNL46YzS1Yn/hbYllOZuZvP1a8CF4Vt+kfcAepwZu2/5hGAF49DodybDwgo
- af+Z+X+1lWjyThFk1ZWLyKtr0TRCHGTclpPX4BBilG9AEtcGEjQXGQGPf4xKlBqo2Qf9
- PSHmoALWdMKCTkzZMPR6ArlEyHoTPlPHYyPvh8hRsGwKxQOBoBV/qD5R7+IV4m7EDQRJ
- P67w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=BwTUuXxH9VQdFyTNpR2EFWyPYUacdmTIk+EuRBn+Bvc=;
- b=eP7fEgj+ZT8cGYfxcFvNJu8r9GbPi+pNWOSe2fFkqAn4mdd8Ag9xk+Oqpvap20pK5d
- zN0YK2gImDzvjlExk9YDaKsQWHA2j48F687uXCHkJ7QZUI2j/aw2XYLneaZhjYMKvgft
- o9V921XyOD+twAKjhwCZCqTHaJgqKctw8ka3qF9QiSt7uxLSmA+V/toqScnHAgdy020e
- AprlyQ45qqxeYDJrW+W7dI6MTlxVGQwnEjtaeBos8okWdxWT0kI/SsHyll37FH7yJV2c
- V2L6aaTxDWLuMtk2q396L50r7NIOPE2b4olyXoBOOAKmTE7P/90P1h+s7mKnSWkZ+PB3
- ZY7A==
-X-Gm-Message-State: APjAAAVxDbg84MCXNmDurHYwpp7l8BVrelBTUscJw8nl5jl4Tmp2nrOj
- NFwVd9yrQNFskVpHXN3U1HVt8hKZ52M=
-X-Google-Smtp-Source: APXvYqw1oa9Us2DoQf3RJdZj2SnhsrBi/Joa81dzUVpZCaGL0BmtVzpXc33ya7HJvSBhmd9qjphNBw==
-X-Received: by 2002:a62:7d10:: with SMTP id
- y16mr137033866pfc.116.1558979661891; 
- Mon, 27 May 2019 10:54:21 -0700 (PDT)
-Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id z4sm12608936pfa.142.2019.05.27.10.54.19
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 27 May 2019 10:54:21 -0700 (PDT)
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: linux-nvme@lists.infradead.org
-Subject: [RFC PATCH 5/5] nvme-trace: Add tracing for req_comp in target
-Date: Tue, 28 May 2019 02:53:46 +0900
-Message-Id: <20190527175346.29972-6-minwoo.im.dev@gmail.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190527175346.29972-1-minwoo.im.dev@gmail.com>
-References: <20190527175346.29972-1-minwoo.im.dev@gmail.com>
+ id 1hVadJ-0004Xd-Dl
+ for linux-nvme@lists.infradead.org; Tue, 28 May 2019 11:51:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lpmiu4zIe6VUKnCjMXZ8kqZc3PtrwQZ7b6CtpGFrw8U=;
+ b=WDCEi0nX89YS0t97xgrlomkg3Rw25KXCqMhayrHBFJ+W21x0n/KqtyuE//OHF/UAb+wZ4q+ObLwDx2zKiMw59LxcvokY++3UuRFwemTQL/CFwa8iyzuFJBJQBKPe2NFuG7Gl1swdHW9L5+AIg1mFTl5Jmo9sJBBuJtylYGQiykU=
+Received: from HE1PR05CA0251.eurprd05.prod.outlook.com (2603:10a6:3:fb::27) by
+ HE1PR0502MB3019.eurprd05.prod.outlook.com (2603:10a6:3:d9::8) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.1922.23; Tue, 28 May 2019 11:51:03 +0000
+Received: from DB5EUR03FT036.eop-EUR03.prod.protection.outlook.com
+ (2a01:111:f400:7e0a::204) by HE1PR05CA0251.outlook.office365.com
+ (2603:10a6:3:fb::27) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1922.16 via Frontend
+ Transport; Tue, 28 May 2019 11:51:03 +0000
+Authentication-Results: spf=pass (sender IP is 193.47.165.134)
+ smtp.mailfrom=mellanox.com; lst.de; dkim=none (message not signed)
+ header.d=none;lst.de; dmarc=pass action=none header.from=mellanox.com;
+Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
+ 193.47.165.134 as permitted sender)
+ receiver=protection.outlook.com; 
+ client-ip=193.47.165.134; helo=mtlcas13.mtl.com;
+Received: from mtlcas13.mtl.com (193.47.165.134) by
+ DB5EUR03FT036.mail.protection.outlook.com (10.152.20.185) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.1922.16 via Frontend Transport; Tue, 28 May 2019 11:51:02 +0000
+Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4; Tue, 28 May 2019 14:51:01
+ +0300
+Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Tue,
+ 28 May 2019 14:51:01 +0300
+Received: from [10.223.3.162] (10.223.3.162) by MTLCAS01.mtl.com (10.0.8.71)
+ with Microsoft SMTP Server (TLS) id 14.3.301.0; Tue, 28 May 2019 14:50:33
+ +0300
+Subject: Re: [PATCH 1/1] nvme-rdma: Add association between ctrl and transport
+ dev
+To: Sagi Grimberg <sagi@grimberg.me>, <linux-nvme@lists.infradead.org>,
+ <hch@lst.de>
+References: <1558444796-5190-1-git-send-email-maxg@mellanox.com>
+ <da6603ee-4a71-e057-5c88-656455956eba@grimberg.me>
+ <ceb1744a-cc68-9588-bd07-d3060630e857@mellanox.com>
+ <724732d9-2ea2-e349-435b-ae664692b565@grimberg.me>
+From: Max Gurtovoy <maxg@mellanox.com>
+Message-ID: <77b99fb1-8996-52bf-1e6f-f2fee9216a2e@mellanox.com>
+Date: Tue, 28 May 2019 14:50:32 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
+In-Reply-To: <724732d9-2ea2-e349-435b-ae664692b565@grimberg.me>
+Content-Language: en-US
+X-Originating-IP: [10.223.3.162]
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:193.47.165.134; IPV:NLI; CTRY:IL; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(39860400002)(376002)(136003)(396003)(346002)(2980300002)(199004)(189003)(4326008)(47776003)(7736002)(65806001)(65956001)(186003)(65826007)(2486003)(53546011)(229853002)(26005)(126002)(3846002)(67846002)(31686004)(11346002)(14444005)(486006)(476003)(77096007)(6116002)(2616005)(446003)(23676004)(36756003)(16526019)(76176011)(6246003)(16576012)(107886003)(336012)(31696002)(70206006)(8936002)(356004)(64126003)(8676002)(81156014)(81166006)(110136005)(230700001)(70586007)(58126008)(106002)(316002)(478600001)(54906003)(5660300002)(2201001)(2906002)(86362001)(50466002)(305945005)(3940600001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:HE1PR0502MB3019; H:mtlcas13.mtl.com; FPR:;
+ SPF:Pass; LANG:en; PTR:mail13.mellanox.com; A:1; MX:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 4594b09b-4df0-433b-c167-08d6e362c29a
+X-Microsoft-Antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(4709054)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
+ SRVR:HE1PR0502MB3019; 
+X-MS-TrafficTypeDiagnostic: HE1PR0502MB3019:
+X-Microsoft-Antispam-PRVS: <HE1PR0502MB3019894E078693A51668FA28B61E0@HE1PR0502MB3019.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
+X-Forefront-PRVS: 00514A2FE6
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Message-Info: MhfBz/Ik62VOycw5v+ClI6/mINYvEoy/8r06awnBWHpYM1dUap+sbgvIezZf3PK6Usj+0hsaFGF90O7e8p/hONR7eQSlf+ea/G3HRzWyIF3cWrw/LBHYMK7qwoor5hJrb5ktFcTgIcdcvLUd24EvcKAxj3ayrO0z101oIFh0Bpq9DElBstbTbwbx5wryzH99ddfAPlgJb5EMPSelz9Nf6xORXXPLmQvu+3Q4b+2/ionV1ycl1QbmY3e7fl+K9GPT12rA8kNNguJ2PY1S+42OUUSepppRprhdySj3igu7UTT8HMo8/QVxwY5TMn/forbN4g0nFfL5+44t41Mne4F8O0cMy2vIYjqHj1Nk+8V7E32Z4riRLHCBOFAuNuERUJ4Yl3wUYf0d3+vezPPIlsp5mr4N1yjze1cuuT3Q/qciRHM=
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 May 2019 11:51:02.8434 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4594b09b-4df0-433b-c167-08d6e362c29a
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.134];
+ Helo=[mtlcas13.mtl.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: HE1PR0502MB3019
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190527_105423_684632_B16F6669 
-X-CRM114-Status: GOOD (  17.52  )
+X-CRM114-CacheID: sfid-20190528_045109_513148_A33A91E3 
+X-CRM114-Status: GOOD (  15.87  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ no trust [2a01:111:f400:fe08:0:0:0:617 listed in]
  [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,139 +134,59 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- James Smart <james.smart@broadcom.com>, Jens Axboe <axboe@fb.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, Keith Busch <kbusch@kernel.org>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
+Cc: shlomin@mellanox.com, israelr@mellanox.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-We can have the common tracing code with different event entries.
-  - nvme_complete_rq
-  - nvmet_req_complete
 
-This patch updates existing TRACE_EVENT to a template to provide a
-common tracing interface.
+On 5/25/2019 2:05 AM, Sagi Grimberg wrote:
+>
+>>> Do you actually need the extra reference on the device? why doesn't 
+>>> just
+>>> the set/clear of ctrl->device sufficient? these routines should be
+>>> serialized..
+>>
+>> Yes we need this reference since the queues are freed during 
+>> reconnection. And without ctrl reference, also the device will be freed.
+>
+> The device should be freed shouldn't it? I thought that this was the
+> purpose of the ref removal from the tagset (which is identical to what
+> you are trying to replace). I'm not clear on what this is solving that
+> the prior reference didn't have?
 
-We can have it as a common code because most of the fields need to be
-printed out for both host and target system.
+Prior reference was per tagset and not per controller.
 
-Cc: Keith Busch <keith.busch@intel.com>
-Cc: Jens Axboe <axboe@fb.com>
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Sagi Grimberg <sagi@grimberg.me>
-Cc: James Smart <james.smart@broadcom.com>
-Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
----
- drivers/nvme/target/core.c |  3 +++
- drivers/nvme/trace.c       |  1 +
- drivers/nvme/trace.h       | 51 ++++++++++++++++++++++++++++++--------
- 3 files changed, 45 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
-index a94c7f9b02ae..722737f5486f 100644
---- a/drivers/nvme/target/core.c
-+++ b/drivers/nvme/target/core.c
-@@ -690,6 +690,9 @@ static void __nvmet_req_complete(struct nvmet_req *req, u16 status)
- 
- 	if (unlikely(status))
- 		nvmet_set_error(req, status);
-+
-+	trace_nvmet_req_complete(req);
-+
- 	if (req->ns)
- 		nvmet_put_namespace(req->ns);
- 	req->ops->queue_response(req);
-diff --git a/drivers/nvme/trace.c b/drivers/nvme/trace.c
-index 8fe2dcee6a42..8071b60ec71d 100644
---- a/drivers/nvme/trace.c
-+++ b/drivers/nvme/trace.c
-@@ -222,3 +222,4 @@ EXPORT_TRACEPOINT_SYMBOL_GPL(nvme_async_event);
- EXPORT_TRACEPOINT_SYMBOL_GPL(nvme_sq);
- 
- EXPORT_TRACEPOINT_SYMBOL_GPL(nvmet_req_init);
-+EXPORT_TRACEPOINT_SYMBOL_GPL(nvmet_req_complete);
-diff --git a/drivers/nvme/trace.h b/drivers/nvme/trace.h
-index 9af674ee0c3a..bd239434de09 100644
---- a/drivers/nvme/trace.h
-+++ b/drivers/nvme/trace.h
-@@ -193,10 +193,11 @@ DEFINE_EVENT(nvme__cmd_begin, nvmet_req_init,
- 	TP_ARGS(req, cmd, NVME_TRACE_TARGET)
- );
- 
--TRACE_EVENT(nvme_complete_rq,
--	    TP_PROTO(struct request *req),
-+DECLARE_EVENT_CLASS(nvme__cmd_end,
-+	    TP_PROTO(void *req, ...),
- 	    TP_ARGS(req),
- 	    TP_STRUCT__entry(
-+		__field(enum nvme_trace_type, type)
- 		__array(char, disk, DISK_NAME_LEN)
- 		__field(int, ctrl_id)
- 		__field(int, qid)
-@@ -207,20 +208,50 @@ TRACE_EVENT(nvme_complete_rq,
- 		__field(u16, status)
- 	    ),
- 	    TP_fast_assign(
--		__entry->ctrl_id = nvme_req(req)->ctrl->instance;
--		__entry->qid = nvme_req_qid(req);
--		__entry->cid = req->tag;
--		__entry->result = le64_to_cpu(nvme_req(req)->result.u64);
--		__entry->retries = nvme_req(req)->retries;
--		__entry->flags = nvme_req(req)->flags;
--		__entry->status = nvme_req(req)->status;
--		__assign_disk_name(__entry->disk, req->rq_disk);
-+		set_trace_type(__entry->type, req);
-+		if (__entry->type != NVME_TRACE_TARGET) {
-+			struct request *req = (struct request *) req;
-+
-+			__entry->ctrl_id = nvme_req(req)->ctrl->instance;
-+			__entry->qid = nvme_req_qid(req);
-+			__entry->cid = req->tag;
-+			__entry->result =
-+					le64_to_cpu(nvme_req(req)->result.u64);
-+			__entry->retries = nvme_req(req)->retries;
-+			__entry->flags = nvme_req(req)->flags;
-+			__entry->status = nvme_req(req)->status;
-+			__assign_disk_name(__entry->disk, req->rq_disk);
-+		} else {
-+			struct nvmet_ctrl *ctrl = nvmet_req_to_ctrl(req);
-+			struct nvmet_cq *cq = ((struct nvmet_req *) req)->cq;
-+			struct nvme_completion *cqe =
-+					((struct nvmet_req *) req)->cqe;
-+			struct nvmet_ns *ns = ((struct nvmet_req *) req)->ns;
-+
-+			__entry->ctrl_id = ctrl ? ctrl->cntlid : 0;
-+			__entry->qid = cq->qid;
-+			__entry->cid = cqe->command_id;
-+			__entry->result = cqe->result.u64;
-+			__entry->flags = 0;
-+			__entry->status = cqe->status >> 1;
-+			__assign_disk_name(__entry->disk, ns ?
-+						ns->bdev->bd_disk : NULL);
-+		}
- 	    ),
- 	    TP_printk("nvme%d: %sqid=%d, cmdid=%u, res=%llu, retries=%u, flags=0x%x, status=%u",
- 		      __entry->ctrl_id, __print_disk_name(__entry->disk),
- 		      __entry->qid, __entry->cid, __entry->result,
- 		      __entry->retries, __entry->flags, __entry->status)
-+);
-+
-+DEFINE_EVENT(nvme__cmd_end, nvme_complete_rq,
-+	TP_PROTO(void *req, ...),
-+	TP_ARGS(req, NVME_TRACE_HOST)
-+);
- 
-+DEFINE_EVENT(nvme__cmd_end, nvmet_req_complete,
-+	TP_PROTO(void *req, ...),
-+	TP_ARGS(req, NVME_TRACE_TARGET)
- );
- 
- #define aer_name(aer) { aer, #aer }
--- 
-2.21.0
+>
+>> And when you disconnect during reconnection, the block layer will 
+>> call exit_request for each request (but the device is freed) and we 
+>> will do the need unmapping from the device..
+>>
+>> Not so plesent..
+>
+> Which again is why we had the tagset reference in the first place. I
+> thought you wanted to remove the device reference altogether because
+> of your bonding use-case..
+
+we remove it in de-configutration state.
+
+
+>
+> I'm getting the feeling that we need to map the qe's in queue_rq
+> and unmap in complete_rq. I don't see any other way around it because
+> on the bonding use-case we need to wipe out all of the device related
+> resources because we need to have it teardown and be prepared to get
+> a different device on the next (re)connect.
+
+Yes, thought using block layer iter but in case it won't hurt 
+performance I'll do it in queue_rq/complete_rq.
+
+Let me check that...
+
+-Max.
+
 
 
 _______________________________________________
