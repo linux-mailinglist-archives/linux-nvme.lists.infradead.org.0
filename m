@@ -2,88 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F3A82D1AC
-	for <lists+linux-nvme@lfdr.de>; Wed, 29 May 2019 00:46:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C1B12D277
+	for <lists+linux-nvme@lfdr.de>; Wed, 29 May 2019 01:38:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WVvrnWhs14oHo86V3uDmo+vqmaTJaFLv7yhTm6YwBzI=; b=DHA38KQVWq7tgOcJheiHIhXj+
-	ULpOdQrEi33rlmpzbVDnQaymEWSUb1I9VQg0mQAJuGZpnNihoEbcp1DhQZJHzO2akj3HUNldCKx6X
-	UuoXTOL+djtLoyuzKCtEKB1cKACxZ6n4j/WXNCxsL21p2LQYVzABzZSfqXNMm3Y09MjTFBGopeOAE
-	vJbVS4IXuQntNXfYYTfx/rZR3pO+emGcVE97stNlYRGa+5TZTGNZWsPxB/fXMb7Yr1B2QSbtCeLmg
-	8GDUWhlfIQ+lFlG5vsJTla6NDPoZTgvUjhuEi4FL5Ao4r/Az/adOoC08pDNFj+zJEu+/IU0mP7p8O
-	v8If2CgOQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ocegAFLfrSqP7e5mjF3fB29HJ5dsBMLo2ObNU3Aaq2o=; b=JMLw/0wD7WRxR6
+	5cwBCF1tG+Ik6Ao0AHo+1m4nSZMFbBlut4hCPumJkx8+3zPwKDxr5o1txTxB7/LPD+ROkR8/amvMo
+	vibz4hfHO8P95kyLIj9Fq1Ae5pv9qS12y01WDmzPSfBwPTic4k3Oe5RLxu8N8L9L79Fv3fdA6kB8O
+	3f+ivCdviomQlEIQljxWzkRIy4lSQlyRpsCII2+se4I8lZClg+ItV5i+mM+CJQiWW9kRPl5O2tEs4
+	KRuKbsM72Ba6t2dvL5KjKchzFiqKKQr80T13g3hbwXgHWbSw5WwDwdVdtN/ZUmbOXHNbbtKqDpvz9
+	sNv6STlo6UpO8dfs/0JQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVkrd-00046O-FC; Tue, 28 May 2019 22:46:37 +0000
-Received: from mail-pf1-f193.google.com ([209.85.210.193])
+	id 1hVlfS-00044S-6W; Tue, 28 May 2019 23:38:06 +0000
+Received: from mx0b-0016f401.pphosted.com ([67.231.156.173])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVkrY-00045q-Qf
- for linux-nvme@lists.infradead.org; Tue, 28 May 2019 22:46:34 +0000
-Received: by mail-pf1-f193.google.com with SMTP id y11so203525pfm.13
- for <linux-nvme@lists.infradead.org>; Tue, 28 May 2019 15:46:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=n1CaGLavqL4RdPQOgl8UPYUKxeKVuSKuSGI1j2uJvGM=;
- b=ZB259WpFUj6La0zwmCvM0DXmH4gHEqbtngicCzQEriS/SbXCOgHvFASYMlRayeB/Nm
- goPLGSg6j9vEKQelXbnf4uGgkhGWcg4Qcj4s6AXx6JxXglTuqgzlyGLXimjTDiAwhcD5
- EqehZ8mi4gBO+h3Yolu0yHbfckbMUd/352AAsaY/6aRCFn4u4Sgc/d7shvtgzB0zDDgt
- tHAib9AIkd//9cisuvywH1v+I74XEcruHjbesxTu/6JGu3uzybqcFopQcpckVfELVDxB
- 5yH7cucx6grmouOD8dItC7GFofzvMsfHh7i034VXWzaLijEGZCMZhIQ9LimJCjTmJ+TG
- QYRg==
-X-Gm-Message-State: APjAAAXK75VrQHW88zfNSQd/f6ZOgnpPVnNudkldVIS9ix0K4Mzev7BU
- RmqYhUhdU0WgUzV2Cvx1vXg=
-X-Google-Smtp-Source: APXvYqyLcUZCK1ZWDRP2+r9Ptvz9lfIBGYWan7RcxG9h/Tw5p7Q380VZWjig48fn6sv1sQsxobLAqA==
-X-Received: by 2002:a63:d00d:: with SMTP id z13mr38514136pgf.368.1559083591784; 
- Tue, 28 May 2019 15:46:31 -0700 (PDT)
-Received: from ?IPv6:2601:647:4800:973f:d85c:2df7:72d9:ea63?
- ([2601:647:4800:973f:d85c:2df7:72d9:ea63])
- by smtp.gmail.com with ESMTPSA id t7sm15816719pfh.156.2019.05.28.15.46.30
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 28 May 2019 15:46:31 -0700 (PDT)
-Subject: Re: [PATCH 6/9] nvme: update list-subsys command to show the entire
- list
-To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org,
- kbusch@kernel.org, hch@lst.de
-References: <1558951310-31066-1-git-send-email-maxg@mellanox.com>
- <1558951310-31066-7-git-send-email-maxg@mellanox.com>
- <0004494a-67a0-c010-5de6-fa66dcafff68@grimberg.me>
- <8a754fd0-6abc-a000-0183-b6832df0f2ba@mellanox.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <a3c90a29-07f3-614a-034e-d04bcc21013a@grimberg.me>
-Date: Tue, 28 May 2019 15:46:29 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ id 1hVlfN-00043w-6C
+ for linux-nvme@lists.infradead.org; Tue, 28 May 2019 23:38:02 +0000
+Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
+ by mx0b-0016f401.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x4SNZqm5001047; Tue, 28 May 2019 16:37:58 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
+ h=date : from : to :
+ cc : subject : in-reply-to : message-id : references : mime-version :
+ content-type; s=pfpt0818; bh=upmdA8iCCdZ5kyiO0JYTSDhCqcl4K3cnMnb5lh3/xcE=;
+ b=GH5/SXJ9jmLbBhADz6eYVirrgHbTt2t/U/ls0/OgffvZJWY5koDK+uypD7QBfvyMeK55
+ 9KPL1zvghRXMun93oOaKNr8lryRAZJyunk8xmb0xm039Cfhyx6MfysYrQ3jEPZEj+WX5
+ D25BU99K9QtsGMQxVFtwSISqoE3Dgi/FATdUSuG5MhOZAYCG/E/J+qVfEnNCjgeFeEtx
+ mokhFee7XuB7F7D625bCj7yQQo373GQ8rYlBOEYZPn2VG0mzBB1TWJBcSXuYXCtL8t26
+ yDo4f/QOhoPD7dBZR3aafGLUAhffjSJzxvZqAxECTJ16pQphmIiNnY4hW1Zb2vnfXVo+ 7A== 
+Received: from sc-exch03.marvell.com ([199.233.58.183])
+ by mx0b-0016f401.pphosted.com with ESMTP id 2ss270k9pk-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
+ Tue, 28 May 2019 16:37:58 -0700
+Received: from SC-EXCH03.marvell.com (10.93.176.83) by SC-EXCH03.marvell.com
+ (10.93.176.83) with Microsoft SMTP Server (TLS) id 15.0.1367.3; Tue, 28 May
+ 2019 16:37:56 -0700
+Received: from maili.marvell.com (10.93.176.43) by SC-EXCH03.marvell.com
+ (10.93.176.83) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
+ Transport; Tue, 28 May 2019 16:37:56 -0700
+Received: from mvluser05.qlc.com (unknown [10.112.10.135])
+ by maili.marvell.com (Postfix) with ESMTP id DBBD93F703F;
+ Tue, 28 May 2019 16:37:56 -0700 (PDT)
+Received: from localhost (aeasi@localhost)
+ by mvluser05.qlc.com (8.14.4/8.14.4/Submit) with ESMTP id x4SNbpQB010415;
+ Tue, 28 May 2019 16:37:52 -0700
+X-Authentication-Warning: mvluser05.qlc.com: aeasi owned process doing -bs
+Date: Tue, 28 May 2019 16:37:51 -0700
+From: Arun Easi <aeasi@marvell.com>
+X-X-Sender: aeasi@mvluser05.qlc.com
+To: James Smart <jsmart2021@gmail.com>
+Subject: Re: [PATCH] nvme-fc: Add message when creating new controller
+In-Reply-To: <20190528182404.3463-1-jsmart2021@gmail.com>
+Message-ID: <alpine.LRH.2.21.9999.1905281624470.9636@mvluser05.qlc.com>
+References: <20190528182404.3463-1-jsmart2021@gmail.com>
+User-Agent: Alpine 2.21.9999 (LRH 334 2019-03-29)
 MIME-Version: 1.0
-In-Reply-To: <8a754fd0-6abc-a000-0183-b6832df0f2ba@mellanox.com>
-Content-Language: en-US
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-05-28_11:, , signatures=0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190528_154632_861547_B3C6C6F3 
-X-CRM114-Status: GOOD (  13.82  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190528_163801_359839_875394D5 
+X-CRM114-Status: GOOD (  16.05  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [67.231.156.173 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.193 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.193 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,40 +94,55 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: shlomin@mellanox.com, martin.petersen@oracle.com, minwoo.im@samsung.com
+Cc: linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+On Tue, 28 May 2019, 11:24am, James Smart wrote:
 
->>> Make it similar to "nvme list" command. For that, remove the
->>> unnecessary ana_state parsing (was introduced only if specific namespace
->>> handle was given).
->>
->> No, this is useful! You're arbitrarily removing useful information from
->> the display...
->>
->> nak from me on this one...
+> When looking at console messages to troubleshoot, there are one
+> maybe two messages before creation of the controller is complete.
+> However, a lot of io takes place to reach that point. It's unclear
+> when things have started.
 > 
-> I intended to add it to different command (maybe to new "nvme multipath" 
-> command you suggested).
+> Add a message when the controller is first attempting to be
+> connecting to. Thus we know what controller and its NQN is being
+> put into place for any subsequent success or failure messages.
+> 
+> Signed-off-by: James Smart <jsmart2021@gmail.com>
+> ---
+>  drivers/nvme/host/fc.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
+> index c17c887f2148..5c9b69ee2c1f 100644
+> --- a/drivers/nvme/host/fc.c
+> +++ b/drivers/nvme/host/fc.c
+> @@ -3129,6 +3129,10 @@ nvme_fc_init_ctrl(struct device *dev, struct nvmf_ctrl_options *opts,
+>  
+>  	nvme_get_ctrl(&ctrl->ctrl);
+>  
+> +	dev_info(ctrl->ctrl.device,
+> +		"NVME-FC{%d}: creating new ctrl: NQN \"%s\"\n",
+> +		ctrl->cnum, ctrl->ctrl.opts->subsysnqn);
+> +
 
-I think it should be the other way around, we already have an interface
-which is useful, if we add information it should either be exposed via
-an argument or a different command.
+Adding rport+lport information would be helpful. It would be good to have 
+for all messages, but at least one message establishing the relationship 
+would make it easier when looking at logs.
 
-> I don't understand why ANA state is so important attribute for a user 
-> that only asked "nvme list-subsys".
+Just wondering if there is any reason why no FC rport/lport info
+was logged with any of the messages in fc.c?
 
-It gives you the layout of the subsystem with respect to the volume you
-asked for.
+Regards,
+-Arun
 
-> One can always run "nvme ana-log" command to get a full log page (I'll 
-> take a look on it and see if it can be improved per given namespace)
-
-This is the reverse info (controller view), this is the
-subsystem/namespace view.
+>  	if (!queue_delayed_work(nvme_wq, &ctrl->connect_work, 0)) {
+>  		nvme_put_ctrl(&ctrl->ctrl);
+>  		dev_err(ctrl->ctrl.device,
+> 
 
 _______________________________________________
 Linux-nvme mailing list
