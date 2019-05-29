@@ -2,79 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 356282E090
-	for <lists+linux-nvme@lfdr.de>; Wed, 29 May 2019 17:09:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BED92E0D1
+	for <lists+linux-nvme@lfdr.de>; Wed, 29 May 2019 17:15:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bLBM0oDlBjQtKmsivgwwJlINzDBB6HtI1l4HFdm2SW8=; b=QL6J0oZVGbIzcQ
-	cX62V7afso3E6bJttSboO3Rz/u80mAtd2FAm8cH/SEFUBMd4hbgfe9R6BobQslgoNPvkeKWjSB/YY
-	Ps+164O6UtYRr4q9sL2AybdVpZI5SY8mmhp6yyVf3EgaQfJ+MVqsxuR9DUtyA2EhOXkW+YmG3+0YS
-	0CIlpDch6fBeuyPpdjJioZYOXkcHt4Gl/JwMxZRWzRL6aab3GyTVIpct6Ghi64+8v114yhrkjlTiE
-	gL8qbQP3JYtMPkKHmK0WivuznFjF4Q+UqJpL5JxrvLiMdkrSQJw+anff4umZwvSYhflIIOKb5msVH
-	8cwOCIZAxye7dVTd5ssQ==;
+	List-Owner; bh=sEEOVCAe9UqsJS6diUYKYJR0/O4QmR59HYPvDhESTQg=; b=PW6aWzuypapYZR
+	TOx6VgCgIML3DHaOhOU5GVxGfJS0Pdzlu+zy5XPVhOJX0zrsmz+uLgnyikkffhtP0Ml7JdQm50ijX
+	1W6Z8k7p1wF0TQhBS8PTTlUP6MSL5m76N6i3dfAwwnf8Ca2b+say9bbkz8+9YhV16TudRYWgNYfbW
+	heeoBETceI/5bsRcqVAHYLiQ9mIynxtKolh5Ep7mf4YGeMFkEOyhFesEClbOql/HM8xWbBMGDeYF8
+	NsZY56KrLwOmyXt1tM4+JNEtyBQGTqaJOcETM5CCSnU/ef9B5C953xNjHARUfFdCQ0vM7/tKHv5ZZ
+	e9mEJ9ZZUd1PYeKwNM/Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hW0CG-0000MK-II; Wed, 29 May 2019 15:08:56 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1hW0IZ-0004Oo-Ra; Wed, 29 May 2019 15:15:27 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hW0CB-0000M0-7b
- for linux-nvme@lists.infradead.org; Wed, 29 May 2019 15:08:52 +0000
-Received: by mail-io1-xd41.google.com with SMTP id g16so2108059iom.9
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 08:08:50 -0700 (PDT)
+ id 1hW0IU-0004OB-RR
+ for linux-nvme@lists.infradead.org; Wed, 29 May 2019 15:15:24 +0000
+Received: by mail-pg1-x544.google.com with SMTP id h2so102086pgg.1
+ for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 08:15:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=d5mm6i6SlQOuViUezZBbHLCgjaf0YFUvTAwdCPBwLdU=;
- b=U+EDeYPq6ZinIhh46Ya4sGjXUf0VWdpnBrBxysLsOgbdNLw2ZpT0/LNnI2SG2IfhCz
- ZrVejVHg1Gm9KGeZqvYCLV/v06YiF5YUC2zRMbZNyJ183o+fIJuhn8VY9wiSxIlzQqJB
- sUzBgg1i2R4HZFZSa43UN6vasCLBQcs4QbXGgH7kik0GjQEyxaFN87fcSUkN2z+HSWZP
- i+bBrTkb8Z4TyiqYPAjMXIOeYXFjEMv5sJ5wD4ZkCXbzHkkZpaYr9e37tKYzFPkmexgb
- 0FYaE3NgFxwsGPFZko3Q0bghNqNMaLL3qJC8GqwFqkvOYQUOS/mTAq7ZL0W9DL62jNVp
- ayyA==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=YD7/cBxw7LRkLxwmM6m3DiNi5eK8EJjOnQqrabni5wk=;
+ b=efpl+pqxTpk6uynjucmLrNO3wU6NZdCAYsaH9wfZPcLJVOOiq+ayHuE6J54vBfMiCo
+ qqa7VcvNl+1mvkcvR+Aq85iYmvLzpZZbfIb9S0mXCE/T4MI+QefqusFehJSCL30Pu3TY
+ dIJ1Jlju3gBiDnE+mL9ITtuc0p4pbqWXS/5JDBx1VCLk3pEIq7i7ZH1ecA8sVuQKyUhE
+ Qcs9WaGq5K+6riaAjsIvtUlyn9fIT/ounEOskphzeWrv/w+MsQRIDGQiLUMyIwca/YqH
+ mie0L5OkbLbDEeI6oi5sONcPQoqYi/1em161Kn5UHWUghi48tVjHxx3i11zLAB/IqRiO
+ 291Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=d5mm6i6SlQOuViUezZBbHLCgjaf0YFUvTAwdCPBwLdU=;
- b=BG7vMbWsmV1NJNEtp1ti5iZOvIqnkDW+NLvc5WDAh/Iaq/rKLWhE9I+BksJcZfaJbq
- P7oJ4up9oSfGE469jVW7VUPVZ4p7Ii8f0E8XkZ2AHCOZXreKJnSpK+B6tkFQxqPNlTd+
- H3ZiYnDiQLKA01LaYYm2OV2xGXvIA0L9YDFPKOgIvESz4ze2y9K5F32FLTlq/0f8T5TG
- wFZ/D2NyWe6cZ17P8W2+4z0flHQpxw1l88HtQFs507UpIm0xJ/q9xtD54BPujsRjO+wY
- PWCBZaKyjHB6jxxL70qPDlu0pUPmuKFtAeHwJQzutmrHUYtNqMuEgV6jnEJaW+B5BKpQ
- PQNQ==
-X-Gm-Message-State: APjAAAUvUmWGKaut9BdYeRRVDFVT+pBNnO+jFWfa6377hgfvT4x4JE9p
- qQEsLPFdotUyNg6LyKSDJqFDIkwWqt86mGenOoE=
-X-Google-Smtp-Source: APXvYqybBbDOl8tndEUyFoDZRiPPrcNkI+o3N8fzupjADtpJR+KN/fGnMh2Wg7X+rjRuYfjXPBW/L/sIHSZ6d/QlHNw=
-X-Received: by 2002:a5e:9703:: with SMTP id w3mr30961421ioj.238.1559142524726; 
- Wed, 29 May 2019 08:08:44 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=YD7/cBxw7LRkLxwmM6m3DiNi5eK8EJjOnQqrabni5wk=;
+ b=CbtI4GiJuDv26H68WZaYKUw+UUiTJgAWZPa7XcZgdAvGjuzOps8ihOBP1NzxXh+h99
+ cOfVTtXUSqTL4x75/NWZRQch7aH+0ER/bUzTe079GL0KA4NdJrL0DL243dpOY0BPY2yN
+ IJW77T7NegV1m/Q2L3vlc4Xeby3Y4b5CnXUVAoVhA/dVDkwHEnowwSeMOMFy5uSmtXha
+ cQm4rHxyUrBamdDcXmWDw8zwzUbzLZVi+NucSD+3S4Ra4Kr2orOMSsDg20eshtAhOVND
+ Usm5ZK9CKE++GYB3A+wa6J18/rYkl8Skade6/XlHbENZZoe/hlV8N8Kh9+w2yriJHoOQ
+ 7wWg==
+X-Gm-Message-State: APjAAAV/MpnXFiHYCU1OHMgBdl3Lvw3tYI3vTNyjSGKucGLQY3KCIH/X
+ lK2GcPztbI+JJ5/cOyDRcMM=
+X-Google-Smtp-Source: APXvYqxTAteT8bJiOMJQ3vOkzrcMeUZij7aykBblSbtFWouj2KzpS4lZAaa3owSARvcjlUPUbykn+w==
+X-Received: by 2002:a63:6e48:: with SMTP id j69mr22160682pgc.34.1559142922147; 
+ Wed, 29 May 2019 08:15:22 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id y12sm4486572pgi.10.2019.05.29.08.15.20
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 29 May 2019 08:15:21 -0700 (PDT)
+Date: Thu, 30 May 2019 00:15:18 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: Akinobu Mita <akinobu.mita@gmail.com>
+Subject: Re: [PATCH v3 2/3] nvme: add thermal zone devices
+Message-ID: <20190529151517.GC28274@minwooim-desktop>
+References: <1558888143-5121-1-git-send-email-akinobu.mita@gmail.com>
+ <1558888143-5121-3-git-send-email-akinobu.mita@gmail.com>
 MIME-Version: 1.0
-References: <20190523231429.21235-1-kenneth.heitke@intel.com>
- <99e76784-ce68-c053-9fde-d035d77f11d3@grimberg.me>
- <18209f57-0c8a-dfa8-af31-7f33ec3cfc0c@intel.com>
-In-Reply-To: <18209f57-0c8a-dfa8-af31-7f33ec3cfc0c@intel.com>
-From: Keith Busch <keith.busch@gmail.com>
-Date: Wed, 29 May 2019 09:08:33 -0600
-Message-ID: <CAOSXXT4FVyyG1gc9hfe8TdH-TDxU=gVCT-0g8tqkgZVUr5eGeA@mail.gmail.com>
-Subject: Re: [PATCH] nvme: Ignore timeouts while PCI config access is blocked
-To: "Heitke, Kenneth" <kenneth.heitke@intel.com>
+Content-Disposition: inline
+In-Reply-To: <1558888143-5121-3-git-send-email-akinobu.mita@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190529_080851_304926_538A2A9C 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20190529_081522_892352_261266F2 
+X-CRM114-Status: GOOD (  19.87  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d41 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (keith.busch[at]gmail.com)
+ provider (minwoo.im.dev[at]gmail.com)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -93,39 +99,105 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, axboe@fb.com,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme <linux-nvme@lists.infradead.org>,
+Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, linux-pm@vger.kernel.org,
+ Jens Axboe <axboe@fb.com>, Kenneth Heitke <kenneth.heitke@intel.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, linux-nvme@lists.infradead.org,
+ Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>,
  Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, May 28, 2019, 4:32 PM Heitke, Kenneth <kenneth.heitke@intel.com> wrote:
-> On 5/24/2019 12:35 AM, Sagi Grimberg wrote:
-> >
-> >>   static void nvme_reset_done(struct pci_dev *pdev)
-> >>   {
-> >>       struct nvme_dev *dev = pci_get_drvdata(pdev);
-> >> -    nvme_reset_ctrl_sync(&dev->ctrl);
-> >> +    nvme_reset_ctrl(&dev->ctrl);
-> >
-> > This change is not explained in the change log. This opens a window
-> > for nvme_reset_work to run concurrently from different contexts which
-> > is not a good idea...
->
-> I think Keith recommended the asynchronous reset
->
-> "Definitely need the nvme_reset_ctrl change as blk_cfg_access is still
-> set here so need to reset asynchronously to unblock new timeouts"
->
-> Keith, does this still hold true or do I need some other mechanism to
-> avoid the issues that Sagi is concerned about?
+> +/**
+> + * nvme_thermal_zones_register() - register nvme thermal zone devices
+> + * @ctrl: controller instance
+> + *
+> + * This function creates up to nine thermal zone devices for all implemented
+> + * temperature sensors including the composite temperature.
+> + * Each thermal zone device provides a single trip point temperature that is
+> + * associated with an over temperature threshold.
+> + */
+> +static int nvme_thermal_zones_register(struct nvme_ctrl *ctrl)
+> +{
+> +	struct nvme_smart_log *log;
+> +	int ret;
+> +	int i;
+> +
+> +	log = kzalloc(sizeof(*log), GFP_KERNEL);
+> +	if (!log)
+> +		return 0; /* non-fatal error */
 
-Can't use the pci's block_cfg_access in timeout if doing synchronous
-resets in reset_done. We wouldn't be able to handle IO timeouts during
-reset using that, so would need to use something else, maybe introduce
-a new flag like your original patch.
+Do we need to print something like warning here? If kzalloc() fails, it
+would be good to be distinguished between the nvme failure and internal
+failure like this.
+
+> +
+> +	ret = nvme_get_log(ctrl, NVME_NSID_ALL, NVME_LOG_SMART, 0,
+> +			   log, sizeof(*log), 0);
+> +	if (ret) {
+> +		dev_err(ctrl->device, "Failed to get SMART log: %d\n", ret);
+> +		/* If the device provided a response, then it's non-fatal */
+> +		if (ret > 0)
+> +			ret = 0;
+
+It seems like that nvme_init_identify() is just check the internal error
+which is in negative value now as you have posted.  Why don't we just
+return the value of "ret" itself without updating it to 0 ?
+
+> +		goto free_log;
+> +	}
+> +
+> +	for (i = 0; i < ARRAY_SIZE(ctrl->tzdev); i++) {
+> +		struct thermal_zone_device *tzdev;
+> +		int temp;
+> +
+> +		if (i)
+> +			temp = le16_to_cpu(log->temp_sensor[i - 1]);
+> +		else
+> +			temp = get_unaligned_le16(log->temperature);
+> +
+> +		/*
+> +		 * All implemented temperature sensors report a non-zero value
+> +		 * in temperature sensor fields in the smart log page.
+> +		 */
+> +		if (!temp)
+> +			continue;
+> +		if (ctrl->tzdev[i])
+> +			continue;
+> +
+> +		tzdev = nvme_thermal_zone_register(ctrl, i);
+> +		if (!IS_ERR(tzdev))
+> +			ctrl->tzdev[i] = tzdev;
+> +	}
+> +
+> +free_log:
+> +	kfree(log);
+> +
+> +	return ret;
+> +}
+> +
+> +/**
+> + * nvme_thermal_zones_unregister() - unregister nvme thermal zone devices
+> + * @ctrl: controller instance
+> + *
+> + * This function removes the registered thermal zone devices and symlinks.
+> + */
+> +static void nvme_thermal_zones_unregister(struct nvme_ctrl *ctrl)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(ctrl->tzdev); i++) {
+> +		struct thermal_zone_device *tzdev = ctrl->tzdev[i];
+> +		char name[20];
+
+Simple query here :)
+
+If we are not going to allow the name of link exceed the length of its
+own device name like nvmeX_tempY, then can we THERMAL_NAME_LENGTH macro
+here?  If the name of link is not exactly about the device name itself,
+then it's fine.  What do you think about it ?
 
 _______________________________________________
 Linux-nvme mailing list
