@@ -2,84 +2,80 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CAFE2E81B
-	for <lists+linux-nvme@lfdr.de>; Thu, 30 May 2019 00:24:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 869B92E81F
+	for <lists+linux-nvme@lfdr.de>; Thu, 30 May 2019 00:25:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EkQhv4HB2U3q6Al9I/iORNzpP1OPH59nQvegms1OBvs=; b=oEy9KE2rbVPXXa8EyptkFFgs9
-	3wkLaYIVBBXyeASH7kIDBEWxRF444zSQHh9OrbQDSsLkuUfi+/Qk9Qa1l+mVXwbxMPnGvOusnJaxI
-	RZJhIqkcBGcpuH97Pj7/7T3jt81sHN77iXoQ9lP3dRfZ9c1/yURy/P7gk+5EiAlDaoF9M9olc+g4O
-	/cg5NktfdSkavQbMQh4p2yjvj5vKTXl2bi6s3UICFSJ5BUZqlKMJOJBPXgBqCL+4uD0RbAlIJNfhQ
-	L/EHrETLqcG0mWCBsjd2/PW4hZlBDhjnWQik+BbSZY9rG5NSTLb+4WNSt1G8eQpJQ3fpAgNQXmM9G
-	60oQuZ7Aw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=omR0TLKeMwhCgKUP7YYu4GzHUYM4iuAA3pTC92ckQrQ=; b=oUE
+	BPWICK4rC3SrQZFlcfQbjpfHvwCl1WkwhLltHdFiNKsTWh32TBRgywb0yXAp2dj4oKuAx7MyPawfO
+	Taj/VWF0pbfxDXxUxaROVKUK//n2p1x/Zmtx2sgmEa7pcWmu1iJU0yuvwxL/SJ+QDfglRcpo/PuaV
+	AyzJzjBRFfkFdvuCBgxHWCXX3QEbqnqPPcCbN+qMBL0R4pfzHbU18iyapR48oVKb+hjIjS2tZMo/v
+	0THqNt/GJdbl0t4SnKeSePLXtDSHI1Redp/w45IYtv6EemQ9AwciyKonWlwrW4X4VA0X4wuBXIaF1
+	j6ZnB35A+8TrFncmHoKxPMgCf2Xoujg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hW6zl-0007d0-I2; Wed, 29 May 2019 22:24:29 +0000
+	id 1hW70w-0000a3-Dg; Wed, 29 May 2019 22:25:42 +0000
 Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hW6zg-0007cj-DQ
- for linux-nvme@lists.infradead.org; Wed, 29 May 2019 22:24:25 +0000
-Received: by mail-pf1-x444.google.com with SMTP id r22so2534905pfh.9
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 15:24:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-transfer-encoding:content-language;
- bh=n58GoC0lBTu66V20UqHQeXUwB/ArdoaGtelkasiOOfM=;
- b=TtW7N/+0mDbCBDXh31fxXBIlK7/SV8PVYyB1mOR7ie9TNSUfWbrzVcVgbQYx5AXXw1
- tAF7VP2M7b0V3kYhjn4ON726hToapdZm/cx4pV/VzS+oI01/ZTukVXiuA0rst7YqIpwn
- eZmCZwDXVUBplc6JyFEnZd6iMRo74Bc+ElCkQ=
+ id 1hW70r-0000Zj-5q
+ for linux-nvme@lists.infradead.org; Wed, 29 May 2019 22:25:38 +0000
+Received: by mail-pf1-x444.google.com with SMTP id q17so2546047pfq.8
+ for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 15:25:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=8UhnAW/QuPsduj+wcnhh1cDfDbYRfA2Occf80mVvUFw=;
+ b=BaUbhx6fS3SMiyNE+kCwYESsBVkk67TWCLTGcIqb32W7YPDGgUGKdWoAc1F1uTZ5qs
+ Rth9YvB/dmxaz8gDFJPNfj0T4DsKumQwNA1Ex6R9jPrgssIMD20vZdoJgjMPwgSY0R/s
+ lhL1zWxJYA5Cq2L3QI9VhtF3pwfRuDNkVrivMuXgHK2g2nTNH4us9HcAxgYgT+qnZZ3X
+ 8taaSN8Y6xr+ot9r7Rxv4EjCS6qyKkJs0fP+8Ts81K97wdjWnHiA5uw6mB+7kaU2Uk/W
+ d/5AKYRy7et45oGFOYFOmt4upkcIO3huTBBQcbn6jCWRcvdsrPNAz4E4UTcbMKvwsVhC
+ WH8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=n58GoC0lBTu66V20UqHQeXUwB/ArdoaGtelkasiOOfM=;
- b=gaEptdwI80buNtNJUPc1zKN/PJtuS5RyUyzLowTwS1a0fidw+GMiJTH1LWpqQ6cPs2
- S0YdA3CriPi6apu2ZZTUl+rWC8T6GFK0oDh6o7iZDNeskvnLi2jQ56JScUu8SjKkg+/8
- lOvDSujWgfUE+/SJXUy7jUPYa9PME++9J/IT6fI3A/i1zzuzsCH7VeQwcqugtvgj5hGm
- Sa8HRpnuqkJ+4G4O4PTpLO10U0aXpF2nK3LNFihJfVl/7fcqqHfkZzucbX3C0K4flbST
- B7qjlZ7BxKa2aFh9+ggL4mjnrYAsV2GYMcfq5FZoB8nJ+k9nh6QDBYZA49p80SPggt2h
- OkiA==
-X-Gm-Message-State: APjAAAVLBP4us5bUxMLFGqW5jCOWYB6KKjfQkVTkPw/wW0mfsIPj45MV
- ouuzSzoMhTVJhKWYSdeihapu4pyT38Wn8C7iQp5S7YDxjPH07jkqWyMu0Z5Nh/ytLaU6CxyonlP
- 6h4vwdNMpeekthCHIIUDj2kyxCW7umaKTAtf2jWy1QjEIHdOl7GKp5atw2LDBfFs0LK7fHzoQlB
- hVjiiY9Q==
-X-Google-Smtp-Source: APXvYqzB+WotJ3w9xOWlSB0IWM6vvNBBf6odTXJXuPqfE9/NNuii1WaKZ354+rvZhUiq2sMyGrxUCQ==
-X-Received: by 2002:a63:2248:: with SMTP id t8mr378758pgm.358.1559168663266;
- Wed, 29 May 2019 15:24:23 -0700 (PDT)
-Received: from [10.69.37.149] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id y191sm617820pfb.179.2019.05.29.15.24.22
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 29 May 2019 15:24:22 -0700 (PDT)
-Subject: Re: [PATCH] nvme-fc: Add message when creating new controller
-To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
-References: <20190528182404.3463-1-jsmart2021@gmail.com>
-From: James Smart <james.smart@broadcom.com>
-Message-ID: <c0671bef-9ddd-17ed-3d4f-0281c8945311@broadcom.com>
-Date: Wed, 29 May 2019 15:24:21 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
-MIME-Version: 1.0
-In-Reply-To: <20190528182404.3463-1-jsmart2021@gmail.com>
-Content-Language: en-US
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=8UhnAW/QuPsduj+wcnhh1cDfDbYRfA2Occf80mVvUFw=;
+ b=eao+qfZUU0z4dQ0rJVlpXF7ecngyGQpJMDdWHYYYRgHVH664dApvh8jOCDDy/FmEah
+ 1TeH42HCOHgVBs9FOBCr4AqRa2vuyFd4ZBUCWQ6DciIpK0Zsnc9AfjxAD/dMYr21B9yS
+ oNMPRf0MkaYfs17MLSNcNQGJ31Cs0yuTPs+XAqPXrnGGROL5+BxoL7pTXSKzKgVZ662y
+ 2x44dezhFd+iLfxBTTUKINx4xEroC15s5fdt7Kgo4wYeB+WEUOKG4qrie1lHFsGB2LAJ
+ C8h9pQCA6NQLbZdq9EJWdH2w10cK+EV++wNVFVDTbqrAMX64vY3nWyX3xnoZ62cCsGrR
+ M6eQ==
+X-Gm-Message-State: APjAAAX0LG537e5r3XyEbg8BB+vMX82UmH+8BI0E6EFD4CaYPRKExnj7
+ DdqkuEdjUkvUFFZxTrYA+MtpiNUK
+X-Google-Smtp-Source: APXvYqyLXJNyqStVeYpShyEJW2n3AQb6/SRjnrOdFGytSM+mkwUb1pfsxkKBVmf0rwMYeWf9KNhfDw==
+X-Received: by 2002:a63:f146:: with SMTP id o6mr349426pgk.179.1559168736080;
+ Wed, 29 May 2019 15:25:36 -0700 (PDT)
+Received: from pallmd1.broadcom.com ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id p13sm636488pff.2.2019.05.29.15.25.35
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Wed, 29 May 2019 15:25:35 -0700 (PDT)
+From: James Smart <jsmart2021@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH v2] nvme-fc: Add message when creating new association
+Date: Wed, 29 May 2019 15:25:26 -0700
+Message-Id: <20190529222526.3672-1-jsmart2021@gmail.com>
+X-Mailer: git-send-email 2.13.7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190529_152424_460491_34290224 
-X-CRM114-Status: UNSURE (   7.58  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190529_152537_250238_F884CC52 
+X-CRM114-Status: GOOD (  11.68  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
  no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit (jsmart2021[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (jsmart2021[at]gmail.com)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -87,7 +83,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,14 +94,54 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: James Smart <jsmart2021@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Please ignore - new patch coming out shortly
+When looking at console messages to troubleshoot, there are one
+maybe two messages before creation of the controller is complete.
+However, a lot of io takes place to reach that point. It's unclear
+when things have started.
 
--- james
+Add a message when the controller is attempting to create a new
+association. Thus we know what controller, between what host and
+remote port, and what NQN is being put into place for any
+subsequent success or failure messages.
+
+Signed-off-by: James Smart <jsmart2021@gmail.com>
+
+--
+v2:
+ Moved message to create association so displayed at initial
+  creation as well as at each reconnect
+ Changed message to additionally print host port wwpn and target port
+  wwpn.
+---
+ drivers/nvme/host/fc.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
+index c17c887f2148..bd1be8aa2d65 100644
+--- a/drivers/nvme/host/fc.c
++++ b/drivers/nvme/host/fc.c
+@@ -2607,6 +2607,12 @@ nvme_fc_create_association(struct nvme_fc_ctrl *ctrl)
+ 	if (nvme_fc_ctlr_active_on_rport(ctrl))
+ 		return -ENOTUNIQ;
+ 
++	dev_info(ctrl->ctrl.device,
++		"NVME-FC{%d}: create association : host wwpn 0x%016llx "
++		" rport wwpn 0x%016llx: NQN \"%s\"\n",
++		ctrl->cnum, ctrl->lport->localport.port_name,
++		ctrl->rport->remoteport.port_name, ctrl->ctrl.opts->subsysnqn);
++
+ 	/*
+ 	 * Create the admin queue
+ 	 */
+-- 
+2.13.7
 
 
 _______________________________________________
