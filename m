@@ -2,92 +2,82 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55FC32E89B
-	for <lists+linux-nvme@lfdr.de>; Thu, 30 May 2019 00:58:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B0A72E8DF
+	for <lists+linux-nvme@lfdr.de>; Thu, 30 May 2019 01:12:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6YLKv9Ub2A3RAk+vpXH5T1WtKs+Js5jNN5rEN63v/lM=; b=Tc00QyWbnaB8VY5/p4fof5mdh
-	JfgVI03k3Cwj1InFhO9X6dNQwXUDcWxJF0ZbXYr11ks8+JOsuvLUUXWTii8UtF5wH/h9H5oHtLMmL
-	DbVTP9KjgOvsNmqZlIeg4/hwJrSQy2Ccys710wUvCy/7x2RPyZUQKH7Kqof+2D6HNUhaRq+Bm7j3v
-	eO7hjvJ1OKK/M/G6xA5/H8UvevZbnvgrF/+wzgsAyf7WIWfcfoJ5n2QSYPOtc9XKEynVwWXk1STtA
-	yxMU4Fqiz2adlpJVLrmanjgg0UDYN87zUkCL3u0ppGdKC0juaS1j3mCAGWrjQRig7BcWzgKPh6Owb
-	YqULOWYmg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/G0bWuhLIavKY76/1UnWuuNAkqhCsTlEhbZO+opbd0c=; b=dR95vy9CDQgMuO
+	aQXcPsB3xF0e3f+1p8k1iOMWb4MyCS2/E5RA5jZ5fN1JAbctQeeeXgR7GSDl7OAL1qLw/ybjgozD4
+	59dtbWX3qjHJoIOcdIS0ZN9Tg2SkcWQGWzZa0GunToBkhNWJucPsRnHA5WzZZ2ioZ0pJ7xVkz+/94
+	zICKBYqg9ZxZb9Tf7b0gf5sZPMywFw1IccCi9wCa74FaH2MirfIcLfHB/u8spuX+3Wq2Y5Xo+wVEE
+	5gjIRZ8HOFzVc7ZwVDRX4wLf8e+aXsJnXh7d6pHsvRm60RswBXbicUpkD2Awcm3gVSrGGlDjQMCCp
+	f5Q4Z+5lvgJn/Sf22jWw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hW7Wm-00056m-My; Wed, 29 May 2019 22:58:36 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1hW7k3-0002M3-JZ; Wed, 29 May 2019 23:12:19 +0000
+Received: from mx0a-0016f401.pphosted.com ([67.231.148.174]
+ helo=mx0b-0016f401.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hW7Wh-00056Q-I7
- for linux-nvme@lists.infradead.org; Wed, 29 May 2019 22:58:32 +0000
-Received: by mail-pg1-x541.google.com with SMTP id d30so756795pgm.7
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 15:58:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=IAt77wUX6TQrCmU7i4WVO7j56C1Vgk0EvlC8Hx4LmRY=;
- b=I/jhWWR8/VDPNUogHT77+OrItmZ0AaXEnUITxp+hJ6JnC0GRJWithA7ISAfHeKXPPt
- O1TMnzzfmEJ3nnWX3Tl4DbZi1XjHkTnaql+HwaBf6nLHx6oBQ85LYgROok7szQ3R9XHC
- /J3Sl5X8bA3JG6PV8DdFyno+oHKnBxribNhPlRl5HEtof44gHasJG0TP8YjawkxD3AcG
- pxkPhBBIbHYaGB8X6/Z2axs2U+qgxwwxV5X0BQO0D0xVgOd1Hz+PvCW1uJw6GxMESOBc
- ivqo2MznBtH4bTVzeJVwZ8LHuppYJFbyvxByV/jrUXRbIUIgAL0pzjQDaRb36yr61jdH
- 35xw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=IAt77wUX6TQrCmU7i4WVO7j56C1Vgk0EvlC8Hx4LmRY=;
- b=qNb6UZZZDjsZMfJgc0t+z1g0qdfWqUHdiTr3MQk+d9kZEtn/c0QfLyKn3unMJL0ByB
- u1t2HANAXC6Hk+n8f0tO0sK1IOzAWTT9T3QqJUJGtXo1sSzzXvuKpalyeCVmgucUB9xK
- rwuywijOfG4JJONptKpYBbImhzUcrxNlMJQLbLMy2ZKxTm3PMJzyYB8nAGsreN1n9OQd
- SHTra5oPhuvy1n5mOkf5bOo7Sw+vutoMWwPFAYf4t9a1kZAH/m5QWvwn/MRc+No6kwb5
- QKWoa4KLqKo0DJvcs28Kry3zJRbiSgjuc6Mcd5L6xGl0V3iiys1S30gBq3LVjx6nY4Lp
- 19Dg==
-X-Gm-Message-State: APjAAAU+mBGLsSFPe+kfrT1pIxqaXkUNCuPjQx7nXLeOJqyrF/ncz4s4
- 1Xp2UsiFmN92rsN7gPHHq3Qf/40g
-X-Google-Smtp-Source: APXvYqxqrOeuYrgjAf+fZn6gVvNCTc3MPiyUdQDEx7ZJ1HJQOuEwtvGukpdgZ7kuFEx54GfbCoI5ZQ==
-X-Received: by 2002:a17:90a:aa88:: with SMTP id l8mr124998pjq.65.1559170710950; 
- Wed, 29 May 2019 15:58:30 -0700 (PDT)
-Received: from [10.69.37.149] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id t187sm466665pfb.64.2019.05.29.15.58.30
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 29 May 2019 15:58:30 -0700 (PDT)
-Subject: Re: [PATCH v2 1/7] nvmet: add transport discovery change op
-To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
+ id 1hW7jx-0002Lk-TQ
+ for linux-nvme@lists.infradead.org; Wed, 29 May 2019 23:12:15 +0000
+Received: from pps.filterd (m0045849.ppops.net [127.0.0.1])
+ by mx0a-0016f401.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x4TN0dQZ014624; Wed, 29 May 2019 16:12:12 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
+ h=date : from : to :
+ cc : subject : in-reply-to : message-id : references : mime-version :
+ content-type; s=pfpt0818; bh=qIrmBfagmZlWafcO848Lh75jeV45F3W8Z6YkNX0CLIk=;
+ b=av1Lsb6R4jbcZSpNPGVr2jlfh5Zj0TP3eTkrwdEzIioN+34ot2ZF+UpX3aJeHWsTkUW8
+ gEt9MTOp4NNRSObVhOehnl+QgHz0dA70iBikktzazHUtQH+vuSPO/+HHh361QCH4s7wL
+ ppLNUXLvCquUgZcFJ+3drJchGV/nOZbmjzMnXuhKTG5+YKLR8KlbCbgPoQQwtHAz4gPI
+ WpCJvr99uLenee9/s0a4e33a5LixWkixNyj1vE+Wp9q4R92jb21aBikQHRVYIsT2f1Lm
+ SxFog2pTrSlcZlW537y0RysGBnO9vVCOPNDxjm+TOJsBdJMZVdO+kMHRW6cjRl+bDEPl jQ== 
+Received: from sc-exch03.marvell.com ([199.233.58.183])
+ by mx0a-0016f401.pphosted.com with ESMTP id 2sspkpkm88-2
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
+ Wed, 29 May 2019 16:12:12 -0700
+Received: from SC-EXCH03.marvell.com (10.93.176.83) by SC-EXCH03.marvell.com
+ (10.93.176.83) with Microsoft SMTP Server (TLS) id 15.0.1367.3; Wed, 29 May
+ 2019 16:12:11 -0700
+Received: from maili.marvell.com (10.93.176.43) by SC-EXCH03.marvell.com
+ (10.93.176.83) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
+ Transport; Wed, 29 May 2019 16:12:11 -0700
+Received: from mvluser05.qlc.com (unknown [10.112.10.135])
+ by maili.marvell.com (Postfix) with ESMTP id 3D68E3F7040;
+ Wed, 29 May 2019 16:12:11 -0700 (PDT)
+Received: from localhost (aeasi@localhost)
+ by mvluser05.qlc.com (8.14.4/8.14.4/Submit) with ESMTP id x4TNC8YZ005431;
+ Wed, 29 May 2019 16:12:09 -0700
+X-Authentication-Warning: mvluser05.qlc.com: aeasi owned process doing -bs
+Date: Wed, 29 May 2019 16:12:08 -0700
+From: Arun Easi <aeasi@marvell.com>
+X-X-Sender: aeasi@mvluser05.qlc.com
+To: James Smart <jsmart2021@gmail.com>
+Subject: Re: [PATCH v2 0/7] nvmet/nvmet_fc: add events for discovery controller
+ rescan
+In-Reply-To: <20190514215808.10572-1-jsmart2021@gmail.com>
+Message-ID: <alpine.LRH.2.21.9999.1905291609220.19585@mvluser05.qlc.com>
 References: <20190514215808.10572-1-jsmart2021@gmail.com>
- <20190514215808.10572-2-jsmart2021@gmail.com>
- <5e71e7be-3ce0-aa3f-4456-7a6d454a3c7d@grimberg.me>
- <72f17092-e068-a13c-9088-59afafcd6157@gmail.com>
- <05fce470-7524-aa9f-355c-bff007b9e91f@grimberg.me>
-From: James Smart <jsmart2021@gmail.com>
-Message-ID: <a62e584f-41af-b1d7-686c-ec4144676a38@gmail.com>
-Date: Wed, 29 May 2019 15:58:29 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+User-Agent: Alpine 2.21.9999 (LRH 334 2019-03-29)
 MIME-Version: 1.0
-In-Reply-To: <05fce470-7524-aa9f-355c-bff007b9e91f@grimberg.me>
-Content-Language: en-US
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-05-29_12:, , signatures=0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190529_155831_601309_63625F79 
-X-CRM114-Status: GOOD (  12.51  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20190529_161214_062307_F47691E5 
+X-CRM114-Status: GOOD (  21.17  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
- [list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [67.231.148.174 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (jsmart2021[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (jsmart2021[at]gmail.com)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -106,31 +96,83 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: martin.petersen@oracle.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: martin.petersen@oracle.com, linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gNS8yOS8yMDE5IDM6NDIgUE0sIFNhZ2kgR3JpbWJlcmcgd3JvdGU6Cj4gCj4+Pj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvbnZtZS90YXJnZXQvZGlzY292ZXJ5LmMgCj4+Pj4gYi9kcml2ZXJzL252
-bWUvdGFyZ2V0L2Rpc2NvdmVyeS5jCj4+Pj4gaW5kZXggNWJhZjI2OWYzZjhhLi44ZWZjYTI2YjQ3
-NzYgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9udm1lL3RhcmdldC9kaXNjb3ZlcnkuYwo+Pj4+
-ICsrKyBiL2RyaXZlcnMvbnZtZS90YXJnZXQvZGlzY292ZXJ5LmMKPj4+PiBAQCAtNDEsNiArNDEs
-MTAgQEAgdm9pZCBudm1ldF9wb3J0X2Rpc2NfY2hhbmdlZChzdHJ1Y3QgbnZtZXRfcG9ydCAKPj4+
-PiAqcG9ydCwKPj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgX19udm1ldF9kaXNjX2NoYW5nZWQocG9y
-dCwgY3RybCk7Cj4+Pj4gwqDCoMKgwqDCoCB9Cj4+Pj4gwqDCoMKgwqDCoCBtdXRleF91bmxvY2so
-Jm52bWV0X2Rpc2Nfc3Vic3lzLT5sb2NrKTsKPj4+PiArCj4+Pj4gK8KgwqDCoCAvKiBJZiB0cmFu
-c3BvcnQgY2FuIHNpZ25hbCBjaGFuZ2UsIG5vdGlmeSB0cmFuc3BvcnQgKi8KPj4+PiArwqDCoMKg
-IGlmIChwb3J0LT50cl9vcHMgJiYgcG9ydC0+dHJfb3BzLT5kaXNjb3ZlcnlfY2hnKQo+Pj4+ICvC
-oMKgwqDCoMKgwqDCoCBwb3J0LT50cl9vcHMtPmRpc2NvdmVyeV9jaGcocG9ydCk7Cj4+Pgo+Pj4g
-U28geW91IGFyZSBzaG9vdGluZyBmb3IgYm90aCB0cmFuc3BvcnQgYW5kIGRpc2MgYWVuIHRvIGhh
-cHBlbgo+Pj4gYXQgdGhlIHNhbWUgdGltZT8KPj4KPj4gdGhleSBjb3VsZCBpZiB0aGUgZGlzY292
-ZXJ5IGNvbnRyb2xsZXIgaXMgYSBwZXJzaXN0ZW50IG9uZS4KPiAKPiBUaGF0J3MgZmluZSBJIHN1
-cHBvc2UuCj4gCj4gU28gdGhlIHNlcmllcyBsb29rcyBwcmV0dHkgcmVhc29uYWJsZSB0byBtZS4g
-QW55IGZlZWRiYWNrIGZyb20KPiB0aGUgRkMgZm9sa3M/CgppbiB3aGF0IHdheSA/CgpubyBkaXNh
-Z3JlZW1lbnRzIGhlcmUgb24gdGhlIGxpc3QuIEFscmVhZHkgcHJlc2VudCBpbiB0aGUgRkMtTlZN
-RSBzcGVjLgoKLS0gamFtZXMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LW52bWUK
+Apologies for the delay, wanted to test out some of these changes, but 
+it looks it would be a bit longer.
+
+Anyway, the series look good to me.
+
+-- arun
+
+On Tue, 14 May 2019, 2:58pm, James Smart wrote:
+
+> A transport may have a transport-specific mechanism that can signal
+> when discovery controller content has changed and request a host
+> to rescan to the discovery controller.
+> 
+> FC is such a transport. RSCNs may be generated by the subsystem's FC
+> port and sent to the initiator or fabric controller. If a fabric, the
+> fabric controller will broadcast the RSCN to registered hosts. A host,
+> upon receiving the RSCN, would validate connectivity then initiate a
+> discovery controller rescan.
+> 
+> These patches:
+> - Modify the nvmet core layer to call a transport callback whenever
+>   a port discovery change occurs.  To facilitate the callback and
+>   avoid new routines between core. and discovery.c the port structure
+>   now has a copy of the transport ops structure.
+> - Modify the nvmet-fc transport to support the nvmet callback, and add
+>   its own internal lldd api to request the lldd to generate an RSCN.
+> - Update nvme-fcloop test harness to support the lldd api and invoke
+>   the rescan on the host.
+> - Modify the lpfc driver to support the new interfaces:
+>   - Adds a new routine to transmit an RSCN to the other port (pt2pt)
+>     or fabric controller.  Add recognition for receipt of an RSCN.
+>   - Add support for the nvmet lldd api for discovery event, which
+>     invokes the RSCN transmit.
+>   - Ties into the RSCN receipt and requests the nvme_fc transport
+>     to rescan the remote port (discovery event will be posted).
+>   - Adds a sysfs routine to enable manual generation of an RSCN.
+> 
+> v2:
+> Revise lpfc patch 6 to check for port role nvme discovery not just
+>   nvme target
+> 
+> 
+> James Smart (7):
+>   nvmet: add transport discovery change op
+>   nvmet_fc: add transport discovery change event callback support
+>   nvme-fcloop: Add support for nvmet discovery_event op
+>   lpfc: Add support to generate RSCN events for nport
+>   lpfc: add nvmet discovery_event op support
+>   lpfc: Add support for translating an RSCN rcv into a discovery rescan
+>   lpfc: Add sysfs interface to post NVME RSCN
+> 
+>  drivers/nvme/target/core.c       |   2 +
+>  drivers/nvme/target/discovery.c  |   4 ++
+>  drivers/nvme/target/fc.c         |  11 ++++
+>  drivers/nvme/target/fcloop.c     |  37 ++++++++++++
+>  drivers/nvme/target/nvmet.h      |   2 +
+>  drivers/scsi/lpfc/lpfc.h         |   2 +
+>  drivers/scsi/lpfc/lpfc_attr.c    |  60 ++++++++++++++++++
+>  drivers/scsi/lpfc/lpfc_crtn.h    |   4 ++
+>  drivers/scsi/lpfc/lpfc_els.c     | 127 +++++++++++++++++++++++++++++++++++++++
+>  drivers/scsi/lpfc/lpfc_hbadisc.c |  35 +++++++++++
+>  drivers/scsi/lpfc/lpfc_hw.h      |   2 +
+>  drivers/scsi/lpfc/lpfc_nvme.c    |  44 ++++++++++++++
+>  drivers/scsi/lpfc/lpfc_nvmet.c   |  17 ++++++
+>  drivers/scsi/lpfc/lpfc_sli.c     |   1 +
+>  include/linux/nvme-fc-driver.h   |   6 ++
+>  15 files changed, 354 insertions(+)
+> 
+> 
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
