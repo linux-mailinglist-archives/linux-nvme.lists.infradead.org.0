@@ -2,105 +2,34 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 58B5D2D2F0
-	for <lists+linux-nvme@lfdr.de>; Wed, 29 May 2019 02:50:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7362F2D536
+	for <lists+linux-nvme@lfdr.de>; Wed, 29 May 2019 07:49:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ToJ1vGQ9lDRfWhRFVPNlOGg/30Q62u96usNxdbYZ65U=; b=fKBcPkltvz1beKCA0VRP1UIH7
-	bIHbWwknH+mT2vHS3zdjk4ClOJYOaPEpNRDNqt9JuuHHcgjEr71aY7E4Lw+NDnZnXIe754DWB2c27
-	L8k0Un8Y74GwfM3dW+YpD7iwb1xHjbQXTxmhSbrcqcK1AEy3/NypEzZTHdGskB3z5OE5M9rFYF3DU
-	kvvxfQyIZBTtlQNNFvuqPWLABp/QO4THiXA2Sa91Yae3eCbZL7gRUEHBOG0Zxpfq06Qz1bTBNicIm
-	IilkvLmmZf48Abl0dj36uv7vuKXAqvF05WdCh0DVa5hbwcYKanTXNgDIUsE+SAxZi0yLwDBEVH4YA
-	x7D54Q9Ug==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=h0Q6QY5pnDg7ZPErCuPbd9HqWbwzlvTfkGSxe8qHqpI=; b=kmr
+	HbUnaF3KnOOEHGTYZKojSDJ7xchC7RRY44WsQEDIrMuDX1hbsXyxX2KxihoJXWiKl0hz6TCEPw5G7
+	27K56N7dPu/Q34bZIGepJBVAQBegkc67IksfKS195WOM1XppFwxlZWgusVpDXombw1jV/efm3zQHK
+	N9gH03M3vsXOnurupozhQq4UV7ALVktCxKL+pwCRLxSoayhMg3JfECQgooFkI1aub8zNRarUEZUYf
+	+ti5Llj/B/JfcLrOeAFyB9UpvJUPOvn1kPAWmKa6c5q0DG17fhtSjMrcux+da8Fcb6IF+8Ovk/8Ya
+	St6A4pmcZwDlW9xu6pwIfPz6ISv5tcA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVmnd-0000Mg-9g; Wed, 29 May 2019 00:50:37 +0000
-Received: from userp2120.oracle.com ([156.151.31.85])
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVmnY-0000MJ-23
- for linux-nvme@lists.infradead.org; Wed, 29 May 2019 00:50:33 +0000
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4T0iOn0167959
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 00:50:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=subject : to :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=corp-2018-07-02;
- bh=hEf46wQdGFc4iRcidLbJFsyoAzEnQb2M8rhEngU55SU=;
- b=uLTkLbtXUwXD+J2NclSbmI2QIVf/JufN5ClBXY6/vsHmbmp/leYAiKQnxHtZ9qFzDE3Y
- XAJSMmUOJLLydIEvcfIMmptR9NXu2fM/niggCg643L0x2GPaA3oFxrDtXb7ABFEETMSr
- f2IKt9Fz/AAXZFku4zlij86tWnf9f8hWeLZZGDIL7vuMVZesoCc2tddJoqHOuYjgBsxX
- yJ8uyMdNM5fXhQAfRCIsu4be+6r8jg9/5oYiuu0Eai+dVyNbH8EaEMBfHXpeuBMY1ZJ2
- Ahb/urwAjmWVPC4vBAi8s4INVUQ3pWqndCsVXl3DIv1mef8wu2uP6iF6WUnPnc7iFYMr 9A== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 2spxbq6f53-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 00:50:28 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x4T0nKuG008370
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 00:50:28 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3030.oracle.com with ESMTP id 2ss1fn5rky-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 00:50:28 +0000
-Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x4T0oRKE023405
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 00:50:27 GMT
-Received: from [192.168.1.140] (/47.220.71.223)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 28 May 2019 17:50:27 -0700
-Subject: Re: [PATCH] nvme-fc: Add message when creating new controller
+	id 1hVrSa-0004Ye-9t; Wed, 29 May 2019 05:49:12 +0000
+Received: from [2601:647:4800:973f:d85c:2df7:72d9:ea63]
+ (helo=bombadil.infradead.org)
+ by bombadil.infradead.org with esmtpsa (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hVrSV-0004YN-1B; Wed, 29 May 2019 05:49:07 +0000
+From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org
-References: <20190528182404.3463-1-jsmart2021@gmail.com>
- <alpine.LRH.2.21.9999.1905281624470.9636@mvluser05.qlc.com>
- <06bf2ef9-253e-3292-5cd5-11cae0c40afa@gmail.com>
-From: John Donnelly <John.P.Donnelly@Oracle.com>
-Message-ID: <6c5ea0a9-edd3-c415-6a67-6b3f5b0bb5e6@Oracle.com>
-Date: Tue, 28 May 2019 19:50:24 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <06bf2ef9-253e-3292-5cd5-11cae0c40afa@gmail.com>
-Content-Language: en-US
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9271
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905290003
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9271
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905290003
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190528_175032_236947_48BAE2FA 
-X-CRM114-Status: GOOD (  25.15  )
-X-Spam-Score: -2.5 (--)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [156.151.31.85 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
+Subject: [PATCH v2 1/2] nvme-rdma: fix queue mapping when queue count is
+ limited
+Date: Tue, 28 May 2019 22:49:04 -0700
+Message-Id: <20190529054905.16279-1-sagi@grimberg.me>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,51 +41,194 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Keith Busch <keith.busch@intel.com>, Max Gurtovoy <maxg@mellanox.com>,
+ Christoph Hellwig <hch@lst.de>, james.r.harris@intel.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gNS8yOC8xOSA3OjEzIFBNLCBKYW1lcyBTbWFydCB3cm90ZToKPiBPbiA1LzI4LzIwMTkgNDoz
-NyBQTSwgQXJ1biBFYXNpIHdyb3RlOgo+PiBPbiBUdWUsIDI4IE1heSAyMDE5LCAxMToyNGFtLCBK
-YW1lcyBTbWFydCB3cm90ZToKPj4KPj4+IFdoZW4gbG9va2luZyBhdCBjb25zb2xlIG1lc3NhZ2Vz
-IHRvIHRyb3VibGVzaG9vdCwgdGhlcmUgYXJlIG9uZQo+Pj4gbWF5YmUgdHdvIG1lc3NhZ2VzIGJl
-Zm9yZSBjcmVhdGlvbiBvZiB0aGUgY29udHJvbGxlciBpcyBjb21wbGV0ZS4KPj4+IEhvd2V2ZXIs
-IGEgbG90IG9mIGlvIHRha2VzIHBsYWNlIHRvIHJlYWNoIHRoYXQgcG9pbnQuIEl0J3MgdW5jbGVh
-cgo+Pj4gd2hlbiB0aGluZ3MgaGF2ZSBzdGFydGVkLgo+Pj4KPj4+IEFkZCBhIG1lc3NhZ2Ugd2hl
-biB0aGUgY29udHJvbGxlciBpcyBmaXJzdCBhdHRlbXB0aW5nIHRvIGJlCj4+PiBjb25uZWN0aW5n
-IHRvLiBUaHVzIHdlIGtub3cgd2hhdCBjb250cm9sbGVyIGFuZCBpdHMgTlFOIGlzIGJlaW5nCj4+
-PiBwdXQgaW50byBwbGFjZSBmb3IgYW55IHN1YnNlcXVlbnQgc3VjY2VzcyBvciBmYWlsdXJlIG1l
-c3NhZ2VzLgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEphbWVzIFNtYXJ0IDxqc21hcnQyMDIxQGdt
-YWlsLmNvbT4KPj4+IC0tLQo+Pj4gwqAgZHJpdmVycy9udm1lL2hvc3QvZmMuYyB8IDQgKysrKwo+
-Pj4gwqAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQo+Pj4KPiAKPj4+ICvCoMKgwqAg
-ZGV2X2luZm8oY3RybC0+Y3RybC5kZXZpY2UsCj4+PiArwqDCoMKgwqDCoMKgwqAgIk5WTUUtRkN7
-JWR9OiBjcmVhdGluZyBuZXcgY3RybDogTlFOIFwiJXNcIlxuIiwKPj4+ICvCoMKgwqDCoMKgwqDC
-oCBjdHJsLT5jbnVtLCBjdHJsLT5jdHJsLm9wdHMtPnN1YnN5c25xbik7Cj4+PiArCj4+Cj4+IEFk
-ZGluZyBycG9ydCtscG9ydCBpbmZvcm1hdGlvbiB3b3VsZCBiZSBoZWxwZnVsLiBJdCB3b3VsZCBi
-ZSBnb29kIHRvIGhhdmUKPj4gZm9yIGFsbCBtZXNzYWdlcywgYnV0IGF0IGxlYXN0IG9uZSBtZXNz
-YWdlIGVzdGFibGlzaGluZyB0aGUgcmVsYXRpb25zaGlwCj4+IHdvdWxkIG1ha2UgaXQgZWFzaWVy
-IHdoZW4gbG9va2luZyBhdCBsb2dzLgo+Pgo+PiBKdXN0IHdvbmRlcmluZyBpZiB0aGVyZSBpcyBh
-bnkgcmVhc29uIHdoeSBubyBGQyBycG9ydC9scG9ydCBpbmZvCj4+IHdhcyBsb2dnZWQgd2l0aCBh
-bnkgb2YgdGhlIG1lc3NhZ2VzIGluIGZjLmM/Cj4gCj4gSSBhY3R1YWxseSBhc2tlZCBteXNlbGYg
-dGhlIHNhbWUgcXVlc3Rpb24gYWZ0ZXIgc2VuZGluZyB0aGUgcGF0Y2g6IAo+IHdoZXRoZXIgaGF2
-aW5nIGhvc3RfdHJhZGRyIGFuZCB0cmFkZHIgZmllbGRzIGluIHRoYXQgbWVzc2FnZSBtYWRlIHNl
-bnNlLiAKPiBJIG9wdGVkIHRvIHN0YXkgYXMgaXMgb25seSBiZWNhdXNlIGl0IGlzIG11Y2ggc2hv
-cnRlciAodGhvc2UgV1dOJ3MgYXJlIAo+IGxvbmcpLgo+IAo+IFRoZSBvdGhlciBxdWVzdGlvbiBJ
-IGhhZCBpcyB3aGV0aGVyIEkgc2hvdWxkIHByaW50IHRoaXMgb25seSBvbiBpbml0aWFsIAo+IGNy
-ZWF0aW9uIG9yIHdoZW5ldmVyIGEgbmV3IGFzc29jaWF0aW9uIGlzIHN0YXJ0ZWQgc28gaXQgcGlj
-a3MgdXAgdGhlIAo+IGNhc2VzIG9mIHdoZW4gYSByZWNvbm5lY3Qgc3RhcnQuwqAgT25seSBkaXNh
-ZHZhbnRhZ2UgaXMgLSBtb3JlIGxvbmcgCj4gbWVzc2FnZXMgaW4gdGhlIGxvZy4KPiAKPiBJIGNh
-biBlYXNpbHkgYmUgY29udmluY2VkIHRvIGRvIHNvbWV0aGluZyBkaWZmZXJlbnQgaWYgeW91IHBy
-ZWZlci4KCkkgZmF2b3IgdmVyYm9zZSBtZXNzYWdpbmcKCj4gCj4gLS0gamFtZXMKPiAKPiAKPiBf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LW52
-bWUgbWFpbGluZyBsaXN0Cj4gTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cHM6
-Ly91cmxkZWZlbnNlLnByb29mcG9pbnQuY29tL3YyL3VybD91PWh0dHAtM0FfX2xpc3RzLmluZnJh
-ZGVhZC5vcmdfbWFpbG1hbl9saXN0aW5mb19saW51eC0yRG52bWUmZD1Ed0lDQWcmYz1Sb1AxWXVt
-Q1hDZ2FXSHZsWllSOFBaaDhCdjdxSXJNVUI2NWVhcElfSm5FJnI9dDJmUGc5RDg3RjdEOGptMF8z
-Q0c5eW9pSUtkUmc0cWNfdGhCdzRiek1oYyZtPS10dmZVSWRKdlgxMVhSclhWTWQ5c3lUSXJJb0pB
-Rm53SlA2OEg2RUN6SHcmcz1ENE5GNmpNVGg0S3RkR3pGcV9Eb05mS3JKUE1fblFnMklEcW5HLTNm
-M3hRJmU9IAo+IAoKCi0tIApUaGFuayBZb3UsCkpvaG4KCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52
-bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LW52bWUK
+When the controller supports less queues than requested, we
+should make sure that queue mapping does the right thing and
+not assume that all queues are available. This fixes a crash
+when the controller supports less queues than requested.
+
+The rules are:
+1. if no write/poll queues are requested, we assign the available queues
+   to the default queue map. The default and read queue maps share the
+   existing queues.
+2. if write queues are requested:
+  - first make sure that read queue map gets the requested
+    nr_io_queues count
+  - then grant the default queue map the minimum between the requested
+    nr_write_queues and the remaining queues. If there are no available
+    queues to dedicate to the default queue map, fallback to (1) and
+    share all the queues in the existing queue map.
+3. if poll queues are requested:
+  - map the remaining queues to the poll queue map.
+
+Also, provide a log indication on how we constructed the different
+queue maps.
+
+Reported-by: Harris, James R <james.r.harris@intel.com>
+Cc: <stable@vger.kernel.org> # v5.0+
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+---
+Changes from v1:
+- keep the num_comp_vectors upper limit on number of io queues
+- keep the queue sets sizes in local variables for readability
+
+ drivers/nvme/host/rdma.c | 99 +++++++++++++++++++++++++---------------
+ 1 file changed, 61 insertions(+), 38 deletions(-)
+
+diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+index f383146e7d0f..26709a2ab593 100644
+--- a/drivers/nvme/host/rdma.c
++++ b/drivers/nvme/host/rdma.c
+@@ -641,34 +641,16 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+ {
+ 	struct nvmf_ctrl_options *opts = ctrl->ctrl.opts;
+ 	struct ib_device *ibdev = ctrl->device->dev;
+-	unsigned int nr_io_queues;
++	unsigned int nr_io_queues, nr_default_queues;
++	unsigned int nr_read_queues, nr_poll_queues;
+ 	int i, ret;
+ 
+-	nr_io_queues = min(opts->nr_io_queues, num_online_cpus());
+-
+-	/*
+-	 * we map queues according to the device irq vectors for
+-	 * optimal locality so we don't need more queues than
+-	 * completion vectors.
+-	 */
+-	nr_io_queues = min_t(unsigned int, nr_io_queues,
+-				ibdev->num_comp_vectors);
+-
+-	if (opts->nr_write_queues) {
+-		ctrl->io_queues[HCTX_TYPE_DEFAULT] =
+-				min(opts->nr_write_queues, nr_io_queues);
+-		nr_io_queues += ctrl->io_queues[HCTX_TYPE_DEFAULT];
+-	} else {
+-		ctrl->io_queues[HCTX_TYPE_DEFAULT] = nr_io_queues;
+-	}
+-
+-	ctrl->io_queues[HCTX_TYPE_READ] = nr_io_queues;
+-
+-	if (opts->nr_poll_queues) {
+-		ctrl->io_queues[HCTX_TYPE_POLL] =
+-			min(opts->nr_poll_queues, num_online_cpus());
+-		nr_io_queues += ctrl->io_queues[HCTX_TYPE_POLL];
+-	}
++	nr_read_queues = min_t(unsigned int, ibdev->num_comp_vectors,
++				min(opts->nr_io_queues, num_online_cpus()));
++	nr_default_queues =  min_t(unsigned int, ibdev->num_comp_vectors,
++				min(opts->nr_write_queues, num_online_cpus()));
++	nr_poll_queues = min(opts->nr_poll_queues, num_online_cpus());
++	nr_io_queues = nr_read_queues + nr_default_queues + nr_poll_queues;
+ 
+ 	ret = nvme_set_queue_count(&ctrl->ctrl, &nr_io_queues);
+ 	if (ret)
+@@ -681,6 +663,34 @@ static int nvme_rdma_alloc_io_queues(struct nvme_rdma_ctrl *ctrl)
+ 	dev_info(ctrl->ctrl.device,
+ 		"creating %d I/O queues.\n", nr_io_queues);
+ 
++	if (opts->nr_write_queues && nr_read_queues < nr_io_queues) {
++		/*
++		 * separate read/write queues
++		 * hand out dedicated default queues only after we have
++		 * sufficient read queues.
++		 */
++		ctrl->io_queues[HCTX_TYPE_READ] = nr_read_queues;
++		nr_io_queues -= ctrl->io_queues[HCTX_TYPE_READ];
++		ctrl->io_queues[HCTX_TYPE_DEFAULT] =
++			min(nr_default_queues, nr_io_queues);
++		nr_io_queues -= ctrl->io_queues[HCTX_TYPE_DEFAULT];
++	} else {
++		/*
++		 * shared read/write queues
++		 * either no write queues were requested, or we don't have
++		 * sufficient queue count to have dedicated default queues.
++		 */
++		ctrl->io_queues[HCTX_TYPE_DEFAULT] =
++			min(nr_read_queues, nr_io_queues);
++		nr_io_queues -= ctrl->io_queues[HCTX_TYPE_DEFAULT];
++	}
++
++	if (opts->nr_poll_queues && nr_io_queues) {
++		/* map dedicated poll queues only if we have queues left */
++		ctrl->io_queues[HCTX_TYPE_POLL] =
++			min(nr_poll_queues, nr_io_queues);
++	}
++
+ 	for (i = 1; i < ctrl->ctrl.queue_count; i++) {
+ 		ret = nvme_rdma_alloc_queue(ctrl, i,
+ 				ctrl->ctrl.sqsize + 1);
+@@ -1763,17 +1773,24 @@ static void nvme_rdma_complete_rq(struct request *rq)
+ static int nvme_rdma_map_queues(struct blk_mq_tag_set *set)
+ {
+ 	struct nvme_rdma_ctrl *ctrl = set->driver_data;
++	struct nvmf_ctrl_options *opts = ctrl->ctrl.opts;
+ 
+-	set->map[HCTX_TYPE_DEFAULT].queue_offset = 0;
+-	set->map[HCTX_TYPE_DEFAULT].nr_queues =
+-			ctrl->io_queues[HCTX_TYPE_DEFAULT];
+-	set->map[HCTX_TYPE_READ].nr_queues = ctrl->io_queues[HCTX_TYPE_READ];
+-	if (ctrl->ctrl.opts->nr_write_queues) {
++	if (opts->nr_write_queues && ctrl->io_queues[HCTX_TYPE_READ]) {
+ 		/* separate read/write queues */
++		set->map[HCTX_TYPE_DEFAULT].nr_queues =
++			ctrl->io_queues[HCTX_TYPE_DEFAULT];
++		set->map[HCTX_TYPE_DEFAULT].queue_offset = 0;
++		set->map[HCTX_TYPE_READ].nr_queues =
++			ctrl->io_queues[HCTX_TYPE_READ];
+ 		set->map[HCTX_TYPE_READ].queue_offset =
+-				ctrl->io_queues[HCTX_TYPE_DEFAULT];
++			ctrl->io_queues[HCTX_TYPE_DEFAULT];
+ 	} else {
+-		/* mixed read/write queues */
++		/* shared read/write queues */
++		set->map[HCTX_TYPE_DEFAULT].nr_queues =
++			ctrl->io_queues[HCTX_TYPE_DEFAULT];
++		set->map[HCTX_TYPE_DEFAULT].queue_offset = 0;
++		set->map[HCTX_TYPE_READ].nr_queues =
++			ctrl->io_queues[HCTX_TYPE_DEFAULT];
+ 		set->map[HCTX_TYPE_READ].queue_offset = 0;
+ 	}
+ 	blk_mq_rdma_map_queues(&set->map[HCTX_TYPE_DEFAULT],
+@@ -1781,16 +1798,22 @@ static int nvme_rdma_map_queues(struct blk_mq_tag_set *set)
+ 	blk_mq_rdma_map_queues(&set->map[HCTX_TYPE_READ],
+ 			ctrl->device->dev, 0);
+ 
+-	if (ctrl->ctrl.opts->nr_poll_queues) {
++	if (opts->nr_poll_queues && ctrl->io_queues[HCTX_TYPE_POLL]) {
++		/* map dedicated poll queues only if we have queues left */
+ 		set->map[HCTX_TYPE_POLL].nr_queues =
+ 				ctrl->io_queues[HCTX_TYPE_POLL];
+ 		set->map[HCTX_TYPE_POLL].queue_offset =
+-				ctrl->io_queues[HCTX_TYPE_DEFAULT];
+-		if (ctrl->ctrl.opts->nr_write_queues)
+-			set->map[HCTX_TYPE_POLL].queue_offset +=
+-				ctrl->io_queues[HCTX_TYPE_READ];
++			ctrl->io_queues[HCTX_TYPE_DEFAULT] +
++			ctrl->io_queues[HCTX_TYPE_READ];
+ 		blk_mq_map_queues(&set->map[HCTX_TYPE_POLL]);
+ 	}
++
++	dev_info(ctrl->ctrl.device,
++		"mapped %d/%d/%d default/read/poll queues.\n",
++		ctrl->io_queues[HCTX_TYPE_DEFAULT],
++		ctrl->io_queues[HCTX_TYPE_READ],
++		ctrl->io_queues[HCTX_TYPE_POLL]);
++
+ 	return 0;
+ }
+ 
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
