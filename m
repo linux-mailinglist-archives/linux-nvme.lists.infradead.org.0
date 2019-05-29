@@ -2,79 +2,86 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D0A62DFF6
-	for <lists+linux-nvme@lfdr.de>; Wed, 29 May 2019 16:40:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63B7E2E013
+	for <lists+linux-nvme@lfdr.de>; Wed, 29 May 2019 16:46:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a+EW0Tn6z+Ywof2k3K0pCTgUNz63XjTQ7mBLPxqbB+s=; b=NMbL5RgfMBLQXC
-	fkDIf8dMwbL1z29vpzADhYgjKjmA9vo2JNd2W2hscfuWMMfztfb10LXU/nekWIdsltCij0Np+oO/n
-	kYSgIckaIt8/oksg595t2gj3kdy8SHgXa4rc5033pGVbrvmOMkyEL1/45dC9GNPz7VTbs551kiqne
-	5lVTT7AP/GbN7rduaXtzbwctRepo/wBC0dnw1fKkafTpyoMgZn4g5bL4ya8ipG168TXk3028VmhKB
-	LT5Pircv028T4DlglSfIPjEnDl2Sb7MBMtN0lp/TKZXkJmpmY1d24a6K8Omf9P0Jlh1YZByTZSjiv
-	FQcVoqsjeTX9bqPUtq6Q==;
+	List-Owner; bh=Qc0vNQdVJM+Qqa/3yXf2q0M5NpyPs3RO6YwygQReBqM=; b=kkCC80v+sd77vG
+	jcB45jtHywwIghpzQRZZvDB7fpj53aUsA1K7yVNqRnBUHVZF+HJQk7jd+Vyk2CxhKA+5CO6CdaK3o
+	vZkIv1vIZceBGLYMtqqzzNwllm7wkAAfeaWlwNncnCwDJM5CZn/kkoXLGzFP58U+rU67YZOmiYOzq
+	5gjla4usnUbE/+7cAMkXK7HuOsY1cSXmVNv1zv9ZeID2AanTGDZyAi/yHglkm2vMFBJo59ThTYx2T
+	mQz9Py0RWzCa27+mXj+zlVYtKVHp+fB0vg4V3FcbLN5J3UtHydgqUzKNffR2xO1rr2XYXN5oEPMvu
+	1jSgfe9REkpqACITY1EA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hVzkA-000670-96; Wed, 29 May 2019 14:39:54 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1hVzqg-0000ir-RO; Wed, 29 May 2019 14:46:38 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hVzk5-0005vp-Gp
- for linux-nvme@lists.infradead.org; Wed, 29 May 2019 14:39:50 +0000
-Received: by mail-pf1-x442.google.com with SMTP id u17so1773890pfn.7
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 07:39:45 -0700 (PDT)
+ id 1hVzqa-0000iH-R8
+ for linux-nvme@lists.infradead.org; Wed, 29 May 2019 14:46:34 +0000
+Received: by mail-pf1-x443.google.com with SMTP id c6so1774583pfa.10
+ for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 07:46:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=fu6SvGE6jZlqJ4hrABO6VQNoU4SQBpiYEFF/5S0DUAY=;
- b=DMvE8RYHibCFQrjGd9JHyrMoFP3XZcjUqXY6UZXCXDWhUtovD/qOG9XTjUuSUOs4+o
- 2DiRdxTZRq5S6T2dK3mx91H0PRjENhGSqAbxCeiYBCPTC2RhzXejrhLRLxweOpL/RYCC
- zYbzEG4z0iOvC9nsL8wt3oFJn48i2X8oTgmgc/QR/oaQfBURwiQw8KYHBZWiwCJzxthL
- UF3UARqG02uz5lalQ2EoEZV6XPQBNzN37G54LEZpxjsHFh5x1GS+fvkyrsvYxlt2FMnR
- WzncwFD1FyE1pFPy7jXTtvaHE784A9ZjHAhvl7/aahUzReepNx+dYJYxEcDWbEC3pnHE
- Zn+g==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=NhUPt5iA2elTv3Plfnw7t9vjPYRnEUaw9x/qdKCgthU=;
+ b=EOMktvbTx5ddYTeMgVRAE048xEBL+9lfAqM4Rkv4r4xKvdi8qWnTweXKbbEnysKOAE
+ p+cNaUG786qPWC7C30XqV4dRFjD2GxAM/fcaOKl7+TS7ZwadiyWA82if8uHt/X67r7MV
+ DY4lgAi1WPipH2akdCQjI/FCyy9Sk1tqoS4ANNpuzCj5lIB2t3XoWchgivFRQTB/I8J7
+ Z92ecdEm1UiVzM+SjoD61yQEWyhpBwN9Nz2Sld4V3QMVbX0B0xVT4NMnHqhQD+Glm21O
+ mYb7pmy976bcfPM6CH3N7UtnNOlDNrpXzIeSGNjqJDBbxyOPdqlqgeLwXSM+xFzLvJcB
+ mVNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=fu6SvGE6jZlqJ4hrABO6VQNoU4SQBpiYEFF/5S0DUAY=;
- b=ghjwUiXK1CgIWS1hsT8MytO8PfzQHUGmJ2SpCczpkYozgcdmg2Ij3MSh0LMXVzExY2
- HKkUuXuGc8zcCJmFr1DHp9HNyQ3YsjZ1fO2PeZOGenCAOMwoJKZJc6D3ocJYuXm71y7r
- rYZumJYVYsNvYkVP566wDliRliJWgzPyxhr3/hU5KFlvqnXhZJ0nNfJJsW+PAVTZox87
- ztbjVdmrfnySW518/rDsyJAn5Kjr9APniY0sIrCa8UYkMdcjweYsUyR8+bPaJSwS6QJn
- wRGeijmY9efDY5aL8Sp8Aqj5bV1NmkGdZJ19Vo43I+N0IFBFZ0CS56LVC0E1ZrCeawNt
- 6C+Q==
-X-Gm-Message-State: APjAAAUVMHzbEe9swzfr08SOvcEgbasUFl0XLH2Xsi55Ta1aJGq907YP
- DBVlL2iyYrLhe8JigG8z7OwoBBQoNwTxcFyKZnI=
-X-Google-Smtp-Source: APXvYqycHTt80sywd+2+knbILIR2vhGJO+a7KZ0cPZA7R71ZFYqIS2BZDm8XL5d+WzCb3HxqlFaJ/j46dVGc7nTPD5A=
-X-Received: by 2002:a62:585:: with SMTP id 127mr128788123pff.231.1559140780467; 
- Wed, 29 May 2019 07:39:40 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=NhUPt5iA2elTv3Plfnw7t9vjPYRnEUaw9x/qdKCgthU=;
+ b=Xf/bJxanQ6P8mKMiV5y860qYIibsuHpdPtMR5WWLifweHfHp1aL5v35kSZxzDbh4oa
+ ZpOLk18xTY7mwESStJb+xQXOYdAfXhb63bsPX0ujQHQqSldFnBEoZNezXHAs7if+9W7s
+ Wqe0mpRrjP8phZiM3xqkGV2caKEiZR9yx+bAHklYaAhHve/oES2Z+KaZwUJObp4pI5Lk
+ gC8GIq5jt9YAFjZ5Fz1T8eJMl9trGAZ3/0fSamZV+3UqrDVNrQLkzKV5K7zCn8HFTyrK
+ tgL3r7++3P6SppQzS91+2TRurwXsSvzy1hbQXmqFQG8XTlhXhyXEOCx0y1J3lNXzRC75
+ WDFw==
+X-Gm-Message-State: APjAAAW5HGSUqHITiz4D3gJHglwn1k8ighuUVhyqfozU8otqNPmFRwI8
+ hdyDb+LlE+M8MFvOsauujd1cy2WARfQ=
+X-Google-Smtp-Source: APXvYqzuhqqEQBW5/4rvm8LFky+4XFnuXeBuk/1yvbfOP6YwCdIxaBCpVa43+cRJX3P2bZuzpY7aWQ==
+X-Received: by 2002:a17:90a:2561:: with SMTP id
+ j88mr12778574pje.121.1559141190025; 
+ Wed, 29 May 2019 07:46:30 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id t33sm6231931pjb.1.2019.05.29.07.46.28
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 29 May 2019 07:46:29 -0700 (PDT)
+Date: Wed, 29 May 2019 23:46:26 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: Akinobu Mita <akinobu.mita@gmail.com>
+Subject: Re: [PATCH 1/2] nvme: prepare for fault injection into admin commands
+Message-ID: <20190529144624.GA28274@minwooim-desktop>
 References: <1559063018-3682-1-git-send-email-akinobu.mita@gmail.com>
- <8cb23080-b7ab-f773-2d25-e39b36501e3d@oracle.com>
-In-Reply-To: <8cb23080-b7ab-f773-2d25-e39b36501e3d@oracle.com>
-From: Akinobu Mita <akinobu.mita@gmail.com>
-Date: Wed, 29 May 2019 23:39:29 +0900
-Message-ID: <CAC5umyiqy82saDbTAtR8w99ahe-sH=r1hvt2jMtjnFE9AufqNw@mail.gmail.com>
-Subject: Re: [PATCH 0/2] nvme: enable to inject errors into admin commands
-To: Thomas Tai <thomas.tai@oracle.com>
+ <1559063018-3682-2-git-send-email-akinobu.mita@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1559063018-3682-2-git-send-email-akinobu.mita@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190529_073949_596803_68E60BAA 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20190529_074632_940282_571D68BC 
+X-CRM114-Status: GOOD (  18.23  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (akinobu.mita[at]gmail.com)
+ provider (minwoo.im.dev[at]gmail.com)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -93,38 +100,79 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
- Sagi Grimberg <sagi@grimberg.me>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Sagi Grimberg <sagi@grimberg.me>, Thomas Tai <thomas.tai@oracle.com>,
+ linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
+ Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-MjAxOeW5tDXmnIgyOeaXpSjmsLQpIDI6NDcgVGhvbWFzIFRhaSA8dGhvbWFzLnRhaUBvcmFjbGUu
-Y29tPjoKPgo+IE9uIDUvMjgvMTkgMTowMyBQTSwgQWtpbm9idSBNaXRhIHdyb3RlOgo+ID4gQ3Vy
-cmVubHR5IGZhdWx0IGluamVjdGlvbiBzdXBwb3J0IGZvciBudm1lIG9ubHkgZW5hYmxlcyB0byBp
-bmplY3QgZXJyb3JzCj4gPiBpbnRvIHRoZSBjb21tYW5kcyBzdWJtaXR0ZWQgdG8gSS9PIHF1ZXVl
-cy4KPiA+Cj4gPiBUaGlzIGVuYWJsZXMgdG8gaW5qZWN0IGVycm9ycyBpbnRvIHRoZSBjb21tYW5k
-cyBzdWJtaXR0ZWQgdG8gdGhlIGFkbWluCj4gPiBxdWV1ZS4KPiA+Cj4gPiBJdCBpcyB1c2VmdWwg
-dG8gdGVzdCBlcnJvciBoYW5kbGluZyBpbiB0aGUgY29udHJvbGxlciBpbml0aWFsaXphdGlvbi4K
-PiA+Cj4gPiAgICAgICAjIGVjaG8gMTAwID4gL3N5cy9rZXJuZWwvZGVidWcvbnZtZTAvZmF1bHRf
-aW5qZWN0L3Byb2JhYmlsaXR5Cj4gPiAgICAgICAjIGVjaG8gMSA+IC9zeXMva2VybmVsL2RlYnVn
-L252bWUwL2ZhdWx0X2luamVjdC90aW1lcwo+ID4gICAgICAgIyBlY2hvIDEwID4gL3N5cy9rZXJu
-ZWwvZGVidWcvbnZtZTAvZmF1bHRfaW5qZWN0L3NwYWNlCj4gPiAgICAgICAjIG52bWUgcmVzZXQg
-L2Rldi9udm1lMAo+ID4gICAgICAgIyBkbWVzZwo+Cj4gSGkgQWtpbm9idSwKPiBUaGF0IHNvdW5k
-cyBsaWtlIGEgZ29vZCBpZGVhLiB3b3VsZCB5b3Uga2luZGx5IHVwZGF0ZSB0aGUgZG9jdW1lbnQg
-aW4KPiBEb2N1bWVudGF0aW9uL2ZhdWx0LWluamVjdGlvbi9udm1lLWZhdWx0LWluamVjdGlvbi50
-eHQgd2l0aCB5b3VyIGV4YW1wbGU/CgpTdXJlLiBJJ2xsIGFkZCB0aGUgZm9sbG93aW5nIGV4bXBs
-ZS4KCkV4YW1wbGUgMzogSW5qZWN0IGFuIGVycm9yIGludG8gdGhlIDEwdGggYWRtaW4gY29tbWFu
-ZAotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0K
-CmVjaG8gMTAwID4gL3N5cy9rZXJuZWwvZGVidWcvbnZtZTAvZmF1bHRfaW5qZWN0L3Byb2JhYmls
-aXR5CmVjaG8gMTAgPiAvc3lzL2tlcm5lbC9kZWJ1Zy9udm1lMC9mYXVsdF9pbmplY3Qvc3BhY2UK
-ZWNobyAxID4gL3N5cy9rZXJuZWwvZGVidWcvbnZtZTAvZmF1bHRfaW5qZWN0L3RpbWVzCm52bWUg
-cmVzZXQgL2Rldi9udm1lMAoKRXhwZWN0ZWQgUmVzdWx0OgoKQWZ0ZXIgTlZNZSBjb250cm9sbGVy
-IHJlc2V0LCB0aGUgcmVpbml0aWFsaXphdGlvbiBtYXkgb3IgbWF5IG5vdCBzdWNjZWVkLgpJdCBk
-ZXBlbmRzIG9uIHdoaWNoIGFkbWluIGNvbW1hbmQgaXMgYWN0dWFsbHkgZm9yY2VkIHRvIGZhaWwu
-CgpNZXNzYWdlIGZyb20gZG1lc2c6Ci4uLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtbnZtZQo=
+On 19-05-29 02:03:37, Akinobu Mita wrote:
+> Currenlty fault injection support for nvme only enables to inject errors
+> into the commands submitted to I/O queues.
+> 
+> In preparation for fault injection into the admin commands, this makes
+> the helper functions independent of struct nvme_ns.
+> 
+> Cc: Thomas Tai <thomas.tai@oracle.com>
+> Cc: Keith Busch <kbusch@kernel.org>
+> Cc: Jens Axboe <axboe@fb.com>
+> Cc: Christoph Hellwig <hch@lst.de>
+> Cc: Sagi Grimberg <sagi@grimberg.me>
+> Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
+> ---
+>  drivers/nvme/host/core.c         |  4 ++--
+>  drivers/nvme/host/fault_inject.c | 28 +++++++++++++++-------------
+>  drivers/nvme/host/nvme.h         | 20 ++++++++++++--------
+>  3 files changed, 29 insertions(+), 23 deletions(-)
+> 
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index 26c8b59..9fca8457 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -3698,7 +3698,7 @@ static int nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+>  	device_add_disk(ctrl->device, ns->disk, nvme_ns_id_attr_groups);
+>  
+>  	nvme_mpath_add_disk(ns, id);
+> -	nvme_fault_inject_init(ns);
+> +	nvme_fault_inject_init(&ns->fault_inject, ns->disk->disk_name);
+>  	kfree(id);
+>  
+>  	return 0;
+> @@ -3723,7 +3723,7 @@ static void nvme_ns_remove(struct nvme_ns *ns)
+>  	if (test_and_set_bit(NVME_NS_REMOVING, &ns->flags))
+>  		return;
+>  
+> -	nvme_fault_inject_fini(ns);
+> +	nvme_fault_inject_fini(&ns->fault_inject);
+>  	if (ns->disk && ns->disk->flags & GENHD_FL_UP) {
+>  		del_gendisk(ns->disk);
+>  		blk_cleanup_queue(ns->queue);
+> diff --git a/drivers/nvme/host/fault_inject.c b/drivers/nvme/host/fault_inject.c
+> index 4cfd2c9..e8d8da9 100644
+> --- a/drivers/nvme/host/fault_inject.c
+> +++ b/drivers/nvme/host/fault_inject.c
+> @@ -15,11 +15,10 @@ static DECLARE_FAULT_ATTR(fail_default_attr);
+>  static char *fail_request;
+>  module_param(fail_request, charp, 0000);
+>  
+> -void nvme_fault_inject_init(struct nvme_ns *ns)
+> +void nvme_fault_inject_init(struct nvme_fault_inject *fault_inj,
+> +			    const char *name)
+
+Hi Akinobu,
+
+Just a simple proposal here.  Can we have a name for the disk name with:
+	const char *disk_name ?
+I think the name of variable "name" can make some confusions to whom want
+to use this feature at later time :)
+
+Otherwise, in the perspective of this single patch, looks good to me.
+
+Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
