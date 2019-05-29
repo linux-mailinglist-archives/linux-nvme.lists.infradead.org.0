@@ -2,73 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 869B92E81F
-	for <lists+linux-nvme@lfdr.de>; Thu, 30 May 2019 00:25:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CF3B2E835
+	for <lists+linux-nvme@lfdr.de>; Thu, 30 May 2019 00:27:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=omR0TLKeMwhCgKUP7YYu4GzHUYM4iuAA3pTC92ckQrQ=; b=oUE
-	BPWICK4rC3SrQZFlcfQbjpfHvwCl1WkwhLltHdFiNKsTWh32TBRgywb0yXAp2dj4oKuAx7MyPawfO
-	Taj/VWF0pbfxDXxUxaROVKUK//n2p1x/Zmtx2sgmEa7pcWmu1iJU0yuvwxL/SJ+QDfglRcpo/PuaV
-	AyzJzjBRFfkFdvuCBgxHWCXX3QEbqnqPPcCbN+qMBL0R4pfzHbU18iyapR48oVKb+hjIjS2tZMo/v
-	0THqNt/GJdbl0t4SnKeSePLXtDSHI1Redp/w45IYtv6EemQ9AwciyKonWlwrW4X4VA0X4wuBXIaF1
-	j6ZnB35A+8TrFncmHoKxPMgCf2Xoujg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=/zeO68X+1fB0MRvueA51B8He3LexUbk8TCcdQMs4X3I=; b=UsA2XDF/KAfcH7HPk2Kj4fylE
+	6Lr9jsVoc3iI5qx4gonNckuzZq5O/3KU/godJxqN6EvaKu8IxNw1XGZyYkK07HxuwK4ftKzZ4j/Cy
+	AEscLZFo3IEte9FYmHuCJ4HiUBGsrf8ihCfshwWj2y64eiJ/pxMiPJl0Saq6JgNONTIIf4d1K51P7
+	X9LcDf8sK7exEdq42/BJhkdiLy8RsK6Jo9ITDCUnudlCwhVzVFD9E8pW6RRBKwmUxNrnauLqeOwir
+	2+geayl+X50dTn5CKyCjVFA2GW9jATK8Ucs74O/ZO7gdeOGeiDulfuTyUbPvud5Uk9HYjnYukCz5Z
+	bd4pI/xCA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hW70w-0000a3-Dg; Wed, 29 May 2019 22:25:42 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1hW72w-0000pt-D2; Wed, 29 May 2019 22:27:46 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hW70r-0000Zj-5q
- for linux-nvme@lists.infradead.org; Wed, 29 May 2019 22:25:38 +0000
-Received: by mail-pf1-x444.google.com with SMTP id q17so2546047pfq.8
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 15:25:36 -0700 (PDT)
+ id 1hW72q-0000p8-Vg
+ for linux-nvme@lists.infradead.org; Wed, 29 May 2019 22:27:42 +0000
+Received: by mail-pl1-x641.google.com with SMTP id x7so667017plr.12
+ for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 15:27:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=8UhnAW/QuPsduj+wcnhh1cDfDbYRfA2Occf80mVvUFw=;
- b=BaUbhx6fS3SMiyNE+kCwYESsBVkk67TWCLTGcIqb32W7YPDGgUGKdWoAc1F1uTZ5qs
- Rth9YvB/dmxaz8gDFJPNfj0T4DsKumQwNA1Ex6R9jPrgssIMD20vZdoJgjMPwgSY0R/s
- lhL1zWxJYA5Cq2L3QI9VhtF3pwfRuDNkVrivMuXgHK2g2nTNH4us9HcAxgYgT+qnZZ3X
- 8taaSN8Y6xr+ot9r7Rxv4EjCS6qyKkJs0fP+8Ts81K97wdjWnHiA5uw6mB+7kaU2Uk/W
- d/5AKYRy7et45oGFOYFOmt4upkcIO3huTBBQcbn6jCWRcvdsrPNAz4E4UTcbMKvwsVhC
- WH8Q==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=wSvYi4aVV0f8GgdoqzbJZCDKzs4jzbB05ELxyPaUCBg=;
+ b=euw99r6o1/teAmQCSOcO+XusidsrCcslABEnQ44HJcGn9V4WeDzGGYoydIxQ395Vnr
+ 3V5vPKSPIM+0ULTkCsDwCcTDYOUao4knUm6btRF8JtroW8CNGhJfXDSg3ynS8KaQE/FI
+ BzAr1jJC5F/aTUoRfUgIrs8mOFWi0ds9hJCd+B6nDAdWYjaPGy6/pV6cvQ+qzFWojFMR
+ CSHWAXxvS4hYdjRH2Pc3BdpTpXEw5DkUo+ImGhH6d1ssBhdgurVrTfnOuUs6oGfcavhX
+ 21g1GWQJmfmuWeIr+KSf5k2PgypKy39kyz7gCSBtXCYP1QqHzuo4ONoeMtJYHG/ang0E
+ jAAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=8UhnAW/QuPsduj+wcnhh1cDfDbYRfA2Occf80mVvUFw=;
- b=eao+qfZUU0z4dQ0rJVlpXF7ecngyGQpJMDdWHYYYRgHVH664dApvh8jOCDDy/FmEah
- 1TeH42HCOHgVBs9FOBCr4AqRa2vuyFd4ZBUCWQ6DciIpK0Zsnc9AfjxAD/dMYr21B9yS
- oNMPRf0MkaYfs17MLSNcNQGJ31Cs0yuTPs+XAqPXrnGGROL5+BxoL7pTXSKzKgVZ662y
- 2x44dezhFd+iLfxBTTUKINx4xEroC15s5fdt7Kgo4wYeB+WEUOKG4qrie1lHFsGB2LAJ
- C8h9pQCA6NQLbZdq9EJWdH2w10cK+EV++wNVFVDTbqrAMX64vY3nWyX3xnoZ62cCsGrR
- M6eQ==
-X-Gm-Message-State: APjAAAX0LG537e5r3XyEbg8BB+vMX82UmH+8BI0E6EFD4CaYPRKExnj7
- DdqkuEdjUkvUFFZxTrYA+MtpiNUK
-X-Google-Smtp-Source: APXvYqyLXJNyqStVeYpShyEJW2n3AQb6/SRjnrOdFGytSM+mkwUb1pfsxkKBVmf0rwMYeWf9KNhfDw==
-X-Received: by 2002:a63:f146:: with SMTP id o6mr349426pgk.179.1559168736080;
- Wed, 29 May 2019 15:25:36 -0700 (PDT)
-Received: from pallmd1.broadcom.com ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id p13sm636488pff.2.2019.05.29.15.25.35
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 29 May 2019 15:25:35 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wSvYi4aVV0f8GgdoqzbJZCDKzs4jzbB05ELxyPaUCBg=;
+ b=cIpEZMX7U4zqjraL6ToLGLOkY6mXmPmSM7P5IIt0nUdlYmhzXkfV2NP2S5DNyRmT0P
+ HnPDPsczfy55WBr4oIeCSQ2K1HmrIx5xozJ424tp7vgErcOi0S/XdjThIZ4QBzJN9AAo
+ eji+BUdl1gnNNjPZUY4A6d1Wm+rVwKEisiw7NC4RpOqBnjV0SrjF+JWppGxFz3UpshYh
+ MwR03rtyntiWaetHLtDdMSIp1MMOLzUCeodgtAgI+wKmjYJ/reA4etONeoiMzNEVvBV6
+ 3+t65UYR3ye3t1DFuy2M5qdLpwP4/++9Rc7mCDrwED92jn/KhyGQ/mjhpKB0pqX6AOfF
+ F8Mg==
+X-Gm-Message-State: APjAAAX8L/42o63JmTVWZVWciN4Q6prygh7F8bql59iy4GKFG0RBfTBx
+ CWpo19GtHRHa+sCOeMhCl8o=
+X-Google-Smtp-Source: APXvYqzNrV31iTFZ64CbDw6B7eZ1rYagAT4lLxt3JjX2bQv+WfXRFPbZgyUkPvbktajjdOpPpmW5mw==
+X-Received: by 2002:a17:902:6a83:: with SMTP id
+ n3mr296969plk.109.1559168857809; 
+ Wed, 29 May 2019 15:27:37 -0700 (PDT)
+Received: from [10.69.37.149] ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id e10sm725801pfm.137.2019.05.29.15.27.37
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 29 May 2019 15:27:37 -0700 (PDT)
+Subject: Re: [PATCH v2 1/7] nvmet: add transport discovery change op
+To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
+References: <20190514215808.10572-1-jsmart2021@gmail.com>
+ <20190514215808.10572-2-jsmart2021@gmail.com>
+ <5e71e7be-3ce0-aa3f-4456-7a6d454a3c7d@grimberg.me>
 From: James Smart <jsmart2021@gmail.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2] nvme-fc: Add message when creating new association
-Date: Wed, 29 May 2019 15:25:26 -0700
-Message-Id: <20190529222526.3672-1-jsmart2021@gmail.com>
-X-Mailer: git-send-email 2.13.7
+Message-ID: <72f17092-e068-a13c-9088-59afafcd6157@gmail.com>
+Date: Wed, 29 May 2019 15:27:36 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <5e71e7be-3ce0-aa3f-4456-7a6d454a3c7d@grimberg.me>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190529_152537_250238_F884CC52 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20190529_152741_024969_0454515F 
+X-CRM114-Status: GOOD (  12.18  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
@@ -94,57 +105,26 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: James Smart <jsmart2021@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: martin.petersen@oracle.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-When looking at console messages to troubleshoot, there are one
-maybe two messages before creation of the controller is complete.
-However, a lot of io takes place to reach that point. It's unclear
-when things have started.
-
-Add a message when the controller is attempting to create a new
-association. Thus we know what controller, between what host and
-remote port, and what NQN is being put into place for any
-subsequent success or failure messages.
-
-Signed-off-by: James Smart <jsmart2021@gmail.com>
-
---
-v2:
- Moved message to create association so displayed at initial
-  creation as well as at each reconnect
- Changed message to additionally print host port wwpn and target port
-  wwpn.
----
- drivers/nvme/host/fc.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
-index c17c887f2148..bd1be8aa2d65 100644
---- a/drivers/nvme/host/fc.c
-+++ b/drivers/nvme/host/fc.c
-@@ -2607,6 +2607,12 @@ nvme_fc_create_association(struct nvme_fc_ctrl *ctrl)
- 	if (nvme_fc_ctlr_active_on_rport(ctrl))
- 		return -ENOTUNIQ;
- 
-+	dev_info(ctrl->ctrl.device,
-+		"NVME-FC{%d}: create association : host wwpn 0x%016llx "
-+		" rport wwpn 0x%016llx: NQN \"%s\"\n",
-+		ctrl->cnum, ctrl->lport->localport.port_name,
-+		ctrl->rport->remoteport.port_name, ctrl->ctrl.opts->subsysnqn);
-+
- 	/*
- 	 * Create the admin queue
- 	 */
--- 
-2.13.7
-
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNS8yOS8yMDE5IDM6MjEgUE0sIFNhZ2kgR3JpbWJlcmcgd3JvdGU6Cj4gCj4+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL252bWUvdGFyZ2V0L2Rpc2NvdmVyeS5jIAo+PiBiL2RyaXZlcnMvbnZtZS90
+YXJnZXQvZGlzY292ZXJ5LmMKPj4gaW5kZXggNWJhZjI2OWYzZjhhLi44ZWZjYTI2YjQ3NzYgMTAw
+NjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbnZtZS90YXJnZXQvZGlzY292ZXJ5LmMKPj4gKysrIGIvZHJp
+dmVycy9udm1lL3RhcmdldC9kaXNjb3ZlcnkuYwo+PiBAQCAtNDEsNiArNDEsMTAgQEAgdm9pZCBu
+dm1ldF9wb3J0X2Rpc2NfY2hhbmdlZChzdHJ1Y3QgbnZtZXRfcG9ydCAqcG9ydCwKPj4gwqDCoMKg
+wqDCoMKgwqDCoMKgIF9fbnZtZXRfZGlzY19jaGFuZ2VkKHBvcnQsIGN0cmwpOwo+PiDCoMKgwqDC
+oMKgIH0KPj4gwqDCoMKgwqDCoCBtdXRleF91bmxvY2soJm52bWV0X2Rpc2Nfc3Vic3lzLT5sb2Nr
+KTsKPj4gKwo+PiArwqDCoMKgIC8qIElmIHRyYW5zcG9ydCBjYW4gc2lnbmFsIGNoYW5nZSwgbm90
+aWZ5IHRyYW5zcG9ydCAqLwo+PiArwqDCoMKgIGlmIChwb3J0LT50cl9vcHMgJiYgcG9ydC0+dHJf
+b3BzLT5kaXNjb3ZlcnlfY2hnKQo+PiArwqDCoMKgwqDCoMKgwqAgcG9ydC0+dHJfb3BzLT5kaXNj
+b3ZlcnlfY2hnKHBvcnQpOwo+IAo+IFNvIHlvdSBhcmUgc2hvb3RpbmcgZm9yIGJvdGggdHJhbnNw
+b3J0IGFuZCBkaXNjIGFlbiB0byBoYXBwZW4KPiBhdCB0aGUgc2FtZSB0aW1lPwoKdGhleSBjb3Vs
+ZCBpZiB0aGUgZGlzY292ZXJ5IGNvbnRyb2xsZXIgaXMgYSBwZXJzaXN0ZW50IG9uZS4KCi0tIGph
+bWVzCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
