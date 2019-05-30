@@ -2,67 +2,67 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01B1A2EA1C
-	for <lists+linux-nvme@lfdr.de>; Thu, 30 May 2019 03:13:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EAE222EA1D
+	for <lists+linux-nvme@lfdr.de>; Thu, 30 May 2019 03:13:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EnlpFBr4ldsEYdTWBNvHAUFVmiRjTr9fPn7cEHVgDLQ=; b=TU4l/ri0Ets4qBURyjpuEMAIp
-	5F2soQMpvRl9ysPFzTEHRjesjSL8PbZoZWSuON9r1uBzRxHQyNyaMZyCV1ZFlMRBe+WVGbWxVCl8c
-	mUKPFUhByc/G98yqgZNUk4ZxKSyUZNcABrNZCWaN5qTjECntgPiYwdu2fNvW0xsFF8rC16/CgwTPL
-	lanUKaocq2KS/xGTMqczKuYV7JNfRkkVNgUPLue3kjQTX/4+CYMEocUCVW0zsg9Kkgg8pXrXOmry3
-	Tbqa4jd0n+P60BqHH35l+TZc8FKJpC2resHgJa2gJQZhccxXVkXCn4j5Ne0nu2UUfOFULXMREO2kX
-	vTQaKNbwQ==;
+	 bh=EnlpFBr4ldsEYdTWBNvHAUFVmiRjTr9fPn7cEHVgDLQ=; b=RPnGOMeGyelGzJe3YcJMuGn1a
+	b7iZ9DXyET7VZFFC3apv5aDVeZKmrI7maYE8aAVpR32hO7EF4O9agPZJ7iSLDtzvzrdcGj/v78PrP
+	9i+wFgAlXBpq94fb8qeIUXjJm9LOQdfeudRHlTjVjH0Y6hwI1eMuFMRT7Dm+pbq06jbw8zJjHyWGN
+	unKk2jQc6H1H2kLAgoqD3ZuyEKYDBN76KXWW2A2mlCM3WNqnIVozTELDiKle5Z4uEZ+U0GQ/qk6Qh
+	bPCtPDTy7aelflQ25gwgL26bSiu9y3qRSXQygb+pq7ackDALWEIxN1FX+jSHbEpB+BW2KbxZMW+rO
+	n5n71yKhA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hW9d1-0008Ri-E4; Thu, 30 May 2019 01:13:11 +0000
+	id 1hW9dd-0000Ao-5F; Thu, 30 May 2019 01:13:49 +0000
 Received: from mail-wr1-f65.google.com ([209.85.221.65])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hW9cx-0008RJ-ES
- for linux-nvme@lists.infradead.org; Thu, 30 May 2019 01:13:08 +0000
-Received: by mail-wr1-f65.google.com with SMTP id x4so2997796wrt.6
- for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 18:13:07 -0700 (PDT)
+ id 1hW9dY-0000A4-9t
+ for linux-nvme@lists.infradead.org; Thu, 30 May 2019 01:13:45 +0000
+Received: by mail-wr1-f65.google.com with SMTP id t4so2990385wrx.7
+ for <linux-nvme@lists.infradead.org>; Wed, 29 May 2019 18:13:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
  bh=nWpDQmZNg8zKVk12QskQ7NNS05C4fI/JmZBKLdKyu8Q=;
- b=bIo/e0GwGuIF16lI2C5FJWKUnoTyIKnMtucUidYFPqoMNinym/Z9dpAKHUmw1tmV72
- ruNcizj5/SuYI5DJJjbKvlpi+R8GyC0+73hwWfBjsbpm12ylVPJkxUNORBDAUJO32Nur
- ikUSgtjb7BtfSeHFTQZi9uAr9XjRvGhTUn2nbX9Y8KUqX3nhSztCl0AP0OTc8vfz0QhO
- pjninwOba9ECQSBXFCVUTRsrHNt4Ijh0H6lmimZTsjAzFtmZT7nD63tjmQff6EEgemv5
- auGZyd7GENuW2jUyHmnT4QL/sHjVXky0mJx1J+L2iQ3HuO5OsKD1dv7ExqrKxv7OpeDT
- PRgg==
-X-Gm-Message-State: APjAAAWX2jBbeVnY9Be/p3tQg83A35TYwRMm4JFjIepCMZ9LIm45tdEx
- qyqb726ff5BihwK/0Zkv8/0=
-X-Google-Smtp-Source: APXvYqzJQVl7/mNQ/xzPz9+dMPrN6yfZmQd7+OwLwCwiBrQX3/9cWyebJubUANp8CC0ETQRW9D31gg==
-X-Received: by 2002:adf:e584:: with SMTP id l4mr545105wrm.54.1559178785810;
- Wed, 29 May 2019 18:13:05 -0700 (PDT)
+ b=XX/Z/9TR3zGtafYmM8JMA8c9ZM4LEJtW5NNGo+iY6rzV9zHt4wjLYmevH+NOX2HdlM
+ E71RySHRy/+rjMUqxec9urinCUkiIPqENlAEao28XEj65FAVFi306+NpD2ToYgdV2GWG
+ d3SabEN+QX1rT4HK6a3ceuePi2cqVMbj23QGTUvliGpTBDL+iGBroknsV3CPAfKxD820
+ ovYo4+rAtIsPTiXBX/hOxMhwp9NhBsnyskJikNyHaCGGAB4CpmjREGPrkoKlX5LKVfcM
+ 7Ak465WRmC+3eycotATTdwLlkUbLCPcgkdVmi6BoudIPpttCMuurvPTtAL89bZEFeRBB
+ rgnA==
+X-Gm-Message-State: APjAAAVbjSxz8RgKAhcjCrVZYty4WgnvmymebP/xbGW80MCtabcgmYK7
+ gVXupLxqkhxdAT6lvVxz9Qc=
+X-Google-Smtp-Source: APXvYqzUBerReiveVZpINITlF3pW/hF7h6h1aoM0iGglvcKxj0YeSwv9VpBPhBoNpGmf1FcjB+6fKw==
+X-Received: by 2002:adf:8bc5:: with SMTP id w5mr552335wra.132.1559178822896;
+ Wed, 29 May 2019 18:13:42 -0700 (PDT)
 Received: from ?IPv6:2601:647:4800:973f:d85c:2df7:72d9:ea63?
  ([2601:647:4800:973f:d85c:2df7:72d9:ea63])
- by smtp.gmail.com with ESMTPSA id u9sm2668894wme.48.2019.05.29.18.13.03
+ by smtp.gmail.com with ESMTPSA id k125sm2062357wmb.34.2019.05.29.18.13.40
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 29 May 2019 18:13:05 -0700 (PDT)
-Subject: Re: [RFC PATCH 2/5] nvme-trace: Support tracing fabrics commands from
- host-side
+ Wed, 29 May 2019 18:13:42 -0700 (PDT)
+Subject: Re: [RFC PATCH 3/5] nvme: Introduce nvme_is_fabrics to check fabrics
+ cmd
 To: Minwoo Im <minwoo.im.dev@gmail.com>, linux-nvme@lists.infradead.org
 References: <20190527175346.29972-1-minwoo.im.dev@gmail.com>
- <20190527175346.29972-3-minwoo.im.dev@gmail.com>
+ <20190527175346.29972-4-minwoo.im.dev@gmail.com>
 From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <0c02ec4d-d68e-0341-6eea-71b5e1540e29@grimberg.me>
-Date: Wed, 29 May 2019 18:13:00 -0700
+Message-ID: <432dd6df-5faa-8f7f-adda-2dd6e0565632@grimberg.me>
+Date: Wed, 29 May 2019 18:13:39 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190527175346.29972-3-minwoo.im.dev@gmail.com>
+In-Reply-To: <20190527175346.29972-4-minwoo.im.dev@gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190529_181307_482811_BEB83FFD 
-X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-CacheID: sfid-20190529_181344_346744_843AC454 
+X-CRM114-Status: UNSURE (   9.90  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
