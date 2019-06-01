@@ -2,82 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34EB03190F
-	for <lists+linux-nvme@lfdr.de>; Sat,  1 Jun 2019 04:38:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 76DB43191D
+	for <lists+linux-nvme@lfdr.de>; Sat,  1 Jun 2019 04:45:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ny1p4AlTYKXcXkcASQoLZyvYIjfzrxtppwn6a0uzt74=; b=SxJbn/JcUiwvTd
-	iu+DG2bbeI3LkIPaq1IHczhjIcQYUXpdbfpCaAx6jbWk2ol4fTB9xHPQCM2MYrUbXUaqyd6t03hMq
-	ZU8NAaXaDupMV1nf2bqEhvE0CWfJHT9rE6iOAIX42K34/uMpR8gBULLKNo+J/cgTE3dhND8op6VDF
-	wunIZE3G7usPdfTCkrwlGa2eLX2VQIfvtNMJGgWyXj5rCD44U3eWaDVmnBw6OCc9jMEZzJtks9Ehn
-	dUC2InbAQHQNBAAuhBvHOQRJlBuSIGafjANaJTku6e6dpuWwSCPGNqVHaAFsPIKK3BlTjg6R0uJDa
-	QNFWp9Hcw8T1MGLY/Cqw==;
+	List-Owner; bh=9WsNqtvIy9w5gcGCGEcRiu4P8WYqKu3CQ8d/lVVn9qU=; b=AeRkpoSwxeNL5v
+	0HCg8q3t4Aa1r9H2LclsXtqcC9pdCVrQic2wX2cXqUUI2d9Ojnq4Y4UfOuCwDChtyfbYLbuOJa/ct
+	MhxkwppSMWI1E9udapusP/i+Z1f7PZeAMFSG5TIvNi8MPnRctkf38rdKIg1hS8Qt4pZ8lfjX+qrZk
+	6vbwviGXO20Os6vusGcTwO1iQ7gNWb5sKfgifuJbm0vvGFr8yVS19hn6frNKmu1PGk2eVdywX3dZV
+	H6cv4mUCrM2oZpJDQyNr288fYUjjmvC8Sc/q7DsvHDTiTVbJVoaQyf43LrNLsTBCuyLqknRL7HLka
+	va+l6wURAEn0NNo/OCoQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hWtuM-0003J0-GK; Sat, 01 Jun 2019 02:38:10 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1hWu1Z-0006LI-Bl; Sat, 01 Jun 2019 02:45:37 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hWtuI-0003IW-0C
- for linux-nvme@lists.infradead.org; Sat, 01 Jun 2019 02:38:07 +0000
-Received: by mail-pg1-x544.google.com with SMTP id v9so5012702pgr.13
- for <linux-nvme@lists.infradead.org>; Fri, 31 May 2019 19:38:03 -0700 (PDT)
+ id 1hWu1U-0006Kq-1a
+ for linux-nvme@lists.infradead.org; Sat, 01 Jun 2019 02:45:33 +0000
+Received: by mail-pg1-x541.google.com with SMTP id n2so5026394pgp.11
+ for <linux-nvme@lists.infradead.org>; Fri, 31 May 2019 19:45:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=fMw6nyevytf0tX7yfVGsJgKktbyobdgLwvoj1VgRKYI=;
- b=faZ2hdOP3PlNHkWXGSy/sRixpmQQMH1uuQkPKOkz5lHSTvEhWSDkcBvK+boy6cGhai
- i1prcDwFeqSXIMNf5ytqMjToRD0LQ2TEjg31kqzG6gsLVOiZe3XqS1FfgVvU9LqhAvMH
- 0qmHxqcIZqOfK5gidngJYcP8ZNrTBiz+woDCy/KFUOYOtD/qUvrd2UoybkkU0E1YrSId
- eutJxASFFOZIvO4i/VGRYO5evgCiOYFasMHYLm5siGNeP/JPC/4/FU9SNPYbYBH+R6RV
- kHfEcfEdWb7iG+i4glfuCsRplRJa62sm7ASr9nTrSEhB5kBUkH74zX00twU9b1530JLv
- AKig==
+ bh=XP66PE8yXM1OLIC2egUmqbAXq+LKz/a8KBA1mm6fKbM=;
+ b=jXyWYrgeUg/YF0i8iXJeBFkPr1J4uzCJB7sHkDaEvN2WEtudWez6OdZCMR/ywILsdw
+ w648Ff5e1JUb5BnzryB/u5C8Law6b6Zm1lPHweAutfZsGpo+oZzBQOc6O8SL/nyXrSMT
+ njna3oIq2VG4eCx9uWrxtl/G6i9NxeiCZP5u0pV3POWyVjbvvtte9fmkILF3WmLJJMFQ
+ Oh9uIYV2H9pWO19iPc/vFCg6jPTmb0XQnWeo+uyFutX295sI7PIGxMsVMvAwB/t3sa58
+ F8VlcAgaqQReqAXzDVuIlum2POgx6ROVKbwGxrXIWL0PzNQDXbj1V1h7kAlBebnrcyPp
+ GR1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=fMw6nyevytf0tX7yfVGsJgKktbyobdgLwvoj1VgRKYI=;
- b=USAHIql95lwvEabqZqBwBxQknxGI+6Q8QCdP0f6xvOq/2AqSldQrXUFv2x4OZXek45
- dTn0tM4ZRmLpqb2FmXjs7GoDgh0YYzdCvPXewzVIlZQgg0fDRte1ld+1vKjSVdaiHWOy
- Da3jrzt5Agy8cytGES2pqV1Ff5AEor9D37TeZcMV0b4Y45Ds3hfJGT1boIX4Jzj3YJKn
- lhnyvQGD8mevviSDi82djpYiDjZRAfOPCZYhyJymn3f6HafsOfjQ6hCMfsC5317u7neX
- uLovc7QHVER4RyUdsEnUTTldsjzBn67yXwc+IashJ14mU122xnMRl/2F7Ucscm7nLu5y
- ANYw==
-X-Gm-Message-State: APjAAAVeZcxelJc+iHxDiZlXP2VSTIWA5Tsss5rm9nCaNXlBWJkZGR8q
- ZzG3PP7VzekFYNplWFJNVGXysxkBOV0=
-X-Google-Smtp-Source: APXvYqw0Tn+n+MR2RKYhckwb69EHVyZJMAMjR1iu6grXiF9yISQMLskmdgaqaP7+tonwyUfmJcp9KQ==
-X-Received: by 2002:a17:90a:bb8d:: with SMTP id
- v13mr12987013pjr.79.1559356682975; 
- Fri, 31 May 2019 19:38:02 -0700 (PDT)
+ bh=XP66PE8yXM1OLIC2egUmqbAXq+LKz/a8KBA1mm6fKbM=;
+ b=iYH6C66zn1EHBHENa1P5BQJ9goyEZE+F1jET1TZSPXIkBVni6vDVb+od45b1fPqadU
+ li6L3cnf8r07v2piVgj42tDZHm30sEYwmrvqeZxJ6Xb5zN8QpTg5dqjvEqBnYheUjCpv
+ p9EC/O/Xo8FmfWf5VptpZ69KyG4Wdo3koAVSHr6RUd/uoehBoFdDlGCjnMyLSvrBoTok
+ UXJkML9Swq240B66Bcb58Ij899ytUwuWnlpQFCzqclGkbCmWfTVnM0a7RZH1M/W10xYR
+ kuINegbY964sM4rysNMBFFJmFAxzbsZSTpXw/JDApN965tjiJlmkOHch6DIwaXvqD0iq
+ t1ag==
+X-Gm-Message-State: APjAAAXzzXVAGoWR8RRy6oPBnFGiIioMY1D97uZJ42U1U8GYjy2NIY8k
+ lIajnYdWfw7e9Afz20VBezM=
+X-Google-Smtp-Source: APXvYqwN/Y26BquChBMULTilfQ0oxuWBLlDuL2CfGf4ZcBIyw30EiI/NB1mVRkml0I0Mxa2bg5CmbA==
+X-Received: by 2002:a17:90a:e17:: with SMTP id
+ v23mr12946498pje.139.1559357130600; 
+ Fri, 31 May 2019 19:45:30 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id s2sm7832210pfe.105.2019.05.31.19.38.01
+ by smtp.gmail.com with ESMTPSA id d35sm5828903pgb.55.2019.05.31.19.45.29
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 31 May 2019 19:38:02 -0700 (PDT)
-Date: Sat, 1 Jun 2019 11:37:54 +0900
+ Fri, 31 May 2019 19:45:29 -0700 (PDT)
+Date: Sat, 1 Jun 2019 11:45:27 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [RFC PATCH 5/5] nvme-trace: Add tracing for req_comp in target
-Message-ID: <20190601023752.GA3349@minwooim-desktop>
-References: <20190527175346.29972-1-minwoo.im.dev@gmail.com>
- <20190527175346.29972-6-minwoo.im.dev@gmail.com>
- <b2e1e9f4-a96c-9f72-d787-1cd0a6248aa0@grimberg.me>
+Subject: Re: [PATCH 0/3] nvme: Improve processing paused support
+Message-ID: <20190601024525.GB3349@minwooim-desktop>
+References: <20190524202036.17265-1-keith.busch@intel.com>
+ <76f0ba18-fb80-7a96-6f53-d4df1d637da5@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <b2e1e9f4-a96c-9f72-d787-1cd0a6248aa0@grimberg.me>
+In-Reply-To: <76f0ba18-fb80-7a96-6f53-d4df1d637da5@grimberg.me>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190531_193806_046360_7D7A1CE3 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20190531_194532_088419_9EE58A80 
+X-CRM114-Status: GOOD (  12.93  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -101,68 +100,31 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, James Smart <james.smart@broadcom.com>,
- linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
+Cc: Bart Van Assche <bvanassche@acm.org>, linux-nvme@lists.infradead.org,
+ Ming Lei <ming.lei@redhat.com>, Keith Busch <keith.busch@intel.com>,
  Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-05-31 16:29:06, Sagi Grimberg wrote:
+On 19-05-31 16:32:24, Sagi Grimberg wrote:
+> This looks sensible to me,
 > 
-> > @@ -207,20 +208,50 @@ TRACE_EVENT(nvme_complete_rq,
-> >   		__field(u16, status)
-> >   	    ),
-> >   	    TP_fast_assign(
-> > -		__entry->ctrl_id = nvme_req(req)->ctrl->instance;
-> > -		__entry->qid = nvme_req_qid(req);
-> > -		__entry->cid = req->tag;
-> > -		__entry->result = le64_to_cpu(nvme_req(req)->result.u64);
-> > -		__entry->retries = nvme_req(req)->retries;
-> > -		__entry->flags = nvme_req(req)->flags;
-> > -		__entry->status = nvme_req(req)->status;
-> > -		__assign_disk_name(__entry->disk, req->rq_disk);
-> > +		set_trace_type(__entry->type, req);
-> > +		if (__entry->type != NVME_TRACE_TARGET) {
-> > +			struct request *req = (struct request *) req;
-> > +
-> > +			__entry->ctrl_id = nvme_req(req)->ctrl->instance;
-> > +			__entry->qid = nvme_req_qid(req);
-> > +			__entry->cid = req->tag;
-> > +			__entry->result =
-> > +					le64_to_cpu(nvme_req(req)->result.u64);
-> > +			__entry->retries = nvme_req(req)->retries;
-> > +			__entry->flags = nvme_req(req)->flags;
-> > +			__entry->status = nvme_req(req)->status;
-> > +			__assign_disk_name(__entry->disk, req->rq_disk);
-> > +		} else {
-> > +			struct nvmet_ctrl *ctrl = nvmet_req_to_ctrl(req);
-> > +			struct nvmet_cq *cq = ((struct nvmet_req *) req)->cq;
-> > +			struct nvme_completion *cqe =
-> > +					((struct nvmet_req *) req)->cqe;
-> > +			struct nvmet_ns *ns = ((struct nvmet_req *) req)->ns;
-> > +
-> > +			__entry->ctrl_id = ctrl ? ctrl->cntlid : 0;
-> > +			__entry->qid = cq->qid;
-> > +			__entry->cid = cqe->command_id;
-> > +			__entry->result = cqe->result.u64;
-> > +			__entry->flags = 0;
-> > +			__entry->status = cqe->status >> 1;
-> 
-> Why not keep the dnr bit?
+> Minwoo, do you have any concerns or feedback? If not
+> can I get your review tag?
 
-Hi Sagi,
+Actually this series are looking good to me.  But, I was just
+concerning that if there is better print statement or safe access method
+for CSTS.PP bit in the code.
 
-Thanks for your review on this.  It's just for phase tag which might
-not need for us here.  Thanks to your review, I have realized that it
-should be like:
+But, the print message is not that critical so that I can make my review
+on this.  I need to ask Keith about accessing CSTS.PP without seeing
+CC.EN can be valid in some cases, by the way :).
 
-	__entry->status = le16_to_cpu(cqe->status) >> 1;
+For this series:
 
-I will prepare V5 patch series with this.
-
-Thanks,
+Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
 
 _______________________________________________
 Linux-nvme mailing list
