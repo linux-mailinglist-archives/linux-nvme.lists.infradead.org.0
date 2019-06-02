@@ -2,86 +2,82 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD70D3218E
-	for <lists+linux-nvme@lfdr.de>; Sun,  2 Jun 2019 03:48:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C95C0321B0
+	for <lists+linux-nvme@lfdr.de>; Sun,  2 Jun 2019 05:44:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D8sWNvLT5M7OFK4IV5WgDhbvSZjIMhjyDDjiluOIpcY=; b=no8xA3gymiO4Kt
-	/Wf7JY9HrkwxWwy2R2HPDMpgI6bWUYvmfAYO5YJpOglp6hjf72CHBxHRn5AWcbgxH8lxWs3m+cAYK
-	467d5SXHATnRL45/7IcqIq2M59mAgjYAvng8pdzZdNlUV+qJUd781VCEpjZtdaL40pf7ekCWYROa7
-	/Bsru5ZzJ76SocH7AdfCuFOHr/DxyMNWgS2NnBDuwsoJJhKPz4jzhWUn+hsQSkuz7cAsS+wTpKOAo
-	HFZrd5oRWHVpizYPw2NDvtmeLlQySq14XCC1ehbeR5krUwCnJrZTuqyh8nBxZVg40TTEhi+4g5y5R
-	keZT4Vn0jo51FiIZchpQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eDBV2yVWWbLelQqcRaw84MhtgHJQRNkeWxg2RAUiyB8=; b=rLuJd02gjOt8ah
+	SKCH6qDKK0pCM4+PKAG0xHBJs4aicEobQaDZ8TINt5p2uMk7/UUQaITpEgwimLkuOzpJmDkx87AvT
+	G3gaAjyI5OwMSeZ5kDBADnKFA8fmDvaBMIMyak38fEy1bavFFvXszmz/KVBO52u/ICkh5zn5ZHUtS
+	P9UwFRDdLkl2KLzGT6hhJugMJKFZBWNNYKY4Rpsz7vzc2MLO5U3HrLEJRBh2fdyHXvURxk4WK7bs6
+	cM9xQTZwvWkc4KIgD0ucmpHFUlZovtH6hOhKdZEj/h82r0ASuwVObVOtLR2MKa8FOHutQA6SzExZ2
+	EIka6ILonzZoZfItppPg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hXFbG-0005zy-Mo; Sun, 02 Jun 2019 01:47:54 +0000
+	id 1hXHPf-000321-Hv; Sun, 02 Jun 2019 03:44:03 +0000
 Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hXFb9-0005ze-NP
- for linux-nvme@lists.infradead.org; Sun, 02 Jun 2019 01:47:49 +0000
-Received: by mail-pf1-x444.google.com with SMTP id u17so8492589pfn.7
- for <linux-nvme@lists.infradead.org>; Sat, 01 Jun 2019 18:47:42 -0700 (PDT)
+ id 1hXHPb-00031i-0Z
+ for linux-nvme@lists.infradead.org; Sun, 02 Jun 2019 03:44:00 +0000
+Received: by mail-pf1-x444.google.com with SMTP id a23so8589858pff.4
+ for <linux-nvme@lists.infradead.org>; Sat, 01 Jun 2019 20:43:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=EEEJuTkc7aX5QV4dX7n2N7Df0fgVgxYqjxKhQa17VfM=;
- b=BK8BogcDpfy1wJNFaq5Uo1RSvrAkNEiQnsjCGDtLVVrlZaXhPxt7JpANZjlg3PnDrb
- xjmwmhHQTn2H8ERygRef/8a7sul4vCYsQVbiBHneAQ3WHQqWfLYTPbQ3WVYUr4RwjW6q
- 4qmIQY96vHz53yo1v4nGqJKnRQFXOmqxHCqElTtJzFswdfTG2OB7BQNiHFEBeqiWsXp2
- oGRF6lu6yMxmrJU313cqXp6vP66KckFlKL/43nvNZy60wCc/PfMee3IcUjQPa7E/91mM
- A0n4CqBoD9oDDcLCCJyHKnrBX+2WIKaUstr2oTiZPaVFUZTgD0JBwkrblbFECzPk2dN3
- i5NA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=GY85igdreVsvDNeGOnmNR1MlSVJ2ljY3Vkv20VfsHjI=;
+ b=jWFDg0qEb7Uez9u7pFB0q5xfdmlss7c8Y9XUNX1RaRxT9RHvFMpN4lXPB1IvMk09lU
+ XmXIWBw5uz/MGPCD7OzoMPfkNRtVJfE0GggAea6BaYlCbg9OgDY7Ujq11DMOZ1RpNFWn
+ DbGlcllSUowl09E4kqfaSV9tV+qR3nyFqkSPs31fbExSGpc4L29Iu0kTBTLWK9/xJxxm
+ 8U2XypnDFh2dbFlrYp3c5aaudK/G06Xu6cri0lEU6Z3AOc1yAo0t6PH3DYzC6v31KhS3
+ aafhquBMOOmdc4km7rIOhl2L1NorOIrjlzI5kyTP965K3Z4jW2GrH5vadzRggwkJPH7x
+ +IaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=EEEJuTkc7aX5QV4dX7n2N7Df0fgVgxYqjxKhQa17VfM=;
- b=oOIVqErqKCizU/ElE1RkS14hTZykDmslttUsVtXxRCXIPJyNSj0Y6Ic6g3Pgko2Bnd
- eX/yAQeQ2hx0mdMSGmkFrfN12iJcY4+FTTdsGFTekDtUVpi8SlFumzsTaG7smdTeUrgu
- 6JgXy4rTqsuOSCTaP9xUs9DrIomU39sb5s+C25Jc8iLteobzJStN2DFo1k1dlO4gg75S
- G0ROETL+NKyi/CvrKbFxiDhZg0i0SmZBfBpeV58evktBtrzSOpx40lytybLm3bI4jzFD
- hOnbeicm0GJfY78e5ZthBp/cJUiqzQXQHoq1vLfxo2h+bUdh+5e7Pjd25KxjwTf/EOnH
- 8Q7w==
-X-Gm-Message-State: APjAAAXQLNWn1LUJDVusjWSJU0dZHNqQRGtbgm2lKhBtc5rc9bh9qvfM
- KNfITxudPCIH0OwnO2TGDbY=
-X-Google-Smtp-Source: APXvYqz1Vvs1CXFIicLU5szf+uhZWs8ZsIXivNKbq6KltRi9TSJwQ4jQ3duwriilBwkMm9ymvt7vKw==
-X-Received: by 2002:a63:af44:: with SMTP id s4mr19371214pgo.411.1559440061739; 
- Sat, 01 Jun 2019 18:47:41 -0700 (PDT)
-Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id c85sm5348266pfc.149.2019.06.01.18.47.40
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 01 Jun 2019 18:47:41 -0700 (PDT)
-Date: Sun, 2 Jun 2019 10:47:38 +0900
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=GY85igdreVsvDNeGOnmNR1MlSVJ2ljY3Vkv20VfsHjI=;
+ b=Z2Gluy5FBWdARd648t49eeuV5rG+NgDqQyye9BfpMmLglhEk9aSQJmxFC9s7FKhrOa
+ FAhaB/8K8mxQ5dw+GcaMKAifyZW2JIZ8deO2jSkPLZ7y9PEyIa59JCg7tbZDhqxO5KlK
+ 0/HVnL0tdlN2p4tBE5/MOtiBkzezlAHjpRPHwbwWgT1wHWBeO6YJnub2jb0czvs4hG8X
+ 98maty8iFiu9+mxWqnrtBg7qABRlHo4KcYjpZCtz3xcHyHvI0RRXscJiGRqsiIoAOnUi
+ XVtegN9riQNUxyzQY+GwAuIwHXx3qWzWPs9xROooNTFxOCGGdmLJgsYQcQOnIZYKE3+W
+ 4FPg==
+X-Gm-Message-State: APjAAAVgwsNs68eA/VjszyI72uoJMcuH/Z/UMMH7G1eRZpswj0kLbMH2
+ bS1RbpsRqz4CQwLVcUjIXeawqbvnAjo=
+X-Google-Smtp-Source: APXvYqyWPTeKTftPBy2/rsHVrBBs7FZ0eS4Rr7SnhD9ZRy8njCbIk81bh1ksI02xqFNhhdu4pBhnsQ==
+X-Received: by 2002:a17:90a:2ec2:: with SMTP id
+ h2mr18982961pjs.119.1559447036599; 
+ Sat, 01 Jun 2019 20:43:56 -0700 (PDT)
+Received: from localhost.localdomain ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id j11sm11506411pfe.46.2019.06.01.20.43.53
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 01 Jun 2019 20:43:55 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH V5 1/5] nvme: Make trace common for host and target both
-Message-ID: <20190602014737.GA28933@minwooim-desktop>
-References: <20190601072143.21233-1-minwoo.im.dev@gmail.com>
- <20190601072143.21233-2-minwoo.im.dev@gmail.com>
- <20190601085016.GA6375@lst.de>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvmet: fix data_len to 0 for bdev-backed write_zeroes
+Date: Sun,  2 Jun 2019 12:43:39 +0900
+Message-Id: <20190602034339.11246-1-minwoo.im.dev@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190601085016.GA6375@lst.de>
-User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190601_184747_789982_E8C489BA 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20190601_204359_083572_9D3EBD4C 
+X-CRM114-Status: GOOD (  13.10  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -100,51 +96,58 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- James Smart <james.smart@broadcom.com>, linux-nvme@lists.infradead.org,
- Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
+Cc: Sagi Grimberg <sagi@grimberg.me>, Minwoo Im <minwoo.im.dev@gmail.com>,
+ Christoph Hellwig <hch@lst.de>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
  Minwoo Im <minwoo.im@samsung.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-06-01 10:50:16, Christoph Hellwig wrote:
-> > diff --git a/drivers/nvme/Makefile b/drivers/nvme/Makefile
-> > index 0096a7fd1431..12f193502d46 100644
-> > --- a/drivers/nvme/Makefile
-> > +++ b/drivers/nvme/Makefile
-> > @@ -1,3 +1,6 @@
-> >  
-> > +ccflags-y		+= -I$(src)
-> > +obj-$(CONFIG_TRACING)	+= trace.o
-> 
-> this will always build the file into the kernel if CONFIG_TRACING,
-> even if no nvme code is enabled.
+The WRITE ZEROES command has no data transfer so that we need to
+initialize the struct (nvmet_req *req)->data_len to 0x0.  While
+(nvmet_req *req)->transfer_len is initialized in nvmet_req_init(),
+data_len will be initialized by nowhere which might cause the failure
+with status code NVME_SC_SGL_INVALID_DATA | NVME_SC_DNR randomly.  It's
+because nvmet_req_execute() checks like:
 
-Oh, thanks to point it out.
+	if (unlikely(req->data_len != req->transfer_len)) {
+		req->error_loc = offsetof(struct nvme_common_command, dptr);
+		nvmet_req_complete(req, NVME_SC_SGL_INVALID_DATA | NVME_SC_DNR);
+	} else
+		req->execute(req);
 
-> And looking at the later patches I don't even think this sharing is
-> worth it, as the actual trace points are pretty different.
+This patch fixes req->data_len not to be a randomly assigned by
+initializing it to 0x0 when preparing the command in
+nvmet_bdev_parse_io_cmd().
 
-That's why this patch series introduces DECLARE_EVENT_CLASS as a
-template, and gives different events for it by DEFINE_EVENT.
+nvmet_file_parse_io_cmd() which is for file-backed I/O has already
+initialized the data_len field to 0x0, though.
 
-> 
-> I'd much prefer to have different implementations for host vs target for
-> now instead of introducing a common library.  Maybe we could revisit
-> that later if we end up having a lot of shared code.
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Cc: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+---
+ drivers/nvme/target/io-cmd-bdev.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-As you know, nvmet handles not only nvme fabrics commands, but normal
-commands in nvmet_req_init() and nvmet_req_complete().  Which means that
-we already have a lot of shared codes in parsing point of view.
+diff --git a/drivers/nvme/target/io-cmd-bdev.c b/drivers/nvme/target/io-cmd-bdev.c
+index 3efc52f9c309..7a1cf6437a6a 100644
+--- a/drivers/nvme/target/io-cmd-bdev.c
++++ b/drivers/nvme/target/io-cmd-bdev.c
+@@ -293,6 +293,7 @@ u16 nvmet_bdev_parse_io_cmd(struct nvmet_req *req)
+ 		return 0;
+ 	case nvme_cmd_write_zeroes:
+ 		req->execute = nvmet_bdev_execute_write_zeroes;
++		req->data_len = 0;
+ 		return 0;
+ 	default:
+ 		pr_err("unhandled cmd %d on qid %d\n", cmd->common.opcode,
+-- 
+2.21.0
 
-The host/trace.c provides parsing admin commands which can be used by
-nvmet also.  I guess it's enough to be shared for host and target both.
-
-I hope you can correct me if I missed someting here.
-
-Thanks, Christoph.
 
 _______________________________________________
 Linux-nvme mailing list
