@@ -2,74 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE18433BE7
-	for <lists+linux-nvme@lfdr.de>; Tue,  4 Jun 2019 01:26:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3741A33C09
+	for <lists+linux-nvme@lfdr.de>; Tue,  4 Jun 2019 01:42:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6koOCdYuFrAxkOL0iClrjVKlcp6YxkOuczFtYEEvNUk=; b=PjnstEWfI361E4
-	ES49saC11OoonKdpqnuu8VRAid93jxOEt5N8ZGGv77wzon+nIiVRVM30iOfBNt7UudjuiNDPfkaHu
-	UbGUu6g8UvHITWfzJLzvA33Lg/xmQi9LbSzAv6GnqS3MzUimz7BcCRpH4mLFPZNw4Q17BjAg/aOHm
-	rt5u9XPdJ/WznFdRfZi0nUQa/EB71xM/uMCqpma29BRjRQioYtbpvy1MY0+OLrEHogK0VHP8nG4b2
-	Np2C7365JqHIgF/rnaEZkKm3R9P2DlZAvYj3JFJVOB4FX21UKajhzvbBPXaeX0ixiUXtNj1zouu5D
-	7xfZelSledL2otrIZGlQ==;
+	List-Owner; bh=NFnDuiU1OorkDCGOC5PZHIIQWp5bapoX3GefcdKWHeI=; b=mcGJY+m0W/PfsE
+	v5CNJWdcDOu6HDFI7Aq8NxIcDVFYTDl/icp9sGmziVhcMwtdbtMRYIF+TWN/4sNNtxWicyg0G8xkp
+	a9kMZC5p6UJuJy71Jk2PtuGavJv4CicHw8YcmdB3tnW3WyzDbEcnUn6FKodyVIpyKTDhCVfoJkOwl
+	v0fJ0WJc7ZDYzmG/qfePjMMR/hN1Yc8eqnjKmlkIFYrMzDQ2+BWrENQQez8GRYUuk7JnzQBOXggfo
+	wpNqbzCWpy8CuFQlP/dm06W3/1F1bsIpxoRiL8wFQYIFjfD2sxEfdjKkKb8teZjFEYH1jS+3OH8qs
+	wPW5H3Uj8iZaQ8zPBJIg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hXwLj-0001QA-6p; Mon, 03 Jun 2019 23:26:43 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1hXwbF-0007GM-7E; Mon, 03 Jun 2019 23:42:45 +0000
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hXwLe-0001Pk-6x
- for linux-nvme@lists.infradead.org; Mon, 03 Jun 2019 23:26:39 +0000
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 Jun 2019 16:26:36 -0700
-X-ExtLoop1: 1
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga006.fm.intel.com with ESMTP; 03 Jun 2019 16:26:36 -0700
-Received: from fmsmsx125.amr.corp.intel.com (10.18.125.40) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Mon, 3 Jun 2019 16:26:36 -0700
-Received: from fmsmsx105.amr.corp.intel.com ([169.254.4.170]) by
- FMSMSX125.amr.corp.intel.com ([169.254.2.238]) with mapi id 14.03.0415.000;
- Mon, 3 Jun 2019 16:26:36 -0700
-From: "Harris, James R" <james.r.harris@intel.com>
-To: Sagi Grimberg <sagi@grimberg.me>, "linux-nvme@lists.infradead.org"
- <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH] Revert "nvme-rdma: remove redundant reference between
- ib_device and tagset"
-Thread-Topic: [PATCH] Revert "nvme-rdma: remove redundant reference between
- ib_device and tagset"
-Thread-Index: AQHVGmHCpHLls/ICnUC9eESHTfFT86aLBKaA//+OKIA=
-Date: Mon, 3 Jun 2019 23:26:35 +0000
-Message-ID: <F4E18075-01AA-443B-BF43-23A4BA80C10C@intel.com>
-References: <20190603231159.17034-1-sagi@grimberg.me>
- <b98d3c8f-85ee-06f2-b47a-a3e04261c0d1@grimberg.me>
-In-Reply-To: <b98d3c8f-85ee-06f2-b47a-a3e04261c0d1@grimberg.me>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Microsoft-MacOutlook/10.10.a.190512
-x-originating-ip: [143.182.136.112]
-Content-ID: <0325865E8813B24EAA55C837A00E9801@intel.com>
+ id 1hXwbA-0007G1-FO
+ for linux-nvme@lists.infradead.org; Mon, 03 Jun 2019 23:42:42 +0000
+Received: by mail-qk1-x743.google.com with SMTP id c11so1647631qkk.8
+ for <linux-nvme@lists.infradead.org>; Mon, 03 Jun 2019 16:42:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=purestorage.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=q34hiie00I0QvvuvhEWlKQjduJtR3/oNs+vw/V6cmoY=;
+ b=KJ+sANO9hGBjUjFkJS2nY47qQxRu98k0JuzZQyErIhHbEDSuKyLa8Yb0SADHWddKIi
+ ami0FeyAKeSqMVkKuEN2PwJbzj5QBxkWOfc8sST0iyGSlYMMLqU9EDOk31NoqOjeXCKu
+ gRLDxkNMES5ZgPm7lqfE6Up58K06LQVk/mASU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=q34hiie00I0QvvuvhEWlKQjduJtR3/oNs+vw/V6cmoY=;
+ b=DNfT//CaUZv9l7melCj2eMpq932KYNKnGCfax6h75QDra4xqIlvSll1ztJdA/41JLj
+ 0jIg6S1uA80W+C3VUkEJrN+kkyBveiGTx2CBiXqxF4IfpGJjUJyk5LhrSKmNhMrU5Ge9
+ NiEX88aIhCdr+z3u7w5uUqYpf+IFBaMTiAsjuCGGJt1kjOAm2T8jv7IdKdzoGSnvnbfx
+ 7OErP+9zzwiwwWPKrqioegyF1dIDLoiB4o+1NeEaqpVu8m2yozzwMuLguaitOvvKWiLg
+ pmdnWSJEV6ksIlNXXNtpkCnMOVjA6Z/4R/DbUQEeCAM8Td5CAKVCKbO1IA4hs/7XnXI0
+ wPgg==
+X-Gm-Message-State: APjAAAVQHXx6CGwWtXzc1h955MTvklsa4mhrYH4VXy5JdQSnHu7Fb4oC
+ tYB8fhm8wCbUurVIy2XaS1sJ0VQtkTpRA3JNcE+ghA==
+X-Google-Smtp-Source: APXvYqwySXCYicdHwXelSpPgxJ7n7fla0DxuZwjIH9NrxD2mRi+CYbgq1aDF/8xk6/H+j9UNwXpGoeBNHL2vUetO928=
+X-Received: by 2002:a05:620a:15d3:: with SMTP id
+ o19mr5431373qkm.213.1559605359113; 
+ Mon, 03 Jun 2019 16:42:39 -0700 (PDT)
 MIME-Version: 1.0
+References: <1559604301-14042-1-git-send-email-jalee@purestorage.com>
+In-Reply-To: <1559604301-14042-1-git-send-email-jalee@purestorage.com>
+From: Jaesoo Lee <jalee@purestorage.com>
+Date: Mon, 3 Jun 2019 16:42:28 -0700
+Message-ID: <CAJX3CtgdrbaPhFPnR13CT9mAQ8yVRyPFMjbFz01gcNz6G=2T_g@mail.gmail.com>
+Subject: [PATCH v2] nvme: Fix u32 overflow in the number of namespace list
+ calculation
+To: Keith Busch <keith.busch@intel.com>, Jens Axboe <axboe@fb.com>,
+ Christoph Hellwig <hch@lst.de>, 
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190603_162638_266570_789E6E9C 
-X-CRM114-Status: GOOD (  10.62  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190603_164240_603902_FC04EDAE 
+X-CRM114-Status: GOOD (  12.13  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.151 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:743 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,35 +91,44 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "Busch, Keith" <keith.busch@intel.com>, Max Gurtovoy <maxg@mellanox.com>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Roland Dreier <roland@purestorage.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-DQoNCu+7v09uIDYvMy8xOSwgNDoxNCBQTSwgIlNhZ2kgR3JpbWJlcmciIDxzYWdpQGdyaW1iZXJn
-Lm1lPiB3cm90ZToNCg0KICAgIA0KICAgID4gVGhpcyBjb21taXQgY2F1c2VkIGEga2VybmVsIHBh
-bmljIHdoZW4gZGlzY29ubmVjdGluZyBmcm9tIGFuDQogICAgPiBpbmFjY2Vzc2libGUgY29udHJv
-bGxlci4NCiAgICA+IA0KICAgID4gLS0NCiAgICA+IG52bWUgbnZtZTA6IFJlbW92aW5nIGN0cmw6
-IE5RTiAidGVzdG5xbjEiDQogICAgPiBudm1lX3JkbWE6IG52bWVfcmRtYV9leGl0X3JlcXVlc3Q6
-IGhjdHggMCBxdWV1ZV9pZHggMQ0KICAgID4gQlVHOiB1bmFibGUgdG8gaGFuZGxlIGtlcm5lbCBw
-YWdpbmcgcmVxdWVzdCBhdCAwMDAwMDAwMDgwMDAwMjI4DQogICAgPiBQR0QgMCBQNEQgMA0KICAg
-ID4gT29wczogMDAwMCBbIzFdIFNNUCBQVEkNCiAgICA+IC4uLg0KICAgID4gQ2FsbCBUcmFjZToN
-CiAgICA+ICAgYmxrX21xX2V4aXRfaGN0eCsweDVjLzB4ZjANCiAgICA+ICAgYmxrX21xX2V4aXRf
-cXVldWUrMHhkNC8weDEwMA0KICAgID4gICBibGtfY2xlYW51cF9xdWV1ZSsweDlhLzB4YzANCiAg
-ICA+ICAgbnZtZV9yZG1hX2Rlc3Ryb3lfaW9fcXVldWVzKzB4NTIvMHg2MCBbbnZtZV9yZG1hXQ0K
-ICAgID4gICBudm1lX3JkbWFfc2h1dGRvd25fY3RybCsweDNlLzB4ODAgW252bWVfcmRtYV0NCiAg
-ICA+ICAgbnZtZV9kb19kZWxldGVfY3RybCsweDUzLzB4ODAgW252bWVfY29yZV0NCiAgICA+ICAg
-bnZtZV9zeXNmc19kZWxldGUrMHg0NS8weDYwIFtudm1lX2NvcmVdDQogICAgPiAgIGtlcm5mc19m
-b3Bfd3JpdGUrMHgxMDUvMHgxODANCiAgICA+ICAgdmZzX3dyaXRlKzB4YWQvMHgxYTANCiAgICA+
-ICAga3N5c193cml0ZSsweDVhLzB4ZDANCiAgICA+ICAgZG9fc3lzY2FsbF82NCsweDU1LzB4MTEw
-DQogICAgPiAgIGVudHJ5X1NZU0NBTExfNjRfYWZ0ZXJfaHdmcmFtZSsweDQ0LzB4YTkNCiAgICA+
-IFJJUDogMDAzMzoweDdmYTIxNTQxNzE1NA0KICAgID4gLS0NCiAgICA+IA0KICAgIA0KICAgIFNo
-b3VsZCBhZGQ6DQogICAgUmVwb3J0ZWQtYnk6IEhhcnJpcywgSmFtZXMgUiA8amFtZXMuci5oYXJy
-aXNAaW50ZWwuY29tPg0KDQpUaGFua3MgU2FnaS4gIEkgY2FuIGNvbmZpcm0gdGhhdCByZXZlcnRp
-bmcgdGhpcyBwYXRjaCBlbGltaW5hdGVkIHRoZSBrZXJuZWwgcGFuaWMgb24gbXkgc3lzdGVtLg0K
-ICAgIA0KICAgID4gU2lnbmVkLW9mZi1ieTogU2FnaSBHcmltYmVyZyA8c2FnaUBncmltYmVyZy5t
-ZT4NCiAgICANCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+The Number of Namespaces (nn) field in the identify controller data structure is
+defined as u32 and the maximum allowed value in NVMe specification is
+0xFFFFFFFEUL. This change fixes the possible overflow of the DIV_ROUND_UP()
+operation used in nvme_scan_ns_list() by casting the nn to u64.
+
+Signed-off-by: Jaesoo Lee <jalee@purestorage.com>
+---
+Changes in v2:
+  - use DIV_ROUND_UP_ULL for 32-bit system
+
+ drivers/nvme/host/core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 2c43e12..4c4633b 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -3373,7 +3373,8 @@ static int nvme_scan_ns_list(struct nvme_ctrl
+*ctrl, unsigned nn)
+ {
+        struct nvme_ns *ns;
+        __le32 *ns_list;
+-       unsigned i, j, nsid, prev = 0, num_lists = DIV_ROUND_UP(nn, 1024);
++       unsigned i, j, nsid, prev = 0;
++       unsigned num_lists = DIV_ROUND_UP_ULL((u64)nn, 1024);
+        int ret = 0;
+
+        ns_list = kzalloc(NVME_IDENTIFY_DATA_SIZE, GFP_KERNEL);
+--
+2.7.4
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
