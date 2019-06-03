@@ -2,99 +2,99 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7F603278B
-	for <lists+linux-nvme@lfdr.de>; Mon,  3 Jun 2019 06:29:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EEA932796
+	for <lists+linux-nvme@lfdr.de>; Mon,  3 Jun 2019 06:32:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:Date:Message-ID:
 	In-Reply-To:To:From:Subject:Mime-Version:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kehc4VJPeGz9nwyYhcxbneBynTnKMtQuiefyEHHUFDQ=; b=qAyxGcz/LoCwla
-	pQlcOJ2e9W30RPet3KzA8eVaktK6vxgw09L/urdO2w1M3z1mERskgf0hu6Ma6hPWq5RWCcYFpfK8z
-	HcsOVsx5ZyL1pYpOJN+nWTD0HIaUoxX0HVtQibPknEBgn0195UQUsQHqAsnuAaRfyp+tzE/zDarL4
-	MopI+oKp9snVpa6yXsXInR7tv8khrbfU7l/4p/mMGNkpgtgquJivEelFVV/SLt/tzLrVomciWDAAt
-	A2Hdy+ndn+sbns8FlsMwJFT5w9BJVf/2NvujcwZ1se0EgngIfvBgpiY7qY4lNVcxfXiXBwd7FW8cl
-	WMoWPFp4drhE8ccTfv7g==;
+	List-Owner; bh=Q7JasUa3KMkJq1s8rxbrwrZmI0SOnmhHHenp2S28CqY=; b=BZUYxPS88stndK
+	mxHLQMjmcTFBShu1nft5xOd3OqsSo6tqbHTYN0FUh7csQJ+LN9kBX/s6hQb6CKcqcH+2RCRpZKnIj
+	0Elp0NhziUPROkWdC4BtajurfkrUW7cLIbEcbi0TFKUkTaFA5yrOkEndsK8bfgk07bzMq6G3cclS6
+	qwvfBWp/U/hk7V7kwMDdTtxb76hsjJ4yor9CEpnkZIGMYTAxYMsX/ZR0n6XEfzgOXm8Hr2ZCCoIs9
+	Cbs4QEldBDe7DRI+7gfIqIrs7PnlNshMEiJlvRDHXRA2PfmHWUZ0cwbzDVoE4b8jPFcZi8xj8vuv8
+	Cs5Klm841vhM0m9ncW4A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hXebC-0000An-Kf; Mon, 03 Jun 2019 04:29:30 +0000
-Received: from mailout3.samsung.com ([203.254.224.33])
+	id 1hXede-0001jL-3s; Mon, 03 Jun 2019 04:32:02 +0000
+Received: from mailout4.samsung.com ([203.254.224.34])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hXeb7-0000A2-6v
- for linux-nvme@lists.infradead.org; Mon, 03 Jun 2019 04:29:26 +0000
-Received: from epcas2p3.samsung.com (unknown [182.195.41.55])
- by mailout3.samsung.com (KnoxPortal) with ESMTP id
- 20190603042918epoutp03229f82fc8ea6443a424a848f3c0627bb~kld_vBaIi2476524765epoutp03Q
- for <linux-nvme@lists.infradead.org>; Mon,  3 Jun 2019 04:29:18 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
- 20190603042918epoutp03229f82fc8ea6443a424a848f3c0627bb~kld_vBaIi2476524765epoutp03Q
+ id 1hXedY-0001iy-T3
+ for linux-nvme@lists.infradead.org; Mon, 03 Jun 2019 04:31:58 +0000
+Received: from epcas2p2.samsung.com (unknown [182.195.41.54])
+ by mailout4.samsung.com (KnoxPortal) with ESMTP id
+ 20190603043154epoutp04e4841f6613f0933741182b86be40bb84~klgPNHwns2447824478epoutp04G
+ for <linux-nvme@lists.infradead.org>; Mon,  3 Jun 2019 04:31:54 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
+ 20190603043154epoutp04e4841f6613f0933741182b86be40bb84~klgPNHwns2447824478epoutp04G
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1559536158;
- bh=+0I6KUOTYVxnp3eGmJtlQfBUQoObObZUhLXywaW/mJo=;
+ s=mail20170921; t=1559536314;
+ bh=x5GPKkgXbL8LyYLqCYhULAUHH2WYkohzWq+UfNm21jc=;
  h=Subject:Reply-To:From:To:CC:In-Reply-To:Date:References:From;
- b=HVSVXM9HOrplx/acx0Z9agho8fq7S9uEiuNt5q+8tbUQOK1eeyRTAnuSL3gt9En1X
- 6qQVXm9hFIEdQhrJ6A6NpewMsZxxa6sXdgr5HcWpnCHnNvoEoj1pD2SCPP7/AyFjzg
- 1fbq6MAMOvzJr68wzKWBHccJHlHkZ41jm/P087KU=
-Received: from epsmges2p4.samsung.com (unknown [182.195.40.187]) by
+ b=VKP0drft+Dp9yI+uGOJ1oFureCgKn+4A685IDGfb+lEMlSWDQyzvBbExBs0HouF6c
+ Y0D/2nH9H3I/oWO1IANtt+eKczmunGFNFSbmQ0npayc92cT1ldH+DpIKjeVeTZKQ2f
+ Mbp69piEmbUfO8y2hkhrOyZltldVDKiFxa/OFxjg=
+Received: from epsmges2p1.samsung.com (unknown [182.195.40.186]) by
  epcas2p2.samsung.com (KnoxPortal) with ESMTP id
- 20190603042912epcas2p2fb47fb5e2906a4bd3432422b73bc1362~kld4yd4L11232312323epcas2p29;
- Mon,  3 Jun 2019 04:29:12 +0000 (GMT)
-X-AuditID: b6c32a48-6a1ff7000000106f-c9-5cf4a2153b7d
-Received: from epcas2p2.samsung.com ( [182.195.41.54]) by
- epsmges2p4.samsung.com (Symantec Messaging Gateway) with SMTP id
- 1F.1E.04207.512A4FC5; Mon,  3 Jun 2019 13:29:09 +0900 (KST)
+ 20190603043152epcas2p2255d30adcd616bb28a5ff1d044d4bbf3~klgNyRRF22299322993epcas2p2t;
+ Mon,  3 Jun 2019 04:31:52 +0000 (GMT)
+X-AuditID: b6c32a45-d5fff70000001063-7e-5cf4a2b71326
+Received: from epcas2p3.samsung.com ( [182.195.41.55]) by
+ epsmges2p1.samsung.com (Symantec Messaging Gateway) with SMTP id
+ E9.09.04195.7B2A4FC5; Mon,  3 Jun 2019 13:31:51 +0900 (KST)
 Mime-Version: 1.0
-Subject: Re: [PATCH] nvme-cli: add default value for nsid of write-zeroes
+Subject: Re: [PATCH V5 2/6] fabrics: Do not return in the middle of the
+ subcommand
 From: Minwoo Im <minwoo.im@samsung.com>
-To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, Sagi Grimberg
- <sagi@grimberg.me>, Minwoo Im <minwoo.im.dev@gmail.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, Minwoo Im
+ <minwoo.im.dev@gmail.com>, "linux-nvme@lists.infradead.org"
+ <linux-nvme@lists.infradead.org>
 X-Priority: 3
 X-Content-Kind-Code: NORMAL
-In-Reply-To: <BYAPR04MB5749A32C48ADD555EF1B6A8C861B0@BYAPR04MB5749.namprd04.prod.outlook.com>
+In-Reply-To: <BYAPR04MB5749D2AD58284C2F5F859527861B0@BYAPR04MB5749.namprd04.prod.outlook.com>
 X-Drm-Type: N,general
 X-Msg-Generator: Mail
 X-Msg-Type: PERSONAL
 X-Reply-Demand: N
-Message-ID: <20190603042909epcms2p6a171f91c9d75e5ada95685ad6523cd95@epcms2p6>
-Date: Mon, 03 Jun 2019 13:29:09 +0900
-X-CMS-MailID: 20190603042909epcms2p6a171f91c9d75e5ada95685ad6523cd95
+Message-ID: <20190603043151epcms2p62ce7d68832b8e8732510aa9ad34f1d7b@epcms2p6>
+Date: Mon, 03 Jun 2019 13:31:51 +0900
+X-CMS-MailID: 20190603043151epcms2p62ce7d68832b8e8732510aa9ad34f1d7b
 X-Sendblock-Type: AUTO_CONFIDENTIAL
 CMS-TYPE: 102P
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0hTURzHO7vX7WotTlPrl5WNayFa003auj2MKItJBmKQVBO96EWlvdjd
- xF5okZj2QM0oVvjI0l4mrdSV/9gMg0oli/KR00gLshTpZZbSXmL/ffie3znf7/ecQxGSQmEI
- la03cyY9q6WFAWRTW4RKFnz1u0beP7icsfaPkkyZ4w1iKmtHRMxU0Xzm7ug4udVP/dA6IFJ3
- Oe+RatutIqH6/rU8dWHraUGi337t5iyOzeBMUk6fbsjI1mfG0rv2pG5PVarkCpliA7OelupZ
- HRdLxyUkynZma13etDSH1VpcUiLL83T0ls0mg8XMSbMMvDmW5owZWqNCYYziWR1v0WdGpRt0
- GxVyeYzSNZmmzaqxfSSNP1Hul8EhIh+1omLkTwFeB8119R6WYDuC10VQjChKjBfBtD3QLQfi
- eOh7d0fgliV4JUx+lnvlCBhreeHnZiEOh/wLn8liFEAF4ccInH13SfcCgcPgZ3UT6bUSw6XC
- ER8vc9k2emz9cQoUDDQKvXow9N7+Kprl8fZKX8wgKHB2EF5eBEO/W5A7D2AA59gWL+bBgxuM
- OwLgkwh6vtT7tkbD8U8THlsx3g32ikEPk3g1OCq7fTNxMDNViryRV0Lz1yuE+0zC1bHhUbT3
- +DB40ucrtRBOtU2LZkvZK4YFXg6DCYfDF3Ip1HWP+kqpoaJ8ROSOJsFnBHDD3k6UIKl17p6t
- /xlb54yrEHELLeaMvC6T42OM6/5/WRvyfMJItR21diY4EKYQvUB8SfRdI/Fjc/hDOgcCiqCD
- xDdVExqJOIM9dJgzGVJNFi3HO5DS1b+UCAlON7i+tN6cqlDGqFTyDUpGqYph6CVi2/xejQRn
- smbuIMcZOdPsPgHlH5KPkrqeJYUQ5NPhtMmzW8fKJnZM7etQNtTBidPWb7b2o8UFOXfwdLKm
- 8phMFpRsHKqZDFt95Bu7VDVP2N32p+d8w6qqhPjE62z53r6ba4kPubHlLw9UqxB9ebB2W2fS
- 35Lk0NuF71NenftRkBdX/+t5fW6peMXIzMVNTsua8bfhMw2hNMlnsYpIwsSz/wBpcZ4MmgMA
- AA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrNKsWRmVeSWpSXmKPExsWy7bCmue72RV9iDPZNVLCYdfs1i8WkQ9cY
+ LeYve8pu8auT24HFY+esu+wem1Z1snlsXlLv0X6gmymAJSrHJiM1MSW1SCE1Lzk/JTMv3VbJ
+ OzjeOd7UzMBQ19DSwlxJIS8xN9VWycUnQNctMwdoo5JCWWJOKVAoILG4WEnfzqYov7QkVSEj
+ v7jEVim1ICWnwNCwQK84Mbe4NC9dLzk/18rQwMDIFKgyISdj051ZrAXlFY8e+DUwxnQxcnJI
+ CJhILJh0hqWLkYtDSGAHo8TeHf/Zuhg5OHgFBCX+7hAGqREWCJH4OWkrE0hYSEBe4scrA4iw
+ psS73WdYQWw2AXWJhqmvwMaICMxnlPgzqQUswSygLPFt4TYWiF28EjPan0LZ0hLbl29lBLE5
+ BWIlvp/+ygwRF5W4ufotO4z9/th8RghbRKL13lmoGkGJBz93M4LcIyEgIXHvnR2EWS+xZYUF
+ yAkSAi2MEjferIVq1ZdofP4RbC2vgK/ErVlH2UBsFgFViXX/Z7FB1LhItH38wAZxsrzE9rdz
+ mEFmMgP9uH6XPsR4ZYkjt1ggKvgkOg7/ZYd5ase8J0wQtrLEx0OHoI6UlFh+6TXUdA+Jl5tn
+ MkMCuYtJ4tSnE0wTGBVmIcJ5FpLFsxAWL2BkXsUollpQnJueWmxUYIgcr5sYwQlPy3UH44xz
+ PocYBTgYlXh4Z7B/iRFiTSwrrsw9xCjBwawkwrvS7GOMEG9KYmVValF+fFFpTmrxIUZToP8n
+ MkuJJucDk3FeSbyhqZGZmYGlqYWpmZGFkjjvZu6bMUIC6YklqdmpqQWpRTB9TBycUg2MCS1m
+ a9qvt7NdlWm91Bm++LLqoSc+b/l+frFLYHHoebfy4fsv7fvtIzcuZA8889zo4ucFXN/sWrWa
+ +gUaxNtuX8uL8PR1j/hye7nuG5MX9oLP07WDS426Jq+S3Gt0U6TRRZBv7f7ECe8f/p5qZ/xZ
+ i2HHz/y0uzEb7gr8TH89T5Nj2qO1Oe+UlFiKMxINtZiLihMBrQlInY4DAAA=
 DLP-Filter: Pass
 X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20190602232226epcas5p4831fd57de8def05b189bc9bf5c7c5432
-References: <BYAPR04MB5749A32C48ADD555EF1B6A8C861B0@BYAPR04MB5749.namprd04.prod.outlook.com>
- <20190601070003.20142-1-minwoo.im.dev@gmail.com>
- <bfac4b78-937c-42e8-1be1-f9a81ad22ab7@grimberg.me>
- <CGME20190602232226epcas5p4831fd57de8def05b189bc9bf5c7c5432@epcms2p6>
+X-CMS-RootMailID: 20190602231146epcas3p10cc96137dc9a4d7f6e7cfb78f390d240
+References: <BYAPR04MB5749D2AD58284C2F5F859527861B0@BYAPR04MB5749.namprd04.prod.outlook.com>
+ <20190523145750.27425-1-minwoo.im.dev@gmail.com>
+ <20190523145750.27425-3-minwoo.im.dev@gmail.com>
+ <CGME20190602231146epcas3p10cc96137dc9a4d7f6e7cfb78f390d240@epcms2p6>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190602_212925_417298_55237F97 
-X-CRM114-Status: GOOD (  13.18  )
+X-CRM114-CacheID: sfid-20190602_213157_101805_4A81C902 
+X-CRM114-Status: GOOD (  11.86  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [203.254.224.33 listed in list.dnswl.org]
+ high trust [203.254.224.34 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -123,13 +123,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> Is this breaking any testcases or expected behavior ?
-
 Hi Chaitanya,
 
-Thanks for your question.  As I replied to Sagi, This patch can be ignored.
-Sorry for making confusions here.  This patch has never caused any
-issues ever.
+Thanks for your review.  That sounds absolutely right.
+Will prepare V6	 patches with it.
 
 Thanks,
 
