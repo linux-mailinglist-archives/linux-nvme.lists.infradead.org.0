@@ -2,113 +2,80 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D42A833505
-	for <lists+linux-nvme@lfdr.de>; Mon,  3 Jun 2019 18:33:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A77D337E2
+	for <lists+linux-nvme@lfdr.de>; Mon,  3 Jun 2019 20:32:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=CaG1h9O01/RDpDCthjxJKEHSaQz50dMaGK1iK5h7Jpg=; b=Neu99xlh8EdFch
-	tC33EFIs8Su6vuiFVi3Ywhna3DW0GPaPf+HGNQez8v7p86fCD0koMubyiTCHiWODyZk+H945dvGAJ
-	oHPjs4PeBiH62Xl/iMD9LPeoxl0Di0xGarxGEi6+k2AkRHhmpRbkY2Cu7zUAg8HQOjuk2/OiwSQ9C
-	SMOSa/l3h60tAOdSfpxSFQmrxkHU/2e5eVWLsR5a6mreabG8DDCbIqMdwcRH1ZMFOIqCJf90aUCqj
-	dIWUeGQP9nqDVYjzf6F6LNaR4MosALGTyuMRWCBTLibiwJPWEhlT1xI+QxtQRGvNjwUSUuI1iiGE5
-	QSmLKQf3EzhpAHjTe/Yw==;
+	References:List-Owner; bh=J8UEv2p1HmGbOpfpMUTtZS9N9LjDBEvHpEojUroZjhg=; b=i6N
+	ngIOZQgKQ6CXYUCnoqvRNZJ5erb0sUbbhNRSrKn8aCmIaIoVTOFnUnPqtaOLb6FObwZ7YXSu5a5jK
+	M6GRjVKp2Od1P3ikC6BpCLw20iVC71mhHH12QtI8+hsO5KjrFPkxm9RNrhZDc3ztpDzqf52QmPmzV
+	fLj+VbEVjbK1D5m9XpkMFWUNX0FRKBCZDYLR/9q4Ja1m6QYkAGgw+A5esC0YBFglgG7YAlnzZRsMC
+	z1sNoSB7zSYJIE4F4o/vTTULwE8Bk+gZugpRyXpJIG3hlE3pSgdxft4Xh+uFVjGGKOP29BabM/vUa
+	jWYyGWp/MVurXzbI00azc1UNGqXaogA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hXpte-0007TO-Dm; Mon, 03 Jun 2019 16:33:18 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1hXrkk-0001Q1-Rh; Mon, 03 Jun 2019 18:32:14 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hXptS-0007M3-R5
- for linux-nvme@lists.infradead.org; Mon, 03 Jun 2019 16:33:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1559579587; x=1591115587;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=YT3egw5g0B/uwwTaY+umPrwc8Yogk2VloKAKCiLZgwo=;
- b=XczVryJR9351mu+xCAw2lu2MVzaM+ATNZPeHbY5XWNvXKKBiHz+NAuVc
- 3yMZY9Zf+o9s7qdvpORCzm/Uj2/zYdW2fPu/NE1a5xbkWBCkIQ6JlZ/pv
- XP/+KjpFLpOZTjM5a8aycZuD0d4/ri1RVKGiNBO66LKYQAtl49/Ix0k4C
- 64tyj3WDdQS6uTBWYvhIl9i2OvuQzBr5OPYiXaGxG0FwUcjXjnzNVWdJY
- hkW9dVKdfk9T7FtoIjT/C05G6G3Tqx6J3DdfX/cUYcKSZ1Dyqc9ZR/Zw9
- qm3KzfCN0RVcOSlNnz3UAS5GaS0pmsWAIsd+7q4D1PxlTuNfWhpkc/LuV w==;
-X-IronPort-AV: E=Sophos;i="5.60,547,1549900800"; d="scan'208";a="111359227"
-Received: from mail-cys01nam02lp2055.outbound.protection.outlook.com (HELO
- NAM02-CY1-obe.outbound.protection.outlook.com) ([104.47.37.55])
- by ob1.hgst.iphmx.com with ESMTP; 04 Jun 2019 00:33:03 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0bCuAqXhfMZHnfAMidIh5q7svdbe1SdnEBsDtNKAQrY=;
- b=E6S53+Jpye7AuQy3TNQxF1B+2Kx7ttiWhy1HW8NfXGMcAdy9BSn11vdDbRjm4kL9YLw9VJ7hKPpsCD6YWjNIfwIZhWjRYJrRueqI8Z/454o7P9FzonQ1wQg1yDLCMdktETHQ0n+DioPjwhcm5UX1Zenl/vvoJt74o21gOqOMMF0=
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.58.26) by
- BYAPR04MB5527.namprd04.prod.outlook.com (20.178.232.89) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1943.17; Mon, 3 Jun 2019 16:33:02 +0000
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::ad42:af4b:a53b:80f5]) by BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::ad42:af4b:a53b:80f5%4]) with mapi id 15.20.1943.018; Mon, 3 Jun 2019
- 16:33:02 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Max Gurtovoy <maxg@mellanox.com>, "kbusch@kernel.org" <kbusch@kernel.org>, 
- "hch@lst.de" <hch@lst.de>, "linux-nvme@lists.infradead.org"
- <linux-nvme@lists.infradead.org>, "sagi@grimberg.me" <sagi@grimberg.me>
-Subject: Re: [PATCH 5/5] nvme: fix coding style issue
-Thread-Topic: [PATCH 5/5] nvme: fix coding style issue
-Thread-Index: AQHVFsxALKp0h7ViU0652txK1TkjvQ==
-Date: Mon, 3 Jun 2019 16:33:01 +0000
-Message-ID: <BYAPR04MB5749196B1B64839154AA405486140@BYAPR04MB5749.namprd04.prod.outlook.com>
-References: <1559209406-713-1-git-send-email-maxg@mellanox.com>
- <1559209406-713-5-git-send-email-maxg@mellanox.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.44.174]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0196dcd7-c5ac-41f5-0ba2-08d6e841259c
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB5527; 
-x-ms-traffictypediagnostic: BYAPR04MB5527:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <BYAPR04MB552780EB3CDE31D696C6A9A986140@BYAPR04MB5527.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1186;
-x-forefront-prvs: 0057EE387C
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(979002)(346002)(136003)(39860400002)(396003)(376002)(366004)(189003)(199004)(76176011)(102836004)(6506007)(99286004)(486006)(6246003)(53546011)(4326008)(7696005)(2201001)(25786009)(86362001)(446003)(54906003)(55016002)(26005)(71200400001)(71190400001)(9686003)(2501003)(186003)(476003)(110136005)(316002)(256004)(66946007)(73956011)(76116006)(6436002)(33656002)(66446008)(64756008)(14444005)(66556008)(66476007)(229853002)(68736007)(2906002)(52536014)(7736002)(8936002)(5660300002)(478600001)(72206003)(305945005)(4744005)(14454004)(3846002)(6116002)(81166006)(81156014)(66066001)(53936002)(74316002)(8676002)(969003)(989001)(999001)(1009001)(1019001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5527;
- H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: GDgHflApzuSmL8u2tgRQ/hXxAn+bYKD7N2YRLVp2RJ3oI2kUGYckLlf7l2M/oqfFEk5/jZOyhMdfa0IW3N2FWtWBiZ2AtFKSW990Cgze4lF5HZAcYxojy7EV8QT2dzq2ejGkViFm3hr1vXbgwYqiPfB8V2aWERoAcVuisiPTKJSKiVmVyuaTKGSCNiYZYTA/b1l1wDrrwyOJlP296NYmt0NopMgvK2KNal8QhkmWo52Ql7Ve+1omoauSfYjAk9NkVgCZ8E/roU/FKRPd2HSikmqkyWV+PrQeAaTL5RkwCSpDKEGHYhoAmAST1BGDNmH9g5cJJZU5MqFDt2O6FYyRcxf8JephJeKA+Qa4PubcswwyCtEhWprF+E/ZPSTwaEZknvkOKtOn/I3qnUsGZgn/YwYKUQHJxSYpbL6w01h7MnY=
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0196dcd7-c5ac-41f5-0ba2-08d6e841259c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jun 2019 16:33:01.9346 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Chaitanya.Kulkarni@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5527
+ id 1hXrkf-0001PV-Pb
+ for linux-nvme@lists.infradead.org; Mon, 03 Jun 2019 18:32:11 +0000
+Received: by mail-pg1-x543.google.com with SMTP id w34so8744425pga.12
+ for <linux-nvme@lists.infradead.org>; Mon, 03 Jun 2019 11:32:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=9ELX+27qWaiIS1VCYruUUkn/li7PxyGSbQoS3oUnGjk=;
+ b=DQRBQhKiYw43Am3mduxEBIGDtOqVOV+n7cEt8eG/kHm8zouykTVZjt9V8ZQ27MTTX9
+ XVgCveKXsDsV4prEQSOSt05pum2H0lIFwYAzJ7OpZFv7rEWrptLXQDVExODYtDx+Tq1j
+ IsSp8n/B+OfXJEWmAljWiFWieh+adWHek4BxNIxGmUvdBwYCwVQlsYnjz5/DUqQvQaB0
+ fuHwl+IbhXC1h6qnMdHN0m0M40mEZe6ZFoE5Dhg6vHO4nt45ZtRxooV5rP9adoMLZxMi
+ AnMK9tQt1fLsO9dzGRCXZMvzB6y2sYlrjl+mOvMv9Kt9ZQDaC7FAm2q3MEz8Bjox78+F
+ JBtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=9ELX+27qWaiIS1VCYruUUkn/li7PxyGSbQoS3oUnGjk=;
+ b=nzcomU4spAo+Q6vgIED3GcW/sqqQoOivDehdt1PxpV/jzbLnthv9Q4EieuL7IXVAIA
+ wyS8oCtiFj7tzsYM/ULuf91RCyIAq4S2YTQ6wYaFEZHcQiTLAgw6dTrukXDD314CfdLe
+ jE6aIF047Dt55TM8O4rvg9WL/SKCwRpRjry31HN3SYMRmAI1azoN9OVJPtSt74Xi+vh5
+ Ll0jl0vqMiVFks/5Uer3HO+BXg9SktvygznzsONT4FNi/rL7rIOnljlhF7OPrNZ2dgu8
+ gHnwGkuAkdVNCmmF8U+lvSzIANk5dKT8He7ykoXAiJr250G1UfTpV9OntgCxRIfIoPXW
+ xr2Q==
+X-Gm-Message-State: APjAAAWBmVj77aiJxd2kVZ2+e3xTpwYkKWFODjmOOvDm/Emw7ceFam+d
+ LUKIVeRAJfq6CHXWOiNeIChP6B41
+X-Google-Smtp-Source: APXvYqxOLVlk6MJlRIMw0GmDH31p0mo1BJHuNCAZSqUsb+MBMLbdnzBva5vd0Bxwcp4KhjB8xC2JSw==
+X-Received: by 2002:a63:158:: with SMTP id 85mr30880153pgb.101.1559586728331; 
+ Mon, 03 Jun 2019 11:32:08 -0700 (PDT)
+Received: from pallmd1.broadcom.com ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id o20sm11904470pgj.70.2019.06.03.11.32.07
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Mon, 03 Jun 2019 11:32:07 -0700 (PDT)
+From: James Smart <jsmart2021@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH v3] nvme-fcloop: Add support for nvmet discovery_event op
+Date: Mon,  3 Jun 2019 11:31:48 -0700
+Message-Id: <20190603183148.25051-1-jsmart2021@gmail.com>
+X-Mailer: git-send-email 2.13.7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190603_093306_981659_17DA503F 
-X-CRM114-Status: GOOD (  15.17  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190603_113209_855773_AEFDD4F4 
+X-CRM114-Status: GOOD (  14.02  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (jsmart2021[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit (jsmart2021[at]gmail.com)
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -127,53 +94,92 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "shlomin@mellanox.com" <shlomin@mellanox.com>,
- "minwoo.im@samsung.com" <minwoo.im@samsung.com>
+Cc: James Smart <jsmart2021@gmail.com>, aeasi@marvell.com, sagi@grimberg.me
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Looks good.
+Update fcloop to support the discovery_event operation and
+invoke a nvme rescan. In a real fc adapter, this would generate an
+RSCN, which the host would receive and convert into a nvme rescan
+on the remote port specified in the rscn payload.
 
-Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-On 5/30/19 2:44 AM, Max Gurtovoy wrote:
-> It's more common to use the following coding style:
-> if (condition) {
->    do_that;
->    do_this;
-> } else if (condition2) {
->    do_this;
-> } else {
->    do_that;
-> }
->
-> Reviewed-by: Minwoo Im <minwoo.im@samsung.com>
-> Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
-> ---
->  nvme.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/nvme.c b/nvme.c
-> index 3310abd..2fd4362 100644
-> --- a/nvme.c
-> +++ b/nvme.c
-> @@ -988,11 +988,11 @@ static int list_ns(int argc, char **argv, struct command *cmd, struct plugin *pl
->  		for (i = 0; i < 1024; i++)
->  			if (ns_list[i])
->  				printf("[%4u]:%#x\n", i, le32_to_cpu(ns_list[i]));
-> -	}
-> -	else if (err > 0)
-> +	} else if (err > 0) {
->  		show_nvme_status(err);
-> -	else
-> +	} else {
->  		perror("id namespace list");
-> +	}
->  
->  close_fd:
->  	close(fd);
+Signed-off-by: James Smart <jsmart2021@gmail.com>
+Reviewed-by: Hannes Reinecke <hare@suse.com>
 
+---
+This is a report of a v2 patch that triggered a sparse warning
+v3: convert fcloop_tgt_discovery_evt() to static
+---
+ drivers/nvme/target/fcloop.c | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
+
+diff --git a/drivers/nvme/target/fcloop.c b/drivers/nvme/target/fcloop.c
+index 381b5a90c48b..b8c1cc54a0db 100644
+--- a/drivers/nvme/target/fcloop.c
++++ b/drivers/nvme/target/fcloop.c
+@@ -231,6 +231,11 @@ struct fcloop_lsreq {
+ 	int				status;
+ };
+ 
++struct fcloop_rscn {
++	struct fcloop_tport		*tport;
++	struct work_struct		work;
++};
++
+ enum {
+ 	INI_IO_START		= 0,
+ 	INI_IO_ACTIVE		= 1,
+@@ -348,6 +353,37 @@ fcloop_xmt_ls_rsp(struct nvmet_fc_target_port *tport,
+ 	return 0;
+ }
+ 
++/*
++ * Simulate reception of RSCN and converting it to a initiator transport
++ * call to rescan a remote port.
++ */
++static void
++fcloop_tgt_rscn_work(struct work_struct *work)
++{
++	struct fcloop_rscn *tgt_rscn =
++		container_of(work, struct fcloop_rscn, work);
++	struct fcloop_tport *tport = tgt_rscn->tport;
++
++	if (tport->remoteport)
++		nvme_fc_rescan_remoteport(tport->remoteport);
++	kfree(tgt_rscn);
++}
++
++static void
++fcloop_tgt_discovery_evt(struct nvmet_fc_target_port *tgtport)
++{
++	struct fcloop_rscn *tgt_rscn;
++
++	tgt_rscn = kzalloc(sizeof(*tgt_rscn), GFP_KERNEL);
++	if (!tgt_rscn)
++		return;
++
++	tgt_rscn->tport = tgtport->private;
++	INIT_WORK(&tgt_rscn->work, fcloop_tgt_rscn_work);
++
++	schedule_work(&tgt_rscn->work);
++}
++
+ static void
+ fcloop_tfcp_req_free(struct kref *ref)
+ {
+@@ -839,6 +875,7 @@ static struct nvmet_fc_target_template tgttemplate = {
+ 	.fcp_op			= fcloop_fcp_op,
+ 	.fcp_abort		= fcloop_tgt_fcp_abort,
+ 	.fcp_req_release	= fcloop_fcp_req_release,
++	.discovery_event	= fcloop_tgt_discovery_evt,
+ 	.max_hw_queues		= FCLOOP_HW_QUEUES,
+ 	.max_sgl_segments	= FCLOOP_SGL_SEGS,
+ 	.max_dif_sgl_segments	= FCLOOP_SGL_SEGS,
+-- 
+2.13.7
 
 
 _______________________________________________
