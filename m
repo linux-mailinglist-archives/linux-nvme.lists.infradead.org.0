@@ -2,92 +2,93 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7EEA932796
-	for <lists+linux-nvme@lfdr.de>; Mon,  3 Jun 2019 06:32:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D3E22327BF
+	for <lists+linux-nvme@lfdr.de>; Mon,  3 Jun 2019 06:35:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:Date:Message-ID:
 	In-Reply-To:To:From:Subject:Mime-Version:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q7JasUa3KMkJq1s8rxbrwrZmI0SOnmhHHenp2S28CqY=; b=BZUYxPS88stndK
-	mxHLQMjmcTFBShu1nft5xOd3OqsSo6tqbHTYN0FUh7csQJ+LN9kBX/s6hQb6CKcqcH+2RCRpZKnIj
-	0Elp0NhziUPROkWdC4BtajurfkrUW7cLIbEcbi0TFKUkTaFA5yrOkEndsK8bfgk07bzMq6G3cclS6
-	qwvfBWp/U/hk7V7kwMDdTtxb76hsjJ4yor9CEpnkZIGMYTAxYMsX/ZR0n6XEfzgOXm8Hr2ZCCoIs9
-	Cbs4QEldBDe7DRI+7gfIqIrs7PnlNshMEiJlvRDHXRA2PfmHWUZ0cwbzDVoE4b8jPFcZi8xj8vuv8
-	Cs5Klm841vhM0m9ncW4A==;
+	List-Owner; bh=xJ9dze+PqosxDpFe+kZnMQHnO9V9tTz3m+ipL6iwpik=; b=ZaAl0RWt2rfn3a
+	GH98DC81plbhRI6AkfSzBLi/uuieOUDKb0h4mJ6ujIn6MKuYr9t1Enuq55hf35T6kErhe728AhKb5
+	Z6HGfJmNBlq1S009j068inzklGXe5sIB7ZCvWmhZoUKZgWg/wC33KV7UMb3qgR0TxQIah0QUBlyOA
+	3/NuByfQRYiq94EIWS1EjvNDyuUbIIjrn3CBbpUt1cl45NBo4hAhdPxVz18RZBPe+NhdM4MuZG5vU
+	OsuaoNhHm4zzFkio3loC0Hbe1KcuOX6EdrBT9JKS6wClR44OvD+tfuWkfG/39zzORnu1Tw37yPB5H
+	YNrzie+yyBum57vUO8uQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hXede-0001jL-3s; Mon, 03 Jun 2019 04:32:02 +0000
+	id 1hXegj-0004ne-Vn; Mon, 03 Jun 2019 04:35:14 +0000
 Received: from mailout4.samsung.com ([203.254.224.34])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hXedY-0001iy-T3
- for linux-nvme@lists.infradead.org; Mon, 03 Jun 2019 04:31:58 +0000
+ id 1hXefr-0003W9-7P
+ for linux-nvme@lists.infradead.org; Mon, 03 Jun 2019 04:34:52 +0000
 Received: from epcas2p2.samsung.com (unknown [182.195.41.54])
  by mailout4.samsung.com (KnoxPortal) with ESMTP id
- 20190603043154epoutp04e4841f6613f0933741182b86be40bb84~klgPNHwns2447824478epoutp04G
- for <linux-nvme@lists.infradead.org>; Mon,  3 Jun 2019 04:31:54 +0000 (GMT)
+ 20190603043416epoutp04944c0d0878e973d1a799ee1e4c99cdd7~kliUJvXhd2627526275epoutp04a
+ for <linux-nvme@lists.infradead.org>; Mon,  3 Jun 2019 04:34:16 +0000 (GMT)
 DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
- 20190603043154epoutp04e4841f6613f0933741182b86be40bb84~klgPNHwns2447824478epoutp04G
+ 20190603043416epoutp04944c0d0878e973d1a799ee1e4c99cdd7~kliUJvXhd2627526275epoutp04a
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1559536314;
- bh=x5GPKkgXbL8LyYLqCYhULAUHH2WYkohzWq+UfNm21jc=;
+ s=mail20170921; t=1559536456;
+ bh=JGvMTm/wyhXiqBFZfxXKXccqtyf4PsSYRcBTPttn2NA=;
  h=Subject:Reply-To:From:To:CC:In-Reply-To:Date:References:From;
- b=VKP0drft+Dp9yI+uGOJ1oFureCgKn+4A685IDGfb+lEMlSWDQyzvBbExBs0HouF6c
- Y0D/2nH9H3I/oWO1IANtt+eKczmunGFNFSbmQ0npayc92cT1ldH+DpIKjeVeTZKQ2f
- Mbp69piEmbUfO8y2hkhrOyZltldVDKiFxa/OFxjg=
-Received: from epsmges2p1.samsung.com (unknown [182.195.40.186]) by
- epcas2p2.samsung.com (KnoxPortal) with ESMTP id
- 20190603043152epcas2p2255d30adcd616bb28a5ff1d044d4bbf3~klgNyRRF22299322993epcas2p2t;
- Mon,  3 Jun 2019 04:31:52 +0000 (GMT)
-X-AuditID: b6c32a45-d5fff70000001063-7e-5cf4a2b71326
-Received: from epcas2p3.samsung.com ( [182.195.41.55]) by
- epsmges2p1.samsung.com (Symantec Messaging Gateway) with SMTP id
- E9.09.04195.7B2A4FC5; Mon,  3 Jun 2019 13:31:51 +0900 (KST)
+ b=hlsn2goa8tq/zkzq1YoVH0zpBegwh/63xQeWEGHLycV3uYU0xCmBraKcCvcJGptah
+ 342TbsA5T150V3i7elVAWLAmpSl6Fmib1mEyHHVV9VAn96x2nhTIiw9g/0MN9OD7re
+ RuFvi9Px6HZVDxALuGTidVLfOa14IIkIGW8YrkN0=
+Received: from epsmges2p3.samsung.com (unknown [182.195.40.184]) by
+ epcas2p4.samsung.com (KnoxPortal) with ESMTP id
+ 20190603043415epcas2p41f66d3748a035e08cebeccca4441a3fd~kliStmrRA0320303203epcas2p4y;
+ Mon,  3 Jun 2019 04:34:15 +0000 (GMT)
+X-AuditID: b6c32a47-5a93e9c00000106e-99-5cf4a346ccaf
+Received: from epcas2p1.samsung.com ( [182.195.41.53]) by
+ epsmges2p3.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 38.3C.04206.643A4FC5; Mon,  3 Jun 2019 13:34:14 +0900 (KST)
 Mime-Version: 1.0
-Subject: Re: [PATCH V5 2/6] fabrics: Do not return in the middle of the
- subcommand
+Subject: Re: [PATCH V5 1/6] nvme: Do not return in the middle of the subcommand
 From: Minwoo Im <minwoo.im@samsung.com>
 To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, Minwoo Im
  <minwoo.im.dev@gmail.com>, "linux-nvme@lists.infradead.org"
  <linux-nvme@lists.infradead.org>
 X-Priority: 3
 X-Content-Kind-Code: NORMAL
-In-Reply-To: <BYAPR04MB5749D2AD58284C2F5F859527861B0@BYAPR04MB5749.namprd04.prod.outlook.com>
+In-Reply-To: <BYAPR04MB574964DAEA1B94732AE1E349861B0@BYAPR04MB5749.namprd04.prod.outlook.com>
 X-Drm-Type: N,general
 X-Msg-Generator: Mail
 X-Msg-Type: PERSONAL
 X-Reply-Demand: N
-Message-ID: <20190603043151epcms2p62ce7d68832b8e8732510aa9ad34f1d7b@epcms2p6>
-Date: Mon, 03 Jun 2019 13:31:51 +0900
-X-CMS-MailID: 20190603043151epcms2p62ce7d68832b8e8732510aa9ad34f1d7b
+Message-ID: <20190603043414epcms2p30dfc8251c2d56070d94bb55c1a93a7ec@epcms2p3>
+Date: Mon, 03 Jun 2019 13:34:14 +0900
+X-CMS-MailID: 20190603043414epcms2p30dfc8251c2d56070d94bb55c1a93a7ec
 X-Sendblock-Type: AUTO_CONFIDENTIAL
 CMS-TYPE: 102P
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrNKsWRmVeSWpSXmKPExsWy7bCmue72RV9iDPZNVLCYdfs1i8WkQ9cY
- LeYve8pu8auT24HFY+esu+wem1Z1snlsXlLv0X6gmymAJSrHJiM1MSW1SCE1Lzk/JTMv3VbJ
- OzjeOd7UzMBQ19DSwlxJIS8xN9VWycUnQNctMwdoo5JCWWJOKVAoILG4WEnfzqYov7QkVSEj
- v7jEVim1ICWnwNCwQK84Mbe4NC9dLzk/18rQwMDIFKgyISdj051ZrAXlFY8e+DUwxnQxcnJI
- CJhILJh0hqWLkYtDSGAHo8TeHf/Zuhg5OHgFBCX+7hAGqREWCJH4OWkrE0hYSEBe4scrA4iw
- psS73WdYQWw2AXWJhqmvwMaICMxnlPgzqQUswSygLPFt4TYWiF28EjPan0LZ0hLbl29lBLE5
- BWIlvp/+ygwRF5W4ufotO4z9/th8RghbRKL13lmoGkGJBz93M4LcIyEgIXHvnR2EWS+xZYUF
- yAkSAi2MEjferIVq1ZdofP4RbC2vgK/ErVlH2UBsFgFViXX/Z7FB1LhItH38wAZxsrzE9rdz
- mEFmMgP9uH6XPsR4ZYkjt1ggKvgkOg7/ZYd5ase8J0wQtrLEx0OHoI6UlFh+6TXUdA+Jl5tn
- MkMCuYtJ4tSnE0wTGBVmIcJ5FpLFsxAWL2BkXsUollpQnJueWmxUYIgcr5sYwQlPy3UH44xz
- PocYBTgYlXh4Z7B/iRFiTSwrrsw9xCjBwawkwrvS7GOMEG9KYmVValF+fFFpTmrxIUZToP8n
- MkuJJucDk3FeSbyhqZGZmYGlqYWpmZGFkjjvZu6bMUIC6YklqdmpqQWpRTB9TBycUg2MCS1m
- a9qvt7NdlWm91Bm++LLqoSc+b/l+frFLYHHoebfy4fsv7fvtIzcuZA8889zo4ucFXN/sWrWa
- +gUaxNtuX8uL8PR1j/hye7nuG5MX9oLP07WDS426Jq+S3Gt0U6TRRZBv7f7ECe8f/p5qZ/xZ
- i2HHz/y0uzEb7gr8TH89T5Nj2qO1Oe+UlFiKMxINtZiLihMBrQlInY4DAAA=
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrLKsWRmVeSWpSXmKPExsWy7bCmqa7b4i8xBu97RCxm3X7NYjHp0DVG
+ i/nLnrJb/OrkdmDx2DnrLrvHplWdbB6bl9R7tB/oZgpgicqxyUhNTEktUkjNS85PycxLt1Xy
+ Do53jjc1MzDUNbS0MFdSyEvMTbVVcvEJ0HXLzAHaqKRQlphTChQKSCwuVtK3synKLy1JVcjI
+ Ly6xVUotSMkpMDQs0CtOzC0uzUvXS87PtTI0MDAyBapMyMnY17SNvaCZpeLti3NsDYz9zF2M
+ nBwSAiYSr79NYwSxhQR2MEosmOPWxcjBwSsgKPF3hzBIWFggUOLmiSOMIGEhAXmJH68MIMKa
+ Eu92n2EFsdkE1CUapr5i6WLk4hARmM8o8WdSC1iCWUBZ4tvCbSwQq3glZrQ/hbKlJbYv3wq2
+ llMgVqJx2xt2iLioxM3Vb+Hs98fmM0LYIhKt985CnSwo8eDnbrB7JAQkJO69s4Mw6yW2rLAA
+ OUFCoIVR4sabtVCt+hKNzz+CreUV8JX40fALbDyLgKrEotbDUKtcJHZfv8sMcbK8xPa3c5hB
+ ZjID/bh+lz7EeGWJI7dYICr4JDoO/2WHeWrHvCdMELayxMdDh6COlJRYfuk1G4TtIXHi+Rw2
+ kNOEBBYyS3Ru+8k4gVFhFiKcZyFZPAth8QJG5lWMYqkFxbnpqcVGBcbIMbuJEZz0tNx3MG47
+ 53OIUYCDUYmH9wPnlxgh1sSy4srcQ4wSHMxKIrwrzT7GCPGmJFZWpRblxxeV5qQWH2I0Bfp/
+ IrOUaHI+MCHnlcQbmhqZmRlYmlqYmhlZKInzbuK+GSMkkJ5YkpqdmlqQWgTTx8TBKdXA6Bmx
+ oV48vSj0ta/p+fLUr4xx2m86XieH8bO+VI32ujnlotb0G5EHZlXOEuie1rW29dLFz6Hfpm0O
+ UlHV0v228ri3uOwZVcfDWfc+qtiJng0p3b5aqenB8Qk22Wvuz2pviqm9rtkUJie49TGD8c/f
+ +hH5kpNXTnn3t7vpx1GxHpn7ds/d5kX3KLEUZyQaajEXFScCALws5neQAwAA
 DLP-Filter: Pass
 X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20190602231146epcas3p10cc96137dc9a4d7f6e7cfb78f390d240
-References: <BYAPR04MB5749D2AD58284C2F5F859527861B0@BYAPR04MB5749.namprd04.prod.outlook.com>
+X-CMS-RootMailID: 20190524013628epcas4p2a5b6451a173e112a13157f193fb29321
+References: <BYAPR04MB574964DAEA1B94732AE1E349861B0@BYAPR04MB5749.namprd04.prod.outlook.com>
+ <BYAPR04MB5749C9BDCCDA22B5390ED26086020@BYAPR04MB5749.namprd04.prod.outlook.com>
  <20190523145750.27425-1-minwoo.im.dev@gmail.com>
- <20190523145750.27425-3-minwoo.im.dev@gmail.com>
- <CGME20190602231146epcas3p10cc96137dc9a4d7f6e7cfb78f390d240@epcms2p6>
+ <20190523145750.27425-2-minwoo.im.dev@gmail.com>
+ <20190524014037epcms2p26b77433a8c919b847ccb9f8acbb2485a@epcms2p2>
+ <CGME20190524013628epcas4p2a5b6451a173e112a13157f193fb29321@epcms2p3>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190602_213157_101805_4A81C902 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20190602_213420_730388_CA50530C 
+X-CRM114-Status: GOOD (  16.10  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -123,10 +124,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi Chaitanya,
+> We should at least try and use the default style irrespective of the
+> inheriting existing style
+> 
+> which will trigger more cleanups. Begin said that now the question is
+> what is default style ?
 
-Thanks for your review.  That sounds absolutely right.
-Will prepare V6	 patches with it.
+Actually, I wanted to ask what the default style is to myself  ;).
+
+> I'd just stick to non space labels as that is something been consistent
+> with kernel code.
+
+I think following kernel code style would be better than what these
+patches are doing here.
+
+Will prepare V6 series with it.
 
 Thanks,
 
