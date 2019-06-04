@@ -2,47 +2,47 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C2743531E
-	for <lists+linux-nvme@lfdr.de>; Wed,  5 Jun 2019 01:23:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8802535324
+	for <lists+linux-nvme@lfdr.de>; Wed,  5 Jun 2019 01:23:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VvGTfmXAsaDMVmmxAJEiU7ZdpMI33UFdDiLTlwr8YJQ=; b=i1Dp1SL802Xv44
-	nHRryndUUiTuk4BHddDTiuBliYpVzN1KpbneLolxcOcHPuF7PaR4sUdklVxbwfwMwMs3fuiZx0YLW
-	Q46GIj0sIn3E5T8OtQcirC1wWmW2/siD3VQHFA5ZkyrV24RD/Eb5b3x43A2CkcbyimRYGRur21yVe
-	f5hqCKzyFUwIYx7diSlHwdCzmuthI1e5VBBnl6sws7j95JM76ApKEK5fW6ZSkcywsRn1gu4/e2u/E
-	fHN3J9cH/7A243/WCNB5V1vm/7yo8iZPFHzXN/wK0wtf3N62p+YIzKeW0yLhV+CRbEQVbELcx0Vgb
-	rQhT5isk9tXsGC2f7f6g==;
+	List-Owner; bh=fgIdQdqfAAb9Zwe/muazyPwQKrzDWhwWnJBImQL9o2I=; b=XbylVZ3jQuFvx5
+	mftbTM48844JmsE7E/WsZ6qEj7x4YCFKpLMo7DFrqxBgH+rl5v04hCL+FCtCKSgYX9kenHtSBiVyB
+	sR8ji4tp6D/U8ue4DUiRFOynUmsKcyWaMCJUVWnM9TQ/E+6DS6IgRepaDsJRvGbeYyV5fh1edo+CH
+	AKBqpOR80CqUZiXADL9VlwvNECsv+avJLlgq2rVFl/gf8nZe8awRnU5V4xuTF2vg8tB/iUYoMLY6a
+	vUAQam4m3Em2lSQUGfwoY7SaCFJkOVBw0b1smLZB3rYitOvqNWQKNwYeAnntZn4VTF8tjfDEHvSeB
+	6GnGvshXRFjp3mLxwUrg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYIll-00017H-Mg; Tue, 04 Jun 2019 23:23:05 +0000
+	id 1hYIls-0001As-BF; Tue, 04 Jun 2019 23:23:12 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYIle-00015T-UU
- for linux-nvme@lists.infradead.org; Tue, 04 Jun 2019 23:23:00 +0000
+ id 1hYIlf-00015r-Ha
+ for linux-nvme@lists.infradead.org; Tue, 04 Jun 2019 23:23:01 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 635AD208E3;
- Tue,  4 Jun 2019 23:22:57 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 81FD520859;
+ Tue,  4 Jun 2019 23:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559690578;
- bh=qqAkKaDS4lL6uII4veNn02iHkQ8Wsm4Bb8JZWisIFWc=;
+ s=default; t=1559690579;
+ bh=cM51D5QoSBQ33n3wnZ0FR9jG2E5nPuSQ6IWklbZuo9k=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=0pmrcFendHX3htXDFA1yQHlTbIQBjBqmek0B22g3D8hxHH/ubZGqrtNL29wdEYhsL
- NON3mqlIplypbSlEkVzyv/MRZcH/Yl1160+NeiY5i/cbsdDFJIDx6dWBlrvbiF+QuI
- awS1GS65XbRpmMMnSbkuWdfndw/4Ck9KjqXbz38Y=
+ b=m/2UJ57KtpjCgrCskdRAobh1a9hGtQZyu8CRPriq3VppFW1qOUJvS6k+FCAghHNpK
+ reU2tyoPVuNI9Szy2HLYF8CKjVs4vRlJXBpHLdZp8dOy0YN4vvS1+pD6K7qMbaRVtl
+ XBLE2qlEt3qkafOaHca9Sp552pCmD78CfB5SxW1Y=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.1 28/60] nvme-pci: Fix controller freeze wait
- disabling
-Date: Tue,  4 Jun 2019 19:21:38 -0400
-Message-Id: <20190604232212.6753-28-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.1 29/60] nvme: fix srcu locking on error return in
+ nvme_get_ns_from_disk
+Date: Tue,  4 Jun 2019 19:21:39 -0400
+Message-Id: <20190604232212.6753-29-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190604232212.6753-1-sashal@kernel.org>
 References: <20190604232212.6753-1-sashal@kernel.org>
@@ -50,8 +50,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190604_162258_997737_3ABBAB94 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20190604_162259_857441_4BA8AA22 
+X-CRM114-Status: GOOD (  12.14  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -81,66 +81,62 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Keith Busch <keith.busch@intel.com>, Sasha Levin <sashal@kernel.org>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
- Ming Lei <ming.lei@redhat.com>
+ linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
+ Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Keith Busch <keith.busch@intel.com>
+From: Christoph Hellwig <hch@lst.de>
 
-[ Upstream commit e43269e6e5c49d7fec599e6bba71963935b0e4ba ]
+[ Upstream commit 100c815cbd56480b3e31518475b04719c363614a ]
 
-If a controller disabling didn't start a freeze, don't wait for the
-operation to complete.
+If we can't get a namespace don't leak the SRCU lock.  nvme_ioctl was
+working around this, but nvme_pr_command wasn't handling this properly.
+Just do what callers would usually expect.
 
-Reviewed-by: Ming Lei <ming.lei@redhat.com>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-Signed-off-by: Keith Busch <keith.busch@intel.com>
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Keith Busch <keith.busch@intel.com>
+Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/pci.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/nvme/host/core.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index a90cf5d63aac..4e064aad2b1a 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -2397,7 +2397,7 @@ static void nvme_pci_disable(struct nvme_dev *dev)
- 
- static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown)
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 8782d86a8ca3..e29c395f44d2 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1362,9 +1362,14 @@ static struct nvme_ns *nvme_get_ns_from_disk(struct gendisk *disk,
  {
--	bool dead = true;
-+	bool dead = true, freeze = false;
- 	struct pci_dev *pdev = to_pci_dev(dev->dev);
- 
- 	mutex_lock(&dev->shutdown_lock);
-@@ -2405,8 +2405,10 @@ static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown)
- 		u32 csts = readl(dev->bar + NVME_REG_CSTS);
- 
- 		if (dev->ctrl.state == NVME_CTRL_LIVE ||
--		    dev->ctrl.state == NVME_CTRL_RESETTING)
-+		    dev->ctrl.state == NVME_CTRL_RESETTING) {
-+			freeze = true;
- 			nvme_start_freeze(&dev->ctrl);
-+		}
- 		dead = !!((csts & NVME_CSTS_CFS) || !(csts & NVME_CSTS_RDY) ||
- 			pdev->error_state  != pci_channel_io_normal);
+ #ifdef CONFIG_NVME_MULTIPATH
+ 	if (disk->fops == &nvme_ns_head_ops) {
++		struct nvme_ns *ns;
++
+ 		*head = disk->private_data;
+ 		*srcu_idx = srcu_read_lock(&(*head)->srcu);
+-		return nvme_find_path(*head);
++		ns = nvme_find_path(*head);
++		if (!ns)
++			srcu_read_unlock(&(*head)->srcu, *srcu_idx);
++		return ns;
  	}
-@@ -2415,10 +2417,8 @@ static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown)
- 	 * Give the controller a chance to complete all entered requests if
- 	 * doing a safe shutdown.
- 	 */
--	if (!dead) {
--		if (shutdown)
--			nvme_wait_freeze_timeout(&dev->ctrl, NVME_IO_TIMEOUT);
--	}
-+	if (!dead && shutdown && freeze)
-+		nvme_wait_freeze_timeout(&dev->ctrl, NVME_IO_TIMEOUT);
+ #endif
+ 	*head = NULL;
+@@ -1411,9 +1416,9 @@ static int nvme_ioctl(struct block_device *bdev, fmode_t mode,
  
- 	nvme_stop_queues(&dev->ctrl);
- 
+ 	ns = nvme_get_ns_from_disk(bdev->bd_disk, &head, &srcu_idx);
+ 	if (unlikely(!ns))
+-		ret = -EWOULDBLOCK;
+-	else
+-		ret = nvme_ns_ioctl(ns, cmd, arg);
++		return -EWOULDBLOCK;
++
++	ret = nvme_ns_ioctl(ns, cmd, arg);
+ 	nvme_put_ns_from_disk(head, srcu_idx);
+ 	return ret;
+ }
 -- 
 2.20.1
 
