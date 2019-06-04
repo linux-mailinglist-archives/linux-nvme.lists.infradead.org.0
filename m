@@ -2,89 +2,91 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F1B23547C
-	for <lists+linux-nvme@lfdr.de>; Wed,  5 Jun 2019 01:42:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 00EA83548C
+	for <lists+linux-nvme@lfdr.de>; Wed,  5 Jun 2019 01:55:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GLPqZSUhBe59CJCAvDiPDJyhnv+ccQJIbgr1EJFXM3o=; b=b7b1dksb1GAURr
-	MJ/pQ4lfIm/tjwdZHK5m213SXGnP1A08TQdvnYkQ5fmVhrv8pt51YIrnxnAqL/Vx0JKKApXKhc4Wx
-	p+eQWQcTaa+3W/e9UBtNA0GyTMlBTzYWV+SSQcxOSfKvv5i+w9Je96iljznuPE6v7xTcj4XKWOrxA
-	79h3yLYl3nVlSwVbxMwqViWrvnxsjLCX2JWDJZOvrg64GoFAIko+gA7mutj8Vaan336XyW/iIomXP
-	gjkngl3SHx88DQkjApi1eK/vrJr/2wLzL91euQq0kX6qqyEOlO5wkMNIlng40Ft7VMVFIhhFi0K6P
-	dB2loH2yJ65sBeYvAqVQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Cfit/AcVBseMK41DNEK5l9gKU3kVVL5uUjCL2dP8HEI=; b=u2Utldcqhf1DbfZAZz7KrGlIk
+	jK3YZAlyc3s60t10eiO0+9/2zJELiAxe7lmlfT/AmYMnAMeFVyj3O7BPkcd4+3mhuwh2crCf6pFf8
+	Mx6Rx2lBIYZmQ4Up5IzVsmhuxpaDv84jWQm5a63wxoWhdejZ1VnkGtxw78/zdYDG5/LJDgnXkdE+r
+	pDsK0BKU4EsyFZJLC786NwZfZj+DWHTZPbspkzr/6gx100OAzYBURPsoIX+j/0UAjiZB3ZSvNB5o/
+	BJ5wCAnFggRi4Gz3hHVxgImVE3lNa5jjlnTYPbw4qFXa03zIXb8Jgh1uUqhw0CiOAOhmUP3jgpfb3
+	UP1lBU4DA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYJ4l-0001Sa-Mm; Tue, 04 Jun 2019 23:42:43 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1hYJHB-0005o0-Tp; Tue, 04 Jun 2019 23:55:33 +0000
+Received: from mail-it1-f193.google.com ([209.85.166.193])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYJ4h-0000ZB-W5
- for linux-nvme@bombadil.infradead.org; Tue, 04 Jun 2019 23:42:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=6KrEy5IrszLxUBl7wRi2SXCHUcxuWshIOZAbp4m7DOg=; b=aISfBf1c5zj4FF0I7R8qe7Ziiy
- L1qBkmI3zl9xnEW0ZSUSE3cvjXQicqQYqA10Cb2knk2eNcEg2B2LwNXbf0Wl2LthLGtc9dpidq1eD
- OrXHcsDB3w+kbGPSBIIeyaQXv1Oti+xpmCfbK0yOQCr8UChVtStYTFx4LXTpkK5aKEj5WG5nv+p/h
- 0Wu2gouFQA0nm5aIJFBIGy4xLewnEXp0yf9WEGbMSx6OWx9rGe/0ciuiyxYIiVCjkjbH2kYjoGYFN
- TRRU9BEd3FnmB9qGoSHL36fo5FHFgr44GOK+amDEXmZZNyokc37gSSoWXoVYg8GtDUrLzWcyg0MqW
- pk+VPK4w==;
-Received: from mail.kernel.org ([198.145.29.99])
- by casper.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYInP-0001ho-DB
- for linux-nvme@lists.infradead.org; Tue, 04 Jun 2019 23:24:49 +0000
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3E979206C1;
- Tue,  4 Jun 2019 23:24:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1559690686;
- bh=EaaW/+t8hbUzXkNE1JMimrs54aQG7lysK7CNNgNh9EY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=wYCfnD6ELXAf1viN847zxy9T6CFalqGkIhTXmmCLvSffudvelDZGL0dgzjyPyORw/
- 9U72OmaeuO3jnEali6+WHqeao/65ZN6umIpTozVDLSwbBbdIUoIeYh1zh/qoG2hujg
- VfGm3bQgk4nuYocpy3BnmrTWE/mF2a8zpo1beYFw=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 15/24] nvme: remove the ifdef around
- nvme_nvm_ioctl
-Date: Tue,  4 Jun 2019 19:24:06 -0400
-Message-Id: <20190604232416.7479-15-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190604232416.7479-1-sashal@kernel.org>
-References: <20190604232416.7479-1-sashal@kernel.org>
+ id 1hYJH6-0005nd-Hz
+ for linux-nvme@lists.infradead.org; Tue, 04 Jun 2019 23:55:29 +0000
+Received: by mail-it1-f193.google.com with SMTP id i21so828009ita.5
+ for <linux-nvme@lists.infradead.org>; Tue, 04 Jun 2019 16:55:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Llw9riwdC7Dp6ThIlkb0C9bJinfFG446T4LqbnB43tE=;
+ b=p6P5mW4O2aH9x75VU8fFt73/2Liv9qq2+akkoupydX4KwPkaUvqPZlKXX+WDcJjo2c
+ kLR4bp+G9iBjBjA2d6fCKUltuLVJT/G2KitE7WCcucsclTngj6It98Acw84GGFiCno6S
+ kJ+sB2wthIM8hZehi8Bq9Am8YJavoF/GkvJtd8ZzQE3snbpSe7aZn5jmjodzYYLQfxy9
+ cSmkescy5hedUFCCktM4dzjbs4dMp+kT7Q5kUy2zCdLlmwo4oeROIrtBPsxIE8lW8cTd
+ vHQil/jXnazThiKu0Fqnau1JWYDBA2tws70ejaHP6DPrHkH6Nrjz8njo9b2iLY4Rz+tD
+ Itgg==
+X-Gm-Message-State: APjAAAUSRQOJZaBq/rLc4WxL6T5EyD7TyGgRYPC8AjbWi0IoD4iaNeWE
+ oKu+oYvBhWoYUBQA5kQyPRU=
+X-Google-Smtp-Source: APXvYqyICGwM0hiBorzBPue50+SvJ4Ja2RkjSyLM09tyhg82uLNQ5cezdgr5RAyQp7aqGG6kKtdN8g==
+X-Received: by 2002:a05:660c:444:: with SMTP id
+ d4mr22149319itl.158.1559692525678; 
+ Tue, 04 Jun 2019 16:55:25 -0700 (PDT)
+Received: from [172.27.5.71] ([75.104.65.130])
+ by smtp.gmail.com with ESMTPSA id f4sm6399110iok.56.2019.06.04.16.55.07
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 04 Jun 2019 16:55:25 -0700 (PDT)
+Subject: Re: [Suspected-Phishing]Re: [PATCH] Revert "nvme-rdma: remove
+ redundant reference between ib_device and tagset"
+To: Christoph Hellwig <hch@lst.de>
+References: <20190603231159.17034-1-sagi@grimberg.me>
+ <b98d3c8f-85ee-06f2-b47a-a3e04261c0d1@grimberg.me>
+ <F4E18075-01AA-443B-BF43-23A4BA80C10C@intel.com>
+ <d2a20c0f-092d-28ca-3365-1fb5df2cb816@mellanox.com>
+ <b4a79dfe-ffc8-0571-9f54-cf5b98c21500@mellanox.com>
+ <251f83e0-75f1-ef0b-2747-8ae09f038ce8@grimberg.me>
+ <cb21c45b-2ffc-107b-172a-d9f653e90402@mellanox.com>
+ <288d4db3-ca7e-c60f-b7ac-5a6ff2771235@grimberg.me>
+ <20190604190501.GB28398@lst.de>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <c55d56ea-7d63-10e5-dd97-6112a027c7b8@grimberg.me>
+Date: Tue, 4 Jun 2019 16:54:20 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+In-Reply-To: <20190604190501.GB28398@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190605_002447_741191_C3247540 
-X-CRM114-Status: GOOD (  12.38  )
-X-Spam-Score: -5.2 (-----)
-X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
- Content analysis details:   (-5.2 points, 5.0 required)
+X-CRM114-CacheID: sfid-20190604_165528_596191_730A0A7B 
+X-CRM114-Status: GOOD (  17.21  )
+X-Spam-Score: -0.7 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.166.193 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
+ -0.7 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.166.193 listed in wl.mailspike.net]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,47 +98,48 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Sasha Levin <sashal@kernel.org>,
- linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: "Busch, Keith" <keith.busch@intel.com>, Max Gurtovoy <maxg@mellanox.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>, "Harris,
+ James R" <james.r.harris@intel.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Christoph Hellwig <hch@lst.de>
 
-[ Upstream commit 3f98bcc58cd5f1e4668db289dcab771874cc0920 ]
+>>>>> can you test the attached patch (without the revert) ?
+>>>>
+>>>> Max, I think that its pretty late for this change for 5.2,
+>>>> I'm leaning towards reverting the offending patch for 5.2-rc and
+>>>> getting this into 5.3
+>>>
+>>> are you sure ?
+>>>
+>>> we're only at rc3..
+>>
+>> This is beyond a bug fix, its a behavior change, with possible other
+>> implications. This is really something that is merge window material
+>> I think. I would rather let it sit for nvme-5.3 for a while before
+>> we merge it.
+>>
+>> Christoph, do you have a different preference?
+> 
+> The original patch from Max fixed a serious issue, so I'd prefer not
+> to revert it, especially as we are only at rc3.  That assumes we
+> can agree on a fix in the next couple of days.
 
-We already have a proper stub if lightnvm is not enabled, so don't bother
-with the ifdef.
+Its not really a serious issue given that it was broken from day 0, and
+it requires to unload/reset a device that is under a bond to get it
+to trigger (and the issue is not a crash). Not exactly mainstream, and
+it broke something that is basic like disconnecting while reconnect is
+ongoing.
 
-Signed-off-by: Christoph Hellwig <hch@lst.de>
-Reviewed-by: Keith Busch <keith.busch@intel.com>
-Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/nvme/host/core.c | 2 --
- 1 file changed, 2 deletions(-)
+And, this changes the behavior in terms of dma mappings. I'd expect that
+this goes to the next merge window (which we can push asap) instead of
+rushing it.
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 65f3f1a34b6b..d98ffb1ce629 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -1042,10 +1042,8 @@ static int nvme_ioctl(struct block_device *bdev, fmode_t mode,
- 	case NVME_IOCTL_SUBMIT_IO:
- 		return nvme_submit_io(ns, (void __user *)arg);
- 	default:
--#ifdef CONFIG_NVM
- 		if (ns->ndev)
- 			return nvme_nvm_ioctl(ns, cmd, arg);
--#endif
- 		if (is_sed_ioctl(cmd))
- 			return sed_ioctl(ns->ctrl->opal_dev, cmd,
- 					 (void __user *) arg);
--- 
-2.20.1
-
+But, if you think that rc3 is early enough that we can rush it, I won't
+argue with you, lets hope we won't miss anything else and fix again..
 
 _______________________________________________
 Linux-nvme mailing list
