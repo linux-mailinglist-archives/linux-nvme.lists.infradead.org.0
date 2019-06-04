@@ -2,44 +2,45 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 451713401C
-	for <lists+linux-nvme@lfdr.de>; Tue,  4 Jun 2019 09:29:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F2B3C3402B
+	for <lists+linux-nvme@lfdr.de>; Tue,  4 Jun 2019 09:32:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2s2EqlEv2pWXgcKlmvuLTdj5rsyDnHAnBfymsQc66Hg=; b=qeGUysckLktziZ
-	VRisPCDzleyE26SPWMfXc8kirq8BTZMFfu3CAR9gPFtj+YkETpu/wFaLuZNVHROxR6/TiLh/kSV8r
-	NRwFUyuGS8p+p3F0qZZyVq3iz2mHTfz4R9RVpZaTDerbLrVEJTK5iy/zv5PXMBEYf3X/rvUm0amm+
-	Clt6tRKk7u9A3ZaRZzGLjqaMwXyCSFFWI+z/k38O/myLNXvSRssoW3sqewAiRCDVHYKsxZJvgv7ur
-	/6mzQj4QLwt/biQijgNYGHwRRs/SG3urK3k+hBc76/mkDvkx0iDun0D+m1dRWXKKEdmwYJwkErBMh
-	rFxV9a/0n9GbxKqm9sdg==;
+	List-Owner; bh=SSDqdiqP+oXxXlHQbDwUWFEpGD9GCj4+nN3hJNX4Jkw=; b=DOueTWkdW3gKpu
+	D+JDrkaRa3pGUTVNaPLY9Tfr+FPAdSLKmQH7e7hHPTfObK2VeXZ3JLjIdEJCqppvvuojzK49jVLjV
+	wZ7Ja65YnQqtKajRM/fNUp2jI6/M+DvoekVYcTr25uFvGtFPMfu1M2gXcMK3KUZQWDZulHSaBslLo
+	NtcDf7Kta2YS6FuThrU4CulGe4UD1KLiBbSknN246rxdUtC8afYJk4QUr46hsc7mhErpXZvMZE58L
+	pzQTCfbUEWde72lsm3PLkVZ3QcufZpnKftJr+6QTH992gh4Q5WmDazDun0hrpIfixrcFvhBEccJaS
+	EijlYagfLee05XXlinDg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hY3sr-0000gG-7D; Tue, 04 Jun 2019 07:29:25 +0000
+	id 1hY3vZ-0002nv-2L; Tue, 04 Jun 2019 07:32:13 +0000
 Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hY3sm-0000ft-IT
- for linux-nvme@lists.infradead.org; Tue, 04 Jun 2019 07:29:22 +0000
+ id 1hY3vT-0002jW-44
+ for linux-nvme@lists.infradead.org; Tue, 04 Jun 2019 07:32:08 +0000
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id D5B0568B02; Tue,  4 Jun 2019 09:28:53 +0200 (CEST)
-Date: Tue, 4 Jun 2019 09:28:53 +0200
+ id 7DB5B68B02; Tue,  4 Jun 2019 09:31:40 +0200 (CEST)
+Date: Tue, 4 Jun 2019 09:31:40 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Minwoo Im <minwoo.im.dev@gmail.com>
-Subject: Re: [PATCH V5 1/5] nvme: Make trace common for host and target both
-Message-ID: <20190604072853.GG15680@lst.de>
-References: <20190601072143.21233-1-minwoo.im.dev@gmail.com>
- <20190601072143.21233-2-minwoo.im.dev@gmail.com>
- <20190601085016.GA6375@lst.de> <20190602014737.GA28933@minwooim-desktop>
+To: Akinobu Mita <akinobu.mita@gmail.com>
+Subject: Re: [PATCH v3 2/3] nvme: add thermal zone devices
+Message-ID: <20190604073140.GH15680@lst.de>
+References: <1558888143-5121-1-git-send-email-akinobu.mita@gmail.com>
+ <1558888143-5121-3-git-send-email-akinobu.mita@gmail.com>
+ <20190601090238.GD6453@lst.de>
+ <CAC5umyiBmD6-3BNLfG7sNOe9jde8Ct16a9N_Ao3T_1_G1K_DDA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190602014737.GA28933@minwooim-desktop>
+In-Reply-To: <CAC5umyiBmD6-3BNLfG7sNOe9jde8Ct16a9N_Ao3T_1_G1K_DDA@mail.gmail.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190604_002920_758341_9AA98B60 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20190604_003207_332588_E6C7909E 
+X-CRM114-Status: GOOD (  14.01  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -61,33 +62,36 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- James Smart <james.smart@broadcom.com>, linux-nvme@lists.infradead.org,
- Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
- Christoph Hellwig <hch@lst.de>, Minwoo Im <minwoo.im@samsung.com>
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, linux-pm@vger.kernel.org,
+ Jens Axboe <axboe@fb.com>, Kenneth Heitke <kenneth.heitke@intel.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, linux-nvme@lists.infradead.org,
+ Eduardo Valentin <edubezval@gmail.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
+ Zhang Rui <rui.zhang@intel.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Sun, Jun 02, 2019 at 10:47:38AM +0900, Minwoo Im wrote:
-> > I'd much prefer to have different implementations for host vs target for
-> > now instead of introducing a common library.  Maybe we could revisit
-> > that later if we end up having a lot of shared code.
+On Sun, Jun 02, 2019 at 10:19:08PM +0900, Akinobu Mita wrote:
+> As long as the user space thermal governor is used, there is nothing more
+> than that from a functional perspective.  And I suppose that this is used
+> with user_space governor (i.e. there is still some work to be able to bind
+> actual thermal cooling device).
 > 
-> As you know, nvmet handles not only nvme fabrics commands, but normal
-> commands in nvmet_req_init() and nvmet_req_complete().  Which means that
-> we already have a lot of shared codes in parsing point of view.
+> The main purpose of this is to turn on a fan when overheated without
+> polling the device that could prevent the lower power state transitions.
+> But as you noted, we could do that with the existing AEN notifications
+> through uevent.
 > 
-> The host/trace.c provides parsing admin commands which can be used by
-> nvmet also.  I guess it's enough to be shared for host and target both.
-> 
-> I hope you can correct me if I missed someting here.
+> So frankly speaking, the benefit of this is providing generic thermal sysfs
+> interface and the tools like tmon (linux/tools/thermal/tmon) can show the
+> nvme temperatures.
 
-I'm not against sharing per se, but I'm really worried about either
-building that code in the core kernel, or even just a new module, as
-that'll waste at least 8k and will cause more cache misses when
-tracing.  So for now my preference would be to just duplicate the code
-at least at the binary level.
+I'm just a little worried about bloating the nvme driver with features
+that look kinda nifty but don't buy us much.  I'd rather keep at least
+the core and PCIe drivers as minimal.  Now the thermal device support
+is pretty small and except for the smart uevents I can't find anything
+actually bad, but I'm not exactly excited either.
 
 _______________________________________________
 Linux-nvme mailing list
