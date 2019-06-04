@@ -2,45 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 641A633FD4
-	for <lists+linux-nvme@lfdr.de>; Tue,  4 Jun 2019 09:18:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1BCFB33FFF
+	for <lists+linux-nvme@lfdr.de>; Tue,  4 Jun 2019 09:24:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gohoPmNHmGkwKKudOMtODVcAy3zfZX4TOcPy+WXuM8w=; b=UOv1wFrekEkyRP
-	bn/WmPSCW6RzQfgjNOfS5eAHtcShgxfV6pQt0OZ35waNw+KrUbrsLM4KLdkbl5naeMmd9IREhYipA
-	10EmFtNXTDFPzZMi/bJ/mYcmWxG+EesprNRgzTeviaht+H4WBC08wNBscN1r+4GK21kaSOCxA5Nba
-	nuwh73WkMIp1Nj5hRu8WxbZzb2x1V7k6YJa6qVPrNlQkrgUzHGqahStRyT8e5CTy4V8TYc51D0vyb
-	by6TBuY2GHAJ1Ha9siOzKJssSkdFWp/dAxipY7j4cxjxNj/+38dkyh2su9ak/vvcJK7DgTeLHO2dU
-	QXtlVFWJ24AE2RY7YtcA==;
+	List-Owner; bh=P4P5kgNM+yE8CLBxMPrCbD9G8zuRM7MT4AwjUrA0j90=; b=AL6hA+FIVT5TgV
+	KHfsLVSjaXZ+bPkhgVKAywOBz3pn36Wjw5AvGBQn+P+kZy7mVfaCBaITQx7F6FTShtGtjbvbOPx2V
+	ovgpyv+X2ixgK3qk6hgaSKPiUbAxktSFWyolXXsphChdC7v25+CpDlzwVsBU6z1Ho0PJ3x1X3hcsk
+	+F1CLPq3SYrBpVKqEtcQNxXGjvQ8LmY36A/ZZfS0T9Zj0KLLFgJtnDieUAQksTPiIsVqK7jKZSZdw
+	wAEKtCnjjLnUU3SDuZqvnVGaBmvsOP6b84qJzXJgYM5E/TB7fQXj7+vPhPkM2x6WzRPmDIeeEGFES
+	zww3jAMeSpodZ9xoUtJg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hY3ic-0004Pt-Ew; Tue, 04 Jun 2019 07:18:50 +0000
+	id 1hY3nj-0006bc-T6; Tue, 04 Jun 2019 07:24:07 +0000
 Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hY3iW-0004Pb-TP
- for linux-nvme@lists.infradead.org; Tue, 04 Jun 2019 07:18:46 +0000
+ id 1hY3nf-0006b7-1E
+ for linux-nvme@lists.infradead.org; Tue, 04 Jun 2019 07:24:04 +0000
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id 26E5768B02; Tue,  4 Jun 2019 09:18:16 +0200 (CEST)
-Date: Tue, 4 Jun 2019 09:18:16 +0200
+ id C002268B02; Tue,  4 Jun 2019 09:23:36 +0200 (CEST)
+Date: Tue, 4 Jun 2019 09:23:36 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Jaesoo Lee <jalee@purestorage.com>
-Subject: Re: [PATCH v2] nvme: Fix u32 overflow in the number of namespace
- list calculation
-Message-ID: <20190604071816.GA15680@lst.de>
-References: <1559604301-14042-1-git-send-email-jalee@purestorage.com>
- <CAJX3CtgdrbaPhFPnR13CT9mAQ8yVRyPFMjbFz01gcNz6G=2T_g@mail.gmail.com>
+To: Akinobu Mita <akinobu.mita@gmail.com>
+Subject: Re: [PATCH v2 2/3] nvme: enable to inject errors into admin commands
+Message-ID: <20190604072336.GC15680@lst.de>
+References: <1559483421-11361-1-git-send-email-akinobu.mita@gmail.com>
+ <1559483421-11361-3-git-send-email-akinobu.mita@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAJX3CtgdrbaPhFPnR13CT9mAQ8yVRyPFMjbFz01gcNz6G=2T_g@mail.gmail.com>
+In-Reply-To: <1559483421-11361-3-git-send-email-akinobu.mita@gmail.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190604_001845_099465_8E637F0D 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190604_002403_219350_3120F89F 
+X-CRM114-Status: GOOD (  11.26  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -61,23 +59,49 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
- Christoph Hellwig <hch@lst.de>, Roland Dreier <roland@purestorage.com>
+Cc: Sagi Grimberg <sagi@grimberg.me>, Thomas Tai <thomas.tai@oracle.com>,
+ linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
+ Minwoo Im <minwoo.im.dev@gmail.com>, Keith Busch <kbusch@kernel.org>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Jun 03, 2019 at 04:42:28PM -0700, Jaesoo Lee wrote:
-> The Number of Namespaces (nn) field in the identify controller data structure is
-> defined as u32 and the maximum allowed value in NVMe specification is
-> 0xFFFFFFFEUL. This change fixes the possible overflow of the DIV_ROUND_UP()
-> operation used in nvme_scan_ns_list() by casting the nn to u64.
-> 
-> Signed-off-by: Jaesoo Lee <jalee@purestorage.com>
+>  	struct nvme_fault_inject *fault_inject = NULL;
+>  	u16 status;
+>  
+> -	/*
+> -	 * make sure this request is coming from a valid namespace
+> -	 */
+>  	if (disk) {
+>  		struct nvme_ns *ns = disk->private_data;
+>  
+>  		if (ns)
+>  			fault_inject = &ns->fault_inject;
 
-Looks good,
+
+Not new in this code, but how could ns ever be NULL here?
+
+> @@ -257,6 +266,8 @@ struct nvme_ctrl {
+>  	 */
+>  	struct thermal_zone_device *tzdev[9];
+>  #endif
+
+Looks like this series seem to be based on the thermal zone series.
+
+> -struct nvme_fault_inject {
+> -#ifdef CONFIG_FAULT_INJECTION_DEBUG_FS
+> -	struct fault_attr attr;
+> -	struct dentry *parent;
+> -	bool dont_retry;	/* DNR, do not retry */
+> -	u16 status;		/* status code */
+> -#endif
+
+It would be nicer to already move it up earlier when you change the ifdef
+guared.
+
+Otherwise the whole series looks fine:
 
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 
