@@ -2,84 +2,93 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30C563627B
-	for <lists+linux-nvme@lfdr.de>; Wed,  5 Jun 2019 19:27:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E984136313
+	for <lists+linux-nvme@lfdr.de>; Wed,  5 Jun 2019 20:05:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dRhuv43Pz9031eFCcv1kxREVT7AzjHOxtHwChT8fIMA=; b=rYqTVg1PJAWsmf45AYjRjO2jc
-	K9GQaWJ+kvG183KIzhPhNb2DPe/srPj+qZfuYCYPCVoi48Gum4clP6VnjGjm0xEkcr2Sez9HaWsrB
-	5ac/TX2RQlKL2sVDX1jnuqvnr7uIojxoD6hNfehyu1UGO0TJvrgrmytrljAg+IZAOXMEWW8lBbFwH
-	QwpaMiAnoCiGYpQ7v6VLmsPOxv1oa7CRYNO35mRh3aSJP5oud3XuC2gqYh+P1MPy/E8ZcSAJUtB2I
-	QxDcBCIo8qtoqOO24knomVjv9oGXPckn34Kt/WwFhYzQdt5wIc8RsMPkjmvxHXHUCpgCl9u6U31Ml
-	keGXJLZRQ==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Date:Subject:To:From:Message-ID:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Gpbcxizp08nQmSS/8V23EvfFX5cAhMzcOC5i2Yg4Csw=; b=hi5GzjlT1fo9TO
+	CS9+EPt7a5UjzuQUym3jvE5BXEqxzi2EEA4s2qemufiQ2PdFbRLArjYlhZKj+3BPIDDPAMzXUAVAa
+	aj3xpZvHAn4z1eQNLUomY3WCZJlTDzucsncbW6r6KyAdxRFOoTHO9qCKM5jEVzDEkwe23uTLTg2Vy
+	ERzmsnP9lCP4MqsU5hFvKaYdc2WXX9rqf+VsRC6kDww2fiMdVjgu9J8HRBMOMVVPRmxTdfOzioh9+
+	2XKfG9DuDvEmha3QJb+vvklOaEDcDdVcaMAwhDPLOYNO7phn8/5udHNLd50Z4qN01AOhz1CVB/sjh
+	GNwTXb0pe5VbxC3q8q+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYZh6-00068Y-TX; Wed, 05 Jun 2019 17:27:24 +0000
-Received: from mail-ot1-f68.google.com ([209.85.210.68])
+	id 1hYaHZ-0001et-RN; Wed, 05 Jun 2019 18:05:05 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYZh2-00067y-2m
- for linux-nvme@lists.infradead.org; Wed, 05 Jun 2019 17:27:21 +0000
-Received: by mail-ot1-f68.google.com with SMTP id z23so1443342ote.13
- for <linux-nvme@lists.infradead.org>; Wed, 05 Jun 2019 10:27:19 -0700 (PDT)
+ id 1hYaHT-0001Tx-8U
+ for linux-nvme@lists.infradead.org; Wed, 05 Jun 2019 18:05:00 +0000
+Received: by mail-wm1-x342.google.com with SMTP id 16so3151458wmg.5
+ for <linux-nvme@lists.infradead.org>; Wed, 05 Jun 2019 11:04:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=zadara-com.20150623.gappssmtp.com; s=20150623;
+ h=message-id:from:to:subject:date:mime-version
+ :content-transfer-encoding:importance;
+ bh=I1vpMsXk25lr0lja0Q0IPf4OTi1u4Hl8+PgXi+Y+z7k=;
+ b=xddvu9fKQfc9xEE32C2jmfxYYi5KnDckmd6c2e2WwftfmpZR9bNTA3BenBW95u1fRk
+ GuVbkTamCa+DvSPUacWKyDRKqB3EShqcpGVr9IANryiiHKv7ipOQZ7EnmrrkSBTYdh5E
+ m0UgF2USd0Qn8CPQgziDV3kt4WxMB5qgoa9cJPKyy62BPwvmqIwciGpbZujAjDm39Sb0
+ 0QWIFHj8QH3ibSUWIn0+rzVp1fGC7esVdZbKlqzgXOpiRn+Z92/IzNNC+Hzd4/zTckgI
+ 9vKu1I9ezJ+y82+opshQQeRB9z3lBOFMZVZBFwB6DPBw4qcA8sOOZeMH1sz9wEVB61UY
+ xtcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=k3gYvTYr4HAIJzWB+wE3TZetPrgvp/E6eq3i2/jRUxk=;
- b=EDbdFX3SjbtiH6EE5JU0UBleK1+Ylx8KsH5qalwjm1U5B+4I825dWWINk3vePxzNfA
- d088o9VtXR5uePDxBbiRhQ83jyepqfxqUqMYZ7RXeNONUWgmM130iIHlsBCnsEnUfz7t
- ylIHyU3VsQOm2L/i6n4mGL7zzaC2h1HgFudfd4NgL++jyLJf3iRNNvAC8WIim5oUOLIV
- Qit3kMvkIENDShmHHMCHWqkJygGXaG44sx2eyj5HMitkDXXfCUkYyWzH/8f13C8Kfu29
- P67VZ5MorgJqMFTZhTFs2tmV/q/fbc49lsyPbDHRBFYlSU6Z1KHKbWhG3LM+yWW5rJYP
- olUQ==
-X-Gm-Message-State: APjAAAWtqWDzEa6HEE8RreV7WfyjUJGEGm8whmQFk9NxH1AmLXGzJe2r
- 1BdHalW3az4aPs6MZ9AkF3w=
-X-Google-Smtp-Source: APXvYqypmSgZkCHCrO+AnhLJ6Z1mEetk5qz2Ng+6Xbpv5M8DLwjygh52/RUuL/5DXkeIzQfC/4w2KQ==
-X-Received: by 2002:a9d:14a:: with SMTP id 68mr10424499otu.96.1559755638931;
- Wed, 05 Jun 2019 10:27:18 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id b62sm1055521otc.9.2019.06.05.10.27.17
+ h=x-gm-message-state:message-id:from:to:subject:date:mime-version
+ :content-transfer-encoding:importance;
+ bh=I1vpMsXk25lr0lja0Q0IPf4OTi1u4Hl8+PgXi+Y+z7k=;
+ b=YZHBOuurZy3emovjDMt45MXbn1VauRMYFJO0QqlSzI4X6xs30P6brLEYJmuPN7J3zQ
+ Wq19CEnnmEQY6C8cNume3SwCeJf879UhPPQnXFMbEoV0MycvcDd9vcl4l50HaLycQGrm
+ eW0bhXmA28l8yiXgSaIpj4oO4+FvopQ6B8uKNji4jtHOy3cKfsR/oZne1wbIGxmqFcvl
+ nPTz3hIajHMN30+RcGAcKkNh2E1Sew8BqKk/+ZFdDbgeRaTNrbiVWRPIIt++nTWv7BDc
+ 5HkYmkHmy2UdZ1A1vTZYe1FklF3cJcO/GR/wz47bD2Dv+kgOqmns3DEDJzO0YXxryiqK
+ Yk0g==
+X-Gm-Message-State: APjAAAUwkCamepegaDTFGvNw4h382eN+nn7bI2a/hYlCjjOATdCAgJdK
+ tHwv6uJvX5+2LTi6dpjn8e/Z59OKUNo=
+X-Google-Smtp-Source: APXvYqwPRx2zwLQUKYOBbp6buB/aNEJGGkJHTff95eYmrIxUmL1DqlfXhBl6zuuPLCUTpVpYVZbSTw==
+X-Received: by 2002:a1c:4054:: with SMTP id n81mr23854955wma.78.1559757896736; 
+ Wed, 05 Jun 2019 11:04:56 -0700 (PDT)
+Received: from alyakaslap ([82.166.81.77])
+ by smtp.gmail.com with ESMTPSA id d10sm25757287wrh.91.2019.06.05.11.04.55
+ for <linux-nvme@lists.infradead.org>
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 05 Jun 2019 10:27:18 -0700 (PDT)
-Subject: Re: [PATCH 1/1] nvme-rdma: use dynamic dma mapping per command
-To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org,
- james.r.harris@intel.com, hch@lst.de
-References: <1559749293-32649-1-git-send-email-maxg@mellanox.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <f474d61c-a3e4-1452-99fb-6e7164f05194@grimberg.me>
-Date: Wed, 5 Jun 2019 10:27:16 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ Wed, 05 Jun 2019 11:04:55 -0700 (PDT)
+Message-ID: <F7E28AA1609E4FC495B5E8D4250E7DEF@alyakaslap>
+From: "Alex Lyakas" <alex@zadara.com>
+To: <linux-nvme@lists.infradead.org>
+Subject: NULL pointer dereference in nvmet_rdma_queue_disconnect during bond
+ failover
+Date: Wed, 5 Jun 2019 21:03:32 +0300
 MIME-Version: 1.0
-In-Reply-To: <1559749293-32649-1-git-send-email-maxg@mellanox.com>
-Content-Language: en-US
+X-Priority: 3
+X-MSMail-Priority: Normal
+Importance: Normal
+X-Mailer: Microsoft Windows Live Mail 16.4.3528.331
+X-MimeOLE: Produced By Microsoft MimeOLE V16.4.3528.331
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190605_102720_127144_877C5C47 
-X-CRM114-Status: GOOD (  23.18  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190605_110459_439150_953371E2 
+X-CRM114-Status: GOOD (  10.44  )
+X-Spam-Score: 2.1 (++)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (2.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.68 listed in list.dnswl.org]
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ [list.dnswl.org]
+ 0.2 STOX_REPLY_TYPE        No description available.
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.68 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
  0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ 1.9 STOX_REPLY_TYPE_WITHOUT_QUOTES No description available.
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,90 +100,124 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: israelr@mellanox.com, shlomin@mellanox.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+Greetings NVMe community,
+
+I am running kernel 5.1.6, which is the latest stable kernel.
+
+I am testing a nvmf kernel target, configured on top of a bond interface, 
+for high availability. The bond interface is created on top of two 
+ConnectX-3 interfaces, which represent two ports of one ConnectX-3 VF (with 
+this hardware a VF is dual-ported, i.e., a single VF yields two network 
+interfaces). The bond is configured in active-backup mode. Exact bonding 
+configuration is given in [1]. The nvmet target configuration doesn't have 
+anything special and is given in [2].
+
+I create a nvmf connection from a different machine to the nvmet target. 
+Then I initiate bond failover, by disconnecting a cable that corresponds to 
+the active bond slave. As a result, I get the following kernel panic:
+
+[  268.036732] mlx4_en: b1s1: Link Down
+[  268.036739] mlx4_en: b0s1: Link Down
+[  268.036771] mlx4_en: b2s1: Link Down
+[  268.138594] bebond: link status definitely down for interface b1s1, 
+disabling it
+[  268.138597] bebond: making interface b1s0 the new active one 53500 ms 
+earlier
+[  268.138671] RDMA CM addr change for ndev bebond used by id 
+0000000019666fc8
+[  268.138673] RDMA CM addr change for ndev bebond used by id 
+000000007a8dd02e
+[  268.138674] RDMA CM addr change for ndev bebond used by id 
+00000000f825cc30
+[  268.138675] RDMA CM addr change for ndev bebond used by id 
+00000000c575ce3d
+[  268.138733] BUG: unable to handle kernel NULL pointer dereference at 
+0000000000000148
+[  268.138764] #PF error: [normal kernel read fault]
+[  268.138782] PGD 0 P4D 0
+[  268.138795] Oops: 0000 [#1] SMP PTI
+[  268.138811] CPU: 1 PID: 869 Comm: kworker/u4:5 Not tainted 
+5.1.6-050106-generic #201905311031
+[  268.138839] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 
+1.10.2-1ubuntu1 04/01/2014
+[  268.138885] Workqueue: rdma_cm cma_ndev_work_handler [rdma_cm]
+[  268.138912] RIP: 0010:nvmet_rdma_queue_disconnect+0x19/0x80 [nvmet_rdma]
+[  268.138937] Code: e8 bc fe ff ff e9 68 ff ff ff 0f 1f 80 00 00 00 00 66 
+66 66 66 90 55 48 89 e5 53 48 89 fb 48 c7 c7 80 10 86 c0 e8 57 1d ff d1 <48> 
+8b 93 48 01 00 00 48 8d 83 48 01 00 00 48 39 d0 74 3a 48 8b 8b
+[  268.139020] RSP: 0018:ffffb28a0111be08 EFLAGS: 00010246
+[  268.139712] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 
+0000000000000000
+[  268.140348] RDX: ffff9cc2a7c15c00 RSI: 000000000000000e RDI: 
+ffffffffc0861080
+[  268.140764] RBP: ffffb28a0111be10 R08: ffff9cc2a7c15c00 R09: 
+000000000000008c
+[  268.141195] R10: 00000000000001ed R11: 0000000000000001 R12: 
+ffff9cc2a7c54aa8
+[  268.141616] R13: ffff9cc2a9b55800 R14: ffff9cc2a7c54a80 R15: 
+0ffff9cc2a78ee60
+[  268.142057] FS:  0000000000000000(0000) GS:ffff9cc2b9b00000(0000) 
+knlGS:0000000000000000
+[  268.142520] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  268.142962] CR2: 0000000000000148 CR3: 00000001afe30004 CR4: 
+00000000000606e0
+[  268.143430] Call Trace:
+[  268.143880]  nvmet_rdma_cm_handler+0x94/0x292 [nvmet_rdma]
+[  268.144343]  cma_ndev_work_handler+0x45/0xb0 [rdma_cm]
+[  268.144792]  process_one_work+0x20f/0x410
+[  268.145246]  worker_thread+0x34/0x400
+[  268.145689]  kthread+0x120/0x140
+[  268.146141]  ? process_one_work+0x410/0x410
+[  268.146595]  ? __kthread_parkme+0x70/0x70
+[  268.147045]  ret_from_fork+0x35/0x40
+
+This is 100% reproducible.
+
+Thanks,
+Alex.
+
+[1]
+echo +bebond >/sys/class/net/bonding_masters
+echo "1" > /proc/sys/net/ipv6/conf/bebond/disable_ipv6
+echo "1" > /sys/class/net/bebond/bonding/mode
+echo "100" > /sys/class/net/bebond/bonding/miimon
+echo "1" > /sys/class/net/bebond/bonding/fail_over_mac
+echo "60000" > /sys/class/net/bebond/bonding/updelay
+ifconfig b1s1 down
+echo "+b1s1" > /sys/class/net/bebond/bonding/slaves
+ifconfig b1s0 down
+echo "+b1s0" > /sys/class/net/bebond/bonding/slaves
+echo "b1s1" > /sys/class/net/bebond/bonding/primary
+ip addr add 10.3.3.23/24 dev bebond
+
+[2]
+mkdir /sys/kernel/config/nvmet/subsystems/volume-55555555
+echo 1 > 
+/sys/kernel/config/nvmet/subsystems/volume-55555555/attr_allow_any_host
+echo 000055555555 > 
+/sys/kernel/config/nvmet/subsystems/volume-55555555/attr_serial
+mkdir /sys/kernel/config/nvmet/subsystems/volume-55555555/namespaces/1
+echo 0977dff3-6885-43b3-a948-000055555555 > 
+/sys/kernel/config/nvmet/subsystems/volume-55555555/namespaces/1/device_uuid
+echo -n /dev/loop0 > 
+/sys/kernel/config/nvmet/subsystems/volume-55555555/namespaces/1/device_path
+echo 1 > 
+/sys/kernel/config/nvmet/subsystems/volume-55555555/namespaces/1/enable
+
+mkdir /sys/kernel/config/nvmet/ports/1
+echo -n "ipv4" > /sys/kernel/config/nvmet/ports/1/addr_adrfam
+echo -n "rdma" > /sys/kernel/config/nvmet/ports/1/addr_trtype
+echo -n  10.3.3.23 > /sys/kernel/config/nvmet/ports/1/addr_traddr
+echo -n 4420 > /sys/kernel/config/nvmet/ports/1/addr_trsvcid
+ln -s /sys/kernel/config/nvmet/subsystems/volume-55555555 
+/sys/kernel/config/nvmet/ports/1/subsystems/
 
 
-On 6/5/19 8:41 AM, Max Gurtovoy wrote:
-> Commit 87fd125344d6 ("nvme-rdma: remove redundant reference between
-> ib_device and tagset") caused a kernel panic when disconnecting from an
-> inaccessible controller (disconnect during re-connection).
-> 
-> --
-> nvme nvme0: Removing ctrl: NQN "testnqn1"
-> nvme_rdma: nvme_rdma_exit_request: hctx 0 queue_idx 1
-> BUG: unable to handle kernel paging request at 0000000080000228
-> PGD 0 P4D 0
-> Oops: 0000 [#1] SMP PTI
-> ...
-> Call Trace:
->   blk_mq_exit_hctx+0x5c/0xf0
->   blk_mq_exit_queue+0xd4/0x100
->   blk_cleanup_queue+0x9a/0xc0
->   nvme_rdma_destroy_io_queues+0x52/0x60 [nvme_rdma]
->   nvme_rdma_shutdown_ctrl+0x3e/0x80 [nvme_rdma]
->   nvme_do_delete_ctrl+0x53/0x80 [nvme_core]
->   nvme_sysfs_delete+0x45/0x60 [nvme_core]
->   kernfs_fop_write+0x105/0x180
->   vfs_write+0xad/0x1a0
->   ksys_write+0x5a/0xd0
->   do_syscall_64+0x55/0x110
->   entry_SYSCALL_64_after_hwframe+0x44/0xa9
-> RIP: 0033:0x7fa215417154
-> --
-> 
-> The reason for this crash is accessing an already freed ib_device for
-> performing dma_unmap during exit_request commands. The root cause for
-> that is that during re-connection all the queues are destroyed and
-> re-created (and the ib_device is reference counted by the queues and
-> freed as well) but the tagset stays alive and all the DMA mappings (that
-> we perform in init_request) kept in the request context. The original
-> commit fixed a different bug that was introduced during bonding (aka nic
-> teaming) tests that for some scenarios change the underlying ib_device
-> and caused memory leakage and possible segmentation fault. This commit
-> is a complementry
-
-Complementary
-
-  commit that also changes the wrong DMA mappings that
-> were saved in the request context
-
-also making the request sqe dma mappings dynamic with the
-command lifetime (i.e. mapped in .queue_rq and unmapped in .complete).
-
-  and also fixes the above crash of
-> accessing freed ib_device during destruction of the tagset.
-> 
-> Fixes: 87fd125344d6 ("nvme-rdma: remove redundant reference between ib_device and tagset")
-> Suggested-by: Sagi Grimberg <sagi@grimberg.me>
-> Tested-by: Jim Harris <james.r.harris@intel.com>
-> Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
-> ---
->   drivers/nvme/host/rdma.c | 76 ++++++++++++++++++++++++++++++------------------
->   1 file changed, 47 insertions(+), 29 deletions(-)
-> 
-> diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
-> index 0e033b6..88f11c5 100644
-> --- a/drivers/nvme/host/rdma.c
-> +++ b/drivers/nvme/host/rdma.c
-> @@ -167,15 +167,17 @@ static inline size_t nvme_rdma_inline_data_size(struct nvme_rdma_queue *queue)
->   	return queue->cmnd_capsule_len - sizeof(struct nvme_command);
->   }
->   
-> -static void nvme_rdma_free_qe(struct ib_device *ibdev, struct nvme_rdma_qe *qe,
-> -		size_t capsule_size, enum dma_data_direction dir)
-> +static void nvme_rdma_free_mapped_qe(struct ib_device *ibdev,
-> +		struct nvme_rdma_qe *qe, size_t capsule_size,
-> +		enum dma_data_direction dir)
-
-Given that we directly allocate the sqe in .init_request and not call
-this, is there really a need to change the name of the function?
-
-It creates a bit of an unnecessary churn in the patch.
 
 _______________________________________________
 Linux-nvme mailing list
