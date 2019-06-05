@@ -2,90 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B71BD36078
-	for <lists+linux-nvme@lfdr.de>; Wed,  5 Jun 2019 17:42:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 30C563627B
+	for <lists+linux-nvme@lfdr.de>; Wed,  5 Jun 2019 19:27:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fchF5HmfdbuHvjedB8xTxa1+lsD7Kmgb1vM6Fgmps8I=; b=Puhlu0bRvRf9gd
-	mFU6+u+QoWqe8zyPfG2/fcsrlXC4ATFIalA4/ZOPDspvkroHSqlO8kjNRs0OIfd3pNrRYnqUxANLE
-	hdpA0ci46iQoaMKmWicfcIOEI9hnljrAyxODvp3PiRyS29WvxJn1VASC0mxY+G7nmwd7yANvXHVuQ
-	f4/4GOJdztrwe+fGNVeHaO9mvuckCEBx8pTNZqMByF+NlEUxkw876Ulcjpxr61jBrVRss7cXZkCrl
-	5fJ1C34wu7MLV6OpMQmw/W0nz0HiW+xZQjxY2Ln0ChbU3GmA6FybqBNDSFxKyxIlrIXG+vWaBeRG6
-	S5h4q1tfpqUf+Yno9Cug==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=dRhuv43Pz9031eFCcv1kxREVT7AzjHOxtHwChT8fIMA=; b=rYqTVg1PJAWsmf45AYjRjO2jc
+	K9GQaWJ+kvG183KIzhPhNb2DPe/srPj+qZfuYCYPCVoi48Gum4clP6VnjGjm0xEkcr2Sez9HaWsrB
+	5ac/TX2RQlKL2sVDX1jnuqvnr7uIojxoD6hNfehyu1UGO0TJvrgrmytrljAg+IZAOXMEWW8lBbFwH
+	QwpaMiAnoCiGYpQ7v6VLmsPOxv1oa7CRYNO35mRh3aSJP5oud3XuC2gqYh+P1MPy/E8ZcSAJUtB2I
+	QxDcBCIo8qtoqOO24knomVjv9oGXPckn34Kt/WwFhYzQdt5wIc8RsMPkjmvxHXHUCpgCl9u6U31Ml
+	keGXJLZRQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYY3w-0008Ce-14; Wed, 05 Jun 2019 15:42:52 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1hYZh6-00068Y-TX; Wed, 05 Jun 2019 17:27:24 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYY3q-000824-6B
- for linux-nvme@lists.infradead.org; Wed, 05 Jun 2019 15:42:47 +0000
-Received: by mail-pl1-x643.google.com with SMTP id g9so9825528plm.6
- for <linux-nvme@lists.infradead.org>; Wed, 05 Jun 2019 08:42:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=HT8rs4hwGaWG5IuOFVaFlA5Z0E57AgaycUBt63djjCg=;
- b=cn+itN2+p3FswXzcc3Qp9etSRe9Gj6W2oMDHJWFFreOh7hx99jpUUvWPutyY/jSRwM
- eYJeHAr0OCROyY6Lq2xCDXICTig8fvcFF3hqQMFCa/Sb4TF5wAVJ1X/KyyPcpGB6n/u3
- iJpiE1T9ipHjDioMANp3sTQQ6sISYLywriftPJMUF5aO6A4Gc8cOM3+w2W4A+SHN7qF1
- mb8JS296BYik/VN0roz3o+OmqR+ioeZ8kKAkj4YxtaRAVOEK2xk4PV09NFaKKfhoh6dC
- ESYeJlKc7ks/VF0Werc2K+JIyQKSO0cZPO+KeWfEAOSpOp/J9IbPADhhh+b1MNJCSLik
- qC+Q==
+ id 1hYZh2-00067y-2m
+ for linux-nvme@lists.infradead.org; Wed, 05 Jun 2019 17:27:21 +0000
+Received: by mail-ot1-f68.google.com with SMTP id z23so1443342ote.13
+ for <linux-nvme@lists.infradead.org>; Wed, 05 Jun 2019 10:27:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=HT8rs4hwGaWG5IuOFVaFlA5Z0E57AgaycUBt63djjCg=;
- b=Q1qVwawKWx1FgCLxmuHJkty+QJKiC4TCSj+ZnT88EXZ1vMzQ1mcPPZiyecN3oFVVun
- xEEpgcnECH/ejuALoFukVL+2FWr4QIojq+Q2eKo7da5lOGdkCKKKBvf77NRsVrytt6/0
- wF9Dek5tsRDKBRmfYj50wog1zPqPImpGAYfu8QOR82TXdFjcu8+AaljLp8UWgBuoBj4E
- tNQvU4Acu2YCnx2UG0Iw255UFSKfdRHgi1mWebN4E8phbTRos8jGV6LpYMfyzfjq/O17
- 6Isl0JtPEsrZqkivbtwbSUH42yWtlpHX7Pm9tUrNxL26uNkh572vUgjX1ncSJxoF9aLH
- rErQ==
-X-Gm-Message-State: APjAAAUyh5N0RN4Jl45wjclzQ5zihqTZj4UvC3P2oR19R/1iSJMpY4G8
- YHCMiSc97TY0rASkwEC+yxaxAQt+LmwVMlG5O6w=
-X-Google-Smtp-Source: APXvYqw5p6OZod0skAJniUBSTG08MFQgBJ0KoMKwplhFuH2z6vn85MjmNkcGf40iAL1LVV4c2EIWlJLW13wu1g4VqLA=
-X-Received: by 2002:a17:902:24c7:: with SMTP id
- l7mr45027535plg.192.1559749365079; 
- Wed, 05 Jun 2019 08:42:45 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=k3gYvTYr4HAIJzWB+wE3TZetPrgvp/E6eq3i2/jRUxk=;
+ b=EDbdFX3SjbtiH6EE5JU0UBleK1+Ylx8KsH5qalwjm1U5B+4I825dWWINk3vePxzNfA
+ d088o9VtXR5uePDxBbiRhQ83jyepqfxqUqMYZ7RXeNONUWgmM130iIHlsBCnsEnUfz7t
+ ylIHyU3VsQOm2L/i6n4mGL7zzaC2h1HgFudfd4NgL++jyLJf3iRNNvAC8WIim5oUOLIV
+ Qit3kMvkIENDShmHHMCHWqkJygGXaG44sx2eyj5HMitkDXXfCUkYyWzH/8f13C8Kfu29
+ P67VZ5MorgJqMFTZhTFs2tmV/q/fbc49lsyPbDHRBFYlSU6Z1KHKbWhG3LM+yWW5rJYP
+ olUQ==
+X-Gm-Message-State: APjAAAWtqWDzEa6HEE8RreV7WfyjUJGEGm8whmQFk9NxH1AmLXGzJe2r
+ 1BdHalW3az4aPs6MZ9AkF3w=
+X-Google-Smtp-Source: APXvYqypmSgZkCHCrO+AnhLJ6Z1mEetk5qz2Ng+6Xbpv5M8DLwjygh52/RUuL/5DXkeIzQfC/4w2KQ==
+X-Received: by 2002:a9d:14a:: with SMTP id 68mr10424499otu.96.1559755638931;
+ Wed, 05 Jun 2019 10:27:18 -0700 (PDT)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id b62sm1055521otc.9.2019.06.05.10.27.17
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 05 Jun 2019 10:27:18 -0700 (PDT)
+Subject: Re: [PATCH 1/1] nvme-rdma: use dynamic dma mapping per command
+To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org,
+ james.r.harris@intel.com, hch@lst.de
+References: <1559749293-32649-1-git-send-email-maxg@mellanox.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <f474d61c-a3e4-1452-99fb-6e7164f05194@grimberg.me>
+Date: Wed, 5 Jun 2019 10:27:16 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <1558888143-5121-1-git-send-email-akinobu.mita@gmail.com>
- <1558888143-5121-3-git-send-email-akinobu.mita@gmail.com>
- <20190601090238.GD6453@lst.de>
- <CAC5umyiBmD6-3BNLfG7sNOe9jde8Ct16a9N_Ao3T_1_G1K_DDA@mail.gmail.com>
- <20190604073140.GH15680@lst.de>
-In-Reply-To: <20190604073140.GH15680@lst.de>
-From: Akinobu Mita <akinobu.mita@gmail.com>
-Date: Thu, 6 Jun 2019 00:42:33 +0900
-Message-ID: <CAC5umyiN9TTi5rrYjsk-Gh-6aYLJRYjemm-U5F_BpF_+XMaJ_g@mail.gmail.com>
-Subject: Re: [PATCH v3 2/3] nvme: add thermal zone devices
-To: Christoph Hellwig <hch@lst.de>
+In-Reply-To: <1559749293-32649-1-git-send-email-maxg@mellanox.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190605_084246_228143_074AD020 
-X-CRM114-Status: GOOD (  16.90  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190605_102720_127144_877C5C47 
+X-CRM114-Status: GOOD (  23.18  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
- [list.dnswl.org]
+ no trust [209.85.210.68 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.68 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (akinobu.mita[at]gmail.com)
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ provider (sagigrim[at]gmail.com)
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,42 +91,92 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, linux-pm@vger.kernel.org,
- Jens Axboe <axboe@fb.com>, Kenneth Heitke <kenneth.heitke@intel.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-nvme@lists.infradead.org,
- Eduardo Valentin <edubezval@gmail.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Zhang Rui <rui.zhang@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: israelr@mellanox.com, shlomin@mellanox.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-MjAxOeW5tDbmnIg05pelKOeBqykgMTY6MzIgQ2hyaXN0b3BoIEhlbGx3aWcgPGhjaEBsc3QuZGU+
-Ogo+Cj4gT24gU3VuLCBKdW4gMDIsIDIwMTkgYXQgMTA6MTk6MDhQTSArMDkwMCwgQWtpbm9idSBN
-aXRhIHdyb3RlOgo+ID4gQXMgbG9uZyBhcyB0aGUgdXNlciBzcGFjZSB0aGVybWFsIGdvdmVybm9y
-IGlzIHVzZWQsIHRoZXJlIGlzIG5vdGhpbmcgbW9yZQo+ID4gdGhhbiB0aGF0IGZyb20gYSBmdW5j
-dGlvbmFsIHBlcnNwZWN0aXZlLiAgQW5kIEkgc3VwcG9zZSB0aGF0IHRoaXMgaXMgdXNlZAo+ID4g
-d2l0aCB1c2VyX3NwYWNlIGdvdmVybm9yIChpLmUuIHRoZXJlIGlzIHN0aWxsIHNvbWUgd29yayB0
-byBiZSBhYmxlIHRvIGJpbmQKPiA+IGFjdHVhbCB0aGVybWFsIGNvb2xpbmcgZGV2aWNlKS4KPiA+
-Cj4gPiBUaGUgbWFpbiBwdXJwb3NlIG9mIHRoaXMgaXMgdG8gdHVybiBvbiBhIGZhbiB3aGVuIG92
-ZXJoZWF0ZWQgd2l0aG91dAo+ID4gcG9sbGluZyB0aGUgZGV2aWNlIHRoYXQgY291bGQgcHJldmVu
-dCB0aGUgbG93ZXIgcG93ZXIgc3RhdGUgdHJhbnNpdGlvbnMuCj4gPiBCdXQgYXMgeW91IG5vdGVk
-LCB3ZSBjb3VsZCBkbyB0aGF0IHdpdGggdGhlIGV4aXN0aW5nIEFFTiBub3RpZmljYXRpb25zCj4g
-PiB0aHJvdWdoIHVldmVudC4KPiA+Cj4gPiBTbyBmcmFua2x5IHNwZWFraW5nLCB0aGUgYmVuZWZp
-dCBvZiB0aGlzIGlzIHByb3ZpZGluZyBnZW5lcmljIHRoZXJtYWwgc3lzZnMKPiA+IGludGVyZmFj
-ZSBhbmQgdGhlIHRvb2xzIGxpa2UgdG1vbiAobGludXgvdG9vbHMvdGhlcm1hbC90bW9uKSBjYW4g
-c2hvdyB0aGUKPiA+IG52bWUgdGVtcGVyYXR1cmVzLgo+Cj4gSSdtIGp1c3QgYSBsaXR0bGUgd29y
-cmllZCBhYm91dCBibG9hdGluZyB0aGUgbnZtZSBkcml2ZXIgd2l0aCBmZWF0dXJlcwo+IHRoYXQg
-bG9vayBraW5kYSBuaWZ0eSBidXQgZG9uJ3QgYnV5IHVzIG11Y2guICBJJ2QgcmF0aGVyIGtlZXAg
-YXQgbGVhc3QKPiB0aGUgY29yZSBhbmQgUENJZSBkcml2ZXJzIGFzIG1pbmltYWwuICBOb3cgdGhl
-IHRoZXJtYWwgZGV2aWNlIHN1cHBvcnQKPiBpcyBwcmV0dHkgc21hbGwgYW5kIGV4Y2VwdCBmb3Ig
-dGhlIHNtYXJ0IHVldmVudHMgSSBjYW4ndCBmaW5kIGFueXRoaW5nCj4gYWN0dWFsbHkgYmFkLCBi
-dXQgSSdtIG5vdCBleGFjdGx5IGV4Y2l0ZWQgZWl0aGVyLgoKSSdsbCBhZGQgdGhlcm1hbC5jIGZp
-bGUgaW4gb3JkZXIgdG8gbWluaW1pemUgdGhlIGNvcmUgZHJpdmVyIGNoYW5nZXMgYW5kIGEKbW9k
-dWxlIHBhcmFtZXRlciB0byBkaXNhYmxlIHRoZSB0aGVybWFsIHpvbmUgc3VwcG9ydC4KCkRldmlj
-ZSB0cmVlIHRoZXJtYWwgem9uZSB3aWxsIGFsc28gYmUgc3VwcG9ydGVkLiBJdCBlbmFibGVzIHRv
-IHVzZSB0aGVybWFsCmdvdmVybm9yIG90aGVyIHRoYW4gdXNlcl9zcGFjZSBnb3Zlcm5vci4KCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52bWUg
-bWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+
+
+On 6/5/19 8:41 AM, Max Gurtovoy wrote:
+> Commit 87fd125344d6 ("nvme-rdma: remove redundant reference between
+> ib_device and tagset") caused a kernel panic when disconnecting from an
+> inaccessible controller (disconnect during re-connection).
+> 
+> --
+> nvme nvme0: Removing ctrl: NQN "testnqn1"
+> nvme_rdma: nvme_rdma_exit_request: hctx 0 queue_idx 1
+> BUG: unable to handle kernel paging request at 0000000080000228
+> PGD 0 P4D 0
+> Oops: 0000 [#1] SMP PTI
+> ...
+> Call Trace:
+>   blk_mq_exit_hctx+0x5c/0xf0
+>   blk_mq_exit_queue+0xd4/0x100
+>   blk_cleanup_queue+0x9a/0xc0
+>   nvme_rdma_destroy_io_queues+0x52/0x60 [nvme_rdma]
+>   nvme_rdma_shutdown_ctrl+0x3e/0x80 [nvme_rdma]
+>   nvme_do_delete_ctrl+0x53/0x80 [nvme_core]
+>   nvme_sysfs_delete+0x45/0x60 [nvme_core]
+>   kernfs_fop_write+0x105/0x180
+>   vfs_write+0xad/0x1a0
+>   ksys_write+0x5a/0xd0
+>   do_syscall_64+0x55/0x110
+>   entry_SYSCALL_64_after_hwframe+0x44/0xa9
+> RIP: 0033:0x7fa215417154
+> --
+> 
+> The reason for this crash is accessing an already freed ib_device for
+> performing dma_unmap during exit_request commands. The root cause for
+> that is that during re-connection all the queues are destroyed and
+> re-created (and the ib_device is reference counted by the queues and
+> freed as well) but the tagset stays alive and all the DMA mappings (that
+> we perform in init_request) kept in the request context. The original
+> commit fixed a different bug that was introduced during bonding (aka nic
+> teaming) tests that for some scenarios change the underlying ib_device
+> and caused memory leakage and possible segmentation fault. This commit
+> is a complementry
+
+Complementary
+
+  commit that also changes the wrong DMA mappings that
+> were saved in the request context
+
+also making the request sqe dma mappings dynamic with the
+command lifetime (i.e. mapped in .queue_rq and unmapped in .complete).
+
+  and also fixes the above crash of
+> accessing freed ib_device during destruction of the tagset.
+> 
+> Fixes: 87fd125344d6 ("nvme-rdma: remove redundant reference between ib_device and tagset")
+> Suggested-by: Sagi Grimberg <sagi@grimberg.me>
+> Tested-by: Jim Harris <james.r.harris@intel.com>
+> Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+> ---
+>   drivers/nvme/host/rdma.c | 76 ++++++++++++++++++++++++++++++------------------
+>   1 file changed, 47 insertions(+), 29 deletions(-)
+> 
+> diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+> index 0e033b6..88f11c5 100644
+> --- a/drivers/nvme/host/rdma.c
+> +++ b/drivers/nvme/host/rdma.c
+> @@ -167,15 +167,17 @@ static inline size_t nvme_rdma_inline_data_size(struct nvme_rdma_queue *queue)
+>   	return queue->cmnd_capsule_len - sizeof(struct nvme_command);
+>   }
+>   
+> -static void nvme_rdma_free_qe(struct ib_device *ibdev, struct nvme_rdma_qe *qe,
+> -		size_t capsule_size, enum dma_data_direction dir)
+> +static void nvme_rdma_free_mapped_qe(struct ib_device *ibdev,
+> +		struct nvme_rdma_qe *qe, size_t capsule_size,
+> +		enum dma_data_direction dir)
+
+Given that we directly allocate the sqe in .init_request and not call
+this, is there really a need to change the name of the function?
+
+It creates a bit of an unnecessary churn in the patch.
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
