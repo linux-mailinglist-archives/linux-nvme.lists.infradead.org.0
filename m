@@ -2,87 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D574037F23
-	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 22:56:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 839C137F94
+	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 23:29:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QJ0GFfYlTMmCsVsTc5/WJ7Zb9488iHfpIkvdj0Bm+XA=; b=k3FsEzEN5j09/3
-	PtoxuCMgPmoY657nuBr1aAQspMY7ciVyPfIrkLzejBMWAuYO0qMhbS64uy/karAr0LvBWU/tsdGqM
-	TnEt+sgLu99jnBw4xlECaA1py9U5aHT0xpoyC3d/mj1U7dd4GxKheq7+kY2Z3K22j0i+F6Ja+o2aZ
-	LYo3p923aCZ9eaulq4rEfHa4bqh3b7+cHl+UL0WACUZmrolK0g9iqLlJbqliAX1qWSgisMJ/Q+63l
-	rhS8p1EV+X7gesxI5+voe+r34zjyAlvPjOEpvo0mEUoxFB1d4eOAduyR2QVbfFgRu39GD8KBGPtrj
-	4GlHVP08NMz12Mv/zCDA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LQJU6EHdDllzxJPg4St5kXCiTWRsvz+9y83WUW9VxVQ=; b=WwqLAZ/Aid+Wo3
+	x9N1soAnOlaTXzdm9cndN6mGgH1IEuKx6J/sr0uTL+kOyFzzA8S76F+Zo3EoEnl0vHyErQIqKUXaj
+	lQMgLni72Ez3K603mnDWpXrLb3zFaRsY13CzZ/gIS3OQ/l2h6sUSTLOHn34u11ZdzUp1ROXorMDYr
+	wWf6OQZbK3Y3bBDYS06O7/CpzrVJqnJI/TNUVecHHCeGsjvQs0kyCuT3axUbcDlKXT7IFc85NJBNb
+	4x4w9ZmIowYxhZkvshuqSHqJbcZ0/XPpDXa9z/kSbAMcfts81gv5dWvvJHJYUMfEwdDDORGeViNza
+	g+Ks/A3hqGWhrr955RtQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYzQy-0005eg-Lj; Thu, 06 Jun 2019 20:56:28 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1hYzwg-0006rq-0t; Thu, 06 Jun 2019 21:29:14 +0000
+Received: from mail-pf1-f195.google.com ([209.85.210.195])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYzQt-0005dh-Ly
- for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 20:56:25 +0000
-Received: by mail-wr1-x444.google.com with SMTP id x4so18230wrt.6
- for <linux-nvme@lists.infradead.org>; Thu, 06 Jun 2019 13:56:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=jnYKRDA0GN1hsJSdxQwe+nJnGyvVC3CTMOFZMUZUeUc=;
- b=NMGCEUkpwpTv3ejOy7dDIW6Hk38swnw87+kuTsBwzdEzCUo+2b8dscsJLZkG3ky2qf
- 6K2ZNVaxRqZNWXaikQ5gIgxGjOuagpRieWDmiDWxccl9+VlPI1Wle2YN88Eh8KBbLkhA
- 8Qcgp1SQ7HPt25MYd9Lqsj3IErAysNFFx6xKqyNTfXCprq1fxFUABx+0SdLRX/YKd85t
- 8wGglwgZtc6Mkdu8aVf+Wk9gfUJoNrwS7jJIN868oJWsn4+V10QwA9M1HuSiftNHwzVf
- xqKgCrOOOaDBkDQ1tVfydQDEx3k7uO83wy+ohaF8w2ceFhQBDT2jAGNoNum3cZ3tQ7Ru
- uVrA==
+ id 1hYzwZ-0006qw-Ch
+ for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 21:29:10 +0000
+Received: by mail-pf1-f195.google.com with SMTP id i189so2262845pfg.10
+ for <linux-nvme@lists.infradead.org>; Thu, 06 Jun 2019 14:29:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=jnYKRDA0GN1hsJSdxQwe+nJnGyvVC3CTMOFZMUZUeUc=;
- b=WyzeMfzuX0p45hpb5A7aGzGKnagDZHDvGCi/UulMCyC9JrJ7TJ2cebnSgI0TiPaXoi
- arvarRpxCDFYihWQ3gTLyTy8FDjBH/FWho/7HtcyVVq8r0cthECN6w1MfCoTYoINXN2h
- SsUW1Dd2rVAigm3yTt52bcNT683WCne+95dFEih80C/n6fRZ7K4Gqh6x8fcBY7u/FGOX
- qETjjpNduzbS8IPwaaVsYmyvzG9x8Sxa3kOJHV2guREln7LEfyOx018bfLBZ6ud7p/m3
- Db8ULYeQFnWDIJ/dAB6mzlcaf+1w8DEzVR2KdUjMJPJcmPuc6w3dQZkiEIv9aWggQMfz
- KFCg==
-X-Gm-Message-State: APjAAAWfqJP2CAXJ+peIOPTuCApTsp0h4XBZJxORTtTyPZMlxaZmIOJy
- kRNx9ga30rwbGYg7Y7DX0NJGka3BYHMMDBCgMec=
-X-Google-Smtp-Source: APXvYqwcex8IfG5iNDWnf9Ca994HE0LUjlOe+xCtgozPzkrsi+WxGljgwGVsk98PoUsk+laPyvLGQFgDwgliHM880co=
-X-Received: by 2002:a05:6000:110:: with SMTP id
- o16mr29711787wrx.200.1559854581388; 
- Thu, 06 Jun 2019 13:56:21 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NnE5UMkEaJfCF908fSGm3qVyECr/2C+NmT8h9qKo8tA=;
+ b=lvRAPWZNKmHBTJWvVxcVpKplp1XFvq9RmzOu4IFwfwhoKKKE9fm8tgqBkgAmXtt/E7
+ HgdLNv8yP4vn8VK30tTRMKX/nR8acS0RD8bAY02lWaRV2F4vivkZUCG4D77WGjugAqcl
+ H0o3oeGKVrnQqIut6L9STiGYTt4gt+f1zfHzAxKdFKG4gLxIuYKJYA7kr26+5bgdl/OW
+ Q8KvRrKIkoA1uIT153IqE865OxBCzNQxWQjC6P50NFnTS3xYaB2K/D6hc5KFK4vMUMxP
+ aHOF7x4fFHnmv6SIDIdx9Iz8hFULFawXgpv+7GMlIMDx+bRQr55h7yIT3aDXbJodvkU8
+ CLSw==
+X-Gm-Message-State: APjAAAVqVIUaEcwA4jqCRdS1rdr19S6Z/BHvaTzohJnVKithMMye/g8s
+ 4jNGYqoDz7QWWaxknrGIwZ8=
+X-Google-Smtp-Source: APXvYqzwbZYJGP6DOg7PIXQ2ki84ZZ5O/5aXmZXelvqn0iCwSIY6Pljvq/z6l4LjolqKdACIX89big==
+X-Received: by 2002:a63:68c5:: with SMTP id d188mr529098pgc.429.1559856544380; 
+ Thu, 06 Jun 2019 14:29:04 -0700 (PDT)
+Received: from desktop-bart.svl.corp.google.com
+ ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
+ by smtp.gmail.com with ESMTPSA id u1sm85940pfh.85.2019.06.06.14.29.03
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 06 Jun 2019 14:29:03 -0700 (PDT)
+From: Bart Van Assche <bvanassche@acm.org>
+To: Keith Busch <keith.busch@intel.com>,
+	Sagi Grimberg <sagi@grimberg.me>
+Subject: [PATCH 0/2] NVMe 1.4 Identify Namespace Support
+Date: Thu,  6 Jun 2019 14:28:52 -0700
+Message-Id: <20190606212854.122478-1-bvanassche@acm.org>
+X-Mailer: git-send-email 2.20.GIT
 MIME-Version: 1.0
-References: <20190606184620.GA1676@minwooim-desktop>
- <20190606192420.GA17774@minwooim-desktop>
-In-Reply-To: <20190606192420.GA17774@minwooim-desktop>
-From: Keith Busch <keith.busch@gmail.com>
-Date: Thu, 6 Jun 2019 14:56:10 -0600
-Message-ID: <CAOSXXT78U_CmaK_YqQR2D3OKJ5GSy+KtrN6ab4iMQHwn0aROQQ@mail.gmail.com>
-Subject: Re: nvme: build failure report for nvme_sync_queues()
-To: Minwoo Im <minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190606_135623_723132_97EDC483 
-X-CRM114-Status: GOOD (  11.56  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190606_142907_425186_6C4C40C7 
+X-CRM114-Status: GOOD (  11.00  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ no trust [209.85.210.195 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.195 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (keith.busch[at]gmail.com)
+ provider (bart.vanassche[at]gmail.com)
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,31 +86,39 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme <linux-nvme@lists.infradead.org>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
+ Bart Van Assche <bvanassche@acm.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gVGh1LCBKdW4gNiwgMjAxOSBhdCAxOjI0IFBNIE1pbndvbyBJbSA8bWlud29vLmltLmRldkBn
-bWFpbC5jb20+IHdyb3RlOgo+IE9uIDE5LTA2LTA3IDAzOjQ2OjIwLCBNaW53b28gSW0gd3JvdGU6
-Cj4gPiBIaSBhbGwsCj4gPgo+ID4gSSdkIGhhdmUgdG8gcmVwb3J0IGEgYnVpbGQgZmFpbHVyZSBk
-dWUgdG8gdGhlIGZvbGxvd2luZyBjb21taXQ6Cj4gPiBDb21taXQgZTdhZTZkMWU3YzVmICgibnZt
-ZS1wY2k6IFVzZSBob3N0IG1hbmFnZWQgcG93ZXIgc3RhdGUgZm9yIHN1c3BlbmQiKQo+ID4KPiA+
-IE1lc3NhZ2U6Cj4gPiBkcml2ZXJzL252bWUvaG9zdC9wY2kuYzoyODc2OjI6IGVycm9yOiBpbXBs
-aWNpdCBkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiDigJhudm1lX3N5bmNfcXVldWVz4oCZOyBkaWQg
-eW91IG1lYW4g4oCYbnZtZV9zdG9wX3F1ZXVlc+KAmT8gWy1XZXJyb3I9aW1wbGljaXQtZnVuY3Rp
-b24tZGVjbGFyYXRpb25dCj4gPiAgIG52bWVfc3luY19xdWV1ZXMoY3RybCk7Cj4gPiAgICAgXn5+
-fn5+fn5+fn5+fn5+fgo+ID4KPiA+IElzIHRoZSBmb2xsb3dpbmcgcGF0Y2ggYXBwbGllZCB0byB0
-aGlzIGJyYW5jaCA/Cj4gPiAgIFtQQVRDSHY0IDEvNF0gbnZtZTogU3luYyByZXF1ZXN0IHF1ZXVl
-cyBvbiByZXNldDoKPiA+ICAgaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvcGlwZXJtYWlsL2xp
-bnV4LW52bWUvMjAxOC1KdWx5LzAxOTE2Ni5odG1sCj4gPgo+ID4gSWYgSSBtaXNzIHNvbWV0aGlu
-ZyBoZXJlLCBwbGVhc2UgbGV0IG13IGtub3cuCj4gPgo+ID4gVGhhbmtzLAo+Cj4gU29ycnkgSSBm
-b3Jnb3QgdG8gbWVudGlvbiB0aGUgYnJhbmNoIG5hbWU6IG52bWUtNS4zCgpMb29rcyBsaWtlIHRo
-ZSA1LjMgYnJhbmNoIGZvcmtlZCBlYXJseSBlbm91Z2ggdG8gbWlzcyB0aGlzIG9uZSBmcm9tCnRo
-ZSA1LjItcmMyIGJyYWNoOgoKICBodHRwOi8vZ2l0LmluZnJhZGVhZC5vcmcvbnZtZS5naXQvY29t
-bWl0ZGlmZi9kNjEzNWMzYTFlYzBjZGRkYTdiOGI4ZTFiNWI0YWJlZWFmZDk4Mjg5CgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1udm1lIG1haWxp
-bmcgbGlzdApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
+Hi Keith,
+
+These two patches are what I came up with after having read the Identify
+Namespace sections in final draft of version 1.4 of the NVMe. These patches
+compile correctly but have not been tested in any other way. Please consider
+these patches for kernel version 5.3.
+
+Thanks,
+
+Bart.
+
+Bart Van Assche (2):
+  nvme: Introduce NVMe 1.4 Identify Namespace fields in struct
+    nvme_id_ns
+  nvme: Set physical block size and optimal I/O size according to NVMe
+    1.4
+
+ drivers/nvme/host/core.c | 14 ++++++++++++--
+ include/linux/nvme.h     | 12 +++++++++---
+ 2 files changed, 21 insertions(+), 5 deletions(-)
+
+-- 
+2.22.0.rc3
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
