@@ -2,79 +2,80 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2353C36C52
-	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 08:33:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FA4B36C53
+	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 08:33:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AANAL9YaJGX89Uawm4XtnnLzHPURr/miT7zkZPdBP1A=; b=aDDScJOW5pdVDV
-	csJV+LMd9HbpIEOVlTGpv4gbHJIPJHmZqAhoVKtK+plNzqF1f6D1UzTltajwfuYeN/0Y62qoEiIIt
-	lpt30eJMEo3eqb4ZKvmoukNQ6mAomkgtHWNq+o5sOoS8KCuF+Av/fIUhSsykmgFK5n//WyO/hgqpD
-	WQCvaMa0+vhhyGJtqn1TALimUoNVU96faBafd5opWHN7J9vzOIw9Tkk3a16PKLAfQermJadmHKr9f
-	C6riprgAQF8l0LZwXZRxoIRM7go88CtAlV1ZwB0p/JyTTwurq0BTRWtltIEQ7dAHKdIbBgxUr7OMB
-	Zfqw8uNU6VRJm3zkSSeg==;
+	List-Owner; bh=XB0XW0Cs7o9FCnovtTBlIiz4av5w1naXktNyHQ4ciG0=; b=huZKJc/EKpkcl8
+	rHaWUwvCNZgtA4V5ngX8iaL+pC7zHkQNap2m2/0cI6/B4m3Dj8wFtvVR2yTjeK9fdVgSO+LnqpW/i
+	h175Lzu3CoWk4c2hhS18MZxhrJ5OnGcRz3ZCc67GcorY8LmRryCwhxbW/JfR453ytUj+I74r+qO+y
+	16+CvOQX8W+hKyG/EnRz1+kJov1qdYAlWXiJ3x8PuN/yIp5CXknwvNppw2rGFGG6O54hqQmQDQVZJ
+	An2bu19wJY8iBt43jmSWu8MeqPAMkTjAYpaXZmPyzeSR6juAfnV5oVTiocy+/ZgQDv0SZqBWXbusO
+	kAqW6YrHfyHwvpYYm0RA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYlxO-0002K5-26; Thu, 06 Jun 2019 06:33:02 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1hYlxT-0002Xr-12; Thu, 06 Jun 2019 06:33:07 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYlxB-0002B1-CS
- for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 06:32:52 +0000
-Received: by mail-pg1-x544.google.com with SMTP id a3so768575pgb.3
- for <linux-nvme@lists.infradead.org>; Wed, 05 Jun 2019 23:32:49 -0700 (PDT)
+ id 1hYlxE-0002FN-O9
+ for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 06:32:57 +0000
+Received: by mail-pf1-x441.google.com with SMTP id j2so862388pfe.6
+ for <linux-nvme@lists.infradead.org>; Wed, 05 Jun 2019 23:32:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qV7BYsusa/BkjRaIAt5JcaY/btz3GAJvUQJzpnho/mA=;
- b=MSNPPEm2SpRSs5uFnh4sFaJhgND8VUd3lj9r/d930IVjSgPtFN82NRgu3SVXAVAHeh
- 3C42QH6yfWGow1QIH9zWdPzL1OShL1Lcdff0lqk8BKVLXdimuH7Dd9Mbuq+gPgiRGNaf
- yyatFYW9o3w4mSYLGDpSymeTYkwSjUHEL/vfE+QFOIiaoVQ2pQki7YJVVGbEQm+B/VGY
- a4TixDrNHsXB+e1Hx8sph2bcOZo74sftogFuCyfktOBZ1GIdW9rgDfj7TmHf3fJeYDpS
- ibDALU0qr8oZZAq+MeeA4K/u89CTIQqDHd30lXziYE1sITNThyJjESNO73DWt6QrbP+F
- gESg==
+ bh=DlXbdQGpRsKt8lPjwHA+reokj7XV+5ti0vBCTXj2FV4=;
+ b=p4+DPzy7iu0M+gycK9FO+oeMY8zofskHSd70EQLf4EIOX3vjz3+iSeiasB8tZD9+HW
+ b5AlUXyhFk/i4dvClDS0m8JQE+qVC9iQFNYyk6I/JGuNWmelVxEFLoj8hvdZN7C7Udem
+ iPHQ2x/YFiTW9C2quaPKvM4P1P/qASvr2FQD9kHVSa+t8yXmP5UYHefiNOJEw1VZ057Y
+ I96opJMcbNT+ABIiUZuh2MIdWoOzhNVLzUW7szaVLT+e4Lhq1/B6rgdqRkR9TYwcS5bG
+ G5+VLDw+6vzKgTRkR9ycIXXzxGyK/wY4T3rcDv6gef3OD6KEnRqtmfJ9qwom4/bH9UUc
+ l2hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qV7BYsusa/BkjRaIAt5JcaY/btz3GAJvUQJzpnho/mA=;
- b=RiZ05aRzZRQKHp/t1OQbXsD97zRfNe7LTRzyAFEZVsraM0Oq1QYE6e/EJCrzdGfBOw
- BfKF6s8tmFSFMjcHDXXOcvxM5RoOuyvr1M1WyU+CP5lFu7sQTvMhgZf7ttmQpjjJxqOp
- fRfHm2wYWY9R/t2O3OcbIdcRxEny5Y0OARFCGGDY8Ra5x+a5vF7ArD3DydAQwOfsM1iD
- 8A7n7/RfQMijFoHuaCZm9LeHsQ96JMOymWrU01YHEGNtjcof+DeilahcYRWcc3Q9JG1Q
- tFluX+gS1gwwW/LVRkF1FonDFAd0vr8w/yHKCuNtGqV4t8BbvJacjd+GW825Zxou7Y0K
- MlUQ==
-X-Gm-Message-State: APjAAAUmQjlCkG2oCYYKoAZVJ5AEXzFgsOFzhoUagcMgY5VjL/kpLo+e
- MVzLYwjf0lIdi4rmbNX9p73ptuu++WM=
-X-Google-Smtp-Source: APXvYqwO6todhERiIoiK742se/wGBl0TfzJdibw7vdhnQjiDr5StjZdiZeWdK0LN3YwgdXV9fOX5bw==
-X-Received: by 2002:aa7:9342:: with SMTP id 2mr43173317pfn.241.1559802768197; 
- Wed, 05 Jun 2019 23:32:48 -0700 (PDT)
+ bh=DlXbdQGpRsKt8lPjwHA+reokj7XV+5ti0vBCTXj2FV4=;
+ b=aM+MGiHuKG4YywbqqOx5oylpMl6uwv8KLxE/uvYaM2PNSMKiJq1LTlGmNtCxjKauj5
+ cgrsw5n3gpkXHD7ofNcWd6dVkI+KvSw1lYMPiHGtxSzh1ElmPPuqmqDP6UDfx4gnt4Mm
+ lwbwq/nFNCVEOyGdMmSqOlrXcJFA+ne84I5AtxTmHldq+vZcZjDwjZ3zkvqvRgeG+8YF
+ 07qz8MPqES59LaRgUd++/nqcu1nTosSeyQ2QwjLFTYmyTj88oLYbC8yqECtghdhS6CTH
+ 7wT/0nyN5q5tgskdivt6z7/BXqo8OuVF+mcIO2Ma79JrkpZigZ4Nks6JPojKRo0wKGeb
+ k+0g==
+X-Gm-Message-State: APjAAAWcuFNAa69D/yuPFLjmnBMFXri4fl/yyGNGK4CYSS69FukZnkax
+ kxX7nBJwmtR5dM9z8hnJxbDB+ALHq6E=
+X-Google-Smtp-Source: APXvYqwHnOBYykHjEgwab6HwcosK33JMXIWXkE+u8cr6PQhAXipWuY2oAT8GcvwoMHOKJypBk0DCvg==
+X-Received: by 2002:a17:90a:65c2:: with SMTP id
+ i2mr48052352pjs.54.1559802771428; 
+ Wed, 05 Jun 2019 23:32:51 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id r64sm1202562pfr.58.2019.06.05.23.32.45
+ by smtp.gmail.com with ESMTPSA id r64sm1202562pfr.58.2019.06.05.23.32.49
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 05 Jun 2019 23:32:47 -0700 (PDT)
+ Wed, 05 Jun 2019 23:32:50 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [RFC PATCH V6 1/3] nvmet: introduce nvmet_req_to_ctrl to get ctrl
- instance
-Date: Thu,  6 Jun 2019 15:32:27 +0900
-Message-Id: <20190606063229.17258-2-minwoo.im.dev@gmail.com>
+Subject: [RFC PATCH V6 2/3] nvme: trace: do not EXPORT_SYMBOL for a trace
+ function
+Date: Thu,  6 Jun 2019 15:32:28 +0900
+Message-Id: <20190606063229.17258-3-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606063229.17258-1-minwoo.im.dev@gmail.com>
 References: <20190606063229.17258-1-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190605_233249_597572_BB527ADD 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20190605_233253_160053_57860F24 
+X-CRM114-Status: GOOD (  12.93  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -105,39 +106,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-nvme host driver can get the controller instance from
-nvme_req(req)->ctrl.  In case of target driver, it needs to get
-controller instance from the struct nvmet_req with sq where the request
-has been submitted.
+nvme_trace_disk_name() is now already being invoked with the function
+prototype in trace.h.  We don't need to export this symbol at all.
+
+The following patches are going to provide target-side trace feature
+with the exactly same function with this so that this patch removes the
+EXPORT_SYMBOL() for this function.
 
 Cc: Keith Busch <kbusch@kernel.org>
 Cc: Christoph Hellwig <hch@lst.de>
 Cc: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- drivers/nvme/target/nvmet.h | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/nvme/host/trace.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index c25d88fc9dec..2d569a1dc3f4 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -318,6 +318,15 @@ struct nvmet_req {
- 	u64			error_slba;
- };
+diff --git a/drivers/nvme/host/trace.c b/drivers/nvme/host/trace.c
+index 5f24ea7a28eb..14b0d2993cbe 100644
+--- a/drivers/nvme/host/trace.c
++++ b/drivers/nvme/host/trace.c
+@@ -145,6 +145,5 @@ const char *nvme_trace_disk_name(struct trace_seq *p, char *name)
  
-+static inline struct nvmet_ctrl *nvmet_req_to_ctrl(struct nvmet_req *req)
-+{
-+	struct nvmet_sq *sq = req->sq;
-+
-+	if (sq)
-+		return sq->ctrl;
-+	return NULL;
-+}
-+
- extern struct workqueue_struct *buffered_io_wq;
+ 	return ret;
+ }
+-EXPORT_SYMBOL_GPL(nvme_trace_disk_name);
  
- static inline void nvmet_set_result(struct nvmet_req *req, u32 result)
+ EXPORT_TRACEPOINT_SYMBOL_GPL(nvme_sq);
 -- 
 2.21.0
 
