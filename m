@@ -2,68 +2,68 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C14CA37FBE
-	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 23:40:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63FB237FC4
+	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 23:42:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=mDYvsSw/6sZNhKP6d2Xxtazgs5rOaI28gRk6+JCk8Os=; b=ObS8+DejqfOzln
-	gG0RZFDZPZ7O3yRhLMWqqFheD+D+2tcfl3XIoTAa8+qQKs3RW7PiPd2wIpPevtlK+yZW2RJDw8DYf
-	xJY0YzRH+DPL1X4BTorutMp5w0QdhOwMMgFbDwvAxu2o3/HMSvOXyJ+DUTvok/CyyNZRVudTBiNoX
-	vuuY9p4bwGDvIJxtaP4Bfb0jCD92cdMJcYwFjp+gKy6aC8oG71RvL0BnSdiHrmI8y9Ye+vtQXsIcN
-	vDzFYDe28zT7VbTR0f911QpD/rVL+TPcg+ns2/rkMdHOOghPj9JqhCor91gQuIBOKbCebr+KT6vJz
-	+3ZYjULDpJZGjGEu/UbA==;
+	List-Owner; bh=BsBxLVG3aypZni6S8ykkN/wG0AcWzy+RAYCUtWj7URc=; b=o8gG/fD1TDs+Pc
+	CLNClAhxvBCGHIqslmZgVVMmEQDFd2y5iF5WRDtG0LIj1ZVfRXNhYLeMxcr0WEjwOwj33tTXRUiAp
+	2YbfNFHVDGm4zWO7Kn4XdeV30Difcwc1iG6EvGy5kb+OCqcO81qb/GG6aO7LlwaGgNxzukPvHZzvv
+	EmSrqTCeEySjWVtg8slqbjxn8c+bQrnNCs9mTs+xzVRd3kAsVj5G8bvHqVxv9HJ1zCsGzOXZExKCe
+	bKSnryqsrL1DrWUiol7sYyMM3gQiDdB10xfeTmlQRI53aC9+Ubq5HhEaH5hUJqeTOFPhxbWG6Brvm
+	QoYuhwPA5acCc0/ugkOw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hZ07k-00033g-7C; Thu, 06 Jun 2019 21:40:40 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1hZ09J-0003Fu-7z; Thu, 06 Jun 2019 21:42:17 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hZ07e-00033D-Sm
- for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 21:40:36 +0000
+ id 1hZ09C-0003FX-3a
+ for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 21:42:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1559857250; x=1591393250;
+ t=1559857330; x=1591393330;
  h=from:to:cc:subject:date:message-id:references:
  content-transfer-encoding:mime-version;
- bh=b93HXviB2hLLFgnr/43cpuYjiW7AfiVOH4h95rsYW1E=;
- b=FVAUK43q5QSnXefhBxj/ykRwtiRVw8qjtU76mvCGq2SqHA0JNsBqsoYg
- 74cDLPDY/lvlme++MxcfAIVPzZ1iV1TSYPlDVpwNNQZaTgKTwD1xVzNOA
- 95acZdAGyaWmeOrdvgSeaAx274qkbyt3j9OaPG+QyGEyvwa1Drjt/ZBb/
- EcFw/EeItsyKsdZKthgc5LSD6gmBRngU85KJjL7qqNzo6pn7DSB5tfryv
- 49Y5MQiD4iDtFg2xJLoLo4I9wd6vAGw8WwUSPceCb9NGfp0CVrm6wXHSR
- f2tcW7Lh3iZ57mccxRGbrTOaPpwyyadyktjKsr/OceuFSXqwufAAMz7g9 A==;
-X-IronPort-AV: E=Sophos;i="5.63,560,1557158400"; d="scan'208";a="209618712"
-Received: from mail-co1nam04lp2058.outbound.protection.outlook.com (HELO
- NAM04-CO1-obe.outbound.protection.outlook.com) ([104.47.45.58])
- by ob1.hgst.iphmx.com with ESMTP; 07 Jun 2019 05:40:45 +0800
+ bh=lNrvkzk8z02EWrFDR/Wi3u24wTLf/TLZOZLBkJvdN/U=;
+ b=dmwGbQ3YaCTFW5iTpQVxx3L1sh+2MZz1l4MLZG/uButMyR/UN1BSsQI+
+ m3PN/FXW40E3D07ZcVgy6tqjSQt9ttwKHl76lzgaRN7/q+KAYpu4gRTZ8
+ D2bbGoUFeJeRDkCe5rb7N14zI/k3GRKdJKLBQB7UyButEAN5ZIY9kIVUt
+ S3Fsj3lIgNW/BbLOjKvA2oUZG54jp3lNWg1rE8yZW/v257nraw1NeFR3F
+ hUpmxb9XMhclQI01qgD+v5yFNVJuRb0z+D99dgCwSWvuYiTeefd9BwZae
+ W0YTSo8Mtla/zyy7ffwMhvdBVv4wWLwi1xY2958SC0XzyEcYK9kQcWe1p w==;
+X-IronPort-AV: E=Sophos;i="5.63,560,1557158400"; d="scan'208";a="111650971"
+Received: from mail-co1nam05lp2059.outbound.protection.outlook.com (HELO
+ NAM05-CO1-obe.outbound.protection.outlook.com) ([104.47.48.59])
+ by ob1.hgst.iphmx.com with ESMTP; 07 Jun 2019 05:42:08 +0800
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3LjylQQ81ZfffsGcCObo3botLQeY55ORd8i2yOPiTo4=;
- b=PjcpVXjwpoxkQyukDj4es+1LhHpeQ+uDeff1dBp0R+xAHyJFJkN0+KBE9EiFuAByKFqjYYGmIAmAuQxTxJ3AwY3aYi83DEbSsoDMYVkJWAtKE0aM1KqCt3qirDqpXau05Vucv6IplKlTTmgPNXhGbx9etN7VeG98XRARrpi4mHg=
+ bh=AkCG20N6TenXb+1qHFmeTyuifMhPJcOixGQja4zCj5k=;
+ b=IV7bZ4VUL4iF2dmXG3JBvCvJD18xZQMuYAvnY9D6PCAg9jB13F+IgZqXH/j9ik3kY9LxovXRo/e+sC9k7qDc+LhzsGb6EelvJdCgEyXR47RKg5LaEEVxr+2TH4fhadpTjviwZlbPeiOLHL5CNECjeN7HQiTdL2f0Go+fM1w18i0=
 Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.58.26) by
- BYAPR04MB4869.namprd04.prod.outlook.com (52.135.232.158) with Microsoft SMTP
+ BYAPR04MB5446.namprd04.prod.outlook.com (20.178.51.19) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1965.13; Thu, 6 Jun 2019 21:40:29 +0000
+ 15.20.1965.14; Thu, 6 Jun 2019 21:42:06 +0000
 Received: from BYAPR04MB5749.namprd04.prod.outlook.com
  ([fe80::ad42:af4b:a53b:80f5]) by BYAPR04MB5749.namprd04.prod.outlook.com
  ([fe80::ad42:af4b:a53b:80f5%4]) with mapi id 15.20.1965.011; Thu, 6 Jun 2019
- 21:40:29 +0000
+ 21:42:06 +0000
 From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
 To: Bart Van Assche <bvanassche@acm.org>, Keith Busch <keith.busch@intel.com>, 
  Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH 1/2] nvme: Introduce NVMe 1.4 Identify Namespace fields in
- struct nvme_id_ns
-Thread-Topic: [PATCH 1/2] nvme: Introduce NVMe 1.4 Identify Namespace fields
- in struct nvme_id_ns
-Thread-Index: AQHVHK7p5NP2fkEkcUqFXb4VOaXnVQ==
-Date: Thu, 6 Jun 2019 21:40:29 +0000
-Message-ID: <BYAPR04MB57491B1A62AB8B917472232486170@BYAPR04MB5749.namprd04.prod.outlook.com>
+Subject: Re: [PATCH 2/2] nvme: Set physical block size and optimal I/O size
+ according to NVMe 1.4
+Thread-Topic: [PATCH 2/2] nvme: Set physical block size and optimal I/O size
+ according to NVMe 1.4
+Thread-Index: AQHVHK7x9AI8IuFdkEGytuTT5fcunw==
+Date: Thu, 6 Jun 2019 21:42:06 +0000
+Message-ID: <BYAPR04MB5749E9F546E6EA5415BEB20686170@BYAPR04MB5749.namprd04.prod.outlook.com>
 References: <20190606212854.122478-1-bvanassche@acm.org>
- <20190606212854.122478-2-bvanassche@acm.org>
+ <20190606212854.122478-3-bvanassche@acm.org>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -72,42 +72,42 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
 x-originating-ip: [199.255.45.63]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f3a99f76-5277-48ed-0887-08d6eac79881
+x-ms-office365-filtering-correlation-id: a98958d8-e909-4570-e29f-08d6eac7d225
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB4869; 
-x-ms-traffictypediagnostic: BYAPR04MB4869:
+ SRVR:BYAPR04MB5446; 
+x-ms-traffictypediagnostic: BYAPR04MB5446:
 wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <BYAPR04MB4869B782BE7346F86096F61586170@BYAPR04MB4869.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5797;
+x-microsoft-antispam-prvs: <BYAPR04MB54469015CD0F4DE0441B1ABD86170@BYAPR04MB5446.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6430;
 x-forefront-prvs: 00603B7EEF
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(39860400002)(346002)(136003)(366004)(376002)(396003)(199004)(189003)(25786009)(14444005)(7696005)(55016002)(68736007)(486006)(9686003)(256004)(76116006)(14454004)(2906002)(74316002)(3846002)(229853002)(64756008)(66556008)(66446008)(6116002)(110136005)(99286004)(66476007)(66946007)(54906003)(53936002)(476003)(446003)(6246003)(305945005)(186003)(7736002)(52536014)(316002)(72206003)(71190400001)(53546011)(6436002)(6506007)(33656002)(478600001)(71200400001)(81166006)(102836004)(26005)(5660300002)(81156014)(66066001)(8676002)(73956011)(4326008)(86362001)(8936002)(76176011);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4869;
+ SFS:(10019020)(136003)(376002)(346002)(39860400002)(396003)(366004)(189003)(199004)(26005)(8676002)(9686003)(5660300002)(81166006)(81156014)(53936002)(186003)(14454004)(6116002)(72206003)(3846002)(305945005)(6246003)(99286004)(8936002)(68736007)(54906003)(476003)(102836004)(110136005)(229853002)(33656002)(6506007)(53546011)(486006)(7696005)(14444005)(55016002)(478600001)(7736002)(76176011)(256004)(6436002)(71200400001)(446003)(66066001)(76116006)(52536014)(71190400001)(66476007)(66556008)(73956011)(64756008)(66446008)(316002)(4326008)(2906002)(25786009)(74316002)(86362001)(66946007);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5446;
  H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
+ PTR:InfoNoRecords; MX:1; A:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: +ML9BMTBzhClGZIUKN6OfDwi9jQruAdJNfYA1F1SyNC2/Csfq0cK2JsLhlNw4/wQ/Cyz+HYxjA8MAUWeMNchOZGLLqU01Vtq9KZ1mOCqQT3xUHS13eJrhXEjeFBVdUE0SMuGEgyuq2I7Ddk/mKMPfAY+0GuHL+sPoTADPlWUzKnpdNP5xCNVQEoUwpijQOu+2AeD3aYTOebIYGSNYpI36BeSlPFjGItRpxYmCdNWqxjNoXuapYRct7BBIq+uZto89Y/9BTF0aF468/oIiGBamYD3/5e3REq/xQU11fnZwMo5cmUz9lvLwnxtypm2IXf1nD5s/BxaVTsdhECKOZwoJOlYLNoZ304UhhYeLEPEQqHWnWaGV7TmXAet69T7qEJwsd4NYJLYvznDPO3jL2HoLA6BRvX0Cn0cYV8e592BFNg=
+x-microsoft-antispam-message-info: uzTjXLfCY3ZXaGCPASLG9K0Lbnl+rFuXcneJw0bV3myFpmYih5eOWYvRbHWSv7U8OExd5XEAcbYgjaNTrV4G7VMAAxlBV47OKtQT7jkiSnxL5KvowzJ/RSMZgNK8AQo0LLKp4beEn/qm0qNmfQ/YLVmYTBmSQFRxBe+iOeLPGsU63W0nuFpeXwapZcRyU0DR5ZYsV/4zA/HMhldS8vC3m8AF6+1UseCefanmda4/LiAblYjrhurYxt/OHd9MjiAxVEkwwWDPI3F5+H0OBiCsthdl8dB4BTO7UajgmGEPE9IXNXD9T9VBMIGQF4LTcDFYzGgsXZb6QGM8imdwGD89ZYzD+0+N170ecjNvUj+8HaJ7tMW5NmRxosefpqxM9DahyNqmIo4DM4FsMQFJW9/j8SL/S5TtrHuHPce/6jgCwS8=
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f3a99f76-5277-48ed-0887-08d6eac79881
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jun 2019 21:40:29.6159 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a98958d8-e909-4570-e29f-08d6eac7d225
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jun 2019 21:42:06.3244 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
 X-MS-Exchange-CrossTenant-userprincipalname: Chaitanya.Kulkarni@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4869
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5446
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190606_144035_064795_D2509A3F 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20190606_144210_271787_702C01C4 
+X-CRM114-Status: GOOD (  22.70  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
+ medium trust [216.71.154.45 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -135,57 +135,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Looks good.
-
-Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+Looks good. One quick question though do you actually have a controller
+on which you have tested this feature ?
 
 On 06/06/2019 02:29 PM, Bart Van Assche wrote:
-> Several new fields have been introduced in version 1.4 of the NVMe spec
-> at offsets that were defined as reserved in version 1.3d of the NVMe
-> spec. Update the definition of the nvme_id_ns data structure such that
-> it is in sync with version 1.4 of the NVMe spec.
+>  From the NVMe 1.4 spec:
+>
+> NSFEAT bit 4 if set to 1: indicates that the fields NPWG, NPWA, NPDG, NPDA,
+> and NOWS are defined for this namespace and should be used by the host for
+> I/O optimization;
+> [ ... ]
+> Namespace Preferred Write Granularity (NPWG): This field indicates the
+> smallest recommended write granularity in logical blocks for this namespace.
+> This is a 0's based value. The size indicated should be less than or equal
+> to Maximum Data Transfer Size (MDTS) that is specified in units of minimum
+> memory page size. The value of this field may change if the namespace is
+> reformatted. The size should be a multiple of Namespace Preferred Write
+> Alignment (NPWA). Refer to section 8.25 for how this field is utilized to
+> improve performance and endurance.
+> [ ... ]
+> Each Write, Write Uncorrectable, or Write Zeroes commands should address a
+> multiple of Namespace Preferred Write Granularity (NPWG) (refer to Figure
+> 245) and Stream Write Size (SWS) (refer to Figure 515) logical blocks (as
+> expressed in the NLB field), and the SLBA field of the command should be
+> aligned to Namespace Preferred Write Alignment (NPWA) (refer to Figure 245)
+> for best performance.
 >
 > Cc: Christoph Hellwig <hch@lst.de>
 > Cc: Sagi Grimberg <sagi@grimberg.me>
 > Cc: Hannes Reinecke <hare@suse.com>
 > Signed-off-by: Bart Van Assche <bvanassche@acm.org>
 > ---
->   include/linux/nvme.h | 12 +++++++++---
->   1 file changed, 9 insertions(+), 3 deletions(-)
+>   drivers/nvme/host/core.c | 14 ++++++++++++--
+>   1 file changed, 12 insertions(+), 2 deletions(-)
 >
-> diff --git a/include/linux/nvme.h b/include/linux/nvme.h
-> index 8028adacaff3..2b5072ec4511 100644
-> --- a/include/linux/nvme.h
-> +++ b/include/linux/nvme.h
-> @@ -315,7 +315,7 @@ struct nvme_id_ns {
->   	__u8			nmic;
->   	__u8			rescap;
->   	__u8			fpi;
-> -	__u8			rsvd33;
-> +	__u8			dlfeat;
->   	__le16			nawun;
->   	__le16			nawupf;
->   	__le16			nacwu;
-> @@ -324,11 +324,17 @@ struct nvme_id_ns {
->   	__le16			nabspf;
->   	__le16			noiob;
->   	__u8			nvmcap[16];
-> -	__u8			rsvd64[28];
-> +	__le16			npwg;
-> +	__le16			npwa;
-> +	__le16			npdg;
-> +	__le16			npda;
-> +	__le16			nows;
-> +	__u8			rsvd74[18];
->   	__le32			anagrpid;
->   	__u8			rsvd96[3];
->   	__u8			nsattr;
-> -	__u8			rsvd100[4];
-> +	__le16			nvmsetid;
-> +	__le16			endgid;
->   	__u8			nguid[16];
->   	__u8			eui64[8];
->   	struct nvme_lbaf	lbaf[16];
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index 1b7c2afd84cb..c67f2fc8c5c0 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -1608,6 +1608,7 @@ static void nvme_update_disk_info(struct gendisk *disk,
+>   {
+>   	sector_t capacity = le64_to_cpu(id->nsze) << (ns->lba_shift - 9);
+>   	unsigned short bs = 1 << ns->lba_shift;
+> +	uint32_t phys_bs, io_opt;
+>
+>   	if (ns->lba_shift > PAGE_SHIFT) {
+>   		/* unsupported block size, set capacity to 0 later */
+> @@ -1616,9 +1617,18 @@ static void nvme_update_disk_info(struct gendisk *disk,
+>   	blk_mq_freeze_queue(disk->queue);
+>   	blk_integrity_unregister(disk);
+>
+> +	phys_bs = bs;
+> +	io_opt = bs;
+> +	if (id->nsfeat & (1 << 4)) {
+> +		/* NPWG = Namespace Preferred Write Granularity */
+> +		phys_bs *= 1 + le16_to_cpu(id->npwg);
+> +		/* NOWS = Namespace Optimal Write Size */
+> +		io_opt *= 1 + le16_to_cpu(id->nows);
+> +	}
+>   	blk_queue_logical_block_size(disk->queue, bs);
+> -	blk_queue_physical_block_size(disk->queue, bs);
+> -	blk_queue_io_min(disk->queue, bs);
+> +	blk_queue_physical_block_size(disk->queue, phys_bs);
+> +	blk_queue_io_min(disk->queue, phys_bs);
+> +	blk_queue_io_opt(disk->queue, io_opt);
+>
+>   	if (ns->ms && !ns->ext &&
+>   	    (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED))
 >
 
 
