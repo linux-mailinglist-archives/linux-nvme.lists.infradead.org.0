@@ -2,77 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2427836C51
-	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 08:32:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2353C36C52
+	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 08:33:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OmlTLuXp8ujwMM00LJNVY7+J1ONon2WEmQMvQ6B3hsM=; b=HkS82ag5fp8xyi
-	Acp5zy4htO/N8jFOBVxuOQCmYwYro7Yp5sZZHynoLKMJ+nvm6V2nUxzadgb0dDkYKVX7Q+9EfzfMo
-	EHap/yv7IlT1fzI0Cz4GWhIS61Fk8kwS212umeNmm+nfmLd5q2ghvc9SgZtRgZsy6jKsQN7wCO8G8
-	0iSGr8+SZLgQQuR5i/VnWV4SxWUdTReQlOaKAvf+zPa/6JVil2DpcwpBuq0Xhh1qNuEX0JBdIOyeo
-	p60qvUsAoDmqDpbxDpPbbsZhQwT3hy/94QrPlsy/aKdJ/GhKNrQzxJ4qtyDF/MrUczIZnMrCAEiq1
-	KMyUrB9sKOdhaQbpO5dg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AANAL9YaJGX89Uawm4XtnnLzHPURr/miT7zkZPdBP1A=; b=aDDScJOW5pdVDV
+	csJV+LMd9HbpIEOVlTGpv4gbHJIPJHmZqAhoVKtK+plNzqF1f6D1UzTltajwfuYeN/0Y62qoEiIIt
+	lpt30eJMEo3eqb4ZKvmoukNQ6mAomkgtHWNq+o5sOoS8KCuF+Av/fIUhSsykmgFK5n//WyO/hgqpD
+	WQCvaMa0+vhhyGJtqn1TALimUoNVU96faBafd5opWHN7J9vzOIw9Tkk3a16PKLAfQermJadmHKr9f
+	C6riprgAQF8l0LZwXZRxoIRM7go88CtAlV1ZwB0p/JyTTwurq0BTRWtltIEQ7dAHKdIbBgxUr7OMB
+	Zfqw8uNU6VRJm3zkSSeg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYlxD-0002Ak-05; Thu, 06 Jun 2019 06:32:51 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1hYlxO-0002K5-26; Thu, 06 Jun 2019 06:33:02 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYlx7-0002AP-Sv
- for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 06:32:47 +0000
-Received: by mail-pl1-x644.google.com with SMTP id f97so510782plb.5
- for <linux-nvme@lists.infradead.org>; Wed, 05 Jun 2019 23:32:44 -0700 (PDT)
+ id 1hYlxB-0002B1-CS
+ for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 06:32:52 +0000
+Received: by mail-pg1-x544.google.com with SMTP id a3so768575pgb.3
+ for <linux-nvme@lists.infradead.org>; Wed, 05 Jun 2019 23:32:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=UO3g7Gip8LY3OcnQC4tYt8hmxJKAzUJzQ1GKecsMuAQ=;
- b=BYs11jEcPEi91SNh+NhcSdCvPNph162DVg7X07bRmF8R1C5nN3cyGzwdpqHpL4Mm/m
- 2tm8veShxwb7UZI70gps0yQCUd+T1c37JTUoNa8nKRwqVVQfafoDNTgA+OVWUtwBFSY8
- aWX8megb0TUzwG7a2XSSFVsNjILRfv0lpQ3QOaMlLQlY2sF2rAR+zf7yUc2fjp6mogJG
- ij2Cqx1Wu/oovEhJBYho1u5rYs1c71y5QZQV2Wb4MNuAbkh7qavhPBLtmqjI1ARhQ+T7
- 8U/8Gvqhn33TTwfj1+B2r6YWh5rL0YiRSt+mi/SvNjpVikCymDNUvS+mShtRCyDLKpi3
- r0Vw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=qV7BYsusa/BkjRaIAt5JcaY/btz3GAJvUQJzpnho/mA=;
+ b=MSNPPEm2SpRSs5uFnh4sFaJhgND8VUd3lj9r/d930IVjSgPtFN82NRgu3SVXAVAHeh
+ 3C42QH6yfWGow1QIH9zWdPzL1OShL1Lcdff0lqk8BKVLXdimuH7Dd9Mbuq+gPgiRGNaf
+ yyatFYW9o3w4mSYLGDpSymeTYkwSjUHEL/vfE+QFOIiaoVQ2pQki7YJVVGbEQm+B/VGY
+ a4TixDrNHsXB+e1Hx8sph2bcOZo74sftogFuCyfktOBZ1GIdW9rgDfj7TmHf3fJeYDpS
+ ibDALU0qr8oZZAq+MeeA4K/u89CTIQqDHd30lXziYE1sITNThyJjESNO73DWt6QrbP+F
+ gESg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=UO3g7Gip8LY3OcnQC4tYt8hmxJKAzUJzQ1GKecsMuAQ=;
- b=I0HEF2o1evbS7uMK/+xm2U4zYZHnxHR9+kQ0b+WFqZyzEi+1ghVedm7w6JgPTcFh7+
- y0yZ2Xnc/ZCAoKa1xrSXmtap4bePVjJ/WsJa/2snUt9ovd8wwHQ1KYmDQLhsoZlSzRgH
- U8VR/RZc4aGjJjfV1Va9xfE6WV8jKFcyBxmjfTcfrr9wWYxe+1GYS6zCwE9MjcBzUMBu
- sNG6FGQGWdN2jOAZ0SyfcAfZcT6SiQy5BrVbV2j62K9x/voh4rFqtatrmiDA6p9WExeX
- zFIpqeoWJv8g3an1K8hLpz3OyfQTNRu7ZAWXOowzn1V4XbaLDO4pVsIAHf2PElONkjqb
- UQtg==
-X-Gm-Message-State: APjAAAXzSOnsQPZ4nXZleZTLW8TCtWXEPC8ha+3NpbWNMqPKaeV7APwP
- +e8+75syCGqq9lExRhXBBzR4k99kh0Q=
-X-Google-Smtp-Source: APXvYqxC6kSSUv5WU/CFoTdjGjfecRfzt3uJdaMn254lC64gDxfEFZUlLyeYzPQDeoKQ9EVWaNWO1w==
-X-Received: by 2002:a17:902:9a9:: with SMTP id
- 38mr50291617pln.10.1559802763721; 
- Wed, 05 Jun 2019 23:32:43 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=qV7BYsusa/BkjRaIAt5JcaY/btz3GAJvUQJzpnho/mA=;
+ b=RiZ05aRzZRQKHp/t1OQbXsD97zRfNe7LTRzyAFEZVsraM0Oq1QYE6e/EJCrzdGfBOw
+ BfKF6s8tmFSFMjcHDXXOcvxM5RoOuyvr1M1WyU+CP5lFu7sQTvMhgZf7ttmQpjjJxqOp
+ fRfHm2wYWY9R/t2O3OcbIdcRxEny5Y0OARFCGGDY8Ra5x+a5vF7ArD3DydAQwOfsM1iD
+ 8A7n7/RfQMijFoHuaCZm9LeHsQ96JMOymWrU01YHEGNtjcof+DeilahcYRWcc3Q9JG1Q
+ tFluX+gS1gwwW/LVRkF1FonDFAd0vr8w/yHKCuNtGqV4t8BbvJacjd+GW825Zxou7Y0K
+ MlUQ==
+X-Gm-Message-State: APjAAAUmQjlCkG2oCYYKoAZVJ5AEXzFgsOFzhoUagcMgY5VjL/kpLo+e
+ MVzLYwjf0lIdi4rmbNX9p73ptuu++WM=
+X-Google-Smtp-Source: APXvYqwO6todhERiIoiK742se/wGBl0TfzJdibw7vdhnQjiDr5StjZdiZeWdK0LN3YwgdXV9fOX5bw==
+X-Received: by 2002:aa7:9342:: with SMTP id 2mr43173317pfn.241.1559802768197; 
+ Wed, 05 Jun 2019 23:32:48 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id r64sm1202562pfr.58.2019.06.05.23.32.41
+ by smtp.gmail.com with ESMTPSA id r64sm1202562pfr.58.2019.06.05.23.32.45
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 05 Jun 2019 23:32:42 -0700 (PDT)
+ Wed, 05 Jun 2019 23:32:47 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [RFC PATCH V6 0/3] nvme-trace: Add support for fabrics command
-Date: Thu,  6 Jun 2019 15:32:26 +0900
-Message-Id: <20190606063229.17258-1-minwoo.im.dev@gmail.com>
+Subject: [RFC PATCH V6 1/3] nvmet: introduce nvmet_req_to_ctrl to get ctrl
+ instance
+Date: Thu,  6 Jun 2019 15:32:27 +0900
+Message-Id: <20190606063229.17258-2-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190606063229.17258-1-minwoo.im.dev@gmail.com>
+References: <20190606063229.17258-1-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190605_233245_936791_49231CD2 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20190605_233249_597572_BB527ADD 
+X-CRM114-Status: GOOD (  12.46  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -103,89 +105,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi,
+nvme host driver can get the controller instance from
+nvme_req(req)->ctrl.  In case of target driver, it needs to get
+controller instance from the struct nvmet_req with sq where the request
+has been submitted.
 
-This is 6th series to introduce target-side tracing.  This series
-continas codes duplicated with host-side tracing, but it can make us
-avoid some disadvantages Christoph pointed out.
+Cc: Keith Busch <kbusch@kernel.org>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+---
+ drivers/nvme/target/nvmet.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-The target-side takes struct nvmet_req *req, so that those two entries
-have a little bit different from host-side tracing entries.
-
-The following logs are examples of this patch series when trying to
-connect the loop targeted device:
-            nvme-2401  [006] ....  1474.570779: nvmet_req_init: nvme0: qid=0, cmdid=0, nsid=1, flags=0x40, meta=0x0, cmd=(nvme_fabrics_type_connect recfmt=0, qid=0, sqsize=31, cattr=0, kato=15000)
-     kworker/6:2-1067  [006] ....  1474.570933: nvmet_req_complete: nvme1: qid=0, cmdid=0, res=0x1, status=0x0
-            nvme-2401  [004] ....  1474.571216: nvmet_req_init: nvme1: qid=0, cmdid=6, nsid=4, flags=0x40, meta=0x0, cmd=(nvme_fabrics_type_property_get attrib=1, ofst=0x0)
-     kworker/4:2-1235  [004] ....  1474.571336: nvmet_req_complete: nvme1: qid=0, cmdid=6, res=0x200f0003ff, status=0x0
-            nvme-2401  [006] ....  1474.571440: nvmet_req_init: nvme1: qid=0, cmdid=22, nsid=0, flags=0x40, meta=0x0, cmd=(nvme_fabrics_type_property_set attrib=0, ofst=0x14, value=0x460001)
-     kworker/6:2-1067  [006] ....  1474.571494: nvmet_req_complete: nvme1: qid=0, cmdid=22, res=0x0, status=0x0
-            nvme-2401  [004] ....  1474.571668: nvmet_req_init: nvme1: qid=0, cmdid=7, nsid=4, flags=0x40, meta=0x0, cmd=(nvme_fabrics_type_property_get attrib=0, ofst=0x1c)
-     kworker/4:2-1235  [004] ....  1474.571767: nvmet_req_complete: nvme1: qid=0, cmdid=7, res=0x1, status=0x0
-            nvme-2401  [006] ....  1474.572078: nvmet_req_init: nvme1: qid=0, cmdid=23, nsid=4, flags=0x40, meta=0x0, cmd=(nvme_fabrics_type_property_get attrib=0, ofst=0x8)
-     kworker/6:2-1067  [006] ....  1474.572098: nvmet_req_complete: nvme1: qid=0, cmdid=23, res=0x10300, status=0x0
-            nvme-2401  [004] ....  1474.572268: nvmet_req_init: nvme1: qid=0, cmdid=8, nsid=4, flags=0x40, meta=0x0, cmd=(nvme_fabrics_type_property_get attrib=1, ofst=0x0)
-     kworker/4:2-1235  [004] ....  1474.572287: nvmet_req_complete: nvme1: qid=0, cmdid=8, res=0x200f0003ff, status=0x0
-            nvme-2401  [006] ....  1474.572436: nvmet_req_init: nvme1: qid=0, cmdid=24, nsid=0, flags=0x40, meta=0x0, cmd=(nvme_admin_identify cns=1, ctrlid=0)
-     kworker/6:2-1067  [006] ....  1474.572462: nvmet_req_complete: nvme1: qid=0, cmdid=24, res=0x0, status=0x0
-            nvme-2401  [004] ....  1474.572643: nvmet_req_init: nvme1: qid=0, cmdid=9, nsid=4294967295, flags=0x40, meta=0x0, cmd=(nvme_admin_get_log_page cdw10=05 00 ff 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00)
-     kworker/4:2-1235  [004] ....  1474.572664: nvmet_req_complete: nvme1: qid=0, cmdid=9, res=0x0, status=0x0
-            nvme-2401  [006] ....  1474.573001: nvmet_req_init: nvme1: qid=0, cmdid=25, nsid=4294967295, flags=0x40, meta=0x0, cmd=(nvme_admin_get_log_page cdw10=0c 01 03 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00)
-     kworker/6:2-1067  [006] ....  1474.573028: nvmet_req_complete: nvme1: qid=0, cmdid=25, res=0x0, status=0x0
-            nvme-2401  [004] ....  1474.573158: nvmet_req_init: nvme1: qid=0, cmdid=6, nsid=0, flags=0x40, meta=0x0, cmd=(nvme_admin_set_features cdw10=07 00 00 00 07 00 07 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00)
-     kworker/4:2-1235  [004] ....  1474.573179: nvmet_req_complete: nvme1: qid=0, cmdid=6, res=0x20007f007f, status=0x0
-    kworker/0:1H-1057  [000] ....  1474.574905: nvmet_req_init: nvme0: qid=0, cmdid=0, nsid=1, flags=0x40, meta=0x0, cmd=(nvme_fabrics_type_connect recfmt=0, qid=1, sqsize=127, cattr=0, kato=0)
-     kworker/0:2-2118  [000] ....  1474.575025: nvmet_req_complete: nvme1: qid=1, cmdid=0, res=0x0, status=0x0
-    kworker/1:1H-1867  [001] ....  1474.575236: nvmet_req_init: nvme0: qid=0, cmdid=0, nsid=1, flags=0x40, meta=0x0, cmd=(nvme_fabrics_type_connect recfmt=0, qid=2, sqsize=127, cattr=0, kato=0)
-     kworker/1:1-63    [001] ....  1474.575358: nvmet_req_complete: nvme1: qid=2, cmdid=0, res=0x0, status=0x0
-
-Please review.
-Thanks,
-
-Changes to V5:
-  - Provide trace code to the target-side instead of a common code
-    shared between host and target to avoid disadvantages something bad
-    for the performance like cache miss.  It has been suggested by
-    Christoph.
-  - Removed the third patch out of this series because that has nothing
-    to do with this series.
-  - Merged the last two commits into a single commit for the review.
-
-Changes to V4:
-  - Add Reviewed-by: tag from Sagi. (Thanks to Sagi)
-  - Consider endianness for cqe->status when assigning the value in
-    trace
-  - Add more descriptions about the variable arguments in events.
-
-Changes to V3:
-  - Remove additional argument from the caller level.
-
-Changes to V2:
-  - Provide a common code for both host and target. (Chaitanya)
-  - Add support for tracing requests in target-side (Chaitanya)
-  - Make it simple in trace.h without branch out from nvme core module
-    (Christoph)
-
-Changes to V1:
-  - fabrics commands should also be decoded, not just showing that it's
-    a fabrics command. (Christoph)
-  - do not make it within nvme admin commands (Chaitanya)
-
-Minwoo Im (3):
-  nvmet: introduce nvmet_req_to_ctrl to get ctrl instance
-  nvme: trace: do not EXPORT_SYMBOL for a trace function
-  nvmet: introduce target-side trace
-
- drivers/nvme/host/trace.c    |   1 -
- drivers/nvme/target/Makefile |   3 +
- drivers/nvme/target/core.c   |   8 ++
- drivers/nvme/target/nvmet.h  |   9 ++
- drivers/nvme/target/trace.c  | 179 ++++++++++++++++++++++++++++++++++
- drivers/nvme/target/trace.h  | 184 +++++++++++++++++++++++++++++++++++
- 6 files changed, 383 insertions(+), 1 deletion(-)
- create mode 100644 drivers/nvme/target/trace.c
- create mode 100644 drivers/nvme/target/trace.h
-
+diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
+index c25d88fc9dec..2d569a1dc3f4 100644
+--- a/drivers/nvme/target/nvmet.h
++++ b/drivers/nvme/target/nvmet.h
+@@ -318,6 +318,15 @@ struct nvmet_req {
+ 	u64			error_slba;
+ };
+ 
++static inline struct nvmet_ctrl *nvmet_req_to_ctrl(struct nvmet_req *req)
++{
++	struct nvmet_sq *sq = req->sq;
++
++	if (sq)
++		return sq->ctrl;
++	return NULL;
++}
++
+ extern struct workqueue_struct *buffered_io_wq;
+ 
+ static inline void nvmet_set_result(struct nvmet_req *req, u32 result)
 -- 
 2.21.0
 
