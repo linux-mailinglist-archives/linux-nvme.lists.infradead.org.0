@@ -2,79 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 167F637D7F
-	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 21:46:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 104E637D81
+	for <lists+linux-nvme@lfdr.de>; Thu,  6 Jun 2019 21:46:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s4TEA/He66zavCTbRj9oamDi5O/ZnyyclyCNQI91ebE=; b=ErR6vrbBbH42DT
-	0Vcuom6drwGrDyYTiS7iSVYrlrpE/yVYEWH3zJq/FMuCRvrzocTVX40eyNmGn/+ZnhNagCf4USKAx
-	CTAje56VN+h7ncYYKeFxRyEXtcjAESDpogwNaKENACwaHPOzvwJwziBe3PnI7kdGJp0ldZUUPxsah
-	FTNXWCOQCR22tWfk8WXMDDpTSe9lQ/KaLUmX1cR/1xFc0fwzsPlvOORTFAFWlMcnhJ6hnSPQyD0bh
-	yeuDLAjb4z5HXYiP5Q9TpeGFFVM8TJ3SlCNNOTR9uuxNxiTfxjGUBb1WTqrKoXiLrXgT0tZCt2px/
-	yaINpPYR3dNyt2suvBGA==;
+	List-Owner; bh=8040jsL10ySkTRF7px7P7DefX0vjJzSk56T9Dz99+pA=; b=T/1VfJFpBWyvab
+	iUMPw6Zj15UEflucQ5zU5LL1yomuf+gx37xsR9gPTgUGf7PGe21GmFcgdsRcq40y6YHMYL1WWhxHz
+	0SmXM4ubt7FlU8sTsg0l4aEoAiubXvUBLCjmYr5l4+zxdlV1xP3hOIu0PnlTOVFKn9PRwBQJchKzL
+	3Fxw4Ld3kUj8W/HcmPau5tu7zlB0I4byiTMTAOSI+71UmiCoF/BWHi0euwovn/HF/21cvsxBKJ0/1
+	+RY34UJc/njMIawf6WgAmwLspBsmXE73Du0g18oFENfjHv/DBCi9xIWDFRNntoDBG++LHxA2ZO90b
+	Jf+o0WhxgSLa70rcgidw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hYyKg-0002v6-Vn; Thu, 06 Jun 2019 19:45:54 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hYyKo-000359-IE; Thu, 06 Jun 2019 19:46:02 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hYyKM-0002aa-II
- for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 19:45:36 +0000
-Received: by mail-pl1-x642.google.com with SMTP id x7so1313851plr.12
- for <linux-nvme@lists.infradead.org>; Thu, 06 Jun 2019 12:45:34 -0700 (PDT)
+ id 1hYyKP-0002d6-9G
+ for linux-nvme@lists.infradead.org; Thu, 06 Jun 2019 19:45:42 +0000
+Received: by mail-pf1-x442.google.com with SMTP id d126so2140652pfd.2
+ for <linux-nvme@lists.infradead.org>; Thu, 06 Jun 2019 12:45:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=BOwvlVwk0d946ruxZ3cYVEZMYP5ZR8It0G6iHYoPF2I=;
- b=NG+1nxgp25IYgSGqhfpz9v2tnrnvKQPSX7l3KXo1ER4nXAum6oLZDX/01eMiuF4Xo9
- 00TXdPDa9knQ2c0cG0SLZGSNTJ4Cd2VTlIMenYl/dnl7MqBYYPeTgifKGgcIcOxb5iT9
- Z8yUq07Hjl4xuG2/G2kPWxpX4azdP8R0w3qGdVwrQ7Q8Km2V6RntTJqe2BD8r792vLgg
- /JsObKgfV3+h6XboGNa3L73imTwpYKvQr1OQr+wVmwAaDEnSVPUPTVzE/7PpihKqt+Ga
- C/9JScW3siAt85Kt8W8b1DymtIB40w6X92hayfMoG8BmMV5kxsuoIIUZbFoh/TeUz/I/
- DoIQ==
+ bh=x2pboyhaSecw7ygNVGotqOpJ9CXDpUIoiprTEAnEBmM=;
+ b=P7mm3NHFrhkwy5LkzivnWHrsUoWTsj8/+y29xkXskQMP7VPdRPpjEli0HJV8rLbf4N
+ JQYALbUpv3Nikl/Vi3KD3xbGcoeODB6/VbVPMXV8QjA1jEwa2HEhKG/FZkiMBwLw3F0t
+ xn7pEpuXEibm1nO1kw7KqWhCf0WOTs7IqfX//bpj5IVLo8Uuem/hPcyXfq+K1k94f8AV
+ WQko0Gt/RHrA1mcNEGUQ+xmvWL/Hy9/V82eFzv1XiraWfuyS62SLR9o0gXLys3hqUUhj
+ xS+47h5NENaDAKv/ZSSB1wxdjG/ZEH1dNi/fB4jQO0CUJ/dxvBp4q2FcFk/R8p18pnzv
+ ntxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=BOwvlVwk0d946ruxZ3cYVEZMYP5ZR8It0G6iHYoPF2I=;
- b=ZHybKpAu5dHpbaCPXAOR/Q1hDrfseTkZmeJbGYp/9CwDQjOCRow2o329umDrOtN+z9
- JoTYad5xuMiTErCkYopwugS48jovWRwLgfYA65hJPJm2ILP7bS2fQZGx6gcrwGrL4RsV
- wiVocravvOQ9y6RxEJ6/1kYPwjZL6EtTlmYUwNQf5gjDarE8TxT1Un05CfbQPFUIOyAj
- //wGfX/CREqJO0g1tA+uS9XFqcEB1VOYe3MCMVrnCJfrHNw6VcUX+qctgWE1oWXDpkuh
- 1eBYybzE0yF19h0KgnxiFKUqGHTdCti4FwynwReEnUDRwWfOkaNJJT6GypSyvfNvWyBe
- qjWg==
-X-Gm-Message-State: APjAAAVPyJ2iWxXhocR4ihWjra7d/AK/CihsMS33bgtmYiGAGSjEadec
- 5mm3V+nhdzrmeg3sDj8tXN0ub85tPoc=
-X-Google-Smtp-Source: APXvYqx2rTvGNYBUowDr+InKKn0rSbqOaRnc3f3PBob3lFctHG26cdwZH4F+pM3pzXSr1+wL0CISHw==
-X-Received: by 2002:a17:902:7e0f:: with SMTP id
- b15mr43716423plm.237.1559850333392; 
- Thu, 06 Jun 2019 12:45:33 -0700 (PDT)
+ bh=x2pboyhaSecw7ygNVGotqOpJ9CXDpUIoiprTEAnEBmM=;
+ b=kXcYipHkLtvtKzRP/9bupd4PSX2Vdda7FzL4gb2v0kCOi2vH625T3f+n4iSf0CaoyX
+ ShY3oPVE/EZ69k99VVDXAD3c/1qrpVhgfHp+CIR9yHgB4rSmz3MGZzNNvbSSXaMCge5H
+ 4mHoFTXsTY05kveFStWeRk2fDjG5IPlYAulPKJHNBMNt1RVmdKihAsIcbM0bIF41vEvC
+ 9TmlKNT9pwe+pPgyYNU+edTprJTA16l7ASANArVT3LP/531BBFWPNsWwJVWHYRaDiNmr
+ mpWqF00NmcHsK96uzdaDCUarBm2EZt+gM51lsUCBnUd9lvYjHxQ64gJX002AgaYGVwLt
+ Nz7w==
+X-Gm-Message-State: APjAAAV3D0HotONOAdIH89w2uBFbqOVTix59xwGLSzJnOsgDQLbXZDLY
+ fSwS95qNqicfAFyRaj31puTb9bhu8bY=
+X-Google-Smtp-Source: APXvYqwm2uv4P3xTsZe3adoXgTPn0fYO95V59a96XBIsbngpFdyYR45UCqImC0uqz9nQTBuFiXde0w==
+X-Received: by 2002:a17:90a:2e89:: with SMTP id
+ r9mr1494445pjd.117.1559850336257; 
+ Thu, 06 Jun 2019 12:45:36 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id x7sm2769983pfa.125.2019.06.06.12.45.30
+ by smtp.gmail.com with ESMTPSA id x7sm2769983pfa.125.2019.06.06.12.45.33
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 06 Jun 2019 12:45:32 -0700 (PDT)
+ Thu, 06 Jun 2019 12:45:35 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [RFC PATCH V7 2/7] nvme: trace: move opcode symbol print to nvme.h
-Date: Fri,  7 Jun 2019 04:45:07 +0900
-Message-Id: <20190606194512.11020-3-minwoo.im.dev@gmail.com>
+Subject: [RFC PATCH V7 3/7] nvme: trace: put cid with le16_to_cpu()
+Date: Fri,  7 Jun 2019 04:45:08 +0900
+Message-Id: <20190606194512.11020-4-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606194512.11020-1-minwoo.im.dev@gmail.com>
 References: <20190606194512.11020-1-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190606_124534_601331_C38A3BF1 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20190606_124537_766764_45FB8E5F 
+X-CRM114-Status: GOOD (  12.82  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -106,137 +106,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The following patches are going to provide the target-side trace which
-might need these kind of macros.  It would be great if it can be shared
-between host and target side both.
+The CID(Command Identifier) is in 16bits so that we need to convert it
+to cpu's one.
 
 Cc: Keith Busch <kbusch@kernel.org>
 Cc: Christoph Hellwig <hch@lst.de>
 Cc: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- drivers/nvme/host/trace.h | 44 --------------------------------------
- include/linux/nvme.h      | 45 +++++++++++++++++++++++++++++++++++++++
- 2 files changed, 45 insertions(+), 44 deletions(-)
+ drivers/nvme/host/trace.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/nvme/host/trace.h b/drivers/nvme/host/trace.h
-index e71502d141ed..62ee29107c32 100644
+index 62ee29107c32..59323e68c393 100644
 --- a/drivers/nvme/host/trace.h
 +++ b/drivers/nvme/host/trace.h
-@@ -16,50 +16,6 @@
- 
- #include "nvme.h"
- 
--#define nvme_admin_opcode_name(opcode)	{ opcode, #opcode }
--#define show_admin_opcode_name(val)					\
--	__print_symbolic(val,						\
--		nvme_admin_opcode_name(nvme_admin_delete_sq),		\
--		nvme_admin_opcode_name(nvme_admin_create_sq),		\
--		nvme_admin_opcode_name(nvme_admin_get_log_page),	\
--		nvme_admin_opcode_name(nvme_admin_delete_cq),		\
--		nvme_admin_opcode_name(nvme_admin_create_cq),		\
--		nvme_admin_opcode_name(nvme_admin_identify),		\
--		nvme_admin_opcode_name(nvme_admin_abort_cmd),		\
--		nvme_admin_opcode_name(nvme_admin_set_features),	\
--		nvme_admin_opcode_name(nvme_admin_get_features),	\
--		nvme_admin_opcode_name(nvme_admin_async_event),		\
--		nvme_admin_opcode_name(nvme_admin_ns_mgmt),		\
--		nvme_admin_opcode_name(nvme_admin_activate_fw),		\
--		nvme_admin_opcode_name(nvme_admin_download_fw),		\
--		nvme_admin_opcode_name(nvme_admin_ns_attach),		\
--		nvme_admin_opcode_name(nvme_admin_keep_alive),		\
--		nvme_admin_opcode_name(nvme_admin_directive_send),	\
--		nvme_admin_opcode_name(nvme_admin_directive_recv),	\
--		nvme_admin_opcode_name(nvme_admin_dbbuf),		\
--		nvme_admin_opcode_name(nvme_admin_format_nvm),		\
--		nvme_admin_opcode_name(nvme_admin_security_send),	\
--		nvme_admin_opcode_name(nvme_admin_security_recv),	\
--		nvme_admin_opcode_name(nvme_admin_sanitize_nvm))
--
--#define nvme_opcode_name(opcode)	{ opcode, #opcode }
--#define show_nvm_opcode_name(val)				\
--	__print_symbolic(val,					\
--		nvme_opcode_name(nvme_cmd_flush),		\
--		nvme_opcode_name(nvme_cmd_write),		\
--		nvme_opcode_name(nvme_cmd_read),		\
--		nvme_opcode_name(nvme_cmd_write_uncor),		\
--		nvme_opcode_name(nvme_cmd_compare),		\
--		nvme_opcode_name(nvme_cmd_write_zeroes),	\
--		nvme_opcode_name(nvme_cmd_dsm),			\
--		nvme_opcode_name(nvme_cmd_resv_register),	\
--		nvme_opcode_name(nvme_cmd_resv_report),		\
--		nvme_opcode_name(nvme_cmd_resv_acquire),	\
--		nvme_opcode_name(nvme_cmd_resv_release))
--
--#define show_opcode_name(qid, opcode)					\
--	(qid ? show_nvm_opcode_name(opcode) : show_admin_opcode_name(opcode))
--
- const char *nvme_trace_parse_admin_cmd(struct trace_seq *p, u8 opcode,
- 		u8 *cdw10);
- const char *nvme_trace_parse_nvm_cmd(struct trace_seq *p, u8 opcode,
-diff --git a/include/linux/nvme.h b/include/linux/nvme.h
-index 7080923e78d1..86b3d04baf20 100644
---- a/include/linux/nvme.h
-+++ b/include/linux/nvme.h
-@@ -562,6 +562,22 @@ enum nvme_opcode {
- 	nvme_cmd_resv_release	= 0x15,
- };
- 
-+#define nvme_opcode_name(opcode)	{ opcode, #opcode }
-+#define show_nvm_opcode_name(val)				\
-+	__print_symbolic(val,					\
-+		nvme_opcode_name(nvme_cmd_flush),		\
-+		nvme_opcode_name(nvme_cmd_write),		\
-+		nvme_opcode_name(nvme_cmd_read),		\
-+		nvme_opcode_name(nvme_cmd_write_uncor),		\
-+		nvme_opcode_name(nvme_cmd_compare),		\
-+		nvme_opcode_name(nvme_cmd_write_zeroes),	\
-+		nvme_opcode_name(nvme_cmd_dsm),			\
-+		nvme_opcode_name(nvme_cmd_resv_register),	\
-+		nvme_opcode_name(nvme_cmd_resv_report),		\
-+		nvme_opcode_name(nvme_cmd_resv_acquire),	\
-+		nvme_opcode_name(nvme_cmd_resv_release))
-+
-+
- /*
-  * Descriptor subtype - lower 4 bits of nvme_(keyed_)sgl_desc identifier
-  *
-@@ -794,6 +810,35 @@ enum nvme_admin_opcode {
- 	nvme_admin_sanitize_nvm		= 0x84,
- };
- 
-+#define nvme_admin_opcode_name(opcode)	{ opcode, #opcode }
-+#define show_admin_opcode_name(val)					\
-+	__print_symbolic(val,						\
-+		nvme_admin_opcode_name(nvme_admin_delete_sq),		\
-+		nvme_admin_opcode_name(nvme_admin_create_sq),		\
-+		nvme_admin_opcode_name(nvme_admin_get_log_page),	\
-+		nvme_admin_opcode_name(nvme_admin_delete_cq),		\
-+		nvme_admin_opcode_name(nvme_admin_create_cq),		\
-+		nvme_admin_opcode_name(nvme_admin_identify),		\
-+		nvme_admin_opcode_name(nvme_admin_abort_cmd),		\
-+		nvme_admin_opcode_name(nvme_admin_set_features),	\
-+		nvme_admin_opcode_name(nvme_admin_get_features),	\
-+		nvme_admin_opcode_name(nvme_admin_async_event),		\
-+		nvme_admin_opcode_name(nvme_admin_ns_mgmt),		\
-+		nvme_admin_opcode_name(nvme_admin_activate_fw),		\
-+		nvme_admin_opcode_name(nvme_admin_download_fw),		\
-+		nvme_admin_opcode_name(nvme_admin_ns_attach),		\
-+		nvme_admin_opcode_name(nvme_admin_keep_alive),		\
-+		nvme_admin_opcode_name(nvme_admin_directive_send),	\
-+		nvme_admin_opcode_name(nvme_admin_directive_recv),	\
-+		nvme_admin_opcode_name(nvme_admin_dbbuf),		\
-+		nvme_admin_opcode_name(nvme_admin_format_nvm),		\
-+		nvme_admin_opcode_name(nvme_admin_security_send),	\
-+		nvme_admin_opcode_name(nvme_admin_security_recv),	\
-+		nvme_admin_opcode_name(nvme_admin_sanitize_nvm))
-+
-+#define show_opcode_name(qid, opcode)					\
-+	(qid ? show_nvm_opcode_name(opcode) : show_admin_opcode_name(opcode))
-+
- enum {
- 	NVME_QUEUE_PHYS_CONTIG	= (1 << 0),
- 	NVME_CQ_IRQ_ENABLED	= (1 << 1),
+@@ -59,7 +59,7 @@ TRACE_EVENT(nvme_setup_cmd,
+ 		__entry->qid = nvme_req_qid(req);
+ 		__entry->opcode = cmd->common.opcode;
+ 		__entry->flags = cmd->common.flags;
+-		__entry->cid = cmd->common.command_id;
++		__entry->cid = le16_to_cpu(cmd->common.command_id);
+ 		__entry->nsid = le32_to_cpu(cmd->common.nsid);
+ 		__entry->metadata = le64_to_cpu(cmd->common.metadata);
+ 		__assign_disk_name(__entry->disk, req->rq_disk);
 -- 
 2.21.0
 
