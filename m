@@ -2,44 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C0163928D
-	for <lists+linux-nvme@lfdr.de>; Fri,  7 Jun 2019 18:53:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ACE1439291
+	for <lists+linux-nvme@lfdr.de>; Fri,  7 Jun 2019 18:55:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SgVXsRM8nyq8ICljSRkYNbIhlxVgL9zei0pShmBmFlY=; b=KFr7tB7Tt2uUtX
-	PZeBlInc4Q6l+8OSgWGN2xg/0Raa/qJiq1jv7lTEy0uJmncc1SCHXP7Lo0DbcBWuInm+HlyksUB7D
-	e1Oo5z1/qF3r1WJKjb5yCvwa9P5658lhW5Dape8/jFOMMaA0ByihoAWJ8dNPPyVV0azyz4SJTmBSk
-	uU4O03cnMqUwaVdN23Lm3eO2Elbt8dHEe2w9MX3O+EHrMqmD/Poxo0Eed6KP+CwjmzAebMHkfrnYF
-	ou9NI9DOtnk49lFtLs4SfBc1o7i/V9I1qtZD4eSY+MoFI3UTL3mxNelzuJXC5alzwunQrgeD5VrCw
-	thLoI0pOXkZ+xtAcgNvw==;
+	List-Owner; bh=CXwJXZ8+GdxHSzcgicOhxyzSx8ZKORBmd93/wLmb5d0=; b=VBhX7oC23Z7gMg
+	JxwijOWfiRnxcggJSdgMX4cqh0LlTa7p1xrNNF2vciONQWLHnTExIbIPXF/RH9mN0RO7d7q885Ub4
+	M1onZJpm1KW2VlwJs9ZMxVMu8/8sW+bqO64n5ORRoU+GkQ6FwLV/viAM3YSKY5GxK+0PXTxE1COzt
+	HQFf/eZwHMlRP5Cb5yoBxC7SJsgwOrjRKgabMNO1khljAsqrizQjE21ahrm2hk05BcHmhWu3rGFke
+	4o7yyYNYoS0JT5im6Qqt1+clEE9zcILVmlp9vYo/dSKo3KBwg2GfTrlyejsnI9aWgzDxTesPGKD0i
+	khovDt119FyG3yeYAHbg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZI7d-0002rL-Hq; Fri, 07 Jun 2019 16:53:45 +0000
+	id 1hZI8r-00035H-GK; Fri, 07 Jun 2019 16:55:01 +0000
 Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZI7X-0002qY-Ow
- for linux-nvme@lists.infradead.org; Fri, 07 Jun 2019 16:53:41 +0000
+ id 1hZI8j-00034u-2T
+ for linux-nvme@lists.infradead.org; Fri, 07 Jun 2019 16:54:54 +0000
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id 8CFFF68AFE; Fri,  7 Jun 2019 18:53:13 +0200 (CEST)
-Date: Fri, 7 Jun 2019 18:53:13 +0200
+ id CB6DE68AFE; Fri,  7 Jun 2019 18:54:26 +0200 (CEST)
+Date: Fri, 7 Jun 2019 18:54:26 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Minwoo Im <minwoo.im.dev@gmail.com>
-Subject: Re: [RFC PATCH V7 6/7] nvme: trace: print result and status in hex
- format
-Message-ID: <20190607165313.GI7307@lst.de>
+Subject: Re: [RFC PATCH V7 7/7] nvmet: introduce target-side trace
+Message-ID: <20190607165426.GJ7307@lst.de>
 References: <20190606194512.11020-1-minwoo.im.dev@gmail.com>
- <20190606194512.11020-7-minwoo.im.dev@gmail.com>
+ <20190606194512.11020-8-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190606194512.11020-7-minwoo.im.dev@gmail.com>
+In-Reply-To: <20190606194512.11020-8-minwoo.im.dev@gmail.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190607_095339_960857_1478C08E 
-X-CRM114-Status: UNSURE (   5.33  )
+X-CRM114-CacheID: sfid-20190607_095453_265800_550F84C9 
+X-CRM114-Status: UNSURE (   6.73  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -69,9 +68,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Looks good,
-
-Reviewed-by: Christoph Hellwig <hch@lst.de>
+I'm not a native speaker either, but maybe s/totally/entirely/ in
+various places?  Otherwise this looks good modulo the comments to
+the previous patches.  Also if someone has a better idea how to
+share code without creating a new module or bloating the core
+kernel please speak up now.
 
 _______________________________________________
 Linux-nvme mailing list
