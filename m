@@ -2,43 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDB9539279
-	for <lists+linux-nvme@lfdr.de>; Fri,  7 Jun 2019 18:48:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A755839283
+	for <lists+linux-nvme@lfdr.de>; Fri,  7 Jun 2019 18:52:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KppzNZtZPWj3H2dyPA5NbrQbhRwAkCpeyFILsT51Ulg=; b=cjBv8pl3sm1nhW
-	mbQnSXlSXwqoDEmDlFssNbPxAZ5ujW6hWK6qti9cLG06UdlG19FDIijXsLwDfi7FBO0QcUUa/L4Ff
-	DoGhC2bFg+3NZWeXuJ3g8Kt+9opC7AHymWKLrlY6yaQbsnk6Qgi3P3i/lpWntpnXGPpSS0A6Kto1T
-	OynUDTIK1kaNsmdHTjl9wIXHCzpZY/iPHoQYJ8VAgJCjjYqYcYJCoLxBRGEuU49M82q7old0wD6Ol
-	8yH0M4H8nHf8s2/UIu8n95XL61AbKi2HgBmGl21uTCZDWA1L4U9N3DHflOa1uOb816h8pWYhMIHY8
-	IH6takjAD3YumMWa+uWQ==;
+	List-Owner; bh=F21NWiPzT0yPy1UjsKK4agLEXpBTS/RpvxXeqryYom8=; b=OgI3AdIhJRy3vo
+	6SwTuy7t55EDVtViOrpZJgwpBtBLHmxalfrFEuZHIY59usRHZAkG55YMamgwif3wtXrkAVt1HX7Ym
+	5vhoGRnKtvf8R26xcSvok5L98T1VFq8iZFf+qK9Vk+pjuJRiEI8q/0DKT/c6+1ItkWnJF9Y37/qhc
+	4bKKOBW1ibBBHQb0To5LlMNUH0V5y/b4JLjl9ea46qC7t7QQJKJloCUEYwlV1aaOemF85ur2uaKUp
+	mNHYa1vTypKzGW1kdcguliNPJ78tPINpKIF1ewwM9i9diO5oji7Zz+0SCIpiPajPnULaklXmn4ibe
+	hGo5SB+5pK5w38tygykg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZI1y-0000qB-LS; Fri, 07 Jun 2019 16:47:54 +0000
+	id 1hZI6P-0002RY-OP; Fri, 07 Jun 2019 16:52:29 +0000
 Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZI1t-0000pr-Jq
- for linux-nvme@lists.infradead.org; Fri, 07 Jun 2019 16:47:50 +0000
+ id 1hZI6J-0002Qf-Tk
+ for linux-nvme@lists.infradead.org; Fri, 07 Jun 2019 16:52:25 +0000
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id 6189E68AFE; Fri,  7 Jun 2019 18:47:23 +0200 (CEST)
-Date: Fri, 7 Jun 2019 18:47:23 +0200
+ id D326768AFE; Fri,  7 Jun 2019 18:51:56 +0200 (CEST)
+Date: Fri, 7 Jun 2019 18:51:56 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Minwoo Im <minwoo.im.dev@gmail.com>
-Subject: Re: [RFC PATCH V7 3/7] nvme: trace: put cid with le16_to_cpu()
-Message-ID: <20190607164723.GF7307@lst.de>
+Subject: Re: [RFC PATCH V7 4/7] nvme: trace: support for fabrics commands
+ in host-side
+Message-ID: <20190607165156.GG7307@lst.de>
 References: <20190606194512.11020-1-minwoo.im.dev@gmail.com>
- <20190606194512.11020-4-minwoo.im.dev@gmail.com>
+ <20190606194512.11020-5-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190606194512.11020-4-minwoo.im.dev@gmail.com>
+In-Reply-To: <20190606194512.11020-5-minwoo.im.dev@gmail.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190607_094749_803596_2EE88D3A 
-X-CRM114-Status: UNSURE (   8.12  )
+X-CRM114-CacheID: sfid-20190607_095224_109359_E13F3696 
+X-CRM114-Status: UNSURE (   7.10  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -68,18 +69,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, Jun 07, 2019 at 04:45:08AM +0900, Minwoo Im wrote:
-> The CID(Command Identifier) is in 16bits so that we need to convert it
-> to cpu's one.
 
-The command identifier is 16-bits wide, but it is a field that the
-controller just passes through and never interprets.  Because of that
-it isn't marked as __le16 in nvme.h either.
+> +#define parse_nvme_cmd(qid, opcode, fctype, cdw10)			\
+> +	((opcode != nvme_fabrics_command) ?				\
+> +		(qid ?							\
+> +			nvme_trace_parse_nvm_cmd(p, opcode, cdw10) :	\
+> +			nvme_trace_parse_admin_cmd(p, opcode, cdw10)) :	\
+> +		nvme_trace_parse_fabrics_cmd(p, fctype, cdw10))
 
-> -		__entry->cid = cmd->common.command_id;
-> +		__entry->cid = le16_to_cpu(cmd->common.command_id);
+The indentation and use of braces looks a little odd here, how about:
 
-This will actually create a sparse warning.
+#define parse_nvme_cmd(qid, opcode, fctype, cdw10)		\
+	((opcode) == nvme_fabrics_command ?			\
+	 nvme_trace_parse_fabrics_cmd(p, fctype, cdw10) :	\
+	((qid) ?						\
+	 nvme_trace_parse_nvm_cmd(p, opcode, cdw10) :	\
+	 nvme_trace_parse_admin_cmd(p, opcode, cdw10)))
+
+
+> +/*
+> + * If not fabrics command, fctype will be ignored.
+> + */
+> +#define show_opcode_name(qid, opcode, fctype)			\
+> +	((opcode != nvme_fabrics_command) ?			\
+> +		(qid ?						\
+> +			show_nvm_opcode_name(opcode) :		\
+> +			show_admin_opcode_name(opcode)) :	\
+> +		show_fabrics_type_name(fctype))
+> +
+
+and:
+
+#define show_opcode_name(qid, opcode, fctype)	\
+	((opcode) == nvme_fabrics_command ?	\
+	 show_fabrics_type_name(fctype) :	\
+	((qid) ?				\
+	 show_nvm_opcode_name(opcode) :		\
+	 show_admin_opcode_name(opcode)))
+
+Otherwise looks good:
+
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
 _______________________________________________
 Linux-nvme mailing list
