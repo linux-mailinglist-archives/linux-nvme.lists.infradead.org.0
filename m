@@ -2,96 +2,78 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E678338EEC
-	for <lists+linux-nvme@lfdr.de>; Fri,  7 Jun 2019 17:24:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB36B391C2
+	for <lists+linux-nvme@lfdr.de>; Fri,  7 Jun 2019 18:19:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x+hcZm6ULRIe+IQ/Y/rvNWOIf5zqsYgHS+Bp6yqHvTE=; b=jFbhfF3wph6yPa
-	6RtagUdujNE9rk42CYmZpM+8rCgpXNH5Uz1uBe+OwmnKPQjkOfm6SEGT3uWxJqYNfij5UUZaPmTXk
-	znjTYT9V6F8UA4EhHd7y+6A7iGMv5W6hiibWQb1QCAe5/IWNr2UyrQU6+TMA/Ti/6Nx92HYEAt3Cp
-	NGJ+eZcnn/tkp9u9bQ0Z897qlyv/NAxKT/WEtOXUQWgYT+ihqq7w/wACJandc1CPm0gvTdLKwrhUJ
-	0FUDorLcM/NZr02jks3DtUKrH0cYq/Fh5XuikKT8Yu2RIfM7uGjRm4SGWrbOKb5fnivFRqo94yMzt
-	yq1Kqv8pigztHcIwMbQw==;
+	List-Owner; bh=QUQUDdsmef2g0oLl94+axBxfEPZ0dSqPoukS7wrVqu0=; b=lcbBoc6F80SfvT
+	9qcDLM5I3GN2XtJYaW8O7glXrh9xyMrh11TgMAMrWhoXdV9nJzqa4iOhPjEkmXs0dMI8NhaSfpqWt
+	gTRDTYGC/y9X6epTU9skfz5CAIKTAY9+WkQGRYjBwgtTNjdoN+mN78FW75EVD8Jd2vgJfy8OFL6wg
+	ZGzZA0GfzMmF4T3Koiqm+ybvKm5Zcuig2698JUfDJ8BfXcxHsxyWUKTPVJ81X2s+LlKN7EurjTG4g
+	wKjjsCKvAaiw6bdmfrPvwkbWefsu9tT4cdoGIJjEMRjSeGmaO1pgM4khG/u2mIpTuareqp+RZILwS
+	z8BciKdoZqvJFYLvChJA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZGja-0005Pr-1Q; Fri, 07 Jun 2019 15:24:50 +0000
-Received: from userp2120.oracle.com ([156.151.31.85])
+	id 1hZHaJ-0005FR-KA; Fri, 07 Jun 2019 16:19:19 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZGjM-0005JG-GT
- for linux-nvme@lists.infradead.org; Fri, 07 Jun 2019 15:24:37 +0000
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x57FITPP073317;
- Fri, 7 Jun 2019 15:21:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : references : date : in-reply-to : message-id : mime-version :
- content-type; s=corp-2018-07-02;
- bh=5cdmvQ8QtdgBPVF/caTfLE6eCb1HAnOz5sU6tGOcUpM=;
- b=wneFp+NAgWMjIkyM3dS5re6ycPLKE32fzdT1+fMm31OkSbOzn09Itp52QWjJYE/h7EG8
- 5XF8lJPrOaXgIjGGyRnp1FAc4CW8IVvc/hZVfCAXKoPNCPkwAseYi3IL4+iVKqQP5iPd
- Z1f/Npb08SfUD2LK0eV3XyQoSH9TDXQ5A1GJt2/zH2zdn/ZwPKlWGoUsVxAhcKN0XIrl
- +zRv0+W2anzXS3Gkv7vtfS2QPUKYshmVvIWNHF7tPF3KI8mFKFh/TTWv280ea+dnG+Ue
- x7W1kU3wyfRuJppeCctHu0OgBn8+pyEkMQZ1foj2yiWTgYDyGZad+H8qVv9kUm6IR+gC hQ== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2suj0qxtf3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 07 Jun 2019 15:21:21 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x57FKqcL117386;
- Fri, 7 Jun 2019 15:21:21 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3030.oracle.com with ESMTP id 2swnhdakps-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 07 Jun 2019 15:21:20 +0000
-Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x57FLKse004725;
- Fri, 7 Jun 2019 15:21:20 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 07 Jun 2019 08:21:20 -0700
-To: Keith Busch <keith.busch@gmail.com>
-Subject: Re: [PATCH 0/2] NVMe 1.4 Identify Namespace Support
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-References: <20190606212854.122478-1-bvanassche@acm.org>
- <CAOSXXT5vsi4Fp20dj9TrouwNAYfOAMxAsbFZADZQ9pZE8uo3VA@mail.gmail.com>
-Date: Fri, 07 Jun 2019 11:21:16 -0400
-In-Reply-To: <CAOSXXT5vsi4Fp20dj9TrouwNAYfOAMxAsbFZADZQ9pZE8uo3VA@mail.gmail.com>
- (Keith Busch's message of "Fri, 7 Jun 2019 07:56:21 -0600")
-Message-ID: <yq1a7etjuab.fsf@oracle.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
+ id 1hZHaF-0005F2-3a
+ for linux-nvme@lists.infradead.org; Fri, 07 Jun 2019 16:19:16 +0000
+Received: by mail-wr1-x441.google.com with SMTP id n4so2714654wrw.13
+ for <linux-nvme@lists.infradead.org>; Fri, 07 Jun 2019 09:19:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QLYFhCBlTFecqoI8ue6ayHI59AWpi0+HR6mVYkRqz98=;
+ b=mphLlEuZ21mILNo3Ujwa0flUFHknEIuqxN9j/9cuzAFNK/V5++paH4k+fZe9KtNiRi
+ dBPHylJuKnhy5C6xgOn5Zi+BAlWLGOe7xqxIV1YMYTvX2mEcPip6qUhclaVduQDSHMWs
+ nhtmLp/Ac9Hk8hBYinUxOp52sgD0DfQs6NBzo04WcZIn9B3KoOJKk2hiZzCYDnVwkXrP
+ mQS/Ye30GBmOs3yjTR6rn14L3S5RHJWTgnFhaRpy8/AtbK8soEP8CGeOopmIY561u5jl
+ K4OrAynTrg6PyRfWgADXN6ZVayYqFTMEtn/OestSAgJgYAmV+zp3WTAuxhb3EwEfC2+I
+ Qhag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QLYFhCBlTFecqoI8ue6ayHI59AWpi0+HR6mVYkRqz98=;
+ b=af7yjmX3adLRvLz4wzr5/vVq0wB6/kkYUTkoRk95GRY3791HNPSwOhb3+x7nOb2jaO
+ 3L5RCofmoAzPIXunlyIBudDIzysZkiVPq4IaGywlcnTEzo9IFU54d26905Icho0OgcOM
+ VkPjGUZSTTqPggzSaEtV5AQ8HoRpkmMLOCbED13xY38CJHQ5mYPrn25Xh/pCXAC9GChH
+ SQ6erpbIVasedhkuemBO/WCjddt8fZ7UGskzf42BcRqdRZVgvzSi9eYhQcsSW4mmag0L
+ NYtE9r2FQww1otuufoOYa8NtQ6WSLwF7M28oi3PFWkS036OPeWOE+S/4OPJyLYdFrbAI
+ +ZTg==
+X-Gm-Message-State: APjAAAWz1ogysTpH/RovqL5MUzCMIMpVEXnLGgudc3wJjZszS8W0Atio
+ j/tf1EuMou2n1LaK4VQWfYIyWgpGJ2gTd3XGib6WqK2D
+X-Google-Smtp-Source: APXvYqz528mbK0mMUk7tnnXLuDu40v/gl/gDfev/YLhsHhzxFy2WKFX0GHuIKmH7p449eiLbrcAAxBjS7QQrs9MjHg8=
+X-Received: by 2002:a5d:6b12:: with SMTP id v18mr34777728wrw.306.1559924352721; 
+ Fri, 07 Jun 2019 09:19:12 -0700 (PDT)
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9280
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=874
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906070107
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9280
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=938 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906070107
+References: <1559209406-713-1-git-send-email-maxg@mellanox.com>
+In-Reply-To: <1559209406-713-1-git-send-email-maxg@mellanox.com>
+From: Keith Busch <keith.busch@gmail.com>
+Date: Fri, 7 Jun 2019 10:19:01 -0600
+Message-ID: <CAOSXXT5tZa_hoybxbQRpYuOmQKki7gDCA7jcc4a4hfmDiJxp+Q@mail.gmail.com>
+Subject: Re: [PATCH 1/5] nvme: update list-ns nsid option
+To: Max Gurtovoy <maxg@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190607_082436_647089_154444AF 
-X-CRM114-Status: GOOD (  13.93  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190607_091915_175001_4CF65EE9 
+X-CRM114-Status: UNSURE (   4.80  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [156.151.31.85 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (keith.busch[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -99,9 +81,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,26 +92,16 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
- Bart Van Assche <bvanassche@acm.org>,
- linux-nvme <linux-nvme@lists.infradead.org>, Sagi Grimberg <sagi@grimberg.me>
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme <linux-nvme@lists.infradead.org>, shlomin@mellanox.com,
+ Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ minwoo.im@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-Keith,
-
-> Series looks good. There doesn't seem to be much in-kernel use for
-> these preferred access attributes unfortunately, but this is a good
-> start.
-
-Userland makes use of them to ensure partition/MD/DM alignment, pick
-sane values for filesystem layout, etc.
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+I've applied the entire series. Thanks, Max!
 
 _______________________________________________
 Linux-nvme mailing list
