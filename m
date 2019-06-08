@@ -2,65 +2,103 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8CB23A1E2
-	for <lists+linux-nvme@lfdr.de>; Sat,  8 Jun 2019 22:16:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E70C3A1F5
+	for <lists+linux-nvme@lfdr.de>; Sat,  8 Jun 2019 22:27:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=DlE6aDd6TqbApgUGlUmci3sKQZhmAmpG14A0+rap/30=; b=OUF
-	gHKTL3kbY1lddS39WaDZHbFNy1ovlVpa2sEw+4ZhdBkVyDlVprC9zTHX3xCp+FLwHRLxBwwjuUztT
-	qTU0xOMKK5DyScXIhoN5/obuR6JLsR0EkAhcENZ7AUtDU8hrFU2oaqoDRwzZCCX0xI6Nm5qoIlWos
-	9Da9rRbJ0lmPSeeJNBcoDxQfqqhccWOmSJN9sUERd1CWVoVqODeNc+cPUAoo306B0OCT1SLi9Huhe
-	Soy9BxV0jP9myLYWTxEHjnMM9HS3Ho7z42DWGQJSuQ0+xlap+EzCXIYzbW2ZxEDZfMZww8D0RNXbv
-	5eHSh3B3dHEnI51Hz6Ptpvcq3tGCuxQ==;
+	List-Owner; bh=XuxyvAj3/qTUnkFRPRK9tbDAwoinIaTjDYPTJwsoquA=; b=cOLtLoIVR+w6/Z
+	obh2l9duYbtzvwnOpEx0xtnDPeDQKBw0KetUmji8v+HscNSFXRukPVajixa19Cz0M37ltx9zDK32d
+	oxgqzg2XjAKcVyah6xdsq/YkQ2rFAn9G2YKgjRWT9RGlj1ew8UpCuU1GDo60oI1aM3iJTEqkXdHBO
+	iH6DDDJNlTGIUsFWfE3tnE8jAcUCz0j3L56eFxGznwcj8e/M1iHOgco1fiBBBfH4AdEfaAx62IG/p
+	7xNQuTY7/GdftGE/AnukucFwX+FIVKxLU3ZiVkV+gWtFSywKzG1z43qMR++hGSApKfGiChpQl4Ayr
+	lDXdAaTEFom4tL6HbLag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZhld-0002hG-E7; Sat, 08 Jun 2019 20:16:45 +0000
+	id 1hZhwJ-0005wo-4D; Sat, 08 Jun 2019 20:27:47 +0000
 Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZhlY-0002gl-UE
- for linux-nvme@lists.infradead.org; Sat, 08 Jun 2019 20:16:42 +0000
+ id 1hZhwF-0005wU-9F
+ for linux-nvme@lists.infradead.org; Sat, 08 Jun 2019 20:27:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1560025002; x=1591561002;
- h=from:to:cc:subject:date:message-id;
- bh=YXFhHyocZm0MhozOt0VyC0h0mbwjQPKXQtuMEsBZXNc=;
- b=k13nrAsKsvDZCq+2WI9cBpFSRIIw+RndPp+95wgNleX++4i+dimfLpjS
- OX4JVKLxnEYTkLnK9W5GMi6l7Vd3sTyOoErido/q80eyJ6Z5o9A/EU53B
- TCo5S24QsoWdxTviYKICSQ/gzq7plKdKXe/t3nHvCqWd8rk5Onq3cmdWQ
- 4Yg2+20sc9Ua4CcxUTAW92SMgEk6HHc7ozZQ0gy7/SRu4BNniFSWWJRin
- 4kNzXpdOkGOHaWy/8AdfeWMQlD66iHqP8FGk72CJDyvtKldh9F4bwVt5F
- fgoDg7Q6thcjTycpBA2Zhd2V6zouwTyi3By0mLbIXIBzEwObOmTW34HIp Q==;
-X-IronPort-AV: E=Sophos;i="5.63,568,1557158400"; d="scan'208";a="115047865"
-Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 09 Jun 2019 04:16:41 +0800
-IronPort-SDR: MTCgA0bizBKvoNt+fcuy3EW0WnoUpJnQJIEfm2xs3LFqkg0rNZma1tSC6qEm1gtbMYTxKHRJHn
- nnhXBiACgShpWtP3bzMYNfqvSvcP+48KuKgBV734cYWS9zl1GGYIVN0gMBJvouD5iMc1caHndO
- yuy/5z2OkUa/VQxiTUhdyw5nNs4UTngXYCLUzbWqQoOmnxN9/aWbX6WAcKKhxW9oRmmTyd6E+s
- E9iTytJQun/L9gTANV4WzznU+gWJ7VyNk5CEvxYHwoAuYW1IEPpVnAZBqskwRN7BaK6/Kb/YW4
- /PSDEOCfoNC080KRC5PgMxVn
-Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
- by uls-op-cesaep01.wdc.com with ESMTP; 08 Jun 2019 12:51:30 -0700
-IronPort-SDR: NRNgZDymaL7zBsl8ODQDYTVanQYHSNkFM3Xj2PLtuRuLOq4Z11S6Vbmd/DWHLYBPhe9AS2gJYb
- Wapbdo/gUgoW1J4so3DL/ly9XzHDLowXA8ZX+kxfbesjNWKRH2MxVAqlNjHtFDTulEJg5Ik4PT
- GIbUoX+F3IO3zKoqwkRdOk7qZHq/mVHXcfDL+aJcXonIBQVo20waq/N7cpg+3udMzrvGNSUAHX
- HbjMhgOsRkHdKcfYx/fIWgreymWvN/l/UNBnFCjTIYNBmg58rsxf0O1qiknDbN3J2cEI7PIv3r
- 3gU=
-Received: from qemu.hgst.com ([10.202.65.140])
- by uls-op-cesaip02.wdc.com with ESMTP; 08 Jun 2019 13:16:40 -0700
-From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH] nvme-pci: code cleanup
-Date: Sat,  8 Jun 2019 13:16:32 -0700
-Message-Id: <20190608201632.8244-1-chaitanya.kulkarni@wdc.com>
-X-Mailer: git-send-email 2.17.0
+ t=1560025663; x=1591561663;
+ h=from:to:cc:subject:date:message-id:references:
+ content-transfer-encoding:mime-version;
+ bh=8jGlsv/fWN9ZmbwUd+W8qrGIsxdReJUkRsAGN22DD9U=;
+ b=UtHFG1wssdQ23WYQ7fi+/dVMvGuZ0M8Hu+XcR52F1Q7b+al+tZJGoscg
+ 3YPgGg6KS595Wwmunhd7NmrS4EgnKlf60hIv/U/r8+Fz4HCtJW3CWwi9c
+ AQnNz5QP/8/3u+IsdkIjau8hKiy0RrEwHIFE47D5BvKZwpwj2H1XZbEWT
+ CJuph8MwJmQ+R5JZ+Xvby9ahb1ZMdERVs7TUTMEg0dTD6WlhL3+8scrgr
+ e4tmFtPqYyHGZP8LXPiI1xNatmiCabvk7+Zb7MgRzhmyP39lHAKbssnT5
+ SdEvuDNIE2ehQUOMj05VybJxXDPf/d7tNY7+0r9HSZD7JX6Pctd4krbbM Q==;
+X-IronPort-AV: E=Sophos;i="5.63,568,1557158400"; d="scan'208";a="115048375"
+Received: from mail-bn3nam04lp2054.outbound.protection.outlook.com (HELO
+ NAM04-BN3-obe.outbound.protection.outlook.com) ([104.47.46.54])
+ by ob1.hgst.iphmx.com with ESMTP; 09 Jun 2019 04:27:37 +0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6wsbME11By0xuGLhnolZ/+1ttAWypiPrnZp17IOGzng=;
+ b=QZyG0qayOsLOf2hikgu2/9KZ62Md8p0Y8MLfxL5P2zrzVeO5RNS868fyyKPptbYOBnvZhPW3iRbKmvqbVaHr1xOrPXucd33Uhx3rpUtdesh/0OBuIuI98uF9QNhnUdWEJv0zWuJKOYS9IYnO4vsmQaEDWMQvKBeLLYAQCpYcwZ8=
+Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.58.26) by
+ BYAPR04MB6166.namprd04.prod.outlook.com (20.178.235.14) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.1965.12; Sat, 8 Jun 2019 20:27:34 +0000
+Received: from BYAPR04MB5749.namprd04.prod.outlook.com
+ ([fe80::ad42:af4b:a53b:80f5]) by BYAPR04MB5749.namprd04.prod.outlook.com
+ ([fe80::ad42:af4b:a53b:80f5%4]) with mapi id 15.20.1965.017; Sat, 8 Jun 2019
+ 20:27:34 +0000
+From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+To: Minwoo Im <minwoo.im.dev@gmail.com>, "linux-nvme@lists.infradead.org"
+ <linux-nvme@lists.infradead.org>
+Subject: Re: [PATCH 1/3] nvme-pci: remove unnecessary zero for static var
+Thread-Topic: [PATCH 1/3] nvme-pci: remove unnecessary zero for static var
+Thread-Index: AQHVHiRlsfXIC1+aqE6HAEPSVzHASA==
+Date: Sat, 8 Jun 2019 20:27:34 +0000
+Message-ID: <BYAPR04MB574999D2B430187C53DEC8E986110@BYAPR04MB5749.namprd04.prod.outlook.com>
+References: <20190608180219.17523-1-minwoo.im.dev@gmail.com>
+ <20190608180219.17523-2-minwoo.im.dev@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
+x-originating-ip: [199.255.47.11]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: f4145117-501c-47e1-7f50-08d6ec4fbdbf
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
+ SRVR:BYAPR04MB6166; 
+x-ms-traffictypediagnostic: BYAPR04MB6166:
+wdcipoutbound: EOP-TRUE
+x-microsoft-antispam-prvs: <BYAPR04MB61665476898103A326A9EC0386110@BYAPR04MB6166.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1284;
+x-forefront-prvs: 0062BDD52C
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(136003)(376002)(346002)(366004)(39860400002)(396003)(199004)(189003)(81166006)(66066001)(14444005)(6246003)(6506007)(68736007)(53546011)(229853002)(9686003)(81156014)(6436002)(99286004)(316002)(256004)(52536014)(8936002)(478600001)(5660300002)(25786009)(86362001)(76176011)(14454004)(72206003)(4326008)(102836004)(54906003)(2501003)(2906002)(110136005)(7696005)(8676002)(55016002)(26005)(446003)(7736002)(74316002)(76116006)(66946007)(73956011)(6116002)(486006)(53936002)(66476007)(66556008)(64756008)(66446008)(71200400001)(186003)(4744005)(33656002)(305945005)(3846002)(476003)(71190400001);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB6166;
+ H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: y2XPN2YIZNkUBTqmozR1Dk0okHBmEex7YXVWa5ew3WpWr/1jivIXC5jLQxDuLM5nC9rKA7Qti6Qv3wWGT9XA7CeEHRoFPacM+4ofcOUq2PIwIstk3LQqc+tdP3+EZ9iSDFyDAc3jMMJEyvT1DluOsaIRFa3Z/fXMs/HoGoJwo7undxQXURCEof+kahPLuoDQ1+SETvxD8RIz0HbpEKhx1t6tLp/0J/cZUpNz+QYyDt+hm1xDzKgCuvZoxxoxIIauMq27p46w6K4csiMwiwEjoq2xJskUUjb+gwcXMeTDi4qmHEXm6nfcYo4QHtylcGsetaxenebOCyC8GeEOScN4DlqK587y4MXqoxMbk3oEFJFUGpkZqJ9UM1BUqg6chiZzSllWDaDIsepHDTVJpFCxeVrGir1HpFOOANBDrPOPigw=
+MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f4145117-501c-47e1-7f50-08d6ec4fbdbf
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Jun 2019 20:27:34.7200 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Chaitanya.Kulkarni@wdc.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB6166
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190608_131641_098482_A3644539 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20190608_132743_485264_18D0CE9F 
+X-CRM114-Status: GOOD (  14.29  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -88,58 +126,44 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-MIME-Version: 1.0
+Cc: Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
+ Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+ Ming Lei <ming.lei@redhat.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This is purely code cleanup patch and doesn't change any functionality.
+Looks good.
 
-This patch removes the extra parameter which is added to the
-nvme_remove_dead_ctrl() for only printing purpose. Also the dev_warn()
-line has more than 80 char.
-
-We move the print message to the same function where actually error is
-occurring and use this opportunity to fix the 80 char.
-
-Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
----
- drivers/nvme/host/pci.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index aca5867d2e6a..cdb41a3aa048 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -2466,10 +2466,8 @@ static void nvme_pci_free_ctrl(struct nvme_ctrl *ctrl)
- 	kfree(dev);
- }
- 
--static void nvme_remove_dead_ctrl(struct nvme_dev *dev, int status)
-+static void nvme_remove_dead_ctrl(struct nvme_dev *dev)
- {
--	dev_warn(dev->ctrl.device, "Removing after probe failure status: %d\n", status);
--
- 	nvme_get_ctrl(&dev->ctrl);
- 	nvme_dev_disable(dev, false);
- 	nvme_kill_queues(&dev->ctrl);
-@@ -2596,7 +2594,11 @@ static void nvme_reset_work(struct work_struct *work)
-  out_unlock:
- 	mutex_unlock(&dev->shutdown_lock);
-  out:
--	nvme_remove_dead_ctrl(dev, result);
-+	if (result)
-+		dev_warn(dev->ctrl.device,
-+				"Removing after probe failure status: %d\n",
-+				result);
-+	nvme_remove_dead_ctrl(dev);
- }
- 
- static void nvme_remove_dead_ctrl_work(struct work_struct *work)
--- 
-2.17.0
+Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+On 06/08/2019 11:02 AM, Minwoo Im wrote:
+> poll_queues will be zero even without zero initialization here.
+>
+> Cc: Jens Axboe <axboe@fb.com>
+> Cc: Ming Lei <ming.lei@redhat.com>
+> Cc: Keith Busch <kbusch@kernel.org>
+> Cc: Christoph Hellwig <hch@lst.de>
+> Cc: Sagi Grimberg <sagi@grimberg.me>
+> Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+> ---
+>   drivers/nvme/host/pci.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+> index 5c051a8470d4..047785023892 100644
+> --- a/drivers/nvme/host/pci.c
+> +++ b/drivers/nvme/host/pci.c
+> @@ -80,7 +80,7 @@ MODULE_PARM_DESC(write_queues,
+>   	"Number of queues to use for writes. If not set, reads and writes "
+>   	"will share a queue set.");
+>
+> -static int poll_queues = 0;
+> +static int poll_queues;
+>   module_param_cb(poll_queues, &queue_count_ops, &poll_queues, 0644);
+>   MODULE_PARM_DESC(poll_queues, "Number of queues to use for polled IO.");
+>
+>
 
 
 _______________________________________________
