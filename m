@@ -2,78 +2,78 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE18D3A0F5
-	for <lists+linux-nvme@lfdr.de>; Sat,  8 Jun 2019 20:03:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BD1A63A0F6
+	for <lists+linux-nvme@lfdr.de>; Sat,  8 Jun 2019 20:03:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eZjcgoUk7XT0rHic4AMeAOretP2Sg2+AVAH1+FdC9+Q=; b=OAVSwQmeZTBHtl
-	lCZ662n8RriGr2bSpt3E7OMIpLfmGMhwlQ8b4c97KtdvQ+Lz+MlANxA0p7T8xCYW/nWt/lWjjnhoe
-	c25loAh7PrGdZCH1qYH14Kr4bXUsDEioNmXsf/OPk4tKJBD6LnEmDyYy5kIvxAff75M2KHngwdRoy
-	sXOCwWF8PJvIMWVa1J/2GsDvbtwyG3E8XlHr9ldYFYyPrrj1PZAcPCj1nAO4zcXlXRXk6XA+2Lg8x
-	gJWhOvDdYffUqBJnN7GhMyvebFYInW7RNk3lbEfZAHn9nmTaUP1Uc9lnVWxj8mDtR/xvNewHPVyP+
-	+PK0tUkfBE/vyKYUfALw==;
+	List-Owner; bh=GvJC7GL8rIXvZwAz1rM+KpoT/U8Kh5bxhSCQL8cI1lM=; b=c0VAOiwynIyuzr
+	iBAQwM0Ezw5jNOKdXvdlyLN2aMv8L6lbZfla0CnYwTCnpf/hZS+sDWzBj9Co4hfJ7C2ersCLyLSSc
+	qDOeeHW5njdLmIRwz32cXvnuzgd8pjiBoZhnlONU8fKZr2Qi6BewkxIIaXVL7xsfeyqG8opE/bl0R
+	8f3bqBl60qQKGhM/CVergXIMpD6N3foQDzXKCBjNlGe56Xs6LT9R8bc43N3QGzStg3lE2aDz8NCvA
+	mNKq8DQ+LGwHDdjs1mieaWdHKcKNNuxOZYvBhEsLSzl7rDFysDy3X6+h9SYLsF7IBu1udoxAZknlL
+	IQUEMddzUPrITIRp8bmw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZfgR-0007KB-4i; Sat, 08 Jun 2019 18:03:15 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1hZfgc-0007Y6-E2; Sat, 08 Jun 2019 18:03:26 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZffw-00074r-A8
- for linux-nvme@lists.infradead.org; Sat, 08 Jun 2019 18:02:45 +0000
-Received: by mail-pf1-x444.google.com with SMTP id 81so2936815pfy.13
- for <linux-nvme@lists.infradead.org>; Sat, 08 Jun 2019 11:02:44 -0700 (PDT)
+ id 1hZffz-00077F-Ki
+ for linux-nvme@lists.infradead.org; Sat, 08 Jun 2019 18:02:49 +0000
+Received: by mail-pg1-x542.google.com with SMTP id 196so2830649pgc.6
+ for <linux-nvme@lists.infradead.org>; Sat, 08 Jun 2019 11:02:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UB3MBQHpaatoKnOeRusaPQ0+nMMXnFAUQzd+q+ImndQ=;
- b=UpKXomW9JHjV84QXAjp4UblucZtuH/+BGZXWYrGYciHBy5EcOksexLOVWyKRKF1GVG
- W5zo96G1gDfrxj2cWuWkmorfWeXhrEdmdF7q1igNeDqa+bFqBMMrZrJGrVcXP1V2bTMj
- Q/38ozaKwfWpcT8yWTGBaVNw5bcePE5mI7lpP15RZNECiOo7iPM0EKGJ/aoF4mOEu6r9
- QWxGLFvMcyCHEmyzrZ6ChX6fFkl5PrK8YWriBfKxK0oUeucwomKnlAlc5XWJJvqdsgtY
- jNQW3ZP+jwZ8QyfRBxir5jUWZvq+WyY1h0ckzxX+dJ8OEur4bSmE7f8xXHt6T0fuvfKz
- F32w==
+ bh=bWDBpviH0+aW7JV5K9f75z4L8q5Gm/7qvKg7M9S88IY=;
+ b=MPNQXALcMnbTzljWdPzvd+g0VCuA+eqymllcB1ECZI4YOh/nPa1dB/nGAjza0Br8G+
+ ZVA4ZfOUmNWQ/iF84yWhxfqfqcUYWXt7SvaMlIDrCDRl9M6bZZFnUrd8s2OLZl+DGQ2Y
+ 43VXwPQlHu4j8kFOOHsORSxiB1q1yvX2ce8VCFFmzHccvXjByfMVvBCEFZML4jmFvrSY
+ mRQYsr/zEx94XPrdoAXeOS1IZgQc5RBvuD82OBCF+l1+eMfKy7kcgOy57JPplEgjyyaU
+ q+wQa3TcLf7UWDa1giBhkQfG1SnIJq2R9uPXQBUJzg/5/5hBPa9YAvA2/sPWmKBbG+wz
+ i+Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UB3MBQHpaatoKnOeRusaPQ0+nMMXnFAUQzd+q+ImndQ=;
- b=SNJdq2rhqf4dlvJ3aLXpotGtMMcAOrqJvkkO8dXacuPcxinE+RbqKpaFOGLWyqaxwm
- NJQGXPC+xcGGGmbUiUIsSKIBEaOsOaxC42nZmc3Cln2OGb0Dw+rQHRfqMiSvNI0tD+k5
- kugMahZzwE48K34o+kZPR0gU0gj0XB6Z9YfdoDYF64wKgVjsmG+F+Zrz/N9Y1vJkq+Ob
- fUuvupZhDuCyKuUi32Lhn0Jao5WrB/lMlWgNk/6qsy0SrCjHXaGVftOwza14N8rE+8rR
- Fya1KBY6fo1oGFJ+9TiEAswbolwvmpbaFlp/l8YJsiYfuuJ8YnaibkmdhxhJQj22g0/I
- FfdA==
-X-Gm-Message-State: APjAAAXu31pramMSZIFC7F88krJrvLDY0fk9CRPaqToR1TzqzzNH4yfd
- TA69xsReWWRmIIcaWWAYZVMgP0z99ek=
-X-Google-Smtp-Source: APXvYqwQ32Y5fflfGtjYoEM/Ycd6Ia9U5+7LdLq4HoV7+Q9kefxOn3xvIvJXZr2sL/pZThfp7agXfA==
-X-Received: by 2002:a63:4714:: with SMTP id u20mr8427576pga.347.1560016963436; 
- Sat, 08 Jun 2019 11:02:43 -0700 (PDT)
+ bh=bWDBpviH0+aW7JV5K9f75z4L8q5Gm/7qvKg7M9S88IY=;
+ b=XU7gbnvScn8QDwPq3h6ghT43mDfoo50lYHePuCo5hxwxw2N8f3QOoiqOjr7jckgpIH
+ RJ7T7ic+VYnS33bkjF1Ejm5XLh2MLSyxytT19prIrvGbp85gtzlUC6ywTM+0I0jEsHXd
+ qBzxH3QcKx4906ODTK2uLe0IY/+sHLWsHSFXiaku138mPKcmpSYIIuijj2C12mfHw9IV
+ pK6mzod0u+q23rItQo+DKZtq0+oPFIx8m4B6n01t36qhD2IHfhv3T9Wc1oZ3TwfPajzO
+ TIaS9hjRjh2guNsIRpoWeptH5HVN4PQPcJ0F3rBZOtJZpX3ajnuoyztYX7mowwgt+R5N
+ AMhg==
+X-Gm-Message-State: APjAAAU3BzoawKGBKBpxvFXk1pT39MMxX/bySS6CveNmD7xOaZ9q+/xL
+ dJnGt5PbjvCvNbftXCnZ71VshklXFZA=
+X-Google-Smtp-Source: APXvYqz8jch7js1M/zV6Fg1jMMwM3iAjkSsdZAuPlBn6BU17elZEriVF5Pk4+OIRIb1P058ZBE8q9w==
+X-Received: by 2002:aa7:8b12:: with SMTP id f18mr64761974pfd.178.1560016966700; 
+ Sat, 08 Jun 2019 11:02:46 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id 128sm6212824pff.16.2019.06.08.11.02.40
+ by smtp.gmail.com with ESMTPSA id 128sm6212824pff.16.2019.06.08.11.02.44
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 08 Jun 2019 11:02:42 -0700 (PDT)
+ Sat, 08 Jun 2019 11:02:46 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 2/3] nvme-pci: remove queue_count_ops for write,poll_queues
-Date: Sun,  9 Jun 2019 03:02:18 +0900
-Message-Id: <20190608180219.17523-3-minwoo.im.dev@gmail.com>
+Subject: [PATCH 3/3] nvme-pci: adjust irq max_vector using num_possible_cpus()
+Date: Sun,  9 Jun 2019 03:02:19 +0900
+Message-Id: <20190608180219.17523-4-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190608180219.17523-1-minwoo.im.dev@gmail.com>
 References: <20190608180219.17523-1-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190608_110244_349938_2111C81E 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20190608_110247_702711_82E79EF1 
+X-CRM114-Status: GOOD (  14.57  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
@@ -105,13 +105,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-queue_count_set() seems like that it has been provided to limit the
-number of queue entries for write/poll queues.  But, the
-queue_count_set() has been doing nothing but a parameter check even it
-has num_possible_cpus() which is nop.
+If the "irq_queues" are greater than num_possible_cpus(),
+nvme_calc_irq_sets() can have irq set_size for HCTX_TYPE_DEFAULT greater
+than it can be afforded.
+2039         affd->set_size[HCTX_TYPE_DEFAULT] = nrirqs - nr_read_queues;
 
-This patch removes entire queue_count_ops from the write_queues and
-poll_queues.
+It might cause a WARN() from the irq_build_affinity_masks() like [1]:
+220         if (nr_present < numvecs)
+221                 WARN_ON(nr_present + nr_others < numvecs);
+
+This patch prevents it from the WARN() by adjusting the max_vector value
+from the nvme_setup_irqs().
+
+[1] WARN messages when modprobe nvme write_queues=32 poll_queues=0:
+root@target:~/nvme# nproc
+8
+root@target:~/nvme# modprobe nvme write_queues=32 poll_queues=0
+[   17.925326] nvme nvme0: pci function 0000:00:04.0
+[   17.940601] WARNING: CPU: 3 PID: 1030 at kernel/irq/affinity.c:221 irq_create_affinity_masks+0x222/0x330
+[   17.940602] Modules linked in: nvme nvme_core [last unloaded: nvme]
+[   17.940605] CPU: 3 PID: 1030 Comm: kworker/u17:4 Tainted: G        W         5.1.0+ #156
+[   17.940605] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.12.1-0-ga5cab58e9a3f-prebuilt.qemu.org 04/01/2014
+[   17.940608] Workqueue: nvme-reset-wq nvme_reset_work [nvme]
+[   17.940609] RIP: 0010:irq_create_affinity_masks+0x222/0x330
+[   17.940611] Code: 4c 8d 4c 24 28 4c 8d 44 24 30 e8 c9 fa ff ff 89 44 24 18 e8 c0 38 fa ff 8b 44 24 18 44 8b 54 24 1c 5a 44 01 d0 41 39 c4 76 02 <0f> 0b 48 89 df 44 01 e5 e8 f1 ce 10 00 48 8b 34 24 44 89 f0 44 01
+[   17.940611] RSP: 0018:ffffc90002277c50 EFLAGS: 00010216
+[   17.940612] RAX: 0000000000000008 RBX: ffff88807ca48860 RCX: 0000000000000000
+[   17.940612] RDX: ffff88807bc03800 RSI: 0000000000000020 RDI: 0000000000000000
+[   17.940613] RBP: 0000000000000001 R08: ffffc90002277c78 R09: ffffc90002277c70
+[   17.940613] R10: 0000000000000008 R11: 0000000000000001 R12: 0000000000000020
+[   17.940614] R13: 0000000000025d08 R14: 0000000000000001 R15: ffff88807bc03800
+[   17.940614] FS:  0000000000000000(0000) GS:ffff88807db80000(0000) knlGS:0000000000000000
+[   17.940616] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   17.940617] CR2: 00005635e583f790 CR3: 000000000240a000 CR4: 00000000000006e0
+[   17.940617] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[   17.940618] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[   17.940618] Call Trace:
+[   17.940622]  __pci_enable_msix_range+0x215/0x540
+[   17.940623]  ? kernfs_put+0x117/0x160
+[   17.940625]  pci_alloc_irq_vectors_affinity+0x74/0x110
+[   17.940626]  nvme_reset_work+0xc30/0x1397 [nvme]
+[   17.940628]  ? __switch_to_asm+0x34/0x70
+[   17.940628]  ? __switch_to_asm+0x40/0x70
+[   17.940629]  ? __switch_to_asm+0x34/0x70
+[   17.940630]  ? __switch_to_asm+0x40/0x70
+[   17.940630]  ? __switch_to_asm+0x34/0x70
+[   17.940631]  ? __switch_to_asm+0x40/0x70
+[   17.940632]  ? nvme_irq_check+0x30/0x30 [nvme]
+[   17.940633]  process_one_work+0x20b/0x3e0
+[   17.940634]  worker_thread+0x1f9/0x3d0
+[   17.940635]  ? cancel_delayed_work+0xa0/0xa0
+[   17.940636]  kthread+0x117/0x120
+[   17.940637]  ? kthread_stop+0xf0/0xf0
+[   17.940638]  ret_from_fork+0x3a/0x50
+[   17.940639] ---[ end trace aca8a131361cd42a ]---
+[   17.942124] nvme nvme0: 7/1/0 default/read/poll queues
 
 Cc: Jens Axboe <axboe@fb.com>
 Cc: Ming Lei <ming.lei@redhat.com>
@@ -120,56 +168,33 @@ Cc: Christoph Hellwig <hch@lst.de>
 Cc: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- drivers/nvme/host/pci.c | 23 ++---------------------
- 1 file changed, 2 insertions(+), 21 deletions(-)
+ drivers/nvme/host/pci.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 047785023892..20193b11ab0d 100644
+index 20193b11ab0d..52fe785295cb 100644
 --- a/drivers/nvme/host/pci.c
 +++ b/drivers/nvme/host/pci.c
-@@ -68,20 +68,14 @@ static int io_queue_depth = 1024;
- module_param_cb(io_queue_depth, &io_queue_depth_ops, &io_queue_depth, 0644);
- MODULE_PARM_DESC(io_queue_depth, "set io queue depth, should >= 2");
+@@ -2051,6 +2051,7 @@ static int nvme_setup_irqs(struct nvme_dev *dev, unsigned int nr_io_queues)
+ 		.priv		= dev,
+ 	};
+ 	unsigned int irq_queues, this_p_queues;
++	unsigned int nr_cpus = num_possible_cpus();
  
--static int queue_count_set(const char *val, const struct kernel_param *kp);
--static const struct kernel_param_ops queue_count_ops = {
--	.set = queue_count_set,
--	.get = param_get_int,
--};
--
- static int write_queues;
--module_param_cb(write_queues, &queue_count_ops, &write_queues, 0644);
-+module_param(write_queues, int, 0644);
- MODULE_PARM_DESC(write_queues,
- 	"Number of queues to use for writes. If not set, reads and writes "
- 	"will share a queue set.");
+ 	/*
+ 	 * Poll queues don't need interrupts, but we need at least one IO
+@@ -2061,7 +2062,10 @@ static int nvme_setup_irqs(struct nvme_dev *dev, unsigned int nr_io_queues)
+ 		this_p_queues = nr_io_queues - 1;
+ 		irq_queues = 1;
+ 	} else {
+-		irq_queues = nr_io_queues - this_p_queues + 1;
++		if (nr_cpus < nr_io_queues - this_p_queues)
++			irq_queues = nr_cpus + 1;
++		else
++			irq_queues = nr_io_queues - this_p_queues + 1;
+ 	}
+ 	dev->io_queues[HCTX_TYPE_POLL] = this_p_queues;
  
- static int poll_queues;
--module_param_cb(poll_queues, &queue_count_ops, &poll_queues, 0644);
-+module_param(poll_queues, int, 0644);
- MODULE_PARM_DESC(poll_queues, "Number of queues to use for polled IO.");
- 
- struct nvme_dev;
-@@ -146,19 +140,6 @@ static int io_queue_depth_set(const char *val, const struct kernel_param *kp)
- 	return param_set_int(val, kp);
- }
- 
--static int queue_count_set(const char *val, const struct kernel_param *kp)
--{
--	int n, ret;
--
--	ret = kstrtoint(val, 10, &n);
--	if (ret)
--		return ret;
--	if (n > num_possible_cpus())
--		n = num_possible_cpus();
--
--	return param_set_int(val, kp);
--}
--
- static inline unsigned int sq_idx(unsigned int qid, u32 stride)
- {
- 	return qid * 2 * stride;
 -- 
 2.21.0
 
