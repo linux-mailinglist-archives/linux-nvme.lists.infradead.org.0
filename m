@@ -2,89 +2,94 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC3573966E
-	for <lists+linux-nvme@lfdr.de>; Fri,  7 Jun 2019 22:06:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 704C439A09
+	for <lists+linux-nvme@lfdr.de>; Sat,  8 Jun 2019 03:35:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pm4dIFFGIuD8jJPz1Z9zjVcpqS5SXCOR9Gs9wMW9D7I=; b=AoZ6OMiKM2mwq7
-	RCmzLJ4TYL8NwGH82xoVEEpH3iJyRSJ3c40qYQWttGTk98Mofw2d0IuRAXMFxqBeFzvZ3nBmAhD3i
-	wislZaC4mdAJwaAAFWT2HbXkmE16P36Tz0fJ8bOrd3v/eeT7DTkvDBE229c9FPq21UrrmmsZXtm+5
-	WvJi+vCt46rEbQfcYt4YwS8SoVZ4GFiGhlyKaZdKu1kqrI65xUWxibJO2Kz4/KKwVjBXExQ4ZCyQX
-	jxQ5wGPDdLVKh6PpScBjuVeKbYkNw4aBnqO3StlGUT7Xv/uke5bwZwvRt3n4rpE34d5tbVJz3iTs0
-	sBiQ1wuWTOxznYxotsdw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Wx6Jcfqs7/HMaec2zjtuTIbrTbgWRDhXj1RNnhgWTak=; b=GwonJvzf+LIw3G
+	rfIj430iBOsdtU56B3B5Hdih6k3vX7QWQc4S8Lo6nbFidDAdxtxZp+tbpPiv4OMHjiiMiQuohjFQX
+	4NcFRpzIRB8Q+/Cu28mxUszislMf86Y6gG9FMCHiX8VMgJ9FVceIdn+BmcZc1tg3VOJuXm+ErOcFx
+	E1CXghskABwg5qhSfiGCzn11MMiIccopF+9VBJuIsVazg/HZytxRS2ejGoJX4g1lhqOQpMeMQlOOm
+	+nTQMEeB63v6RIVENX14H7iAqjqCzaHM153vPfTO9J8E2tV4gP4o4qFkpWGMpn54wYmOCejv1IhTq
+	WTc3zJoiGHEJfT/dDr9w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZL7j-0000Tm-MD; Fri, 07 Jun 2019 20:06:03 +0000
-Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
+	id 1hZQGK-0007jZ-8C; Sat, 08 Jun 2019 01:35:16 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZL7d-0000TT-Cd
- for linux-nvme@lists.infradead.org; Fri, 07 Jun 2019 20:05:58 +0000
-Received: by mail-yb1-xb2b.google.com with SMTP id p8so1216171ybo.13
- for <linux-nvme@lists.infradead.org>; Fri, 07 Jun 2019 13:05:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel-dk.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=W2VvREvwiZyOkniLaY7HWmmBzSbdKWPTDFMEsiU09Wk=;
- b=wNUWCYagOmkS9URuGB6K+BT696Cj0qzN2h+Z8LKwZtYdMuyZJS2nulbPcQA9FbL2cu
- JTuwBUWpjTB0hR2cydqBlUVQ6KD24GTj4V/rW599N2skZY4ZnBH899cSrMxBCGuIllV7
- L5Qr/6Tk4L9QDxV0J6/dkSMZ2enuaBinwduXrW3O/NLN69CyfE/94iaOzw0WBYA+RI3M
- RjkIHub9mc72K6yANfxpE6wFo7cvPR9XPDIACJWZyWPIX4rn2WtqzG40x40O7PSjAhJH
- rpSVLBZNn9cCc3WAg4jHqU10E9tvRiEvnKGhRX05MlhcZaPVLewxfNDaZfN6fYKBFMO2
- WwmA==
+ id 1hZQGG-0007j5-43
+ for linux-nvme@lists.infradead.org; Sat, 08 Jun 2019 01:35:13 +0000
+Received: by mail-pf1-x444.google.com with SMTP id j2so2113563pfe.6
+ for <linux-nvme@lists.infradead.org>; Fri, 07 Jun 2019 18:35:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=44htWoeozfln1RP9YHnaYPIAw2hFkLZPH7KUgbi0fRM=;
+ b=nQAZB7sMJcf8nP0WXrv6/p9oOj97lMwjXoLSXxGgZ6DQ9DrZx6ipMKwW8yUNE8iq/4
+ SO8ikESqz3RGsaI/A2kvPy6nKgbQATMTwaLpdkcbGBmoSD0ObStkpWaH2VcB5tH5cJHs
+ AQDU7HhgQEEYZxLiUMuYI9seswll1G389k7xkHGs6FfUWu3DfXeJ4JSPaTLQsOPRAlPR
+ J5R8vvGmqQuy4hcxWu00+e6cuKfIxj8/8hcYhfodiNGxiiDn/5VE+kt2D+G9jK9x8mZU
+ vBPOPZrn1Hic4VwX2U3f39aLU9YquYZQlc1kivNiiKgrpq2qzdTBBcWiR0hhTv0AgGJu
+ 1W3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=W2VvREvwiZyOkniLaY7HWmmBzSbdKWPTDFMEsiU09Wk=;
- b=GQ0zhuoB+Zbizgak+Xb3wo3kZtX9ktyzUz2D2IdyFtjkPgbiJGGzg5XpUHlaZUJJyQ
- 4P9LeFJxAjUCeKa4Bx/0pGByRiidqgv1dzxzhX6JBHQffMiJTE91L7B12+OA9wRsEuix
- EnAomgCHA5ywW7a1bAfvzr+ZPmzKHckm8Kbnz6wsMW2Uw7KPLRRx9kCkaK2fyueY9RBs
- pyb4ncwwJ8Ia4BlXX61ZvPx6j0np96ublBwuGv27u0+AidhZ9Us7eDVhPu1l5xwr7SaE
- 74dT2Ci9rAzBbEmovpbbQ2piBNgq/OHhQHoNfy1FWr9UseZW5URHTWISVdf2CAU4zLQL
- ve8A==
-X-Gm-Message-State: APjAAAW+89BHZH1XWnAlLcOZtirPFJSB+zmIlweqVXbwXH+3drrm9onQ
- NJ7ncBGQF9jAm6UdJE9xTKxcUQ==
-X-Google-Smtp-Source: APXvYqy4k//DQKzBQGQsevjhZj1tGq8HLVyQw1v3xp3v14QiCuxiH/a4HZqNnkVJPphA7DPJFmVwcA==
-X-Received: by 2002:a25:70c4:: with SMTP id l187mr9879206ybc.118.1559937954693; 
- Fri, 07 Jun 2019 13:05:54 -0700 (PDT)
-Received: from [172.20.10.3] (mobile-166-172-59-47.mycingular.net.
- [166.172.59.47])
- by smtp.gmail.com with ESMTPSA id 203sm849785ywq.24.2019.06.07.13.05.51
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 07 Jun 2019 13:05:53 -0700 (PDT)
-Subject: Re: [GIT PULL] nvme fixes for 5.2-rc
-To: Sagi Grimberg <sagi@grimberg.me>
-References: <20190607195458.12866-1-sagi@grimberg.me>
-From: Jens Axboe <axboe@kernel.dk>
-Message-ID: <87d6eb42-e12e-39f6-43df-c59226bf1911@kernel.dk>
-Date: Fri, 7 Jun 2019 14:05:50 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=44htWoeozfln1RP9YHnaYPIAw2hFkLZPH7KUgbi0fRM=;
+ b=Roc2wHGno+HwPMSuBK8aanQHxa/x8Hsbe1w3WTh9K8GlN/joMOEj5gSC4V49sDWg88
+ xxrEgKt3iYBHEP9AMIszs2RACiu78cnWAV4+7OvIl/xz5ffY5TJuqAdwgjLeIrlHaj2y
+ bTlfh4JDBrTfn9bpqawh1LkAeWa1bTMf4sNEP1ry2jjPXDoRtdZqNvi0x3ZVDgHBU3b1
+ FREAjBV53P+ecDwxdhlq9A4oLDFnG1kL2qBYAzPnpK3jZWgJP3c7L+lmb8IYEnYDPJ/K
+ ay6UcPMxPBXSM0wsUkIyRC79WKUtp8SNRkdKwqXYjYnMT7X9WgSHyyzgGHWTjcljp1BN
+ Wcrw==
+X-Gm-Message-State: APjAAAUFkH4FmdsszMVIF/Wi6uQtkuRCsNoBWDZp/1Fqose9QgYsWigQ
+ AEGFrPVtI3uYRagptZheBVA=
+X-Google-Smtp-Source: APXvYqzzkV8wfbv8Zw0nSDFeyZI6A2TqwBU0IacUQnrXkJM6u3brb26tSyOE19ZhCI9vL1z8bCx0vQ==
+X-Received: by 2002:a17:90a:d16:: with SMTP id
+ t22mr8972425pja.130.1559957710616; 
+ Fri, 07 Jun 2019 18:35:10 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id g13sm4721196pfi.93.2019.06.07.18.35.09
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 07 Jun 2019 18:35:09 -0700 (PDT)
+Date: Sat, 8 Jun 2019 10:35:07 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: [RFC PATCH V7 3/7] nvme: trace: put cid with le16_to_cpu()
+Message-ID: <20190608013507.GC1276@minwooim-desktop>
+References: <20190606194512.11020-1-minwoo.im.dev@gmail.com>
+ <20190606194512.11020-4-minwoo.im.dev@gmail.com>
+ <20190607164723.GF7307@lst.de>
 MIME-Version: 1.0
-In-Reply-To: <20190607195458.12866-1-sagi@grimberg.me>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20190607164723.GF7307@lst.de>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190607_130557_479522_A298B19E 
-X-CRM114-Status: GOOD (  18.12  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190607_183512_190613_6D79106C 
+X-CRM114-Status: GOOD (  12.40  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:b2b listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,59 +101,31 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
- linux-nvme@lists.infradead.org
+Cc: Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 6/7/19 1:54 PM, Sagi Grimberg wrote:
-> Hey Jens,
+On 19-06-07 18:47:23, Christoph Hellwig wrote:
+> On Fri, Jun 07, 2019 at 04:45:08AM +0900, Minwoo Im wrote:
+> > The CID(Command Identifier) is in 16bits so that we need to convert it
+> > to cpu's one.
 > 
-> Couple of nvme fixes for the next rc round.
-> - nvmet write zeros fix from Minwoo
-> - nvme-rdma use-after-free fix from Max
-> - nvme-core u32 overflow fix from Jaesoo
-> - tcp,rdma fixes for limited number of queues from me
+> The command identifier is 16-bits wide, but it is a field that the
+> controller just passes through and never interprets.  Because of that
+> it isn't marked as __le16 in nvme.h either.
 > 
-> The following changes since commit cb9e0e5006064a807b5d722c7e3c42f307193792:
+> > -		__entry->cid = cmd->common.command_id;
+> > +		__entry->cid = le16_to_cpu(cmd->common.command_id);
 > 
->    nvme-pci: use blk-mq mapping for unmanaged irqs (2019-05-22 10:11:36 -0600)
-> 
-> are available in the Git repository at:
-> 
->    git://git.infradead.org/nvme.git nvme-5.2-rc-next
-> 
-> for you to fetch changes up to 62f99b62e5e3b88d23b6ced4380199e8386965af:
-> 
->    nvme-rdma: use dynamic dma mapping per command (2019-06-06 09:53:19 -0700)
-> 
-> ----------------------------------------------------------------
-> Jaesoo Lee (1):
->        nvme: Fix u32 overflow in the number of namespace list calculation
-> 
-> Max Gurtovoy (1):
->        nvme-rdma: use dynamic dma mapping per command
-> 
-> Minwoo Im (1):
->        nvmet: fix data_len to 0 for bdev-backed write_zeroes
-> 
-> Sagi Grimberg (2):
->        nvme-rdma: fix queue mapping when queue count is limited
->        nvme-tcp: fix queue mapping when queue count is limited
-> 
->   drivers/nvme/host/core.c          |   3 +-
->   drivers/nvme/host/rdma.c          | 152 ++++++++++++++++++++++++--------------
->   drivers/nvme/host/tcp.c           |  57 ++++++++++++--
->   drivers/nvme/target/io-cmd-bdev.c |   1 +
->   4 files changed, 150 insertions(+), 63 deletions(-)
+> This will actually create a sparse warning.
 
-Pulled, thanks.
+This is a horrible mistake that I made.  Sorry for making confusions.
+Please ignore this patch in this series.
 
--- 
-Jens Axboe
-
+Thanks,
 
 _______________________________________________
 Linux-nvme mailing list
