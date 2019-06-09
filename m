@@ -2,110 +2,76 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E70C3A1F5
-	for <lists+linux-nvme@lfdr.de>; Sat,  8 Jun 2019 22:27:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 429BD3A655
+	for <lists+linux-nvme@lfdr.de>; Sun,  9 Jun 2019 16:17:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=XuxyvAj3/qTUnkFRPRK9tbDAwoinIaTjDYPTJwsoquA=; b=cOLtLoIVR+w6/Z
-	obh2l9duYbtzvwnOpEx0xtnDPeDQKBw0KetUmji8v+HscNSFXRukPVajixa19Cz0M37ltx9zDK32d
-	oxgqzg2XjAKcVyah6xdsq/YkQ2rFAn9G2YKgjRWT9RGlj1ew8UpCuU1GDo60oI1aM3iJTEqkXdHBO
-	iH6DDDJNlTGIUsFWfE3tnE8jAcUCz0j3L56eFxGznwcj8e/M1iHOgco1fiBBBfH4AdEfaAx62IG/p
-	7xNQuTY7/GdftGE/AnukucFwX+FIVKxLU3ZiVkV+gWtFSywKzG1z43qMR++hGSApKfGiChpQl4Ayr
-	lDXdAaTEFom4tL6HbLag==;
+	References:List-Owner; bh=mU8vUtNeanXXVvqOePPbnTcs6g3nmo3A3W9kby/aQuU=; b=gEx
+	DMyVGa3kbEVVxKRImE9BP6Fd+DEpB/HPvK3z7h12dLS9O0WK55PZzqxr3N8z2J78i3BDPAVrjujkN
+	htvXMcLbn/TmKnwQ2IC6tvTkyEB5Zp2PGNiMZtSAdcKHsyGGPi6M3RQe4yz8v+SPc1QmJwhwxTMDs
+	djnDAhknqZ7slr+x1obQewrmGDlL+zIMPh58XbdKDCNfEI81iFRwSOoNVVA3zViyNXOcIqSkIinPw
+	+0OSkV5K0989IXqS8mm3CXkn4oVIamONLhduC5kaer2tnQairNFJkyvHYOn7zXiyhyKIwu3gKyKHQ
+	c9TsC9pimUXSGo1K0XTWYpdMoCkQ5yA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hZhwJ-0005wo-4D; Sat, 08 Jun 2019 20:27:47 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1hZydU-0003VX-QP; Sun, 09 Jun 2019 14:17:28 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hZhwF-0005wU-9F
- for linux-nvme@lists.infradead.org; Sat, 08 Jun 2019 20:27:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1560025663; x=1591561663;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=8jGlsv/fWN9ZmbwUd+W8qrGIsxdReJUkRsAGN22DD9U=;
- b=UtHFG1wssdQ23WYQ7fi+/dVMvGuZ0M8Hu+XcR52F1Q7b+al+tZJGoscg
- 3YPgGg6KS595Wwmunhd7NmrS4EgnKlf60hIv/U/r8+Fz4HCtJW3CWwi9c
- AQnNz5QP/8/3u+IsdkIjau8hKiy0RrEwHIFE47D5BvKZwpwj2H1XZbEWT
- CJuph8MwJmQ+R5JZ+Xvby9ahb1ZMdERVs7TUTMEg0dTD6WlhL3+8scrgr
- e4tmFtPqYyHGZP8LXPiI1xNatmiCabvk7+Zb7MgRzhmyP39lHAKbssnT5
- SdEvuDNIE2ehQUOMj05VybJxXDPf/d7tNY7+0r9HSZD7JX6Pctd4krbbM Q==;
-X-IronPort-AV: E=Sophos;i="5.63,568,1557158400"; d="scan'208";a="115048375"
-Received: from mail-bn3nam04lp2054.outbound.protection.outlook.com (HELO
- NAM04-BN3-obe.outbound.protection.outlook.com) ([104.47.46.54])
- by ob1.hgst.iphmx.com with ESMTP; 09 Jun 2019 04:27:37 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6wsbME11By0xuGLhnolZ/+1ttAWypiPrnZp17IOGzng=;
- b=QZyG0qayOsLOf2hikgu2/9KZ62Md8p0Y8MLfxL5P2zrzVeO5RNS868fyyKPptbYOBnvZhPW3iRbKmvqbVaHr1xOrPXucd33Uhx3rpUtdesh/0OBuIuI98uF9QNhnUdWEJv0zWuJKOYS9IYnO4vsmQaEDWMQvKBeLLYAQCpYcwZ8=
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.58.26) by
- BYAPR04MB6166.namprd04.prod.outlook.com (20.178.235.14) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1965.12; Sat, 8 Jun 2019 20:27:34 +0000
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::ad42:af4b:a53b:80f5]) by BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::ad42:af4b:a53b:80f5%4]) with mapi id 15.20.1965.017; Sat, 8 Jun 2019
- 20:27:34 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Minwoo Im <minwoo.im.dev@gmail.com>, "linux-nvme@lists.infradead.org"
- <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH 1/3] nvme-pci: remove unnecessary zero for static var
-Thread-Topic: [PATCH 1/3] nvme-pci: remove unnecessary zero for static var
-Thread-Index: AQHVHiRlsfXIC1+aqE6HAEPSVzHASA==
-Date: Sat, 8 Jun 2019 20:27:34 +0000
-Message-ID: <BYAPR04MB574999D2B430187C53DEC8E986110@BYAPR04MB5749.namprd04.prod.outlook.com>
-References: <20190608180219.17523-1-minwoo.im.dev@gmail.com>
- <20190608180219.17523-2-minwoo.im.dev@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.47.11]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f4145117-501c-47e1-7f50-08d6ec4fbdbf
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB6166; 
-x-ms-traffictypediagnostic: BYAPR04MB6166:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <BYAPR04MB61665476898103A326A9EC0386110@BYAPR04MB6166.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1284;
-x-forefront-prvs: 0062BDD52C
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(136003)(376002)(346002)(366004)(39860400002)(396003)(199004)(189003)(81166006)(66066001)(14444005)(6246003)(6506007)(68736007)(53546011)(229853002)(9686003)(81156014)(6436002)(99286004)(316002)(256004)(52536014)(8936002)(478600001)(5660300002)(25786009)(86362001)(76176011)(14454004)(72206003)(4326008)(102836004)(54906003)(2501003)(2906002)(110136005)(7696005)(8676002)(55016002)(26005)(446003)(7736002)(74316002)(76116006)(66946007)(73956011)(6116002)(486006)(53936002)(66476007)(66556008)(64756008)(66446008)(71200400001)(186003)(4744005)(33656002)(305945005)(3846002)(476003)(71190400001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB6166;
- H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: y2XPN2YIZNkUBTqmozR1Dk0okHBmEex7YXVWa5ew3WpWr/1jivIXC5jLQxDuLM5nC9rKA7Qti6Qv3wWGT9XA7CeEHRoFPacM+4ofcOUq2PIwIstk3LQqc+tdP3+EZ9iSDFyDAc3jMMJEyvT1DluOsaIRFa3Z/fXMs/HoGoJwo7undxQXURCEof+kahPLuoDQ1+SETvxD8RIz0HbpEKhx1t6tLp/0J/cZUpNz+QYyDt+hm1xDzKgCuvZoxxoxIIauMq27p46w6K4csiMwiwEjoq2xJskUUjb+gwcXMeTDi4qmHEXm6nfcYo4QHtylcGsetaxenebOCyC8GeEOScN4DlqK587y4MXqoxMbk3oEFJFUGpkZqJ9UM1BUqg6chiZzSllWDaDIsepHDTVJpFCxeVrGir1HpFOOANBDrPOPigw=
-MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f4145117-501c-47e1-7f50-08d6ec4fbdbf
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Jun 2019 20:27:34.7200 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Chaitanya.Kulkarni@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB6166
+ id 1hZydO-0003Up-DV
+ for linux-nvme@lists.infradead.org; Sun, 09 Jun 2019 14:17:24 +0000
+Received: by mail-pf1-x442.google.com with SMTP id u22so3790631pfm.3
+ for <linux-nvme@lists.infradead.org>; Sun, 09 Jun 2019 07:17:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=gIbuP6hHZX1dqCf5cIyqO9R3JNZkLkFml2Tb/cKhC60=;
+ b=u1Djz2LTcSChLFnfiQCH3bwGb5x31HqHrKBZezJxgXaFwmt+wAT/q4kRICk0u8f1PA
+ bExQqumzsXlJT40rZgyw8aMxjrjzjAORa061kzSG6dQONz46Hp/pjBRvCNbTe3n3VYq2
+ nufyZDmd1fSlpEbrlhdTxgZtrPIBy9VnAvA0zJ4IW8PqabRUZ669q3dx5G305x+3+o3c
+ knJkaX4fI3TWayb9We2hxZ6768CMV1qkPeBGj1zetnmqh4eHws48djRG09KkNuAxLk/M
+ BHgIWOcWchBvzmztGdaeHlXHj503x6oHpYQcNCp+eFa4uOjc8nA3wVyt5ITwwdGpBHd4
+ h6ew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=gIbuP6hHZX1dqCf5cIyqO9R3JNZkLkFml2Tb/cKhC60=;
+ b=qD2K782GHujw2gDG/C8d8P7ZeJOPJl5h9ttNyr7YqM5KWXK+q8L0rK5PDR9x6+hXUm
+ dj/5FnxcoRalqNHOEXw2mYyisLvf/e+kak49kpz9Qj51JN+rX9LL6zkA1xtH22B8DotE
+ gxZ0BJw67Yz/uX6dRCCMNgsfki7th8PRrgrxSUAwYAj0B4RO2qSeK8rsHxP+t8rQWRJf
+ 5aUyZBz69z3XQPBPONaIEMMvSnIgVkdxQt1n9lwgXUagWi5lwZmXqN/xwCY/YoRBuk9G
+ Bv7POXa6L8fdhehHd4/Of2+Dwn3Ea2HLPPJZ9Eox9x8dbf4slK2wb9EXQCoX+PXSNRGU
+ CX9A==
+X-Gm-Message-State: APjAAAWOA4xXdUJ/C6Dr7CJJb7vMRf7F5NEnPiI295OalHQ0h1ApVKs8
+ VKiH9AnTi4XV2WTAFbn6Eb3cdoDajwg=
+X-Google-Smtp-Source: APXvYqwF7Q4ezFK60yyanSO3uokVdmltuf+M5VusIPUkim56Ag2jNA8U8J86i3pG6FxleWBXyzIfgQ==
+X-Received: by 2002:a62:a509:: with SMTP id v9mr68058903pfm.82.1560089840791; 
+ Sun, 09 Jun 2019 07:17:20 -0700 (PDT)
+Received: from mita-MS-7A45.lan ([240f:34:212d:1:b49b:e456:7394:88a2])
+ by smtp.gmail.com with ESMTPSA id w4sm9556554pfw.97.2019.06.09.07.17.16
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Sun, 09 Jun 2019 07:17:20 -0700 (PDT)
+From: Akinobu Mita <akinobu.mita@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH v3 0/3] nvme: enable to inject errors into admin commands
+Date: Sun,  9 Jun 2019 23:16:59 +0900
+Message-Id: <1560089822-11462-1-git-send-email-akinobu.mita@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190608_132743_485264_18D0CE9F 
-X-CRM114-Status: GOOD (  14.29  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190609_071722_484069_A3ED35B2 
+X-CRM114-Status: GOOD (  11.69  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (akinobu.mita[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -126,44 +92,64 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
- Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
- Ming Lei <ming.lei@redhat.com>
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+ Thomas Tai <thomas.tai@oracle.com>, Akinobu Mita <akinobu.mita@gmail.com>,
+ Jens Axboe <axboe@fb.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
+ Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Looks good.
+Currenlty fault injection support for nvme only enables to inject errors
+into the commands submitted to I/O queues.
 
-Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-On 06/08/2019 11:02 AM, Minwoo Im wrote:
-> poll_queues will be zero even without zero initialization here.
->
-> Cc: Jens Axboe <axboe@fb.com>
-> Cc: Ming Lei <ming.lei@redhat.com>
-> Cc: Keith Busch <kbusch@kernel.org>
-> Cc: Christoph Hellwig <hch@lst.de>
-> Cc: Sagi Grimberg <sagi@grimberg.me>
-> Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
-> ---
->   drivers/nvme/host/pci.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-> index 5c051a8470d4..047785023892 100644
-> --- a/drivers/nvme/host/pci.c
-> +++ b/drivers/nvme/host/pci.c
-> @@ -80,7 +80,7 @@ MODULE_PARM_DESC(write_queues,
->   	"Number of queues to use for writes. If not set, reads and writes "
->   	"will share a queue set.");
->
-> -static int poll_queues = 0;
-> +static int poll_queues;
->   module_param_cb(poll_queues, &queue_count_ops, &poll_queues, 0644);
->   MODULE_PARM_DESC(poll_queues, "Number of queues to use for polled IO.");
->
->
+This enables to inject errors into the commands submitted to the admin
+queue.
+    
+It is useful to test error handling in the controller initialization.
+
+	# echo 100 > /sys/kernel/debug/nvme0/fault_inject/probability
+	# echo 1 > /sys/kernel/debug/nvme0/fault_inject/times
+	# echo 10 > /sys/kernel/debug/nvme0/fault_inject/space
+	# nvme reset /dev/nvme0
+	# dmesg
+	...
+	nvme nvme0: Could not set queue count (16385)
+	nvme nvme0: IO queues not created
+
+* v3
+- add Reviewed-by tags
+- WARN_ONCE() if no namespace is tied to the request
+- remove thermal zone series dependency
+
+* v2
+- rename the argument 'name' to 'dev_name'
+- add Reviewed-by tags
+- add documentation for nvme fault injection
+
+Akinobu Mita (3):
+  nvme: prepare for fault injection into admin commands
+  nvme: enable to inject errors into admin commands
+  Documentation: nvme: add an example for nvme fault injection
+
+ .../fault-injection/nvme-fault-injection.txt       | 56 ++++++++++++++++++++++
+ drivers/nvme/host/core.c                           |  7 ++-
+ drivers/nvme/host/fault_inject.c                   | 41 ++++++++--------
+ drivers/nvme/host/nvme.h                           | 36 ++++++++------
+ 4 files changed, 104 insertions(+), 36 deletions(-)
+
+Cc: Thomas Tai <thomas.tai@oracle.com>
+Cc: Keith Busch <kbusch@kernel.org>
+Cc: Jens Axboe <axboe@fb.com>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Cc: Minwoo Im <minwoo.im.dev@gmail.com>
+Cc: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+-- 
+2.7.4
 
 
 _______________________________________________
