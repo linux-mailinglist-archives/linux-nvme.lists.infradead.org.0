@@ -2,85 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE8763B8CB
-	for <lists+linux-nvme@lfdr.de>; Mon, 10 Jun 2019 18:00:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1531F3BE05
+	for <lists+linux-nvme@lfdr.de>; Mon, 10 Jun 2019 23:06:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rc9jGDL/PQvXdzeAIlL/IR0R7OqVJyuE19Abeot4n7o=; b=Sd39MI6rRY886+
-	pfHFnbm/RIOdTZv86bzVclNI3p40m20oHFQ+QaQQjovvlnppQ13hDpuDLA8o7FzCf4KAbNsrTodi/
-	VnF42FDYt/lcGcOU2UblCGjImJ+UzjaabTuznsz9VzkyYcuLZeD63Cc1wVifsG+dLF+sCfZFkb6od
-	Q/4J+qceD4iV+O9n41tucVxOHQ4pd7jrUQE9IwnRgFiITc4+rAljxnp3J3snPOw1i3U6QlFTNgoD1
-	Lv3LniueFJbpcfEJvq9MTSQCPa9IJghz66WaqnaCrjanumI5paUuNlRKFXg0wOD5J1sklIoaH9T2Q
-	QV+1YYMsHwQT0iwKIGDg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+QWX+yS+CesHTkSUb+AJq6yeCzqDlHkpAxVhXMuIRUg=; b=fN1axWaENJADgd
+	7BG2npvtvw2ODFK9ywg7QaarFuEFJwVHog5KFla6D6AIxjnkFXxk1aVzUDN4aGwq/ORu1PoV0HC+I
+	zMOrCa0n7LckeMy1sSq3lGwCoTkm3hZYL9Tq4fF3CmKA4bMP3WUx3ZAABEErzg7CiH5Dn/OWUt++9
+	ChwAk4b3q3VH9UVnoSgGHMKFra98aK3e33ccaYGfFax9LR1iieT11TKCxJfB0uW10v2ThQ4xc8Quu
+	SjpHB/sMIHiniZ5S1xzAD536a9rYHmFTW2OsBeJ/k8MXFpLPFN1ekxKYTRr/vWxXX/Q6PMyWRWtL7
+	ZkxFP+aBE4DJ2IhmANjw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haMj2-0007EZ-Uz; Mon, 10 Jun 2019 16:00:48 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1haRUw-0002pp-Qn; Mon, 10 Jun 2019 21:06:35 +0000
+Received: from mail-pf1-f195.google.com ([209.85.210.195])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1haMix-0007DB-Tu
- for linux-nvme@lists.infradead.org; Mon, 10 Jun 2019 16:00:45 +0000
-Received: by mail-wm1-x344.google.com with SMTP id u8so8709640wmm.1
- for <linux-nvme@lists.infradead.org>; Mon, 10 Jun 2019 09:00:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MhW3IQp2kxp2WT1udPSFigogxSZG4DD8hbZhEXJzbNM=;
- b=JttkhtuJpnp8/3mKYAP9FX6ZEhZDtPhV1qxLZqEoyxaqTClzBbTE8mNvx6McK0tsLD
- ZjzW+6RwjnPV9k7+OJFsAC4PfgauIkhX+nIaU52boLtE7gurMr9oRzg/XlDAAiuDXnZ4
- L3aWan/PNGTkGgZgN5G7NQOYuQUrGwq/Ug5vIXr3vY9XT8aeZ8hSADGHjESGHcU3C8Il
- 0Jode0lCd1Tvd3acp/lvM5u0IiR15nHpL9jeaXuauJDnKNDoj3UQv0xZVwG41KgFEw6/
- /DPjfLDp0f4JqdyBSAgfh54iPoomChh5uwItMcuUIdtu0JdlN691uphnutTSx/3U0ZYW
- STcw==
+ id 1haRUk-0002p6-Jq
+ for linux-nvme@lists.infradead.org; Mon, 10 Jun 2019 21:06:23 +0000
+Received: by mail-pf1-f195.google.com with SMTP id s11so5973328pfm.12
+ for <linux-nvme@lists.infradead.org>; Mon, 10 Jun 2019 14:06:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MhW3IQp2kxp2WT1udPSFigogxSZG4DD8hbZhEXJzbNM=;
- b=A4WkHM+2DvzKbolg168fEe6fPVBoVnHFRihmSmaDM8807d6FUwD5PMlHSwxWTuVc5M
- eYY7SJ5m6q+I3UaQoitYH0BPE7xKMZ+GIVpckP/sMXGrGjM6klc36zbtW8rZ0kuMnCar
- zivZFwtic80p5cOuxglXk7qlImAKvjiXbMf2bmNaWEmtLStEFkOHr+mUiKHjgRSzieBV
- tFfdT5bNluAbOpepiSoyihI/mmmClkLdx1GTnA1lSmRlZ/okugc/fCxhv48yS8Lojs0a
- mCLeRnupj2BbXVqceHBsMKnPmxDyGcLIsHwCcS4556AbUSAS5Uq1TzLR5uCC0GYAQFss
- IZFw==
-X-Gm-Message-State: APjAAAVH6CXtfdDa9ZmBNVwSZP7outiRLVE0pIelmtadWwbLBSX4XaQ0
- 36IQgYZGb3+Zefp1n8U5sW5vk8GfV45kzaYY0W4=
-X-Google-Smtp-Source: APXvYqwP5gOmUVTPPKtavKrK8n/uGxVtTooANi2L7IbER7pYjep9UeDVtH2Tdsw9KlCt/brAB0JyQYC/SUM+Ayft/tI=
-X-Received: by 2002:a1c:4484:: with SMTP id r126mr14508368wma.27.1560182441396; 
- Mon, 10 Jun 2019 09:00:41 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TCy0P22D2DyrD8Q3AzXU7cwffVhRk/7/n1MERuYYeqw=;
+ b=EtbzOE0zG6FH8mF1vacyVATcpjISJ/y1eZpcOtLvtQErCvd7qy/HmfhzIkmA+sTNQk
+ RgomXXnC1hSNwP7aCfX7cG/mNeA23sSsTYHg9ZjPQBmOR8UotriK9JJjJa9lPtFI55hL
+ 8fvTkHzk7iSBr0Ma6gJ4+wAq/r4+Y8Wr4t7PuN+XcDapsoI1rzp+wqd1qoiQpEP2c1OY
+ FtLjMy2h35pSRNECMe9gRZXbxI+sNULv80hTsSj/e5nDY8plkLJSKfh4CVjTFStjK4ez
+ 45Cm38yd9g3Cbc7nXJ5pg1uuT/l9NLPSvmieatkhaYnvOUR2vLAooi9wgjGVyF7ngVcz
+ FqgA==
+X-Gm-Message-State: APjAAAXkIRAdyErV4IgvClzZh5fd40tlVrxhjh2IP3OWPBBZINQYx3Sb
+ +XJqpE9z4Mg34na3R8WN07c=
+X-Google-Smtp-Source: APXvYqylRaHOR8xHWGc1O8xsQKdI6bmIdn03fd1UJzMhhSDWDSvrnk+WaPxJC0GIFTcyqmCcN4gFLw==
+X-Received: by 2002:a17:90a:778c:: with SMTP id
+ v12mr22061548pjk.141.1560200781134; 
+ Mon, 10 Jun 2019 14:06:21 -0700 (PDT)
+Received: from desktop-bart.svl.corp.google.com
+ ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
+ by smtp.gmail.com with ESMTPSA id d19sm332208pjs.22.2019.06.10.14.06.19
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 10 Jun 2019 14:06:20 -0700 (PDT)
+From: Bart Van Assche <bvanassche@acm.org>
+To: Christoph Hellwig <hch@lst.de>
+Subject: [PATCH v2 0/3] NVMe 1.4 Identify Namespace Support
+Date: Mon, 10 Jun 2019 14:06:09 -0700
+Message-Id: <20190610210612.103952-1-bvanassche@acm.org>
+X-Mailer: git-send-email 2.20.GIT
 MIME-Version: 1.0
-References: <20190610074456.2761-1-drake@endlessm.com>
-In-Reply-To: <20190610074456.2761-1-drake@endlessm.com>
-From: Keith Busch <keith.busch@gmail.com>
-Date: Mon, 10 Jun 2019 10:00:30 -0600
-Message-ID: <CAOSXXT7OFzHeTxNqZ1sS6giRxhDcrUUnVjURWBiFUc5T_8p=MA@mail.gmail.com>
-Subject: Re: [PATCH] PCI: Add Intel remapped NVMe device support
-To: Daniel Drake <drake@endlessm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190610_090043_970152_E9458FA6 
-X-CRM114-Status: UNSURE (   7.49  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190610_140622_652069_C02CBF43 
+X-CRM114-Status: GOOD (  14.21  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
- [list.dnswl.org]
+ no trust [209.85.210.195 listed in list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (keith.busch[at]gmail.com)
+ provider (bart.vanassche[at]gmail.com)
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.195 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,23 +86,46 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
- linux-pci@vger.kernel.org, linux-nvme <linux-nvme@lists.infradead.org>,
- Keith Busch <kbusch@kernel.org>, linux-ide@vger.kernel.org,
- bhelgaas@google.com, linux@endlessm.com, Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme@lists.infradead.org, Bart Van Assche <bvanassche@acm.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Jun 10, 2019 at 1:45 AM Daniel Drake <drake@endlessm.com> wrote:
-> +       /* We don't support sharing MSI interrupts between these devices */
-> +       nrdev->bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
+Hi Christoph,
 
-And this is a problem, isn't it? Since we don't have an option to open
-the MSI implementation in RAID mode, your experience will be much
-better to disable this mode when using Linux as per the current
-recommendation rather than limping along with legacy IRQ.
+This patch series adds support for several of the new parameters introduced
+in the NVMe 1.4 Identify Namespace command. Please consider these patches
+for kernel version 5.3.
+
+Thanks,
+
+Bart.
+
+Changes compared to v1:
+- Added a patch for the NVMe target code that exports these parameters.
+- Limited the physical block size to the value of AWUPF/NAWUPF as appropriate.
+
+Bart Van Assche (3):
+  nvme: Introduce NVMe 1.4 Identify Namespace fields in struct
+    nvme_id_ns
+  nvmet: Export NVMe namespace attributes
+  nvme: Set physical block size and optimal I/O size according to NVMe
+    1.4
+
+ drivers/nvme/host/core.c          | 24 +++++++++++++++--
+ drivers/nvme/host/nvme.h          |  1 +
+ drivers/nvme/target/admin-cmd.c   |  5 ++++
+ drivers/nvme/target/io-cmd-bdev.c | 43 +++++++++++++++++++++++++++++++
+ drivers/nvme/target/io-cmd-file.c | 34 ++++++++++++++++++++++++
+ drivers/nvme/target/nvmet.h       |  2 ++
+ include/linux/nvme.h              | 12 ++++++---
+ 7 files changed, 116 insertions(+), 5 deletions(-)
+
+-- 
+2.22.0.rc3
+
 
 _______________________________________________
 Linux-nvme mailing list
