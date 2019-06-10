@@ -2,76 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FF123B68E
-	for <lists+linux-nvme@lfdr.de>; Mon, 10 Jun 2019 15:56:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 674A13B6B6
+	for <lists+linux-nvme@lfdr.de>; Mon, 10 Jun 2019 16:07:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/tDx7QdgXpv9kVfICSDu0/p9PUmSVI4L0lrnJu58j5g=; b=sNlDVH1uWjIUSF
-	5WaKZrNibNm0IH3hOeuUNPSsg2RFnVLINff13+YoNHD9fFXSzgrhurWGVCcnYvfK3BHW9A2j381OF
-	r5qbwdE99Yo/mXthih5KbagfVdZcTsJSW+tRzRGpMpZObnaIgBFeU8lDSeQZNWwK2I+LVzikC1rVY
-	kNE6vU0bDItP0FNTz4RdFutZ5Jcyr2+OCCkChFTIw+ARz40F3+C4mb6jjp3ekTDQOS/a5+V1M+dMs
-	hCP75R4dHBM6Z3JCCSiuSW+2hJuNGjotaeZz1ame7I2xiLEkd6/gDxb0rW7mBKaUPqjMFotlZ3Ci8
-	i0G4topjFvBFZq/eFT0Q==;
+	List-Owner; bh=+2S+0QYkRcg3Odxmfxmt9vX9DUWqA/239uY2c53+Jm0=; b=kPsooQaRLRSRhD
+	Km/LErhQydwye5BIMIUj/Y5XjR0jJCMrVIAom+jKQCR9uXshZgkoM4NbAyhOvykT57qa4MYYd0Nkx
+	mfDLpOp1SdB3O01E0x3T2FaOujk9XKyHwfbMgJ36TYVxoEfl5JIv9lHbxDMA/fq7fEJ9FLYDuHMqA
+	3YfvJzdSPN1OXFGKbjUpi97AE35n6K4u++l5bSGWrd9macZC8N394Zk/xSrSexkiuWAVcrYqY+ktO
+	bx3JfoeW13ziHqCbNQobMnsv3oRKIFSP2Jk3DtbjtkaYOUXovRTNMpIpRjg1spuRy4tsnZ7WSwbF5
+	uqQtW91Cr5IaEk+Tmpeg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haKmP-0004Ai-GY; Mon, 10 Jun 2019 13:56:09 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1haKww-0007eh-SK; Mon, 10 Jun 2019 14:07:02 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1haKmH-0004AI-Kk
- for linux-nvme@lists.infradead.org; Mon, 10 Jun 2019 13:56:02 +0000
-Received: by mail-wr1-x431.google.com with SMTP id c2so9280907wrm.8
- for <linux-nvme@lists.infradead.org>; Mon, 10 Jun 2019 06:56:00 -0700 (PDT)
+ id 1haKwq-0007e9-5g
+ for linux-nvme@lists.infradead.org; Mon, 10 Jun 2019 14:06:57 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id v9so3394161pgr.13
+ for <linux-nvme@lists.infradead.org>; Mon, 10 Jun 2019 07:06:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uO4+GZW4xbXl4/wykQtfEQ0jDCPmlKa2yq+0Q5jkCU0=;
- b=a6KC5zqFVMzW3vx3MIVsabnxZivrl3BVMFpVv9y2bs4143Y6YJ7Jv7VCfRa4dbgoAd
- 4I6vaLXRdLySUBh7q3bey3wCQ76GYPoLcAzr8LQPBFoSC5Ls0Fbvl9/SaPsyoofKAe4Y
- SoDeA+is87w28ke0/djURMhXSrtlA03xBhLw16ce/JNY6CHZOChgF9cDAWo8tnRhgjg9
- c1DYi61IIeQOaAvCqrn+NvWOmkLqKiEhNlOJAkIBHK1zlc361qJX2PsSJ6rph9sBDJ+M
- Om0BfMriGvffdSLGHmAKeslfKiYToDLfvzEpNyn4PZtql1wtZEQ9voJRiv4gSElUjmpA
- A4bA==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=Vcycf2y/TVJVrYPKWevN/s3XQSJKbmJ49bSQR1X7Hj4=;
+ b=TuVutxnGhoFVmmN6y7sQ/MmDWAbmIkc9KSojm2L4qy1UZbntUN5I3Vzg/vVlHDILUI
+ 21/BmCgZAI/3l58ITjDigFtivD7+efb0irk2qsNQnxR1CFf912RuApjKRnwsb0IC60WK
+ 3TK1hywzpHFGyptR9dAbm3JzIJ4mGbc1d+g36nHmzbKO8uJm7qzs6RjDQtvqZc8tiTWG
+ WmZTDjb7iWL7oc79PlBtIClEeszFDqK3pZjEnXCoWPgdXg19gV2U8LAd5aAwTLEG1xhh
+ PWB5kcbp3nH5rUr3u1EHFW3gZkgVn7S4ENwgq7qReAL/NXdl/yYUZ4LJ2N7eA5qXLThB
+ inXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uO4+GZW4xbXl4/wykQtfEQ0jDCPmlKa2yq+0Q5jkCU0=;
- b=gQ3B/ocyuUXN+eGdyEodc5vFmpJbVeWGDC6ZSrMATI1tMYaoOx++NJWsEAUplYZtPZ
- R3bdG1xfOjw5z8y0czMxdCO8c0cKhxWgR4phqWKL0J4jlOlhl9Q6MXWPdVV21A1nsZhm
- sOuMa86kg912Jre8TwFEJBGSniFFfwjUhkOPq3cdRvhU2b1r8oVoLREMRQ2JBHHxmzFH
- EMUq/KyZKuhcDaPOpJyqTN3uc7DhLZvFBnberRRzH7pHicUIuAIDpJ69I4X5iowUCZ2c
- zh7Lc4vuYFmacjKyL4eu+1V3PvVbA9TP8U6D251H06G0YEJvubNppHovCfOSbMUUCPoo
- 8zOw==
-X-Gm-Message-State: APjAAAWZMMb2FfFCmh5u/QH8UTip+WAGQPJUKgfw981hi8ItkdkQkL/o
- w2/nA1QOA1wee1oJyQ5+OXqpkw5KagzgyWjJi4Y=
-X-Google-Smtp-Source: APXvYqyIi3LtnRXzAoCMckyk3WQoFK9OvbvbRkTnVNcStjtXhsfMk7gARN97dlPMBzdWS0BBCwxJSmGezvn8Upbfp4U=
-X-Received: by 2002:a5d:400f:: with SMTP id n15mr14781240wrp.312.1560174959651; 
- Mon, 10 Jun 2019 06:55:59 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190610124925.GA20319@minwooim-desktop>
-In-Reply-To: <20190610124925.GA20319@minwooim-desktop>
-From: Keith Busch <keith.busch@gmail.com>
-Date: Mon, 10 Jun 2019 07:55:49 -0600
-Message-ID: <CAOSXXT6BJD8tnus6=vWh6dr9owkVSJdQ_f1icG9Kdq7SpF9Pzg@mail.gmail.com>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Vcycf2y/TVJVrYPKWevN/s3XQSJKbmJ49bSQR1X7Hj4=;
+ b=YpJM1/VyJW+XB7K7vrtCDdRoSPJEyYy9CwIcPoXYrdlx8+n3sIEyfEm6WIYvNJG1rm
+ +nr7kmNAWoJ7EzupBCTFlCYCSyTYEz+HBVQlAC1jmFitS6u6JMfdTSiihXgR8QTT7PV2
+ Y3evPA8WZHJKkcfB7Mh5P8Mo+LJJ5vEvWyJRsk0SrLz5Yn9nuux8AmQefd3a4JSv0tbe
+ vBHe27F4Kbhra5TtTjqKxOwfjlMdwWnKRr8GbMoBsglUi8bmeLE9dq9G9Pe9/KcEBjzb
+ kuRTf9lnHjKm50TDawP21a9HXk0QgAic+pEcVOu6ZNJw23047BRqQyFhmgq2sgJ9G+Lf
+ WU/g==
+X-Gm-Message-State: APjAAAUKmUZHmg0fWD9vvpnHvUeDNh2XoKiosK8geqQR0o4xxD2e9bBp
+ kp740HvwxKQ1ySlcTK6kqFzhAwt1Ecg=
+X-Google-Smtp-Source: APXvYqxiOennscmzqp1z319CCkuyqEK2d7eYvsrkWJk47gD0wuFQDgKLAlaDxbC4ckx7W8NFZPPfPg==
+X-Received: by 2002:a17:90a:bf02:: with SMTP id
+ c2mr21624157pjs.73.1560175613193; 
+ Mon, 10 Jun 2019 07:06:53 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id b128sm11516383pfa.165.2019.06.10.07.06.51
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 10 Jun 2019 07:06:52 -0700 (PDT)
+Date: Mon, 10 Jun 2019 23:06:50 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: Keith Busch <keith.busch@gmail.com>
 Subject: Re: [RFC] mismatch between chardev and blkdev node names
-To: Minwoo Im <minwoo.im.dev@gmail.com>
+Message-ID: <20190610140650.GA25273@minwooim-desktop>
+References: <20190610124925.GA20319@minwooim-desktop>
+ <CAOSXXT6BJD8tnus6=vWh6dr9owkVSJdQ_f1icG9Kdq7SpF9Pzg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAOSXXT6BJD8tnus6=vWh6dr9owkVSJdQ_f1icG9Kdq7SpF9Pzg@mail.gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190610_065601_681559_942FE578 
-X-CRM114-Status: UNSURE (   7.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190610_070656_218338_203C7E44 
+X-CRM114-Status: GOOD (  12.75  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:431 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:52e listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (keith.busch[at]gmail.com)
+ provider (minwoo.im.dev[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -98,21 +106,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Jun 10, 2019 at 6:49 AM Minwoo Im <minwoo.im.dev@gmail.com> wrote:
-> Should users with multipath enabled know this situation well and do
-> something with perfect understanding this policy because they might be
-> administrator for the system?  or should the driver provide the same
-> index at least right next to "nvme" for the controller and namespaces?
+On 19-06-10 07:55:49, Keith Busch wrote:
+> On Mon, Jun 10, 2019 at 6:49 AM Minwoo Im <minwoo.im.dev@gmail.com> wrote:
+> > Should users with multipath enabled know this situation well and do
+> > something with perfect understanding this policy because they might be
+> > administrator for the system?  or should the driver provide the same
+> > index at least right next to "nvme" for the controller and namespaces?
+> 
+> You can't just use the controller instance for the namespace names
+> when multipathing: you can't consistently name the namespace that is
+> accessible through two controllers that way. You have to use an
+> identifier that is common to all controllers with a shared namespace
+> access, which is the subsystem instance.
 
-You can't just use the controller instance for the namespace names
-when multipathing: you can't consistently name the namespace that is
-accessible through two controllers that way. You have to use an
-identifier that is common to all controllers with a shared namespace
-access, which is the subsystem instance.
+Yeah, I can see things in multipath code just like what you mentioned.
 
-You just need to know this if you're accessing direct namespace
-handles, and the controller-namespace relationship is accurately
-represented in sysfs for those wanting to view it.
+> 
+> You just need to know this if you're accessing direct namespace
+> handles, and the controller-namespace relationship is accurately
+> represented in sysfs for those wanting to view it.
+
+Then the user should exactly know the relationship bettwen the
+controller and namespaces via the sysfs structures.
+
+Thanks, Keith.
 
 _______________________________________________
 Linux-nvme mailing list
