@@ -2,85 +2,78 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED1ED3B21A
-	for <lists+linux-nvme@lfdr.de>; Mon, 10 Jun 2019 11:29:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B8D73B539
+	for <lists+linux-nvme@lfdr.de>; Mon, 10 Jun 2019 14:49:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o2im6I8PfwE7xV6SZjWETKCtTTUh11oBpSmtKRgI5zw=; b=YvKtl5dxOJ4pej
-	5na5VBr9O5cY+edArCGnyY/k7W+Nv8FgzNVhBZx6ckreEPPbZ1eIhioaGhq8OFkgT3MpM+t/fi4vo
-	mRSjMzkB6dcuDUfEd5Gy0pVwG0Gy3iKOMxs2N5O/dgxCEpPrP5Ymv9/RnWFb4WVg7IHT5RuOBvr7x
-	8VlszWyKEAs4n7M0un+cbxXtoe8ZPaofKrDU9hOVvtED9aVAi9+NBzZnjqg7pL6nka1KHPt4nWdvx
-	mvtGcvp6X2KGBF+wwAn6vMUcm2mzIfrNOcaVe6G4eIkn9/RFbQB3w8ILVL+yHveLO5kVBmH5V7OiE
-	g6wFrN4bAFCiL5BUCU6Q==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wL4DFhu5919TkHjX3T3HYn7O3EgEtKUmgbP86kwJkVU=; b=f7u4PpCn1koU/a
+	lz5infNfPMvmLT2r4Rp9D4c1/o1l/b+B6tUkLEZxyOvIe3YBkPrIOUSlZrFNOkjie6GGmp/VGXNE2
+	hm3j/5B859zXYYZnvt92guUdr9g0btJg3GhCRAhkuAJlhv+SdM2pzgQCctXyIudhnGY1p4BZth+8G
+	KX+ndZh3+7QXtNf2SiI90hpl7vaJ0TAgEpclrtS+/DWfQtgsX+IDB+26zy2Sv4DhyNob3UZKrnAhs
+	tGijZY6xgAOtcySmRqvQAIS38wX8DA31PZ+2r5WJ9pZMcHciJ8judiawXNKzx9lOuiVpZGXPf2wcb
+	Uwjj8jXBZXHWLAbkf7rQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haGcQ-00085O-Ar; Mon, 10 Jun 2019 09:29:34 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1haJk9-0007EW-UE; Mon, 10 Jun 2019 12:49:46 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1haGZh-0006Tx-St
- for linux-nvme@lists.infradead.org; Mon, 10 Jun 2019 09:26:49 +0000
-Received: by mail-pf1-x442.google.com with SMTP id i189so4930434pfg.10
- for <linux-nvme@lists.infradead.org>; Mon, 10 Jun 2019 02:26:45 -0700 (PDT)
+ id 1haJju-0007Dh-FX
+ for linux-nvme@lists.infradead.org; Mon, 10 Jun 2019 12:49:31 +0000
+Received: by mail-pl1-x630.google.com with SMTP id s24so3618423plr.8
+ for <linux-nvme@lists.infradead.org>; Mon, 10 Jun 2019 05:49:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=/MrfA3Emiysa/e6lrADNN7cD47aICPb7f5I4SBAjvbA=;
- b=dFA9udkKxNLMst9ly+tH51vw62+SbyGG/PN+Lw9mMBw3fVBZs6mXQDe2pQKzxolpi9
- 9RDdgm+qqmyHKb2ltLpLUrmlkBI4r/yQpX5m3DlCLRHRc+5f6vDqOWneMsHPrDKVOl1X
- QNuLFvUFFhccu7je2jzhn2OGKbQSdZeEuVXJgiuyHV8vcf/60r/Kw4usBnFJ4RM97lns
- i2ZShSnUF85ehtu1fnekUb7yIIGLSxgLWjrdrOI942WNVBFKgyVyH3KovXnLjWOCd04O
- +uiBt/GKNzmf/JmyaomkMviy0szOn/xaRf0gR1FX9BdmoI+t9uGX/wgfXOlnn3YGDFsK
- 7dgg==
+ h=date:from:to:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=DKX9tMvkjU0157EuO4Q/1Zkbvmv4iMHC94qzKtqYmPQ=;
+ b=ZPpS4ouBuKn61+pjdVXiU/FEND/oKWd8cfD0q8g/OvPl3B2rez/VwRCajKfIS76Szh
+ HB1TVqrkZtQP91QW1YFngft/tRbeEXMx+8XNYv1CHxeAtBcXeW5zusXiNrWZni9gVRME
+ WZEmk8dW4e7vWJhw5GP+bPOi2L2a7Deq1yzmNnhQ/F5Ho8taRltpPl/afZXp0xCxGLk0
+ eTvyhWLnimDJjzyKhca3Z0fHysppat6CbJMnQrCBfpRBOT0nKVxwpXmFXp5rYNFI+qdQ
+ eJDOk1HAbMzT0PY9z+GK/NWs1OMeqnCvLvKyxJs45BUM5ZURUpjqD2aCsVzOj6RtQV3K
+ ykLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=/MrfA3Emiysa/e6lrADNN7cD47aICPb7f5I4SBAjvbA=;
- b=f20fLuXpeX/nqvbBOi1x82D4HSXdl8/DFW71F2Dp+ay9tYCw2mvpNmxzKnK0lNiFGX
- xHWEMlwjOgxpS4sImtEwL39UljYoHaORll7sAj7HeWorUSlHbN/aoNUT9m4/hCijF6mK
- lMHBBETNZNdTYNlohBvIM5Bo826mUOO4TiWQu6WeHv+d5QDA9CiPA5Nlmif3oaipRGiy
- b05z6+/Y8U6009Jtdteq3oG18OgoD3jhmPzcWzfNyGXXk0azfgqMvcaHUzygfHb3jjkt
- Dbq677QiVUhatVZPLYMtJC0GL2+rYSoc7D7MgMeJaNxpPGBh5YYnlqBoKDse4tRpQByX
- EIPw==
-X-Gm-Message-State: APjAAAUS0mOAKdVxMrvHuDkyX26wma6UAvRMam8F8bMmjsydBkGhscRU
- l8XTjtE68hFJZmkC0FzG4k2AwNrzjww=
-X-Google-Smtp-Source: APXvYqye8v4wyGwCJ9+RlGBTm7Hx0IZAm15djbqgjmQatcwYqpTin2PibFn7qKWmAEi95K31UUtl3g==
-X-Received: by 2002:a62:2f87:: with SMTP id v129mr74758930pfv.9.1560158804566; 
- Mon, 10 Jun 2019 02:26:44 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=DKX9tMvkjU0157EuO4Q/1Zkbvmv4iMHC94qzKtqYmPQ=;
+ b=inwV7C6OPqPOjH62AY1d3r6fpNAi8nqpfhfQtccMxY0tEfU3jSdteXFEHtoNQnztpC
+ A9UxG/LL49N+IeVmjHfZ9Z1P2t1ohx4Es9NGf7VoUnKkfxdiScqPtAA8L0hoBnY9hq6F
+ r7HMVjCpd8HWSn+Vg5OQvm0vnzeupdZEzwsVOzuq7Mtopm2LZ5g4iEHcMod4g2X621GE
+ FhLh4y8pW51G+NcrbbvKu5Rf/k+E12Sas8LYvtGfgr9wouV1Q2AYWvaRhF3n/01dURhb
+ dQ3Yc5jS2TxmV7+tzULSm9HC8g2oGVrWz/DF/ev6/ZmUNSmEGu2cg4VsG5IBC2aAwr+t
+ fpQw==
+X-Gm-Message-State: APjAAAWnZ+dpX4cmm26fgh/A7C5tMbqGNuuzdK1RGQClIc/lSw092vl9
+ AnUSas6RTr0dJ9mS7txydOvFMdXgwTw=
+X-Google-Smtp-Source: APXvYqyDJqi7RWUKYo2scLk9z9SJrQPhz3dSrH+Xpddrmwqf8vkNepUQ3YAbJTa41y1A5VCEvRi4lQ==
+X-Received: by 2002:a17:902:9a84:: with SMTP id
+ w4mr71120176plp.241.1560170968822; 
+ Mon, 10 Jun 2019 05:49:28 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id d4sm9348605pju.19.2019.06.10.02.26.42
+ by smtp.gmail.com with ESMTPSA id a25sm11194905pfn.1.2019.06.10.05.49.26
+ for <linux-nvme@lists.infradead.org>
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 10 Jun 2019 02:26:43 -0700 (PDT)
-Date: Mon, 10 Jun 2019 18:26:40 +0900
+ Mon, 10 Jun 2019 05:49:27 -0700 (PDT)
+Date: Mon, 10 Jun 2019 21:49:25 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH V6 6/6] fabrics: Return errno mapped for fabrics error
- status
-Message-ID: <20190610092640.GB1879@minwooim-desktop>
-References: <20190604154034.23386-1-minwoo.im.dev@gmail.com>
- <20190604154034.23386-7-minwoo.im.dev@gmail.com>
- <BYAPR04MB57497DFEEC77ED6D43998ED086110@BYAPR04MB5749.namprd04.prod.outlook.com>
- <20190608200112.GC28228@minwoo-900X5N>
- <BYAPR04MB57495E9DBF68A2BF2FA076C686110@BYAPR04MB5749.namprd04.prod.outlook.com>
+To: linux-nvme@lists.infradead.org
+Subject: [RFC] mismatch between chardev and blkdev node names
+Message-ID: <20190610124925.GA20319@minwooim-desktop>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <BYAPR04MB57495E9DBF68A2BF2FA076C686110@BYAPR04MB5749.namprd04.prod.outlook.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190610_022646_071957_D45C7C3E 
-X-CRM114-Status: GOOD (  18.79  )
+X-CRM114-CacheID: sfid-20190610_054930_542935_5B752542 
+X-CRM114-Status: GOOD (  12.59  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:630 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
@@ -104,63 +97,58 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-06-08 20:13:00, Chaitanya Kulkarni wrote:
-> (+ CC: Sagi).
-> 
-> I'm fine if Sagi is okay with this.
+Hi, NVMe people.
 
-(Fix typo in the previous mail.)
+I'd like to get some advices for the reported issue from nvme-cli:
+  https://github.com/linux-nvme/nvme-cli/issues/510
 
-Sagi,
+As all you guys know, the controller chardev is created with controller
+instance id which is from ctrl->instance.  (e.g. /dev/nvme0)
+For the namespace blkdev node is set to either instance id or
+subsystem id when ns->head->disk is not there.
 
-Could you please have a look this series?
+This policy can make the blkdev and chardev are pretty different view to
+the users like who faced this issue.
+
+For the following case, the controller and the namespaces are completly
+looking different:
+
+root@target:~# nvme list-subsys                                       
+nvme-subsys0 - NQN=nqn.2014.08.org.nvmexpress:80861af4bar                 QEMU NVMe Ctrl
+\                                                                                       
+ +- nvme1 pcie 0000:00:05.0 live                                                        
+nvme-subsys1 - NQN=nqn.2014.08.org.nvmexpress:80861af4foo                 QEMU NVMe Ctrl
+\                                                                                       
+ +- nvme0 pcie 0000:00:04.0 live                                                        
+nvme-subsys2 - NQN=nqn.2014.08.org.nvmexpress:80861af4zoo                 QEMU NVMe Ctrl
+\                                                                                       
+ +- nvme2 pcie 0000:00:06.0 live                                                        
+
+root@target:~# nvme list                                                                                                   
+Node             SN                   Model                                    Namespace Usage                      Format           FW Rev  
+---------------- -------------------- ---------------------------------------- --------- -------------------------- ---------------- --------
+/dev/nvme0n1     bar                  QEMU NVMe Ctrl                           1         536.87  MB / 536.87  MB    512   B +  0 B   1.0     
+/dev/nvme1n1     foo                  QEMU NVMe Ctrl                           1         536.87  MB / 536.87  MB    512   B +  0 B   1.0     
+/dev/nvme2n1     zoo                  QEMU NVMe Ctrl                           1         536.87  MB / 536.87  MB    512   B +  0 B   1.0     
+
+This example shows that if we want to get the same result for the id-ctrl,
+then we should:
+  # nvme id-ctrl /dev/nvme1
+  # nvme id-ctrl /dev/nvme0n1
+
+Should users with multipath enabled know this situation well and do
+something with perfect understanding this policy because they might be
+administrator for the system?  or should the driver provide the same
+index at least right next to "nvme" for the controller and namespaces?
+
+I hope you guys can give some advices here :)
 
 Thanks,
-
-> 
-> On 06/08/2019 01:01 PM, Minwoo Im wrote:
-> > On 19-06-08 19:36:42, Chaitanya Kulkarni wrote:
-> >>> @@ -874,9 +877,11 @@ static int do_discover(char *argstr, bool connect)
-> >>>    	case DISC_GET_NUMRECS:
-> >>>    		fprintf(stderr,
-> >>>    			"Get number of discovery log entries failed.\n");
-> >>> +		ret = status;
-> >>>    		break;
-> >>>    	case DISC_GET_LOG:
-> >>>    		fprintf(stderr, "Get discovery log entries failed.\n");
-> >>> +		ret = status;
-> >>>    		break;
-> >>>    	case DISC_NO_LOG:
-> >>>    		fprintf(stdout, "No discovery log entries to fetch.\n");
-> >>> @@ -885,6 +890,7 @@ static int do_discover(char *argstr, bool connect)
-> >>>    	case DISC_NOT_EQUAL:
-> >>>    		fprintf(stderr,
-> >>>    		"Numrec values of last two get discovery log page not equal\n");
-> >>> +		ret = DISC_OK;
-> >> Can you please explain above assignment ?
-> >
-> > Even it fails due to a mismatch between numrec in the header and the
-> > actual nr_entries, the discovery log-page has been done successfully
-> > whose status code should be in zero.
-> >
-> > That code is just returning 0 to the caller which does not need to fail
-> > due to this reason.  You may ask me why I didn't do like:
-> > 	ret = 0;
-> >
-> > That is just following the code right above which is a case for
-> > DISC_NO_LOG.
-> >
-> > What do you think about it ?
-> >
-> > Thanks!
-> >
-> 
 
 _______________________________________________
 Linux-nvme mailing list
