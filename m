@@ -2,115 +2,59 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA3D23BE22
-	for <lists+linux-nvme@lfdr.de>; Mon, 10 Jun 2019 23:10:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B39593BE31
+	for <lists+linux-nvme@lfdr.de>; Mon, 10 Jun 2019 23:16:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Nag18wHb8n7+lBqGkVFzpqTN8D3JdCMDTqgTiOq6OnI=; b=W4njdN9RBACfx6
-	DgQlU76hVVioHUh6q9D/ctI20RoxO1UJU+hEeFuQznnTTIKKJ172rXRYJLOgnMRp7x3Zppc6qi8nb
-	OjhoAdKjgJrprvIA8KHsco3YKbpPuCwCz/09gCmdWvLGn+Aqi23QqWp0LUjBjUtIAmVG9lo84vwip
-	YUopR/+TcQEXwF5sPom8jxLfWI/fT4nvNstEkGxQnsgzSwIlYB/NUnh8wc3f0O+7EHyoWWXR2tZHv
-	TaX7x0ec4OhbiQQs/6v1fb64vBEmoFhHWqkqmsAb2MVtymKUYgq51m73CEbIevOP87U2W/qgCoGnb
-	I05mIcGv7qG0V2OPNpMQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IZkgYD5zIDnjRmI9nNNRUM8l1F/Sd/jiPhcLTLPwiLE=; b=ahZ14LN8bM0uQH
+	w5DYWUn0AKvHBEU3ZB+b7fONNYyqE0ZpOiPC6oAHMc0sQpYRf1RhqIJzVexTvGk4d08waofIaYfSZ
+	ZygXTu9aFM9vvRbr270WBn6wJOkFj1vMrM0Kmgf0H3zb5aZFSKXxpCdFeT7JdkPaUcmBNwE/JHPW+
+	XUsxTvLK3wnRRb7BHJboYzXw4WkEcOsldaG+CmPiW/qiJkJREllinVeJPFvV8gXdr0KSyrRSBHVdV
+	nF+hLPg00Ip3VWyPmAyJQH3WwgsjhRcWr1vO9nEix1v6Sq3IgflBazeiH22K32XmOmBF8whN5UjQw
+	/T/m/sr6ALg34w3ao52Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haRYY-0005Fh-0c; Mon, 10 Jun 2019 21:10:18 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1haReo-0007AN-Cc; Mon, 10 Jun 2019 21:16:46 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1haRYL-0004aY-Tt
- for linux-nvme@lists.infradead.org; Mon, 10 Jun 2019 21:10:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1560201005; x=1591737005;
- h=from:to:cc:subject:date:message-id:
- content-transfer-encoding:mime-version;
- bh=cUBKqYd1crw+lfzfRZIE7MwISEXgg9CaIwcGlOD3hms=;
- b=cZ6H3Z1BW/X5QVwF5MZ0L+P2sufGtml+i8KYqyfyAB+ivNGkbc3tXQI9
- uizfsDivx1fiKaZvdgKZzydFv3FEYoZVDDovc9dJAY3XOVZIxAXvFiCdg
- BLfG4Ii3mDxRUrPFpRYgzMa++fi24RgZmiA/+7+cTKg4Haz8PYHLL/BsP
- odUNZhiAypMchOpebRWvSLhZXXHjStnFByjopGQ4BoySkIm8FcH0q5llz
- ew+uG0ZnHEsRcu3xwns/QXpTG8I3Jc9V4Vwl+GNOemG1/FZgsFb/ovstE
- gLaeENfuEJqzQS7dv8Hz07hEGFQMtANCVBHxnQEanU4EvXJprOrW+Aizw g==;
-X-IronPort-AV: E=Sophos;i="5.63,576,1557158400"; d="scan'208";a="216554200"
-Received: from mail-sn1nam02lp2056.outbound.protection.outlook.com (HELO
- NAM02-SN1-obe.outbound.protection.outlook.com) ([104.47.36.56])
- by ob1.hgst.iphmx.com with ESMTP; 11 Jun 2019 05:10:02 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=cUBKqYd1crw+lfzfRZIE7MwISEXgg9CaIwcGlOD3hms=;
- b=CHbWRhuJHqQfzIbVyNbD+fL6oTcGaQuaA4D4ZeXhGHOBs0lkgl1rHYzIPtD/yl8wRTegnn36NTKKH0pYJeCvGn7LWjo7Lv7LyOC9cVGcPzR+12PTbdKEp2zqhTMfzccGgIuCANoFQc9C/Qb9IpbmG8i0nymrExCD7iywtLmT5bM=
-Received: from DM6PR04MB5900.namprd04.prod.outlook.com (20.179.49.138) by
- DM6PR04MB4875.namprd04.prod.outlook.com (20.176.109.32) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1965.12; Mon, 10 Jun 2019 21:10:00 +0000
-Received: from DM6PR04MB5900.namprd04.prod.outlook.com
- ([fe80::7962:f5f7:d104:f1f0]) by DM6PR04MB5900.namprd04.prod.outlook.com
- ([fe80::7962:f5f7:d104:f1f0%6]) with mapi id 15.20.1965.017; Mon, 10 Jun 2019
- 21:10:00 +0000
-From: Jeffrey Lien <Jeff.Lien@wdc.com>
-To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- "kbusch@kernel.org" <kbusch@kernel.org>
-Subject: [PATCH] [NVMe-CLI] Add support for 64 bit data addresses in Get DUI
- Data functions
-Thread-Topic: [PATCH] [NVMe-CLI] Add support for 64 bit data addresses in Get
- DUI Data functions
-Thread-Index: AQHVH9DdCEmbaTVM7UG3cJ77G+E3Ew==
-Date: Mon, 10 Jun 2019 21:10:00 +0000
-Message-ID: <1560200984-25183-1-git-send-email-jeff.lien@wdc.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: DM3PR12CA0047.namprd12.prod.outlook.com
- (2603:10b6:0:56::15) To DM6PR04MB5900.namprd04.prod.outlook.com
- (2603:10b6:5:166::10)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Jeff.Lien@wdc.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 1.8.3.1
-x-originating-ip: [199.255.44.171]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0cac1994-db1d-4e03-bff2-08d6ede7ff8c
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:DM6PR04MB4875; 
-x-ms-traffictypediagnostic: DM6PR04MB4875:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <DM6PR04MB487537D347B078C6D30A4D9CEA130@DM6PR04MB4875.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:419;
-x-forefront-prvs: 0064B3273C
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(376002)(346002)(39860400002)(136003)(396003)(366004)(189003)(199004)(8936002)(6486002)(66066001)(64756008)(66446008)(66556008)(73956011)(50226002)(66476007)(66946007)(110136005)(186003)(86362001)(36756003)(2501003)(26005)(5660300002)(316002)(68736007)(99286004)(4720700003)(25786009)(3846002)(486006)(478600001)(476003)(6116002)(2906002)(102836004)(256004)(52116002)(6506007)(71190400001)(386003)(72206003)(14454004)(71200400001)(6512007)(8676002)(81156014)(6436002)(305945005)(2616005)(53936002)(81166006)(7736002)(4326008);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR04MB4875;
- H:DM6PR04MB5900.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: ATOoEqu9oNGgFqq2384USrsfIYhgvQnxisSKaoJZTFPwxBOg3utG+63uVVh9GnkMyjWmr0j+c34EfzQhhKkAxbqvKdpqmHoidqwNBHjNjHm8zmQC0+bElWN17ogzkXEzZ+pFQAe9rh4gsr0HEoPfsF7whLxf3DBfZODrq3AhYc+W6Lab4eBxjWJF6gMAAf5EZ3txGidjavtkaEW+nf3VeiXBYrsGNfApg04rrTVyqD3EmestJL/FMZ7gvsqrBedBAPIHPALThC425VbcMW8dgwKY/s/dFJURm1JcWtBV+O+c0oXAgZR5Cr4Cb+/i0ZVdak5kmLq/9xVWI/iwxXOE7smoeJZwzo93zWorWXlh2msq8vRTqfiLCn7sNAacNSaghjEkgHJRQleDNFDk5yuoGPvq9aJJcK96MIcqnjFh2pw=
+ id 1haReg-00078x-PB
+ for linux-nvme@lists.infradead.org; Mon, 10 Jun 2019 21:16:41 +0000
+Received: from localhost (unknown [69.71.4.100])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8B00120820;
+ Mon, 10 Jun 2019 21:16:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1560201396;
+ bh=SH/as1LkXY+tDnWeZrVqWz6aIhR9+aBuyt2yrIeNugg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZudaH9naW7kscr/rzGbM8Uwk/GNARNrVOsola8L4GdK1N1dlKk1T1cIa4O6Z1TJ9D
+ SCosC4dJJxtfRLJfbRQxQzwI1g0h9pD0DEt858HkoONFVgPYe+dXKJy9qymDgVGptT
+ CVrkc6oFhJUK2W5Z7W0s2EXdCA1vxEM0X7F4Mj1E=
+Date: Mon, 10 Jun 2019 16:16:28 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Daniel Drake <drake@endlessm.com>
+Subject: Re: [PATCH] PCI: Add Intel remapped NVMe device support
+Message-ID: <20190610211628.GA68572@google.com>
+References: <20190610074456.2761-1-drake@endlessm.com>
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0cac1994-db1d-4e03-bff2-08d6ede7ff8c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jun 2019 21:10:00.3564 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Jeff.Lien@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB4875
+Content-Disposition: inline
+In-Reply-To: <20190610074456.2761-1-drake@endlessm.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190610_141006_204020_A8C238D1 
-X-CRM114-Status: GOOD (  20.33  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190610_141638_850340_D6C8033C 
+X-CRM114-Status: GOOD (  49.35  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.141.245 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -120,6 +64,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -131,313 +76,684 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jeffrey Lien <Jeff.Lien@wdc.com>
+Cc: axboe@kernel.dk, sagi@grimberg.me, linux-pci@vger.kernel.org,
+ linux-nvme@lists.infradead.org, linux-ide@vger.kernel.org,
+ Alex Williamson <alex.williamson@redhat.com>, kbusch@kernel.org,
+ Dan Williams <dan.j.williams@intel.com>, linux@endlessm.com, hch@lst.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Signed-off-by: Jeff Lien <jeff.lien@wdc.com>
----
- plugins/wdc/wdc-nvme.c | 223 +++++++++++++++++++++++++++++++++++++------------
- 1 file changed, 170 insertions(+), 53 deletions(-)
+[+cc Dan, Alex]
 
-diff --git a/plugins/wdc/wdc-nvme.c b/plugins/wdc/wdc-nvme.c
-index a1cb1eb..d122c16 100644
---- a/plugins/wdc/wdc-nvme.c
-+++ b/plugins/wdc/wdc-nvme.c
-@@ -129,6 +129,7 @@
- #define WDC_NVME_CAP_DUI_OPCODE				0xFA
- #define WDC_NVME_CAP_DUI_DISABLE_IO         0x01
- #define WDC_NVME_DUI_MAX_SECTION			0x3A
-+#define WDC_NVME_DUI_MAX_SECTION_V2			0x26
- #define WDC_NVME_DUI_MAX_DATA_AREA			0x05
- 
- /* Crash dump */
-@@ -453,15 +454,31 @@ struct wdc_dui_log_section {
- 	__le32	section_size;
- };
- 
-+/* DUI log header V2 */
-+struct __attribute__((__packed__)) wdc_dui_log_section_v2 {
-+	__le16	section_type;
-+	__le16	data_area_id;
-+	__le64	section_size;
-+};
-+
- struct wdc_dui_log_hdr {
- 	__u8    telemetry_hdr[512];
- 	__le16	hdr_version;
- 	__le16	section_count;
--	__u8	log_size[4];
-+	__le32	log_size;
- 	struct	wdc_dui_log_section log_section[WDC_NVME_DUI_MAX_SECTION];
- 	__u8    log_data[40];
- };
- 
-+struct __attribute__((__packed__)) wdc_dui_log_hdr_v2 {
-+	__u8    telemetry_hdr[512];
-+	__le16	hdr_version;
-+	__le16	section_count;
-+	__le64	log_size;
-+	struct	wdc_dui_log_section_v2 log_section[WDC_NVME_DUI_MAX_SECTION_V2];
-+	__u8    log_data[40];
-+};
-+
- /* Purge monitor response */
- struct wdc_nvme_purge_monitor_data {
- 	__le16 	rsvd1;
-@@ -1081,7 +1098,34 @@ static __u32 wdc_dump_dui_data(int fd, __u32 dataLen, __u32 offset, __u8 *dump_d
- 
- 	ret = nvme_submit_passthru(fd, NVME_IOCTL_ADMIN_CMD, &admin_cmd);
- 	if (ret != 0) {
--		fprintf(stderr, "ERROR : WDC : reading DUI length failed\n");
-+		fprintf(stderr, "ERROR : WDC : reading DUI data failed\n");
-+		fprintf(stderr, "NVMe Status:%s(%x)\n", nvme_status_to_string(ret), ret);
-+	}
-+
-+	return ret;
-+}
-+
-+static __u32 wdc_dump_dui_data_v2(int fd, __u32 dataLen, __u64 offset, __u8 *dump_data, bool last_xfer)
-+{
-+	int ret;
-+	struct nvme_admin_cmd admin_cmd;
-+
-+	memset(&admin_cmd, 0, sizeof (struct nvme_admin_cmd));
-+	admin_cmd.opcode = WDC_NVME_CAP_DUI_OPCODE;
-+	admin_cmd.nsid = 0xFFFFFFFF;
-+	admin_cmd.addr = (__u64)(uintptr_t)dump_data;
-+	admin_cmd.data_len = dataLen;
-+	admin_cmd.cdw10 = ((dataLen >> 2) - 1);
-+	admin_cmd.cdw12 = (__u32)(offset & 0x00000000FFFFFFFF);
-+	admin_cmd.cdw13 = (__u32)(offset >> 32);
-+	if (last_xfer)
-+		admin_cmd.cdw14 = 0;
-+	else
-+		admin_cmd.cdw14 = WDC_NVME_CAP_DUI_DISABLE_IO;
-+
-+	ret = nvme_submit_passthru(fd, NVME_IOCTL_ADMIN_CMD, &admin_cmd);
-+	if (ret != 0) {
-+		fprintf(stderr, "ERROR : WDC : reading DUI data V2 failed\n");
- 		fprintf(stderr, "NVMe Status:%s(%x)\n", nvme_status_to_string(ret), ret);
- 	}
- 
-@@ -1256,18 +1300,18 @@ static int wdc_do_cap_dui(int fd, char *file, __u32 xfer_size, int data_area)
- 	int ret = 0;
- 	__u32 dui_log_hdr_size = WDC_NVME_CAP_DUI_HEADER_SIZE;
- 	struct wdc_dui_log_hdr *log_hdr;
-+	struct wdc_dui_log_hdr_v2 *log_hdr_v2;
- 	__u32 cap_dui_length;
--	__u8 *dump_data;
-+	__u64 cap_dui_length_v2;
-+	__u8 *dump_data = NULL;
- 	__u64 buffer_addr;
--	__u32 curr_data_offset;
--	__s32 log_size = 0;
--	__s32 total_size = 0;
-+	__s64 total_size = 0;
- 	int i;
- 	bool last_xfer = false;
- 
- 	log_hdr = (struct wdc_dui_log_hdr *) malloc(dui_log_hdr_size);
- 	if (log_hdr == NULL) {
--		fprintf(stderr, "%s: ERROR : malloc : %s\n", __func__, strerror(errno));
-+		fprintf(stderr, "%s: ERROR : log header malloc failed : %s\n", __func__, strerror(errno));
- 		return -1;
- 	}
- 	memset(log_hdr, 0, dui_log_hdr_size);
-@@ -1280,69 +1324,142 @@ static int wdc_do_cap_dui(int fd, char *file, __u32 xfer_size, int data_area)
- 		goto out;
- 	}
- 
--	cap_dui_length = (log_hdr->log_size[3] << 24 | log_hdr->log_size[2] << 16 |
--			log_hdr->log_size[1] << 8 | log_hdr->log_size[0]);
-+	/* Check the Log Header version  */
-+	if (log_hdr->hdr_version == 2) {								/* Process Version 2 of the header */
-+		__s64 log_size = 0;
-+		__u64 curr_data_offset = 0;
-+		__u64 xfer_size_long = (__u64)xfer_size;
- 
--	if (cap_dui_length == 0) {
--		fprintf(stderr, "INFO : WDC : Capture Device Unit Info log is empty\n");
--	} else {
-+		log_hdr_v2 = (struct wdc_dui_log_hdr_v2 *)log_hdr;
- 
--		/* parse log header for all sections up to specified data area inclusively */
--		if (data_area != WDC_NVME_DUI_MAX_DATA_AREA) {
--			for(int i = 0; i < WDC_NVME_DUI_MAX_SECTION; i++) {
--				if (log_hdr->log_section[i].data_area_id <= data_area &&
--				    log_hdr->log_section[i].data_area_id != 0)
--					log_size += log_hdr->log_section[i].section_size;
--				else
--					break;
-+		cap_dui_length_v2 = le64_to_cpu(log_hdr_v2->log_size);
-+
-+		fprintf(stderr, "INFO : WDC : Capture V2 Device Unit Info log\n");
-+
-+		if (cap_dui_length_v2 == 0) {
-+			fprintf(stderr, "INFO : WDC : Capture V2 Device Unit Info log is empty\n");
-+		} else {
-+			/* parse log header for all sections up to specified data area inclusively */
-+			if (data_area != WDC_NVME_DUI_MAX_DATA_AREA) {
-+				for(int i = 0; i < WDC_NVME_DUI_MAX_SECTION_V2; i++) {
-+					if (log_hdr_v2->log_section[i].data_area_id <= data_area &&
-+							log_hdr_v2->log_section[i].data_area_id != 0)
-+						log_size += log_hdr_v2->log_section[i].section_size;
-+					else
-+						break;
-+				}
-+			} else
-+				log_size = cap_dui_length_v2;
-+
-+			total_size = log_size;
-+
-+			dump_data = (__u8 *) malloc(sizeof (__u8) * total_size);
-+			if (dump_data == NULL) {
-+				fprintf(stderr, "%s: ERROR : dump data V2 malloc failed : %s, size = 0x%lx\n",
-+						__func__, strerror(errno), (long unsigned int)total_size);
-+				ret = -1;
-+				goto out;
- 			}
--		} else
--			log_size = cap_dui_length;
-+			memset(dump_data, 0, sizeof (__u8) * total_size);
- 
--		total_size = log_size;
--		dump_data = (__u8 *) malloc(sizeof (__u8) * total_size);
--		if (dump_data == NULL) {
--			fprintf(stderr, "%s: ERROR : malloc : %s\n", __func__, strerror(errno));
--			ret = -1;
--			goto out;
-+			/* copy the telemetry and log headers into the dump_data buffer */
-+			memcpy(dump_data, log_hdr_v2, WDC_NVME_CAP_DUI_HEADER_SIZE);
-+
-+			log_size -= WDC_NVME_CAP_DUI_HEADER_SIZE;
-+			curr_data_offset = WDC_NVME_CAP_DUI_HEADER_SIZE;
-+			i = 0;
-+
-+			for(; log_size > 0; log_size -= xfer_size_long) {
-+				xfer_size_long = min(xfer_size_long, log_size);
-+
-+				if (log_size <= xfer_size_long)
-+					last_xfer = true;
-+
-+				buffer_addr = (__u64)(uintptr_t)dump_data + (__u64)curr_data_offset;
-+
-+				ret = wdc_dump_dui_data_v2(fd, (__u32)xfer_size_long, curr_data_offset, (__u8 *)buffer_addr, last_xfer);
-+				if (ret != 0) {
-+					fprintf(stderr, "%s: ERROR : WDC : Get chunk %d, size = 0x%lx, offset = 0x%lx, addr = 0x%lx\n",
-+							__func__, i, (long unsigned int)total_size, (long unsigned int)curr_data_offset, (long unsigned int)buffer_addr);
-+					fprintf(stderr, "%s: ERROR : WDC : NVMe Status:%s(%x)\n", __func__, nvme_status_to_string(ret), ret);
-+					break;
-+				}
-+
-+				curr_data_offset += xfer_size_long;
-+				i++;
-+			}
- 		}
--		memset(dump_data, 0, sizeof (__u8) * total_size);
-+	} else	{
-+		__s32 log_size = 0;
-+		__u32 curr_data_offset = 0;
- 
--		/* copy the telemetry and log headers into the dump_data buffer */
--		memcpy(dump_data, log_hdr, WDC_NVME_CAP_DUI_HEADER_SIZE);
-+		cap_dui_length = le32_to_cpu(log_hdr->log_size);
- 
--		log_size -= WDC_NVME_CAP_DUI_HEADER_SIZE;
--		curr_data_offset = WDC_NVME_CAP_DUI_HEADER_SIZE;
--		i = 0;
-+		fprintf(stderr, "INFO : WDC : Capture V1 Device Unit Info log\n");
- 
--		for(; log_size > 0; log_size -= xfer_size) {
--			xfer_size = min(xfer_size, log_size);
-+		if (cap_dui_length == 0) {
-+			fprintf(stderr, "INFO : WDC : Capture V1 Device Unit Info log is empty\n");
-+		} else {
-+			/* parse log header for all sections up to specified data area inclusively */
-+			if (data_area != WDC_NVME_DUI_MAX_DATA_AREA) {
-+				for(int i = 0; i < WDC_NVME_DUI_MAX_SECTION; i++) {
-+					if (log_hdr->log_section[i].data_area_id <= data_area &&
-+							log_hdr->log_section[i].data_area_id != 0)
-+						log_size += log_hdr->log_section[i].section_size;
-+					else
-+						break;
-+				}
-+			} else
-+				log_size = cap_dui_length;
-+
-+			total_size = log_size;
-+			dump_data = (__u8 *) malloc(sizeof (__u8) * total_size);
-+			if (dump_data == NULL) {
-+				fprintf(stderr, "%s: ERROR : dump data V1 malloc failed : %s\n", __func__, strerror(errno));
-+				ret = -1;
-+				goto out;
-+			}
-+			memset(dump_data, 0, sizeof (__u8) * total_size);
- 
--			if (log_size <= xfer_size)
--				last_xfer = true;
-+			/* copy the telemetry and log headers into the dump_data buffer */
-+			memcpy(dump_data, log_hdr, WDC_NVME_CAP_DUI_HEADER_SIZE);
- 
--			buffer_addr = (__u64)(uintptr_t)dump_data + (__u64)curr_data_offset;
-+			log_size -= WDC_NVME_CAP_DUI_HEADER_SIZE;
-+			curr_data_offset = WDC_NVME_CAP_DUI_HEADER_SIZE;
-+			i = 0;
- 
--			ret = wdc_dump_dui_data(fd, xfer_size, curr_data_offset, (__u8 *)buffer_addr, last_xfer);
--			if (ret != 0) {
--				fprintf(stderr, "%s: ERROR : WDC : Get chunk %d, size = 0x%x, offset = 0x%x, addr = 0x%lx\n",
--						__func__, i, total_size, curr_data_offset, (long unsigned int)buffer_addr);
--				fprintf(stderr, "%s: ERROR : WDC : NVMe Status:%s(%x)\n", __func__, nvme_status_to_string(ret), ret);
--				break;
-+			for(; log_size > 0; log_size -= xfer_size) {
-+				xfer_size = min(xfer_size, log_size);
-+
-+				if (log_size <= xfer_size)
-+					last_xfer = true;
-+
-+				buffer_addr = (__u64)(uintptr_t)dump_data + (__u64)curr_data_offset;
-+
-+				ret = wdc_dump_dui_data(fd, xfer_size, curr_data_offset, (__u8 *)buffer_addr, last_xfer);
-+				if (ret != 0) {
-+					fprintf(stderr, "%s: ERROR : WDC : Get chunk %d, size = 0x%lx, offset = 0x%x, addr = 0x%lx\n",
-+							__func__, i, (long unsigned int)total_size, curr_data_offset, (long unsigned int)buffer_addr);
-+					fprintf(stderr, "%s: ERROR : WDC : NVMe Status:%s(%x)\n", __func__, nvme_status_to_string(ret), ret);
-+					break;
-+				}
-+
-+				curr_data_offset += xfer_size;
-+				i++;
- 			}
- 
--			curr_data_offset += xfer_size;
--			i++;
- 		}
-+	}
- 
--		if (ret == 0) {
--			fprintf(stderr, "%s:  NVMe Status:%s(%x)\n", __func__, nvme_status_to_string(ret), ret);
--			fprintf(stderr, "INFO : WDC : Capture Device Unit Info log, length = 0x%x\n", total_size);
-+	if (ret == 0) {
-+		fprintf(stderr, "%s:  NVMe Status:%s(%x)\n", __func__, nvme_status_to_string(ret), ret);
-+		fprintf(stderr, "INFO : WDC : Capture Device Unit Info log, length = 0x%lx\n", (long unsigned int)total_size);
- 
--			ret = wdc_create_log_file(file, dump_data, total_size);
--		}
--		free(dump_data);
-+		ret = wdc_create_log_file(file, dump_data, total_size);
- 	}
-+
-+	free(dump_data);
-+
- out:
- 	free(log_hdr);
- 	return ret;
--- 
-1.8.3.1
+On Mon, Jun 10, 2019 at 03:44:56PM +0800, Daniel Drake wrote:
+> Consumer products that are configured by default to run the Intel SATA AHCI
+> controller in "RAID" or "Intel RST Premium With Intel Optane System
+> Acceleration" mode are becoming increasingly prevalent.
+> 
+> Unde this mode, NVMe devices are remapped into the SATA device and become
+> hidden from the PCI bus, which means that Linux users cannot access their
+> storage devices unless they go into the firmware setup menu to revert back
+> to AHCI mode - assuming such option is available. Lack of support for this
+> mode is also causing complications for vendors who distribute Linux.
+
+Ugh.  Is there a spec that details what's actually going on here?
+"Remapping" doesn't describe much other than to say "something magic
+is happening here."
+
+I'm guessing this is related to these:
+
+  bfa9cb3e110c ("ahci-remap.h: add ahci remapping definitions")
+  aecec8b60422 ("ahci: warn about remapped NVMe devices")
+
+This driver makes a lot of assumptions about how this works, e.g.,
+apparently there's an AHCI BAR that covers "hidden devices" plus some
+other stuff of some magic size, whatever is special about device 0,
+etc, but I don't see the source of those assumptions.
+
+Why can't we use the device in "RAID" or "Intel RST Premium With Intel
+Optane System Acceleration" mode?  Why doesn't Intel make a Linux
+driver that works in that mode?
+
+What do users see in that mode, i.e., how would they recognize that
+they need this patch?
+
+I'm not really keen on the precedent this sets about pretending things
+are PCI when they're not.  This seems like a bit of a kludge that
+might happen to work now but could easily break in the future because
+it's not based on any spec we can rely on.  Plus it makes future PCI
+maintenance harder because we have to worry about how these differ
+from real PCI devices.
+
+> Add support for the remapped NVMe mode by creating a virtual PCI bus,
+> where the AHCI and NVMe devices are presented separately, allowing the
+> ahci and nvme drivers to bind in the normal way.
+> 
+> Unfortunately the NVMe device configuration space is inaccesible under
+> this scheme, so we provide a fake one, and hope that no DeviceID-based
+> quirks are needed. The interrupt is shared between the AHCI and NVMe
+> devices.
+> 
+> The existing ahci driver is modified to not claim devices where remapped
+> NVMe devices are present, allowing this new driver to step in.
+> 
+> The details of the remapping scheme came from patches previously
+> posted by Dan Williams and the resulting discussion.
+
+Maybe these details answer some of my questions.  Please include the
+URL (in addition to addressing the questions in the commit log).
+
+> Signed-off-by: Daniel Drake <drake@endlessm.com>
+> ---
+>  drivers/ata/ahci.c                        |  25 +-
+>  drivers/pci/controller/Kconfig            |  16 +
+>  drivers/pci/controller/Makefile           |   1 +
+>  drivers/pci/controller/intel-nvme-remap.c | 461 ++++++++++++++++++++++
+>  4 files changed, 493 insertions(+), 10 deletions(-)
+>  create mode 100644 drivers/pci/controller/intel-nvme-remap.c
+> 
+> diff --git a/drivers/ata/ahci.c b/drivers/ata/ahci.c
+> index f7652baa6337..75c5733cbae9 100644
+> --- a/drivers/ata/ahci.c
+> +++ b/drivers/ata/ahci.c
+> @@ -1499,7 +1499,7 @@ static irqreturn_t ahci_thunderx_irq_handler(int irq, void *dev_instance)
+>  }
+>  #endif
+>  
+> -static void ahci_remap_check(struct pci_dev *pdev, int bar,
+> +static int ahci_remap_check(struct pci_dev *pdev, int bar,
+>  		struct ahci_host_priv *hpriv)
+>  {
+>  	int i, count = 0;
+> @@ -1512,7 +1512,7 @@ static void ahci_remap_check(struct pci_dev *pdev, int bar,
+>  	    pci_resource_len(pdev, bar) < SZ_512K ||
+>  	    bar != AHCI_PCI_BAR_STANDARD ||
+>  	    !(readl(hpriv->mmio + AHCI_VSCAP) & 1))
+> -		return;
+> +		return 0;
+>  
+>  	cap = readq(hpriv->mmio + AHCI_REMAP_CAP);
+>  	for (i = 0; i < AHCI_MAX_REMAP; i++) {
+> @@ -1527,17 +1527,20 @@ static void ahci_remap_check(struct pci_dev *pdev, int bar,
+>  	}
+>  
+>  	if (!count)
+> -		return;
+> +		return 0;
+> +
+> +	/* Abort probe, allowing intel-nvme-remap to step in when available */
+> +	if (IS_ENABLED(CONFIG_INTEL_NVME_REMAP)) {
+> +		dev_info(&pdev->dev,
+> +			 "Device will be handled by intel-nvme-remap.\n");
+> +		return -ENODEV;
+> +	}
+>  
+>  	dev_warn(&pdev->dev, "Found %d remapped NVMe devices.\n", count);
+>  	dev_warn(&pdev->dev,
+> -		 "Switch your BIOS from RAID to AHCI mode to use them.\n");
+> +		 "Enable intel-nvme-remap or switch your BIOS to AHCI mode to use them.\n");
+
+I don't think users will know how to "enable intel-nvme-remap".  I
+think the message would have to mention a config option and rebuilding
+the kernel.
+
+> -	/*
+> -	 * Don't rely on the msi-x capability in the remap case,
+> -	 * share the legacy interrupt across ahci and remapped devices.
+> -	 */
+> -	hpriv->flags |= AHCI_HFLAG_NO_MSI;
+> +	return 0;
+>  }
+>  
+>  static int ahci_get_irq_vector(struct ata_host *host, int port)
+> @@ -1717,7 +1720,9 @@ static int ahci_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
+>  	hpriv->mmio = pcim_iomap_table(pdev)[ahci_pci_bar];
+>  
+>  	/* detect remapped nvme devices */
+> -	ahci_remap_check(pdev, ahci_pci_bar, hpriv);
+> +	rc = ahci_remap_check(pdev, ahci_pci_bar, hpriv);
+> +	if (rc)
+> +		return rc;
+>  
+>  	/* must set flag prior to save config in order to take effect */
+>  	if (ahci_broken_devslp(pdev))
+> diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+> index 011c57cae4b0..20bf2b528c5f 100644
+> --- a/drivers/pci/controller/Kconfig
+> +++ b/drivers/pci/controller/Kconfig
+> @@ -265,6 +265,22 @@ config PCIE_TANGO_SMP8759
+>  	  This can lead to data corruption if drivers perform concurrent
+>  	  config and MMIO accesses.
+>  
+> +config INTEL_NVME_REMAP
+> +	tristate "Support Intel NVMe remap via AHCI"
+> +	depends on X86_64
+> +	help
+> +	  Adds support for hidden NVMe devices remapped into AHCI memory
+> +	  on Intel platforms.
+
+As a user, I don't know what "hidden NVMe devices" means.  I think
+this needs to say something about RAID and/or the other Intel
+marketing-speak.
+
+> +	  As an alternative to this driver, it is sometimes possible to
+> +	  make such devices appear in the normal way by configuring your
+> +	  SATA controller to AHCI mode in the firmware setup menu.
+> +
+> +	  Say Y here if you want to access the remapped devices.
+> +
+> +	  To compile this driver as a module, choose M here: the
+> +	  module will be called intel-nvme-remap.
+> +
+>  config VMD
+>  	depends on PCI_MSI && X86_64 && SRCU
+>  	select X86_DEV_DMA_OPS
+> diff --git a/drivers/pci/controller/Makefile b/drivers/pci/controller/Makefile
+> index d56a507495c5..d4386025b0d1 100644
+> --- a/drivers/pci/controller/Makefile
+> +++ b/drivers/pci/controller/Makefile
+> @@ -1,4 +1,5 @@
+>  # SPDX-License-Identifier: GPL-2.0
+> +obj-$(CONFIG_INTEL_NVME_REMAP) += intel-nvme-remap.o
+>  obj-$(CONFIG_PCIE_CADENCE) += pcie-cadence.o
+>  obj-$(CONFIG_PCIE_CADENCE_HOST) += pcie-cadence-host.o
+>  obj-$(CONFIG_PCIE_CADENCE_EP) += pcie-cadence-ep.o
+> diff --git a/drivers/pci/controller/intel-nvme-remap.c b/drivers/pci/controller/intel-nvme-remap.c
+> new file mode 100644
+> index 000000000000..c5ac712443aa
+> --- /dev/null
+> +++ b/drivers/pci/controller/intel-nvme-remap.c
+> @@ -0,0 +1,461 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Intel remapped NVMe device support.
+> + *
+> + * Copyright (c) 2019 Endless Mobile, Inc.
+> + * Author: Daniel Drake <drake@endlessm.com>
+> + *
+> + * Some products ship by default with the SATA controller in "RAID" or
+> + * "Intel RST Premium With Intel Optane System Acceleration" mode. Under this
+> + * mode, which we refer to as "remapped NVMe" mode, any installed NVMe
+> + * devices disappear from the PCI bus, and instead their I/O memory becomes
+> + * available within the AHCI device BARs.
+> + *
+> + * This scheme is understood to be a way of avoiding usage of the standard
+> + * Windows NVMe driver under that OS, instead mandating usage of Intel's
+> + * driver instead, which has better power management, and presumably offers
+> + * some RAID/disk-caching solutions too.
+> + *
+> + * Here in this driver, we support the remapped NVMe mode by claiming the
+> + * AHCI device and creating a fake PCIe root port. On the new bus, the
+> + * original AHCI device is exposed with only minor tweaks. Then, fake PCI
+> + * devices corresponding to the remapped NVMe devices are created. The usual
+> + * ahci and nvme drivers are then expected to bind to these devices and
+> + * operate as normal.
+
+I think this creates a fake PCI host bridge, but not an actual PCIe
+Root Port, right?  I.e., "lspci" doesn't show a new Root Port device,
+does it?
+
+But I suppose "lspci" *does* show new NVMe devices that seem to be
+PCIe endpoints?  But they probably don't *work* like PCIe endpoints,
+e.g., we can't control ASPM, can't use AER, etc?
+
+> + * The PCI configuration space for the NVMe devices is completely
+> + * unavailable, so we fake a minimal one and hope for the best.
+> + *
+> + * Interrupts are shared between the AHCI and NVMe devices. For simplicity,
+> + * we only support the legacy interrupt here, although MSI support
+> + * could potentially be added later.
+> + */
+> +
+> +#define MODULE_NAME "intel-nvme-remap"
+> +
+> +#include <linux/ahci-remap.h>
+> +#include <linux/irq.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/pci.h>
+> +
+> +#define AHCI_PCI_BAR_STANDARD 5
+> +
+> +struct nvme_remap_dev {
+> +	struct pci_dev		*dev;		/* AHCI device */
+> +	struct pci_bus		*bus;		/* our fake PCI bus */
+> +	struct pci_sysdata	sysdata;
+> +	int			irq_base;	/* our fake interrupts */
+> +
+> +	/*
+> +	 * When we detect an all-ones write to a BAR register, this flag
+> +	 * is set, so that we return the BAR size on the next read (a
+> +	 * standard PCI behaviour).
+> +	 * This includes the assumption that an all-ones BAR write is
+> +	 * immediately followed by a read of the same register.
+> +	 */
+> +	bool			bar_sizing;
+> +
+> +	/*
+> +	 * Resources copied from the AHCI device, to be regarded as
+> +	 * resources on our fake bus.
+> +	 */
+> +	struct resource		ahci_resources[PCI_NUM_RESOURCES];
+> +
+> +	/* Resources corresponding to the NVMe devices. */
+> +	struct resource		remapped_dev_mem[AHCI_MAX_REMAP];
+> +
+> +	/* Number of remapped NVMe devices found. */
+> +	int			num_remapped_devices;
+> +};
+> +
+> +static inline struct nvme_remap_dev *nrdev_from_bus(struct pci_bus *bus)
+> +{
+> +	return container_of(bus->sysdata, struct nvme_remap_dev, sysdata);
+> +}
+> +
+> +
+> +/******** PCI configuration space **********/
+> +
+> +/*
+> + * Helper macros for tweaking returned contents of PCI configuration space.
+> + *
+> + * value contains len bytes of data read from reg.
+> + * If fixup_reg is included in that range, fix up the contents of that
+> + * register to fixed_value.
+> + */
+> +#define NR_FIX8(fixup_reg, fixed_value) do { \
+> +		if (reg <= fixup_reg && fixup_reg < reg + len) \
+> +			((u8 *) value)[fixup_reg - reg] = (u8) (fixed_value); \
+> +	} while (0)
+
+These implicitly depend on local variables named "reg", "len",
+"value".  Can you make that explicit?
+
+> +#define NR_FIX16(fixup_reg, fixed_value) do { \
+> +		NR_FIX8(fixup_reg, fixed_value); \
+> +		NR_FIX8(fixup_reg + 1, fixed_value >> 8); \
+> +	} while (0)
+> +
+> +#define NR_FIX24(fixup_reg, fixed_value) do { \
+> +		NR_FIX8(fixup_reg, fixed_value); \
+> +		NR_FIX8(fixup_reg + 1, fixed_value >> 8); \
+> +		NR_FIX8(fixup_reg + 2, fixed_value >> 16); \
+> +	} while (0)
+> +
+> +#define NR_FIX32(fixup_reg, fixed_value) do { \
+> +		NR_FIX16(fixup_reg, (u16) fixed_value); \
+> +		NR_FIX16(fixup_reg + 2, fixed_value >> 16); \
+> +	} while (0)
+> +
+> +/*
+> + * Read PCI config space of the slot 0 (AHCI) device.
+> + * We pass through the read request to the underlying device, but
+> + * tweak the results in some cases.
+> + */
+> +static int nvme_remap_pci_read_slot0(struct pci_bus *bus, int reg,
+> +				     int len, u32 *value)
+> +{
+> +	struct nvme_remap_dev *nrdev = nrdev_from_bus(bus);
+> +	struct pci_bus *ahci_dev_bus = nrdev->dev->bus;
+> +	int ret;
+> +
+> +	ret = ahci_dev_bus->ops->read(ahci_dev_bus, nrdev->dev->devfn,
+> +				      reg, len, value);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/*
+> +	 * Adjust the device class, to prevent this driver from attempting to
+> +	 * additionally probe the device we're simulating here.
+> +	 */
+> +	NR_FIX24(PCI_CLASS_PROG, PCI_CLASS_STORAGE_SATA_AHCI);
+> +
+> +	/*
+> +	 * Unset interrupt pin, otherwise ACPI tries to find routing
+> +	 * info for our virtual IRQ, fails, and complains.
+> +	 */
+> +	NR_FIX8(PCI_INTERRUPT_PIN, 0);
+> +
+> +	/*
+> +	 * Truncate the AHCI BAR to not include the region that covers the
+> +	 * hidden devices. This will cause the ahci driver to successfully
+> +	 * probe th new device (instead of handing it over to this driver).
+> +	 */
+> +	if (nrdev->bar_sizing) {
+> +		NR_FIX32(PCI_BASE_ADDRESS_5, ~(SZ_16K - 1));
+> +		nrdev->bar_sizing = false;
+> +	}
+> +
+> +	return PCIBIOS_SUCCESSFUL;
+> +}
+> +
+> +/*
+> + * Read PCI config space of a remapped device.
+> + * Since the original PCI config space is inaccessible, we provide a minimal,
+> + * fake config space instead.
+> + */
+> +static int nvme_remap_pci_read_remapped(struct pci_bus *bus, unsigned int port,
+> +					int reg, int len, u32 *value)
+> +{
+> +	struct nvme_remap_dev *nrdev = nrdev_from_bus(bus);
+> +	struct resource *remapped_mem;
+> +
+> +	if (port > nrdev->num_remapped_devices)
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+> +
+> +	*value = 0;
+> +	remapped_mem = &nrdev->remapped_dev_mem[port - 1];
+> +
+> +	/* Set a Vendor ID, otherwise Linux assumes no device is present */
+> +	NR_FIX16(PCI_VENDOR_ID, PCI_VENDOR_ID_INTEL);
+> +
+> +	/* Always appear on & bus mastering */
+> +	NR_FIX16(PCI_COMMAND, PCI_COMMAND_MEMORY | PCI_COMMAND_MASTER);
+> +
+> +	/* Set class so that nvme driver probes us */
+> +	NR_FIX24(PCI_CLASS_PROG, PCI_CLASS_STORAGE_EXPRESS);
+> +
+> +	if (nrdev->bar_sizing) {
+> +		NR_FIX32(PCI_BASE_ADDRESS_0,
+> +			 ~(resource_size(remapped_mem) - 1));
+> +		nrdev->bar_sizing = false;
+> +	} else {
+> +		resource_size_t mem_start = remapped_mem->start;
+> +
+> +		mem_start |= PCI_BASE_ADDRESS_MEM_TYPE_64;
+> +		NR_FIX32(PCI_BASE_ADDRESS_0, mem_start);
+> +		mem_start >>= 32;
+> +		NR_FIX32(PCI_BASE_ADDRESS_1, mem_start);
+> +	}
+> +
+> +	return PCIBIOS_SUCCESSFUL;
+> +}
+> +
+> +/* Read PCI configuration space. */
+> +static int nvme_remap_pci_read(struct pci_bus *bus, unsigned int devfn,
+> +			       int reg, int len, u32 *value)
+> +{
+> +	if (PCI_SLOT(devfn) == 0)
+> +		return nvme_remap_pci_read_slot0(bus, reg, len, value);
+> +	else
+> +		return nvme_remap_pci_read_remapped(bus, PCI_SLOT(devfn),
+> +						    reg, len, value);
+> +}
+> +
+> +/*
+> + * Write PCI config space of the slot 0 (AHCI) device.
+> + * Apart from the special case of BAR sizing, we disable all writes.
+> + * Otherwise, the ahci driver could make changes (e.g. unset PCI bus master)
+> + * that would affect the operation of the NVMe devices.
+> + */
+> +static int nvme_remap_pci_write_slot0(struct pci_bus *bus, int reg,
+> +				      int len, u32 value)
+> +{
+> +	struct nvme_remap_dev *nrdev = nrdev_from_bus(bus);
+> +	struct pci_bus *ahci_dev_bus = nrdev->dev->bus;
+> +
+> +	if (reg >= PCI_BASE_ADDRESS_0 && reg <= PCI_BASE_ADDRESS_5) {
+> +		/*
+> +		 * Writing all-ones to a BAR means that the size of the
+> +		 * memory region is being checked. Flag this so that we can
+> +		 * reply with an appropriate size on the next read.
+> +		 */
+> +		if (value == ~0)
+> +			nrdev->bar_sizing = true;
+> +
+> +		return ahci_dev_bus->ops->write(ahci_dev_bus,
+> +						nrdev->dev->devfn,
+> +						reg, len, value);
+> +	}
+> +
+> +	return PCIBIOS_SET_FAILED;
+> +}
+> +
+> +/*
+> + * Write PCI config space of a remapped device.
+> + * Since the original PCI config space is inaccessible, we reject all
+> + * writes, except for the special case of BAR probing.
+> + */
+> +static int nvme_remap_pci_write_remapped(struct pci_bus *bus,
+> +					 unsigned int port,
+> +					 int reg, int len, u32 value)
+> +{
+> +	struct nvme_remap_dev *nrdev = nrdev_from_bus(bus);
+> +
+> +	if (port > nrdev->num_remapped_devices)
+> +		return PCIBIOS_DEVICE_NOT_FOUND;
+> +
+> +	/*
+> +	 * Writing all-ones to a BAR means that the size of the memory
+> +	 * region is being checked. Flag this so that we can reply with
+> +	 * an appropriate size on the next read.
+> +	 */
+> +	if (value == ~0 && reg >= PCI_BASE_ADDRESS_0
+> +			&& reg <= PCI_BASE_ADDRESS_5) {
+> +		nrdev->bar_sizing = true;
+> +		return PCIBIOS_SUCCESSFUL;
+> +	}
+> +
+> +	return PCIBIOS_SET_FAILED;
+> +}
+> +
+> +/* Write PCI configuration space. */
+> +static int nvme_remap_pci_write(struct pci_bus *bus, unsigned int devfn,
+> +				int reg, int len, u32 value)
+> +{
+> +	if (PCI_SLOT(devfn) == 0)
+> +		return nvme_remap_pci_write_slot0(bus, reg, len, value);
+> +	else
+> +		return nvme_remap_pci_write_remapped(bus, PCI_SLOT(devfn),
+> +						     reg, len, value);
+> +}
+> +
+> +static struct pci_ops nvme_remap_pci_ops = {
+> +	.read	= nvme_remap_pci_read,
+> +	.write	= nvme_remap_pci_write,
+> +};
+> +
+> +
+> +/******** Initialization & exit **********/
+> +
+> +/*
+> + * Find a PCI domain ID to use for our fake bus.
+> + * Start at 0x10000 to not clash with ACPI _SEG domains (16 bits).
+> + */
+> +static int find_free_domain(void)
+> +{
+> +	int domain = 0xffff;
+> +	struct pci_bus *bus = NULL;
+> +
+> +	while ((bus = pci_find_next_bus(bus)) != NULL)
+> +		domain = max_t(int, domain, pci_domain_nr(bus));
+> +
+> +	return domain + 1;
+> +}
+
+This is the same as vmd_find_free_domain().  There might not be a
+conflict now, but both places should call the same interface so future
+changes can take both callers into account.
+
+> +static int find_remapped_devices(struct nvme_remap_dev *nrdev,
+> +				 struct list_head *resources)
+> +{
+> +	void __iomem *mmio;
+> +	int i, count = 0;
+> +	u32 cap;
+> +
+> +	mmio = pcim_iomap(nrdev->dev, AHCI_PCI_BAR_STANDARD,
+> +			  pci_resource_len(nrdev->dev,
+> +					   AHCI_PCI_BAR_STANDARD));
+> +	if (!mmio)
+> +		return -ENODEV;
+> +
+> +	/* Check if this device might have remapped nvme devices. */
+> +	if (pci_resource_len(nrdev->dev, AHCI_PCI_BAR_STANDARD) < SZ_512K ||
+> +	    !(readl(mmio + AHCI_VSCAP) & 1))
+> +		return -ENODEV;
+> +
+> +	cap = readq(mmio + AHCI_REMAP_CAP);
+
+Can you provide a spec reference for AHCI_VSCAP and AHCI_REMAP_CAP?
+It might not need to be in the code, but it would be useful in the
+commit log at least.
+
+> +	for (i = 0; i < AHCI_MAX_REMAP; i++) {
+> +		struct resource *remapped_mem;
+> +
+> +		if ((cap & (1 << i)) == 0)
+> +			continue;
+> +		if (readl(mmio + ahci_remap_dcc(i))
+> +				!= PCI_CLASS_STORAGE_EXPRESS)
+> +			continue;
+> +
+> +		/* We've found a remapped device */
+> +		remapped_mem = &nrdev->remapped_dev_mem[count++];
+> +		remapped_mem->start =
+> +			pci_resource_start(nrdev->dev, AHCI_PCI_BAR_STANDARD)
+> +			+ ahci_remap_base(i);
+> +		remapped_mem->end = remapped_mem->start
+> +			+ AHCI_REMAP_N_SIZE - 1;
+> +		remapped_mem->flags = IORESOURCE_MEM | IORESOURCE_PCI_FIXED;
+> +		pci_add_resource(resources, remapped_mem);
+> +	}
+> +
+> +	pcim_iounmap(nrdev->dev, mmio);
+> +
+> +	if (count == 0)
+> +		return -ENODEV;
+> +
+> +	nrdev->num_remapped_devices = count;
+> +	dev_info(&nrdev->dev->dev, "Found %d remapped NVMe devices\n",
+> +		 nrdev->num_remapped_devices);
+> +	return 0;
+> +}
+> +
+> +static void nvme_remap_remove_root_bus(void *data)
+> +{
+> +	struct pci_bus *bus = data;
+> +
+> +	pci_stop_root_bus(bus);
+> +	pci_remove_root_bus(bus);
+> +}
+> +
+> +static int nvme_remap_probe(struct pci_dev *dev,
+> +			    const struct pci_device_id *id)
+> +{
+> +	struct nvme_remap_dev *nrdev;
+> +	LIST_HEAD(resources);
+> +	int i;
+> +	int ret;
+> +	struct pci_dev *child;
+> +
+> +	nrdev = devm_kzalloc(&dev->dev, sizeof(*nrdev), GFP_KERNEL);
+> +	nrdev->sysdata.domain = find_free_domain();
+> +	nrdev->dev = dev;
+> +	pci_set_drvdata(dev, nrdev);
+> +
+> +	ret = pcim_enable_device(dev);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	pci_set_master(dev);
+> +
+> +	ret = find_remapped_devices(nrdev, &resources);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Add resources from the original AHCI device */
+> +	for (i = 0; i < PCI_NUM_RESOURCES; i++) {
+> +		struct resource *res = &dev->resource[i];
+> +
+> +		if (res->start) {
+> +			struct resource *nr_res = &nrdev->ahci_resources[i];
+> +
+> +			nr_res->start = res->start;
+> +			nr_res->end = res->end;
+> +			nr_res->flags = res->flags;
+> +			pci_add_resource(&resources, nr_res);
+> +		}
+> +	}
+> +
+> +	/* Create virtual interrupts */
+> +	nrdev->irq_base = devm_irq_alloc_descs(&dev->dev, -1, 0,
+> +					       nrdev->num_remapped_devices + 1,
+> +					       0);
+> +	if (nrdev->irq_base < 0)
+> +		return nrdev->irq_base;
+> +
+> +	/* Create and populate PCI bus */
+> +	nrdev->bus = pci_create_root_bus(&dev->dev, 0, &nvme_remap_pci_ops,
+> +					 &nrdev->sysdata, &resources);
+> +	if (!nrdev->bus)
+> +		return -ENODEV;
+> +
+> +	if (devm_add_action_or_reset(&dev->dev, nvme_remap_remove_root_bus,
+> +				     nrdev->bus))
+> +		return -ENOMEM;
+> +
+> +	/* We don't support sharing MSI interrupts between these devices */
+> +	nrdev->bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
+> +
+> +	pci_scan_child_bus(nrdev->bus);
+> +
+> +	list_for_each_entry(child, &nrdev->bus->devices, bus_list) {
+> +		/*
+> +		 * Prevent PCI core from trying to move memory BARs around.
+> +		 * The hidden NVMe devices are at fixed locations.
+> +		 */
+> +		for (i = 0; i < PCI_NUM_RESOURCES; i++) {
+> +			struct resource *res = &child->resource[i];
+> +
+> +			if (res->flags & IORESOURCE_MEM)
+> +				res->flags |= IORESOURCE_PCI_FIXED;
+> +		}
+> +
+> +		/* Share the legacy IRQ between all devices */
+> +		child->irq = dev->irq;
+> +	}
+> +
+> +	pci_assign_unassigned_bus_resources(nrdev->bus);
+> +	pci_bus_add_devices(nrdev->bus);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct pci_device_id nvme_remap_ids[] = {
+> +	/*
+> +	 * Match all Intel RAID controllers.
+> +	 *
+> +	 * There's overlap here with the set of devices detected by the ahci
+> +	 * driver, but ahci will only successfully probe when there
+> +	 * *aren't* any remapped NVMe devices, and this driver will only
+> +	 * successfully probe when there *are* remapped NVMe devices that
+> +	 * need handling.
+> +	 */
+> +	{
+> +		PCI_VDEVICE(INTEL, PCI_ANY_ID),
+> +		.class = PCI_CLASS_STORAGE_RAID << 8,
+> +		.class_mask = 0xffffff00,
+> +	},
+> +	{0,}
+> +};
+> +MODULE_DEVICE_TABLE(pci, nvme_remap_ids);
+> +
+> +static struct pci_driver nvme_remap_drv = {
+> +	.name		= MODULE_NAME,
+> +	.id_table	= nvme_remap_ids,
+> +	.probe		= nvme_remap_probe,
+> +};
+> +module_pci_driver(nvme_remap_drv);
+> +
+> +MODULE_AUTHOR("Daniel Drake <drake@endlessm.com>");
+> +MODULE_LICENSE("GPL v2");
+> -- 
+> 2.20.1
+> 
+> 
+> _______________________________________________
+> Linux-nvme mailing list
+> Linux-nvme@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-nvme
 
 _______________________________________________
 Linux-nvme mailing list
