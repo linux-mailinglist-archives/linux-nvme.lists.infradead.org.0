@@ -2,88 +2,71 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 553A13D457
-	for <lists+linux-nvme@lfdr.de>; Tue, 11 Jun 2019 19:36:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E17783D739
+	for <lists+linux-nvme@lfdr.de>; Tue, 11 Jun 2019 21:53:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WfjNYwpuIxTkVklkMAD7RvTBtHms6OFrh5QhtTfSvRk=; b=CxIcQkDUDVUqr14uUXHI+vpQg
-	EKILhVtR04Mke0kwRByg53FDR2Tov+E5T6ZlL+T42x0xEPPG/66wRCJj/2ZGhbbTAma0ykNhvBCbq
-	TawJDgkAWyHnyFCE/ZtUQz8IQY05+FCuX/M9ikeN257CLUqyYF2eLzL9Gy8qi7/WaMp8wIjdbiyet
-	bfnQfpjb9eDMM1CjwEnpz3RaZB4SlNJw2Wnl3ullGBSH4zvB9NAwO3haURqcKa26mUlLjMxfygncS
-	oOG7oRz74UUYuCM+fHqAtf3PrhpxW/tXErQk4H44kKO7hiFs9pp4fRzKKNRo9p+YbRJNvbCUaiINJ
-	6lHaXHZqg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SXzfJGsjiHo8cuwskABvMvQpQK6BaYyJawYZYLbNg38=; b=Q5GYIbYLmtfykO
+	RQfTOH37I1sC8TfVqVOubJZg/FvZTBE1xJrPn08DmEmzmhropOH1hEkl8rzPr80r7ScznTs0y1b9J
+	EcHI9jjdcu5dKLuqfO2WIVQ9JF9CyisF+X4cToDkMRo6C6L8sHiyZ9VL4391kuFjEQqRdgg3a3Akv
+	ePaqjJGuzf408zS2J8bxvPIOJGkfMDPzLEyBCWoSiioBHu7l6uinLIA75n8Xnm28T5xnd9fHQvjOf
+	OZDcUlFrf1vpjoT25GSkHleSjYT8qFdDDYYeut7HsDygwLWiq+UUcLYDVtk84r0TsI0RoVsXB47iw
+	7TPabdPnYwvD1aNkjCkg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hakhW-0005Oe-95; Tue, 11 Jun 2019 17:36:50 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1hampL-0005ba-3Y; Tue, 11 Jun 2019 19:53:03 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hakhH-0005Le-UF
- for linux-nvme@lists.infradead.org; Tue, 11 Jun 2019 17:36:37 +0000
-Received: by mail-ot1-f67.google.com with SMTP id z24so12721528oto.1
- for <linux-nvme@lists.infradead.org>; Tue, 11 Jun 2019 10:36:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=l02+Iqk4b5i4HbMO22TWpcCjAzDLoILtHFUU6Ppkk0Y=;
- b=DwVnxT992X4iHuV1KnodO3fmpK8vwPVXwn/pJoGQLmQDfjrQSYPPDN1IRdvInTlIxh
- 9orKi0YDzELy2aUJjRQSCX4Lg0G2x+1Ha+LOrzM9EJil9dO/jZNa5agYC5q5GBTUh36/
- XW4+ufYFJmXp4Qh4oO8k1ozKpLICLBjNO312iFx192EI4khp1KVjWqgDHtWnFHSDo/se
- adgYexth0txwVJYCWtJgsvfs4sTqBqnIkBiSdORrFLnsg1Ip4b485zTylmaYYLU1TjeL
- 8DGUdBzNJuC9z0hPEERJKded1MnM1gg67/w24TBELPbdgPzeGiO1q7XcEoi+r1ltrQUy
- mb0A==
-X-Gm-Message-State: APjAAAX0+EzbXM0kFLAUnXRQd3LNJG2lfLHX8II6Bl2V9cZFlTVSn+ic
- gURhWj1kzP++uVq+KnIVfAxhlCIh
-X-Google-Smtp-Source: APXvYqx0EI41JxrTlqzMSYH7GD4/bdIr5X9ALI4n56nu0EPVtada9T7HCStiT3HygcVR5fNHERLqkQ==
-X-Received: by 2002:a9d:65cb:: with SMTP id z11mr12944240oth.325.1560274594547; 
- Tue, 11 Jun 2019 10:36:34 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id u16sm222829otk.46.2019.06.11.10.36.33
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 11 Jun 2019 10:36:33 -0700 (PDT)
-Subject: Re: [PATCH V6 6/6] fabrics: Return errno mapped for fabrics error
- status
-To: minwoo.im@samsung.com, Minwoo Im <minwoo.im.dev@gmail.com>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-References: <7710edd4-5277-615c-426f-f9d48da8cb99@grimberg.me>
- <20190604154034.23386-1-minwoo.im.dev@gmail.com>
- <20190604154034.23386-7-minwoo.im.dev@gmail.com>
- <BYAPR04MB57497DFEEC77ED6D43998ED086110@BYAPR04MB5749.namprd04.prod.outlook.com>
- <20190608200112.GC28228@minwoo-900X5N>
- <CGME20190611000218epcas3p3270ae3bfaa97cd686a7006810c453988@epcms2p1>
- <20190611051309epcms2p1e47e656deb584057d428eaec018a363e@epcms2p1>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <667f4f9e-9356-44fb-d7fd-14d00b5393ea@grimberg.me>
-Date: Tue, 11 Jun 2019 10:36:32 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ id 1hampF-0005b9-GM
+ for linux-nvme@lists.infradead.org; Tue, 11 Jun 2019 19:52:59 +0000
+Received: from localhost (unknown [69.71.4.100])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 58ED820883;
+ Tue, 11 Jun 2019 19:52:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1560282776;
+ bh=0CA6nGYQ/ToZnu4NcBoqKhbEm0DpVVUDuW9mvjoONPY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Z3+L6uZ/jqpeIZFFKA9KkS7JROD6XRokUklWr6M0oNalePt64+bQhN42uwGBetAB1
+ 8iaO1HxlyqJjEagyJ2tTGD5hC/99YPCVbcT3hRqajhvdqhM3baFcbIVWVNUKf1ntEe
+ oLJkDQGRx+JtqfwmqxSOIf6mTw5hoy6fcZDr9Dd0=
+Date: Tue, 11 Jun 2019 14:52:55 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Daniel Drake <drake@endlessm.com>
+Subject: Re: [PATCH] PCI: Add Intel remapped NVMe device support
+Message-ID: <20190611195254.GB768@google.com>
+References: <20190610074456.2761-1-drake@endlessm.com>
+ <20190610211628.GA68572@google.com>
+ <CAD8Lp47BmOtEgFUDCMyLrDpoPZSxcWmbrXEbh4PXS0FSG8ukLA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20190611051309epcms2p1e47e656deb584057d428eaec018a363e@epcms2p1>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CAD8Lp47BmOtEgFUDCMyLrDpoPZSxcWmbrXEbh4PXS0FSG8ukLA@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190611_103635_981111_F60605F8 
-X-CRM114-Status: GOOD (  16.20  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20190611_125257_583442_BC9CE39D 
+X-CRM114-Status: GOOD (  27.10  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.67 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,43 +78,126 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
+ Linux PCI <linux-pci@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>, linux-ide@vger.kernel.org,
+ Alex Williamson <alex.williamson@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ Dan Williams <dan.j.williams@intel.com>,
+ Linux Upstreaming Team <linux@endlessm.com>, Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+On Tue, Jun 11, 2019 at 11:25:55AM +0800, Daniel Drake wrote:
+> On Tue, Jun 11, 2019 at 5:16 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > Ugh.  Is there a spec that details what's actually going on here?
+> 
+> Unfortunately there isn't a great spec to go on.
+> https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/100-series-chipset-datasheet-vol-2.pdf
+> has some details on the VS_CAP register (section 14.2.10).
+> Beyond that, Intel contributed patches to enable support for these
+> devices previously:
+> https://marc.info/?l=linux-ide&m=147709610621480&w=2
+> and stated that "The patch contents are [the spec]".
+> https://marc.info/?l=linux-ide&m=147733119300691&w=2
 
->> Shouldn't we start over in this case?
-> 
-> I can see two functions are calling do_discover() which are:
->    1) case for discover_from_conf_file()
-> 		err = do_discover(argstr, connect);
-> 		if (err) {
-> 			ret = err;
-> 			continue;
-> 		}
-> 
->    2) case for discover()
-> 		return do_discover(argstr, connect);
-> 
-> The 1) case might need non-zero values to start over by the user.  For the
-> 2) case, it needs to be in zero value even it fails with entry count mismatch.
-> 
-> I would rather to have negative error value for the DISC_NOT_EQUAL case.
-> Sagi, How about :
-> 
-> 	case DISC_NOT_EQUAL:
-> 		ret = -EBADSLT;
-> 		fprintf(stderr,
-> 		"Numrec values of last two get discovery log page not equal\n");
-> 		break;
-> 
+It also said (three years ago) that there was some hope of opening the
+specs.  But I guess that hasn't happened.
 
-Question, this is a case where the numrec is different but the genctr is
-the same? I think we need to fail if the genctr is the same, but we need
-to start over if the genctr is different.
+I'd much prefer lore.kernel.org links, but unfortunately lore doesn't
+seem to have linux-ide archives.  If marc.info is the best we can do,
+maybe at least include Message-IDs so there's some useful info in the
+event marc.info disappears.
+
+> > I think this creates a fake PCI host bridge, but not an actual PCIe
+> > Root Port, right?  I.e., "lspci" doesn't show a new Root Port device,
+> > does it?
+> > ...
+> 
+> I appreciate your input here as I don't frequently go down to this
+> level of detail with PCI. I'm trying to follow the previous
+> suggestions from Christoph Hellwig, and further clarification on the
+> most appropriate way to do this would be appreciated:
+> 
+> https://marc.info/?l=linux-ide&m=147923593001525&w=2
+> "implementing a bridge driver like VMD"
+> http://lists.infradead.org/pipermail/linux-nvme/2017-October/013325.html
+> "The right way to do this would be to expose a fake PCIe root port
+> that both the AHCI and NVMe driver bind to."
+> 
+> I'm not completely clear regarding the difference between a PCI host
+> bridge and a PCIe root port, but indeed, after my patch, when running
+> lspci, you see:
+> 
+> 1. The original RAID controller, now claimed by this new intel-nvme-remap driver
+> 
+> 0000:00:17.0 RAID bus controller: Intel Corporation 82801 Mobile SATA
+> Controller [RAID mode] (rev 30)
+>     Memory at b4390000 (32-bit, non-prefetchable) [size=32K]
+
+> 2. The RAID controller presented by intel-nvme-remap on a new bus,
+> with the cfg space tweaked in a way that it gets probed & accepted by
+> the ahci driver:
+> 
+> 10000:00:00.0 SATA controller: Intel Corporation 82801 Mobile SATA
+> Controller [RAID mode] (rev 30) (prog-if 01 [AHCI 1.0])
+>     Memory at b4390000 (32-bit, non-prefetchable) [size=32K]
+
+Exposing the same device in two different places (0000:00:17.0 and
+10000:00:00.0) is definitely an architectural issue.  Logically we're
+saying that accesses to b4390000 are claimed by two different devices.
+
+> 3. The (previously inaccessible) NVMe device as presented on the new
+> bus by intel-nvme-remap, probed by the nvme driver
+> 
+> 10000:00:01.0 Non-Volatile memory controller: Intel Corporation Device
+> 0000 (prog-if 02 [NVM Express])
+>     Memory at b430c000 (64-bit, non-prefetchable) [size=16K]
+
+From a hardware point of view, I think it *was* previously accessible.
+Maybe not in a convenient, driver-bindable way, but I don't think your
+patch flips any PCI_COMMAND or similar register enable bits.
+Everything should have been accessible before if you knew where to
+look.
+
+> I think Christoph's suggestion does ultimately require us to do some
+> PCI pretending in some form, but let me know if there are more
+> accepable ways to do this. If you'd like to see this appear more like
+> a PCIe root port then I guess I can use pci-bridge-emul.c to do this,
+> although having a fake root bridge appear in lspci output feels like
+> I'd be doing even more pretending.
+
+Maybe exposing a Root Port would help rationalize some of the issues,
+but I wasn't suggesting that you *need* to expose a Root Port.  I was
+just trying to point out that the comment inaccurately claimed you
+were.
+
+> Also happy to experiment with alternative approaches if you have any
+> suggestions? 
+
+Why do you need these to be PCI devices?  It looks like the main thing
+you get is a hook to bind the driver to.  Could you accomplish
+something similar by doing some coordination between the ahci and nvme
+drivers directly, without involving PCI?
+
+I assume that whatever magic Intel is doing with this "RST Optane"
+mode, the resulting platform topology is at least compliant with the
+PCI spec, so all the standard things in the spec like AER, DPC, power
+management, etc, still work.
+
+> With the decreasing cost of NVMe SSDs, we're seeing an
+> influx of upcoming consumer PC products that will ship with the NVMe
+> disk being the only storage device, combined with the BIOS default of
+> "RST Optane" mode which will prevent Linux from seeing it at all, 
+> so I'm really keen to swiftly find a way forward here.
+
+This all sounds urgent, but without details of what this "RST Optane"
+mode means actually means, I don't know what to do with it.  I want to
+avoid the voodoo programming of "we don't know *why* we're doing this,
+but it seems to work."
+
+Bjorn
 
 _______________________________________________
 Linux-nvme mailing list
