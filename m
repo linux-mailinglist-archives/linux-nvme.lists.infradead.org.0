@@ -2,108 +2,88 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 968F23C353
-	for <lists+linux-nvme@lfdr.de>; Tue, 11 Jun 2019 07:15:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 553A13D457
+	for <lists+linux-nvme@lfdr.de>; Tue, 11 Jun 2019 19:36:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:Date:Message-ID:
-	In-Reply-To:To:From:Subject:Mime-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hIoNPOYkV0e62RQ6ou4flr03D23fRR7/M6Uq8eOglZg=; b=Z6tYlARIk/xgaD
-	/558raSASd99vGGSG7paaZ842iItROxBhfaxDJnxTaeTXJyiwKvm20BY6Sce11qvacEQBrelXCdQX
-	LgoXX6/R0BtlpimTw3xMCI/jrJyuR6i0UbCI0N63pVgQd6Cg5tpHHOmuQP/fFE3XCHEQ2y91csC7E
-	Yq3s1Qt4VHmTdczslCg3SYUOzjLlnGd6d9StZLtek2zDTswVHuwvJojh7FtswPhFdWCcqob4JuIxU
-	tAhgn4+JHaHBADOYuq5OfTVbWOcw7TbjzA92Dr2PZQN+OUJwKqDl2wsdv+CH0GpjExtDAZ7RFDbjk
-	rqwRH10YNaAgX8ygnsag==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=WfjNYwpuIxTkVklkMAD7RvTBtHms6OFrh5QhtTfSvRk=; b=CxIcQkDUDVUqr14uUXHI+vpQg
+	EKILhVtR04Mke0kwRByg53FDR2Tov+E5T6ZlL+T42x0xEPPG/66wRCJj/2ZGhbbTAma0ykNhvBCbq
+	TawJDgkAWyHnyFCE/ZtUQz8IQY05+FCuX/M9ikeN257CLUqyYF2eLzL9Gy8qi7/WaMp8wIjdbiyet
+	bfnQfpjb9eDMM1CjwEnpz3RaZB4SlNJw2Wnl3ullGBSH4zvB9NAwO3haURqcKa26mUlLjMxfygncS
+	oOG7oRz74UUYuCM+fHqAtf3PrhpxW/tXErQk4H44kKO7hiFs9pp4fRzKKNRo9p+YbRJNvbCUaiINJ
+	6lHaXHZqg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1haZ7h-0000KE-GD; Tue, 11 Jun 2019 05:15:06 +0000
-Received: from mailout2.samsung.com ([203.254.224.25])
+	id 1hakhW-0005Oe-95; Tue, 11 Jun 2019 17:36:50 +0000
+Received: from mail-ot1-f67.google.com ([209.85.210.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1haZ7X-0000H8-86
- for linux-nvme@lists.infradead.org; Tue, 11 Jun 2019 05:14:56 +0000
-Received: from epcas2p3.samsung.com (unknown [182.195.41.55])
- by mailout2.samsung.com (KnoxPortal) with ESMTP id
- 20190611051452epoutp0242dc5422c7d03eca86eeb0fb7415d6ba~nDQCYT-ig0401904019epoutp02-
- for <linux-nvme@lists.infradead.org>; Tue, 11 Jun 2019 05:14:52 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com
- 20190611051452epoutp0242dc5422c7d03eca86eeb0fb7415d6ba~nDQCYT-ig0401904019epoutp02-
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1560230092;
- bh=16lcUJdq6zsgdvbEHnA+Vt8f0l7lqf7ZNY0qJT/vUMY=;
- h=Subject:Reply-To:From:To:CC:In-Reply-To:Date:References:From;
- b=tZRcbNvF7G1vOWecG9XSjxgXEtqQKh0BAFOWkC0jyJY2CBUblRkFrJh02el2cbXqA
- 38hxfZgtwxnXrSisgsZnlEPVPudL+uB/iNk0Lq7ntmjlPsIo0AipMmrMNlb/FWhtNl
- XClM8CtagY2cz5TMz358vaj7pbTvYX9TlweObhPo=
-Received: from epsmges2p4.samsung.com (unknown [182.195.40.187]) by
- epcas2p2.samsung.com (KnoxPortal) with ESMTP id
- 20190611051450epcas2p2832d73eab369d33d31366e6020a9cf74~nDQAnoeRR2680526805epcas2p2T;
- Tue, 11 Jun 2019 05:14:50 +0000 (GMT)
-X-AuditID: b6c32a48-689ff7000000106f-48-5cff38caed5a
-Received: from epcas2p2.samsung.com ( [182.195.41.54]) by
- epsmges2p4.samsung.com (Symantec Messaging Gateway) with SMTP id
- C6.C1.04207.AC83FFC5; Tue, 11 Jun 2019 14:14:50 +0900 (KST)
-Mime-Version: 1.0
-Subject: Re: [RFC] mismatch between chardev and blkdev node names
-From: Minwoo Im <minwoo.im@samsung.com>
-To: Sagi Grimberg <sagi@grimberg.me>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Keith Busch <keith.busch@gmail.com>, Minwoo Im <minwoo.im@samsung.com>
-X-Priority: 3
-X-Content-Kind-Code: NORMAL
-In-Reply-To: <49a9c722-72f4-bce9-b368-ece078e1e03a@grimberg.me>
-X-Drm-Type: N,general
-X-Msg-Generator: Mail
-X-Msg-Type: PERSONAL
-X-Reply-Demand: N
-Message-ID: <20190611051448epcms2p4637f4b9209d0b9292e0db2b3be1dcced@epcms2p4>
-Date: Tue, 11 Jun 2019 14:14:48 +0900
-X-CMS-MailID: 20190611051448epcms2p4637f4b9209d0b9292e0db2b3be1dcced
-X-Sendblock-Type: AUTO_CONFIDENTIAL
-CMS-TYPE: 102P
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmpik+LIzCtJLcpLzFFi42LZdljTTPeUxf8Ygz9TWCxmHM2wmL/sKbvF
- r05ui2enDzBbrHv9nsWB1WPnrLvsHufvbWTx2Lyk3qNvyyrGAJaoHJuM1MSU1CKF1Lzk/JTM
- vHRbJe/geOd4UzMDQ11DSwtzJYW8xNxUWyUXnwBdt8wcoK1KCmWJOaVAoYDE4mIlfTubovzS
- klSFjPziElul1IKUnAJDwwK94sTc4tK8dL3k/FwrQwMDI1OgyoScjO3bulgKPrNWnJj4nqmB
- 8SZLFyMnh4SAiUTzwV1MXYxcHEICOxgljlxawdbFyMHBKyAo8XeHMEiNsICjxNGlO1lBwkIC
- 8hI/XhlAhDUl3u0+wwpiswmoSzRMfcUCMkZEYDKjxNJ508ESzAL6EoubulghdvFKzGh/CrVX
- WmL78q2MIDangL3Enf/dbBBxUYmbq9+yw9jvj81nhLBFJFrvnWWGsAUlHvzczQhyj4SAhMS9
- d3YQZr3ElhUWICdICLQwStx4sxaqVV+i8flHsLW8Ar4Sx1c9B4uzCKhKrOzfBXWOi8SJJ38Y
- IU6Wl9j+dg4zyExmoB/X79KHGK8sceQWC0QFn0TH4b/sME/tmPeECcJWlvh46BDUkZISyy+9
- hnrKQ2LR+uXskEBeyiRx/doR9gmMCrMQ4TwLyeJZCIsXMDKvYhRLLSjOTU8tNiowQY7aTYzg
- 9KflsYPxwDmfQ4wCHIxKPLwR0f9ihFgTy4orcw8xSnAwK4nwdn0HCvGmJFZWpRblxxeV5qQW
- H2I0Bfp/IrOUaHI+MDXnlcQbmhqZmRlYmlqYmhlZKInzbuK+GSMkkJ5YkpqdmlqQWgTTx8TB
- KdXAeNTwQrRWy1zDb0cmz1gb7q132OuJzsOL2i6T13zewDghOT+yReVnlITHOqNbJqs2rP3y
- Yc3yle3V/o2fPayO/Z83t+zp+qt7ekXvLS6elu6s4OByLetIiVKV3sWLk68JnZz1qFJjg6h+
- ZPseZoPfAsWhXxMvOfmcX2n3WnvvOSWvmKRDfR7R9UosxRmJhlrMRcWJALUj6DmVAwAA
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20190610235716epcas4p2715a468530e87b74c60543e8077a0481
-References: <49a9c722-72f4-bce9-b368-ece078e1e03a@grimberg.me>
- <20190610124925.GA20319@minwooim-desktop>
- <CAOSXXT6BJD8tnus6=vWh6dr9owkVSJdQ_f1icG9Kdq7SpF9Pzg@mail.gmail.com>
- <20190610140650.GA25273@minwooim-desktop>
- <CGME20190610235716epcas4p2715a468530e87b74c60543e8077a0481@epcms2p4>
+ id 1hakhH-0005Le-UF
+ for linux-nvme@lists.infradead.org; Tue, 11 Jun 2019 17:36:37 +0000
+Received: by mail-ot1-f67.google.com with SMTP id z24so12721528oto.1
+ for <linux-nvme@lists.infradead.org>; Tue, 11 Jun 2019 10:36:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=l02+Iqk4b5i4HbMO22TWpcCjAzDLoILtHFUU6Ppkk0Y=;
+ b=DwVnxT992X4iHuV1KnodO3fmpK8vwPVXwn/pJoGQLmQDfjrQSYPPDN1IRdvInTlIxh
+ 9orKi0YDzELy2aUJjRQSCX4Lg0G2x+1Ha+LOrzM9EJil9dO/jZNa5agYC5q5GBTUh36/
+ XW4+ufYFJmXp4Qh4oO8k1ozKpLICLBjNO312iFx192EI4khp1KVjWqgDHtWnFHSDo/se
+ adgYexth0txwVJYCWtJgsvfs4sTqBqnIkBiSdORrFLnsg1Ip4b485zTylmaYYLU1TjeL
+ 8DGUdBzNJuC9z0hPEERJKded1MnM1gg67/w24TBELPbdgPzeGiO1q7XcEoi+r1ltrQUy
+ mb0A==
+X-Gm-Message-State: APjAAAX0+EzbXM0kFLAUnXRQd3LNJG2lfLHX8II6Bl2V9cZFlTVSn+ic
+ gURhWj1kzP++uVq+KnIVfAxhlCIh
+X-Google-Smtp-Source: APXvYqx0EI41JxrTlqzMSYH7GD4/bdIr5X9ALI4n56nu0EPVtada9T7HCStiT3HygcVR5fNHERLqkQ==
+X-Received: by 2002:a9d:65cb:: with SMTP id z11mr12944240oth.325.1560274594547; 
+ Tue, 11 Jun 2019 10:36:34 -0700 (PDT)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id u16sm222829otk.46.2019.06.11.10.36.33
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 11 Jun 2019 10:36:33 -0700 (PDT)
+Subject: Re: [PATCH V6 6/6] fabrics: Return errno mapped for fabrics error
+ status
+To: minwoo.im@samsung.com, Minwoo Im <minwoo.im.dev@gmail.com>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+References: <7710edd4-5277-615c-426f-f9d48da8cb99@grimberg.me>
+ <20190604154034.23386-1-minwoo.im.dev@gmail.com>
+ <20190604154034.23386-7-minwoo.im.dev@gmail.com>
+ <BYAPR04MB57497DFEEC77ED6D43998ED086110@BYAPR04MB5749.namprd04.prod.outlook.com>
+ <20190608200112.GC28228@minwoo-900X5N>
+ <CGME20190611000218epcas3p3270ae3bfaa97cd686a7006810c453988@epcms2p1>
+ <20190611051309epcms2p1e47e656deb584057d428eaec018a363e@epcms2p1>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <667f4f9e-9356-44fb-d7fd-14d00b5393ea@grimberg.me>
+Date: Tue, 11 Jun 2019 10:36:32 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <20190611051309epcms2p1e47e656deb584057d428eaec018a363e@epcms2p1>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190610_221455_450044_E08720ED 
-X-CRM114-Status: GOOD (  14.97  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190611_103635_981111_F60605F8 
+X-CRM114-Status: GOOD (  16.20  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [203.254.224.25 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.67 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.0 T_DKIMWL_WL_HIGH       DKIMwl.org - Whitelisted High sender
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,34 +95,43 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Reply-To: minwoo.im@samsung.com
-Cc: linux-nvme <linux-nvme@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Keith Busch <kbusch@kernel.org>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> >> You just need to know this if you're accessing direct namespace
-> >> handles, and the controller-namespace relationship is accurately
-> >> represented in sysfs for those wanting to view it.
-> >
-> > Then the user should exactly know the relationship bettwen the
-> > controller and namespaces via the sysfs structures.
-> 
-> Or run:
-> 
-> nvme list-subsys (with or without passing in a namespace device node).
-> 
-> For example: nvme list-subsys /dev/nvme0n1 will show you exactly which
-> controllers it spans and which subsystem it belongs to.
 
-Yeah, Sagi.
+>> Shouldn't we start over in this case?
+> 
+> I can see two functions are calling do_discover() which are:
+>    1) case for discover_from_conf_file()
+> 		err = do_discover(argstr, connect);
+> 		if (err) {
+> 			ret = err;
+> 			continue;
+> 		}
+> 
+>    2) case for discover()
+> 		return do_discover(argstr, connect);
+> 
+> The 1) case might need non-zero values to start over by the user.  For the
+> 2) case, it needs to be in zero value even it fails with entry count mismatch.
+> 
+> I would rather to have negative error value for the DISC_NOT_EQUAL case.
+> Sagi, How about :
+> 
+> 	case DISC_NOT_EQUAL:
+> 		ret = -EBADSLT;
+> 		fprintf(stderr,
+> 		"Numrec values of last two get discovery log page not equal\n");
+> 		break;
+> 
 
-I just have posted the comment to the issue in Github just like what you've
-mentioned.  we can figure out the relationship for the subsystems via
-"nvme list-subsys".
-
-Thanks,
+Question, this is a case where the numrec is different but the genctr is
+the same? I think we need to fail if the genctr is the same, but we need
+to start over if the genctr is different.
 
 _______________________________________________
 Linux-nvme mailing list
