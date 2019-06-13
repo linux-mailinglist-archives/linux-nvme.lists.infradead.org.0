@@ -2,107 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 339A54321E
-	for <lists+linux-nvme@lfdr.de>; Thu, 13 Jun 2019 03:54:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5AC6643452
+	for <lists+linux-nvme@lfdr.de>; Thu, 13 Jun 2019 10:45:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0Y95lMakhdfQTvZ62xrtCGfGklfxIHOgNQG0JOx9tP8=; b=ti2ZtSyMAJJpRG
-	iMxpFhQiwh265HNTZe9c2YBGHt9DovGdsYYJsQrj5Au5Ikhd93ItMCxUuyrcEhP2CU4fjh24FvjzL
-	G+SOSCQR3vralOjLzl6Ajpev/vOF127BLYR0ZUVUVRfQVz5JcFJytuKKh5r2S8PRd7+cJ4zq1ouub
-	TxaaqGm/TRitseEhEqwErt6cE8QZpxlfMPQgksx9YJZK9P1mBisiWhmeeuBuIkHQenLhQIHKGP1uN
-	U+YHlDpUok+ILD2uypFaD/LpyiibkWEa4l96IbL/0Bu9HJ7gKlGD9m1e7+cww5+aVZRmpf7OtTM/r
-	/bjmNKvwYx+QXy9hLGkA==;
+	List-Owner; bh=wFlhxWglQn2GRA6YHHsmwbNWdckJu6Xlfbx/13ssy8Q=; b=lSfRNV6+Ryu7Nk
+	ShOnzMTTRTOsxjPeNzbEC/DHvQboRZOTryFUY38qCqWB0/gMRAdwXvBX/pHsY4yKOG4hVHEQamW3f
+	F8eiyA2VATsz3udNr6R5zUeKsWKzdHrr46fMnn16z2IBK0r4YcTbRVK/X2zNIRUkvHBkjbHKv64lf
+	c+2eL2d3icfLf4h1HhuZyX6uy6fr0H9wWPQl/0mulMyDmalCSrjxwQ1Wy3URUqQxphgg2GAjHOyas
+	c228JOu8sFJKaStDupQReBdWpcMUpdaxhbqvnVQuRnr1VZELqI1n16kIlShSJfECo9RQZQ18ZTfT/
+	f8VfsBQZTHWTQfM+DTvg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hbEwM-0001z3-15; Thu, 13 Jun 2019 01:54:10 +0000
-Received: from aserp2130.oracle.com ([141.146.126.79])
+	id 1hbLMj-0006Mt-Gi; Thu, 13 Jun 2019 08:45:49 +0000
+Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hbEw9-0001yW-A3
- for linux-nvme@lists.infradead.org; Thu, 13 Jun 2019 01:53:58 +0000
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5D1hOOO011978;
- Thu, 13 Jun 2019 01:53:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : references : date : in-reply-to : message-id : mime-version :
- content-type; s=corp-2018-07-02;
- bh=KEmDoCz3dWCEeotxXoSp2kP1arF3OgFwA4amQUIPNOs=;
- b=pTsVEElrx/TDogtSJ0WHsa6WBFikd81O2jkMmkrKYF1vlx977yyI4ip+7FTTzZmIv+EC
- 4p0tnv53SQNmLrsCqMVtos/z+D9/QdpWtbE8RLRjcebstIkJSE/9eTK2ysL1bw9SAWOH
- ogdqXAqTYEnu1OnnvfefMZ/jf4BiqJg+pZnnLaHEbLPIaE6KGF0crFZaZ+rCkRs7cLdp
- +yY7FkfLOXAz3Sr2To1zgxalz5SMcMNvIdZb8/SszFBKLWLvBp3l/zWIr+lH6aH92O3V
- mcQLVmuE7SCfPf9CQCvp32Aqu4G99RB9D+4Rq+tfKDs9pnBI/A7cYJZjIZPC0vfRSHOy ig== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2130.oracle.com with ESMTP id 2t02hexupm-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 13 Jun 2019 01:53:44 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5D1rhVV074912;
- Thu, 13 Jun 2019 01:53:43 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3030.oracle.com with ESMTP id 2t024v949g-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 13 Jun 2019 01:53:43 +0000
-Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5D1reim013505;
- Thu, 13 Jun 2019 01:53:42 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 12 Jun 2019 18:53:40 -0700
-To: Bart Van Assche <bvanassche@acm.org>
-Subject: Re: [PATCH v2 3/3] nvme: Set physical block size and optimal I/O size
- according to NVMe 1.4
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-References: <20190610210612.103952-1-bvanassche@acm.org>
- <20190610210612.103952-4-bvanassche@acm.org>
-Date: Wed, 12 Jun 2019 21:53:29 -0400
-In-Reply-To: <20190610210612.103952-4-bvanassche@acm.org> (Bart Van Assche's
- message of "Mon, 10 Jun 2019 14:06:12 -0700")
-Message-ID: <yq15zpa2que.fsf@oracle.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
+ id 1hbLMR-0006JL-AU
+ for linux-nvme@lists.infradead.org; Thu, 13 Jun 2019 08:45:32 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id DEC0668B05; Thu, 13 Jun 2019 10:44:58 +0200 (CEST)
+Date: Thu, 13 Jun 2019 10:44:58 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Kashyap Desai <kashyap.desai@broadcom.com>
+Subject: Re: [PATCH 10/13] megaraid_sas: set virt_boundary_mask in the scsi
+ host
+Message-ID: <20190613084458.GB13221@lst.de>
+References: <20190605190836.32354-1-hch@lst.de>
+ <20190605190836.32354-11-hch@lst.de>
+ <cd713506efb9579d1f69a719d831c28d@mail.gmail.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9286
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=542
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906130013
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9286
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=584 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906130012
+Content-Disposition: inline
+In-Reply-To: <cd713506efb9579d1f69a719d831c28d@mail.gmail.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190612_185357_445454_6F9AB1A4 
-X-CRM114-Status: GOOD (  13.34  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190613_014531_520322_BD44C81E 
+X-CRM114-Status: UNSURE (   6.19  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [141.146.126.79 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
- 0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,45 +62,26 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
- Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
+Cc: Jens Axboe <axboe@kernel.dk>, Ulf Hansson <ulf.hansson@linaro.org>,
+ linux-usb@vger.kernel.org, Bart Van Assche <bvanassche@acm.org>,
+ Sebastian Ott <sebott@linux.ibm.com>, linux-rdma@vger.kernel.org,
+ Oliver Neukum <oneukum@suse.com>, linux-mmc@vger.kernel.org,
+ linux-hyperv@vger.kernel.org, linux-nvme@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-block@vger.kernel.org,
+ usb-storage@lists.one-eyed-alien.net, Alan Stern <stern@rowland.harvard.edu>,
+ linux-scsi@vger.kernel.org, Max Gurtovoy <maxg@mellanox.com>,
+ PDL-MPT-FUSIONLINUX <mpt-fusionlinux.pdl@broadcom.com>,
+ Christoph Hellwig <hch@lst.de>, "PDL,
+ MEGARAIDLINUX" <megaraidlinux.pdl@broadcom.com>,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-Bart,
-
-> +	nawupf = (1 + ns->ctrl->subsys->awupf) * bs;
-> +	if (id->nsfeat & (1 << 1))
-> +		nawupf = (1 + id->nawupf) * bs;
-
-This tripped me up a bit. I would have preferred an else statement and
-maybe a clarifying comment to make it obvious whether the value comes
-from the controller or the namespace.
-
-Also, unlike awupf, nawupf is not a 0-based value (0 means "use awupf"
-and not 1 logical block).
-
-And finally, I think it's confusing that you use nawupf for the variable
-name post modification. In terms of naming, I think you'd be better off
-to do s/nawupf/phys_bs/ or atomic_bs. And then rename your existing
-phys_bs variable to io_min to match the existing block layer usage.
-
-So something like:
-
-        /* Use reported namespace write atomicity */
-	if (id->nsfeat & (1 << 1) && id->nawupf != 0)
-           phys_bs = id->nawupf * bs;
-        else /* Fall back to reported controller write atomicity */
-           phys_bs = (1 + ns->ctrl->subsys->awupf) * bs;
-
-[...]
-
--- 
-Martin K. Petersen	Oracle Linux Engineering
+So before I respin this series, can you help with a way to figure out
+for mpt3sas and megaraid if a given controller supports NVMe devices
+at all, so that we don't have to set the virt boundary if not?
 
 _______________________________________________
 Linux-nvme mailing list
