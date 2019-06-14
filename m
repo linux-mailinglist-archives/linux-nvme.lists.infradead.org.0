@@ -2,114 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CCCC46654
-	for <lists+linux-nvme@lfdr.de>; Fri, 14 Jun 2019 19:53:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B217746832
+	for <lists+linux-nvme@lfdr.de>; Fri, 14 Jun 2019 21:36:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=RYbDtvR19KvIkqVN3rf961ijp5k0DvLjk938bnjju3o=; b=r1MsAxD1eaYYEw
-	dLxa9/tHLU/7k5+/kVmioNVHp1RrhHHE4cehJ7pPVb8UdYH20UqxY1fxhE5m6GuR2vMcvuZlAf/hr
-	45NHOAu4KVgI7g8yYvSyCmsggpUZ0gaBslYto4/x2EL/zob35uPUsH+2j1+fv+Sz9D+l5qtDjdqOo
-	jjF3A/psg1mf6z4D2SJ1hJTlzFhty/vSMYM4HOhSK8t8CTVIWF5xgoUDiQFTfFrBS8e7IF0s79dWv
-	bL0EfhS4LyKs5e+2j2y0dVGNKbDdKtsp7MtNHRhJAVHVWShR39GkEDJOtPIRCTrbuozaSwCUh37me
-	k1D4YIKGs9LXMfKHYAGA==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aa/tmYf36Jq49WUo9UGpnVx/ePknMgQd1iWk2CUC+ps=; b=JaWgTQNd/T8WVG
+	WjWmIZw3LVugjF0XvDzlhOmg+dEaZJlSq2rx6AxID1pN9xsujpGVImseGPcDfNo6qLsmpDW7Lscp3
+	zqI2dVpXRJG/kMQPX4wHCjVJFZkRhVN0PnfJfm9tU/N292QCoRckBgnSbMsLRljksksOsjG2CbCIt
+	Bf2Ulsyoz8i7vLdSzm47VgRSHnGJ/5LoVBXaV8MWB5xRZZ/5ybgcqZADcagHLAOF1j1bSsa7pajMP
+	WwQPPdN/33zjmI/3CbptOrCZZf8VOIspUXJ+AlnBY69P2/rDoLTgWEv1KFu6rGyrVhRakWfY0fBKb
+	L0sqbETUB6RVQ3FYcZUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hbqOM-0000nB-IQ; Fri, 14 Jun 2019 17:53:34 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1hbrzv-0002YE-MM; Fri, 14 Jun 2019 19:36:27 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hbqO6-0000gd-Jx
- for linux-nvme@lists.infradead.org; Fri, 14 Jun 2019 17:53:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1560534799; x=1592070799;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=X802j7dzxsbWiN8xvfoVWK+G5fZuNpmkByuEdLLTVcw=;
- b=aDsr3ZUavhCfDoOQRoO3ewoqUsxT1f7Di/2ubm/1vi5ofcnCOFb0iraT
- TcjIWaoY00T9RuiTHdu+Of++PO6v6hoOVfubhRSYTJWCyTN2TsxAop2wU
- ue/mDyUVBPoZ6jRSHtpk3s+QVya3+jEZreSvkDabKLcD3Bse1r4Lifn3N
- 9u2gMvfh5wY5uvv4yJ7Xox6b9gImF3jCYGnS6FCBW4fOG2uI+/Dy4sF1b
- gBxmB+f8mlwnr2DZaZlFFwcPLIENx1aFLN7RWd8a6wgC+S9Wfu/rvMrbr
- kcNsru79TPUkTePNmoyFRGY7YCWf9SrB0OqpiZP3OhbME7k7KoZFjZtsm g==;
-X-IronPort-AV: E=Sophos;i="5.63,373,1557158400"; d="scan'208";a="115527544"
-Received: from mail-dm3nam03lp2058.outbound.protection.outlook.com (HELO
- NAM03-DM3-obe.outbound.protection.outlook.com) ([104.47.41.58])
- by ob1.hgst.iphmx.com with ESMTP; 15 Jun 2019 01:53:15 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FZvG7Ehw41CiQj1NcHJXcuQOyZUP7W0UEBExAttPvEg=;
- b=PpYvW0QCWFMQNj2nnyY7HZ6lmNu6hJ+a1TAzurImeEJYmeXnJpuTsWRMh7dShKUPEWtvOI1THIcJW7RMgKFqGFPqGxbER9tOcnsU4U8XJVNwOw+6Y8loa9Ay0Wti8u9m8F7cT/lwz4ezEhz4WKZPEwPRnZ6Si5GZ6ZQq6KZSRuc=
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.58.26) by
- BYAPR04MB4053.namprd04.prod.outlook.com (52.135.215.148) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1987.11; Fri, 14 Jun 2019 17:53:13 +0000
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::fc2b:fcd4:7782:53d6]) by BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::fc2b:fcd4:7782:53d6%7]) with mapi id 15.20.1987.012; Fri, 14 Jun 2019
- 17:53:13 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Bart Van Assche <bvanassche@acm.org>, Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH v2 2/3] nvmet: Export NVMe namespace attributes
-Thread-Topic: [PATCH v2 2/3] nvmet: Export NVMe namespace attributes
-Thread-Index: AQHVH9BeCr9rG+GhmUKxcuJckMDc0g==
-Date: Fri, 14 Jun 2019 17:53:13 +0000
-Message-ID: <BYAPR04MB57494419BF76E4C3E3439E6D86EE0@BYAPR04MB5749.namprd04.prod.outlook.com>
-References: <20190610210612.103952-1-bvanassche@acm.org>
- <20190610210612.103952-3-bvanassche@acm.org>
- <BYAPR04MB5749D68053F5CAF2456E17FC86EE0@BYAPR04MB5749.namprd04.prod.outlook.com>
- <4a104091-5ef2-ee3b-9653-cbb816b39a2e@acm.org>
- <BYAPR04MB57499B4C1225252183F01ADC86EE0@BYAPR04MB5749.namprd04.prod.outlook.com>
- <a296a5c7-33f0-a1a6-07ec-f64dd8006693@acm.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.45.63]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: b24292c7-aee8-4d8c-bc99-08d6f0f12bef
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB4053; 
-x-ms-traffictypediagnostic: BYAPR04MB4053:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <BYAPR04MB4053B6B37EA8CA38B382D5A886EE0@BYAPR04MB4053.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 0068C7E410
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(136003)(39860400002)(396003)(346002)(366004)(376002)(199004)(189003)(51914003)(74316002)(14454004)(25786009)(86362001)(229853002)(9686003)(2906002)(5660300002)(446003)(55016002)(72206003)(476003)(6246003)(486006)(53936002)(4326008)(73956011)(14444005)(66446008)(64756008)(3846002)(6116002)(68736007)(66556008)(71200400001)(66476007)(33656002)(26005)(81166006)(8936002)(6506007)(53546011)(102836004)(478600001)(186003)(76176011)(66946007)(71190400001)(6436002)(7696005)(99286004)(54906003)(76116006)(66066001)(52536014)(316002)(8676002)(305945005)(110136005)(81156014)(7736002)(256004);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4053;
- H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: ku33nS6/mzbBWeFV3ZzFblhQ/nau8aeIQb5CbDQXMLByHlkHFyUj7ImVaUtpHbLPDYdY+P//o3VvuSIsDYbSDmaRjKtHyfKkxiYPmdtKb/NvrQzWW9ivZB8+ACyceIUQCXlAs9TCamP+sryOHlHiBWBUu/44JpJGgK6RcAU8ftrxyaAbvL9Z8ICfqpgt2NyR8gKFP1nH8fPR+TtNT+MHaPsUejDoUbPw2emNLu63VT+/nwa9m7AVGDvCq38GxLq/yxq8lbLP+Px8s79fXYSGsP92VELq1pneSocnXEhUnylAA2eD14Aq9QBEJ6I8ffijTZ4gfxAzVoi3y2N1ghqOrl4Y180aoyQ4jafo8R8LHALMNCAVGMPBjmEQokt7xeTZmytvZOfGCYw3dXgmfEk6YA/3gUR/wPADMm1HTDmTbZg=
+ id 1hbrzp-0002Hs-VQ
+ for linux-nvme@lists.infradead.org; Fri, 14 Jun 2019 19:36:23 +0000
+Received: by mail-wr1-x444.google.com with SMTP id p11so3689945wre.7
+ for <linux-nvme@lists.infradead.org>; Fri, 14 Jun 2019 12:36:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Iuen4us4qwoV5tqtyFbIwEnmTYf7b4xea2g4tH0SWx8=;
+ b=IAvJg8ETPBRJWFF/CGdbBAN8iyvgesw76DdfQRPlXss/RPtBIBuZhkJDiEW8DK2UMc
+ OIwzjcMDGDtv7bFu86LRsy1jRy+fBurVJq1EdPU3m79G0+cU/wIujLwzNFr0kzjxKDcm
+ ZayMCIIn1xqCRQ/SHsWj93ob6tAojWpoJma83UpFn9WmYv26W6nRECIiCeQ/g0cVDakV
+ fQmTFt3znCEOGuFYOSWzlyasP5KWQ0oPB3p7ibde5NlXatrCcoSmWjXM6Fo7dJbmLhCV
+ dA3126kW+XtzrUmACoqbo1PjUx3A/Me7lTRrgSEZ0ysSh5+dJDfQsUDGIoGYSHTYQqee
+ HCyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Iuen4us4qwoV5tqtyFbIwEnmTYf7b4xea2g4tH0SWx8=;
+ b=YeDa2g2KbrW3YNrbUBZsPE+5xNyy5to3r4PEfQGSLd8s01RnsoW5GJwJeLfx2TjmlG
+ lTR7um8sFaL5ehISDds38A4PQ1p/6KmQ1Z0gucC5ZXNfp9PeBIKEv0TTaZZZmMOed9dk
+ j83OA6KmoMEQhNnfksZ7meOboebWK+KGCsK6FUxoTsQ9iJJvvWejPf+coZkyjxw5Pp0L
+ NPq5OadMzKOnJaiucYCNv8hq9BAUjvFEKOchAn/LKv7XoO80q08DelYviSyEZtyv1Ioi
+ NPGJISlF3RZJNTEEs+KN4+akPQc8euVlWA6RXsEqR8XD0xuZkSmYYh81GkNdttqwesHj
+ i+Ug==
+X-Gm-Message-State: APjAAAVXGqvB06y6qh+tXHzEZED+nLNUtTPv4quzD3CM3hcdDNe0yomO
+ yWiYyBHM+wj7iXpnkG0xsptTrK9KI4aTrGt6gAI=
+X-Google-Smtp-Source: APXvYqzJyCR5WhUhz5HRAU2NajqT2EChTOtU9SC51qWgHHh2VgjMJakSG3j7zJQj+J0sE/Lje+oCGhTch8AZWAzJei4=
+X-Received: by 2002:a5d:6b12:: with SMTP id v18mr66636492wrw.306.1560540979110; 
+ Fri, 14 Jun 2019 12:36:19 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b24292c7-aee8-4d8c-bc99-08d6f0f12bef
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jun 2019 17:53:13.3980 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Chaitanya.Kulkarni@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4053
+References: <20190610074456.2761-1-drake@endlessm.com>
+ <CAOSXXT7OFzHeTxNqZ1sS6giRxhDcrUUnVjURWBiFUc5T_8p=MA@mail.gmail.com>
+ <CAD8Lp45djPU_Ur8uCO2Y5Sbek_5N9QKkxLXdKNVcvkr6rFPLUQ@mail.gmail.com>
+ <CAOSXXT7H6HxY-za66Tr9ybRQyHsTdwwAgk9O2F=xK42MT8HsuA@mail.gmail.com>
+ <20190613085402.GC13442@lst.de>
+ <CAD8Lp47Vu=w+Lj77_vL05JYV1WMog9WX3FHGE+TseFrhcLoTuA@mail.gmail.com>
+In-Reply-To: <CAD8Lp47Vu=w+Lj77_vL05JYV1WMog9WX3FHGE+TseFrhcLoTuA@mail.gmail.com>
+From: Keith Busch <keith.busch@gmail.com>
+Date: Fri, 14 Jun 2019 13:36:07 -0600
+Message-ID: <CAOSXXT4Ba_6xRUyaQBxpq+zdG9_itXDhFJ5EFZPv3CQuJZKHzg@mail.gmail.com>
+Subject: Re: [PATCH] PCI: Add Intel remapped NVMe device support
+To: Daniel Drake <drake@endlessm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190614_105318_772233_0190680F 
-X-CRM114-Status: GOOD (  19.77  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190614_123622_046374_B94A9A61 
+X-CRM114-Status: GOOD (  12.51  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:444 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (keith.busch[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -129,74 +96,44 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>, "Martin
- K . Petersen" <martin.petersen@oracle.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- Keith Busch <keith.busch@intel.com>, Keith Busch <kbusch@kernel.org>
+Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
+ Linux PCI <linux-pci@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>, Keith Busch <kbusch@kernel.org>,
+ linux-ide@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ Linux Upstreaming Team <linux@endlessm.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 06/14/2019 10:43 AM, Bart Van Assche wrote:
-> On 6/14/19 10:18 AM, Chaitanya Kulkarni wrote:
->>>>> +	id->nsfeat |= 1 << 1;
->>>>> +	id->nawun = ppl0b;
->>>>> +	id->nawupf = ppl0b;
->>>>> +	id->nacwu = ppl0b;
->>>> The above 4 assignments are similar to the assignments present in the
->>>> nvmet_file_set_limits() ? If so is it make sense to have a helper to
->>>> reduce the code duplication ?
->>> I don't think that that is a good idea.
->>
->> It will be great learning experience for me if you can educate me about
->> why this
->>
->> is not a good idea, can you please explain  ?
->>
->> The rational behind asking for an explanation is that I've got a comment
->> on my code
->>
->> about not having same copy of the code in the kernel which is right.
->>
->> The situation is same here where this code is operating on same
->> structure doing the
->>
->> same thing across file io-cmd-bdev.c and io-cmd-file.c.
->>
->>
->> My understanding is that if this patch gets applied then we will have
->> same copy of two
->>
->> assignments in the target which are exactly doing the same thing which
->> calls for a nice
->>
->> little helper function.
+On Thu, Jun 13, 2019 at 8:26 PM Daniel Drake <drake@endlessm.com> wrote:
+> On Thu, Jun 13, 2019 at 4:54 PM Christoph Hellwig <hch@lst.de> wrote:
+> >  b) reset handling, including the PCI device removal as the last
+> >     escalation step
 >
-> Hi Chaitanya,
+> Apparently can't be supported, but it's not clear that this actually
+> matters for a home PC...
 >
-> There is no hard rule that code duplication should be avoided at any
-> price in the Linux kernel. For this patch I will leave it to the NVMe
-> maintainers to decide whether or not they want to move these assignments
-> into a helper function.
+> https://marc.info/?l=linux-ide&m=147733119300691&w=2
+> "The driver seems to already comprehend instances where the
+> device does not support nvme_reset_subsystem() requests."
 >
-I'll keep in mind from next time.
-> Regarding req_op_str(): I had never seen it before if the same
-> functionality is needed in two different source files in the same
-> subsystem that code got copy/pasted instead of calling a single function
-> from all code that needs the functionality. I had asked to avoid to
-> duplicate req_op_str() because of the following reasons:
-> - If a new request operation would be added having one req_op_str()
-> implementation is more convenient than having multiple.
-> - An operation like conversion from a request operation into a string
-> should not happen inside f2fs. f2fs should call a block layer function
-> to do that conversion.
-This makes perfect sense, thanks for the great explanation Bart.
->
-> Bart.
->
->
+> https://marc.info/?l=linux-ide&m=147734288604783&w=2
+> "Talking with Keith, subsystem-resets are a feature of enterprise-class
+> NVMe devices.  I think those features are out of scope for the class
+> of devices that will find themselves in a platform with this
+> configuration, same for hot-plug."
 
+NVMe Subsystem resets are not the same thing as conventional PCI
+resets. We still have use for the latter in client space.
+
+Even if you wish to forgo the standard features and management
+capabilities, you're still having to deal with legacy IRQ, which has
+IOPs at a fraction of the hardware's true capabilities when using MSI.
+I do not believe that is what users want out of their purchased
+hardware, so your best option is still to set to AHCI mode for Linux
+for this reason alone, and vendors should be providing this option in
+BIOS.
 
 _______________________________________________
 Linux-nvme mailing list
