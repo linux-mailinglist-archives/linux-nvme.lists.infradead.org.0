@@ -2,79 +2,89 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 145A148872
-	for <lists+linux-nvme@lfdr.de>; Mon, 17 Jun 2019 18:13:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1102348A5E
+	for <lists+linux-nvme@lfdr.de>; Mon, 17 Jun 2019 19:40:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Drn0OourWuGWLOo3z3YIC2ECaylAavDeVmq03GPj/yo=; b=s/aQ3uwjNGm9/B
-	ZwihUz6y7uRLAEVkGgicadY0TaJLZeJ3z8j9dbcnMzQADD5Xgs8nf886s6rR8bSFugJ7+W14Hf4ER
-	2zqS2qFWZS+zaV27gMibIrnyMOE51uMJss+aan1GhG0G9sRnWDkDQlUx1rcvdE9BcN+rWpyc5PL9l
-	Ulf4hcX3MT6uAgBcHNq4Bv270ESrrC5zyU1RJPlA4BvblgpJivTayBODIbLsFcg9/keWt2J8Ddbu4
-	CvmkRc/JzUJcp+1ECpnChAY3v0cEPJ1fMaUJXDVhX45YdM21cxF+HekDEMoIv06H751OffWTjhSAY
-	/+ZRDsM8e+VnDlcPo1NQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=O5Wcm5tLsO6zrFV9Mg3uK8zuDgpwBYJr21FzIVFyL0k=; b=M546VFxLKQfnq41o+9JmF1ron
+	O4CgDTW7n20xmV9oKAmuV2Ds7/noYzVrzqUnOm7VqRORoXaCGLok6m7VAcOh5hV357KUMdD9ojBbm
+	N9u0qtlkNm8AayhIvmudF4Gt9b3IubLmeaCpGthlGDzoP5TKj600MWdEMToFuKj/2ocWpZjGd4L7P
+	M+AsanbaXqpPvvP5qOXbwtLST96V1+3XRx7uEC4bG4SjJTpOTA3A17DVSTq18YGeloNquCI11gyJy
+	PNyyoVGuW/w84S7xp+Ux01M7XDWh+F3OWazLaTJRarqjRnL1uZlCCLhjDm5cdaCHqe7Q10SDUJFr8
+	2UHABf5yw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hcuG0-0002Pv-EB; Mon, 17 Jun 2019 16:13:20 +0000
-Received: from mail-pg1-f194.google.com ([209.85.215.194])
+	id 1hcvbz-0003Y8-1d; Mon, 17 Jun 2019 17:40:07 +0000
+Received: from mail-oi1-f193.google.com ([209.85.167.193])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hcuFF-0001xb-Cl
- for linux-nvme@lists.infradead.org; Mon, 17 Jun 2019 16:12:35 +0000
-Received: by mail-pg1-f194.google.com with SMTP id n2so6071255pgp.11
- for <linux-nvme@lists.infradead.org>; Mon, 17 Jun 2019 09:12:33 -0700 (PDT)
+ id 1hcvbo-0003Xm-Bx
+ for linux-nvme@lists.infradead.org; Mon, 17 Jun 2019 17:39:57 +0000
+Received: by mail-oi1-f193.google.com with SMTP id 65so7589730oid.13
+ for <linux-nvme@lists.infradead.org>; Mon, 17 Jun 2019 10:39:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=pKLCdQCtXvphKk1+cb5ewNrkWE7PKWEDYoBDUKqXEZI=;
- b=XmKRjFxjuELwg+cw0KT7DuATIsWEU3c2F9RuV0LSd/LX8M7OvNsJOfC9D6aAR2GQ4z
- HAK0IYxcBphhJN0xz/3SfuxeyiOF7qV8II9ciXATZz1+6deqtORHBwSkMFfnRM4tw5FD
- LYjD1mPhaawjqRpyxZNZ+bt+ZF5YHZOlCn7Tra3qVpQgr4QzYfFuL4vljtR7IUaqktI1
- zyMJOgObRDGh3Qn+y4bS8v4hMebk3Is98zX+bP4c3UUj4CnF3VchxsfsTj117hrQsPtn
- dJhoszmHx2fC1ZHWeL31Lb818UwsbV7AfPzgYQ5PkhV7sbxY+qlaAkf5GYOZYu4UWABL
- 1u9g==
-X-Gm-Message-State: APjAAAVMAGGSjnwl0DKUDoGbHd5zq8cmB+pRhGi0uld9AUXf8ZtrCTsf
- KdRKRSDJxVWEZHfPOceemwE=
-X-Google-Smtp-Source: APXvYqyABnzNgiD8NDvmtKQFQHCYYwRdbzgvPbLlFwOlJ4xeyLi3S0V1gfJjLbNoFOPhtxzQZZyozA==
-X-Received: by 2002:a63:4d05:: with SMTP id a5mr46484475pgb.19.1560787952827; 
- Mon, 17 Jun 2019 09:12:32 -0700 (PDT)
-Received: from desktop-bart.svl.corp.google.com
- ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
- by smtp.gmail.com with ESMTPSA id y19sm11416069pfe.150.2019.06.17.09.12.31
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 17 Jun 2019 09:12:32 -0700 (PDT)
-From: Bart Van Assche <bvanassche@acm.org>
-To: Christoph Hellwig <hch@lst.de>
-Subject: [PATCH v3 3/3] nvme: Set physical block size and optimal I/O size
- according to NVMe 1.4
-Date: Mon, 17 Jun 2019 09:12:22 -0700
-Message-Id: <20190617161222.253849-4-bvanassche@acm.org>
-X-Mailer: git-send-email 2.20.GIT
-In-Reply-To: <20190617161222.253849-1-bvanassche@acm.org>
-References: <20190617161222.253849-1-bvanassche@acm.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=MebAnNw9lqBPqioYy4Y0TG3qheCRvq/c2Vqw7+lP4LA=;
+ b=MaoOkZ21gHdLMb/yRVHk0i2RuiZ+2iVDVapDxnkrDgU1A0F0Jhr1Bon4L31juApYrW
+ wgZ6ZkhBLB7igE+S2pCrVWJeXoR4iVCA7xTzRqEvz4FKvfGqSzDAsxwpAVHw/jt7Iba/
+ 2U18M/kn5TJ2y1cs6N31x6d6tAG9v68W8zfbIZqYd8SlzFhhWEG2G7J5mznTdR4ilOJr
+ 3gwtK5dMRmKISAx6ON8rHs12ZoKmpA9orEyKbGyvrkELMmZJHOk1jt7AZsUOQWl/9hih
+ wkr7TCSZCMUjgILdTTp4+uATATy1Dvoc0w+ydYStnGBAmnv4346M2Ig+26uas63FQTXM
+ uh9w==
+X-Gm-Message-State: APjAAAWDejZfj8rKd2PQUJ5hkP8pbJSmGNEQX69t53pxjt1DGoWWi2AA
+ wLQd29j0oRnh7eI2kb4z8dk=
+X-Google-Smtp-Source: APXvYqwk/5KuTatoAbU/ytfGPSJ0Y3DQQnOXhUS0Dq4bus0GybDZChckHre3P66LBDR6MBL8CCZ9gg==
+X-Received: by 2002:aca:f002:: with SMTP id o2mr3274oih.31.1560793193522;
+ Mon, 17 Jun 2019 10:39:53 -0700 (PDT)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id a4sm2928032otp.72.2019.06.17.10.39.51
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 17 Jun 2019 10:39:52 -0700 (PDT)
+Subject: Re: [PATCH V6 6/6] fabrics: Return errno mapped for fabrics error
+ status
+To: Minwoo Im <minwoo.im.dev@gmail.com>
+References: <7710edd4-5277-615c-426f-f9d48da8cb99@grimberg.me>
+ <20190604154034.23386-1-minwoo.im.dev@gmail.com>
+ <20190604154034.23386-7-minwoo.im.dev@gmail.com>
+ <BYAPR04MB57497DFEEC77ED6D43998ED086110@BYAPR04MB5749.namprd04.prod.outlook.com>
+ <20190608200112.GC28228@minwoo-900X5N>
+ <CGME20190611000218epcas3p3270ae3bfaa97cd686a7006810c453988@epcms2p1>
+ <20190611051309epcms2p1e47e656deb584057d428eaec018a363e@epcms2p1>
+ <667f4f9e-9356-44fb-d7fd-14d00b5393ea@grimberg.me>
+ <20190612122646.GA32660@minwooim-desktop>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <4a7a6044-3de6-c099-bdbd-02065c9ef6cb@grimberg.me>
+Date: Mon, 17 Jun 2019 10:39:50 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
+In-Reply-To: <20190612122646.GA32660@minwooim-desktop>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190617_091233_681185_FB3817FC 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20190617_103956_413193_0760E653 
+X-CRM114-Status: GOOD (  17.32  )
 X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.215.194 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.215.194 listed in wl.mailspike.net]
+ no trust [209.85.167.193 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bart.vanassche[at]gmail.com)
+ provider (sagigrim[at]gmail.com)
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.167.193 listed in wl.mailspike.net]
  0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -88,116 +98,32 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
- Keith Busch <kbusch@kernel.org>, Bart Van Assche <bvanassche@acm.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Keith Busch <kbusch@kernel.org>,
+ =?UTF-8?Q?Javier_Gonz=c3=a1lez?= <javier@javigon.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, minwoo.im@samsung.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From the NVMe 1.4 spec:
 
-NSFEAT bit 4 if set to 1: indicates that the fields NPWG, NPWA, NPDG, NPDA,
-and NOWS are defined for this namespace and should be used by the host for
-I/O optimization;
-[ ... ]
-Namespace Preferred Write Granularity (NPWG): This field indicates the
-smallest recommended write granularity in logical blocks for this namespace.
-This is a 0's based value. The size indicated should be less than or equal
-to Maximum Data Transfer Size (MDTS) that is specified in units of minimum
-memory page size. The value of this field may change if the namespace is
-reformatted. The size should be a multiple of Namespace Preferred Write
-Alignment (NPWA). Refer to section 8.25 for how this field is utilized to
-improve performance and endurance.
-[ ... ]
-Each Write, Write Uncorrectable, or Write Zeroes commands should address a
-multiple of Namespace Preferred Write Granularity (NPWG) (refer to Figure
-245) and Stream Write Size (SWS) (refer to Figure 515) logical blocks (as
-expressed in the NLB field), and the SLBA field of the command should be
-aligned to Namespace Preferred Write Alignment (NPWA) (refer to Figure 245)
-for best performance.
+>> Question, this is a case where the numrec is different but the genctr is
+>> the same? I think we need to fail if the genctr is the same, but we need
+>> to start over if the genctr is different.
+> 
+> This is the case where you pointed it out.  But we don't know if
+> genctr is different or not because we don't have any notifying code
+> in nvmf_get_log_page_discovery().  Even genctr is different but the
+> retries count is exhausted to max_retries, it does not notify this
+> situation to the caller to retry it.
+> 
+> Would you mind if the following patch is added to this series?  If not, we
+> need to change the design concept which tries to avoid infinite loop that
+> had been introduced by Hannes's commit 3cbcd165b47.
 
-Cc: Keith Busch <kbusch@kernel.org>
-Cc: Sagi Grimberg <sagi@grimberg.me>
-Cc: Hannes Reinecke <hare@suse.com>
-Signed-off-by: Bart Van Assche <bvanassche@acm.org>
----
- drivers/nvme/host/core.c | 30 ++++++++++++++++++++++++++++--
- drivers/nvme/host/nvme.h |  1 +
- 2 files changed, 29 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 1b7c2afd84cb..5b92d875a1a6 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -1608,6 +1608,7 @@ static void nvme_update_disk_info(struct gendisk *disk,
- {
- 	sector_t capacity = le64_to_cpu(id->nsze) << (ns->lba_shift - 9);
- 	unsigned short bs = 1 << ns->lba_shift;
-+	u32 atomic_bs, phys_bs, io_opt;
- 
- 	if (ns->lba_shift > PAGE_SHIFT) {
- 		/* unsupported block size, set capacity to 0 later */
-@@ -1616,9 +1617,33 @@ static void nvme_update_disk_info(struct gendisk *disk,
- 	blk_mq_freeze_queue(disk->queue);
- 	blk_integrity_unregister(disk);
- 
-+	/*
-+	 * Bit 1 indicates whether NAWUPF is defined for this namespace
-+	 * and whether it should be used instead of AWUPF. If NAWUPF == 0
-+	 * then AWUPF must be used instead.
-+	 */
-+	if (id->nsfeat & (1 << 1) && id->nawupf)
-+		atomic_bs = (1 + id->nawupf) * bs;
-+	else
-+		atomic_bs = (1 + ns->ctrl->subsys->awupf) * bs;
-+	phys_bs = bs;
-+	io_opt = bs;
-+	if (id->nsfeat & (1 << 4)) {
-+		/* NPWG = Namespace Preferred Write Granularity */
-+		phys_bs *= 1 + le16_to_cpu(id->npwg);
-+		/* NOWS = Namespace Optimal Write Size */
-+		io_opt *= 1 + le16_to_cpu(id->nows);
-+	}
-+
- 	blk_queue_logical_block_size(disk->queue, bs);
--	blk_queue_physical_block_size(disk->queue, bs);
--	blk_queue_io_min(disk->queue, bs);
-+	/*
-+	 * Linux filesystems assume writing a single physical block is
-+	 * an atomic operation. Hence limit the physical block size to the
-+	 * value of the Atomic Write Unit Power Fail parameter.
-+	 */
-+	blk_queue_physical_block_size(disk->queue, min(phys_bs, atomic_bs));
-+	blk_queue_io_min(disk->queue, phys_bs);
-+	blk_queue_io_opt(disk->queue, io_opt);
- 
- 	if (ns->ms && !ns->ext &&
- 	    (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED))
-@@ -2415,6 +2440,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 	memcpy(subsys->firmware_rev, id->fr, sizeof(subsys->firmware_rev));
- 	subsys->vendor_id = le16_to_cpu(id->vid);
- 	subsys->cmic = id->cmic;
-+	subsys->awupf = le16_to_cpu(id->awupf);
- #ifdef CONFIG_NVME_MULTIPATH
- 	subsys->iopolicy = NVME_IOPOLICY_NUMA;
- #endif
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 55553d293a98..d93279fd5960 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -272,6 +272,7 @@ struct nvme_subsystem {
- 	char			firmware_rev[8];
- 	u8			cmic;
- 	u16			vendor_id;
-+	u16			awupf;	/* 0's based awupf value. */
- 	struct ida		ns_ida;
- #ifdef CONFIG_NVME_MULTIPATH
- 	enum nvme_iopolicy	iopolicy;
--- 
-2.22.0.rc3
-
+Thats fine, also if the numrec is different then it should be an error
+in this case I think.
 
 _______________________________________________
 Linux-nvme mailing list
