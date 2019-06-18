@@ -2,78 +2,78 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CFCD4A207
-	for <lists+linux-nvme@lfdr.de>; Tue, 18 Jun 2019 15:24:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DDB654A20B
+	for <lists+linux-nvme@lfdr.de>; Tue, 18 Jun 2019 15:24:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z60mkvelW003+qzzwHpDG7BIVQ0ORj67wgeq/KmxY6A=; b=NA0wwGOlY0flyH
-	xLM7EdMLjdXfOo53kuJIL37sDuaj++0xncOZa75eAtOEKdepkXkSGeUqJxF2W5kSifYO/6B7H4+TN
-	GZUMo3xVB4zfmzndmvuSsV1cha0iH2imJeaxBuhuoa75PmtiUcLlRg7MxdOmpcPSCvE9ZIJWSDc5q
-	3tojkfXNaP1JNasK63EjeC3kTwcEiLWq0Fn8uB3hZbxbhg1NVAkT77++vWHGnxhG4cBgLgOZgWNK6
-	EY2ZQCIdzeiv5b/LjoQ/gaWXgEZhWla+Y2zOuv3YsDv/tz2dm+/M8cwaKgGP1ziLHuFILY8m0tgXD
-	snUsTFHbTSoMQyo9Bm6Q==;
+	List-Owner; bh=JC8D7rg2p4dX9eRghZ7iEj0O+uRJ5Nc7xgG2cWhKIWQ=; b=Yy8xyO/NIOBGRe
+	CGIsIkEXoIi+QT48Wuqo1mDnxTqUuK/+P9iWZRCctlmqA9NZDERw1yGCYSZTx1kRcX9P0WjAYFPFG
+	7L/W/I+Oz4bHGnNjLm7ZEyNL0k2oUFDjyWNGj/5gEFusIzKKbYkiLT9VT9YZahOfdidDJDjXI0lQ9
+	UalXK6kQi/qBTpllL8oZXrUkTzmvZkStpl13xaoOWCIpfL+HaEGZGNr/jM4H56kfw7TdMo2ZhDPNa
+	uEZ/DDv6+iveoHxTpl2a7xb2/3hvymDyHL8rhxFEGN5kWEWor9sNvCh8dRZeXzqoiQXv0vXguBu7S
+	5vXnBaDTD1OipjqLfHwA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hdE5V-0006cL-QY; Tue, 18 Jun 2019 13:23:50 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1hdE6Q-000746-BC; Tue, 18 Jun 2019 13:24:46 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hdDuq-0006Z9-O0
- for linux-nvme@lists.infradead.org; Tue, 18 Jun 2019 13:13:10 +0000
-Received: by mail-pg1-x544.google.com with SMTP id n2so7668578pgp.11
- for <linux-nvme@lists.infradead.org>; Tue, 18 Jun 2019 06:12:47 -0700 (PDT)
+ id 1hdDus-0006ZW-QV
+ for linux-nvme@lists.infradead.org; Tue, 18 Jun 2019 13:13:11 +0000
+Received: by mail-pg1-x542.google.com with SMTP id f21so7691921pgi.3
+ for <linux-nvme@lists.infradead.org>; Tue, 18 Jun 2019 06:12:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Cv5poHagb65CHyN7N+rbBWxQMCSC8kq0uth1J0vfdZc=;
- b=jM/00ou3OZULWTDiNoiDjXekTkSCBjG1O93rqzDAvR37TwJuw/tBdJCzN19rTnKUvU
- 4Nq4lWITMdOWp0c7UtDOYTW5DcAlTenak5/0xf5CqQ2y1GSQMMf8YhN7xJGGrY498lUP
- 95GNGE7B/D35vSnKZemHqkoPWw1ZNxJ1HeouCV+WK7053Ew3doCpVssW20qrLnuD2yV9
- U4Wo9+hYhV08MmKT6Dr3s8JAEeTdMDpGwglWx3q6qNal/s1uy0Wm3fqKYq2csbxuLY96
- jWJIMDxw3PAiE3qEd4COZc17rpAVgkrypdUo73e8xBr6ilCOuG1dbyH/DYodZx7YsyL6
- mhrw==
+ bh=+8RCnsO+CU+gZbVyt/tRjmUdZJJz6aaB6nDyPj71spk=;
+ b=g6LGvoiG28ZhIo/La6V4345IGkRToH3c2gY++K0mWVJSMHifSemt5vyFzBMbQT2kT2
+ teyR4W743lIn8CU6xI+cVgiL8iGw1Y1QHGWDvM+Hmremem9v+iyKg+6qPpVB4UPhVnxy
+ ZSMZqGQi0zrihr5ZrDveexrf2mJgfJf0/yjXl6JmW5x+WQVGv1yNhbiwCzE0VYMpnO3V
+ 60ta3dNpXW/zZFT9YmujuMIoetQ1TsxOiEdHrSnRr/2ohX12Lo4UFDIon5znW68JqeHS
+ RcYjWwbacypZtxkJJ/AayTCg6sGQywoSMGDdyoKyT8RvfXu/Ckwk0eqIXc8S97G9BJqr
+ GY7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Cv5poHagb65CHyN7N+rbBWxQMCSC8kq0uth1J0vfdZc=;
- b=g05IuKY6CvA6I3mZvunK0zt+JsjTUYTrSqKQzo58L7pvkfSi0WUHlafbDhhbiq1oA4
- PG9roSOaaCd5jXqudrSkWlmc5SzLQP5zreFYK6fciuFVRYWy8Bnea54cPJGDXIByGJSO
- 1eTarOAi83nEkk+m/tgnURaHVIO4FNA3skavqNLMocqYnH4cGwJlZdDPpbwA4CDYwm/T
- YTyOczR7pGKeu8+oJD4cPnDkQDl06Ma2SkrNup8gGSjYu9SVpJQDJwsarFxyIFgO/Cl8
- 7Gs2wksXkKs5pMlwtnHyBk1BXEg78KYUqBZ/iG+u60nKDZ4lKtTNlYFaq9irC27aTYo2
- w3dA==
-X-Gm-Message-State: APjAAAVE/HQTbMPyeBZfAOAIQ+TOvxE/aPh1vM0P5BOg7X0i4WIKE7BW
- SLYvC3OrjOq47i38Z4YE4gE=
-X-Google-Smtp-Source: APXvYqwP6tDi0wTo8rAcRhPPGndMW97RxutaIxY8egFejS2S5KQEsdNFTi9kLMreClgRiqGt4LBsLQ==
-X-Received: by 2002:a62:e518:: with SMTP id n24mr4637618pff.102.1560863567098; 
- Tue, 18 Jun 2019 06:12:47 -0700 (PDT)
+ bh=+8RCnsO+CU+gZbVyt/tRjmUdZJJz6aaB6nDyPj71spk=;
+ b=FVJVgkW9FcrjrENmchLOgBGTGz15fNbiH9wK0qxJEVK5V36hQ+sxGQuKC9YK78F0ph
+ NineruIzIE0t7NJGVcf/W/VxZTGegiVyGjS21NMfdB0UUP5GC4PdkrHuBWDRf7wXkltk
+ DAXise8z8TITSF8tZY6P6VE296OSX1dRe7NrusR3vhWC22HQEreE3+IAPaR9MfbQ+1DE
+ wKTFMGw4K9n4Fba+WQ+2Fagg4bzImGb1v6c1WdTuXzMH07jo7VIsVOuN0+WcTmOFTr0e
+ f3eANndteOTbw9WGCkTu1NmeWq5EynK6YlhdqMGmXgJvnE6xJm9b36UiNWSj3ESkdX15
+ bwnw==
+X-Gm-Message-State: APjAAAWvyQ6t5Yyavy5sS+zClD4IqX8wpmMcSSVxBgyEc+9ASpg5HVNF
+ nAW8gfJniNw49juw9mqGWFA=
+X-Google-Smtp-Source: APXvYqwq4QKIyRuDeHpXpHt7W1T88JXIg45P0FzTQQxRIZ9Mqq7vv5M/SuCkAQmtF7iYL3efzfmexA==
+X-Received: by 2002:a62:e119:: with SMTP id q25mr83631727pfh.148.1560863570070; 
+ Tue, 18 Jun 2019 06:12:50 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id c142sm21663733pfb.171.2019.06.18.06.12.44
+ by smtp.gmail.com with ESMTPSA id c142sm21663733pfb.171.2019.06.18.06.12.47
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 18 Jun 2019 06:12:46 -0700 (PDT)
+ Tue, 18 Jun 2019 06:12:49 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Keith Busch <kbusch@kernel.org>
-Subject: [PATCH V7 5/7] nvme: Return errno mapped for nvme error status
-Date: Tue, 18 Jun 2019 22:12:14 +0900
-Message-Id: <20190618131216.3661-6-minwoo.im.dev@gmail.com>
+Subject: [PATCH V7 6/7] fabrics: return error when discovery retry exhausted
+Date: Tue, 18 Jun 2019 22:12:15 +0900
+Message-Id: <20190618131216.3661-7-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190618131216.3661-1-minwoo.im.dev@gmail.com>
 References: <20190618131216.3661-1-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190618_061251_285659_0F2CF9C6 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20190618_061252_017521_42114F92 
+X-CRM114-Status: GOOD (  14.67  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
@@ -97,7 +97,7 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>,
+Cc: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
  Minwoo Im <minwoo.im.dev@gmail.com>, Sagi Grimberg <sagi@grimberg.me>,
  linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -105,499 +105,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-If ioctl module has returned a nvme error status, it will be returned
-by being converted to a mapped errno value which has been provided by
-previous commits.
+If the discovery page is not updated to the latest one over the 10
+times, it's currently returning DISC_OK if the numrec has no problem.
+If so, the caller might think that the discovery has been successfully
+done without any errors even there is.
 
-Cc: Keith Busch <kbusch@kernel.org>
-Cc: Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>
+This patch makes it return an error -EAGAIN if retry(10 times) has been
+exhausted.
+
+Cc: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
-Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 ---
- nvme.c | 106 ++++++++++++++++++++++++++++-----------------------------
- 1 file changed, 53 insertions(+), 53 deletions(-)
+ fabrics.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/nvme.c b/nvme.c
-index d337b4a..9a00b26 100644
---- a/nvme.c
-+++ b/nvme.c
-@@ -48,6 +48,7 @@
- #include "common.h"
- #include "nvme-print.h"
- #include "nvme-ioctl.h"
-+#include "nvme-status.h"
- #include "nvme-lightnvm.h"
- #include "plugin.h"
+diff --git a/fabrics.c b/fabrics.c
+index adedca0..8470d97 100644
+--- a/fabrics.c
++++ b/fabrics.c
+@@ -291,6 +291,7 @@ enum {
+ 	DISC_NO_LOG,
+ 	DISC_GET_NUMRECS,
+ 	DISC_GET_LOG,
++	DISC_RETRY_EXHAUSTED,
+ 	DISC_NOT_EQUAL,
+ };
  
-@@ -223,7 +224,7 @@ static int get_smart_log(int argc, char **argv, struct command *cmd, struct plug
- 	close(fd);
+@@ -385,6 +386,16 @@ static int nvmf_get_log_page_discovery(const char *dev_path,
+ 	} while (genctr != le64_to_cpu(log->genctr) &&
+ 		 ++retries < max_retries);
  
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_ana_log(int argc, char **argv, struct command *cmd,
-@@ -298,7 +299,7 @@ static int get_ana_log(int argc, char **argv, struct command *cmd,
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_telemetry_log(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -428,7 +429,7 @@ static int get_telemetry_log(int argc, char **argv, struct command *cmd, struct
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_endurance_log(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -485,7 +486,7 @@ static int get_endurance_log(int argc, char **argv, struct command *cmd, struct
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_effects_log(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -550,7 +551,7 @@ static int get_effects_log(int argc, char **argv, struct command *cmd, struct pl
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_error_log(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -637,7 +638,7 @@ static int get_error_log(int argc, char **argv, struct command *cmd, struct plug
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_fw_log(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -694,7 +695,7 @@ static int get_fw_log(int argc, char **argv, struct command *cmd, struct plugin
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_changed_ns_list_log(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -752,7 +753,7 @@ static int get_changed_ns_list_log(int argc, char **argv, struct command *cmd, s
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_log(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -854,7 +855,7 @@ static int get_log(int argc, char **argv, struct command *cmd, struct plugin *pl
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int sanitize_log(int argc, char **argv, struct command *command, struct plugin *plugin)
-@@ -919,7 +920,7 @@ static int sanitize_log(int argc, char **argv, struct command *command, struct p
-  close_fd:
- 	close(fd);
-  ret:
--	return ret;
-+	return nvme_status_to_errno(ret, false);
- }
- 
- static int list_ctrl(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -975,7 +976,7 @@ static int list_ctrl(int argc, char **argv, struct command *cmd, struct plugin *
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int list_ns(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -1029,7 +1030,7 @@ static int list_ns(int argc, char **argv, struct command *cmd, struct plugin *pl
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_nsid(int fd)
-@@ -1103,7 +1104,7 @@ static int delete_ns(int argc, char **argv, struct command *cmd, struct plugin *
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int nvme_attach_ns(int argc, char **argv, int attach, const char *desc, struct command *cmd)
-@@ -1170,7 +1171,7 @@ static int nvme_attach_ns(int argc, char **argv, int attach, const char *desc, s
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int attach_ns(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -1300,7 +1301,7 @@ static int create_ns(int argc, char **argv, struct command *cmd, struct plugin *
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- char *nvme_char_from_block(char *block)
-@@ -1788,7 +1789,7 @@ free:
- 		free(subsysnqn);
- 
- ret:
--	return ret;
-+	return nvme_status_to_errno(ret, false);
- }
- 
- static int get_nvme_info(int fd, struct list_item *item, const char *node)
-@@ -1921,7 +1922,7 @@ static int list(int argc, char **argv, struct command *cmd, struct plugin *plugi
- 		free(devices[i]);
- 	free(devices);
-  ret:
--	return ret;
-+	return nvme_status_to_errno(ret, false);
- }
- 
- int __id_ctrl(int argc, char **argv, struct command *cmd, struct plugin *plugin, void (*vs)(__u8 *vs, struct json_object *root))
-@@ -1997,7 +1998,7 @@ int __id_ctrl(int argc, char **argv, struct command *cmd, struct plugin *plugin,
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int id_ctrl(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2080,7 +2081,7 @@ static int ns_descs(int argc, char **argv, struct command *cmd, struct plugin *p
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int id_ns(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2169,7 +2170,7 @@ static int id_ns(int argc, char **argv, struct command *cmd, struct plugin *plug
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int id_nvmset(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2229,7 +2230,7 @@ static int id_nvmset(int argc, char **argv, struct command *cmd, struct plugin *
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_ns_id(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2258,7 +2259,7 @@ static int get_ns_id(int argc, char **argv, struct command *cmd, struct plugin *
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int virtual_mgmt(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2325,8 +2326,7 @@ static int virtual_mgmt(int argc, char **argv, struct command *cmd, struct plugi
- 
- 	close(fd);
- ret:
--	return err;
--
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int list_secondary_ctrl(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2404,7 +2404,7 @@ static int list_secondary_ctrl(int argc, char **argv, struct command *cmd, struc
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int device_self_test(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2455,7 +2455,7 @@ static int device_self_test(int argc, char **argv, struct command *cmd, struct p
- 
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int self_test_log(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2513,7 +2513,7 @@ static int self_test_log(int argc, char **argv, struct command *cmd, struct plug
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_feature(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2646,7 +2646,7 @@ static int get_feature(int argc, char **argv, struct command *cmd, struct plugin
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int fw_download(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2753,7 +2753,7 @@ static int fw_download(int argc, char **argv, struct command *cmd, struct plugin
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static char *nvme_fw_status_reset_type(__u32 status)
-@@ -2848,7 +2848,7 @@ static int fw_commit(int argc, char **argv, struct command *cmd, struct plugin *
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int subsystem_reset(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2877,7 +2877,7 @@ static int subsystem_reset(int argc, char **argv, struct command *cmd, struct pl
- 
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int reset(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2901,7 +2901,7 @@ static int reset(int argc, char **argv, struct command *cmd, struct plugin *plug
- 
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int ns_rescan(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -2925,7 +2925,7 @@ static int ns_rescan(int argc, char **argv, struct command *cmd, struct plugin *
- 
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int sanitize(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3019,7 +3019,7 @@ static int sanitize(int argc, char **argv, struct command *cmd, struct plugin *p
-  close_fd:
- 	close(fd);
-  ret:
--	return ret;
-+	return nvme_status_to_errno(ret, false);
- }
- 
- static int show_registers(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3094,7 +3094,7 @@ static int show_registers(int argc, char **argv, struct command *cmd, struct plu
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int get_property(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3148,7 +3148,7 @@ static int get_property(int argc, char **argv, struct command *cmd, struct plugi
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int set_property(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3205,7 +3205,7 @@ static int set_property(int argc, char **argv, struct command *cmd, struct plugi
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int format(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3368,7 +3368,7 @@ static int format(int argc, char **argv, struct command *cmd, struct plugin *plu
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int set_feature(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3490,7 +3490,7 @@ static int set_feature(int argc, char **argv, struct command *cmd, struct plugin
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int sec_send(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3589,7 +3589,7 @@ static int sec_send(int argc, char **argv, struct command *cmd, struct plugin *p
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int dir_send(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3743,7 +3743,7 @@ free:
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int write_uncor(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3800,7 +3800,7 @@ static int write_uncor(int argc, char **argv, struct command *cmd, struct plugin
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int write_zeroes(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3894,7 +3894,7 @@ static int write_zeroes(int argc, char **argv, struct command *cmd, struct plugi
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int dsm(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -3997,7 +3997,7 @@ static int dsm(int argc, char **argv, struct command *cmd, struct plugin *plugin
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int flush(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -4047,7 +4047,7 @@ static int flush(int argc, char **argv, struct command *cmd, struct plugin *plug
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int resv_acquire(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -4124,7 +4124,7 @@ static int resv_acquire(int argc, char **argv, struct command *cmd, struct plugi
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int resv_register(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -4204,7 +4204,7 @@ static int resv_register(int argc, char **argv, struct command *cmd, struct plug
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int resv_release(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -4280,7 +4280,7 @@ static int resv_release(int argc, char **argv, struct command *cmd, struct plugi
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int resv_report(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -4377,7 +4377,7 @@ static int resv_report(int argc, char **argv, struct command *cmd, struct plugin
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int submit_io(int opcode, char *command, const char *desc,
-@@ -4625,7 +4625,7 @@ static int submit_io(int opcode, char *command, const char *desc,
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int compare(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -4734,7 +4734,7 @@ static int sec_recv(int argc, char **argv, struct command *cmd, struct plugin *p
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int dir_receive(int argc, char **argv, struct command *cmd, struct plugin *plugin)
-@@ -4867,7 +4867,7 @@ free:
- close_fd:
- 	close(fd);
- ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int passthru(int argc, char **argv, int ioctl_cmd, const char *desc, struct command *cmd)
-@@ -5070,7 +5070,7 @@ static int passthru(int argc, char **argv, int ioctl_cmd, const char *desc, stru
-  close_fd:
- 	close(fd);
-  ret:
--	return err;
-+	return nvme_status_to_errno(err, false);
- }
- 
- static int io_passthru(int argc, char **argv, struct command *cmd, struct plugin *plugin)
++	/*
++	 * If genctr is still different with the one in the log entry, it
++	 * means the retires have been exhausted to max_retries.  Then it
++	 * should be retried by the caller or the user.
++	 */
++	if (genctr != le64_to_cpu(log->genctr)) {
++		error = DISC_RETRY_EXHAUSTED;
++		goto out_free_log;
++	}
++
+ 	if (*numrec != le32_to_cpu(log->numrec)) {
+ 		error = DISC_NOT_EQUAL;
+ 		goto out_free_log;
+@@ -882,6 +893,10 @@ static int do_discover(char *argstr, bool connect)
+ 		fprintf(stdout, "No discovery log entries to fetch.\n");
+ 		ret = DISC_OK;
+ 		break;
++	case DISC_RETRY_EXHAUSTED:
++		fprintf(stdout, "Discovery retries exhausted.\n");
++		ret = -EAGAIN;
++		break;
+ 	case DISC_NOT_EQUAL:
+ 		fprintf(stderr,
+ 		"Numrec values of last two get discovery log page not equal\n");
 -- 
 2.21.0
 
