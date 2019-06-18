@@ -2,81 +2,82 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8C434A872
-	for <lists+linux-nvme@lfdr.de>; Tue, 18 Jun 2019 19:31:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 595554A8AD
+	for <lists+linux-nvme@lfdr.de>; Tue, 18 Jun 2019 19:42:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LBSMVA789o6YhiShB5YsW1+IxaEvnPCUjJG8aPGNFIM=; b=g+TlD5RbXmkQTQchPxpVTxclL
-	khpTzJhSOd0tdKbYC6KkHfQan1sflx/+ZvVlSwRK+mPHIG6oFmmdGt5RJvUbjEBBMH3h4xnMJVi0u
-	X/myoaYABuSF9/5FGsKvlRUuvlkd3W6Rh/3+tG2WRa/CaDnHfVIv1Pak5brlY/fg6gI7Sow3tW4zp
-	UB25pC3S+6HdO4uec9RxYWVRVdKW5YHI6rf8vcaey9YqPuymAQe1kCOVm5/lxyXaQnOlIMRwpUSen
-	iPnFxllTD50HUg0K+YzO7i46o08YyxJXmZGPanxcZbk3YedeFIABgrF9oJeRc6jD0nPbkPYrwLYVe
-	l+uys91nw==;
+	 bh=Gpj5t7hOFV4OT4dCHlqrzNmRfm73yifymFYLUesfcLY=; b=B78GiYDlc0nYdGa/B3nJcSD/w
+	adTQki9V9c8vKh+s4C86gQEZx2P5dnNIS4BYhF8IhBqEGYEdoA75CMS+qqyhAMrKXTPOLy43+egPe
+	EF71Si6jUpbe3ibo7SFmaPlx6s1K2MwWoO8Qtkqx9IeFJ9H4Dl9IyHFZN58WjnjwCm1RnkU8P/NXX
+	6QR4+sOa0zoZUSs6+i/Q+/6MSdT/SM1yQMP03eJYzXsqJLVgESrKV8g37uk2lRejf5gNC1DxLQhnX
+	Nrb+pGfabJgQomFho+5A4K0/VX6cJJhCtdasxw+4Omb9LqjOI4haSE1hM7k02G3gHBAD7uoXG1Zdp
+	AMk3lDopA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hdHwd-00047E-L4; Tue, 18 Jun 2019 17:30:55 +0000
-Received: from mail-pl1-f193.google.com ([209.85.214.193])
+	id 1hdI7N-0000RV-K4; Tue, 18 Jun 2019 17:42:01 +0000
+Received: from mail-pg1-f194.google.com ([209.85.215.194])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hdHwX-00046A-Ms
- for linux-nvme@lists.infradead.org; Tue, 18 Jun 2019 17:30:52 +0000
-Received: by mail-pl1-f193.google.com with SMTP id f98so417572plb.5
- for <linux-nvme@lists.infradead.org>; Tue, 18 Jun 2019 10:30:49 -0700 (PDT)
+ id 1hdI7G-0000R3-OT
+ for linux-nvme@lists.infradead.org; Tue, 18 Jun 2019 17:41:55 +0000
+Received: by mail-pg1-f194.google.com with SMTP id k187so8085917pga.0
+ for <linux-nvme@lists.infradead.org>; Tue, 18 Jun 2019 10:41:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=dJRXZt5DtRjNdjOrYTivIOwdOChv/o+3WYWbg8BNn9I=;
- b=PjZ3jM6y/fTp+QeanG1p4WD+Q3yhxz3bHwaByPO7U/IZD0Uq15YqCgaTNAuEZj+HvY
- CNoEQsxpvsqqygyWa6UN0Eab/5smOxD/m3jZXF5+WfFC6HZprpTs2SHxyYZTZL1xNtPy
- ptgxQ082Z+TwsJunxgRxtcpEzN1rCa+WOQ8EGwCXpqR4WfDfXMpIlLDe4HLhGMIQdUFx
- Yyi9aqeZUh6/kFRNDroMpW4YGyjIgVUSICncBnw4wkuJXhYPzg8pNXBDPa1sUAl6vM38
- 83KnVgdu6Zahv+I88zpeKiEtt5rEO39TV2Qco+gDowBr+07p7sVHKfShFnh17NlIyfBs
- lJ2g==
-X-Gm-Message-State: APjAAAVWs2lGPOxKCR/5+PDTUpfRswZ7kRbq4+qypfjK8DLtafaq4Gnr
- 7iKJGCB78leJop8/TR3HXLE94/NT8cM=
-X-Google-Smtp-Source: APXvYqzLPBlkawgb4MR4neFNQwQM+ZiLxxgE80oUSlgPMGyCJkjF0Kxb5Od4Tku25JIhRaJTrerhyw==
-X-Received: by 2002:a17:902:2f:: with SMTP id 44mr53622415pla.5.1560879048681; 
- Tue, 18 Jun 2019 10:30:48 -0700 (PDT)
+ bh=KGz8zim5w+Azn63GsS3fKDKtFbSBJ8Amvcd685Nyxq0=;
+ b=kEj4sg6FSZmtp9VZnDDdcX//qoKd45NwBpS+SVaTYiNzRcPDs0WxrXkLel7SfIzSJa
+ G4sn9rzcfA5XoTdioc1l6jcXEGhZshOTKUxN7qjmlBo7tFMrzUR3g9ZLTeLh+o5ri2zA
+ E/C/f7eXlcpKfumVH0+5JypuK9s9BtRYTWVzJdBzmgiT0mMGfLijD0AptWMT7IS2AT72
+ +Q0St6BbxwHmWpd0aqD/FjeZn96EIMaqHVPNJKpvW8FBHA6onfj2yALNziJocT7e27wt
+ 5+YviYgNIcca5LiEEJk8tm2jjJAVeSWXHMUh6J8qRIaTMuVJvbQyNPxS1F1wqX96ty91
+ 0m7A==
+X-Gm-Message-State: APjAAAWbseJlX6cou9wuGcZzufmZdTyjLSLagduaUQAQ5CTHnfV4vvqG
+ i+oQPaX9kJtNSIb/1Z/m2yAoDv/muIw=
+X-Google-Smtp-Source: APXvYqyf/EkVfoebTVWyZ2Tkqz3I8RSOLvlpMLajhtCnpq0wCBV+tE0ZflIu8yKgjAQG83YWW8b4lA==
+X-Received: by 2002:a17:90a:4803:: with SMTP id
+ a3mr6569191pjh.58.1560879713599; 
+ Tue, 18 Jun 2019 10:41:53 -0700 (PDT)
 Received: from ?IPv6:2601:647:4800:973f:8c36:4f80:5fb5:4302?
  ([2601:647:4800:973f:8c36:4f80:5fb5:4302])
- by smtp.gmail.com with ESMTPSA id v5sm4555437pgq.66.2019.06.18.10.30.47
+ by smtp.gmail.com with ESMTPSA id s66sm17367527pgs.87.2019.06.18.10.41.52
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 18 Jun 2019 10:30:48 -0700 (PDT)
-Subject: Re: [PATCH 1/2] nvme: Do not remove namespaces during reset
+ Tue, 18 Jun 2019 10:41:52 -0700 (PDT)
+Subject: Re: [PATCH 2/2] nvme: flush scan_work when resetting controller
 To: Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
 References: <20190618101025.78840-1-hare@suse.de>
- <20190618101025.78840-2-hare@suse.de>
+ <20190618101025.78840-3-hare@suse.de>
 From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <17c5aaa9-a8eb-f541-f136-9a728e72f428@grimberg.me>
-Date: Tue, 18 Jun 2019 10:30:46 -0700
+Message-ID: <36c093c6-9fea-aa2f-affe-70957e0c5b1b@grimberg.me>
+Date: Tue, 18 Jun 2019 10:41:51 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190618101025.78840-2-hare@suse.de>
+In-Reply-To: <20190618101025.78840-3-hare@suse.de>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190618_103049_743256_37291957 
-X-CRM114-Status: GOOD (  21.11  )
+X-CRM114-CacheID: sfid-20190618_104154_794596_6012C7C5 
+X-CRM114-Status: GOOD (  12.59  )
 X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.214.193 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.214.193 listed in wl.mailspike.net]
+ no trust [209.85.215.194 listed in list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (sagigrim[at]gmail.com)
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.215.194 listed in wl.mailspike.net]
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
@@ -99,39 +100,28 @@ Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
-> When a controller is resetting or reconnecting there is no way
-> how we could establish the validity of any given namespace.
-> So do not call nvme_ns_remove() during resetting or reconnecting
-> and rely on the call to nvme_scan_queue() after reset to fixup
-> things.
-> 
-> Signed-off-by: Hannes Reinecke <hare@suse.com>
-> ---
->   drivers/nvme/host/core.c | 11 +++++++++++
->   1 file changed, 11 insertions(+)
-> 
-> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index ba2079d217da..e872591e5fe7 100644
-> --- a/drivers/nvme/host/core.c
-> +++ b/drivers/nvme/host/core.c
-> @@ -3358,6 +3358,17 @@ static int nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
->   
->   static void nvme_ns_remove(struct nvme_ns *ns)
->   {
-> +	/*
-> +	 * We cannot make any assumptions about namespaces during
-> +	 * reset; in particular we shouldn't attempt to remove them
-> +	 * as I/O might still be queued to them.
-> +	 * So ignore this call during reset and rely on the
-> +	 * rescan after reset to clean up things again.
-> +	 */
-> +	if (ns->ctrl->state == NVME_CTRL_RESETTING ||
-> +	    ns->ctrl->state == NVME_CTRL_CONNECTING)
-> +		return;
-> +
+> When resetting the controller there is no point whatsoever to
+> have a scan run in parallel;
 
-This is conflicting with the commit log, this condition needs to
-go to the call site.
+There is also no point of trying to prevent it.
+
+> we cannot access the controller and
+> we cannot tell which devices are present and which not.
+> Additionally we'll run a scan after reset anyway.
+> So flush existing scans before reconnecting, ensuring to
+> short-circuit the scan workqueue function if the controller state
+> isn't live to avoid lockups.
+
+What is this fixing? can we get a detailed description?
+
+These ctrl->state conditions sprayed around that are not barriered
+by anything do not prevent any scan to run in parallel with resets.
+
+Also, do note that resets will unquiesce the admin queue right away
+and not when the reset completes (rdma, tcp, fc). The only exception
+is pci that will unquiesce as soon as the reset fails.
+
+So can you please clarify the problem?
 
 _______________________________________________
 Linux-nvme mailing list
