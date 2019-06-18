@@ -2,78 +2,77 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDB654A20B
-	for <lists+linux-nvme@lfdr.de>; Tue, 18 Jun 2019 15:24:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 897404A205
+	for <lists+linux-nvme@lfdr.de>; Tue, 18 Jun 2019 15:23:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JC8D7rg2p4dX9eRghZ7iEj0O+uRJ5Nc7xgG2cWhKIWQ=; b=Yy8xyO/NIOBGRe
-	CGIsIkEXoIi+QT48Wuqo1mDnxTqUuK/+P9iWZRCctlmqA9NZDERw1yGCYSZTx1kRcX9P0WjAYFPFG
-	7L/W/I+Oz4bHGnNjLm7ZEyNL0k2oUFDjyWNGj/5gEFusIzKKbYkiLT9VT9YZahOfdidDJDjXI0lQ9
-	UalXK6kQi/qBTpllL8oZXrUkTzmvZkStpl13xaoOWCIpfL+HaEGZGNr/jM4H56kfw7TdMo2ZhDPNa
-	uEZ/DDv6+iveoHxTpl2a7xb2/3hvymDyHL8rhxFEGN5kWEWor9sNvCh8dRZeXzqoiQXv0vXguBu7S
-	5vXnBaDTD1OipjqLfHwA==;
+	List-Owner; bh=tZ2+3ir9ZVFPAqxWgC7vW2+0KLj9CpaSNstfQKXPXBQ=; b=cMzxL5ypPi8v3X
+	raQEP1o9qz5t4iwe1FQSsEK99Z4DCzcx8Ul6kZ5aQCiPb26kU6/ksvRy2gt6okiGqmAQRqTv7rk2q
+	pD8aG7YvbZYYPpMFnN+1qHBmv4xHGR9VOp9SuDVFqe8IjGbAA89RCbHqHK9bBUW3yZSsYY7PJ/aHp
+	OSEWebUTd+SoPvmBeg69UHds5kSOtAJJjYXfLKgwGO/oP43MdabDyRg5dNPf5QcthOaJ9Mhqmdt6l
+	NSWk01GIYqGh2t2l9kUoQVbYeBc1qUQ2Xo9HjvUP7mj4MuGSfjxg+v1WecHDf8xcRWhYk/WJzgOy3
+	CeTGR3Q5pyff72ls88Xg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hdE6Q-000746-BC; Tue, 18 Jun 2019 13:24:46 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1hdE4e-0006Pu-JN; Tue, 18 Jun 2019 13:22:57 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hdDus-0006ZW-QV
- for linux-nvme@lists.infradead.org; Tue, 18 Jun 2019 13:13:11 +0000
-Received: by mail-pg1-x542.google.com with SMTP id f21so7691921pgi.3
- for <linux-nvme@lists.infradead.org>; Tue, 18 Jun 2019 06:12:50 -0700 (PDT)
+ id 1hdDuv-0006Zy-Tb
+ for linux-nvme@lists.infradead.org; Tue, 18 Jun 2019 13:13:09 +0000
+Received: by mail-pl1-x644.google.com with SMTP id f98so124946plb.5
+ for <linux-nvme@lists.infradead.org>; Tue, 18 Jun 2019 06:12:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+8RCnsO+CU+gZbVyt/tRjmUdZJJz6aaB6nDyPj71spk=;
- b=g6LGvoiG28ZhIo/La6V4345IGkRToH3c2gY++K0mWVJSMHifSemt5vyFzBMbQT2kT2
- teyR4W743lIn8CU6xI+cVgiL8iGw1Y1QHGWDvM+Hmremem9v+iyKg+6qPpVB4UPhVnxy
- ZSMZqGQi0zrihr5ZrDveexrf2mJgfJf0/yjXl6JmW5x+WQVGv1yNhbiwCzE0VYMpnO3V
- 60ta3dNpXW/zZFT9YmujuMIoetQ1TsxOiEdHrSnRr/2ohX12Lo4UFDIon5znW68JqeHS
- RcYjWwbacypZtxkJJ/AayTCg6sGQywoSMGDdyoKyT8RvfXu/Ckwk0eqIXc8S97G9BJqr
- GY7A==
+ bh=9pZy/dWIHCqcAg2InNIiIVTVo8lRywWlXoHVyV1k5oA=;
+ b=Plv7zziMzid8d0hfVFDFY1cj5/GoGPHyDxKg13FWo/rzcuTSncTe0Elxczy/rlc6qR
+ kZM8VReGLIIFLRja/qDwfyhwQtLwbP+mz3b8CNLzJSW3lX1RLhZbwvOaExedx5TzNAk7
+ MUDDUuRWV9aVTua/t65Q/g8AgMag9K9ysMDI2XUNmrllqP5vUluUg30XF+Ytp6ydOQkM
+ gKV6//gNPSVlHrNXr9tnkQGZAaa4EFMgsPzpSOWXBbGNCfUJ2zTQk9uwmnuD+VgrA+Ot
+ TJOn3FnEHWUWlwmwqL5nzsYmyKtDU/Zc5BfygRm0QbrTZClWm51EwiXbQYv8Rp8ZzOlC
+ GI3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+8RCnsO+CU+gZbVyt/tRjmUdZJJz6aaB6nDyPj71spk=;
- b=FVJVgkW9FcrjrENmchLOgBGTGz15fNbiH9wK0qxJEVK5V36hQ+sxGQuKC9YK78F0ph
- NineruIzIE0t7NJGVcf/W/VxZTGegiVyGjS21NMfdB0UUP5GC4PdkrHuBWDRf7wXkltk
- DAXise8z8TITSF8tZY6P6VE296OSX1dRe7NrusR3vhWC22HQEreE3+IAPaR9MfbQ+1DE
- wKTFMGw4K9n4Fba+WQ+2Fagg4bzImGb1v6c1WdTuXzMH07jo7VIsVOuN0+WcTmOFTr0e
- f3eANndteOTbw9WGCkTu1NmeWq5EynK6YlhdqMGmXgJvnE6xJm9b36UiNWSj3ESkdX15
- bwnw==
-X-Gm-Message-State: APjAAAWvyQ6t5Yyavy5sS+zClD4IqX8wpmMcSSVxBgyEc+9ASpg5HVNF
- nAW8gfJniNw49juw9mqGWFA=
-X-Google-Smtp-Source: APXvYqwq4QKIyRuDeHpXpHt7W1T88JXIg45P0FzTQQxRIZ9Mqq7vv5M/SuCkAQmtF7iYL3efzfmexA==
-X-Received: by 2002:a62:e119:: with SMTP id q25mr83631727pfh.148.1560863570070; 
- Tue, 18 Jun 2019 06:12:50 -0700 (PDT)
+ bh=9pZy/dWIHCqcAg2InNIiIVTVo8lRywWlXoHVyV1k5oA=;
+ b=eqR0x9s7m9jaR9enoG7ywBlhbtUhtqW6FdNobVtWUEhWkHe4IacANXbTdfCmeTShPV
+ nrK+HV6JDm9bLlP+wvykWz4vBKGmhn4pTt/ggWUgYh1frNJS2CLJGHaM+1ciy4yoJJKK
+ bPX8GsTD/P/kGRra0cHLiwCgqKyL8d70Axk3RvSSH0g1vDkjKOcYZ69sQJ5MhFyrE9jZ
+ +6E+KX29k3zKZ04xSaRLxZQ0Y3RBoce3uSd+qAFv20l1/C3CZHBuYBsNPgUWhY54dBb3
+ 9OGG7X3weOK0Pz4FBwcirlhdDFm40wPDFi/SqrlqQtZXveYCKlxwuisjl9UDDxd/UnSo
+ UCQA==
+X-Gm-Message-State: APjAAAUQKQWrQCqUissFlShLMwBFHV6o7tIj9ptOoits3hEwD7U1+UTV
+ 2VNtmT5vvhUw7SVSNLuYcgY=
+X-Google-Smtp-Source: APXvYqzeSoLWAsQe+ouDHlK74UhTrA4UHJFSgCn2Ppt3LOozUsAISjXVUSUOi9UlUBnZXRub1Mswdg==
+X-Received: by 2002:a17:902:522:: with SMTP id
+ 31mr107637317plf.296.1560863573186; 
+ Tue, 18 Jun 2019 06:12:53 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id c142sm21663733pfb.171.2019.06.18.06.12.47
+ by smtp.gmail.com with ESMTPSA id c142sm21663733pfb.171.2019.06.18.06.12.50
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 18 Jun 2019 06:12:49 -0700 (PDT)
+ Tue, 18 Jun 2019 06:12:52 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Keith Busch <kbusch@kernel.org>
-Subject: [PATCH V7 6/7] fabrics: return error when discovery retry exhausted
-Date: Tue, 18 Jun 2019 22:12:15 +0900
-Message-Id: <20190618131216.3661-7-minwoo.im.dev@gmail.com>
+Subject: [PATCH V7 7/7] fabrics: Return errno mapped for fabrics error status
+Date: Tue, 18 Jun 2019 22:12:16 +0900
+Message-Id: <20190618131216.3661-8-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190618131216.3661-1-minwoo.im.dev@gmail.com>
 References: <20190618131216.3661-1-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190618_061252_017521_42114F92 
-X-CRM114-Status: GOOD (  14.67  )
+X-Spam-Note: CRM114 invocation failed
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
@@ -97,7 +96,7 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+Cc: Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>,
  Minwoo Im <minwoo.im.dev@gmail.com>, Sagi Grimberg <sagi@grimberg.me>,
  linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -105,60 +104,133 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-If the discovery page is not updated to the latest one over the 10
-times, it's currently returning DISC_OK if the numrec has no problem.
-If so, the caller might think that the discovery has been successfully
-done without any errors even there is.
+If discover has been failed due to a nvme status, it will be returned to
+main() with mapped value for fabrics get log page command.
 
-This patch makes it return an error -EAGAIN if retry(10 times) has been
-exhausted.
+Now connect command related status cannot be added in this patch because
+kernel is not currently returning the nvme status, it's instead
+returning -EIO if fails.  errno for connect command can be added once
+kernel is ready to return the proper value for nvme status.
 
+Cc: Keith Busch <kbusch@kernel.org>
+Cc: Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>
 Cc: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- fabrics.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ fabrics.c | 25 +++++++++++++++++--------
+ 1 file changed, 17 insertions(+), 8 deletions(-)
 
 diff --git a/fabrics.c b/fabrics.c
-index adedca0..8470d97 100644
+index 8470d97..c628152 100644
 --- a/fabrics.c
 +++ b/fabrics.c
-@@ -291,6 +291,7 @@ enum {
- 	DISC_NO_LOG,
- 	DISC_GET_NUMRECS,
- 	DISC_GET_LOG,
-+	DISC_RETRY_EXHAUSTED,
- 	DISC_NOT_EQUAL,
+@@ -35,6 +35,7 @@
+ 
+ #include "parser.h"
+ #include "nvme-ioctl.h"
++#include "nvme-status.h"
+ #include "fabrics.h"
+ 
+ #include "nvme.h"
+@@ -296,7 +297,7 @@ enum {
  };
  
-@@ -385,6 +386,16 @@ static int nvmf_get_log_page_discovery(const char *dev_path,
- 	} while (genctr != le64_to_cpu(log->genctr) &&
- 		 ++retries < max_retries);
+ static int nvmf_get_log_page_discovery(const char *dev_path,
+-		struct nvmf_disc_rsp_page_hdr **logp, int *numrec)
++		struct nvmf_disc_rsp_page_hdr **logp, int *numrec, int *status)
+ {
+ 	struct nvmf_disc_rsp_page_hdr *log;
+ 	unsigned int hdr_size;
+@@ -411,6 +412,7 @@ out_free_log:
+ out_close:
+ 	close(fd);
+ out:
++	*status = nvme_status_to_errno(error, true);
+ 	return error;
+ }
  
-+	/*
-+	 * If genctr is still different with the one in the log entry, it
-+	 * means the retires have been exhausted to max_retries.  Then it
-+	 * should be retried by the caller or the user.
-+	 */
-+	if (genctr != le64_to_cpu(log->genctr)) {
-+		error = DISC_RETRY_EXHAUSTED;
-+		goto out_free_log;
-+	}
-+
- 	if (*numrec != le32_to_cpu(log->numrec)) {
- 		error = DISC_NOT_EQUAL;
- 		goto out_free_log;
-@@ -882,6 +893,10 @@ static int do_discover(char *argstr, bool connect)
- 		fprintf(stdout, "No discovery log entries to fetch.\n");
- 		ret = DISC_OK;
+@@ -860,6 +862,7 @@ static int do_discover(char *argstr, bool connect)
+ 	struct nvmf_disc_rsp_page_hdr *log = NULL;
+ 	char *dev_name;
+ 	int instance, numrec = 0, ret, err;
++	int status = 0;
+ 
+ 	instance = add_ctrl(argstr);
+ 	if (instance < 0)
+@@ -867,7 +870,7 @@ static int do_discover(char *argstr, bool connect)
+ 
+ 	if (asprintf(&dev_name, "/dev/nvme%d", instance) < 0)
+ 		return -errno;
+-	ret = nvmf_get_log_page_discovery(dev_name, &log, &numrec);
++	ret = nvmf_get_log_page_discovery(dev_name, &log, &numrec, &status);
+ 	free(dev_name);
+ 	err = remove_ctrl(instance);
+ 	if (err)
+@@ -885,9 +888,11 @@ static int do_discover(char *argstr, bool connect)
+ 	case DISC_GET_NUMRECS:
+ 		fprintf(stderr,
+ 			"Get number of discovery log entries failed.\n");
++		ret = status;
  		break;
-+	case DISC_RETRY_EXHAUSTED:
-+		fprintf(stdout, "Discovery retries exhausted.\n");
-+		ret = -EAGAIN;
-+		break;
+ 	case DISC_GET_LOG:
+ 		fprintf(stderr, "Get discovery log entries failed.\n");
++		ret = status;
+ 		break;
+ 	case DISC_NO_LOG:
+ 		fprintf(stdout, "No discovery log entries to fetch.\n");
+@@ -900,6 +905,7 @@ static int do_discover(char *argstr, bool connect)
  	case DISC_NOT_EQUAL:
  		fprintf(stderr,
  		"Numrec values of last two get discovery log page not equal\n");
++		ret = -EBADSLT;
+ 		break;
+ 	default:
+ 		fprintf(stderr, "Get discovery log page failed: %d\n", ret);
+@@ -1015,7 +1021,7 @@ int discover(const char *desc, int argc, char **argv, bool connect)
+ 	}
+ 
+ out:
+-	return ret;
++	return nvme_status_to_errno(ret, true);
+ }
+ 
+ int connect(const char *desc, int argc, char **argv)
+@@ -1062,8 +1068,9 @@ int connect(const char *desc, int argc, char **argv)
+ 	instance = add_ctrl(argstr);
+ 	if (instance < 0)
+ 		ret = instance;
++
+ out:
+-	return ret;
++	return nvme_status_to_errno(ret, true);
+ }
+ 
+ static int scan_sys_nvme_filter(const struct dirent *d)
+@@ -1196,7 +1203,7 @@ int disconnect(const char *desc, int argc, char **argv)
+ 	}
+ 
+ out:
+-	return ret;
++	return nvme_status_to_errno(ret, true);
+ }
+ 
+ int disconnect_all(const char *desc, int argc, char **argv)
+@@ -1223,10 +1230,12 @@ int disconnect_all(const char *desc, int argc, char **argv)
+ 
+ 			ret = disconnect_by_device(ctrl->name);
+ 			if (ret)
+-				goto out;
++				goto free;
+ 		}
+ 	}
+-out:
++
++free:
+ 	free_subsys_list(slist, subcnt);
+-	return ret;
++out:
++	return nvme_status_to_errno(ret, true);
+ }
 -- 
 2.21.0
 
