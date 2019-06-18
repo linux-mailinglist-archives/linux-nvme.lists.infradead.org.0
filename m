@@ -2,79 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D1AB4A208
-	for <lists+linux-nvme@lfdr.de>; Tue, 18 Jun 2019 15:24:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A33584A204
+	for <lists+linux-nvme@lfdr.de>; Tue, 18 Jun 2019 15:22:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GNubC2HPm2BFDoXV8jZ3sQujdI3Icg0Q7LPCm86W9lE=; b=YE+NZEnP0Ldu06
-	/xvb3Kmb9Ve/+AZLC6ZaRlIsipOEmWuA53vO9iBER7eBY5vwbNj1p4U6nLl7D+zCXbQPHFrZjpwOF
-	jJrhw5htajSVEcSqcwissFCTcrVe/TS0yZwoDN0O5O/DRjFnHgCWFZIfzNfgVWcLXCvMJF/jprz3x
-	pWIOxTNCKLj4P/L7pA3QoV3iGMiOXLob/m6j/niyZsNTBj+zr7tk7qKFPmuQb88jrYb0CN4KO97Gk
-	DDk/nuFF+LgLs0515o8J0qLTu7XCDs+Cri6k0LKf6Wg0ToWBSqGfVU3UU//+9Lvj3FJawbLbfLBqR
-	z8CZHe4W6IYCob8w9dsA==;
+	List-Owner; bh=4UoWvrtboHepzzsu7kopW56vCjZI9/1+FDri4l9O4Tg=; b=NvOfV/UmD6dGhx
+	4KvgRtnPMUubt2y6hFAQJOOvRFKcqjGNQOXGqq79EXO9Ik5/6JkESAMAYlrWxYar6smS9P5bFbEJL
+	ChhnbtFLtWdXiZzymeJCKf31ck8TduBGvPxYeaIsO5Z8ij1ETYTQZXNMPCRCaKVFd3iYSWBUCAkbI
+	Qg0ZYpwONPQQZIXnwUpGdM5NDykHdSRoiEoLywFrTG4gq4M4UUjoLDOLvlojr1oFKt0AMQmcc1LH2
+	YLpsZKQ407Tmw23wgGGJY1NI3AUlLlTBMz1ezcuZOcJlf/CnDFEquzHNmgmxLQi003mPUwErFzXGs
+	YHqLdxlpOLxra4tBJAnQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hdE5z-0006qH-35; Tue, 18 Jun 2019 13:24:19 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1hdE47-0006Fn-Lz; Tue, 18 Jun 2019 13:22:23 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hdDuj-0006Xq-Jl
- for linux-nvme@lists.infradead.org; Tue, 18 Jun 2019 13:13:12 +0000
-Received: by mail-pf1-x444.google.com with SMTP id t16so7636442pfe.11
- for <linux-nvme@lists.infradead.org>; Tue, 18 Jun 2019 06:12:41 -0700 (PDT)
+ id 1hdDum-0006YX-MN
+ for linux-nvme@lists.infradead.org; Tue, 18 Jun 2019 13:13:10 +0000
+Received: by mail-pf1-x443.google.com with SMTP id c85so7663160pfc.1
+ for <linux-nvme@lists.infradead.org>; Tue, 18 Jun 2019 06:12:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=grLVTNPXDIX662gUbaJIdBiejO8Hw7+xkPMZBfJTI54=;
- b=HafiriVuxl7wiy8gNzRsLc0Y/LlZqDcB89KbNHz+9Mf6WpDOIFN0Z140Lgp5rW5++d
- 3ukJtD3Tikd6HrdVTbBdbmamxF4oh+VW24jf/mHlf/Y8Mhm5kopZ2ifJ8LaVZ9G+UB0F
- nQh73R/q04kZS0XWwrv4AWjNfDnldwD6d3hmKIUjScfF1e3jd3xbGHiw3W73Tfje6zkN
- /ffoRIoc0jHR9eDGnNet2nGq/fA+tVrSWuw9TfgIsr1urd9jamCXP+1jpS8lpNO1GVxt
- JgfkdEgS3gsHcsDKWYwKFt0QUuMU95NcHdIStIc8kvomrnwS/7fHaAoZxKUs0CU9GFdP
- poSw==
+ bh=vk0ktTH9+iivYac+ZZb5GoAzUvSQeqAx92ULIKke6BI=;
+ b=eZ370m6h5D6zQWfvqp++DOec5RAboOdkWkQxOttmKZBndgxtG165pwKiHJLGF6fPss
+ Lf/YGbsRSBVL6sYRNa9gA+2IbROgCcb+WLW8KTOTKmayOCGg9OHULM/iSLvc7n8yoVmH
+ 33RZlIsOivgzwBOOUz5IPwbjf5v9G+0q128oxp1iRgjbIt6JNasYGhCWbmtxn6exT0dq
+ 5sBYrBTJuxNMwMCA+FuOowPfIgNlumaW1uTWhV/QiIN8o++wJlEZ3BsisCfxuet+EVJh
+ 5XbutLwatRy2I3UZgZulGrXTmpCXjCxGJOyL/w8CBMwwi/NAXS2Zms81nycshk3VxPqU
+ BRzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=grLVTNPXDIX662gUbaJIdBiejO8Hw7+xkPMZBfJTI54=;
- b=Njd5bsnXblIDMx7Jbjo8/ALWnN9CL/h55ujrDVlJQ3ewyBcqWSTH/y/38PBGp+yyQg
- /mCPpTfaexC4NjNyxHYmYp4UIqy+dC2kAZSkFHEXI3inicbTAzOlx9No0JMaG8Si+n6V
- 5h8hKBhde68KQykZuDFsLFmhY0QOSi5xJQHcN+HhX3ULnLT6W6glfwdjbFasDYfc92sq
- Ie0ds3vQIR2BBxyoWIDTMU9yXPg1R1+fw8s5V0CNm3lUNQ8BS3M1kb/uM4muJVOyujT8
- vCk70buhDtNxLKooT8T4DREf3z5kQAzcVphedaB/+x+HVODsqdAIxPntv9ujnDLs/F42
- LldA==
-X-Gm-Message-State: APjAAAWQCO+G7CXrqEZSgQmbMyUtExc0AULVnxEU/sIYXefGk1jSszIO
- SrcK+yDvO+CMOXWmRJx3opU=
-X-Google-Smtp-Source: APXvYqzfXlsG9ep/iKojHwhsJVc0SsZZCkdAYquC1zESvfPw+RotLMBMbAHWVvkvlayyHc3vpzL04A==
-X-Received: by 2002:a17:90a:ae12:: with SMTP id
- t18mr5240119pjq.32.1560863560868; 
- Tue, 18 Jun 2019 06:12:40 -0700 (PDT)
+ bh=vk0ktTH9+iivYac+ZZb5GoAzUvSQeqAx92ULIKke6BI=;
+ b=W5OPpwIBryC3Q6ZqAKWj0VlUOXJrdIOmBcpL4E2+6RJu937cCJ/EfJI5cN3uKsBnw0
+ DP3GGtJ4SGTTfZPzHQ8rpVM/CwqRVOBXfmv/7aUyCkfJkxwkWOYic/JpqzbW7A+IViDt
+ Lh4NLDlWaMtKJzMhyycH76yDS07MVTDd1hOaNKr2lc+OUwZtBFGURRA7JOGvp/TLtR0U
+ HhEOQ+9TDt0EPLGrvCRG6Ajn6kul3lVxefk5n9au5jk6OopsaNfvNRxdxbQi2t16bo/N
+ fAB9awmPA/L5TSn+YOLiV6elMvvd/yMCeJ6BmbamRsz6ldiVSLtbDnGRfLfoNlIFWW5Y
+ PLfg==
+X-Gm-Message-State: APjAAAXVHCF0rOVyeuUT+qDvjqW+pZjd02hBdCg4rplOBA9F4TAUEjKI
+ aoaIGoyazdK1MTkqJOsRsw0=
+X-Google-Smtp-Source: APXvYqxRnuShEd/PrKpzskEVupjkmtI3zQoTq6mHUhabk2y+9n42Y4YoGB5PqUAjowNR2W0UIO60VA==
+X-Received: by 2002:a17:90a:2706:: with SMTP id
+ o6mr5249336pje.62.1560863563868; 
+ Tue, 18 Jun 2019 06:12:43 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id c142sm21663733pfb.171.2019.06.18.06.12.38
+ by smtp.gmail.com with ESMTPSA id c142sm21663733pfb.171.2019.06.18.06.12.41
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 18 Jun 2019 06:12:40 -0700 (PDT)
+ Tue, 18 Jun 2019 06:12:43 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Keith Busch <kbusch@kernel.org>
-Subject: [PATCH V7 3/7] nvme: Return negative error value for internal errors
-Date: Tue, 18 Jun 2019 22:12:12 +0900
-Message-Id: <20190618131216.3661-4-minwoo.im.dev@gmail.com>
+Subject: [PATCH V7 4/7] nvme-status: Introduce nvme status module to map errno
+Date: Tue, 18 Jun 2019 22:12:13 +0900
+Message-Id: <20190618131216.3661-5-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190618131216.3661-1-minwoo.im.dev@gmail.com>
 References: <20190618131216.3661-1-minwoo.im.dev@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190618_061242_536154_70503B8D 
-X-CRM114-Status: GOOD (  15.33  )
+X-CRM114-CacheID: sfid-20190618_061245_377336_B4876DC8 
+X-CRM114-Status: GOOD (  17.18  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
@@ -98,7 +98,7 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+Cc: Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>,
  Minwoo Im <minwoo.im.dev@gmail.com>, Sagi Grimberg <sagi@grimberg.me>,
  linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
@@ -106,732 +106,245 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-To support the mapping of error values which will be introduced in the
-next patches, All the internal errors caused in the middle of the
-subcommands preparation or teardown should be returned as a negative
-value to make it distinguished from nvme error status which is positive.
+Background:
+  It's not enough to return the nvme status value in main() because it's
+allowed to be in 8bits, but nvme status is indicated in 16bits.  So we
+has not been able to figure out what kind of nvme status has been
+returned by return value.
 
-This patch makes all the internal error values which used to be returned
-as a positive value to be returned as a negative value.
+  This patch introduces nvme-status module that manages mapping between
+nvme status and errno.  It's not possible to make 1:1 mapping relations,
+but we can map it as a groups.
+
+All the internal errors which has been returned in a negative value will
+be returned with ECOMM that indicates communication errors.  In this
+case, we can see what happened via stderr.
 
 Cc: Keith Busch <kbusch@kernel.org>
+Cc: Chaitanya Kulkarni <chaitanya.Kulkarni@wdc.com>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 ---
- nvme.c | 170 ++++++++++++++++++++++++++++-----------------------------
- 1 file changed, 85 insertions(+), 85 deletions(-)
+ Makefile      |   3 +-
+ linux/nvme.h  |   6 ++
+ nvme-status.c | 155 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ nvme-status.h |  14 +++++
+ 4 files changed, 177 insertions(+), 1 deletion(-)
+ create mode 100644 nvme-status.c
+ create mode 100644 nvme-status.h
 
-diff --git a/nvme.c b/nvme.c
-index bb61322..d337b4a 100644
---- a/nvme.c
-+++ b/nvme.c
-@@ -343,7 +343,7 @@ static int get_telemetry_log(int argc, char **argv, struct command *cmd, struct
+diff --git a/Makefile b/Makefile
+index 5081c2b..db594a3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -32,7 +32,8 @@ override CFLAGS += -DNVME_VERSION='"$(NVME_VERSION)"'
+ NVME_DPKG_VERSION=1~`lsb_release -sc`
  
- 	if (!cfg.file_name) {
- 		fprintf(stderr, "Please provide an output file!\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
+ OBJS := argconfig.o suffix.o parser.o nvme-print.o nvme-ioctl.o \
+-	nvme-lightnvm.o fabrics.o json.o nvme-models.o plugin.o
++	nvme-lightnvm.o fabrics.o json.o nvme-models.o plugin.o \
++	nvme-status.o
  
-@@ -353,7 +353,7 @@ static int get_telemetry_log(int argc, char **argv, struct command *cmd, struct
- 	if (!hdr || !page_log) {
- 		fprintf(stderr, "Failed to allocate %zu bytes for log: %s\n",
- 				bs, strerror(errno));
--		err = ENOMEM;
-+		err = -ENOMEM;
- 		goto free_mem;
- 	}
- 	memset(hdr, 0, bs);
-@@ -393,7 +393,7 @@ static int get_telemetry_log(int argc, char **argv, struct command *cmd, struct
- 		break;
- 	default:
- 		fprintf(stderr, "Invalid data area requested");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_output;
- 	}
+ PLUGIN_OBJS :=					\
+ 	plugins/intel/intel-nvme.o		\
+diff --git a/linux/nvme.h b/linux/nvme.h
+index 69f287e..9963e90 100644
+--- a/linux/nvme.h
++++ b/linux/nvme.h
+@@ -1319,6 +1319,12 @@ static inline bool nvme_is_write(struct nvme_command *cmd)
+ 	return cmd->common.opcode & 1;
+ }
  
-@@ -597,7 +597,7 @@ static int get_error_log(int argc, char **argv, struct command *cmd, struct plug
- 
- 	if (!cfg.log_entries) {
- 		fprintf(stderr, "non-zero log-entries is required param\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -606,7 +606,7 @@ static int get_error_log(int argc, char **argv, struct command *cmd, struct plug
- 		perror("identify controller");
- 	else if (err) {
- 		fprintf(stderr, "could not identify controller\n");
--		err = ENODEV;
-+		err = -ENODEV;
- 	} else {
- 		struct nvme_error_log_page *err_log;
- 
-@@ -614,7 +614,7 @@ static int get_error_log(int argc, char **argv, struct command *cmd, struct plug
- 		err_log = calloc(cfg.log_entries, sizeof(struct nvme_error_log_page));
- 		if (!err_log) {
- 			fprintf(stderr, "could not alloc buffer for error log\n");
--			err = ENOMEM;
-+			err = -ENOMEM;
- 			goto close_fd;
- 		}
- 
-@@ -815,13 +815,13 @@ static int get_log(int argc, char **argv, struct command *cmd, struct plugin *pl
- 
- 	if (cfg.log_id > 0xff) {
- 		fprintf(stderr, "Invalid log identifier: %d. Valid range: 0-255\n", cfg.log_id);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
- 	if (!cfg.log_len) {
- 		fprintf(stderr, "non-zero log-len is required param\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 	} else {
- 		unsigned char *log;
- 
-@@ -829,7 +829,7 @@ static int get_log(int argc, char **argv, struct command *cmd, struct plugin *pl
- 		if (!log) {
- 			fprintf(stderr, "could not alloc buffer for log: %s\n",
- 					strerror(errno));
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 
-@@ -1081,13 +1081,13 @@ static int delete_ns(int argc, char **argv, struct command *cmd, struct plugin *
- 	if (S_ISBLK(nvme_stat.st_mode)) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	} else if (!cfg.namespace_id) {
- 		fprintf(stderr, "%s: namespace-id parameter required\n",
- 						cmd->name);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -1138,7 +1138,7 @@ static int nvme_attach_ns(int argc, char **argv, int attach, const char *desc, s
- 	if (!cfg.namespace_id) {
- 		fprintf(stderr, "%s: namespace-id parameter required\n",
- 						cmd->name);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -1148,7 +1148,7 @@ static int nvme_attach_ns(int argc, char **argv, int attach, const char *desc, s
-     if (num == -1) {
- 		fprintf(stderr, "%s: controller id list is required\n",
- 						cmd->name);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
-     }
- 
-@@ -2048,14 +2048,14 @@ static int ns_descs(int argc, char **argv, struct command *cmd, struct plugin *p
- 	if (!cfg.namespace_id) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
- 
- 	if (posix_memalign(&nsdescs, getpagesize(), 0x1000)) {
- 		fprintf(stderr, "can not allocate controller list payload\n");
--		err = ENOMEM;
-+		err = -ENOMEM;
- 		goto close_fd;
- 	}
- 
-@@ -2142,7 +2142,7 @@ static int id_ns(int argc, char **argv, struct command *cmd, struct plugin *plug
- 	if (!cfg.namespace_id && S_ISBLK(nvme_stat.st_mode)) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
-@@ -2575,12 +2575,12 @@ static int get_feature(int argc, char **argv, struct command *cmd, struct plugin
- 
- 	if (cfg.sel > 7) {
- 		fprintf(stderr, "invalid 'select' param:%d\n", cfg.sel);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 	if (!cfg.feature_id) {
- 		fprintf(stderr, "feature-id required param\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -2614,7 +2614,7 @@ static int get_feature(int argc, char **argv, struct command *cmd, struct plugin
- 	if (cfg.data_len) {
- 		if (posix_memalign(&buf, getpagesize(), cfg.data_len)) {
- 			fprintf(stderr, "can not allocate feature payload\n");
--			err = ENOMEM;
-+			err = -ENOMEM;
- 			goto close_fd;
- 		}
- 		memset(buf, 0, cfg.data_len);
-@@ -2697,7 +2697,7 @@ static int fw_download(int argc, char **argv, struct command *cmd, struct plugin
- 	if (fw_fd < 0) {
- 		fprintf(stderr, "Failed to open firmware file %s: %s\n",
- 				cfg.fw, strerror(errno));
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -2710,12 +2710,12 @@ static int fw_download(int argc, char **argv, struct command *cmd, struct plugin
- 	fw_size = sb.st_size;
- 	if (fw_size & 0x3) {
- 		fprintf(stderr, "Invalid size:%d for f/w image\n", fw_size);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fw_fd;
- 	}
- 	if (posix_memalign(&fw_buf, getpagesize(), fw_size)) {
- 		fprintf(stderr, "No memory for f/w size:%d\n", fw_size);
--		err = ENOMEM;
-+		err = -ENOMEM;
- 		goto close_fw_fd;
- 	}
- 
-@@ -2805,17 +2805,17 @@ static int fw_commit(int argc, char **argv, struct command *cmd, struct plugin *
- 
- 	if (cfg.slot > 7) {
- 		fprintf(stderr, "invalid slot:%d\n", cfg.slot);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 	if (cfg.action > 7 || cfg.action == 4 || cfg.action == 5) {
- 		fprintf(stderr, "invalid action:%d\n", cfg.action);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 	if (cfg.bpid > 1) {
- 		fprintf(stderr, "invalid boot partition id:%d\n", cfg.bpid);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -2983,14 +2983,14 @@ static int sanitize(int argc, char **argv, struct command *cmd, struct plugin *p
- 		break;
- 	default:
- 		fprintf(stderr, "Invalid Sanitize Action\n");
--		ret = EINVAL;
-+		ret = -EINVAL;
- 		goto close_fd;
- 	}
- 
- 	if (cfg.sanact == NVME_SANITIZE_ACT_EXIT) {
- 	       if (cfg.ause || cfg.no_dealloc) {
- 			fprintf(stderr, "SANACT is Exit Failure Mode\n");
--			ret = EINVAL;
-+			ret = -EINVAL;
- 			goto close_fd;
- 	       }
- 	}
-@@ -2998,13 +2998,13 @@ static int sanitize(int argc, char **argv, struct command *cmd, struct plugin *p
- 	if (cfg.sanact == NVME_SANITIZE_ACT_OVERWRITE) {
- 		if (cfg.owpass > 16) {
- 			fprintf(stderr, "OWPASS out of range [0-16]\n");
--			ret = EINVAL;
-+			ret = -EINVAL;
- 			goto close_fd;
- 		}
- 	} else {
- 		if (cfg.owpass || cfg.oipbp || cfg.ovrpat) {
- 			fprintf(stderr, "SANACT is not Overwrite\n");
--			ret = EINVAL;
-+			ret = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
-@@ -3065,7 +3065,7 @@ static int show_registers(int argc, char **argv, struct command *cmd, struct plu
- 
- 	if (cfg.human_readable && fmt != NORMAL) {
- 		fprintf(stderr, "Only --output-format=normal supports -H\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -3077,7 +3077,7 @@ static int show_registers(int argc, char **argv, struct command *cmd, struct plu
- 			err = 0;
- 	}
- 	if (!bar) {
--		err = ENODEV;
-+		err = -ENODEV;
- 		goto close_fd;
- 	}
- 
-@@ -3132,7 +3132,7 @@ static int get_property(int argc, char **argv, struct command *cmd, struct plugi
- 
- 	if (cfg.offset == -1) {
- 		fprintf(stderr, "offset required param");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -3183,12 +3183,12 @@ static int set_property(int argc, char **argv, struct command *cmd, struct plugi
- 
- 	if (cfg.offset == -1) {
- 		fprintf(stderr, "offset required param");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 	if (cfg.value == -1) {
- 		fprintf(stderr, "value required param");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -3287,7 +3287,7 @@ static int format(int argc, char **argv, struct command *cmd, struct plugin *plu
- 	if (S_ISBLK(nvme_stat.st_mode)) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
-@@ -3328,27 +3328,27 @@ static int format(int argc, char **argv, struct command *cmd, struct plugin *plu
- 	/* ses & pi checks set to 7 for forward-compatibility */
- 	if (cfg.ses > 7) {
- 		fprintf(stderr, "invalid secure erase settings:%d\n", cfg.ses);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 	if (cfg.lbaf > 15) {
- 		fprintf(stderr, "invalid lbaf:%d\n", cfg.lbaf);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 	if (cfg.pi > 7) {
- 		fprintf(stderr, "invalid pi:%d\n", cfg.pi);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 	if (cfg.pil > 1) {
- 		fprintf(stderr, "invalid pil:%d\n", cfg.pil);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 	if (cfg.ms > 1) {
- 		fprintf(stderr, "invalid ms:%d\n", cfg.ms);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -3432,7 +3432,7 @@ static int set_feature(int argc, char **argv, struct command *cmd, struct plugin
- 
- 	if (!cfg.feature_id) {
- 		fprintf(stderr, "feature-id required param\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 	if (cfg.feature_id == NVME_FEAT_LBA_RANGE)
-@@ -3440,7 +3440,7 @@ static int set_feature(int argc, char **argv, struct command *cmd, struct plugin
- 	if (cfg.data_len) {
- 		if (posix_memalign(&buf, getpagesize(), cfg.data_len)) {
- 			fprintf(stderr, "can not allocate feature payload\n");
--			err = ENOMEM;
-+			err = -ENOMEM;
- 			goto close_fd;
- 		}
- 		memset(buf, 0, cfg.data_len);
-@@ -3452,7 +3452,7 @@ static int set_feature(int argc, char **argv, struct command *cmd, struct plugin
- 			if (ffd <= 0) {
- 				fprintf(stderr, "Failed to open file %s: %s\n",
- 						cfg.file, strerror(errno));
--				err = EINVAL;
-+				err = -EINVAL;
- 				goto free;
- 			}
- 		}
-@@ -3548,7 +3548,7 @@ static int sec_send(int argc, char **argv, struct command *cmd, struct plugin *p
- 	if (sec_fd < 0) {
- 		fprintf(stderr, "Failed to open %s: %s\n",
- 				cfg.file, strerror(errno));
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -3561,7 +3561,7 @@ static int sec_send(int argc, char **argv, struct command *cmd, struct plugin *p
- 	sec_size = sb.st_size;
- 	if (posix_memalign(&sec_buf, getpagesize(), sec_size)) {
- 		fprintf(stderr, "No memory for security size:%d\n", sec_size);
--		err = ENOMEM;
-+		err = -ENOMEM;
- 		goto close_sec_fd;
- 	}
- 
-@@ -3660,14 +3660,14 @@ static int dir_send(int argc, char **argv, struct command *cmd, struct plugin *p
- 		case NVME_DIR_SND_ID_OP_ENABLE:
- 			if (!cfg.ttype) {
- 				fprintf(stderr, "target-dir required param\n");
--				err = EINVAL;
-+				err = -EINVAL;
- 				goto close_fd;
- 			}
- 			dw12 = cfg.ttype << 8 | cfg.endir;
- 			break;
- 		default:
- 			fprintf(stderr, "invalid directive operations for Identify Directives\n");
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 		break;
-@@ -3678,20 +3678,20 @@ static int dir_send(int argc, char **argv, struct command *cmd, struct plugin *p
- 			break;
- 		default:
- 			fprintf(stderr, "invalid directive operations for Streams Directives\n");
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 		break;
- 	default:
- 		fprintf(stderr, "invalid directive type\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
- 
- 	if (cfg.data_len) {
- 		if (posix_memalign(&buf, getpagesize(), cfg.data_len)) {
--			err = ENOMEM;
-+			err = -ENOMEM;
- 			goto close_fd;
- 		}
- 		memset(buf, 0, cfg.data_len);
-@@ -3703,7 +3703,7 @@ static int dir_send(int argc, char **argv, struct command *cmd, struct plugin *p
- 			if (ffd <= 0) {
- 				fprintf(stderr, "Failed to open file %s: %s\n",
- 						cfg.file, strerror(errno));
--				err = EINVAL;
-+				err = -EINVAL;
- 				goto free;
- 			}
- 		}
-@@ -3783,7 +3783,7 @@ static int write_uncor(int argc, char **argv, struct command *cmd, struct plugin
- 	if (!cfg.namespace_id) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
-@@ -3863,7 +3863,7 @@ static int write_zeroes(int argc, char **argv, struct command *cmd, struct plugi
- 	}
- 
- 	if (cfg.prinfo > 0xf) {
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -3877,7 +3877,7 @@ static int write_zeroes(int argc, char **argv, struct command *cmd, struct plugi
- 	if (!cfg.namespace_id) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
-@@ -3965,14 +3965,14 @@ static int dsm(int argc, char **argv, struct command *cmd, struct plugin *plugin
- 	nr = max(nc, max(nb, ns));
- 	if (!nr || nr > 256) {
- 		fprintf(stderr, "No range definition provided\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
- 	if (!cfg.namespace_id) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
-@@ -3982,7 +3982,7 @@ static int dsm(int argc, char **argv, struct command *cmd, struct plugin *plugin
- 	dsm = nvme_setup_dsm_range((__u32 *)ctx_attrs, (__u32 *)nlbs, (__u64 *)slbas, nr);
- 	if (!dsm) {
- 		fprintf(stderr, "failed to allocate data set payload\n");
--		err = ENOMEM;
-+		err = -ENOMEM;
- 		goto close_fd;
- 	}
- 
-@@ -4032,7 +4032,7 @@ static int flush(int argc, char **argv, struct command *cmd, struct plugin *plug
- 	if (S_ISBLK(nvme_stat.st_mode)) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
-@@ -4102,13 +4102,13 @@ static int resv_acquire(int argc, char **argv, struct command *cmd, struct plugi
- 	if (!cfg.namespace_id) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
- 	if (cfg.racqa > 7) {
- 		fprintf(stderr, "invalid racqa:%d\n", cfg.racqa);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -4176,19 +4176,19 @@ static int resv_register(int argc, char **argv, struct command *cmd, struct plug
- 	if (!cfg.namespace_id) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
- 	if (cfg.cptpl > 3) {
- 		fprintf(stderr, "invalid cptpl:%d\n", cfg.cptpl);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
- 	if (cfg.rrega > 7) {
- 		fprintf(stderr, "invalid rrega:%d\n", cfg.rrega);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -4258,13 +4258,13 @@ static int resv_release(int argc, char **argv, struct command *cmd, struct plugi
- 	if (!cfg.namespace_id) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
- 	if (cfg.rrela > 7) {
- 		fprintf(stderr, "invalid rrela:%d\n", cfg.rrela);
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -4339,7 +4339,7 @@ static int resv_report(int argc, char **argv, struct command *cmd, struct plugin
- 	if (!cfg.namespace_id) {
- 		cfg.namespace_id = get_nsid(fd);
- 		if (cfg.namespace_id == 0) {
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
-@@ -4352,7 +4352,7 @@ static int resv_report(int argc, char **argv, struct command *cmd, struct plugin
- 
- 	if (posix_memalign((void **)&status, getpagesize(), size)) {
- 		fprintf(stderr, "No memory for resv report:%d\n", size);
--		err = ENOMEM;
-+		err = -ENOMEM;
- 		goto close_fd;
- 	}
- 	memset(status, 0, size);
-@@ -4477,7 +4477,7 @@ static int submit_io(int opcode, char *command, const char *desc,
- 
- 	dfd = mfd = opcode & 1 ? STDIN_FILENO : STDOUT_FILENO;
- 	if (cfg.prinfo > 0xf) {
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
-@@ -4491,7 +4491,7 @@ static int submit_io(int opcode, char *command, const char *desc,
- 		if (cfg.dtype > 0xf) {
- 			fprintf(stderr, "Invalid directive type, %x\n",
- 				cfg.dtype);
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 		control |= cfg.dtype << 4;
-@@ -4502,7 +4502,7 @@ static int submit_io(int opcode, char *command, const char *desc,
- 		dfd = open(cfg.data, flags, mode);
- 		if (dfd < 0) {
- 			perror(cfg.data);
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 		mfd = dfd;
-@@ -4511,14 +4511,14 @@ static int submit_io(int opcode, char *command, const char *desc,
- 		mfd = open(cfg.metadata, flags, mode);
- 		if (mfd < 0) {
- 			perror(cfg.metadata);
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_dfd;
- 		}
- 	}
- 
- 	if (!cfg.data_size)	{
- 		fprintf(stderr, "data size not provided\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_mfd;
- 	}
- 
-@@ -4535,7 +4535,7 @@ static int submit_io(int opcode, char *command, const char *desc,
- 
- 	if (posix_memalign(&buffer, getpagesize(), buffer_size)) {
- 		fprintf(stderr, "can not allocate io payload\n");
--		err = ENOMEM;
-+		err = -ENOMEM;
- 		goto close_mfd;
- 	}
- 	memset(buffer, 0, buffer_size);
-@@ -4545,7 +4545,7 @@ static int submit_io(int opcode, char *command, const char *desc,
- 		if (!mbuffer) {
- 			fprintf(stderr, "can not allocate io metadata "
- 					"payload: %s\n", strerror(errno));
--			err = ENOMEM;
-+			err = -ENOMEM;
- 			goto free_buffer;
- 		}
- 	}
-@@ -4602,12 +4602,12 @@ static int submit_io(int opcode, char *command, const char *desc,
- 		if (!(opcode & 1) && write(dfd, (void *)buffer, cfg.data_size) < 0) {
- 			fprintf(stderr, "write: %s: failed to write buffer to output file\n",
- 					strerror(errno));
--			err = EINVAL;
-+			err = -EINVAL;
- 		} else if (!(opcode & 1) && cfg.metadata_size &&
- 				write(mfd, (void *)mbuffer, cfg.metadata_size) < 0) {
- 			fprintf(stderr, "write: %s: failed to write meta-data buffer to output file\n",
- 					strerror(errno));
--			err = EINVAL;
-+			err = -EINVAL;
- 		} else
- 			fprintf(stderr, "%s: Success\n", command);
- 	}
-@@ -4708,7 +4708,7 @@ static int sec_recv(int argc, char **argv, struct command *cmd, struct plugin *p
- 		if (posix_memalign(&sec_buf, getpagesize(), cfg.size)) {
- 			fprintf(stderr, "No memory for security size:%d\n",
- 								cfg.size);
--			err = ENOMEM;
-+			err = -ENOMEM;
- 			goto close_fd;
- 		}
- 	}
-@@ -4801,7 +4801,7 @@ static int dir_receive(int argc, char **argv, struct command *cmd, struct plugin
- 			break;
- 		default:
- 			fprintf(stderr, "invalid directive operations for Identify Directives\n");
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 		break;
-@@ -4820,19 +4820,19 @@ static int dir_receive(int argc, char **argv, struct command *cmd, struct plugin
- 			break;
- 		default:
- 			fprintf(stderr, "invalid directive operations for Streams Directives\n");
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 		break;
- 	default:
- 		fprintf(stderr, "invalid directive type\n");
--		err = EINVAL;
-+		err = -EINVAL;
- 		goto close_fd;
- 	}
- 
- 	if (cfg.data_len) {
- 		if (posix_memalign(&buf, getpagesize(), cfg.data_len)) {
--			err = ENOMEM;
-+			err = -ENOMEM;
- 			goto close_fd;
- 		}
- 		memset(buf, 0, cfg.data_len);
-@@ -4981,7 +4981,7 @@ static int passthru(int argc, char **argv, int ioctl_cmd, const char *desc, stru
- 			   S_IRUSR | S_IRGRP | S_IROTH);
- 		if (wfd < 0) {
- 			perror(cfg.input_file);
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto close_fd;
- 		}
- 	}
-@@ -4991,21 +4991,21 @@ static int passthru(int argc, char **argv, int ioctl_cmd, const char *desc, stru
- 		if (!metadata) {
- 			fprintf(stderr, "can not allocate metadata "
- 					"payload: %s\n", strerror(errno));
--			err = ENOMEM;
-+			err = -ENOMEM;
- 			goto close_wfd;
- 		}
- 	}
- 	if (cfg.data_len) {
- 		if (posix_memalign(&data, getpagesize(), cfg.data_len)) {
- 			fprintf(stderr, "can not allocate data payload\n");
--			err = ENOMEM;
-+			err = -ENOMEM;
- 			goto free_metadata;
- 		}
- 
- 		memset(data, cfg.prefill, cfg.data_len);
- 		if (!cfg.read && !cfg.write) {
- 			fprintf(stderr, "data direction not given\n");
--			err = EINVAL;
-+			err = -EINVAL;
- 			goto free_data;
- 		} else if (cfg.write) {
- 			if (read(wfd, data, cfg.data_len) < 0) {
++enum {
++	NVME_SCT_GENERIC		= 0x0,
++	NVME_SCT_CMD_SPECIFIC		= 0x1,
++	NVME_SCT_MEDIA			= 0x2,
++};
++
+ enum {
+ 	/*
+ 	 * Generic Command Status:
+diff --git a/nvme-status.c b/nvme-status.c
+new file mode 100644
+index 0000000..c69ff3f
+--- /dev/null
++++ b/nvme-status.c
+@@ -0,0 +1,155 @@
++#include <linux/types.h>
++#include <stdbool.h>
++#include <errno.h>
++
++#include "nvme.h"
++#include "nvme-status.h"
++
++static inline __u8 nvme_generic_status_to_errno(__u16 status)
++{
++	switch (status) {
++	case NVME_SC_INVALID_OPCODE:
++	case NVME_SC_INVALID_FIELD:
++	case NVME_SC_INVALID_NS:
++	case NVME_SC_SGL_INVALID_LAST:
++	case NVME_SC_SGL_INVALID_COUNT:
++	case NVME_SC_SGL_INVALID_DATA:
++	case NVME_SC_SGL_INVALID_METADATA:
++	case NVME_SC_SGL_INVALID_TYPE:
++	case NVME_SC_SGL_INVALID_OFFSET:
++	case NVME_SC_SGL_INVALID_SUBTYPE:
++		return EINVAL;
++	case NVME_SC_CMDID_CONFLICT:
++		return EADDRINUSE;
++	case NVME_SC_DATA_XFER_ERROR:
++	case NVME_SC_INTERNAL:
++	case NVME_SC_SANITIZE_FAILED:
++		return EIO;
++	case NVME_SC_POWER_LOSS:
++	case NVME_SC_ABORT_REQ:
++	case NVME_SC_ABORT_QUEUE:
++	case NVME_SC_FUSED_FAIL:
++	case NVME_SC_FUSED_MISSING:
++		return EWOULDBLOCK;
++	case NVME_SC_CMD_SEQ_ERROR:
++		return EILSEQ;
++	case NVME_SC_SANITIZE_IN_PROGRESS:
++		return EINPROGRESS;
++	case NVME_SC_NS_WRITE_PROTECTED:
++	case NVME_SC_NS_NOT_READY:
++	case NVME_SC_RESERVATION_CONFLICT:
++		return EACCES;
++	case NVME_SC_LBA_RANGE:
++		return EREMOTEIO;
++	case NVME_SC_CAP_EXCEEDED:
++		return ENOSPC;
++	}
++
++	return EIO;
++}
++
++static inline __u8 nvme_cmd_specific_status_to_errno(__u16 status)
++{
++	switch (status) {
++	case NVME_SC_CQ_INVALID:
++	case NVME_SC_QID_INVALID:
++	case NVME_SC_QUEUE_SIZE:
++	case NVME_SC_FIRMWARE_SLOT:
++	case NVME_SC_FIRMWARE_IMAGE:
++	case NVME_SC_INVALID_VECTOR:
++	case NVME_SC_INVALID_LOG_PAGE:
++	case NVME_SC_INVALID_FORMAT:
++	case NVME_SC_INVALID_QUEUE:
++	case NVME_SC_NS_INSUFFICIENT_CAP:
++	case NVME_SC_NS_ID_UNAVAILABLE:
++	case NVME_SC_CTRL_LIST_INVALID:
++	case NVME_SC_BAD_ATTRIBUTES:
++	case NVME_SC_INVALID_PI:
++		return EINVAL;
++	case NVME_SC_ABORT_LIMIT:
++	case NVME_SC_ASYNC_LIMIT:
++		return EDQUOT;
++	case NVME_SC_FW_NEEDS_CONV_RESET:
++	case NVME_SC_FW_NEEDS_SUBSYS_RESET:
++	case NVME_SC_FW_NEEDS_MAX_TIME:
++		return ERESTART;
++	case NVME_SC_FEATURE_NOT_SAVEABLE:
++	case NVME_SC_FEATURE_NOT_CHANGEABLE:
++	case NVME_SC_FEATURE_NOT_PER_NS:
++	case NVME_SC_FW_ACTIVATE_PROHIBITED:
++	case NVME_SC_NS_IS_PRIVATE:
++	case NVME_SC_BP_WRITE_PROHIBITED:
++	case NVME_SC_READ_ONLY:
++		return EPERM;
++	case NVME_SC_OVERLAPPING_RANGE:
++	case NVME_SC_NS_NOT_ATTACHED:
++		return ENOSPC;
++	case NVME_SC_NS_ALREADY_ATTACHED:
++		return EALREADY;
++	case NVME_SC_THIN_PROV_NOT_SUPP:
++	case NVME_SC_ONCS_NOT_SUPPORTED:
++		return EOPNOTSUPP;
++	}
++
++	return EIO;
++}
++
++static inline __u8 nvme_fabrics_status_to_errno(__u16 status)
++{
++	switch (status) {
++	case NVME_SC_CONNECT_FORMAT:
++	case NVME_SC_CONNECT_INVALID_PARAM:
++		return EINVAL;
++	case NVME_SC_CONNECT_CTRL_BUSY:
++		return EBUSY;
++	case NVME_SC_CONNECT_RESTART_DISC:
++		return ERESTART;
++	case NVME_SC_CONNECT_INVALID_HOST:
++		return ECONNREFUSED;
++	case NVME_SC_DISCOVERY_RESTART:
++		return EAGAIN;
++	case NVME_SC_AUTH_REQUIRED:
++		return EPERM;
++	}
++
++	return EIO;
++}
++
++/*
++ * nvme_status_to_errno - It converts given status to errno mapped
++ * @status: >= 0 for nvme status field in completion queue entry,
++ *          < 0 for linux internal errors
++ * @fabrics: true if given status is for fabrics
++ *
++ * Notes: This function will convert a given status to an errno mapped
++ */
++__u8 nvme_status_to_errno(int status, bool fabrics)
++{
++	__u8 sct;
++
++	if (!status)
++		return 0;
++
++	if (status < 0)
++		return ECOMM;
++
++	/*
++	 * The actual status code is enough with masking 0xff, but we need to
++	 * cover status code type which is 3bits with 0x7ff.
++	 */
++	status &= 0x7ff;
++
++	sct = nvme_status_type(status);
++	if (sct == NVME_SCT_GENERIC)
++		return nvme_generic_status_to_errno(status);
++	else if (sct == NVME_SCT_CMD_SPECIFIC && !fabrics)
++		return nvme_cmd_specific_status_to_errno(status);
++	else if (sct == NVME_SCT_CMD_SPECIFIC && fabrics)
++		return nvme_fabrics_status_to_errno(status);
++
++	/*
++	 * Media, integrity related status, and the others will be mapped to
++	 * EIO.
++	 */
++	return EIO;
++}
+diff --git a/nvme-status.h b/nvme-status.h
+new file mode 100644
+index 0000000..92a474c
+--- /dev/null
++++ b/nvme-status.h
+@@ -0,0 +1,14 @@
++#include <linux/types.h>
++#include <stdbool.h>
++
++/*
++ * nvme_status_type - It gives SCT(Status Code Type) in status field in
++ *                    completion queue entry.
++ * @status: status field located at DW3 in completion queue entry
++ */
++static inline __u8 nvme_status_type(__u16 status)
++{
++	return (status & 0x700) >> 8;
++}
++
++__u8 nvme_status_to_errno(int status, bool fabrics);
 -- 
 2.21.0
 
