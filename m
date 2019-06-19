@@ -2,77 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C58A04BA88
-	for <lists+linux-nvme@lfdr.de>; Wed, 19 Jun 2019 15:52:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EF0A74BD29
+	for <lists+linux-nvme@lfdr.de>; Wed, 19 Jun 2019 17:44:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w6bfWUQ2ci2GGJxcRZWVmxXta1wBZ6q/SJHnStNVmZI=; b=c/xnLBqnKe0rZ3
-	tlcf+GI0dTmdBVJ8tgaOSQQTgj0Zd+huZXapRtdOqIosmHz98BreWq5yXRMaA3wPa6zXm8BmYlH4l
-	MWTzUKE2O/YZuP9j2OEp1XD4PocAK5Jp0KKcNpHeDmnfW2GuLU5PtOIgX1lxnn2I0kJfXfAb27Y6L
-	Utcz80r+Ryp/q8e5tv5m6zV/2yJSte1YqC/0A7dvUHiA0uPQmYUGBRlhfxDXVmTFMbqPKwPE9tyPr
-	iOuAh2TslWspUPibcxjI+sAI8gPeaiBpXx9Le1X7EF5q87gbJfbdHfQpU0531WscjPNNFXKaWqRGB
-	IjS6Faj1ydawhBEFqYyQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=RlSBhj6YxMrxkqRKaRnhsKdLUxVNjOxWEPvCfji3k48=; b=RTYJVxvGP0/hxel3rU6rcJ96q
+	n3RQTqPpBhnYfQhmC8eVL4wYLkw5ID41+oPXq+6kDmRhK3f10nAupIlVUB4CFTMJSpD8cbR0QpmEW
+	Q42veAxHhtqOUqNhMwtYUa0BDr/sRRipXobfy7dSItp7eWa64fpPmqnOVINEieTpkuxp5FvT0nBrv
+	34xzCLnzoPGVZGCV4Mn/DQx6wqujKY0lq6tzkd6Qt7cn351FDT3BBVhWK4LF/tHUjIcqqUiv/pKqb
+	9DPXpUqlbOtvH3K3dNMbraTcpIsjWFEDOkqReB/IKnqNt/BPesif5h0SJ2OwRb5h7HT43EV0RHfxo
+	f5in39drw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hdb0e-00008l-Um; Wed, 19 Jun 2019 13:52:20 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1hdclW-0002OS-Am; Wed, 19 Jun 2019 15:44:50 +0000
+Received: from mail-pf1-f195.google.com ([209.85.210.195])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hdb0Y-000084-Mh
- for linux-nvme@lists.infradead.org; Wed, 19 Jun 2019 13:52:15 +0000
-Received: from localhost (173-25-83-245.client.mchsi.com [173.25.83.245])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5804121670;
- Wed, 19 Jun 2019 13:52:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1560952333;
- bh=hclDymaNDOsDIbtMIl2LJFfnJSsWaLYy2U58GCdGL90=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=B3jizonAV2P/nKMYqbPEgPAL9k/qW8ysXT3xel3+pdhOYp0ed6QM+M43NYXIgDS4R
- TJwpRuRfyoYWC2o6XWzDHvFF1BZojHDXeUNX9GB+zXKfS/3M2bZW6qfeZgiw1jGLr+
- ne2uDEFhd+dqrxNPw95QMPUZSaRWDeBIuK7jqKjw=
-Date: Wed, 19 Jun 2019 08:52:12 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Hannes Reinecke <hare@suse.de>
-Subject: Re: [PATCH] PCI: Add Intel remapped NVMe device support
-Message-ID: <20190619135212.GB143205@google.com>
-References: <20190610074456.2761-1-drake@endlessm.com>
- <CAOSXXT7OFzHeTxNqZ1sS6giRxhDcrUUnVjURWBiFUc5T_8p=MA@mail.gmail.com>
- <CAD8Lp45djPU_Ur8uCO2Y5Sbek_5N9QKkxLXdKNVcvkr6rFPLUQ@mail.gmail.com>
- <CAOSXXT7H6HxY-za66Tr9ybRQyHsTdwwAgk9O2F=xK42MT8HsuA@mail.gmail.com>
- <20190613085402.GC13442@lst.de>
- <CAD8Lp47Vu=w+Lj77_vL05JYV1WMog9WX3FHGE+TseFrhcLoTuA@mail.gmail.com>
- <06c38b3e-603b-5bae-4959-9965ab40db62@suse.de>
- <CAD8Lp44rqGh3nmUOFhwq+SSxpJGuWvLFJ8sKtM0q1GeY0j4v9A@mail.gmail.com>
- <1f56c881-9005-f8ad-1557-5efd6e0ef535@suse.de>
+ id 1hdclR-0002Ml-4Y
+ for linux-nvme@lists.infradead.org; Wed, 19 Jun 2019 15:44:46 +0000
+Received: by mail-pf1-f195.google.com with SMTP id i189so9981525pfg.10
+ for <linux-nvme@lists.infradead.org>; Wed, 19 Jun 2019 08:44:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ooMX3VCHw0lSSRut1UE7TyHgahxVxjlxjVzhKuqscLo=;
+ b=BD79sfbJf81MQXU4c4olRf0GfHFVyLsw1AcL1hF9CNe+Z/S7kL3cBqOI9oLuF3ekDw
+ 2kUX7NhuPcdf7lfqVdBAiZ6J9nBT/rYVaPIRKbI8h1OOHJRItDIcuVWAjQDGZGIE7/br
+ B91yxvFfUlj5BGO4Ecv2LogPqGswWeJq5TsPp+t4J/T5fdETWhqe7ULR3OB0LbBfCpzB
+ gpUjVcKH/SFU0KAV8fUJSqZZ53sEvpzdfHpkABUPutylUmM0v3YjX0KO6A+fzOj6jUYx
+ z8SkTMhixlxZl2jWTz5oaSX+BZ+/ZLwFaE9mEonwR1ciiFkL72nqmJ9Vzs5F2g1hCrYU
+ KsfA==
+X-Gm-Message-State: APjAAAV0sVq8xKGkGdvS8yYzlpsZ1vLYqi8geuNNhx0xgQfJShc5y/0o
+ COYnDpSv477FHuhlQRzeUkf7NdXH
+X-Google-Smtp-Source: APXvYqznrW58wGb8N7acQ7Bst2AbsWMLGcpbXSsfrc9p2rCMicH1k0F27V2c4OjDsC+jAaGw7qtRBw==
+X-Received: by 2002:a17:90a:8c06:: with SMTP id
+ a6mr12133064pjo.45.1560959084120; 
+ Wed, 19 Jun 2019 08:44:44 -0700 (PDT)
+Received: from desktop-bart.svl.corp.google.com
+ ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
+ by smtp.gmail.com with ESMTPSA id l23sm20411161pgh.68.2019.06.19.08.44.42
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Wed, 19 Jun 2019 08:44:43 -0700 (PDT)
+Subject: Re: [PATCH v3 2/3] nvmet: Export NVMe namespace attributes
+To: "Martin K. Petersen" <martin.petersen@oracle.com>
+References: <20190617161222.253849-1-bvanassche@acm.org>
+ <20190617161222.253849-3-bvanassche@acm.org> <yq1a7eeusa5.fsf@oracle.com>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <68786de5-cdd8-c6d8-98a7-8a4310dac789@acm.org>
+Date: Wed, 19 Jun 2019 08:44:41 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1f56c881-9005-f8ad-1557-5efd6e0ef535@suse.de>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <yq1a7eeusa5.fsf@oracle.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190619_065214_755530_DF06D9A8 
-X-CRM114-Status: GOOD (  13.35  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190619_084445_183853_71F1CEBF 
+X-CRM114-Status: GOOD (  15.62  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.195 listed in list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (bart.vanassche[at]gmail.com)
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.195 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,35 +92,45 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
- Linux PCI <linux-pci@vger.kernel.org>, Keith Busch <keith.busch@gmail.com>,
- Daniel Drake <drake@endlessm.com>, linux-ide@vger.kernel.org,
- linux-nvme <linux-nvme@lists.infradead.org>, Keith Busch <kbusch@kernel.org>,
- Linux Upstreaming Team <linux@endlessm.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+ linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
+ Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Jun 18, 2019 at 05:15:52PM +0200, Hannes Reinecke wrote:
-> On 6/18/19 10:06 AM, Daniel Drake wrote:
+On 6/18/19 9:13 PM, Martin K. Petersen wrote:
+> 
+> Bart,
+> 
+>> +	/*
+>> +	 * Physical blocks per logical block, 0's based. Is it possible to
+>> +	 * extract this information from the filesystem properties?
+>> +	 */
+>> +	const __le16 ppl0b = cpu_to_le16(0);
+> 
+> Maybe report the filesystem block size here?
+> 
+> Otherwise OK.
+> 
+> Reviewed-by: Martin K. Petersen <martin.petersen@oracle.com>
 
-> > We can probably also use these registers for MSI support. I
-> > started to experiment, doesn't quite work but I'll keep poking.
-> > The doc suggests there is a single MSI-X vector for the AHCI SATA
-> > device, and AHCI MSI-X Starting Vector (AMXV) has value 0x140 on
-> > this platform. No idea how to interpret that value. From
-> > experimentation, the AHCI SATA disk generates interrupts on vector
-> > 0.
-> > 
-> The 0x140 is probably the offset into the PCI config space where the
-> AHCI MSI-X vector table can be found ...
+Hi Martin,
 
-An MSI-X vector table is in memory space, not config space.  You'd
-have to look at PCI_MSIX_TABLE_BIR to find which BAR maps it, and then
-add PCI_MSIX_TABLE_OFFSET to the BAR value.
+Thanks for the review.
 
-Bjorn
+Are you perhaps referring to the parameter that can be specified as 
+command-line option -b to mkfs? I'm not sure that we should report that 
+size as the physical block size since that parameter can be set to a 
+value that is much larger than the physical block size of the storage 
+medium (in the target system). I'd like to make sure that writes with a 
+size of what is reported as physical block size are atomic because that 
+is what filesystems (at the initiator side) expect.
+
+Bart.
+
 
 _______________________________________________
 Linux-nvme mailing list
