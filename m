@@ -2,80 +2,77 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A446D4C017
-	for <lists+linux-nvme@lfdr.de>; Wed, 19 Jun 2019 19:46:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 715DC4C023
+	for <lists+linux-nvme@lfdr.de>; Wed, 19 Jun 2019 19:47:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SIZMqspuqIeXUgyjeZZ1y38oMPzu+wHeUn7MvflSSQQ=; b=ddVzQdgt0YlT1g
-	RWzY8UV7d+OJTDTR4GISXJYrm1ySlZe4xkQawMt6PgNdL6Ret7pzlLL44gCl9V70oy0+DebYl4PJ0
-	A1KZReMBWuInCNCFUx4iETiplSynyqQF8ZQAJV8PJ9MpS5IGoCcyxd2/TxiBunx8h4lrZ4p/RZMBJ
-	GDmzVFZW/lKHjFlR27Pi8UfElqBf8BlyMauyNRlN4xWHR1JZof5CXJvDj6MDJJFFusnZp8EKQvoLA
-	1GZFwxuSuxLylLWrT/76fdB6K56gve02IZQ7KspK83mlpuQ5eWLmYw3pgrcnRmqisVfAEHHzx+K4M
-	dQiNb9sudXr6ICZSPsiw==;
+	List-Owner; bh=8bsI4a2WyuPbclopBh/t47ksowezWLB/QqfcNjJA7TE=; b=jcIlKMrQpJ1TUH
+	AnisJIYTcwn6pwVW8zK2wuGmCHV6bhUV/CKgzYCu9BD0unPNHZZAGG0/VhwU4B/8T81bZYEtHSmLz
+	oIn0nqGBongR+9KduC2NSBWy129E/G/01nv5Z4C7OzCMRiYcg04VLUMOfNxD4H5yKGPkZuIsyo9R3
+	f3/sKC95fzm32tRCC8i49mSOl14fVjl2HclFu4DTysUJNRKYMqhZdyQMBv2Ocmi3oUlXSN70iX1EP
+	K5QjufsSUFnswXbSeK3cjazTwXymhx+nVcWDqIXxMZZfA+/AmXf1jeFwKyuTaofgstkWsuqsOtcUd
+	u5pyrw/+aMT6SbGhweCw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hdef3-0002Ro-TB; Wed, 19 Jun 2019 17:46:17 +0000
-Received: from mail-pg1-f193.google.com ([209.85.215.193])
+	id 1hdefq-0003FY-4e; Wed, 19 Jun 2019 17:47:06 +0000
+Received: from mail-pg1-f172.google.com ([209.85.215.172])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hdeWH-0006dF-Ns
- for linux-nvme@lists.infradead.org; Wed, 19 Jun 2019 17:37:15 +0000
-Received: by mail-pg1-f193.google.com with SMTP id y72so51256pgd.8
- for <linux-nvme@lists.infradead.org>; Wed, 19 Jun 2019 10:37:13 -0700 (PDT)
+ id 1hdeWJ-0006eM-4n
+ for linux-nvme@lists.infradead.org; Wed, 19 Jun 2019 17:37:17 +0000
+Received: by mail-pg1-f172.google.com with SMTP id 196so56133pgc.6
+ for <linux-nvme@lists.infradead.org>; Wed, 19 Jun 2019 10:37:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=jGF6ncOrn1i3AOPVET0vqoZO/P1nVgOv/NhsOeEG3Hs=;
- b=DEHr811vjlUR2GBeG7L43pGTZ5/gx6fCOR1z60SXu7CeXDX2zxlKBxzhtEB4uM8ie5
- Nk88SyHKmb7Ec9PizWIkWMd5gzY5kwyGINDmHMLlseHW46DBdshFSzAZhmqjnjqlcJ2s
- zTNqin8mNykIvx3MFWyd+Z2UBpSUJFk+dNGSD6Mv6vB6mlJlTGWSB3e+JeVsLvmgKlI7
- 3YRItVImFa67gASERbtb9LvwFjPULrfyITEb4GKQ/qobGUvD2PL4Q4W/bzJmEBMlt7qk
- 4nhTA0mVI7P++MdFQeiV+axBl6WH9GByy+uHIQFQLAbIUv2IUSrLhFcJvgVxK+O3LtvI
- h/gA==
-X-Gm-Message-State: APjAAAU+iC5R6sVyGoET/RRzfqZe+rns7gx9PjYptA0vVUYwEZbVNyE9
- DQ7pwP0t1R3q6Wr6qCv5uic=
-X-Google-Smtp-Source: APXvYqys8xV7VcLlGyPx06r++L3i1xcPj60UIfTTWZYS+8/g3mOt5PyEHsmbUIg/ee7mgSwHh5EcGQ==
-X-Received: by 2002:a17:90a:3590:: with SMTP id
- r16mr12527814pjb.44.1560965832531; 
- Wed, 19 Jun 2019 10:37:12 -0700 (PDT)
+ bh=SwgUanhPx0dqP3tl8la156ivKFnG/FWXu+fcYajPTww=;
+ b=Csf/pN+A/GbMbHotzMU1dBn8VcYabdysTpkvmjpZABA2lBzIrWDypb0xldHK9NZjCe
+ VdE9AQCwcR4s2biJbnaAwfA71poY20bSq+zwysWjem9IKd0G+0Ujs4GqBIVVv8vZCxGW
+ ApMyWDGJwA0mxex7tlBTeRk3ShJxTk4hC7Vh7k+Yb7zLEJp/7Ib4wUP6WvrhclWC1vAr
+ xj3tNCe85edEgveHU7f/Pu5YXvEZQ2e82WjLO28jnpIRhJF04jXeFZt2ci7g0krCk036
+ N6tvSJBJC22rif25Cz1RuEkD3QTOjIvQMb0rGEZUQZsamrKgIvOQY4EwrvSFPmWj+C/b
+ omsA==
+X-Gm-Message-State: APjAAAViK9DzU3JoO3Deh2SylEPh5xIMuAaZFijdfzo+je6oN3HTooSW
+ APTWtEWMlhH+Pr0DhhfjJ8M=
+X-Google-Smtp-Source: APXvYqzWYD2cGms2j+bNG3bOSXValgYPmTVbPdFux6/ErnlvpNrdFLU2jiKqTB+e1zerpGExK7M7nw==
+X-Received: by 2002:aa7:82cd:: with SMTP id
+ f13mr131162115pfn.203.1560965833860; 
+ Wed, 19 Jun 2019 10:37:13 -0700 (PDT)
 Received: from desktop-bart.svl.corp.google.com
  ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
- by smtp.gmail.com with ESMTPSA id o13sm2474204pje.28.2019.06.19.10.37.11
+ by smtp.gmail.com with ESMTPSA id o13sm2474204pje.28.2019.06.19.10.37.12
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 19 Jun 2019 10:37:11 -0700 (PDT)
+ Wed, 19 Jun 2019 10:37:12 -0700 (PDT)
 From: Bart Van Assche <bvanassche@acm.org>
 To: Keith Busch <keith.busch@intel.com>,
 	Sagi Grimberg <sagi@grimberg.me>
-Subject: [PATCH nvme-cli 03/13] huawei: Declare local functions static
-Date: Wed, 19 Jun 2019 10:36:51 -0700
-Message-Id: <20190619173701.8263-4-bvanassche@acm.org>
+Subject: [PATCH nvme-cli 04/13] seagate: Declare local functions static
+Date: Wed, 19 Jun 2019 10:36:52 -0700
+Message-Id: <20190619173701.8263-5-bvanassche@acm.org>
 X-Mailer: git-send-email 2.20.GIT
 In-Reply-To: <20190619173701.8263-1-bvanassche@acm.org>
 References: <20190619173701.8263-1-bvanassche@acm.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190619_103713_854385_0151B9D9 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20190619_103715_207887_83347BB6 
+X-CRM114-Status: GOOD (  13.23  )
 X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.215.193 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.215.193 listed in wl.mailspike.net]
+ no trust [209.85.215.172 listed in list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (bart.vanassche[at]gmail.com)
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -89,9 +86,9 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Zou Ming <zouming.zouming@huawei.com>, Bart Van Assche <bvanassche@acm.org>,
+Cc: Hannes Reinecke <hare@suse.com>, Bart Van Assche <bvanassche@acm.org>,
  "Martin K . Petersen" <martin.petersen@oracle.com>,
- Hannes Reinecke <hare@suse.com>, linux-nvme@lists.infradead.org,
+ linux-nvme@lists.infradead.org, Muhammad Ahmad <muhammad.ahmad@seagate.com>,
  Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -100,26 +97,130 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 This patch avoids that sparse complains about missing declarations.
 
-Cc: Zou Ming <zouming.zouming@huawei.com>
+Cc: Muhammad Ahmad <muhammad.ahmad@seagate.com>
 Signed-off-by: Bart Van Assche <bvanassche@acm.org>
 ---
- plugins/huawei/huawei-nvme.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ nvme-models.c                  |  1 +
+ plugins/seagate/seagate-nvme.c | 24 +++++++++++++-----------
+ 2 files changed, 14 insertions(+), 11 deletions(-)
 
-diff --git a/plugins/huawei/huawei-nvme.c b/plugins/huawei/huawei-nvme.c
-index b68e05c55aee..3130607a6443 100644
---- a/plugins/huawei/huawei-nvme.c
-+++ b/plugins/huawei/huawei-nvme.c
-@@ -163,7 +163,8 @@ static void format(char *formatter, size_t fmt_sz, char *tofmt, size_t tofmtsz)
+diff --git a/nvme-models.c b/nvme-models.c
+index f90ab9574d04..9b5077d0cdbb 100644
+--- a/nvme-models.c
++++ b/nvme-models.c
+@@ -7,6 +7,7 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <errno.h>
++#include "nvme-models.h"
+ 
+ static char *_fmt1 = "/sys/class/nvme/nvme%d/device/subsystem_vendor";
+ static char *_fmt2 = "/sys/class/nvme/nvme%d/device/subsystem_device";
+diff --git a/plugins/seagate/seagate-nvme.c b/plugins/seagate/seagate-nvme.c
+index 69f3667d5b16..a93bf8537315 100644
+--- a/plugins/seagate/seagate-nvme.c
++++ b/plugins/seagate/seagate-nvme.c
+@@ -46,7 +46,7 @@
+ /***************************************
+ *Command for "log-pages-supp"
+ ***************************************/
+-char* log_pages_supp_print(__u32 pageID)
++static char *log_pages_supp_print(__u32 pageID)
+ {
+ 	switch(pageID) {
+ 	case 0x01:
+@@ -128,7 +128,7 @@ char* log_pages_supp_print(__u32 pageID)
+ }
+ 
+ 
+-void json_log_pages_supp(log_page_map *logPageMap)
++static void json_log_pages_supp(log_page_map *logPageMap)
+ {
+ 	struct json_object *root;
+ 	struct json_array *logPages;
+@@ -214,7 +214,7 @@ static int log_pages_supp(int argc, char **argv, struct command *cmd,
+ /***************************************
+ * Extended-SMART Information
+ ***************************************/
+-char* print_ext_smart_id(__u8 attrId)
++static char *print_ext_smart_id(__u8 attrId)
+ {
+ 	switch(attrId) {
+ 	case VS_ATTR_ID_SOFT_READ_ERROR_RATE:
+@@ -360,7 +360,7 @@ char* print_ext_smart_id(__u8 attrId)
  	}
  }
  
--void huawei_json_print_list_items(struct huawei_list_item *list_items, unsigned len)
-+static void huawei_json_print_list_items(struct huawei_list_item *list_items,
-+					 unsigned len)
+-__u64 smart_attribute_vs(__u16 verNo, SmartVendorSpecific attr)
++static __u64 smart_attribute_vs(__u16 verNo, SmartVendorSpecific attr)
+ {
+ 	__u64 val = 0;
+ 	vendor_smart_attribute_data *attrVendor;
+@@ -376,7 +376,7 @@ __u64 smart_attribute_vs(__u16 verNo, SmartVendorSpecific attr)
+ 		return le32_to_cpu(attr.Raw0_3);
+ }
+ 
+-void print_smart_log(__u16 verNo, SmartVendorSpecific attr, int lastAttr)
++static void print_smart_log(__u16 verNo, SmartVendorSpecific attr, int lastAttr)
+ {
+ 	static __u64 lsbGbErased = 0, msbGbErased = 0, lsbLifWrtToFlash = 0, msbLifWrtToFlash = 0,
+ 		lsbLifWrtFrmHost = 0, msbLifWrtFrmHost = 0, lsbLifRdToHost = 0, msbLifRdToHost = 0, lsbTrimCnt = 0, msbTrimCnt = 0;
+@@ -491,7 +491,8 @@ void print_smart_log(__u16 verNo, SmartVendorSpecific attr, int lastAttr)
+ 	}
+ }
+ 
+-void json_print_smart_log(struct json_object *root, EXTENDED_SMART_INFO_T* ExtdSMARTInfo )
++static void json_print_smart_log(struct json_object *root,
++				 EXTENDED_SMART_INFO_T *ExtdSMARTInfo )
+ {
+ 	/*struct json_object *root; */
+ 	struct json_array *lbafs;
+@@ -606,7 +607,7 @@ void json_print_smart_log(struct json_object *root, EXTENDED_SMART_INFO_T* ExtdS
+ 	*/
+ }
+ 
+-void print_smart_log_CF(vendor_log_page_CF *pLogPageCF)
++static void print_smart_log_CF(vendor_log_page_CF *pLogPageCF)
+ {
+ 	__u64 currentTemp, maxTemp;
+ 	printf("\n\nSeagate DRAM Supercap SMART Attributes :\n");
+@@ -648,7 +649,8 @@ void print_smart_log_CF(vendor_log_page_CF *pLogPageCF)
+ 
+ }
+ 
+-void json_print_smart_log_CF(struct json_object *root, vendor_log_page_CF *pLogPageCF)
++static void json_print_smart_log_CF(struct json_object *root,
++				    vendor_log_page_CF *pLogPageCF)
+ {
+ 	/*struct json_object *root;*/
+ 	struct json_array *logPages;
+@@ -904,7 +906,7 @@ static int temp_stats(int argc, char **argv, struct command *cmd, struct plugin
+ /***************************************
+  * PCIe error-log information
+  ***************************************/
+-void print_vs_pcie_error_log(pcie_error_log_page  pcieErrorLog)
++static void print_vs_pcie_error_log(pcie_error_log_page  pcieErrorLog)
+ {
+ 	__u32 correctPcieEc = 0;
+ 	__u32 uncorrectPcieEc = 0;
+@@ -944,7 +946,7 @@ void print_vs_pcie_error_log(pcie_error_log_page  pcieErrorLog)
+ 	printf("%-45s : %s\n", "Completer Abort Status (CAS)", "Not Supported");
+ }
+ 
+-void json_vs_pcie_error_log(pcie_error_log_page  pcieErrorLog)
++static void json_vs_pcie_error_log(pcie_error_log_page pcieErrorLog)
  {
  	struct json_object *root;
- 	struct json_array *devices;
+ 	root = json_create_object();
+@@ -1392,7 +1394,7 @@ static int vs_internal_log(int argc, char **argv, struct command *cmd, struct pl
+ }
+ 
+ //SEAGATE-PLUGIN Version
+-int seagate_plugin_version(int argc, char **argv, struct command *cmd,
++static int seagate_plugin_version(int argc, char **argv, struct command *cmd,
+ 			   struct plugin *plugin)
+ {
+ 	printf("Seagate-Plugin version : %d.%d \n", SEAGATE_PLUGIN_VERSION_MAJOR, SEAGATE_PLUGIN_VERSION_MINOR);
 -- 
 2.22.0.rc3
 
