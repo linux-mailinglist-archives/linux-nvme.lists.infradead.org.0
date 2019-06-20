@@ -2,74 +2,73 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F18084DAEC
-	for <lists+linux-nvme@lfdr.de>; Thu, 20 Jun 2019 22:07:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BA8EE4DAED
+	for <lists+linux-nvme@lfdr.de>; Thu, 20 Jun 2019 22:07:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=AYmJkQgLqeacRJGeeGY6+ro5PkbQ5qiKKAsBJBPJ4UY=; b=t7V
-	FaxjX5Soa4N7l8D05v/br7fiPcGUfiC2S8i/GVeiowCbMClCGImnVyLBAKKM5sWh1mCWECE81fyx8
-	0lw2NO/Zd6hOJbuCf5/N3VM182/ouv1DmCc2zqpdWFsILl6t1vsHsdpkR0sDTtbkzXlWSxZohNuV7
-	2w9XB2iLhsabmu1DG1rOQrB+ST95P5ZQHDxkceHt/D8iKNuZgX9DH+0VhaBYYCN0KERlePqbbMrzz
-	EVdzIPY3N/5D7OFG1+XatF9eNOlKrWxF2UIWhG/sdoH0O//Iey96pZ7Jt+LRa4Ogt/4GXpVRPAlUP
-	dn7TJvUJ69FFbnn9K/DcPzEsFTrHXIw==;
+	References:List-Owner; bh=K4Ox6jixHYVVA1RMnrurLovC8R/JTh0YsqjYqbpJSCo=; b=UfC
+	kKG+b6OfaHsI64n0cuRjJpsPEiNgvDT3ROLzYbImDjdf5FXlB12qeZzKC8p85yyW/83iHQSDzFOXh
+	ueRpWoYU35oe5cTKPhWEjA1It5Jj9QQSZLbhl87k1Wb4jgFJpby60YU7J3Bnxu34S6ukWigfe30+V
+	usDKHQVFMrkeDIpJ8GmRYtQHMA+DsxG5hwDF/uMoTQ3bNtE76JyyOZjn0mdjtoAYBTO7mN2MMrpVI
+	6RLj5R+5afGhbps8UrF4splwPNkrDR8dcENiSLyE0HT4A7mUWL3IvLpNRE0yjvwtGK0rv32bDjz/K
+	60nR0HOMVIsmvg4opAiCYbDqWArYRzQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1he3L6-0003Mj-T4; Thu, 20 Jun 2019 20:07:21 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1he3LL-0003VB-QH; Thu, 20 Jun 2019 20:07:35 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1he3Kz-0003LZ-Hn
- for linux-nvme@lists.infradead.org; Thu, 20 Jun 2019 20:07:15 +0000
-Received: by mail-pf1-x442.google.com with SMTP id r7so2277388pfl.3
- for <linux-nvme@lists.infradead.org>; Thu, 20 Jun 2019 13:07:12 -0700 (PDT)
+ id 1he3LA-0003Sz-Fa
+ for linux-nvme@lists.infradead.org; Thu, 20 Jun 2019 20:07:25 +0000
+Received: by mail-pf1-x443.google.com with SMTP id 19so2273930pfa.4
+ for <linux-nvme@lists.infradead.org>; Thu, 20 Jun 2019 13:07:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
- bh=xYkQPKUt4X+ezKge+WaEkUumHmR4z2T6j+Vpca2ujVo=;
- b=BZeKuRy4CEhtMgs5U2NZJSwHN3KBC1S8XREbqR/hFvsUe2F3ph61bxTtoziO7lMIBk
- kyfO0mfIteiDVurDuNrLBeDZvre0YuRDi0EYfxfT6IViyXHFaUPvl6ZkkcwVkJjsLxrZ
- 3RpYoejg66jS1Mo9oeG8FNH9ebPIi0/mKc9GEdP3RYjirnd/FTuA/MByjjXWF0qS7S34
- jeo5qv6QySLAOOz1+F6EsnnzXPoXdJPqbvNAzrDfrb3EB26wZkwIcT7nVrSqMxyJfNTm
- d52bGKzL0em+YZNlXAlluS7OB+0K0+JBkCSmMpNjSCTn7SBfQmdOJ5y4K88qBTyCDr/6
- a8Dw==
+ bh=0o9q+UbhIMSqsmf/UHgy+wwJTSxfGbmdtKtXkWzQVA0=;
+ b=LGNuzRs3BvjkeKcx2ejkFwkGjKisdA/VN2QzB8nBGPzrhTI0CAFVsylhwmR/vePXPK
+ 1QkAaXl/+HvDG7GMgCp+udjpGAJgfl29b9mnBLxlSY9KRiEaZKacUbtXKhaDf2FBkRqj
+ Yc8a+O9mxFzkCVaVj5aozeAlNuzdqrtOOyaN5dw/EYKpIukV/NJAuSxy5LJ41VTB/Mnm
+ NJx34IUjHdc5WZy+D3f1VFkw86lyCkjqcDGCXn0Y536+1Y8xrH/NdHZxGKgz+yY4PIhx
+ MFtPHFHR2hPuDyEQtWZxCACZBP4CNW/gTpyphY29+wNYnCgdIIMmZLf7OnImQJxjbHwj
+ bGWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=xYkQPKUt4X+ezKge+WaEkUumHmR4z2T6j+Vpca2ujVo=;
- b=LeitrjcYXEj/P9beSQ19RvY+NGLS25SJ0I60NRtOpSN4TYnuPOB12++/dDn5pU1r6P
- TAht/kiWwx9hMrQpsYv0YDj5KNH09IjFDZb5Q5oPEOKtCgexLj+aY+lHyzsuSeM0hYVH
- MFkwFDsiXGPSB2ROYIKKgyV5UoP0KTRGduKNgmjptYs1SXWOeGmHq0ZJfkoutmWBSR3U
- 6sE+jvwtKrHgCaVuCV1M1mfAwyowUcysik+PF5f5EwQx+t0nYm5j1usjL6HmEzNeZINH
- WCb0/yMkY/WEzkU2ku5ZQiUGkhgOXQYlK/WO2HaAZwKkkJ7BjCiSQRrWJstrRN/0tInA
- df9g==
-X-Gm-Message-State: APjAAAV+OuOFm4AQqyd4qgKdp4ErRjnVRceVm8VeNOynQm/PszkGrLn5
- psHK016rmFlWKpkegTWMuSwbCDo6
-X-Google-Smtp-Source: APXvYqzZadYpKxCcX3K+zS2R/Byy/iayFpOn1HM2rsq9aV84lDQCneIeyDUqqVCJmROYS/PApy/5mQ==
-X-Received: by 2002:a17:90a:36a9:: with SMTP id
- t38mr1449998pjb.19.1561061232136; 
- Thu, 20 Jun 2019 13:07:12 -0700 (PDT)
+ bh=0o9q+UbhIMSqsmf/UHgy+wwJTSxfGbmdtKtXkWzQVA0=;
+ b=PGN/71rUc45cEtTpqq2HLeRI1vDVbd0P1iUWEHUDy2aUW6XGMtS+GiIJckJAQXneSr
+ 06htdVXM+TcIGDRbh813p0/PhkMc7p6BwwsMbvaXHTAIMa5iKe5BjXqEsHVpoz6jI+8O
+ /e8atX6prGAYSrLKT4mO1lxcgHNrkNd1niyCY0025nfNMWzH262on0zzm/kIhx8UlQAB
+ FUD0f8wzNpuwSllDLulmDtgdlQaF3MmHsrJoToXiInzeiKGybqzpBXu1XJcbhuopMFhU
+ NPM/ILIlpqoIm5EcxWitJnAbvQiYNPNEGgpxqUhJkAD1Hn9PC2uQjczWiErWWSh/+p4Q
+ 62xA==
+X-Gm-Message-State: APjAAAWaH7x7lsO8g7IdE4tPj13uerOFZOiNtAfL6hdcIIilwrwzH9EJ
+ tNJEYOPTM5Lt5W/9tf9QQmQxS7+n
+X-Google-Smtp-Source: APXvYqxoRhFq4fhiyIQDr7mJ8wP6ZhPSiLxQBf39UgJmaB+zpH2YLqc+fRrnJC2YaTByrra7ffrpyA==
+X-Received: by 2002:a63:a1a:: with SMTP id 26mr14153295pgk.265.1561061243690; 
+ Thu, 20 Jun 2019 13:07:23 -0700 (PDT)
 Received: from pallmd1.broadcom.com ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id n98sm513358pjc.26.2019.06.20.13.07.10
+ by smtp.gmail.com with ESMTPSA id k13sm415704pgq.45.2019.06.20.13.07.22
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 20 Jun 2019 13:07:11 -0700 (PDT)
+ Thu, 20 Jun 2019 13:07:23 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH] nvme-fcloop: Fix inconsistent lock state warnings
-Date: Thu, 20 Jun 2019 13:07:00 -0700
-Message-Id: <20190620200700.15659-1-jsmart2021@gmail.com>
+Subject: [PATCH] nvme-fcloop: Resole warnings on RCU usage and
+Date: Thu, 20 Jun 2019 13:07:14 -0700
+Message-Id: <20190620200714.15709-1-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.13.7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190620_130713_624893_7906D4D9 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20190620_130724_524854_6A4A52DC 
+X-CRM114-Status: GOOD (  10.78  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -102,167 +101,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-With extra debug on, inconsistent lock state warnings are being
-called out as the tfcp_req->reqlock is being taken out without
-irq, while some calling sequences have the sequence in a softirq
-state.
+With additional debugging enabled, seeing warnings for suspicious
+RCU usage or Sleeping function called from invalid context.
 
-Change the lock taking/release to raise/drop irq.
+These both map to allocation of a work structure which is currently
+GFP_KERNEL, meaning it can sleep. For the RCU warning, the sequence
+was sleeping while holding the RCU lock.
+
+Convert the allocation to GFP_ATOMIC.
 
 Signed-off-by: James Smart <jsmart2021@gmail.com>
 ---
- drivers/nvme/target/fcloop.c | 42 +++++++++++++++++++++---------------------
- 1 file changed, 21 insertions(+), 21 deletions(-)
+ drivers/nvme/target/fcloop.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/nvme/target/fcloop.c b/drivers/nvme/target/fcloop.c
-index b8c1cc54a0db..e64969d2a7c5 100644
+index e64969d2a7c5..b50b53db3746 100644
 --- a/drivers/nvme/target/fcloop.c
 +++ b/drivers/nvme/target/fcloop.c
-@@ -434,7 +434,7 @@ fcloop_fcp_recv_work(struct work_struct *work)
- 	int ret = 0;
- 	bool aborted = false;
+@@ -535,7 +535,7 @@ fcloop_fcp_req(struct nvme_fc_local_port *localport,
+ 	if (!rport->targetport)
+ 		return -ECONNREFUSED;
  
--	spin_lock(&tfcp_req->reqlock);
-+	spin_lock_irq(&tfcp_req->reqlock);
- 	switch (tfcp_req->inistate) {
- 	case INI_IO_START:
- 		tfcp_req->inistate = INI_IO_ACTIVE;
-@@ -443,11 +443,11 @@ fcloop_fcp_recv_work(struct work_struct *work)
- 		aborted = true;
- 		break;
- 	default:
--		spin_unlock(&tfcp_req->reqlock);
-+		spin_unlock_irq(&tfcp_req->reqlock);
- 		WARN_ON(1);
- 		return;
- 	}
--	spin_unlock(&tfcp_req->reqlock);
-+	spin_unlock_irq(&tfcp_req->reqlock);
+-	tfcp_req = kzalloc(sizeof(*tfcp_req), GFP_KERNEL);
++	tfcp_req = kzalloc(sizeof(*tfcp_req), GFP_ATOMIC);
+ 	if (!tfcp_req)
+ 		return -ENOMEM;
  
- 	if (unlikely(aborted))
- 		ret = -ECANCELED;
-@@ -469,7 +469,7 @@ fcloop_fcp_abort_recv_work(struct work_struct *work)
- 	struct nvmefc_fcp_req *fcpreq;
- 	bool completed = false;
- 
--	spin_lock(&tfcp_req->reqlock);
-+	spin_lock_irq(&tfcp_req->reqlock);
- 	fcpreq = tfcp_req->fcpreq;
- 	switch (tfcp_req->inistate) {
- 	case INI_IO_ABORTED:
-@@ -478,11 +478,11 @@ fcloop_fcp_abort_recv_work(struct work_struct *work)
- 		completed = true;
- 		break;
- 	default:
--		spin_unlock(&tfcp_req->reqlock);
-+		spin_unlock_irq(&tfcp_req->reqlock);
- 		WARN_ON(1);
- 		return;
- 	}
--	spin_unlock(&tfcp_req->reqlock);
-+	spin_unlock_irq(&tfcp_req->reqlock);
- 
- 	if (unlikely(completed)) {
- 		/* remove reference taken in original abort downcall */
-@@ -494,9 +494,9 @@ fcloop_fcp_abort_recv_work(struct work_struct *work)
- 		nvmet_fc_rcv_fcp_abort(tfcp_req->tport->targetport,
- 					&tfcp_req->tgt_fcp_req);
- 
--	spin_lock(&tfcp_req->reqlock);
-+	spin_lock_irq(&tfcp_req->reqlock);
- 	tfcp_req->fcpreq = NULL;
--	spin_unlock(&tfcp_req->reqlock);
-+	spin_unlock_irq(&tfcp_req->reqlock);
- 
- 	fcloop_call_host_done(fcpreq, tfcp_req, -ECANCELED);
- 	/* call_host_done releases reference for abort downcall */
-@@ -513,10 +513,10 @@ fcloop_tgt_fcprqst_done_work(struct work_struct *work)
- 		container_of(work, struct fcloop_fcpreq, tio_done_work);
- 	struct nvmefc_fcp_req *fcpreq;
- 
--	spin_lock(&tfcp_req->reqlock);
-+	spin_lock_irq(&tfcp_req->reqlock);
- 	fcpreq = tfcp_req->fcpreq;
- 	tfcp_req->inistate = INI_IO_COMPLETED;
--	spin_unlock(&tfcp_req->reqlock);
-+	spin_unlock_irq(&tfcp_req->reqlock);
- 
- 	fcloop_call_host_done(fcpreq, tfcp_req, tfcp_req->status);
- }
-@@ -621,12 +621,12 @@ fcloop_fcp_op(struct nvmet_fc_target_port *tgtport,
- 	int fcp_err = 0, active, aborted;
- 	u8 op = tgt_fcpreq->op;
- 
--	spin_lock(&tfcp_req->reqlock);
-+	spin_lock_irq(&tfcp_req->reqlock);
- 	fcpreq = tfcp_req->fcpreq;
- 	active = tfcp_req->active;
- 	aborted = tfcp_req->aborted;
- 	tfcp_req->active = true;
--	spin_unlock(&tfcp_req->reqlock);
-+	spin_unlock_irq(&tfcp_req->reqlock);
- 
- 	if (unlikely(active))
- 		/* illegal - call while i/o active */
-@@ -634,9 +634,9 @@ fcloop_fcp_op(struct nvmet_fc_target_port *tgtport,
- 
- 	if (unlikely(aborted)) {
- 		/* target transport has aborted i/o prior */
--		spin_lock(&tfcp_req->reqlock);
-+		spin_lock_irq(&tfcp_req->reqlock);
- 		tfcp_req->active = false;
--		spin_unlock(&tfcp_req->reqlock);
-+		spin_unlock_irq(&tfcp_req->reqlock);
- 		tgt_fcpreq->transferred_length = 0;
- 		tgt_fcpreq->fcp_error = -ECANCELED;
- 		tgt_fcpreq->done(tgt_fcpreq);
-@@ -693,9 +693,9 @@ fcloop_fcp_op(struct nvmet_fc_target_port *tgtport,
- 		break;
- 	}
- 
--	spin_lock(&tfcp_req->reqlock);
-+	spin_lock_irq(&tfcp_req->reqlock);
- 	tfcp_req->active = false;
--	spin_unlock(&tfcp_req->reqlock);
-+	spin_unlock_irq(&tfcp_req->reqlock);
- 
- 	tgt_fcpreq->transferred_length = xfrlen;
- 	tgt_fcpreq->fcp_error = fcp_err;
-@@ -715,9 +715,9 @@ fcloop_tgt_fcp_abort(struct nvmet_fc_target_port *tgtport,
- 	 * (one doing io, other doing abort) and only kills ops posted
- 	 * after the abort request
- 	 */
--	spin_lock(&tfcp_req->reqlock);
-+	spin_lock_irq(&tfcp_req->reqlock);
- 	tfcp_req->aborted = true;
--	spin_unlock(&tfcp_req->reqlock);
-+	spin_unlock_irq(&tfcp_req->reqlock);
- 
- 	tfcp_req->status = NVME_SC_INTERNAL;
- 
-@@ -765,7 +765,7 @@ fcloop_fcp_abort(struct nvme_fc_local_port *localport,
- 		return;
- 
- 	/* break initiator/target relationship for io */
--	spin_lock(&tfcp_req->reqlock);
-+	spin_lock_irq(&tfcp_req->reqlock);
- 	switch (tfcp_req->inistate) {
- 	case INI_IO_START:
- 	case INI_IO_ACTIVE:
-@@ -775,11 +775,11 @@ fcloop_fcp_abort(struct nvme_fc_local_port *localport,
- 		abortio = false;
- 		break;
- 	default:
--		spin_unlock(&tfcp_req->reqlock);
-+		spin_unlock_irq(&tfcp_req->reqlock);
- 		WARN_ON(1);
- 		return;
- 	}
--	spin_unlock(&tfcp_req->reqlock);
-+	spin_unlock_irq(&tfcp_req->reqlock);
- 
- 	if (abortio)
- 		/* leave the reference while the work item is scheduled */
 -- 
 2.13.7
 
