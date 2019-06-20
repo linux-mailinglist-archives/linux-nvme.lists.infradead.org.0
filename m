@@ -2,65 +2,66 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA8EE4DAED
-	for <lists+linux-nvme@lfdr.de>; Thu, 20 Jun 2019 22:07:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 73F4C4DB0F
+	for <lists+linux-nvme@lfdr.de>; Thu, 20 Jun 2019 22:17:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=K4Ox6jixHYVVA1RMnrurLovC8R/JTh0YsqjYqbpJSCo=; b=UfC
-	kKG+b6OfaHsI64n0cuRjJpsPEiNgvDT3ROLzYbImDjdf5FXlB12qeZzKC8p85yyW/83iHQSDzFOXh
-	ueRpWoYU35oe5cTKPhWEjA1It5Jj9QQSZLbhl87k1Wb4jgFJpby60YU7J3Bnxu34S6ukWigfe30+V
-	usDKHQVFMrkeDIpJ8GmRYtQHMA+DsxG5hwDF/uMoTQ3bNtE76JyyOZjn0mdjtoAYBTO7mN2MMrpVI
-	6RLj5R+5afGhbps8UrF4splwPNkrDR8dcENiSLyE0HT4A7mUWL3IvLpNRE0yjvwtGK0rv32bDjz/K
-	60nR0HOMVIsmvg4opAiCYbDqWArYRzQ==;
+	References:List-Owner; bh=MMeNTrKgz5xw3fG6UAbwiCAglS7xERMV9+R6x9whEK0=; b=V+a
+	AtD/wZqh0ufONsu+XNztToy1fCaEpzNBByS1vGP0ukte/rj7leCUi4G2JM7itfJmok9OIMce4Efa2
+	oE2CzUj3d8VXi6DdO4IwTTMIBrOjMG2YZfZHTPMZhdwwN7POYpxSj1ZwoXpjVlLadM/+84EIiHT9V
+	iiURn1Xcer0xK3834Fxlk1w2tRy/jPaF/Zz/Mrlomu2ussKbY2wIaLs4k+3w+7+s9Pk6jY9DG/3vT
+	173EGZxAXhXV7zZTv9AIxkkkSDoR09VK0jmf6sI6lWaVvS8JMPKeCEYKkrkNDw2jzo0kvvKZDPvlm
+	tlkXkFAaU7hplrUFjNmubU+8s7SJutg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1he3LL-0003VB-QH; Thu, 20 Jun 2019 20:07:35 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1he3Uj-000799-3w; Thu, 20 Jun 2019 20:17:17 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1he3LA-0003Sz-Fa
- for linux-nvme@lists.infradead.org; Thu, 20 Jun 2019 20:07:25 +0000
-Received: by mail-pf1-x443.google.com with SMTP id 19so2273930pfa.4
- for <linux-nvme@lists.infradead.org>; Thu, 20 Jun 2019 13:07:24 -0700 (PDT)
+ id 1he3Ub-00078k-TA
+ for linux-nvme@lists.infradead.org; Thu, 20 Jun 2019 20:17:11 +0000
+Received: by mail-pg1-x543.google.com with SMTP id p10so2163136pgn.1
+ for <linux-nvme@lists.infradead.org>; Thu, 20 Jun 2019 13:17:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
- bh=0o9q+UbhIMSqsmf/UHgy+wwJTSxfGbmdtKtXkWzQVA0=;
- b=LGNuzRs3BvjkeKcx2ejkFwkGjKisdA/VN2QzB8nBGPzrhTI0CAFVsylhwmR/vePXPK
- 1QkAaXl/+HvDG7GMgCp+udjpGAJgfl29b9mnBLxlSY9KRiEaZKacUbtXKhaDf2FBkRqj
- Yc8a+O9mxFzkCVaVj5aozeAlNuzdqrtOOyaN5dw/EYKpIukV/NJAuSxy5LJ41VTB/Mnm
- NJx34IUjHdc5WZy+D3f1VFkw86lyCkjqcDGCXn0Y536+1Y8xrH/NdHZxGKgz+yY4PIhx
- MFtPHFHR2hPuDyEQtWZxCACZBP4CNW/gTpyphY29+wNYnCgdIIMmZLf7OnImQJxjbHwj
- bGWw==
+ bh=OoArljCk1jpPBpk2acBDdgZ56/jT+avxm62xbugKG5w=;
+ b=jSHaRJB7arhLKMv7Q1fu1XhyFSLdjEgUc4LdXkHUpPsoR0jQojLWWKVBnF0HZEFhEB
+ EqOvptIvuAvusI07pRYSfEQM10KKq48EjBJThwqPMZZLR0IqVxNBaBuUP9RwYSWyla3E
+ 2MBVbCFNi83cEIuYdWy8fKt43BPC06pG7LxWYrkvIObO/AltgnnFOEB4UJvObqWYKaZG
+ UreDCTzBDRkr+9RqlZeOMlOv1ygPxJsF5vpPAQR8CQ4iv3xQFL6Flee8JXzjJ3VJjK4M
+ tcbEqF92i4TsWhpPw+zsRYC7b3Bf2mhjMDxY4bjNshnQ0z1Uessobx8Ywyel87Cz0du7
+ xZBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=0o9q+UbhIMSqsmf/UHgy+wwJTSxfGbmdtKtXkWzQVA0=;
- b=PGN/71rUc45cEtTpqq2HLeRI1vDVbd0P1iUWEHUDy2aUW6XGMtS+GiIJckJAQXneSr
- 06htdVXM+TcIGDRbh813p0/PhkMc7p6BwwsMbvaXHTAIMa5iKe5BjXqEsHVpoz6jI+8O
- /e8atX6prGAYSrLKT4mO1lxcgHNrkNd1niyCY0025nfNMWzH262on0zzm/kIhx8UlQAB
- FUD0f8wzNpuwSllDLulmDtgdlQaF3MmHsrJoToXiInzeiKGybqzpBXu1XJcbhuopMFhU
- NPM/ILIlpqoIm5EcxWitJnAbvQiYNPNEGgpxqUhJkAD1Hn9PC2uQjczWiErWWSh/+p4Q
- 62xA==
-X-Gm-Message-State: APjAAAWaH7x7lsO8g7IdE4tPj13uerOFZOiNtAfL6hdcIIilwrwzH9EJ
- tNJEYOPTM5Lt5W/9tf9QQmQxS7+n
-X-Google-Smtp-Source: APXvYqxoRhFq4fhiyIQDr7mJ8wP6ZhPSiLxQBf39UgJmaB+zpH2YLqc+fRrnJC2YaTByrra7ffrpyA==
-X-Received: by 2002:a63:a1a:: with SMTP id 26mr14153295pgk.265.1561061243690; 
- Thu, 20 Jun 2019 13:07:23 -0700 (PDT)
+ bh=OoArljCk1jpPBpk2acBDdgZ56/jT+avxm62xbugKG5w=;
+ b=XGZTBTfbCBpacqTwi4V/TnbA+CXdsjqjqo97z49g9hzIrQZ9VFGbiiBndzRTq9DFXe
+ Fa4jqUewNoSGMFDDG2PY6cdV2bPSxa1CM698ToK/2bRPVa/B9BPksZ5+ZfMKSnEe47o+
+ QcvL1G6FkZAwQ61NuwrgGlI6YnT7nwVwKQRVy35domlxLz4mKmJAC+AlZkYB9TaMZ+VI
+ 5+KXpoi7fn3IiV4tlABGYPUsPTcBWh+auZlpV8SdEm8L7FGuVZos0puv53SMGg8txDaU
+ Z3IIeAwPSP80A3D+KnUhtHleJfNljukV/zY7oMbEbatxxpANClbZdpVoGMjN7ES06C9L
+ t5wg==
+X-Gm-Message-State: APjAAAXhDA7ofNhWTSpKxp/bpGq/zWSmlhjrfs6y2GkdockkEA5tN82K
+ CsCb4udl6LsbJXDbz8Lk7aIGLz/l
+X-Google-Smtp-Source: APXvYqw+LHX6oZBcHkhf50LUMXr/e0/OhlY1XksYlkOQXY2pyWnqBSvnfMPxBHqILE+iXNciwYHVCQ==
+X-Received: by 2002:a63:595e:: with SMTP id j30mr13519181pgm.2.1561061829026; 
+ Thu, 20 Jun 2019 13:17:09 -0700 (PDT)
 Received: from pallmd1.broadcom.com ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id k13sm415704pgq.45.2019.06.20.13.07.22
+ by smtp.gmail.com with ESMTPSA id r77sm396505pgr.93.2019.06.20.13.17.07
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 20 Jun 2019 13:07:23 -0700 (PDT)
+ Thu, 20 Jun 2019 13:17:08 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH] nvme-fcloop: Resole warnings on RCU usage and
-Date: Thu, 20 Jun 2019 13:07:14 -0700
-Message-Id: <20190620200714.15709-1-jsmart2021@gmail.com>
+Subject: [PATCH][Repost] nvme-fcloop: Resolve warnings on RCU usage and sleep
+ warnings
+Date: Thu, 20 Jun 2019 13:17:01 -0700
+Message-Id: <20190620201701.16833-1-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.13.7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190620_130724_524854_6A4A52DC 
+X-CRM114-CacheID: sfid-20190620_131709_945785_522AB051 
 X-CRM114-Status: GOOD (  10.78  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -68,7 +69,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -111,6 +112,9 @@ was sleeping while holding the RCU lock.
 Convert the allocation to GFP_ATOMIC.
 
 Signed-off-by: James Smart <jsmart2021@gmail.com>
+
+---
+repost fixing munged title
 ---
  drivers/nvme/target/fcloop.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
