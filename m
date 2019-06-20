@@ -2,56 +2,40 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E5854D38D
-	for <lists+linux-nvme@lfdr.de>; Thu, 20 Jun 2019 18:20:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9C254D378
+	for <lists+linux-nvme@lfdr.de>; Thu, 20 Jun 2019 18:17:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
 	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YPz/wj7E9UU9gxMfz4pQu7AAnFMu80wdtOM49SXbq5w=; b=cwGaX1FKU8aJgn
-	MkTwF1qY0XCQvm8xIB9mew8LVyXen6Ed3I22dypDG3QXC7Kwvjnk6f8RfEIUA0DS4NwLlS5ZdKff2
-	QTdvV5hnqx9LWCdTADUrREjlev/8xMpGbkfUo32pp4FtbRuqqBWKM/BWVzjfOIrDg00kfjD3AYZY3
-	6hC40AUP3tli2FPfk1Jtx5fTQRfabAqoGKoE5swK/wEOxoFjyajxJZZ9+mTvErXldEqyvKM5p1omU
-	5rRaX69k6YuINlBafM/sHs5jOTN9COtvEPnYBoj2Az/6nU7uQTV8CRtKYb5/tUj9Eht1I0yUpfK5F
-	gF/QcTg2scQT3+uv9QCA==;
+	List-Owner; bh=rV8lmEfwvJiP9S46nGwTVMxnfuHO9GKYpiBSYiX8gs4=; b=HOChPlBsvn+1UJ
+	ULzqLurj9x0O/zHchCBlGOImaH+OVyTM2p2uIu2p8KzypPZBsB83DijOH3YDG7jcFUNMFBKmTCW05
+	i6K4KzABhFXhKDSs3GDjYPUeO6bZXRW2NFZ9nVchBxGOtKUvs6vW/3DsppokRC/mO+mmo1CbOkJT2
+	PwzK9ozsNjr17YJ7y0nTo2R/s/jQ2Dx9oVVCokxMnYc9iShLStU+vsDg5BAL5DIcipmaeDre8AZDO
+	+yIvDot3chxvmEpAdYSooE1BZV5A8bTxQCMQdwJY8EN8h8Hj59+9FkW8hhcawtompOU+q3A7kRWaZ
+	tcf5wRtvBZxKHb0IosvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hdznq-0004VA-Pq; Thu, 20 Jun 2019 16:20:47 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hdzgR-0004ts-Jk
- for linux-nvme@bombadil.infradead.org; Thu, 20 Jun 2019 16:13:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Subject:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Cc:To:From:Sender:
- Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=sCY/nX+Ax0FBNtBCvwjC8V5ENwvvTwinYzpCDizIymY=; b=MakpB/rei8UhiLpHZTpYPxsVNf
- LNrEWpm4qlv9LiDMxDkJnTTWsqPdRFujEv7Xz0xMnAdQ7iVSV1RKgoUrnOuljAUzAppRjVb6ercmt
- i4IJIhGX1C91d156pZTtFgLofGhzXo/Ll7KBkn56EnQfDMUYhFFWDMCvjp8ZnM0e7EQSgPAiCLrK3
- 6HyQzSxwjGVTzjeIrQEpagHBqNxuhhg5/uKsGCbhg/Fr7KX6qZGkDI5Qj4PAtU7ElMFncgzOqwRjq
- zHC/651DGC7y5ppVuqIrF6JbHFMx0dTG1g1W3EaIoH9lXVL5hdolBDkTml7O5IbK1RNkVchIBuRto
- SZRY+jJg==;
+	id 1hdzkL-0000s4-6K; Thu, 20 Jun 2019 16:17:09 +0000
 Received: from ale.deltatee.com ([207.54.116.67])
- by casper.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hdzgP-000387-3R
- for linux-nvme@lists.infradead.org; Thu, 20 Jun 2019 16:13:07 +0000
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hdzgI-0004dm-Bx
+ for linux-nvme@lists.infradead.org; Thu, 20 Jun 2019 16:13:03 +0000
 Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
  by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1hdzg6-00046J-6C; Thu, 20 Jun 2019 10:12:48 -0600
+ id 1hdzg6-00046K-69; Thu, 20 Jun 2019 10:12:51 -0600
 Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
  (envelope-from <gunthorp@deltatee.com>)
- id 1hdzg4-0005vz-02; Thu, 20 Jun 2019 10:12:44 -0600
+ id 1hdzg4-0005w2-39; Thu, 20 Jun 2019 10:12:44 -0600
 From: Logan Gunthorpe <logang@deltatee.com>
 To: linux-kernel@vger.kernel.org, linux-block@vger.kernel.org,
  linux-nvme@lists.infradead.org, linux-pci@vger.kernel.org,
  linux-rdma@vger.kernel.org
-Date: Thu, 20 Jun 2019 10:12:14 -0600
-Message-Id: <20190620161240.22738-3-logang@deltatee.com>
+Date: Thu, 20 Jun 2019 10:12:15 -0600
+Message-Id: <20190620161240.22738-4-logang@deltatee.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190620161240.22738-1-logang@deltatee.com>
 References: <20190620161240.22738-1-logang@deltatee.com>
@@ -65,18 +49,18 @@ X-SA-Exim-Rcpt-To: linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
 X-SA-Exim-Mail-From: gunthorp@deltatee.com
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
- version=3.4.2
-Subject: [RFC PATCH 02/28] block: Add dma_vec structure
+X-Spam-Status: No, score=-8.5 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE,MYRULES_FREE,MYRULES_NO_TEXT autolearn=ham
+ autolearn_force=no version=3.4.2
+Subject: [RFC PATCH 03/28] block: Warn on mis-use of dma-direct bios
 X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190620_171305_310579_280C5DE8 
-X-CRM114-Status: GOOD (  21.35  )
+X-CRM114-CacheID: sfid-20190620_091258_927006_6FEC5937 
+X-CRM114-Status: GOOD (  10.14  )
 X-Spam-Score: -0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
- Content analysis details:   (-0.0 points, 5.0 required)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
@@ -104,149 +88,164 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The dma_vec structure is similar to the bio_vec structure except
-it only stores DMA addresses instead of the struct page address.
+This is a result of an audit of users of 'bi_io_vec'. A number of
+warnings and blocking conditions are added to ensure dma-direct bios
+are not incorrectly accessing the 'bi_io_vec' when they should access
+the 'bi_dma_vec'. These are largely just protecting against mis-uses
+in future development so depending on taste and public opinion some
+or all of these checks may not be necessary.
 
-struct bios will be able to make use of dma_vecs with a union and,
-therefore, we need to ensure that struct dma_vec is no larger
-than struct bvec, as they will share the allocated memory.
-
-dma_vecs can make the same use of the bvec_iter structure
-to iterate through the vectors.
-
-This will be used for passing DMA addresses directly through the block
-layer. I expect something like struct dma_vec will also be used in
-Christoph's work to improve the dma_mapping layer and remove sgls.
-At some point, these would use the same structure.
+A few other issues with dma-direct bios will be tackled in subsequent
+patches.
 
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 ---
- include/linux/bio.h       | 12 +++++++++++
- include/linux/blk_types.h |  5 ++++-
- include/linux/bvec.h      | 43 +++++++++++++++++++++++++++++++++++++++
- 3 files changed, 59 insertions(+), 1 deletion(-)
+ block/bio.c      | 33 +++++++++++++++++++++++++++++++++
+ block/blk-core.c |  3 +++
+ 2 files changed, 36 insertions(+)
 
-diff --git a/include/linux/bio.h b/include/linux/bio.h
-index 0f23b5682640..8180309123d7 100644
---- a/include/linux/bio.h
-+++ b/include/linux/bio.h
-@@ -28,6 +28,8 @@
+diff --git a/block/bio.c b/block/bio.c
+index 683cbb40f051..6998fceddd36 100644
+--- a/block/bio.c
++++ b/block/bio.c
+@@ -525,6 +525,9 @@ void zero_fill_bio_iter(struct bio *bio, struct bvec_iter start)
+ 	struct bio_vec bv;
+ 	struct bvec_iter iter;
  
- #define bio_iter_iovec(bio, iter)				\
- 	bvec_iter_bvec((bio)->bi_io_vec, (iter))
-+#define bio_iter_dma_vec(bio, iter)				\
-+	bvec_iter_dvec((bio)->bi_dma_vec, (iter))
- 
- #define bio_iter_page(bio, iter)				\
- 	bvec_iter_page((bio)->bi_io_vec, (iter))
-@@ -39,6 +41,7 @@
- #define bio_page(bio)		bio_iter_page((bio), (bio)->bi_iter)
- #define bio_offset(bio)		bio_iter_offset((bio), (bio)->bi_iter)
- #define bio_iovec(bio)		bio_iter_iovec((bio), (bio)->bi_iter)
-+#define bio_dma_vec(bio)	bio_iter_dma_vec((bio), (bio)->bi_iter)
- 
- #define bio_multiple_segments(bio)				\
- 	((bio)->bi_iter.bi_size != bio_iovec(bio).bv_len)
-@@ -155,6 +158,15 @@ static inline void bio_advance_iter(struct bio *bio, struct bvec_iter *iter,
- #define bio_for_each_bvec(bvl, bio, iter)			\
- 	__bio_for_each_bvec(bvl, bio, iter, (bio)->bi_iter)
- 
-+#define __bio_for_each_dvec(dvl, bio, iter, start)		\
-+	for (iter = (start);						\
-+	     (iter).bi_size &&						\
-+		((dvl = bvec_iter_dvec((bio)->bi_dma_vec, (iter))), 1); \
-+	     dvec_iter_advance((bio)->bi_dma_vec, &(iter), (dvl).dv_len))
++	if (WARN_ON_ONCE(bio_is_dma_direct(bio)))
++		return;
 +
-+#define bio_for_each_dvec(dvl, bio, iter)			\
-+	__bio_for_each_dvec(dvl, bio, iter, (bio)->bi_iter)
-+
- #define bio_iter_last(bvec, iter) ((iter).bi_size == (bvec).bv_len)
+ 	__bio_for_each_segment(bv, bio, iter, start) {
+ 		char *data = bvec_kmap_irq(&bv, &flags);
+ 		memset(data, 0, bv.bv_len);
+@@ -707,6 +710,8 @@ static int __bio_add_pc_page(struct request_queue *q, struct bio *bio,
+ 	 */
+ 	if (unlikely(bio_flagged(bio, BIO_CLONED)))
+ 		return 0;
++	if (unlikely(bio_is_dma_direct(bio)))
++		return 0;
  
- static inline unsigned bio_segments(struct bio *bio)
-diff --git a/include/linux/blk_types.h b/include/linux/blk_types.h
-index f3cabfdb6774..7f76ea73b77d 100644
---- a/include/linux/blk_types.h
-+++ b/include/linux/blk_types.h
-@@ -191,7 +191,10 @@ struct bio {
- 
- 	atomic_t		__bi_cnt;	/* pin count */
- 
--	struct bio_vec		*bi_io_vec;	/* the actual vec list */
-+	union {
-+		struct bio_vec	*bi_io_vec;	/* the actual vec list */
-+		struct dma_vec	*bi_dma_vec;	/* for dma direct bios*/
-+	};
- 
- 	struct bio_set		*bi_pool;
- 
-diff --git a/include/linux/bvec.h b/include/linux/bvec.h
-index a032f01e928c..f680e96132ef 100644
---- a/include/linux/bvec.h
-+++ b/include/linux/bvec.h
-@@ -21,6 +21,11 @@ struct bio_vec {
- 	unsigned int	bv_offset;
- };
- 
-+struct dma_vec {
-+	dma_addr_t	dv_addr;
-+	unsigned int	dv_len;
-+};
-+
- struct bvec_iter {
- 	sector_t		bi_sector;	/* device address in 512 byte
- 						   sectors */
-@@ -84,6 +89,18 @@ struct bvec_iter_all {
- 	.bv_offset	= bvec_iter_offset((bvec), (iter)),	\
- })
- 
-+#define bvec_iter_dvec_addr(dvec, iter)	\
-+	(__bvec_iter_bvec((dvec), (iter))->dv_addr + (iter).bi_bvec_done)
-+#define bvec_iter_dvec_len(dvec, iter)	\
-+	min((iter).bi_size,					\
-+	    __bvec_iter_bvec((dvec), (iter))->dv_len - (iter).bi_bvec_done)
-+
-+#define bvec_iter_dvec(dvec, iter)				\
-+((struct dma_vec) {						\
-+	.dv_addr	= bvec_iter_dvec_addr((dvec), (iter)),	\
-+	.dv_len		= bvec_iter_dvec_len((dvec), (iter)),	\
-+})
-+
- static inline bool bvec_iter_advance(const struct bio_vec *bv,
- 		struct bvec_iter *iter, unsigned bytes)
+ 	if (((bio->bi_iter.bi_size + len) >> 9) > queue_max_hw_sectors(q))
+ 		return 0;
+@@ -783,6 +788,8 @@ bool __bio_try_merge_page(struct bio *bio, struct page *page,
  {
-@@ -110,6 +127,32 @@ static inline bool bvec_iter_advance(const struct bio_vec *bv,
- 	return true;
- }
- 
-+static inline bool dvec_iter_advance(const struct dma_vec *dv,
-+		struct bvec_iter *iter, unsigned bytes)
-+{
-+	if (WARN_ONCE(bytes > iter->bi_size,
-+		      "Attempted to advance past end of dvec iter\n")) {
-+		iter->bi_size = 0;
+ 	if (WARN_ON_ONCE(bio_flagged(bio, BIO_CLONED)))
+ 		return false;
++	if (WARN_ON_ONCE(bio_is_dma_direct(bio)))
 +		return false;
-+	}
+ 
+ 	if (bio->bi_vcnt > 0) {
+ 		struct bio_vec *bv = &bio->bi_io_vec[bio->bi_vcnt - 1];
+@@ -814,6 +821,7 @@ void __bio_add_page(struct bio *bio, struct page *page,
+ 
+ 	WARN_ON_ONCE(bio_flagged(bio, BIO_CLONED));
+ 	WARN_ON_ONCE(bio_full(bio));
++	WARN_ON_ONCE(bio_is_dma_direct(bio));
+ 
+ 	bv->bv_page = page;
+ 	bv->bv_offset = off;
+@@ -851,6 +859,8 @@ static void bio_get_pages(struct bio *bio)
+ 	struct bvec_iter_all iter_all;
+ 	struct bio_vec *bvec;
+ 
++	WARN_ON_ONCE(bio_is_dma_direct(bio));
 +
-+	while (bytes) {
-+		const struct dma_vec *cur = dv + iter->bi_idx;
-+		unsigned len = min3(bytes, iter->bi_size,
-+				    cur->dv_len - iter->bi_bvec_done);
+ 	bio_for_each_segment_all(bvec, bio, iter_all)
+ 		get_page(bvec->bv_page);
+ }
+@@ -956,6 +966,8 @@ int bio_iov_iter_get_pages(struct bio *bio, struct iov_iter *iter)
+ 
+ 	if (WARN_ON_ONCE(bio->bi_vcnt))
+ 		return -EINVAL;
++	if (WARN_ON_ONCE(bio_is_dma_direct(bio)))
++		return -EINVAL;
+ 
+ 	do {
+ 		if (is_bvec)
+@@ -1029,6 +1041,9 @@ void bio_copy_data_iter(struct bio *dst, struct bvec_iter *dst_iter,
+ 	void *src_p, *dst_p;
+ 	unsigned bytes;
+ 
++	if (WARN_ON_ONCE(bio_is_dma_direct(src) || bio_is_dma_direct(dst)))
++		return;
 +
-+		bytes -= len;
-+		iter->bi_size -= len;
-+		iter->bi_bvec_done += len;
+ 	while (src_iter->bi_size && dst_iter->bi_size) {
+ 		src_bv = bio_iter_iovec(src, *src_iter);
+ 		dst_bv = bio_iter_iovec(dst, *dst_iter);
+@@ -1143,6 +1158,9 @@ static int bio_copy_from_iter(struct bio *bio, struct iov_iter *iter)
+ 	struct bio_vec *bvec;
+ 	struct bvec_iter_all iter_all;
+ 
++	if (WARN_ON_ONCE(bio_is_dma_direct(bio)))
++		return -EINVAL;
 +
-+		if (iter->bi_bvec_done == cur->dv_len) {
-+			iter->bi_bvec_done = 0;
-+			iter->bi_idx++;
-+		}
-+	}
-+	return true;
-+}
+ 	bio_for_each_segment_all(bvec, bio, iter_all) {
+ 		ssize_t ret;
+ 
+@@ -1174,6 +1192,9 @@ static int bio_copy_to_iter(struct bio *bio, struct iov_iter iter)
+ 	struct bio_vec *bvec;
+ 	struct bvec_iter_all iter_all;
+ 
++	if (WARN_ON_ONCE(bio_is_dma_direct(bio)))
++		return -EINVAL;
 +
- #define for_each_bvec(bvl, bio_vec, iter, start)			\
- 	for (iter = (start);						\
- 	     (iter).bi_size &&						\
+ 	bio_for_each_segment_all(bvec, bio, iter_all) {
+ 		ssize_t ret;
+ 
+@@ -1197,6 +1218,9 @@ void bio_free_pages(struct bio *bio)
+ 	struct bio_vec *bvec;
+ 	struct bvec_iter_all iter_all;
+ 
++	if (WARN_ON_ONCE(bio_is_dma_direct(bio)))
++		return;
++
+ 	bio_for_each_segment_all(bvec, bio, iter_all)
+ 		__free_page(bvec->bv_page);
+ }
+@@ -1653,6 +1677,9 @@ void bio_set_pages_dirty(struct bio *bio)
+ 	struct bio_vec *bvec;
+ 	struct bvec_iter_all iter_all;
+ 
++	if (unlikely(bio_is_dma_direct(bio)))
++		return;
++
+ 	bio_for_each_segment_all(bvec, bio, iter_all) {
+ 		if (!PageCompound(bvec->bv_page))
+ 			set_page_dirty_lock(bvec->bv_page);
+@@ -1704,6 +1731,9 @@ void bio_check_pages_dirty(struct bio *bio)
+ 	unsigned long flags;
+ 	struct bvec_iter_all iter_all;
+ 
++	if (unlikely(bio_is_dma_direct(bio)))
++		return;
++
+ 	bio_for_each_segment_all(bvec, bio, iter_all) {
+ 		if (!PageDirty(bvec->bv_page) && !PageCompound(bvec->bv_page))
+ 			goto defer;
+@@ -1777,6 +1807,9 @@ void bio_flush_dcache_pages(struct bio *bi)
+ 	struct bio_vec bvec;
+ 	struct bvec_iter iter;
+ 
++	if (unlikely(bio_is_dma_direct(bi)))
++		return;
++
+ 	bio_for_each_segment(bvec, bi, iter)
+ 		flush_dcache_page(bvec.bv_page);
+ }
+diff --git a/block/blk-core.c b/block/blk-core.c
+index 8340f69670d8..ea152d54c7ce 100644
+--- a/block/blk-core.c
++++ b/block/blk-core.c
+@@ -1467,6 +1467,9 @@ void rq_flush_dcache_pages(struct request *rq)
+ 	struct req_iterator iter;
+ 	struct bio_vec bvec;
+ 
++	if (unlikely(blk_rq_is_dma_direct(rq)))
++		return;
++
+ 	rq_for_each_segment(bvec, rq, iter)
+ 		flush_dcache_page(bvec.bv_page);
+ }
 -- 
 2.20.1
 
