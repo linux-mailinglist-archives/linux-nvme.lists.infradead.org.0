@@ -2,63 +2,100 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 442BF4E0B4
-	for <lists+linux-nvme@lfdr.de>; Fri, 21 Jun 2019 08:59:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3433B4E17F
+	for <lists+linux-nvme@lfdr.de>; Fri, 21 Jun 2019 09:59:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5qIR2MBOfVgoyuDtszF4Da2nMtrWc+QCOLzaR3STkIE=; b=n97H5kkeaGYiN1
-	50+f5tuThTHevYI4ohxjiroIvEp6nnfvSbhhx16BABIENl1H8upkIO0IDJ3oRuk1uHMTANWNk90+6
-	8jlFJPXDo7WvWd7F8jorxwElMZHYwfgxTmo5mBIOfI084tH/tAWwpLEuvCStNVkwutmHSiNGApjoJ
-	8K55Vx9KeHZ1M9T5yUc57N42QCyi6ZeFvLWKf0KTiMuPShWmnt8T8BALpSyO1QDRQLYG/HTaVYXdQ
-	+odkH6VZ1VRnMKstoGpVa+lMbyQgW+P4zN8Ib05/yFaKjS2gNciseX5SQqXxRrMYlUTFIBYHncO+V
-	qeQxF0SN9KDkAoKR3ArQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bw5ARjCAvMoSVWGgqtoyS+fZIiBhgYdb4/P2rh6NAto=; b=qcnE7j6CR3IKjI
+	JdCtgpATsHdMiblJVNnu8j445WvYP5BaYhbKNKW1m1BMK2P6LRH11ESYuKHSsE2BwVq9Q+DWpsOQT
+	InCpAhPoS7N+DfW80abI3uwFNyJQuTaYiA+EWRHbG7H49NSrUyISAtGEzJr3ITnsiXU1xzqSVV7B8
+	ybJ4MPf72U8TSClgsaz4pgKhcoMqcCwtwQ76xM61wtLhlzFWZMPPOjXW1lavRNcQvP3q3EQxi9Sup
+	xOPUfLEnvy/QEMfZRL4vMzTNwrvDRHJvfhPkeCuKjJL05Zi5jGKOGiWq+3ChN5teEYTkmBCiosZIt
+	vMnjvxXAlLM9reI4jTAw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1heDW3-0004tz-Ss; Fri, 21 Jun 2019 06:59:19 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
+	id 1heESA-0000TW-5F; Fri, 21 Jun 2019 07:59:22 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1heDVo-0004tg-V3
- for linux-nvme@lists.infradead.org; Fri, 21 Jun 2019 06:59:06 +0000
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 552CF3086262;
- Fri, 21 Jun 2019 06:59:04 +0000 (UTC)
-Received: from ming.t460p (ovpn-8-22.pek2.redhat.com [10.72.8.22])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 85F5A60928;
- Fri, 21 Jun 2019 06:58:58 +0000 (UTC)
-Date: Fri, 21 Jun 2019 14:58:52 +0800
-From: Ming Lei <ming.lei@redhat.com>
-To: Hannes Reinecke <hare@suse.de>
+ id 1heERt-0000TD-20
+ for linux-nvme@lists.infradead.org; Fri, 21 Jun 2019 07:59:06 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 2BE8CAEF3;
+ Fri, 21 Jun 2019 07:59:03 +0000 (UTC)
 Subject: Re: [PATCH 2/2] nvme: flush scan_work when resetting controller
-Message-ID: <20190621065851.GA22145@ming.t460p>
+To: Ming Lei <ming.lei@redhat.com>
 References: <20190618101025.78840-1-hare@suse.de>
- <20190618101025.78840-3-hare@suse.de>
- <20190620013650.GB31179@ming.t460p>
+ <20190618101025.78840-3-hare@suse.de> <20190620013650.GB31179@ming.t460p>
  <3dbb8dc0-2491-6226-8715-b0f5b7f6a73a@suse.de>
+ <20190621065851.GA22145@ming.t460p>
+From: Hannes Reinecke <hare@suse.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
+ 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
+ azzYF4VRJsdl+d0MCaSy8mUh
+Message-ID: <5ec67ad6-a61a-b28f-9676-864a5f04bbad@suse.de>
+Date: Fri, 21 Jun 2019 09:59:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3dbb8dc0-2491-6226-8715-b0f5b7f6a73a@suse.de>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Fri, 21 Jun 2019 06:59:04 +0000 (UTC)
+In-Reply-To: <20190621065851.GA22145@ming.t460p>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190620_235905_043983_EA8F4473 
-X-CRM114-Status: GOOD (  21.44  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190621_005905_395996_B4D36A15 
+X-CRM114-Status: GOOD (  23.54  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -74,101 +111,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
 Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
  Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
  Sagi Grimberg <sagi@grimberg.me>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, Jun 21, 2019 at 08:14:45AM +0200, Hannes Reinecke wrote:
-> On 6/20/19 3:36 AM, Ming Lei wrote:
-> > On Tue, Jun 18, 2019 at 12:10:25PM +0200, Hannes Reinecke wrote:
-> >> When resetting the controller there is no point whatsoever to
-> >> have a scan run in parallel; we cannot access the controller and
-> > 
-> > scan won't be run in parallel, because .scan_work is embedded in
-> > 'struct nvme_ctrl' which is per-HBA.
-> > 
-> Wrong. We do.
-> Not sure why having it embedded in the controller structure might
-> prevent this from happening; both reset and scan are embedded, but
-> running on different queues:
-
-I mean the scan_work function itself is run exclusively, but yes, it can be 
-run when resetting is in-progress.
-
-> 
-> void nvme_queue_scan(struct nvme_ctrl *ctrl)
-> {
-> 	/*
-> 	 * Only new queue scan work when admin and IO queues are both alive
-> 	 */
-> 	if (ctrl->state == NVME_CTRL_LIVE)
-> 		queue_work(nvme_wq, &ctrl->scan_work);
-> }
-> EXPORT_SYMBOL_GPL(nvme_queue_scan);
-> 
-> int nvme_reset_ctrl(struct nvme_ctrl *ctrl)
-> {
-> 	if (!nvme_change_ctrl_state(ctrl, NVME_CTRL_RESETTING))
-> 		return -EBUSY;
-> 	if (!queue_work(nvme_reset_wq, &ctrl->reset_work))
-> 		return -EBUSY;
-> 	return 0;
-> }
-> EXPORT_SYMBOL_GPL(nvme_reset_ctrl);
-> 
-> So there's nothing stopping them to run in parallel.
-> 
-> >> we cannot tell which devices are present and which not.
-> >> Additionally we'll run a scan after reset anyway.
-> >> So flush existing scans before reconnecting, ensuring to
-> >> short-circuit the scan workqueue function if the controller state
-> >> isn't live to avoid lockups.
-> > 
-> > This way may cause dead-lock.
-> > 
-> > 1) nvme_revalidate_disk() might freeze queue in flush context, however
-> > any in-flight requests won't be completed until reset is done, so
-> > deadlock may be caused by flushing scans in reset context.
-> > 
-> Which is why I'm checking the controller state; I've observed the
-> deadlock plenty of times before introducing the controller state check.
-
-Your check can't help wrt. the deadlock, for example:
-
-1) in scan work context:
-
-- blk_mq_freeze_queue() is being started after passing the controller
-  state check
-
-2) timeout & reset is triggered in another context at the exact same time:
-
-- all in-flight IOs won't be freed until disable controller & reset is done.
-
-- now flush_work() in reset context can't move on, because
-  blk_mq_freeze_queue() in scan context can't make progress.
-
-> 
-> > 2) sync IO may be involved in revalidate_disk() which is called in
-> > scan context, so deadlock is caused for same reason with 1).
-> > 
-> I/O during revalidate_disk() is protected by the state check, too, so we
-> won't be issuing any I/O during resetting.
-> 
-> To be precise: any I/O in flight when reset is triggered will be
-> terminated, and any subsequent I/O is short-circuited by the state check.
-
-No, any I/O in flight before resetting is just terminated from hardware,
-but still in blk-mq sw or scheduler queue, so either sync IO or queue
-freezing won't make progress.
-
-Please see nvme_complete_rq(), all these IO will be retried usually.
-
-
-Thanks,
-Ming
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNi8yMS8xOSA4OjU4IEFNLCBNaW5nIExlaSB3cm90ZToKPiBPbiBGcmksIEp1biAyMSwgMjAx
+OSBhdCAwODoxNDo0NUFNICswMjAwLCBIYW5uZXMgUmVpbmVja2Ugd3JvdGU6Cj4+IE9uIDYvMjAv
+MTkgMzozNiBBTSwgTWluZyBMZWkgd3JvdGU6Cj4+PiBPbiBUdWUsIEp1biAxOCwgMjAxOSBhdCAx
+MjoxMDoyNVBNICswMjAwLCBIYW5uZXMgUmVpbmVja2Ugd3JvdGU6Cj4+Pj4gV2hlbiByZXNldHRp
+bmcgdGhlIGNvbnRyb2xsZXIgdGhlcmUgaXMgbm8gcG9pbnQgd2hhdHNvZXZlciB0bwo+Pj4+IGhh
+dmUgYSBzY2FuIHJ1biBpbiBwYXJhbGxlbDsgd2UgY2Fubm90IGFjY2VzcyB0aGUgY29udHJvbGxl
+ciBhbmQKPj4+Cj4+PiBzY2FuIHdvbid0IGJlIHJ1biBpbiBwYXJhbGxlbCwgYmVjYXVzZSAuc2Nh
+bl93b3JrIGlzIGVtYmVkZGVkIGluCj4+PiAnc3RydWN0IG52bWVfY3RybCcgd2hpY2ggaXMgcGVy
+LUhCQS4KPj4+Cj4+IFdyb25nLiBXZSBkby4KPj4gTm90IHN1cmUgd2h5IGhhdmluZyBpdCBlbWJl
+ZGRlZCBpbiB0aGUgY29udHJvbGxlciBzdHJ1Y3R1cmUgbWlnaHQKPj4gcHJldmVudCB0aGlzIGZy
+b20gaGFwcGVuaW5nOyBib3RoIHJlc2V0IGFuZCBzY2FuIGFyZSBlbWJlZGRlZCwgYnV0Cj4+IHJ1
+bm5pbmcgb24gZGlmZmVyZW50IHF1ZXVlczoKPiAKPiBJIG1lYW4gdGhlIHNjYW5fd29yayBmdW5j
+dGlvbiBpdHNlbGYgaXMgcnVuIGV4Y2x1c2l2ZWx5LCBidXQgeWVzLCBpdCBjYW4gYmUgCj4gcnVu
+IHdoZW4gcmVzZXR0aW5nIGlzIGluLXByb2dyZXNzLgo+IAo+Pgo+PiB2b2lkIG52bWVfcXVldWVf
+c2NhbihzdHJ1Y3QgbnZtZV9jdHJsICpjdHJsKQo+PiB7Cj4+IAkvKgo+PiAJICogT25seSBuZXcg
+cXVldWUgc2NhbiB3b3JrIHdoZW4gYWRtaW4gYW5kIElPIHF1ZXVlcyBhcmUgYm90aCBhbGl2ZQo+
+PiAJICovCj4+IAlpZiAoY3RybC0+c3RhdGUgPT0gTlZNRV9DVFJMX0xJVkUpCj4+IAkJcXVldWVf
+d29yayhudm1lX3dxLCAmY3RybC0+c2Nhbl93b3JrKTsKPj4gfQo+PiBFWFBPUlRfU1lNQk9MX0dQ
+TChudm1lX3F1ZXVlX3NjYW4pOwo+Pgo+PiBpbnQgbnZtZV9yZXNldF9jdHJsKHN0cnVjdCBudm1l
+X2N0cmwgKmN0cmwpCj4+IHsKPj4gCWlmICghbnZtZV9jaGFuZ2VfY3RybF9zdGF0ZShjdHJsLCBO
+Vk1FX0NUUkxfUkVTRVRUSU5HKSkKPj4gCQlyZXR1cm4gLUVCVVNZOwo+PiAJaWYgKCFxdWV1ZV93
+b3JrKG52bWVfcmVzZXRfd3EsICZjdHJsLT5yZXNldF93b3JrKSkKPj4gCQlyZXR1cm4gLUVCVVNZ
+Owo+PiAJcmV0dXJuIDA7Cj4+IH0KPj4gRVhQT1JUX1NZTUJPTF9HUEwobnZtZV9yZXNldF9jdHJs
+KTsKPj4KPj4gU28gdGhlcmUncyBub3RoaW5nIHN0b3BwaW5nIHRoZW0gdG8gcnVuIGluIHBhcmFs
+bGVsLgo+Pgo+Pj4+IHdlIGNhbm5vdCB0ZWxsIHdoaWNoIGRldmljZXMgYXJlIHByZXNlbnQgYW5k
+IHdoaWNoIG5vdC4KPj4+PiBBZGRpdGlvbmFsbHkgd2UnbGwgcnVuIGEgc2NhbiBhZnRlciByZXNl
+dCBhbnl3YXkuCj4+Pj4gU28gZmx1c2ggZXhpc3Rpbmcgc2NhbnMgYmVmb3JlIHJlY29ubmVjdGlu
+ZywgZW5zdXJpbmcgdG8KPj4+PiBzaG9ydC1jaXJjdWl0IHRoZSBzY2FuIHdvcmtxdWV1ZSBmdW5j
+dGlvbiBpZiB0aGUgY29udHJvbGxlciBzdGF0ZQo+Pj4+IGlzbid0IGxpdmUgdG8gYXZvaWQgbG9j
+a3Vwcy4KPj4+Cj4+PiBUaGlzIHdheSBtYXkgY2F1c2UgZGVhZC1sb2NrLgo+Pj4KPj4+IDEpIG52
+bWVfcmV2YWxpZGF0ZV9kaXNrKCkgbWlnaHQgZnJlZXplIHF1ZXVlIGluIGZsdXNoIGNvbnRleHQs
+IGhvd2V2ZXIKPj4+IGFueSBpbi1mbGlnaHQgcmVxdWVzdHMgd29uJ3QgYmUgY29tcGxldGVkIHVu
+dGlsIHJlc2V0IGlzIGRvbmUsIHNvCj4+PiBkZWFkbG9jayBtYXkgYmUgY2F1c2VkIGJ5IGZsdXNo
+aW5nIHNjYW5zIGluIHJlc2V0IGNvbnRleHQuCj4+Pgo+PiBXaGljaCBpcyB3aHkgSSdtIGNoZWNr
+aW5nIHRoZSBjb250cm9sbGVyIHN0YXRlOyBJJ3ZlIG9ic2VydmVkIHRoZQo+PiBkZWFkbG9jayBw
+bGVudHkgb2YgdGltZXMgYmVmb3JlIGludHJvZHVjaW5nIHRoZSBjb250cm9sbGVyIHN0YXRlIGNo
+ZWNrLgo+IAo+IFlvdXIgY2hlY2sgY2FuJ3QgaGVscCB3cnQuIHRoZSBkZWFkbG9jaywgZm9yIGV4
+YW1wbGU6Cj4gCj4gMSkgaW4gc2NhbiB3b3JrIGNvbnRleHQ6Cj4gCj4gLSBibGtfbXFfZnJlZXpl
+X3F1ZXVlKCkgaXMgYmVpbmcgc3RhcnRlZCBhZnRlciBwYXNzaW5nIHRoZSBjb250cm9sbGVyCj4g
+ICBzdGF0ZSBjaGVjawo+IAo+IDIpIHRpbWVvdXQgJiByZXNldCBpcyB0cmlnZ2VyZWQgaW4gYW5v
+dGhlciBjb250ZXh0IGF0IHRoZSBleGFjdCBzYW1lIHRpbWU6Cj4gCj4gLSBhbGwgaW4tZmxpZ2h0
+IElPcyB3b24ndCBiZSBmcmVlZCB1bnRpbCBkaXNhYmxlIGNvbnRyb2xsZXIgJiByZXNldCBpcyBk
+b25lLgo+IAo+IC0gbm93IGZsdXNoX3dvcmsoKSBpbiByZXNldCBjb250ZXh0IGNhbid0IG1vdmUg
+b24sIGJlY2F1c2UKPiAgIGJsa19tcV9mcmVlemVfcXVldWUoKSBpbiBzY2FuIGNvbnRleHQgY2Fu
+J3QgbWFrZSBwcm9ncmVzcy4KPiAKVGhlcmUgbWlnaHQgYmUgYSBkaWZmZXJlbmNlIGJldHdlZW4g
+UkRNQSBhbmQgRkMgaW1wbGVtZW50YXRpb25zOyBmb3IgRkMKd2UgdGVybWluYXRlIGFsbCBvdXRz
+dGFuZGluZyBJL09zIGZyb20gdGhlIEhXIHNpZGUsIHNvIGVhY2ggSS9PIHdpbGwgYmUKcmV0dXJu
+ZWQgd2l0aCBhbiBhYm9ydGVkIHN0YXR1cy4KV2hpY2ggZm9yIGFsbCB0ZXN0cyBJIChhbmQgTmV0
+QXBwIDotKSBkaWQgd2FzIGVub3VnaCB0byBnZXQKJ2Jsa19tcV9mcmVlemVfcXVldWUoKScgdW5z
+dHVjayBhbmQgdGhlIGZsdXNoX3dvcmsgdG8gY29tcGxldGUuCldlIF9kaWRfIG9ic2VydmVkLCBo
+b3dldmVyLCB0aGF0IHRoZSBzdGF0ZSBjaGVja3MgYXJlIGFic29sdXRlbHkKY3JpdGljYWwgdG8g
+dGhpcywgb3RoZXJ3aXNlIHdlIGluZGVlZCBlbmRlZCB1cCB3aXRoIGEgc3R1Y2sgZmx1c2hfd29y
+aygpLgoKPj4KPj4+IDIpIHN5bmMgSU8gbWF5IGJlIGludm9sdmVkIGluIHJldmFsaWRhdGVfZGlz
+aygpIHdoaWNoIGlzIGNhbGxlZCBpbgo+Pj4gc2NhbiBjb250ZXh0LCBzbyBkZWFkbG9jayBpcyBj
+YXVzZWQgZm9yIHNhbWUgcmVhc29uIHdpdGggMSkuCj4+Pgo+PiBJL08gZHVyaW5nIHJldmFsaWRh
+dGVfZGlzaygpIGlzIHByb3RlY3RlZCBieSB0aGUgc3RhdGUgY2hlY2ssIHRvbywgc28gd2UKPj4g
+d29uJ3QgYmUgaXNzdWluZyBhbnkgSS9PIGR1cmluZyByZXNldHRpbmcuCj4+Cj4+IFRvIGJlIHBy
+ZWNpc2U6IGFueSBJL08gaW4gZmxpZ2h0IHdoZW4gcmVzZXQgaXMgdHJpZ2dlcmVkIHdpbGwgYmUK
+Pj4gdGVybWluYXRlZCwgYW5kIGFueSBzdWJzZXF1ZW50IEkvTyBpcyBzaG9ydC1jaXJjdWl0ZWQg
+YnkgdGhlIHN0YXRlIGNoZWNrLgo+IAo+IE5vLCBhbnkgSS9PIGluIGZsaWdodCBiZWZvcmUgcmVz
+ZXR0aW5nIGlzIGp1c3QgdGVybWluYXRlZCBmcm9tIGhhcmR3YXJlLAo+IGJ1dCBzdGlsbCBpbiBi
+bGstbXEgc3cgb3Igc2NoZWR1bGVyIHF1ZXVlLCBzbyBlaXRoZXIgc3luYyBJTyBvciBxdWV1ZQo+
+IGZyZWV6aW5nIHdvbid0IG1ha2UgcHJvZ3Jlc3MuCj4gCj4gUGxlYXNlIHNlZSBudm1lX2NvbXBs
+ZXRlX3JxKCksIGFsbCB0aGVzZSBJTyB3aWxsIGJlIHJldHJpZWQgdXN1YWxseS4KPiAKRm9yIHRo
+ZSBtdWx0aXBhdGggY2FzZSB0aGUgcmVxdWVzdCB3aWxsIGJlIHJlcXVldWVkIHZpYQpibGtfc3Rl
+YWxfYmlvcygpLCBhbmQgdGhlIG9yaWdpbmFsIHJlcXVlc3Qgd2lsbCBiZSBjb21wbGV0ZWQuClNv
+IHRoZSBxdWV1ZSBpbmRlZWQgYmVjb21lcyBmcmVlLCBhbmQgd2UgY2FuIGNvbnRpbnVlLgoKVGhp
+bmdzIF9taWdodF8gYmUgZGlmZmVyZW50IGZvciB0aGUgbm9uLW11bHRpcGF0aCBjYXNlLCB0aG91
+Z2g7IEknbGwKaGF2ZSB0byBjaGVjay4KCkNoZWVycywKCkhhbm5lcwotLSAKRHIuIEhhbm5lcyBS
+ZWluZWNrZQkJICAgVGVhbWxlYWQgU3RvcmFnZSAmIE5ldHdvcmtpbmcKaGFyZUBzdXNlLmRlCQkJ
+ICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1MyA2ODgKU1VTRSBMSU5VWCBHbWJILCBNYXhmZWxk
+c3RyLiA1LCA5MDQwOSBOw7xybmJlcmcKR0Y6IEZlbGl4IEltZW5kw7ZyZmZlciwgTWFyeSBIaWdn
+aW5zLCBTcmkgUmFzaWFoCkhSQiAyMTI4NCAoQUcgTsO8cm5iZXJnKQoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QK
+TGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
