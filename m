@@ -2,56 +2,94 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D31694F06D
-	for <lists+linux-nvme@lfdr.de>; Fri, 21 Jun 2019 23:20:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CDE44F2C7
+	for <lists+linux-nvme@lfdr.de>; Sat, 22 Jun 2019 02:35:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=dkZKrW13TAPQfV1KRtCpp78n7hKY7344McOVilYVHv8=; b=Fw5
-	3tpS98ycuxh5sICWybEhP369cNcuHZG5iQ9A9yJqI/3+KfLHmKrxcG7saNBLMpUPWZfCM0TSsUtOj
-	5ym0Ho9EHudXWlxKOVLViI3hxup9DVEw0ftNjOf03aPbm7cMGc7tO8Lg4y/YuQRc4RKNbk+ThHTn+
-	WEaLUKPq5qudV5WUruwTBpLYAn4r5jYz3OiVVcpZ1Y0nypr5hVVPA8QlmGZzqPi2nyC/LXPrYtV1v
-	Bw1dcUruAhJ2eWchtS5aZqFUups+X4C5nE4adyA+IoK0mYqXPAxrjCXsXRPW5jsDuTAoefyQMNqfL
-	ezjmCtR+1ht7n4zfn4LLDIrnUqun2dA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VFnSoC14DLLvqepwA50LKvoHGvfWVR5Fx3VIi2KCLQU=; b=JzUBlRoujEwE49
+	NBKWhQA1dtgOJb4Ww2QMq81U4iZmOPrLKaTYOAs58fp+Ed645M5TNA99C6hH8m2P5g95Yw/ZkHRFt
+	RgCsfZhaVIiPQtxrZZYCFz8VtdnY0x9RA37t4XWHo4nZlj66rljGOdpEYQ8k9HYABpbW/Nyfnc3/h
+	gjrzxMu62Y50rXF4aYWL5ja8zZo2xlZaibZ3EGBev0y3oUVAdVoAZ1kmtwaHeKFCutEdbcyqj6TnR
+	PPbfCOQkx+SNWJRddrIR7z+q0rqN4cAym65iTnYFk/v7q0v04UAX2OoUXV85AyBNwoevGG1yh6lpq
+	L3bAONoWW4YX+3nqOP7w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1heQwv-0000ot-NL; Fri, 21 Jun 2019 21:19:57 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
+	id 1heTze-0002oU-9p; Sat, 22 Jun 2019 00:34:58 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1heQwq-0000oV-U4
- for linux-nvme@lists.infradead.org; Fri, 21 Jun 2019 21:19:54 +0000
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id C58A93082A28;
- Fri, 21 Jun 2019 21:19:47 +0000 (UTC)
-Received: from emilne.bos.redhat.com (unknown [10.18.25.205])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5916919C4F;
- Fri, 21 Jun 2019 21:19:45 +0000 (UTC)
-From: "Ewan D. Milne" <emilne@redhat.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH] nvme-fc: clean up error messages
-Date: Fri, 21 Jun 2019 17:19:44 -0400
-Message-Id: <20190621211944.28604-1-emilne@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.45]); Fri, 21 Jun 2019 21:19:50 +0000 (UTC)
+ id 1heTzY-0002o2-RW
+ for linux-nvme@lists.infradead.org; Sat, 22 Jun 2019 00:34:54 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id 145so4121636pgh.4
+ for <linux-nvme@lists.infradead.org>; Fri, 21 Jun 2019 17:34:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=DbzYyUDp1dRjn3H+usjWi3D9EIfYCLIg8vMo1iKLxOE=;
+ b=Ie7sUVEaK5OSyRscP5dvXhmCFMg80uC1Rr+Gy6wh4iz+bfWGNOHmyvtamVcFm9iPew
+ CbA0qcqSFsfAbs14QFwNYkh0tvGd2JqSxMCU1yuAGZS0tLDWqJoXHQo7aOvMkO4Z7Ph+
+ u+xZ5UFowwSbqbKAen32rpUlQyJrO+jZknTOB8wEwMBBdImpbeDdYCpDCE8jdg9TBbrN
+ eU4TXWHHw/qGpSqZ7NM+ATKB4wEU6GmUfoGq3Zq9Rl2c9tmL/Z1sSpYkiN6UoBpwdgqm
+ wW0E2KLGweWbvWoku8ucbItmwAmgQ51SiX0KyS+kROiql3ShLv0XpSzMjH7fJ+5yfIrd
+ iQnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=DbzYyUDp1dRjn3H+usjWi3D9EIfYCLIg8vMo1iKLxOE=;
+ b=GGDBON8k6eKMLeh2BiLFQE7wPBpK4W/Z1RR7aBjVupMMSmZbLt7lHa7WHF3tix7E9Q
+ I9XoGYpgYZN1guS0gKaih4AThBGpSE275pShgJzxnr6OPk2vhUjpxp+P5PV1Yv6gGvID
+ 0wkfuDxeZl+1B429M7Lst4sEUzi4DnKXA3ciFqFH2ul2fCpY8tOlWTSEyvAcu6Y5DMzb
+ S84yCIvgpMulX8opTdFF70JinSgFk1SCu2UkIiP5k3mT+65XrOsgVDmbMcatTc6UCJEB
+ ocYNVP7FIWlGeL4vngRcx5H7tnPRiNSXhHCRP0Wr8fueniNSBCEvexRIKJcpdWkTf0a7
+ L9kw==
+X-Gm-Message-State: APjAAAWoT8Bv/GJI9DytRSJvWPZvqSo7Xm3fjtM63tMUBwCE6E7gRquU
+ zCxd2OmJg7hKsq6FGU5Qf9A=
+X-Google-Smtp-Source: APXvYqytxwUx0Tpur+7GnC2a3P+s+b+qdLObq2Xpr15NA8L/4qKDggPrC2Rid4tOj6BLU0hnPYkhVQ==
+X-Received: by 2002:a17:90a:be08:: with SMTP id
+ a8mr9562679pjs.69.1561163690582; 
+ Fri, 21 Jun 2019 17:34:50 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id k184sm3506693pgk.7.2019.06.21.17.34.49
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 21 Jun 2019 17:34:49 -0700 (PDT)
+Date: Sat, 22 Jun 2019 09:34:47 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: James Smart <jsmart2021@gmail.com>
+Subject: Re: [PATCH][Repost] nvme-fcloop: Resolve warnings on RCU usage and
+ sleep warnings
+Message-ID: <20190622003447.GB3139@minwooim-desktop>
+References: <20190620201701.16833-1-jsmart2021@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190620201701.16833-1-jsmart2021@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190621_141952_990045_775FAA57 
-X-CRM114-Status: GOOD (  10.94  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190621_173452_892635_5A3F4988 
+X-CRM114-Status: UNSURE (   5.41  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:52e listed in]
+ [list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,79 +101,15 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: james.smart@broadcom.com
-MIME-Version: 1.0
+Cc: linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Some of the error messages are inconsistent, and one of them is wrong
-(i.e. "queue_size 128 > ctrl maxcmd 32, reducing to queue_size").
-Make them more clear and distinguishable for log analysis.
+It looks good to me:
 
-Signed-off-by: Ewan D. Milne <emilne@redhat.com>
----
- drivers/nvme/host/fc.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
-index 9b497d785ed7..5da2bef0b193 100644
---- a/drivers/nvme/host/fc.c
-+++ b/drivers/nvme/host/fc.c
-@@ -1259,7 +1259,7 @@ nvme_fc_connect_admin_queue(struct nvme_fc_ctrl *ctrl,
- 	if (fcret) {
- 		ret = -EBADF;
- 		dev_err(ctrl->dev,
--			"q %d connect failed: %s\n",
-+			"queue %d connect admin queue failed: %s\n",
- 			queue->qnum, validation_errors[fcret]);
- 	} else {
- 		ctrl->association_id =
-@@ -1358,7 +1358,7 @@ nvme_fc_connect_queue(struct nvme_fc_ctrl *ctrl, struct nvme_fc_queue *queue,
- 	if (fcret) {
- 		ret = -EBADF;
- 		dev_err(ctrl->dev,
--			"q %d connect failed: %s\n",
-+			"queue %d connect failed: %s\n",
- 			queue->qnum, validation_errors[fcret]);
- 	} else {
- 		queue->connection_id =
-@@ -1371,7 +1371,7 @@ nvme_fc_connect_queue(struct nvme_fc_ctrl *ctrl, struct nvme_fc_queue *queue,
- out_no_memory:
- 	if (ret)
- 		dev_err(ctrl->dev,
--			"queue %d connect command failed (%d).\n",
-+			"queue %d connect failed (%d).\n",
- 			queue->qnum, ret);
- 	return ret;
- }
-@@ -2678,16 +2678,18 @@ nvme_fc_create_association(struct nvme_fc_ctrl *ctrl)
- 		/* warn if maxcmd is lower than queue_size */
- 		dev_warn(ctrl->ctrl.device,
- 			"queue_size %zu > ctrl maxcmd %u, reducing "
--			"to queue_size\n",
--			opts->queue_size, ctrl->ctrl.maxcmd);
-+			"queue_size to %u\n",
-+			opts->queue_size, ctrl->ctrl.maxcmd, ctrl->ctrl.maxcmd);
- 		opts->queue_size = ctrl->ctrl.maxcmd;
- 	}
- 
- 	if (opts->queue_size > ctrl->ctrl.sqsize + 1) {
- 		/* warn if sqsize is lower than queue_size */
- 		dev_warn(ctrl->ctrl.device,
--			"queue_size %zu > ctrl sqsize %u, clamping down\n",
--			opts->queue_size, ctrl->ctrl.sqsize + 1);
-+			"queue_size %zu > ctrl sqsize %u, reducing "
-+			"queue_size to %u\n",
-+			opts->queue_size, ctrl->ctrl.sqsize + 1,
-+			ctrl->ctrl.sqsize + 1);
- 		opts->queue_size = ctrl->ctrl.sqsize + 1;
- 	}
- 
--- 
-2.18.1
-
+Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
 
 _______________________________________________
 Linux-nvme mailing list
