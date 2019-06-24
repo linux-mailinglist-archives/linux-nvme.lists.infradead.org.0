@@ -2,110 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8AAF751F20
-	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 01:31:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98FE551F46
+	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 01:52:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ByRRA1U/TYDlMSpflSy2H/1k38RR7Vz9cnCiAAUcPM4=; b=tsMhWxaIju6XYd
-	gX9sQkEa2JL1vBWbeEyvtdnEPjUZYI8cxUkaXRnr5pncOvjFmQno/wroGejHbtoIlP9S5YJmbdxKI
-	szlKKsxruwMC83lFN4UOEU+cyqckx1spTrZLzd3GT7EMET/UN8sxae09UUPtvwOmD4jNuZoLKyyGm
-	320MkD6mqDBVioNKJeertrDUVLBRst6UFtRW0Gb5p/uozyn3Fb3DrCx/MdWgdUGm+h5Dl6Qe8pyOb
-	qXk5GKQmFeO4YJuM9162Y2a1pl5btvZAtLayYcoJULKfI4K6VDzG6+T7K3c69l79WUquEFeJLMFz3
-	0HaLXZodOSej49/cvY9g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=XNa398Lt8D/eN9PZkkqh31CPRIjwWrHREMKuf4Mn06M=; b=pplSoacM1AyyM/ZSv2fHhsDbe
+	TDdCNmUr1tJ3mCXBWrylZ3C7M5x0h1uCa52Myp4IR/gfaqwAJvB/6B+Z42h7TC2WELRGsRbYiToMY
+	m2vfVups2gvcVvd5eqVFC+l98/acDp4CuzvkHPfxe7E6XORl/9NHLtSepI2dTKdjAPNZOU5ihxqW+
+	h/mPEMX/g7GnST/ALWC5vKa7zx5FJGoMoeBKeLuW8bbVX+1/j+1TNdKMpE/olYgflOU0hKh+3gvqR
+	wUnW1m/CfTzQSU26Dj1SUzae3sEfE1CppGk2O4fEDugZXwCiqqREaWRRWiJViYKLY1r30YLSBmCxK
+	mDBR4Zh/Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfYQV-0001d9-OR; Mon, 24 Jun 2019 23:31:07 +0000
-Received: from userp2130.oracle.com ([156.151.31.86])
+	id 1hfYkX-0007tR-Qf; Mon, 24 Jun 2019 23:51:49 +0000
+Received: from mail-pf1-f195.google.com ([209.85.210.195])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfYQP-0001ca-Ls
- for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 23:31:03 +0000
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5ONSjdK048339;
- Mon, 24 Jun 2019 23:30:46 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : references : date : in-reply-to : message-id : mime-version :
- content-type; s=corp-2018-07-02;
- bh=Fg8AuVU3KV01MxtcKRTupjogXqtNQe8wroUKpliyH/c=;
- b=BSWO0uIB+ukZ/3cjFPiAzD4KFQIOcf+eOekX5tv8sl6g+zH7bWzdJIPuksZHGgRpbqNi
- oJWkbzWibK2/LLa3XP8udXNDu2nHRlzlWDoLrnY2aPZryWB4ZsJ+mYyXkPa1r0cjwqDu
- A0wVcNi4GSoiWS8IXPoXUNj9viY/MxYxq3mFhH7qb6yLWCKZuaQMiCKGD1SJGn9HGvBG
- MDwFsSxHFdOtWqaWLaMLLOUu7TZ6pnqjRkbVh8trAfgMuypmUfRmblhnNn1fHdebrdKM
- iRAOKKx6p5MRAvmK3h4mAzo6HtIRqIoP4CQFUzw2S5WqASkNRTEiESjA0HDuuiXVE/OW xQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2130.oracle.com with ESMTP id 2t9brt1277-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 24 Jun 2019 23:30:46 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5ONTwFe089270;
- Mon, 24 Jun 2019 23:30:45 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3030.oracle.com with ESMTP id 2t99f3hwum-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 24 Jun 2019 23:30:45 +0000
-Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5ONUh2N016011;
- Mon, 24 Jun 2019 23:30:43 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 24 Jun 2019 16:30:43 -0700
-To: Bart Van Assche <bvanassche@acm.org>
+ id 1hfYkS-0007sr-6D
+ for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 23:51:45 +0000
+Received: by mail-pf1-f195.google.com with SMTP id r7so8409258pfl.3
+ for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 16:51:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=qxDuwXEThMg2WkwoIL/dzcR2t9gaI98nDz2R40M2WcY=;
+ b=cbaqLX+iFRPkRvyGGt0CPqiHB77yRuYPBCtakpY3/Z0+spuwGgXlrplGdZu1SaTS3c
+ m9n5+5JGc8Gw5n6qcf8gmu1XKTpuGIZJ+O477DaAOrDBMxN69suWrMzvZ0Aa4bO5emHR
+ xyLuMCd4JWt2QUCn++lEDA8skq0HrDc2KT3UAzPsWXszmWHi5+O8Zx0x+uerMqJwzaKT
+ HWDktJz7R9pPBd0N/wfbrwxepdt/03z0d8YuqRC1X3oIG0BrYv0riBnmpMsD+KlvccLf
+ vcJUVzVmmvja5ytzq4i92rW83TxBLUMocummlt0yhQ2M5G7iwiVOvgB1GxAYD0xaLtWO
+ fvsQ==
+X-Gm-Message-State: APjAAAUj4dGod3vVvVp462WilP3XNcLVru7axMWqKtpDnTw54tcaqL96
+ xlZCYIiPYSgnjpXmHAH7DWY=
+X-Google-Smtp-Source: APXvYqyhMD5o+i1LjaK6oVlsI/0EgZanh0eB8QKiQdztpSYkWfhXtyeNelE5ypFxMxPl91s5CCti1A==
+X-Received: by 2002:a17:90a:a008:: with SMTP id
+ q8mr28240183pjp.114.1561420302260; 
+ Mon, 24 Jun 2019 16:51:42 -0700 (PDT)
+Received: from desktop-bart.svl.corp.google.com
+ ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
+ by smtp.gmail.com with ESMTPSA id h1sm14902482pfo.152.2019.06.24.16.51.40
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 24 Jun 2019 16:51:41 -0700 (PDT)
 Subject: Re: [PATCH v3 2/3] nvmet: Export NVMe namespace attributes
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
+To: "Martin K. Petersen" <martin.petersen@oracle.com>
 References: <20190617161222.253849-1-bvanassche@acm.org>
- <20190617161222.253849-3-bvanassche@acm.org>
- <yq1a7eeusa5.fsf@oracle.com>
- <68786de5-cdd8-c6d8-98a7-8a4310dac789@acm.org>
- <yq1blyrpupw.fsf@oracle.com>
- <7e51e415-16af-2fc5-42e9-ebd0e6f94c0e@acm.org>
-Date: Mon, 24 Jun 2019 19:30:40 -0400
-In-Reply-To: <7e51e415-16af-2fc5-42e9-ebd0e6f94c0e@acm.org> (Bart Van Assche's
- message of "Fri, 21 Jun 2019 08:19:04 -0700")
-Message-ID: <yq136jyo927.fsf@oracle.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
+ <20190617161222.253849-3-bvanassche@acm.org> <yq1a7eeusa5.fsf@oracle.com>
+ <68786de5-cdd8-c6d8-98a7-8a4310dac789@acm.org> <yq1blyrpupw.fsf@oracle.com>
+ <7e51e415-16af-2fc5-42e9-ebd0e6f94c0e@acm.org> <yq136jyo927.fsf@oracle.com>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <062c6877-62e3-a37b-d2b2-ea35aadae912@acm.org>
+Date: Mon, 24 Jun 2019 16:51:39 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9298
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=994
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906240185
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9298
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906240185
+In-Reply-To: <yq136jyo927.fsf@oracle.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_163101_816288_9B9AC6DE 
-X-CRM114-Status: GOOD (  15.04  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190624_165144_228225_6C8E0F42 
+X-CRM114-Status: GOOD (  18.01  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [156.151.31.86 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.195 listed in list.dnswl.org]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (bart.vanassche[at]gmail.com)
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.195 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,27 +95,37 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
  Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
  linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
  Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+On 6/24/19 4:30 PM, Martin K. Petersen wrote:
+> 
+> Hi Bart,
+> 
+>> As you must have noticed the patch at the start of this thread touches
+>> both the bdev and the file backends. So I'm not sure what your
+>> question is about?
+> 
+> I was contemplating what the observed I/O atomicity would be for the
+> initiator side when the target file backend is using buffered I/O.
 
-Hi Bart,
+Hi Martin,
 
-> As you must have noticed the patch at the start of this thread touches
-> both the bdev and the file backends. So I'm not sure what your
-> question is about?
+My understanding is that after a completion has been reported for an 
+atomic NVMe write that the written data must survive a power cycle. As 
+you probably know all single logical block NVMe writes are atomic since 
+the AWUPF field is 0's based. So I don't think that it is possible to 
+implement a backend that uses buffered I/O in such a way that the 
+backend is NVMe compliant without using an uninterruptible power supply.
 
-I was contemplating what the observed I/O atomicity would be for the
-initiator side when the target file backend is using buffered I/O.
+Bart.
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
+
 
 _______________________________________________
 Linux-nvme mailing list
