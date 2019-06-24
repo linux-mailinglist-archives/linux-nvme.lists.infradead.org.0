@@ -2,74 +2,74 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D66CF51C38
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 22:24:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BD25451C44
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 22:26:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VFnSoC14DLLvqepwA50LKvoHGvfWVR5Fx3VIi2KCLQU=; b=oaZK4mUFtqbWvf
-	ZFXYNQ2Y5ETH1jfPBK1B0T4e8AULdzBwT8utzdIPyKpfjcfG1l6p5fwPKEW099Bq5fUFLfGv6+wUt
-	yIgs+PtEWYWp6Om9ldkI2bh/leOXmPZlxPYdKElgm1ep8xLm65A5iK3BCbcj1WnDQnDNJAkSBhJBE
-	lPXqnCwGILwzJ9ZVpcV4o2AGETXLQYI/+TH8aDQDq99YHHJe9t+5+TuN0ke5+1moGNaYJuOjEuT5N
-	FTY4GvRBq5YGWQCwDnVfNvkMswPaMeGcOFE3wqrpTGmW9jhOj6766o224sD2RP73G6slvhwxQSUY6
-	GBN9MvOswtX0K/0n37nQ==;
+	List-Owner; bh=VlzGBjnDobEz1zCf6VbE6kOEB/ZoRitZBw7aov1BT+E=; b=BLpVTepkQFAFaS
+	gvVVsLYBLFADtpGyrujYJobU+AQ1JgVK7+HswyBVcXsDzOCa2EDofmimUGslhHXe1XdTp1AQKrmnT
+	wkjb9opquI7SdjD36+kCsLlNTHUjMmg848gPMKJ6acMvmZVUiE7O83ZYAJPm3rhFAp0gOEgPLEXUi
+	5Osw4hw/ZtX9JI0MZWrAiyw7N7MB4THh+aMV/n4d+Pvnb29csK/U6GXAZFdcZvBP+HKhXVzDO1r9v
+	Pgk9PlnVpMXEilr0pxPsbRIidb/sDZKSEIfQdJIKHrmip2uzO8txX3ZyFKV+ZyT8cXA35h5cTRoOk
+	X/CNcXHODS7tpui8+LSg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfVVo-0003di-2t; Mon, 24 Jun 2019 20:24:24 +0000
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+	id 1hfVXU-0005NL-2h; Mon, 24 Jun 2019 20:26:08 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfVVh-0003dO-Q6
- for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 20:24:18 +0000
-Received: by mail-pg1-x530.google.com with SMTP id w10so7692478pgj.7
- for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 13:24:16 -0700 (PDT)
+ id 1hfVXN-0005Mz-30
+ for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 20:26:02 +0000
+Received: by mail-pl1-x642.google.com with SMTP id e5so7516605pls.13
+ for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 13:26:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=DbzYyUDp1dRjn3H+usjWi3D9EIfYCLIg8vMo1iKLxOE=;
- b=Z1Q57SHQB7ez5PE8GQ60J2xo/mfIC7Rh2CL7dcauj5ogbxztzLTIjPAo9ulsZIK+LS
- e5GyMI2vMaz3s9ijKGma6ALb5PP98gtSxvuZLbWkVpxdmQkqC4iw5OnWBKT1kQxt1hXJ
- n/js4HhGjgJcyG2tsRQ20I6pSDpEU8cmUuYaMHXhrDlukr+SlKlYUN1PhKgRmWwnw1M9
- 8DNHHL0WFcJ7CAn5pXnSAljTlOW30oW+OHCzHcUm+hetKYxoGIX3i4yoWxf5dxoKfVZG
- fYPYex3ai3gLDrdSpy180sfQfiDSahMwerjInHyX19/3XilAPHd0PDRXKYKzvinFydtS
- vsIA==
+ bh=6pLaaiZ1mPQUewloYg+pN5Ez3zRBpU86Cu11UBdtbVo=;
+ b=KsIvLb8UYLsfz3jQxcMuHxsQx2m2z+kH8kjMasiaWgrsQ1VuwurSAtK+C1q7AiQzhr
+ 1UvzWTvaI1eKoXvKNzpvI+Jk9wtoOr2z2XS9V445YYDVjtnu1jjQd2N9Y9DSW01ay4kN
+ DCsD8YJ0w12eyi3FHs47ccogUhf2bu9ShDnzkuwpVI56QAofwwewU2Lbaft5ACoiuA3m
+ nEpS6cDkUphE6nQsSjERO/FQYUp4H5k7w1kfrk+ZUZ3ZKmwuPbOJz+YBsGLstA+BDG2u
+ xFJfXi//PKfdaLrR1WShzmWDfbB0ftj/CnJbpSmQfJFcvNvrNxe4H+61zsBcLKW8mpnG
+ 2GQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=DbzYyUDp1dRjn3H+usjWi3D9EIfYCLIg8vMo1iKLxOE=;
- b=aIK0Zw0xbGLUfaOWPCyY+pHUdHWOzCB+46iEZBo6byWoWGKKqJYlLc0waoy58fH/3I
- LHxSU3udqvb64h2ALv+T4i8nadeY+/DD38k4NC2URGh/jkKHU1M1IaMCBHwrt0dg3Ryw
- 25XmZEVjRe4vEtum0SJ98V+cTZmtYyBHf15Pw/Do6gEu3QmjT2EubgZ/h5MCro/TLBwO
- A/UIsvAeDXNpwQeixDMhNDoFbM1Kxl6pHf4DfJdO/AUI8rZb23oKsTTEd6Nu0N7mpKMy
- a6LALu9HzYhsaEH+f0TrJWeoXWAOYbTw9Buc3YYjr8fui7ygMDUkoa07lTXVKhaz/Kcz
- 2cPA==
-X-Gm-Message-State: APjAAAW42suXdNg74WJUbPCrdT98OCZW0+P/1+YwWuKwOhJm/mMj2pmj
- gDxrhPz3JP4/070Ooea74Vc=
-X-Google-Smtp-Source: APXvYqwEIBO0HUUhwbizywQBCuPRuVg1n39Piy2auQdE/pI+TMT3UAMwtCZuG87VoUjDWaXj2jh6Tw==
-X-Received: by 2002:a63:6b46:: with SMTP id g67mr27070741pgc.45.1561407856158; 
- Mon, 24 Jun 2019 13:24:16 -0700 (PDT)
+ bh=6pLaaiZ1mPQUewloYg+pN5Ez3zRBpU86Cu11UBdtbVo=;
+ b=nhT8Dcm60VO+Gr2voTkmQF34OpuGS+ezlMmnEOG40Ni/FxZz1BFWhUzqN/4Qyz2sJc
+ 2E89TOOzUUBKuqAIi0AIhHKN6ulAfGm/NT9bQ3Z2MbOW0xYlRc3xCDUt5VVAJTvN46c7
+ 6xN8JDqaEmEB0eyqHVXqVrr1tXuBc3psKTMl81gKOkIkVU2m57IKFwTIClJmha60uWDq
+ vgprxfKbLWXkCpSJgALJ1LZIPzWpK6DjMBnKfwBtSWY7cOw/YOLsJJxJO88HeG05L/n9
+ fkusdJ/5wObBWi6RYJqscaLoP9I4wnMd6l5Gs5YAF7wbPwZyjlIIMCtX0O5bM2Nr+f2H
+ 8+sA==
+X-Gm-Message-State: APjAAAXM6hP5k74OSExi4ELb5q3yxJRk2ee0yKq+/jhYlyPnTJPi8A47
+ eiJYn63kPRKhcR2s231YB4g=
+X-Google-Smtp-Source: APXvYqyJu9hyZYX+v0WhCVWtmRqh0V9sWyFpT+5ZAMOBp00eRgVZm+6Ao8LkFmb1QEbmQInnufvd9Q==
+X-Received: by 2002:a17:902:522:: with SMTP id
+ 31mr141875367plf.296.1561407960629; 
+ Mon, 24 Jun 2019 13:26:00 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id u2sm293536pjv.30.2019.06.24.13.24.14
+ by smtp.gmail.com with ESMTPSA id r188sm8088823pfr.16.2019.06.24.13.25.59
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 24 Jun 2019 13:24:15 -0700 (PDT)
-Date: Tue, 25 Jun 2019 05:24:13 +0900
+ Mon, 24 Jun 2019 13:25:59 -0700 (PDT)
+Date: Tue, 25 Jun 2019 05:25:57 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Bart Van Assche <bvanassche@acm.org>
-Subject: Re: [PATCH nvme-cli 1/3] nvme-cli: Restore support for older gcc
- versions
-Message-ID: <20190624202413.GE6526@minwooim-desktop>
+Subject: Re: [PATCH nvme-cli 2/3] nvme-cli: Restore RHEL 7 compatibility
+Message-ID: <20190624202557.GF6526@minwooim-desktop>
 References: <20190624200521.28191-1-bvanassche@acm.org>
- <20190624200521.28191-2-bvanassche@acm.org>
+ <20190624200521.28191-3-bvanassche@acm.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190624200521.28191-2-bvanassche@acm.org>
+In-Reply-To: <20190624200521.28191-3-bvanassche@acm.org>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_132417_874701_0F522822 
-X-CRM114-Status: UNSURE (   6.71  )
+X-CRM114-CacheID: sfid-20190624_132601_130218_F51021ED 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -77,7 +77,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:530 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -101,17 +101,37 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>
+Cc: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
+ Christoph Hellwig <hch@lst.de>, Keith Busch <keith.busch@intel.com>,
+ Minwoo Im <minwoo.im.dev@gmail.com>,
+ Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-It looks good to me:
+On 19-06-24 13:05:20, Bart Van Assche wrote:
+> With glibc version 2.24 and before the endianness conversion macros
+> return a value with an incorrect type. Avoid that this causes the
+> nvme-cli build to fail on e.g. RHEL 7. A side effect of this patch
+> is that it allows sparse to verify the type of the endianness
+> conversion functions.
+> 
+> See also https://sourceware.org/bugzilla/show_bug.cgi?id=16458
+> 
+> Cc: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
+> Cc: Minwoo Im <minwoo.im.dev@gmail.com>
+> Reported-by: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
+> Fixes: e68409e447b2 ("Remove superfluous casts")
+> Signed-off-by: Bart Van Assche <bvanassche@acm.org>
+
+Not only for REHL 7, Ubuntu 16.04 which is my VM has had same issue :)
 
 Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+
+Also for the build:
+
+Tested-by: Minwoo Im <minwoo.im.dev@gmail.com>
 
 _______________________________________________
 Linux-nvme mailing list
