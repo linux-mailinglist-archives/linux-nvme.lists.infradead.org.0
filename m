@@ -2,106 +2,35 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50EB35017C
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 07:49:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AAAB501EF
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 08:13:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YkmWlp/1YIBB7QicifMwYY18oqw3hGwBXv7KzXei8qg=; b=OTaeoEhUd70WrM
-	p3hmrQRc4UeSk8G+26TklUG1Y521z2FyQvGoy8+3OVQVsJ1dXFZthFVHVy00KKmgPtCrIMBEOcnSV
-	JUoo4Q+SMQt+HQZOypHdDY8VWP+HkFAXhh3dPyER5GPGWv9lqaL7qB2YyYATJca1f7i3ovZhk0IT3
-	i42YwmuZ0ibolGJruR+rt/BxfO6wTYVDVybKSBGNeIhyjMFz3HMlOzqcScSSXdQXeWYiBC5t0C7cG
-	/Ix1INfi0g9+CqfiF5bMR9Vl3ODvimGIDlpUlMwQvIVOySSgMnvSjlYHnRQ+ddV/wX+x5ekoZZCZ2
-	v8qLKShW/ut8qokrpzPQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qmoBOHzp5w7bVzrKierId2fvxvuQZs8o18EYwBN+JTo=; b=LOk+88qHQMfBsm
+	cGAeny/OOLGo/5gExwb+k6zOqv/knEvDn4fGwOwlMQpixqHMevZHLNof8L4uwbQjGaJW03nuQEEFA
+	ApU1fwv7ksfNsQFqubWJq2mrX4n1YbAJLLxYzA18vROrYrtL/i3NmyPJw9bGycn4ZZiQGm33fhmBM
+	4sVj4wDKaV2OXKPVCMFSbWWbgX9s+dJSk7Z92PlebwSIW9zICtzCc1S8FPqpgonvgKwQb2y9AaPCO
+	pqAUsOkIKbG4ASn3puC96D8KKNrSAn6MQNU4XIWyGOAU4SYS0mf3ENa4dEmkQOOmTYHYvoHTlJDXW
+	nq0L5ALUL0ApwHGFyaqw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfHrC-00028T-2n; Mon, 24 Jun 2019 05:49:34 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfHqB-0001Cs-Ac
- for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 05:48:33 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id C62A3AE1C;
- Mon, 24 Jun 2019 05:48:27 +0000 (UTC)
-Subject: Re: [PATCH 2/2] nvme: flush scan_work when resetting controller
-To: Sagi Grimberg <sagi@grimberg.me>, Hannes Reinecke <hare@suse.com>,
- Christoph Hellwig <hch@lst.de>
-References: <20190618101025.78840-1-hare@suse.de>
- <20190618101025.78840-3-hare@suse.de>
- <36c093c6-9fea-aa2f-affe-70957e0c5b1b@grimberg.me>
- <681a1c11-7d11-6e28-bc64-b14bef22c144@suse.com>
- <fe550375-fc5d-ff19-c303-6671b8713df6@grimberg.me>
- <d64a5902-139e-4119-ec75-3394e0b129f9@suse.de>
- <d84bf42f-c9fe-6af4-58cc-14195ddff931@grimberg.me>
- <68599577-450a-ade1-451c-f310e5094317@grimberg.me>
-From: Hannes Reinecke <hare@suse.de>
-Openpgp: preference=signencrypt
-Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
- mQINBE6KyREBEACwRN6XKClPtxPiABx5GW+Yr1snfhjzExxkTYaINHsWHlsLg13kiemsS6o7
- qrc+XP8FmhcnCOts9e2jxZxtmpB652lxRB9jZE40mcSLvYLM7S6aH0WXKn8bOqpqOGJiY2bc
- 6qz6rJuqkOx3YNuUgiAxjuoYauEl8dg4bzex3KGkGRuxzRlC8APjHlwmsr+ETxOLBfUoRNuE
- b4nUtaseMPkNDwM4L9+n9cxpGbdwX0XwKFhlQMbG3rWA3YqQYWj1erKIPpgpfM64hwsdk9zZ
- QO1krgfULH4poPQFpl2+yVeEMXtsSou915jn/51rBelXeLq+cjuK5+B/JZUXPnNDoxOG3j3V
- VSZxkxLJ8RO1YamqZZbVP6jhDQ/bLcAI3EfjVbxhw9KWrh8MxTcmyJPn3QMMEp3wpVX9nSOQ
- tzG72Up/Py67VQe0x8fqmu7R4MmddSbyqgHrab/Nu+ak6g2RRn3QHXAQ7PQUq55BDtj85hd9
- W2iBiROhkZ/R+Q14cJkWhzaThN1sZ1zsfBNW0Im8OVn/J8bQUaS0a/NhpXJWv6J1ttkX3S0c
- QUratRfX4D1viAwNgoS0Joq7xIQD+CfJTax7pPn9rT////hSqJYUoMXkEz5IcO+hptCH1HF3
- qz77aA5njEBQrDRlslUBkCZ5P+QvZgJDy0C3xRGdg6ZVXEXJOQARAQABtCpIYW5uZXMgUmVp
- bmVja2UgKFN1U0UgTGFicykgPGhhcmVAc3VzZS5kZT6JAkEEEwECACsCGwMFCRLMAwAGCwkI
- BwMCBhUIAgkKCwQWAgMBAh4BAheABQJOisquAhkBAAoJEGz4yi9OyKjPOHoQAJLeLvr6JNHx
- GPcHXaJLHQiinz2QP0/wtsT8+hE26dLzxb7hgxLafj9XlAXOG3FhGd+ySlQ5wSbbjdxNjgsq
- FIjqQ88/Lk1NfnqG5aUTPmhEF+PzkPogEV7Pm5Q17ap22VK623MPaltEba+ly6/pGOODbKBH
- ak3gqa7Gro5YCQzNU0QVtMpWyeGF7xQK76DY/atvAtuVPBJHER+RPIF7iv5J3/GFIfdrM+wS
- BubFVDOibgM7UBnpa7aohZ9RgPkzJpzECsbmbttxYaiv8+EOwark4VjvOne8dRaj50qeyJH6
- HLpBXZDJH5ZcYJPMgunghSqghgfuUsd5fHmjFr3hDb5EoqAfgiRMSDom7wLZ9TGtT6viDldv
- hfWaIOD5UhpNYxfNgH6Y102gtMmN4o2P6g3UbZK1diH13s9DA5vI2mO2krGz2c5BOBmcctE5
- iS+JWiCizOqia5Op+B/tUNye/YIXSC4oMR++Fgt30OEafB8twxydMAE3HmY+foawCpGq06yM
- vAguLzvm7f6wAPesDAO9vxRNC5y7JeN4Kytl561ciTICmBR80Pdgs/Obj2DwM6dvHquQbQrU
- Op4XtD3eGUW4qgD99DrMXqCcSXX/uay9kOG+fQBfK39jkPKZEuEV2QdpE4Pry36SUGfohSNq
- xXW+bMc6P+irTT39VWFUJMcSuQINBE6KyREBEACvEJggkGC42huFAqJcOcLqnjK83t4TVwEn
- JRisbY/VdeZIHTGtcGLqsALDzk+bEAcZapguzfp7cySzvuR6Hyq7hKEjEHAZmI/3IDc9nbdh
- EgdCiFatah0XZ/p4vp7KAelYqbv8YF/ORLylAdLh9rzLR6yHFqVaR4WL4pl4kEWwFhNSHLxe
- 55G56/dxBuoj4RrFoX3ynerXfbp4dH2KArPc0NfoamqebuGNfEQmDbtnCGE5zKcR0zvmXsRp
- qU7+caufueZyLwjTU+y5p34U4PlOO2Q7/bdaPEdXfpgvSpWk1o3H36LvkPV/PGGDCLzaNn04
- BdiiiPEHwoIjCXOAcR+4+eqM4TSwVpTn6SNgbHLjAhCwCDyggK+3qEGJph+WNtNU7uFfscSP
- k4jqlxc8P+hn9IqaMWaeX9nBEaiKffR7OKjMdtFFnBRSXiW/kOKuuRdeDjL5gWJjY+IpdafP
- KhjvUFtfSwGdrDUh3SvB5knSixE3qbxbhbNxmqDVzyzMwunFANujyyVizS31DnWC6tKzANkC
- k15CyeFC6sFFu+WpRxvC6fzQTLI5CRGAB6FAxz8Hu5rpNNZHsbYs9Vfr/BJuSUfRI/12eOCL
- IvxRPpmMOlcI4WDW3EDkzqNAXn5Onx/b0rFGFpM4GmSPriEJdBb4M4pSD6fN6Y/Jrng/Bdwk
- SQARAQABiQIlBBgBAgAPBQJOiskRAhsMBQkSzAMAAAoJEGz4yi9OyKjPgEwQAIP/gy/Xqc1q
- OpzfFScswk3CEoZWSqHxn/fZasa4IzkwhTUmukuIvRew+BzwvrTxhHcz9qQ8hX7iDPTZBcUt
- ovWPxz+3XfbGqE+q0JunlIsP4N+K/I10nyoGdoFpMFMfDnAiMUiUatHRf9Wsif/nT6oRiPNJ
- T0EbbeSyIYe+ZOMFfZBVGPqBCbe8YMI+JiZeez8L9JtegxQ6O3EMQ//1eoPJ5mv5lWXLFQfx
- f4rAcKseM8DE6xs1+1AIsSIG6H+EE3tVm+GdCkBaVAZo2VMVapx9k8RMSlW7vlGEQsHtI0FT
- c1XNOCGjaP4ITYUiOpfkh+N0nUZVRTxWnJqVPGZ2Nt7xCk7eoJWTSMWmodFlsKSgfblXVfdM
- 9qoNScM3u0b9iYYuw/ijZ7VtYXFuQdh0XMM/V6zFrLnnhNmg0pnK6hO1LUgZlrxHwLZk5X8F
- uD/0MCbPmsYUMHPuJd5dSLUFTlejVXIbKTSAMd0tDSP5Ms8Ds84z5eHreiy1ijatqRFWFJRp
- ZtWlhGRERnDH17PUXDglsOA08HCls0PHx8itYsjYCAyETlxlLApXWdVl9YVwbQpQ+i693t/Y
- PGu8jotn0++P19d3JwXW8t6TVvBIQ1dRZHx1IxGLMn+CkDJMOmHAUMWTAXX2rf5tUjas8/v2
- azzYF4VRJsdl+d0MCaSy8mUh
-Message-ID: <851186ed-47a9-321d-6f46-d0c0a958a5fe@suse.de>
-Date: Mon, 24 Jun 2019 07:48:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
+	id 1hfIDk-00076g-H4; Mon, 24 Jun 2019 06:12:52 +0000
+Received: from 213-225-6-159.nat.highway.a1.net ([213.225.6.159]
+ helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
+ id 1hfIDb-000712-ML; Mon, 24 Jun 2019 06:12:44 +0000
+Date: Mon, 24 Jun 2019 08:12:41 +0200
+From: Christoph Hellwig <hch@infradead.org>
+To: Jens Axboe <axboe@kernel.dk>
+Subject: [GIT PULL] nvme updates for 5.3
+Message-ID: <20190624061241.GA31634@infradead.org>
 MIME-Version: 1.0
-In-Reply-To: <68599577-450a-ade1-451c-f310e5094317@grimberg.me>
-Content-Language: en-US
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190623_224831_735101_9EDB3005 
-X-CRM114-Status: GOOD (  13.61  )
-X-Spam-Score: -2.3 (--)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,20 +42,107 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, linux-nvme@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Keith Busch <keith.busch@intel.com>, linux-block@vger.kernel.org,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gNi8yMS8xOSA2OjI2IFBNLCBTYWdpIEdyaW1iZXJnIHdyb3RlOgo+IFBpbmc/Cj4gCj4gSGFu
-bmVzIGRpZCB5b3UgZ2V0IHRvIGxvb2sgaW50byBteSBxdWVzdGlvbnM/Cj4gClllYWgsIEkgZGlk
-LCBidXQgYnVnemlsbGEgd2FzIGRvd24gb24gRnJpZGF5IHNvIEkgY291bGRuJ3QgbG9va3VwIGRl
-dGFpbHMuCk1vcmUgdG8gZm9sbG93IDotKQoKQ2hlZXJzLAoKSGFubmVzCi0tIApEci4gSGFubmVz
-IFJlaW5lY2tlCQkgICBUZWFtbGVhZCBTdG9yYWdlICYgTmV0d29ya2luZwpoYXJlQHN1c2UuZGUJ
-CQkgICAgICAgICAgICAgICArNDkgOTExIDc0MDUzIDY4OApTVVNFIExJTlVYIEdtYkgsIE1heGZl
-bGRzdHIuIDUsIDkwNDA5IE7DvHJuYmVyZwpHRjogRmVsaXggSW1lbmTDtnJmZmVyLCBNYXJ5IEhp
-Z2dpbnMsIFNyaSBSYXNpYWgKSFJCIDIxMjg0IChBRyBOw7xybmJlcmcpCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1udm1lIG1haWxpbmcgbGlz
-dApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
+A large chunk of NVMe updates for 5.3.  Highlights:
+
+ - improved PCIe suspent support (Keith Busch)
+ - error injection support for the admin queue (Akinobu Mita)
+ - Fibre Channel discovery improvements (James Smart)
+ - tracing improvements including nvmetc tracing support (Minwoo Im)
+ - misc fixes and cleanups (Anton Eidelman, Minwoo Im, Chaitanya Kulkarni)
+
+
+The following changes since commit 474a280036e8d319ef852f1dec59bedf4eda0107:
+
+  cgroup: export css_next_descendant_pre for bfq (2019-06-21 02:48:34 -0600)
+
+are available in the Git repository at:
+
+  git://git.infradead.org/nvme.git nvme-5.3
+
+for you to fetch changes up to 7e31d8215fd8cb1c13b47e23f1136545010e00de:
+
+  Documentation: nvme: add an example for nvme fault injection (2019-06-21 11:15:50 +0200)
+
+----------------------------------------------------------------
+Akinobu Mita (3):
+      nvme: prepare for fault injection into admin commands
+      nvme: enable to inject errors into admin commands
+      Documentation: nvme: add an example for nvme fault injection
+
+Anton Eidelman (1):
+      nvme: fix possible io failures when removing multipathed ns
+
+Chaitanya Kulkarni (2):
+      nvme-pci: set the errno on ctrl state change error
+      nvme-pci: clean up nvme_remove_dead_ctrl a bit
+
+James Smart (8):
+      nvmet: add transport discovery change op
+      nvmet-fc: add transport discovery change event callback support
+      nvme-fcloop: add support for nvmet discovery_event op
+      lpfc: add support to generate RSCN events for nport
+      lpfc: add nvmet discovery_event op support
+      lpfc: add support for translating an RSCN rcv into a discovery rescan
+      lpfc: add sysfs interface to post NVME RSCN
+      nvme-fc: add message when creating new association
+
+Keith Busch (2):
+      nvme: export get and set features
+      nvme-pci: use host managed power state for suspend
+
+Minwoo Im (10):
+      nvme: introduce nvme_is_fabrics to check fabrics cmd
+      nvme-pci: remove unnecessary zero for static var
+      nvme-pci: remove queue_count_ops for write_queues and poll_queues
+      nvme-pci: adjust irq max_vector using num_possible_cpus()
+      nvme-pci: properly report state change failure in nvme_reset_work
+      nvme-trace: do not export nvme_trace_disk_name
+      nvme-trace: move opcode symbol print to nvme.h
+      nvme-trace: support for fabrics commands in host-side
+      nvme-trace: print result and status in hex format
+      nvmet: introduce target-side trace
+
+ .../fault-injection/nvme-fault-injection.txt       |  56 ++++++
+ drivers/nvme/host/core.c                           |  45 +++--
+ drivers/nvme/host/fabrics.c                        |   2 +-
+ drivers/nvme/host/fault_inject.c                   |  41 +++--
+ drivers/nvme/host/fc.c                             |   6 +
+ drivers/nvme/host/nvme.h                           |  42 +++--
+ drivers/nvme/host/pci.c                            | 143 +++++++++++----
+ drivers/nvme/host/trace.c                          |  64 ++++++-
+ drivers/nvme/host/trace.h                          |  66 ++-----
+ drivers/nvme/target/Makefile                       |   3 +
+ drivers/nvme/target/core.c                         |  12 +-
+ drivers/nvme/target/discovery.c                    |   4 +
+ drivers/nvme/target/fabrics-cmd.c                  |   2 +-
+ drivers/nvme/target/fc.c                           |  13 +-
+ drivers/nvme/target/fcloop.c                       |  37 ++++
+ drivers/nvme/target/nvmet.h                        |   2 +
+ drivers/nvme/target/trace.c                        | 201 +++++++++++++++++++++
+ drivers/nvme/target/trace.h                        | 141 +++++++++++++++
+ drivers/scsi/lpfc/lpfc.h                           |   2 +
+ drivers/scsi/lpfc/lpfc_attr.c                      |  60 ++++++
+ drivers/scsi/lpfc/lpfc_crtn.h                      |   4 +
+ drivers/scsi/lpfc/lpfc_els.c                       | 127 +++++++++++++
+ drivers/scsi/lpfc/lpfc_hbadisc.c                   |  35 ++++
+ drivers/scsi/lpfc/lpfc_hw.h                        |   2 +
+ drivers/scsi/lpfc/lpfc_nvme.c                      |  44 +++++
+ drivers/scsi/lpfc/lpfc_nvmet.c                     |  17 ++
+ drivers/scsi/lpfc/lpfc_sli.c                       |   1 +
+ include/linux/nvme-fc-driver.h                     |   6 +
+ include/linux/nvme.h                               |  66 ++++++-
+ 29 files changed, 1110 insertions(+), 134 deletions(-)
+ create mode 100644 drivers/nvme/target/trace.c
+ create mode 100644 drivers/nvme/target/trace.h
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
