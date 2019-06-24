@@ -2,86 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1F1A51C12
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 22:13:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1096751C30
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 22:21:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AfTiiO9hkbQdCadzjxXGrC7674fj+AbPu4X15AeRitE=; b=WMPGvUf1fyMrCS
-	XnA132vxnA4Gl0kU+kyBlmuG+OdeEsSCDFMHK76B6lkYW29pRRAz7X0B2eCsYlh+oD+eY5pVPxsIC
-	buuRY860fjlIVJB80dgMeGrz7mAE/SS3QqWzwbp8RCDUXde0pdX5dS/d3LAFj54rOo+ajEp8ict/x
-	FkB2q9UvNDkMHEDRtIKpXaON//qM+zcx7fHM7OISw5e2ErDxjDRmLIDng7gbflZFXq4eHuyNedrgA
-	y6mi5gNo+jpBVLADrmZvHrVcn/BMg9TGjXgNwu2ZyVHVo1d8mGc8tz+2xvsLtAK9c3T+o3y/mnvtR
-	3U6cZXf2soO9ixxlJZUg==;
+	List-Owner; bh=c69MCpRs+Kd+DbuN7hIwS1zh72Q8jbJEyl4elLeBnJg=; b=p/D7Iz0TE0AEBm
+	KC8hXveHfEmY9Yd9FhFeuGwi4rObkAcYZRbh8OdIXCA/41LEHYtl24Gy25xzYwq2D6EcXZ43dXBLX
+	41INoNj9U20G39aIfNlZpd71CgHi4hSF0bZLy0hG04srgvSbnO3H8Q90ZbR5V4lejaS6Xs4rkQIcP
+	5PPOmBkUZqvBIxIlIoZb70RdfQ59QaIyfPR0ZbcWBZj4knjOkuhq7yfa946Vc1nw30TVsu+mkcWhg
+	4yq03+YuC5N8x4aEvsuXkL6K62Q1H3TZCEV8ezlLmQsjfZlHPtEOkIm66ituJz2QJBBTzf6pt05+j
+	TuS8B46H3Em6N51ecLWA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfVKs-0007x2-CZ; Mon, 24 Jun 2019 20:13:06 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hfVSq-00039g-Rr; Mon, 24 Jun 2019 20:21:20 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfVKl-0007w3-UN
- for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 20:13:01 +0000
-Received: by mail-pl1-x642.google.com with SMTP id t7so7501839plr.11
- for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 13:12:59 -0700 (PDT)
+ id 1hfVSk-000397-Fx
+ for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 20:21:15 +0000
+Received: by mail-pg1-x544.google.com with SMTP id n2so7687383pgp.11
+ for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 13:21:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=USqQq4RtkZv36krdefC1dbFXyRTkrhEsSnTWhHiiTX8=;
- b=UAq2Et+pia3d9R0qhpF83A5UD8W5EaC75PZwCmcojVBmj9F2Hd5oIW961tVXyMKD7C
- hEC08TQzOBAfOIRTuPBmiotLtC2+RxH5g3gw7BvahJEm7NhHG8suI2vZxwPttT+cjZEL
- CExcnFb8IRjqeuXOqPv774ZUfr3UqB2AA7HWXuV0NEfXOqf2bauGj5T2S8/6HYswHjhJ
- 029RkOopSH+uHZaupFpixjLVKa5II6QZWMa7JPwyvLiMYrQV8WaFuzaxN3K70YRB9/Xw
- 574ZX7VUYSsf/8DjRBYBXban/YVnPdFy40FrSFV2RjmhGm8ZlCf6jkcatD2+HXJSajzt
- R5cA==
+ bh=K2URUWLi/i37v7K+14kEpM0KZq8GpN2UCZhu67teNXY=;
+ b=OOw72oySzClnxongvl16fJuTXhexhrWE/q4y8lfFonZMTpCIt3o/TI1qLmOLR2poFw
+ MfAzSxygGpHJ7dcNfmkrhq+wSJDkxi9mi4U6vGEYqPo7Z0/SZ1u5HbBv+1kNr+Vl3u0s
+ F8yAH7yQmycnjpiTUwjoNzXjXm7Tg6Fin3f+eTmXn0ZFO85FDQsCrfdJqahzciKrXFkn
+ VQtvoffQWEM/CACMX83eHL+5qhZ0wFH8WFwCaB21G0nyLlO0jWCOic5j6LQuIJ8RBLjb
+ F9ijJXTLAzoaX+nRx8yJWTZWQF9CpAeH2Urym0CAUzdRTr+UxRzqN8KZXKi2KXakuC3k
+ XvCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=USqQq4RtkZv36krdefC1dbFXyRTkrhEsSnTWhHiiTX8=;
- b=T2ySjMrTZtT/BprO9MsYMM6LoN9q0tQQJIBu6SwI2B014h76a24RbzGJ3tNfa1btFF
- WjUoxs/LAfS+76SYtHyZ+CYx10JVYybuQVWULvutmpWKFWnjZdAo9YPuK0/CV6R10+PO
- /GsS0z548KMS/elMnc1Nq88R7YqJtZOSH3Tjc8y1RU0U83s3OQ43YRjiTdy8ir1Y+m7x
- 5WHZTyT8O7L4tXzakx70a0Gp44Bn3CIJRMocaGGsNQBvNPofmeh/YTBdHrBczwz4MI2s
- mZoF6TAim2MfFnWAUHjOL5YJL1giH5mmT5FwbK1NirLmLPpacmprYv06ZzzkWcec/LLT
- PwhQ==
-X-Gm-Message-State: APjAAAVIGuaS0k2byij0fAr690rDc9yCFGoHrM5UhXHhRXmhe5TNEuwh
- H0Bl+9P+x7chE72FhiXu/q0=
-X-Google-Smtp-Source: APXvYqzPi32d1jAllYMuwcsfTzleeJQdzD8IdW8C+BXnyAZqnrl6HAe2CEmCZYz1VuODNORP3ZlQrw==
-X-Received: by 2002:a17:902:8f93:: with SMTP id
- z19mr62437831plo.97.1561407179277; 
- Mon, 24 Jun 2019 13:12:59 -0700 (PDT)
+ bh=K2URUWLi/i37v7K+14kEpM0KZq8GpN2UCZhu67teNXY=;
+ b=bJaW5qEaKR1OUEMbnN13saK1gLZ6w9TIXoNhvOkSdQTBYfG3WWau0mA4kMIwO6ObSd
+ 2rBF50eXadoAn0+amsamRLsUbAQDNkilXcfmIvlejXtetw0aJLBeY0WVy/Bhie28OHjJ
+ 1F6EE4dawiBXh52rxiLP1Bz7n10Ui1AlXz3QzfHSNJiL7d+JcBVyG3zsS83nFJaNt40y
+ FS9Tq8Tj7Hya9XJUuXUAXws/vyMnrkHjDZyT3KnF08FWfb5dgYmcUq+F/V+B2HVqn0tu
+ F5JFKNjIImOBf455M3Vit4hDKgceO+BihHmyO6Y53SQu7JLG9AU35IPAj5yNuctfAUdc
+ HC0A==
+X-Gm-Message-State: APjAAAWJC/cMh2KI9tRLjji+i9sW6dW5ddRFnCwvbRH3GN5gRmWev3AB
+ mgGaJkJm5eMTFN8YMlQhNVM=
+X-Google-Smtp-Source: APXvYqzN3DSPGn+3YbngXKJ00yEQiBNAAdY0MNO6THf0uc/OgOi7WJGWhIs2NZDIA+kWIeC2dM5YLA==
+X-Received: by 2002:a63:52:: with SMTP id 79mr34365144pga.381.1561407673484;
+ Mon, 24 Jun 2019 13:21:13 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id g9sm9863715pgs.78.2019.06.24.13.12.57
+ by smtp.gmail.com with ESMTPSA id x25sm12526216pfm.48.2019.06.24.13.21.12
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 24 Jun 2019 13:12:58 -0700 (PDT)
-Date: Tue, 25 Jun 2019 05:12:56 +0900
+ Mon, 24 Jun 2019 13:21:12 -0700 (PDT)
+Date: Tue, 25 Jun 2019 05:21:10 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Weiping Zhang <zhangweiping@didiglobal.com>
-Subject: Re: [PATCH v3 2/5] nvme: add get_ams for nvme_ctrl_ops
-Message-ID: <20190624201256.GC6526@minwooim-desktop>
+Subject: Re: [PATCH v3 5/5] nvme: add support weighted round robin queue
+Message-ID: <20190624202110.GD6526@minwooim-desktop>
 References: <cover.1561385989.git.zhangweiping@didiglobal.com>
- <2c916063e19cc3f33376d7bb0fb8a5ff10ea42db.1561385989.git.zhangweiping@didiglobal.com>
+ <6e3b0f511a291dd0ce570a6cc5393e10d4509d0e.1561385989.git.zhangweiping@didiglobal.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <2c916063e19cc3f33376d7bb0fb8a5ff10ea42db.1561385989.git.zhangweiping@didiglobal.com>
+In-Reply-To: <6e3b0f511a291dd0ce570a6cc5393e10d4509d0e.1561385989.git.zhangweiping@didiglobal.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_131300_008698_A96DD43F 
-X-CRM114-Status: GOOD (  18.77  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20190624_132114_535483_C6AE3B9F 
+X-CRM114-Status: GOOD (  12.08  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
- 0.1 URIBL_SBL_A Contains URL's A record listed in the Spamhaus SBL
- blocklist [URIs: didiglobal.com]
- 0.6 URIBL_SBL Contains an URL's NS IP listed in the Spamhaus SBL
- blocklist [URIs: didiglobal.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
@@ -112,120 +107,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-06-24 22:29:05, Weiping Zhang wrote:
-> The get_ams() will return the AMS(Arbitration Mechanism Selected)
-> from the driver.
-> 
-> Signed-off-by: Weiping Zhang <zhangweiping@didiglobal.com>
-
-Hello, Weiping.
-
-Sorry, but I don't really get what your point is here.  Could you please
-elaborate this patch a little bit more?  The commit description just
-says a function would just return the AMS from nowhere..
-
-> ---
->  drivers/nvme/host/core.c | 9 ++++++++-
->  drivers/nvme/host/nvme.h | 1 +
->  drivers/nvme/host/pci.c  | 6 ++++++
->  include/linux/nvme.h     | 1 +
->  4 files changed, 16 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index b2dd4e391f5c..4cb781e73123 100644
-> --- a/drivers/nvme/host/core.c
-> +++ b/drivers/nvme/host/core.c
-> @@ -1943,6 +1943,7 @@ int nvme_enable_ctrl(struct nvme_ctrl *ctrl, u64 cap)
->  	 */
->  	unsigned dev_page_min = NVME_CAP_MPSMIN(cap) + 12, page_shift = 12;
->  	int ret;
-> +	u32 ams = NVME_CC_AMS_RR;
+> @@ -2627,7 +2752,30 @@ static int nvme_pci_get_address(struct nvme_ctrl *ctrl, char *buf, int size)
 >  
->  	if (page_shift < dev_page_min) {
->  		dev_err(ctrl->device,
-> @@ -1951,11 +1952,17 @@ int nvme_enable_ctrl(struct nvme_ctrl *ctrl, u64 cap)
->  		return -ENODEV;
->  	}
->  
-> +	/* get Arbitration Mechanism Selected */
-> +	if (ctrl->ops->get_ams) {
+>  static void nvme_pci_get_ams(struct nvme_ctrl *ctrl, u32 *ams)
+>  {
+> -	*ams = NVME_CC_AMS_RR;
+> +	/* if deivce doesn't support WRR, force reset wrr queues to 0 */
+> +	if (!NVME_CAP_AMS_WRRU(ctrl->cap)) {
+> +		wrr_low_queues = 0;
+> +		wrr_medium_queues = 0;
+> +		wrr_high_queues = 0;
+> +		wrr_urgent_queues = 0;
 
-I just wonder if this check will be valid because this patch just
-register the function nvme_pci_get_ams() without any conditions.
+Could we avoid this kind of reset variables in get_XXX() function?  I
+guess it would be great if it just tries to get some value which is
+mainly focused to do.
 
-> +		ctrl->ops->get_ams(ctrl, &ams);
-> +		ams &= NVME_CC_AMS_MASK;
+> +
+> +		*ams = NVME_CC_AMS_RR;
+> +		ctrl->wrr_enabled = false;
+> +		return;
 > +	}
 > +
->  	ctrl->page_size = 1 << page_shift;
->  
->  	ctrl->ctrl_config = NVME_CC_CSS_NVM;
->  	ctrl->ctrl_config |= (page_shift - 12) << NVME_CC_MPS_SHIFT;
-> -	ctrl->ctrl_config |= NVME_CC_AMS_RR | NVME_CC_SHN_NONE;
-> +	ctrl->ctrl_config |= ams | NVME_CC_SHN_NONE;
->  	ctrl->ctrl_config |= NVME_CC_IOSQES | NVME_CC_IOCQES;
->  	ctrl->ctrl_config |= NVME_CC_ENABLE;
->  
-> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-> index ea45d7d393ad..9c7e9217f78b 100644
-> --- a/drivers/nvme/host/nvme.h
-> +++ b/drivers/nvme/host/nvme.h
-> @@ -369,6 +369,7 @@ struct nvme_ctrl_ops {
->  	void (*submit_async_event)(struct nvme_ctrl *ctrl);
->  	void (*delete_ctrl)(struct nvme_ctrl *ctrl);
->  	int (*get_address)(struct nvme_ctrl *ctrl, char *buf, int size);
-> +	void (*get_ams)(struct nvme_ctrl *ctrl, u32 *ams);
+> +	/*
+> +	 * if device support WRR, check wrr queue count, all wrr queues are
+> +	 * 0, don't enable device's WRR.
+> +	 */
+> +	if ((wrr_low_queues + wrr_medium_queues + wrr_high_queues +
+> +				wrr_urgent_queues) > 0) {
+> +		*ams = NVME_CC_AMS_WRRU;
+> +		ctrl->wrr_enabled = true;
+> +	} else {
+> +		*ams = NVME_CC_AMS_RR;
+> +		ctrl->wrr_enabled = false;
 
-Can we just have a return value for the AMS value?
+These two line can be merged into above condition:
 
->  };
->  
->  #ifdef CONFIG_FAULT_INJECTION_DEBUG_FS
-> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-> index 189352081994..5d84241f0214 100644
-> --- a/drivers/nvme/host/pci.c
-> +++ b/drivers/nvme/host/pci.c
-> @@ -2627,6 +2627,11 @@ static int nvme_pci_get_address(struct nvme_ctrl *ctrl, char *buf, int size)
->  	return snprintf(buf, size, "%s", dev_name(&pdev->dev));
->  }
->  
-> +static void nvme_pci_get_ams(struct nvme_ctrl *ctrl, u32 *ams)
-> +{
-> +	*ams = NVME_CC_AMS_RR;
-> +}
-> +
->  static const struct nvme_ctrl_ops nvme_pci_ctrl_ops = {
->  	.name			= "pcie",
->  	.module			= THIS_MODULE,
-> @@ -2638,6 +2643,7 @@ static const struct nvme_ctrl_ops nvme_pci_ctrl_ops = {
->  	.free_ctrl		= nvme_pci_free_ctrl,
->  	.submit_async_event	= nvme_pci_submit_async_event,
->  	.get_address		= nvme_pci_get_address,
-> +	.get_ams		= nvme_pci_get_ams,
-
-Question: Do we really need this being added to nvme_ctrl_ops?
-
-Also If 5th patch will make this function much more than this, then it
-would be great if you describe this kind of situation in description :)
-
->  };
->  
->  static int nvme_dev_map(struct nvme_dev *dev)
-> diff --git a/include/linux/nvme.h b/include/linux/nvme.h
-> index da5f696aec00..8f71451fc2fa 100644
-> --- a/include/linux/nvme.h
-> +++ b/include/linux/nvme.h
-> @@ -156,6 +156,7 @@ enum {
->  	NVME_CC_AMS_RR		= 0 << NVME_CC_AMS_SHIFT,
->  	NVME_CC_AMS_WRRU	= 1 << NVME_CC_AMS_SHIFT,
->  	NVME_CC_AMS_VS		= 7 << NVME_CC_AMS_SHIFT,
-> +	NVME_CC_AMS_MASK	= 7 << NVME_CC_AMS_SHIFT,
->  	NVME_CC_SHN_NONE	= 0 << NVME_CC_SHN_SHIFT,
->  	NVME_CC_SHN_NORMAL	= 1 << NVME_CC_SHN_SHIFT,
->  	NVME_CC_SHN_ABRUPT	= 2 << NVME_CC_SHN_SHIFT,
-> -- 
-> 2.14.1
-> 
+	if (!NVME_CAP_AMS_WRRU(ctrl->cap) ||
+		wrr_low_queues + wrr_medium_queues + wrr_high_queues +
+			wrr_urgent_queues <= 0) {
+		*ams = NVME_CC_AMS_RR;
+		ctrl->wrr_enabled = false;
+	}
 
 _______________________________________________
 Linux-nvme mailing list
