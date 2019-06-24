@@ -2,100 +2,94 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEFC351ABE
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 20:35:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 10A2251AEF
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 20:46:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Date:Subject:In-Reply-To:References:To:
-	From:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UJ3oe4w0nRySGHSLvthMg9MuzZ22s09zy8N5x0ilp0E=; b=D7e7cG26yNQ1W/SaF5LrBTMMn
-	0YTPmU/KLdDAiKtqOqj9T9J9saGWDnXZoKxtXtJflm61TH0TnJbH4bWHSxo3GmP9shzlYxE0p2/iV
-	qWvhO8e1/asj084jzlSghjBDXRUw54c7mMmG8eSir7/3317mj0hn3nJB3bfSBV22uUItYR9KvNZAd
-	VO/tC0Eg3cleMcJD5tIQ8E2wLtlSJYGui3r3yPhXNqVe1A6t7TqbCQudH82UH1Mf9uEBSuh2rzeLf
-	spGiXuRGntaxQRQAmh/D7IHRM38iddVjz/PAnIhXEaCxo1JnZhKbIFPb90pAxKSAvAbuw48PC3VEa
-	So7LgstfA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aFOKPByBoVsnUFRrQVHwq1kf3m5645ZH0azJUrSrP88=; b=svY4ovfsLlw+3M
+	u9SoOYUDnoYQGMfnZ3zbAPhcgcz4zTbVVKJ+/P/lmrNn31hAFAXYmvQwHMpk4afS5x5WlPgddcRRS
+	RbLLZ4eNDgYsA1gfrI1fXUyQUwy27akHm8lu5sVAy7G0DCd3Ur/PoULI1T9UvN1/gyP7E6E+XbuWh
+	prWkMCgyb1r2fVlKVN5vKo1H0EXoQBsWYiHrxyFFp+jIFBfwGQtm8/K9KaFdoIp7fUJL4YIBENAFh
+	WnYzvvP2aj/v9w9BQwZoMklJ4p/XLf/Yo8SguUu1lThiqPhgebtARGWXRUzQ6z+b1eW2F32Q4tdx8
+	9PI8gCYW0CbwN5UFgSqw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfToV-0004w0-HS; Mon, 24 Jun 2019 18:35:35 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1hfTzI-0000kd-0O; Mon, 24 Jun 2019 18:46:44 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfToO-0004vY-Sg
- for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 18:35:30 +0000
-Received: by mail-wr1-x441.google.com with SMTP id d18so14997447wrs.5
- for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 11:35:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=zadara-com.20150623.gappssmtp.com; s=20150623;
- h=message-id:from:to:cc:references:in-reply-to:subject:date
- :mime-version:content-transfer-encoding:importance;
- bh=g/RqNnnqPMm2sJpnSJBkLA9sf3h/S2eBghZjJHIQmC4=;
- b=tkOhJg/jaGwiJGoE9700MJ1euLv39jNlk/Rfa+sInkwYTV+orSal9Kgxb4AHQ3SUtE
- QM+VeWXFmKV5BMtyrwuGLKq/2MO6d4uPO81NNpgAWPKp7gKCeUMV9w6CCwCKByLThExR
- m3mFCiZtwIyhq5F+1UTnieaDmI52791OjQ0Na7gE8cX3wHLsZhILDK301BpQivHC8sGt
- mnuVlJyq128tDVs31WEN438wCtQPZbwv+CuIDfXPkJFTN6l6JC17jUFLDoYqtBGcfD2f
- hIfD9hPbZfUbNNuQu7CMFyVHwU+9pbpyYdmkSRJ5TeifgxiAzNayiq2EbCW6DRk7bxwA
- OZDQ==
+ id 1hfTzB-0000jx-Fb
+ for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 18:46:39 +0000
+Received: by mail-pl1-x642.google.com with SMTP id cl9so7384338plb.10
+ for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 11:46:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=dPpJeevT3H2ww/E5O4EQBlOOyrHr2rPWUCxJmzA2JZA=;
+ b=ofPlwK87YGf+12+EVbIl9+4fP1BPMsb/sIw1KLD4B2E5W0WFNuAGUbDus8lWr1xor9
+ ksLZsHrjgsh6xoyZlf5TMvEZ2NwrHfvZ5YtQuIaNgOaL1v/mhqAEg3UQvTfNnhKz3hWV
+ zi/59fFI42az/zLXi70tVGkVI0os5hnE7hKPkqtKnYpwPTVv2OW0bGpj5robPnChRvvA
+ oEoChnEiohAzdxfSu6XFMXzPB6bBEuit8MmMWzVxrBjZPj6mha9RFBfEe+s7WmUaoC33
+ Zxeqtk7LlBmjuq/5+N8/+AxiZcf9MAgvGewWH6dznPc397xjFf2r2CR0+JneOhdlO5ir
+ boUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:from:to:cc:references:in-reply-to
- :subject:date:mime-version:content-transfer-encoding:importance;
- bh=g/RqNnnqPMm2sJpnSJBkLA9sf3h/S2eBghZjJHIQmC4=;
- b=NIO+YqLMOihKRssp+eDN5Jn+tYHkOATsUuhzUfn1l6yEw2AD4XJ0BRMRCJFiJRFoFs
- 9RiqhE1waWBptFge7o2KFHhJ7Bu0yj0gabcVTV/8E6Bi/19h0P4vYBGOOpU/6QjPaW5f
- LGsyXInUYunOFin14HH3TVkZW559DHEX/YGla0ftmc0OMI6oiK+jKdLa6Q8VldoAXdvO
- 4Zthg7Ufdi0tzzYqwDCfecEtNPkXF+Shh62aEkM03A1a/dXOiDJFRF7vzVt0NwlRhQgz
- yMGjTRa9iy7tBn7TMm7NpV5cCArXOJrUnz8D7Yr7uMgCQoBIUs8djkeM1K7t2VJyp2W9
- I7vQ==
-X-Gm-Message-State: APjAAAVNWwu2pb9PknmHN0+/x33gEu6DlDSykebyAl2ikOAM2tQIHWVu
- FZOvqmVi6sGt+wGI3i7ZhpYfRA==
-X-Google-Smtp-Source: APXvYqwEK2v2VyTPrue158+/ktLp5EgBsdZgFBV+OX3uws2yz9OJ/yUFBkFgWGLizZPINpfQRPO6Cg==
-X-Received: by 2002:a05:6000:124a:: with SMTP id
- j10mr9871211wrx.191.1561401326812; 
- Mon, 24 Jun 2019 11:35:26 -0700 (PDT)
-Received: from alyakaslap ([82.166.81.77])
- by smtp.gmail.com with ESMTPSA id a67sm260359wmh.40.2019.06.24.11.35.25
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 24 Jun 2019 11:35:26 -0700 (PDT)
-Message-ID: <71727394A2834938B4CC9C104EA6B650@alyakaslap>
-From: "Alex Lyakas" <alex@zadara.com>
-To: "Minwoo Im" <minwoo.im.dev@gmail.com>
-References: <49a9c722-72f4-bce9-b368-ece078e1e03a@grimberg.me>
- <20190610124925.GA20319@minwooim-desktop>
- <CAOSXXT6BJD8tnus6=vWh6dr9owkVSJdQ_f1icG9Kdq7SpF9Pzg@mail.gmail.com>
- <20190610140650.GA25273@minwooim-desktop>
- <CGME20190610235716epcas4p2715a468530e87b74c60543e8077a0481@epcms2p4>
- <20190611051448epcms2p4637f4b9209d0b9292e0db2b3be1dcced@epcms2p4>
- <C98BA6B1D6A342DAA10DA3CA561EA768@alyakaslap>
- <20190623115425.GB26212@minwooim-desktop>
- <20190623115735.GC26212@minwooim-desktop>
-In-Reply-To: <20190623115735.GC26212@minwooim-desktop>
-Subject: Re: [RFC] mismatch between chardev and blkdev node names
-Date: Mon, 24 Jun 2019 21:35:24 +0300
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=dPpJeevT3H2ww/E5O4EQBlOOyrHr2rPWUCxJmzA2JZA=;
+ b=RB55iuK5xEptUHO4+It0ILIzGLFlt8swopm8I5OWpEhw63EGhUXiIPi9DxdBENIWsI
+ 8HSwclXS/UPSskasT6Fp+atAgqvHt918VAtXjLFKhW9yjxa5tWXC1fmVcJmTHaQmSp0+
+ HkCjpPLslciZBfz7JI3+FWKhR/5f2/3JnwPvOckco/PXobGKR2HZzuAqazUAsEsVHbuQ
+ piJEeatiZEb6i/JthJ9DkxRvC9w9NZidZuYv9rB/n1WETlVpt0b/smtZ1q7Z3xk/sQf/
+ 2DqqsHZrDNfXx4u6ABNq+eY9kzhqsSwtMHjkl/kDI1XfC9B57vb/FsltLydPKPyWEvxW
+ CQ1w==
+X-Gm-Message-State: APjAAAWN1F8fOP5xyeXYZlhYScqloQmSHrh7P08MG6W75v0YiBOG3wR6
+ DjxI+3CX1DXXHxCf6kaTj5E=
+X-Google-Smtp-Source: APXvYqywYwpCj5nI5vr5wqYtqsXPNojV6fVPIEYrwrTmjsgUDziOErZuPqASx1VZBGY8/d9sZWYNNA==
+X-Received: by 2002:a17:902:aa0a:: with SMTP id
+ be10mr145559248plb.293.1561401996339; 
+ Mon, 24 Jun 2019 11:46:36 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id t17sm3771717pgg.48.2019.06.24.11.46.34
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 24 Jun 2019 11:46:35 -0700 (PDT)
+Date: Tue, 25 Jun 2019 03:46:32 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: Bart Van Assche <bvanassche@acm.org>
+Subject: Re: [PATCH nvme-cli 01/13] Remove superfluous casts
+Message-ID: <20190624184632.GA6526@minwooim-desktop>
+References: <20190619173701.8263-1-bvanassche@acm.org>
+ <20190619173701.8263-2-bvanassche@acm.org>
+ <87tvcfnw05.fsf@solarflare.com>
+ <4fbac30a-51f0-95a7-7146-28805103f6a8@acm.org>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-Importance: Normal
-X-Mailer: Microsoft Windows Live Mail 16.4.3528.331
-X-MimeOLE: Produced By Microsoft MimeOLE V16.4.3528.331
+Content-Disposition: inline
+In-Reply-To: <4fbac30a-51f0-95a7-7146-28805103f6a8@acm.org>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_113528_992487_BE271910 
-X-CRM114-Status: GOOD (  12.27  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20190624_114637_556657_FBA527E1 
+X-CRM114-Status: GOOD (  15.53  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
  [list.dnswl.org]
- 0.2 STOX_REPLY_TYPE        No description available.
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -108,53 +102,94 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-nvme <linux-nvme@lists.infradead.org>,
- Minwoo Im <minwoo.im.dev@gmail.com>, Sagi Grimberg <sagi@grimberg.me>,
- Keith Busch <keith.busch@gmail.com>, Minwoo Im <minwoo.im@samsung.com>
+Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
+ Keith Busch <keith.busch@intel.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
+ Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Minwoo Im,
+On 19-06-24 06:55:21, Bart Van Assche wrote:
+> On 6/24/19 3:00 AM, Mikhail Skorzhinskii wrote:
+> > I'm not completely sure that anyone interesting in fixing this, but this
+> > change breaks compilation on anything with glibc v2.24 or lower. This is
+> > due to long lasting bug #16458[1] which was fixed 2 years ago and landed
+> > in glibc v2.25.
+> > 
+> > I noticed it due to compiling it in rhel7\centos7 which is using glibc
+> > v2.17.
+> 
+> How about restoring RHEL 7 compatibility with the (untested) patch below?
 
-Thanks for the explanation.
+Bart,
 
-Alex.
+It works for me.
 
-
------Original Message----- 
-From: Minwoo Im
-Sent: Sunday, June 23, 2019 2:57 PM
-To: Alex Lyakas
-Cc: Sagi Grimberg ; Keith Busch ; Minwoo Im ; linux-nvme ; Minwoo Im
-Subject: Re: [RFC] mismatch between chardev and blkdev node names
-
-On 19-06-23 20:54:25, Minwoo Im wrote:
-> On 19-06-23 11:13:54, Alex Lyakas wrote:
-> > Hello,
-> >
-> > if we look at the UDEV DEVPATH propertys of a particular nvme block 
-> > device,
-> > for example:
-> >
-> > DEVPATH=/devices/virtual/nvme-fabrics/ctl/nvmeX/nvmeYnZ
-> >
-> > Would it be correct to say that "nvmeX" is the controller instance for 
-> > this
-> > particular block device (or one of the instances)?
->
-> Yes, for the above path, The corresponding blkdev of the nvmeX subsystem
-> is nvmeYnZ.  We just need to be aware if the MULTIPATH is enabled or
-
-I mean if subsystem has multiple namespaces, then nvmeYnZ is one of
-them.
-
-> not.  If so, the X will be a subsystem instance which can be checked by
-> nvme list-subsys.  If not, the X is the controller instance name.
->
-> Thanks, 
-
+> 
+> Thanks,
+> 
+> Bart.
+> 
+> diff --git a/nvme.h b/nvme.h
+> index a149005a0425..ecac52d4d172 100644
+> --- a/nvme.h
+> +++ b/nvme.h
+> @@ -119,19 +119,31 @@ struct nvme_bar_cap {
+>  #define __force
+>  #endif
+> 
+> -#define cpu_to_le16(x) \
+> -	((__force __le16)htole16(x))
+> -#define cpu_to_le32(x) \
+> -	((__force __le32)htole32(x))
+> -#define cpu_to_le64(x) \
+> -	((__force __le64)htole64(x))
+> -
+> -#define le16_to_cpu(x) \
+> -	le16toh((__force __u16)(x))
+> -#define le32_to_cpu(x) \
+> -	le32toh((__force __u32)(x))
+> -#define le64_to_cpu(x) \
+> -	le64toh((__force __u64)(x))
+> +static inline __le16 cpu_to_le16(uint16_t x)
+> +{
+> +	return ((__force __le16)htole16(x));
+> +}
+> +static inline __le32 cpu_to_le32(uint32_t x)
+> +{
+> +	return ((__force __le32)htole32(x));
+> +}
+> +static inline __le64 cpu_to_le64(uint64_t x)
+> +{
+> +	return ((__force __le64)htole64(x));
+> +}
+> +
+> +static inline uint16_t le16_to_cpu(__le16 x)
+> +{
+> +	return le16toh((__force __u16)x);
+> +}
+> +static inline uint32_t le32_to_cpu(__le32 x)
+> +{
+> +	return le32toh((__force __u32)x);
+> +}
+> +static inline uint64_t le64_to_cpu(__le64 x)
+> +{
+> +	return le64toh((__force __u64)x);
+> +}
+> 
+>  #define MAX_LIST_ITEMS 256
+>  struct list_item {
+> -- 
+> 2.21.0
+> 
+> 
+> _______________________________________________
+> Linux-nvme mailing list
+> Linux-nvme@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-nvme
 
 _______________________________________________
 Linux-nvme mailing list
