@@ -2,42 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41DD250DFD
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 16:29:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DD8750E07
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 16:30:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SOG4H1Y3bb4QzyOR1Vq2OH+A8hGpDDiqO3vr5dilP4s=; b=OQVM7NJEKExGQx
-	QQfGrLTBlRGxvExbjRXjkqXmIN2+N5axPQdXvZXaS48Za6AfHmNif2Rxj4bMh9+5gYhHjXxLcRssg
-	BpNVCzrF0hRNmixx6BjqGSBWUhmOEtslLpY0MrXKhOwQRRyvx2++aT+ExXxOGjx2st5HMLUDSYk8m
-	zllP5sMRRSf5OVOvUqzuiS5091o6o5P9Q/eM6yZR4HUSV4LkVeQUrqQN0jZ3kQWduNE9GknrfLrN7
-	kSszjaxXYQiwgXhHtherqgB3RxoC/5FFvC0L35d8PawDheVuDH6EZ+qrMXJLabQE/m7jLlSkauwa6
-	cuTfqzP132De2zTQBs0Q==;
+	List-Owner; bh=w6t4livaeYw5VP6KdFI9JFwzcDSHF3434pJDvMycahk=; b=TxjlJ11TNimySE
+	IobwEkWF6m+ar/3HycB2xw5XHB/Oc1SeLuxhJH8MSo7mpqhoemBjKzEqCw2XVR/gsdXjBu71sMTgg
+	27bW9yMtpoL/fPMljuGUgkNJfbuHLiGgp7dbVlOIwBAp9VPzniRp12uV46kCgCSQmU9XnGmLzm+Va
+	9DGE5sPWqW2Fm2hcG3hlQktvO+OWplPGQWkJpfniKhkBSFh7G3TiORl89E7QISfWxiiSZQ/tUONOU
+	epHxBIE3+NctPO4LEmSzUYabFwusxgJ/L72qwZ5r8Bq2VZxrpg1KDPCOACI/QQCYpFE5onHK0H650
+	VguI0GKov8zPOm7qcGpw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfPyU-0001VH-8o; Mon, 24 Jun 2019 14:29:38 +0000
-Received: from mx2.didichuxing.com ([36.110.17.22] helo=bsf01.didichuxing.com)
+	id 1hfPyq-0001kd-Rr; Mon, 24 Jun 2019 14:30:01 +0000
+Received: from mx2.didichuxing.com ([36.110.17.22] helo=bsf02.didichuxing.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfPy1-0001MC-Sv
- for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 14:29:12 +0000
-X-ASG-Debug-ID: 1561386547-0e40886efb18f3b0001-VMfPqL
-Received: from BJEXCAS05.didichuxing.com (bogon [172.20.36.127]) by
- bsf01.didichuxing.com with ESMTP id QZ9Rl3n5RC25VWHP;
- Mon, 24 Jun 2019 22:29:07 +0800 (CST)
+ id 1hfPyG-0001Xi-Fm
+ for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 14:29:38 +0000
+X-ASG-Debug-ID: 1561386560-0e41086a0c1785e0001-VMfPqL
+Received: from BJEXCAS07.didichuxing.com (bogon [172.20.36.204]) by
+ bsf02.didichuxing.com with ESMTP id fq8g7KvknyPVSe5D;
+ Mon, 24 Jun 2019 22:29:20 +0800 (CST)
 X-Barracuda-Envelope-From: zhangweiping@didiglobal.com
 Received: from 192.168.3.9 (172.22.50.20) by BJSGEXMBX03.didichuxing.com
  (172.20.15.133) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Mon, 24 Jun
- 2019 22:29:06 +0800
-Date: Mon, 24 Jun 2019 22:29:05 +0800
+ 2019 22:29:20 +0800
+Date: Mon, 24 Jun 2019 22:29:19 +0800
 From: Weiping Zhang <zhangweiping@didiglobal.com>
 To: <axboe@kernel.dk>, <tj@kernel.org>, <hch@lst.de>, <bvanassche@acm.org>,
  <keith.busch@intel.com>, <minwoo.im.dev@gmail.com>
-Subject: [PATCH v3 2/5] nvme: add get_ams for nvme_ctrl_ops
-Message-ID: <2c916063e19cc3f33376d7bb0fb8a5ff10ea42db.1561385989.git.zhangweiping@didiglobal.com>
-X-ASG-Orig-Subj: [PATCH v3 2/5] nvme: add get_ams for nvme_ctrl_ops
+Subject: [PATCH v3 3/5] nvme-pci: rename module parameter write_queues to
+ read_queues
+Message-ID: <d61b1b9a31c3d2fae9ece26bcd5f4504b25f059f.1561385989.git.zhangweiping@didiglobal.com>
+X-ASG-Orig-Subj: [PATCH v3 3/5] nvme-pci: rename module parameter write_queues
+ to read_queues
 Mail-Followup-To: axboe@kernel.dk, tj@kernel.org, hch@lst.de,
  bvanassche@acm.org, keith.busch@intel.com, minwoo.im.dev@gmail.com,
  linux-block@vger.kernel.org, cgroups@vger.kernel.org,
@@ -50,11 +52,11 @@ User-Agent: Mutt/1.5.21 (2010-09-15)
 X-Originating-IP: [172.22.50.20]
 X-ClientProxiedBy: BJEXCAS03.didichuxing.com (172.20.36.245) To
  BJSGEXMBX03.didichuxing.com (172.20.15.133)
-X-Barracuda-Connect: bogon[172.20.36.127]
-X-Barracuda-Start-Time: 1561386547
-X-Barracuda-URL: https://bsf01.didichuxing.com:443/cgi-mod/mark.cgi
+X-Barracuda-Connect: bogon[172.20.36.204]
+X-Barracuda-Start-Time: 1561386560
+X-Barracuda-URL: https://bsf02.didichuxing.com:443/cgi-mod/mark.cgi
 X-Virus-Scanned: by bsmtpd at didichuxing.com
-X-Barracuda-Scan-Msg-Size: 3241
+X-Barracuda-Scan-Msg-Size: 2354
 X-Barracuda-BRTS-Status: 1
 X-Barracuda-Bayes: INNOCENT GLOBAL 0.0000 1.0000 -2.0210
 X-Barracuda-Spam-Score: -2.02
@@ -66,8 +68,8 @@ X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.73067
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_072910_493680_FA84314B 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20190624_072926_074754_BD8594F0 
+X-CRM114-Status: GOOD (  12.21  )
 X-Spam-Score: 0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.7 points)
@@ -99,96 +101,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The get_ams() will return the AMS(Arbitration Mechanism Selected)
-from the driver.
+Now nvme support three type hardware queues, read, poll and default,
+this patch rename write_queues to read_queues to set the number of
+read queues more explicitly. This patch alos is prepared for nvme
+support WRR(weighted round robin) that we can get the number of
+each queue type easily.
 
 Signed-off-by: Weiping Zhang <zhangweiping@didiglobal.com>
 ---
- drivers/nvme/host/core.c | 9 ++++++++-
- drivers/nvme/host/nvme.h | 1 +
- drivers/nvme/host/pci.c  | 6 ++++++
- include/linux/nvme.h     | 1 +
- 4 files changed, 16 insertions(+), 1 deletion(-)
+ drivers/nvme/host/pci.c | 22 ++++++++++------------
+ 1 file changed, 10 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index b2dd4e391f5c..4cb781e73123 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -1943,6 +1943,7 @@ int nvme_enable_ctrl(struct nvme_ctrl *ctrl, u64 cap)
- 	 */
- 	unsigned dev_page_min = NVME_CAP_MPSMIN(cap) + 12, page_shift = 12;
- 	int ret;
-+	u32 ams = NVME_CC_AMS_RR;
- 
- 	if (page_shift < dev_page_min) {
- 		dev_err(ctrl->device,
-@@ -1951,11 +1952,17 @@ int nvme_enable_ctrl(struct nvme_ctrl *ctrl, u64 cap)
- 		return -ENODEV;
- 	}
- 
-+	/* get Arbitration Mechanism Selected */
-+	if (ctrl->ops->get_ams) {
-+		ctrl->ops->get_ams(ctrl, &ams);
-+		ams &= NVME_CC_AMS_MASK;
-+	}
-+
- 	ctrl->page_size = 1 << page_shift;
- 
- 	ctrl->ctrl_config = NVME_CC_CSS_NVM;
- 	ctrl->ctrl_config |= (page_shift - 12) << NVME_CC_MPS_SHIFT;
--	ctrl->ctrl_config |= NVME_CC_AMS_RR | NVME_CC_SHN_NONE;
-+	ctrl->ctrl_config |= ams | NVME_CC_SHN_NONE;
- 	ctrl->ctrl_config |= NVME_CC_IOSQES | NVME_CC_IOCQES;
- 	ctrl->ctrl_config |= NVME_CC_ENABLE;
- 
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index ea45d7d393ad..9c7e9217f78b 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -369,6 +369,7 @@ struct nvme_ctrl_ops {
- 	void (*submit_async_event)(struct nvme_ctrl *ctrl);
- 	void (*delete_ctrl)(struct nvme_ctrl *ctrl);
- 	int (*get_address)(struct nvme_ctrl *ctrl, char *buf, int size);
-+	void (*get_ams)(struct nvme_ctrl *ctrl, u32 *ams);
- };
- 
- #ifdef CONFIG_FAULT_INJECTION_DEBUG_FS
 diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 189352081994..5d84241f0214 100644
+index 5d84241f0214..a3c9bb72d90e 100644
 --- a/drivers/nvme/host/pci.c
 +++ b/drivers/nvme/host/pci.c
-@@ -2627,6 +2627,11 @@ static int nvme_pci_get_address(struct nvme_ctrl *ctrl, char *buf, int size)
- 	return snprintf(buf, size, "%s", dev_name(&pdev->dev));
+@@ -68,10 +68,10 @@ static int io_queue_depth = 1024;
+ module_param_cb(io_queue_depth, &io_queue_depth_ops, &io_queue_depth, 0644);
+ MODULE_PARM_DESC(io_queue_depth, "set io queue depth, should >= 2");
+ 
+-static int write_queues;
+-module_param(write_queues, int, 0644);
+-MODULE_PARM_DESC(write_queues,
+-	"Number of queues to use for writes. If not set, reads and writes "
++static int read_queues;
++module_param(read_queues, int, 0644);
++MODULE_PARM_DESC(read_queues,
++	"Number of queues to use for reads. If not set, reads and writes "
+ 	"will share a queue set.");
+ 
+ static int poll_queues;
+@@ -211,7 +211,7 @@ struct nvme_iod {
+ 
+ static unsigned int max_io_queues(void)
+ {
+-	return num_possible_cpus() + write_queues + poll_queues;
++	return num_possible_cpus() + read_queues + poll_queues;
  }
  
-+static void nvme_pci_get_ams(struct nvme_ctrl *ctrl, u32 *ams)
-+{
-+	*ams = NVME_CC_AMS_RR;
-+}
-+
- static const struct nvme_ctrl_ops nvme_pci_ctrl_ops = {
- 	.name			= "pcie",
- 	.module			= THIS_MODULE,
-@@ -2638,6 +2643,7 @@ static const struct nvme_ctrl_ops nvme_pci_ctrl_ops = {
- 	.free_ctrl		= nvme_pci_free_ctrl,
- 	.submit_async_event	= nvme_pci_submit_async_event,
- 	.get_address		= nvme_pci_get_address,
-+	.get_ams		= nvme_pci_get_ams,
- };
+ static unsigned int max_queue_count(void)
+@@ -2021,18 +2021,16 @@ static void nvme_calc_irq_sets(struct irq_affinity *affd, unsigned int nrirqs)
+ 	 * If only one interrupt is available or 'write_queue' == 0, combine
+ 	 * write and read queues.
+ 	 *
+-	 * If 'write_queues' > 0, ensure it leaves room for at least one read
++	 * If 'read_queues' > 0, ensure it leaves room for at least one write
+ 	 * queue.
+ 	 */
+-	if (!nrirqs) {
++	if (!nrirqs || nrirqs == 1) {
+ 		nrirqs = 1;
+ 		nr_read_queues = 0;
+-	} else if (nrirqs == 1 || !write_queues) {
+-		nr_read_queues = 0;
+-	} else if (write_queues >= nrirqs) {
+-		nr_read_queues = 1;
++	} else if (read_queues >= nrirqs) {
++		nr_read_queues = nrirqs - 1;
+ 	} else {
+-		nr_read_queues = nrirqs - write_queues;
++		nr_read_queues = read_queues;
+ 	}
  
- static int nvme_dev_map(struct nvme_dev *dev)
-diff --git a/include/linux/nvme.h b/include/linux/nvme.h
-index da5f696aec00..8f71451fc2fa 100644
---- a/include/linux/nvme.h
-+++ b/include/linux/nvme.h
-@@ -156,6 +156,7 @@ enum {
- 	NVME_CC_AMS_RR		= 0 << NVME_CC_AMS_SHIFT,
- 	NVME_CC_AMS_WRRU	= 1 << NVME_CC_AMS_SHIFT,
- 	NVME_CC_AMS_VS		= 7 << NVME_CC_AMS_SHIFT,
-+	NVME_CC_AMS_MASK	= 7 << NVME_CC_AMS_SHIFT,
- 	NVME_CC_SHN_NONE	= 0 << NVME_CC_SHN_SHIFT,
- 	NVME_CC_SHN_NORMAL	= 1 << NVME_CC_SHN_SHIFT,
- 	NVME_CC_SHN_ABRUPT	= 2 << NVME_CC_SHN_SHIFT,
+ 	dev->io_queues[HCTX_TYPE_DEFAULT] = nrirqs - nr_read_queues;
 -- 
 2.14.1
 
