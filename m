@@ -2,91 +2,89 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BF6D51AF8
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 20:52:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A435751B05
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 20:55:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4LuAvRLOotvkkSJc+X/0d/vpxJialWyczJR41PpSwb8=; b=Sw9w4HCpELdEnol/r+uLoS+vA
-	zg3hSLp67Da+w1TQgRHnaeJ1Q1gj1aicu6mlvqQk3hY5ZeH+2oDewdrisdpo39gcDuEefYIUHI1j9
-	tivgk9Pj+mcQO753tU/zcgD9+AAqvSM287VusOPXktSy9zK9cUVYk7iE4Fbb+8+bcDQXe3Cl5g3GY
-	GAJcaRloeNyhbrIsFutOgpZqxbse7qRdbeTYQPLIGNskgbY2tpms6FmZWsyLgzgbXXstWI85c1HdC
-	Jams9rWbCxEBdfZ0Lx2u/rTeQhVVqoqlxexkMjy/wqtWVjfUIR0NgPk1Eet3NvAOEXRAPaQoFDNdG
-	FNUKSO6Vg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YLS2/6fBCWGSg6v9yCDuaKDm3yeiLPBrO4XrqBaMQy8=; b=nJQggyBKHLHswp
+	GNulAAysBRr3UiWPL1FO/bxXtfxfy3+VQTYePhcEkgouIQtjpRddGgYgkJNbKeXEhw4OETI8azSRJ
+	dPzqPQvEkxRgZMzCQVwG8X4Q3WFLrL/Ojvzjj0lfpSyMJ33Yr75nF0+AQ78Ia61yLJYkHqHn8ePnr
+	sNRJA30FKooJm73kio/wD+kmvVUsWEaky7OAPSMdD6jQfoo7d1B5shLRAq5/K0LY/MjnMOGFLvuC4
+	1W5sgElqUHupRMtOEl1qvWp3ZFY8Jq0dJWQyOMsr33bDboC+Wv9PcEJXfstHuFwsB9S9lfq650TpV
+	E+/PBWiFaOlfJfqIJlOQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfU4U-0002wl-8A; Mon, 24 Jun 2019 18:52:06 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hfU7C-0003MH-LH; Mon, 24 Jun 2019 18:54:54 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfU4D-0002ou-L1
- for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 18:51:51 +0000
-Received: by mail-pl1-x642.google.com with SMTP id g4so7392737plb.5
- for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 11:51:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=Tu70a6GqT0e8GNMBEnhxElVrZ5wZkDd2zBIWDlSltuM=;
- b=ggQY+fWdsT+x+c4al3YaoiYLO/xTBkQP+SNKeR7T9O49MffyfC1SkqHgYBbvGGFHNB
- pJsDhgHp4Q+arSW6+NJcsvl6zHeMFK7C0E3jbNh/Qz1I8BVOm1/pGHzBf2BtBTSckdaH
- N96Y7Iapx16O9eiJpNjpJPm7Mr+o+0XMxgito=
+ id 1hfU77-0003Lp-3k
+ for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 18:54:50 +0000
+Received: by mail-wm1-x344.google.com with SMTP id z23so380723wma.4
+ for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 11:54:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=2VLB62LTLlXO8oWMzmxndKFmxYDQNRrl1nYzZ7fiBH8=;
+ b=bssP7nVtbxic8x1W+7aINGmVwUOYnfJSdJihHr+XXest3Vx9i0deL1LOz0fug7R1U1
+ B5g5IL/YBGy8xioHik2tNV6c6asgwNQLrq+uBuFoxRMgZJ4BuztaJWrkpPSpqVsKILZx
+ 14viaNCjBFFfPcy4wbxl2lhjSG22PDgW5GgEPY+aiVW57k23uu6GJEjQYvC/FgVfHEUM
+ 7d3P9SFXDAUtN220jCpceeo0OnTuWEohYBulBbQvXmpACGPIxLabY5EMrRWaAaowQaS4
+ rSCmwjE/WHV4DGUGkvibovageI+23aZgeutKLX3qZ1Fp8lrfuajpCPGxlls7Z8yyNbcA
+ ILfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=Tu70a6GqT0e8GNMBEnhxElVrZ5wZkDd2zBIWDlSltuM=;
- b=P5hvrP08b5cRsYXJ5T+NOHsjWFOdJo7/eLGFjcWVlXegqeGKrnF58W6eeIp0SQ3nR9
- HUYdnftiK4qz5sAlPZqdSQmmZWNUqLnpHtZF73ml1QddFZK3XfsYOxdAZN1vFyxSKB3h
- QBor7msr1Ouw8u9vjwHDI2F/Yf1ggOjqb4e50BBRbZWQ0ySdFGgZPnfz8+gSZgXzTbJR
- 4XtINkv2SI9T0w9p5rAwTish1xAf8Bmsq0Q1Zn0ccUtZkUX2pnlXJTVX6ZQZhzMcUAwk
- 2Nx8oNNQGouVTVhfqbSJaM5ZL44UQyk2OqWw2/0lYmN3liIGSCQdhUF0q4ZwUlkegf3q
- 4mBg==
-X-Gm-Message-State: APjAAAWD2sFftwOA7taB7uJhlqD641RkB0c3V3yyINCeNlygmZDF4Y2Q
- JjO4Rw6Qm2mc8iYPJnkpLSnBDHFo2oQfeEusnaAEtKm5EcCYqNCml+jty1EukmQ6a9EoF0n0bdt
- c3loaljc651GcSAN4Y6a9MfGjT6UNUD1rDCcj64tmgoOlxeivwZFIDKN+ZzqykkiAaumsxkkzZf
- nSwcSlyw==
-X-Google-Smtp-Source: APXvYqwKkZilx+mFwuOkE1A7w7qvHFqox5yFovewe96TDRXvCil0Sszwhs/m3eE2jmH+jDGcm366Kg==
-X-Received: by 2002:a17:902:b487:: with SMTP id
- y7mr88309155plr.219.1561402307747; 
- Mon, 24 Jun 2019 11:51:47 -0700 (PDT)
-Received: from [10.69.37.149] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id c10sm199734pjq.14.2019.06.24.11.51.46
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 24 Jun 2019 11:51:47 -0700 (PDT)
-Subject: Re: [PATCH 2/2] nvme: flush scan_work when resetting controller
-To: Sagi Grimberg <sagi@grimberg.me>, Hannes Reinecke <hare@suse.de>,
- Hannes Reinecke <hare@suse.com>, Christoph Hellwig <hch@lst.de>
-References: <20190618101025.78840-1-hare@suse.de>
- <20190618101025.78840-3-hare@suse.de>
- <36c093c6-9fea-aa2f-affe-70957e0c5b1b@grimberg.me>
- <681a1c11-7d11-6e28-bc64-b14bef22c144@suse.com>
- <fe550375-fc5d-ff19-c303-6671b8713df6@grimberg.me>
- <d64a5902-139e-4119-ec75-3394e0b129f9@suse.de>
- <d84bf42f-c9fe-6af4-58cc-14195ddff931@grimberg.me>
- <68599577-450a-ade1-451c-f310e5094317@grimberg.me>
- <66f3dd84-77cd-fc45-025c-4082cf3df7ec@suse.de>
- <2a6168f3-37f6-1acf-2e89-48a3b9cac8e1@grimberg.me>
-From: James Smart <james.smart@broadcom.com>
-Message-ID: <1bda7d1a-19f9-8a79-51cc-e5428d226d88@broadcom.com>
-Date: Mon, 24 Jun 2019 11:51:45 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=2VLB62LTLlXO8oWMzmxndKFmxYDQNRrl1nYzZ7fiBH8=;
+ b=hQABR5MTNDJfq1ykK/OqAwbmVTd6XxmZZ2NA++6juUTxruhaeDD3oHBsVIyZueRWt2
+ xUIPPnixfLjMWbb6J9RzYtQQIq/aqfMock2j2wCXWmn2YYfdOBGTmHIP3VE8Dw6JbtL/
+ BjJ6k5XUqIwGciOgmbBhbZA6Ru4x89tfT4dKeOGu9r3x/am9/c/LPCwK/MCC/CDlJmcm
+ GkheCK2IP6wQie+/uXBFlgpmf/yzB801ieeVsQEzgp0h3MNA1W3I4/HZTNjVSVOOozwu
+ 8nXI6YlIU118FFo0QGlMR+NK2CpKnQ1ku8qAxZP9emPdEPBNo0lPJClY8Ul5nJm7vCon
+ isYQ==
+X-Gm-Message-State: APjAAAVdnOK2qDC4P0YVG7JjxNKVq24+QZzyZkx7cnw21CUDf1G9s7YM
+ u7hnNf5WucSPcrM0QXdsH7zAgA==
+X-Google-Smtp-Source: APXvYqwuzff7/kg/rNAW2pQFDbje1NhrbmshAeZpBjzb6O9dqiGhfTGm1OhmaQBXRqL6CYA5mJ8psQ==
+X-Received: by 2002:a7b:c94a:: with SMTP id i10mr16384528wml.97.1561402487618; 
+ Mon, 24 Jun 2019 11:54:47 -0700 (PDT)
+Received: from ziepe.ca ([66.187.232.66])
+ by smtp.gmail.com with ESMTPSA id y2sm10324854wrl.4.2019.06.24.11.54.46
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 24 Jun 2019 11:54:46 -0700 (PDT)
+Received: from jgg by jggl.ziepe.ca with local (Exim 4.90_1)
+ (envelope-from <jgg@ziepe.ca>)
+ id 1hfU72-0006ZX-QC; Mon, 24 Jun 2019 15:54:44 -0300
+Date: Mon, 24 Jun 2019 15:54:44 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
+Message-ID: <20190624185444.GD8268@ziepe.ca>
+References: <20190620161240.22738-1-logang@deltatee.com>
+ <CAPcyv4ijztOK1FUjLuFing7ps4LOHt=6z=eO=98HHWauHA+yog@mail.gmail.com>
+ <20190620193353.GF19891@ziepe.ca> <20190624073126.GB3954@lst.de>
+ <20190624134641.GA8268@ziepe.ca> <20190624135024.GA11248@lst.de>
+ <20190624135550.GB8268@ziepe.ca>
+ <7210ba39-c923-79ca-57bb-7cf9afe21d54@deltatee.com>
+ <20190624181632.GC8268@ziepe.ca>
+ <bbd81ef9-b4f7-3ba7-7f93-85f602495e19@deltatee.com>
 MIME-Version: 1.0
-In-Reply-To: <2a6168f3-37f6-1acf-2e89-48a3b9cac8e1@grimberg.me>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <bbd81ef9-b4f7-3ba7-7f93-85f602495e19@deltatee.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_115149_708548_A1C4141D 
-X-CRM114-Status: GOOD (  15.70  )
+X-CRM114-CacheID: sfid-20190624_115449_157953_B7430FEB 
+X-CRM114-Status: GOOD (  11.18  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -97,7 +95,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,50 +106,38 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, linux-nvme@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-rdma <linux-rdma@vger.kernel.org>, linux-pci@vger.kernel.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ linux-block@vger.kernel.org, Keith Busch <kbusch@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Dan Williams <dan.j.williams@intel.com>,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-CgpPbiA2LzI0LzIwMTkgMTE6MDggQU0sIFNhZ2kgR3JpbWJlcmcgd3JvdGU6Cj4KPj4+Pj4gVGhh
-dCdzIHdoYXQgSSB0aG91Z2h0IGluaXRpYWxseSwgdG9vLCBidXQgaXQgdHVybmVkIG91dCB0byBi
-ZSBub3QKPj4+Pj4gc3VmZmljaWVudC4KPj4+Pgo+Pj4+IE5vdCBzdWZmaWNpZW50IGJlY2F1c2Ug
-aXQgaGFuZ3M/IG9yIHBhbmljcz8KPj4+Pgo+PiBJdCBoYW5ncywgYW5kIHdlJ3JlIHNlZWluZyBh
-IHdhcm5pbmc6Cj4+Cj4+IGtlcm5lbDogWzY3MDg4LjM0NDAzNF0gV0FSTklORzogQ1BVOiA0IFBJ
-RDogMjUwMjAgYXQKPj4gLi4vbGliL3BlcmNwdS1yZWZjb3VudC5jOjMzNCBwZXJjcHVfcmVmX2tp
-bGxfYW5kX2NvbmZpcm0rMHg3YS8weGEwCj4+IFsgLi4gXQo+PiBrZXJuZWw6IFs2NzA4OC4zNDQx
-MDZdIENhbGwgVHJhY2U6Cj4+IGtlcm5lbDogWzY3MDg4LjM0NDExMl3CoCBibGtfZnJlZXplX3F1
-ZXVlX3N0YXJ0KzB4MmEvMHg0MAo+PiBrZXJuZWw6IFs2NzA4OC4zNDQxMTRdwqAgYmxrX2ZyZWV6
-ZV9xdWV1ZSsweGUvMHg0MAo+PiBrZXJuZWw6IFs2NzA4OC4zNDQxMThdwqAgbnZtZV91cGRhdGVf
-ZGlza19pbmZvKzB4MzYvMHgyNjAgW252bWVfY29yZV0KPj4ga2VybmVsOiBbNjcwODguMzQ0MTIy
-XcKgIF9fbnZtZV9yZXZhbGlkYXRlX2Rpc2srMHhjYS8weGYwIFtudm1lX2NvcmVdCj4+IGtlcm5l
-bDogWzY3MDg4LjM0NDEyNV3CoCBudm1lX3JldmFsaWRhdGVfZGlzaysweGE2LzB4MTIwIFtudm1l
-X2NvcmVdCj4+IGtlcm5lbDogWzY3MDg4LjM0NDEyN13CoCA/IGJsa19tcV9nZXRfdGFnKzB4YTMv
-MHgyMjAKPj4ga2VybmVsOiBbNjcwODguMzQ0MTMwXcKgIHJldmFsaWRhdGVfZGlzaysweDIzLzB4
-YzAKPj4ga2VybmVsOiBbNjcwODguMzQ0MTMzXcKgIG52bWVfdmFsaWRhdGVfbnMrMHg0My8weDgz
-MCBbbnZtZV9jb3JlXQo+PiBrZXJuZWw6IFs2NzA4OC4zNDQxMzddwqAgPyB3YWtlX3VwX3ErMHg3
-MC8weDcwCj4+IGtlcm5lbDogWzY3MDg4LjM0NDEzOV3CoCA/IGJsa19tcV9mcmVlX3JlcXVlc3Qr
-MHgxMmEvMHgxNjAKPj4ga2VybmVsOiBbNjcwODguMzQ0MTQyXcKgID8gX19udm1lX3N1Ym1pdF9z
-eW5jX2NtZCsweDczLzB4ZTAgW252bWVfY29yZV0KPj4ga2VybmVsOiBbNjcwODguMzQ0MTQ1XcKg
-IG52bWVfc2Nhbl93b3JrKzB4MmIzLzB4MzUwIFtudm1lX2NvcmVdCj4+IGtlcm5lbDogWzY3MDg4
-LjM0NDE0OV3CoCBwcm9jZXNzX29uZV93b3JrKzB4MWRhLzB4NDAwCj4+Cj4+IMKgRnJvbSB3aGlj
-aCBJJ3ZlIGluZmVycmVkIHRoYXQgd2UncmUgc3RpbGwgcnVubmluZyBhIHNjYW4gaW4gcGFyYWxs
-ZWwgdG8KPj4gcmVzZXQsIGFuZCB0aGF0IHRoZSBzY2FuIHRocmVhZCBpcyBjYWxsaW5nICdibGtf
-ZnJlZXplX3F1ZXVlKCknIG9uIGEKPj4gcXVldWUgd2hpY2ggaXMgYWxyZWFkeSB0b3JuIGRvd24u
-Cj4KPgo+IFdoZXJlIGlzIHRoZSBzY2FuIHRyaWdnZXJlZCBmcm9tPyB0aGVyZSBpcyBubyBzY2Fu
-IGNhbGwgZnJvbSB0aGUgcmVzZXQKPiBwYXRoLgo+Cj4gSXMgdGhlcmUgYSBuYW1lc3BhY2UgcmVt
-b3ZhbCBvciBzb21ldGhpbmcgZWxzZSB0aGF0IHRyaWdnZXJzIEFFTgo+IHRvIG1ha2UgdGhpcyBo
-YXBwZW4/Cj4KPiBXaGF0IGV4YWN0bHkgaXMgdGhlIHNjZW5hcmlvPwoKSSBiZWxpZXZlIHRoaXMg
-aXMgZnJvbSBxdWljayBsaW5rIGJvdW5jZSBvciBsb2dvdXQvbG9naW4gdGVzdGluZyBvbiBGQy4K
-ClRoZSBsb3NzIG9mIGNvbm5lY3Rpdml0eSB0byB0aGUgc3Vic3lzdGVtIGNhdXNlcyBhIHJlc2V0
-IHRvIGJlIGRvbmUgb24gCnRoZSBjb250cm9sbGVyLiBSZS1sb2dpbiBjYXVzZXMgdGhlIHRyYW5z
-cG9ydCB0byBzZW5kIGEgZGlzY292ZXJ5IHNjYW4gCi1vci0gdGhlIHJlY29ubmVjdCB0aW1lciB3
-aWxsIGZpcmUsIGNhdXNpbmcgdGhlIGNvbnRyb2xsZXIgdG8gcmVjb25uZWN0IAphbmQgaXNzdWUg
-dGhlIHNjYW4uCgpUaGVzZSByZXNldHMgYW5kIHJlY29ubmVjdHMgYXJlIHJpZ2h0IG9uIHRoZSBo
-ZWVscyBvZiBlYWNoIG90aGVyIC0gdGh1cyAKc2NhbiBtYXkgbm90IGJlIGZpbmlzaGVkIGJlZm9y
-ZSB0aGUgcmVzZXQgb2NjdXJzLsKgIFJlc2V0IHdpbGwgY29tcGxldGUsIAphcyB0aGUgaW9zIGl0
-IGtub3dzIGFib3V0IGFyZSBjbGVhbmVkIHVwLgoKLS0gamFtZXMKCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QK
-TGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+On Mon, Jun 24, 2019 at 12:28:33PM -0600, Logan Gunthorpe wrote:
+
+> > Sounded like this series does generate the dma_addr for the correct
+> > device..
+> 
+> This series doesn't generate any DMA addresses with dma_map(). The
+> current p2pdma code ensures everything is behind the same root port and
+> only uses the pci bus address. This is valid and correct, but yes it's
+> something to expand upon.
+
+I think if you do this it still has to be presented as the same API
+like dma_map that takes in the target device * and produces the device
+specific dma_addr_t
+
+Otherwise this whole thing is confusing and looks like *all* of it can
+only work under the switch assumption
+
+Jason
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
