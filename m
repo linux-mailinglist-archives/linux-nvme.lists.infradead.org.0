@@ -2,70 +2,88 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF01A5181A
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 18:10:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E7295181F
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 18:11:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ty+05PPtqbv6v5r7rp2FKX5cPpq27ohjGK0hIBcQ6Fs=; b=hBaFOEuTA8OJkS
-	2R8V3dGo0yNqeNG5dmBB/U42f7iXkc0VJ2x+daz6rlZjf2IUZ4DPi7l5QsqPDQOxatHQJuylePW+0
-	gaXvYz5PrhWxSrqq9P7Apa4soDVFd26oXOSSvD7COuQTVGpDgl+ERVdiBnDZdMtMb9jw979wlibjg
-	O9/zorG3BumIaAM0052xPhuGzOH6gxUjMNq+IVVZcOLpVceC1tEvYKD5/aGBcymLmcTRc7AVU/tKo
-	6Z9l5nZLF8+XD4oS+rPxgC+ZEMufcsqZQJWu/b/QpfMjn6z9+LGjJUThkePj4a09q444f9hnVbYXJ
-	TIW0LflNBest3EptAzUQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ASbUJGK4galbLv03Xg9djHVg6u/UJ+4+HP82pE4CVnc=; b=j1twgj2LKpB6G8
+	0JKyls6zqkCY2pPenkONIyhXCk4QdnhqiXvxMSPvN2q0IbPcqNo8L7ntEjh97B+gTkr+8Ksv48hGf
+	R5FJKh5x87iOg4TxgKouBo7gLcukRjDzTDdUr0ILfWZYZlGkSUAx5fJZCl8L5BWlO7YsSHRr3Xcbl
+	J3NcTftK5+uTJ0EicZ6u3E8PlcrGTb/iAQYI8dsc5vfwi3NumI07OWh6BEve6vFRio9ujiZFQsuwy
+	P7wqFlFDaqvnJL0EB830405b8GLx4UfPrPYVjTJ/O7fHi4X2Hth0nKLzT80U8zGV5Lw9bfui2AiJP
+	vglItqVPH0o5LhYYfZ6A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfRY8-0005vl-UV; Mon, 24 Jun 2019 16:10:32 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1hfRZD-0006DK-A4; Mon, 24 Jun 2019 16:11:39 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfRXy-0005uC-QB
- for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 16:10:24 +0000
-Received: from guinness.priv.deltatee.com ([172.16.1.162])
- by ale.deltatee.com with esmtp (Exim 4.89)
- (envelope-from <logang@deltatee.com>)
- id 1hfRXt-0007iv-9o; Mon, 24 Jun 2019 10:10:18 -0600
-To: Jason Gunthorpe <jgg@ziepe.ca>, Christoph Hellwig <hch@lst.de>
-References: <20190620161240.22738-1-logang@deltatee.com>
- <CAPcyv4ijztOK1FUjLuFing7ps4LOHt=6z=eO=98HHWauHA+yog@mail.gmail.com>
- <20190620193353.GF19891@ziepe.ca> <20190624073126.GB3954@lst.de>
- <20190624134641.GA8268@ziepe.ca>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <1041d2c6-f22c-81f2-c141-fb821b35c0c1@deltatee.com>
-Date: Mon, 24 Jun 2019 10:10:16 -0600
+ id 1hfRZ4-0006Ci-Qm
+ for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 16:11:32 +0000
+Received: by mail-wr1-x443.google.com with SMTP id d18so14553889wrs.5
+ for <linux-nvme@lists.infradead.org>; Mon, 24 Jun 2019 09:11:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=kernel-dk.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=yv7g9F3JbTO6nm8BoK1sLWwWIrm0oykMKq0EW314Tag=;
+ b=Fe8rLTSzr1sb5lUncJi7FEZ/eNkjQbgWsoQps4Gs4FIwHO5Tt7pGpW+q2micqCVJUO
+ 7ShvXQlvIT5mfTtppoDs94fCcCWtBGW81ycvZk03Hcylcgs1RFedpBJyoIfvH8euiPHl
+ DpunVvYe9vBLeDXQKO0eZF0HZML4rrcQDtddoMdNhL/qIVaBuoZkMSLjdFFJY2Li6I/t
+ 1B+M3/3bu3B8S6dC+j5aqpVd7WNjFVglZTPr4bHaDaWfLQIHmcBhKRN36IrTl38jZ5wP
+ JBRbz+xpqgU14cZKD0sFLhtB3ZDRlq5G2ySdfQLZ/8Vwv6QL/ZpQ+owzlRbHxs4+fnFL
+ b6Ew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=yv7g9F3JbTO6nm8BoK1sLWwWIrm0oykMKq0EW314Tag=;
+ b=JQknwhC0y2DO77tmeM/cHhRnAiREUzaaNXtfzJ2b0K9YQbCfS0L5S4gBcId+FK6tiT
+ Z1e6K4LPHFEtlCYVahcQi2oddM067xjTreMRI5gNvmWU5pl9LxfQAsXc6OCUCknujhNX
+ UvbvNT093kVcE6humho5gm5nQ4ZgD082d1c5+0U5s7L+PXzUCTBIbPSnD0pT1ykrrSjE
+ p30fzRJbasW9Rk8+Oite4cFu27pqWwjSOzSc9Y0NDQrkz3wihY2fs9PnrKuelx5Xe3Ug
+ qjetRQW9Z8rIFL3DRrW0xsiJS3HLJWK5mFV/kEHazees+UFy2nmIUahSgiYasRNn3c/7
+ dWBw==
+X-Gm-Message-State: APjAAAX3DbseDmaa8CQpMCa37xP/bzVdI5++LMoHd1smASy/49QvrdVY
+ wN1ip5A079SZoRfyHxkOan62ig==
+X-Google-Smtp-Source: APXvYqx5dDIsMuJy3B70LLvSX82c79NQkaeseqdEewRs2ybI3ghntIz2mUkg4dD2R6KWySro3Xo6QQ==
+X-Received: by 2002:a5d:55d1:: with SMTP id i17mr8778904wrw.46.1561392688805; 
+ Mon, 24 Jun 2019 09:11:28 -0700 (PDT)
+Received: from [172.20.10.174] ([85.184.65.84])
+ by smtp.gmail.com with ESMTPSA id n14sm25505400wra.75.2019.06.24.09.11.27
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 24 Jun 2019 09:11:27 -0700 (PDT)
+Subject: Re: [GIT PULL] nvme updates for 5.3
+To: Christoph Hellwig <hch@infradead.org>
+References: <20190624061241.GA31634@infradead.org>
+From: Jens Axboe <axboe@kernel.dk>
+Message-ID: <00f87f06-99f3-b28d-eef8-d6bb8afe2f72@kernel.dk>
+Date: Mon, 24 Jun 2019 10:11:26 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.1
 MIME-Version: 1.0
-In-Reply-To: <20190624134641.GA8268@ziepe.ca>
-Content-Language: en-CA
-X-SA-Exim-Connect-IP: 172.16.1.162
-X-SA-Exim-Rcpt-To: sbates@raithlin.com, kbusch@kernel.org, sagi@grimberg.me,
- bhelgaas@google.com, axboe@kernel.dk, linux-rdma@vger.kernel.org,
- linux-pci@vger.kernel.org, linux-nvme@lists.infradead.org,
- linux-block@vger.kernel.org, linux-kernel@vger.kernel.org,
- dan.j.williams@intel.com, hch@lst.de, jgg@ziepe.ca
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+In-Reply-To: <20190624061241.GA31634@infradead.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190624_091022_903307_D1FBD6D7 
-X-CRM114-Status: GOOD (  17.02  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190624_091130_908796_84D105D5 
+X-CRM114-Status: GOOD (  12.95  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,57 +95,36 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
- linux-rdma <linux-rdma@vger.kernel.org>, linux-pci@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
- linux-block@vger.kernel.org, Keith Busch <kbusch@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Dan Williams <dan.j.williams@intel.com>
+Cc: Keith Busch <keith.busch@intel.com>, linux-block@vger.kernel.org,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-
-On 2019-06-24 7:46 a.m., Jason Gunthorpe wrote:
-> On Mon, Jun 24, 2019 at 09:31:26AM +0200, Christoph Hellwig wrote:
->> On Thu, Jun 20, 2019 at 04:33:53PM -0300, Jason Gunthorpe wrote:
->>>> My primary concern with this is that ascribes a level of generality
->>>> that just isn't there for peer-to-peer dma operations. "Peer"
->>>> addresses are not "DMA" addresses, and the rules about what can and
->>>> can't do peer-DMA are not generically known to the block layer.
->>>
->>> ?? The P2P infrastructure produces a DMA bus address for the
->>> initiating device that is is absolutely a DMA address. There is some
->>> intermediate CPU centric representation, but after mapping it is the
->>> same as any other DMA bus address.
->>>
->>> The map function can tell if the device pair combination can do p2p or
->>> not.
->>
->> At the PCIe level there is no such thing as a DMA address, it all
->> is bus address with MMIO and DMA in the same address space (without
->> that P2P would have not chance of actually working obviously).  But
->> that bus address space is different per "bus" (which would be an
->> root port in PCIe), and we need to be careful about that.
+On 6/24/19 12:12 AM, Christoph Hellwig wrote:
+> A large chunk of NVMe updates for 5.3.  Highlights:
 > 
-> Sure, that is how dma_addr_t is supposed to work - it is always a
-> device specific value that can be used only by the device that it was
-> created for, and different devices could have different dma_addr_t
-> values for the same memory. 
+>   - improved PCIe suspent support (Keith Busch)
+>   - error injection support for the admin queue (Akinobu Mita)
+>   - Fibre Channel discovery improvements (James Smart)
+>   - tracing improvements including nvmetc tracing support (Minwoo Im)
+>   - misc fixes and cleanups (Anton Eidelman, Minwoo Im, Chaitanya Kulkarni)
 > 
-> So when Logan goes and puts dma_addr_t into the block stack he must
-> also invert things so that the DMA map happens at the start of the
-> process to create the right dma_addr_t early.
+> 
+> The following changes since commit 474a280036e8d319ef852f1dec59bedf4eda0107:
+> 
+>    cgroup: export css_next_descendant_pre for bfq (2019-06-21 02:48:34 -0600)
+> 
+> are available in the Git repository at:
+> 
+>    git://git.infradead.org/nvme.git nvme-5.3
 
-Yes, that's correct. The intent was to invert it so the dma_map could
-happen at the start of the process so that P2PDMA code could be called
-with all the information it needs to make it's decision on how to map;
-without having to hook into the mapping process of every driver that
-wants to participate.
+Pulled, thanks.
 
-Logan
+-- 
+Jens Axboe
+
 
 _______________________________________________
 Linux-nvme mailing list
