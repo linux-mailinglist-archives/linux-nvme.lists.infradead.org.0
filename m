@@ -2,57 +2,51 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33FBC5029F
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 08:58:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E5C85035A
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Jun 2019 09:28:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Mime-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NsYlM3xkJVjJYmSe7Shg8Fvx9fow7Fyu8EtgH5UxnBc=; b=rAnBxCjXs1gM6DXPnwt2bI9jR
-	vYLillDPU2D+XAdMpm9RrKkSkPFBeAgeZe6rjffO+jyYpR209re276i5r++a3Rzzsbo+MDa/Rtvr7
-	aMsEC9VNPLY2wlDhV5zpSoKwqS9l58t7SKTszNaKyh2ka58MVkLQMjmnMTOAtlrCIV+o6BdakEZPu
-	sqQEaBnbgAqup1s2IdUEwuX+YuenEEj049bNvA82BcTvmibOe8H2VLiqZ+KBjX/LahZXY3jx6baii
-	G5cvO0J1yENCjbQv9fLJYgNh0vFkLyZB1ZhzcSi5EWTc08zAdWFhzbYAQbt/xt55ccrvziDlmpXIt
-	vso9DiS8A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6nCfb3MSN2KiI8tZU5sOthc5iPxFFMDTdUIR2gxFjuc=; b=BO1siKI2C7s/8s
+	a1nUZBkj78RaorYDyFhrjFI8mvn0cWHKz97GwwbQq0v64If9hvUXN49Ff8bFOeyhleNxAvs7nKPV1
+	xEHWs0ou7sA3SCqV5EcF1G1GZG/FM/l33NbKKJ1SBqQDI0BLWhquWfHPELot3agHQ5q7aztcpQGfs
+	fq65hea7MABUtnM0IYBnCbRhJDGFhIICcyNFzRMklBfAdpe/+L3K1zYwlvmnWh9ZsCQPNKk9dBy4q
+	w8tqjwLONSNRElDaJiS/+kG3JLETLhqBKLskUy8QJwe4yLGyq7WPRKu9A+pljp6TG3hioLFYlk9oz
+	sb+9jdV6AnmUrcs+a79w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfIwA-0006Ct-K1; Mon, 24 Jun 2019 06:58:46 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1hfJP5-0001HB-6f; Mon, 24 Jun 2019 07:28:39 +0000
+Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfIw5-0006Cj-AI
- for linux-nvme@bombadil.infradead.org; Mon, 24 Jun 2019 06:58:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Mime-Version:Content-Type:References:
- In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=+sNbs5RSsynfFI/koaFrIhCQHhb6C5RIpqC6tOD0+9k=; b=Lb23TuLFyQBbikuOqSQoUMRcX
- aouAxz6YxrjHIFrNsCidNn/U97gx1tYU52sbLC84Nq125xsmLKeyHiDYOlPAhLPE9yg+iqmO6skQO
- +lU1ShPhhvuSYUU1UFvgLjGWlJS3B9hnDO0IkZ80Fv4wIF9acOzpsD5vBZ8OoWFqQoHf62A4kavq5
- 0TNq4T1xLH6iudg6lQKQvr2i3qu8A7YJFsxEMqYEAHYUMEv5nxZJqgf9LEOOzV6I2i7kpaBpP59fY
- HKsxkF3oByMyMuIBljLQwWuTuilP8BnZuoY9BDVcE7aHxFTTARo+WDEwHoz2U/WpN8FUHIGE0LYGF
- hcLSn6Y2w==;
-Received: from 54-240-197-228.amazon.com ([54.240.197.228]
- helo=u3832b3a9db3152.ant.amazon.com)
- by merlin.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hfIvs-0004yr-F2; Mon, 24 Jun 2019 06:58:29 +0000
-Message-ID: <a7beeb56e98a5559c4ab7810368b4d388aedf44c.camel@infradead.org>
-Subject: Re: [PATCH v2 2/5] nvme: rename "pci" operations to "mmio"
-From: David Woodhouse <dwmw2@infradead.org>
-To: Christoph Hellwig <hch@lst.de>, Daniel Drake <drake@endlessm.com>
-Date: Mon, 24 Jun 2019 07:58:23 +0100
-In-Reply-To: <20190624061617.GA2848@lst.de>
-References: <20190620051333.2235-1-drake@endlessm.com>
- <20190620051333.2235-3-drake@endlessm.com> <20190620061038.GA20564@lst.de>
- <CAD8Lp45ua=L+ixO+du=Njhy+dxjWobWA+V1i+Y2p6faeyt1FBQ@mail.gmail.com>
- <20190624061617.GA2848@lst.de>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
-Mime-Version: 1.0
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- merlin.infradead.org. See http://www.infradead.org/rpr.html
+ id 1hfJOr-0001Gg-DO
+ for linux-nvme@lists.infradead.org; Mon, 24 Jun 2019 07:28:26 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id 0DC7D68B02; Mon, 24 Jun 2019 09:27:53 +0200 (CEST)
+Date: Mon, 24 Jun 2019 09:27:52 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
+Message-ID: <20190624072752.GA3954@lst.de>
+References: <20190620161240.22738-1-logang@deltatee.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190620161240.22738-1-logang@deltatee.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190624_002825_600222_363D8B6F 
+X-CRM114-Status: GOOD (  14.91  )
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,168 +59,66 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
- linux-ide@vger.kernel.org, Linux PCI <linux-pci@vger.kernel.org>,
- Linux Kernel <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Alex Williamson <alex.williamson@redhat.com>, Hannes Reinecke <hare@suse.de>,
- Keith Busch <kbusch@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
- Linux Upstreaming Team <linux@endlessm.com>
-Content-Type: multipart/mixed; boundary="===============2400504962631167138=="
+ Jason Gunthorpe <jgg@ziepe.ca>, linux-rdma@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ linux-block@vger.kernel.org, Keith Busch <kbusch@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Dan Williams <dan.j.williams@intel.com>,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+This is not going to fly.
 
---===============2400504962631167138==
-Content-Type: multipart/signed; micalg="sha-256";
-	protocol="application/x-pkcs7-signature";
-	boundary="=-9aCQqSHJuYA983LejTz1"
+For one passing a dma_addr_t through the block layer is a layering
+violation, and one that I think will also bite us in practice.
+The host physical to PCIe bus address mapping can have offsets, and
+those offsets absolutely can be different for differnet root ports.
+So with your caller generated dma_addr_t everything works fine with
+a switched setup as the one you are probably testing on, but on a
+sufficiently complicated setup with multiple root ports it can break.
 
+Also duplicating the whole block I/O stack, including hooks all over
+the fast path is pretty much a no-go.
 
---=-9aCQqSHJuYA983LejTz1
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+I've been pondering for a while if we wouldn't be better off just
+passing a phys_addr_t + len instead of the page, offset, len tuple
+in the bio_vec, though.  If you look at the normal I/O path here
+is what we normally do:
 
-On Mon, 2019-06-24 at 08:16 +0200, Christoph Hellwig wrote:
-> On Thu, Jun 20, 2019 at 04:11:26PM +0800, Daniel Drake wrote:
-> > On Thu, Jun 20, 2019 at 2:11 PM Christoph Hellwig <hch@lst.de> wrote:
-> > > The Linux NVMe driver will deal with NVMe as specified plus whatever
-> > > minor tweaks we'll need for small bugs.  Hiding it behind an AHCI
-> > > device is completely out of scope and will not be accepted.
-> >=20
-> > Do you have any new suggestions for alternative ways we can implement
-> > support for this storage configuration?
->=20
-> IFF we want to support it it has to be done at the PCIe layer.  But
-> even that will require actual documentation and support from Intel.
->=20
-> If Intel still believes this scheme is their magic secret to control
-> the NVMe market and give themselves and unfair advantage over their
-> competitors there is not much we can do.
+ - we get a page as input, either because we have it at hand (e.g.
+   from the page cache) or from get_user_pages (which actually caculates
+   it from a pfn in the page tables)
+ - once in the bio all the merging decisions are based on the physical
+   address, so we have to convert it to the physical address there,
+   potentially multiple times
+ - then dma mapping all works off the physical address, which it gets
+   from the page at the start
+ - then only the dma address is used for the I/O
+ - on I/O completion we often but not always need the page again.  In
+   the direct I/O case for reference counting and dirty status, in the
+   file system also for things like marking the page uptodate
 
-At the very least, the switch to make it normal again shouldn't be in
-the BIOS settings where it requires manual interaction, but should be
-changeable at run time by the operating system.
+So if we move to a phys_addr_t we'd need to go back to the page at least
+once.  But because of how the merging works we really only need to do
+it once per segment, as we can just do pointer arithmerics do get the
+following pages.  As we generally go at least once from a physical
+address to a page in the merging code even a relatively expensive vmem_map
+looks shouldn't be too bad.  Even more so given that the super hot path
+(small blkdev direct I/O) can actually trivially cache the affected pages
+as well.
 
-Intel are consistently failing to learn the "firmware exists to boot
-the OS and get out of the way" lesson. There are cases like thermal
-management which sometimes make for valid exceptions, of course. This
-isn't one of them.
-
-
---=-9aCQqSHJuYA983LejTz1
-Content-Type: application/x-pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCECow
-ggUcMIIEBKADAgECAhEA4rtJSHkq7AnpxKUY8ZlYZjANBgkqhkiG9w0BAQsFADCBlzELMAkGA1UE
-BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
-A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhl
-bnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1haWwgQ0EwHhcNMTkwMTAyMDAwMDAwWhcNMjIwMTAxMjM1
-OTU5WjAkMSIwIAYJKoZIhvcNAQkBFhNkd213MkBpbmZyYWRlYWQub3JnMIIBIjANBgkqhkiG9w0B
-AQEFAAOCAQ8AMIIBCgKCAQEAsv3wObLTCbUA7GJqKj9vHGf+Fa+tpkO+ZRVve9EpNsMsfXhvFpb8
-RgL8vD+L133wK6csYoDU7zKiAo92FMUWaY1Hy6HqvVr9oevfTV3xhB5rQO1RHJoAfkvhy+wpjo7Q
-cXuzkOpibq2YurVStHAiGqAOMGMXhcVGqPuGhcVcVzVUjsvEzAV9Po9K2rpZ52FE4rDkpDK1pBK+
-uOAyOkgIg/cD8Kugav5tyapydeWMZRJQH1vMQ6OVT24CyAn2yXm2NgTQMS1mpzStP2ioPtTnszIQ
-Ih7ASVzhV6csHb8Yrkx8mgllOyrt9Y2kWRRJFm/FPRNEurOeNV6lnYAXOymVJwIDAQABo4IB0zCC
-Ac8wHwYDVR0jBBgwFoAUgq9sjPjF/pZhfOgfPStxSF7Ei8AwHQYDVR0OBBYEFLfuNf820LvaT4AK
-xrGK3EKx1DE7MA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAAMB0GA1UdJQQWMBQGCCsGAQUF
-BwMEBggrBgEFBQcDAjBGBgNVHSAEPzA9MDsGDCsGAQQBsjEBAgEDBTArMCkGCCsGAQUFBwIBFh1o
-dHRwczovL3NlY3VyZS5jb21vZG8ubmV0L0NQUzBaBgNVHR8EUzBRME+gTaBLhklodHRwOi8vY3Js
-LmNvbW9kb2NhLmNvbS9DT01PRE9SU0FDbGllbnRBdXRoZW50aWNhdGlvbmFuZFNlY3VyZUVtYWls
-Q0EuY3JsMIGLBggrBgEFBQcBAQR/MH0wVQYIKwYBBQUHMAKGSWh0dHA6Ly9jcnQuY29tb2RvY2Eu
-Y29tL0NPTU9ET1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcnQwJAYI
-KwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmNvbW9kb2NhLmNvbTAeBgNVHREEFzAVgRNkd213MkBpbmZy
-YWRlYWQub3JnMA0GCSqGSIb3DQEBCwUAA4IBAQALbSykFusvvVkSIWttcEeifOGGKs7Wx2f5f45b
-nv2ghcxK5URjUvCnJhg+soxOMoQLG6+nbhzzb2rLTdRVGbvjZH0fOOzq0LShq0EXsqnJbbuwJhK+
-PnBtqX5O23PMHutP1l88AtVN+Rb72oSvnD+dK6708JqqUx2MAFLMevrhJRXLjKb2Mm+/8XBpEw+B
-7DisN4TMlLB/d55WnT9UPNHmQ+3KFL7QrTO8hYExkU849g58Dn3Nw3oCbMUgny81ocrLlB2Z5fFG
-Qu1AdNiBA+kg/UxzyJZpFbKfCITd5yX49bOriL692aMVDyqUvh8fP+T99PqorH4cIJP6OxSTdxKM
-MIIFHDCCBASgAwIBAgIRAOK7SUh5KuwJ6cSlGPGZWGYwDQYJKoZIhvcNAQELBQAwgZcxCzAJBgNV
-BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
-BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRo
-ZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTE5MDEwMjAwMDAwMFoXDTIyMDEwMTIz
-NTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCASIwDQYJKoZIhvcN
-AQEBBQADggEPADCCAQoCggEBALL98Dmy0wm1AOxiaio/bxxn/hWvraZDvmUVb3vRKTbDLH14bxaW
-/EYC/Lw/i9d98CunLGKA1O8yogKPdhTFFmmNR8uh6r1a/aHr301d8YQea0DtURyaAH5L4cvsKY6O
-0HF7s5DqYm6tmLq1UrRwIhqgDjBjF4XFRqj7hoXFXFc1VI7LxMwFfT6PStq6WedhROKw5KQytaQS
-vrjgMjpICIP3A/CroGr+bcmqcnXljGUSUB9bzEOjlU9uAsgJ9sl5tjYE0DEtZqc0rT9oqD7U57My
-ECIewElc4VenLB2/GK5MfJoJZTsq7fWNpFkUSRZvxT0TRLqznjVepZ2AFzsplScCAwEAAaOCAdMw
-ggHPMB8GA1UdIwQYMBaAFIKvbIz4xf6WYXzoHz0rcUhexIvAMB0GA1UdDgQWBBS37jX/NtC72k+A
-CsaxitxCsdQxOzAOBgNVHQ8BAf8EBAMCBaAwDAYDVR0TAQH/BAIwADAdBgNVHSUEFjAUBggrBgEF
-BQcDBAYIKwYBBQUHAwIwRgYDVR0gBD8wPTA7BgwrBgEEAbIxAQIBAwUwKzApBggrBgEFBQcCARYd
-aHR0cHM6Ly9zZWN1cmUuY29tb2RvLm5ldC9DUFMwWgYDVR0fBFMwUTBPoE2gS4ZJaHR0cDovL2Ny
-bC5jb21vZG9jYS5jb20vQ09NT0RPUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFp
-bENBLmNybDCBiwYIKwYBBQUHAQEEfzB9MFUGCCsGAQUFBzAChklodHRwOi8vY3J0LmNvbW9kb2Nh
-LmNvbS9DT01PRE9SU0FDbGllbnRBdXRoZW50aWNhdGlvbmFuZFNlY3VyZUVtYWlsQ0EuY3J0MCQG
-CCsGAQUFBzABhhhodHRwOi8vb2NzcC5jb21vZG9jYS5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
-cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAC20spBbrL71ZEiFrbXBHonzhhirO1sdn+X+O
-W579oIXMSuVEY1LwpyYYPrKMTjKECxuvp24c829qy03UVRm742R9Hzjs6tC0oatBF7KpyW27sCYS
-vj5wbal+TttzzB7rT9ZfPALVTfkW+9qEr5w/nSuu9PCaqlMdjABSzHr64SUVy4ym9jJvv/FwaRMP
-gew4rDeEzJSwf3eeVp0/VDzR5kPtyhS+0K0zvIWBMZFPOPYOfA59zcN6AmzFIJ8vNaHKy5QdmeXx
-RkLtQHTYgQPpIP1Mc8iWaRWynwiE3ecl+PWzq4i+vdmjFQ8qlL4fHz/k/fT6qKx+HCCT+jsUk3cS
-jDCCBeYwggPOoAMCAQICEGqb4Tg7/ytrnwHV2binUlYwDQYJKoZIhvcNAQEMBQAwgYUxCzAJBgNV
-BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
-BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMSswKQYDVQQDEyJDT01PRE8gUlNBIENlcnRpZmljYXRp
-b24gQXV0aG9yaXR5MB4XDTEzMDExMDAwMDAwMFoXDTI4MDEwOTIzNTk1OVowgZcxCzAJBgNVBAYT
-AkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAYBgNV
-BAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRoZW50
-aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
-AQEAvrOeV6wodnVAFsc4A5jTxhh2IVDzJXkLTLWg0X06WD6cpzEup/Y0dtmEatrQPTRI5Or1u6zf
-+bGBSyD9aH95dDSmeny1nxdlYCeXIoymMv6pQHJGNcIDpFDIMypVpVSRsivlJTRENf+RKwrB6vcf
-WlP8dSsE3Rfywq09N0ZfxcBa39V0wsGtkGWC+eQKiz4pBZYKjrc5NOpG9qrxpZxyb4o4yNNwTqza
-aPpGRqXB7IMjtf7tTmU2jqPMLxFNe1VXj9XB1rHvbRikw8lBoNoSWY66nJN/VCJv5ym6Q0mdCbDK
-CMPybTjoNCQuelc0IAaO4nLUXk0BOSxSxt8kCvsUtQIDAQABo4IBPDCCATgwHwYDVR0jBBgwFoAU
-u69+Aj36pvE8hI6t7jiY7NkyMtQwHQYDVR0OBBYEFIKvbIz4xf6WYXzoHz0rcUhexIvAMA4GA1Ud
-DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMBEGA1UdIAQKMAgwBgYEVR0gADBMBgNVHR8E
-RTBDMEGgP6A9hjtodHRwOi8vY3JsLmNvbW9kb2NhLmNvbS9DT01PRE9SU0FDZXJ0aWZpY2F0aW9u
-QXV0aG9yaXR5LmNybDBxBggrBgEFBQcBAQRlMGMwOwYIKwYBBQUHMAKGL2h0dHA6Ly9jcnQuY29t
-b2RvY2EuY29tL0NPTU9ET1JTQUFkZFRydXN0Q0EuY3J0MCQGCCsGAQUFBzABhhhodHRwOi8vb2Nz
-cC5jb21vZG9jYS5jb20wDQYJKoZIhvcNAQEMBQADggIBAHhcsoEoNE887l9Wzp+XVuyPomsX9vP2
-SQgG1NgvNc3fQP7TcePo7EIMERoh42awGGsma65u/ITse2hKZHzT0CBxhuhb6txM1n/y78e/4ZOs
-0j8CGpfb+SJA3GaBQ+394k+z3ZByWPQedXLL1OdK8aRINTsjk/H5Ns77zwbjOKkDamxlpZ4TKSDM
-KVmU/PUWNMKSTvtlenlxBhh7ETrN543j/Q6qqgCWgWuMAXijnRglp9fyadqGOncjZjaaSOGTTFB+
-E2pvOUtY+hPebuPtTbq7vODqzCM6ryEhNhzf+enm0zlpXK7q332nXttNtjv7VFNYG+I31gnMrwfH
-M5tdhYF/8v5UY5g2xANPECTQdu9vWPoqNSGDt87b3gXb1AiGGaI06vzgkejL580ul+9hz9D0S0U4
-jkhJiA7EuTecP/CFtR72uYRBcunwwH3fciPjviDDAI9SnC/2aPY8ydehzuZutLbZdRJ5PDEJM/1t
-yZR2niOYihZ+FCbtf3D9mB12D4ln9icgc7CwaxpNSCPt8i/GqK2HsOgkL3VYnwtx7cJUmpvVdZ4o
-gnzgXtgtdk3ShrtOS1iAN2ZBXFiRmjVzmehoMof06r1xub+85hFQzVxZx5/bRaTKTlL8YXLI8nAb
-R9HWdFqzcOoB/hxfEyIQpx9/s81rgzdEZOofSlZHynoSMYIDyjCCA8YCAQEwga0wgZcxCzAJBgNV
-BAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGjAY
-BgNVBAoTEUNPTU9ETyBDQSBMaW1pdGVkMT0wOwYDVQQDEzRDT01PRE8gUlNBIENsaWVudCBBdXRo
-ZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA4rtJSHkq7AnpxKUY8ZlYZjANBglghkgB
-ZQMEAgEFAKCCAe0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTkw
-NjI0MDY1ODIzWjAvBgkqhkiG9w0BCQQxIgQgM0GFWRHsqwHSrOejNTQO9wEwyerOAoIymISKWp8Q
-xmswgb4GCSsGAQQBgjcQBDGBsDCBrTCBlzELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIg
-TWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQx
-PTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhlbnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1h
-aWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMIHABgsqhkiG9w0BCRACCzGBsKCBrTCBlzELMAkGA1UE
-BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEaMBgG
-A1UEChMRQ09NT0RPIENBIExpbWl0ZWQxPTA7BgNVBAMTNENPTU9ETyBSU0EgQ2xpZW50IEF1dGhl
-bnRpY2F0aW9uIGFuZCBTZWN1cmUgRW1haWwgQ0ECEQDiu0lIeSrsCenEpRjxmVhmMA0GCSqGSIb3
-DQEBAQUABIIBAJCP7u5+OkWrdE8XzgmfW6LMFChD70NPGUAIJzqSSF5R/S5LXYYqXK3LneLngAIN
-/YfZ92AEesnYHwW9Y2cEVmWUgttRtmd85uEnyGqAJTbae7oZQBh7O9pYhIph3fN4cDPOlISBybqk
-wc1Ntw8hsC+kM6UcofgtTNIQLp5Bd40X87XTHke9VrYeLiUDVKaWuxOp/dNlw+emVmgtP6zdLAZ9
-vErZ8lWzkEGoQa5WAwSMNXZjaj6gN5IAn/rPCPHeFMag4SlWXxp1LBYL/S+yHRY/QJQT9Sdi6iLf
-mRhXZxYxD2XhFiciBtZIbUB7bd3K252MRkalNF38+GnZVJ11RRkAAAAAAAA=
-
-
---=-9aCQqSHJuYA983LejTz1--
-
-
-
---===============2400504962631167138==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Linus kinda hates the pfn approach, but part of that was really that
+it was proposed for file system data, which we all found out really
+can't work as-is without pages the hard way.  Another part probably
+was potential performance issue, but between the few page lookups, and
+the fact that using a single phys_addr_t instead of pfn/page + offset
+should avoid quite a few calculations performance should not actually
+be affected, although we'll have to be careful to actually verify that.
 
 _______________________________________________
 Linux-nvme mailing list
 Linux-nvme@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-nvme
-
---===============2400504962631167138==--
-
-
