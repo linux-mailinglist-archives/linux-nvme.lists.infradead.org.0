@@ -2,86 +2,70 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DE2E553AF
-	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 17:45:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B264553D8
+	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 17:58:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:References:
-	In-Reply-To:Message-ID:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Cno9mQqWywg+aUvf2v3lP3biahN5SgwAP8frAWnik4w=; b=Ndyi/r1vpUsj6T
-	dsdnSKMQq7kaSiOCUZYNBgCTzhLDU0fdkAThHGVMITttUbPYksd8meREBIAmHxCvEt0FiJhmKU6cW
-	lBdX63YtrRoF88SPUU4FOQMbWf9NqdrbUO+Jj7wswRFRxhTjcBn351ljzSwtDwWqITQRMUt8fsyUR
-	lv8T4kTuBCgKFh89YnHWzGH4euhQlerDTkaeSS5KGCD/w4TMow9wOM1mtrNhP0GfkSLouvMsggnxV
-	ZPbN+4Ai9pRyLKgnBQflCNaVtPeynhTiGWrQLOrZKOEre9rDcxLYVMxQlb8En5NWGMyBf/RMs71ap
-	wpsESmit21SkVKT14vvw==;
+	List-Owner; bh=Cq9YC5l5nNdEtFDoNClVf0YZtkRqUOYMpbmWHu1Wmqs=; b=hs3QCQ1GOnsy3Z
+	QfGyT1hMdZnqNov6Q0R4xP66Uo9hbDi0xKhkEV57VdDMnVW8BCUSqxaO8dEiN40Q77cWGOsfe7ivN
+	JQCZ49bn5GNGM4a/DFXyuZjETB7rCkPGL/je8a1CH9V3MgdPb8dfXsrImlmqVYQrvNYeW9PQkTbIa
+	IGiwApGhEdDEgH6k3cWfYvKJAg8m00DkCLKHrxEbzlliVIjV5HMlVG0Ys4lX7Z13CbvzOEK29u0q0
+	hm10eUiepyWOvX7anTpQBKoIv2BvXuHPOQbRZP6gb3C/aw0QVAua+0E0D3jfyPiAEp57Suv1j140j
+	XNf1JlAl0CdcsLQkRI/A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfndF-00062x-0F; Tue, 25 Jun 2019 15:45:17 +0000
-Received: from zimbra2.kalray.eu ([92.103.151.219])
+	id 1hfnps-0003DN-Kd; Tue, 25 Jun 2019 15:58:20 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfnd9-000608-U4
- for linux-nvme@lists.infradead.org; Tue, 25 Jun 2019 15:45:13 +0000
-Received: from localhost (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id 87F1327EEF65;
- Tue, 25 Jun 2019 17:45:08 +0200 (CEST)
-Received: from zimbra2.kalray.eu ([127.0.0.1])
- by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 2m3k0HJ10xOv; Tue, 25 Jun 2019 17:45:02 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id 6126927EEFDD;
- Tue, 25 Jun 2019 17:45:02 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra2.kalray.eu 6126927EEFDD
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kalray.eu;
- s=32AE1B44-9502-11E5-BA35-3734643DEF29; t=1561477502;
- bh=RNm+ew/R+i3Y90/UD43mEQaTPkUN7pWqM0A/6WCsRpc=;
- h=Date:From:To:Message-ID:MIME-Version;
- b=DT8HijNVU3rQCIHjuPy9Cpx/v1TpY4c0xqXEZU57rKCL8au4BjwRSYL95u/Fq3xvw
- 7Li6efwumayKBCQ8YGHmVoGB54csBA2r6bKXmkyoDylVh7+VlTSA0CiWJHUNNOmxdf
- vmrMnoVsNGdAWs4bbKGDKYhABT/qcIUPaGaCn4eI=
-X-Virus-Scanned: amavisd-new at zimbra2.kalray.eu
-Received: from zimbra2.kalray.eu ([127.0.0.1])
- by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id Qxlc1X4RJ23d; Tue, 25 Jun 2019 17:45:02 +0200 (CEST)
-Received: from zimbra2.kalray.eu (zimbra2.kalray.eu [192.168.40.202])
- by zimbra2.kalray.eu (Postfix) with ESMTP id 4A18227EEF65;
- Tue, 25 Jun 2019 17:45:02 +0200 (CEST)
-Date: Tue, 25 Jun 2019 17:45:02 +0200 (CEST)
-From: Marta Rybczynska <mrybczyn@kalray.eu>
-To: Bart Van Assche <bvanassche@acm.org>
-Message-ID: <1492173308.27223699.1561477502288.JavaMail.zimbra@kalray.eu>
-In-Reply-To: <7d28ee3d-0326-6d31-1cc6-13acc48e0d4d@acm.org>
-References: <20190403230402.119428-1-bvanassche@acm.org>
- <1554392625.118779.243.camel@acm.org>
- <1035014818.27150671.1561441925414.JavaMail.zimbra@kalray.eu>
- <7d28ee3d-0326-6d31-1cc6-13acc48e0d4d@acm.org>
-Subject: Re: [PATCH] nvmet-rdma: Suppress a lockdep complaint
+ id 1hfnpn-0003Cw-30
+ for linux-nvme@lists.infradead.org; Tue, 25 Jun 2019 15:58:16 +0000
+Received: from guinness.priv.deltatee.com ([172.16.1.162])
+ by ale.deltatee.com with esmtp (Exim 4.89)
+ (envelope-from <logang@deltatee.com>)
+ id 1hfnpU-00047F-3d; Tue, 25 Jun 2019 09:57:57 -0600
+To: Christoph Hellwig <hch@lst.de>
+References: <20190620161240.22738-1-logang@deltatee.com>
+ <20190624072752.GA3954@lst.de>
+ <558a27ba-e7c9-9d94-cad0-377b8ee374a6@deltatee.com>
+ <20190625072008.GB30350@lst.de>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <f0f002bf-2b94-cd18-d18f-5d0b08311495@deltatee.com>
+Date: Tue, 25 Jun 2019 09:57:52 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
 MIME-Version: 1.0
-X-Originating-IP: [192.168.40.202]
-X-Mailer: Zimbra 8.8.12_GA_3794 (ZimbraWebClient - FF57 (Linux)/8.8.12_GA_3794)
-Thread-Topic: nvmet-rdma: Suppress a lockdep complaint
-Thread-Index: P3j1iDAp70PbfYiWz9FntAbarrublA==
+In-Reply-To: <20190625072008.GB30350@lst.de>
+Content-Language: en-CA
+X-SA-Exim-Connect-IP: 172.16.1.162
+X-SA-Exim-Rcpt-To: sbates@raithlin.com, jgg@ziepe.ca, kbusch@kernel.org,
+ sagi@grimberg.me, dan.j.williams@intel.com, bhelgaas@google.com,
+ axboe@kernel.dk, linux-rdma@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
+ linux-kernel@vger.kernel.org, hch@lst.de
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190625_084512_363823_367171ED 
-X-CRM114-Status: UNSURE (   7.56  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190625_085815_498901_D18E5667 
+X-CRM114-Status: GOOD (  17.10  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [92.103.151.219 listed in list.dnswl.org]
+ no trust [207.54.116.67 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,54 +77,62 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme <linux-nvme@lists.infradead.org>,
- Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
- Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
+Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
+ Jason Gunthorpe <jgg@ziepe.ca>, linux-rdma@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ linux-block@vger.kernel.org, Keith Busch <kbusch@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Dan Williams <dan.j.williams@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
------ On 25 Jun, 2019, at 17:18, Bart Van Assche bvanassche@acm.org wrote:
 
-> On 6/24/19 10:52 PM, Marta Rybczynska wrote:
->> ----- On 4 Apr, 2019, at 17:43, Bart Van Assche bvanassche@acm.org wrote:
->>> On Wed, 2019-04-03 at 16:04 -0700, Bart Van Assche wrote:
->>>> Although the code that waits for controllers that are being teared down
->>>> in nvmet_rdma_queue_connect() is fine, lockdep complains about that code.
->>>> Lockdep complains because all release_work instances are assigned the
->>>> same static lockdep key. Avoid that lockdep complains by using dynamic
->>>> lockdep keys instead of static lockdep keys. See also the following
->>>> commits:
->>>> * 87915adc3f0a ("workqueue: re-add lockdep dependencies for flushing").
->>>> * 777dc82395de ("nvmet-rdma: occasionally flush ongoing controller teardown").
->>>> * 108c14858b9e ("locking/lockdep: Add support for dynamic keys").
->>>>
->>>> This patch avoids that lockdep reports the following:
->>>>
->>>> ======================================================
->>>> WARNING: possible circular locking dependency detected
->>>> 4.19.0-dbg #1 Not tainted
->>>> ------------------------------------------------------
->>>> kworker/u12:0/7 is trying to acquire lock:
->>>
->>> Please drop this patch - it is not sufficient to suppress the lockdep complaint.
->>> I will see whether I can come up with a better solution.
->>>
->> 
->> Have you had time to work on this one further? We're seeing the same issue.
-> 
-> Hi Marta,
-> 
-> I'm running all NVMe tests on my setup with the attached patch applied.
-> 
-> Bart.
 
-Thanks Bart! We're going to test it out in our setup and I let you know what
-the result is.
+On 2019-06-25 1:20 a.m., Christoph Hellwig wrote:
+> On Mon, Jun 24, 2019 at 10:07:56AM -0600, Logan Gunthorpe wrote:
+>>> For one passing a dma_addr_t through the block layer is a layering
+>>> violation, and one that I think will also bite us in practice.
+>>> The host physical to PCIe bus address mapping can have offsets, and
+>>> those offsets absolutely can be different for differnet root ports.
+>>> So with your caller generated dma_addr_t everything works fine with
+>>> a switched setup as the one you are probably testing on, but on a
+>>> sufficiently complicated setup with multiple root ports it can break.
+>>
+>> I don't follow this argument. Yes, I understand PCI Bus offsets and yes
+>> I understand that they only apply beyond the bus they're working with.
+>> But this isn't *that* complicated and it should be the responsibility of
+>> the P2PDMA code to sort out and provide a dma_addr_t for. The dma_addr_t
+>> that's passed through the block layer could be a bus address or it could
+>> be the result of a dma_map_* request (if the transaction is found to go
+>> through an RC) depending on the requirements of the devices being used.
+> 
+> You assume all addressing is done by the PCI bus address.  If a device
+> is addressing its own BAR there is no reason to use the PCI bus address,
+> as it might have much more intelligent schemes (usually bar + offset).
 
-Marta
+Yes, that will be a bit tricky regardless of what we do.
+
+>>> Also duplicating the whole block I/O stack, including hooks all over
+>>> the fast path is pretty much a no-go.
+>>
+>> There was very little duplicate code in the patch set. (Really just the
+>> mapping code). There are a few hooks, but in practice not that many if
+>> we ignore the WARN_ONs. We might be able to work to reduce this further.
+>> The main hooks are: when we skip bouncing, when we skip integrity prep,
+>> when we split, and when we map. And the patchset drops the PCI_P2PDMA
+>> hook when we map. So we're talking about maybe three or four extra ifs
+>> that would likely normally be fast due to the branch predictor.
+> 
+> And all of those add code to the block layer fast path.
+
+If we can't add any ifs to the block layer, there's really nothing we
+can do.
+
+So then we're committed to using struct page for P2P?
+
+Logan
 
 _______________________________________________
 Linux-nvme mailing list
