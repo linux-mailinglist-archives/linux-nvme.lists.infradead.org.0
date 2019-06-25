@@ -2,43 +2,46 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 705FF52411
-	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 09:09:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A0B75243C
+	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 09:19:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6b/yIPtwSuMbuBTlNk+VE5pelYogbmqRD3zfXLRJra8=; b=oEJnvKCo6xoDc7
-	l5+hBR+5f/LzZewhoyM+ONX59g9dnn9z1yhusnU9ENbldRxcbfEhUp0dHLcobRJMMpMiHLv0pXKAk
-	UvsjNyhwPodp9B0zB4OpghBqGGoiUgK6Miu4NFzC7ElSAvVQr2qhAbYTmbyGsZVZioZKvjxxys+eS
-	qrJF0/KLYA8onFoxaKMVEqtEBnPgGVyfrbMDT9IQb3PzD/e3VG1sKwOOmiwq/c99PCRJZdgRUcpng
-	FzSJqiZtDvx6zOKegDbxaaWTUZOMNwUBeJDYc86p5Bt9aW6gE+HuJtoUa8PqrZUUgntnEL9hE4Cim
-	BxjMYlAvU2RvZA/YsiIw==;
+	List-Owner; bh=6nPJZsuXnS9GXEaXj+Xujd24vTuMVOLQaBZYH1yv3oo=; b=rxMkci5GE2DFIc
+	aE0vxmOzW/OnGGvkwbdpx+Hr6PDx9CHZ6AqpJUrQLVt/6ZD2VhDpbQ9Xk2u+H5QJyt7thLnkb7ZEp
+	WTpQhLREqh3dCKfhUC+8jCy2cHbjaFgAphzaYSUttYB92pzY/TtpyAeWiO0vySmeKTjdqkoW78upd
+	Qi8TzkjFjdYWB85+lqzAuyZMv6/ocNQxebb9YkDYeLeidYE6oYhKkeBIHlaQmXWNG7JFU7nte3yZS
+	9otZWyCIttkMKrxaaTLRQYoF64X07be4DujCNPruxP3O9CLOmHEvOAgguQDBxXz9cxOgROWMrezdq
+	LipXvG0Mx0ou1z1QH+xw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hffa1-0003w3-CK; Tue, 25 Jun 2019 07:09:25 +0000
+	id 1hffjN-0000LE-75; Tue, 25 Jun 2019 07:19:05 +0000
 Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hffZk-0003v5-30
- for linux-nvme@lists.infradead.org; Tue, 25 Jun 2019 07:09:10 +0000
+ id 1hffjE-0000Kn-Co
+ for linux-nvme@lists.infradead.org; Tue, 25 Jun 2019 07:18:57 +0000
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id D31E168B05; Tue, 25 Jun 2019 09:08:35 +0200 (CEST)
-Date: Tue, 25 Jun 2019 09:08:35 +0200
+ id 0E82368B02; Tue, 25 Jun 2019 09:18:24 +0200 (CEST)
+Date: Tue, 25 Jun 2019 09:18:23 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Alan Mikhak <alan.mikhak@sifive.com>
-Subject: Re: [PATCH] nvme-pci: Avoid leak if pci_p2pmem_virt_to_bus()
- returns null
-Message-ID: <20190625070835.GC30123@lst.de>
-References: <1561420642-21186-1-git-send-email-alan.mikhak@sifive.com>
+To: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
+Message-ID: <20190625071823.GA30350@lst.de>
+References: <20190620161240.22738-1-logang@deltatee.com>
+ <CAPcyv4ijztOK1FUjLuFing7ps4LOHt=6z=eO=98HHWauHA+yog@mail.gmail.com>
+ <20190620193353.GF19891@ziepe.ca> <20190624073126.GB3954@lst.de>
+ <20190624134641.GA8268@ziepe.ca>
+ <1041d2c6-f22c-81f2-c141-fb821b35c0c1@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1561420642-21186-1-git-send-email-alan.mikhak@sifive.com>
+In-Reply-To: <1041d2c6-f22c-81f2-c141-fb821b35c0c1@deltatee.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190625_000908_471074_AAB1518C 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20190625_001856_586043_0C529FA6 
+X-CRM114-Status: GOOD (  10.70  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -59,59 +62,34 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@fb.com, sagi@grimberg.me, palmer@sifive.com,
- linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- keith.busch@intel.com, paul.walmsley@sifive.com, hch@lst.de
+Cc: Jens Axboe <axboe@kernel.dk>, Keith Busch <kbusch@kernel.org>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-rdma <linux-rdma@vger.kernel.org>,
+ linux-pci@vger.kernel.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ linux-block@vger.kernel.org, Jason Gunthorpe <jgg@ziepe.ca>,
+ Bjorn Helgaas <bhelgaas@google.com>, Dan Williams <dan.j.williams@intel.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Jun 24, 2019 at 04:57:22PM -0700, Alan Mikhak wrote:
-> Modify nvme_alloc_sq_cmds() to call pci_free_p2pmem()
-> to free the memory it allocated using pci_alloc_p2pmem()
-> in case pci_p2pmem_virt_to_bus() returns null.
-> 
-> Make sure not to call pci_free_p2pmem() if pci_alloc_p2pmem()
-> returned null which can happen if CONFIG_PCI_P2PDMA is not
-> configured.
+On Mon, Jun 24, 2019 at 10:10:16AM -0600, Logan Gunthorpe wrote:
+> Yes, that's correct. The intent was to invert it so the dma_map could
+> happen at the start of the process so that P2PDMA code could be called
+> with all the information it needs to make it's decision on how to map;
+> without having to hook into the mapping process of every driver that
+> wants to participate.
 
-Can you 
-
-> 
-> Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
-> ---
->  drivers/nvme/host/pci.c | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-> index 524d6bd6d095..5dfa067f6506 100644
-> --- a/drivers/nvme/host/pci.c
-> +++ b/drivers/nvme/host/pci.c
-> @@ -1456,11 +1456,15 @@ static int nvme_alloc_sq_cmds(struct nvme_dev *dev, struct nvme_queue *nvmeq,
->  
->  	if (qid && dev->cmb_use_sqes && (dev->cmbsz & NVME_CMBSZ_SQS)) {
->  		nvmeq->sq_cmds = pci_alloc_p2pmem(pdev, SQ_SIZE(depth));
-> -		nvmeq->sq_dma_addr = pci_p2pmem_virt_to_bus(pdev,
-> -						nvmeq->sq_cmds);
-> -		if (nvmeq->sq_dma_addr) {
-> -			set_bit(NVMEQ_SQ_CMB, &nvmeq->flags);
-> -			return 0; 
-> +		if (nvmeq->sq_cmds) {
-> +			nvmeq->sq_dma_addr = pci_p2pmem_virt_to_bus(pdev,
-> +							nvmeq->sq_cmds);
-> +			if (nvmeq->sq_dma_addr) {
-> +				set_bit(NVMEQ_SQ_CMB, &nvmeq->flags);
-> +				return 0;
-> +			}
-> +
-> +			pci_free_p2pmem(pdev, nvmeq->sq_cmds, SQ_SIZE(depth));
-
-pci_p2pmem_virt_to_bus should only fail when
-pci_p2pmem_virt_to_bus failed.  That being said I think doing the
-error check on pci_alloc_p2pmem instead of relying on 
-pci_p2pmem_virt_to_bus "passing through" the error seems odd, I'd
-rather check the pci_alloc_p2pmem return value directly.
+And that just isn't how things work in layering.  We need to keep
+generating the dma addresses in the driver in the receiving end, as
+there are all kinds of interesting ideas how we do that.  E.g. for the
+Mellanox NICs addressing their own bars is not done by PCIe bus
+addresses but by relative offsets.  And while NVMe has refused to go
+down that route in the current band aid fix for CMB addressing I suspect
+it will sooner or later have to do the same to deal with the addressing
+problems in a multiple PASID world.
 
 _______________________________________________
 Linux-nvme mailing list
