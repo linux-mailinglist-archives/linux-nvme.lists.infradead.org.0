@@ -2,46 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A0B75243C
-	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 09:19:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3066652447
+	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 09:20:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6nPJZsuXnS9GXEaXj+Xujd24vTuMVOLQaBZYH1yv3oo=; b=rxMkci5GE2DFIc
-	aE0vxmOzW/OnGGvkwbdpx+Hr6PDx9CHZ6AqpJUrQLVt/6ZD2VhDpbQ9Xk2u+H5QJyt7thLnkb7ZEp
-	WTpQhLREqh3dCKfhUC+8jCy2cHbjaFgAphzaYSUttYB92pzY/TtpyAeWiO0vySmeKTjdqkoW78upd
-	Qi8TzkjFjdYWB85+lqzAuyZMv6/ocNQxebb9YkDYeLeidYE6oYhKkeBIHlaQmXWNG7JFU7nte3yZS
-	9otZWyCIttkMKrxaaTLRQYoF64X07be4DujCNPruxP3O9CLOmHEvOAgguQDBxXz9cxOgROWMrezdq
-	LipXvG0Mx0ou1z1QH+xw==;
+	List-Owner; bh=OIpHEzyFGE3UpNpiFBul9D8EVS8rxdAMzzUH+dTp/wM=; b=rDu/8D7nvsFcUf
+	3lIpmrP8mw2AwKrgicFufwWpV2RAkqcsP1YvLtktap6d6jGw03/7HQiefM73J4LxveOUAIJmBiVV4
+	BUDfqsSTXQGT/QaiwWQe3LiZV574HAQ0HCt8E8GJqEoaop57FlAr263dtFcLi5Y5DZ/YS0WBuCB72
+	oVJFa3lmiLaQ5XedwBjvMZUB0zWUtublGnmQJRkWcR0Z1hL7faDQkwQNTTdNeWOchlHDUbfyxortA
+	ptciVVBfxgtasJCICto9YiObfeYW+MZ12MTIsJZBuGL0YuwN2KerKrNsmvvg3DfjYTeNrsqU4fv91
+	nftA9nIHRRyUmivQTSyw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hffjN-0000LE-75; Tue, 25 Jun 2019 07:19:05 +0000
+	id 1hffl4-00023J-Uf; Tue, 25 Jun 2019 07:20:51 +0000
 Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hffjE-0000Kn-Co
- for linux-nvme@lists.infradead.org; Tue, 25 Jun 2019 07:18:57 +0000
+ id 1hffkv-00022R-MO
+ for linux-nvme@lists.infradead.org; Tue, 25 Jun 2019 07:20:43 +0000
 Received: by newverein.lst.de (Postfix, from userid 2407)
- id 0E82368B02; Tue, 25 Jun 2019 09:18:24 +0200 (CEST)
-Date: Tue, 25 Jun 2019 09:18:23 +0200
+ id 4CE0068B02; Tue, 25 Jun 2019 09:20:09 +0200 (CEST)
+Date: Tue, 25 Jun 2019 09:20:08 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Logan Gunthorpe <logang@deltatee.com>
 Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
-Message-ID: <20190625071823.GA30350@lst.de>
+Message-ID: <20190625072008.GB30350@lst.de>
 References: <20190620161240.22738-1-logang@deltatee.com>
- <CAPcyv4ijztOK1FUjLuFing7ps4LOHt=6z=eO=98HHWauHA+yog@mail.gmail.com>
- <20190620193353.GF19891@ziepe.ca> <20190624073126.GB3954@lst.de>
- <20190624134641.GA8268@ziepe.ca>
- <1041d2c6-f22c-81f2-c141-fb821b35c0c1@deltatee.com>
+ <20190624072752.GA3954@lst.de>
+ <558a27ba-e7c9-9d94-cad0-377b8ee374a6@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1041d2c6-f22c-81f2-c141-fb821b35c0c1@deltatee.com>
+In-Reply-To: <558a27ba-e7c9-9d94-cad0-377b8ee374a6@deltatee.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190625_001856_586043_0C529FA6 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20190625_002041_883426_799BD00D 
+X-CRM114-Status: GOOD (  18.59  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -62,12 +60,11 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Keith Busch <kbusch@kernel.org>,
- Sagi Grimberg <sagi@grimberg.me>, linux-rdma <linux-rdma@vger.kernel.org>,
- linux-pci@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
+ Jason Gunthorpe <jgg@ziepe.ca>, linux-rdma@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
- linux-block@vger.kernel.org, Jason Gunthorpe <jgg@ziepe.ca>,
+ linux-block@vger.kernel.org, Keith Busch <kbusch@kernel.org>,
  Bjorn Helgaas <bhelgaas@google.com>, Dan Williams <dan.j.williams@intel.com>,
  Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
@@ -75,21 +72,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Jun 24, 2019 at 10:10:16AM -0600, Logan Gunthorpe wrote:
-> Yes, that's correct. The intent was to invert it so the dma_map could
-> happen at the start of the process so that P2PDMA code could be called
-> with all the information it needs to make it's decision on how to map;
-> without having to hook into the mapping process of every driver that
-> wants to participate.
+On Mon, Jun 24, 2019 at 10:07:56AM -0600, Logan Gunthorpe wrote:
+> > For one passing a dma_addr_t through the block layer is a layering
+> > violation, and one that I think will also bite us in practice.
+> > The host physical to PCIe bus address mapping can have offsets, and
+> > those offsets absolutely can be different for differnet root ports.
+> > So with your caller generated dma_addr_t everything works fine with
+> > a switched setup as the one you are probably testing on, but on a
+> > sufficiently complicated setup with multiple root ports it can break.
+> 
+> I don't follow this argument. Yes, I understand PCI Bus offsets and yes
+> I understand that they only apply beyond the bus they're working with.
+> But this isn't *that* complicated and it should be the responsibility of
+> the P2PDMA code to sort out and provide a dma_addr_t for. The dma_addr_t
+> that's passed through the block layer could be a bus address or it could
+> be the result of a dma_map_* request (if the transaction is found to go
+> through an RC) depending on the requirements of the devices being used.
 
-And that just isn't how things work in layering.  We need to keep
-generating the dma addresses in the driver in the receiving end, as
-there are all kinds of interesting ideas how we do that.  E.g. for the
-Mellanox NICs addressing their own bars is not done by PCIe bus
-addresses but by relative offsets.  And while NVMe has refused to go
-down that route in the current band aid fix for CMB addressing I suspect
-it will sooner or later have to do the same to deal with the addressing
-problems in a multiple PASID world.
+You assume all addressing is done by the PCI bus address.  If a device
+is addressing its own BAR there is no reason to use the PCI bus address,
+as it might have much more intelligent schemes (usually bar + offset).
+> 
+> > Also duplicating the whole block I/O stack, including hooks all over
+> > the fast path is pretty much a no-go.
+> 
+> There was very little duplicate code in the patch set. (Really just the
+> mapping code). There are a few hooks, but in practice not that many if
+> we ignore the WARN_ONs. We might be able to work to reduce this further.
+> The main hooks are: when we skip bouncing, when we skip integrity prep,
+> when we split, and when we map. And the patchset drops the PCI_P2PDMA
+> hook when we map. So we're talking about maybe three or four extra ifs
+> that would likely normally be fast due to the branch predictor.
+
+And all of those add code to the block layer fast path.
 
 _______________________________________________
 Linux-nvme mailing list
