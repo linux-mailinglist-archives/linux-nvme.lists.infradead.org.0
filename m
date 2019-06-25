@@ -2,89 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDD7355305
-	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 17:14:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C9DFF55327
+	for <lists+linux-nvme@lfdr.de>; Tue, 25 Jun 2019 17:18:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JZyfcXRbuOqdnC48g/eDwFofFqX/iksJmhgRrM8es18=; b=SQUTXcAA3v+0jv
-	TrrrQ4dan5mhn2QfXxEMSXIrcDE9Vycd2+j+5IAVNHta/jWr4t70cSQS5Z9YLp1gbiC8pDlJxQrPb
-	MiBRTC4D2z9N/P8M7ekvj594pJ0gt6ofh+lnPALenrh0doEkN2Tua3SBK+bABMINmtzHUm4mvbyZw
-	MC2P1PBHW4nm1zAJCtNliML1c0EDyliVTjsDYwa+QRFJpQrJ7pHklxPj85bMnPc1NUP2O4D817YaN
-	nyDo6dMd/jXLiVYNe76ekXy/wP3a/KD18UoUktEolosfSaTNNKR2ls/MQoyO1K/9lU2TgnbYJNmC0
-	vMAl9JbCDg6kzonXICeg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=OuEIYHffQAD7ZErB3YHEnG7m3da+GmAdSY9J8Fu0A3Y=; b=SpyQzgh8Qnb2uPAv8Qv0CZ4AG
+	KO7PG70lfrNChi2WcPGYIb3ap0XJpZeabxJXp44PHk5TS8K/cpnyMOw5lL/sAs2zWfPxah+S8rfI/
+	KppR7v8X/0sB5qh1zwDmta+wYmCOWqcteHz/TDK6Rbd0XQDgYIG1zDtGMpayfcM3twBu5wJ/ssIpI
+	SmclSxTzIy45W5sc+chAtLglns1hXjrgAwYm7glluzf5ZD8ZJ9PGXwUfL/5pGbsVEg991fA2WO1aG
+	UBnE2TwUKEB4UkQDmpMRKOtY6ppxg1nvelVHo0IwglzC23TnKnLvBa44SGcqOypYEtO/mx+hQPsd+
+	Gl5EPjeew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hfn9m-0007dN-Gu; Tue, 25 Jun 2019 15:14:50 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1hfnDU-0001So-Sx; Tue, 25 Jun 2019 15:18:40 +0000
+Received: from mail-pg1-f193.google.com ([209.85.215.193])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hfn9g-0007cn-JT
- for linux-nvme@lists.infradead.org; Tue, 25 Jun 2019 15:14:46 +0000
-Received: by mail-pl1-x643.google.com with SMTP id ay6so8973814plb.9
- for <linux-nvme@lists.infradead.org>; Tue, 25 Jun 2019 08:14:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=AiypwnEqHIwqKwf+R3e2H+Rvy6WR//fHScn0AOjLw3I=;
- b=NDRmLkfny2mQ3nvxayJ7eaEca9oIVcQ4nQ9M3VhZUBTSbB/iY1QTCI1dx6mMj8u0Bz
- GdZELXPDhuKZH2+sZYF5dyN9exNwRjBrm65bzwcppCIxdUnt+9fcoFqdQ3/6sNRchzd2
- iFKJGz2TeYxUrPJodB8FS74kHzVdkpGNLOmGQHedvXs9pTDjDPaGznEbGWpoUAG8EbSh
- mYuowhQfT9sU8mSw2EAwmvyd0rcrxP7k5uWfEqGCVbLzudvBeWNFbjFXcUxqRDeCAeQZ
- EWoJKM6OvuCLeUsyGoVSox+tJKlpr2HfVuDfJIOr/c+s6VTUh8J2DL5GAH/MSQnmTbzY
- 06GQ==
+ id 1hfnDM-0001RX-C1
+ for linux-nvme@lists.infradead.org; Tue, 25 Jun 2019 15:18:34 +0000
+Received: by mail-pg1-f193.google.com with SMTP id y8so1321748pgl.4
+ for <linux-nvme@lists.infradead.org>; Tue, 25 Jun 2019 08:18:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=AiypwnEqHIwqKwf+R3e2H+Rvy6WR//fHScn0AOjLw3I=;
- b=F6wZZD/8lyFrGQWZc128qXOfADCbZRqW2j8Gfaz/5YC2sDFib3ar44vxQfHZd+nEF1
- hRr4aT8HXkNWz2UqIgocG0MjF0ji1laiPF0I9D26Zkqu1SlvFwnDFZXlPAnPHrIPUML/
- gMFcOIP/dxB43Nzjh+AH0JS6pk9IiHc+DBiiGp090laOU1g8MIQ/FPJftHLrfwl4aB55
- NtC4E2GhvC4biTPvUVuamumR1e4JMI3e+TDwnQHKaVupYhfaWyQwxEcBKHINqgvC3boR
- HT6ZL/mAgMmMMWaH1td2GYVFmQEIOMwq5DhIxa1t+eMsMMyoeGiD1dT7PeNBBbcWMvJL
- hxYQ==
-X-Gm-Message-State: APjAAAUtBNisRFqlh3kLpD9LZy35/OU7wPzoTQU7hiBhIW/VPQJnpbKD
- jcIdS38eR5C5avzlO43yDNynaT6nawPNvZOHTq0=
-X-Google-Smtp-Source: APXvYqxHoaMUX/D0YohPi1Xl3zaWAzEpC1/isJE3gtRb272DLi5OhqgbMLNNI2L1/AiIEoLCMUMZ2MQEPuZIw3j7p1c=
-X-Received: by 2002:a17:902:e082:: with SMTP id
- cb2mr35643359plb.274.1561475683402; 
- Tue, 25 Jun 2019 08:14:43 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language;
+ bh=omeXmTqWrY35rHwslkfxvsf5JgGf+M8U2+oGSACrwZE=;
+ b=n0USKuaNWjPySTYkyu3FnWcFikvEsXkW0wGlUWl+GVycszO7YOGBt+TpfKmZDPzCtT
+ Tw12oKKTZLODYlM244Wf+94gqjV0Z/Pnq1/Z+FWOGrQ+7rlhO6meCjq5m+JqaXIt9l+j
+ ODIxPBS1rtJQnyOrT9bRYGCFO82yXSAYN2ts0JP1HYQRfIJaWu9OgizxnU1I7lQ2KNUA
+ kXuP8o7k0Bpwbcr5Zl3zLCbuHlzSKbjgXrcH0IZbrnSFYGlo3yW5g5ILqvlg92tBLw2i
+ vhnnRVi0PXvunGN6nbxPWJ8Mt4Nlo8i3RqlXpC3kqrv+9Gc7Nqhqf5IBdC2U3AlLhjmK
+ Q8iw==
+X-Gm-Message-State: APjAAAXBZRhSqgeGRfolPVKIT5Gceb15RCb62tj/m1VLdgCcMarbtMpX
+ 1A1/2k6GjQg5Ji9t5F8Z26Q=
+X-Google-Smtp-Source: APXvYqz5vsjEj4IkCYs2BpIxP/Qz3vnT1PeM8q6H7PFoxWJkjaqVspLDL/LFdpsjCNGK8GLz2aAEQg==
+X-Received: by 2002:a63:289:: with SMTP id 131mr33619805pgc.211.1561475910960; 
+ Tue, 25 Jun 2019 08:18:30 -0700 (PDT)
+Received: from desktop-bart.svl.corp.google.com
+ ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
+ by smtp.gmail.com with ESMTPSA id y68sm16624219pfy.164.2019.06.25.08.18.29
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 25 Jun 2019 08:18:29 -0700 (PDT)
+Subject: Re: [PATCH] nvmet-rdma: Suppress a lockdep complaint
+To: Marta Rybczynska <mrybczyn@kalray.eu>
+References: <20190403230402.119428-1-bvanassche@acm.org>
+ <1554392625.118779.243.camel@acm.org>
+ <1035014818.27150671.1561441925414.JavaMail.zimbra@kalray.eu>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <7d28ee3d-0326-6d31-1cc6-13acc48e0d4d@acm.org>
+Date: Tue, 25 Jun 2019 08:18:28 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
 MIME-Version: 1.0
-References: <1560439238-4054-1-git-send-email-akinobu.mita@gmail.com>
- <1560439238-4054-4-git-send-email-akinobu.mita@gmail.com>
- <1561473887.19713.6.camel@intel.com>
-In-Reply-To: <1561473887.19713.6.camel@intel.com>
-From: Akinobu Mita <akinobu.mita@gmail.com>
-Date: Wed, 26 Jun 2019 00:14:32 +0900
-Message-ID: <CAC5umyj6tyCH9GM4bPE30JYoKN57HCvjdM89h8eyAcZWspCm6A@mail.gmail.com>
-Subject: Re: [PATCH v4 3/3] nvme: notify thermal framework when temperature
- threshold events occur
-To: Zhang Rui <rui.zhang@intel.com>
+In-Reply-To: <1035014818.27150671.1561441925414.JavaMail.zimbra@kalray.eu>
+Content-Type: multipart/mixed; boundary="------------5EAA00D6F9A357E0C20E778D"
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190625_081444_670063_FE298F84 
-X-CRM114-Status: GOOD (  22.27  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190625_081832_432426_0E5EDBBE 
+X-CRM114-Status: GOOD (  26.72  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
- [list.dnswl.org]
+ no trust [209.85.215.193 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.215.193 listed in wl.mailspike.net]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (akinobu.mita[at]gmail.com)
+ provider (bart.vanassche[at]gmail.com)
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,105 +92,256 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, linux-pm@vger.kernel.org,
- Kenneth Heitke <kenneth.heitke@intel.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-nvme@lists.infradead.org,
- Eduardo Valentin <edubezval@gmail.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
+ Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
+ Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-MjAxOeW5tDbmnIgyNeaXpSjngaspIDIzOjQ0IFpoYW5nIFJ1aSA8cnVpLnpoYW5nQGludGVsLmNv
-bT46Cj4KPiBPbiDkupQsIDIwMTktMDYtMTQgYXQgMDA6MjAgKzA5MDAsIEFraW5vYnUgTWl0YSB3
-cm90ZToKPiA+IFRoZSBOVk1lIGNvbnRyb2xsZXIgc3VwcG9ydHMgdGhlIHRlbXBlcmF0dXJlIHRo
-cmVzaG9sZCBmZWF0dXJlCj4gPiAoRmVhdHVyZQo+ID4gSWRlbnRpZmllciAwNGgpIHRoYXQgZW5h
-YmxlcyB0byBjb25maWd1cmUgdGhlIGFzeW5jaHJvbm91cyBldmVudAo+ID4gcmVxdWVzdAo+ID4g
-Y29tbWFuZCB0byBjb21wbGV0ZSB3aGVuIHRoZSB0ZW1wZXJhdHVyZSBpcyBjcm9zc2VkIGl0cyBj
-b3JyZXNwb25kaW5nCj4gPiB0ZW1wZXJhdHVyZSB0aHJlc2hvbGQuCj4gPgo+ID4gVGhpcyBlbmFi
-bGVzIHRoZSByZXBvcnRpbmcgb2YgYXN5bmNocm9ub3VzIGV2ZW50cyBmcm9tIHRoZSBjb250cm9s
-bGVyCj4gPiB3aGVuCj4gPiB0aGUgdGVtcGVyYXR1cmUgcmVhY2hlZCBvciBleGNlZWRlZCBhIHRl
-bXBlcmF0dXJlIHRocmVzaG9sZC4KPiA+IEluIHRoZSBjYXNlIG9mIHRoZSB0ZW1wZXJhdHVyZSB0
-aHJlc2hvbGQgY29uZGl0aW9ucywgdGhpcyBub3RpZmllcwo+ID4gdGhlCj4gPiB0aGVybWFsIGZy
-YW1ld29yay4KPiA+Cj4gPiBUaGUgbWFpbiBwdXJwb3NlIG9mIHRoaXMgaXMgdG8gdHVybiBvbiBh
-IGZhbiB3aGVuIG92ZXJoZWF0ZWQgd2l0aG91dAo+ID4gcG9sbGluZyB0aGUgZGV2aWNlIGZvciB0
-aGUgc21hcnQgbG9nIHRoYXQgY291bGQgcHJldmVudCB0aGUgbG93ZXIKPiA+IHBvd2VyCj4gPiBz
-dGF0ZSB0cmFuc2l0aW9ucy4KPiA+Cj4gPiBDYzogWmhhbmcgUnVpIDxydWkuemhhbmdAaW50ZWwu
-Y29tPgo+ID4gQ2M6IEVkdWFyZG8gVmFsZW50aW4gPGVkdWJlenZhbEBnbWFpbC5jb20+Cj4gPiBD
-YzogRGFuaWVsIExlemNhbm8gPGRhbmllbC5sZXpjYW5vQGxpbmFyby5vcmc+Cj4gPiBDYzogS2Vp
-dGggQnVzY2ggPGtidXNjaEBrZXJuZWwub3JnPgo+ID4gQ2M6IEplbnMgQXhib2UgPGF4Ym9lQGZi
-LmNvbT4KPiA+IENjOiBDaHJpc3RvcGggSGVsbHdpZyA8aGNoQGxzdC5kZT4KPiA+IENjOiBTYWdp
-IEdyaW1iZXJnIDxzYWdpQGdyaW1iZXJnLm1lPgo+ID4gQ2M6IE1pbndvbyBJbSA8bWlud29vLmlt
-LmRldkBnbWFpbC5jb20+Cj4gPiBDYzogS2VubmV0aCBIZWl0a2UgPGtlbm5ldGguaGVpdGtlQGlu
-dGVsLmNvbT4KPiA+IENjOiBDaGFpdGFueWEgS3Vsa2FybmkgPENoYWl0YW55YS5LdWxrYXJuaUB3
-ZGMuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogQWtpbm9idSBNaXRhIDxha2lub2J1Lm1pdGFAZ21h
-aWwuY29tPgo+ID4gLS0tCj4gPiAqIHY0Cj4gPiAtIHN1cHBvcnQgRFQgdGhlcm1hbCB6b25lIGRl
-dmljZS4KPiA+IC0gdXNlIGJpdG1hcCB0byBpdGVyYXRlIG92ZXIgaW1wbGVtZW50ZWQgc2Vuc29y
-cwo+ID4KPiA+ICBkcml2ZXJzL252bWUvaG9zdC9jb3JlLmMgICAgfCAxNCArKysrKysrKysrKysr
-Kwo+ID4gIGRyaXZlcnMvbnZtZS9ob3N0L252bWUuaCAgICB8ICA1ICsrKysrCj4gPiAgZHJpdmVy
-cy9udm1lL2hvc3QvdGhlcm1hbC5jIHwgMTIgKysrKysrKysrKysrCj4gPiAgaW5jbHVkZS9saW51
-eC9udm1lLmggICAgICAgIHwgIDcgKysrKysrKwo+ID4gIDQgZmlsZXMgY2hhbmdlZCwgMzggaW5z
-ZXJ0aW9ucygrKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL252bWUvaG9zdC9jb3JlLmMg
-Yi9kcml2ZXJzL252bWUvaG9zdC9jb3JlLmMKPiA+IGluZGV4IDRiZTMzOWIuLjQ0ZGFkYmIgMTAw
-NjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL252bWUvaG9zdC9jb3JlLmMKPiA+ICsrKyBiL2RyaXZlcnMv
-bnZtZS9ob3N0L2NvcmUuYwo+ID4gQEAgLTExODYsNiArMTE4Niw5IEBAIHN0YXRpYyB2b2lkIG52
-bWVfZW5hYmxlX2FlbihzdHJ1Y3QgbnZtZV9jdHJsCj4gPiAqY3RybCkKPiA+ICAgICAgIHUzMiBy
-ZXN1bHQsIHN1cHBvcnRlZF9hZW5zID0gY3RybC0+b2FlcyAmCj4gPiBOVk1FX0FFTl9TVVBQT1JU
-RUQ7Cj4gPiAgICAgICBpbnQgc3RhdHVzOwo+ID4KPiA+ICsgICAgIGlmIChJU19FTkFCTEVEKENP
-TkZJR19USEVSTUFMKSkKPiA+ICsgICAgICAgICAgICAgc3VwcG9ydGVkX2FlbnMgfD0gTlZNRV9T
-TUFSVF9DUklUX1RFTVBFUkFUVVJFOwo+ID4gKwo+ID4gICAgICAgaWYgKCFzdXBwb3J0ZWRfYWVu
-cykKPiA+ICAgICAgICAgICAgICAgcmV0dXJuOwo+ID4KPiA+IEBAIC0zNTYxLDYgKzM1NjQsMTYg
-QEAgdm9pZCBudm1lX3JlbW92ZV9uYW1lc3BhY2VzKHN0cnVjdCBudm1lX2N0cmwKPiA+ICpjdHJs
-KQo+ID4gIH0KPiA+ICBFWFBPUlRfU1lNQk9MX0dQTChudm1lX3JlbW92ZV9uYW1lc3BhY2VzKTsK
-PiA+Cj4gPiArc3RhdGljIHZvaWQgbnZtZV9oYW5kbGVfYWVuX3NtYXJ0KHN0cnVjdCBudm1lX2N0
-cmwgKmN0cmwsIHUzMgo+ID4gcmVzdWx0KQo+ID4gK3sKPiA+ICsgICAgIHUzMiBhZXJfdHlwZSA9
-IHJlc3VsdCAmIE5WTUVfQUVSX1RZUEVfTUFTSzsKPiA+ICsgICAgIHUzMiBhZXJfaW5mbyA9IChy
-ZXN1bHQgPj4gTlZNRV9BRVJfSU5GT19TSElGVCkgJgo+ID4gTlZNRV9BRVJfSU5GT19NQVNLOwo+
-ID4gKwo+ID4gKyAgICAgaWYgKGFlcl90eXBlID09IE5WTUVfQUVSX1NNQVJUICYmCj4gPiArICAg
-ICAgICAgYWVyX2luZm8gPT0gTlZNRV9BRVJfU01BUlRfVEVNUF9USFJFU0gpCj4gPiArICAgICAg
-ICAgICAgIG52bWVfdGhlcm1hbF9ub3RpZnlfZnJhbWV3b3JrKGN0cmwpOwo+ID4gK30KPiA+ICsK
-PiA+ICBzdGF0aWMgdm9pZCBudm1lX2Flbl91ZXZlbnQoc3RydWN0IG52bWVfY3RybCAqY3RybCkK
-PiA+ICB7Cj4gPiAgICAgICBjaGFyICplbnZwWzJdID0geyBOVUxMLCBOVUxMIH07Cj4gPiBAQCAt
-MzU4Miw2ICszNTk1LDcgQEAgc3RhdGljIHZvaWQgbnZtZV9hc3luY19ldmVudF93b3JrKHN0cnVj
-dAo+ID4gd29ya19zdHJ1Y3QgKndvcmspCj4gPiAgICAgICBzdHJ1Y3QgbnZtZV9jdHJsICpjdHJs
-ID0KPiA+ICAgICAgICAgICAgICAgY29udGFpbmVyX29mKHdvcmssIHN0cnVjdCBudm1lX2N0cmws
-Cj4gPiBhc3luY19ldmVudF93b3JrKTsKPiA+Cj4gPiArICAgICBudm1lX2hhbmRsZV9hZW5fc21h
-cnQoY3RybCwgY3RybC0+YWVuX3Jlc3VsdCk7Cj4gPiAgICAgICBudm1lX2Flbl91ZXZlbnQoY3Ry
-bCk7Cj4gPiAgICAgICBjdHJsLT5vcHMtPnN1Ym1pdF9hc3luY19ldmVudChjdHJsKTsKPiA+ICB9
-Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9udm1lL2hvc3QvbnZtZS5oIGIvZHJpdmVycy9udm1l
-L2hvc3QvbnZtZS5oCj4gPiBpbmRleCBhOWM2M2VhLi40MDMyNWI2IDEwMDY0NAo+ID4gLS0tIGEv
-ZHJpdmVycy9udm1lL2hvc3QvbnZtZS5oCj4gPiArKysgYi9kcml2ZXJzL252bWUvaG9zdC9udm1l
-LmgKPiA+IEBAIC02MDUsNiArNjA1LDcgQEAgc3RhdGljIGlubGluZSBzdHJ1Y3QgbnZtZV9ucwo+
-ID4gKm52bWVfZ2V0X25zX2Zyb21fZGV2KHN0cnVjdCBkZXZpY2UgKmRldikKPiA+Cj4gPiAgaW50
-IG52bWVfdGhlcm1hbF96b25lc19yZWdpc3RlcihzdHJ1Y3QgbnZtZV9jdHJsICpjdHJsKTsKPiA+
-ICB2b2lkIG52bWVfdGhlcm1hbF96b25lc191bnJlZ2lzdGVyKHN0cnVjdCBudm1lX2N0cmwgKmN0
-cmwpOwo+ID4gK3ZvaWQgbnZtZV90aGVybWFsX25vdGlmeV9mcmFtZXdvcmsoc3RydWN0IG52bWVf
-Y3RybCAqY3RybCk7Cj4gPgo+ID4gICNlbHNlCj4gPgo+ID4gQEAgLTYxNyw2ICs2MTgsMTAgQEAg
-c3RhdGljIGlubGluZSB2b2lkCj4gPiBudm1lX3RoZXJtYWxfem9uZXNfdW5yZWdpc3RlcihzdHJ1
-Y3QgbnZtZV9jdHJsICpjdHJsKQo+ID4gIHsKPiA+ICB9Cj4gPgo+ID4gK3N0YXRpYyBpbmxpbmUg
-dm9pZCBudm1lX3RoZXJtYWxfbm90aWZ5X2ZyYW1ld29yayhzdHJ1Y3QgbnZtZV9jdHJsCj4gPiAq
-Y3RybCkKPiA+ICt7Cj4gPiArfQo+ID4gKwo+ID4gICNlbmRpZiAvKiBDT05GSUdfVEhFUk1BTCAq
-Lwo+ID4KPiA+ICAjZW5kaWYgLyogX05WTUVfSCAqLwo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-bnZtZS9ob3N0L3RoZXJtYWwuYwo+ID4gYi9kcml2ZXJzL252bWUvaG9zdC90aGVybWFsLmMKPiA+
-IGluZGV4IDE4ZDBlNGMuLmI1ZTgzNWQgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL252bWUvaG9z
-dC90aGVybWFsLmMKPiA+ICsrKyBiL2RyaXZlcnMvbnZtZS9ob3N0L3RoZXJtYWwuYwo+ID4gQEAg
-LTMwOSwzICszMDksMTUgQEAgdm9pZCBudm1lX3RoZXJtYWxfem9uZXNfdW5yZWdpc3RlcihzdHJ1
-Y3QKPiA+IG52bWVfY3RybCAqY3RybCkKPiA+ICAgICAgICAgICAgICAgX19jbGVhcl9iaXQoaSwg
-Y3RybC0+dHpfZW5hYmxlZCk7Cj4gPiAgICAgICB9Cj4gPiAgfQo+ID4gKwo+ID4gK3ZvaWQgbnZt
-ZV90aGVybWFsX25vdGlmeV9mcmFtZXdvcmsoc3RydWN0IG52bWVfY3RybCAqY3RybCkKPiA+ICt7
-Cj4gPiArICAgICBpbnQgaTsKPiA+ICsKPiA+ICsgICAgIGZvcl9lYWNoX3NldF9iaXQoaSwgY3Ry
-bC0+dHpfZW5hYmxlZCwgQVJSQVlfU0laRShjdHJsLT50eikpCj4gPiB7Cj4gPiArICAgICAgICAg
-ICAgIGlmIChjdHJsLT50eltpXS5kZXYpCj4gPiArICAgICAgICAgICAgICAgICAgICAgdGhlcm1h
-bF9ub3RpZnlfZnJhbWV3b3JrKGN0cmwtPnR6W2ldLmRldiwKPiA+IDApOwo+Cj4gSSdkIHByZWZl
-ciB0byB1c2UgdGhlcm1hbF96b25lX2RldmljZV91cGRhdGUoKSBoZXJlIHRvIG5vdGlmeSB0aGUK
-PiB0aGVybWFsIGZyYW1ld29yay4KPiB0aGVybWFsX25vdGlmeV9mcmFtZXdvcmsoKSB3aWxsIGJl
-IHJlbW92ZWQgc29tZXRpbWUgbGF0ZXIuCgpZb3UgYXJlIHJpZ2h0LgoKSSBnb3QgbXkgUk9DS1By
-bzY0IGJvYXJkIGFuZCBqdXN0IHN0YXJ0ZWQgdGVzdGluZyB3aXRoIHB3bS1mYW4gY29vbGluZwpk
-ZXZpY2UuICBBbmQgdGhlbiBJIGFsc28gbm90aWNlZCB0aGF0IHVzaW5nIHRoZXJtYWxfbm90aWZ5
-X2ZyYW1ld29yaygpCmlzIGluc3VmZmljaWVudCB3aGVuIHBvbGxpbmctZGVsYXkgaXMgemVybyAo
-aS5lLiBpbnRlcnJ1cHQgZHJpdmVuIHRoZXJtYWwKem9uZSkuCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1udm1lIG1haWxpbmcgbGlzdApMaW51
-eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
+This is a multi-part message in MIME format.
+--------------5EAA00D6F9A357E0C20E778D
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+
+On 6/24/19 10:52 PM, Marta Rybczynska wrote:
+> ----- On 4 Apr, 2019, at 17:43, Bart Van Assche bvanassche@acm.org wrote:
+>> On Wed, 2019-04-03 at 16:04 -0700, Bart Van Assche wrote:
+>>> Although the code that waits for controllers that are being teared down
+>>> in nvmet_rdma_queue_connect() is fine, lockdep complains about that code.
+>>> Lockdep complains because all release_work instances are assigned the
+>>> same static lockdep key. Avoid that lockdep complains by using dynamic
+>>> lockdep keys instead of static lockdep keys. See also the following
+>>> commits:
+>>> * 87915adc3f0a ("workqueue: re-add lockdep dependencies for flushing").
+>>> * 777dc82395de ("nvmet-rdma: occasionally flush ongoing controller teardown").
+>>> * 108c14858b9e ("locking/lockdep: Add support for dynamic keys").
+>>>
+>>> This patch avoids that lockdep reports the following:
+>>>
+>>> ======================================================
+>>> WARNING: possible circular locking dependency detected
+>>> 4.19.0-dbg #1 Not tainted
+>>> ------------------------------------------------------
+>>> kworker/u12:0/7 is trying to acquire lock:
+>>
+>> Please drop this patch - it is not sufficient to suppress the lockdep complaint.
+>> I will see whether I can come up with a better solution.
+>>
+> 
+> Have you had time to work on this one further? We're seeing the same issue.
+
+Hi Marta,
+
+I'm running all NVMe tests on my setup with the attached patch applied.
+
+Bart.
+
+--------------5EAA00D6F9A357E0C20E778D
+Content-Type: text/x-patch;
+ name="0001-nvmet-rdma-Rework-DoS-attack-mitigation.patch"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+ filename="0001-nvmet-rdma-Rework-DoS-attack-mitigation.patch"
+
+From 7777cb6118b4b4f0b43f6c8d36421c7fa8d3f6f2 Mon Sep 17 00:00:00 2001
+From: Bart Van Assche <bvanassche@acm.org>
+Date: Wed, 24 Oct 2018 11:23:08 -0700
+Subject: [PATCH] nvmet-rdma: Rework DoS attack mitigation
+
+When the rate of connect / disconnect requests is high, temporarily
+refuse connections instead of waiting until previous connections have
+been cleaned up. This patch avoids that the lockdep complaint shown
+below is reported. See also the following commits:
+* 87915adc3f0a ("workqueue: re-add lockdep dependencies for flushing").
+* 777dc82395de ("nvmet-rdma: occasionally flush ongoing controller teardown").
+
+======================================================
+WARNING: possible circular locking dependency detected
+4.19.0-dbg+ #1 Not tainted
+------------------------------------------------------
+kworker/u12:0/7 is trying to acquire lock:
+00000000c03a91d1 (&id_priv->handler_mutex){+.+.}, at: rdma_destroy_id+0x6f/0x440 [rdma_cm]
+
+but task is already holding lock:
+(work_completion)(&queue->release_work)){+.+.}, at: process_one_work+0x3c9/0x9f0
+which lock already depends on the new lock.
+
+the existing dependency chain (in reverse order) is:
+-> #3 ((work_completion)(&queue->release_work)){+.+.}:
+       process_one_work+0x447/0x9f0
+       worker_thread+0x63/0x5a0
+       kthread+0x1cf/0x1f0
+       ret_from_fork+0x24/0x30
+-> #2 ((wq_completion)"nvmet-rdma-delete-wq"){+.+.}:
+       flush_workqueue+0xf3/0x970
+       nvmet_rdma_cm_handler+0x1320/0x170f [nvmet_rdma]
+       cma_ib_req_handler+0x72f/0xf90 [rdma_cm]
+       cm_process_work+0x2e/0x110 [ib_cm]
+       cm_work_handler+0x431e/0x50ba [ib_cm]
+       process_one_work+0x481/0x9f0
+       worker_thread+0x63/0x5a0
+       kthread+0x1cf/0x1f0
+       ret_from_fork+0x24/0x30
+-> #1 (&id_priv->handler_mutex/1){+.+.}:
+       __mutex_lock+0xfe/0xbe0
+       mutex_lock_nested+0x1b/0x20
+       cma_ib_req_handler+0x6aa/0xf90 [rdma_cm]
+       cm_process_work+0x2e/0x110 [ib_cm]
+       cm_work_handler+0x431e/0x50ba [ib_cm]
+       process_one_work+0x481/0x9f0
+       worker_thread+0x63/0x5a0
+       kthread+0x1cf/0x1f0
+       ret_from_fork+0x24/0x30
+-> #0 (&id_priv->handler_mutex){+.+.}:
+       lock_acquire+0xc5/0x200
+       __mutex_lock+0xfe/0xbe0
+       mutex_lock_nested+0x1b/0x20
+       rdma_destroy_id+0x6f/0x440 [rdma_cm]
+       nvmet_rdma_release_queue_work+0x8e/0x1b0 [nvmet_rdma]
+       process_one_work+0x481/0x9f0
+       worker_thread+0x63/0x5a0
+       kthread+0x1cf/0x1f0
+       ret_from_fork+0x24/0x30
+other info that might help us debug this:
+Chain exists of:
+  &id_priv->handler_mutex --> (wq_completion)"nvmet-rdma-delete-wq" --> (work_completion)(&queue->release_work)
+
+Possible unsafe locking scenario:
+
+       CPU0                    CPU1
+       ----                    ----
+  lock((work_completion)(&queue->release_work));
+                               lock((wq_completion)"nvmet-rdma-delete-wq");
+                               lock((work_completion)(&queue->release_work));
+  lock(&id_priv->handler_mutex);
+
+ *** DEADLOCK ***
+
+2 locks held by kworker/u12:0/7:
+ #0: 00000000272134f2 ((wq_completion)"nvmet-rdma-delete-wq"){+.+.}, at: process_one_work+0x3c9/0x9f0
+ #1: 0000000090531fcd ((work_completion)(&queue->release_work)){+.+.}, at: process_one_work+0x3c9/0x9f0
+
+               stack backtrace:
+CPU: 1 PID: 7 Comm: kworker/u12:0 Not tainted 4.19.0-dbg+ #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.10.2-1 04/01/2014
+Workqueue: nvmet-rdma-delete-wq nvmet_rdma_release_queue_work [nvmet_rdma]
+Call Trace:
+ dump_stack+0x86/0xc5
+ print_circular_bug.isra.32+0x20a/0x218
+ __lock_acquire+0x1c68/0x1cf0
+ lock_acquire+0xc5/0x200
+ __mutex_lock+0xfe/0xbe0
+ mutex_lock_nested+0x1b/0x20
+ rdma_destroy_id+0x6f/0x440 [rdma_cm]
+ nvmet_rdma_release_queue_work+0x8e/0x1b0 [nvmet_rdma]
+ process_one_work+0x481/0x9f0
+ worker_thread+0x63/0x5a0
+ kthread+0x1cf/0x1f0
+ ret_from_fork+0x24/0x30
+
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Cc: Johannes Berg <johannes.berg@intel.com>
+Signed-off-by: Bart Van Assche <bvanassche@acm.org>
+---
+ drivers/nvme/target/rdma.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/nvme/target/rdma.c b/drivers/nvme/target/rdma.c
+index 36d906a7f70d..a02af993e45a 100644
+--- a/drivers/nvme/target/rdma.c
++++ b/drivers/nvme/target/rdma.c
+@@ -30,6 +30,7 @@
+ #define NVMET_RDMA_DEFAULT_INLINE_DATA_SIZE	PAGE_SIZE
+ #define NVMET_RDMA_MAX_INLINE_SGE		4
+ #define NVMET_RDMA_MAX_INLINE_DATA_SIZE		max_t(int, SZ_16K, PAGE_SIZE)
++#define NVMET_MAX_BACKLOG	128
+ 
+ struct nvmet_rdma_cmd {
+ 	struct ib_sge		sge[NVMET_RDMA_MAX_INLINE_SGE + 1];
+@@ -118,6 +119,7 @@ static bool nvmet_rdma_use_srq;
+ module_param_named(use_srq, nvmet_rdma_use_srq, bool, 0444);
+ MODULE_PARM_DESC(use_srq, "Use shared receive queue.");
+ 
++static atomic_t queues_being_released;
+ static DEFINE_IDA(nvmet_rdma_queue_ida);
+ static LIST_HEAD(nvmet_rdma_queue_list);
+ static DEFINE_MUTEX(nvmet_rdma_queue_mutex);
+@@ -1086,6 +1088,8 @@ static void nvmet_rdma_release_queue_work(struct work_struct *w)
+ 
+ 	nvmet_rdma_free_queue(queue);
+ 
++	atomic_dec(&queues_being_released);
++
+ 	kref_put(&dev->ref, nvmet_rdma_free_dev);
+ }
+ 
+@@ -1271,6 +1275,12 @@ static int nvmet_rdma_queue_connect(struct rdma_cm_id *cm_id,
+ 	struct nvmet_rdma_queue *queue;
+ 	int ret = -EINVAL;
+ 
++	if (atomic_read(&queues_being_released) > NVMET_MAX_BACKLOG) {
++		pr_warn_ratelimited("The rate at which initiator systems connect and disconnect seems to be high. New connections will be refused temporarily.\n");
++		nvmet_rdma_cm_reject(cm_id, NVME_RDMA_CM_NO_RSC);
++		return -ECONNREFUSED;
++	}
++
+ 	ndev = nvmet_rdma_find_get_device(cm_id);
+ 	if (!ndev) {
+ 		nvmet_rdma_cm_reject(cm_id, NVME_RDMA_CM_NO_RSC);
+@@ -1284,13 +1294,9 @@ static int nvmet_rdma_queue_connect(struct rdma_cm_id *cm_id,
+ 	}
+ 	queue->port = cm_id->context;
+ 
+-	if (queue->host_qid == 0) {
+-		/* Let inflight controller teardown complete */
+-		flush_scheduled_work();
+-	}
+-
+ 	ret = nvmet_rdma_cm_accept(cm_id, queue, &event->param.conn);
+ 	if (ret) {
++		atomic_inc(&queues_being_released);
+ 		schedule_work(&queue->release_work);
+ 		/* Destroying rdma_cm id is not needed here */
+ 		return 0;
+@@ -1356,6 +1362,7 @@ static void __nvmet_rdma_queue_disconnect(struct nvmet_rdma_queue *queue)
+ 
+ 	if (disconnect) {
+ 		rdma_disconnect(queue->cm_id);
++		atomic_inc(&queues_being_released);
+ 		schedule_work(&queue->release_work);
+ 	}
+ }
+@@ -1386,6 +1393,7 @@ static void nvmet_rdma_queue_connect_fail(struct rdma_cm_id *cm_id,
+ 	mutex_unlock(&nvmet_rdma_queue_mutex);
+ 
+ 	pr_err("failed to connect queue %d\n", queue->idx);
++	atomic_inc(&queues_being_released);
+ 	schedule_work(&queue->release_work);
+ }
+ 
+@@ -1560,7 +1568,7 @@ static int nvmet_rdma_add_port(struct nvmet_port *port)
+ 		goto out_destroy_id;
+ 	}
+ 
+-	ret = rdma_listen(cm_id, 128);
++	ret = rdma_listen(cm_id, NVMET_MAX_BACKLOG);
+ 	if (ret) {
+ 		pr_err("listening to %pISpcs failed (%d)\n",
+ 			(struct sockaddr *)&addr, ret);
+-- 
+2.22.0.410.gd8fdbe21b5-goog
+
+
+--------------5EAA00D6F9A357E0C20E778D
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
+
+--------------5EAA00D6F9A357E0C20E778D--
+
