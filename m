@@ -2,78 +2,103 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2D8A57378
-	for <lists+linux-nvme@lfdr.de>; Wed, 26 Jun 2019 23:18:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1173E57C93
+	for <lists+linux-nvme@lfdr.de>; Thu, 27 Jun 2019 08:55:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x9aai36Z7CXRsVM/8BebdFEd7ULFJR8eoNCJvDP2IUY=; b=F2OMzYVjxP/J5A
-	308/yAMrJcCuFNUHt1oo0T/htNdhf1qhhS0+84zLKQ6Io9BkP/JJT9UXVDeyfbkvizBu0AI0st5r9
-	6T9IohOUFy4xzc0m/rm0ES8AqHXtBUkAxUy8YEem9FBHS8sV5OHKEYGKGGCVELiknSIc5vs12pQ8y
-	GwZuG57DbLE+sFIu7pHdIgtgYylKxFMSPeoNIXVH6dNFU/zGQLl3uMKIWbrq2wnftnr1Nmv9tmKuF
-	NmbqSuwFFiwdxQ0ofdCNlU2bePfCkP7oaruYtNG8UqH28yzqKGgI66Gz2IGYVeQjxp4qgKo65y2UH
-	vsoF2/tKNLfncguRry3A==;
+	List-Owner; bh=C12g2giCufzUrhIF7bQJSlEHSD07rg8lgLTBH11hFqw=; b=M1qWS4mXF1U1bG
+	evrsQhlcJ5K7U1AftJ++76Bsds+cEuOK8WlOH0cyjpJrGzqGZWnhFE2/ql+7GHyTsp1674LUES+X0
+	nYh7pI90mreRRJwrMLod0NK8RE0ZOP4zzOy3YbIioG1Vrk6W9yyQ56YcC/GllKSgo9UJ/Qse2AaCe
+	PkbvfUQ0WxGR0meXNu3bLIRV4WPRG45d6YSwD9/jUVAQHHQ3y8J0HtsjnjFjh8+CrS8R72ADmul/j
+	GwWpFCr0oerTCL+WgYkrG3hiln/8hFQUpBcFmxnZRb6+H4ykBTnJhZBaWDmj3BT7YONS8lFTlgaWJ
+	8mI+YKONd7u6tUnKlMgw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgFJ8-0000K2-Ai; Wed, 26 Jun 2019 21:18:22 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1hgOJc-0002nm-U0; Thu, 27 Jun 2019 06:55:29 +0000
+Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgFJ1-0000Jh-QU
- for linux-nvme@lists.infradead.org; Wed, 26 Jun 2019 21:18:17 +0000
-Received: from s01061831bf6ec98c.cg.shawcable.net ([68.147.80.180]
- helo=[192.168.6.132])
- by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <logang@deltatee.com>)
- id 1hgFIv-000310-0a; Wed, 26 Jun 2019 15:18:10 -0600
-To: Jason Gunthorpe <jgg@ziepe.ca>
-References: <20190624072752.GA3954@lst.de>
- <558a27ba-e7c9-9d94-cad0-377b8ee374a6@deltatee.com>
- <20190625072008.GB30350@lst.de>
- <f0f002bf-2b94-cd18-d18f-5d0b08311495@deltatee.com>
- <20190625170115.GA9746@lst.de>
- <41235a05-8ed1-e69a-e7cd-48cae7d8a676@deltatee.com>
- <20190626065708.GB24531@lst.de>
- <c15d5997-9ba4-f7db-0e7a-a69e75df316c@deltatee.com>
- <20190626202107.GA5850@ziepe.ca>
- <8a0a08c3-a537-bff6-0852-a5f337a70688@deltatee.com>
- <20190626210018.GB6392@ziepe.ca>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <c25d3333-dcd5-3313-089b-7fbbd6fbd876@deltatee.com>
-Date: Wed, 26 Jun 2019 15:18:07 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
+ id 1hgO98-0006KM-5w
+ for linux-nvme@bombadil.infradead.org; Thu, 27 Jun 2019 06:44:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=merlin.20170209; h=Content-Type:MIME-Version:References:
+ Message-ID:In-Reply-To:Subject:CC:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=8VjKXhl6f4T4IhLYgkdcnRWolyhhnf5vL4hgVJFFYfo=; b=W4EgevkQZS7FhEFj/z3NOr9gu
+ YLWWuF0jZueFadpREC5saQskTYzm41WX+HXuIWWfNIORQKz04mP3m2QqODUGOIxZl4TjbwnjiLpY/
+ u9ypkrFywa8PNuRNt8Pf2CoVBfn6r1ysRjL3EAYW1t6/K5//UbLGA5WHRfXdptzq0kKqqDXLK+R8x
+ 3egCW3cvFgec0wMWr/EyR2BV6IiLYBMq1QOonAlbXrO2Byll7G3sNX/8BnBE4XS8WiFgruJFJv49W
+ sEyKhp395hOxGoUSwKWVtrN2CoAbNPGuqb5wdIFETFvYCbLCsORlL0Z0ZyKf7vcfh3EDVZuTBdO5E
+ DzPQw6Nyw==;
+Received: from mx0a-0016f401.pphosted.com ([67.231.148.174]
+ helo=mx0b-0016f401.pphosted.com)
+ by merlin.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hgGI8-0002iF-85
+ for linux-nvme@lists.infradead.org; Wed, 26 Jun 2019 22:21:25 +0000
+Received: from pps.filterd (m0045849.ppops.net [127.0.0.1])
+ by mx0a-0016f401.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x5QMK8Kp011308; Wed, 26 Jun 2019 15:20:17 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
+ h=date : from : to :
+ cc : subject : in-reply-to : message-id : references : mime-version :
+ content-type; s=pfpt0818; bh=8VjKXhl6f4T4IhLYgkdcnRWolyhhnf5vL4hgVJFFYfo=;
+ b=jr21TgH1CIiJel4Zv4SPmKqtkUaRFX+2cfcjamktTAgUzSeoMMYvPwV6kGOBZgnWLxm0
+ vqS/jSfrKCXKCmGuBrdeimt6Tl5/FAE5S+rR7zn5xpUubiRHBdCqszMYveDg0pcQBdOI
+ q5+AO6rXpzQUlV35f0RnKjFY1clV20mpEFftG7nza4ZZ7g1YaePpLEjJKEP2udeiIQsI
+ gm/nle02Z7FfshOLAon2DPP7ZSstZz44/UvW5qmY2iDFDeH3LvRtWG9pZQTvp5BzQ8GG
+ YMNJbiWABcqxpb5ZTfsBy+ly8e9Xc/b1XzUW1Ap2C354nH0eoAIwUiDF6Gg6orA8EPMM vQ== 
+Received: from sc-exch03.marvell.com ([199.233.58.183])
+ by mx0a-0016f401.pphosted.com with ESMTP id 2tch6981up-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
+ Wed, 26 Jun 2019 15:20:17 -0700
+Received: from SC-EXCH01.marvell.com (10.93.176.81) by SC-EXCH03.marvell.com
+ (10.93.176.83) with Microsoft SMTP Server (TLS) id 15.0.1367.3; Wed, 26 Jun
+ 2019 15:20:16 -0700
+Received: from maili.marvell.com (10.93.176.43) by SC-EXCH01.marvell.com
+ (10.93.176.81) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
+ Transport; Wed, 26 Jun 2019 15:20:16 -0700
+Received: from mvluser05.qlc.com (unknown [10.112.10.135])
+ by maili.marvell.com (Postfix) with ESMTP id 07BB03F7041;
+ Wed, 26 Jun 2019 15:20:16 -0700 (PDT)
+Received: from localhost (aeasi@localhost)
+ by mvluser05.qlc.com (8.14.4/8.14.4/Submit) with ESMTP id x5QMKEpn025835;
+ Wed, 26 Jun 2019 15:20:15 -0700
+X-Authentication-Warning: mvluser05.qlc.com: aeasi owned process doing -bs
+Date: Wed, 26 Jun 2019 15:20:14 -0700
+From: Arun Easi <aeasi@marvell.com>
+X-X-Sender: aeasi@mvluser05.qlc.com
+To: James Smart <jsmart2021@gmail.com>
+Subject: Re: [PATCH] nvme-fc: fix module unloads while lports still pending
+In-Reply-To: <20190625160604.3905-1-jsmart2021@gmail.com>
+Message-ID: <alpine.LRH.2.21.9999.1906261516150.7630@mvluser05.qlc.com>
+References: <20190625160604.3905-1-jsmart2021@gmail.com>
+User-Agent: Alpine 2.21.9999 (LRH 334 2019-03-29)
 MIME-Version: 1.0
-In-Reply-To: <20190626210018.GB6392@ziepe.ca>
-Content-Language: en-US
-X-SA-Exim-Connect-IP: 68.147.80.180
-X-SA-Exim-Rcpt-To: sbates@raithlin.com, kbusch@kernel.org, sagi@grimberg.me,
- dan.j.williams@intel.com, bhelgaas@google.com, axboe@kernel.dk,
- linux-rdma@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
- linux-kernel@vger.kernel.org, hch@lst.de, jgg@ziepe.ca
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190626_141816_208499_BC38DFC9 
-X-CRM114-Status: GOOD (  21.94  )
-X-Spam-Score: -0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-06-26_12:, , signatures=0
+X-Spam-Note: CRM114 invocation failed
+X-Spam-Score: -0.9 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on merlin.infradead.org summary:
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [67.231.148.174 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.0 KHOP_DYNAMIC           Relay looks like a dynamic address
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,82 +110,70 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
- linux-rdma@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- Stephen Bates <sbates@raithlin.com>, linux-block@vger.kernel.org,
- Keith Busch <kbusch@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Dan Williams <dan.j.williams@intel.com>, Christoph Hellwig <hch@lst.de>
+Cc: linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+On Tue, 25 Jun 2019, 9:06am, James Smart wrote:
 
-
-On 2019-06-26 3:00 p.m., Jason Gunthorpe wrote:
-> On Wed, Jun 26, 2019 at 02:45:38PM -0600, Logan Gunthorpe wrote:
->>
->>
->> On 2019-06-26 2:21 p.m., Jason Gunthorpe wrote:
->>> On Wed, Jun 26, 2019 at 12:31:08PM -0600, Logan Gunthorpe wrote:
->>>>> we have a hole behind len where we could store flag.  Preferably
->>>>> optionally based on a P2P or other magic memory types config
->>>>> option so that 32-bit systems with 32-bit phys_addr_t actually
->>>>> benefit from the smaller and better packing structure.
->>>>
->>>> That seems sensible. The one thing that's unclear though is how to get
->>>> the PCI Bus address when appropriate. Can we pass that in instead of the
->>>> phys_addr with an appropriate flag? Or will we need to pass the actual
->>>> physical address and then, at the map step, the driver has to some how
->>>> lookup the PCI device to figure out the bus offset?
->>>
->>> I agree with CH, if we go down this path it is a layering violation
->>> for the thing injecting bio's into the block stack to know what struct
->>> device they egress&dma map on just to be able to do the dma_map up
->>> front.
->>
->> Not sure I agree with this statement. The p2pdma code already *must*
->> know and access the pci_dev of the dma device ahead of when it submits
->> the IO to know if it's valid to allocate and use P2P memory at all.
+> Current code allows the module to be unloaded even if there are
+> pending data structures, such as localports and controllers on
+> the localports, that have yet to hit their reference counting
+> to remove them.
 > 
-> I don't think we should make drives do that. What if it got CMB memory
-> on some other device?
-
-Huh? A driver submitting P2P requests finds appropriate memory to use
-based on the DMA device that will be doing the mapping. It *has* to. It
-doesn't necessarily have control over which P2P provider it might find
-(ie. it may get CMB memory from a random NVMe device), but it easily
-knows the NVMe device it got the CMB memory for. Look at the existing
-code in the nvme target.
-
->>> For instance we could use a small hash table of the upper phys addr
->>> bits, or an interval tree, to do the lookup.
->>
->> Yes, if we're going to take a hard stance on this. But using an interval
->> tree (or similar) is a lot more work for the CPU to figure out these
->> mappings that may not be strictly necessary if we could just pass better
->> information down from the submitting driver to the mapping driver.
+> Fix by taking a reference out on the module upon the first localport
+> registered, and which is cleared when the last localport is removed.
 > 
-> Right, this is coming down to an optimization argument. I think there
-> are very few cases (Basically yours) where the caller will know this
-> info, so we need to support the other cases anyhow.
+> Signed-off-by: James Smart <jsmart2021@gmail.com>
+> ---
+>  drivers/nvme/host/fc.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+> 
+> diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
+> index b7662e237eb9..bd80e2c475da 100644
+> --- a/drivers/nvme/host/fc.c
+> +++ b/drivers/nvme/host/fc.c
+> @@ -229,6 +229,8 @@ nvme_fc_free_lport(struct kref *ref)
+>  	/* remove from transport list */
+>  	spin_lock_irqsave(&nvme_fc_lock, flags);
+>  	list_del(&lport->port_list);
+> +	if (list_empty(&nvme_fc_lport_list))
+> +		module_put(THIS_MODULE);
+>  	spin_unlock_irqrestore(&nvme_fc_lock, flags);
+>  
+>  	ida_simple_remove(&nvme_fc_local_port_cnt, lport->localport.port_num);
+> @@ -398,6 +400,11 @@ nvme_fc_register_localport(struct nvme_fc_port_info *pinfo,
+>  	newrec->localport.port_num = idx;
+>  
+>  	spin_lock_irqsave(&nvme_fc_lock, flags);
+> +	if (list_empty(&nvme_fc_lport_list) && !try_module_get(THIS_MODULE)) {
+> +		spin_unlock_irqrestore(&nvme_fc_lock, flags);
+> +		ret = -ENODEV;
+> +		goto out_dev_put;
+> +	}
+>  	list_add_tail(&newrec->port_list, &nvme_fc_lport_list);
+>  	spin_unlock_irqrestore(&nvme_fc_lock, flags);
+>  
+> @@ -407,6 +414,9 @@ nvme_fc_register_localport(struct nvme_fc_port_info *pinfo,
+>  	*portptr = &newrec->localport;
+>  	return 0;
+>  
+> +out_dev_put:
+> +	if (dev)
+> +		put_device(dev);
+>  out_ida_put:
+>  	ida_simple_remove(&nvme_fc_local_port_cnt, idx);
+>  out_fail_kfree:
+> 
 
-I disagree. I think it has to be a common pattern. A driver doing a P2P
-transaction *must* find some device to obtain memory from (or it may be
-itself)  and check if it is compatible with the device that's going to
-be mapping the memory or vice versa. So no matter what we do, a driver
-submitting P2P requests must have access to both the PCI device that's
-going to be mapping the memory and the device that's providing the memory.
+Changes look ok.
 
-> I think with some simple caching this will become negligible for cases
-> you care about
+Did you hit this during testing? Wondering because LLD would have unloaded 
+prior to nvme_fc, so no lport/rport should remain if LLD behaves well.
 
-Well *maybe* it will be negligible performance wise, but it's also a lot
-more complicated, code wise. Tree lookups will always be a lot more
-expensive than just checking a flag.
-
-Logan
+-Arun
 
 _______________________________________________
 Linux-nvme mailing list
