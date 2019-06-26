@@ -2,74 +2,92 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C06085726B
-	for <lists+linux-nvme@lfdr.de>; Wed, 26 Jun 2019 22:18:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 867DF5727A
+	for <lists+linux-nvme@lfdr.de>; Wed, 26 Jun 2019 22:21:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5gwolF7Gp6WaPn2/qFf1aC0NzMXGdmgirp6SS9iRmLo=; b=WGjKbT7alpALzS
-	q/gb8mD2ztpatFvoEemGqMGqTou4r33EIHPxQFARk29vTVZ9FJStKrbjvaWtlLGp/ljHogLvKJSpb
-	VnoYziYoLObWG4B6pUjFgYr9/m+33Ariwx899S5BfH+ojkRhJd+ZKMRvs9S6O4iG8CnchbB/g4Q7q
-	FaNGyYZWe3yTk4yRFnQnKDEiZ2e9hnQ5i0Sb+z80iOb7ZJ6yGaVczkLpwfvFkOIHskHglmdq3U6zv
-	pQwa5KfJuuu9cty9YDEQTzaycBqM5Xrf9GRjZ/4XGHGg5eWc5g8jbTBK/aaPTeTlBlcYAFZFLvsp+
-	KlCcj2jR5HZAWmsH6Gag==;
+	List-Owner; bh=Tp8BM/LrTFLfsHbxiGODZJZYd2q7B0b1zAwRdPDLgQ0=; b=uIvtrHsk+WwiDN
+	vV45iXxhzmkBwEWOZsdnhn3r+NXubXqS9lGLQmtEEYueXacJiGKTViYNjswEHtrFwdDEG+ECNuLkv
+	QxqiqWRWi+98LeA98S17Sfm4KB9uBL+pkJ/FurdqzXd1s78AFjAZX7o3xbJncLupK+BfdLScLJ/xm
+	MRGkgN1ws4/EiufvH40cBYE8NVPSoEy9/8HOmLYgA8O3+Z8cm5R5QihuMc0Z4gvUz+j0SxCcwXwOg
+	4KTsTF0O1JchSTivXJQ4wNhVi3h0c9S4Iisnma6N4m5X9tYBSMFhNpQYlfCb3ik9LRHfg+EUr2Xlp
+	+1KnNJ0aUPuIKFLcLvJA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgEN9-0002o6-Dw; Wed, 26 Jun 2019 20:18:27 +0000
-Received: from mo6-p01-ob.smtp.rzone.de ([2a01:238:20a:202:5301::10])
+	id 1hgEPz-0004UE-DV; Wed, 26 Jun 2019 20:21:23 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgEN1-0002ne-3z
- for linux-nvme@lists.infradead.org; Wed, 26 Jun 2019 20:18:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1561580294;
- s=strato-dkim-0002; d=rohdewald.de;
- h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
- X-RZG-CLASS-ID:X-RZG-AUTH:From:Subject:Sender;
- bh=85rv0CAA+UD5aYxQ0jPNgkqohdUXvbkDCM7wo02lt20=;
- b=WdUcPqoebnIqotmgZcWTAQhwE9xszufx1Q8Y+21uX+EfBloOMnGzAxHkfYul5lfJMb
- GbM1OgjcS/TyLkG6Q7ATGH9Ea0UYlbTJDPH25vb1G+qwa6gAVi2fGNnHVR5MnzeOdq5P
- oy6XiSDcmXmF5Gwh5zvzLH/0yYsLCnInTqbcTIaWOf9kFfycRRtMo6ZWbL/Ad8440/OW
- n5kNxJMej1xbipMXhHLt5uj+FeNDJoAGM3XUeZ/rcN70gZBovqWAb2Xb21H61fptGSTA
- q2fdUBhWsAAITdKV36HzOTJfVyegtwfqhhPj7KK5UekJMgXiqOzYllnSrcZmjPm842y+
- 973Q==
-X-RZG-AUTH: ":O2MIc0epdfgAjoV+frHI3UhxNCLBO5P+YT7khnlEaB0/xTIC/6v6hbEcd4t3zIbpGQPXJPtfE+RucQ=="
-X-RZG-CLASS-ID: mo00
-Received: from skull.home by smtp.strato.de (RZmta 44.24 DYNA|AUTH)
- with ESMTPSA id K00eaav5QKI3bTy
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (curve secp521r1 with
- 521 ECDH bits, eq. 15360 bits RSA))
- (Client did not present a certificate);
- Wed, 26 Jun 2019 22:18:03 +0200 (CEST)
-Message-ID: <701ee07140bda40badba5e188c32fe9fe971ead9.camel@rohdewald.de>
-Subject: Re: [nvme] Invalid SGL for payload:91648 nents:3
-From: Wolfgang Rohdewald <wolfgang@rohdewald.de>
-To: Ming Lei <ming.lei@redhat.com>
-Date: Wed, 26 Jun 2019 22:18:01 +0200
-In-Reply-To: <20190626012654.GA23698@ming.t460p>
-References: <92778741dff3723fc94cd75df3043adc9c8bf21a.camel@rohdewald.de>
- <20190625091704.GA30606@ming.t460p>
- <CAOSXXT5PgPJqouD0G7qJjar5tmy-9z+wWdFMqpD2K1=5vQZ+HA@mail.gmail.com>
- <20190625094532.GA11214@ming.t460p> <20190625095013.GA1353@lst.de>
- <336692273232ee2441e30e7e2a1c542201854010.camel@rohdewald.de>
- <20190625132900.GA22428@ming.t460p>
- <6e23e6656188778c22e4aef04b6572c247103972.camel@rohdewald.de>
- <20190626012654.GA23698@ming.t460p>
-User-Agent: Evolution 3.32.1-2 
+ id 1hgEPp-0004TK-EB
+ for linux-nvme@lists.infradead.org; Wed, 26 Jun 2019 20:21:15 +0000
+Received: by mail-wm1-x342.google.com with SMTP id f17so3366847wme.2
+ for <linux-nvme@lists.infradead.org>; Wed, 26 Jun 2019 13:21:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=OEhwVsMA3XIUpQpge8sgosocEMtryj/JM+GB3rxyxT0=;
+ b=OBEQAdaamQq8DPC1D4CThjy6eV1PBaNXcwZ+5jy2E8475I+WlimCxcgC3HJrBb4Iz4
+ 0dVkwRaL7lX/ctEdlDzagRE1VjUA7WgtIyx9GWUJ9NC106rOa7MKYzwoHJ2RscAOG+kh
+ liv+OYx3WzQdJn1mrZtCIdVHhASpUGnRNKNhiZ7r/v5geqVaTiphTa45C/tD01oSWo5h
+ QTrSESIxcee5CT0pENaIxan0g84iO6+Gu//kRQzqTrgZKveJizs6i+Yea/t5c+iH4IKc
+ klNTP6r9pOee8VKujHJlPdpJFTYHtk11YSZvgxxI84b3uC0Vv/4Zf/sKzq4cF6jKoHjF
+ Kqog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=OEhwVsMA3XIUpQpge8sgosocEMtryj/JM+GB3rxyxT0=;
+ b=SROEU1fHWZXIBOK0LXeX3T2qlJZN6Jo0nnZG/SHXj42dlvf4+hvcvPnQzxxZFHvoi2
+ 5YCHVFM9MGBJVdij0M48gWluqIMzgpIeNoz1Y4pi2hv0eMoy1xlF3ARQEmPNinfGfEIh
+ 07Au0BUqljpjqMJByE3s2BDOkYAe4d+QmFD3/W/iuLopP6G02DUrvxjSPi6dp28EYi5S
+ KXOqQGhKxl9WKAU69fHjMQpEjMICzOU9wf5r/V7xlIVzcb+SOQ0fybjRHbr4pqdBCDFf
+ nm02Cji2KHtd/PO83G7Bcm11Jd8uyBBu0ZeCHb07sPqiK5IUMUAFExEjl3qxPwkHg5ab
+ FuwQ==
+X-Gm-Message-State: APjAAAWFNw7xSp6AfGGYObv4BuJ4mgV0FwJy+yO/VNrVy6NJ5AOzBkje
+ BTH+7ShjGvd9rTMnReGbtKVLbg==
+X-Google-Smtp-Source: APXvYqxSlsbE0PgFuCvLKbN06OJ5ff+z7EepoAOuIIAuuzNl3RxOn4db108Jy3bqKOnIlDRyHb96EQ==
+X-Received: by 2002:a1c:cfc3:: with SMTP id f186mr446698wmg.134.1561580471033; 
+ Wed, 26 Jun 2019 13:21:11 -0700 (PDT)
+Received: from ziepe.ca ([148.87.23.38])
+ by smtp.gmail.com with ESMTPSA id r5sm38908409wrg.10.2019.06.26.13.21.10
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 26 Jun 2019 13:21:10 -0700 (PDT)
+Received: from jgg by jggl.ziepe.ca with local (Exim 4.90_1)
+ (envelope-from <jgg@ziepe.ca>)
+ id 1hgEPk-0001YU-12; Wed, 26 Jun 2019 17:21:08 -0300
+Date: Wed, 26 Jun 2019 17:21:08 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
+Message-ID: <20190626202107.GA5850@ziepe.ca>
+References: <20190620161240.22738-1-logang@deltatee.com>
+ <20190624072752.GA3954@lst.de>
+ <558a27ba-e7c9-9d94-cad0-377b8ee374a6@deltatee.com>
+ <20190625072008.GB30350@lst.de>
+ <f0f002bf-2b94-cd18-d18f-5d0b08311495@deltatee.com>
+ <20190625170115.GA9746@lst.de>
+ <41235a05-8ed1-e69a-e7cd-48cae7d8a676@deltatee.com>
+ <20190626065708.GB24531@lst.de>
+ <c15d5997-9ba4-f7db-0e7a-a69e75df316c@deltatee.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <c15d5997-9ba4-f7db-0e7a-a69e75df316c@deltatee.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190626_131819_759763_38085B77 
-X-CRM114-Status: GOOD (  10.05  )
-X-Spam-Score: -0.9 (/)
+X-CRM114-CacheID: sfid-20190626_132113_896595_49A74A42 
+X-CRM114-Status: GOOD (  16.12  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.9 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [2a01:238:20a:202:5301:0:0:10 listed in]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
  [list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -89,31 +107,51 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
- Keith Busch <keith.busch@gmail.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-rdma@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
+ Stephen Bates <sbates@raithlin.com>, linux-block@vger.kernel.org,
+ Keith Busch <kbusch@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Dan Williams <dan.j.williams@intel.com>, Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gTWksIDIwMTktMDYtMjYgYXQgMDk6MjYgKzA4MDAsIE1pbmcgTGVpIHdyb3RlOgo+IEFuZCB0
-aGUgZm9sbG93aW5nIHBhdGNoIHNob3VsZCBmaXggdGhlIDUuMSBpc3N1ZSB0b286Cj4gCj4gZGlm
-ZiAtLWdpdCBhL2Jsb2NrL2Jsay1tZXJnZS5jIGIvYmxvY2svYmxrLW1lcmdlLmMKPiBpbmRleCAx
-YzlkNGYwZjk2ZWEuLmZmNjliN2RkMjE3OSAxMDA2NDQKPiAtLS0gYS9ibG9jay9ibGstbWVyZ2Uu
-Ywo+ICsrKyBiL2Jsb2NrL2Jsay1tZXJnZS5jCj4gQEAgLTYwLDcgKzYwLDggQEAgc3RhdGljIGlu
-bGluZSBib29sIGJpb193aWxsX2dhcChzdHJ1Y3QgcmVxdWVzdF9xdWV1ZSAqcSwKPiAgICAgICAg
-ICAqLwo+ICAgICAgICAgYmlvX2dldF9sYXN0X2J2ZWMocHJldiwgJnBiKTsKPiAgICAgICAgIGJp
-b19nZXRfZmlyc3RfYnZlYyhuZXh0LCAmbmIpOwo+IC0gICAgICAgaWYgKGJpb3Nfc2Vnc19tZXJn
-ZWFibGUocSwgcHJldiwgJnBiLCAmbmIpKQo+ICsgICAgICAgaWYgKGJpb3Nfc2Vnc19tZXJnZWFi
-bGUocSwgcHJldiwgJnBiLCAmbmIpICYmIHByZXYtPmJpX3NlZ19iYWNrX3NpemUgKwo+ICsgICAg
-ICAgICAgICAgICAgICAgICAgIG5leHQtPmJpX3NlZ19mcm9udF9zaXplIDwgcXVldWVfbWF4X3Nl
-Z21lbnRfc2l6ZShxKSkKPiAgICAgICAgICAgICAgICAgcmV0dXJuIGZhbHNlOwo+ICAgICAgICAg
-cmV0dXJuIF9fYnZlY19nYXBfdG9fcHJldihxLCAmcGIsIG5iLmJ2X29mZnNldCk7Cj4gIH0KClNv
-IGZhciwgdGhpcyB3b3JrcyBmb3IgbWUgd2l0aCA1LjEuMTUuIEJlZm9yZSwgdGhlIGJ1ZyB3b3Vs
-ZCB0cmlnZ2VyIHdpdGhpbiAKc2Vjb25kcyBhZnRlciBzdGFydGluZyB3aW5kb3dzIDEwIHVwZGF0
-ZSBpbiB2aXJ0dWFsYm94IDYuMC42LCBub3cgaXQgZG9lcyBub3QuCgotLSAKbWl0IGZyZXVuZGxp
-Y2hlbiBHcsO8c3NlbgoKV29sZmdhbmcgUm9oZGV3YWxkCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgt
-bnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+On Wed, Jun 26, 2019 at 12:31:08PM -0600, Logan Gunthorpe wrote:
+> > we have a hole behind len where we could store flag.  Preferably
+> > optionally based on a P2P or other magic memory types config
+> > option so that 32-bit systems with 32-bit phys_addr_t actually
+> > benefit from the smaller and better packing structure.
+> 
+> That seems sensible. The one thing that's unclear though is how to get
+> the PCI Bus address when appropriate. Can we pass that in instead of the
+> phys_addr with an appropriate flag? Or will we need to pass the actual
+> physical address and then, at the map step, the driver has to some how
+> lookup the PCI device to figure out the bus offset?
+
+I agree with CH, if we go down this path it is a layering violation
+for the thing injecting bio's into the block stack to know what struct
+device they egress&dma map on just to be able to do the dma_map up
+front.
+
+So we must be able to go from this new phys_addr_t&flags to some BAR
+information during dma_map.
+
+For instance we could use a small hash table of the upper phys addr
+bits, or an interval tree, to do the lookup.
+
+The bar info would give the exporting struct device and any other info
+we need to make the iommu mapping.
+
+This phys_addr_t seems like a good approach to me as it avoids the
+struct page overheads and will lets us provide copy from/to bio
+primitives that could work on BAR memory. I think we can surely use
+this approach in RDMA as well.
+
+Jason
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
