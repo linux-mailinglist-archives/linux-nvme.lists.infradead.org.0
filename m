@@ -2,138 +2,110 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F07F757B6A
-	for <lists+linux-nvme@lfdr.de>; Thu, 27 Jun 2019 07:29:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D1D8F57B84
+	for <lists+linux-nvme@lfdr.de>; Thu, 27 Jun 2019 07:34:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tXNRNacQxNDqaGZjpHy/kzGQIIQ/r1chWi8K3mJznlg=; b=rUGqKkYXkDpb+o
-	zOLBbhOqzzUCJ5QVNQeauoS3j9NjN9/EFPCeuDgOOs757NX69zWS1evV2b6w+bfD/2AHMSUwLgaxx
-	B84grwNzYs7azrFvmOKA5q4qHj2QFbkra+yGP48WdCEw6ei3RBgPK6q0Yrcvqb0JqacMWDNM51oyt
-	D7Lpt3FMgufvFdOrgYnHoJCN2RSB5dCtOL5bl2s5/nAjtBfmBYkyyIs6YKKbonybDixr+9OdXzkv5
-	MQoXaorkXq8YGIqn5ERDoa2LxWkliZhaAeSDX3P8tXFf7pQqheMX1IUe2Yx6v8FleAVRWpRAiec3K
-	iaqWQ8SID5pUS67zgQyw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:References:Message-ID:In-Reply-To:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=6BGVboshy8+bHimVOW4lrExVB7Q8Y5aoAcANusw7Uh8=; b=cJsEpZeLVDFB9LMrFeB4NxSyt
+	5h9FnKIvnl2JFLezyCBxxS8jCHcNFBiEuGoEPsIFXuUwWWFYFlVzf3QvqY4ALt12d3ZH7RDr2lrrb
+	7H3NftoumQ3od52zle2U6XzLesXtkpkMHe1YHSkFK77XS+5EloigaaL/snXI9EmiWonKQjI8hjHmT
+	gN0O4JzFJ7SIxPIRLrj8MxyBSkQNx88AE20Q2OeVI218UyyioAxlecpKrWqhvhz74uN9pnDx2dzm/
+	aWww7LS/lr8rc4Cfb/NI70rQ87Xkae1asVsklJ/tidYeLhiVphNN23cXruXaP8sTfwUwn3a5qWTuc
+	Q82wqPLJA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgMyB-00008P-PQ; Thu, 27 Jun 2019 05:29:15 +0000
+	id 1hgN2o-000599-0f; Thu, 27 Jun 2019 05:34:02 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgMsL-00033C-JZ
- for linux-nvme@bombadil.infradead.org; Thu, 27 Jun 2019 05:23:13 +0000
+ id 1hgMsA-0006ep-TH
+ for linux-nvme@bombadil.infradead.org; Thu, 27 Jun 2019 05:23:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Transfer-Encoding:
- Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:
- From:Sender:Reply-To:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=WqBpN83LyOFjQvwqlwTcSvuoOJHHok4XS1A9Ium+qpY=; b=JbzrZWLmTHtd9BwgnHcA6IdswC
- xYe2ucDLqzFap5jhTEdb5JTQUiwbPXY+OQDhbGXHX9Ig01yu8fWIHouefvDTQhSl83M8BDdQB0rXW
- s4dlqus7Tyf2g64YsljZfjl4CXd/riCfUOkHLzrsVHDcTmSYOtBQAnk9TmbP4OwlQI/JdYUCEoV5h
- pJR4SLsHACz7sNr8FIBx6yMnVlEXJ0ytbS4ru0taV92R9gbBLLclI7GTr0iJo8FjBEc0BxN207H6r
- oa1KTimiVLPhoHjoorlB1tDy3ByKI/mt5Qj9Evk0xiDoIip1czJAKA/mxFF/1QJ6Ikr8BCTph/fbY
- ZUlVOgKA==;
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+ d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
+ Message-ID:In-Reply-To:Subject:CC:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=Y3hLdJtgQDsFchZ3YZn/blHk5XbGZwJhJgAL3zAtu/s=; b=gf9YkHPK9o/yX3OtfhfJVNmlv
+ B7jJ1qPkhjTbnF1E6CMSgsye0o2WaoscL/LALr85kkE2jLQi0Ssvl1v5h2x7W/wnBR7Kl4PJniQ9R
+ mWFkdrxkML206jWW7SdUXjQVrPas0oZvMPrjTDIVCRn8ST0oCjlDR9/7Xm7icQem0ORpuMQUKbzzJ
+ ll6v6u/rrQvooUow0d4czoeYhJT3/OkA7r6yi3hjxxyLcFYkBWlTpsZ3L86zhvkN0vCBE6QIVzKjK
+ KjHbVTHFyne7o/G4mbOjUWO3oF82ZKQXvE3jvUHSVmhlKYNNNvfudpBIDW7JHpzjsQGpjaxhLQgCi
+ eY253LcrQ==;
+Received: from mx0a-0016f401.pphosted.com ([67.231.148.174]
+ helo=mx0b-0016f401.pphosted.com)
  by casper.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgHt3-0001Bf-LX
- for linux-nvme@lists.infradead.org; Thu, 27 Jun 2019 00:04:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1561593832; x=1593129832;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=WqBpN83LyOFjQvwqlwTcSvuoOJHHok4XS1A9Ium+qpY=;
- b=H/hUXwYy/ikMW5kbDHACuejCefncoRG5LfyeBQ1G8aNxuA5rcsbO3i8d
- a+/CxvjUMYLZJ+BanaWi2EF3+gUYGwus8GSkdY03DBxngVV1rR1VjtS2S
- tHJkXQS6We2hjSf//S1lFeC+Xjr32KGVb9/3MYxh/gzIiP3r+jRBUqMFK
- HQi/CyUCjJLRc4cbVNhkHBv0lVj2rbGkGj8L486khvYFYVEuSMFvAGPYd
- s4raH5SvstW2v9cKJTsynHOASiEbDgibBBljEu+iLTfkKzLQaKQOrkt2X
- XBiPogekUoUk/jkR8VicrItsnQ6sUYe6bUXt+RTjNqu2Lk6ck3T0PQWIV Q==;
-X-IronPort-AV: E=Sophos;i="5.63,421,1557158400"; d="scan'208";a="211442148"
-Received: from mail-by2nam05lp2057.outbound.protection.outlook.com (HELO
- NAM05-BY2-obe.outbound.protection.outlook.com) ([104.47.50.57])
- by ob1.hgst.iphmx.com with ESMTP; 27 Jun 2019 08:03:08 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WqBpN83LyOFjQvwqlwTcSvuoOJHHok4XS1A9Ium+qpY=;
- b=o01DBJKAA41MKcB1niPgSiMt32aZ6iaTmMDtND1l61cl7kNLAMKUqsErgtCZ0Qd4Q1yklQZQNJ4P+3mgyd+dMCg2KQ092VzlfUe1T6YdN9/0jpDl3HIqaquU4y5olg/7j5ZaG9UDaITHRE8xD8tG8sjn8q6yQIN/fx88E0zg9Lw=
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.58.26) by
- BYAPR04MB5767.namprd04.prod.outlook.com (20.179.58.89) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2008.17; Thu, 27 Jun 2019 00:02:49 +0000
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::fc2b:fcd4:7782:53d6]) by BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::fc2b:fcd4:7782:53d6%7]) with mapi id 15.20.2008.018; Thu, 27 Jun 2019
- 00:02:49 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Minwoo Im <minwoo.im.dev@gmail.com>, YueHaibing <yuehaibing@huawei.com>
-Subject: Re: [PATCH -next] nvme-pci: Make nvme_dev_pm_ops static
-Thread-Topic: [PATCH -next] nvme-pci: Make nvme_dev_pm_ops static
-Thread-Index: AQHVK8QyV/HFyY84V0GwUJFDyz2beaauYmqA///IAoA=
-Date: Thu, 27 Jun 2019 00:02:48 +0000
-Message-ID: <16F98F71-9186-443A-A787-1F966A3BCC87@wdc.com>
-References: <20190626020902.38240-1-yuehaibing@huawei.com>
- <20190626202311.GB4934@minwooim-desktop>
-In-Reply-To: <20190626202311.GB4934@minwooim-desktop>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Microsoft-MacOutlook/10.1a.0.190609
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [2605:e000:3e45:f500:7ce8:bb88:a236:3b7]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: da475c96-a207-4b5a-3fd2-08d6fa92cabc
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB5767; 
-x-ms-traffictypediagnostic: BYAPR04MB5767:
-x-ms-exchange-purlcount: 1
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <BYAPR04MB5767CD86FD9FE1A137B7887486FD0@BYAPR04MB5767.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:3173;
-x-forefront-prvs: 008184426E
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(366004)(136003)(346002)(376002)(396003)(39860400002)(189003)(199004)(33656002)(73956011)(36756003)(486006)(66556008)(25786009)(71200400001)(71190400001)(66476007)(5660300002)(68736007)(76116006)(66446008)(66946007)(46003)(54906003)(58126008)(476003)(316002)(110136005)(4326008)(64756008)(11346002)(446003)(14444005)(256004)(6116002)(6246003)(186003)(76176011)(53546011)(6486002)(99286004)(6506007)(2616005)(102836004)(53936002)(72206003)(6436002)(86362001)(478600001)(2906002)(229853002)(6306002)(966005)(8936002)(14454004)(6512007)(81166006)(81156014)(7736002)(8676002)(305945005);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5767;
- H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: tyI3tNMdQMPzzigxzPw1NWqjD/+qgJ1V7t7aLNBPNuu03U1BIEhDo2YkL0i1oLlHqZA9i3+ZnjPzrcAHPwhhTlurbZaagYgQ7tLrCHwDfj6w79D06uaXxqoyWINSGzAHYr1HEo4vAlPmPfWG6gjkpoE2KM0Ot64WeJOLVSlNSzevtu2h0zKUSPgPw+cOzfZ3VTz36YHEBImZ3HDhFsUiTFm6gnN7xRusnl+L0CV2Z1hSgMsW7UUVFp/16YN8PNQ7BSlRzCyDe9y91vvoTY77X5P3IyiPbzp06yVktPk6jLuQi4qtaLrH+WTFiH7mYUu4pWD51X01c9yTSNOqtr49GIFhb5QUlVIpIOw/8OqGuBvac5lbp7mQVzUxqk8aEEUunYOVClhmXT767kDapQN883UyPV0za0CcxqU5NP9N9Jw=
-Content-ID: <700F4F47C515F3488C30827EA840589C@namprd04.prod.outlook.com>
+ id 1hgIIZ-00029m-Cy
+ for linux-nvme@lists.infradead.org; Thu, 27 Jun 2019 00:30:02 +0000
+Received: from pps.filterd (m0045849.ppops.net [127.0.0.1])
+ by mx0a-0016f401.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x5R0JwZw012376; Wed, 26 Jun 2019 17:28:50 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
+ h=date : from : to :
+ cc : subject : in-reply-to : message-id : references : mime-version :
+ content-type; s=pfpt0818; bh=Y3hLdJtgQDsFchZ3YZn/blHk5XbGZwJhJgAL3zAtu/s=;
+ b=SAuSPykgCUdT8bHyBBNfKkGTeNo0uEF/JiAtnfhIKftfzfelJmFO+yn8g6rifhtByZEc
+ STmqcamfauxxtYSwJxVmTEcPYCuJMRL5Jo0dmaXpQZYadgX1T4t1YpzDhU+2iFrQFFRf
+ J7vosCzF3i0lh2lGcL8+il2+Xcb7PRAe6YbUxivkmD9Ndlo1RvuIGEBoseToWxCDEEAX
+ iX0y6urQe+zNNm/ceycQ0xg10ko4+9xJ/YTxq87t9sbQwOCCLEEI1vvmgUZuM0k77LM1
+ QLR/jWriJMhOk1YH5LtuYXQnjSXRl14Z2Dg/7hlwWrjnfNCq2yNbhxRybNxU1sHJJ5cc Qw== 
+Received: from sc-exch02.marvell.com ([199.233.58.182])
+ by mx0a-0016f401.pphosted.com with ESMTP id 2tch698hjj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
+ Wed, 26 Jun 2019 17:28:50 -0700
+Received: from SC-EXCH03.marvell.com (10.93.176.83) by SC-EXCH02.marvell.com
+ (10.93.176.82) with Microsoft SMTP Server (TLS) id 15.0.1367.3; Wed, 26 Jun
+ 2019 17:28:49 -0700
+Received: from maili.marvell.com (10.93.176.43) by SC-EXCH03.marvell.com
+ (10.93.176.83) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
+ Transport; Wed, 26 Jun 2019 17:28:49 -0700
+Received: from mvluser05.qlc.com (unknown [10.112.10.135])
+ by maili.marvell.com (Postfix) with ESMTP id 97BC93F703F;
+ Wed, 26 Jun 2019 17:28:49 -0700 (PDT)
+Received: from localhost (aeasi@localhost)
+ by mvluser05.qlc.com (8.14.4/8.14.4/Submit) with ESMTP id x5R0SnHC028794;
+ Wed, 26 Jun 2019 17:28:49 -0700
+X-Authentication-Warning: mvluser05.qlc.com: aeasi owned process doing -bs
+Date: Wed, 26 Jun 2019 17:28:49 -0700
+From: Arun Easi <aeasi@marvell.com>
+X-X-Sender: aeasi@mvluser05.qlc.com
+To: James Smart <jsmart2021@gmail.com>
+Subject: Re: [EXT] Re: [PATCH] nvme-fc: fix module unloads while lports still
+ pending
+In-Reply-To: <alpine.LRH.2.21.9999.1906261638450.7630@mvluser05.qlc.com>
+Message-ID: <alpine.LRH.2.21.9999.1906261725120.7630@mvluser05.qlc.com>
+References: <20190625160604.3905-1-jsmart2021@gmail.com>
+ <alpine.LRH.2.21.9999.1906261516150.7630@mvluser05.qlc.com>
+ <ddcc1865-4494-9cfe-d371-9995c19ae1c4@gmail.com>
+ <alpine.LRH.2.21.9999.1906261638450.7630@mvluser05.qlc.com>
+User-Agent: Alpine 2.21.9999 (LRH 334 2019-03-29)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: da475c96-a207-4b5a-3fd2-08d6fa92cabc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Jun 2019 00:02:49.0659 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Chaitanya.Kulkarni@wdc.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5767
+Content-Type: multipart/mixed; boundary="1879738122-67375923-1561595329=:7630"
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-06-26_14:, , signatures=0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190627_010338_622439_141C4B53 
-X-CRM114-Status: GOOD (  18.95  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190627_013000_317146_C2237D50 
+X-CRM114-Status: GOOD (  39.02  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
- Content analysis details:   (-2.5 points, 5.0 required)
+ Content analysis details:   (-0.9 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [67.231.148.174 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 KHOP_DYNAMIC           Relay looks like a dynamic address
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -145,42 +117,218 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "axboe@fb.com" <axboe@fb.com>, "sagi@grimberg.me" <sagi@grimberg.me>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- "keith.busch@intel.com" <keith.busch@intel.com>,
- "kbusch@kernel.org" <kbusch@kernel.org>, "hch@lst.de" <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-nvme@lists.infradead.org
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-TG9va3MgZ29vZC4NCg0KUmV2aWV3ZWQtYnk6IENoYWl0YW55YSBLdWxrYXJuaSA8Y2hhaXRhbnlh
-Lmt1bGthcm5pQHdkYy5jb20+DQoNCu+7v09uIDYvMjYvMTksIDE6MjMgUE0sICJMaW51eC1udm1l
-IG9uIGJlaGFsZiBvZiBNaW53b28gSW0iIDxsaW51eC1udm1lLWJvdW5jZXNAbGlzdHMuaW5mcmFk
-ZWFkLm9yZyBvbiBiZWhhbGYgb2YgbWlud29vLmltLmRldkBnbWFpbC5jb20+IHdyb3RlOg0KDQog
-ICAgT24gMTktMDYtMjYgMTA6MDk6MDIsIFl1ZUhhaWJpbmcgd3JvdGU6DQogICAgPiBGaXggc3Bh
-cnNlIHdhcm5pbmc6DQogICAgPiANCiAgICA+IGRyaXZlcnMvbnZtZS9ob3N0L3BjaS5jOjI5MjY6
-MjU6IHdhcm5pbmc6DQogICAgPiAgc3ltYm9sICdudm1lX2Rldl9wbV9vcHMnIHdhcyBub3QgZGVj
-bGFyZWQuIFNob3VsZCBpdCBiZSBzdGF0aWM/DQogICAgPiANCiAgICA+IFJlcG9ydGVkLWJ5OiBI
-dWxrIFJvYm90IDxodWxrY2lAaHVhd2VpLmNvbT4NCiAgICA+IFNpZ25lZC1vZmYtYnk6IFl1ZUhh
-aWJpbmcgPHl1ZWhhaWJpbmdAaHVhd2VpLmNvbT4NCiAgICA+IC0tLQ0KICAgID4gIGRyaXZlcnMv
-bnZtZS9ob3N0L3BjaS5jIHwgMiArLQ0KICAgID4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlv
-bigrKSwgMSBkZWxldGlvbigtKQ0KICAgID4gDQogICAgPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9u
-dm1lL2hvc3QvcGNpLmMgYi9kcml2ZXJzL252bWUvaG9zdC9wY2kuYw0KICAgID4gaW5kZXggMTg5
-MzUyMC4uZjUwMDEzMyAxMDA2NDQNCiAgICA+IC0tLSBhL2RyaXZlcnMvbnZtZS9ob3N0L3BjaS5j
-DQogICAgPiArKysgYi9kcml2ZXJzL252bWUvaG9zdC9wY2kuYw0KICAgID4gQEAgLTI5MjMsNyAr
-MjkyMyw3IEBAIHN0YXRpYyBpbnQgbnZtZV9zaW1wbGVfcmVzdW1lKHN0cnVjdCBkZXZpY2UgKmRl
-dikNCiAgICA+ICAJcmV0dXJuIDA7DQogICAgPiAgfQ0KICAgID4gIA0KICAgID4gLWNvbnN0IHN0
-cnVjdCBkZXZfcG1fb3BzIG52bWVfZGV2X3BtX29wcyA9IHsNCiAgICA+ICtzdGF0aWMgY29uc3Qg
-c3RydWN0IGRldl9wbV9vcHMgbnZtZV9kZXZfcG1fb3BzID0gew0KICAgID4gIAkuc3VzcGVuZAk9
-IG52bWVfc3VzcGVuZCwNCiAgICA+ICAJLnJlc3VtZQkJPSBudm1lX3Jlc3VtZSwNCiAgICA+ICAJ
-LmZyZWV6ZQkJPSBudm1lX3NpbXBsZV9zdXNwZW5kLA0KICAgIA0KICAgIElNSE8sIGl0IHNob3Vs
-ZCBiZSBpbiBzdGF0aWMuDQogICAgDQogICAgUmV2aWV3ZWQtYnk6IE1pbndvbyBJbSA8bWlud29v
-LmltLmRldkBnbWFpbC5jb20+DQogICAgDQogICAgX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18NCiAgICBMaW51eC1udm1lIG1haWxpbmcgbGlzdA0KICAgIExp
-bnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZw0KICAgIGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQ0KICAgIA0KDQpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1udm1lIG1haWxpbmcgbGlzdApM
-aW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
+--1879738122-67375923-1561595329=:7630
+Content-Type: text/plain; charset="US-ASCII"
+
+Attaching the patch I was referring earlier. Maybe the infinite loop in 
+exit could be changed to a time bound one.
+
+-Arun
+
+On Wed, 26 Jun 2019, 5:02pm, Arun Easi wrote:
+
+> On Wed, 26 Jun 2019, 4:00pm, James Smart wrote:
+> 
+> > External Email
+> > 
+> > ----------------------------------------------------------------------
+> > On 6/26/2019 3:20 PM, Arun Easi wrote:
+> > > Changes look ok.
+> > > 
+> > > Did you hit this during testing? Wondering because LLD would have unloaded
+> > > prior to nvme_fc, so no lport/rport should remain if LLD behaves well.
+> > > 
+> > > -Arun
+> > > 
+> > 
+> > It's been a longstanding annoyance - usually tied with test cases that used
+> > modprobe -r.   Issue is the drivers would call the targetport unregister
+> > calls, which would release the targetport once all the outstanding ios were
+> > cancelled to the lldd and the link-side association terminated, but the
+> > controllers are in a reconnecting and not yet torn down.
+> 
+> Did you mean a "nvme_reset_ctrl/nvme_delete_ctrl" is in progress?
+> 
+> > From the drivers point of view, they are unlinked. Thus it was 
+> > intended the driver could unregister/unload/reload/reregister and if 
+> > possible reconnect - allowing the nvme device to never be deleted. Given 
+> > the lack of module reference, when the driver module left, so did the 
+> > transport module, even with the live data structures.
+> > 
+> 
+> Thanks for the explanation. This reminds me of a similar issue we hit. The 
+> fix under consideration was to wait in nvme_fc module exit to quiesce 
+> rport/lport before proceeding.
+> 
+> Anyway, with the fix above, I am wondering, if nvme_fc is active for a 
+> brief time just after the unload of LLD, the unload of nvme_fc would fail 
+> (saying in use), wouldn't it? If so, in addition to the above fix, a 
+> quiesce (flush) of such threads during module exit would give "modprobe 
+> -r" a better chance to unload both modules.
+> 
+> Thoughts?
+> 
+> -Arun
+> 
+> 
+> 
+--1879738122-67375923-1561595329=:7630
+Content-Type: text/plain; charset="US-ASCII";
+	name="0001-nvme-fc-Wait-for-all-the-nvme-host-controllers-and-i.patch"
+Content-Transfer-Encoding: BASE64
+Content-ID: <alpine.LRH.2.21.9999.1906261728490.7630@mvluser05.qlc.com>
+Content-Description: 
+Content-Disposition: attachment;
+	filename="0001-nvme-fc-Wait-for-all-the-nvme-host-controllers-and-i.patch"
+
+RnJvbSBjYThjNjBhMjA5M2RlZmVlMzMyMTY2M2RkNWU3ZjgwMTliMjk1ZmZh
+IE1vbiBTZXAgMTcgMDA6MDA6MDAgMjAwMQ0KRnJvbTogR2lyaWRoYXIgTWFs
+YXZhbGkgPGdtYWxhdmFsaUBtYXJ2ZWxsLmNvbT4NCkRhdGU6IEZyaSwgMTcg
+TWF5IDIwMTkgMTI6NDg6NTcgLTA3MDANClN1YmplY3Q6IFtQQVRDSCAxLzFd
+IG52bWUtZmM6IFdhaXQgZm9yIGFsbCB0aGUgbnZtZSBob3N0IGNvbnRyb2xs
+ZXJzIGFuZCBpdCdzDQogcmVzb3VyY2VzIHRvIGJlIGZyZWVkIGJlZm9yZSB1
+bmxvYWRpbmcgdGhlIG52bWUtZmMgbW9kdWxlLg0KDQpUaGUgdW5sb2FkIHRo
+cmVhZCBjYW4gcHJvY2VlZCBhbmQgdW5sb2FkIGJlZm9yZSB0aGUgbnZtZS1m
+YyBob3N0IGNvbnRyb2xsZXIgYXJlIGZyZWVkLg0KVGhpcyBmaXggc3luY2hy
+b25pemVzIGJldHdlZW4gdGhlc2UgdGhyZWFkcyB0byBlbnN1cmUgdW5sb2Fk
+IHRocmVhZCBjb250aW51ZXMgb25seSB3aGVuIGFsbCB0aGUgbnZtZQ0KaG9z
+dCBjb250cm9sbGVyIGFuZCBpdCdzIHJlc291cmNlcyBhcmUgcmVsYXNlZC4N
+Cg0KMzM1NyBbICAyMjUuMjkyNTcyXSBCVUc6IHVuYWJsZSB0byBoYW5kbGUg
+a2VybmVsIHBhZ2luZyByZXF1ZXN0IGF0IGZmZmZmZmZmYzA2ODcxYTgNCjMz
+NTggWyAgMjI1LjI5MjYxMV0gSVA6IFs8ZmZmZmZmZmY5NmQ1NGM1OT5dIGJs
+a19tcV9leGl0X2hjdHgrMHg0OS8weGYwDQozMzU5IFsgIDIyNS4yOTI2NDJd
+IFBHRCBmNTRlMTQwNjcgUFVEIGY1NGUxNjA2NyBQTUQgMTA1ODZlNDA2NyBQ
+VEUgMA0KMzM2MCBbICAyMjUuMjkyNjY5XSBPb3BzOiAwMDAwIFsjMV0gU01Q
+DQozMzYxIFsgIDIyNS4yOTI2ODZdIE1vZHVsZXMgbGlua2VkIGluOiBtYWNz
+ZWMgdGNwX2RpYWcgdWRwX2RpYWcgaW5ldF9kaWFnIHVuaXhfZGlhZyBhZl9w
+YWNrZXRfZGlhZyBuZXRsaW5rX2RpYWcgYmluZm10X21pc2MgeHRfQ0hFQ0tT
+VU0gaXB0X01BU1FVRVJBREUgbmZfbmF0X21hc3F1ZXJhZGVfaXB2NCB0dW4g
+ZGV2bGluayBpcDZ0X3JwZmlsdGVyIGlwdF9SRUpFQ1QNCjMzNjIgWyAgMjI1
+LjI5MzAxMV0gIGdmMTI4bXVsIGdsdWVfaGVscGVyIGFibGtfaGVscGVyIGNy
+eXB0ZCBwY3Nwa3Igam95ZGV2IGlwbWlfc3NpZiBpMmNfaTgwMSBzZyBocHdk
+dCBocGlsbyBscGNfaWNoIGlwbWlfc2kgaXBtaV9kZXZpbnRmIGlwbWlfbXNn
+aGFuZGxlciBpb2F0ZG1hIHBjY19jcHVmcmVxIHdtaSBkY2EgYWNwaV9wb3dl
+cl9tZXRlciBkbV9tdWx0aXBhdGgNCjMzNjMgWyAgMjI1LjI5MzI0OV0gQ1BV
+OiAzIFBJRDogMTg4IENvbW06IGt3b3JrZXIvdTQ5OjEgS2R1bXA6IGxvYWRl
+ZCBUYWludGVkOiBHICAgICAgICAgICBPRSAgLS0tLS0tLS0tLS0tIFQgMy4x
+MC4wLW52bWVtb2Rwcm9iZSsgIzINCjMzNjQgWyAgMjI1LjI5MzI4Nl0gSGFy
+ZHdhcmUgbmFtZTogSFAgUHJvTGlhbnQgREwzODAgR2VuOS9Qcm9MaWFudCBE
+TDM4MCBHZW45LCBCSU9TIFA4OSAwMS8yMi8yMDE4DQozMzY1IFsgIDIyNS4y
+OTQzNTZdIFdvcmtxdWV1ZTogbnZtZS1kZWxldGUtd3EgbnZtZV9kZWxldGVf
+Y3RybF93b3JrIFtudm1lX2NvcmVdDQozMzY2IFsgIDIyNS4yOTUzNzFdIHRh
+c2s6IGZmZmY4YTg4MWE3ZWQyMzAgdGk6IGZmZmY4YTg4MWExNjgwMDAgdGFz
+ay50aTogZmZmZjhhODgxYTE2ODAwMA0KMzM2NyBbICAyMjUuMjk2NTE4XSBS
+SVA6IDAwMTA6WzxmZmZmZmZmZjk2ZDU0YzU5Pl0gIFs8ZmZmZmZmZmY5NmQ1
+NGM1OT5dIGJsa19tcV9leGl0X2hjdHgrMHg0OS8weGYwDQozMzY4IFsgIDIy
+NS4yOTc2MDFdIFJTUDogMDAxODpmZmZmOGE4ODFhMTZiYzkwICBFRkxBR1M6
+IDAwMDEwMjQ2DQozMzY5IFsgIDIyNS4yOTg1NjhdIFJBWDogZmZmZmZmZmZj
+MDY4NzE4MCBSQlg6IGZmZmY4YTg4MWVkYWNjMDAgUkNYOiAwMDAwMDAwMDAw
+MDAwMDAwDQozMzcwIFsgIDIyNS4yOTk1MjBdIFJEWDogZmZmZjhhODgxZWRh
+Y2MwMCBSU0k6IGZmZmY4YTkwMTc1OTkwYzggUkRJOiAwMDAwMDAwMDAwMDAw
+MDAwDQozMzcxIFsgIDIyNS4zMDA0NjZdIFJCUDogZmZmZjhhODgxYTE2YmNi
+MCBSMDg6IGZmZmY4YTg4MWExNmJjMDggUjA5OiAwMDAwMDAwMDAwMDAwMDAx
+DQozMzcyIFsgIDIyNS4zMDE0NDRdIFIxMDogMDAwMDAwMDAwMDAwMDNlMyBS
+MTE6IDAwMDAwMDAwMDAwMDAwMDAgUjEyOiBmZmZmOGE5MDE3NTk5MGM4DQoz
+MzczIFsgIDIyNS4zMDIzOTJdIFIxMzogMDAwMDAwMDAwMDAwMDAwMCBSMTQ6
+IGZmZmY4YTkwMTU4MTgwMDAgUjE1OiBmZmZmOGE5MDE3NTk5MTAwDQozMzc0
+IFsgIDIyNS4zMDMzNDldIEZTOiAgMDAwMDAwMDAwMDAwMDAwMCgwMDAwKSBH
+UzpmZmZmOGE4ODFmYWMwMDAwKDAwMDApIGtubEdTOjAwMDAwMDAwMDAwMDAw
+MDANCjMzNzUgWyAgMjI1LjMwNDMyMl0gQ1M6ICAwMDEwIERTOiAwMDAwIEVT
+OiAwMDAwIENSMDogMDAwMDAwMDA4MDA1MDAzMw0KMzM3NiBbICAyMjUuMzA1
+MjU5XSBDUjI6IGZmZmZmZmZmYzA2ODcxYTggQ1IzOiAwMDAwMDAwZjU0ZTEw
+MDAwIENSNDogMDAwMDAwMDAwMDE2MDdlMA0KMzM3NyBbICAyMjUuMzA2MjEw
+XSBDYWxsIFRyYWNlOg0KMzM3OCBbICAyMjUuMzA3MTg4XSAgWzxmZmZmZmZm
+Zjk2ZDU5MDgxPl0gYmxrX21xX2ZyZWVfcXVldWUrMHgxMDEvMHgxNzANCjMz
+NzkgWyAgMjI1LjMwODEzNV0gIFs8ZmZmZmZmZmY5NmQ0YTIzNj5dIGJsa19j
+bGVhbnVwX3F1ZXVlKzB4MTM2LzB4MWIwDQozMzgwIFsgIDIyNS4zMDkwODRd
+ICBbPGZmZmZmZmZmYzA1Yjk5NGM+XSA/IG52bWVfZnJlZV9jdHJsKzB4OWMv
+MHgxMDAgW252bWVfY29yZV0NCjMzODEgWyAgMjI1LjMxMDA2NV0gIFs8ZmZm
+ZmZmZmY5NmVhOWU0NT5dID8gZGV2aWNlX3JlbGVhc2UrMHgzNS8weGEwDQoz
+MzgyIFsgIDIyNS4zMTEwMDJdICBbPGZmZmZmZmZmOTZkN2UwYTE+XSA/IGtv
+YmplY3RfcmVsZWFzZSsweDgxLzB4MWIwDQozMzgzIFsgIDIyNS4zMTE5Mjhd
+ICBbPGZmZmZmZmZmOTZkN2RmMzg+XSA/IGtvYmplY3RfcHV0KzB4MjgvMHg2
+MA0KMzM4NCBbICAyMjUuMzEyODgzXSAgWzxmZmZmZmZmZjk2ZWFhMWI3Pl0g
+PyBwdXRfZGV2aWNlKzB4MTcvMHgyMA0KMzM4NSBbICAyMjUuMzEzODE2XSAg
+WzxmZmZmZmZmZmMwNWI5ODExPl0gPyBudm1lX2RlbGV0ZV9jdHJsX3dvcmsr
+MHhhMS8weGIwIFtudm1lX2NvcmVdDQozMzg2IFsgIDIyNS4zMTQ3MjZdICBb
+PGZmZmZmZmZmOTZhYmJhY2Y+XSA/IHByb2Nlc3Nfb25lX3dvcmsrMHgxN2Yv
+MHg0NDANCjMzODcgWyAgMjI1LjMxNTY0Ml0gIFs8ZmZmZmZmZmY5NmFiYzc5
+Nj5dID8gd29ya2VyX3RocmVhZCsweDEyNi8weDNjMA0KMzM4OCBbICAyMjUu
+MzE2NTQzXSAgWzxmZmZmZmZmZjk2YWJjNjcwPl0gPyBtYW5hZ2Vfd29ya2Vy
+cy5pc3JhLjI2KzB4MmEwLzB4MmEwDQozMzg5IFsgIDIyNS4zMTczNjRdICBb
+PGZmZmZmZmZmOTZhYzNhNzE+XSA/IGt0aHJlYWQrMHhkMS8weGUwDQozMzkw
+IFsgIDIyNS4zMTgxNzJdICBbPGZmZmZmZmZmOTZhYzM5YTA+XSA/IGluc2Vy
+dF9rdGhyZWFkX3dvcmsrMHg0MC8weDQwDQozMzkxIFsgIDIyNS4zMTkwMjVd
+ICBbPGZmZmZmZmZmOTcxN2VjZjc+XSA/IHJldF9mcm9tX2Zvcmtfbm9zcGVj
+X2JlZ2luKzB4MjEvMHgyMQ0KMzM5MiBbICAyMjUuMzE5ODI3XSAgWzxmZmZm
+ZmZmZjk2YWMzOWEwPl0gPyBpbnNlcnRfa3RocmVhZF93b3JrKzB4NDAvMHg0
+MA0KMzM5MyBbICAyMjUuMzIwNjI0XSBDb2RlOiBkMyBlOCBmYyA1YiAwMiAw
+MCA4YiA4MyBlOCAwMCAwMCAwMCA4NSBjMCA3NCAxNyA0OCA4MyBiYiAyMCAw
+MSAwMCAwMCAwMCA3NCAwZCBmNiA4MyBjOCAwMCAwMCAwMCAwNCAwZiA4NSA5
+YiAwMCAwMCAwMCA0OSA4YiAwNCAyNCA8NDg+IDhiIDQwIDI4IDQ4IDg1IGMw
+IDc0IDE2IDQ4IDhiIDkzIGE4IDAyIDAwIDAwIDRjIDg5DQozMzk0IFsgIDIy
+NS4zMjI2NTRdIFJJUCAgWzxmZmZmZmZmZjk2ZDU0YzU5Pl0gYmxrX21xX2V4
+aXRfaGN0eCsweDQ5LzB4ZjANCjMzOTUgWyAgMjI1LjMyMzQ4N10gIFJTUCA8
+ZmZmZjhhODgxYTE2YmM5MD4NCjMzOTYgWyAgMjI1LjMyNDI5M10gQ1IyOiBm
+ZmZmZmZmZmMwNjg3MWE4DQotLS0NCiBkcml2ZXJzL252bWUvaG9zdC9mYy5j
+IHwgMjcgKysrKysrKysrKysrKysrKysrKysrKystLS0tDQogMSBmaWxlIGNo
+YW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pDQoNCmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL252bWUvaG9zdC9mYy5jIGIvZHJpdmVycy9u
+dm1lL2hvc3QvZmMuYw0KaW5kZXggMDZjNjkzMS4uZTExZTRmNyAxMDA2NDQN
+Ci0tLSBhL2RyaXZlcnMvbnZtZS9ob3N0L2ZjLmMNCisrKyBiL2RyaXZlcnMv
+bnZtZS9ob3N0L2ZjLmMNCkBAIC0yMDYsOCArMjA2LDcgQEAgc3RhdGljIERF
+RklORV9TUElOTE9DSyhudm1lX2ZjX2xvY2spOw0KIHN0YXRpYyBMSVNUX0hF
+QUQobnZtZV9mY19scG9ydF9saXN0KTsNCiBzdGF0aWMgREVGSU5FX0lEQShu
+dm1lX2ZjX2xvY2FsX3BvcnRfY250KTsNCiBzdGF0aWMgREVGSU5FX0lEQShu
+dm1lX2ZjX2N0cmxfY250KTsNCi0NCi0NCitzdHJ1Y3QgY29tcGxldGlvbiBu
+dm1lX2ZjX3VubG9hZF9wcm9jZWVkOw0KIA0KIC8qDQogICogVGhlc2UgaXRl
+bXMgYXJlIHNob3J0LXRlcm0uIFRoZXkgd2lsbCBldmVudHVhbGx5IGJlIG1v
+dmVkIGludG8NCkBAIC0yNDIsNiArMjQxLDEyIEBAIG52bWVfZmNfZnJlZV9s
+cG9ydChzdHJ1Y3Qga3JlZiAqcmVmKQ0KIAlwdXRfZGV2aWNlKGxwb3J0LT5k
+ZXYpOw0KIA0KIAlrZnJlZShscG9ydCk7DQorDQorCS8qIElmIG5vIG90aGVy
+IGxwb3J0IHByZXNlbnQgdGhlbiBhbGxvdyB1bmxvYWQgdGhyZWFkIHRvIGNv
+bnRpbnVlDQorIAkgKiBpbiBjYXNlIGl0IGlzIHdhaXRpbmcNCisgCSAqLw0K
+KwlpZiAobGlzdF9lbXB0eSgmbnZtZV9mY19scG9ydF9saXN0KSkNCisJCWNv
+bXBsZXRlKCZudm1lX2ZjX3VubG9hZF9wcm9jZWVkKTsNCiB9DQogDQogc3Rh
+dGljIHZvaWQNCkBAIC0zNDE3LDYgKzM0MjIsNyBAQCBzdGF0aWMgaW50IF9f
+aW5pdCBudm1lX2ZjX2luaXRfbW9kdWxlKHZvaWQpDQogCWlmIChyZXQpDQog
+CQlnb3RvIG91dF9kZXN0cm95X2RldmljZTsNCiANCisJaW5pdF9jb21wbGV0
+aW9uKCZudm1lX2ZjX3VubG9hZF9wcm9jZWVkKTsNCiAJcmV0dXJuIDA7DQog
+DQogb3V0X2Rlc3Ryb3lfZGV2aWNlOg0KQEAgLTM0MjksOSArMzQzNSwyMiBA
+QCBvdXRfZGVzdHJveV9jbGFzczoNCiBzdGF0aWMgdm9pZCBfX2V4aXQgbnZt
+ZV9mY19leGl0X21vZHVsZSh2b2lkKQ0KIHsNCiAJLyogc2FuaXR5IGNoZWNr
+IC0gYWxsIGxwb3J0cyBzaG91bGQgYmUgcmVtb3ZlZCAqLw0KLQlpZiAoIWxp
+c3RfZW1wdHkoJm52bWVfZmNfbHBvcnRfbGlzdCkpDQotCQlwcl93YXJuKCIl
+czogbG9jYWxwb3J0IGxpc3Qgbm90IGVtcHR5XG4iLCBfX2Z1bmNfXyk7DQog
+DQorCXUzMiB3YWl0X3RtbzsNCisJaW50IHJldDsNCisNCisjZGVmaW5lIE5W
+TUVfRkNfVU5MT0FEX1dBSVRfVE1PIDENCisJLyogV2FpdCB1bmxvYWRpbmcg
+dGhlIG1vZHVsZSB1bnRpbCBhbGwgcmVzb3VyY2VzIGFyZSByZWxlYXNlZCAq
+Lw0KKwl3YWl0X3RtbyA9IG1zZWNzX3RvX2ppZmZpZXMoTlZNRV9GQ19VTkxP
+QURfV0FJVF9UTU8gKiAxMDAwKTsNCisJd2hpbGUgKCFsaXN0X2VtcHR5KCZu
+dm1lX2ZjX2xwb3J0X2xpc3QpKSB7DQorCQlyZXQgPSB3YWl0X2Zvcl9jb21w
+bGV0aW9uX3RpbWVvdXQoJm52bWVfZmNfdW5sb2FkX3Byb2NlZWQsDQorICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICB3YWl0X3Rtbyk7DQorCQlpZiAodW5saWtlbHkoIXJldCkpIHsNCisJCQlw
+cl93YXJuKCIlczogbG9jYWxwb3J0IGxpc3Qgbm90IGVtcHR5LiBSZW5ldyB0
+aW1lclxuIiwgX19mdW5jX18pOw0KKwkJCWNvbnRpbnVlOw0KKwkJfQ0KKwkJ
+YnJlYWs7DQorCX0NCiAJbnZtZl91bnJlZ2lzdGVyX3RyYW5zcG9ydCgmbnZt
+ZV9mY190cmFuc3BvcnQpOw0KIA0KIAlpZGFfZGVzdHJveSgmbnZtZV9mY19s
+b2NhbF9wb3J0X2NudCk7DQotLSANCjEuOC4zLjENCg0K
+
+--1879738122-67375923-1561595329=:7630
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
+
+--1879738122-67375923-1561595329=:7630--
+
