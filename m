@@ -2,78 +2,59 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 735BD5879B
-	for <lists+linux-nvme@lfdr.de>; Thu, 27 Jun 2019 18:50:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 929F1587F4
+	for <lists+linux-nvme@lfdr.de>; Thu, 27 Jun 2019 19:07:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jLLbG5DS7yvma1NOfO3LVb2OiLtSXnfrbyaVKML18wU=; b=dW+zOLoKpcjrHg
-	aAV/cQWk08gpkyZVXk4yqUZDzfmiawysW95uYWX6Vf0Y7LUe3t5eu4CtCh3MRiZtnsJ9V/TbLD6gn
-	f9xFC/FJgwb9SHeX5LBSTqU8c5pjNflpLWLCUGyUicYf3HcwzIoNBC2E2U/VucU5hQWhPPB/Sytqm
-	IuiKJ2Ef+m2CGXbm3amoSQf5Fo+qByk+jvzFBnoyIjScpikhqBDVulDNnaTQdilR35KN+VYbSwyJP
-	n7Z9O8O1uJ0pqgNGZlhtiBMTbzOylV94f/EvjkZ0VmF6u1G8HIrUkm154b/04S8j9jGWQTx54ZJfR
-	07sJNowJ58kseWRXXanA==;
+	List-Owner; bh=+Ruz8MTu7u+tXK1ArG6TD3G4bs/Wr86Y53KSU56Gu4c=; b=NwVyvr0hShteYj
+	iEqK5l2q396daugUiDg8ceKLMS3bGJgIhr3CV40iGYfHv0YO/qaKBOECFtmldF7BTNKBwfM441Idf
+	VZdyMY+HUyJbWVDLS4hK8HV0j091cGAORPzNPFp1lhO7ZeKNNoX22svM6Qe2x16VwwALmcJXoHJT9
+	ZIp4e7Z4ki5KUcM3Cbjf9HgxzdG3FgpaUhypG6IxuQmCzro5xIul8s8KmRy/koBRzV4Wi3/YLD+S3
+	1dfh6dMOqc+ss6n8rOkQG6qePYeMcC5+wtgg22zCLaFepza1pqPsNzit5tGfHx8e+t7xFd9ubRIhY
+	tCmAWxG6VS7drUIx15Eg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgXb8-0007Yy-0n; Thu, 27 Jun 2019 16:50:10 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1hgXrV-0006cD-Qr; Thu, 27 Jun 2019 17:07:06 +0000
+Received: from [213.95.11.210] (helo=newverein.lst.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgXar-0007YE-Ew
- for linux-nvme@lists.infradead.org; Thu, 27 Jun 2019 16:49:56 +0000
-Received: from s01061831bf6ec98c.cg.shawcable.net ([68.147.80.180]
- helo=[192.168.6.132])
- by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <logang@deltatee.com>)
- id 1hgXak-000303-OD; Thu, 27 Jun 2019 10:49:47 -0600
-To: Jason Gunthorpe <jgg@ziepe.ca>
-References: <20190625170115.GA9746@lst.de>
+ id 1hgXrH-0006br-Qm
+ for linux-nvme@lists.infradead.org; Thu, 27 Jun 2019 17:06:53 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id 991F9227A8B; Thu, 27 Jun 2019 19:00:27 +0200 (CEST)
+Date: Thu, 27 Jun 2019 19:00:27 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
+Message-ID: <20190627170027.GE10652@lst.de>
+References: <20190625072008.GB30350@lst.de>
+ <f0f002bf-2b94-cd18-d18f-5d0b08311495@deltatee.com>
+ <20190625170115.GA9746@lst.de>
  <41235a05-8ed1-e69a-e7cd-48cae7d8a676@deltatee.com>
  <20190626065708.GB24531@lst.de>
  <c15d5997-9ba4-f7db-0e7a-a69e75df316c@deltatee.com>
  <20190626202107.GA5850@ziepe.ca>
  <8a0a08c3-a537-bff6-0852-a5f337a70688@deltatee.com>
- <20190626210018.GB6392@ziepe.ca>
- <c25d3333-dcd5-3313-089b-7fbbd6fbd876@deltatee.com>
- <20190627063223.GA7736@ziepe.ca>
- <6afe4027-26c8-df4e-65ce-49df07dec54d@deltatee.com>
- <20190627163504.GB9568@ziepe.ca>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <4894142c-3233-a3bb-f9a3-4a4985136e9b@deltatee.com>
-Date: Thu, 27 Jun 2019 10:49:43 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ <20190627090843.GB11548@lst.de>
+ <89889319-e778-7772-ab36-dc55b59826be@deltatee.com>
 MIME-Version: 1.0
-In-Reply-To: <20190627163504.GB9568@ziepe.ca>
-Content-Language: en-US
-X-SA-Exim-Connect-IP: 68.147.80.180
-X-SA-Exim-Rcpt-To: sbates@raithlin.com, kbusch@kernel.org, sagi@grimberg.me,
- dan.j.williams@intel.com, bhelgaas@google.com, axboe@kernel.dk,
- linux-rdma@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
- linux-kernel@vger.kernel.org, hch@lst.de, jgg@ziepe.ca
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+Content-Disposition: inline
+In-Reply-To: <89889319-e778-7772-ab36-dc55b59826be@deltatee.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190627_094953_540216_BE0E1CAB 
-X-CRM114-Status: GOOD (  24.22  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190627_100652_173285_FA2E3E63 
+X-CRM114-Status: GOOD (  18.46  )
+X-Spam-Score: 1.3 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,92 +66,70 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
- linux-rdma@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- Stephen Bates <sbates@raithlin.com>, linux-block@vger.kernel.org,
- Keith Busch <kbusch@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Dan Williams <dan.j.williams@intel.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jens Axboe <axboe@kernel.dk>, Keith Busch <kbusch@kernel.org>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-rdma@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ linux-block@vger.kernel.org, Jason Gunthorpe <jgg@ziepe.ca>,
+ Bjorn Helgaas <bhelgaas@google.com>, Dan Williams <dan.j.williams@intel.com>,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-
-On 2019-06-27 10:35 a.m., Jason Gunthorpe wrote:
-> On Thu, Jun 27, 2019 at 10:09:41AM -0600, Logan Gunthorpe wrote:
->>
->>
->> On 2019-06-27 12:32 a.m., Jason Gunthorpe wrote:
->>> On Wed, Jun 26, 2019 at 03:18:07PM -0600, Logan Gunthorpe wrote:
->>>>> I don't think we should make drives do that. What if it got CMB memory
->>>>> on some other device?
->>>>
->>>> Huh? A driver submitting P2P requests finds appropriate memory to use
->>>> based on the DMA device that will be doing the mapping. It *has* to. It
->>>> doesn't necessarily have control over which P2P provider it might find
->>>> (ie. it may get CMB memory from a random NVMe device), but it easily
->>>> knows the NVMe device it got the CMB memory for. Look at the existing
->>>> code in the nvme target.
->>>
->>> No, this all thinking about things from the CMB perspective. With CMB
->>> you don't care about the BAR location because it is just a temporary
->>> buffer. That is a unique use model.
->>>
->>> Every other case has data residing in BAR memory that can really only
->>> reside in that one place (ie on a GPU/FPGA DRAM or something). When an IO
->>> against that is run it should succeed, even if that means bounce
->>> buffering the IO - as the user has really asked for this transfer to
->>> happen.
->>>
->>> We certainly don't get to generally pick where the data resides before
->>> starting the IO, that luxury is only for CMB.
->>
->> I disagree. If we we're going to implement a "bounce" we'd probably want
->> to do it in two DMA requests.
-> 
-> How do you mean?
-> 
->> So the GPU/FPGA driver would first decide whether it can do it P2P
->> directly and, if it can't, would want to submit a DMA request copy
->> the data to host memory and then submit an IO normally to the data's
->> final destination.
-> 
-> I don't think a GPU/FPGA driver will be involved, this would enter the
-> block layer through the O_DIRECT path or something generic.. This the
-> general flow I was suggesting to Dan earlier
-
-I would say the O_DIRECT path has to somehow call into the driver
-backing the VMA to get an address to appropriate memory (in some way
-vaguely similar to how we were discussing at LSF/MM). If P2P can't be
-done at that point, then the provider driver would do the copy to system
-memory, in the most appropriate way, and return regular pages for
-O_DIRECT to submit to the block device.
-
->> I think it would be a larger layering violation to have the NVMe driver
->> (for example) memcpy data off a GPU's bar during a dma_map step to
->> support this bouncing. And it's even crazier to expect a DMA transfer to
->> be setup in the map step.
-> 
-> Why? Don't we already expect the DMA mapper to handle bouncing for
-> lots of cases, how is this case different? This is the best place to
-> place it to make it shared.
-
-This is different because it's special memory where the DMA mapper can't
-possibly know the best way to transfer the data. The best way to
-transfer the data is almost certainly going to be a DMA request handled
-by the GPU/FPGA. So, one way or another, the GPU/FPGA driver has to be
-involved.
-
-One could argue that the hook to the GPU/FPGA driver could be in the
-mapping step but then we'd have to do lookups based on an address --
-where as the VMA could more easily have a hook back to whatever driver
-exported it.
-
-Logan
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gVGh1LCBKdW4gMjcsIDIwMTkgYXQgMTA6MzA6NDJBTSAtMDYwMCwgTG9nYW4gR3VudGhvcnBl
+IHdyb3RlOgo+ID4gIChhKSBhIHJhbmdlIGlzIG5vcm1hbCBSQU0sIERNQSBtYXBwaW5nIHdvcmtz
+IGFzIHVzdWFsCj4gPiAgKGIpIGEgcmFuZ2UgaXMgYW5vdGhlciBkZXZpY2VzIEJBUiwgaW4gd2hp
+Y2ggY2FzZSB3ZSBuZWVkIHRvIGRvIGEKPiA+ICAgICAgbWFwX3Jlc291cmNlIGVxdWl2YWxlbnQg
+KHdoaWNoIHJlYWxseSBqdXN0IG1lYW5zIGRvbid0IGJvdGhlciB3aXRoCj4gPiAgICAgIGNhY2hl
+IGZsdXNoIG9uIG5vbi1jb2hlcmVudCBhcmNoaXRlY3R1cmVzKSBhbmQgYXBwbHkgYW55IG5lZWRl
+ZAo+ID4gICAgICBvZmZzZXQsIGZpeGVkIG9yIGlvbW11IGJhc2VkCj4gCj4gV2VsbCBJIHdvdWxk
+IHNwbGl0IHRoaXMgaW50byB0d28gY2FzZXM6IChiMSkgcmFuZ2VzIGluIGFub3RoZXIgZGV2aWNl
+J3MKPiBCQVIgdGhhdCB3aWxsIHBhc3MgdGhyb3VnaCB0aGUgcm9vdCBjb21wbGV4IGFuZCByZXF1
+aXJlIGEgbWFwX3Jlc291cmNlCj4gZXF1aXZhbGVudCBhbmQgKGIyKSByYW5nZXMgaW4gYW5vdGhl
+ciBkZXZpY2UncyBiYXIgdGhhdCBkb24ndCBwYXNzCj4gdGhyb3VnaCB0aGUgcm9vdCBjb21wbGV4
+IGFuZCByZXF1aXJlIGFwcGx5aW5nIGFuIG9mZnNldCB0byB0aGUgYnVzCj4gYWRkcmVzcy4gQm90
+aCByZXF1aXJlIHJhdGhlciBkaWZmZXJlbnQgaGFuZGxpbmcgYW5kIHRoZSBzdWJtaXR0aW5nCj4g
+ZHJpdmVyIHNob3VsZCBhbHJlYWR5IGtub3cgYWhlYWQgb2YgdGltZSB3aGF0IHR5cGUgd2UgaGF2
+ZS4KClRydWUuCgo+IAo+ID4gIChjKSBhIHJhbmdlIHBvaW50cyB0byBhIEJBUiBvbiB0aGUgYWN0
+aW5nIGRldmljZS4gSW4gd2hpY2ggY2FzZSB3ZQo+ID4gICAgICBkb24ndCBuZWVkIHRvIERNQSBt
+YXAgYXQgYWxsLCBiZWNhdXNlIG5vIGRtYSBpcyBoYXBwZW5pbmcgYnV0IGp1c3QgYW4KPiA+ICAg
+ICAgaW50ZXJuYWwgdHJhbnNmZXIuICBBbmQgZGVwZW5kaW5nIG9uIHRoZSBkZXZpY2UgdGhhdCBt
+aWdodCBhbHNvIHJlcXVpcmUKPiA+ICAgICAgYSBkaWZmZXJlbnQgYWRkcmVzc2luZyBtb2RlCj4g
+Cj4gSSB0aGluayAoYykgaXMgYWN0dWFsbHkganVzdCBhIHNwZWNpYWwgY2FzZSBvZiAoYjIpLiBB
+bnkgZGV2aWNlIHRoYXQgaGFzCj4gYSBzcGVjaWFsIHByb3RvY29sIGZvciBhZGRyZXNzaW5nIHRo
+ZSBsb2NhbCBCQVIgY2FuIGp1c3QgZG8gYSByYW5nZQo+IGNvbXBhcmUgb24gdGhlIGFkZHJlc3Mg
+dG8gZGV0ZXJtaW5lIGlmIGl0J3MgbG9jYWwgb3Igbm90LiBEZXZpY2VzIHRoYXQKPiBkb24ndCBo
+YXZlIGEgc3BlY2lhbCBwcm90b2NvbCBmb3IgdGhpcyB3b3VsZCBoYW5kbGUgYm90aCAoYykgYW5k
+IChiMikKPiB0aGUgc2FtZS4KCkl0IGlzIG5vdC4gIChjKSBpcyBmdW5kYW1lbnRhbGx5IHZlcnkg
+ZGlmZmVyZW50IGFzIGl0IGlzIG5vdCBhY3R1YWxseQphbiBvcGVyYXRpb24gdGhhdCBldmVyIGdv
+ZXMgb3V0IHRvIHRoZSB3aXJlIGF0IGFsbCwgYW5kIHdoaWNoIGlzIHdoeSB0aGUKYWN0dWFsIHBo
+eXNpY2FsIGFkZHJlc3Mgb24gdGhlIHdpcmUgZG9lcyBub3QgbWF0dGVyIGF0IGFsbC4KU29tZSBp
+bnRlcmZhY2VzIGxpa2UgTlZNZSBoYXZlIGRlc2lnbmVkIGl0IGluIGEgd2F5IHRoYXQgaXQgdGhl
+IGNvbW1hbmRzCnVzZWQgdG8gZG8gdGhpcyBpbnRlcm5hbCB0cmFuc2ZlciBsb29rIGxpa2UgKGIy
+KSwgYnV0IHRoYXQgaXMganVzdCB0aGVpcgooSU1ITyB2ZXJ5IHF1ZXN0aW9uYWJsZSkgaW50ZXJm
+YWNlIGRlc2lnbiBjaG9pY2UsIHRoYXQgcHJvZHVjZXMgYSB3aG9sZQpjaGFpbiBvZiBwcm9ibGVt
+cy4KCj4gPiBJIGd1ZXNzIGl0IG1pZ2h0IG1ha2Ugc2Vuc2UgdG8ganVzdCBoYXZlIGEgYmxvY2sg
+bGF5ZXIgZmxhZyB0aGF0IChiKSBvcgo+ID4gKGMpIG1pZ2h0IGJlIGNvbnRhaW5lZCBpbiBhIGJp
+by4gIFRoZW4gd2UgYWx3YXlzIGxvb2sgdXAgdGhlIGRhdGEKPiA+IHN0cnVjdHVyZSwgYnV0IGNh
+biBzdGlsbCBmYWxsIGJhY2sgdG8gKGEpIGlmIG5vdGhpbmcgd2FzIGZvdW5kLiAgVGhhdAo+ID4g
+ZXZlbiBhbGxvd3MgZnJlZSBtaXhpbmcgYW5kIG1hdGNoaW5nIG9mIG1lbW9yeSB0eXBlcywgYXQg
+bGVhc3QgYXMgbG9uZwo+ID4gYXMgdGhleSBhcmUgY29udGFpbmVkIHRvIHNlcGFyYXRlIGJpb192
+ZWMgc2VnbWVudHMuCj4gCj4gSU1PIHRoZXNlIHRocmVlIGNhc2VzIHNob3VsZCBiZSByZWZsZWN0
+ZWQgaW4gZmxhZ3MgaW4gdGhlIGJpb192ZWMuIFdlJ2QKPiBwcm9iYWJseSBzdGlsbCBuZWVkIGEg
+cXVldWUgZmxhZyB0byBpbmRpY2F0ZSBzdXBwb3J0IGZvciBtYXBwaW5nIHRoZXNlLAo+IGJ1dCBh
+IGZsYWcgb24gdGhlIGJpbyB0aGF0IGluZGljYXRlcyBzcGVjaWFsIGNhc2VzICptaWdodCogZXhp
+c3QgaW4gdGhlCj4gYmlvX3ZlYyBhbmQgdGhlIGRyaXZlciBoYXMgdG8gZG8gZXh0cmEgd29yayB0
+byBzb21laG93IGRpc3Rpbmd1aXNoIHRoZQo+IHRocmVlIHR5cGVzIGRvZXNuJ3Qgc2VlbSB1c2Vm
+dWwuIGJpb192ZWMgZmxhZ3MgYWxzbyBtYWtlIGl0IGVhc3kgdG8KPiBzdXBwb3J0IG1peGluZyBz
+ZWdtZW50cyBmcm9tIGRpZmZlcmVudCBtZW1vcnkgdHlwZXMuCgpTbyBJINGWbml0aWFsbHkgc3Vn
+Z2VzdGVkIHRoZXNlIGZsYWdzLiAgQnV0IHdpdGhvdXQgYSBwZ21hcCB3ZSBhYnNvbHV0ZWx5Cm5l
+ZWQgYSBsb29rdXAgb3BlcmF0aW9uIHRvIGZpbmQgd2hpY2ggcGh5cyBhZGRyZXNzIHJhbmdlcyBt
+YXAgdG8gd2hpY2gKZGV2aWNlLiAgQW5kIG9uY2Ugd2UgZG8gdGhhdCB0aGUgZGF0YSBzdHJ1Y3R1
+cmUgdGhlIG9ubHkgdGhpbmcgd2UgbmVlZAppcyBhIGZsYWcgc2F5aW5nIHRoYXQgd2UgbmVlZCB0
+aGF0IGluZm9ybWF0aW9uLCBhbmQgZXZlcnl0aGluZyBlbHNlCmNhbiBiZSBpbiB0aGUgZGF0YSBz
+dHJ1Y3R1cmUgcmV0dXJuZWQgZnJvbSB0aGF0IGxvb2t1cC4KCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4
+LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
