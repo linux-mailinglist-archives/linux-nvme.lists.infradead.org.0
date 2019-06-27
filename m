@@ -2,60 +2,93 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9500757F00
-	for <lists+linux-nvme@lfdr.de>; Thu, 27 Jun 2019 11:10:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7630E58083
+	for <lists+linux-nvme@lfdr.de>; Thu, 27 Jun 2019 12:37:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xljwe+AP7Yvrgiy3ZNE26LK+0D022L8zkqz8ZW84mck=; b=UWbGQ6lXufnb4S
-	LkglGy+ArFnmNRO+Wax7YF+YjLAZfwWcazmBJGCc10xe5sWKCd4sKzmra2Yn+Fndt48J4ty4dFw/B
-	yRFe5jXQEoGoYLJNf8FMg1EjTTMVw236m3BDCcw/F8VtS4sgJEB/dZdCxusMp89EMlIAgcbgvQt8z
-	o0cyXATkwTg1itF3EfUT/MHuVwcJIeevWQeGYEKRsEC1+oQviWgu6WXSpFJBg5G6kHr4I29grpKTv
-	dJnaEIRF+2rlNXiFsLoCPV7b4GYu0gxlj7k0ebyx8wBhCsl0MW4vX2pddsyAGNeV5olqzSNK3497O
-	djsHRo0LN8aWo8NPVHNA==;
+	List-Owner; bh=YciJLY+A7tEKDq8FMMDqluYhabw0ydD2fjQ2zETxpFI=; b=nChzlGElYzo3H8
+	rb3UhVASnpj7/io2KZJmFp1HoeVFegI3L+HTb/y1yiyS5AjwW6tjYMK15Xg0sjHObkASFBhdEI0Ku
+	BBMEYkHjeXtfs77yTPoiufE/p0X4avIr3eC7hTejorIF9SRv1+Bnsv3UamOARam8Mz62hJ3S2oBrQ
+	P3f3Q6a1qYZ0JfyQ3N+nJ4R/St11jrv9Kotnksj5HSKc73M2EUKVJ5OZXKpDBGc3BLCNgg9TSkLIV
+	rqcpsaJuOorhaE6btnDDFb48dplxd8dom1A4HUc+F6+/AdIX7MHlClGHl5V+viikFKA/8DVS/dUao
+	aED/aMjuQF3BVdhhkIvQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgQQG-000376-VQ; Thu, 27 Jun 2019 09:10:29 +0000
-Received: from verein.lst.de ([213.95.11.211] helo=newverein.lst.de)
+	id 1hgRma-0000ga-II; Thu, 27 Jun 2019 10:37:36 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hgQP6-0002tF-Se
- for linux-nvme@lists.infradead.org; Thu, 27 Jun 2019 09:09:19 +0000
-Received: by newverein.lst.de (Postfix, from userid 2407)
- id 7C50668B20; Thu, 27 Jun 2019 11:08:43 +0200 (CEST)
-Date: Thu, 27 Jun 2019 11:08:43 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [RFC PATCH 00/28] Removing struct page from P2PDMA
-Message-ID: <20190627090843.GB11548@lst.de>
-References: <20190624072752.GA3954@lst.de>
- <558a27ba-e7c9-9d94-cad0-377b8ee374a6@deltatee.com>
- <20190625072008.GB30350@lst.de>
- <f0f002bf-2b94-cd18-d18f-5d0b08311495@deltatee.com>
- <20190625170115.GA9746@lst.de>
- <41235a05-8ed1-e69a-e7cd-48cae7d8a676@deltatee.com>
- <20190626065708.GB24531@lst.de>
- <c15d5997-9ba4-f7db-0e7a-a69e75df316c@deltatee.com>
- <20190626202107.GA5850@ziepe.ca>
- <8a0a08c3-a537-bff6-0852-a5f337a70688@deltatee.com>
+ id 1hgRmM-0000g3-Ok
+ for linux-nvme@lists.infradead.org; Thu, 27 Jun 2019 10:37:23 +0000
+Received: by mail-pg1-x532.google.com with SMTP id 25so835213pgy.4
+ for <linux-nvme@lists.infradead.org>; Thu, 27 Jun 2019 03:37:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=MObgwXC4+xpG5mCxYFyIgB66+8LNdRrFhmn9RhEV0hY=;
+ b=b2Lz9EdIXDTHwGBIt8A3IDwmt70SfMRpv1aJcxVNmZ3nCeMt4AebUZcihOwWynpHnW
+ nsaJI/F2I0V6D0HxL7X5S2UkKyhEdnEQOlTCaZRbBq5Kg7388Zb26t3tqummV6AG68ax
+ GzvmVQqQZ5nQGPCHmtjAMfMjn4+lbJ1cSFhGfBubkqiBY4p0zZy4Tva+IjNkYw9sG6Ks
+ JtQg8R1B1krAS9wGF62QKLiIXbzk1+VGEWC2DJ4HanCTduhPVko+o+a34EI2KbCWm9JN
+ qt96GTs4OeU+GbbeKd7QxCM95RbCtpObLy3MRj61eNMGrhFqYRqGrTDMG4gPz19VUCzm
+ HOqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=MObgwXC4+xpG5mCxYFyIgB66+8LNdRrFhmn9RhEV0hY=;
+ b=W8VasA7qyrdy0mFYnV7MW72/jrJkG9s3rib56ILdExbq9eCzo6ug3i3acEgKoULtPt
+ LcEJhq8IYp9L6tR3NVwsVBdfIbiC4pJIpgniVTpL/o6CR3u2bpNx2CyaAMx/9sSijTz8
+ l/tvhrnkZu9lLcggYoB1jP/07Pc/Bm4XQk4+VHpqV93C0Fwp5XgAdpeRiMG3LvYRpAZI
+ ggT7ic78fitHPOWV96jPrjaVUrzc98uIpr27diQFRh3tndQwvmfgyZk0Lx3Z+8l89tcD
+ Wg2a40iVxOvQmobXAqencQNyt2ZBnR0zKkZ7Jyd0yHrUg/ZqJM0GNTpZ2F3gSwcHzsvR
+ hieA==
+X-Gm-Message-State: APjAAAWdhdPXh+ajTWgSur2ICQ+4upKXX8z+twjb9MpbuxSef7iK7w59
+ wvh/pHpa/J6Wo5wsklNiyA0=
+X-Google-Smtp-Source: APXvYqyZpVYuOcnPAOKXOmvJjSfCYa65xr/1x7qNwatCLSFfi3i0rBn3vNlHQjtuRIVGYGF7L9mfJQ==
+X-Received: by 2002:a63:6cc3:: with SMTP id h186mr3101252pgc.292.1561631841900; 
+ Thu, 27 Jun 2019 03:37:21 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id j23sm1809128pgb.63.2019.06.27.03.37.20
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 27 Jun 2019 03:37:21 -0700 (PDT)
+Date: Thu, 27 Jun 2019 19:37:19 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: hch@lst.de, keith.busch@intel.com, sagi@grimberg.me
+Subject: Re: [PATCH v3 5/5] nvme: add support weighted round robin queue
+Message-ID: <20190627103719.GC4421@minwooim-desktop>
+References: <cover.1561385989.git.zhangweiping@didiglobal.com>
+ <6e3b0f511a291dd0ce570a6cc5393e10d4509d0e.1561385989.git.zhangweiping@didiglobal.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <8a0a08c3-a537-bff6-0852-a5f337a70688@deltatee.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+In-Reply-To: <6e3b0f511a291dd0ce570a6cc5393e10d4509d0e.1561385989.git.zhangweiping@didiglobal.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190627_020917_076524_AF4296AF 
-X-CRM114-Status: GOOD (  12.55  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190627_033722_809790_40E6A55E 
+X-CRM114-Status: UNSURE (   6.91  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:532 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,48 +100,19 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Keith Busch <kbusch@kernel.org>,
- Sagi Grimberg <sagi@grimberg.me>, linux-rdma@vger.kernel.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
- linux-block@vger.kernel.org, Jason Gunthorpe <jgg@ziepe.ca>,
- Bjorn Helgaas <bhelgaas@google.com>, Dan Williams <dan.j.williams@intel.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: linux-block@vger.kernel.org, linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Jun 26, 2019 at 02:45:38PM -0600, Logan Gunthorpe wrote:
-> > The bar info would give the exporting struct device and any other info
-> > we need to make the iommu mapping.
-> 
-> Well, the IOMMU mapping is the normal thing the mapping driver will
-> always do. We'd really just need the submitting driver to, when
-> appropriate, inform the mapping driver that this is a pci bus address
-> and not to call dma_map_xxx(). Then, for special mappings for the CMB
-> like Christoph is talking about, it's simply a matter of doing a range
-> compare on the PCI Bus address and converting the bus address to a BAR
-> and offset.
+Hi, Maintainers
 
-Well, range compare on the physical address.  We have a few different
-options here:
+Would you guys please give some thoughts about this patch?  I like this
+feature WRR addition to the driver so I really want to hear something
+from you guys.
 
- (a) a range is normal RAM, DMA mapping works as usual
- (b) a range is another devices BAR, in which case we need to do a
-     map_resource equivalent (which really just means don't bother with
-     cache flush on non-coherent architectures) and apply any needed
-     offset, fixed or iommu based
- (c) a range points to a BAR on the acting device. In which case we
-     don't need to DMA map at all, because no dma is happening but just an
-     internal transfer.  And depending on the device that might also require
-     a different addressing mode
-
-I guess it might make sense to just have a block layer flag that (b) or
-(c) might be contained in a bio.  Then we always look up the data
-structure, but can still fall back to (a) if nothing was found.  That
-even allows free mixing and matching of memory types, at least as long
-as they are contained to separate bio_vec segments.
+Thanks,
 
 _______________________________________________
 Linux-nvme mailing list
