@@ -2,55 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C91E594C1
-	for <lists+linux-nvme@lfdr.de>; Fri, 28 Jun 2019 09:23:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C9A89594CB
+	for <lists+linux-nvme@lfdr.de>; Fri, 28 Jun 2019 09:25:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IDEvtjIJVOtE/Mr3k3/3zpzNXP2fg34N5+6XoAYP3/I=; b=CZm1lJA2jOMoYU
-	C1nkeU6AK8orLtYFloEA0EKANw0PXxeXskA2ExkhJWhLpNTZ76w6aeWVpF+PD34BbKInISG7wHIfE
-	UVyKWzEA6I5I4/D+gsfBEr+3nakDL7eyoIzrvN556OrIuBD2XsQtQLD28SjwNLvSTPFf/RvxNWbXw
-	6ecWpok1DBUuePGdFsWYrdeCC5DjzRPo4H2kEm+Q2ktJBb0L4L5HIM7XO2MQx3s9w/ITl/l1UDr6N
-	stXCkQWftaOGQzTtPpml2VuNTnej3n5XApKjomwBXLZZRTo9JSUbLZhfG9x5FwdSg9yKkCnK8Cxko
-	wIvmRpnwhcYDrl4013Ow==;
+	List-Owner; bh=Az1EGFdgFg0D5alm16zBJ+7/GTIoz5xbIuQiTB+aqpU=; b=Lq21RwtgRdPMZP
+	6YMnBaToQ08+C3hvfCgLUGS+gvHTkHo+J1ngNStL7aLEJYEfY2AbseEG66LfIG1CVgE15sTSxUqgZ
+	uC5gKOkn1oo5a0vqQgbvHJEsvbROejkwF1BLdYmcGWYV54thQqhBjtI6sNvE9A7g79hBhcD32W6YO
+	hre2EfpXyNtrcx3tx24AU+dioGNTliF+p02dlRtarkCNxBeUztSQd3JUb/iS6yZaTL5Xvyb1kpPm3
+	HezlHZefsEgVVXD5sy/D5lJ3d4mOwxMEzFVAtOphYZ5DEeSoIzj76sIaiUseeeDG/YcNPwWB3bNpm
+	fYgla2ecvRdQ1VsZbuJw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hglEF-0008GT-EY; Fri, 28 Jun 2019 07:23:27 +0000
-Received: from [213.95.11.210] (helo=newverein.lst.de)
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hglE2-0008Fs-MJ
- for linux-nvme@lists.infradead.org; Fri, 28 Jun 2019 07:23:15 +0000
-Received: by newverein.lst.de (Postfix, from userid 2407)
- id A014E68CFE; Fri, 28 Jun 2019 09:23:10 +0200 (CEST)
-Date: Fri, 28 Jun 2019 09:23:10 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Daniel Drake <drake@endlessm.com>
-Subject: Re: [PATCH v2 2/5] nvme: rename "pci" operations to "mmio"
-Message-ID: <20190628072310.GA28896@lst.de>
-References: <20190620051333.2235-1-drake@endlessm.com>
- <20190620051333.2235-3-drake@endlessm.com> <20190620061038.GA20564@lst.de>
- <CAD8Lp45ua=L+ixO+du=Njhy+dxjWobWA+V1i+Y2p6faeyt1FBQ@mail.gmail.com>
- <20190624061617.GA2848@lst.de>
- <CAD8Lp464B0dOd+ayF_AK4DRzHEpiaSbUOXjVJ5bq5zMXq=BBKQ@mail.gmail.com>
+	id 1hglGB-0001bH-Ut; Fri, 28 Jun 2019 07:25:28 +0000
+Received: from hch by bombadil.infradead.org with local (Exim 4.92 #3 (Red Hat
+ Linux)) id 1hglG2-0001az-TF; Fri, 28 Jun 2019 07:25:18 +0000
+Date: Fri, 28 Jun 2019 00:25:18 -0700
+From: 'Christoph Hellwig' <hch@infradead.org>
+To: kanchan <joshi.k@samsung.com>
+Subject: Re: [PATCH v5 0/7] Extend write-hint framework, and add write-hint
+ for Ext4 journal
+Message-ID: <20190628072518.GA25577@infradead.org>
+References: <CGME20190425112347epcas2p1f7be48b8f0d2203252b8c9dd510c1b61@epcas2p1.samsung.com>
+ <1556191202-3245-1-git-send-email-joshi.k@samsung.com>
+ <20190510170249.GA26907@infradead.org>
+ <00fb01d50c71$dd358e50$97a0aaf0$@samsung.com>
+ <20190520142719.GA15705@infradead.org>
+ <20190521082528.GA17709@quack2.suse.cz>
+ <20190521082846.GA11024@infradead.org>
+ <20190522102530.GK17019@quack2.suse.cz>
+ <00f301d52c1d$58f1e820$0ad5b860$@samsung.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAD8Lp464B0dOd+ayF_AK4DRzHEpiaSbUOXjVJ5bq5zMXq=BBKQ@mail.gmail.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190628_002314_895495_F6911443 
-X-CRM114-Status: UNSURE (   7.83  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 1.3 (+)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.3 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
+In-Reply-To: <00f301d52c1d$58f1e820$0ad5b860$@samsung.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,27 +51,24 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
- linux-ide@vger.kernel.org, Linux PCI <linux-pci@vger.kernel.org>,
- Linux Kernel <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Alex Williamson <alex.williamson@redhat.com>, Hannes Reinecke <hare@suse.de>,
- Keith Busch <kbusch@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
- Linux Upstreaming Team <linux@endlessm.com>, Christoph Hellwig <hch@lst.de>
+Cc: linux-block@vger.kernel.org, 'Jan Kara' <jack@suse.cz>,
+ "'Martin K. Petersen'" <martin.petersen@oracle.com>,
+ linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
+ 'Christoph Hellwig' <hch@infradead.org>, anshul@samsung.com,
+ linux-fsdevel@vger.kernel.org, prakash.v@samsung.com,
+ linux-ext4@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Jun 25, 2019 at 11:51:28AM +0800, Daniel Drake wrote:
-> Bearing in mind that we've already been told that the NVMe device
-> config space is inaccessible, and the new docs show exactly how the
-> BIOS enforces such inaccessibility during early boot, the remaining
-> points you mentioned recently were:
+On Wed, Jun 26, 2019 at 06:17:29PM +0530, kanchan wrote:
+> Christoph, 
+> May I know if you have thoughts about what Jan mentioned below? 
 
-If we can't access the config space we unfortunately can't support
-this scheme at all, as it invalidates all our quirks handling.
+As said I fundamentally disagree with exposting the streams mess at
+the block layer.  I have no problem with setting a hint on the journal,
+but I do object to exposting the streams mess even more.
 
 _______________________________________________
 Linux-nvme mailing list
