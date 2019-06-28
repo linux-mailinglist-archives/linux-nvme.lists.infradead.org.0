@@ -2,36 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19CDE59427
-	for <lists+linux-nvme@lfdr.de>; Fri, 28 Jun 2019 08:23:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BAEFB59486
+	for <lists+linux-nvme@lfdr.de>; Fri, 28 Jun 2019 09:01:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CqT5STRpPg+NSzDnSb1C/h/R8Q9eUkiCoocbAN5gQ0w=; b=eCNuwG7RnvBIDG
-	FhT0SqsMBYozbhUCBhBXTSLo2y6rB3zKdRV2QJB97N2y9zgqz8IpxX+j4QWdwRtwx0WIqS6C0Ixmv
-	ediuArmARV9U/r5veyET6PrOZ1Nr+mMlqS5GKGwA9BY7FywVPRXJcJdIcyYXDmfKqPKxSPHohiJVN
-	XCwNDNOLRT4l0diPk/XKx7ChQdCZpP1L+UfeF3MgPvgxkPaqAABfVrcSVHa2fC/Wggwq5+A4D+U3f
-	/51eV6ZmZfUZ0dfpR7N5pK2zjzrfrtmTjZ3kOKRrhKsIPwBdH0NjFQbbTGWIhHfaSj4Wsz6GlA7jP
-	YfSOUOzB5e/1TTPcmf0w==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=73nKKU+ougsH9Fq2+WsezuabAGaspwo1qUQIq9cN+nw=; b=R8MGXLxiqRwJLl
+	pj+mfWFH4Gm6By28pxW2MJwLKa0Eh2MIZ6swiQVfXURI+BoNO6wUhtL56ODxsSPwRFTP2/aaRV+Kg
+	y8mMcDLBhZ1wXMpBXfJemX1pCE8TIwou43GZeZlLtOauLtDJNe/ZQbjyIX5AqA3I+BSbznZhoOmF2
+	Y2SGLq08OiPRyDiHw7VYD6xfSp8F2gvJIrQVDngmCrh4nc5gAIHh0J4BMzqIEbNhr2RRqqxXIoPwZ
+	du7VJPnN6J8J3HN/8LWAMH924G1ps3kiraj1rkam36kvvnQpKHQyzqmehvhEccuzGsOkwmjk9IBMM
+	84eo2pEP8meMJjCkLQOw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hgkI2-0000pf-Kg; Fri, 28 Jun 2019 06:23:18 +0000
-Received: from 089144214055.atnat0023.highway.a1.net ([89.144.214.55]
- helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hgkHw-0000pW-MR
- for linux-nvme@lists.infradead.org; Fri, 28 Jun 2019 06:23:13 +0000
-Date: Fri, 28 Jun 2019 08:23:10 +0200
-From: Christoph Hellwig <hch@infradead.org>
-To: linux-nvme@lists.infradead.org
-Subject: [ANNOUNCE] Alpine Linux Persistence and Storage Summit
-Message-ID: <20190628062310.GD2014@infradead.org>
+	id 1hgksu-0007uT-FP; Fri, 28 Jun 2019 07:01:24 +0000
+Received: from [213.95.11.210] (helo=newverein.lst.de)
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hgksF-0007tq-CE
+ for linux-nvme@lists.infradead.org; Fri, 28 Jun 2019 07:00:46 +0000
+Received: by newverein.lst.de (Postfix, from userid 2407)
+ id C00E168CFE; Fri, 28 Jun 2019 09:00:38 +0200 (CEST)
+Date: Fri, 28 Jun 2019 09:00:38 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Bart Van Assche <bvanassche@acm.org>
+Subject: Re: [PATCH v4 1/3] nvme: Introduce NVMe 1.4 Identify Namespace
+ fields in struct nvme_id_ns
+Message-ID: <20190628070038.GA28268@lst.de>
+References: <20190627143215.27443-1-bvanassche@acm.org>
+ <20190627143215.27443-2-bvanassche@acm.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20190627143215.27443-2-bvanassche@acm.org>
+User-Agent: Mutt/1.5.17 (2007-11-01)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190628_000043_997773_D05457D0 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 1.3 (+)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (1.3 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 1.3 RDNS_NONE Delivered to internal network by a host with no rDNS
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -43,53 +60,34 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: Hannes Reinecke <hare@suse.com>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+ linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
+ Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-We proudly announce the second Alpine Linux Persistence and Storage
-Summit (ALPSS), which will be held October 1st to October 4th 2019 at
-the Lizumerhuette [1][2] in Austria .
+On Thu, Jun 27, 2019 at 07:32:13AM -0700, Bart Van Assche wrote:
+> Several new fields have been introduced in version 1.4 of the NVMe spec
+> at offsets that were defined as reserved in version 1.3d of the NVMe
+> spec. Update the definition of the nvme_id_ns data structure such that
+> it is in sync with version 1.4 of the NVMe spec. This change preserves
+> backwards compatibility.
+> 
+> Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+> Reviewed-by: Martin K. Petersen <martin.petersen@oracle.com>
+> Reviewed-by: Keith Busch <kbusch@kernel.org>
+> Cc: Sagi Grimberg <sagi@grimberg.me>
+> Cc: Hannes Reinecke <hare@suse.com>
+> Signed-off-by: Bart Van Assche <bvanassche@acm.org>
 
-The goal of this conference is to discuss the hot topics in Linux storage
-and file systems, such as persistent memory, NVMe, Zoned Block Device,
-and PCIe peer to peer transfers in a cool and relaxed setting with
-spectacular views in the Austrian alps.
+Looks good:
 
-We plan to have a small selection of short and to the point talks with
-lots of room for discussion in small groups, as well as ample downtime
-to enjoy the surrounding.
-
-Attendance is free except for the accommodation and food at the lodge [3],
-but the number of seats is strictly limited.  If you are interested in
-attending please reserve a seat by mailing your favorite topic(s) to:
-
-	alpss-pc@lists.infradead.org
-
-If you are interested in giving a short and crisp talk please also send
-an abstract to the same address.
-
-Note: The Lizumerhuette is an Alpine Society lodge in a high alpine
-environment.  A hike of approximately 2 hours is required to the lodge,
-and no other accommodations are available within walking distance.
-
-More details will eventually be available on our website:
-
-        http://www.alpss.at/
-
-Thank you on behalf of the program committee:
-
-    Stephen Bates
-    Sagi Grimberg
-    Christoph Hellwig
-    Johannes Thumshirn
-    Richard Weinberger
-
-[1] http://www.tyrol.com/things-to-do/sports/hiking/refuge-huts/a-lizumer-hut
-[2] https://www.glungezer.at/l-i-z-u-m-e-r-h-%C3%BC-t-t-e/
-[3] approx. EUR 40-60 per person and night, depending on the room
-    category
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
 _______________________________________________
 Linux-nvme mailing list
