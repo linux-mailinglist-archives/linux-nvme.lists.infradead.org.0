@@ -2,70 +2,83 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B52465ECBA
-	for <lists+linux-nvme@lfdr.de>; Wed,  3 Jul 2019 21:24:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 48E045ED9F
+	for <lists+linux-nvme@lfdr.de>; Wed,  3 Jul 2019 22:34:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s1WWziK0IwjReqAtzxXFOjs4GCOyTAAFnObQGeDRlA8=; b=Bxlzw/UoRuDlL3
-	Y0CYXsHjxdq/DhpLnUkA/06JD3g2/siV1eeVk/iEi8HR0g4qn7Ih6AYTyQdAmqLwlPmH1ONureUY9
-	4PIgFtnAWk6/6JArdjFLMIUnLKaYePXpfldEp95aig6Bv7oQzjvDSkSc7s68GDF0G+PvgieTnhc0Z
-	1xLBQqG4rnz7Eilra+UEdhneB9IQhPk0buZllXbwIHooJG36AwNIr7UH8RoybxyVLA4mCpWw7CUWy
-	DJww+7zAq1YuKsRmk/9fz+cIJVnctipeXAQ0n+M++w4p1sP/7VFvVPSXYZpda0IKQJbu3pTnyG3tj
-	lJWjHTTDhfoK0AhQW3sQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=0KBF6p2Y7PLhZfbLY5jDeqzKSxCQAwulRhVn1oZp0/0=; b=Cp777URkJdHoSB98+fsZsSfYI
+	hyyGkn53a8ZLSFwOcJBaiQPOCt3wJJO+ZccgPuZCVDyMHcnWuyF1eavdp20Oo9NGbdL9XBEO+ZQg7
+	MGsat4eOuDJ+DdAkSsvPLtjwUmfh6WasbVhK+15ks67Juf+wTpcg6uSY2yADMvXDXm07Re0cHaJFO
+	zvcG/4UHysFkYkcR6RzC+MTbVtgQBkOrEEej7k53xZ+nTCotqc8cc5451IU1CShMDSGpA0AGda8PV
+	nPsINyLF2MF9MJnRe0VyKR75M6QkV4GZyIB/qu9iHBxpYk9CnLnrIGEI3gUEafQZymr35jFPMSuWL
+	HonhGwPoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hiks0-0003aJ-AU; Wed, 03 Jul 2019 19:24:44 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1hilx8-0005kG-Iv; Wed, 03 Jul 2019 20:34:06 +0000
+Received: from mail-ot1-f65.google.com ([209.85.210.65])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hikrt-0003Zu-Co
- for linux-nvme@lists.infradead.org; Wed, 03 Jul 2019 19:24:38 +0000
-Received: from s01061831bf6ec98c.cg.shawcable.net ([68.147.80.180]
- helo=[192.168.6.132])
- by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <logang@deltatee.com>)
- id 1hikrp-0002Qw-SO; Wed, 03 Jul 2019 13:24:34 -0600
-To: Sagi Grimberg <sagi@grimberg.me>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>
-References: <20190703170136.21515-1-logang@deltatee.com>
- <e88bed6b-c487-e224-1434-ba9912495a33@grimberg.me>
- <c072210c-1f44-2803-4781-15ff6f72a07a@deltatee.com>
- <e7f0ae6e-9a72-0640-12d3-1683f9950a13@grimberg.me>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <6344ac00-0102-5cc8-a565-58a715657345@deltatee.com>
-Date: Wed, 3 Jul 2019 13:24:33 -0600
+ id 1hilx2-0005jx-1O
+ for linux-nvme@lists.infradead.org; Wed, 03 Jul 2019 20:34:01 +0000
+Received: by mail-ot1-f65.google.com with SMTP id r21so3315438otq.6
+ for <linux-nvme@lists.infradead.org>; Wed, 03 Jul 2019 13:33:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wZ2zFebmm1IlVtNQDMaoXLiwfNIF4EW1UANc34wGHmU=;
+ b=p1QP90cN6BsWv9tyhWq0LuXpntPpz1Mo7wFzmNDZGMNzwu8B9LGopvdJ2uPAMbZgWq
+ YZunBRTlDycwTSZPF7Q/LXxO7xoPkHOAd6/ETcFwov+i2NtqtXrHadVOnvXDVHEypZEl
+ Va0H2CVfJptW7JP24/89jhC6c9/2ixAyry+aCIwAKB3Yojn7T+GwamHSAar7JPWKsRwr
+ biOIo0PlmcEXLBjmFYGqBNoM8SdNx7kQIqNTsEeGTsyaiyt3ZSjwrKfMM4HzaBE1cc2r
+ G7SunzK1qVIpz/MZK8mWmnkUb7U7zAqqw1P0Z9TCeNUc1A2ay/GF5H/uDIEZzFgO0d2/
+ 3wQQ==
+X-Gm-Message-State: APjAAAXTcefookQaK/yER8sYqVySbu1G9KrDB6YSZacAr8JpL2BW2PL/
+ gxTqiZEtL59In38QCZ1LIrgjiM47
+X-Google-Smtp-Source: APXvYqzrmI8SKx0VXAyGHly8EtnY7KsDhYqwErlkxPbObGB01DxoOxAYK0r55TMc35sLw7AZw4hrhg==
+X-Received: by 2002:a9d:174:: with SMTP id 107mr31723688otu.322.1562186038544; 
+ Wed, 03 Jul 2019 13:33:58 -0700 (PDT)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id q12sm1120034oth.25.2019.07.03.13.33.57
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 03 Jul 2019 13:33:58 -0700 (PDT)
+Subject: Re: [PATCH 2/2] nvme-multipath: do not select namespaces which are
+ about to be removed
+To: Christoph Hellwig <hch@lst.de>, Hannes Reinecke <hare@suse.de>
+References: <20190703131232.58595-1-hare@suse.de>
+ <20190703131232.58595-3-hare@suse.de> <20190703132133.GA8948@lst.de>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <c355b6ef-12b9-6a57-f091-a459e937f2ec@grimberg.me>
+Date: Wed, 3 Jul 2019 13:33:56 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <e7f0ae6e-9a72-0640-12d3-1683f9950a13@grimberg.me>
+In-Reply-To: <20190703132133.GA8948@lst.de>
 Content-Language: en-US
-X-SA-Exim-Connect-IP: 68.147.80.180
-X-SA-Exim-Rcpt-To: sbates@raithlin.com, hch@lst.de,
- linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org, sagi@grimberg.me
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE,MYRULES_FREE autolearn=ham autolearn_force=no
- version=3.4.2
-Subject: Re: [PATCH 0/2] Fix use-after-free bug when ports are removed
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190703_122437_766058_62E1BFB9 
-X-CRM114-Status: GOOD (  16.90  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190703_133400_082136_BA0A2C29 
+X-CRM114-Status: GOOD (  14.32  )
+X-Spam-Score: 0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
+ no trust [209.85.210.65 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ 0.0 T_PDS_NO_HELO_DNS      High profile HELO but no A record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,65 +90,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Stephen Bates <sbates@raithlin.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
+ linux-nvme@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
-
-On 2019-07-03 1:20 p.m., Sagi Grimberg wrote:
+>> diff --git a/drivers/nvme/host/multipath.c b/drivers/nvme/host/multipath.c
+>> index c8cc82639327..1f6105a5c596 100644
+>> --- a/drivers/nvme/host/multipath.c
+>> +++ b/drivers/nvme/host/multipath.c
+>> @@ -130,7 +130,8 @@ static struct nvme_ns *__nvme_find_path(struct nvme_ns_head *head, int node)
+>>   
+>>   	list_for_each_entry_rcu(ns, &head->list, siblings) {
+>>   		if (ns->ctrl->state != NVME_CTRL_LIVE ||
+>> -		    test_bit(NVME_NS_ANA_PENDING, &ns->flags))
+>> +		    test_bit(NVME_NS_ANA_PENDING, &ns->flags) ||
+>> +		    test_bit(NVME_NS_REMOVING, &ns->flags))
+>>   			continue;
+>>   
+>>   		if (READ_ONCE(head->subsys->iopolicy) == NVME_IOPOLICY_NUMA)
+>> @@ -180,7 +181,8 @@ static struct nvme_ns *nvme_round_robin_path(struct nvme_ns_head *head,
+>>   
+>>   	if (list_is_singular(&head->list)) {
+>>   		if (old->ctrl->state != NVME_CTRL_LIVE ||
+>> -		    test_bit(NVME_NS_ANA_PENDING, &old->flags))
+>> +		    test_bit(NVME_NS_ANA_PENDING, &old->flags)||
+>> +		    test_bit(NVME_NS_REMOVING, &old->flags))
+>>   			return NULL;
+>>   		return old;
+>>   	}
+>> @@ -189,7 +191,8 @@ static struct nvme_ns *nvme_round_robin_path(struct nvme_ns_head *head,
+>>   	     ns != old;
+>>   	     ns = nvme_next_ns(head, ns)) {
+>>   		if (ns->ctrl->state != NVME_CTRL_LIVE ||
+>> -		    test_bit(NVME_NS_ANA_PENDING, &ns->flags))
+>> +		    test_bit(NVME_NS_ANA_PENDING, &ns->flags) ||
+>> +		    test_bit(NVME_NS_REMOVING, &ns->flags))
+>>   			continue;
 > 
->>> Can we handle this in the core instead (also so we'd be consistent
->>> across transports)?
->>
->> Yes, that would be much better if we can sort out some other issues
->> below...
->>
->>> How about this untested patch instead?
->>
->> I've found a couple of problems with the patch:
->>
->> 1) port->subsystems will always be empty before nvmet_disable_port() is
->> called. We'd have to restructure things a little perhaps so that when a
->> subsystem is removed from a port, all the active controllers for that
->> subsys/port combo would be removed.
-> 
-> Yes, that is better.
+> I think we clearly need a patch before the two patches in your
+> series that factors this check into a little helper with a
+> descriptive name.  Also doesn't nvme_path_is_optimized also need
+> to have these checks while we are at it?
 
-Ok, if you like this solution I'll try and come up with a patch like
-that. It *may* not be too intrusive compared to the cleanup I suggested
-below.
+I definitely agree here.
 
->> 2) loop needs to call flush_workqueue(nvme_delete_wq) somewhere,
->> otherwise there's a small window after the port disappears while
->> commands can still be submitted. We can actually still hit the bug with
->> a tight loop.
-> 
-> We could simply flush the workqueue in nvme_loop_delete_ctrl for
-> each controller?
-> 
-> Might be an overkill though, and its risking circular locking in case
-> we are going via the fatal error path (work context flushing a different
-> workqueue always annoys lockdep even when its perfectly safe)
-> 
->> Maybe there's other cleanup that could be done to solve this: it does
->> seem like all three transports need to keep their own lists of open
->> controllers and loops through them to delete them. In theory, that could
->> be made common so there's common code to manage the list per transport
->> which would remove some boiler plate code. If we want to go this route
->> though, I'd suggest using my patches as is for now and doing the cleanup
->> in the next cycle.
-> 
-> Then please fix tcp as well.
-
-Ok, I'll try to send either a destroy controller on subsystem-removal
-patch or I'll resend these with TCP included sometime today or tomorrow.
-
-Thanks,
-
-Logan
+BTW, while we're on this, do we need the flags check to be
+atomic? or can we micro-optimize with a simple flag arithmetic?
 
 _______________________________________________
 Linux-nvme mailing list
