@@ -2,65 +2,118 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B71560737
-	for <lists+linux-nvme@lfdr.de>; Fri,  5 Jul 2019 16:05:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F398E60BBC
+	for <lists+linux-nvme@lfdr.de>; Fri,  5 Jul 2019 21:16:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:Message-ID:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:
+	From:To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qy4lSvqUnnJOSbvWNTGLaWSsu8z+ewRmeWJ2wxzBo9w=; b=S+/oSnuts6pLwk
-	8FW5PxSJ7QKvavnja45wVJbzDHHXJkuLKkqQEyL4duGpceCwNykKNoc5jJ4WxET4hmKS25KRWjtmK
-	ImcOfeKYYg3DrDcyUbeKfjwwN65OhBzmy45EZ36oASNOMDnn5iJWydShcfzJc3w13qYbw6YNllqMI
-	8CuKMLKzf0DPZ+grphwew5YhIxWW7JHijQoBQEYm+e0iwkNOGGb8vTEuo6iKoa+qqasnQQOakk1Vm
-	IkBNkSDQ6Ih6gCiuIXCOQQMz9wRmRGk7hmhzpLcQnlYH58xHprFO6S9hwznBWXxsyKquptUM7ENyd
-	OuZEIsbnJHM2pr9DOfAg==;
+	List-Owner; bh=gixs7tHw5MKMoMRfXYhn88GSRBiEM1UuUh3q8CxguGE=; b=RU8rkhTZaZ7xpo
+	BwTYN9McfvmpzXKodUs7ykA8QqpmA8+MA4zzLx/0cfCTQE/DjKTZo5lPFkH3ycJlpBWErACrFZCjR
+	nO/1vL6SusOK1HwDgk/oXkNo6QVvnS8sxgR5y3VY0hQUZa74X5ZV5+t4TgoMCv+IJgHvAIAtD6yxh
+	UR5q7hJ1aRmj8wdbedtbqfqtYVMUX5fWsBRjD5FyObB0RdADrwvx0zt5vp028rMWEmW8qoP7yvdtc
+	0cqQ6AqDIWadBx/3+Bm/gOxruvEpZkVs780KYKJibbm317/OIiLsgbr/bT8CmM0Dyg8gX4lcrYzVY
+	UQA92MS7mVKEWXadWDsw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hjOq7-0001WV-Fl; Fri, 05 Jul 2019 14:05:27 +0000
-Received: from zimbra2.kalray.eu ([92.103.151.219])
+	id 1hjTgf-0003eZ-R8; Fri, 05 Jul 2019 19:16:02 +0000
+Received: from mout.web.de ([212.227.15.14])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hjOpx-0001Un-LY
- for linux-nvme@lists.infradead.org; Fri, 05 Jul 2019 14:05:19 +0000
-Received: from localhost (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id EBB9027F8F09;
- Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
-Received: from zimbra2.kalray.eu ([127.0.0.1])
- by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id nv28oveJJWmP; Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id 7002D27F8BF5;
- Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra2.kalray.eu 7002D27F8BF5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kalray.eu;
- s=32AE1B44-9502-11E5-BA35-3734643DEF29; t=1562335512;
- bh=fbpiTuSNeqW8w3jWmq2tRRtqzaFo3ZHuIyQcxnq4s6c=;
- h=Date:From:To:Message-ID:MIME-Version;
- b=LyLd99Vz+to+JD8mv/IGi3VLtOz6h+44fkTgbnwxvu9NY/UJbua5g5K0unApac75E
- N5krwMEj1bRNhoeSf/0DweH5w+8SdsjlX9GkdR4Vr3LcA5QkF1ipLn9ywsuONMJFBK
- Ja8ZP66SpVMZbvkq3IgzmShOVGxd11xE4B3cnuv8=
-X-Virus-Scanned: amavisd-new at zimbra2.kalray.eu
-Received: from zimbra2.kalray.eu ([127.0.0.1])
- by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 5QyuWIOAEMpk; Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
-Received: from zimbra2.kalray.eu (zimbra2.kalray.eu [192.168.40.202])
- by zimbra2.kalray.eu (Postfix) with ESMTP id 5524E27F8BE4;
- Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
-Date: Fri, 5 Jul 2019 16:05:12 +0200 (CEST)
-From: Marta Rybczynska <mrybczyn@kalray.eu>
-To: kbusch@kernel.org, axboe@fb.com, hch@lst.de, sagi@grimberg.me, 
- linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org
-Message-ID: <1575872828.30576006.1562335512322.JavaMail.zimbra@kalray.eu>
-Subject: [PATCH v2] nvme: fix multipath crash when ANA desactivated
+ id 1hjTgX-0003e7-Gx
+ for linux-nvme@lists.infradead.org; Fri, 05 Jul 2019 19:15:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=dbaedf251592; t=1562354134;
+ bh=pbYTbmFg5+9MUs+Xq9U8VQNqI7dxSqfuIjlnzkc6lpQ=;
+ h=X-UI-Sender-Class:To:Cc:From:Subject:Date;
+ b=M1+6PiKyqNM+06i8ByDyR1wS5u+goSGY9+reKMncZcmMfUlzWnlIsSQVjuCbXYrUx
+ lJa/uAFINkduHgHvpzx9Q0I1SIjDpbmjsZTfx9R0HJz8dBIMt1PvZJgAz5Fjyx1jr7
+ csXhDywM14iXqpJk+ozwzBwB63wJ2HLuWXpWI+Kc=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [192.168.1.2] ([2.244.45.164]) by smtp.web.de (mrweb002
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 0MhlP1-1hvwFp0Zmd-00Mt90; Fri, 05
+ Jul 2019 21:15:34 +0200
+To: linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
+ Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
+ Sagi Grimberg <sagi@grimberg.me>
+From: Markus Elfring <Markus.Elfring@web.de>
+Subject: [PATCH] nvme: One function call less in nvme_update_disk_info()
+Openpgp: preference=signencrypt
+Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
+ mQINBFg2+xABEADBJW2hoUoFXVFWTeKbqqif8VjszdMkriilx90WB5c0ddWQX14h6w5bT/A8
+ +v43YoGpDNyhgA0w9CEhuwfZrE91GocMtjLO67TAc2i2nxMc/FJRDI0OemO4VJ9RwID6ltwt
+ mpVJgXGKkNJ1ey+QOXouzlErVvE2fRh+KXXN1Q7fSmTJlAW9XJYHS3BDHb0uRpymRSX3O+E2
+ lA87C7R8qAigPDZi6Z7UmwIA83ZMKXQ5stA0lhPyYgQcM7fh7V4ZYhnR0I5/qkUoxKpqaYLp
+ YHBczVP+Zx/zHOM0KQphOMbU7X3c1pmMruoe6ti9uZzqZSLsF+NKXFEPBS665tQr66HJvZvY
+ GMDlntZFAZ6xQvCC1r3MGoxEC1tuEa24vPCC9RZ9wk2sY5Csbva0WwYv3WKRZZBv8eIhGMxs
+ rcpeGShRFyZ/0BYO53wZAPV1pEhGLLxd8eLN/nEWjJE0ejakPC1H/mt5F+yQBJAzz9JzbToU
+ 5jKLu0SugNI18MspJut8AiA1M44CIWrNHXvWsQ+nnBKHDHHYZu7MoXlOmB32ndsfPthR3GSv
+ jN7YD4Ad724H8fhRijmC1+RpuSce7w2JLj5cYj4MlccmNb8YUxsE8brY2WkXQYS8Ivse39MX
+ BE66MQN0r5DQ6oqgoJ4gHIVBUv/ZwgcmUNS5gQkNCFA0dWXznQARAQABtCZNYXJrdXMgRWxm
+ cmluZyA8TWFya3VzLkVsZnJpbmdAd2ViLmRlPokCVAQTAQgAPhYhBHDP0hzibeXjwQ/ITuU9
+ Figxg9azBQJYNvsQAhsjBQkJZgGABQsJCAcCBhUICQoLAgQWAgMBAh4BAheAAAoJEOU9Figx
+ g9azcyMP/iVihZkZ4VyH3/wlV3nRiXvSreqg+pGPI3c8J6DjP9zvz7QHN35zWM++1yNek7Ar
+ OVXwuKBo18ASlYzZPTFJZwQQdkZSV+atwIzG3US50ZZ4p7VyUuDuQQVVqFlaf6qZOkwHSnk+
+ CeGxlDz1POSHY17VbJG2CzPuqMfgBtqIU1dODFLpFq4oIAwEOG6fxRa59qbsTLXxyw+PzRaR
+ LIjVOit28raM83Efk07JKow8URb4u1n7k9RGAcnsM5/WMLRbDYjWTx0lJ2WO9zYwPgRykhn2
+ sOyJVXk9xVESGTwEPbTtfHM+4x0n0gC6GzfTMvwvZ9G6xoM0S4/+lgbaaa9t5tT/PrsvJiob
+ kfqDrPbmSwr2G5mHnSM9M7B+w8odjmQFOwAjfcxoVIHxC4Cl/GAAKsX3KNKTspCHR0Yag78w
+ i8duH/eEd4tB8twcqCi3aCgWoIrhjNS0myusmuA89kAWFFW5z26qNCOefovCx8drdMXQfMYv
+ g5lRk821ZCNBosfRUvcMXoY6lTwHLIDrEfkJQtjxfdTlWQdwr0mM5ye7vd83AManSQwutgpI
+ q+wE8CNY2VN9xAlE7OhcmWXlnAw3MJLW863SXdGlnkA3N+U4BoKQSIToGuXARQ14IMNvfeKX
+ NphLPpUUnUNdfxAHu/S3tPTc/E/oePbHo794dnEm57LuuQINBFg2+xABEADZg/T+4o5qj4cw
+ nd0G5pFy7ACxk28mSrLuva9tyzqPgRZ2bdPiwNXJUvBg1es2u81urekeUvGvnERB/TKekp25
+ 4wU3I2lEhIXj5NVdLc6eU5czZQs4YEZbu1U5iqhhZmKhlLrhLlZv2whLOXRlLwi4jAzXIZAu
+ 76mT813jbczl2dwxFxcT8XRzk9+dwzNTdOg75683uinMgskiiul+dzd6sumdOhRZR7YBT+xC
+ wzfykOgBKnzfFscMwKR0iuHNB+VdEnZw80XGZi4N1ku81DHxmo2HG3icg7CwO1ih2jx8ik0r
+ riIyMhJrTXgR1hF6kQnX7p2mXe6K0s8tQFK0ZZmYpZuGYYsV05OvU8yqrRVL/GYvy4Xgplm3
+ DuMuC7/A9/BfmxZVEPAS1gW6QQ8vSO4zf60zREKoSNYeiv+tURM2KOEj8tCMZN3k3sNASfoG
+ fMvTvOjT0yzMbJsI1jwLwy5uA2JVdSLoWzBD8awZ2X/eCU9YDZeGuWmxzIHvkuMj8FfX8cK/
+ 2m437UA877eqmcgiEy/3B7XeHUipOL83gjfq4ETzVmxVswkVvZvR6j2blQVr+MhCZPq83Ota
+ xNB7QptPxJuNRZ49gtT6uQkyGI+2daXqkj/Mot5tKxNKtM1Vbr/3b+AEMA7qLz7QjhgGJcie
+ qp4b0gELjY1Oe9dBAXMiDwARAQABiQI8BBgBCAAmFiEEcM/SHOJt5ePBD8hO5T0WKDGD1rMF
+ Alg2+xACGwwFCQlmAYAACgkQ5T0WKDGD1rOYSw/+P6fYSZjTJDAl9XNfXRjRRyJSfaw6N1pA
+ Ahuu0MIa3djFRuFCrAHUaaFZf5V2iW5xhGnrhDwE1Ksf7tlstSne/G0a+Ef7vhUyeTn6U/0m
+ +/BrsCsBUXhqeNuraGUtaleatQijXfuemUwgB+mE3B0SobE601XLo6MYIhPh8MG32MKO5kOY
+ hB5jzyor7WoN3ETVNQoGgMzPVWIRElwpcXr+yGoTLAOpG7nkAUBBj9n9TPpSdt/npfok9ZfL
+ /Q+ranrxb2Cy4tvOPxeVfR58XveX85ICrW9VHPVq9sJf/a24bMm6+qEg1V/G7u/AM3fM8U2m
+ tdrTqOrfxklZ7beppGKzC1/WLrcr072vrdiN0icyOHQlfWmaPv0pUnW3AwtiMYngT96BevfA
+ qlwaymjPTvH+cTXScnbydfOQW8220JQwykUe+sHRZfAF5TS2YCkQvsyf7vIpSqo/ttDk4+xc
+ Z/wsLiWTgKlih2QYULvW61XU+mWsK8+ZlYUrRMpkauN4CJ5yTpvp+Orcz5KixHQmc5tbkLWf
+ x0n1QFc1xxJhbzN+r9djSGGN/5IBDfUqSANC8cWzHpWaHmSuU3JSAMB/N+yQjIad2ztTckZY
+ pwT6oxng29LzZspTYUEzMz3wK2jQHw+U66qBFk8whA7B2uAU1QdGyPgahLYSOa4XAEGb6wbI FEE=
+Message-ID: <38f864df-9c90-31a3-d78d-7aaf2d726e4f@web.de>
+Date: Fri, 5 Jul 2019 21:15:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-X-Originating-IP: [192.168.40.202]
-X-Mailer: Zimbra 8.8.12_GA_3794 (ZimbraWebClient - FF57 (Linux)/8.8.12_GA_3794)
-Thread-Index: 765tNWerV/iaZsWbFobuqYFnkx/0Vg==
-Thread-Topic: nvme: fix multipath crash when ANA desactivated
+Content-Language: en-US
+X-Provags-ID: V03:K1:ANMk+Cgq9cYCEBwg4q5PhHWWyXZJCCasPJFZ1XSjkkJr2srE/mm
+ wevMJjKH3eLpC2CkN0QIIhYmG7ZdupzQDTY3jtOSE58TJN43o0CABqoN/FDnYrj8/eEfJWJ
+ xEv6qVRR8nVaznopsr78h/G3L71xX6pyNWxCRF5TopTVOeNpX/vwDTdWAh4ibo4ZymZxD+F
+ S99ZbsGgvYv0v5iBFHTxg==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6LQdEfRKV9A=:690brpmga8cWk+XLBPnrnE
+ OQzlKSaBMkuM4sBSQjnoqRAKBnilpm8rJV6p+4p6/otMmews6Zq+UJwv1EkT9WRa6J8HGOxYY
+ p6boq5AOWUMhNNKVREahvFXHi8taInH/D6d5njfv5eD6dFKr4HTHT7XIrRznyc+PfXagMj3tz
+ XbQuxDowN177JpSUISVvgu+jcGJObw5kmnL1BlaoA3GeQpijzk+kALajnsCcaKwsCal6JoTnO
+ xGbOdL3THgxT9BuqzV+Tllx9ByhBsH7dtVsmSt5q6avbEkiFDZKVPUwdbhheNvCCfF0GNiLAM
+ +zm9ec/YDY91pFBQk8SC1fPGMUdiC/jg1oABigj+veHwgCQTo7yq/UpQBsH8HYrOirSDcpC+c
+ roGFngIN2dSflvVgXK26f0Dtj3+YESD1nYSHU4wpccjTvnhrtp4U5nWBjEoMjkQCBFX19VrAr
+ QUW426/Fs9QBUNvH2B6Ced7UVkqj6uw3OmjqKkVS60OAU6LN0emzdKgq6HsfOpO0qQ8BZTNJT
+ 2OmZD/8IOYh47XAy2UoOIHU+pDqUriXq99nxPs7LbzGz0Crn16X3oGsf+fmPXgUfkpD1gQMAJ
+ BrznoLiAdTUQUH8Hc0ueVailrmLL8RoJKaQd1/ntFdbKFTe4IEr5Tm0N30rBB/OCfdOA5J69k
+ E1Hc9CNrf9kIbQd/zAKQGRNObiXk3mOMZ0ZSfEVI/rtIwgO7Qq6G2dbzGXfe5+vj4Mo8rD21k
+ W7fh2aI8YjVJxedY3a0vCN9R8sFuYkNWZdAIurov8UJ4+j3roKhE5l5oH/lGoBSbOc/SiSCyf
+ sP5jawQSbYiYPzN3C6UwrmEgIPxeubc0j2ix17b9mpu5PNXgp+X6+526nKuLJfQ+Zv+IqjJCS
+ PcwTcCh5W+ovIlm/5oClalFzsTV6J9465mdYwtzfKjVAPS9/3DvxHyQ2QDJ+fCySwpYn9rNdc
+ 9DdVlQqtcvEU2/w6dNGVA36IsyOJFwloxaRrWyAFMHwWFuZxGF0kdnqtoDXRfz4d6HRei2chN
+ 6tzoGpVeN4pSkRY0DrO5LEoazKEkJnrB3OydpBBw60Zda+ACJ6E2QAnCiPECAScfGP0ayw9St
+ u3zAoi52J/O0yMMIoCbW94iI89gxK5WapRk
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190705_070518_107604_4212858E 
-X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-CacheID: sfid-20190705_121553_864777_BB361837 
+X-CRM114-Status: UNSURE (   9.85  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -68,8 +121,10 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [92.103.151.219 listed in list.dnswl.org]
+ no trust [212.227.15.14 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (markus.elfring[at]web.de)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -89,107 +144,43 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Samuel Jones <sjones@kalray.eu>, Jean-Baptiste Riaux <jbriaux@kalray.eu>
+Cc: kernel-janitors@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Fix a crash with multipath activated. It happends when ANA log
-page is larger than MDTS and because of that ANA is disabled.
-The driver then tries to access unallocated buffer when connecting
-to a nvme target. The signature is as follows:
+From: Markus Elfring <elfring@users.sourceforge.net>
+Date: Fri, 5 Jul 2019 21:08:12 +0200
 
-[  300.433586] nvme nvme0: ANA log page size (8208) larger than MDTS (8192).
-[  300.435387] nvme nvme0: disabling ANA support.
-[  300.437835] nvme nvme0: creating 4 I/O queues.
-[  300.459132] nvme nvme0: new ctrl: NQN "nqn.0.0.0", addr 10.91.0.1:8009
-[  300.464609] BUG: unable to handle kernel NULL pointer dereference at 0000000000000008
-[  300.466342] #PF error: [normal kernel read fault]
-[  300.467385] PGD 0 P4D 0
-[  300.467987] Oops: 0000 [#1] SMP PTI
-[  300.468787] CPU: 3 PID: 50 Comm: kworker/u8:1 Not tainted 5.0.20kalray+ #4
-[  300.470264] Hardware name: Red Hat KVM, BIOS 0.5.1 01/01/2011
-[  300.471532] Workqueue: nvme-wq nvme_scan_work [nvme_core]
-[  300.472724] RIP: 0010:nvme_parse_ana_log+0x21/0x140 [nvme_core]
-[  300.474038] Code: 45 01 d2 d8 48 98 c3 66 90 0f 1f 44 00 00 41 57 41 56 41 55 41 54 55 53 48 89 fb 48 83 ec 08 48 8b af 20 0a 00 00 48 89 34 24 <66> 83 7d 08 00 0f 84 c6 00 00 00 44 8b 7d 14 49 89 d5 8b 55 10 48
-[  300.477374] RSP: 0018:ffffa50e80fd7cb8 EFLAGS: 00010296
-[  300.478334] RAX: 0000000000000001 RBX: ffff9130f1872258 RCX: 0000000000000000
-[  300.479784] RDX: ffffffffc06c4c30 RSI: ffff9130edad4280 RDI: ffff9130f1872258
-[  300.481488] RBP: 0000000000000000 R08: 0000000000000001 R09: 0000000000000044
-[  300.483203] R10: 0000000000000220 R11: 0000000000000040 R12: ffff9130f18722c0
-[  300.484928] R13: ffff9130f18722d0 R14: ffff9130edad4280 R15: ffff9130f18722c0
-[  300.486626] FS:  0000000000000000(0000) GS:ffff9130f7b80000(0000) knlGS:0000000000000000
-[  300.488538] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  300.489907] CR2: 0000000000000008 CR3: 00000002365e6000 CR4: 00000000000006e0
-[  300.491612] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[  300.493303] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[  300.494991] Call Trace:
-[  300.495645]  nvme_mpath_add_disk+0x5c/0xb0 [nvme_core]
-[  300.496880]  nvme_validate_ns+0x2ef/0x550 [nvme_core]
-[  300.498105]  ? nvme_identify_ctrl.isra.45+0x6a/0xb0 [nvme_core]
-[  300.499539]  nvme_scan_work+0x2b4/0x370 [nvme_core]
-[  300.500717]  ? __switch_to_asm+0x35/0x70
-[  300.501663]  process_one_work+0x171/0x380
-[  300.502340]  worker_thread+0x49/0x3f0
-[  300.503079]  kthread+0xf8/0x130
-[  300.503795]  ? max_active_store+0x80/0x80
-[  300.504690]  ? kthread_bind+0x10/0x10
-[  300.505502]  ret_from_fork+0x35/0x40
-[  300.506280] Modules linked in: nvme_tcp nvme_rdma rdma_cm iw_cm ib_cm ib_core nvme_fabrics nvme_core xt_physdev ip6table_raw ip6table_mangle ip6table_filter ip6_tables xt_comment iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xt_CHECKSUM iptable_mangle iptable_filter veth ebtable_filter ebtable_nat ebtables iptable_raw vxlan ip6_udp_tunnel udp_tunnel sunrpc joydev pcspkr virtio_balloon br_netfilter bridge stp llc ip_tables xfs libcrc32c ata_generic pata_acpi virtio_net virtio_console net_failover virtio_blk failover ata_piix serio_raw libata virtio_pci virtio_ring virtio
-[  300.514984] CR2: 0000000000000008
-[  300.515569] ---[ end trace faa2eefad7e7f218 ]---
-[  300.516354] RIP: 0010:nvme_parse_ana_log+0x21/0x140 [nvme_core]
-[  300.517330] Code: 45 01 d2 d8 48 98 c3 66 90 0f 1f 44 00 00 41 57 41 56 41 55 41 54 55 53 48 89 fb 48 83 ec 08 48 8b af 20 0a 00 00 48 89 34 24 <66> 83 7d 08 00 0f 84 c6 00 00 00 44 8b 7d 14 49 89 d5 8b 55 10 48
-[  300.520353] RSP: 0018:ffffa50e80fd7cb8 EFLAGS: 00010296
-[  300.521229] RAX: 0000000000000001 RBX: ffff9130f1872258 RCX: 0000000000000000
-[  300.522399] RDX: ffffffffc06c4c30 RSI: ffff9130edad4280 RDI: ffff9130f1872258
-[  300.523560] RBP: 0000000000000000 R08: 0000000000000001 R09: 0000000000000044
-[  300.524734] R10: 0000000000000220 R11: 0000000000000040 R12: ffff9130f18722c0
-[  300.525915] R13: ffff9130f18722d0 R14: ffff9130edad4280 R15: ffff9130f18722c0
-[  300.527084] FS:  0000000000000000(0000) GS:ffff9130f7b80000(0000) knlGS:0000000000000000
-[  300.528396] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  300.529440] CR2: 0000000000000008 CR3: 00000002365e6000 CR4: 00000000000006e0
-[  300.530739] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[  300.531989] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[  300.533264] Kernel panic - not syncing: Fatal exception
-[  300.534338] Kernel Offset: 0x17c00000 from 0xffffffff81000000 (relocation range: 0xffffffff80000000-0xffffffffbfffffff)
-[  300.536227] ---[ end Kernel panic - not syncing: Fatal exception ]---
+Avoid an extra function call by using a ternary operator instead of
+a conditional statement.
 
-Signed-off-by: Marta Rybczynska <marta.rybczynska@kalray.eu>
-Tested-by: Jean-Baptiste Riaux <jbriaux@kalray.eu>
+This issue was detected by using the Coccinelle software.
+
+Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
 ---
- drivers/nvme/host/multipath.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/nvme/host/core.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/drivers/nvme/host/multipath.c b/drivers/nvme/host/multipath.c
-index 499acf0..5ba982b 100644
---- a/drivers/nvme/host/multipath.c
-+++ b/drivers/nvme/host/multipath.c
-@@ -14,7 +14,8 @@
- 
- inline bool nvme_ctrl_use_ana(struct nvme_ctrl *ctrl)
- {
--	return multipath && ctrl->subsys && (ctrl->subsys->cmic & (1 << 3));
-+	return multipath && ctrl->ana_log_buf && ctrl->subsys &&
-+		(ctrl->subsys->cmic & (1 << 3));
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index b2dd4e391f5c..73888195bdb2 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1650,10 +1650,7 @@ static void nvme_update_disk_info(struct gendisk *disk,
+ 	nvme_config_discard(disk, ns);
+ 	nvme_config_write_zeroes(disk, ns);
+
+-	if (id->nsattr & (1 << 0))
+-		set_disk_ro(disk, true);
+-	else
+-		set_disk_ro(disk, false);
++	set_disk_ro(disk, id->nsattr & (1 << 0) ? true : false);
+
+ 	blk_mq_unfreeze_queue(disk->queue);
  }
- 
- /*
-@@ -614,7 +615,10 @@ int nvme_mpath_init(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- {
- 	int error;
- 
--	if (!nvme_ctrl_use_ana(ctrl))
-+	/* check if multipath is enabled and we have the capability */
-+	if (!multipath)
-+		return 0;
-+	if (!ctrl->subsys || ((ctrl->subsys->cmic & (1 << 3)) != 0))
- 		return 0;
- 
- 	ctrl->anacap = id->anacap;
--- 
-1.8.3.1
+--
+2.22.0
 
 
 _______________________________________________
