@@ -2,107 +2,127 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFD0B6083D
-	for <lists+linux-nvme@lfdr.de>; Fri,  5 Jul 2019 16:47:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E415660721
+	for <lists+linux-nvme@lfdr.de>; Fri,  5 Jul 2019 16:03:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4vqnIrrkbdpt47Ny8ENgiDL+APmRNhTcHI6Ij+wm+pQ=; b=ppeD1hpefskXbr
-	1LXkNWuZwl6fgh1yiSoD/HUAI2So6aE4ZGX9Xh5U/P/2g7+d2fianY8RI0uvfBQbM0y0EbXwHXtoe
-	G3peMlwLntFyUDvL3/UsupoxZ8yAGcuELMkVMQF2hYmGsCHtKrOBF1JYRXG2gCXLezgoYOAU8aQ5J
-	WsMreNgQ+osLYyXc4wjWCi6EXbCQiNWQRn9WVKxVgpSXhCskzx7uQ/9uVczxBNKqMWAM+KnJUCXHb
-	+mL2Bg9YTI+5u2zqERoepggV24eH1vJxRoMN+Imkm7Bi4JaQXUeJKSxFFYdvKR0P8FofkvuFIL/Rn
-	i3jYWsgNLNZ0qyMoWuyg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=cRboK3nT/HPM9YBr5kNsWja9oA1hAf/fk2jvGQtRcUA=; b=cRZ5hEOvvLuwuITzd+RE1tDVf
+	306mHT6w2lCsxTwsCe5Bd06SPDnemmuoN/iPiH8cuoqHI+2BEdqmWso76yC2mlFXMiHhpfKRbm9gl
+	AvtnaFhKVaex1bTfKE7xkG4f0egoncUb8i2oH5ObqVl+FXoOnGXh5Zfhx0baB3vGyzu0wcUbQchqH
+	omGSoF/6E59Ir4QprvypL5sSL+6dCiCjf3WOZw+HbuZk61CPPHr0RykcZefleeGX07JCEPeGpDis2
+	hKZnCGawj04SmqEHeG741oW4hLGRaOun0P7S9jjsH8V7q8y/IpPmWhxbWJm/etDo/9LQMfMu+bUST
+	E2XukJUZQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hjPUS-0002L7-DD; Fri, 05 Jul 2019 14:47:08 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1hjOoE-0007TL-J8; Fri, 05 Jul 2019 14:03:30 +0000
+Received: from mail-eopbgr10068.outbound.protection.outlook.com ([40.107.1.68]
+ helo=EUR02-HE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hjPRe-0006F8-Tq
- for linux-nvme@bombadil.infradead.org; Fri, 05 Jul 2019 14:44:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=88F0TT2/tG/uYyfWXjssEK7KTkmg635UzXMmOcEz6oU=; b=YxTyDhS66CdylSvzPzC7ZuAEu
- sp+O7+YmRCZOY/mymSkf43nJPM5bcwwBtoGR1vd7gMAQ++pji9nTCVNiWeyp0wUf742NRZIdPUuOa
- nza8DwShY/4Qd8WAhnlWhRrPUxi3wbfXKuG4x7J+3+KQx7AAUg2Um5VYzP+X/XzlzEPKVdlGRLZ14
- rh5Z5taApUXmAsi+YDBMCQDjtwzyalNxUMLLLDhRXF5KMczRffMMkgGmn3tBsSGC3kKJbaRIPp6y8
- VfO+cArBYq/h1t9XMOIlH5Omwwv28oSFuoAWq19UjlB5aMUL7exWY6qGBa0LMChztntB9JwFEK00c
- UtPx32zrQ==;
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
- by merlin.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hjJJf-0000PE-Go
- for linux-nvme@lists.infradead.org; Fri, 05 Jul 2019 08:11:37 +0000
-Received: by mail-pf1-x441.google.com with SMTP id r7so3979315pfl.3
- for <linux-nvme@lists.infradead.org>; Fri, 05 Jul 2019 01:11:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=88F0TT2/tG/uYyfWXjssEK7KTkmg635UzXMmOcEz6oU=;
- b=MYdf3WLHjq66FOPyHjvBc0l6y/zji/AEZ1mmiumXQyM31SyQpc69FD7uT7lEFlHATb
- lbqHIzvik7BLE09DIhDF894QmgJaCSU+48PLgizcf95IT75k6Zcf3MB27C6KCGpTNEcq
- Mar1wOn/AM+uqCBJag19IaXZvZvPSoCYdYkJHXpYcOqsRIqQBInMe5DU/ZjW7TXxjTbx
- 90Vx5G4ZDk+o015DbVI+5DMelE9zYgscIrmpmoCO5/+I0Om/XhHJak7Aj2EAP7R1i/hg
- ZO355nK8Hlp+qEKZELxjYPqEZ+Oq+2cCoy38C2K/lOt/ErLXUI9V+U1uEhTn72m3kR5m
- QSnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=88F0TT2/tG/uYyfWXjssEK7KTkmg635UzXMmOcEz6oU=;
- b=InRc9c/iYGkrcCuukdYUdXcnWYjUUjycF8LbNmtyqM3tlcMZqPCtbbs/YPH8fCMSJt
- egRJ8H9+8f/GWv/PP9z7oLY9kvrPXQQQVNaXz1KXbnXzpMlKK8GC4gpWs+sWXpJGfYlb
- 5zEXExr8oREBRUOmF4UFv24IyD6/YxCQaqCRdIgfM1fONJ6/8OoobVYy7wVWP7VXH7lW
- y/mswccmomaPUVKd1qkcJwuaqznxknztlDnjX2E6djotwo2GH/GssOtoCvoi28xm2dM/
- zxNZBaDiqzaVq6G4LAC8QAMamQfb91wColTPZHI+bA7yR/LqoaslnvhHmIVSI7v7sL/Y
- ApTg==
-X-Gm-Message-State: APjAAAXus6P0bvE1P5azub5fdcaWB3MU3ao6Fxb9/gVR/bHcnBy3Dya8
- Ilwrc5EWVuhyofeqEgHOEkA=
-X-Google-Smtp-Source: APXvYqzY0a24urIp8N/e8MJXkFnOntDpHHQCjxIKSWQmeuTX+Xyj0BSWXA1iTf6GzXpSp1EQ5uHklg==
-X-Received: by 2002:a63:79ca:: with SMTP id u193mr3698327pgc.91.1562314170281; 
- Fri, 05 Jul 2019 01:09:30 -0700 (PDT)
-Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id g66sm8170219pfb.44.2019.07.05.01.09.28
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 05 Jul 2019 01:09:29 -0700 (PDT)
-Date: Fri, 5 Jul 2019 17:09:26 +0900
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Tom Wu <tomwu@mellanox.com>
-Subject: Re: [PATCH] nvme: add delete completion and submission queue to
- admin cmds tracer
-Message-ID: <20190705080926.GA13653@minwoo-desktop>
-References: <1562235594-7847-1-git-send-email-tomwu@mellanox.com>
+ id 1hjOfj-0004xN-Tq
+ for linux-nvme@lists.infradead.org; Fri, 05 Jul 2019 13:54:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZYIG5xg6SgOR+uedWHE+D2fpxO0fHVKretsP+pHBSM8=;
+ b=b3pmEoSQSOASq5QDFbEsTr6I2ZqrjyEUZjPyKlnp4rBWq2d03fbErlZFqp+ql6AIUQb6wblbZZHu3vprhTScgHbUyfMTMo+hLBtMuQQI0dU4SF5YJQb4YDB9cwwQpync2he0BgzzszUINlSzBrmO0NWbTwv0TGnDz+fEI5DttFs=
+Received: from DB6PR05CA0011.eurprd05.prod.outlook.com (2603:10a6:6:14::24) by
+ VI1PR0502MB3981.eurprd05.prod.outlook.com (2603:10a6:803:24::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2032.20; Fri, 5 Jul
+ 2019 12:18:15 +0000
+Received: from VE1EUR03FT017.eop-EUR03.prod.protection.outlook.com
+ (2a01:111:f400:7e09::206) by DB6PR05CA0011.outlook.office365.com
+ (2603:10a6:6:14::24) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2052.18 via Frontend
+ Transport; Fri, 5 Jul 2019 12:18:15 +0000
+Authentication-Results: spf=pass (sender IP is 193.47.165.134)
+ smtp.mailfrom=mellanox.com; raithlin.com; dkim=none (message not signed)
+ header.d=none;raithlin.com; dmarc=pass action=none header.from=mellanox.com;
+Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
+ 193.47.165.134 as permitted sender)
+ receiver=protection.outlook.com; 
+ client-ip=193.47.165.134; helo=mtlcas13.mtl.com;
+Received: from mtlcas13.mtl.com (193.47.165.134) by
+ VE1EUR03FT017.mail.protection.outlook.com (10.152.18.90) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.2052.18 via Frontend Transport; Fri, 5 Jul 2019 12:18:14 +0000
+Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4; Fri, 5 Jul 2019 15:18:12
+ +0300
+Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Fri,
+ 5 Jul 2019 15:18:11 +0300
+Received: from [172.16.0.102] (172.16.0.102) by MTLCAS01.mtl.com (10.0.8.71)
+ with Microsoft SMTP Server (TLS) id 14.3.301.0; Fri, 5 Jul 2019 15:17:57
+ +0300
+Subject: Re: [PATCH v2 1/2] nvmet: Fix use-after-free bug when a port is
+ removed
+To: Logan Gunthorpe <logang@deltatee.com>, <linux-kernel@vger.kernel.org>,
+ <linux-nvme@lists.infradead.org>, Christoph Hellwig <hch@lst.de>, "Sagi
+ Grimberg" <sagi@grimberg.me>
+References: <20190703230304.22905-1-logang@deltatee.com>
+ <20190703230304.22905-2-logang@deltatee.com>
+ <786259e6-ffed-8db3-74d0-71ed5a760079@mellanox.com>
+ <d79a4c2d-9326-2805-b2a2-ca265ab2a717@deltatee.com>
+From: Max Gurtovoy <maxg@mellanox.com>
+Message-ID: <731bd412-2e44-c027-726e-d73a42c5f773@mellanox.com>
+Date: Fri, 5 Jul 2019 15:17:56 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1562235594-7847-1-git-send-email-tomwu@mellanox.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-Spam-Note: CRM114 invocation failed
+In-Reply-To: <d79a4c2d-9326-2805-b2a2-ca265ab2a717@deltatee.com>
+Content-Language: en-US
+X-Originating-IP: [172.16.0.102]
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:193.47.165.134; IPV:NLI; CTRY:IL; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(4636009)(39860400002)(136003)(396003)(346002)(376002)(2980300002)(199004)(189003)(110136005)(16576012)(58126008)(106002)(2201001)(6116002)(3846002)(86362001)(305945005)(6246003)(4326008)(229853002)(8936002)(67846002)(26005)(186003)(77096007)(64126003)(50466002)(36756003)(16526019)(2486003)(316002)(23676004)(76176011)(478600001)(53546011)(2906002)(81156014)(476003)(31696002)(65956001)(446003)(47776003)(8676002)(126002)(65806001)(11346002)(486006)(2616005)(230700001)(31686004)(70586007)(356004)(4744005)(65826007)(336012)(7736002)(5660300002)(70206006)(81166006)(3940600001)(2101003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR0502MB3981; H:mtlcas13.mtl.com; FPR:;
+ SPF:Pass; LANG:en; PTR:mail13.mellanox.com; A:1; MX:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e4246992-29b2-4e90-f92a-08d70142dae2
+X-Microsoft-Antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(4709080)(1401327)(2017052603328)(7193020);
+ SRVR:VI1PR0502MB3981; 
+X-MS-TrafficTypeDiagnostic: VI1PR0502MB3981:
+X-Microsoft-Antispam-PRVS: <VI1PR0502MB39817692F0AD71C4C376565DB6F50@VI1PR0502MB3981.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4125;
+X-Forefront-PRVS: 008960E8EC
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Message-Info: XTtgnlS6dxAHSQ7wQmeZJmQfG4ifcr9AVLrPEyTDsqhHiWcW+fAXJkTaSRaPTRib18H02KRX17gazEsFB+UXOh4z2IFMmlTdaHA2oN7sPShgbNndFZpaNkbzhFnfxWN9VFsgn9Qs5xkvHuor668P3/tkeyjy3czDzwbrpwgcC1Qe90TpJQ9C+6yLby+CVSb3TIuZmtllb7SrdzQ7FTcUeN4nJ94jpfwuXCDQf8hWPgHVQDG+0S0jvhUj0uB7iHJeoDHNxJLzxel+0Hcomb0F+NFiBu4F8px+3b+OFwAcAozlFiZSyk3cMcGBHvPBSlSvQk7Q66NR1IsqZIWO4TeCw4GsEyyFnNxs0guHvByz6eEmmqCGed5AqtI8eE2PLdxILiS0pml05tQTlcm78RiIdGYoa33izx4W2CXw6mSJGZE=
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jul 2019 12:18:14.3598 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e4246992-29b2-4e90-f92a-08d70142dae2
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.134];
+ Helo=[mtlcas13.mtl.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0502MB3981
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190705_065447_225211_09738302 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on merlin.infradead.org summary:
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.1.68 listed in list.dnswl.org]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- 0.0 T_PDS_NO_HELO_DNS      High profile HELO but no A record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,29 +134,43 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: sagi@grimberg.me, Israel Rukshin <israelr@mellanox.com>,
- Linux-nvme <linux-nvme@lists.infradead.org>, keith.busch@intel.com,
- Shlomi Nimrodi <shlomin@mellanox.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Max Gurtovoy <maxg@mellanox.com>, hch@lst.de
-Content-Type: text/plain; charset="us-ascii"
+Cc: Stephen Bates <sbates@raithlin.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-07-04 10:19:54, Tom Wu wrote:
-> The trace log for 'delete I/O submission queue' and 'delete I/O
-> completion queue' command will look like as below:
-> 
-> kworker/u49:1-3438  [003] ....  6693.070865: nvme_setup_cmd: nvme0: qid=0, cmdid=11, nsid=0, flags=0x0, meta=0x0, cmd=(nvme_admin_delete_sq sqid=1)
-> kworker/u49:1-3438  [003] ....  6693.071171: nvme_setup_cmd: nvme0: qid=0, cmdid=8, nsid=0, flags=0x0, meta=0x0, cmd=(nvme_admin_delete_cq cqid=24)
-> 
-> Signed-off-by: Tom Wu <tomwu@mellanox.com>
-> Reviewed-by: Israel Rukshin <israelr@mellanox.com>
-> Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 
-This looks good to me.
+On 7/5/2019 12:01 AM, Logan Gunthorpe wrote:
+>
+> On 2019-07-04 3:00 p.m., Max Gurtovoy wrote:
+>> Hi Logan,
+>>
+>> On 7/4/2019 2:03 AM, Logan Gunthorpe wrote:
+>>> When a port is removed through configfs, any connected controllers
+>>> are still active and can still send commands. This causes a
+>>> use-after-free bug which is detected by KASAN for any admin command
+>>> that dereferences req->port (like in nvmet_execute_identify_ctrl).
+>>>
+>>> To fix this, disconnect all active controllers when a subsystem is
+>>> removed from a port. This ensures there are no active controllers
+>>> when the port is eventually removed.
+>> so now we are enforcing controller existence with port configfs, right ?
+>> sounds reasonable.
+> Correct.
+>
+>> Did you run your patches with other transport (RDMA/TCP/FC) ?
+> Just RDMA and loop. I suppose I could test with TCP but I don't have FC
+> hardware.
 
-Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+Great.
+
+the code looks good:
+
+Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+
+>
+> Logan
 
 _______________________________________________
 Linux-nvme mailing list
