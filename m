@@ -2,116 +2,75 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B8C160877
-	for <lists+linux-nvme@lfdr.de>; Fri,  5 Jul 2019 16:53:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B71560737
+	for <lists+linux-nvme@lfdr.de>; Fri,  5 Jul 2019 16:05:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NFF12FOB5ea5m3BYaN3i93ZaKN8GChDzsT4K17nlMFU=; b=BU3LwWNyaFZZ5By2Rq6qJO6G/
-	NfPfJ9SoNyJfMC2E0rfB3YAl8KWLY30ytH2KV/X9yz0UNfWSJRiAStwsQTPGZ9CwvhlM9I5Y4QPm4
-	Ik1Y4w6mfjTg48/6zMOs9AC8px9ImnOaOGqDX35GYT3xaFHJ8cXa28u9ekCJt1iS3HAJzcFbIcL5k
-	sLX9LAqy4VdAaI8tX4Vky1xpm1SvG/pbY2lI3tytB7UL0bz4TPzF9OceNkCmVMPQV1YFxE34cvCeg
-	5WTIlOxFI80JNepiJzpNB3c2YJTeDtM+NEi/HAKwy+YMg9m8fmYYHVr5WlwNBw8KdnxLfGwPPzT0z
-	8mfUYp9CQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:Message-ID:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qy4lSvqUnnJOSbvWNTGLaWSsu8z+ewRmeWJ2wxzBo9w=; b=S+/oSnuts6pLwk
+	8FW5PxSJ7QKvavnja45wVJbzDHHXJkuLKkqQEyL4duGpceCwNykKNoc5jJ4WxET4hmKS25KRWjtmK
+	ImcOfeKYYg3DrDcyUbeKfjwwN65OhBzmy45EZ36oASNOMDnn5iJWydShcfzJc3w13qYbw6YNllqMI
+	8CuKMLKzf0DPZ+grphwew5YhIxWW7JHijQoBQEYm+e0iwkNOGGb8vTEuo6iKoa+qqasnQQOakk1Vm
+	IkBNkSDQ6Ih6gCiuIXCOQQMz9wRmRGk7hmhzpLcQnlYH58xHprFO6S9hwznBWXxsyKquptUM7ENyd
+	OuZEIsbnJHM2pr9DOfAg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hjPaW-0006xX-Ux; Fri, 05 Jul 2019 14:53:25 +0000
-Received: from mail-eopbgr50088.outbound.protection.outlook.com ([40.107.5.88]
- helo=EUR03-VE1-obe.outbound.protection.outlook.com)
+	id 1hjOq7-0001WV-Fl; Fri, 05 Jul 2019 14:05:27 +0000
+Received: from zimbra2.kalray.eu ([92.103.151.219])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hjPaS-0006x3-3N
- for linux-nvme@lists.infradead.org; Fri, 05 Jul 2019 14:53:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nedWuy/27H1a+ingUAprQRS6TMjCVkFTEoHNByrPO+I=;
- b=ifB+RvhWNe5HYvkjhzQkYocNwec6QRq0UQfd34Q9xfF8+sXjNIbpybKJaCFGm39hG6HOMBxA+yHnjLfCSMQQSarbdLKSgRJrAkfTUFO6iqoIqz1QK3uhadh724GyoCgudIyVDT4K31hxhrRpLIkSg12BEMSmeT+IorC9ydHM06A=
-Received: from HE1PR05CA0297.eurprd05.prod.outlook.com (20.176.160.156) by
- DB3PR0502MB3977.eurprd05.prod.outlook.com (52.134.70.150) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2052.18; Fri, 5 Jul 2019 12:20:34 +0000
-Received: from VE1EUR03FT042.eop-EUR03.prod.protection.outlook.com
- (2a01:111:f400:7e09::206) by HE1PR05CA0297.outlook.office365.com
- (2603:10a6:7:93::28) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2052.19 via Frontend
- Transport; Fri, 5 Jul 2019 12:20:34 +0000
-Authentication-Results: spf=pass (sender IP is 193.47.165.134)
- smtp.mailfrom=mellanox.com; raithlin.com; dkim=none (message not signed)
- header.d=none;raithlin.com; dmarc=pass action=none header.from=mellanox.com;
-Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
- 193.47.165.134 as permitted sender)
- receiver=protection.outlook.com; 
- client-ip=193.47.165.134; helo=mtlcas13.mtl.com;
-Received: from mtlcas13.mtl.com (193.47.165.134) by
- VE1EUR03FT042.mail.protection.outlook.com (10.152.19.62) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.2052.18 via Frontend Transport; Fri, 5 Jul 2019 12:20:33 +0000
-Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4; Fri, 5 Jul 2019 15:20:31
- +0300
-Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Fri,
- 5 Jul 2019 15:20:31 +0300
-Received: from [172.16.0.102] (172.16.0.102) by MTLCAS01.mtl.com (10.0.8.71)
- with Microsoft SMTP Server (TLS) id 14.3.301.0; Fri, 5 Jul 2019 15:20:31
- +0300
-Subject: Re: [PATCH v2 2/2] nvmet-loop: Flush nvme_delete_wq when removing the
- port
-To: Logan Gunthorpe <logang@deltatee.com>, <linux-kernel@vger.kernel.org>,
- <linux-nvme@lists.infradead.org>, Christoph Hellwig <hch@lst.de>, "Sagi
- Grimberg" <sagi@grimberg.me>
-References: <20190703230304.22905-1-logang@deltatee.com>
- <20190703230304.22905-3-logang@deltatee.com>
-From: Max Gurtovoy <maxg@mellanox.com>
-Message-ID: <bbbfdcda-5acc-a02c-565a-929180ab6c0c@mellanox.com>
-Date: Fri, 5 Jul 2019 15:20:30 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ id 1hjOpx-0001Un-LY
+ for linux-nvme@lists.infradead.org; Fri, 05 Jul 2019 14:05:19 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra2.kalray.eu (Postfix) with ESMTP id EBB9027F8F09;
+ Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
+Received: from zimbra2.kalray.eu ([127.0.0.1])
+ by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id nv28oveJJWmP; Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra2.kalray.eu (Postfix) with ESMTP id 7002D27F8BF5;
+ Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra2.kalray.eu 7002D27F8BF5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kalray.eu;
+ s=32AE1B44-9502-11E5-BA35-3734643DEF29; t=1562335512;
+ bh=fbpiTuSNeqW8w3jWmq2tRRtqzaFo3ZHuIyQcxnq4s6c=;
+ h=Date:From:To:Message-ID:MIME-Version;
+ b=LyLd99Vz+to+JD8mv/IGi3VLtOz6h+44fkTgbnwxvu9NY/UJbua5g5K0unApac75E
+ N5krwMEj1bRNhoeSf/0DweH5w+8SdsjlX9GkdR4Vr3LcA5QkF1ipLn9ywsuONMJFBK
+ Ja8ZP66SpVMZbvkq3IgzmShOVGxd11xE4B3cnuv8=
+X-Virus-Scanned: amavisd-new at zimbra2.kalray.eu
+Received: from zimbra2.kalray.eu ([127.0.0.1])
+ by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id 5QyuWIOAEMpk; Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
+Received: from zimbra2.kalray.eu (zimbra2.kalray.eu [192.168.40.202])
+ by zimbra2.kalray.eu (Postfix) with ESMTP id 5524E27F8BE4;
+ Fri,  5 Jul 2019 16:05:12 +0200 (CEST)
+Date: Fri, 5 Jul 2019 16:05:12 +0200 (CEST)
+From: Marta Rybczynska <mrybczyn@kalray.eu>
+To: kbusch@kernel.org, axboe@fb.com, hch@lst.de, sagi@grimberg.me, 
+ linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org
+Message-ID: <1575872828.30576006.1562335512322.JavaMail.zimbra@kalray.eu>
+Subject: [PATCH v2] nvme: fix multipath crash when ANA desactivated
 MIME-Version: 1.0
-In-Reply-To: <20190703230304.22905-3-logang@deltatee.com>
-Content-Language: en-US
-X-Originating-IP: [172.16.0.102]
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:193.47.165.134; IPV:NLI; CTRY:IL; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(4636009)(396003)(39860400002)(376002)(346002)(136003)(2980300002)(189003)(199004)(64126003)(229853002)(3846002)(6116002)(77096007)(16526019)(186003)(356004)(86362001)(7736002)(486006)(2201001)(476003)(478600001)(8676002)(81166006)(230700001)(65826007)(81156014)(4326008)(446003)(2616005)(305945005)(8936002)(126002)(11346002)(23676004)(2486003)(106002)(6246003)(31686004)(76176011)(53546011)(31696002)(16576012)(67846002)(58126008)(110136005)(316002)(65806001)(47776003)(26005)(14444005)(2906002)(70206006)(70586007)(50466002)(336012)(5660300002)(36756003)(65956001)(3940600001)(2101003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DB3PR0502MB3977; H:mtlcas13.mtl.com; FPR:;
- SPF:Pass; LANG:en; PTR:mail13.mellanox.com; MX:1; A:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: caa205c8-ec5e-4c25-319e-08d701432da4
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(4709080)(1401327)(2017052603328)(7193020);
- SRVR:DB3PR0502MB3977; 
-X-MS-TrafficTypeDiagnostic: DB3PR0502MB3977:
-X-Microsoft-Antispam-PRVS: <DB3PR0502MB3977211A03BFF00FE5192854B6F50@DB3PR0502MB3977.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
-X-Forefront-PRVS: 008960E8EC
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: 3d3uzSNvC9su4jASWxDwHJAKJOhOFmpbS0xwRpJSaQyaEfbo7n9k08gtyywmQBc/mn5k15A2jGBPeIRZfqq7PJvQTGuzpLlcAed75ll6imTma0bJrOV44ph47+wCvRCOqVAjaHEeWeOjGrwMGEMmiWyVb/vEfStLSttEnOhYKJyFW0w2TMk7YPcBDt2lIRDCqQX5bP+d+T9Ekopi9//NUhZ7c2uPGi0Hu6UUn7UI4dtNrHyv3zbZ1MsEZIp3nj5aa+EIbcCKrfc7DmJ0agXtntamCMY4JosU6e/4zq/DsiXA23/Ks97+IrVcyc/AE1zEFz0KAlzyHpEY3SowpgVsk4XmR0OHZgSU+9wP1EBcVwg95NJ5Qc/GlXSDVg5NTszvUh00weby0jNH6SR5so7vHNao9tZoehVPGn88qWKiEG0=
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jul 2019 12:20:33.3143 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: caa205c8-ec5e-4c25-319e-08d701432da4
-X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.134];
- Helo=[mtlcas13.mtl.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB3PR0502MB3977
+X-Originating-IP: [192.168.40.202]
+X-Mailer: Zimbra 8.8.12_GA_3794 (ZimbraWebClient - FF57 (Linux)/8.8.12_GA_3794)
+Thread-Index: 765tNWerV/iaZsWbFobuqYFnkx/0Vg==
+Thread-Topic: nvme: fix multipath crash when ANA desactivated
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190705_075320_147118_9622B2FB 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20190705_070518_107604_4212858E 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.5.88 listed in list.dnswl.org]
+ no trust [92.103.151.219 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -130,53 +89,107 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Stephen Bates <sbates@raithlin.com>
+Cc: Samuel Jones <sjones@kalray.eu>, Jean-Baptiste Riaux <jbriaux@kalray.eu>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+Fix a crash with multipath activated. It happends when ANA log
+page is larger than MDTS and because of that ANA is disabled.
+The driver then tries to access unallocated buffer when connecting
+to a nvme target. The signature is as follows:
 
-On 7/4/2019 2:03 AM, Logan Gunthorpe wrote:
-> After calling nvme_loop_delete_ctrl(), the controllers will not
-> yet be deleted because nvme_delete_ctrl() only schedules work
-> to do the delete.
->
-> This means a race can occur if a port is removed but there
-> are still active controllers trying to access that memory.
->
-> To fix this, flush the nvme_delete_wq before returning from
-> nvme_loop_remove_port() so that any controllers that might
-> be in the process of being deleted won't access a freed port.
->
-> Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
-> ---
->   drivers/nvme/target/loop.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
->
-> diff --git a/drivers/nvme/target/loop.c b/drivers/nvme/target/loop.c
-> index 9e211ad6bdd3..da9cd07461fb 100644
-> --- a/drivers/nvme/target/loop.c
-> +++ b/drivers/nvme/target/loop.c
-> @@ -654,6 +654,14 @@ static void nvme_loop_remove_port(struct nvmet_port *port)
->   	mutex_lock(&nvme_loop_ports_mutex);
->   	list_del_init(&port->entry);
->   	mutex_unlock(&nvme_loop_ports_mutex);
-> +
-> +	/*
-> +	 * Ensure any ctrls that are in the process of being
-> +	 * deleted are in fact deleted before we return
-> +	 * and free the port. This is to prevent active
-> +	 * ctrls from using a port after it's freed.
-> +	 */
-> +	flush_workqueue(nvme_delete_wq);
->   }
->   
->   static const struct nvmet_fabrics_ops nvme_loop_ops = {
+[  300.433586] nvme nvme0: ANA log page size (8208) larger than MDTS (8192).
+[  300.435387] nvme nvme0: disabling ANA support.
+[  300.437835] nvme nvme0: creating 4 I/O queues.
+[  300.459132] nvme nvme0: new ctrl: NQN "nqn.0.0.0", addr 10.91.0.1:8009
+[  300.464609] BUG: unable to handle kernel NULL pointer dereference at 0000000000000008
+[  300.466342] #PF error: [normal kernel read fault]
+[  300.467385] PGD 0 P4D 0
+[  300.467987] Oops: 0000 [#1] SMP PTI
+[  300.468787] CPU: 3 PID: 50 Comm: kworker/u8:1 Not tainted 5.0.20kalray+ #4
+[  300.470264] Hardware name: Red Hat KVM, BIOS 0.5.1 01/01/2011
+[  300.471532] Workqueue: nvme-wq nvme_scan_work [nvme_core]
+[  300.472724] RIP: 0010:nvme_parse_ana_log+0x21/0x140 [nvme_core]
+[  300.474038] Code: 45 01 d2 d8 48 98 c3 66 90 0f 1f 44 00 00 41 57 41 56 41 55 41 54 55 53 48 89 fb 48 83 ec 08 48 8b af 20 0a 00 00 48 89 34 24 <66> 83 7d 08 00 0f 84 c6 00 00 00 44 8b 7d 14 49 89 d5 8b 55 10 48
+[  300.477374] RSP: 0018:ffffa50e80fd7cb8 EFLAGS: 00010296
+[  300.478334] RAX: 0000000000000001 RBX: ffff9130f1872258 RCX: 0000000000000000
+[  300.479784] RDX: ffffffffc06c4c30 RSI: ffff9130edad4280 RDI: ffff9130f1872258
+[  300.481488] RBP: 0000000000000000 R08: 0000000000000001 R09: 0000000000000044
+[  300.483203] R10: 0000000000000220 R11: 0000000000000040 R12: ffff9130f18722c0
+[  300.484928] R13: ffff9130f18722d0 R14: ffff9130edad4280 R15: ffff9130f18722c0
+[  300.486626] FS:  0000000000000000(0000) GS:ffff9130f7b80000(0000) knlGS:0000000000000000
+[  300.488538] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  300.489907] CR2: 0000000000000008 CR3: 00000002365e6000 CR4: 00000000000006e0
+[  300.491612] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  300.493303] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  300.494991] Call Trace:
+[  300.495645]  nvme_mpath_add_disk+0x5c/0xb0 [nvme_core]
+[  300.496880]  nvme_validate_ns+0x2ef/0x550 [nvme_core]
+[  300.498105]  ? nvme_identify_ctrl.isra.45+0x6a/0xb0 [nvme_core]
+[  300.499539]  nvme_scan_work+0x2b4/0x370 [nvme_core]
+[  300.500717]  ? __switch_to_asm+0x35/0x70
+[  300.501663]  process_one_work+0x171/0x380
+[  300.502340]  worker_thread+0x49/0x3f0
+[  300.503079]  kthread+0xf8/0x130
+[  300.503795]  ? max_active_store+0x80/0x80
+[  300.504690]  ? kthread_bind+0x10/0x10
+[  300.505502]  ret_from_fork+0x35/0x40
+[  300.506280] Modules linked in: nvme_tcp nvme_rdma rdma_cm iw_cm ib_cm ib_core nvme_fabrics nvme_core xt_physdev ip6table_raw ip6table_mangle ip6table_filter ip6_tables xt_comment iptable_nat nf_nat_ipv4 nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xt_CHECKSUM iptable_mangle iptable_filter veth ebtable_filter ebtable_nat ebtables iptable_raw vxlan ip6_udp_tunnel udp_tunnel sunrpc joydev pcspkr virtio_balloon br_netfilter bridge stp llc ip_tables xfs libcrc32c ata_generic pata_acpi virtio_net virtio_console net_failover virtio_blk failover ata_piix serio_raw libata virtio_pci virtio_ring virtio
+[  300.514984] CR2: 0000000000000008
+[  300.515569] ---[ end trace faa2eefad7e7f218 ]---
+[  300.516354] RIP: 0010:nvme_parse_ana_log+0x21/0x140 [nvme_core]
+[  300.517330] Code: 45 01 d2 d8 48 98 c3 66 90 0f 1f 44 00 00 41 57 41 56 41 55 41 54 55 53 48 89 fb 48 83 ec 08 48 8b af 20 0a 00 00 48 89 34 24 <66> 83 7d 08 00 0f 84 c6 00 00 00 44 8b 7d 14 49 89 d5 8b 55 10 48
+[  300.520353] RSP: 0018:ffffa50e80fd7cb8 EFLAGS: 00010296
+[  300.521229] RAX: 0000000000000001 RBX: ffff9130f1872258 RCX: 0000000000000000
+[  300.522399] RDX: ffffffffc06c4c30 RSI: ffff9130edad4280 RDI: ffff9130f1872258
+[  300.523560] RBP: 0000000000000000 R08: 0000000000000001 R09: 0000000000000044
+[  300.524734] R10: 0000000000000220 R11: 0000000000000040 R12: ffff9130f18722c0
+[  300.525915] R13: ffff9130f18722d0 R14: ffff9130edad4280 R15: ffff9130f18722c0
+[  300.527084] FS:  0000000000000000(0000) GS:ffff9130f7b80000(0000) knlGS:0000000000000000
+[  300.528396] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  300.529440] CR2: 0000000000000008 CR3: 00000002365e6000 CR4: 00000000000006e0
+[  300.530739] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  300.531989] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  300.533264] Kernel panic - not syncing: Fatal exception
+[  300.534338] Kernel Offset: 0x17c00000 from 0xffffffff81000000 (relocation range: 0xffffffff80000000-0xffffffffbfffffff)
+[  300.536227] ---[ end Kernel panic - not syncing: Fatal exception ]---
 
-Looks good:
+Signed-off-by: Marta Rybczynska <marta.rybczynska@kalray.eu>
+Tested-by: Jean-Baptiste Riaux <jbriaux@kalray.eu>
+---
+ drivers/nvme/host/multipath.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+diff --git a/drivers/nvme/host/multipath.c b/drivers/nvme/host/multipath.c
+index 499acf0..5ba982b 100644
+--- a/drivers/nvme/host/multipath.c
++++ b/drivers/nvme/host/multipath.c
+@@ -14,7 +14,8 @@
+ 
+ inline bool nvme_ctrl_use_ana(struct nvme_ctrl *ctrl)
+ {
+-	return multipath && ctrl->subsys && (ctrl->subsys->cmic & (1 << 3));
++	return multipath && ctrl->ana_log_buf && ctrl->subsys &&
++		(ctrl->subsys->cmic & (1 << 3));
+ }
+ 
+ /*
+@@ -614,7 +615,10 @@ int nvme_mpath_init(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+ {
+ 	int error;
+ 
+-	if (!nvme_ctrl_use_ana(ctrl))
++	/* check if multipath is enabled and we have the capability */
++	if (!multipath)
++		return 0;
++	if (!ctrl->subsys || ((ctrl->subsys->cmic & (1 << 3)) != 0))
+ 		return 0;
+ 
+ 	ctrl->anacap = id->anacap;
+-- 
+1.8.3.1
 
 
 _______________________________________________
