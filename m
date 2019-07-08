@@ -2,63 +2,62 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED4C261E29
-	for <lists+linux-nvme@lfdr.de>; Mon,  8 Jul 2019 14:06:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B05C61E25
+	for <lists+linux-nvme@lfdr.de>; Mon,  8 Jul 2019 14:05:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:
-	In-Reply-To:Subject:To:From:References:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=HqmTOWc0K7c3wHszbGgvdx49qB01UaAvnlL69LGAVt0=; b=XoRBOM8RbTV2tLhqARkP4YYMwu
-	4bgLiW/BRSE4INabFe1kKCctnLggHc0hmb0mjQunTB1aXzeWuN1hIFw9ppqBxWLEfnKVx6zFuzMR8
-	FrRgXPT11br0MC3tZzLVO4kdBvsmfVkQdkZenvEKRzmTeRVreeKWXqflMzAni7c35cZnzNktIj4CI
-	l8kUueQ9+ONUILZkQVhacKSFKItwupqBHgMBZsCzzD4v8IqEIe/J3oHvXy3X3aIWSf4+V2J2GNMI1
-	KDzelT1XbNOCBF5A5lTfxxLXoe8J7c67eyMeI/6/yUkPK6p2FkUGyqh7qdZkFIqI5SqOk+/C0FIH1
-	4ot3sLuw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1glF+w9YBSpnxrbGOkr8zfiLawxOrQXZIgailZqGydY=; b=Fbz9qJ4I3padsV
+	hgGfxa5Pfu9NozxK7fG9gZteNQVSbPDVZYrJFKEjunFI0XcoRW9PjUPUF0Ao1X6CiaiJCrkF233lW
+	PDvC1bTB4Q6lS4rGagxXgPZrbiNrFsdsxQ701JzCJ26/BC4yh8cQucKxxSMtMDucls9hY6PWJzCUS
+	PXzGtGRhaPbsf8YfAPzxDyb3d6nhUXI9wXZw0y3r1BxV7dUtVuwDB+UhnPWCNF23loyIdlTZVriHY
+	vM9WQeMh5JCfnDWvbWJYiiy1Ce2wsxOhtgDh/HZ8AJSceBOoUy/q1YJYRhgqXEvzPFKYuWSFNgdCx
+	IHCPJRfvysQ0zOMPCAJQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hkSPc-000277-M4; Mon, 08 Jul 2019 12:06:28 +0000
+	id 1hkSOr-0001VT-If; Mon, 08 Jul 2019 12:05:41 +0000
 Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.52])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hkSOu-0001kz-SR
- for linux-nvme@lists.infradead.org; Mon, 08 Jul 2019 12:05:47 +0000
+ id 1hkSOe-0001V2-0G
+ for linux-nvme@lists.infradead.org; Mon, 08 Jul 2019 12:05:29 +0000
 X-Virus-Scanned: Proofpoint Essentials engine
 Received: from webmail.solarflare.com (uk.solarflare.com [193.34.186.16])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
  (No client certificate requested)
- by mx1-us5.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id BAEBE18007B;
- Mon,  8 Jul 2019 12:05:43 +0000 (UTC)
+ by mx1-us5.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 45B3D8007D; 
+ Mon,  8 Jul 2019 12:05:24 +0000 (UTC)
 Received: from linux-m89u (62.102.148.158) by ukex01.SolarFlarecom.com
  (10.17.10.4) with Microsoft SMTP Server (TLS) id 15.0.1395.4; Mon, 8 Jul 2019
- 13:05:29 +0100
-References: <cover.1562586804.git.mskorzhinskiy@solarflare.com>
+ 13:05:12 +0100
 From: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
-To: <linux-nvme@lists.infradead.org>, Sagi Grimberg <sagi@grimberg.me>,
- <linux-nvme@lists.infradead.org>, Sagi Grimberg <sagi@grimberg.me>
-Subject: [PATCH v2 2/2] nvme-tcp: don't use sendpage for SLAB pages
-In-Reply-To: <cover.1562586804.git.mskorzhinskiy@solarflare.com>
-Date: Mon, 8 Jul 2019 12:31:29 +0200
-Message-ID: <3206ec8102d4dae933f4638652e84349dcc50ee4.1562586804.git.mskorzhinskiy@solarflare.com>
+To: <linux-nvme@lists.infradead.org>, Sagi Grimberg <sagi@grimberg.me>
+Subject: [PATCH v2 0/2] Miscellaneous changes for nvme-tcp v2
+Date: Mon, 8 Jul 2019 13:53:24 +0200
+Message-ID: <cover.1562586804.git.mskorzhinskiy@solarflare.com>
 MIME-Version: 1.0
 X-Originating-IP: [62.102.148.158]
 X-ClientProxiedBy: ocex03.SolarFlarecom.com (10.20.40.36) To
  ukex01.SolarFlarecom.com (10.17.10.4)
 X-TM-AS-Product-Ver: SMEX-12.5.0.1300-8.5.1010-24746.003
-X-TM-AS-Result: No-5.473100-8.000000-10
-X-TMASE-MatchedRID: 7f0W3vGS/J6qLzGGxbeS5oboZ15KqReTOxjb9QQbt+SgDWpkqTKvoWxb
- gRPguoUXUYxfl/uCXqMNpKIKK7OPwbmvDpsAGJWUqJSK+HSPY++WODD/yzpvdwdkFovAReUoaUX
- s6FguVy02dnVybJBziQpwpdIIi4oJObOMSve0pv+iAZ3zAhQYgn0tCKdnhB589yM15V5aWpj6C0
- ePs7A07YFInLyeDAoZcU3wZy/N6V7J2ZwVNJG5VyTVOsm0STA++PV0ORL9FhMZIK8uLS1ymw==
+X-TM-AS-Result: No-2.934200-8.000000-10
+X-TMASE-MatchedRID: CeFUhkA4YSYiLS38rUYb5H4neC0h7SADwJjn8yqLU6IoFW8VuxQzlbXQ
+ PQH2e5fTpHMI9S5lkTm1zfGba1EKfZE4FU2ZdQO4EhGH3CRdKUXqZ8otpu+6+MAkyHiYDAQbdEc
+ SyvjnoeK2LUeOAZoLHU4OkoR+1mrTBm30RORoPjN8nLwuiNHSSH0tCKdnhB58I/9UW5M5dRPefx
+ 4FmMaZTOTCMddcL/gjymsk/wUE4hrVhIc4ZC2qXjnSps7XDgaazBVwyQCIpf7HBoJi7c0vzg0jr
+ dn86t3Pnd9Stmy6668q504a2KMgCmSYI1GDqq+GNaLSAr1/d6vd0RArmVqfIXhb+tXQ0Z2H9HOa
+ lI4Kiyr2JUHlN8ax9F7RiZtjf98i
 X-TM-AS-User-Approved-Sender: Yes
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.473100-8.000000
+X-TMASE-Result: 10--2.934200-8.000000
 X-TMASE-Version: SMEX-12.5.0.1300-8.5.1010-24746.003
-X-MDID: 1562587544-YaWuJLYdUXnF
+X-MDID: 1562587525-p1a1l3dGBV2S
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190708_050545_049847_06E6C7F4 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20190708_050528_075500_C11D41A9 
+X-CRM114-Status: UNSURE (   7.69  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.7 points)
@@ -85,38 +84,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-According to commit a10674bf2406 ("tcp: detecting the misuse of .sendpage
-for Slab objects") and previous discussion, tcp_sendpage should not be
-used for pages that is managed by SLAB, as SLAB is not taking page
-reference counters into consideration.
+A few unrelated changes for NVMoF subsystem, that was found during testing
+of NVMoF TCP.
 
-This change prevents sendpage calls for payload sending too, although this
-is true only for admin commands, so actual data transfer performance
-should be untouched.
+patch 2: found during extensive testing on various filesystems
+patch 3: found during testing on debug kernels with VM_DEBUG enabled
 
-Signed-off-by: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
----
- drivers/nvme/host/tcp.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+v2
+  - Moved hint patch as separate patch;
+  - Fix commit description in stable writes patch;
+  - Simplify check for SLAB check;
+  - Remove unnecessary replacments of sendpage calls;
 
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 08a2501b9357..c4acdbdca520 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -860,7 +860,12 @@ static int nvme_tcp_try_send_data(struct nvme_tcp_request *req)
- 		else
- 			flags |= MSG_MORE;
- 
--		ret = kernel_sendpage(queue->sock, page, offset, len, flags);
-+		/* can't zcopy slab pages */
-+		if (unlikely(PageSlab(page))) {
-+			ret = sock_no_sendpage(queue->sock, page, offset, len, flags);
-+		} else {
-+			ret = kernel_sendpage(queue->sock, page, offset, len, flags);
-+		}
- 		if (ret <= 0)
- 			return ret;
- 
+Mike Playle (1):
+  nvme-tcp: set the STABLE_WRITES flag when data digests are enabled
+
+Mikhail Skorzhinskii (1):
+  nvme-tcp: don't use sendpage for SLAB pages
+
+ drivers/nvme/host/core.c | 5 +++++
+ drivers/nvme/host/tcp.c  | 7 ++++++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
 -- 
 2.16.4
 
