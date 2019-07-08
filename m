@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DD5461CCD
-	for <lists+linux-nvme@lfdr.de>; Mon,  8 Jul 2019 12:16:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED4C261E29
+	for <lists+linux-nvme@lfdr.de>; Mon,  8 Jul 2019 14:06:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
@@ -11,60 +11,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Subject:To:From:References:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=NuwJE34/R7vlvOnQE97YilUNCYGoh+U8GDCxjnfVFo4=; b=HSGOnWjB5qK9T5j/9PrZWSQAPg
-	756pp45tF0MCrMEJ7eLKKgttAOfaaVyuomMNP2p1n8I0m7zoYMFIGFLKbqAosCN/HG8h3skODu+/m
-	p69bU45Wv/pRC9r7FbBKbBlBlzSvMTevEwV8AbDl08x9nUjqxbsBxQcsylNNJl1R6v3J3OBFbV7da
-	WoXDpdZNPCDwvfNUB8wgDy2WbyUVwIB3Eu5hTMT2dfhbxJAQt6gDau7uOHH2Yr6aieqZbhzUTnmnm
-	THe3vp1EoEHvKAVIcqCYULKIDiL1jjfTpDP9shXg7tmsb7ds4Sr+78SieDiZhslOmmTKSjfBe4Saf
-	2Ifv1wVg==;
+	bh=HqmTOWc0K7c3wHszbGgvdx49qB01UaAvnlL69LGAVt0=; b=XoRBOM8RbTV2tLhqARkP4YYMwu
+	4bgLiW/BRSE4INabFe1kKCctnLggHc0hmb0mjQunTB1aXzeWuN1hIFw9ppqBxWLEfnKVx6zFuzMR8
+	FrRgXPT11br0MC3tZzLVO4kdBvsmfVkQdkZenvEKRzmTeRVreeKWXqflMzAni7c35cZnzNktIj4CI
+	l8kUueQ9+ONUILZkQVhacKSFKItwupqBHgMBZsCzzD4v8IqEIe/J3oHvXy3X3aIWSf4+V2J2GNMI1
+	KDzelT1XbNOCBF5A5lTfxxLXoe8J7c67eyMeI/6/yUkPK6p2FkUGyqh7qdZkFIqI5SqOk+/C0FIH1
+	4ot3sLuw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hkQgf-0001Jv-C2; Mon, 08 Jul 2019 10:15:57 +0000
+	id 1hkSPc-000277-M4; Mon, 08 Jul 2019 12:06:28 +0000
 Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.52])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hkQgQ-0001JH-A3
- for linux-nvme@lists.infradead.org; Mon, 08 Jul 2019 10:15:43 +0000
+ id 1hkSOu-0001kz-SR
+ for linux-nvme@lists.infradead.org; Mon, 08 Jul 2019 12:05:47 +0000
 X-Virus-Scanned: Proofpoint Essentials engine
 Received: from webmail.solarflare.com (uk.solarflare.com [193.34.186.16])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
  (No client certificate requested)
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id E57FA10006B;
- Mon,  8 Jul 2019 10:15:33 +0000 (UTC)
+ by mx1-us5.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id BAEBE18007B;
+ Mon,  8 Jul 2019 12:05:43 +0000 (UTC)
 Received: from linux-m89u (62.102.148.158) by ukex01.SolarFlarecom.com
  (10.17.10.4) with Microsoft SMTP Server (TLS) id 15.0.1395.4; Mon, 8 Jul 2019
- 11:15:27 +0100
-References: <cover.1562234605.git.mskorzhinskiy@solarflare.com>
- <cdce4bc7cedc11a80c01e457a4b18933b73017e2.1562234605.git.mskorzhinskiy@solarflare.com>
- <28d0887b-692e-0b33-7530-673006340431@grimberg.me>
-User-agent: mu4e 1.3.1; emacs 26.2
+ 13:05:29 +0100
+References: <cover.1562586804.git.mskorzhinskiy@solarflare.com>
 From: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
-To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH 3/3] nvme-tcp: replace sendpage calls with sendmsg calls
- for SLAB chunks
-In-Reply-To: <28d0887b-692e-0b33-7530-673006340431@grimberg.me>
-Date: Mon, 8 Jul 2019 12:15:19 +0200
-Message-ID: <87zhlovnm0.fsf@solarflare.com>
+To: <linux-nvme@lists.infradead.org>, Sagi Grimberg <sagi@grimberg.me>,
+ <linux-nvme@lists.infradead.org>, Sagi Grimberg <sagi@grimberg.me>
+Subject: [PATCH v2 2/2] nvme-tcp: don't use sendpage for SLAB pages
+In-Reply-To: <cover.1562586804.git.mskorzhinskiy@solarflare.com>
+Date: Mon, 8 Jul 2019 12:31:29 +0200
+Message-ID: <3206ec8102d4dae933f4638652e84349dcc50ee4.1562586804.git.mskorzhinskiy@solarflare.com>
 MIME-Version: 1.0
 X-Originating-IP: [62.102.148.158]
 X-ClientProxiedBy: ocex03.SolarFlarecom.com (10.20.40.36) To
  ukex01.SolarFlarecom.com (10.17.10.4)
 X-TM-AS-Product-Ver: SMEX-12.5.0.1300-8.5.1010-24746.003
-X-TM-AS-Result: No-9.671200-8.000000-10
-X-TMASE-MatchedRID: eVEkOcJu0F7OH9fyebH9T0dAWPMBu8kQWYK8+f3T9tH3aTNmWiTJHiOq
- N0W6x+gkxLEhAE7cnFZBft7eCOymzcRNeQXK6csDHl2pJS1lPFv4qCLIu0mtIDyC5ddG2Jcg8d4
- oypC4x6uvEHiqa8cd2Bt92Hcett2zIR6KO1Rewi4FZev51JnVPQZyESFXAljfJ1wWZpKFYUmDnm
- xD/gIAeD/JtLzybny2iG5O+yIERz9MJ2NroIGtN20WRq7KHlv4Igt1z4icQStVZCccrGnfyLbsw
- c5FrZdZvTFNo8PUukiYj928NIu8/3jxgHkp9duCAZ0lncqeHqGYohOKUAu7XeIXFxESdRFSqRFi
- yZgRFsRIb6I9FJPzktJHai6GfGFVHxPMjOKY7A8LbigRnpKlKTpcQTtiHDgWE99lJ/uB+WLvkz0
- grrggfowUgjTsIXCxy2u3d5eVkULrHE2FN+Fuc0MMprcbiest
+X-TM-AS-Result: No-5.473100-8.000000-10
+X-TMASE-MatchedRID: 7f0W3vGS/J6qLzGGxbeS5oboZ15KqReTOxjb9QQbt+SgDWpkqTKvoWxb
+ gRPguoUXUYxfl/uCXqMNpKIKK7OPwbmvDpsAGJWUqJSK+HSPY++WODD/yzpvdwdkFovAReUoaUX
+ s6FguVy02dnVybJBziQpwpdIIi4oJObOMSve0pv+iAZ3zAhQYgn0tCKdnhB589yM15V5aWpj6C0
+ ePs7A07YFInLyeDAoZcU3wZy/N6V7J2ZwVNJG5VyTVOsm0STA++PV0ORL9FhMZIK8uLS1ymw==
 X-TM-AS-User-Approved-Sender: Yes
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.671200-8.000000
+X-TMASE-Result: 10--5.473100-8.000000
 X-TMASE-Version: SMEX-12.5.0.1300-8.5.1010-24746.003
-X-MDID: 1562580935-2-o1HxvKWFjM
+X-MDID: 1562587544-YaWuJLYdUXnF
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190708_031542_407949_13D1F0EE 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20190708_050545_049847_06E6C7F4 
+X-CRM114-Status: GOOD (  10.62  )
 X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.7 points)
@@ -85,85 +79,47 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org
+Cc: Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+According to commit a10674bf2406 ("tcp: detecting the misuse of .sendpage
+for Slab objects") and previous discussion, tcp_sendpage should not be
+used for pages that is managed by SLAB, as SLAB is not taking page
+reference counters into consideration.
 
-Sagi Grimberg <sagi@grimberg.me> writes:
- > > According to commit a10674bf2406 ("tcp: detecting the misuse of .sendpage
- > > for Slab objects") and previous discussion[1][2], tcp_sendpage should not
- > > be used for pages that is managed by SLAB, as SLAB is not taking page
- > > reference counters into consideration.
- > >
- > > This change prevents sendpage calls for payload sending too, although this
- > > is true only for admin commands, so actual data transfer performance
- > > should be untouched.
- > >
- > > [1] https://www.spinics.net/lists/netdev/msg553616.html
- > > [2] https://www.spinics.net/lists/netdev/msg553285.html
- >
- > Well, the lifetime here is guaranteed to be the same for the buffers
- > in question.
- >
- > Was any issue seen in action?
+This change prevents sendpage calls for payload sending too, although this
+is true only for admin commands, so actual data transfer performance
+should be untouched.
 
-No.
+Signed-off-by: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
+---
+ drivers/nvme/host/tcp.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-And if you go through the threads related to this warning, original bug
-only observed when sender and receiver happens to be one physical
-machine. Making this patch a bit overreaction to the warning, of course.
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 08a2501b9357..c4acdbdca520 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -860,7 +860,12 @@ static int nvme_tcp_try_send_data(struct nvme_tcp_request *req)
+ 		else
+ 			flags |= MSG_MORE;
+ 
+-		ret = kernel_sendpage(queue->sock, page, offset, len, flags);
++		/* can't zcopy slab pages */
++		if (unlikely(PageSlab(page))) {
++			ret = sock_no_sendpage(queue->sock, page, offset, len, flags);
++		} else {
++			ret = kernel_sendpage(queue->sock, page, offset, len, flags);
++		}
+ 		if (ret <= 0)
+ 			return ret;
+ 
+-- 
+2.16.4
 
-I was thinking about disabling this check inside tcp code for our caller
-then, but I didn't come up with anything clever, so instead I patch
-NVMoF TCP.
-
- > > @@ -860,7 +878,7 @@ static int nvme_tcp_try_send_data(struct nvme_tcp_request *req)
- > >   		else
- > >   			flags |= MSG_MORE;
- > >   -		ret = kernel_sendpage(queue->sock, page, offset, len,
- > > flags);
- > > +		ret = nvme_tcp_sendpage(req, page, offset, len, flags);
- >
- > Please just do this instead:
- > --
- > 	/* can't zcopy slab pages */
- > 	if (unlikely(PageSlab(page))
- > 		sock_no_sendpage()
- > 	else
- > 		kernel_sendpage()
- > --
-
-Will fix.
-
- > > +static inline int nvme_tcp_try_send_pdu(struct nvme_tcp_request *req,
- > > +					int len, int flags)
- > > +{
- > > +	struct nvme_tcp_queue *queue = req->queue;
- > > +	struct msghdr msg = { .msg_flags = flags };
- > > +	struct kvec iov = {
- > > +			   .iov_base = req->pdu + req->offset,
- > > +			   .iov_len = len,
- > > +	};
- > > +
- > > +	return kernel_sendmsg(queue->sock, &msg, &iov, 1, iov.iov_len);
- > > +}
- > > +
- > >   static int nvme_tcp_try_send_cmd_pdu(struct nvme_tcp_request *req)
- > >   {
- > >   	struct nvme_tcp_queue *queue = req->queue;
- > > @@ -898,8 +929,7 @@ static int nvme_tcp_try_send_cmd_pdu(struct nvme_tcp_request *req)
- > >   	if (queue->hdr_digest && !req->offset)
- > >   		nvme_tcp_hdgst(queue->snd_hash, pdu, sizeof(*pdu));
- > >   -	ret = kernel_sendpage(queue->sock, virt_to_page(pdu),
- > > -			offset_in_page(pdu) + req->offset, len,  flags);
- > > +	ret = nvme_tcp_try_send_pdu(req, len, flags);
- >
- > This is unneeded given that pdus are page fragments, NOT slab pages.
-
-Will fix.
 
 _______________________________________________
 Linux-nvme mailing list
