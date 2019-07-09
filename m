@@ -2,42 +2,42 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9B8463D33
-	for <lists+linux-nvme@lfdr.de>; Tue,  9 Jul 2019 23:20:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D15FE63D34
+	for <lists+linux-nvme@lfdr.de>; Tue,  9 Jul 2019 23:20:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8oRq/0hNwKGvVEJB9X6GsjkwQplmVihfddoiQy04oMc=; b=assA+jeUzsRSRn
-	jNXpcOR/Wv9yUt/R5F2l83Z8K0eOH3FjIMmpnaBHU/wopwuO5uSYlVXO1X/9m82qwr6E9tJnqbuKP
-	CcdZi7ipH+z6Sk/XifmpTXeWf3t/eYuskaNrOtWe5oGjJ7V60tPZIJz1CkWFmgexz3Z4hTRlFIwtP
-	hKwq8BAvBKC2/mpZrDkQ3RZschXgOZNSqO99ZSeVD7D3ztZc2Qh8MtwstD08BjQZ4gulVQ891O6xW
-	rbmSBsF/mIemcV/QUEOUAdq5Qk4SZ7lSRG6v0qtNF2VLA+kSxCtKwcJWoNOTiDu7oAzSu3lDnoXYk
-	9lpbQdzwdPZ1FrYI+FZA==;
+	List-Owner; bh=jrRf1EiDxCAy1YPTyzXapQtaH8pmM56lJcoHwM1Ul54=; b=toihjwBfYcQyyA
+	FEMInVbCz0W7Iw9gs2KIZ+gSP0l/j4arm8trf/+UOcAY3nY+hL9jGP5jpa94HQtenOAnDbhMPyeyC
+	T3Qy46AeDtb3/yKH0U+Kd60s2Q1wQSydCOlN/xXXFh3VG5VHh0+YWkIpTRj1iqZt08jwhnr3BgrAy
+	tZrYBQLf1BoYMakpb0Kw4XefCfmjNJt3CpY6GVmd03c2+1Y9wdRrRH1Kh88X/esAH7owDSbUoiQeG
+	zzUWpFN0bREm5In+pUtFvEHicL4pcxPiOqF596IprdO7IVHFuOO6GY+Jpp3cxGHsQT3IqQLmnlswr
+	Dj0Vt4s2XZPntv3s0OMA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hkxWm-0005Gq-6x; Tue, 09 Jul 2019 21:19:56 +0000
+	id 1hkxX5-0005k2-Ll; Tue, 09 Jul 2019 21:20:15 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hkxWf-0005GZ-5S
- for linux-nvme@lists.infradead.org; Tue, 09 Jul 2019 21:19:50 +0000
+ id 1hkxWq-0005Nn-FT
+ for linux-nvme@lists.infradead.org; Tue, 09 Jul 2019 21:20:01 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 3A6CB68B02; Tue,  9 Jul 2019 23:19:47 +0200 (CEST)
-Date: Tue, 9 Jul 2019 23:19:47 +0200
+ id 0ED7C68B02; Tue,  9 Jul 2019 23:19:59 +0200 (CEST)
+Date: Tue, 9 Jul 2019 23:19:58 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Hannes Reinecke <hare@suse.de>
-Subject: Re: [PATCHv2 0/2] nvme-multipath: path selection fixes
-Message-ID: <20190709211947.GA9518@lst.de>
-References: <20190704061047.94976-1-hare@suse.de>
+To: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
+Subject: Re: [PATCH] nvmet: print a hint while rejecting NSID 0 or 0xffffffff
+Message-ID: <20190709211958.GB9518@lst.de>
+References: <c3a8458b54fcd189f7a441eb959274937faf8568.1562586068.git.mskorzhinskiy@solarflare.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190704061047.94976-1-hare@suse.de>
+In-Reply-To: <c3a8458b54fcd189f7a441eb959274937faf8568.1562586068.git.mskorzhinskiy@solarflare.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190709_141949_353628_A69D78D8 
-X-CRM114-Status: UNSURE (   5.93  )
+X-CRM114-CacheID: sfid-20190709_142000_717384_14E55AE8 
+X-CRM114-Status: UNSURE (   4.83  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -59,8 +59,8 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
- linux-nvme@lists.infradead.org, Sagi Grimberg <sagi@grimberg.me>
+Cc: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
@@ -68,8 +68,7 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 Thanks,
 
-I've split out the addition of the new nvme_path_is_disabled helper into
-a separate patch and then applied there series to the nvme-5.3 branch.
+applied to nvme-5.3.
 
 _______________________________________________
 Linux-nvme mailing list
