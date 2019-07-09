@@ -2,68 +2,94 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6634C62863
-	for <lists+linux-nvme@lfdr.de>; Mon,  8 Jul 2019 20:35:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DA3B5638DA
+	for <lists+linux-nvme@lfdr.de>; Tue,  9 Jul 2019 17:48:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=194B4GREhjDIobmRb9m/fMTAEMRWTzi7NVvH9ilOXk0=; b=j3y
-	3Qx8zMl0jOcqUUfT+xfs7jQdAPRIhga6TXxefRLBEIDpZwF3BxRxJ9kOoGbfJ0VtBwEFFyrssLrhy
-	BAfzvkFsZ5n1DAQ8aLFI65A/Wta/Lgf7DRP3L9geAWbnyEOEyXbPVqVFpH3fmaeQF5CbUtxXLtexg
-	lA7TqPXTnarHOXFXAffoqa4fuspeiaJpvr4Vu5VPIjN/MkC0R9FD30GzYFZdy2PD1XgSWIj7S/mdl
-	xvE2dXugAXtHOx2vSy7+8V7XOCkeOjsOPmikcbbGbY+xe3cP3pIxnt3Z1n7pyr74djn6l1FLXgeaQ
-	GBhL2CU4OpCm+JwQMNlW8ykrsy+P60A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yXNslQDu+wfsWPlJvFQNkmVwzCIUB5wX6TFN1oEIeMQ=; b=AoUKvOOAz7W4aI
+	SKiU97NE2xI21d0x3YcrQkz5cnKMeQWnpRIpwFL8BkgqwE2Ohyt+fEkTMXyhFPszyvuEkn13MUbGr
+	JTvilksMlhpEE31kkx6G4qIsiTicra1/YUbKVzsa0mkuPiRPkWn4tY1JZYW5uqi0jnaIv8ePGrlWf
+	DUMc/FmrAXq9Yujf4DX3xKnpY5pUb4Ts8dWhhXFdC0rO+x2axdTKZCq+pRjijKwGwgyvI6efJJ0bH
+	FRMrYNGy4ZK6zrdsOSrZ2frjxZeRbiGK9Ytmv03K+oCl+kPeZIIH0AK9CZtkLpeOoJ67vfMDTp465
+	gXvLOijfbKhMGIJAUvrg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hkYUF-0003gs-FQ; Mon, 08 Jul 2019 18:35:39 +0000
-Received: from mga06.intel.com ([134.134.136.31])
+	id 1hksLX-0002oC-Rv; Tue, 09 Jul 2019 15:47:59 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hkYU8-0003g5-N2
- for linux-nvme@lists.infradead.org; Mon, 08 Jul 2019 18:35:34 +0000
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Jul 2019 11:35:31 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,466,1557212400"; 
- d="p7s'?scan'208";a="185731505"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by fmsmga001.fm.intel.com with ESMTP; 08 Jul 2019 11:35:31 -0700
-Received: from orsmsx111.amr.corp.intel.com (10.22.240.12) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 8 Jul 2019 11:35:30 -0700
-Received: from orsmsx101.amr.corp.intel.com ([169.254.8.157]) by
- ORSMSX111.amr.corp.intel.com ([169.254.12.226]) with mapi id 14.03.0439.000;
- Mon, 8 Jul 2019 11:35:30 -0700
-From: "Derrick, Jonathan" <jonathan.derrick@intel.com>
-To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Subject: Should hot removed devices close open namespace bd references?
-Thread-Topic: Should hot removed devices close open namespace bd references?
-Thread-Index: AQHVNbvqtlB3EQuFOkGBXTU7sMclWQ==
-Date: Mon, 8 Jul 2019 18:35:29 +0000
-Message-ID: <d7027ad47e28339f13eb2d7f1bff4c7749da1160.camel@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: yes
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.255.1.61]
+ id 1hksLL-0002no-Er
+ for linux-nvme@lists.infradead.org; Tue, 09 Jul 2019 15:47:48 +0000
+Received: by mail-pf1-x442.google.com with SMTP id m30so9488274pff.8
+ for <linux-nvme@lists.infradead.org>; Tue, 09 Jul 2019 08:47:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=vPsLQFWWdwuLT/EXeyCmhPkawl4nkAU4Krobq8uGgrs=;
+ b=bk+gExtY5KXmN3dzlN2Yq8aFP7kyt9sFr5YN+mIkX4OG/0RQQdwdakgYtv0nFUrrBR
+ r29ckaz4uGXMUqM4/HnENEesr7tELQlfHm46/Cc3PsCiX1cGdNpgngWy7uIyx/iqxYIY
+ nn8jGdza5xSXRnkdCUbImcnZvxmxhG37F5AUjQVs+Jc9OGxTbQ5wwyo1q5GgHRgOaO28
+ KcyVVjdc/hJlHyeGSfEggwkVyKfB86DWnErROZ4hmidWQ1BoLyz4zU+Q+tNQzqezmeQ7
+ VvzTZPtcK9i84ecXPQ3hDYxCNCQAUmQDTqagHkDHie/3zq6RI4GzktRTp/ITwd0e2gyV
+ NkMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=vPsLQFWWdwuLT/EXeyCmhPkawl4nkAU4Krobq8uGgrs=;
+ b=jel83u2qA/iMZbN6VIdzSQ850SSpYGGjkWGgn/l87w978qh6mWGLN7P/EtQBOYgzxU
+ U22lamDGRmNvkNAm5Mun1lp8JNcZh5EKAKymXxOVJ/96QEGZphFtubrNOwkLfGML5KrN
+ 28uW6mRlaCNRVeCvooqisfMsY+VAVzzKrFi/WkbExkxviNd+ASegm9Fqw0FztXp4O2rz
+ 1RcC5Q06WhsvEXUkWmOhAxC06jCiN44bLdWDoEEOKK0rHC4qxqG3C8WKtwx8ZUEw01Zg
+ T3YI9AvVitpkNjrYMZzGUPiAa1gyNmviy3uYpPVBfyEG0yAL61JeBYzqW9CNc2DODEXP
+ wC/g==
+X-Gm-Message-State: APjAAAU00b8VsbAOjZvP85ZY9rs9FoKCpALJJLE1edu44NMeOMuUQ8EU
+ /nYnlYKk43ONLBY8dEOoJNSFUK+4RlQ=
+X-Google-Smtp-Source: APXvYqySlXe4BuiJDr/Eb2xWDmP5It5JN67+wAv2E3nWRWU0bTh2DXTmvsN23Ccq+3u+SjHeeOPgEQ==
+X-Received: by 2002:a17:90a:77c5:: with SMTP id
+ e5mr737241pjs.109.1562687266120; 
+ Tue, 09 Jul 2019 08:47:46 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id p27sm36675557pfq.136.2019.07.09.08.47.44
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 09 Jul 2019 08:47:45 -0700 (PDT)
+Date: Wed, 10 Jul 2019 00:47:43 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: Bart Van Assche <bvanassche@acm.org>
+Subject: Re: [PATCH] nvmet: print a hint while rejecting NSID 0 or 0xffffffff
+Message-ID: <20190709154743.GA16207@minwoo-desktop>
+References: <c3a8458b54fcd189f7a441eb959274937faf8568.1562586068.git.mskorzhinskiy@solarflare.com>
+ <8bfa9035-ad7c-bdd2-a480-b8d26c597767@acm.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <8bfa9035-ad7c-bdd2-a480-b8d26c597767@acm.org>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190708_113532_801594_D8EA84CB 
-X-CRM114-Status: GOOD (  12.03  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190709_084747_525226_9DED7EE9 
+X-CRM114-Status: GOOD (  11.62  )
+X-Spam-Score: 1.1 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (1.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [134.134.136.31 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 1.3 PDS_NO_HELO_DNS        High profile HELO but no A record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,144 +101,35 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2270125722492040792=="
+Cc: Minwoo Im <minwoo.im.dev@gmail.com>, Christoph Hellwig <hch@lst.de>,
+ Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>,
+ linux-nvme@lists.infradead.org, Sagi Grimberg <sagi@grimberg.me>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
---===============2270125722492040792==
-Content-Language: en-US
-Content-Type: multipart/signed; micalg=sha-1;
-	protocol="application/x-pkcs7-signature"; boundary="=-Jx6TkvrYgMSiBzwYDG62"
+On 19-07-08 08:09:38, Bart Van Assche wrote:
+> If Linux users want to figure out which code reported an error message they
+> sometimes run grep over the Linux kernel source code. Seeing the above
+> message makes me wonder whether enough context information is provided to
+> allow users to figure out unambiguously which code reported the error
+> message? Have you considered to include the function name in the error
+> message?
 
---=-Jx6TkvrYgMSiBzwYDG62
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Bart,
 
-Hello,
+I can see some pr_err() with __func__ being printed out in other drivers,
+but I just wonder if error messages with the function name itself have
+been a tradition for the linux kernel project.
 
-5.2 shows a strange regression where if a namespace handle is open and
-the device is hot removed, then hot inserted, the new controller
-instance fails to enumerate.
+Is there somewhere to find out these kind of standard or something?  Or
+If you don't mind, can I ask your advices based on your experience on
+kernel?
 
-Previous kernels back to the multipathing introduction would simply add
-the new namespace to the previous controller's subsystem id, so you
-would end up with something like:
-/dev/nvme2
-/dev/nvme0n2
-Because the subsystem namespace instance is 2 upon enumeration as the
-previous handle hadn't been released through the block layer.
-
-With 5.2, I instead see:
-[  247.767504] nvme nvme2: pci function 10000:01:00.0
-[  247.772642] nvme 10000:01:00.0: enabling device (0000 -> 0002)
-[  247.778671] pcieport 10000:00:02.0: can't derive routing for PCI INT
-A
-[  247.785411] nvme 10000:01:00.0: PCI INT A: no GSI
-[  247.899879] nvme nvme2: Duplicate cntlid 0 with nvme0, rejecting
-[  247.906086] nvme nvme2: Removing after probe failure status: -22
-
-
-Here's a test program:
-#define _GNU_SOURCE
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-
-int main(int argc, char *argv[])
-{
-        int fd;
-
-        fd =3D open("/dev/nvme0n1", O_DIRECT);
-
-        for (;;)
-                ;
-}
-
-
-
-Run this and in parallel, remove the link from the upstream port:
-setpci -s <BDF> CAP_EXP+10.w=3D10:10
-And add it back:
-setpci -s <BDF> CAP_EXP+10.w=3D0:10
-
---=-Jx6TkvrYgMSiBzwYDG62
-Content-Type: application/x-pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
-
-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
-PNauajAtxgRKfqfSMb+IcL/VXiPtVZOxVq+CTZeDJkaEmn/79vg8OYxpR+YhFF+tGlKf/Zc4id1P
-AgMBAAGjggI3MIICMzAdBgNVHQ4EFgQU4oawcWXM1cPGdwGcIszDfjORVZAwHwYDVR0jBBgwFoAU
-HmkqtNwo/kcYTiELP7ysES/wmPUwZQYDVR0fBF4wXDBaoFigVoZUaHR0cDovL3d3dy5pbnRlbC5j
-b20vcmVwb3NpdG9yeS9DUkwvSW50ZWwlMjBFeHRlcm5hbCUyMEJhc2ljJTIwSXNzdWluZyUyMENB
-JTIwNEEuY3JsMIGfBggrBgEFBQcBAQSBkjCBjzBpBggrBgEFBQcwAoZdaHR0cDovL3d3dy5pbnRl
-bC5jb20vcmVwb3NpdG9yeS9jZXJ0aWZpY2F0ZXMvSW50ZWwlMjBFeHRlcm5hbCUyMEJhc2ljJTIw
-SXNzdWluZyUyMENBJTIwNEEuY3J0MCIGCCsGAQUFBzABhhZodHRwOi8vb2NzcC5pbnRlbC5jb20v
-MAsGA1UdDwQEAwIHgDA8BgkrBgEEAYI3FQcELzAtBiUrBgEEAYI3FQiGw4x1hJnlUYP9gSiFjp9T
-gpHACWeB3r05lfBDAgFkAgEJMB8GA1UdJQQYMBYGCCsGAQUFBwMEBgorBgEEAYI3CgMMMCkGCSsG
-AQQBgjcVCgQcMBowCgYIKwYBBQUHAwQwDAYKKwYBBAGCNwoDDDBRBgNVHREESjBIoCoGCisGAQQB
-gjcUAgOgHAwaam9uYXRoYW4uZGVycmlja0BpbnRlbC5jb22BGmpvbmF0aGFuLmRlcnJpY2tAaW50
-ZWwuY29tMA0GCSqGSIb3DQEBBQUAA4IBAQBxGkHe05DNpYel4b9WbbyQqD1G6y6YA6C93TjKULZi
-p8+gO1LL096ixD44+frVm3jtXMikoadRHQJmBJdzsCywNE1KgtrYF0k4zRWr7a28nyfGgQe4UHHD
-7ARyZFeGd7AKSQ1y4/LU57I2Aw2HKx9/PXavv1JXjjO2/bqTfnZDJTQmOQ0nvlO3/gvbbABxZHqz
-NtfHZsQWS7s+Elk2xGUQ0Po2pMCQoaPo9R96mm+84UP9q3OvSqMoaZwfzoUeAx2wGJYl0h3S+ABr
-CPVfCgq9qnmVCn5DyHWE3V/BRjJCoILLBLxAxnmSdH4pF6wJ6pYRLEw9qoyNhpzGUIJU/Lk1MYIC
-FzCCAhMCAQEwgZAweTELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRQwEgYDVQQHEwtTYW50YSBD
-bGFyYTEaMBgGA1UEChMRSW50ZWwgQ29ycG9yYXRpb24xKzApBgNVBAMTIkludGVsIEV4dGVybmFs
-IEJhc2ljIElzc3VpbmcgQ0EgNEECEzMAAMamAkocC+WQNPgAAAAAxqYwCQYFKw4DAhoFAKBdMBgG
-CSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE5MDcwODE4MzQyOFowIwYJ
-KoZIhvcNAQkEMRYEFLorhWRVHzL/nQNa8tJa8qXSft6rMA0GCSqGSIb3DQEBAQUABIIBAFzqj4g0
-JyNRwrLJDpkbuhcwrVyzeeRzyHBQi0e0ofRa7Nu4N56AJsuzkevpqcQ9anchsA9I1yfuEw7Ato/v
-LXf50DdTy7OBOhl6p/JR4B181detXakFbArg57sQRSe9pjq2QQ37SOPXZtuONS841jQklQV9HYDN
-M4Fg+ANHiHPBZMApOfEjeKYhlROHgZqC9i863YocSlvtxfvyzbAo2R4xQ0Vyzy+vhpCKd4skzYcB
-oa1lH8NkDBBCI2cm/TVuy8btt/KwFs+NdnVewzpVGVBJOoguUbknNzbDa25nwOfqAjA/Qbl/8nE8
-dEkDO0+XYK5+B1uspC3EJj5fLPV+d1UAAAAAAAA=
-
-
---=-Jx6TkvrYgMSiBzwYDG62--
-
-
---===============2270125722492040792==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
 
 _______________________________________________
 Linux-nvme mailing list
 Linux-nvme@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-nvme
-
---===============2270125722492040792==--
-
