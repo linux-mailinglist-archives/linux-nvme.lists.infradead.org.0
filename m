@@ -2,87 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FE7D63F22
-	for <lists+linux-nvme@lfdr.de>; Wed, 10 Jul 2019 04:15:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DD60640AE
+	for <lists+linux-nvme@lfdr.de>; Wed, 10 Jul 2019 07:27:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XJu79ikGKs04rXEd0cZ4IO62Rtu9qB4REdeI87X3Uas=; b=Wqy7kIZBytluJUWP15iY5leWp
-	00inLekc7QH6p7Z3kcJT2HH1Qrnu8nLDndTzK6t33lu1oD3XY5mW7jAM61qno0vWJoSgeAtIIvf29
-	RNRYh5mN9YJzWqdaCjLUPIZGTkItgzsnWNUpgX/EEc4rNuIe6A3Tw5AKgc1/feAp4oOdt09a8JLed
-	P/KQMOOcz7u1dB6Q2xayB65ffbxHcRTqNtGM27kvcp78CQn3zBrQLk+epvV5NRyapTDvUQsRm5hW0
-	jHEvZJxFTIbllEyWuno6N5xUu1dW4EfxJDTgElkuaLf1VvAsPMeVhC0JQEY52hNXryhboWF/dZ2kb
-	j6KGLeoEw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:References:
+	In-Reply-To:Message-ID:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=S2vAcTVR4yD0TF/YPLNZvV/K3IZnuhjrNfKKCNDHrww=; b=BMQb159lGUKa2K
+	W05BG3PrEcspnzAcU/YpJwXbGJpVFtTBCerswyBkYmbVPszdZ5WuNETY9DEEeH8AD9LjO2Vqyi75W
+	o65ZAq8m7N9p0B2hpm4j+GHQtm9AWDo0P0ebwUu7GsVDMUG1dF5nZP55Aycqn/UBRcxaqAuSf785H
+	ZL7O5qc6UXQs5ozhqr9FRg2bTBSjj4W4q0x60mNbMxueEzqCnk3NMTfSy5XKEbxvZqES6Gl77eCkU
+	RnL8k93ntABngAAMi5FV5mS3h44Qvjv/YeTC3ZZU7MP37KxciaPhMYNqOwhNp8FgYOf103+YPFGUS
+	GiazH9QBTD0HYNTkc5wQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hl28d-0003qN-Jj; Wed, 10 Jul 2019 02:15:19 +0000
-Received: from mail-wr1-f66.google.com ([209.85.221.66])
+	id 1hl58N-0001k9-HT; Wed, 10 Jul 2019 05:27:15 +0000
+Received: from zimbra2.kalray.eu ([92.103.151.219])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hl28W-0003q3-34
- for linux-nvme@lists.infradead.org; Wed, 10 Jul 2019 02:15:13 +0000
-Received: by mail-wr1-f66.google.com with SMTP id n9so781991wrr.4
- for <linux-nvme@lists.infradead.org>; Tue, 09 Jul 2019 19:15:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=VqzZyijMCgOSPfwWbb5AHyz8Sbfbrq9U0uzBFtSsorg=;
- b=ohKm1BHn+thEz5hbPvJTmFbsGKYv90xuNSmvW1+T8vK4pZQR41wyv7mtYQFdoN07x+
- y3eWrZjm8Re+KDPbleo1Vq0f10UsupfmKQI9UY0wzn/cUR0MSglwFTSSgT4IBHsGzUwM
- fVxjYSbsJ5xX35BMAZFNPZsXO1rDQ3eEfswLEShWIbrdBha3u2Mg5DftCl2SRH5dCFER
- uVJDR3c3+HH3n2Pd7f5K6RS7V8PrIJCX/p5RuHe/+tTKYeGXA+YB/2Bc46DtVSkno8mW
- TeKBiZ/7ke2xdFwt1O2uGzg8ksgnshn6LO5YPm1xH/5SiywA9SBAuxx0lPeFxq5GQtRF
- H86Q==
-X-Gm-Message-State: APjAAAWDZAinWz93908O+dqDOW6zoGH1PAa+aO/VDoTFNp51S0voZ2Xq
- owTC3wzBEhCScfUKjjS9BKfYF1xk
-X-Google-Smtp-Source: APXvYqwXjs0XrNUllDyJbjnUNSHpIKitA3v8TvYaBJVbmuV9bLfXm/U9LchR7nyu0tl9dyHDLf9hsQ==
-X-Received: by 2002:a5d:438e:: with SMTP id i14mr13223158wrq.122.1562724910532; 
- Tue, 09 Jul 2019 19:15:10 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id r11sm663694wre.14.2019.07.09.19.15.08
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 09 Jul 2019 19:15:09 -0700 (PDT)
-Subject: Re: [PATCH rfc] nvme-tcp: support simple polling
-To: Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>
-References: <20190703210804.23137-1-sagi@grimberg.me>
- <20190709202201.GB8405@lst.de>
- <70b60d78-1a77-ddb0-3414-e0c26d657e4f@grimberg.me>
- <20190709212717.GA9636@lst.de>
- <e7e4ec9a-b644-58a3-77b0-7828d73831ca@kernel.dk>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <4e8ec90b-b2d9-685f-6b39-1113688dce5c@grimberg.me>
-Date: Tue, 9 Jul 2019 19:15:07 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ id 1hl588-0001jO-Q4
+ for linux-nvme@lists.infradead.org; Wed, 10 Jul 2019 05:27:02 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra2.kalray.eu (Postfix) with ESMTP id 7A0362BE068D;
+ Wed, 10 Jul 2019 07:26:54 +0200 (CEST)
+Received: from zimbra2.kalray.eu ([127.0.0.1])
+ by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id JlrKVqP9bF-r; Wed, 10 Jul 2019 07:26:47 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra2.kalray.eu (Postfix) with ESMTP id E23272BE0691;
+ Wed, 10 Jul 2019 07:26:46 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra2.kalray.eu E23272BE0691
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kalray.eu;
+ s=32AE1B44-9502-11E5-BA35-3734643DEF29; t=1562736406;
+ bh=+2lMnvpoKjx0Ngf9cwUYGi4yi5g7W+P6A5+xpsO8iBY=;
+ h=Date:From:To:Message-ID:MIME-Version;
+ b=aqNTLf+XfRmJ9UKN6JcmU8vF/naP12Zw/pqnA9Pmg8CPQkC8CscnENMnR7foF8tP5
+ UMLBS27LdDAHiBuDb+ClP9Cg07IrGoIqBhIWLN8yUVrfU0t5INts0ZsEdL3MkdhQ8G
+ qA5KS5hh+I6mX2rgw/F+fHCw4Kp36lvQGzQ2+UaM=
+X-Virus-Scanned: amavisd-new at zimbra2.kalray.eu
+Received: from zimbra2.kalray.eu ([127.0.0.1])
+ by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id NUe8OLhz0rwc; Wed, 10 Jul 2019 07:26:46 +0200 (CEST)
+Received: from zimbra2.kalray.eu (zimbra2.kalray.eu [192.168.40.202])
+ by zimbra2.kalray.eu (Postfix) with ESMTP id C9F532BE0631;
+ Wed, 10 Jul 2019 07:26:46 +0200 (CEST)
+Date: Wed, 10 Jul 2019 07:26:46 +0200 (CEST)
+From: Marta Rybczynska <mrybczyn@kalray.eu>
+To: Christoph Hellwig <hch@lst.de>
+Message-ID: <516302383.30860772.1562736406606.JavaMail.zimbra@kalray.eu>
+In-Reply-To: <20190709212904.GB9636@lst.de>
+References: <1575872828.30576006.1562335512322.JavaMail.zimbra@kalray.eu>
+ <989987da-6711-0abc-785c-6574b3bb768c@mellanox.com>
+ <20190709212904.GB9636@lst.de>
+Subject: Re: [PATCH v2] nvme: fix multipath crash when ANA desactivated
 MIME-Version: 1.0
-In-Reply-To: <e7e4ec9a-b644-58a3-77b0-7828d73831ca@kernel.dk>
-Content-Language: en-US
+X-Originating-IP: [192.168.40.202]
+X-Mailer: Zimbra 8.8.12_GA_3794 (ZimbraWebClient - FF57 (Linux)/8.8.12_GA_3794)
+Thread-Topic: nvme: fix multipath crash when ANA desactivated
+Thread-Index: 3ZiudTJo+4Xoo4yxPm7HpynQ7U2Unw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190709_191512_142874_0A367B5A 
-X-CRM114-Status: GOOD (  13.65  )
-X-Spam-Score: 1.8 (+)
+X-CRM114-CacheID: sfid-20190709_222700_998523_7BF034CC 
+X-CRM114-Status: UNSURE (   6.16  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.8 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.221.66 listed in list.dnswl.org]
+ no trust [92.103.151.219 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.221.66 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 1.3 PDS_NO_HELO_DNS        High profile HELO but no A record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,30 +92,48 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, linux-nvme@lists.infradead.org
+Cc: Sagi Grimberg <sagi@grimberg.me>, Samuel Jones <sjones@kalray.eu>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>, axboe <axboe@fb.com>,
+ Jean-Baptiste Riaux <jbriaux@kalray.eu>, kbusch <kbusch@kernel.org>,
+ Max Gurtovoy <maxg@mellanox.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
->> On Tue, Jul 09, 2019 at 02:26:04PM -0700, Sagi Grimberg wrote:
->>>> Looks good enough to me, especially now that we need to explicitly opt
->>>> into polling queues.
->>>
->>> Cool, so unless we have any objections, lets let it sit in 5.3?
+
+----- On 9 Jul, 2019, at 23:29, Christoph Hellwig hch@lst.de wrote:
+
+> On Sat, Jul 06, 2019 at 01:06:44PM +0300, Max Gurtovoy wrote:
+>>> +	/* check if multipath is enabled and we have the capability */
+>>> +	if (!multipath)
+>>> +		return 0;
+>>> +	if (!ctrl->subsys || ((ctrl->subsys->cmic & (1 << 3)) != 0))
 >>
->> Well, the 5.3 merge window is over, I'm not sure how happy Jens would
->> be about this new feature.
+>> shouldn't it be:
+>>
+>> if (!ctrl->subsys || ((ctrl->subsys->cmic & (1 << 3)) == 0))
+>>
+>> or
+>>
+>> if (!ctrl->subsys || !(ctrl->subsys->cmic & (1 << 3)))
+>>
+>>
+>> Otherwise, you don't really do any initialization and return 0 in case you have
+>> the capability, right ?
 > 
-> I'm most likely doing a later pull this merge window, so if it's
-> important and not super involved, we can probably sneak it in without
-> too much fuss.
+> Yes.  FYI, my idea how to fix this would be something like:
 
-Its not very important, but also not involved... We can safely defer it
-to 5.4.
+Thanks both, error when changing the condition on my side. I submit the next
+version very soon.
 
-Thanks Jens.
+Christoph, why would you like to put the use_ana function in the header?
+It isn't used anywhere else outside of that file.
+
+Regards,
+Marta
 
 _______________________________________________
 Linux-nvme mailing list
