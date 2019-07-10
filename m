@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9C2E64F36
-	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 01:28:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F2BC64F37
+	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 01:29:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,62 +11,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=R6E2Cbt6gWQ87P4Z4YK4S0XIoQpc2djN5VyDVd1MFCM=; b=Mcl6ULA/ExPv/OyESD8p3YoNXO
-	420n5twP/mroTEdngtPAOw2tlSdCnK9L7EY5SQgWAR7cjIPw7AExAkCCMRHTbckkJ0gtlzTepdJUN
-	4mHthW0l2WUPIufiMC8oyMaWvcyumHeV8Y1qLlovzRi+fUlFPU0DhMkYsgETOXhkxg8eTR/HwH/tq
-	PJOMQmVmvwBkLaE+RI98aD4qMGEwfd5q3rJqPQj2OAgzoSv+tNdAN4ho2O/Z11BHca/NcETWYKge8
-	BV0/SSRa5/W1FJdRdkwQEEEhS93HK7ZqXiXXNOzIDuoEqpTfLIsgpZBYohFZbmI7lKvfDh5B/1XFB
-	iEMJMUsw==;
+	bh=abezltp0P/lRK83343lePk3/UGAF2eKr+vYYqVA5dYs=; b=Bho6ejV1LDb8xMNqjPX9l0wV3b
+	oaV9dn+ipU3zUST7D9J9Q1de/JjrXEDQwIdjrHq2FIPYWZstFr+HA8XisgquouaZS2pk+gevQhh6Z
+	st8wVktx3LusQDZLWwW4m2Ele7FPcmoG35udQKjw16U30Bo4YIMGY9Qa17x+ji7kEUInFlVAzq9Gx
+	dSkVNdW14WiU16ZOtKjmMSo6qC+mngdnlNvcaD5T67S4UuHLkr/WcbsUFz465y6yKJPg9cgGI4AkX
+	z2N2neJB4xEkEIdB9c8jPtjrudN3dlTbnf6BsfoO8CFhY8vY/K0P3f1gixAV7KptC2/fGNS7YOrw/
+	5HiK8b4w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlM0u-0008RY-2F; Wed, 10 Jul 2019 23:28:40 +0000
+	id 1hlM16-0000BR-Sz; Wed, 10 Jul 2019 23:28:53 +0000
 Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hlM0B-00087z-DE
- for linux-nvme@lists.infradead.org; Wed, 10 Jul 2019 23:27:57 +0000
-Received: by mail-pg1-x544.google.com with SMTP id i8so1942008pgm.13
- for <linux-nvme@lists.infradead.org>; Wed, 10 Jul 2019 16:27:52 -0700 (PDT)
+ id 1hlM0B-000881-De
+ for linux-nvme@lists.infradead.org; Wed, 10 Jul 2019 23:27:58 +0000
+Received: by mail-pg1-x544.google.com with SMTP id z75so1963780pgz.5
+ for <linux-nvme@lists.infradead.org>; Wed, 10 Jul 2019 16:27:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=LVrEbZDbQDqh4/Ks47qYgsBJWlmfLM2uYJRcxLI5jSo=;
- b=DoYgyJYbQc1DqED6Q9K5FM4MsMuFrnvP2mb2z03KAiDyoy4O49dDlpSIBtt7f3FPvk
- X8J5aDr89zBpUPePV559tHxXqgrZ+2BIwtfXzR6x479BHoIFbo64XLmRWrCEiUbj80NP
- 2ribhAKep+X22kEc3OyF4uPWMbHPWN9E6ozXYRxWV3N1h9nq+R+a2e8R+5KZlZn9O/Tc
- eP8b41uRs/mpzbcJQw42QDYfGmUIg3ZliKPeRzIT/ncxuRC8Q/GJmT4UyIRlBu4ixK55
- SoeIE2GdRrtnNVZeRVwA3/G33iytdCl6MVnpUEYgMu9g9QURkt2kYpj2w0aVXCgxf9oP
- SrfA==
+ bh=wIe+WQ8kGPoqgI/lUBcJ9T1JE9kpRHZXUVnOdVwLPZI=;
+ b=YvWRBp+scl3DD0K6Q9Aje9jXMLo9XZfkya7/8oMMv1wqWBLHBhoPElPifXqVzAerTu
+ haYd3tE8Nvy9eqohSzmA0DUObgQ8TihIBzTRZk7f0CBOt3PScCq7aOBJdU/LHiLchcl9
+ jbBcLqiukOj5YnsZgSToRDa7VGULddq+lzduYH895LqnC3wiy+VvSoRSZU5i8J+d55BF
+ Rpe4kPs0nw0QNHo6YedM24Iq69EfRklHKFTlgkWSUHtJr9NHdOK6On+4QQ9BGX6Rl9L0
+ WA06IiSWHJq3kmrcqwv9QMG/Rg1s3q8w18gndhFpz3YvOESVx1YS3boYgOU+HfAxFlTc
+ WH1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=LVrEbZDbQDqh4/Ks47qYgsBJWlmfLM2uYJRcxLI5jSo=;
- b=J3yOdywiZz9dWN4gdjIJqcdBxJJpIiX/pJC1WT+A6hY6/mMcJ54wiL1scoXqHT5tnH
- MAWOLkH1eCxjw0Y4HT/PlC+NLXjrEECG9DvfyDuJpkYw3w3+fG+2s9vJOLNgYsfmxEPR
- KjSgk+UOwTunPuPjtHdoh230yr3e8JZYq34VTgScZJuvVhz1A3c0JnAMuQokz7Nk3qqc
- 3FQo/ydtcusk7uW1dW4JUapTUGC4T9Xg6pwpHPL3e+d2Ai6SpmH0fKXiDVwBs7wgkbxD
- QVWFBvXtS9Q1MovgV7l7CaaOSf1F5d5vfKw485ttc0QCJTEaVNIV4sqm1hYMcIwd6/6I
- REPw==
-X-Gm-Message-State: APjAAAXj8ovEamE7FnOGdy/Xit/PpL8X8kex2wY45LeUqUAZb7T4plL6
- RYL7fdtuR7SWTHYq7IodJnTAZb1b
-X-Google-Smtp-Source: APXvYqz+Wc0fydM3hpJFTSIguwaBmOtn9GefZZ0RYrBBBcRfrH3zaTj5Di0/QXp96Fxicq0/LKvtLQ==
-X-Received: by 2002:a17:90a:21ac:: with SMTP id
- q41mr1069209pjc.31.1562801271921; 
- Wed, 10 Jul 2019 16:27:51 -0700 (PDT)
+ bh=wIe+WQ8kGPoqgI/lUBcJ9T1JE9kpRHZXUVnOdVwLPZI=;
+ b=ZYoTWjIQB7+m4NXWQSe2fpZPvmVdrnuNYSqQ5c/g5tnsReJxOmhip4A8xnHsjk8g6G
+ QcNpzmKO3Fg0ASHVb/7rC08oFuW6vIFOS/jM6fx4dZ+T8FDRXk4VfxA+e84uTsY+os96
+ SnDcmO60TcA4e4ECUBtDoGvDPRYj6hRAu6znsPsF/xQgWevGjhx1umtWet/seeffbeIm
+ X1YYrsJ5ZX9Cpwfn5fD80dbHOx6OxFU1QBekogTwY22bXJFpztUteZ6aPl7FGhU9c5H0
+ BByverwu4wuz6L6/AC3i9qyyFbyYx/UA2/5NYZeUMzvgkC39BGx+5mPOkKiLIcE2oYl6
+ SZMg==
+X-Gm-Message-State: APjAAAU4jO0wgKgvvjmM57rXJ/0AN61zy4ANIBO6klxETZkMB8EsaoGq
+ Wmq2vRVjW27q7XGu5rNNX33Q5WsD
+X-Google-Smtp-Source: APXvYqxSDeRG/I9cGRLeQL7mpHqpHziGjLIpo5mmzg3C86IyXoKQcPrnepUBea1oOEsUIsKPyMm6IA==
+X-Received: by 2002:a63:9a41:: with SMTP id e1mr933860pgo.210.1562801272943;
+ Wed, 10 Jul 2019 16:27:52 -0700 (PDT)
 Received: from pallmd1.broadcom.com ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id n140sm3305478pfd.132.2019.07.10.16.27.50
+ by smtp.gmail.com with ESMTPSA id n140sm3305478pfd.132.2019.07.10.16.27.51
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 10 Jul 2019 16:27:51 -0700 (PDT)
+ Wed, 10 Jul 2019 16:27:52 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH rfc 1/6] nvme-cli: ignore arguments that pass in "none"
-Date: Wed, 10 Jul 2019 16:27:35 -0700
-Message-Id: <20190710232740.26734-2-jsmart2021@gmail.com>
+Subject: [PATCH rfc 2/6] nvme-cli: support persistent connections to a
+ discovery controller
+Date: Wed, 10 Jul 2019 16:27:36 -0700
+Message-Id: <20190710232740.26734-3-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.13.7
 In-Reply-To: <20190710232740.26734-1-jsmart2021@gmail.com>
 References: <20190710232740.26734-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190710_162755_462046_1C820D67 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20190710_162755_474046_3CAC3390 
+X-CRM114-Status: GOOD (  15.34  )
 X-Spam-Score: 1.3 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (1.3 points)
@@ -100,77 +100,102 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: James Smart <jsmart2021@gmail.com>, Sagi Grimberg <sagi@grimberg.me>
+Cc: Sagi Grimberg <sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-As we want to support discovery uevents over different
-transports, we want to allow the kernel to provide missing
-information in the form of none and have nvme-cli properly
-ignore it.
+From: Sagi Grimberg <sagi@grimberg.me>
 
-One example is the host_traddr. If it is not set (which means
-that the default route determined the host address) we will
-want to do the same for newly discovered controllers.
-
-So allow users to pass 'none' arguments as well.
+Simply don't destroy the discovery controller after getting the
+log pages. Note that persistent connection to a discovery subsystem
+require to pass in a non-zero kato value, so if not provided we
+simply use a default of 30 seconds kato.
 
 Example:
-  nvme connect-all ... --hostnqn=none --hostid=none --host_traddr=none
+  nvme connect-all ... --persistent
 
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
-Signed-off-by: James Smart <jsmart2021@gmail.com>
+Reviewed-by: James Smart <jsmart2021@gmail.com>
 Reviewed-by: Hannes Reinecke <hare@suse.com>
+Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 
 ---
-Patch originated from Sagi in an RFC
-Fixed typo in Sagi's patch on cfg.hostid
+resolved merge error
 ---
- fabrics.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ fabrics.c | 15 ++++++++++++---
+ fabrics.h |  2 ++
+ 2 files changed, 14 insertions(+), 3 deletions(-)
 
 diff --git a/fabrics.c b/fabrics.c
-index 573a6ef..cc91d00 100644
+index cc91d00..c4bbe2c 100644
 --- a/fabrics.c
 +++ b/fabrics.c
-@@ -565,7 +565,7 @@ add_argument(char **argstr, int *max_len, char *arg_str, char *arg)
- {
- 	int len;
+@@ -65,6 +65,7 @@ static struct config {
+ 	int  disable_sqflow;
+ 	int  hdr_digest;
+ 	int  data_digest;
++	bool persistent;
+ } cfg = { NULL };
  
--	if (arg) {
-+	if (arg && strcmp(arg, "none")) {
- 		len = snprintf(*argstr, *max_len, ",%s=%s", arg_str, arg);
- 		if (len < 0)
- 			return -EINVAL;
-@@ -658,14 +658,14 @@ retry:
- 		return -EINVAL;
- 	p += len;
+ #define BUF_SIZE		4096
+@@ -858,9 +859,11 @@ static int do_discover(char *argstr, bool connect)
+ 		return -errno;
+ 	ret = nvmf_get_log_page_discovery(dev_name, &log, &numrec);
+ 	free(dev_name);
+-	err = remove_ctrl(instance);
+-	if (err)
+-		return err;
++	if (!cfg.persistent) {
++		err = remove_ctrl(instance);
++		if (err)
++			return err;
++	}
  
--	if (cfg.hostnqn) {
-+	if (cfg.hostnqn && strcmp(cfg.hostnqn, "none")) {
- 		len = sprintf(p, ",hostnqn=%s", cfg.hostnqn);
- 		if (len < 0)
- 			return -EINVAL;
- 		p += len;
- 	}
+ 	switch (ret) {
+ 	case DISC_OK:
+@@ -936,6 +939,9 @@ static int discover_from_conf_file(const char *desc, char *argstr,
+ 		if (err)
+ 			continue;
  
--	if (cfg.hostid) {
-+	if (cfg.hostid && strcmp(cfg.hostid, "none")) {
- 		len = sprintf(p, ",hostid=%s", cfg.hostid);
- 		if (len < 0)
- 			return -EINVAL;
-@@ -700,7 +700,7 @@ retry:
- 		p += len;
- 	}
++		if (cfg.persistent && !cfg.keep_alive_tmo)
++			cfg.keep_alive_tmo = NVMF_DEF_DISC_TMO;
++
+ 		err = build_options(argstr, BUF_SIZE);
+ 		if (err) {
+ 			ret = err;
+@@ -978,6 +984,7 @@ int discover(const char *desc, int argc, char **argv, bool connect)
+ 		{"nr-write-queues", 'W', "LIST", CFG_INT, &cfg.nr_write_queues,    required_argument, "number of write queues to use (default 0)" },
+ 		{"nr-poll-queues",  'P', "LIST", CFG_INT, &cfg.nr_poll_queues,    required_argument, "number of poll queues to use (default 0)" },
+ 		{"queue-size",      'Q', "LIST", CFG_INT, &cfg.queue_size,      required_argument, "number of io queue elements to use (default 128)" },
++		{"persistent",  'p', "LIST", CFG_NONE, &cfg.persistent,  no_argument, "persistent discovery connection" },
+ 		{NULL},
+ 	};
  
--	if (cfg.host_traddr) {
-+	if (cfg.host_traddr && strcmp(cfg.host_traddr, "none")) {
- 		len = sprintf(p, ",host_traddr=%s", cfg.host_traddr);
- 		if (len < 0)
- 			return -EINVAL;
+@@ -992,6 +999,8 @@ int discover(const char *desc, int argc, char **argv, bool connect)
+ 		return discover_from_conf_file(desc, argstr,
+ 				command_line_options, connect);
+ 	} else {
++		if (cfg.persistent && !cfg.keep_alive_tmo)
++			cfg.keep_alive_tmo = NVMF_DEF_DISC_TMO;
+ 		ret = build_options(argstr, BUF_SIZE);
+ 		if (ret)
+ 			return ret;
+diff --git a/fabrics.h b/fabrics.h
+index 988f3ef..7c1664b 100644
+--- a/fabrics.h
++++ b/fabrics.h
+@@ -1,6 +1,8 @@
+ #ifndef _DISCOVER_H
+ #define _DISCOVER_H
+ 
++#define NVMF_DEF_DISC_TMO	30
++
+ extern int discover(const char *desc, int argc, char **argv, bool connect);
+ extern int connect(const char *desc, int argc, char **argv);
+ extern int disconnect(const char *desc, int argc, char **argv);
 -- 
 2.13.7
 
