@@ -2,91 +2,72 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B142264827
-	for <lists+linux-nvme@lfdr.de>; Wed, 10 Jul 2019 16:21:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C42D1649D9
+	for <lists+linux-nvme@lfdr.de>; Wed, 10 Jul 2019 17:40:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j/0wKmu1V0ulvhwTgDaZ8CdZZGY+jC4NfKw3HR3h0xg=; b=I1U43NMZgft7Xr
-	Y1XH2h2RhwCepY5ctA6QqvnKUIHu7doSfNsHieHmlq9ubLB5aE5rRvreXFOOmj+m4Pnx9gwfWlpwA
-	4McEozpAWE1UsRuvwcO6Yj6zFApuXhW5vzFMUib/RBsbpsPzQaIDXG1fNSlP9n9E9QhF+V5pW0pAG
-	IYuSA+fVHCtY1OmEkAlG3NDXlHQVyUSC+eb+5Yq2vGg0+cSCBSWJ5lsZA/y/IZDc+DI9dvi15YAm+
-	2uuvrNsoY12N8QgGXu4m5w26PIJdQXRCPuTWTTi339nB4GNm8Ykmofp0+YyBqySiEXLMV8b0L9LtP
-	HqdIbnTGlFZibQGArtrA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:In-Reply-To:References:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=AHou3czEgsltYCaKBKdBoEyVIYiJxYe4uKC9i9m7bNg=; b=Qa4Uqwksoj6ufyZi4ds0n3v8G
+	mxfaCJI8jOzIltjKsXOJz3IqdDIAuLvLdGR3qOLnchSZIrK9rJdGYdEuorn8h5Z/W29Fg9OfLpPtn
+	i7HF+ZMpVGZhJRyBXtwy/LKkvWoBgWMZYJHocgIWnnu9/UbxMoj7JSbMUpwxaWm5gaRA9YLFHTnP8
+	bso3w+wn8Gr1W7wncr/2dbz8jux04LNXVAI6H8Px85cWOByh/QfjqWBwfc140UsPhBq/ACJKDALjQ
+	9hEDoXwLuY9qtfwhpJInJn9Jaj8+1uXXSKh6KqpL6ZvuNBv7lfWiUEJHovmS+xhZFYHD3kyL5dYKe
+	YXSUDv6/A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlDSq-0004Df-II; Wed, 10 Jul 2019 14:20:56 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1hlEhi-00017c-7t; Wed, 10 Jul 2019 15:40:22 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hlDSe-0004Ci-5o
- for linux-nvme@lists.infradead.org; Wed, 10 Jul 2019 14:20:45 +0000
-Received: by mail-wm1-x344.google.com with SMTP id g67so2478397wme.1
- for <linux-nvme@lists.infradead.org>; Wed, 10 Jul 2019 07:20:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=bZKPVzLfGMPRTUT4p8/bnTDMgIbx3MafroMWGt5fKDA=;
- b=dOkgQTfNx/4nWmpyTmtMTGCATQwlvrU/n8ezVy4TbxzNl6S2NoHDcVJmyNy3QfpBQD
- 4DvIPV1vn+d9WhLuk0CdJWEN3YUHP4Nu1OYA7oSq1WsdMu4UZXVL4L7NSXT9FjtBLRKc
- qHscrb0hRJf9ErP3KIB3YWR+JoTH3TOVaKINPBvOpTJlYZPt32or9OS+bPirNxozrRjm
- BkMWI4qtnZzDCbaAxojGQ266feTHb5uvg4oqRPqZfNlWKkDQOnLCQuBOYX9vVWnHEA6t
- LZebWar2yYAf7/WHiQCtHli/I0J5+zRkyf1WYf6RcOt9y/CkZxAtzQqKlAigaMUU47jh
- 0biA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=bZKPVzLfGMPRTUT4p8/bnTDMgIbx3MafroMWGt5fKDA=;
- b=houfvXvfcQbYEwpVF62ttZ54HTSOo8GSsjM46TMaAzKerB6vVh5x7TFK+Ngp1JAOiL
- gqUf3rMMC8wdatyOOB4geE2XAMErGUEd+QJ5R8tTx07FJSE72oaIkumq1t8a6u5P0VAA
- TFcEoi6SMak9RWQFDRKlJlieUcsDIZShEgG4qsZk2islxmUhm5QA8m6LLR6cZ61aP7A1
- kAfSTv5Nlj/VQjLKyX9ugopdbPCa9FHWkgIU/mD66aoHFKQXhxRfO60QmsmvuGufBj99
- wk0OGmxnYgDc9BlCh9Hu+syqzXYfCU0IZxIED6EWmGP0nnLxA3IKDn3IUI/ViNE9psdt
- vyDQ==
-X-Gm-Message-State: APjAAAXAAcjITjHMjtrPcJdj/6KdBhzgIo/V7wFo7nznVOjIUETrmdqG
- uyPmT81ZiHIULo/oVqUa+WaLu49aY1r5p5NR4tN+wqsbnJU=
-X-Google-Smtp-Source: APXvYqwrU0QFp19fXd7eOjSX/s5C7ayWL4rJyb3/DBjg8l5cX7XnZnMzEYPDAYyu+Faz+tw6vuinMMxapJsyPGLcLe0=
-X-Received: by 2002:a7b:c7c2:: with SMTP id z2mr5318834wmk.147.1562768441982; 
- Wed, 10 Jul 2019 07:20:41 -0700 (PDT)
+ id 1hlEhX-00016n-5h
+ for linux-nvme@lists.infradead.org; Wed, 10 Jul 2019 15:40:12 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 10 Jul 2019 08:40:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.63,475,1557212400"; 
+ d="p7s'?scan'208";a="364966460"
+Received: from orsmsx108.amr.corp.intel.com ([10.22.240.6])
+ by fmsmga006.fm.intel.com with ESMTP; 10 Jul 2019 08:40:08 -0700
+Received: from orsmsx101.amr.corp.intel.com ([169.254.8.157]) by
+ ORSMSX108.amr.corp.intel.com ([169.254.2.65]) with mapi id 14.03.0439.000;
+ Wed, 10 Jul 2019 08:40:07 -0700
+From: "Derrick, Jonathan" <jonathan.derrick@intel.com>
+To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ "sagi@grimberg.me" <sagi@grimberg.me>
+Subject: Re: Should hot removed devices close open namespace bd references?
+Thread-Topic: Should hot removed devices close open namespace bd references?
+Thread-Index: AQHVNbvqtlB3EQuFOkGBXTU7sMclWabDLjuAgAAsJACAADmrAIAA4VSA
+Date: Wed, 10 Jul 2019 15:40:07 +0000
+Message-ID: <1d2ca793b6836b1af71117c5bb7295654e29a29d.camel@intel.com>
+References: <d7027ad47e28339f13eb2d7f1bff4c7749da1160.camel@intel.com>
+ <32a2e339-b948-43fe-72a3-77eb2e626c63@grimberg.me>
+ <4eddc7d98f49abf4255c31fbe4412ce9e3877c06.camel@intel.com>
+ <ed33a95f-1202-a5aa-c0ec-c91a8810a082@grimberg.me>
+In-Reply-To: <ed33a95f-1202-a5aa-c0ec-c91a8810a082@grimberg.me>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.232.115.162]
 MIME-Version: 1.0
-References: <cover.1561385989.git.zhangweiping@didiglobal.com>
- <6e3b0f511a291dd0ce570a6cc5393e10d4509d0e.1561385989.git.zhangweiping@didiglobal.com>
- <20190627103719.GC4421@minwooim-desktop> <20190627110342.GA13612@lst.de>
- <CAA70yB5uve6x-t56u7RcM8=JNSXh644uErC5z4m5h2C1rkSuvA@mail.gmail.com>
-In-Reply-To: <CAA70yB5uve6x-t56u7RcM8=JNSXh644uErC5z4m5h2C1rkSuvA@mail.gmail.com>
-From: Weiping Zhang <zwp10758@gmail.com>
-Date: Wed, 10 Jul 2019 22:20:34 +0800
-Message-ID: <CAA70yB7-mLguBM=RxHeGzpDrrvnvdOaK3A32k4bdFc3uOvKaiQ@mail.gmail.com>
-Subject: Re: [PATCH v3 5/5] nvme: add support weighted round robin queue
-To: Christoph Hellwig <hch@lst.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190710_072044_253463_201A3256 
-X-CRM114-Status: GOOD (  13.45  )
-X-Spam-Score: 1.3 (+)
+X-CRM114-CacheID: sfid-20190710_084011_235224_849FF636 
+X-CRM114-Status: GOOD (  18.44  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.3 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:344 listed in]
- [list.dnswl.org]
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (zwp10758[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (zwp10758[at]gmail.com)
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 1.3 PDS_NO_HELO_DNS        High profile HELO but no A record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [192.55.52.120 listed in list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,29 +79,140 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: keith.busch@intel.com, linux-block@vger.kernel.org,
- Minwoo Im <minwoo.im.dev@gmail.com>, sagi@grimberg.me,
- linux-nvme@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7102420753239417629=="
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-V2VpcGluZyBaaGFuZyA8endwMTA3NThAZ21haWwuY29tPiDkuo4yMDE55bm0NuaciDI45pel5ZGo
-5LqUIOS4i+WNiDExOjU35YaZ6YGT77yaCj4KPiBDaHJpc3RvcGggSGVsbHdpZyA8aGNoQGxzdC5k
-ZT4g5LqOMjAxOeW5tDbmnIgyN+aXpeWRqOWbmyDkuIvljYg3OjA25YaZ6YGT77yaCj4gPgo+ID4g
-T24gVGh1LCBKdW4gMjcsIDIwMTkgYXQgMDc6Mzc6MTlQTSArMDkwMCwgTWlud29vIEltIHdyb3Rl
-Ogo+ID4gPiBIaSwgTWFpbnRhaW5lcnMKPiA+ID4KPiA+ID4gV291bGQgeW91IGd1eXMgcGxlYXNl
-IGdpdmUgc29tZSB0aG91Z2h0cyBhYm91dCB0aGlzIHBhdGNoPyAgSSBsaWtlIHRoaXMKPiA+ID4g
-ZmVhdHVyZSBXUlIgYWRkaXRpb24gdG8gdGhlIGRyaXZlciBzbyBJIHJlYWxseSB3YW50IHRvIGhl
-YXIgc29tZXRoaW5nCj4gPiA+IGZyb20geW91IGd1eXMuCj4gPgo+ID4gV2UgYXJlIGF0IHRoZSBl
-bmQgb2YgdGhlIG1lcmdlIHdpbmRvdyB3aXRoIHRvbnMgb2YgdGhpbmdzIHRvIHNvcnQgb3V0Lgo+
-ID4gQSBnaWFudCBmZWF0dXJlIHNlcmllcyB3aXRoIGEgbG90IG9mIGltcGFjdCBpcyBub3QgYXQg
-dGhlIHRvcCBvZiB0aGUKPiA+IHByaW9yaXR5IGxpc3QgcmlnaHQgbm93Lgo+Cj4gSGkgQ2hyaXN0
-b3BoLAo+Cj4gVGhlcmUgYXJlIHNvbWUgZmVlZGJhY2sgaW4gVjMsIEkgcmVhbGx5IHdhbnQgdG8g
-Z2V0IHNvbWUgbW9yZSBmZWVkYmFjayBmcm9tIHlvdQo+IGFuZCBvdGhlciBwZW9wbGUsIGF0IHRo
-YXQgdGltZSBJIHBvc3QgVjQuCj4KPiBTbyBwbGVhc2UgZ2l2ZSBzb21lIGNvbW1lbnRzIGZvciBW
-MyBhdCB5b3VyIGNvbnZlbmllbmNlIGFmdGVyIHRoaXMgbWVyZ2Ugd2luZG93Lgo+CkhpIENocmlz
-dG9waCwKClBpbmcKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+--===============7102420753239417629==
+Content-Language: en-US
+Content-Type: multipart/signed; micalg=sha-1;
+	protocol="application/x-pkcs7-signature"; boundary="=-DpiL2/roxlTRWKtznOyM"
+
+--=-DpiL2/roxlTRWKtznOyM
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, 2019-07-09 at 19:13 -0700, Sagi Grimberg wrote:
+> > > Its the controller that is not released (as the open ns handle holds
+> > > a reference to it). But what is the old controller state? the code
+> > > is supposed to allow this check if the old controller is in
+> > > DELETING/DEAD.
+> > The state is 6 (DEAD). I added some sysfs code to show the controller
+> > state:
+> >=20
+>=20
+> I think I understand the problem, can you try with:
+> --
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index e28717d11f9a..04d5ce1a42c1 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -2419,8 +2419,8 @@ static bool nvme_validate_cntlid(struct=20
+> nvme_subsystem *subsys,
+>          lockdep_assert_held(&nvme_subsystems_lock);
+>=20
+>          list_for_each_entry(tmp, &subsys->ctrls, subsys_entry) {
+> -               if (ctrl->state =3D=3D NVME_CTRL_DELETING ||
+> -                   ctrl->state =3D=3D NVME_CTRL_DEAD)
+> +               if (tmp->state =3D=3D NVME_CTRL_DELETING ||
+> +                   tmp->state =3D=3D NVME_CTRL_DEAD)
+>                          continue;
+>=20
+>                  if (tmp->cntlid =3D=3D ctrl->cntlid) {
+> --
+
+Thanks Sagi
+
+This does resolve the issue and restore the previous behavior.
+The new controller and namespace instance get named nvmeN and nvmeMn2
+(because it adds to the now-stale subsystem and increments the
+instance)
+
+It might be nice to see if the instance could somehow be released on
+deleting/dead, otherwise this behavior seems fine.
+
+
+You can give it my tested-by
+Tested-by: Jon Derrick <jonathan.derrick@intel.com>
+
+--=-DpiL2/roxlTRWKtznOyM
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+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
+PNauajAtxgRKfqfSMb+IcL/VXiPtVZOxVq+CTZeDJkaEmn/79vg8OYxpR+YhFF+tGlKf/Zc4id1P
+AgMBAAGjggI3MIICMzAdBgNVHQ4EFgQU4oawcWXM1cPGdwGcIszDfjORVZAwHwYDVR0jBBgwFoAU
+HmkqtNwo/kcYTiELP7ysES/wmPUwZQYDVR0fBF4wXDBaoFigVoZUaHR0cDovL3d3dy5pbnRlbC5j
+b20vcmVwb3NpdG9yeS9DUkwvSW50ZWwlMjBFeHRlcm5hbCUyMEJhc2ljJTIwSXNzdWluZyUyMENB
+JTIwNEEuY3JsMIGfBggrBgEFBQcBAQSBkjCBjzBpBggrBgEFBQcwAoZdaHR0cDovL3d3dy5pbnRl
+bC5jb20vcmVwb3NpdG9yeS9jZXJ0aWZpY2F0ZXMvSW50ZWwlMjBFeHRlcm5hbCUyMEJhc2ljJTIw
+SXNzdWluZyUyMENBJTIwNEEuY3J0MCIGCCsGAQUFBzABhhZodHRwOi8vb2NzcC5pbnRlbC5jb20v
+MAsGA1UdDwQEAwIHgDA8BgkrBgEEAYI3FQcELzAtBiUrBgEEAYI3FQiGw4x1hJnlUYP9gSiFjp9T
+gpHACWeB3r05lfBDAgFkAgEJMB8GA1UdJQQYMBYGCCsGAQUFBwMEBgorBgEEAYI3CgMMMCkGCSsG
+AQQBgjcVCgQcMBowCgYIKwYBBQUHAwQwDAYKKwYBBAGCNwoDDDBRBgNVHREESjBIoCoGCisGAQQB
+gjcUAgOgHAwaam9uYXRoYW4uZGVycmlja0BpbnRlbC5jb22BGmpvbmF0aGFuLmRlcnJpY2tAaW50
+ZWwuY29tMA0GCSqGSIb3DQEBBQUAA4IBAQBxGkHe05DNpYel4b9WbbyQqD1G6y6YA6C93TjKULZi
+p8+gO1LL096ixD44+frVm3jtXMikoadRHQJmBJdzsCywNE1KgtrYF0k4zRWr7a28nyfGgQe4UHHD
+7ARyZFeGd7AKSQ1y4/LU57I2Aw2HKx9/PXavv1JXjjO2/bqTfnZDJTQmOQ0nvlO3/gvbbABxZHqz
+NtfHZsQWS7s+Elk2xGUQ0Po2pMCQoaPo9R96mm+84UP9q3OvSqMoaZwfzoUeAx2wGJYl0h3S+ABr
+CPVfCgq9qnmVCn5DyHWE3V/BRjJCoILLBLxAxnmSdH4pF6wJ6pYRLEw9qoyNhpzGUIJU/Lk1MYIC
+FzCCAhMCAQEwgZAweTELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRQwEgYDVQQHEwtTYW50YSBD
+bGFyYTEaMBgGA1UEChMRSW50ZWwgQ29ycG9yYXRpb24xKzApBgNVBAMTIkludGVsIEV4dGVybmFs
+IEJhc2ljIElzc3VpbmcgQ0EgNEECEzMAAMamAkocC+WQNPgAAAAAxqYwCQYFKw4DAhoFAKBdMBgG
+CSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE5MDcxMDE1NDAwNVowIwYJ
+KoZIhvcNAQkEMRYEFNESaCfaRLiDcctgxmk1jUJHTeIfMA0GCSqGSIb3DQEBAQUABIIBAC1N0gxC
+roGr+quyjltzHBer08DdO+i2FzVdKMprb+V5OB7SPEvTRQXZ5L3xz1UxNBR4tohi3pq5Tw8175CP
+2OFdldOLlbSqFOXWm6Tpo7pDHepwRUTqWYdYZJQdP0GxmnJJrFLIOmWgTzVxCDoJlBSl5hs4eUKv
+QFSpATKPHzAkZqdCFYsLpJpH9JjogD0QZAbhT5KFwsBXSjirVaSTmI6P1D/1DmH2zgaaIrpGiWsm
+78+3aATxSaZlhipVBD7SLg6oJuZvS1rNt++mEfQpjjpOmcjjp8CEZHW0DmkuYtCb+fjBrlg9/FzT
+i+M8Cu0+vpaCmQ3j3RU9XxeQJ/H22RUAAAAAAAA=
+
+
+--=-DpiL2/roxlTRWKtznOyM--
+
+
+--===============7102420753239417629==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
+
+--===============7102420753239417629==--
+
