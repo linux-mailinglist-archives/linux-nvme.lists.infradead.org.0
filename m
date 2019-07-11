@@ -2,34 +2,95 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2969965514
-	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 13:21:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 95544656D8
+	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 14:28:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=L42jEOm4v+qIt96FuyYxsyMMvSzUg8UFjAo4fCE8C3U=; b=pEJqLPEomCidK4
-	Yy0Wa+Vr0xhTFhi08fCumRIOsiym4Jm3YHlQee37RqrRob+6tSA0qKrkW8wyYUrmjImlzAHH89fEG
-	zFBMd22Kqmw/95jguOZjU0kPJV2aL50aOHRbU2KlLgFTG/i/sbAlRzzktDvgy4kykpy/qx1FmclwV
-	LfQv7313zsfj9HRC6X4TAje52jLp8zZYjZDwUj1ynG8h23TiR1zLaHpeNlOAse5623hs2/bLmOYjt
-	pdPKIyvRC4MsWRoSD+FvufI5goOKoxqX6FyQWMixZHootQPKctmyOfqQBXu6jAiao+2TEsvWmY9JB
-	kyrCypOx+nzJIAFelqdQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ft+PR1rJoOZAjazqrNR4SfJptoloZtR10GX02yxJz2g=; b=rBeKzwRz5ipVbf
+	7yUzoHYGKothdxnLBNGmikkCN4fqhswkXSaf+SAikW7ZPyI6Ehq3ZaOHJIZjKeOMC7kB1jckCc3x8
+	UPwIHZsSzHcLXTjn1n24KH10KbLZNS9GASpGm4pbbKDL2mvrF4e8rwGh8AWKiX/7Szoa/8kLTFYLS
+	GuSIDLzJGTLnZ0L9SqOt5BsDUnsqI6IHA+v0ud48XJra/Tr5K6lP08yrF1oQexLoAZ/BEeHoIbwrY
+	0ZNIjJK1xf59EiR8axV9N0t+pLfSIRzAMS5ZVi4+m3b2FFuhHXrBx1uCPVIneKnADiKy2bmAIQwqg
+	dPNsk18J9nv4O4Cb/6iw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlX8A-0003mx-KC; Thu, 11 Jul 2019 11:20:54 +0000
-Received: from [38.98.37.141] (helo=localhost)
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hlX84-0003kQ-7c; Thu, 11 Jul 2019 11:20:51 +0000
-Date: Thu, 11 Jul 2019 13:20:31 +0200
-From: Christoph Hellwig <hch@infradead.org>
-To: Jens Axboe <axboe@kernel.dk>
-Subject: [GIT PULL] nvme updates for 5.3
-Message-ID: <20190711112031.GA5031@infradead.org>
+	id 1hlYBN-0006Ja-46; Thu, 11 Jul 2019 12:28:17 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hlYBG-0006JI-D4
+ for linux-nvme@lists.infradead.org; Thu, 11 Jul 2019 12:28:11 +0000
+Received: by mail-pg1-x544.google.com with SMTP id s27so2886076pgl.2
+ for <linux-nvme@lists.infradead.org>; Thu, 11 Jul 2019 05:28:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=rAAPm8g28fheGYabYreb5NfjxjA22kLl4avP6jGPGVo=;
+ b=FEr7dA0xXl6BawdKlyFS9DfKlgsub1LPfN8trrX5aUFNP82UjEg85gdjChBwRtEh9q
+ po377e4MKTbjlHUATeHvJP3OFn6yLEdbxdTyfM6FBo6ViaP/FB8gBA7D02XtJM66Cca/
+ 6xyfLerwSZr6P02RBEOyz7O2i9IhdUme0j0uioVtXqNu7YRpEq7Y5rOfHSC/4QMgkvuA
+ y4qEXVqV6jIQUm6KJ7EhajK+GWIyd7CYadvm/Dwle6pq7dRF8Iov/ujs3+yp5L0OIhKV
+ vVV7EDLPE8z38GmQzN8K8ITSjUyvtVhSe7dLdpRq+ZNRLdeAlO45uPs9GsCQpXMUjQPK
+ dAHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=rAAPm8g28fheGYabYreb5NfjxjA22kLl4avP6jGPGVo=;
+ b=B4SuzzhQ5JRjfQa0Y5Qyt+aMoCIYNcOtbS+lnEBRljW0jzJ2msN2sb7tPz/nFR+Uat
+ cmm/iBM5TFnKsFf1uxjeWOweXcSs2vf/761syQkSxiyB5qeZMW/TS7iQkCu6bCXxGwc/
+ d07BwZihjo4xYRQxUIwnnQJPY51iWPO5UnpMD75iJ0TE5byLU6f5eLUMGnpXg2j88r+A
+ ppmFbg2UqaETplBAi7lojQ2j/jskUVAB1i39V4JzcfIEBIf+cX/Omn9k3RDDUT9Fqw5h
+ uo5ajK9nfsflTwe4za2TQttDCDyJJ1TlHxqlQbqKxzNjfV6gxoYMqLm1rWFFd53dTTsJ
+ goPA==
+X-Gm-Message-State: APjAAAVlsjR8fNvsWe1Ykb/NGJsE5K8PqVkE0s4s47VVGfre1uVzofZA
+ 9K039kYfOxWbIXn9F3SvRpg=
+X-Google-Smtp-Source: APXvYqzAwDeDD7ZFmLfFkhMt7Yed5Xp4haYDz8LrWMTATIjF8NrJcL441qN4Q1ecSwaJQe/MQqFuXA==
+X-Received: by 2002:a17:90a:8c90:: with SMTP id
+ b16mr4518827pjo.133.1562848089222; 
+ Thu, 11 Jul 2019 05:28:09 -0700 (PDT)
+Received: from localhost ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id n140sm5572708pfd.132.2019.07.11.05.28.07
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 11 Jul 2019 05:28:08 -0700 (PDT)
+Date: Thu, 11 Jul 2019 21:28:06 +0900
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: James Smart <jsmart2021@gmail.com>
+Subject: Re: [PATCH rfc 1/6] nvme-cli: ignore arguments that pass in "none"
+Message-ID: <20190711122806.GA8398@minwoo-desktop>
+References: <20190710232740.26734-1-jsmart2021@gmail.com>
+ <20190710232740.26734-2-jsmart2021@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20190710232740.26734-2-jsmart2021@gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190711_052810_463389_0B2E6814 
+X-CRM114-Status: UNSURE (   5.77  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 1.1 (+)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (1.1 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 1.3 PDS_NO_HELO_DNS        High profile HELO but no A record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -41,87 +102,17 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, linux-block@vger.kernel.org,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
+Cc: Minwoo Im <minwoo.im.dev@gmail.com>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
-Lof of fixes all over the place, and two very minor features that
-were in the nvme tree by the end of the merge window, but hadn't made
-it out to Jens yet.
+Loos good to me.
 
-
-The following changes since commit c9b3007feca018d3f7061f5d5a14cb00766ffe9b:
-
-  blk-iolatency: fix STS_AGAIN handling (2019-07-05 15:14:00 -0600)
-
-are available in the Git repository at:
-
-  git://git.infradead.org/nvme.git nvme-5.3
-
-for you to fetch changes up to 420dc733f980246f2179e0144f9cedab9ad4a91e:
-
-  nvme: fix regression upon hot device removal and insertion (2019-07-10 09:36:16 -0700)
-
-----------------------------------------------------------------
-Alan Mikhak (2):
-      nvme-pci: don't create a read hctx mapping without read queues
-      nvme-pci: check for NULL return from pci_alloc_p2pmem()
-
-Bart Van Assche (3):
-      nvmet: export I/O characteristics attributes in Identify
-      nvme: add I/O characteristics fields
-      nvme: set physical block size and optimal I/O size
-
-Christoph Hellwig (2):
-      nvme-pci: don't fall back to a 32-bit DMA mask
-      nvme-pci: limit max_hw_sectors based on the DMA max mapping size
-
-Colin Ian King (1):
-      nvme-trace: fix spelling mistake "spcecific" -> "specific"
-
-Hannes Reinecke (3):
-      nvme-multipath: factor out a nvme_path_is_disabled helper
-      nvme-multipath: also check for a disabled path if there is a single sibling
-      nvme-multipath: do not select namespaces which are about to be removed
-
-James Smart (3):
-      nvme-fcloop: fix inconsistent lock state warnings
-      nvme-fcloop: resolve warnings on RCU usage and sleep warnings
-      nvme-fc: fix module unloads while lports still pending
-
-Mikhail Skorzhinskii (3):
-      nvmet: print a hint while rejecting NSID 0 or 0xffffffff
-      nvme-tcp: set the STABLE_WRITES flag when data digests are enabled
-      nvme-tcp: don't use sendpage for SLAB pages
-
-Sagi Grimberg (1):
-      nvme: fix regression upon hot device removal and insertion
-
-Tom Wu (1):
-      nvme-trace: add delete completion and submission queue to admin cmds tracer
-
-YueHaibing (1):
-      nvme-pci: make nvme_dev_pm_ops static
-
- drivers/nvme/host/core.c          | 43 ++++++++++++++++++++++++++++++---
- drivers/nvme/host/fc.c            | 51 ++++++++++++++++++++++++++++++++++++---
- drivers/nvme/host/multipath.c     | 18 ++++++++++----
- drivers/nvme/host/nvme.h          |  1 +
- drivers/nvme/host/pci.c           | 26 ++++++++++++--------
- drivers/nvme/host/tcp.c           |  9 ++++++-
- drivers/nvme/host/trace.c         | 28 ++++++++++++++++++++-
- drivers/nvme/target/admin-cmd.c   |  3 +++
- drivers/nvme/target/configfs.c    |  4 ++-
- drivers/nvme/target/fcloop.c      | 44 ++++++++++++++++-----------------
- drivers/nvme/target/io-cmd-bdev.c | 39 ++++++++++++++++++++++++++++++
- drivers/nvme/target/nvmet.h       |  8 ++++++
- drivers/nvme/target/trace.c       |  2 +-
- include/linux/nvme.h              | 12 ++++++---
- 14 files changed, 237 insertions(+), 51 deletions(-)
+Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
 
 _______________________________________________
 Linux-nvme mailing list
