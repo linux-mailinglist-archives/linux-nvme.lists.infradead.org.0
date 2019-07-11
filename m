@@ -2,81 +2,83 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86C3565E35
-	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 19:09:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B6EE265E3E
+	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 19:12:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nf2AOuvwDbJQSWavVdpWaLFfTlXUv9JNOG+LuErlKH8=; b=pseyIxaoOCbI0W
-	dfN8SFylAkEus3c1j4vipXOrnZPjhIpu/dou+k1dopjobHqXCkYx1mMHiKG6DeKDliSn4v61fEqjf
-	pGrnT4U/rEAgOSGoV7Y+zkEs/9ADVsZW6RJ67lWHiTS3DK4f4tmuRRJQJuw1xvhd2rbnVBTo2DFQ9
-	NfIbZtQYMfm2pt/FV77gmEnOm2cN9P2gOEYaWjYNd38tL5bTkNtuEpTieV6LWlz1mPhmyOoYJVFij
-	ZqAE0Ma/BnfWdzCui4TtY+KqKZM6+zrUkxa8YNyzMkwRnzJ3ZUFZ2cUgGF/4bbuxFb0ieljL4aDZz
-	Wx9+SJLFZ93zlLGHPivw==;
+	List-Owner; bh=MV2rj1w7g9XeRKLw2RUNFL0chaoxcu7u2MXMGPBIG2o=; b=QwAJfdVpOaCsex
+	4UTtVJxittfkWS0nPvDEpV7zuWQXhasBT/7qfZD15gd5C/L8qAw5dhbsYMwqd4Yrk5/X0H/j09o3G
+	gxacCxKtFBvr8U/TEhxk/XZaY1N8kcItN+Mv/JZtKjI+3kZ6QZtsnaWzmF5Qodkhw3vr+isFb+JL2
+	4yPFdhZ2WaIfRa0IgYMeikxrtxvKgveccmvQMTLYldLnEfJsumSvDigsaQuAvHWl45OTAp2Gy218B
+	w/r41EI0Y04DBTqmYHRgPjhfaBHtNWb3QmSewFJCpCHj9Cawlt0wzH1NnR2mvdvyC2j6Y3Li+2neu
+	AgGyHvWv6Yp0oUMKyeSA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlcZ6-0007V9-SY; Thu, 11 Jul 2019 17:09:05 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1hlcc2-0000hR-Uq; Thu, 11 Jul 2019 17:12:07 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hlcYx-0007UV-Hw
- for linux-nvme@lists.infradead.org; Thu, 11 Jul 2019 17:08:56 +0000
-Received: by mail-pf1-x441.google.com with SMTP id i189so3044369pfg.10
- for <linux-nvme@lists.infradead.org>; Thu, 11 Jul 2019 10:08:55 -0700 (PDT)
+ id 1hlcbu-0000h5-QB
+ for linux-nvme@lists.infradead.org; Thu, 11 Jul 2019 17:12:00 +0000
+Received: by mail-pg1-x542.google.com with SMTP id q4so3243991pgj.8
+ for <linux-nvme@lists.infradead.org>; Thu, 11 Jul 2019 10:11:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=MkCGXz+ORuF6OW7gQyDWTr8Og6/hQ6xbud/QWJpEXbg=;
- b=cOjlJlH0vCobJX8F0hsI0yjTm24Ow0vvdcw34/3RXLeIpQY+lnY+Ckyc2j4BcY3tX5
- S4n87giw3fCZRQut33dpEEmPVnmObhpolXZxIXc4RuBKNvFOBKIOb7wgfBiDfDELRpE9
- QA6CENHtMXzry7TFFRz9/9ouT2whIUQ8h7Sf4l9Zgg5DcK4R2zPRFMCJEKCVr1+9f7EU
- m500meobuha8UtleH4cY/ATR2UUZuJ9YVyOu0soLCTf4AZyoBg9EXdkTp8G6DQQVjYCV
- v59smb7N/x96XSNt15GxJERPC94/TYjtXd+bNDE97TZioTsLwgWPJwY6nDgUKEV6oweD
- bx/g==
+ bh=PdMQzZsJ/1NJ73BWgu9uZUzxX0mRsGpsZbs4XkJXhS4=;
+ b=V81vo3gdksCKuurAm5HihE2brNYpn5LUw17yclucuHcvsSrTgmwFVf11eMXt5q96Sh
+ ocG76sK/zjJ9ovtqV7WDoTIIh8q8jtODkE/gwUTIe2EcJ17kP0V3in6HduOthWnmQlkY
+ MnWB1DhUy3cVOyphMtdwlaUpjsCSiq4yz5HacyxpsnzmqsfHgGROyygkSTbISjpJ338o
+ 6kR8BcRmhwyAlN19P/CiqpqBc6Z4mrWKbuRpA6LHJv2/phZunBNutCPrdmPhcoFWDL/4
+ gd4mRMuW9Qt63Eo7rFEU+/FyucxygsU8UktAIVy+bnQNPnM24TG4k+zn+5RhCByAJUeQ
+ LY3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=MkCGXz+ORuF6OW7gQyDWTr8Og6/hQ6xbud/QWJpEXbg=;
- b=QWG4YGKrI5pqjWkQQjbwfbRmXAHI9JP6sfktETX5mHsWzsdZgMljKBuQ9l8vhI0CZf
- 0TVcYtzUzWAHDTIMpUWf1t1ZR8rM6VdB3UOVjHsVKNR7/ZOhJDXwPFN4FgsfxfGnYix+
- Qu6HImqLtSahEejMG84ocY97BP3jlSMvnctci63EqNAjKTxK9+ojOFKsgx43v+cKWKvA
- oNYNe9uRF58eQtvT9EmYz5ND/oza4rAXoXdekQcVdCwp4Y668N2VWTmV3jf/C6ViQq50
- AnTB+gpTf+Jryib3bbWqhxAZAADTG9LkimESSnOoSddH7fmucqxv83w9TTqnTEMgSAw1
- suwQ==
-X-Gm-Message-State: APjAAAW2DT0mSd2kAYGfqruSuZVv+mfInc13hhvSWSuLVb4PI/dG9bTz
- iUkEie8PwREb/zFwbYiSnJY=
-X-Google-Smtp-Source: APXvYqzKPKLv7u0OfK7QxUSBeuOq7HLx2VMVov3ODl2bbm+XiOcEXIUdn0MYjEpcD0bH1G6jBUcDKA==
-X-Received: by 2002:a17:90a:3ae8:: with SMTP id
- b95mr5911498pjc.68.1562864934559; 
- Thu, 11 Jul 2019 10:08:54 -0700 (PDT)
+ bh=PdMQzZsJ/1NJ73BWgu9uZUzxX0mRsGpsZbs4XkJXhS4=;
+ b=WCh0oWskIPyMZFtbXHZSX5czgE9OA9FwqCIZghuiRzg7klZxiTRJrtA/W4AGu5Vzoe
+ gi3uCSDkjBSeI/eZ/uUnIZRBG9yE4YRbdOvBt2qCHEizlB+6p7wVRniRkKCisbQ9ug7A
+ 5L9GYl0sjevz02LknwO/N9estQwlV/+HHsuiKgbfuzHzPA6EwGuD944qmzzaF+kPzKyg
+ cNSJo4fzv7/4StBlwXyeGq9yI14bWNtinUHRPY6ZGZd+iW3hZNPf+Cbl2pFwJjltibwX
+ ksKCJIxMn+Kb3MJgfIU0dD/EDLwB4G2SUVwgODx/oBSmIEhxUg0xk4B0p65PnTGj4+pF
+ MEyw==
+X-Gm-Message-State: APjAAAWIY+DKvb5f8KzdmA6f/qtuoCJ6itmKsulWspERvr0pi/0kYIRl
+ gh/3BCkjud23D/rOXRroHptn8LdLPU0=
+X-Google-Smtp-Source: APXvYqyQWsKs99jnW6KzyW3CiLZEdNG5TlFrQY7L/zy6pHUQCYTpR6AyxI6NjK21BWr7/rbjBkZ8/g==
+X-Received: by 2002:a63:2326:: with SMTP id j38mr5643203pgj.134.1562865116185; 
+ Thu, 11 Jul 2019 10:11:56 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id o24sm12804027pfp.135.2019.07.11.10.08.53
+ by smtp.gmail.com with ESMTPSA id x65sm6870137pfd.139.2019.07.11.10.11.54
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 11 Jul 2019 10:08:53 -0700 (PDT)
-Date: Fri, 12 Jul 2019 02:08:51 +0900
+ Thu, 11 Jul 2019 10:11:55 -0700 (PDT)
+Date: Fri, 12 Jul 2019 02:11:52 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH] nvme: tcp: depends on CRYPTO_HASH2 for nvme-tcp
-Message-ID: <20190711170851.GA17328@minwoo-desktop>
-References: <20190711151338.16810-1-minwoo.im.dev@gmail.com>
- <d67b7a73-0061-202c-457d-93bc4cd06122@grimberg.me>
+To: James Smart <jsmart2021@gmail.com>
+Subject: Re: [PATCH rfc 3/6] nvme-cli: allow discover to address discovery
+ controller by persistent name
+Message-ID: <20190711171152.GB17328@minwoo-desktop>
+References: <20190710232740.26734-1-jsmart2021@gmail.com>
+ <20190710232740.26734-4-jsmart2021@gmail.com>
+ <20190711124116.GC8398@minwoo-desktop>
+ <39f7417d-dd5c-8c81-a4d5-7b8a313deaab@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <d67b7a73-0061-202c-457d-93bc4cd06122@grimberg.me>
+In-Reply-To: <39f7417d-dd5c-8c81-a4d5-7b8a313deaab@gmail.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190711_100855_616690_B5A406F0 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20190711_101158_857122_34526ECB 
+X-CRM114-Status: GOOD (  24.42  )
 X-Spam-Score: 1.1 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (1.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -101,59 +103,99 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, Christoph Hellwig <hch@lst.de>,
+Cc: Minwoo Im <minwoo.im.dev@gmail.com>, Sagi Grimberg <sagi@grimberg.me>,
  linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi Sagi,
-
-Thanks for your review on this.
-
-On 19-07-11 09:05:28, Sagi Grimberg wrote:
-> Hi Minwoo,
-> 
-> > The tcp host module is now taking those APIs from crypto ahash:
-> > 	(1) crypto_ahash_final()
-> > 	(2) crypto_ahash_digest()
-> > 	(3) crypto_alloc_ahash()
+On 19-07-11 09:16:37, James Smart wrote:
+> On 7/11/2019 5:41 AM, Minwoo Im wrote:
+> > On 19-07-10 16:27:37, James Smart wrote:
+> > > To support discovery (connect/connect-all) to operate against a
+> > > persistent discovery controller, let the discovery controller to
+> > > be specified by its device node name rather than new connection
+> > > attributes.
+> > > 
+> > > Example:
+> > >    nvme connect-all ... --device=nvme5
+> > > 
+> > > Also centralize extraction of controller instance from the controller
+> > > name to a common helper.
+> > > 
+> > > Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+> > > Signed-off-by: James Smart <jsmart2021@gmail.com>
+> > > Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 > > 
-> > nvme-tcp should depends on CRYPTO_HASH2.
+> > Hi Sagi and James,
+> > 
+> > I think it might be too late review on this, but please have a look my
+> > comments below :)
 > 
-> It actually should depend on CRYPTO_CRC32C because
-> it needs CRC32C.
+> well,  it was posted as an RFC, so....
 
-Okay.  That looks right for this commit's goal..
+Yup, Thanks :)
 
 > > 
-> > Cc: Christoph Hellwig <hch@lst.de>
-> > Cc: Keith Busch <kbusch@kernel.org>
-> > Cc: Sagi Grimberg <sagi@grimberg.me>
-> > Cc: Jens Axboe <axboe@fb.com>
-> > Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
-> > ---
-> >   drivers/nvme/host/Kconfig | 1 +
-> >   1 file changed, 1 insertion(+)
+> > > +static int ctrl_instance(char *device)
+> > > +{
+> > > +	int ret, instance;
+> > > +
+> > > +	device = basename(device);
+> > > +	ret = sscanf(device, "nvme%d", &instance);
+> > > +	if (ret < 0)
+> > > +		return ret;
 > > 
-> > diff --git a/drivers/nvme/host/Kconfig b/drivers/nvme/host/Kconfig
-> > index ec43ac9199e2..711d3ea5143f 100644
-> > --- a/drivers/nvme/host/Kconfig
-> > +++ b/drivers/nvme/host/Kconfig
-> > @@ -63,6 +63,7 @@ config NVME_TCP
-> >   	tristate "NVM Express over Fabrics TCP host driver"
-> >   	depends on INET
-> >   	depends on BLK_DEV_NVME
-> > +	depends on CRYPTO_HASH2
+> > It's just nitpick, but could we just do like:
+> > 
+> > 	ret = sscanf(device, "nvme%d", &instance);
+> > 	if (ret < 0)
+> > 		return -errno;
 > 
-> Lets make it select instead.
+> I would think that what sscanf might report as a problem may not be
+> something understandable for someone using the cli. I'd like to replace
+> this with something like -EINVAL for an invalid argument rather than
+> ret/-errorno.
 
-Oh, That would be much easier to use them.  Will prepare updated patch
-soon.
+-EINVAL would be fine to me also.
 
-Thanks,
+> > 
+> > > +	if (!ret)
+> > > +		return -1;
+> > 
+> > Same here.  Can we please do:
+> > 
+> > 	if (!ret)
+> > 		return -EINVAL;
+> 
+> yep
+> 
+> 
+> > 
+> > 
+> > These two things are not from this commit, but if you don't like it to
+> > be involved in this scope of the commit, I think I can make it later, if
+> > you don't mind.
+> > 
+> > > +	return instance;
+> > > +}
+> > 
+> > I have a doubt here.  In case of multipath, if this function is given an
+> > argument like "nvme0n1", Is "0" really an instance of that controller?
+> > I think it could be an instance of the subsystem.  If so, can we just
+> > prevent the argstr as a namespace node?
+> > 
+> > Please correct me if I'm wrong here.
+> 
+> it should never be given an argument with the n? suffix. We're dealing with
+> controllers only. And multipath won't confuse that.  Perhaps we should
+> verify it ends at the controller name.
+
+Yeah.. It should not be given like that.  But I think it would be great
+if we can verify the given argument indicates a controller, not a
+namespace node in somewhere because people are sometimes get confused
+and may give some ns node here ;(
 
 _______________________________________________
 Linux-nvme mailing list
