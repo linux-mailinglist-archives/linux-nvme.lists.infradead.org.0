@@ -2,85 +2,82 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FE0065894
-	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 16:13:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E45D365A2F
+	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 17:14:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xLrC7l34rXInPEoyKSSGR/ROFJXxYaFDLmQhM/YrC8k=; b=QuxzM8X1rGwo9/
-	gIly4rO7/DWIWpJCqUxQhZqWgL7N297OMSub19jeCsNQIl5FLKIaNojYBYqty202E64Y9Yo/LvYS0
-	F1+LY+1+qm5O2HYDCUP7sifhOITcOFtlD2Uoi1e2JQwMOrDma6iFiaBuPbW/GilsX8q4UnrNB+/9T
-	jrvNObb8yay715SVcRoMNhke5rObtl2buyL5N0Y+MTKQcN8rjSx34PJjMIJolyL2XPw5asT0WkO1E
-	DwyGgDwNR8084mXYYzJZoS1ETW1W+8hGYTvhxG0UlM8zEvM5aHag3aZE9OvkLl5ZaXoRskXeXxH2L
-	rFFlQQuhNBDR4OnCR4DQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=Qt0ICDD83RC6pvkY3qqJJRdcwDGGyQc5yHgHufBu904=; b=b+6
+	NVuJ5FvYxQeZ4jqBQKbPObbTzNpMjXWNUNg9Zhfe/LExTYxnAwX6MSk7cVt8Bog2NhgxzvHwQtlE+
+	3wgun2yzkm0spA5/KfoGBpr4ymLMSbppe9QDLq7acMSXCAjB0dCFDFLUB9Wpg+rxfEK/lFJ6Vv1RF
+	gswe3Fvh9Kc9I5zqqPyTLtLHZ5uSEpsDeCjwb3wOf115lmHF7WfHe0Esxip3sPqR1sHOAOA/+Nunb
+	cUMeBky73ksdW644Fz/1KFW54YLQaa1Ed943B75janW2OsCnpqFN6y3nYaP5Gd1CzV75Byr4rKoie
+	QhVw9TNA1ECydFPxkQ1M4JAOPaFFcTQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlZpG-0001F9-Nw; Thu, 11 Jul 2019 14:13:35 +0000
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
+	id 1hlale-00014D-2b; Thu, 11 Jul 2019 15:13:54 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hlZp4-0001EM-6c
- for linux-nvme@lists.infradead.org; Thu, 11 Jul 2019 14:13:24 +0000
-Received: by mail-io1-xd44.google.com with SMTP id m24so12887733ioo.2
- for <linux-nvme@lists.infradead.org>; Thu, 11 Jul 2019 07:13:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel-dk.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=16Yz3BOasQd0d7r+jsj7ibx3CTf61ox/R+rnrtS0DFY=;
- b=y5H/caJCu1O9QNsZ2//okCjT4/T0R1Vhj5J+Go/Mm7utx4+xSzmkYSDeN1MzirZIOL
- 0Iej55gx4e846buButpi3ZPYrz4xNdkDHsmmNa8ivU4M/6Hg+GQdo4qwifoQuC8bv+hJ
- aIhKxcrZ/k15Z4SgUxoUcZB4c0UoSxJFZzIZjyGlsqI6wrOaHPhc4EfqJkHVb+ItxsCm
- 4HJQIWKLV7R+PxxorUbRsR9RWotjJrYM+WQpCvXmUfu/VIYScD/PBbJYs47gg9QT1egD
- q+mDA7f/5Np3rRT5WEr2a2lnttFmHwL/ykaJF6QWZ2LkdrhRwuuC08UPGITL6SnX0nyh
- h06g==
+ id 1hlalU-00013p-NP
+ for linux-nvme@lists.infradead.org; Thu, 11 Jul 2019 15:13:46 +0000
+Received: by mail-pg1-x541.google.com with SMTP id w10so3091092pgj.7
+ for <linux-nvme@lists.infradead.org>; Thu, 11 Jul 2019 08:13:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=aS0qxdwNj06g94smSG8hLo42CY84Oq4GaRRgXTXLldA=;
+ b=EgzgLshFqAotjooAJF3uxX9bcqWPpBKGOIBXBsdzKv5L1WMszkMFZpjK9igJE5WtUP
+ Sgxf9BTBE3ktgkYeLpvtK2YvJH8lwWhqlOcuaaoByyDwqGbuwVeLD77S1dMLtmYXlSSm
+ WEZ8MjX9i0xLNJwZpbttSuduU6Bc5pSlWasQNqg7Jh3cShk4BGeQq74LyB2O1FfnT9VV
+ dg8LF2odgq1v8uO5Rc2BgcN2LxjYgw+MXcD5L5duis760rQPkXcb53QmafYOKe2vlhOO
+ AVh1LjerpEH5PR4GyCg/iw812KDEYN1nAd+jOPgYWViZl1PDjZRBXk6NnfqkJ84t9T0/
+ dLhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=16Yz3BOasQd0d7r+jsj7ibx3CTf61ox/R+rnrtS0DFY=;
- b=ISKsSGcyP9KmadRenhN2XTx7Ej3eRALl3KT4nIlmNbwm520XftY8Jdb0yTKQOy2NW7
- h+vWOgVRcEl7oKuf79bpuiXyNU5qli2PjbpJLZIyV7so2RQ2CGW0EHdRcuYDAgteJHRv
- S9Ph+V1C4vtCj1/y1s7vKfxllUf+DQmIXEyHNbRzOBxCxEGyDoIP0uA53h814IVagM09
- KOLCR269Yf4jv7qP8LxQHAJ+z/RYB751iPVHaXK2jKqKXPTGOgqdjQXkcf4cvKnKO+fS
- GxYmI/eJplAgo7zPUWf6HTShLb+DFMsulksegH35XNPRuzpUw0pzKP1TMttdSCE56GpU
- 6F8g==
-X-Gm-Message-State: APjAAAVRxqg0Y7zWJxHbF0MeqH8rZwBLQtJcUTwbxluTvZp9T6hsXBlk
- n/VVr626dIGD5iEM707yuXTXQyjMqsc/Gw==
-X-Google-Smtp-Source: APXvYqy6T8wuuDVkyo1Evus0rMXuKhUfA9IFHzpodzDqmB4NGwZK3nFkJaSdkSURIW/VFWu5y7EfWw==
-X-Received: by 2002:a02:ce37:: with SMTP id v23mr4708810jar.2.1562854397332;
- Thu, 11 Jul 2019 07:13:17 -0700 (PDT)
-Received: from [192.168.1.158] ([65.144.74.34])
- by smtp.gmail.com with ESMTPSA id c17sm4321271ioo.82.2019.07.11.07.13.16
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 11 Jul 2019 07:13:16 -0700 (PDT)
-Subject: Re: [GIT PULL] nvme updates for 5.3
-To: Christoph Hellwig <hch@infradead.org>
-References: <20190711112031.GA5031@infradead.org>
-From: Jens Axboe <axboe@kernel.dk>
-Message-ID: <33e106b8-aa93-89bc-ea78-5571e8c11272@kernel.dk>
-Date: Thu, 11 Jul 2019 08:13:15 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
-MIME-Version: 1.0
-In-Reply-To: <20190711112031.GA5031@infradead.org>
-Content-Language: en-US
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=aS0qxdwNj06g94smSG8hLo42CY84Oq4GaRRgXTXLldA=;
+ b=opp71YkgtaUgmdAAFCMIpp6JtGeeR5Tgbckk4L64ATlucpxkd6fKzeRw1IxZ1Weekt
+ R1Mh+thrJZy23kpmRaCwGtzl9Kdcbz0Zo1g4OTQHwdczMXWb+qH+oVTFiR/OWU1Sa8yx
+ qmOwBTd44skFtdG6jtsUyWoBigMJOJhaW12UJ+Cmy2lwn0bBAxYIJ0q0Wq74RXLEjG8D
+ VX7g4UZfDmTRujAbcEpJzN3HazgjYq3KLNvzqxrFTtXZZ7GxyOijyXKNPphhb6QlHOMG
+ YodZCMc1YsaoO0d0RP1Bjr0/xt4mWUA8MTwJxIRbEzmDpAFnONAOPWOdKPqUhI87ryLa
+ gyAA==
+X-Gm-Message-State: APjAAAWQ0AvmeaTdJCePrMiksu8FYKIiTgcpt1DOgGujRP5LszlX0mXu
+ lyDvZxHdS2zV4qwbP+wP9MPu2bnIZps=
+X-Google-Smtp-Source: APXvYqw7+n+PyMTyUVuwW+uD0KBXX9r0uS+QBo2r27OFACmXCtFWdxsZItQIQqgrxjQUvERDRv0N+Q==
+X-Received: by 2002:a63:2a0f:: with SMTP id q15mr5068929pgq.163.1562858023592; 
+ Thu, 11 Jul 2019 08:13:43 -0700 (PDT)
+Received: from localhost.localdomain ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id l4sm5544576pff.50.2019.07.11.08.13.41
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 11 Jul 2019 08:13:42 -0700 (PDT)
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme: tcp: depends on CRYPTO_HASH2 for nvme-tcp
+Date: Fri, 12 Jul 2019 00:13:38 +0900
+Message-Id: <20190711151338.16810-1-minwoo.im.dev@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190711_071322_248415_04F09CFC 
-X-CRM114-Status: GOOD (  12.94  )
-X-Spam-Score: 1.3 (+)
+X-CRM114-CacheID: sfid-20190711_081344_786144_35BD8B14 
+X-CRM114-Status: GOOD (  11.76  )
+X-Spam-Score: 1.1 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (1.3 points)
+ Content analysis details:   (1.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d44 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -96,32 +93,45 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, linux-block@vger.kernel.org,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
+Cc: Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
+ Minwoo Im <minwoo.im.dev@gmail.com>, Christoph Hellwig <hch@lst.de>,
+ Sagi Grimberg <sagi@grimberg.me>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 7/11/19 5:20 AM, Christoph Hellwig wrote:
-> 
-> Lof of fixes all over the place, and two very minor features that
-> were in the nvme tree by the end of the merge window, but hadn't made
-> it out to Jens yet.
-> 
-> 
-> The following changes since commit c9b3007feca018d3f7061f5d5a14cb00766ffe9b:
-> 
->    blk-iolatency: fix STS_AGAIN handling (2019-07-05 15:14:00 -0600)
-> 
-> are available in the Git repository at:
-> 
->    git://git.infradead.org/nvme.git nvme-5.3
+The tcp host module is now taking those APIs from crypto ahash:
+	(1) crypto_ahash_final()
+	(2) crypto_ahash_digest()
+	(3) crypto_alloc_ahash()
 
-Pulled, thanks.
+nvme-tcp should depends on CRYPTO_HASH2.
 
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <kbusch@kernel.org>
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Cc: Jens Axboe <axboe@fb.com>
+Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+---
+ drivers/nvme/host/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/nvme/host/Kconfig b/drivers/nvme/host/Kconfig
+index ec43ac9199e2..711d3ea5143f 100644
+--- a/drivers/nvme/host/Kconfig
++++ b/drivers/nvme/host/Kconfig
+@@ -63,6 +63,7 @@ config NVME_TCP
+ 	tristate "NVM Express over Fabrics TCP host driver"
+ 	depends on INET
+ 	depends on BLK_DEV_NVME
++	depends on CRYPTO_HASH2
+ 	select NVME_FABRICS
+ 	help
+ 	  This provides support for the NVMe over Fabrics protocol using
 -- 
-Jens Axboe
+2.17.1
 
 
 _______________________________________________
