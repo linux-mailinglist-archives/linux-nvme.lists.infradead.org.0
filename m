@@ -2,111 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BEAF65B5F
-	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 18:19:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C879F65E26
+	for <lists+linux-nvme@lfdr.de>; Thu, 11 Jul 2019 19:05:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XsE9mcZN1RgjRLvVskMmC3GTenLGrJ5yKnW8PCVGIrY=; b=AI+1CnN2DDabBj
-	XFsk5Qbpd2o7URZImt7NSE37IcInLnuQAYOWm04nVT9xCeTO/1ZWNoTUDwBJvPiMm3JiAZ9ihDci+
-	VLV31AbkzKtDdj+1Sz7gzjDsEeqwllR+QwFeuFF+G1Bx/P0jtT6oUTI3cMgteF3EA8IoWDqFtDbgr
-	5C4bJ46yTrJSUulyRj5FQQsuUj6cnPAWQlSALk/nZJC2HU53mvc832czuJ0ad3dro4LE0t6QTwueV
-	RXvtlvbXn4i5bdZRkToJfNth9OoYmZgdJAtr6qpEnSUPAjewOGlsJku+B6gsmAwnIWj5TcMQ7bGWU
-	rSV9zrrym9K7412fE3kg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=WPgIfMtkz1XdNPLpGh6cAigg8/ro57goZtXb0AZxIM4=; b=MuC
+	KH27aQvJfNlEVm+FWvUEA6QHrd9LclIEyOj6jmhOgClJ8c+Xv/z61BLx/FTPzgPEfO0VRd9BtGPay
+	Drsx6N36obSPKRw09zX7OmfhIuTHEIkoJ8wvLcTG3aeEPrlrsbNhefYuhZ0Gjpw9MwtADmGZRRhlK
+	8J4IGlF2dY2rUeoW6qz7eA1m6buqlL5QKo/dBXNl0OwO53N2omAyqbsOHUzuI02YCq7Z9+8bw0ARt
+	4XXIm96WkD1pTiSHUt5uAVfb8xiQEhyHxSQqjcDQ4zp48Ofr/NtdEsQI0QRh6HMhXJAm8njZN5VEb
+	S4ZNcw3I9hLrxz6zWjUz19JvjKdfUWA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlbn4-0003Gj-N4; Thu, 11 Jul 2019 16:19:26 +0000
-Received: from mail-eopbgr40056.outbound.protection.outlook.com ([40.107.4.56]
- helo=EUR03-DB5-obe.outbound.protection.outlook.com)
+	id 1hlcVP-0006B1-Cb; Thu, 11 Jul 2019 17:05:15 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hlbmS-00031D-HM
- for linux-nvme@lists.infradead.org; Thu, 11 Jul 2019 16:18:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Zrs9gP1tD9ItrYMGihphFukQCo31jKf/OVD/GB+TPfULifepSGR3UGxsGLtUVjlglo/4ZAxMdtl6MFzxBltTyHDxxYB4CVeUl5v+4rgcdt/0l/1vktueFggAkOgwyh6izlkNC/K1adtVsMQUPHyqjSOAM4Echkeab3DC1wyY9rsUv+XKOC1/5v5hUojBAQsKjn0+mCUKd0+kkb0aG3ztW3gYxT4ULIx+FzLCCKRMUazgXl6U6X4sLYOp5Oq2L8CLNwNwABmV9m/3mSZj+zAWwqpHiMLM1n15D63iDOC8x2a7HrLDfLwVvmGTAaan8vynD+wbppj5MeWYN4v73gyjlQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+HvnIk+80qWWKXe+ojnEDXJ1snfbHtfV8m4VtYKZFks=;
- b=BIChcD/ByR7jeLRRT8BrQkKr+gKCtcjQiFtLevokHKGvM05GhtUT1FVJMjzJnh/r2g9RYVMcSzQ2vEbd7KsodY/AlV3yVh2YOjut4l8Bj/7OXczVhAc18tPyczGBIDcJ17olTeyj1V5i7ZsilRsvCg+w1XOEv4Csts/m0hNtLQz0fhoLPUdMNK+BExwO86ab454eSf7Z4OHxkfh6wKx42yz/PGafDV060guc7yVQB+kDsG1DVkdLM5OJXygQwoZe5+O+jEEcxbr41aHLBf/dR0MPk3z0sxhKn2ad7DtodAcU/5WOLiHB4i+WcH7cP09IvBQ00tkmIMMHV1u3c2Wd6A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=mellanox.com;dmarc=pass action=none
- header.from=mellanox.com;dkim=pass header.d=mellanox.com;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+HvnIk+80qWWKXe+ojnEDXJ1snfbHtfV8m4VtYKZFks=;
- b=CyUjlCW+Q9DRbjhwuL2wrnlQTKA247RZoKAxbVSYYt+FxEYsW1jQsg9YziUpGV36llXS7cYYXC4Mcum8KO840zuOBokQeJ477KQDWO34uKXSFf8vubDNHNRqc7uSPIdii0jQ06fswJ0aSy2gR7R17/8ByGAYgbZlqAXi/gJWEx4=
-Received: from AM0PR05MB4866.eurprd05.prod.outlook.com (20.176.214.160) by
- AM0PR05MB6434.eurprd05.prod.outlook.com (20.179.32.84) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2073.10; Thu, 11 Jul 2019 16:18:46 +0000
-Received: from AM0PR05MB4866.eurprd05.prod.outlook.com
- ([fe80::217d:2cd7:c8da:9279]) by AM0PR05MB4866.eurprd05.prod.outlook.com
- ([fe80::217d:2cd7:c8da:9279%5]) with mapi id 15.20.2052.020; Thu, 11 Jul 2019
- 16:18:46 +0000
-From: Parav Pandit <parav@mellanox.com>
-To: Yi Zhang <yi.zhang@redhat.com>, "linux-nvme@lists.infradead.org"
- <linux-nvme@lists.infradead.org>
-Subject: RE: regression: nvme rdma with bnxt_re0 broken
-Thread-Topic: regression: nvme rdma with bnxt_re0 broken
-Thread-Index: 2UfSPBB7aurhIBgBOMtlZZ/Acg5lQJrLV3lwgAA5BsA=
-Date: Thu, 11 Jul 2019 16:18:45 +0000
-Message-ID: <AM0PR05MB4866070FBADCCABD1F84E42ED1F30@AM0PR05MB4866.eurprd05.prod.outlook.com>
-References: <1310083272.27124086.1562836112586.JavaMail.zimbra@redhat.com>
- <619411460.27128070.1562838433020.JavaMail.zimbra@redhat.com>
- <AM0PR05MB48664657022ECA8526E3C967D1F30@AM0PR05MB4866.eurprd05.prod.outlook.com>
-In-Reply-To: <AM0PR05MB48664657022ECA8526E3C967D1F30@AM0PR05MB4866.eurprd05.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=parav@mellanox.com; 
-x-originating-ip: [49.207.52.95]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0e9cdeef-6933-46d0-a320-08d7061b730c
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(7168020)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:AM0PR05MB6434; 
-x-ms-traffictypediagnostic: AM0PR05MB6434:
-x-ms-exchange-purlcount: 1
-x-microsoft-antispam-prvs: <AM0PR05MB643466E437C7BF2985148778D1F30@AM0PR05MB6434.eurprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:241;
-x-forefront-prvs: 0095BCF226
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(136003)(346002)(366004)(39860400002)(396003)(376002)(189003)(199004)(13464003)(66476007)(66066001)(6436002)(71190400001)(71200400001)(55016002)(14454004)(66556008)(66946007)(66446008)(76116006)(33656002)(54906003)(2940100002)(2906002)(229853002)(64756008)(7696005)(99286004)(25786009)(6116002)(53936002)(3846002)(7736002)(6246003)(305945005)(2501003)(8936002)(52536014)(9686003)(6306002)(81166006)(14444005)(5660300002)(966005)(74316002)(186003)(76176011)(26005)(6506007)(53546011)(102836004)(55236004)(11346002)(476003)(486006)(316002)(446003)(68736007)(256004)(86362001)(478600001)(110136005)(81156014)(8676002)(4326008);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM0PR05MB6434;
- H:AM0PR05MB4866.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: mellanox.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: eLCjRMtAzIfBdi0qltIJdSZZNi/lpWZDVal/fuAkyP3jui0K7y4wHm8IzaHujcr/QKNglN4M++U2bGWApYW0aW44KItts8MvgA5DF5q6mhsPJnOI/e25+szVh5r9J1chPlPVs08zTzxWL1aZmcKfcuo/AJtmlJLATYEk92CpgxodcJhhO5V7d3xv4ksLalaeJJWS5boJEpTSmwQQ7ezWZlqVtfs8JsZsGSQ45mx3CP/mplwv0sk6EP1uevemLLk6rkfNf1ES9nYoG3kR6xIVDkQ0qGeRb+s2SoT5/NEYf7gVFTijqg6oPMGL6TJ7Avfw2+qoW5GOJtZc+YzRr4ioNnrTkYgD/xgWqtpjHQVM0LUxOyAla7HsC/oK4frfAiDgWMiHBZKP/3O/86ju9mVZkOfQU4RXiTXZ22FPSrr5VzI=
-MIME-Version: 1.0
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0e9cdeef-6933-46d0-a320-08d7061b730c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jul 2019 16:18:45.9366 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: parav@mellanox.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB6434
+ id 1hlcVF-0005hh-Sh
+ for linux-nvme@lists.infradead.org; Thu, 11 Jul 2019 17:05:07 +0000
+Received: by mail-pg1-x542.google.com with SMTP id s27so3251026pgl.2
+ for <linux-nvme@lists.infradead.org>; Thu, 11 Jul 2019 10:05:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=PUWL9bZLMdYKdkcEf6PM7INsQDfk/1mdx4JEV1jB4iU=;
+ b=Z75Igbbkao7eXi9klkU4zY32i8Fc0M1esRJ6ujPCUXXQPfK5z18FuEcxVjKkFofQnH
+ DFdZfZ1BWNgV84lr3dsj3xCsoYcHBMbpbEObDMC8CZX/ketCxnDZLyHGVfEr9PnF58+1
+ rxBpKeiFkyv1v9RABbFgX19jjvviqQibkOq7Zz6VMicaZCcoL8vmknHrCX9uJqSTuJ1+
+ Le/11GVIzOrmYOzjOpu3Scjqsc3jNjfh42W+4kKngQbcFzZVX1UKsfPyQsSvV9HuG9RO
+ Lzmi9ZKF7icnKMJbuNwPZ1VIvoByPu+/+6OjLmY6D2p4nkREL7AcQVGtVE06jggTGnnU
+ N5jw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=PUWL9bZLMdYKdkcEf6PM7INsQDfk/1mdx4JEV1jB4iU=;
+ b=KCXOqnr4WJXK8GYiGem79U4egedA02vnNlXn94/ofROQ2wp0PbBV/hrDc6EeXnIiqQ
+ 2Viyd6mOikV7n3Go5udMFc+OP9sgvzy7MeItoWlcCRpYuTQcK61rB/4qVGqYbYfrUf0n
+ 2X+oqmws5VJLGPmFFbWcc0iVn8zzayhDoSPoQWYeL+Y4daYE4u8UexGVWzFmhlZ4Xdcg
+ Zkf8Dqmr3SdEmSrH0F4PPnf4CqKmrzk5EUv9t3TdmDZK7k0TlOC4FypymbCTANNvxrzh
+ RAgu9eYRbP6nLfkjHKzKnZ+5EexbkP0rMi1gpvxwfFh+xTFSlhS4G4Z03LlTevgTq31p
+ zxlg==
+X-Gm-Message-State: APjAAAX/7EFQ/3QAVpJvDytaFYg4WcVAyZ93Y/r+uIAfYxJOeaXp/ZhH
+ 9Sfrd3j0fuuhxqO7QkiVBcyCgflkbB4=
+X-Google-Smtp-Source: APXvYqzCaNxnoX223pFP/HD3hNXAKE7PHC6sxNhOaUSK2AKvptulOEM8QlEyWYQZ/xg3qCVQK8FZzA==
+X-Received: by 2002:a17:90a:2767:: with SMTP id
+ o94mr5802021pje.25.1562864704789; 
+ Thu, 11 Jul 2019 10:05:04 -0700 (PDT)
+Received: from localhost.localdomain ([123.213.206.190])
+ by smtp.gmail.com with ESMTPSA id o130sm11371518pfg.171.2019.07.11.10.05.02
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 11 Jul 2019 10:05:04 -0700 (PDT)
+From: Minwoo Im <minwoo.im.dev@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme: fix NULL deref for fabrics options
+Date: Fri, 12 Jul 2019 02:04:47 +0900
+Message-Id: <20190711170447.20836-1-minwoo.im.dev@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190711_091848_575998_D529B46A 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20190711_100505_971124_CF491EE0 
+X-CRM114-Status: GOOD (  14.42  )
 X-Spam-Score: 1.1 (+)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (1.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.4.56 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (minwoo.im.dev[at]gmail.com)
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -126,86 +94,97 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Jurgens <danielj@mellanox.com>,
- "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
- Devesh Sharma <devesh.sharma@broadcom.com>,
- "selvin.xavier@broadcom.com" <selvin.xavier@broadcom.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
+ Minwoo Im <minwoo.im.dev@gmail.com>, Christoph Hellwig <hch@lst.de>,
+ Sagi Grimberg <sagi@grimberg.me>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-U2FnaSwNCg0KVGhpcyBpcyBiZXR0ZXIgb25lIHRvIGNjIHRvIGxpbnV4LXJkbWEuDQoNCisgRGV2
-ZXNoLCBTZWx2aW4uDQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGFy
-YXYgUGFuZGl0DQo+IFNlbnQ6IFRodXJzZGF5LCBKdWx5IDExLCAyMDE5IDY6MjUgUE0NCj4gVG86
-IFlpIFpoYW5nIDx5aS56aGFuZ0ByZWRoYXQuY29tPjsgbGludXgtbnZtZUBsaXN0cy5pbmZyYWRl
-YWQub3JnDQo+IENjOiBEYW5pZWwgSnVyZ2VucyA8ZGFuaWVsakBtZWxsYW5veC5jb20+DQo+IFN1
-YmplY3Q6IFJFOiByZWdyZXNzaW9uOiBudm1lIHJkbWEgd2l0aCBibnh0X3JlMCBicm9rZW4NCj4g
-DQo+IEhpIFlpIFpoYW5nLA0KPiANCj4gPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiA+
-IEZyb206IFlpIFpoYW5nIDx5aS56aGFuZ0ByZWRoYXQuY29tPg0KPiA+IFNlbnQ6IFRodXJzZGF5
-LCBKdWx5IDExLCAyMDE5IDM6MTcgUE0NCj4gPiBUbzogbGludXgtbnZtZUBsaXN0cy5pbmZyYWRl
-YWQub3JnDQo+ID4gQ2M6IERhbmllbCBKdXJnZW5zIDxkYW5pZWxqQG1lbGxhbm94LmNvbT47IFBh
-cmF2IFBhbmRpdA0KPiA+IDxwYXJhdkBtZWxsYW5veC5jb20+DQo+ID4gU3ViamVjdDogcmVncmVz
-c2lvbjogbnZtZSByZG1hIHdpdGggYm54dF9yZTAgYnJva2VuDQo+ID4NCj4gPiBIZWxsbw0KPiA+
-DQo+ID4gJ252bWUgY29ubmVjdCcgZmFpbGVkIHdoZW4gdXNlIGJueHRfcmUwIG9uIGxhdGVzdCB1
-cHN0cmVhbSBidWlsZFsxXSwNCj4gPiBieSBiaXNlY3RpbmcgSSBmb3VuZCBpdCB3YXMgaW50cm9k
-dWNlZCBmcm9tIHY1LjIuMC1yYzEgd2l0aCBbMl0sIGl0DQo+ID4gd29ya3MgYWZ0ZXIgSSByZXZl
-cnQgaXQuDQo+ID4gTGV0IG1lIGtub3cgaWYgeW91IG5lZWQgbW9yZSBpbmZvLCB0aGFua3MuDQo+
-ID4NCj4gPiBbMV0NCj4gPiBbcm9vdEByZG1hLXBlcmYtMDcgfl0kIG52bWUgY29ubmVjdCAtdCBy
-ZG1hIC1hIDE3Mi4zMS40MC4xMjUgLXMgNDQyMA0KPiA+IC1uIHRlc3RucW4gRmFpbGVkIHRvIHdy
-aXRlIHRvIC9kZXYvbnZtZS1mYWJyaWNzOiBCYWQgYWRkcmVzcw0KPiA+DQo+ID4gW3Jvb3RAcmRt
-YS1wZXJmLTA3IH5dJCBkbWVzZw0KPiA+IFsgIDQ3Ni4zMjA3NDJdIGJueHRfZW4gMDAwMDoxOTow
-MC4wOiBRUExJQjogY21kcVsweDRiOV09MHgxNSBzdGF0dXMNCj4gPiAweDUgWyA0NzYuMzI3MTAz
-XSBpbmZpbmliYW5kIGJueHRfcmUwOiBGYWlsZWQgdG8gYWxsb2NhdGUgSFcgQUggWw0KPiA+IDQ3
-Ni4zMzI1MjVdIG52bWUgbnZtZTI6IHJkbWFfY29ubmVjdCBmYWlsZWQgKC0xNCkuDQo+ID4gWyAg
-NDc2LjM0MzU1Ml0gbnZtZSBudm1lMjogcmRtYSBjb25uZWN0aW9uIGVzdGFibGlzaG1lbnQgZmFp
-bGVkICgtMTQpDQo+ID4NCj4gPiBbcm9vdEByZG1hLXBlcmYtMDcgfl0kIGxzcGNpICB8IGdyZXAg
-LWkgQnJvYWRjb20NCj4gPiAwMTowMC4wIEV0aGVybmV0IGNvbnRyb2xsZXI6IEJyb2FkY29tIElu
-Yy4gYW5kIHN1YnNpZGlhcmllcyBOZXRYdHJlbWUNCj4gPiBCQ001NzIwIDItcG9ydCBHaWdhYml0
-IEV0aGVybmV0IFBDSWUNCj4gPiAwMTowMC4xIEV0aGVybmV0IGNvbnRyb2xsZXI6IEJyb2FkY29t
-IEluYy4gYW5kIHN1YnNpZGlhcmllcyBOZXRYdHJlbWUNCj4gPiBCQ001NzIwIDItcG9ydCBHaWdh
-Yml0IEV0aGVybmV0IFBDSWUNCj4gPiAxODowMC4wIFJBSUQgYnVzIGNvbnRyb2xsZXI6IEJyb2Fk
-Y29tIC8gTFNJIE1lZ2FSQUlEIFNBUy0zIDMwMDggW0Z1cnldDQo+ID4gKHJldg0KPiA+IDAyKQ0K
-PiA+IDE5OjAwLjAgRXRoZXJuZXQgY29udHJvbGxlcjogQnJvYWRjb20gSW5jLiBhbmQgc3Vic2lk
-aWFyaWVzIEJDTTU3NDEyDQo+ID4gTmV0WHRyZW1lLUUgMTBHYiBSRE1BIEV0aGVybmV0IENvbnRy
-b2xsZXIgKHJldiAwMSkNCj4gPiAxOTowMC4xIEV0aGVybmV0IGNvbnRyb2xsZXI6IEJyb2FkY29t
-IEluYy4gYW5kIHN1YnNpZGlhcmllcyBCQ001NzQxMg0KPiA+IE5ldFh0cmVtZS1FIDEwR2IgUkRN
-QSBFdGhlcm5ldCBDb250cm9sbGVyIChyZXYgMDEpDQo+ID4NCj4gPg0KPiA+IFsyXQ0KPiA+IGNv
-bW1pdCA4MjNiMjNkYTcxMTMyYjgwZDlmNDFhYjY2N2M2OGIxMTI0NTVmM2I2DQo+ID4gQXV0aG9y
-OiBQYXJhdiBQYW5kaXQgPHBhcmF2QG1lbGxhbm94LmNvbT4NCj4gPiBEYXRlOiAgIFdlZCBBcHIg
-MTAgMTE6MjM6MDMgMjAxOSArMDMwMA0KPiA+DQo+ID4gICAgIElCL2NvcmU6IEFsbG93IHZsYW4g
-bGluayBsb2NhbCBhZGRyZXNzIGJhc2VkIFJvQ0UgR0lEcw0KPiA+DQo+ID4gICAgIElQdjYgbGlu
-ayBsb2NhbCBhZGRyZXNzIGZvciBhIFZMQU4gbmV0ZGV2aWNlIGhhcyBub3RoaW5nIHRvIGRvIHdp
-dGggaXRzDQo+ID4gICAgIHJlc2VtYmxhbmNlIHdpdGggdGhlIGRlZmF1bHQgR0lELCBiZWNhdXNl
-IFZMQU4gbGluayBsb2NhbCBHSUQgaXMgaW4NCj4gPiAgICAgZGlmZmVyZW50IGxheWVyIDIgZG9t
-YWluLg0KPiA+DQo+ID4gICAgIE5vdyB0aGF0IFJvQ0UgTUFEIHBhY2tldCBwcm9jZXNzaW5nIGFu
-ZCByb3V0ZSByZXNvbHV0aW9uIGNvbnNpZGVyIHRoZQ0KPiA+ICAgICByaWdodCBHSUQgaW5kZXgs
-IHRoZXJlIGlzIG5vIG5lZWQgZm9yIGFuIHVubmVjZXNzYXJ5IGNoZWNrIHdoaWNoIHByZXZlbnRz
-DQo+ID4gICAgIHRoZSBhZGRpdGlvbiBvZiB2bGFuIGJhc2VkIElQdjYgbGluayBsb2NhbCBHSURz
-Lg0KPiA+DQo+ID4gICAgIFNpZ25lZC1vZmYtYnk6IFBhcmF2IFBhbmRpdCA8cGFyYXZAbWVsbGFu
-b3guY29tPg0KPiA+ICAgICBSZXZpZXdlZC1ieTogRGFuaWVsIEp1cmdlbnMgPGRhbmllbGpAbWVs
-bGFub3guY29tPg0KPiA+ICAgICBTaWduZWQtb2ZmLWJ5OiBMZW9uIFJvbWFub3Zza3kgPGxlb25y
-b0BtZWxsYW5veC5jb20+DQo+ID4gICAgIFNpZ25lZC1vZmYtYnk6IEphc29uIEd1bnRob3JwZSA8
-amdnQG1lbGxhbm94LmNvbT4NCj4gPg0KPiA+DQo+ID4NCj4gPiBCZXN0IFJlZ2FyZHMsDQo+ID4g
-ICBZaSBaaGFuZw0KPiA+DQo+IA0KPiBJIG5lZWQgc29tZSBtb3JlIGluZm9ybWF0aW9uIGZyb20g
-eW91IHRvIGRlYnVnIHRoaXMgaXNzdWUgYXMgSSBkb27igJl0IGhhdmUgdGhlDQo+IGh3Lg0KPiBU
-aGUgaGlnaGxpZ2h0ZWQgcGF0Y2ggYWRkZWQgc3VwcG9ydCBmb3IgSVB2NiBsaW5rIGxvY2FsIGFk
-ZHJlc3MgZm9yIHZsYW4uIEkgYW0NCj4gdW5zdXJlIGhvdyB0aGlzIGNhbiBhZmZlY3QgSVB2NCBB
-SCBjcmVhdGlvbiBmb3Igd2hpY2ggdGhlcmUgaXMgZmFpbHVyZS4NCj4gDQo+IDEuIEJlZm9yZSB5
-b3UgYXNzaWduIHRoZSBJUCBhZGRyZXNzIHRvIHRoZSBuZXRkZXZpY2UsIFBsZWFzZSBkbywgZWNo
-byAtbg0KPiAibW9kdWxlIGliX2NvcmUgK3AiID4gL3N5cy9rZXJuZWwvZGVidWcvZHluYW1pY19k
-ZWJ1Zy9jb250cm9sDQo+IA0KPiBQbGVhc2Ugc2hhcmUgYmVsb3cgb3V0cHV0IGJlZm9yZSBkb2lu
-ZyBudm1lIGNvbm5lY3QuDQo+IDIuIE91dHB1dCBvZiBzY3JpcHQgWzFdDQo+ICQgc2hvd19naWRz
-IHNjcmlwdA0KPiBJZiBnZXR0aW5nIHRoaXMgc2NyaXB0IGlzIHByb2JsZW1hdGljLCBzaGFyZSB0
-aGUgb3V0cHV0IG9mLA0KPiANCj4gJCBjYXQgL3N5cy9jbGFzcy9pbmZpbmliYW5kL2JueHRfcmUw
-L3BvcnRzLzEvZ2lkcy8qDQo+ICQgY2F0IC9zeXMvY2xhc3MvaW5maW5pYmFuZC9ibnh0X3JlMC9w
-b3J0cy8xL2dpZF9hdHRycy9uZGV2cy8qDQo+ICQgaXAgbGluayBzaG93DQo+ICRpcCBhZGRyIHNo
-b3cNCj4gJCBkbWVzZw0KPiANCj4gWzFdIGh0dHBzOi8vY29tbXVuaXR5Lm1lbGxhbm94LmNvbS9z
-L2FydGljbGUvdW5kZXJzdGFuZGluZy1zaG93LWdpZHMtDQo+IHNjcmlwdCNqaXZlX2NvbnRlbnRf
-aWRfVGhlX1NjcmlwdA0KPiANCj4gSSBzdXNwZWN0IHRoYXQgZHJpdmVyJ3MgYXNzdW1wdGlvbiBh
-Ym91dCBHSUQgaW5kaWNlcyBtaWdodCBoYXZlIGdvbmUgd3JvbmcNCj4gaGVyZSBpbiBkcml2ZXJz
-L2luZmluaWJhbmQvaHcvYm54dF9yZS9pYl92ZXJicy5jLg0KPiBMZXRzIHNlZSBhYm91dCByZXN1
-bHRzIHRvIGNvbmZpcm0gdGhhdC4NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LW52bWUK
+git://git.infradead.org/nvme.git nvme-5.3 branch now causes the
+following NULL deref oops.  Check the ctrl->opts first before the deref.
+
+[   16.337581] BUG: kernel NULL pointer dereference, address: 0000000000000056
+[   16.338551] #PF: supervisor read access in kernel mode
+[   16.338551] #PF: error_code(0x0000) - not-present page
+[   16.338551] PGD 0 P4D 0
+[   16.338551] Oops: 0000 [#1] SMP PTI
+[   16.338551] CPU: 2 PID: 1035 Comm: kworker/u16:5 Not tainted 5.2.0-rc6+ #1
+[   16.338551] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.11.2-0-gf9626ccb91-prebuilt.qemu-project.org 04/01/2014
+[   16.338551] Workqueue: nvme-wq nvme_scan_work [nvme_core]
+[   16.338551] RIP: 0010:nvme_validate_ns+0xc9/0x7e0 [nvme_core]
+[   16.338551] Code: c0 49 89 c5 0f 84 00 07 00 00 48 8b 7b 58 e8 be 48 39 c1 48 3d 00 f0 ff ff 49 89 45 18 0f 87 a4 06 00 00 48 8b 93 70 0a 00 00 <80> 7a 56 00 74 0c 48 8b 40 68 83 48 3c 08 49 8b 45 18 48 89 c6 bf
+[   16.338551] RSP: 0018:ffffc900024c7d10 EFLAGS: 00010283
+[   16.338551] RAX: ffff888135a30720 RBX: ffff88813a4fd1f8 RCX: 0000000000000007
+[   16.338551] RDX: 0000000000000000 RSI: ffffffff8256dd38 RDI: ffff888135a30720
+[   16.338551] RBP: 0000000000000001 R08: 0000000000000007 R09: ffff88813aa6a840
+[   16.338551] R10: 0000000000000001 R11: 000000000002d060 R12: ffff88813a4fd1f8
+[   16.338551] R13: ffff88813a77f800 R14: ffff88813aa35180 R15: 0000000000000001
+[   16.338551] FS:  0000000000000000(0000) GS:ffff88813ba80000(0000) knlGS:0000000000000000
+[   16.338551] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   16.338551] CR2: 0000000000000056 CR3: 000000000240a002 CR4: 0000000000360ee0
+[   16.338551] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[   16.338551] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[   16.338551] Call Trace:
+[   16.338551]  nvme_scan_work+0x2c0/0x340 [nvme_core]
+[   16.338551]  ? __switch_to_asm+0x40/0x70
+[   16.338551]  ? _raw_spin_unlock_irqrestore+0x18/0x30
+[   16.338551]  ? try_to_wake_up+0x408/0x450
+[   16.338551]  process_one_work+0x20b/0x3e0
+[   16.338551]  worker_thread+0x1f9/0x3d0
+[   16.338551]  ? cancel_delayed_work+0xa0/0xa0
+[   16.338551]  kthread+0x117/0x120
+[   16.338551]  ? kthread_stop+0xf0/0xf0
+[   16.338551]  ret_from_fork+0x3a/0x50
+[   16.338551] Modules linked in: nvme nvme_core
+[   16.338551] CR2: 0000000000000056
+[   16.338551] ---[ end trace b9bf761a93e62d84 ]---
+[   16.338551] RIP: 0010:nvme_validate_ns+0xc9/0x7e0 [nvme_core]
+[   16.338551] Code: c0 49 89 c5 0f 84 00 07 00 00 48 8b 7b 58 e8 be 48 39 c1 48 3d 00 f0 ff ff 49 89 45 18 0f 87 a4 06 00 00 48 8b 93 70 0a 00 00 <80> 7a 56 00 74 0c 48 8b 40 68 83 48 3c 08 49 8b 45 18 48 89 c6 bf
+[   16.338551] RSP: 0018:ffffc900024c7d10 EFLAGS: 00010283
+[   16.338551] RAX: ffff888135a30720 RBX: ffff88813a4fd1f8 RCX: 0000000000000007
+[   16.338551] RDX: 0000000000000000 RSI: ffffffff8256dd38 RDI: ffff888135a30720
+[   16.338551] RBP: 0000000000000001 R08: 0000000000000007 R09: ffff88813aa6a840
+[   16.338551] R10: 0000000000000001 R11: 000000000002d060 R12: ffff88813a4fd1f8
+[   16.338551] R13: ffff88813a77f800 R14: ffff88813aa35180 R15: 0000000000000001
+[   16.338551] FS:  0000000000000000(0000) GS:ffff88813ba80000(0000) knlGS:0000000000000000
+[   16.338551] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   16.338551] CR2: 0000000000000056 CR3: 000000000240a002 CR4: 0000000000360ee0
+[   16.338551] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[   16.338551] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+
+Fixes: 958f2a0f8 ("nvme-tcp: set the STABLE_WRITES flag when data digests
+are enabled")
+
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <kbusch@kernel.org>
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Cc: Jens Axboe <axboe@fb.com>
+Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+---
+ drivers/nvme/host/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 3077cd4d75bf..cc09b81fc7f4 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -3305,7 +3305,7 @@ static int nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+ 		goto out_free_ns;
+ 	}
+ 
+-	if (ctrl->opts->data_digest)
++	if (ctrl->opts && ctrl->opts->data_digest)
+ 		ns->queue->backing_dev_info->capabilities
+ 			|= BDI_CAP_STABLE_WRITES;
+ 
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
