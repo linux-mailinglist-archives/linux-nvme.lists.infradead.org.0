@@ -2,36 +2,36 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0800666E9
-	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jul 2019 08:21:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B2DD666EE
+	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jul 2019 08:25:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=irCNRblTJcWrrl9h82nlHEmg4hCTKqKs+yDO7SsFo34=; b=aqm0QtJhOoXy70
-	qusv8PpeU2YPyYhRpKW6vCC/HbLhjvV/07v6kH1RfKhJrTVK0fdbZOkldYvXTBD5yYla0lZptuVKP
-	fZdQJcWBipyr9oojo2zuHwRT+S2JHXTBkBptTU4zse3mks/6/oNwt5VxRAuRugK8hkjMl1EKxD3YR
-	riXZqmOVEHWcKP/8FgX1vF8zq2c3OX+8rzz7sXtfOw81j6FoD0gHDEaLWyRiFZs+qN+rJJCXbyavf
-	z7b84r1gNXfWGpycURBJAGRxuI7wdKexGnqbC6wM8ZsJ37A0uNZ86UGyjQnMnrzcIZnwmyLctOGJ1
-	T4bbgN2LSJseqhZt1/Dg==;
+	List-Owner; bh=PkQmQozv27XSPVsOLfHrQ+ZlRFtp1FIPEaznYQpbovM=; b=irgySZJSSwSWuS
+	48UVCE1GPfjKQ9dQZLZ7eSmj0WNbNcfCsgNlQpSYOaf/nipEa1iqWldx0by/J6eEuz3KAar6+805s
+	RJLrkULPjIIA+ScP+E1mX80kxxVFQfPCtOWo/bonE91OGCOnKKFe3KqEzLOfCyZsH7GvFgZ1fF6/N
+	LWhGEL6vXXJf9Hq4hL/Ak9GqCZZoE/XgO9Q5HyiE0tXosRS8Z9hA3s6nEYaLwtbHdHjOyyl3x+8oh
+	ihb3+39Aum3LT0u/R/nsKF8lMzY/Wdd/uNxwRvOr8uIN0vp1s4hhiaIZWpIqUEELkUo1PMQs0srSI
+	vuVDJXrs1OVS4DeNdDTw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlovN-0004li-Iq; Fri, 12 Jul 2019 06:20:54 +0000
+	id 1hlozI-00059Z-Ey; Fri, 12 Jul 2019 06:24:56 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hlovB-0004kO-Qh
- for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 06:20:43 +0000
+ id 1hloz9-00059C-Dp
+ for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 06:24:48 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 15E75AE37;
- Fri, 12 Jul 2019 06:20:38 +0000 (UTC)
-Subject: Re: [PATCH rfc v2 04/10] nvme-cli: Refactor to create a
- get_nvme_ctrl_info routine
+ by mx1.suse.de (Postfix) with ESMTP id 20F99AF86;
+ Fri, 12 Jul 2019 06:24:46 +0000 (UTC)
+Subject: Re: [PATCH rfc v2 05/10] nvme-cli: extend ctrl_list_item for connect
+ attributes
 To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
 References: <20190712003140.16221-1-jsmart2021@gmail.com>
- <20190712003140.16221-5-jsmart2021@gmail.com>
+ <20190712003140.16221-6-jsmart2021@gmail.com>
 From: Hannes Reinecke <hare@suse.de>
 Openpgp: preference=signencrypt
 Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
@@ -77,16 +77,16 @@ Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
  ZtWlhGRERnDH17PUXDglsOA08HCls0PHx8itYsjYCAyETlxlLApXWdVl9YVwbQpQ+i693t/Y
  PGu8jotn0++P19d3JwXW8t6TVvBIQ1dRZHx1IxGLMn+CkDJMOmHAUMWTAXX2rf5tUjas8/v2
  azzYF4VRJsdl+d0MCaSy8mUh
-Message-ID: <e4e91783-a59b-8aa9-a1f2-d024ae5390ab@suse.de>
-Date: Fri, 12 Jul 2019 08:20:37 +0200
+Message-ID: <e0cc3910-a013-de0e-6fc3-742c84e0268e@suse.de>
+Date: Fri, 12 Jul 2019 08:24:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <20190712003140.16221-5-jsmart2021@gmail.com>
+In-Reply-To: <20190712003140.16221-6-jsmart2021@gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190711_232042_161763_6014A19A 
-X-CRM114-Status: GOOD (  14.49  )
+X-CRM114-CacheID: sfid-20190711_232447_754315_6E5C0C9B 
+X-CRM114-Status: GOOD (  18.18  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -115,19 +115,27 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 T24gNy8xMi8xOSAyOjMxIEFNLCBKYW1lcyBTbWFydCB3cm90ZToKPiBJbiBwcmVwYXJhdGlvbiBm
 b3Igc2VhcmNoaW5nIGNvbnRyb2xsZXJzIHRvIG1hdGNoIHdpdGggY29ubmVjdCBhcmdzOgo+IAo+
-IFJlZmFjdG9yIHRoZSBnZXRfbnZtZV9zdWJzeXN0ZW1faW5mbygpIHJvdXRpbmUgdG8gdGFrZSB0
-aGUgcG9ydGlvbgo+IHRoYXQgY3JlYXRlcyBhIGN0cmxfbGlzdF9pdGVtIGFuZCBzZXRzIGl0cyB2
-YWx1ZXMgYW5kIHB1dCBpdCBpbiBhCj4gc2VwYXJhdGUgZ2V0X252bWVfY3RybF9pbmZvKCkgcm91
-dGluZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKYW1lcyBTbWFydCA8anNtYXJ0MjAyMUBnbWFpbC5j
-b20+Cj4gQ0M6IFNhZ2kgR3JpbWJlcmcgPHNhZ2lAZ3JpbWJlcmcubWU+Cj4gQ0M6IEhhbm5lcyBS
-ZWluZWNrZSA8aGFyZUBzdXNlLmNvbT4KPiAtLS0KPiAgbnZtZS5jIHwgNzcgKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4g
-IDEgZmlsZSBjaGFuZ2VkLCA0NSBpbnNlcnRpb25zKCspLCAzMiBkZWxldGlvbnMoLSkKPiAKUmV2
-aWV3ZWQtYnk6IEhhbm5lcyBSZWluZWNrZSA8aGFyZUBzdXNlLmNvbT4KCkNoZWVycywKCkhhbm5l
-cwotLSAKRHIuIEhhbm5lcyBSZWluZWNrZQkJICAgVGVhbWxlYWQgU3RvcmFnZSAmIE5ldHdvcmtp
-bmcKaGFyZUBzdXNlLmRlCQkJICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1MyA2ODgKU1VTRSBM
-SU5VWCBHbWJILCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJlcmcKR0Y6IEZlbGl4IEltZW5k
-w7ZyZmZlciwgTWFyeSBIaWdnaW5zLCBTcmkgUmFzaWFoCkhSQiAyMTI4NCAoQUcgTsO8cm5iZXJn
-KQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-bnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+IEV4dGVuZCB0aGUgY3RybF9saXN0X2l0ZW0gd2l0aCBlbGVtZW50cyB0aGF0IGNhbiBiZSBjb21w
+YXJlZCBhZ2FpbnN0Cj4gY29ubmVjdCBhcmd1bWVudHMuIEV4dGVuZCB0aGUgZ2V0X252bWVfY3Ry
+bF9pbmZvKCkgcm91dGluZSB0byBzZXQKPiB0aGUgZmllbGRzLgo+IAo+IHN1YnN5c25xbiB3YXMg
+YWRkZWQgYXMgdGhlIGN0cmxfbGlzdF9pdGVtIG1heSBub3cgYmUgdXNlZCBvdXRzaWRlIG9mCj4g
+YSBzdWJzeXN0ZW0gbGlzdGluZy4KPiAKPiB0cmFkZHIsIHRyc3ZpZCwgYW5kIGhvc3RfdHJhZGRy
+IGFyZSBhZGRlZC4gVGhlaXIgdmFsdWVzIGNvbWUgZnJvbQo+IHRoZSBhZGRyZXNzIGF0dHJpYnV0
+ZS4gIEEgbmV3IHBhcnNpbmcgcm91dGluZSB3YXMgYWRkZWQgdGhhdCBleHRyYWN0cwo+IHRoZSB2
+YWx1ZXMgZnJvbSB0aGUgYWRkcmVzcyBzdHJpbmcuCj4gCj4gVGhlIG5ldyBwYXJzaW5nIHJvdXRp
+bmUgYW5kIHN1cHBvcnRpbmcgZmllbGQgbmFtZXMgc3RyaW5ncyBhcmUKPiBkZWNsYXJlZCBhcyBh
+IGdsb2JhbCBpbnRlcmZhY2UgYXMgYSBzdWJzZXF1ZW50IHBhdGNoIHdpbGwgY2FsbCBpdAo+IGZy
+b20gdGhlIGZhYnJpY3Mgcm91dGluZXMuCj4gCj4gU2lnbmVkLW9mZi1ieTogSmFtZXMgU21hcnQg
+PGpzbWFydDIwMjFAZ21haWwuY29tPgo+IENDOiBTYWdpIEdyaW1iZXJnIDxzYWdpQGdyaW1iZXJn
+Lm1lPgo+IENDOiBIYW5uZXMgUmVpbmVja2UgPGhhcmVAc3VzZS5jb20+Cj4gLS0tCj4gIG52bWUu
+YyB8IDcyICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKwo+ICBudm1lLmggfCAxMCArKysrKysrKysrCj4gIDIgZmlsZXMgY2hh
+bmdlZCwgODIgaW5zZXJ0aW9ucygrKQo+IApSZXZpZXdlZC1ieTogSGFubmVzIFJlaW5lY2tlIDxo
+YXJlQHN1c2UuY29tCgpDaGVlcnMsCgpIYW5uZXMKLS0gCkRyLiBIYW5uZXMgUmVpbmVja2UJCSAg
+IFRlYW1sZWFkIFN0b3JhZ2UgJiBOZXR3b3JraW5nCmhhcmVAc3VzZS5kZQkJCSAgICAgICAgICAg
+ICAgICs0OSA5MTEgNzQwNTMgNjg4ClNVU0UgTElOVVggR21iSCwgTWF4ZmVsZHN0ci4gNSwgOTA0
+MDkgTsO8cm5iZXJnCkdGOiBGZWxpeCBJbWVuZMO2cmZmZXIsIE1hcnkgSGlnZ2lucywgU3JpIFJh
+c2lhaApIUkIgMjEyODQgKEFHIE7DvHJuYmVyZykKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LW52bWUK
