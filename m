@@ -2,92 +2,69 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAE0C67567
-	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jul 2019 21:39:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 60C526771D
+	for <lists+linux-nvme@lfdr.de>; Sat, 13 Jul 2019 02:00:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	To:From:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BgmrkKaXWeLms70eBo09Dlj7uR/7lcvkI21gpE6YGNs=; b=MiSVWaH4E56PKNUrupbhJ+xiR
-	XejUCck2n8ZeooiSspIMs5apWfSy5n7cMikKcZ9XUetS2vN/ZVByYwCZZizYm4uXpp7JVdGL5t2h1
-	WZwB3JmzZ1ZWtL0A8eGQopoQtt5I4y+tDyYDSDk/GOZHT6QwJYrxMrTzbi18lyUb3qGwhSaN46LdF
-	ck8vhCv8NM8BlTru8aj82E4LCTGAPncLjUlAIzomEquS12gqJFotg1IQTwMiXexBZUp9VL4x1sK8S
-	GlKwv8R5zz4sHl6YaLDVxxOwMcBbbEu/Um2rZCAE5gGOlPKbXJuPNYgf/jNdp1MC2AyLRT5bDVsh/
-	U36Re+fBg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
+	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/v9ue2OOTsw8QWOzV9Z1/zk8och0fUph0ewAOSp07xE=; b=VJQ3MT4JLp+bvv
+	uZH57pO8WWMBe4Uu8sl9BJ9mEnO/ybq6HiuPm4bD0D4MWnflVezFaBX26+EmHq07n3tfUS1vxdTOG
+	EVmR634zrU8q1HLHJToL03dRNnxUFw4S9v2rcOyWuAOXFyGCbrH5nLmZNQY5egVWpjZfqKfeFveYM
+	U/r8UnHZrtXODpcbU3NpPvgDuTuw9rhz4xDnSmmWBGPNjOzY/ue41wMVdbGlCq1UQBF8VVzPZaRVv
+	ehCwqfGyTvovOoPVKPfUOvV+RbO5nmDLKkhryXZfr4h/CmzO+sQiKrE/397PwWC4a8US/ShF+kJKz
+	tGrKQIym1UUJjA6deJxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hm1No-0001g2-HU; Fri, 12 Jul 2019 19:39:04 +0000
-Received: from mail-ot1-f54.google.com ([209.85.210.54])
+	id 1hm5SE-0007Cj-0Q; Fri, 12 Jul 2019 23:59:54 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hm1Ng-0001fU-53
- for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 19:38:57 +0000
-Received: by mail-ot1-f54.google.com with SMTP id x21so10550999otq.12
- for <linux-nvme@lists.infradead.org>; Fri, 12 Jul 2019 12:38:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gqi7kNatypdwB0urhm8h5j47PlGpsdBaIaObGOks7nw=;
- b=UK9098BRegl+l1T45/nDDTCTHwpG4II3zXpKdWYBh9auBPomY65nnIB5f/apOSuG2K
- Ahubb7mXsq05wtwNC3JjtyoL9w/ob5otjYoKtqzVGgAywD1x1D1ZL1pR90CSPrzIX5tl
- zEHBwS2zm5MRrOmD0rVIlQ/lpF1CVsL7mLUJwufDYliQk8p3nTdteshrsFDkJKc7GaIe
- qsaQdZCxHlNHotr6RPuX2QVJMKA4CEhNdW5nxxFj63NGHN2rW+4iaVwfQA53KuXxdejG
- sj2Xuot+CuA2mjRKdU2g4FUjHRxadKzJaNV1jSSQ2iJksYFK7sFg65uDf9nE/+j7ZYHg
- 8Ekw==
-X-Gm-Message-State: APjAAAWikjMvuu1zPQ+PdVwSh6x2pYjIl6gsyXPZVKhjuOZuPheV9UVp
- /5nch7rkGjvSIpJg/DeiUvc=
-X-Google-Smtp-Source: APXvYqyB+3yj+UYDFqTCLiso5q19IVyMv0WD8LlMH+NCJFZXNiBvZR0pknc9Igt/ZM4xlRSoCJpPbw==
-X-Received: by 2002:a05:6830:93:: with SMTP id
- a19mr10389299oto.127.1562960331737; 
- Fri, 12 Jul 2019 12:38:51 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id a94sm3506324otb.15.2019.07.12.12.38.50
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 12 Jul 2019 12:38:50 -0700 (PDT)
-Subject: Re: NULL pointer dereference in nvmet_rdma_queue_disconnect during
- bond failover
-From: Sagi Grimberg <sagi@grimberg.me>
-To: Max Gurtovoy <maxg@mellanox.com>, Alex Lyakas <alex@zadara.com>,
- linux-nvme@lists.infradead.org, Shlomi Nimrodi <shlomin@mellanox.com>,
- Israel Rukshin <israelr@mellanox.com>, tomwu@mellanox.com
-References: <F7E28AA1609E4FC495B5E8D4250E7DEF@alyakaslap>
- <90599926-b7ec-8431-a7aa-c44fde08b5c4@grimberg.me>
- <ec4fb8df-98c4-fffc-7581-5245c397d16c@mellanox.com>
- <66ACE500178B47D6B39F23FE98D22363@alyakaslap>
- <b6443a7c-4be6-3dbc-0535-a8ded3261c50@mellanox.com>
- <8ab1fa5e-2d67-5128-93b5-2f32704869e4@grimberg.me>
-Message-ID: <28046c97-c271-dff4-5252-4b5668c7bfb7@grimberg.me>
-Date: Fri, 12 Jul 2019 12:38:49 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ id 1hm5QN-0006Go-DP
+ for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 23:58:02 +0000
+Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
+ by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
+ id 1hm5QG-0004Ow-Dz; Fri, 12 Jul 2019 17:57:56 -0600
+Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
+ (envelope-from <gunthorp@deltatee.com>)
+ id 1hm5QE-0005uI-Cr; Fri, 12 Jul 2019 17:57:50 -0600
+From: Logan Gunthorpe <logang@deltatee.com>
+To: linux-block@vger.kernel.org, linux-nvme@lists.infradead.org,
+ Omar Sandoval <osandov@fb.com>
+Date: Fri, 12 Jul 2019 17:57:33 -0600
+Message-Id: <20190712235742.22646-4-logang@deltatee.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190712235742.22646-1-logang@deltatee.com>
+References: <20190712235742.22646-1-logang@deltatee.com>
 MIME-Version: 1.0
-In-Reply-To: <8ab1fa5e-2d67-5128-93b5-2f32704869e4@grimberg.me>
-Content-Language: en-US
+X-SA-Exim-Connect-IP: 172.16.1.31
+X-SA-Exim-Rcpt-To: linux-block@vger.kernel.org, linux-nvme@lists.infradead.org,
+ osandov@fb.com, chaitanya.kulkarni@wdc.com, tytso@mit.edu, mmoese@suse.de,
+ jthumshirn@suse.de, sbates@raithlin.com, logang@deltatee.com
+X-SA-Exim-Mail-From: gunthorp@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
+ version=3.4.2
+Subject: [PATCH blktests 03/12] nvme: Add new test to verify the generation
+ counter
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190712_123856_196282_5157EEB8 
-X-CRM114-Status: GOOD (  10.54  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20190712_165759_522196_092B65FC 
+X-CRM114-Status: GOOD (  11.47  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.54 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ no trust [207.54.116.67 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.54 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,24 +76,135 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: Theodore Ts'o <tytso@mit.edu>,
+ Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+ Stephen Bates <sbates@raithlin.com>, Johannes Thumshirn <jthumshirn@suse.de>,
+ Logan Gunthorpe <logang@deltatee.com>, Michael Moese <mmoese@suse.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+Now that the other discovery tests ignore the generation counter value,
+create a new test to specifically check that it increments when
+subsystems are added or removed from ports and when allow_any_host
+is set/unset.
 
->> Hi Alex,
->>
->> Not yet. Our fix is in the Initiator/Host side and it was merged.
->>
->> This is on our plate.
->>
->> In case you would like to send a patch to solve this, we'll review it 
->> of-course.
-> 
-> Does the attached untested patch help?
+Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
+---
+ tests/nvme/030     | 76 ++++++++++++++++++++++++++++++++++++++++++++++
+ tests/nvme/030.out |  2 ++
+ tests/nvme/rc      |  5 +++
+ 3 files changed, 83 insertions(+)
+ create mode 100755 tests/nvme/030
+ create mode 100644 tests/nvme/030.out
 
-Alex? Max?
+diff --git a/tests/nvme/030 b/tests/nvme/030
+new file mode 100755
+index 000000000000..963e1ad7118c
+--- /dev/null
++++ b/tests/nvme/030
+@@ -0,0 +1,76 @@
++#!/bin/bash
++# SPDX-License-Identifier: GPL-3.0+
++# Copyright (C) 2019 Logan Gunthorpe
++#
++# Test nvme discovery generation counter
++
++. tests/nvme/rc
++
++DESCRIPTION="ensure the discovery generation counter is updated appropriately"
++QUICK=1
++
++requires() {
++	_have_program nvme &&
++	_have_modules loop nvme-loop nvmet &&
++	_have_configfs
++}
++
++
++checkgenctr() {
++	local last=$1
++	local msg=$2
++	local genctr
++
++	genctr=$(_discovery_genctr)
++	if (( "${genctr}" <= "${last}" )); then
++		echo "Generation counter not incremented when ${msg} (${genctr} <= ${last})"
++	fi
++
++	echo "${genctr}"
++}
++
++test() {
++	local port
++	local genctr
++	local subsys="blktests-subsystem-"
++
++	echo "Running ${TEST_NAME}"
++
++	modprobe nvmet
++	modprobe nvme-loop
++
++	port="$(_create_nvmet_port "loop")"
++
++	_create_nvmet_subsystem "${subsys}1" "$(losetup -f)"
++	_add_nvmet_subsys_to_port "${port}" "${subsys}1"
++
++	genctr=$(_discovery_genctr)
++
++	_create_nvmet_subsystem "${subsys}2" "$(losetup -f)"
++	_add_nvmet_subsys_to_port "${port}" "${subsys}2"
++
++	genctr=$(checkgenctr "${genctr}" "adding a subsystem to a port")
++
++	echo 0 > "${NVMET_CFS}/subsystems/${subsys}2/attr_allow_any_host"
++
++	genctr=$(checkgenctr "${genctr}" "clearing attr_allow_any_host")
++
++	echo 1 > "${NVMET_CFS}/subsystems/${subsys}2/attr_allow_any_host"
++
++	genctr=$(checkgenctr "${genctr}" "setting attr_allow_any_host")
++
++	_remove_nvmet_subsystem_from_port "${port}" "${subsys}2"
++	_remove_nvmet_subsystem "${subsys}2"
++
++	genctr=$(checkgenctr "${genctr}" "removing a subsystem from a port")
++
++	_remove_nvmet_subsystem_from_port "${port}" "${subsys}1"
++	_remove_nvmet_subsystem "${subsys}1"
++
++	_remove_nvmet_port "${port}"
++
++	modprobe -r nvme-loop
++	modprobe -r nvmet
++
++	echo "Test complete"
++}
+diff --git a/tests/nvme/030.out b/tests/nvme/030.out
+new file mode 100644
+index 000000000000..93e51905b5d4
+--- /dev/null
++++ b/tests/nvme/030.out
+@@ -0,0 +1,2 @@
++Running nvme/030
++Test complete
+diff --git a/tests/nvme/rc b/tests/nvme/rc
+index 60dc05869726..39b2c2e2b91c 100644
+--- a/tests/nvme/rc
++++ b/tests/nvme/rc
+@@ -123,3 +123,8 @@ _filter_discovery() {
+ 	sed -r -e "s/Generation counter [0-9]+/Generation counter X/" |
+ 		grep 'Discovery Log Number\|Log Entry\|trtype\|subnqn'
+ }
++
++_discovery_genctr() {
++	nvme discover -t loop |
++		sed -n -e 's/^.*Generation counter \([0-9]\+\).*$/\1/p'
++}
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-nvme mailing list
