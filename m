@@ -2,76 +2,100 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 859D666BB8
-	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jul 2019 13:41:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AED066ECA
+	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jul 2019 14:41:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fQ+TeVzbL9nHe2fWov87DuJaJs120BFEx9iMiIfdI1g=; b=pPmAMFLxXPSuRpf2I+OVovD7j
-	y6PlABgbJHGiuPuR7RXoZXMVfGI8NWTAS1mgapNNdcNYlvgbdsTxMYTolONt7bUl9OKbcNPWasJCr
-	oN205/tzkM7OppJMcqcLT3oBYWmOKda+su44/Cxd/0qk/dmrOI4pMi5/AxybBqNwmSU5ri4j9ESaH
-	L1nU/ZsxP4yT4lABnYp3M0xtNT7yp/gNsHoeKMQ+n4yiH8+n6Hm/SVPHTsECmKJvUytZK/Tl0aTe/
-	3qJ3lWk7DijMwg2vUJi6/RfQAxMBBzvO4t4jBCpILVZwhKMqaRGATfM2LOFUcsn0iCje1DjdiQ16A
-	t2OovKZRQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=F5KocfqDTlAURe4Bq7YSEa24ffHlHHvzEqb0T3PXvPQ=; b=bDJuV7wGwROGhm
+	meegQoWrBPATxEvOlx20aLvHPil5/vNPRpb++rXECir/MwdzJILDKNlyFLLL+iwg+nBU77mzoJpDq
+	eIdFT37S20aKHvihUynUfNCsVp8UrDe0lYyX/Yo238c7A+zXhU4n2Xou/KKbK6WAu6ExcEBKnUhlx
+	N30Kk7rZya5xdZTmdHM7VXq8q1AckqV99KR0atKXHRv1MnR5E1i4GwenN9k5B0ht8haMBMIREbhzY
+	qdrrEDW+1166PaVawxYYDxIjAFliCujuAyqYjV8K+6SkrkvBb4k0s03DJ4ZLcYP1B3xZAX2GnwV4c
+	xyjOfaNUSfq47HbboQTg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hltve-00054B-En; Fri, 12 Jul 2019 11:41:30 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
+	id 1hlurf-0004yY-1n; Fri, 12 Jul 2019 12:41:27 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hltvZ-0004vV-5p
- for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 11:41:26 +0000
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 2CF27C04AC70;
- Fri, 12 Jul 2019 11:41:24 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-12-47.pek2.redhat.com [10.72.12.47])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A049F5C559;
- Fri, 12 Jul 2019 11:41:20 +0000 (UTC)
-Subject: Re: regression: nvme rdma with bnxt_re0 broken
-To: Parav Pandit <parav@mellanox.com>,
- Selvin Xavier <selvin.xavier@broadcom.com>
-References: <1310083272.27124086.1562836112586.JavaMail.zimbra@redhat.com>
- <619411460.27128070.1562838433020.JavaMail.zimbra@redhat.com>
- <AM0PR05MB48664657022ECA8526E3C967D1F30@AM0PR05MB4866.eurprd05.prod.outlook.com>
- <AM0PR05MB4866070FBADCCABD1F84E42ED1F30@AM0PR05MB4866.eurprd05.prod.outlook.com>
- <66d43fd8-18e8-8b9d-90e3-ee2804d56889@redhat.com>
- <AM0PR05MB4866DEDB9DE4379F6A6EF15BD1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
- <CA+sbYW17PGAW57pyRmQB9KsDA9Q+7FFgSseSTTWE_h6vffa7UQ@mail.gmail.com>
- <AM0PR05MB4866CFEDCDF3CDA1D7D18AA5D1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
- <AM0PR05MB4866CCD487C9D99BD9526BA8D1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
- <AM0PR05MB4866665D5CACB34AE885BCA2D1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
-From: Yi Zhang <yi.zhang@redhat.com>
-Message-ID: <ef6a01a1-9163-ef4e-29ac-4f4130c682f1@redhat.com>
-Date: Fri, 12 Jul 2019 19:41:17 +0800
+ id 1hlurV-0004lp-VN
+ for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 12:41:19 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 81D70AB91;
+ Fri, 12 Jul 2019 12:41:16 +0000 (UTC)
+Subject: Re: [PATCH rfc v2 03/10] nvme-cli: allow discover to address
+ discovery controller by persistent name
+To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
+References: <20190712003140.16221-1-jsmart2021@gmail.com>
+ <20190712003140.16221-4-jsmart2021@gmail.com>
+From: Hannes Reinecke <hare@suse.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
+ 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
+ azzYF4VRJsdl+d0MCaSy8mUh
+Message-ID: <9cd61b4d-af8c-06ac-959f-1005ad7441d9@suse.de>
+Date: Fri, 12 Jul 2019 14:41:15 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <AM0PR05MB4866665D5CACB34AE885BCA2D1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
+In-Reply-To: <20190712003140.16221-4-jsmart2021@gmail.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.31]); Fri, 12 Jul 2019 11:41:24 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190712_044125_269974_389702C1 
-X-CRM114-Status: GOOD (  23.78  )
-X-Spam-Score: -4.3 (----)
+X-CRM114-CacheID: sfid-20190712_054118_310938_4439D061 
+X-CRM114-Status: GOOD (  14.60  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-4.3 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
- 0.1 URIBL_SBL_A Contains URL's A record listed in the Spamhaus SBL
- blocklist [URIs: pastebin.com]
- 0.6 URIBL_SBL Contains an URL's NS IP listed in the Spamhaus SBL
- blocklist [URIs: pastebin.com]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,148 +107,31 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Jurgens <danielj@mellanox.com>,
- "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
- Devesh Sharma <devesh.sharma@broadcom.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Sagi Grimberg <sagi@grimberg.me>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi Parav
-The nvme connect still failed[1], I've paste all the dmesg log to[2], 
-pls check it.
-
-
-[1]
-[root@rdma-perf-07 ~]$ nvme connect -t rdma -a 172.31.40.125 -s 4420 -n 
-testnqn
-Failed to write to /dev/nvme-fabrics: Connection reset by peer
-[2]
-https://pastebin.com/ipvak0Sp
-
-Thanks
-
-Yi
-
-
-On 7/12/19 5:49 PM, Parav Pandit wrote:
->>> Hi Selvin,
->>>
->>>> -----Original Message-----
->>>> From: Selvin Xavier <selvin.xavier@broadcom.com>
->>>> Sent: Friday, July 12, 2019 9:16 AM
->>>> To: Parav Pandit <parav@mellanox.com>
->>>> Cc: Yi Zhang <yi.zhang@redhat.com>; linux-nvme@lists.infradead.org;
->>>> Daniel Jurgens <danielj@mellanox.com>; linux-rdma@vger.kernel.org;
->>>> Devesh Sharma <devesh.sharma@broadcom.com>
->>>> Subject: Re: regression: nvme rdma with bnxt_re0 broken
->>>>
->>>> On Fri, Jul 12, 2019 at 8:19 AM Parav Pandit <parav@mellanox.com>
->> wrote:
->>>>> GID table looks fine.
->>>>>
->>>> The GID table has  fe80:0000:0000:0000:020a:f7ff:fee3:6e32 entry
->>>> repeated 6 times. 2 for each interface bnxt_roce, bnxt_roce.43 and
->>>> bnxt_roce.45. Is this expected to have same gid entries for vlan and
->>>> base interfaces? As you mentioned earlier, driver's assumption that
->>>> only 2 GID entries identical (one for RoCE v1 and one for RoCE
->>>> v2)   is breaking here.
->>>>
->>> Yes, this is correct behavior. Each vlan netdev interface is in
->>> different L2 segment.
->>> Vlan netdev has this ipv6 link local address. Hence, it is added to the GID
->> table.
->>> A given GID table entry is identified uniquely by GID+ndev+type(v1/v2).
->>>
->>> Reviewing bnxt_qplib_add_sgid() does the comparison below.
->>> if (!memcmp(&sgid_tbl->tbl[i], gid, sizeof(*gid))) {
->>>
->>> This comparison looks incomplete which ignore netdev and type.
->>> But even with that, I would expect GID entry addition failure for
->>> vlans for ipv6 link local entries.
->>>
->>> But I am puzzled now, that , with above memcmp() check, how does both
->>> v1 and v2 entries get added in your table and for vlans too?
->>> I expect add_gid() and core/cache.c add_roce_gid () to fail for the
->>> duplicate entry.
->>> But GID table that Yi Zhang dumped has these vlan entries.
->>> I am missing something.
->>>
->> Ah, found it.
->> bnxt_re_add_gid() checks for -EALREADY and returns 0 to add_gid() callback.
->> Ok. so you just need to extend bnxt_qplib_add_sgid() for considering vlan too.
->> Let me see if I can share a patch in few minutes.
->>
->>> Yi Zhang,
->>> Instead of last 15 lines of dmesg, can you please share the whole dmsg
->>> log which should be enabled before creating vlans.
->>> using
->>> echo -n "module ib_core +p" /sys/kernel/debug/dynamic_debug/control
->>>
->>> Selvin,
->>> Additionally, driver shouldn't be looking at the duplicate entries.
->>> core already does it.
->>> You might only want to do for v1/v2 case as bnxt driver has some
->>> dependency with it.
->>> Can you please fix this part?
->>>
-> How about below fix?
->
->  From f3f17008d34b5a0c38c190010281a3030a8e5771 Mon Sep 17 00:00:00 2001
-> From: Parav Pandit <parav@mellanox.com>
-> Date: Fri, 12 Jul 2019 04:34:52 -0500
-> Subject: [PATCH] IB/bnxt_re: Honor vlan_id in GID entry comparision
->
-> GID entry consist of GID, vlan, netdev and smac.
-> Extend GID duplicate check comparions to consider vlan_id as well
-> to support IPv6 VLAN based link local addresses.
->
-> Fixes: 823b23da7113 ("IB/core: Allow vlan link local address based RoCE GIDs")
-> Change-Id: I2e026ec8065c8425ba24fad8525323d112a2f4e4
-> Signed-off-by: Parav Pandit <parav@mellanox.com>
-> ---
->   drivers/infiniband/hw/bnxt_re/qplib_sp.c | 4 +++-
->   drivers/infiniband/hw/bnxt_re/qplib_sp.h | 1 +
->   2 files changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_sp.c b/drivers/infiniband/hw/bnxt_re/qplib_sp.c
-> index 48793d3512ac..8567b7367669 100644
-> --- a/drivers/infiniband/hw/bnxt_re/qplib_sp.c
-> +++ b/drivers/infiniband/hw/bnxt_re/qplib_sp.c
-> @@ -296,7 +296,8 @@ int bnxt_qplib_add_sgid(struct bnxt_qplib_sgid_tbl *sgid_tbl,
->   	}
->   	free_idx = sgid_tbl->max;
->   	for (i = 0; i < sgid_tbl->max; i++) {
-> -		if (!memcmp(&sgid_tbl->tbl[i], gid, sizeof(*gid))) {
-> +		if (!memcmp(&sgid_tbl->tbl[i], gid, sizeof(*gid)) &&
-> +		    sgid_tbl->tbl[i].vlan_id == vlan_id) {
->   			dev_dbg(&res->pdev->dev,
->   				"SGID entry already exist in entry %d!\n", i);
->   			*index = i;
-> @@ -351,6 +352,7 @@ int bnxt_qplib_add_sgid(struct bnxt_qplib_sgid_tbl *sgid_tbl,
->   	}
->   	/* Add GID to the sgid_tbl */
->   	memcpy(&sgid_tbl->tbl[free_idx], gid, sizeof(*gid));
-> +	sgid_tbl->tbl[free_idx].vlan_id = vlan_id;
->   	sgid_tbl->active++;
->   	if (vlan_id != 0xFFFF)
->   		sgid_tbl->vlan[free_idx] = 1;
-> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_sp.h b/drivers/infiniband/hw/bnxt_re/qplib_sp.h
-> index 0ec3b12b0bcd..7a1957c9dc6f 100644
-> --- a/drivers/infiniband/hw/bnxt_re/qplib_sp.h
-> +++ b/drivers/infiniband/hw/bnxt_re/qplib_sp.h
-> @@ -82,6 +82,7 @@ struct bnxt_qplib_pd {
->   
->   struct bnxt_qplib_gid {
->   	u8				data[16];
-> +	u16 vlan_id;
->   };
->   
->   struct bnxt_qplib_ah {
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNy8xMi8xOSAyOjMxIEFNLCBKYW1lcyBTbWFydCB3cm90ZToKPiBUbyBzdXBwb3J0IGRpc2Nv
+dmVyeSAoY29ubmVjdC9jb25uZWN0LWFsbCkgdG8gb3BlcmF0ZSBhZ2FpbnN0IGEKPiBwZXJzaXN0
+ZW50IGRpc2NvdmVyeSBjb250cm9sbGVyLCBsZXQgdGhlIGRpc2NvdmVyeSBjb250cm9sbGVyIHRv
+Cj4gYmUgc3BlY2lmaWVkIGJ5IGl0cyBkZXZpY2Ugbm9kZSBuYW1lIHJhdGhlciB0aGFuIG5ldyBj
+b25uZWN0aW9uCj4gYXR0cmlidXRlcy4KPiAKPiBFeGFtcGxlOgo+ICAgbnZtZSBjb25uZWN0LWFs
+bCAuLi4gLS1kZXZpY2U9bnZtZTUKPiAKPiBBbHNvIGNlbnRyYWxpemUgZXh0cmFjdGlvbiBvZiBj
+b250cm9sbGVyIGluc3RhbmNlIGZyb20gdGhlIGNvbnRyb2xsZXIKPiBuYW1lIHRvIGEgY29tbW9u
+IGhlbHBlci4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBTYWdpIEdyaW1iZXJnIDxzYWdpQGdyaW1iZXJn
+Lm1lPgo+IFNpZ25lZC1vZmYtYnk6IEphbWVzIFNtYXJ0IDxqc21hcnQyMDIxQGdtYWlsLmNvbT4K
+PiBSZXZpZXdlZC1ieTogTWF4IEd1cnRvdm95IDxtYXhnQG1lbGxhbm94LmNvbT4KPiAKPiAtLS0K
+PiB2MjoKPiAgUmV3b3JrIGN0cmxfaW5zdGFuY2UgZm9yIHJldHVybiB2YWx1ZSBvbiBlcnJvci4K
+PiAgVmFsaWRhdGUgZGV2aWNlIG5hbWUgaXMgYSBjb250cm9sbGVyIG5hbWUuCj4gLS0tCj4gIGZh
+YnJpY3MuYyB8IDM3ICsrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDI3IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+IApSZXZpZXdl
+ZC1ieTogSGFubmVzIFJlaW5lY2tlIDxoYXJlQHN1c2UuY29tPgoKQ2hlZXJzLAoKSGFubmVzCi0t
+IApEci4gSGFubmVzIFJlaW5lY2tlCQkgICBUZWFtbGVhZCBTdG9yYWdlICYgTmV0d29ya2luZwpo
+YXJlQHN1c2UuZGUJCQkgICAgICAgICAgICAgICArNDkgOTExIDc0MDUzIDY4OApTVVNFIExJTlVY
+IEdtYkgsIE1heGZlbGRzdHIuIDUsIDkwNDA5IE7DvHJuYmVyZwpHRjogRmVsaXggSW1lbmTDtnJm
+ZmVyLCBNYXJ5IEhpZ2dpbnMsIFNyaSBSYXNpYWgKSFJCIDIxMjg0IChBRyBOw7xybmJlcmcpCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1udm1l
+IG1haWxpbmcgbGlzdApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
