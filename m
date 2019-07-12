@@ -2,85 +2,103 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF4686745B
-	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jul 2019 19:36:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E6F1A67474
+	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jul 2019 19:42:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=z+7wkgPULcAO5WyomwahYYQx4LmCsyia8NZ3tSMQ2gM=; b=o+c7hsqVo2SktGQ0PMY1u8t6U
-	VNHaOva8PE2CLwGf68cB3z88iSMgwdPLnI3HpSNJEmDzdAWRJPnpLKr3FvLEB/DTwDm8Ejq8/bOmk
-	gQhsu1a6lVNvBPPjkcMkluCtm5B7lD5BEAhG0T4YN3Td2tY9ztVICqCWn8/pIDfuQ/TbIGNZyBfeD
-	iOYWNuxGIQJICjopX0lYG4FOmdkq0jnYNgBFPjahEDY7s0B/W2xap0cTW8YXuDt4WzgPKBY+Ha4bl
-	dAP1GguufhP0KVmVHijuq6mBTWRRG7YETebkxUB0lIitpb84AUzVDWb5HjGmDKiq1KvsdrG8xUxDo
-	ciAtmd1Dw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fa2m8BCYbJSx8OG3xqHWYsywTyCc8arhKXXeKS0yWDs=; b=OVR4/uji3u/0hm
+	+v71GvqVAcAVWiCVOir1dYjzkdY7qn4jjOSzONCSivk7viHScNMihSzeGMZirMGiV/nf+JRszygfg
+	fl0IaFNVOCTKsKJLFT8t59iZtNozoLEwqqi8na9E7Mwfi+kyPs/XtI1mjiwhJJtxAvojL3n0vbPuV
+	frrlOB4rT2pQI/ZuFWM1+ZDbekybexnSI9DZLMhWKbyyrFdNfCZVCK56e8f98sJ35cOSFMYdXIbi6
+	4keUZYRMz8fMcU8mxnFwrhirzB4S58iKVq6RKwuNNduHv1+GcFwirdAgAfTM8zcX4AnT9JJ/jKnib
+	cjMDCkjyeesDw/wIoL9Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlzSq-0002Ki-Je; Fri, 12 Jul 2019 17:36:08 +0000
-Received: from mail-pf1-f193.google.com ([209.85.210.193])
+	id 1hlzZ0-0004LM-5r; Fri, 12 Jul 2019 17:42:30 +0000
+Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hlzSh-0002KE-UT
- for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 17:36:01 +0000
-Received: by mail-pf1-f193.google.com with SMTP id 19so4599938pfa.4
- for <linux-nvme@lists.infradead.org>; Fri, 12 Jul 2019 10:35:59 -0700 (PDT)
+ id 1hlzYs-0004Ko-HM
+ for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 17:42:23 +0000
+Received: by mail-qt1-x844.google.com with SMTP id l9so8940101qtu.6
+ for <linux-nvme@lists.infradead.org>; Fri, 12 Jul 2019 10:42:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=3O32Kyq6oSJ1qa7toJHZZ9UJwAgNuju3KRmfxEHI8bQ=;
+ b=LC5r0LDDWh4BCxxQAgMDccQsgHNbKdSIzUaME2cre/oHB3xGOfm5djQo5dU71oDT20
+ 0kihFyTgPyY1P6nXSAF3hhpaSbHw3cixIdOyJFNDPSTdx/9z6pQgN8KTogdgIxpumS2G
+ SL/nu+SYkLsC7Jk2Wsh8ntoveNraL10w9ipdraGe6hnPVGJXczioSrTwBYNV10HfFL8H
+ 5YAyvHrRVuCfmgMxbuhbyFQbS6keetepHK8XxE/MtdF5kR29KXTtmlNOVMkD/kgxK3VO
+ 7lotP2jZLki0wZrXVOx77+ww11yFk6BAy7LDmfErx7QsqWFgocmFvvn6JsxytcuyZA/K
+ OdZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=axSvuzMwueVarNPOMRNToZl4dbJU5wcCQ6XbR34gdfQ=;
- b=dWOQR7WLLO5ziwbYE+hQtCdeyUF0P0HCDGbCieYVeKdWAn71aoquLVV5gC8SenRVrH
- ppj0Vg5tQaSf6ynZY1nIehIoIVJq0zTXOSVkwWoFpLQRaPf4B9BimHljL4Y33OlE7qk9
- 9ppbgptyzGNx6v6PTAif2ssNuugFRrVf9ZE9GpsA+2BxBHvZpeCcychikORe41pL5FU3
- fqhnhTlv86YkvldqnpIbjzb4PpdXAUWFQTG3ab8rVkroHeWzPrciGjWZRQP90Qnk1vxR
- qEyI+imgVdPFqnrz/jSfYmR/sFZ1PqeGYHE6sZDCfAmxR4N0z4lChbQvFnJvDt4Pxo8z
- yySg==
-X-Gm-Message-State: APjAAAWA710Ov77Wg/3Sb58e99npsvpPOPV233GLxrVVIDStMNKF2xxX
- 0IeHvLpKsbMk7mzluGjWmeYUqqYh
-X-Google-Smtp-Source: APXvYqzNXaI70yV4T2pbgDnyoAMXdxQGYQ4ZKWoCG2jVDWRyzJA99PIve2p3VHEbQR4A2Vk3f2rhsw==
-X-Received: by 2002:a17:90b:f12:: with SMTP id
- br18mr12671085pjb.127.1562952958901; 
- Fri, 12 Jul 2019 10:35:58 -0700 (PDT)
-Received: from ?IPv6:2601:647:4800:973f:10a0:43d6:25f7:7bc3?
- ([2601:647:4800:973f:10a0:43d6:25f7:7bc3])
- by smtp.gmail.com with ESMTPSA id a6sm1416071pfa.162.2019.07.12.10.35.57
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 12 Jul 2019 10:35:58 -0700 (PDT)
-Subject: Re: [PATCH rfc v2 09/10] nvme-cli: add --quiet option
-To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
-References: <20190712003140.16221-1-jsmart2021@gmail.com>
- <20190712003140.16221-10-jsmart2021@gmail.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <46dcab64-c4f9-74dc-b75c-4f4b8926051d@grimberg.me>
-Date: Fri, 12 Jul 2019 10:35:57 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=3O32Kyq6oSJ1qa7toJHZZ9UJwAgNuju3KRmfxEHI8bQ=;
+ b=SwKCuIESRejvtM5jKmAHgbvjSA87/Ynm84gXFIP2tFcnwBPFdousW8uL78JT5ll199
+ WTjWtoUU1rA2QMUGqHoJhS3Va9hHv4QmD1AyVsTQOje2AWbgAlyp0HiYebUjoCrVM203
+ q1ydYZX/QjHhOVXZyrMbgAD2ADnUzDCXoK3Wd+NHcbNPc3H26Z9WCyU+2Ws4zCXCwcTT
+ e4+zQpieiKEMbQ6NLgbcReOVHYwO1r8Ac2x+VjuR49Fxm2hs5w62eucB/hZumVhRA9Ms
+ xwnVbTa5ZN1E0ABMRQpiX4QOJhMGIhwnAkUyfndLjSv2QOUnSWuWaeQIczo3c+LAf05U
+ Q+gg==
+X-Gm-Message-State: APjAAAVkdCX8rRMFRmjywlYPCeZ1OaVqDx/PLZ35ppxLTRWc+ZiFtBO6
+ wpip/cY+hVkdtSKP5MUJLSghCA==
+X-Google-Smtp-Source: APXvYqwsq+dBel5Hn8pHqLq0F0nE+qD0pvdFMR/gu9SpDJgObwHHtFiugfMDsGXPAyVOZ2RX5wfsrw==
+X-Received: by 2002:ad4:4a92:: with SMTP id h18mr7877218qvx.235.1562953341056; 
+ Fri, 12 Jul 2019 10:42:21 -0700 (PDT)
+Received: from ziepe.ca
+ (hlfxns017vw-156-34-55-100.dhcp-dynamic.fibreop.ns.bellaliant.net.
+ [156.34.55.100])
+ by smtp.gmail.com with ESMTPSA id i27sm3818246qkk.58.2019.07.12.10.42.20
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 12 Jul 2019 10:42:20 -0700 (PDT)
+Received: from jgg by mlx.ziepe.ca with local (Exim 4.90_1)
+ (envelope-from <jgg@ziepe.ca>)
+ id 1hlzYq-0003pT-5V; Fri, 12 Jul 2019 14:42:20 -0300
+Date: Fri, 12 Jul 2019 14:42:20 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Selvin Xavier <selvin.xavier@broadcom.com>
+Subject: Re: regression: nvme rdma with bnxt_re0 broken
+Message-ID: <20190712174220.GL27512@ziepe.ca>
+References: <66d43fd8-18e8-8b9d-90e3-ee2804d56889@redhat.com>
+ <AM0PR05MB4866DEDB9DE4379F6A6EF15BD1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
+ <CA+sbYW17PGAW57pyRmQB9KsDA9Q+7FFgSseSTTWE_h6vffa7UQ@mail.gmail.com>
+ <AM0PR05MB4866CFEDCDF3CDA1D7D18AA5D1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
+ <AM0PR05MB4866CCD487C9D99BD9526BA8D1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
+ <AM0PR05MB4866665D5CACB34AE885BCA2D1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
+ <ef6a01a1-9163-ef4e-29ac-4f4130c682f1@redhat.com>
+ <AM0PR05MB48666463325E1D0E25D63F57D1F20@AM0PR05MB4866.eurprd05.prod.outlook.com>
+ <20190712154044.GJ27512@ziepe.ca>
+ <CA+sbYW0F6Vgpa5SQX+9ge4EwWrMkJ4kQ-psEq11S00=-L_mVhg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20190712003140.16221-10-jsmart2021@gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CA+sbYW0F6Vgpa5SQX+9ge4EwWrMkJ4kQ-psEq11S00=-L_mVhg@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190712_103559_985949_24BC7493 
-X-CRM114-Status: GOOD (  22.63  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20190712_104222_718924_6974F9A0 
+X-CRM114-Status: GOOD (  10.83  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.193 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.193 listed in wl.mailspike.net]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ no trust [2607:f8b0:4864:20:0:0:0:844 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,105 +110,51 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: Yi Zhang <yi.zhang@redhat.com>, Parav Pandit <parav@mellanox.com>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Daniel Jurgens <danielj@mellanox.com>,
+ Devesh Sharma <devesh.sharma@broadcom.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+On Fri, Jul 12, 2019 at 09:59:38PM +0530, Selvin Xavier wrote:
 
-> From: Sagi Grimberg <sagi@grimberg.me>
+> > bnxt guys: please just delete this duplicate detection code from the
+> > driver. Every GID provided from the core must be programmed into the
+> > given gid table index.
 > 
-> Now we are going to have discovery log change events, so
-> instead of trying to figure out which NVM subsystem ports
-> are already connected, we let the driver do that and
-> only suppress the failure messages.
-> 
-> Example:
->    nvme connect-all ... --quiet
-> 
-> This option will be used by the discovery log change corresponding
-> udev rule.
-> 
-> Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
-> Reviewed-by: James Smart <jsmart2021@gmail.com>
-> Reviewed-by: Hannes Reinecke <hare@suse.com>
-> Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
-> ---
->   fabrics.c | 21 ++++++++++++++-------
->   1 file changed, 14 insertions(+), 7 deletions(-)
-> 
-> diff --git a/fabrics.c b/fabrics.c
-> index e101ead..13e2cf8 100644
-> --- a/fabrics.c
-> +++ b/fabrics.c
-> @@ -67,6 +67,7 @@ static struct config {
->   	int  hdr_digest;
->   	int  data_digest;
->   	bool persistent;
-> +	bool quiet;
->   } cfg = { NULL };
->   
->   #define BUF_SIZE		4096
-> @@ -219,9 +220,11 @@ static int add_ctrl(const char *argstr)
->   		goto out;
->   	}
->   
-> -	if (write(fd, argstr, len) != len) {
-> -		fprintf(stderr, "Failed to write to %s: %s\n",
-> -			 PATH_NVME_FABRICS, strerror(errno));
-> +	ret = write(fd, argstr, len);
-> +	if (ret != len) {
-> +		if (errno != EALREADY || !cfg.quiet)
-> +			fprintf(stderr, "Failed to write to %s: %s\n",
-> +				 PATH_NVME_FABRICS, strerror(errno));
->   		ret = -errno;
->   		goto out_close;
->   	}
-> @@ -855,10 +858,13 @@ static int connect_ctrls(struct nvmf_disc_rsp_page_hdr *log, int numrec)
->   		/* already connected print message	*/
->   		if (instance == -EALREADY) {
->   			const char *traddr = log->entries[i].traddr;
-> -			fprintf(stderr,
-> -				"traddr=%.*s is already connected\n",
-> -				space_strip_len(NVMF_TRADDR_SIZE, traddr),
-> -				traddr);
-> +
-> +			if (!cfg.quiet)
-> +				fprintf(stderr,
-> +					"traddr=%.*s is already connected\n",
-> +					space_strip_len(NVMF_TRADDR_SIZE,
-> +							traddr),
-> +					traddr);
->   			continue;
->   		}
->   
-> @@ -1063,6 +1069,7 @@ int discover(const char *desc, int argc, char **argv, bool connect)
->   		{"nr-poll-queues",  'P', "LIST", CFG_INT, &cfg.nr_poll_queues,    required_argument, "number of poll queues to use (default 0)" },
->   		{"queue-size",      'Q', "LIST", CFG_INT, &cfg.queue_size,      required_argument, "number of io queue elements to use (default 128)" },
->   		{"persistent",  'p', "LIST", CFG_NONE, &cfg.persistent,  no_argument, "persistent discovery connection" },
-> +		{"quiet",       'Q', "LIST", CFG_NONE, &cfg.quiet,  no_argument, "suppress already connected errors" },
+> Jason,
+>  This check is required in bnxt_re because the HW need only one entry
+> in its table for RoCE V1 and RoCE v2 Gids.
 
-Q is already a short-arg (queue-size). Lets have it 'S' (stand for 
-Suppress). Also, when I tested it locally for some reason it did not
-take:
---
-Jul 12 17:30:00 nvmc systemd[1]: Started NVMf auto-connect scan upon 
-nvme discovery controller Events.
-Jul 12 17:30:00 nvmc sh[2767]: Failed to write to /dev/nvme-fabrics: 
-Operation already in progress
-Jul 12 17:30:00 nvmc sh[2767]: traddr=192.168.123.1 is already connected
-Jul 12 17:30:00 nvmc kernel: nvme nvme2: creating 4 I/O queues.
-Jul 12 17:30:00 nvmc kernel: nvme nvme2: mapped 4/0/0 default/read/poll 
-queues.
-Jul 12 17:30:00 nvmc kernel: nvme nvme2: new ctrl: NQN "testnqn2", addr 
-192.168.123.1:8009
---
+The HW doesn't have a 'GID table' if it has this restriction. It
+sounds like it has some 'IP table' or maybe 'IP and VLAN' table?
 
-Adding print to add_ctrl:
-Jul 12 17:30:00 nvmc sh[2767]: errno 114 quiet 0
+So the driver must provide a full emulated 'GID Table' with all the
+normal semantics.
 
-When I pass it manually it works, but not from udev... Not sure what
-is going on...
+Which looks sort of like what the add side is doing, other than the
+mis-naming it seems reasonable..
+
+But then I see this in re_create_ah:
+
+	/*
+	 * If RoCE V2 is enabled, stack will have two entries for
+	 * each GID entry. Avoiding this duplicte entry in HW. Dividing
+	 * the GID index by 2 for RoCE V2
+	 */
+	ah->qplib_ah.sgid_index = grh->sgid_index / 2;
+
+Which seems completely wrong - that is making assumptions about the
+layout of the gid table that is just not allowed.
+
+Surely it needs to access the per-gid driver context that add_gid set
+and use the index into the sgid_table from there?
+
+Jason
 
 _______________________________________________
 Linux-nvme mailing list
