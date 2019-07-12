@@ -2,90 +2,41 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34C8467109
-	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jul 2019 16:11:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CD3DC67295
+	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jul 2019 17:38:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ps1AVeFAdJn09jvtmOT/xXAXiz+U+U3YXMnQMAuZ0Xg=; b=MGmLiYECplIA7l
-	n7zRRudKxIGlV85mt5B3y8gnBLLoBfudAFl9i0yF/z4VO/GSEqChR/nQqx8BOxaBZUsSZrJOVF/tw
-	zxADpB8ZJLEE0poi8EjhZAEPcrUSOMMbpmnZKE1dUfQ/bplNgDwXe8Y6vRkBfH6Y6MH3zkG1elcqh
-	0zBa8hMFArI/k87p5ym8/nXq+27I9oF665CRWKFCj+8zf4WnmDv7y6HLZCmJYUHhqM/LRS9ZCQfP6
-	Aygm4Z8uVwgpLcI9NLU+1eIkCtQaNfClQ9HiK9eYpAY2d5fy4s2m/tvzdyfk4xHEG9r70LgqjjN4Y
-	EyWD5g7lE3JHECGoLEJA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rEtKSWOhfZj1F30aTzHbtwW8qSBfJCQgCnsbjKeS0ys=; b=ilOTJjpDMKKcM3
+	wibhOT5glN8DfaQWeWvf/lt7Rlad0/++BC+xVEKOeJ0+UJi0j273B3wKmJdNXg2vyKsBHZx8IMFW/
+	H4H3EIB1C30pXf1I1Eca3qYw5XUp3i9yJ9farC/fftX9Y4GE4+kBuTqwfFzHClHmEiM3v8MnbUDSh
+	8p4yLl9cObgx50z3dFyMSzbk829kkTCjuuS4g17ouSaaChRu7FpIXv5i4RIXASaqYv0A8mvV7oQLc
+	l8n0KbtXd+6pUQTWXYf/HYi7UhooM0iKpErQDHNeYN7QL8pIt5HYdbEFlBROIe9djAIo8KI8WSn15
+	h5rD0q9PkP91h6HEMVdA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hlwGI-0007OK-Ke; Fri, 12 Jul 2019 14:10:58 +0000
+	id 1hlxcn-0008TV-H5; Fri, 12 Jul 2019 15:38:17 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hlwG5-0007Eb-6T
- for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 14:10:46 +0000
+ id 1hlxcQ-0008Hy-Lu
+ for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 15:37:56 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id D4BC9B024;
- Fri, 12 Jul 2019 14:10:37 +0000 (UTC)
-Subject: Re: [PATCH rfc v2 08/10] nvme-cli: Expand --device argument processing
-To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
-References: <20190712003140.16221-1-jsmart2021@gmail.com>
- <20190712003140.16221-9-jsmart2021@gmail.com>
-From: Hannes Reinecke <hare@suse.de>
-Openpgp: preference=signencrypt
-Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
- 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
- azzYF4VRJsdl+d0MCaSy8mUh
-Message-ID: <6699bf8a-b78e-ed9f-e579-e4f96440b5f9@suse.de>
-Date: Fri, 12 Jul 2019 16:10:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ by mx1.suse.de (Postfix) with ESMTP id 2A7F7ACB4;
+ Fri, 12 Jul 2019 15:37:51 +0000 (UTC)
+From: Simon Schricker <sschricker@suse.de>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme-vendor: fix c99 declarations in vendor plugins
+Date: Fri, 12 Jul 2019 17:34:57 +0200
+Message-Id: <20190712153457.13877-1-sschricker@suse.de>
+X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
-In-Reply-To: <20190712003140.16221-9-jsmart2021@gmail.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190712_071045_540778_7119F951 
-X-CRM114-Status: GOOD (  20.31  )
+X-CRM114-CacheID: sfid-20190712_083754_871540_3E9672C6 
+X-CRM114-Status: GOOD (  11.33  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -106,42 +57,90 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: keith.busch@intel.com, sschricker@suse.de, sagi@grimberg.me, hare@suse.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gNy8xMi8xOSAyOjMxIEFNLCBKYW1lcyBTbWFydCB3cm90ZToKPiBUaGUgY29ubmVjdC1hbGwg
-LS1kZXZpY2UgYXJndW1lbnQgd2FzIHVzZWQgdG8gc3BlY2lmeSBhIHNwZWNpZmljIGRldmljZQo+
-IHRvIGJlIHVzZWQgYXMgdGhlIGRpc2NvdmVyeSBjb250cm9sbGVyLiBUaGUgZGV2aWNlIGlzIHR5
-cGljYWxseSBhCj4gbG9uZy1saXZlZCBkaXNjb3ZlcnkgY29udHJvbGxlciB0aGF0IHBvc3RlZCBh
-IGRpc2NvdmVyeSBldmVudC4KPiBObyBhdHRlbXB0IHdhcyBtYWRlIHRvIGVuc3VyZSB0aGUgZGV2
-aWNlIGlzIHdobyBpdCBpcyBzdXBwb3NlZCB0byBiZQo+IGJlZm9yZSB1c2luZyBpdC4KPiAKPiBS
-ZXZpc2VkIHRoZSBjb2RlIHRvIHVzZSB0aGUgb3RoZXIgYXJndW1lbnRzIGluIHRoZSBjb25uZWN0
-LWFsbCByZXF1ZXN0Cj4gdG8gdmFsaWRhdGUgdGhhdCB0aGUgZGV2aWNlIGlzIHRoZSBlbnRpdHkg
-dGhhdCB3YXMgZXhwZWN0ZWQuIElmIHRoZQo+IGRldmljZSBkb2Vzbid0IG1hdGNoLCB0aGUgY2xp
-IHdpbGwgbG9vayBmb3IgYW4gZXhpc3RpbmcgbWF0Y2hpbmcgZGV2aWNlCj4gaW4gdGhlIHN5c3Rl
-bSAoc2hvdWxkIGJlIGEgZGlzY292ZXJ5IGNvbnRyb2xsZXIgZHVlIHRvIG5xbikgd2l0aCB0aGUK
-PiBzYW1lIGNvbm5lY3QgcGFyYW1ldGVycyBhbmQgdXNlIGl0LiAgSWYgb25lIGlzIG5vdCBmb3Vu
-ZCBvbiB0aGUgc3lzdGVtLAo+IGEgbmV3IGRpc2NvdmVyeSBjb250cm9sbGVyIHdpbGwgYmUgY3Jl
-YXRlZCBmb3IgdGhlIGNvbm5lY3QtYWxsIHJlcXVlc3QuCj4gCj4gVGhlIHJldmlzaW9uIHVzZXMg
-bmV3IHJvdXRpbmVzIHRvIHBhcnNlIHRoZSBjb25uZWN0IGFyZ3VtZW50cyBnaXZlbgo+IGluIHRo
-ZSBhcmdzdHIgcGFyYW1ldGVyLiBBcyBhIGNvdXBsZSBvZiBuZXcgZmllbGRuYW1lcyBhcmUgbmVl
-ZGVkLCB0aGUKPiBwYXJzZSByb3V0aW5lIGNvbnN0YW50cyB3ZXJlIGV4cGFuZGVkIGZvciB0aGVt
-Lgo+IAo+IFRoZSByZXZpc2lvbiB1c2VzIHRoZSBuZXcgcm91dGluZXMgdG8gbWF0Y2ggdGhlIHNw
-ZWNpZmllZCBkZXZpY2UgdnMKPiBpdCdzIGF0dHJpYnV0ZXMgYXMgd2VsbCBhcyB0aGUgc2VhcmNo
-IHJvdXRpbmUgdGhhdCBsb29rcyBmb3IgYSBkZXZpY2UKPiB3aXRoIHRoZSBjb25uZWN0IGFyZ3Vt
-ZW50cy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKYW1lcyBTbWFydCA8anNtYXJ0MjAyMUBnbWFpbC5j
-b20+Cj4gQ0M6IFNhZ2kgR3JpbWJlcmcgPHNhZ2lAZ3JpbWJlcmcubWU+Cj4gQ0M6IEhhbm5lcyBS
-ZWluZWNrZSA8aGFyZUBzdXNlLmNvbT4KPiAtLS0KPiAgZmFicmljcy5jIHwgMzggKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAgbnZtZS5jICAgIHwgIDIgKysKPiAgbnZt
-ZS5oICAgIHwgIDIgKysKPiAgMyBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCspCj4gClJl
-dmlld2VkLWJ5OiBIYW5uZXMgUmVpbmVja2UgPGhhcmVAc3VzZS5jb20+CgpDaGVlcnMsCgpIYW5u
-ZXMKLS0gCkRyLiBIYW5uZXMgUmVpbmVja2UJCSAgIFRlYW1sZWFkIFN0b3JhZ2UgJiBOZXR3b3Jr
-aW5nCmhhcmVAc3VzZS5kZQkJCSAgICAgICAgICAgICAgICs0OSA5MTEgNzQwNTMgNjg4ClNVU0Ug
-TElOVVggR21iSCwgTWF4ZmVsZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnCkdGOiBGZWxpeCBJbWVu
-ZMO2cmZmZXIsIE1hcnkgSGlnZ2lucywgU3JpIFJhc2lhaApIUkIgMjEyODQgKEFHIE7DvHJuYmVy
-ZykKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+We can't use c99 declarations with older compilers.
+
+Signed-off-by: Simon Schricker <sschricker@suse.de>
+---
+ plugins/micron/micron-nvme.c   | 3 ++-
+ plugins/toshiba/toshiba-nvme.c | 9 ++++++---
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/plugins/micron/micron-nvme.c b/plugins/micron/micron-nvme.c
+index c827bae..b0762f0 100644
+--- a/plugins/micron/micron-nvme.c
++++ b/plugins/micron/micron-nvme.c
+@@ -40,6 +40,7 @@ static int micron_selective_download(int argc, char **argv, struct command *cmd,
+ 	void *fw_buf;
+     int fd, selectNo,fw_fd,fw_size,err,offset = 0;
+     struct stat sb;
++	int i;
+ 
+ 	struct config {
+ 		char  *fw;
+@@ -68,7 +69,7 @@ static int micron_selective_download(int argc, char **argv, struct command *cmd,
+         goto out;
+     }
+ 
+-    for(int i=0;i<3;i++) 
++    for(i=0;i<3;i++)
+     {
+         cfg.select[i] = toupper(cfg.select[i]);
+     }
+diff --git a/plugins/toshiba/toshiba-nvme.c b/plugins/toshiba/toshiba-nvme.c
+index a22a4d6..e27653f 100644
+--- a/plugins/toshiba/toshiba-nvme.c
++++ b/plugins/toshiba/toshiba-nvme.c
+@@ -192,10 +192,11 @@ static int d_raw_to_fd(const unsigned char *buf, unsigned len, int fd)
+ static void progress_runner(float progress)
+ {
+     const size_t barWidth = 70;
++    size_t i;
+ 
+     fprintf(stdout, "[");
+     size_t pos = barWidth * progress;
+-    for (size_t i = 0; i < barWidth; ++i) {
++    for (i = 0; i < barWidth; ++i) {
+         if (i <= pos) {
+         	fprintf(stdout, "=");
+         } else {
+@@ -216,6 +217,8 @@ static int nvme_get_internal_log(int fd, const char* const filename, bool curren
+ 	// By trial and error it seems that the largest transfer chunk size
+ 	// is 128 * 32 =  4k sectors = 2MB
+ 	const __u32 max_pages = 128;
++	size_t i;
++	unsigned j;
+ 	err = nvme_sct_command_transfer_log(fd, current);
+ 	if (err) {
+ 		fprintf(stderr, "%s: SCT command transfer failed\n", __func__);
+@@ -267,7 +270,7 @@ static int nvme_get_internal_log(int fd, const char* const filename, bool curren
+ 		}
+ 	}
+ 	// Now read the rest
+-	for (size_t i = 1; i < pages;) {
++	for (i = 1; i < pages;) {
+ 		__u32 pages_chunk = max_pages;
+ 		if (pages_chunk + i >= pages) {
+ 			pages_chunk = pages - i;
+@@ -280,7 +283,7 @@ static int nvme_get_internal_log(int fd, const char* const filename, bool curren
+ 		progress = (float) (i) / (float) (pages);
+ 		progress_runner(progress);
+ 		if (filename == NULL) {
+-			for (unsigned j = 0; j < pages_chunk; ++j) {
++			for (j = 0; j < pages_chunk; ++j) {
+ 				fprintf(stdout, "Page: %zu of %zu\n", i + j, pages);
+ 				d(page_data + (j * page_data_len), page_data_len, 16, 1);
+ 			}
+-- 
+2.22.0
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
