@@ -2,60 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9044067724
-	for <lists+linux-nvme@lfdr.de>; Sat, 13 Jul 2019 02:01:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0E3067728
+	for <lists+linux-nvme@lfdr.de>; Sat, 13 Jul 2019 02:02:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x8vIuuAbZf+ycqmciyCGSdZcPMGB64Xaxf1U/3IuZl0=; b=t3SREpMpPlDgu9
-	+igNKx3I34tQ9miwbc8NXtJGqsaSrb120Rzh2g037GL2RW6/LnjgUTfUKAeqYY+5m+KreR7o4gk8p
-	TVZA5BivvtLAOQ73ZhmkoBbXoqbx6mAECUWtJRkDVsxwh9A0g5EsjIyPaCb8hnlGKyLzp02RSuw1V
-	2McgECwYND1+Sz0dQf56pQKub9+2pstsVK4dFHHwt/vRfhhPye2fuji2m+lIjxP9fx3pHi3AQRC9I
-	n5+Srwi+LjWBCRSGHOzD85zAS27zXgWwGK4omGmJpIJWV2po2SmbloDef1sR4Vbyx285Z44v9a7+M
-	tKEAC/GprK/CpdMcAFwA==;
+	List-Owner; bh=Y8ucfyWRlBwj4AUIxZYMGnhkdORJa9k9MKqWl2slSoE=; b=cV2GjNXhI38pM7
+	zCiW342YMK71cq6wY7eIJ/8Pz0+v4frRZ/9fp7H+dsfn0EHMtYpl45+PjrPRlHBVAJR2x5fAolZVQ
+	Kh+Fb7cPNiyvSdZ6GNY0veJgkgYgX25C9tfNGtsfTV49gE4AEMbHvUuIraalwz5RccIgk4UXEmQtO
+	fod8t01sbpToyPUQQKlBbp5DQLFaJKZOcTQj5yNaXiCXL8uDsk/n2lxURQuruKSsYUbAoM9DjVlM3
+	bUAk778iVZRjmGQaWkkNUWqadrFK+Qcv5AMjeNkjIqYwNrBBWrnNmzObo9fqBIrBSBUPfhA5A1ggU
+	oUb8Wad7e/nodzzUPgew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hm5U5-0001FM-6x; Sat, 13 Jul 2019 00:01:49 +0000
+	id 1hm5Uy-0001oz-BO; Sat, 13 Jul 2019 00:02:44 +0000
 Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hm5QN-0006GT-DI
- for linux-nvme@lists.infradead.org; Fri, 12 Jul 2019 23:58:04 +0000
-Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
- by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1hm5QG-0004P5-E1; Fri, 12 Jul 2019 17:57:54 -0600
-Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
- (envelope-from <gunthorp@deltatee.com>)
- id 1hm5QF-0005uh-5c; Fri, 12 Jul 2019 17:57:51 -0600
-From: Logan Gunthorpe <logang@deltatee.com>
+ id 1hm5UF-0001UN-7P
+ for linux-nvme@lists.infradead.org; Sat, 13 Jul 2019 00:02:03 +0000
+Received: from s01061831bf6ec98c.cg.shawcable.net ([68.147.80.180]
+ helo=[192.168.6.132])
+ by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <logang@deltatee.com>)
+ id 1hm5U8-0004XU-4w; Fri, 12 Jul 2019 18:01:52 -0600
 To: linux-block@vger.kernel.org, linux-nvme@lists.infradead.org,
  Omar Sandoval <osandov@fb.com>
-Date: Fri, 12 Jul 2019 17:57:41 -0600
-Message-Id: <20190712235742.22646-12-logang@deltatee.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190712235742.22646-1-logang@deltatee.com>
 References: <20190712235742.22646-1-logang@deltatee.com>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <d1bcf1fa-baed-dbf6-d04b-31df3f7ad30e@deltatee.com>
+Date: Fri, 12 Jul 2019 18:01:50 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 172.16.1.31
-X-SA-Exim-Rcpt-To: linux-block@vger.kernel.org, linux-nvme@lists.infradead.org,
- osandov@fb.com, chaitanya.kulkarni@wdc.com, tytso@mit.edu, mmoese@suse.de,
- jthumshirn@suse.de, sbates@raithlin.com, logang@deltatee.com
-X-SA-Exim-Mail-From: gunthorp@deltatee.com
+In-Reply-To: <20190712235742.22646-1-logang@deltatee.com>
+Content-Language: en-US
+X-SA-Exim-Connect-IP: 68.147.80.180
+X-SA-Exim-Rcpt-To: sbates@raithlin.com, jthumshirn@suse.de, tytso@mit.edu,
+ mmoese@suse.de, chaitanya.kulkarni@wdc.com, osandov@fb.com,
+ linux-nvme@lists.infradead.org, linux-block@vger.kernel.org
+X-SA-Exim-Mail-From: logang@deltatee.com
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
- version=3.4.2
-Subject: [PATCH blktests 11/12] common: Use sysfs instead of modinfo for
- _have_module_param()
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: [PATCH blktests 00/12] Fix nvme block test issues
 X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190712_165759_877634_5426B4BB 
-X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-CacheID: sfid-20190712_170159_623324_1E1AAC49 
+X-CRM114-Status: UNSURE (   5.56  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -77,38 +75,21 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Theodore Ts'o <tytso@mit.edu>,
+Cc: Stephen Bates <sbates@raithlin.com>,
+ Johannes Thumshirn <jthumshirn@suse.de>, Theodore Ts'o <tytso@mit.edu>,
  Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
- Stephen Bates <sbates@raithlin.com>, Johannes Thumshirn <jthumshirn@suse.de>,
- Logan Gunthorpe <logang@deltatee.com>, Michael Moese <mmoese@suse.de>
+ Michael Moese <mmoese@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Using modinfo fails if the given module is built-in. Instead,
-just check for the parameter's existence in sysfs.
+Oh, I forgot to mention there is a git branch of these patches available
+here:
 
-Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
----
- common/rc | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+https://github.com/Eideticom/blktests nvme_fixes
 
-diff --git a/common/rc b/common/rc
-index 49050c71dabf..d48f73c5bf3d 100644
---- a/common/rc
-+++ b/common/rc
-@@ -48,7 +48,7 @@ _have_modules() {
- }
- 
- _have_module_param() {
--	if ! modinfo -F parm -0 "$1" | grep -q -z "^$2:"; then
-+	if ! [ -e "/sys/module/$1/parameters/$2" ]; then
- 		SKIP_REASON="$1 module does not have parameter $2"
- 		return 1
- 	fi
--- 
-2.17.1
+Logan
 
 
 _______________________________________________
