@@ -2,75 +2,74 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F278F67E41
-	for <lists+linux-nvme@lfdr.de>; Sun, 14 Jul 2019 10:09:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CADD067E42
+	for <lists+linux-nvme@lfdr.de>; Sun, 14 Jul 2019 10:09:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=79XzWiQQrzfwBBlSdB6cugs+lzpRKePJFEyjeWl0RH8=; b=If6NVUl9tmKwXP
-	OjzFNB+jTcsh1M2csQ0Y8kwt54XQBRZE7/0RG60ZuTXlayQKfcHUdEkkIxwe8Z9fVTZ6zgiHDGxcU
-	zToOCW0a4sMbLfidW9NyseIUTp3KahkXcJjyIXVSeYrbDGg7QnECRILy9lKA0+K3f+rkZ+RIFMc6M
-	f/XgXgZXILaROPFHYnpEXf5OMfJ8+1iaL5Ehzv9AHHiIS0Hq5KCv8aRB4HNPnLTEJAX1Vk7dM5tcO
-	CGToKg8zKR/RGLAOurJNwqZOvsoiYvgqgd2v7qYJsHWAnqoGuOtewstZfPMZhJ0w6ISrB+NAF00ce
-	QDkk4BP00mZ7/xf3oHrg==;
+	List-Owner; bh=68FG6OxJ+6+DWEWZvpnJ+nGNOLoAXTrATc688lB0FpY=; b=OiRCpts2LkXzHP
+	leZuyOyNXOZ8F1tKnSCcZtKNGE7GEXhjS8TGxcSAtyUTpmVMU9XXlAG3PpIThsQUKlUkqFiNFD1Ql
+	+MTh3E77T07XjLELPM2lxYkD4Ar80TwgDwprVN+AJsDnrP7X9hH60DBkhevpsndhnnevFQmBKnehl
+	isD8TY0fzdVsfLsd0ezprURRkJMP/CvcNrgWywaG32E/IQ1k/+fUMGaZrWxWeZjh1N5OZ5KINhTFF
+	VvLlaeGE2/dJsnYkctYU7oqrwot5qXghGIgOnQty3LBgA0r9XPY0ZvhYoRbyyo8HOUCAFeZlBCURB
+	dYiIekRD1fdkdAgWt8ZA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hmZZ9-0002Hm-Rn; Sun, 14 Jul 2019 08:09:04 +0000
+	id 1hmZZl-0002XF-DC; Sun, 14 Jul 2019 08:09:41 +0000
 Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hmZYs-0002Cw-UE
- for linux-nvme@lists.infradead.org; Sun, 14 Jul 2019 08:08:48 +0000
-Received: by mail-pf1-x444.google.com with SMTP id r7so6075636pfl.3
- for <linux-nvme@lists.infradead.org>; Sun, 14 Jul 2019 01:08:46 -0700 (PDT)
+ id 1hmZZb-0002Wv-GB
+ for linux-nvme@lists.infradead.org; Sun, 14 Jul 2019 08:09:32 +0000
+Received: by mail-pf1-x444.google.com with SMTP id y15so6077076pfn.5
+ for <linux-nvme@lists.infradead.org>; Sun, 14 Jul 2019 01:09:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=J9BOe8e9D9wSs03UFsMFOXh1ztj6MEyX6EAorNQKXuY=;
- b=CxL5ye9AOpViskOEU1qDK059wRrMGfflfRNSHPy+BmipCEobt3o/jNdQx3E6Z0OfHe
- OieeUoebQchO1ziXxA78yGZ6YCTtZYPc5zMJ2WMu+A5A3kQmR74wg7wyfcxaEsd6wp3m
- QuvLEEgIViGzm7UlRwCSrerj2IEJ3J1SnINvmzdS9M01ODwLR+wlefCZJOexe4M5YZcA
- H255VBNhHXzAd7K/wvOZLAB80HN4tFRBrRRvkxrDKbc7kXCaFIFCQfaZfngSL13nwtrQ
- S84Ye6U3gwMcQHdC+BwnOwz+xiV2hRAS5hiWdie3NmDliOcQgPX/PX+Eu11yNMsDlSy0
- NIyw==
+ bh=Cl6NwiN+qFcTG8P7Oa+6s9yUPSIgkM4mT70CWvMC5MQ=;
+ b=QsL/IL1J4zYM7RBUgpxhm7oiQ9/5mrhKGzP2XQHD7HbjfC6d2ymCtI3GkyUi5LoJlZ
+ qiVakPoXP/YmKZhZIKpGS+r/VBNCuw+xJh8qffJos8q55Q1wXiyFM/WZp8vj8wrq3SR3
+ ltuRsjMOIOyeD1lllJeGkyrpsc6zeFx3qwaxAiZA8k+j/hKqzYSZzM9XYAz8eXZgeRC5
+ XbgFa0hlQxUlLafIV3oPSUvYtMjbt9CNAW16NLdgOlhLweLfYpt4avZWu62uALimVrFz
+ L29drpFnI/gtsAXMj7UZtkkVzUTrLyFVnUyFlA0UElNxlOuzQ5ouqmaQeQuTahE50f5Z
+ qBPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=J9BOe8e9D9wSs03UFsMFOXh1ztj6MEyX6EAorNQKXuY=;
- b=B4YDFaRgK8ofD7Y0/Y6cYvrDZKNm6K1GxLshRGyz3391mB1vEzrI84TR8JxoXrVpT2
- DlHRvgi77CC/WTstR7kBluDbAIsjYsHscbDtT8sKoIPN1SM9K4Z/QFLdQKUf8airAvOx
- yi9J4irg47wpsSHQIImlLbb14xeUp0BTmA5tkhWkTejNESm8wVRyOu7HKnRMy2zxvs9S
- FVZnNKwnO3+g7FNZObrDiozXuhzTwn3Bmpj2Citg27TIVi9lG/AaalYqxJ2dQCncWhGO
- A19dmKt10PcEr2gPmBmaS5UcF4GehpbLWBn5GXkslPNUXBeOA/5ri7K0v9uKjzOPhHje
- nHpQ==
-X-Gm-Message-State: APjAAAX3dqbdsSnsKRksYI4d7OH6bJJwixkJ5d1xy1j+BAMVT9fpsSGv
- 9CVfsRpTuu5sfHMnJfyJwbs=
-X-Google-Smtp-Source: APXvYqwGU9CwxCeSqBmFYy1zQjN6KhcaUdLVZ5p6qqiefx67Q9UK0yJLBRlHSIc2elX383kLbUtm/w==
-X-Received: by 2002:a17:90a:fa07:: with SMTP id
- cm7mr22699365pjb.115.1563091726084; 
- Sun, 14 Jul 2019 01:08:46 -0700 (PDT)
+ bh=Cl6NwiN+qFcTG8P7Oa+6s9yUPSIgkM4mT70CWvMC5MQ=;
+ b=mCannGHKpWjK0dV8JicbUQ6sJk0ir5EbjzJNyukSkSgdJfvvQIG4L4bHkdcg7VQfIi
+ z0sFjKR6tUmqEPFY159dw82hy7fFGLFBuG+yt+cbYDkEkE9mSsfzb+6OO1yE35XUGbGA
+ bvj6xMGFcVYob4A2QF6aZ1H0OLRpmPWgUPPRZ3l2VK7q49STO1VZwEArmFh7pGDozdYC
+ eNZUIeqqVJL6QbdT/AAUGzdWPEn47/Y5p3NGbLrvpaCoZYmPOt7Pub5TduKkPqf7EGmT
+ SIr86o07bJDLQyvE6G23W8jMo32xybEp3Fxxtg8s3iyZl0qljYstosRbTIdtsV6itol2
+ eJbg==
+X-Gm-Message-State: APjAAAUZPWwCghNUDUlRtOI17ABY86knYj9YEnOSDk4Db14DpbBTsgUf
+ VaSebGcP8FoFJPFuAH8LUO8=
+X-Google-Smtp-Source: APXvYqx7qMm3lYgDNDtft+RC6Qu4rch/8wP7Oh3FnlifPWlxcRe5sAkXwf4O2f16ZRuP+ytVwyQD2g==
+X-Received: by 2002:a63:1a03:: with SMTP id a3mr19497108pga.397.1563091771072; 
+ Sun, 14 Jul 2019 01:09:31 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id w12sm12259703pgp.56.2019.07.14.01.08.44
+ by smtp.gmail.com with ESMTPSA id p65sm14086183pfp.58.2019.07.14.01.09.29
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 14 Jul 2019 01:08:45 -0700 (PDT)
-Date: Sun, 14 Jul 2019 17:08:43 +0900
+ Sun, 14 Jul 2019 01:09:30 -0700 (PDT)
+Date: Sun, 14 Jul 2019 17:09:28 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH v2 1/3] nvme-fabrics: allow discovery subsystems accept a
- kato
-Message-ID: <20190714080843.GB2993@minwoo-desktop>
+Subject: Re: [PATCH v2 2/3] nvme: enable aen also for discovery controllers
+Message-ID: <20190714080928.GC2993@minwoo-desktop>
 References: <20190712180211.26333-1-sagi@grimberg.me>
- <20190712180211.26333-2-sagi@grimberg.me>
+ <20190712180211.26333-3-sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190712180211.26333-2-sagi@grimberg.me>
+In-Reply-To: <20190712180211.26333-3-sagi@grimberg.me>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190714_010847_326462_21E271B1 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20190714_010931_533387_CB635B1F 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -109,12 +108,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-07-12 11:02:09, Sagi Grimberg wrote:
-> This modifies the behavior of discovery subsystems to accept
-> a kato as a preparation to support discovery log change
-> events. This also means that now every discovery controller
-> will have a default kato value, and for non-persistent connections
-> the host needs to pass in a zero kato value (keep_alive_tmo=0).
+On 19-07-12 11:02:10, Sagi Grimberg wrote:
+> If the controller supports discovery log page change events,
+> we want to enable it on the host side as well.
 > 
 > Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 
