@@ -2,84 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5731367F6F
-	for <lists+linux-nvme@lfdr.de>; Sun, 14 Jul 2019 16:49:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D14E67F71
+	for <lists+linux-nvme@lfdr.de>; Sun, 14 Jul 2019 16:50:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=D4cXOrw20ccYKtBvMnjTyF/ML87xNhgPY84w2F3cxwc=; b=Ndn6RoBEFIXL3iaYfUqIJzEOs
-	kzfgNiIphZBDcJynKiuy3TJ200bgp7w6tE8YxarkRFJSi5xrp7dJmoygJVwhY6CLQQ9adl4pbWZS2
-	9PDcOPI7gevGpfEiVmvZhSvPxz7WqiJxLenWTU5L69/Mh00PRCftrFYvEla2qjeV7b3e/eNMNbdp4
-	c9SNApDqV1O8upHroLwpg1rk96J5E4Jdr07MCjYRcUU36rDFZq/GfDAwK7vVpjkJmsBLxmYt/Kvy3
-	iLACTtaNTqk4Vslr/WvSK8AwFRgdztxQZyCDTtNLuVeFRpwG2CIz3qjg9YU2DOeYultYJyKAnsX3v
-	pbrxM6Jnw==;
+	 bh=ASrIDXxoCa6i1Cn834BSJpi9fdQ2OOQt58zwhzBJoZo=; b=LMZSnHa7zWBOfjzzMKAyfVMSP
+	RgHc2NrHQKYwOZTG1/S6bwtvqyyo6hCEqM3qOJ1yQ6Kkki1mBqlz/GP9LCfLrBH8s5UV7FSllnR6C
+	Ia4zcFNXQfpc1HROY6cEYc0rmIOwwhvx+S84d/3su8NmNsOwxVt0403Pn2zXmkYaBAhepXJpxVl9z
+	/Syjk7PuF8sweKoZY9O7ZA+mJtcQpl4XxppNhT0sLGflJod4WhTRvlS0O4SMRZ3UbEtN8kXYAE2Rz
+	SkMybBNgsHthrO3nlYIRLbomYIqDzcou5q42FrJuo898EjFqlpJYqoX6BCYzm+eaUtZFw4Ir4M17O
+	ME2UQ3zcg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hmfod-0004aK-TP; Sun, 14 Jul 2019 14:49:28 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1hmfp7-0004mP-7l; Sun, 14 Jul 2019 14:49:57 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hmfoU-0004Zn-5N
- for linux-nvme@lists.infradead.org; Sun, 14 Jul 2019 14:49:19 +0000
-Received: by mail-pl1-x642.google.com with SMTP id c2so6999647plz.13
- for <linux-nvme@lists.infradead.org>; Sun, 14 Jul 2019 07:49:17 -0700 (PDT)
+ id 1hmfow-0004lq-0f
+ for linux-nvme@lists.infradead.org; Sun, 14 Jul 2019 14:49:48 +0000
+Received: by mail-pf1-x442.google.com with SMTP id i189so6267444pfg.10
+ for <linux-nvme@lists.infradead.org>; Sun, 14 Jul 2019 07:49:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-transfer-encoding:content-language;
- bh=pRO7+XFJ3CgL/YMo6cY5bIOIoNIAPb/vPg6oXURGLPk=;
- b=BaiLQE2OdK7ZGYn9ydpxw4/cp+QCPg8H1trgZy9S2UBUiRojSvSZPURlNHFnb0dD4x
- v8N9SA0LmnzehOmx8qIn2XidJUVGIJTPyWi8ESh4kBlbQWmQUq+0PlfoPcD3GQgOHYTn
- SVfrZrRxovDDPNqDslmbpVCJ//NBDzzW146SQ=
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=Sk+ibqGH58Ho7DDvi7vzIYQLTE4+VTGdzjH8ri8d9GM=;
+ b=LhrxUPf22wt13h1nGk5++ZmhMOp6TzCJtxIFWnVnl+Fro5C/rsiJNkNWcgGRqj3IIF
+ qVmyaBNDaqofh7W1/xO7qc/b7PNU7inZZcjaSsE5gBUAI+L9AeCL7HOn/Nndnz/aobcy
+ lySUSfcTnSbtO3HG98MSc/es5C8S72kzAL4yo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-transfer-encoding
  :content-language;
- bh=pRO7+XFJ3CgL/YMo6cY5bIOIoNIAPb/vPg6oXURGLPk=;
- b=GUJQMR33K0DXO+obsX4xcFoNfQdh5/CXAS9mHuojCsR2kvhWTr2ONIuL6QjTAOGkga
- 1j8EaXyCsgQQQLYd8O+56UaUDoITYbfMsZa0hWK9TawL+hNGEpmp7zYb7kdPAnPguhs3
- OpiR2VeHqPySImsVYs1obdMB9hvUzqP+Gv/w3dXPUQJ1KXQagRHxTRMrKeKH85AuDqym
- 41SxRW0vHhIrWeXhsSpJv67lS/fEKEUbc9JdBhgSjFOsYd/ROOz45AkeEaRgWi6nqOxt
- Nivz70bjTgCWeDuzfg7eN3MwXq/Ea7ubOx6s++U8hKcdiRA7q6R9K36I6q/LBsajrKJT
- WGMg==
-X-Gm-Message-State: APjAAAUAhOPSE5y43Vs3TVkyP/jbse63F7RuFdT+6zYWsbF35fekiEM0
- tekUBQYAqdWiPYSsR9wrt+DqUUprpBjgORTQsHQPGct46xranb2qEAOpGADl5Rvqe5yXeX6Qp1p
- OOhc5QGH+BlcXeb8eNcWV+aQBPn4GwXxt8mMcT5k20dHt+GRF5R2MOEsLkBMgmX07ImBFBWf88q
- NBEAKyiQ==
-X-Google-Smtp-Source: APXvYqw6MOyI0rfWmjneChOyHzhHQzUL15YdIqfj5S/rz4VPRKhhyScb7L9rL2ugFda574VJ0jOIMw==
-X-Received: by 2002:a17:902:29a7:: with SMTP id
- h36mr23829181plb.158.1563115757044; 
- Sun, 14 Jul 2019 07:49:17 -0700 (PDT)
+ bh=Sk+ibqGH58Ho7DDvi7vzIYQLTE4+VTGdzjH8ri8d9GM=;
+ b=M5lQWb/kpHBO6IGC4+jkWcS1mS7S9T07RKYoa1CkCcrvuSR9RJI3fJrN8VBVXR6VLM
+ k7RwhwlVBNV8sQVoOJ64IhevrTFAKpocTCyOHw3PhOsetUSA9iRLPNVA7wmy3gm7fNT2
+ oaj1NqKL+zox0gyweSgNs/VPx8wafI0CU93cY+0usq0sRwMLN3DV5vSktNc2GDNG5tL2
+ iXAfCR18NiFQIae7JWF2wqLKCQssH1+92pcPXJcGfd/peGBSpFhHT2/DMilCfnhA0nuv
+ c0326yhJKyw3I+vW3YII5pb+NAgg2NOzwmQAVr1n75UYSMYSSo+sVrRlW4V4X6FCyoNP
+ KiOQ==
+X-Gm-Message-State: APjAAAWX7qGjTIqknUKxJQMMsq+7996D14Moz//Z6Q5orn9FZtNmPhs2
+ jRdGG7OhRg1p2ZR5+oHxhMbHNR1G06s=
+X-Google-Smtp-Source: APXvYqzHRexxfU1lM79WVLkK/xXgzH2GXaPK+17hEWYfw71kVXOntN/XKqCeS94+hhFhNtzusejhxg==
+X-Received: by 2002:a63:6904:: with SMTP id e4mr21715677pgc.321.1563115785112; 
+ Sun, 14 Jul 2019 07:49:45 -0700 (PDT)
 Received: from [10.230.29.90] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id v184sm15297174pfb.82.2019.07.14.07.49.14
+ by smtp.gmail.com with ESMTPSA id s20sm16515568pfe.169.2019.07.14.07.49.42
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 14 Jul 2019 07:49:16 -0700 (PDT)
-Subject: Re: [PATCH rfc v2 09/10] nvme-cli: add --quiet option
+ Sun, 14 Jul 2019 07:49:44 -0700 (PDT)
+Subject: Re: [PATCH rfc v2 10/10] nvme-cli: nvmf auto-connect scripts
 To: Sagi Grimberg <sagi@grimberg.me>, James Smart <jsmart2021@gmail.com>,
  linux-nvme@lists.infradead.org
 References: <20190712003140.16221-1-jsmart2021@gmail.com>
- <20190712003140.16221-10-jsmart2021@gmail.com>
- <46dcab64-c4f9-74dc-b75c-4f4b8926051d@grimberg.me>
+ <20190712003140.16221-11-jsmart2021@gmail.com>
+ <6627bc48-cdda-dace-b7a9-6e6eb5530d72@grimberg.me>
 From: James Smart <james.smart@broadcom.com>
-Message-ID: <898fcfa4-e70f-fd0d-0905-cc4af74d4cda@broadcom.com>
-Date: Sun, 14 Jul 2019 07:49:14 -0700
+Message-ID: <b3ba9d5a-4a9f-be5a-7a16-0fb31c0dad37@broadcom.com>
+Date: Sun, 14 Jul 2019 07:49:42 -0700
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <46dcab64-c4f9-74dc-b75c-4f4b8926051d@grimberg.me>
+In-Reply-To: <6627bc48-cdda-dace-b7a9-6e6eb5530d72@grimberg.me>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190714_074918_209869_4CE75A7B 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20190714_074946_065414_DF0D719F 
+X-CRM114-Status: GOOD (  10.93  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -102,45 +99,31 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Simon Schricker <sschricker@suse.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-
-On 7/12/2019 10:35 AM, Sagi Grimberg wrote:
->
-> Q is already a short-arg (queue-size). Lets have it 'S' (stand for 
-> Suppress). 
-
-ok...
-
-> Also, when I tested it locally for some reason it did not
-> take:
-> -- 
-> Jul 12 17:30:00 nvmc systemd[1]: Started NVMf auto-connect scan upon 
-> nvme discovery controller Events.
-> Jul 12 17:30:00 nvmc sh[2767]: Failed to write to /dev/nvme-fabrics: 
-> Operation already in progress
-> Jul 12 17:30:00 nvmc sh[2767]: traddr=192.168.123.1 is already connected
-> Jul 12 17:30:00 nvmc kernel: nvme nvme2: creating 4 I/O queues.
-> Jul 12 17:30:00 nvmc kernel: nvme nvme2: mapped 4/0/0 
-> default/read/poll queues.
-> Jul 12 17:30:00 nvmc kernel: nvme nvme2: new ctrl: NQN "testnqn2", 
-> addr 192.168.123.1:8009
-> -- 
->
-> Adding print to add_ctrl:
-> Jul 12 17:30:00 nvmc sh[2767]: errno 114 quiet 0
->
-> When I pass it manually it works, but not from udev... Not sure what
-> is going on...
-
-?? I'll check it on my side
-
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+CgpPbiA3LzEyLzIwMTkgMTA6NTUgQU0sIFNhZ2kgR3JpbWJlcmcgd3JvdGU6Cj4KPj4gZGlmZiAt
+LWdpdCBhL252bWYtYXV0b2Nvbm5lY3QvNzAtbnZtZi1hdXRvY29ubmVjdC5ydWxlcyAKPj4gYi9u
+dm1mLWF1dG9jb25uZWN0LzcwLW52bWYtYXV0b2Nvbm5lY3QucnVsZXMKPj4gbmV3IGZpbGUgbW9k
+ZSAxMDA2NDQKPj4gaW5kZXggMDAwMDAwMC4uYjI0MWIxMgo+PiAtLS0gL2Rldi9udWxsCj4+ICsr
+KyBiL252bWYtYXV0b2Nvbm5lY3QvNzAtbnZtZi1hdXRvY29ubmVjdC5ydWxlcwo+PiBAQCAtMCww
+ICsxLDE4IEBACj4+ICsjCj4+ICsjIG52bWYtYXV0b2Nvbm5lY3QucnVsZXM6Cj4+ICsjwqDCoCBI
+YW5kbGVzIHVkZXYgZXZlbnRzIHdoaWNoIGludm9rZSBhdXRvbWF0aWNhbGx5IHNjYW4gdmlhIGRp
+c2NvdmVyeQo+PiArI8KgwqAgY29udHJvbGxlciBhbmQgY29ubmVjdCB0byBlbGVtZW50cyBpbiB0
+aGUgZGlzY292ZXJ5IGxvZy4KPj4gKyMKPj4gKyMKPj4gKwo+PiArIyBFdmVudHMgZnJvbSBwZXJz
+aXN0ZW50IGRpc2NvdmVyeSBjb250cm9sbGVycyBvciBudm1lLWZjIHRyYW5zcG9ydCAKPj4gZXZl
+bnRzCj4+ICtBQ1RJT049PSJjaGFuZ2UiLCBTVUJTWVNURU09PSJudm1lIiwgRU5We05WTUVfRVZF
+TlR9PT0iZGlzY292ZXJ5IixcCj4+ICvCoCBFTlZ7TlZNRV9DVExSX05BTUV9PT0iKiIsIEVOVntO
+Vk1FX1RSVFlQRX09PSIqIiwgCj4+IEVOVntOVk1FX1RSQUREUn09PSIqIiwgXAo+PiArwqAgRU5W
+e05WTUVfVFJTVkNJRH09PSIqIiwgRU5We05WTUVfSE9TVF9UUkFERFJ9PT0iKiIsIFwKPj4gK8Kg
+IFJVTis9Ii91c3IvYmluL3N5c3RlbWN0bCAtLW5vLWJsb2NrIHN0YXJ0IAo+PiBudm1mLWNvbm5l
+Y3RALS1xdWlldFx0LS1kZXZpY2U9JGVudntOVk1FX0NUTFJfTkFNRX1cdC0tdHJhbnNwb3J0PSRl
+bnZ7TlZNRV9UUlRZUEV9XHQtLXRyYWRkcj0kZW52e05WTUVfVFJBRERSfVx0LS10cnN2Y2lkPSRl
+bnZ7TlZNRV9UUlNWQ0lEfVx0LS1ob3N0LXRyYWRkcj0kZW52e05WTUVfSE9TVF9UUkFERFJ9LnNl
+cnZpY2UiCj4KPiBOVk1FX0NUUkxfTkFNRQo+Cm9rCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZt
+ZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtbnZtZQo=
