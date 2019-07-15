@@ -2,46 +2,46 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50732690B9
-	for <lists+linux-nvme@lfdr.de>; Mon, 15 Jul 2019 16:24:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CB957690BD
+	for <lists+linux-nvme@lfdr.de>; Mon, 15 Jul 2019 16:24:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ErMYGqhHBP1R8U9HlqHpdyFNeZJQq0fgAcl1p1+018E=; b=Gcy4v/MgBJURS0
-	V9PSJ96F5179O09RPVsPK9zhTOGnNRns8yPMkBRxH/zplZF8ZnNRX9taWBsWR1bPrpavSs17QT9Ze
-	noX28mpluzhtlAKgvwkoVKuG5oD6NHQGzy85sBmOicvtDjWLmVa5hnA6BMao2M2i2tWPowgJIt1Bv
-	Hiq4OYcNAXC2qQOK5Ri5n5DrzkmHQ98RNv+H3U16d1k3lshWPvoOaM4Bf1EjcnWG3/peiHCD1jHKI
-	SbCgnkxnthzhwLlsILVjsfDd4fHSYet/CvN+BLBWo/GaDY/5BPtBrnAiqHfo8vDEWRg0N/7AfnQ3k
-	lJP3lcqWol7ggKhKUWcQ==;
+	List-Owner; bh=mERj85YFXIWNWhFpK94/dZx72ueJDjHCz7IE4tL91gM=; b=JQb4O0HCHRUP2V
+	NicfBU91yPcl1UL+7AIdeWbMeLpWSmdWU4Ye0GA+Qs7qnIlT4MMEgi2sFjdC8s5+GwVhZMsyeuDhs
+	2+MJYZWH3VsHUDRFYIDbkOw/2sRbGe5P6ZLV/iYvOsN9g+5IbQFbNWLexiZC+q3UViPFgLpkArVQk
+	OThDXz1TdpEMtHCxWxOflVZp0pZX8sirAXkL5YFaE826dMK0zXYSbr46qM0vbhb1VC+hqIX21+WSg
+	nsKHphEQlkbvga8HmqCu/HPUcpO8X0cE20zYd/UHvXqabTLIovY2sJMKcCrjnMHcx1wGQSxYeDJrW
+	aroK+ywUDRkzpDdLcfEw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hn1td-00066S-QE; Mon, 15 Jul 2019 14:24:05 +0000
+	id 1hn1tp-0006J3-Nc; Mon, 15 Jul 2019 14:24:17 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hn1sm-0005eB-V2
- for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 14:23:15 +0000
+ id 1hn1sp-0005fZ-7Y
+ for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 14:23:16 +0000
 Received: from sasha-vm.mshome.net (unknown [73.61.17.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 49EAF2053B;
- Mon, 15 Jul 2019 14:23:09 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 34BD921849;
+ Mon, 15 Jul 2019 14:23:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1563200592;
- bh=Eym8MS50yHo72lBKZmtYkwak9akjxUM9NVoKAzzueeU=;
+ s=default; t=1563200595;
+ bh=w02hCbkEW8H4mxyePHmWDo6/6g+lVjws7tYYS8cVE7o=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=M2CpBa21LS6TLnpKFy+vRg76EyOaLhUC5GPfL3ZPoPODvv51yCiCvI2Pr1gTGdBFF
- LgBtOS34uL1IdQZ6ZRxOSz1bWbSsb6x+xDIpOsAhGsvsnoRzpPIN1j2THNBEMirvvG
- IWWF+eC8i40jv6t1NhVmJjSmxAB0jtysjx3m7614=
+ b=uIYNUZw6VI8DaLKLQ0vPNlfQ4/QKKY1ld6m1MyuDPbSHhp8JtvBp+ZHiddgnAdmkx
+ Y9Af5jKaIodOnWt8odBAHpp7p8Ig+G2OLwsKXVm+UAxszF6i9kc1r+9jWmWDt6zaph
+ kXwa4a4FBFZS0LqBq6ns/2Jiyx4cE+FgtiHdo0oU=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 086/158] nvme-pci: properly report state change
- failure in nvme_reset_work
-Date: Mon, 15 Jul 2019 10:16:57 -0400
-Message-Id: <20190715141809.8445-86-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 087/158] nvme-pci: set the errno on ctrl state
+ change error
+Date: Mon, 15 Jul 2019 10:16:58 -0400
+Message-Id: <20190715141809.8445-87-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190715141809.8445-1-sashal@kernel.org>
 References: <20190715141809.8445-1-sashal@kernel.org>
@@ -49,8 +49,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190715_072313_546479_8BC7F396 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20190715_072315_301237_11EF1E83 
+X-CRM114-Status: GOOD (  14.14  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -80,51 +80,58 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, linux-nvme@lists.infradead.org,
- Minwoo Im <minwoo.im.dev@gmail.com>, Christoph Hellwig <hch@lst.de>,
+ Christoph Hellwig <hch@lst.de>,
  Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Minwoo Im <minwoo.im.dev@gmail.com>
+From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 
-[ Upstream commit cee6c269b016ba89c62e34d6bccb103ee2c7de4f ]
+[ Upstream commit e71afda49335620e3d9adf56015676db33a3bd86 ]
 
-If the state change to NVME_CTRL_CONNECTING fails, the dmesg is going to
-be like:
+This patch removes the confusing assignment of the variable result at
+the time of declaration and sets the value in error cases next to the
+places where the actual error is happening.
 
-  [  293.689160] nvme nvme0: failed to mark controller CONNECTING
-  [  293.689160] nvme nvme0: Removing after probe failure status: 0
+Here we also set the result value to -ENODEV when we fail at the final
+ctrl state transition in nvme_reset_work(). Without this assignment
+result will hold 0 from nvme_setup_io_queue() and on failure 0 will be
+passed to he nvme_remove_dead_ctrl() from final state transition.
 
-Even it prints the first line to indicate the situation, the second line
-is not proper because the status is 0 which means normally success of
-the previous operation.
-
-This patch makes it indicate the proper error value when it fails.
-  [   25.932367] nvme nvme0: failed to mark controller CONNECTING
-  [   25.932369] nvme nvme0: Removing after probe failure status: -16
-
-This situation is able to be easily reproduced by:
-  root@target:~# rmmod nvme && modprobe nvme && rmmod nvme
-
-Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
-Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/pci.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/nvme/host/pci.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index c8eeecc58115..03e72e2f57f5 100644
+index 03e72e2f57f5..0a5d064f82ca 100644
 --- a/drivers/nvme/host/pci.c
 +++ b/drivers/nvme/host/pci.c
-@@ -2294,6 +2294,7 @@ static void nvme_reset_work(struct work_struct *work)
- 	if (!nvme_change_ctrl_state(&dev->ctrl, NVME_CTRL_CONNECTING)) {
+@@ -2253,11 +2253,13 @@ static void nvme_reset_work(struct work_struct *work)
+ 	struct nvme_dev *dev =
+ 		container_of(work, struct nvme_dev, ctrl.reset_work);
+ 	bool was_suspend = !!(dev->ctrl.ctrl_config & NVME_CC_SHN_NORMAL);
+-	int result = -ENODEV;
++	int result;
+ 	enum nvme_ctrl_state new_state = NVME_CTRL_LIVE;
+ 
+-	if (WARN_ON(dev->ctrl.state != NVME_CTRL_RESETTING))
++	if (WARN_ON(dev->ctrl.state != NVME_CTRL_RESETTING)) {
++		result = -ENODEV;
+ 		goto out;
++	}
+ 
+ 	/*
+ 	 * If we're called to reset a live controller first shut it down before
+@@ -2355,6 +2357,7 @@ static void nvme_reset_work(struct work_struct *work)
+ 	if (!nvme_change_ctrl_state(&dev->ctrl, new_state)) {
  		dev_warn(dev->ctrl.device,
- 			"failed to mark controller CONNECTING\n");
-+		result = -EBUSY;
+ 			"failed to mark controller state %d\n", new_state);
++		result = -ENODEV;
  		goto out;
  	}
  
