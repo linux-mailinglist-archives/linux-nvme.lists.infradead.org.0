@@ -2,72 +2,63 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A2B368F03
-	for <lists+linux-nvme@lfdr.de>; Mon, 15 Jul 2019 16:11:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D3CC68FD1
+	for <lists+linux-nvme@lfdr.de>; Mon, 15 Jul 2019 16:17:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=15OFB3D0MAvMrUZ57SYA4PIZ2Ns59C9mvaZo80fpI7I=; b=Ju/nDQHqMxeXId
-	S60JOBemk/OOGm0TS7+4RysyciYW+sKT72U8CtZ4M5x/iAS0OZgXLjwtlX1tu2mVsdudGXHvmDk0B
-	VLPs+1eHWkBlG7WUytNPJQe/4BbBI05wdFb0ebU/iPVPak5ivMvNLeb3WRT9D7BA7LnbE4ofnX+Xt
-	kMv/ppQnLopqT/C6lvnSC8yKCFsKARzNCnf7ez88rexObXLU/BambKyzIoRq5wUls+J8lrv0/3utK
-	U+RHqRjTaHwq1ZGvyr2h8BdhkNLCA4iERqLDY1y9b3wycaK/fyfaaqAHe8+TNkT+InwlB+DzT/Tm8
-	C/xP+QEZVl4qS99VRkKg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=qXqE7s4E4mp7iXkeX+2JcSrRxEFn0ko92T93YjcTVxw=; b=TpZreqlKPPgtoJiEqWv+Sj4tI
+	qwlbGgiIL3kRm7vfX6lZIQdaYVq4YKagQKaedkmAQCqehbYS5MXuyd0pqrIxDEvIRoI6qCwayFyDP
+	WMrJl6xxiSnu0h13p3QwYHs1BIrYpmQzw4fXaBeHWNj8sp18WMFMYjQ1MyF5ZzWhirE7o09+o5uCu
+	hl3/nOJxldWlPfXPR22MOUBNwzxFp0B8gcwqxMEeDycOlDD2YAZEq/WPCk+iEM6tkcIe34DBC4UsE
+	+kAzlynNu0hXPyTMLJ2mqxSeOhKDuKU16cgtOI+JM/J+rDXy6XuAy4ELo8us1NOx5ogB4G5QHpPPj
+	J0IWX1mWw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hn1hQ-0008Bf-Tl; Mon, 15 Jul 2019 14:11:28 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1hn1nJ-0002ow-7c; Mon, 15 Jul 2019 14:17:33 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hn1gb-0007e1-1n
- for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 14:10:39 +0000
-Received: from sasha-vm.mshome.net (unknown [73.61.17.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ id 1hn1n9-0002oP-Fl
+ for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 14:17:25 +0000
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D2BD620868;
- Mon, 15 Jul 2019 14:10:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1563199836;
- bh=5P/j83qoemKekGey4T33iwBjD9Z/xzLz7d5l5edrEZY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=qiK8Jbw9NBdwoW9xdGPZoEMExKdafnuhNhTSafjZlwexbIy5eifPY61H0YG0gUjfY
- XHdXGKH/6qrwBMVyWCRHQCUfMReWs6Im1ow2kD2mvAeHc1FM3deChDRB/9EWdaq/mU
- 6BP9Tzspg9qpmvhNX3jdBJhSNnCmG2Ak7TwHUHxQ=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.1 122/219] nvme-pci: adjust irq max_vector using
- num_possible_cpus()
-Date: Mon, 15 Jul 2019 10:02:03 -0400
-Message-Id: <20190715140341.6443-122-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190715140341.6443-1-sashal@kernel.org>
-References: <20190715140341.6443-1-sashal@kernel.org>
+ by mx1.redhat.com (Postfix) with ESMTPS id BAF193092647;
+ Mon, 15 Jul 2019 14:17:21 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-12-65.pek2.redhat.com [10.72.12.65])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1CAAF60DDF;
+ Mon, 15 Jul 2019 14:17:16 +0000 (UTC)
+Subject: Re: [PATCH for-rc] RDMA/bnxt_re: Honor vlan_id in GID entry comparison
+To: Selvin Xavier <selvin.xavier@broadcom.com>, linux-rdma@vger.kernel.org,
+ dledford@redhat.com, jgg@ziepe.ca
+References: <20190715091913.15726-1-selvin.xavier@broadcom.com>
+From: Yi Zhang <yi.zhang@redhat.com>
+Message-ID: <bdac6832-ba92-2609-a678-982413a87307@redhat.com>
+Date: Mon, 15 Jul 2019 22:17:02 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+In-Reply-To: <20190715091913.15726-1-selvin.xavier@broadcom.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.43]); Mon, 15 Jul 2019 14:17:21 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190715_071037_307721_13449A20 
-X-CRM114-Status: GOOD (  12.37  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190715_071723_561956_FA905F62 
+X-CRM114-Status: GOOD (  25.27  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ high trust [209.132.183.28 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,107 +70,207 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-nvme@lists.infradead.org, stable@vger.kernel.org,
+ Parav Pandit <parav@mellanox.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Minwoo Im <minwoo.im.dev@gmail.com>
+Verified this patch on my nvme rdma bnxt_re environment, thanks.
 
-[ Upstream commit dad77d63903e91a2e97a0c984cabe5d36e91ba60 ]
+Tested-by: Yi Zhang <yi.zhang@redhat.com>
 
-If the "irq_queues" are greater than num_possible_cpus(),
-nvme_calc_irq_sets() can have irq set_size for HCTX_TYPE_DEFAULT greater
-than it can be afforded.
-2039         affd->set_size[HCTX_TYPE_DEFAULT] = nrirqs - nr_read_queues;
-
-It might cause a WARN() from the irq_build_affinity_masks() like [1]:
-220         if (nr_present < numvecs)
-221                 WARN_ON(nr_present + nr_others < numvecs);
-
-This patch prevents it from the WARN() by adjusting the max_vector value
-from the nvme_setup_irqs().
-
-[1] WARN messages when modprobe nvme write_queues=32 poll_queues=0:
-root@target:~/nvme# nproc
-8
-root@target:~/nvme# modprobe nvme write_queues=32 poll_queues=0
-[   17.925326] nvme nvme0: pci function 0000:00:04.0
-[   17.940601] WARNING: CPU: 3 PID: 1030 at kernel/irq/affinity.c:221 irq_create_affinity_masks+0x222/0x330
-[   17.940602] Modules linked in: nvme nvme_core [last unloaded: nvme]
-[   17.940605] CPU: 3 PID: 1030 Comm: kworker/u17:4 Tainted: G        W         5.1.0+ #156
-[   17.940605] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.12.1-0-ga5cab58e9a3f-prebuilt.qemu.org 04/01/2014
-[   17.940608] Workqueue: nvme-reset-wq nvme_reset_work [nvme]
-[   17.940609] RIP: 0010:irq_create_affinity_masks+0x222/0x330
-[   17.940611] Code: 4c 8d 4c 24 28 4c 8d 44 24 30 e8 c9 fa ff ff 89 44 24 18 e8 c0 38 fa ff 8b 44 24 18 44 8b 54 24 1c 5a 44 01 d0 41 39 c4 76 02 <0f> 0b 48 89 df 44 01 e5 e8 f1 ce 10 00 48 8b 34 24 44 89 f0 44 01
-[   17.940611] RSP: 0018:ffffc90002277c50 EFLAGS: 00010216
-[   17.940612] RAX: 0000000000000008 RBX: ffff88807ca48860 RCX: 0000000000000000
-[   17.940612] RDX: ffff88807bc03800 RSI: 0000000000000020 RDI: 0000000000000000
-[   17.940613] RBP: 0000000000000001 R08: ffffc90002277c78 R09: ffffc90002277c70
-[   17.940613] R10: 0000000000000008 R11: 0000000000000001 R12: 0000000000000020
-[   17.940614] R13: 0000000000025d08 R14: 0000000000000001 R15: ffff88807bc03800
-[   17.940614] FS:  0000000000000000(0000) GS:ffff88807db80000(0000) knlGS:0000000000000000
-[   17.940616] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[   17.940617] CR2: 00005635e583f790 CR3: 000000000240a000 CR4: 00000000000006e0
-[   17.940617] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[   17.940618] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[   17.940618] Call Trace:
-[   17.940622]  __pci_enable_msix_range+0x215/0x540
-[   17.940623]  ? kernfs_put+0x117/0x160
-[   17.940625]  pci_alloc_irq_vectors_affinity+0x74/0x110
-[   17.940626]  nvme_reset_work+0xc30/0x1397 [nvme]
-[   17.940628]  ? __switch_to_asm+0x34/0x70
-[   17.940628]  ? __switch_to_asm+0x40/0x70
-[   17.940629]  ? __switch_to_asm+0x34/0x70
-[   17.940630]  ? __switch_to_asm+0x40/0x70
-[   17.940630]  ? __switch_to_asm+0x34/0x70
-[   17.940631]  ? __switch_to_asm+0x40/0x70
-[   17.940632]  ? nvme_irq_check+0x30/0x30 [nvme]
-[   17.940633]  process_one_work+0x20b/0x3e0
-[   17.940634]  worker_thread+0x1f9/0x3d0
-[   17.940635]  ? cancel_delayed_work+0xa0/0xa0
-[   17.940636]  kthread+0x117/0x120
-[   17.940637]  ? kthread_stop+0xf0/0xf0
-[   17.940638]  ret_from_fork+0x3a/0x50
-[   17.940639] ---[ end trace aca8a131361cd42a ]---
-[   17.942124] nvme nvme0: 7/1/0 default/read/poll queues
-
-Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
-Signed-off-by: Christoph Hellwig <hch@lst.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/nvme/host/pci.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 9c956ff5344d..914eea2ea557 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -2085,6 +2085,7 @@ static int nvme_setup_irqs(struct nvme_dev *dev, unsigned int nr_io_queues)
- 		.priv		= dev,
- 	};
- 	unsigned int irq_queues, this_p_queues;
-+	unsigned int nr_cpus = num_possible_cpus();
- 
- 	/*
- 	 * Poll queues don't need interrupts, but we need at least one IO
-@@ -2095,7 +2096,10 @@ static int nvme_setup_irqs(struct nvme_dev *dev, unsigned int nr_io_queues)
- 		this_p_queues = nr_io_queues - 1;
- 		irq_queues = 1;
- 	} else {
--		irq_queues = nr_io_queues - this_p_queues + 1;
-+		if (nr_cpus < nr_io_queues - this_p_queues)
-+			irq_queues = nr_cpus + 1;
-+		else
-+			irq_queues = nr_io_queues - this_p_queues + 1;
- 	}
- 	dev->io_queues[HCTX_TYPE_POLL] = this_p_queues;
- 
--- 
-2.20.1
-
+On 7/15/19 5:19 PM, Selvin Xavier wrote:
+> GID entry consist of GID, vlan, netdev and smac.
+> Extend GID duplicate check companions to consider vlan_id as well
+> to support IPv6 VLAN based link local addresses. Introduce
+> a new structure (bnxt_qplib_gid_info) to hold gid and vlan_id information.
+>
+> The issue is discussed in the following thread
+> https://www.spinics.net/lists/linux-rdma/msg81594.html
+>
+> Fixes: 823b23da7113 ("IB/core: Allow vlan link local address based RoCE GIDs")
+> Cc: <stable@vger.kernel.org> # v5.2+
+> Reported-by: Yi Zhang <yi.zhang@redhat.com>
+> Co-developed-by: Parav Pandit <parav@mellanox.com>
+> Signed-off-by: Parav Pandit <parav@mellanox.com>
+> Signed-off-by: Selvin Xavier <selvin.xavier@broadcom.com>
+> ---
+>   drivers/infiniband/hw/bnxt_re/ib_verbs.c  |  7 +++++--
+>   drivers/infiniband/hw/bnxt_re/qplib_res.c | 13 +++++++++----
+>   drivers/infiniband/hw/bnxt_re/qplib_res.h |  2 +-
+>   drivers/infiniband/hw/bnxt_re/qplib_sp.c  | 14 +++++++++-----
+>   drivers/infiniband/hw/bnxt_re/qplib_sp.h  |  7 ++++++-
+>   5 files changed, 30 insertions(+), 13 deletions(-)
+>
+> diff --git a/drivers/infiniband/hw/bnxt_re/ib_verbs.c b/drivers/infiniband/hw/bnxt_re/ib_verbs.c
+> index 2c3685faa57a..a4a9f90f2482 100644
+> --- a/drivers/infiniband/hw/bnxt_re/ib_verbs.c
+> +++ b/drivers/infiniband/hw/bnxt_re/ib_verbs.c
+> @@ -308,6 +308,7 @@ int bnxt_re_del_gid(const struct ib_gid_attr *attr, void **context)
+>   	struct bnxt_re_dev *rdev = to_bnxt_re_dev(attr->device, ibdev);
+>   	struct bnxt_qplib_sgid_tbl *sgid_tbl = &rdev->qplib_res.sgid_tbl;
+>   	struct bnxt_qplib_gid *gid_to_del;
+> +	u16 vlan_id = 0xFFFF;
+>   
+>   	/* Delete the entry from the hardware */
+>   	ctx = *context;
+> @@ -317,7 +318,8 @@ int bnxt_re_del_gid(const struct ib_gid_attr *attr, void **context)
+>   	if (sgid_tbl && sgid_tbl->active) {
+>   		if (ctx->idx >= sgid_tbl->max)
+>   			return -EINVAL;
+> -		gid_to_del = &sgid_tbl->tbl[ctx->idx];
+> +		gid_to_del = &sgid_tbl->tbl[ctx->idx].gid;
+> +		vlan_id = sgid_tbl->tbl[ctx->idx].vlan_id;
+>   		/* DEL_GID is called in WQ context(netdevice_event_work_handler)
+>   		 * or via the ib_unregister_device path. In the former case QP1
+>   		 * may not be destroyed yet, in which case just return as FW
+> @@ -335,7 +337,8 @@ int bnxt_re_del_gid(const struct ib_gid_attr *attr, void **context)
+>   		}
+>   		ctx->refcnt--;
+>   		if (!ctx->refcnt) {
+> -			rc = bnxt_qplib_del_sgid(sgid_tbl, gid_to_del, true);
+> +			rc = bnxt_qplib_del_sgid(sgid_tbl, gid_to_del,
+> +						 vlan_id,  true);
+>   			if (rc) {
+>   				dev_err(rdev_to_dev(rdev),
+>   					"Failed to remove GID: %#x", rc);
+> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_res.c b/drivers/infiniband/hw/bnxt_re/qplib_res.c
+> index 37928b1111df..bdbde8e22420 100644
+> --- a/drivers/infiniband/hw/bnxt_re/qplib_res.c
+> +++ b/drivers/infiniband/hw/bnxt_re/qplib_res.c
+> @@ -488,7 +488,7 @@ static int bnxt_qplib_alloc_sgid_tbl(struct bnxt_qplib_res *res,
+>   				     struct bnxt_qplib_sgid_tbl *sgid_tbl,
+>   				     u16 max)
+>   {
+> -	sgid_tbl->tbl = kcalloc(max, sizeof(struct bnxt_qplib_gid), GFP_KERNEL);
+> +	sgid_tbl->tbl = kcalloc(max, sizeof(*sgid_tbl->tbl), GFP_KERNEL);
+>   	if (!sgid_tbl->tbl)
+>   		return -ENOMEM;
+>   
+> @@ -526,9 +526,10 @@ static void bnxt_qplib_cleanup_sgid_tbl(struct bnxt_qplib_res *res,
+>   	for (i = 0; i < sgid_tbl->max; i++) {
+>   		if (memcmp(&sgid_tbl->tbl[i], &bnxt_qplib_gid_zero,
+>   			   sizeof(bnxt_qplib_gid_zero)))
+> -			bnxt_qplib_del_sgid(sgid_tbl, &sgid_tbl->tbl[i], true);
+> +			bnxt_qplib_del_sgid(sgid_tbl, &sgid_tbl->tbl[i].gid,
+> +					    sgid_tbl->tbl[i].vlan_id, true);
+>   	}
+> -	memset(sgid_tbl->tbl, 0, sizeof(struct bnxt_qplib_gid) * sgid_tbl->max);
+> +	memset(sgid_tbl->tbl, 0, sizeof(*sgid_tbl->tbl) * sgid_tbl->max);
+>   	memset(sgid_tbl->hw_id, -1, sizeof(u16) * sgid_tbl->max);
+>   	memset(sgid_tbl->vlan, 0, sizeof(u8) * sgid_tbl->max);
+>   	sgid_tbl->active = 0;
+> @@ -537,7 +538,11 @@ static void bnxt_qplib_cleanup_sgid_tbl(struct bnxt_qplib_res *res,
+>   static void bnxt_qplib_init_sgid_tbl(struct bnxt_qplib_sgid_tbl *sgid_tbl,
+>   				     struct net_device *netdev)
+>   {
+> -	memset(sgid_tbl->tbl, 0, sizeof(struct bnxt_qplib_gid) * sgid_tbl->max);
+> +	u32 i;
+> +
+> +	for (i = 0; i < sgid_tbl->max; i++)
+> +		sgid_tbl->tbl[i].vlan_id = 0xffff;
+> +
+>   	memset(sgid_tbl->hw_id, -1, sizeof(u16) * sgid_tbl->max);
+>   }
+>   
+> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_res.h b/drivers/infiniband/hw/bnxt_re/qplib_res.h
+> index 30c42c92fac7..fbda11a7ab1a 100644
+> --- a/drivers/infiniband/hw/bnxt_re/qplib_res.h
+> +++ b/drivers/infiniband/hw/bnxt_re/qplib_res.h
+> @@ -111,7 +111,7 @@ struct bnxt_qplib_pd_tbl {
+>   };
+>   
+>   struct bnxt_qplib_sgid_tbl {
+> -	struct bnxt_qplib_gid		*tbl;
+> +	struct bnxt_qplib_gid_info	*tbl;
+>   	u16				*hw_id;
+>   	u16				max;
+>   	u16				active;
+> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_sp.c b/drivers/infiniband/hw/bnxt_re/qplib_sp.c
+> index 48793d3512ac..40296b97d21e 100644
+> --- a/drivers/infiniband/hw/bnxt_re/qplib_sp.c
+> +++ b/drivers/infiniband/hw/bnxt_re/qplib_sp.c
+> @@ -213,12 +213,12 @@ int bnxt_qplib_get_sgid(struct bnxt_qplib_res *res,
+>   			index, sgid_tbl->max);
+>   		return -EINVAL;
+>   	}
+> -	memcpy(gid, &sgid_tbl->tbl[index], sizeof(*gid));
+> +	memcpy(gid, &sgid_tbl->tbl[index].gid, sizeof(*gid));
+>   	return 0;
+>   }
+>   
+>   int bnxt_qplib_del_sgid(struct bnxt_qplib_sgid_tbl *sgid_tbl,
+> -			struct bnxt_qplib_gid *gid, bool update)
+> +			struct bnxt_qplib_gid *gid, u16 vlan_id, bool update)
+>   {
+>   	struct bnxt_qplib_res *res = to_bnxt_qplib(sgid_tbl,
+>   						   struct bnxt_qplib_res,
+> @@ -236,7 +236,8 @@ int bnxt_qplib_del_sgid(struct bnxt_qplib_sgid_tbl *sgid_tbl,
+>   		return -ENOMEM;
+>   	}
+>   	for (index = 0; index < sgid_tbl->max; index++) {
+> -		if (!memcmp(&sgid_tbl->tbl[index], gid, sizeof(*gid)))
+> +		if (!memcmp(&sgid_tbl->tbl[index].gid, gid, sizeof(*gid)) &&
+> +		    vlan_id == sgid_tbl->tbl[index].vlan_id)
+>   			break;
+>   	}
+>   	if (index == sgid_tbl->max) {
+> @@ -262,8 +263,9 @@ int bnxt_qplib_del_sgid(struct bnxt_qplib_sgid_tbl *sgid_tbl,
+>   		if (rc)
+>   			return rc;
+>   	}
+> -	memcpy(&sgid_tbl->tbl[index], &bnxt_qplib_gid_zero,
+> +	memcpy(&sgid_tbl->tbl[index].gid, &bnxt_qplib_gid_zero,
+>   	       sizeof(bnxt_qplib_gid_zero));
+> +	sgid_tbl->tbl[index].vlan_id = 0xFFFF;
+>   	sgid_tbl->vlan[index] = 0;
+>   	sgid_tbl->active--;
+>   	dev_dbg(&res->pdev->dev,
+> @@ -296,7 +298,8 @@ int bnxt_qplib_add_sgid(struct bnxt_qplib_sgid_tbl *sgid_tbl,
+>   	}
+>   	free_idx = sgid_tbl->max;
+>   	for (i = 0; i < sgid_tbl->max; i++) {
+> -		if (!memcmp(&sgid_tbl->tbl[i], gid, sizeof(*gid))) {
+> +		if (!memcmp(&sgid_tbl->tbl[i], gid, sizeof(*gid)) &&
+> +		    sgid_tbl->tbl[i].vlan_id == vlan_id) {
+>   			dev_dbg(&res->pdev->dev,
+>   				"SGID entry already exist in entry %d!\n", i);
+>   			*index = i;
+> @@ -351,6 +354,7 @@ int bnxt_qplib_add_sgid(struct bnxt_qplib_sgid_tbl *sgid_tbl,
+>   	}
+>   	/* Add GID to the sgid_tbl */
+>   	memcpy(&sgid_tbl->tbl[free_idx], gid, sizeof(*gid));
+> +	sgid_tbl->tbl[free_idx].vlan_id = vlan_id;
+>   	sgid_tbl->active++;
+>   	if (vlan_id != 0xFFFF)
+>   		sgid_tbl->vlan[free_idx] = 1;
+> diff --git a/drivers/infiniband/hw/bnxt_re/qplib_sp.h b/drivers/infiniband/hw/bnxt_re/qplib_sp.h
+> index 0ec3b12b0bcd..13d9432d5ce2 100644
+> --- a/drivers/infiniband/hw/bnxt_re/qplib_sp.h
+> +++ b/drivers/infiniband/hw/bnxt_re/qplib_sp.h
+> @@ -84,6 +84,11 @@ struct bnxt_qplib_gid {
+>   	u8				data[16];
+>   };
+>   
+> +struct bnxt_qplib_gid_info {
+> +	struct bnxt_qplib_gid gid;
+> +	u16 vlan_id;
+> +};
+> +
+>   struct bnxt_qplib_ah {
+>   	struct bnxt_qplib_gid		dgid;
+>   	struct bnxt_qplib_pd		*pd;
+> @@ -221,7 +226,7 @@ int bnxt_qplib_get_sgid(struct bnxt_qplib_res *res,
+>   			struct bnxt_qplib_sgid_tbl *sgid_tbl, int index,
+>   			struct bnxt_qplib_gid *gid);
+>   int bnxt_qplib_del_sgid(struct bnxt_qplib_sgid_tbl *sgid_tbl,
+> -			struct bnxt_qplib_gid *gid, bool update);
+> +			struct bnxt_qplib_gid *gid, u16 vlan_id, bool update);
+>   int bnxt_qplib_add_sgid(struct bnxt_qplib_sgid_tbl *sgid_tbl,
+>   			struct bnxt_qplib_gid *gid, u8 *mac, u16 vlan_id,
+>   			bool update, u32 *index);
 
 _______________________________________________
 Linux-nvme mailing list
