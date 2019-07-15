@@ -2,72 +2,68 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB957690BD
-	for <lists+linux-nvme@lfdr.de>; Mon, 15 Jul 2019 16:24:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 72D8469870
+	for <lists+linux-nvme@lfdr.de>; Mon, 15 Jul 2019 17:41:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mERj85YFXIWNWhFpK94/dZx72ueJDjHCz7IE4tL91gM=; b=JQb4O0HCHRUP2V
-	NicfBU91yPcl1UL+7AIdeWbMeLpWSmdWU4Ye0GA+Qs7qnIlT4MMEgi2sFjdC8s5+GwVhZMsyeuDhs
-	2+MJYZWH3VsHUDRFYIDbkOw/2sRbGe5P6ZLV/iYvOsN9g+5IbQFbNWLexiZC+q3UViPFgLpkArVQk
-	OThDXz1TdpEMtHCxWxOflVZp0pZX8sirAXkL5YFaE826dMK0zXYSbr46qM0vbhb1VC+hqIX21+WSg
-	nsKHphEQlkbvga8HmqCu/HPUcpO8X0cE20zYd/UHvXqabTLIovY2sJMKcCrjnMHcx1wGQSxYeDJrW
-	aroK+ywUDRkzpDdLcfEw==;
+	List-Owner; bh=aFQtIDj7YVACcpJH37hqhuEE47mXh+Ef0zDWOBVRbCY=; b=J9pmJIwarMgw5w
+	dW2Mk2Rq0UHfzKXQYbtupvhh3gMajuwYfni3fr8HyK6hLSzNb0flY51Tpu5/kS8TpITKGOgdfE4TS
+	C+vwHuvScKpsP5p0auoyulraNlQJBqUJTTUVxs80qrtx1kkGqIiKsp8utNg/EXsRleKCP77x+9ZxQ
+	JFY5E2dChlCk3mo1YX0T1ztFB6clQrucu+jmiEsZZNTp9b3kyMtFUESRboJcUSBqz82XJ8GH0/P/W
+	tGYo6rJz3g5Hapevt0tRk5HzViOagQF5aarjYYCW6PXQ7dHUuQWWnP85LgpJ9flN2Q7LjIidbBKGX
+	JAHEA0bd0I9HqrFvEbpQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hn1tp-0006J3-Nc; Mon, 15 Jul 2019 14:24:17 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1hn367-0000sH-EZ; Mon, 15 Jul 2019 15:41:03 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hn1sp-0005fZ-7Y
- for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 14:23:16 +0000
-Received: from sasha-vm.mshome.net (unknown [73.61.17.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 34BD921849;
- Mon, 15 Jul 2019 14:23:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1563200595;
- bh=w02hCbkEW8H4mxyePHmWDo6/6g+lVjws7tYYS8cVE7o=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=uIYNUZw6VI8DaLKLQ0vPNlfQ4/QKKY1ld6m1MyuDPbSHhp8JtvBp+ZHiddgnAdmkx
- Y9Af5jKaIodOnWt8odBAHpp7p8Ig+G2OLwsKXVm+UAxszF6i9kc1r+9jWmWDt6zaph
- kXwa4a4FBFZS0LqBq6ns/2Jiyx4cE+FgtiHdo0oU=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 087/158] nvme-pci: set the errno on ctrl state
- change error
-Date: Mon, 15 Jul 2019 10:16:58 -0400
-Message-Id: <20190715141809.8445-87-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190715141809.8445-1-sashal@kernel.org>
-References: <20190715141809.8445-1-sashal@kernel.org>
+ id 1hn361-0000q8-24
+ for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 15:40:58 +0000
+Received: from guinness.priv.deltatee.com ([172.16.1.162])
+ by ale.deltatee.com with esmtp (Exim 4.89)
+ (envelope-from <logang@deltatee.com>)
+ id 1hn35q-00066X-Pe; Mon, 15 Jul 2019 09:40:47 -0600
+To: Johannes Thumshirn <jthumshirn@suse.de>
+References: <20190712235742.22646-1-logang@deltatee.com>
+ <20190712235742.22646-8-logang@deltatee.com> <20190715071522.GB4495@x250>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <e1008f94-1cb7-8619-bbdd-802968e9402d@deltatee.com>
+Date: Mon, 15 Jul 2019 09:40:39 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+In-Reply-To: <20190715071522.GB4495@x250>
+Content-Language: en-CA
+X-SA-Exim-Connect-IP: 172.16.1.162
+X-SA-Exim-Rcpt-To: sbates@raithlin.com, tytso@mit.edu, mmoese@suse.de,
+ chaitanya.kulkarni@wdc.com, osandov@fb.com, linux-nvme@lists.infradead.org,
+ linux-block@vger.kernel.org, jthumshirn@suse.de
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: [PATCH blktests 07/12] nvme/018: Ignore error message generated
+ by nvme read]
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190715_072315_301237_11EF1E83 
-X-CRM114-Status: GOOD (  14.14  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20190715_084057_471412_FE93243A 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [207.54.116.67 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,64 +75,36 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, linux-nvme@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+Cc: Theodore Ts'o <tytso@mit.edu>,
+ Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ linux-block@vger.kernel.org, Omar Sandoval <osandov@fb.com>,
+ Michael Moese <mmoese@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 
-[ Upstream commit e71afda49335620e3d9adf56015676db33a3bd86 ]
 
-This patch removes the confusing assignment of the variable result at
-the time of declaration and sets the value in error cases next to the
-places where the actual error is happening.
+On 2019-07-15 1:15 a.m., Johannes Thumshirn wrote:
+> On Fri, Jul 12, 2019 at 05:57:37PM -0600, Logan Gunthorpe wrote:
+>> nvme-cli at some point started printing the error message:
+>>
+>>   NVMe status: CAP_EXCEEDED: The execution of the command has caused the
+>> 	capacity of the namespace to be exceeded(0x6081)
+>>
+>> This was not accounted for by test 018 and caused it to fail.
+>>
+>> This test does not need to test the error message content, it's
+>> only important that a read past the end of the file fails. Therefore,
+>> pipe stderr of nvme-cli to /dev/null.
+> 
+> How about redirecting all of the output to $FULL?
 
-Here we also set the result value to -ENODEV when we fail at the final
-ctrl state transition in nvme_reset_work(). Without this assignment
-result will hold 0 from nvme_setup_io_queue() and on failure 0 will be
-passed to he nvme_remove_dead_ctrl() from final state transition.
+Sure, I'll update it and send a v2.
 
-Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-Signed-off-by: Christoph Hellwig <hch@lst.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/nvme/host/pci.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 03e72e2f57f5..0a5d064f82ca 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -2253,11 +2253,13 @@ static void nvme_reset_work(struct work_struct *work)
- 	struct nvme_dev *dev =
- 		container_of(work, struct nvme_dev, ctrl.reset_work);
- 	bool was_suspend = !!(dev->ctrl.ctrl_config & NVME_CC_SHN_NORMAL);
--	int result = -ENODEV;
-+	int result;
- 	enum nvme_ctrl_state new_state = NVME_CTRL_LIVE;
- 
--	if (WARN_ON(dev->ctrl.state != NVME_CTRL_RESETTING))
-+	if (WARN_ON(dev->ctrl.state != NVME_CTRL_RESETTING)) {
-+		result = -ENODEV;
- 		goto out;
-+	}
- 
- 	/*
- 	 * If we're called to reset a live controller first shut it down before
-@@ -2355,6 +2357,7 @@ static void nvme_reset_work(struct work_struct *work)
- 	if (!nvme_change_ctrl_state(&dev->ctrl, new_state)) {
- 		dev_warn(dev->ctrl.device,
- 			"failed to mark controller state %d\n", new_state);
-+		result = -ENODEV;
- 		goto out;
- 	}
- 
--- 
-2.20.1
+Logan
 
 
 _______________________________________________
