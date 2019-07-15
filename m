@@ -2,83 +2,80 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9EDE69F5A
-	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 01:08:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F0E4869F5E
+	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 01:14:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fYUWb1wjRyMHIuZaEo5N2RVqZVHrr4xmJjy21FyQlSU=; b=ukbsB7OehvcNoH
-	K9jChyEa+JRqo8DPXOXvLqNdLqTAsUglgfhdkaOeh3yAZ32LRiTaqy3iQNeB++qYx8ADl0tXvv/VX
-	glZUgGy8rPPi7UbxOs7rChpwfJvtcfqVGHheTs6tFDw3OrS5bxboy2xQmqJjtpidXYs4G2Ic7//tm
-	1202ng7DWT/DGuFckj2WfoRstnKKf+WmPQvTneMedujDGlr9bFYJm8h5JnXvOEBXfLYDm9zggUu9i
-	m3o1YV69/kHCG9oFjiU5GZGPoAChZB/zZGRNzpwLSs4hB9mGIRlDirCdxGBvO9y6MpyltYCyHIGkw
-	8IoImY7fwJmLikETVDnA==;
+	List-Owner; bh=EB5/a1BLIuAMwnALqhV/g93j9TpS3FF9cYLolWw7YoY=; b=SwUGwQ2thSRhy1
+	0y8LZJCQU2x8RMZAy4uOuS5rrgiTB8nrayW0V7XzU79gkAI+atjkmycfdgspKvGLlfw2t+0g+KSlm
+	0m+y9CzdyDOd4toeT+C4xBwdFWKex6tG5rZMPkA6ScYshhn68e7OUqfwPomCq4jK28sx5MK/JjYlJ
+	KvLPjW0MzthhVwb1PAjBY34FozJ8Xr0Sav7Jv2OVTAOuf5kswxW4k7ppMkA8YqKiC2STKCjYGTl1/
+	wUvASm7m6ufFlv9IwV3Jq4B1RwyFCU6eadQDcDMZStE1moba2wNoVYh9e6RdBPUUoa71ZyFrbSvLU
+	R3vVliirW2amX0Z95iLw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnA4U-0001Re-Jc; Mon, 15 Jul 2019 23:07:50 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1hnAAx-0003P3-41; Mon, 15 Jul 2019 23:14:31 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnA4G-0001R3-GH
- for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 23:07:38 +0000
-Received: by mail-pl1-x641.google.com with SMTP id ay6so9048771plb.9
- for <linux-nvme@lists.infradead.org>; Mon, 15 Jul 2019 16:07:35 -0700 (PDT)
+ id 1hnAAf-0003Nv-Pk
+ for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 23:14:15 +0000
+Received: by mail-pf1-x442.google.com with SMTP id u14so8136623pfn.2
+ for <linux-nvme@lists.infradead.org>; Mon, 15 Jul 2019 16:14:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=osandov-com.20150623.gappssmtp.com; s=20150623;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=xm5ERYpf8xDBMsIMMEqpgHX/opm0oJBnr4ig5qE1akc=;
- b=nO7JDWkuSSVYlYAV1lm1SFqOKeBU7k6gxnehcsFT2x21a+ESXU0ippEXhoevTOPLId
- lwjqaYsNnuR3zIvqfzk7w6lymIAQr7rpO1UaguCmQ1xX4YdVpks2fH9dPASW9wW2ZVdS
- BtLCigSaoTQxnnFf0GYsqQ9eRi/Q+JkxvfRtSJEFvFJRH/MRRf24qCd+RR+HSDyswRom
- W5f3Guevmmlhek6RNJjwNu8V+Wz6N0YiWBT8+nt2cC+D7WkaqrzKl19PmDxGkRy3BBL/
- QQKzDElT/H+cMOKPDwcIzk8sN4brFH38vR88WZJ+TJrovAERF7fMiwbxaebgdLSD9i4R
- Ds1A==
+ bh=43ut9F37IivXr0wxhSuvpD20A53QvajOAoIP5Mv0CjQ=;
+ b=zeTj3JVPib1T3f0ZXqdd0HqpMZAQYHa/h66r+rYUuVxZgxiHVPu2ccEEnwklqVElVI
+ HgmoIdwmbRVU++b5F6wUPl7FQi7hzM++GrIhg4r0+rTXgQHsE/d1v2o79inOkRhNIf6s
+ UD7MhWkcVBZiAM0WQ4TYUQcEvN+sbekHY7p7fhdLQlz1ma3Wt4TziF7HRxQZHycB832I
+ vhuqBr3HhXkNB4Xl6NW+GvQm76egSUgFvgV9t8ZnjMqcLShj+VzCKxixAZfCcpyB3fEJ
+ NfhjWOGRh0V3YYIQs/TrBeuY14zkyMiG/Q+afeKA92q1sGz4Uc5x+wchvGGnL8Kq/Mq7
+ Etuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=xm5ERYpf8xDBMsIMMEqpgHX/opm0oJBnr4ig5qE1akc=;
- b=UbZJWxLR2XgVAmrpI8xeL5ttr9JmEsbaZmiJqnXTLqHmLNw4P9K8Jt6VG4lKspiLmj
- enY9kdaZxSZkIi1crNSRxpJfpnIn5rChXVDcryXenHHCqWR4uwfCfOjWVqKg4OdMy1kQ
- uy+z5P+NUcbzcXyHeBoTenhAcgnrDYFkQinUe4bpW7S8hUXpr65+RKo4yitlpBvnsRay
- wG4Ec9YgZJjtbHDr+6UJKhMLH5kutZda9r0zywEFfRKuUsf9QTIq8vksKbZPNzAi2C93
- kd/VErrHBCht4sgfENp0EmN4jBfwVyieLGRgPlCVEZSsQGIMID9r5KMK+99V54FG6V8C
- hmdw==
-X-Gm-Message-State: APjAAAVLoy5F4gvlJooQURbpd2dg6AQEI/6eAllr7XWlpcEIXCWOTZHb
- 7myyrVLtu1wBuWRPgHT6VM4hZA==
-X-Google-Smtp-Source: APXvYqyya/YYukqoHalj390zEcSYsHkxdFRXscVPfyVy23LFXlpDY2hDnBnBtRsd2NvkqIwGwSx2zw==
-X-Received: by 2002:a17:902:bcc4:: with SMTP id
- o4mr30597758pls.90.1563232054358; 
- Mon, 15 Jul 2019 16:07:34 -0700 (PDT)
+ bh=43ut9F37IivXr0wxhSuvpD20A53QvajOAoIP5Mv0CjQ=;
+ b=FVDu8kfgLkuuAyHWjCPNcv3TBpDYScm8xOWIvJcnl41fgfBSDp6O0SEikviX7O+7ur
+ 6I//Qnmkb1PiDExPuzSaXMzkg8ceKnpuFJACLAQ4ZFkLnspNRWTZxXxlSq45F/pt7gww
+ 6fxUlf5mP0g1z3Yh/VYmmlwBZaKZZM/PvMNHs7bpUu90QXwH2oOFarOunWSiPONygdDe
+ ifLAWOo3D+fIDi3NVnfXycZz3lxliZ/Xk6PqX5WJ7zs5j08dBwHV98zTGNPc274c4oVg
+ o9iTRl5dEaFRrccA9K8NFUM8AKp2cr40gYVXhzWp7M7YhryciTkI1XX2qwjlMD3qPF6x
+ EP+Q==
+X-Gm-Message-State: APjAAAUVaXkpzWkIzjLRgo7s49j+uuE7lwTqZhrUx40c4Z+HJ1qAxhDQ
+ s/hD9SZ8cnJdsQIpDN+MTQPeNw==
+X-Google-Smtp-Source: APXvYqzswRPHUBtaK1lClUn8PJIvwZDdw76vBHzPpeT9PhmIGfmTti65pHpW91HCUpx6De6DpJVPLQ==
+X-Received: by 2002:a65:6406:: with SMTP id a6mr16141201pgv.393.1563232452725; 
+ Mon, 15 Jul 2019 16:14:12 -0700 (PDT)
 Received: from vader ([2620:10d:c090:200::2:f4a5])
- by smtp.gmail.com with ESMTPSA id v27sm21592917pgn.76.2019.07.15.16.07.23
+ by smtp.gmail.com with ESMTPSA id b136sm10956871pfb.73.2019.07.15.16.14.11
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 15 Jul 2019 16:07:33 -0700 (PDT)
-Date: Mon, 15 Jul 2019 16:07:13 -0700
+ Mon, 15 Jul 2019 16:14:12 -0700 (PDT)
+Date: Mon, 15 Jul 2019 16:14:11 -0700
 From: Omar Sandoval <osandov@osandov.com>
 To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH blktests 02/12] nvme: More agressively filter the
- discovery output
-Message-ID: <20190715230713.GA5449@vader>
+Subject: Re: [PATCH blktests 00/12] Fix nvme block test issues
+Message-ID: <20190715231411.GB5449@vader>
 References: <20190712235742.22646-1-logang@deltatee.com>
- <20190712235742.22646-3-logang@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190712235742.22646-3-logang@deltatee.com>
+In-Reply-To: <20190712235742.22646-1-logang@deltatee.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190715_160736_842491_915DEF4F 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20190715_161413_840817_B18F1281 
+X-CRM114-Status: GOOD (  26.52  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 SPF_NONE               SPF: sender does not publish an SPF Record
@@ -106,47 +103,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, Jul 12, 2019 at 05:57:32PM -0600, Logan Gunthorpe wrote:
-> Comparing the entire output of nvme-cli for discovery is fragile
-> and error prone as things change. There's already been the
-> long standing issue of the generation counter mismatching
-> and also some versions of nvme-cli print an extra "sq flow control
-> disable supported" text[1].
+On Fri, Jul 12, 2019 at 05:57:30PM -0600, Logan Gunthorpe wrote:
+> Hi,
 > 
-> Instead, filter out all but a few key values from the discovery
-> text which should still be sufficient for this test and much
-> less likely to be subject to churn.
+> This patchset cleans up a number of issues and pain points
+> I've had with getting the nvme blktests to pass and run cleanly.
 > 
-> [1] https://lore.kernel.org/linux-block/20190505150611.15776-4-minwoo.im.dev@gmail.com/
+> The first three patches are meant to fix the Generation Counter
+> issue that's been discussed before but hasn't been fixed in months.
+> I primarily use a slightly fixed up patch posted by Michael Moese[1]
+> but add another patch to properly test the Generation Counter that
+> would no longer be tested otherwise.
 > 
-> Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
-> ---
->  tests/nvme/002.out | 6001 --------------------------------------------
->  tests/nvme/016.out |    7 -
->  tests/nvme/017.out |    7 -
->  tests/nvme/rc      |    4 +-
->  4 files changed, 2 insertions(+), 6017 deletions(-)
+> I've also taken it a step further to filter out more of the discovery
+> information so that we are less fragile against churn and less dependant
+> on the version of nvme-cli in use. This should also fix the issue discussed
+> in [2].
+> 
+> Patches 4 through 7 fix a number of smaller issues I've found with
+> individual tests.
+> 
+> Patches 8 through 10 implement a system to ensure the nvme tests
+> clean themselves up properly especially when ctrl-c is used to
+> interrupt a test (working with the tests before this was a huge
+> pain seeing,  when you ctrl-c, you have to either manually clean
+> up the nvmet configuration or reboot to get the system in a state
+> where it's sane to run the tests again).
+> 
+> Patches 11 and 12 make some minor changes that allow running the
+> tests with the nvme modules built into the kernel.
+> 
+> With these patches, plus a couple I've sent to the nvme list for the
+> kernel, I can consistently pass the entire nvme suite with the
+> exception of the lockdep false-positive with nvme/012 that still
+> seems to be in a bit of contention[3].
+> 
+> Thanks,
+> 
+> Logan
+> 
+> [1] https://github.com/osandov/blktests/pull/34
+> [2] https://lore.kernel.org/linux-block/20190505150611.15776-4-minwoo.im.dev@gmail.com/
+> [3] https://lore.kernel.org/lkml/20190214230058.196511-22-bvanassche@acm.org/
+> 
+> --
+> 
+> Logan Gunthorpe (11):
+>   nvme: More agressively filter the discovery output
+>   nvme: Add new test to verify the generation counter
+>   nvme/003,004: Add missing calls to nvme disconnect
+>   nvme/005: Don't rely on modprobing to set the multipath paramater
+>   nvme/015: Ensure the namespace is flushed not the char device
+>   nvme/018: Ignore error message generated by nvme read
+>   check: Add the ability to call a cleanup function after a test ends
+>   nvme: Cleanup modprobe lines into helper functions
+>   nvme: Ensure all ports and subsystems are removed on cleanup
+>   common: Use sysfs instead of modinfo for _have_module_param()
+>   nvme: Ignore errors when removing modules
+> 
+> Michael Moese (1):
+>   Add filter function for nvme discover
+> 
+>  check              |    9 +
+>  common/rc          |   18 +-
+>  tests/nvme/002     |   10 +-
+>  tests/nvme/002.out | 6003 +-------------------------------------------
+>  tests/nvme/003     |    6 +-
+>  tests/nvme/003.out |    1 +
+>  tests/nvme/004     |    6 +-
+>  tests/nvme/004.out |    1 +
+>  tests/nvme/005     |   16 +-
+>  tests/nvme/006     |    6 +-
+>  tests/nvme/007     |    6 +-
+>  tests/nvme/008     |    6 +-
+>  tests/nvme/009     |    5 +-
+>  tests/nvme/010     |    6 +-
+>  tests/nvme/011     |    6 +-
+>  tests/nvme/012     |    6 +-
+>  tests/nvme/013     |    6 +-
+>  tests/nvme/014     |    6 +-
+>  tests/nvme/015     |    5 +-
+>  tests/nvme/016     |    6 +-
+>  tests/nvme/016.out |    9 +-
+>  tests/nvme/017     |    8 +-
+>  tests/nvme/017.out |    9 +-
+>  tests/nvme/018     |    8 +-
+>  tests/nvme/019     |    6 +-
+>  tests/nvme/020     |    5 +-
+>  tests/nvme/021     |    6 +-
+>  tests/nvme/022     |    6 +-
+>  tests/nvme/023     |    6 +-
+>  tests/nvme/024     |    6 +-
+>  tests/nvme/025     |    6 +-
+>  tests/nvme/026     |    6 +-
+>  tests/nvme/027     |    6 +-
+>  tests/nvme/028     |    6 +-
+>  tests/nvme/029     |    6 +-
+>  tests/nvme/030     |   72 +
+>  tests/nvme/030.out |    2 +
+>  tests/nvme/rc      |   64 +
+>  38 files changed, 208 insertions(+), 6163 deletions(-)
+>  create mode 100755 tests/nvme/030
+>  create mode 100644 tests/nvme/030.out
 
-[snip]
-
-> diff --git a/tests/nvme/rc b/tests/nvme/rc
-> index 22833d8ef9bb..60dc05869726 100644
-> --- a/tests/nvme/rc
-> +++ b/tests/nvme/rc
-> @@ -120,6 +120,6 @@ _find_nvme_loop_dev() {
->  }
->  
->  _filter_discovery() {
-> -	sed -r  -e "s/portid:  [0-9]+/portid:  X/" \
-> -		-e "s/Generation counter [0-9]+/Generation counter X/"
-> +	sed -r -e "s/Generation counter [0-9]+/Generation counter X/" |
-> +		grep 'Discovery Log Number\|Log Entry\|trtype\|subnqn'
->  }
-
-This can be done in a single sed command instead of sed + grep:
-
-sed -rn -e 's/Generation counter [0-9]+/Generation counter X/' \
-	-e '/Discovery Log Number|Log Entry|trtype|subnqn/p'
+Thanks for cleaning this up! I replied with one nitpick, and besides
+that and comments from the other reviewers, I'm happy with it overall
+(assuming it passes shellcheck).
 
 _______________________________________________
 Linux-nvme mailing list
