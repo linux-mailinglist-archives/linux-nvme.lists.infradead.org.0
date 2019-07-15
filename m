@@ -2,46 +2,46 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEF1C683F8
-	for <lists+linux-nvme@lfdr.de>; Mon, 15 Jul 2019 09:15:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 002D468440
+	for <lists+linux-nvme@lfdr.de>; Mon, 15 Jul 2019 09:22:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bYjmmLkt/HKEdXK8zp+lRk/emgNqEQYhZTRMHr/YFg8=; b=io2rzSRv8e6aLU
-	IKdutJniYZ/1mHKMEsYQlXL4ftpmL5EGVGpfrX3XP4t9XeSQnhc1VPYa527HREcJbKO9QjkchcQ6u
-	yJdDeSD1RS6OTkyUQp21gC4EutXClVjRNn08j/S8lTZyam84LuQWe5taRslBQE3khfKUf+PoV1e9n
-	ajBdc1ORI6dFfGc6s296RPFeDJASc78WGMy9OFZzTdUJp7kCME7AI3Jjsrfsa1DTVMA1V6IGK9JXQ
-	kN1WT0hA9mH55bHGsS+5vpPaGKRPEjjM6SEtQ5mRY9yml7vvdBQ+FZKbomoYBLtxQm12DhEBeWXZg
-	n3M2s4+8QnRi6FohJAoQ==;
+	List-Owner; bh=k0gOjybQXhfOtY2lJGxFgWxCENVD/43UQv0MU1VLBVs=; b=jMJb/LU3wEpqPJ
+	RIMCbR+TldyZuAAdXb240UYtNe6xlhlk4kjB7fwjxZyi7Sqtz+eA/7ghjlAjny6cGG+m0zX6TZXMJ
+	7GD5E/8CO5Q3tG+hFLor/njER17w+gCRzqE/5lYiU79YljhT4l+aHqNjzdGiLE1UnCieGLrhN5OB6
+	hPmCKoBeIoRSgy/eq6tUKHbqHMa5wTPAR8Ziam9fX96GBBV2CtXqA5ZT+0UlkCQUV2wjjZakh4rVU
+	GBAUIBbunUwaGynLO7ySj05P3WpBDh93Ynjaltf0QZQR4jjUantVqgAIJU4gUb6UD2w8WWvwEAQht
+	eCziCetUaOHT5FjNzwBQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hmvCy-0006b1-N3; Mon, 15 Jul 2019 07:15:36 +0000
+	id 1hmvJ9-0000A8-8G; Mon, 15 Jul 2019 07:21:59 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hmvCp-0006aC-Nz
- for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 07:15:29 +0000
+ id 1hmvJ0-00009Q-MR
+ for linux-nvme@lists.infradead.org; Mon, 15 Jul 2019 07:21:52 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 91E31AF04;
- Mon, 15 Jul 2019 07:15:23 +0000 (UTC)
-Date: Mon, 15 Jul 2019 09:15:22 +0200
+ by mx1.suse.de (Postfix) with ESMTP id 225C9AFA9;
+ Mon, 15 Jul 2019 07:21:49 +0000 (UTC)
+Date: Mon, 15 Jul 2019 09:21:48 +0200
 From: Johannes Thumshirn <jthumshirn@suse.de>
 To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH blktests 07/12] nvme/018: Ignore error message generated
- by nvme read]
-Message-ID: <20190715071522.GB4495@x250>
+Subject: Re: [PATCH blktests 11/12] common: Use sysfs instead of modinfo for
+ _have_module_param()
+Message-ID: <20190715072148.GC4495@x250>
 References: <20190712235742.22646-1-logang@deltatee.com>
- <20190712235742.22646-8-logang@deltatee.com>
+ <20190712235742.22646-12-logang@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190712235742.22646-8-logang@deltatee.com>
+In-Reply-To: <20190712235742.22646-12-logang@deltatee.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190715_001527_929483_262E53D2 
-X-CRM114-Status: GOOD (  18.08  )
+X-CRM114-CacheID: sfid-20190715_002150_879917_EABB2E93 
+X-CRM114-Status: GOOD (  22.97  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -72,23 +72,41 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, Jul 12, 2019 at 05:57:37PM -0600, Logan Gunthorpe wrote:
-> nvme-cli at some point started printing the error message:
+On Fri, Jul 12, 2019 at 05:57:41PM -0600, Logan Gunthorpe wrote:
+> Using modinfo fails if the given module is built-in. Instead,
+> just check for the parameter's existence in sysfs.
 > =
 
->   NVMe status: CAP_EXCEEDED: The execution of the command has caused the
-> 	capacity of the namespace to be exceeded(0x6081)
+> Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
+> ---
+>  common/rc | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > =
 
-> This was not accounted for by test 018 and caused it to fail.
-> =
+> diff --git a/common/rc b/common/rc
+> index 49050c71dabf..d48f73c5bf3d 100644
+> --- a/common/rc
+> +++ b/common/rc
+> @@ -48,7 +48,7 @@ _have_modules() {
+>  }
+>  =
 
-> This test does not need to test the error message content, it's
-> only important that a read past the end of the file fails. Therefore,
-> pipe stderr of nvme-cli to /dev/null.
+>  _have_module_param() {
+> -	if ! modinfo -F parm -0 "$1" | grep -q -z "^$2:"; then
+> +	if ! [ -e "/sys/module/$1/parameters/$2" ]; then
+>  		SKIP_REASON=3D"$1 module does not have parameter $2"
+>  		return 1
+>  	fi
 
-How about redirecting all of the output to $FULL?
+But this now fails if the module isn't loaded yet. IMHO we'll need to check=
+ if
+"/sys/module/$1" exists and if it does check for
+"/sys/module/$1/parameters/$2", if not try modinfo.
 
+Does that make sense?
+
+Byte,
+	Johannes
 -- =
 
 Johannes Thumshirn                            SUSE Labs Filesystems
