@@ -2,51 +2,73 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB7A96A50B
-	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 11:38:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6345B6A5DD
+	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 11:50:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7mJVQvcrQZInSEtjn1AjCfgHSYePRRqARTFsSoE0YPk=; b=OqCcYNL+hBwZ7j
-	pyfzkZhFFnVyO2+g+C2SZ7cDEbqjFpPkQe81R9Kzz3vSlC8MNi8OCpfjizDkJQdBMw+inHHL1+fRA
-	ElrthwLwOsrP1Y8rhGkmUQUKyYAu3E/goZmzT4blt/nxq83LQa3we9RA6X33/05Nk6oHHYyUU3mVo
-	3FqXycw4QXUFsaoMx8Mzx4tXmrG7wHQEJrNlK9lOrYZ9vk8UccT/k1T7WC+2u1B5fg7+TaC1xxZ5W
-	p1D0bhAJnAMvYDBxjuBNJq7jDvc0tyDDkLhbd9+yvHfIVxkklgBKvd2TAyi+o/jdOyPr+0zdnYwuG
-	IPxZcaoPIuI/BnQD+PIQ==;
+	List-Owner; bh=qWcZabkBKQz2avg4BKnyue9iExJfyTK+/o10cWSMiNI=; b=DfR832VgaeccFy
+	hXmreIOYdLHIImP+Evh/aTAswa4u/dr5ZSe7NhwTHxEj9Q12qsVQhU15ePaOuyEjl74LFdUg89qs+
+	PFwtEHRFbCwJE6kxRjxm5dpTOxHjAKpmBxaEPMsqrp5b4y5avyX92mUJD6GJS1Vsuu05SltF7HH5+
+	6h28lSEFl0RD9sxM8lOeMWYVFwoiKS+IRJviZ/gS3vSkpcAtEz5yYvLv7Q+/IEokzzE2pSNhpmBfH
+	zrImiYfZDHsJtNmyG3zERfpBnyMLAI0m4G61mhVHcxImCYpe48I+v+K+X5gFEyNa+j+OxNhoI264p
+	RxsK0m2i7Jroghb4xfGA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnJuv-0003WS-76; Tue, 16 Jul 2019 09:38:37 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1hnK6I-0001ET-Ak; Tue, 16 Jul 2019 09:50:22 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnJum-0003Vw-7z
- for linux-nvme@lists.infradead.org; Tue, 16 Jul 2019 09:38:29 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 9785168B05; Tue, 16 Jul 2019 11:38:25 +0200 (CEST)
-Date: Tue, 16 Jul 2019 11:38:25 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Hannes Reinecke <hare@suse.de>
-Subject: Re: [PATCH] nvme-multipath: sanitize nvme_update_ana_state()
-Message-ID: <20190716093825.GC32562@lst.de>
-References: <20190716071830.22672-1-hare@suse.de>
+ id 1hnK68-0001DR-QK
+ for linux-nvme@lists.infradead.org; Tue, 16 Jul 2019 09:50:14 +0000
+Received: from localhost (unknown [193.47.165.251])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 77ABA2064B;
+ Tue, 16 Jul 2019 09:50:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1563270611;
+ bh=dpskP48dz6L7doFCtp7W3zMbv4orWk6GK6O1TLm70Ho=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=XZ4atqxgtDuxqVXzfF/P0bRMCMXA22maqJlIV1Mak9/t/65wY4p2uRpH71/gCB4BN
+ GzMcK90E6j8KbxVQ6jaEDLRBGFw1FKjuVAix6Y7mX4RkqMoJYmf7Ks3TdFLfjRRcRj
+ fHGreQf+rH5iGv2jOwfUgbiBWqeioNyFxMBx1PfQ=
+Date: Tue, 16 Jul 2019 12:50:07 +0300
+From: Leon Romanovsky <leon@kernel.org>
+To: Greg KH <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH for-rc] RDMA/bnxt_re: Honor vlan_id in GID entry comparison
+Message-ID: <20190716095007.GK10130@mtr-leonro.mtl.com>
+References: <20190715091913.15726-1-selvin.xavier@broadcom.com>
+ <20190716071030.GH10130@mtr-leonro.mtl.com>
+ <20190716071644.GA21780@kroah.com>
+ <20190716084126.GJ10130@mtr-leonro.mtl.com>
+ <20190716090917.GA11964@kroah.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190716071830.22672-1-hare@suse.de>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+In-Reply-To: <20190716090917.GA11964@kroah.com>
+User-Agent: Mutt/1.12.0 (2019-05-25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190716_023828_437728_C50F724C 
-X-CRM114-Status: GOOD (  10.64  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190716_025012_888920_43A70347 
+X-CRM114-Status: GOOD (  18.15  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,28 +80,80 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
- Sagi Grimberg <sagi@grimberg.me>
+Cc: Selvin Xavier <selvin.xavier@broadcom.com>,
+ Parav Pandit <parav@mellanox.com>, linux-rdma@vger.kernel.org,
+ stable@vger.kernel.org, jgg@ziepe.ca, dledford@redhat.com,
+ linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Jul 16, 2019 at 09:18:30AM +0200, Hannes Reinecke wrote:
-> Commit 04e70bd4a026 ("nvme-multipath: do not select namespaces
-> which are about to be removed") introduced checks when traversing
-> the list of namespaces to avoid tripping over invalid namespaces.
-> A similar check is needed in nvme_update_ana_state() to skip updates
-> for any namespaces which will be removed.
-> With that we should also remove the WARN_ON() at the end of the
-> iteration; this will also be errorneously triggered if ANA Change AENS
-> are received during scanning.
+On Tue, Jul 16, 2019 at 06:09:17PM +0900, Greg KH wrote:
+> On Tue, Jul 16, 2019 at 11:41:26AM +0300, Leon Romanovsky wrote:
+> > On Tue, Jul 16, 2019 at 04:16:44PM +0900, Greg KH wrote:
+> > > On Tue, Jul 16, 2019 at 10:10:30AM +0300, Leon Romanovsky wrote:
+> > > > On Mon, Jul 15, 2019 at 05:19:13AM -0400, Selvin Xavier wrote:
+> > > > > GID entry consist of GID, vlan, netdev and smac.
+> > > > > Extend GID duplicate check companions to consider vlan_id as well
+> > > > > to support IPv6 VLAN based link local addresses. Introduce
+> > > > > a new structure (bnxt_qplib_gid_info) to hold gid and vlan_id information.
+> > > > >
+> > > > > The issue is discussed in the following thread
+> > > > > https://www.spinics.net/lists/linux-rdma/msg81594.html
+> > > > >
+> > > > > Fixes: 823b23da7113 ("IB/core: Allow vlan link local address based RoCE GIDs")
+> > > > > Cc: <stable@vger.kernel.org> # v5.2+
+> > > > > Reported-by: Yi Zhang <yi.zhang@redhat.com>
+> > > >
+> > > > > Co-developed-by: Parav Pandit <parav@mellanox.com>
+> > > > > Signed-off-by: Parav Pandit <parav@mellanox.com>
+> > > >
+> > > > I never understood why bad habits are so stinky.
+> > > >
+> > > > Can you please explain us what does it mean Co-developed-by and
+> > > > Signed-off-by of the same person in the same patch?
+> > >
+> > > See Documentation/process/submitting-patches.rst for what that tag
+> > > means.
+> >
+> > Read it, it doesn't help me to understand if I should now add
+> > Co-developed-by tag to most of RDMA Mellanox upstreamed patches,
+> > which already care my Signed-off-by, because I'm changing and fixing
+> > them many times.
+>
+> It depends, it's your call, if you think you deserve the credit, sure,
+> add it.  If you are just doing basic "review" where you tell people what
+> needs to be done better, that's probably not what you need to do here.
 
-What is the problem we are trying to fix here?  Just that we should
-not call nvme_mpath_set_live?  In that case it might make more sense
-to move the removed check to just guard that call and at least keep
-the values in struct nvme_ns uptodate.
+I'll probably not use this and not because I don't deserve credit, but
+because it looks ridiculously to me to see my name repeated N times for
+my work.
+
+>
+> One example, where I just added myself to a patch happened last week
+> where the developer submitted one solution, I took it and rewrote the
+> whole implementation (from raw kobjects to using the driver model).  The
+> original author got the "From:" and I got a Co-developed-by line.
+
+In old days, we simply changed Author field if changes were above some
+arbitrary threshold (usually half of the original patch) and added SOB.
+
+Why wasn't this approach enough?
+
+>
+> Does that help?
+
+Yes, and it makes me wonder when we will need to hire compliance officer
+who will review all our upstreamed patches to comply with more and more
+bureaucracy.
+
+Thanks.
+
+>
+> thanks,
+>
+> greg k-h
 
 _______________________________________________
 Linux-nvme mailing list
