@@ -2,84 +2,66 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8F786A2B1
-	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 09:12:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 131346A2BC
+	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 09:17:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mHMKz4Hxdm9Rt8Lpt6Plyt6el9AO3hl6A/JJB0fsyyg=; b=Jz2Lv0cdXd9fKs
-	sfeQvawPFH8PmITShTRQHkQMfjcqbFAFGHXPQS1y134btfa5ltNoZSp5QjlBS2NkEqkrD+zWZmJAO
-	sXoW4TjaA7vT/2MRRmIh+XOQ/evHwUT49bi0tvelOVTQTjD16GMHucVIufbke9qWsOioG31aTrsjC
-	oCUPQY4xrYLMgWn8ys9oKTIl6mymAjNzppsKyiXhRMc4WngO6AsTrmgQmwZmAbZN8ebORpS87A0Gw
-	eI2bdSWC2C9Jwidt1wjaaWKevsELaW4oEU1IXiPDW6oquFg5BF0PCYyrmvOBWhQoYtVs5gZ3Fu4qQ
-	nSLj8FjjILcKh1Qq9i5A==;
+	List-Owner; bh=QT90sWedzpBhToCN6jy7xTd8laLlJpHd7w02G2DAUXI=; b=nr/JiwTBIWHl+k
+	frkqvGE7hDJtO9ywwXfDCfErCgp4poR25KLgvBi7XR3ctWKxv8AgVwt2UelfUlHXtyspOMSSWnx3d
+	cYWbJi3qSn7tXe2sJuYhecccJBCjgzF8dGB5pTjDoAPiXSAC39j0bRpvJRkj5CsIs0CH31+6Xe4Tm
+	baDyBRRpyyD19NoJdMnLrnAbFZmsHHwYB0Ou7IhZcmH615FEy0i7AuqtqNAdCxwXmu6P19KVAg8qQ
+	/pJUeYI4fKaFqqaW2SEt78ywYN38XPoo6u3q02k2jirUbbmqx0rKePMfWkS1JUKFBNeBztIvHafoM
+	M5+dnyAteIFoe2AoVaUA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnHdW-0003JK-Dq; Tue, 16 Jul 2019 07:12:30 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1hnHiL-0005AB-RI; Tue, 16 Jul 2019 07:17:29 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnHdL-0003Ig-AS
- for linux-nvme@lists.infradead.org; Tue, 16 Jul 2019 07:12:20 +0000
-Received: by mail-wr1-x444.google.com with SMTP id n9so19718757wru.0
- for <linux-nvme@lists.infradead.org>; Tue, 16 Jul 2019 00:12:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NRMwMg47jMgHw5IV6mLn77vCMbjTm5a1h1uSx62uOvQ=;
- b=G6UOoyG4OpBJlQQLzmaFloHe3nuENgspxTjIBz7jv8cj5mP1IIMtFcFO3nJvj/pAwy
- eML3A7zTqkP3LdjS2OyhXlFO0kNOnNm8k0foJabROCDxtumoTdZx54rdSI0O82t9WiOv
- ES+dbenlOsdBIHK0ESYZ+l+ORNzihGI4yp6gssCc9vCMQMj/6mLMnLN/q1ICcMTIMPgT
- oIlQxEOqhptdBfUDvmsoBX8Sfg/Tfe6WW4pnThWkgDCSnXVX3XRpkxLkFXr3/7mxPXP9
- bFZchluDQ5fG6r2riheUhJrF+4Vtb+ga+DwCJ+pxKospCsIXm6p9F4nmdGGCTr+WB5X7
- i0ZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NRMwMg47jMgHw5IV6mLn77vCMbjTm5a1h1uSx62uOvQ=;
- b=ELHHzbx1KnBsqBdWV4poUe7IilGbdmdpCdZp4vS/f6v0kbPp+cP+9v0hwpabhp9qwa
- +JVNtcR1Oc5hyceNVLT7VSWo9XptVRuaO72shmbFwQUKfa5Cooz5GSMmi1GEJeW7dobK
- tFJWrXa78+ySYnj1AYRAz+jtsw9XA/tPi908x0HK4/CFDaKgRPnhIlyw/HgR5ZIOE7En
- 2cQ/adpfpAMCn/hv8zqOmAHHPGcDtwh7RltLwG6s8Ur8OiuuWJefRFdYU3LSObehV3mB
- R5Jd05OjS4RMDC0sBEWJK0JaF2P14H3DrRnZKleqX7US1j/ZvgmvRceoTR2nxbs+OHKW
- QqNg==
-X-Gm-Message-State: APjAAAXaAqCKLnYzGLkVyaubh6sPetPdVt+pr83PdsD0RqNeLMKNRdSl
- Z4XOGsx7rNnaPHeAvUn2OB9CU7Y+N5D7xkCaMuY=
-X-Google-Smtp-Source: APXvYqxYnHToOhs/3iJ+zhUk9UkGqG8ndpZlzspM4fUkQE028nVJxGUAYohpBwoHFUSU8EYSfdgHtQFcn6FhqzEfmhA=
-X-Received: by 2002:adf:f883:: with SMTP id u3mr33605341wrp.0.1563261137356;
- Tue, 16 Jul 2019 00:12:17 -0700 (PDT)
+ id 1hnHiA-00059a-Me
+ for linux-nvme@lists.infradead.org; Tue, 16 Jul 2019 07:17:20 +0000
+Received: from localhost (unknown [113.157.217.50])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 70B5520880;
+ Tue, 16 Jul 2019 07:17:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1563261437;
+ bh=ivmkYK87VvmWfwPxJ42xkGY8yxoOqLZyFPSJsjyYH8g=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=PdYkRnKFI8BpFImebLmZjpoYxZvey+sR4PqUZI45mlNqCICAp8KEdn9O9jC6nURVf
+ 3nWumJTDL8jd2+pbS2SFBcfr+YJxfdD5UVUU23Ml6Ojqzb4BAnKsD/OI6sVfw4GGVR
+ c0FdnfV0ov755dlSVXxGJ7BCa1KPibpctfO3dsyE=
+Date: Tue, 16 Jul 2019 16:16:44 +0900
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Leon Romanovsky <leon@kernel.org>
+Subject: Re: [PATCH for-rc] RDMA/bnxt_re: Honor vlan_id in GID entry comparison
+Message-ID: <20190716071644.GA21780@kroah.com>
+References: <20190715091913.15726-1-selvin.xavier@broadcom.com>
+ <20190716071030.GH10130@mtr-leonro.mtl.com>
 MIME-Version: 1.0
-References: <798a3907573b910fbb102036afe3dfc1405fb353.camel@kernel.crashing.org>
-In-Reply-To: <798a3907573b910fbb102036afe3dfc1405fb353.camel@kernel.crashing.org>
-From: Ming Lei <tom.leiming@gmail.com>
-Date: Tue, 16 Jul 2019 15:12:06 +0800
-Message-ID: <CACVXFVP8w3mzQ8XVgeif=Nq3kyiZopS0XDB+-c2x5CcT9V3djA@mail.gmail.com>
-Subject: Re: nvme-5.3 ssd performance regression
-To: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Content-Disposition: inline
+In-Reply-To: <20190716071030.GH10130@mtr-leonro.mtl.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190716_001219_357760_145F55CB 
-X-CRM114-Status: GOOD (  13.01  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190716_001718_755318_C9F72D53 
+X-CRM114-Status: GOOD (  10.68  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (tom.leiming[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,67 +73,43 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Christoph Hellwig <hch@lst.de>,
- linux-nvme <linux-nvme@lists.infradead.org>
+Cc: Selvin Xavier <selvin.xavier@broadcom.com>,
+ Parav Pandit <parav@mellanox.com>, linux-rdma@vger.kernel.org,
+ stable@vger.kernel.org, jgg@ziepe.ca, dledford@redhat.com,
+ linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Jul 16, 2019 at 9:05 AM Benjamin Herrenschmidt
-<benh@kernel.crashing.org> wrote:
->
-> Hi !
->
-> Something I noticed while testing those patches for the Apple drives.
->
-> With 5.2.0 (and those patches):
->
-> [benh@mini ~]$ sudo hdparm -tf /dev/nvme0n1
->
-> /dev/nvme0n1:
->  HDIO_DRIVE_CMD(identify) failed: Inappropriate ioctl for device
->  Timing buffered disk reads: 5960 MB in  3.00 seconds = 1986.22 MB/sec
->
-> (The numbers are reasonably stable accross multiple runs)
->
-> With nvme-5.3 (and those patches & the ctrl->opts NULL fix)
->
-> [benh@mini linux]$ sudo hdparm -tf /dev/nvme0n1
->
-> /dev/nvme0n1:
->  HDIO_DRIVE_CMD(identify) failed: Inappropriate ioctl for device
->  Timing buffered disk reads: 4520 MB in  3.00 seconds = 1506.63 MB/sec
-> [benh@mini linux]$ sudo hdparm -tf /dev/nvme0n1
->
-> Here too, the numbers are quite stable during a given boot but
-> interestingly they seem to change from boot to boot, I also observed
-> 1700 MB/s for example. It's a rather major regression.
->
-> The .config is identical in both cases (an x86_64-defconfig with a
-> small tweak or two, I removed more drivers mostly and made nvme a
-> module)
->
-> In both cases the io scheduler is mq-deadline. The device has a single
-> IO queue.
+On Tue, Jul 16, 2019 at 10:10:30AM +0300, Leon Romanovsky wrote:
+> On Mon, Jul 15, 2019 at 05:19:13AM -0400, Selvin Xavier wrote:
+> > GID entry consist of GID, vlan, netdev and smac.
+> > Extend GID duplicate check companions to consider vlan_id as well
+> > to support IPv6 VLAN based link local addresses. Introduce
+> > a new structure (bnxt_qplib_gid_info) to hold gid and vlan_id information.
+> >
+> > The issue is discussed in the following thread
+> > https://www.spinics.net/lists/linux-rdma/msg81594.html
+> >
+> > Fixes: 823b23da7113 ("IB/core: Allow vlan link local address based RoCE GIDs")
+> > Cc: <stable@vger.kernel.org> # v5.2+
+> > Reported-by: Yi Zhang <yi.zhang@redhat.com>
+> 
+> > Co-developed-by: Parav Pandit <parav@mellanox.com>
+> > Signed-off-by: Parav Pandit <parav@mellanox.com>
+> 
+> I never understood why bad habits are so stinky.
+> 
+> Can you please explain us what does it mean Co-developed-by and
+> Signed-off-by of the same person in the same patch?
 
-It should be caused by the following commit, and that patch uses
-single mapping size to limit max hw sectors, and looks that way
-is wrong. For example, on qemu, max_hw_sectors is decreased to
-512. You can try to revert the patch and see if it makes a difference.
+See Documentation/process/submitting-patches.rst for what that tag
+means.
 
-I feel we might need the max segment size limit too.
+thanks,
 
-commit 7637de311bd2124b298a072852448b940d8a34b9
-Author: Christoph Hellwig <hch@lst.de>
-Date:   Wed Jul 3 09:54:44 2019 -0700
-
-    nvme-pci: limit max_hw_sectors based on the DMA max mapping size
-
-
-
-Thanks,
-Ming Lei
+greg k-h
 
 _______________________________________________
 Linux-nvme mailing list
