@@ -2,98 +2,50 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 596FA69FBB
-	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 02:12:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE6A66A005
+	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 02:47:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ukCv53sFhO+wzFtiKgtC5JC6wMzHp6nfBlCqxU2TdTs=; b=sVKWZoo7H0YVWvOt7t4UZTkfO
-	w1MobPWJBBMvWAPD4dTdBxR65iSz5Us11XfwUlvylSNXPqfG90jIk1Hb+/BYf843Upv4Mpt2pXTsX
-	hHHMhYSaCWk+Ke6ukjUcHI7W3eoNeX1TYMx38Cz/SSWzSSzrfP5i/GDnSU4Mye1wPxOX6W947lOt1
-	z+MHbiqisGYAk/wAKB4EmQqfSwfC9HENlAs7RhM2YGp/hZCxsuxZvgLyumdTyHqYJKcktJjPxJv/R
-	pVq7t1zzs77xv2KpAKhIvfwAIcLhEzKACAgMLwpS0mMiO6RLE4vMK7rpFCJKTmx6jm7YcdI14ytWu
-	bBhXssbfw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=bsWJnqMk9lizAKuCfX0A44xQ7SNHkDnblP/rRvWdnOc=; b=IWd
+	EgcffwNlYts/2hZPzqauvST/J+NdPvGYUJ2v2XPbIOVMOQmr8sBu6g2m1SQoJ3wMZec6Y3wSHR4hB
+	dP0kkAf8CCL2HjH4EISeuFWf6eIQ8XxUU4HFzPFrVmIXUrVSrUmafOEE6xqNry7/onsBUb74vToi3
+	sJIO76ams75h1oI7RV+vE5u47gtJ8SJtXkims3vmSIk9t0CmcWNBBlnM765BXozKWQ59anEAbVi4J
+	bs5ca6Elpp2DOVhIyNiS3CrD/crzJ/HJhtSlW1TnWS1AyG9ZewbdifExWTvsG4XWVdYNijX4d+UGs
+	tJnj1cSb6E+lJCLrr//gAwqsgdoaNag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnB4U-0005dE-Gm; Tue, 16 Jul 2019 00:11:54 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1hnBcm-0000dt-5w; Tue, 16 Jul 2019 00:47:20 +0000
+Received: from gate.crashing.org ([63.228.1.57])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnB4O-0005ce-1X
- for linux-nvme@lists.infradead.org; Tue, 16 Jul 2019 00:11:49 +0000
-Received: by mail-pg1-x543.google.com with SMTP id w10so8486845pgj.7
- for <linux-nvme@lists.infradead.org>; Mon, 15 Jul 2019 17:11:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=4XP87/J+stRoWVQdQLVgPeUmBgGgySIjXuhd5HH21gk=;
- b=aOWvcaDvn0qzr/7GwY3aRbLLjkABWoOY8FQC8iS+Lc+lfVNiEdmGXFUFyiFCr9tC0d
- A7U7BI+l+zX2nHM0P24UpWJ7Le6B0KfJQHpfme9x6ie1SwGd58OUx8FInE6/EasMpvbp
- VuRBs9e/CswZ9jOFEJ8PQ2fXftpaTpOoZKIo/s9YcTYWs3SVGymQLtwLKYlNtdXzSdpW
- lpRIxjzft5f6kEo6gZ+S0dF6ZM04/l2OUJX+T/LQYFN1DTPQI0Qm7D67gk4wQ6hKjhf1
- UjJqVQo84Al3Zed1m1T/qws4rY1fCVvUwXHgdl0NnRskRKGrAfcCZCc4KaG4l6uqL8UX
- uH9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=4XP87/J+stRoWVQdQLVgPeUmBgGgySIjXuhd5HH21gk=;
- b=DPzwzidsGuI3gYrrUY74mQVUKu5iwVV8ws7EHMhQCV7FWA5Je64fkNyQ+6JaY+T6qI
- t1EfZi5RwqG64LdlECzZ40zbjhsmjvBibojipSw3V1CJUJlkc/H3N5z+1JsUIg8lFP7D
- mlqKPA7Doy8D8V1sG8cpamhj+zcYZWyAwNbe31PoMfqn/bNKuPzsv0qJC3XnYwXpzXhf
- cVbq6SWBc5EQzElgOdzkrP6g4CJrBF3u+1pT0uIBcWizbWjgUuQ+YKwzlvUeAf0GkXtb
- H4r9qXwmVVKEGObpvB9i6SAEL3O/TeVDlt0Hglhl3feY1rZ0sKzfvWGnkerewVZeH5hE
- PLeQ==
-X-Gm-Message-State: APjAAAUWBJ8yMANSoANl8x+UTZMxLtMmwigNJnXVdJp/tNBfAIHJiVfe
- 66qG34psqRfGzVVEiVuEo8xxnD0u
-X-Google-Smtp-Source: APXvYqzrWDRSoWLYbw5WHPAlZds2nRvg1NNVyVIFQnh8YHR4DOm27pOgZEd3JvZUOCOxxpLydPufOQ==
-X-Received: by 2002:a63:9c5:: with SMTP id 188mr4648905pgj.2.1563235906435;
- Mon, 15 Jul 2019 17:11:46 -0700 (PDT)
-Received: from [10.69.69.102] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id f88sm19625172pjg.5.2019.07.15.17.11.45
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 15 Jul 2019 17:11:45 -0700 (PDT)
-Subject: Re: [PATCH rfc v2 05/10] nvme-cli: extend ctrl_list_item for connect
- attributes
-To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
-References: <20190712003140.16221-1-jsmart2021@gmail.com>
- <20190712003140.16221-6-jsmart2021@gmail.com>
- <6647e40b-cfc9-46e3-cd11-aeaaec8eeff6@grimberg.me>
-From: James Smart <jsmart2021@gmail.com>
-Message-ID: <721a6054-6e49-0fcb-2928-127470b798f6@gmail.com>
-Date: Mon, 15 Jul 2019 17:11:44 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
-MIME-Version: 1.0
-In-Reply-To: <6647e40b-cfc9-46e3-cd11-aeaaec8eeff6@grimberg.me>
-Content-Language: en-US
+ id 1hnBce-0000dM-I4
+ for linux-nvme@lists.infradead.org; Tue, 16 Jul 2019 00:47:14 +0000
+Received: from ufdda393ec48b57.ant.amazon.com (localhost.localdomain
+ [127.0.0.1])
+ by gate.crashing.org (8.14.1/8.14.1) with ESMTP id x6G0l1P5001806;
+ Mon, 15 Jul 2019 19:47:02 -0500
+From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH 1/3] nvme: Pass the queue to SQ_SIZE/CQ_SIZE macros
+Date: Tue, 16 Jul 2019 10:46:47 +1000
+Message-Id: <20190716004649.17799-1-benh@kernel.crashing.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190715_171148_111680_F877ECE2 
-X-CRM114-Status: GOOD (  13.78  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20190715_174712_749778_56FDDD75 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (jsmart2021[at]gmail.com)
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (jsmart2021[at]gmail.com)
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ no trust [63.228.1.57 listed in list.dnswl.org]
+ 0.0 T_SPF_HELO_PERMERROR   SPF: test of HELO record failed (permerror)
+ 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,34 +57,139 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ linux-kernel@vger.kernel.org, Paul Pawlowski <paul@mrarm.io>,
+ Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
+ Christoph Hellwig <hch@lst.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gNy8xMS8yMDE5IDU6NDcgUE0sIFNhZ2kgR3JpbWJlcmcgd3JvdGU6Cj4gCj4+ICtjaGFyICpf
-X3BhcnNlX2Nvbm5lY3RfYXJnKGNoYXIgKmNvbmFyZ3MsIGNvbnN0IGNoYXIgZGVsaW0sIGNvbnN0
-IGNoYXIgCj4+ICpmaWVsZG5tKQo+PiArewo+PiArwqDCoMKgIGNoYXIgKnMsICplOwo+PiArwqDC
-oMKgIHNpemVfdCBjbnQ7Cj4+ICsKPj4gK8KgwqDCoCAvKgo+PiArwqDCoMKgwqAgKiBUaGVyZSBh
-cmUgZmllbGQgbmFtZSBvdmVybGFwczogdHJhZGRyIGFuZCBob3N0X3RyYWRkci4KPj4gK8KgwqDC
-oMKgICogQnkgY2hhbmNlLCBib3RoIGNvbm5lY3QgYXJnIHN0cmluZ3MgYXJlIHNldCB1cCB0bwo+
-PiArwqDCoMKgwqAgKiBoYXZlIHRyYWRkciBmaWVsZCBmb2xsb3dlZCBieSBob3N0X3RyYWRkciBm
-aWVsZC4gVGh1cyBmaWVsZAo+PiArwqDCoMKgwqAgKiBuYW1lIG1hdGNoaW5nIGRvZXNuJ3Qgb3Zl
-cmxhcCBpbiB0aGUgc2VhcmNoZXMuIFRlY2huaWNhbGx5LAo+PiArwqDCoMKgwqAgKiBhcyBpcywg
-dGhlIGxvb3AgYW5kIGRlbGltaXRlciBjaGVja2luZyBpc24ndCBuZWNlc3NhcnkuCj4+ICvCoMKg
-wqDCoCAqIEhvd2V2ZXIsIGJldHRlciB0byBiZSBwcmVwYXJlZC4KPj4gK8KgwqDCoMKgICovCj4+
-ICvCoMKgwqAgZG8gewo+PiArwqDCoMKgwqDCoMKgwqAgcyA9IHN0cnN0cihjb25hcmdzLCBmaWVs
-ZG5tKTsKPiAKPiBBbnkgcmVhc29uIG5vdCB0byB1c2UgdGhlIG5vcm1hbCBzdHJzZXAgZm9yIGxv
-b3A/CgpzdHJzZXAgd2Fzbid0IHVzZWQgYXMgSSBkaWRuJ3Qgd2FudCB0byBtb2RpZnkgdGhlIGFy
-Z3Mgc3RyaW5nLgoKSSBjb3VsZCBjb252ZXJ0LCBidXQgaXQgbWVhbnMgSSBuZWVkIHRvIGR1cGxp
-Y2F0ZSB0aGUgYXJncyBzdHJpbmcgYm90aCAKaW4gZG9fZGlzY292ZXIgYW5kIGluIHRoZSBudm1l
-X2N0cmxfbGlzdGl0ZW0gcm91dGluZSBvciBoYXZlIHRoZSBwYXJzZQpyb3V0aW5lIGR1cGxpY2F0
-ZSBpdCB0aGVuIHRocm93IGl0IGF3YXkuIFVzaW5nIHN0cnNlcCB3b3VsZCBhbHNvIG1lYW4gSSAK
-aGF2ZSB0byBjb250aW51ZSB0byBoYXZlIHRoZSBjaGVjayBmb3IgJz0nIHRva2VuIGFuZCBleHRy
-YWN0aW5nIHRoZSAKdmFsdWUuIE5vdCBzdXJlIEkgZ2FpbiBtdWNoIGNvZGUgcmVkdWN0aW9uLgoK
-QW55IHByZWZlcmVuY2Ugb3ZlciBsZWF2aW5nIGFzIGlzIG9yIGhhdmluZyB0aGUgcGFyc2Ugcm91
-dGluZSBkdXBsaWNhdGUgaXQgPwoKLS0gamFtZXMKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1udm1lIG1haWxpbmcgbGlzdApMaW51eC1udm1l
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1udm1lCg==
+This will make it easier to handle variable queue entry sizes
+later. No functional change.
+
+Signed-off-by: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+
+# Conflicts:
+#	drivers/nvme/host/pci.c
+---
+ drivers/nvme/host/pci.c | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index dd10cf78f2d3..8f006638452b 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -28,8 +28,8 @@
+ #include "trace.h"
+ #include "nvme.h"
+ 
+-#define SQ_SIZE(depth)		(depth * sizeof(struct nvme_command))
+-#define CQ_SIZE(depth)		(depth * sizeof(struct nvme_completion))
++#define SQ_SIZE(q)	((q)->q_depth * sizeof(struct nvme_command))
++#define CQ_SIZE(q)	((q)->q_depth * sizeof(struct nvme_completion))
+ 
+ #define SGES_PER_PAGE	(PAGE_SIZE / sizeof(struct nvme_sgl_desc))
+ 
+@@ -1344,16 +1344,16 @@ static enum blk_eh_timer_return nvme_timeout(struct request *req, bool reserved)
+ 
+ static void nvme_free_queue(struct nvme_queue *nvmeq)
+ {
+-	dma_free_coherent(nvmeq->dev->dev, CQ_SIZE(nvmeq->q_depth),
++	dma_free_coherent(nvmeq->dev->dev, CQ_SIZE(nvmeq),
+ 				(void *)nvmeq->cqes, nvmeq->cq_dma_addr);
+ 	if (!nvmeq->sq_cmds)
+ 		return;
+ 
+ 	if (test_and_clear_bit(NVMEQ_SQ_CMB, &nvmeq->flags)) {
+ 		pci_free_p2pmem(to_pci_dev(nvmeq->dev->dev),
+-				nvmeq->sq_cmds, SQ_SIZE(nvmeq->q_depth));
++				nvmeq->sq_cmds, SQ_SIZE(nvmeq));
+ 	} else {
+-		dma_free_coherent(nvmeq->dev->dev, SQ_SIZE(nvmeq->q_depth),
++		dma_free_coherent(nvmeq->dev->dev, SQ_SIZE(nvmeq),
+ 				nvmeq->sq_cmds, nvmeq->sq_dma_addr);
+ 	}
+ }
+@@ -1433,12 +1433,12 @@ static int nvme_cmb_qdepth(struct nvme_dev *dev, int nr_io_queues,
+ }
+ 
+ static int nvme_alloc_sq_cmds(struct nvme_dev *dev, struct nvme_queue *nvmeq,
+-				int qid, int depth)
++				int qid)
+ {
+ 	struct pci_dev *pdev = to_pci_dev(dev->dev);
+ 
+ 	if (qid && dev->cmb_use_sqes && (dev->cmbsz & NVME_CMBSZ_SQS)) {
+-		nvmeq->sq_cmds = pci_alloc_p2pmem(pdev, SQ_SIZE(depth));
++		nvmeq->sq_cmds = pci_alloc_p2pmem(pdev, SQ_SIZE(nvmeq));
+ 		if (nvmeq->sq_cmds) {
+ 			nvmeq->sq_dma_addr = pci_p2pmem_virt_to_bus(pdev,
+ 							nvmeq->sq_cmds);
+@@ -1447,11 +1447,11 @@ static int nvme_alloc_sq_cmds(struct nvme_dev *dev, struct nvme_queue *nvmeq,
+ 				return 0;
+ 			}
+ 
+-			pci_free_p2pmem(pdev, nvmeq->sq_cmds, SQ_SIZE(depth));
++			pci_free_p2pmem(pdev, nvmeq->sq_cmds, SQ_SIZE(nvmeq));
+ 		}
+ 	}
+ 
+-	nvmeq->sq_cmds = dma_alloc_coherent(dev->dev, SQ_SIZE(depth),
++	nvmeq->sq_cmds = dma_alloc_coherent(dev->dev, SQ_SIZE(nvmeq),
+ 				&nvmeq->sq_dma_addr, GFP_KERNEL);
+ 	if (!nvmeq->sq_cmds)
+ 		return -ENOMEM;
+@@ -1465,12 +1465,13 @@ static int nvme_alloc_queue(struct nvme_dev *dev, int qid, int depth)
+ 	if (dev->ctrl.queue_count > qid)
+ 		return 0;
+ 
+-	nvmeq->cqes = dma_alloc_coherent(dev->dev, CQ_SIZE(depth),
++	nvmeq->q_depth = depth;
++	nvmeq->cqes = dma_alloc_coherent(dev->dev, CQ_SIZE(nvmeq),
+ 					 &nvmeq->cq_dma_addr, GFP_KERNEL);
+ 	if (!nvmeq->cqes)
+ 		goto free_nvmeq;
+ 
+-	if (nvme_alloc_sq_cmds(dev, nvmeq, qid, depth))
++	if (nvme_alloc_sq_cmds(dev, nvmeq, qid))
+ 		goto free_cqdma;
+ 
+ 	nvmeq->dev = dev;
+@@ -1479,15 +1480,14 @@ static int nvme_alloc_queue(struct nvme_dev *dev, int qid, int depth)
+ 	nvmeq->cq_head = 0;
+ 	nvmeq->cq_phase = 1;
+ 	nvmeq->q_db = &dev->dbs[qid * 2 * dev->db_stride];
+-	nvmeq->q_depth = depth;
+ 	nvmeq->qid = qid;
+ 	dev->ctrl.queue_count++;
+ 
+ 	return 0;
+ 
+  free_cqdma:
+-	dma_free_coherent(dev->dev, CQ_SIZE(depth), (void *)nvmeq->cqes,
+-							nvmeq->cq_dma_addr);
++	dma_free_coherent(dev->dev, CQ_SIZE(nvmeq), (void *)nvmeq->cqes,
++			  nvmeq->cq_dma_addr);
+  free_nvmeq:
+ 	return -ENOMEM;
+ }
+@@ -1515,7 +1515,7 @@ static void nvme_init_queue(struct nvme_queue *nvmeq, u16 qid)
+ 	nvmeq->cq_head = 0;
+ 	nvmeq->cq_phase = 1;
+ 	nvmeq->q_db = &dev->dbs[qid * 2 * dev->db_stride];
+-	memset((void *)nvmeq->cqes, 0, CQ_SIZE(nvmeq->q_depth));
++	memset((void *)nvmeq->cqes, 0, CQ_SIZE(nvmeq));
+ 	nvme_dbbuf_init(dev, nvmeq, qid);
+ 	dev->online_queues++;
+ 	wmb(); /* ensure the first interrupt sees the initialization */
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
