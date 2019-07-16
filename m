@@ -2,145 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07B706B0AE
-	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 22:58:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C18D16B0CB
+	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jul 2019 23:13:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WJRgUOWyofZq7w1SMdoOWsmiWLKMemaDvmgZ+pA2Lbo=; b=IMqedWyxY5pP07
-	zURW7+SHIg81XSboukpPS7kK7AqF02yEgFBHln8W+Bm47wrIA7xsQJMUCg1rCG8IYHs5erLHM19Cc
-	l8rKy9CWebXQ9fc1ggBrt+7ylEIwpkroZSmId5iptsKC++8Y/DdBERaRTlfnxBlEAhwu2H1ua7cmt
-	xQg7zfWBkiBJvLD+WU15PnSaouf28g0loRpAQusQUHPqSroTQvG8mw70OU+36aUhF5/IUa5rKxqKY
-	l9T5uguvRc6ryW3gt3anJyd65Wf++XMHr5FFaYULKttZBBtmb8BEqwQFXK5b6M7DyH3NGkGOmrwoI
-	3m/D+/H9oYbgpeTH3O6w==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=y1rDKWojpyjHRwsqYZ/tlKqeY0SWIBXgmTvI3oRxC04=; b=Hyt
+	CWOhQf+HFp9x4ejDJ3Rkf3F2t9q77Lxta/6qs8Po/Rd7AMIYgPN5GFy1Prg1O7WtkJ1uMFBqn+Rn+
+	XGkZoxdq59Z2RqooAydfGQm0l0EdpELA4BbV3PB47Jkydp1f78O4xhCB6MMKkjnAyyQwrbAktEi1K
+	WcyrrIpbLWKfq+2lFTQViqUrruqaKH++Mdg52jKaxz/FtYOshMXHJWCnMT1xnDGbdwEAK2GD8NxQf
+	RsEPoyhpyu0vxNagE7oOpQ7Es+gqzmyG5V0HgaBgGbBmBWPUWJeY89VJDmsj+0ImLJfimTn+OrREA
+	fUSUoWXKHSIvqymQXpaMo561c1dY+dw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnUWU-0007YI-Js; Tue, 16 Jul 2019 20:58:06 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1hnUlF-0005XX-OY; Tue, 16 Jul 2019 21:13:21 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnUWN-0007Xm-7j
- for linux-nvme@lists.infradead.org; Tue, 16 Jul 2019 20:58:01 +0000
-Received: by mail-wr1-x442.google.com with SMTP id 31so22447176wrm.1
- for <linux-nvme@lists.infradead.org>; Tue, 16 Jul 2019 13:57:58 -0700 (PDT)
+ id 1hnUkr-0005MK-QE
+ for linux-nvme@lists.infradead.org; Tue, 16 Jul 2019 21:12:59 +0000
+Received: by mail-pf1-x442.google.com with SMTP id t16so9692692pfe.11
+ for <linux-nvme@lists.infradead.org>; Tue, 16 Jul 2019 14:12:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:openpgp:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Vj1yKcrOw7MzUHsBldLA6/A7pqcsUZuhfBnAzkgFtaY=;
- b=OtmKObDL5ypu+BN7i8Eg2aqn99K4ri251Wh3NXG9JQIhp/4zjm4PGN9y1qCYzzZBp3
- RmFq6U2ELyGP6ZBj3jv16wpKfVTDO1ne4Mr0uq/wITemn21Tx6BwCqIX8iXIIMOHT2Xt
- yII98dhvlLsWViJ2igRov14ETHA4CAUnc85nuqUQJTVnPnN+YSgwgBFT950DsNmf/Voc
- T6kJSj4DyA7ooiJT3wgVQ+Jfhunjfpv/5YJhNX6godtolVtp1frVtZwWd4CkGAQYZjqJ
- 803/dc1dwtii2ep6tFaZDCJFGs+F0qddHyjb8Q/m9wB/+XZ1Wi/95cwAAi9RYLwx/ADd
- TMbQ==
+ h=from:to:cc:subject:date:message-id;
+ bh=tlg1QuWAtvPIcPVPWIpFyF3XQt6rwxtJ+MnT+OqgtQM=;
+ b=IRnmwLZCqyt+AHyWxP8LRSZ3ZM4R+s3Gy7vt8H/p6kdNP0QU6vlVy/HJaey0fS9JIN
+ 49XIJQuBE0yCeSRr/z5UeHxZCxlwaMUw40jJkaPVvS1QiPSAdSpYHgTdGfKdeK19roqN
+ wbCslB9pYpQ5haumv7qRo7E/SL4vjPLBJl7vpWVTI11MuM+158G6kZ+U0v//nQhcugBh
+ d7Hj0LHLXUJu2xHeAQYAKjirj1xIOYxNMNZKu1dUEB5hIgAWCWcxrs51Vh5ICMsmJjcG
+ TOYydZFvGLoWkQq5YBossXWcLHrPRt6Cs1wOMFhrYFPQV/3AZ2BnwaCqJ77A9lSDH5FY
+ KqyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=Vj1yKcrOw7MzUHsBldLA6/A7pqcsUZuhfBnAzkgFtaY=;
- b=bxQbeYQStXbnnDCArz6ChVD7YOvYz0yJlBPKiooocKlL9O/y/nmwdfOqkB0clAhkMR
- jfv04VE/ZLhXlUBVUkJecfUUXiGiu1QRpcH0N5IGQaM1kl/yk5XgQZy/3Sa14GOFiQoO
- MFJaODtEInCkZE4M+AGHf10u5d1ho1UnfPyIJzW2MoWFkI6DzBKmRMRjCGjn5DdWR3vp
- uEAD6XFPg1mdEchi5b6iI43nzgnVTOVkgLjYXKJ/0P3iWPSy/jUUGNa6kaQEwHq7pbhe
- iL/VkA7SGqaJiobCoKPCW/1iIUtPxT1SpugSsLrKnu3NP18XHw3RxqLycn2EsccN4tpr
- MpqQ==
-X-Gm-Message-State: APjAAAXowUTP0vwwob7w+/6apa9AewghFPvkV9aqRE9SL4eSNKGR4jaI
- uKD0SwKhxmwti92joMOb6+E=
-X-Google-Smtp-Source: APXvYqzV2M5Q5EjaoGfP6jVPew/ygyrFwtkcOke1fh7NPX4wopPltCYtuDm03rxfxceNUhQE8OP16Q==
-X-Received: by 2002:adf:ed04:: with SMTP id a4mr35249849wro.86.1563310677477; 
- Tue, 16 Jul 2019 13:57:57 -0700 (PDT)
-Received: from [192.168.1.19] (chm81.neoplus.adsl.tpnet.pl. [83.31.10.81])
- by smtp.gmail.com with ESMTPSA id y6sm15520649wrp.12.2019.07.16.13.57.55
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 16 Jul 2019 13:57:56 -0700 (PDT)
-Subject: Re: [PATCH 2/2] block: introduce LED block device activity trigger
-To: Akinobu Mita <akinobu.mita@gmail.com>, linux-block@vger.kernel.org,
- linux-leds@vger.kernel.org, linux-nvme@lists.infradead.org
-References: <1562435939-15466-1-git-send-email-akinobu.mita@gmail.com>
- <1562435939-15466-3-git-send-email-akinobu.mita@gmail.com>
-From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jacek.anaszewski@gmail.com; prefer-encrypt=mutual; keydata=
- mQINBFWjfaEBEADd66EQbd6yd8YjG0kbEDT2QIkx8C7BqMXR8AdmA1OMApbfSvEZFT1D/ECR
- eWFBS8XtApKQx1xAs1j5z70k3zebk2eeNs5ahxi6vM4Qh89vBM46biSKeeX5fLcv7asmGb/a
- FnHPAfQaKFyG/Bj9V+//ef67hpjJWR3s74C6LZCFLcbZM0z/wTH+baA5Jwcnqr4h/ygosvhP
- X3gkRzJLSFYekmEv+WHieeKXLrJdsUPUvPJTZtvi3ELUxHNOZwX2oRJStWpmL2QGMwPokRNQ
- 29GvnueQdQrIl2ylhul6TSrClMrKZqOajDFng7TLgvNfyVZE8WQwmrkTrdzBLfu3kScjE14Q
- Volq8OtQpTsw5570D4plVKh2ahlhrwXdneSot0STk9Dh1grEB/Jfw8dknvqkdjALUrrM45eF
- FM4FSMxIlNV8WxueHDss9vXRbCUxzGw37Ck9JWYo0EpcpcvwPf33yntYCbnt+RQRjv7vy3w5
- osVwRR4hpbL/fWt1AnZ+RvbP4kYSptOCPQ+Pp1tCw16BOaPjtlqSTcrlD2fo2IbaB5D21SUa
- IsdZ/XkD+V2S9jCrN1yyK2iKgxtDoUkWiqlfRgH2Ep1tZtb4NLF/S0oCr7rNLO7WbqLZQh1q
- ShfZR16h7YW//1/NFwnyCVaG1CP/L/io719dPWgEd/sVSKT2TwARAQABtC1KYWNlayBBbmFz
- emV3c2tpIDxqYWNlay5hbmFzemV3c2tpQGdtYWlsLmNvbT6JAj4EEwEIACgCGwMHCwkIBwMC
- AQYVCAIJCgsDFgIBAh4BAheABQJVo39tBQkJZgNMAAoJEL1qUBy3i3wmxLQQAK8QEQ0JqZEv
- 5hrxiwT+Qtkx1TULYriK9sYcY9zbi18YxbKB0C4Znh5iP5o7k26WnPGLM+w4qWvTAkHjuAI7
- aBrvb4nGRvE5s14PQ9IHgL7iL3zAAHT1azIZng9dUCCSontB+vQZu1x/Un0lVlVCvsvO7QVt
- hAZUlT3iucNMO0jpCiS3raZkNfab8M+JWP/iplaV0Kn+O7LX3A/RdLmx5ZhuT+zvyHwl2c3K
- T56UHaQnjkuHB2Ytk8HtOjNXGNYnm4nLx3ok3jEN1nWDRV/DeiPn8zz4Zebsp686OH9vvX/0
- R4dk2YEjUCY/S7CbJxXzUnLjboUAGmtTVOu/uJ7y11iS9XEoJ09HEzijQwWctJXLojcTXCFw
- rbYkgqOjDRE9NTC6b68iUUVUayEADWz80qChbDJ2R2/Spm5+eojI2NVnr3AVSc7ZCBkhSDei
- TtSjQmlPflKEAR8LH67XbzvwvDwX/Lmi+/1Yxws0rxeJNYMqfOBBW/xi3QEc9hMDTl99EZwl
- NqfEN7HHh2jzAGNtIYxhHHiPUw/UZeS1fxD8vRqVZHW3ENR6lOCEYED1ChU1w8Zzm/CiT4ea
- ZakZChzFeUWVO/yFEcAzTJSiJHqLooNfP/VyFppjAlLVPISLcLBVTy+Ue76Z0IrC12fI38cm
- lJJGVY6NUbNb883pu5B7qB8huQINBFWjfaEBEADDzcpgTaAlnNd1Oqjs7V6yCgVbCxmV6v8j
- mkdp+4BWxQAg9E1O17h9lHJ8LzUfrkBcEq0amhHM19leoiMtgiE1yoOWL4Ndsp9PYE5mn7qC
- MiqFNel7wt2mUENgZ9yztrET9I/zbjA/RpTt+6RwlUaSNgz8RRN/UzJtTy2x5wxvPpWapfna
- TcFsPHQ2kYMl8di3ueNgnEwU+dlQnnlg7andjMDq+C4qGJXxnwKpsHMLnAXUxAVMZJUGjkd1
- WyUMep7SNqAzgZTRr451Q82XvokRHeZeNJfjo02olrwRl5L+jiPsMeUxT6fgTOgE1PulMxUU
- 1Fm4/i6lQPyTKmB0KdOGOB+RrY2xwmvGm0bwcCChL6cE8lmZX1z7afIEZTZsWJ+oEJU8hGQF
- qHV8BOwhPisTZ6u2zx3i760p/GyzSuvNj6Exq9GNNG4LmC38rxMLg2HpNf4fWEl7R2gkdwhI
- +C1NQeetRtY+xVWnmG1/WygQKMvxsQFvCeTtZ5psOxZ5Eh7sDv0A3tAjqDtEGettAn/SAVmB
- 1uJtjNsoeffNZVGojHDTNpD4LCRWJaBaNlxp+pVlPQa1oxKDQ4R2bRfsmjxLsI2aOsf9xNk7
- txOSY9FaVXBPVNWav36rg2O/ZdkSZ+RDaIDrOfj4tBo1aRGEFVn5tD0wsTTzszsxkeEAdwTR
- bwARAQABiQIlBBgBCAAPBQJVo32hAhsMBQkJZgGAAAoJEL1qUBy3i3wmahsQAJVgVlb41OsY
- +9BsHp4IqmGcJltYvIH0uEzYm0E/ykatM5AZxMICsF0W1aFt/KWFbhmucfyQ0DCQ6ywCdMKw
- jkt18W0hwljpf5NmQ/TmsVHl6ujfjphk8362Lz1L1ktR8tOKvQA9XSGjDa7mUJr50X5DpNlA
- 53AyINNeuvzUx4mCNPR+ZqVhqR5/9mk+nZqVcLqDPf6x5RebOagAKPebWdEFtgbSHHhvf622
- JS+e8GkjDxePWsL8C0F+UYVqBfJj0uS7Aa11yoZosyLJ+NLS24tkbVo8w1oGWIrappqoo3gp
- w7yEjeKif5wizuA44khrOfcOR0fpdJ8Hjw4TggOEWGaktXtgpcdVUpA1xaS93oGm3CLKiuwm
- emtta/JV1aaOEZzJULJl2U50ceEmoxb1+z60YP9NgvNdXy34dq+TuYn/LCkOgSipR6broqKn
- 4/8Pc9wdGkO9XuJ9czSQTtZHHc54pDywG6+4xoJAVF09ciYsKU30UK+ctlKNdiCbCsaIZzRV
- WLSvF/0ektHXij462VrwJJZYCD3B4zItlWvMsCk4/yYHKVDuSjfdOj3+8sGSEnuym3HP6pxN
- GIzz0qhTr6Hmbx3uhGQjFvfsWbGoqb5aqQckFVB51YNPSvWBb41AbAT3QvHn+mMIH0faOgJz
- 5sZdKDFCF5AgguXPfX8yWP5PiQKtBBgBCAAgFiEEvx38ClaPBfeVdXCQvWpQHLeLfCYFAlsK
- ioYCGwIAgQkQvWpQHLeLfCZ2IAQZFggAHRYhBBTDHErITmX+em3wBGIQbFEb9KXbBQJbCoqG
- AAoJEGIQbFEb9KXbxC4A/1Pst/4bM9GyIzECWNCy8TP6xWPVc9S+N/pUB14y9zD7AP9ZTZub
- GopbGO2hQVScQM02vGQBlgXVWhqOigr4pgwfBu46D/48fqBjpnUaILO5hv/x/sPQ05wXz6Z3
- 5HooqJBmKP/obljuVdAHPbU6mXhXP/7f2LmCZ8Fr0tEcfii9H093ofQUKOO7heMg4mSIlizY
- eAIKbqdTFElbM+DIw9JVuoIbZy3BpSIKFR1tL7T1tZvYwE2MiUjhvzAtYg63GHKfblWJ+bSn
- 5BHkDbKbhuokn0tKt7Wozyp09ZycTE8VTg9kVhCBn2lfUnK6LvdlQ/3gvv/CDUbIlkvd494T
- iiAFeV0TSDRarc5GoD2AD/K+sJLI0o4dNX0kwaec8Y37CMFgw8w66oM8L/Nwr6y10VdzpRtQ
- zVA2AOdqia+O6Wh+UDFph1uUzbqAV/Km+kVvxzNw8z4E/pfq9aT4zD37y9be3Ir2VKD7jc6M
- haUEY+k71otmxhjECq8nmJLFxts4tvmrzBZy3pTsRnVGe459UiegG22uVi91a1wj/k1BOm2S
- 4H8PJGGvEElz98rMnjCNLaKRxZ7QWfGtClwTbKqhQgVpkx138LH1tFYAZkbTzu3l1Qcm4ydV
- VykdkWccEqvxqDV4f8q0V0MW3KWfkD9/07bbGxXSnImeLt7bPuVMGK2tAUbr2+dUYmUdsETZ
- 1HgZ11moCVU5Ru0RwTv9oyThOsK3HQjI7NCIsDzVpolaGQPd9E7xwOVHhhDcXRqqNjLzHUSe
- eGGiEQ==
-Message-ID: <89262967-667f-80cc-0fd5-ba480e879fe0@gmail.com>
-Date: Tue, 16 Jul 2019 22:57:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <1562435939-15466-3-git-send-email-akinobu.mita@gmail.com>
-Content-Language: en-US
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=tlg1QuWAtvPIcPVPWIpFyF3XQt6rwxtJ+MnT+OqgtQM=;
+ b=jr6EHop7t3yaXg5NloVOcl2YtgacZjB2t1LH69s9josKgIaZ63qNUwwDjLThmVZrrC
+ PD+spTHqRHSoD/Ron2xHG78MK2MiyUxS1yv85ne+yAUHQRdWPL8z6g8Zcy5nX/tJSjav
+ sA5VfHLRHC356fR3C9RsXL3ZongrZcq4unmNycAxLJ6FPMWGqYm6sDMXngxYXMCNO71J
+ mCthQuWtoJJtuYP9t4fVpbwlM7D1nOqewl5Bi73TSI8QH6+BaOcBtJzlh3gWD+xbnA2q
+ Z+Lj/M+j3zx4vIsGusIB4yKdFbS0dCbpEiyjEOxzi7Gv6cMFYnbdUNBa6vDfjHS5STpW
+ 9a4g==
+X-Gm-Message-State: APjAAAXzDvKgZ7KdJ+GuZHr3zEWrChvkhmYJaCPaOjCwuOzayXfNXqJ+
+ iXbbgIkeNqmutMIZ0s233GRGcyl3
+X-Google-Smtp-Source: APXvYqwQlYkxT1iRpiFMVDHq9pLw+Bb9MnXF1Oi3sRHrAQANCeKVWaKWUFMLQe13tNZgYSFve4z9wQ==
+X-Received: by 2002:a63:3c5:: with SMTP id 188mr35887452pgd.394.1563311575564; 
+ Tue, 16 Jul 2019 14:12:55 -0700 (PDT)
+Received: from pallmd1.broadcom.com ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id v18sm140683pgl.87.2019.07.16.14.12.54
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Tue, 16 Jul 2019 14:12:54 -0700 (PDT)
+From: James Smart <jsmart2021@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH 00/10] nvme-cli: nvmf auto-connect scripts
+Date: Tue, 16 Jul 2019 14:12:31 -0700
+Message-Id: <20190716211241.7650-1-jsmart2021@gmail.com>
+X-Mailer: git-send-email 2.13.7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190716_135759_283120_C2A33062 
-X-CRM114-Status: GOOD (  22.94  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190716_141257_867033_63671EBF 
+X-CRM114-Status: GOOD (  14.73  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (jacek.anaszewski[at]gmail.com)
+ provider (jsmart2021[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit (jsmart2021[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -160,361 +94,96 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>,
- Dan Murphy <dmurphy@ti.com>, Pavel Machek <pavel@ucw.cz>
+Cc: James Smart <jsmart2021@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi Akinobu,
+This is a formal posting of the patches, not an RFC.
 
-Thank you for the patch set. It looks nice in general, but I'd like
-to maintain it under LED subsystem. See my below comments.
+This posting is a combination of the RFC postings of nvme-fc
+auto-connect scripts by Hannes, Sagi, and I. The auto-connect
+scripts are utilized on nvme-fc and for persistent discovery
+controllers that send AENs.  It does not contain the code that
+handles the persistent discovery controller AEN and generates the
+event.
 
-On 7/6/19 7:58 PM, Akinobu Mita wrote:
-> This allows LEDs to be controlled by block device activity.
-> 
-> We already have ledtrig-disk (LED disk activity trigger), but the lower
-> level disk drivers need to utilize ledtrig_disk_activity() to make the
-> LED blink.
-> 
-> The LED block device trigger doesn't require the lower level drivers to
-> have any instrumentation. The activity is collected by polling the disk
-> stats.
-> 
-> Example:
-> 
-> echo block-nvme0n1 > /sys/class/leds/diy/trigger
-> 
-> Cc: Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>
-> Cc: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-> Cc: Pavel Machek <pavel@ucw.cz>
-> Cc: Dan Murphy <dmurphy@ti.com>
-> Cc: Jens Axboe <axboe@kernel.dk>
-> Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
-> ---
->  block/Makefile        |   1 +
->  block/blk-ledtrig.c   | 219 ++++++++++++++++++++++++++++++++++++++++++++++++++
->  block/blk.h           |  13 +++
->  block/genhd.c         |   2 +
->  include/linux/genhd.h |   4 +
->  5 files changed, 239 insertions(+)
->  create mode 100644 block/blk-ledtrig.c
-> 
-> diff --git a/block/Makefile b/block/Makefile
-> index eee1b4c..c74d84e6 100644
-> --- a/block/Makefile
-> +++ b/block/Makefile
-> @@ -35,3 +35,4 @@ obj-$(CONFIG_BLK_DEBUG_FS)	+= blk-mq-debugfs.o
->  obj-$(CONFIG_BLK_DEBUG_FS_ZONED)+= blk-mq-debugfs-zoned.o
->  obj-$(CONFIG_BLK_SED_OPAL)	+= sed-opal.o
->  obj-$(CONFIG_BLK_PM)		+= blk-pm.o
-> +obj-$(CONFIG_LEDS_TRIGGERS)	+= blk-ledtrig.o
-> diff --git a/block/blk-ledtrig.c b/block/blk-ledtrig.c
+The auto-connect scripts are now commonized with the exception
+of the nvme-fc boot connections service.  It's expected that both
+the persistent discovery controllers and nvme-fc can post the same
+udev event. Whenever the discovery aen generates an event, the
+new --device=<name> argument will be used to identify the persistent
+discovery controller. When --device is used, the other connect
+attributes will be specified, set to the values of the discovery
+controller, and will be used by the cli to validate the device is
+who it should be or a new discovery controller will be created.
+When nvme-fc generates it's events, it will specify --device=none
+and specify the discovery controller addressing arguments.  If a
+persistent discovery controller exists on nvme-fc, will do nothing
+special and AEN's from it will follow the --device=<name> syntax.
 
-Please move the whole trigger implementation to
-drivers/leds/trigger and rename the file to ledtrig-blk.c
+The udev event handler supports both the new event to be used
+by discovery controllers as well as the existing nvme-fc transport
+event. The nvme-fc transport will be migrated to issue the new
+event syntax. The udev script will continue to support the older
+style nvme-fc event info in case the cli is running against an
+older kernel.
 
-> new file mode 100644
-> index 0000000..da93b06
-> --- /dev/null
-> +++ b/block/blk-ledtrig.c
-> @@ -0,0 +1,219 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +// LED Kernel Blockdev Trigger
-> +// Derived from ledtrig-netdev.c
-> +
-> +#include <linux/atomic.h>
-> +#include <linux/genhd.h>
-> +#include <linux/leds.h>
-> +#include <linux/workqueue.h>
-> +
-> +struct blk_ledtrig_data {
-> +	struct delayed_work work;
-> +	struct led_classdev *led_cdev;
-> +
-> +	atomic_t interval;
-> +	u64 last_activity;
-> +
-> +	unsigned long mode;
-> +#define BLK_LEDTRIG_READ BIT(0)
-> +#define BLK_LEDTRIG_WRITE BIT(1)
-> +#define BLK_LEDTRIG_DISCARD BIT(2)
+Since last rfc:
+ Add reviewed-by's
+ Parsing for ctlr_list_item left as is.
+ Moved SYS_NVME from fabrics.c to nvme.h
+ Changed udev device variable to NVME_CTRL_NAME
+ Removed full pathname for nvme and echo in systemd service that
+    invokes connect-all
+ Moved --quiet option. Rather than include in "arguments" in
+    systemd service name, add directly to systemd service that
+    invokes connect-all
+ Makefile:
+   Created install-systemd and install-dracut Make targets
+   Changed PREFIX to /usr to match nvme.spec.in's %install target
+   Changed LIBDIR to use PREFIX as base path
 
-s/BLK_LEDTRIG/LEDTRIG_BLK/
 
-> +};
-> +
-> +static ssize_t blk_ledtrig_attr_show(struct device *dev, char *buf,
-> +				     unsigned long blk_ledtrig)
-> +{
-> +	struct blk_ledtrig_data *trig_data = led_trigger_get_drvdata(dev);
-> +
-> +	return sprintf(buf, "%u\n", test_bit(blk_ledtrig, &trig_data->mode));
-> +}
-> +
-> +static ssize_t blk_ledtrig_attr_store(struct device *dev, const char *buf,
-> +				      size_t size, unsigned long blk_ledtrig)
-> +{
-> +	struct blk_ledtrig_data *trig_data = led_trigger_get_drvdata(dev);
-> +	unsigned long state;
-> +	int ret;
-> +
-> +	ret = kstrtoul(buf, 0, &state);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (state)
-> +		set_bit(blk_ledtrig, &trig_data->mode);
-> +	else
-> +		clear_bit(blk_ledtrig, &trig_data->mode);
-> +
-> +	return size;
-> +}
-> +
-> +static ssize_t read_show(struct device *dev, struct device_attribute *attr,
-> +			 char *buf)
-> +{
-> +	return blk_ledtrig_attr_show(dev, buf, BLK_LEDTRIG_READ);
-> +}
-> +static ssize_t read_store(struct device *dev, struct device_attribute *attr,
-> +			  const char *buf, size_t size)
-> +{
-> +	return blk_ledtrig_attr_store(dev, buf, size, BLK_LEDTRIG_READ);
-> +}
-> +static DEVICE_ATTR_RW(read);
-> +
-> +static ssize_t write_show(struct device *dev, struct device_attribute *attr,
-> +			  char *buf)
-> +{
-> +	return blk_ledtrig_attr_show(dev, buf, BLK_LEDTRIG_WRITE);
-> +}
-> +static ssize_t write_store(struct device *dev, struct device_attribute *attr,
-> +			   const char *buf, size_t size)
-> +{
-> +	return blk_ledtrig_attr_store(dev, buf, size, BLK_LEDTRIG_WRITE);
-> +}
-> +static DEVICE_ATTR_RW(write);
-> +
-> +static ssize_t discard_show(struct device *dev, struct device_attribute *attr,
-> +			    char *buf)
-> +{
-> +	return blk_ledtrig_attr_show(dev, buf, BLK_LEDTRIG_DISCARD);
-> +}
-> +static ssize_t discard_store(struct device *dev, struct device_attribute *attr,
-> +			     const char *buf, size_t size)
-> +{
-> +	return blk_ledtrig_attr_store(dev, buf, size, BLK_LEDTRIG_DISCARD);
-> +}
-> +static DEVICE_ATTR_RW(discard);
-> +
-> +static ssize_t interval_show(struct device *dev, struct device_attribute *attr,
-> +			     char *buf)
-> +{
-> +	struct blk_ledtrig_data *trig_data = led_trigger_get_drvdata(dev);
-> +
-> +	return sprintf(buf, "%u\n",
-> +		       jiffies_to_msecs(atomic_read(&trig_data->interval)));
-> +}
-> +static ssize_t interval_store(struct device *dev, struct device_attribute *attr,
-> +			      const char *buf, size_t size)
-> +{
-> +	struct blk_ledtrig_data *trig_data = led_trigger_get_drvdata(dev);
-> +	unsigned long value;
-> +	int ret;
-> +
-> +	ret = kstrtoul(buf, 0, &value);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* impose some basic bounds on the timer interval */
-> +	if (value >= 5 && value <= 10000) {
-> +		cancel_delayed_work_sync(&trig_data->work);
-> +		atomic_set(&trig_data->interval, msecs_to_jiffies(value));
-> +		schedule_delayed_work(&trig_data->work,
-> +				      atomic_read(&trig_data->interval) * 2);
-> +	}
-> +
-> +	return size;
-> +}
-> +static DEVICE_ATTR_RW(interval);
-> +
-> +static struct attribute *blk_ledtrig_attrs[] = {
-> +	&dev_attr_read.attr,
-> +	&dev_attr_write.attr,
-> +	&dev_attr_discard.attr,
-> +	&dev_attr_interval.attr,
-> +	NULL
-> +};
-> +ATTRIBUTE_GROUPS(blk_ledtrig);
-> +
-> +static void blk_ledtrig_work(struct work_struct *work)
-> +{
-> +	struct blk_ledtrig_data *trig_data =
-> +		container_of(work, struct blk_ledtrig_data, work.work);
-> +	struct gendisk *disk = container_of(trig_data->led_cdev->trigger,
-> +					    struct gendisk, led_trig);
-> +	u64 activity = 0;
-> +
-> +	if (test_bit(BLK_LEDTRIG_READ, &trig_data->mode))
-> +		activity += part_stat_read(&disk->part0, ios[STAT_READ]);
-> +	if (test_bit(BLK_LEDTRIG_WRITE, &trig_data->mode))
-> +		activity += part_stat_read(&disk->part0, ios[STAT_WRITE]);
-> +	if (test_bit(BLK_LEDTRIG_DISCARD, &trig_data->mode))
-> +		activity += part_stat_read(&disk->part0, ios[STAT_DISCARD]);
-> +
-> +	if (trig_data->last_activity != activity) {
-> +		unsigned long interval;
-> +
-> +		led_stop_software_blink(trig_data->led_cdev);
-> +		interval = jiffies_to_msecs(atomic_read(&trig_data->interval));
-> +		led_blink_set_oneshot(trig_data->led_cdev, &interval, &interval,
-> +				      0);
-> +
-> +		trig_data->last_activity = activity;
-> +	}
-> +
-> +	schedule_delayed_work(&trig_data->work,
-> +			      atomic_read(&trig_data->interval) * 2);
-> +}
-> +
-> +static int blk_ledtrig_activate(struct led_classdev *led_cdev)
-> +{
-> +	struct blk_ledtrig_data *trig_data;
-> +
-> +	trig_data = kzalloc(sizeof(*trig_data), GFP_KERNEL);
-> +	if (!trig_data)
-> +		return -ENOMEM;
-> +
-> +	trig_data->mode = BLK_LEDTRIG_READ | BLK_LEDTRIG_WRITE |
-> +			  BLK_LEDTRIG_DISCARD;
-> +
-> +	atomic_set(&trig_data->interval, msecs_to_jiffies(50));
-> +	trig_data->last_activity = 0;
-> +	trig_data->led_cdev = led_cdev;
-> +
-> +	INIT_DELAYED_WORK(&trig_data->work, blk_ledtrig_work);
-> +
-> +	led_set_trigger_data(led_cdev, trig_data);
-> +
-> +	schedule_delayed_work(&trig_data->work,
-> +			      atomic_read(&trig_data->interval) * 2);
-> +
-> +	return 0;
-> +}
-> +
-> +static void blk_ledtrig_deactivate(struct led_classdev *led_cdev)
-> +{
-> +	struct blk_ledtrig_data *trig_data = led_get_trigger_data(led_cdev);
-> +
-> +	cancel_delayed_work_sync(&trig_data->work);
-> +	kfree(trig_data);
-> +}
-> +
-> +int blk_ledtrig_register(struct gendisk *disk)
-> +{
-> +	int ret;
-> +
-> +	disk->led_trig.name = kasprintf(GFP_KERNEL, "block-%s",
-> +					disk->disk_name);
-> +	if (!disk->led_trig.name)
-> +		return -ENOMEM;
-> +
-> +	disk->led_trig.activate = blk_ledtrig_activate;
-> +	disk->led_trig.deactivate = blk_ledtrig_deactivate;
-> +	disk->led_trig.groups = blk_ledtrig_groups;
-> +
-> +	ret = led_trigger_register(&disk->led_trig);
-> +	if (ret) {
-> +		kfree(disk->led_trig.name);
-> +		disk->led_trig.name = NULL;
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +void blk_ledtrig_unregister(struct gendisk *disk)
-> +{
-> +	if (!disk->led_trig.name)
-> +		return;
-> +
-> +	led_trigger_unregister(&disk->led_trig);
-> +	kfree(disk->led_trig.name);
-> +	disk->led_trig.name = NULL;
-> +}
-> diff --git a/block/blk.h b/block/blk.h
-> index 7814aa2..dd4c230a 100644
-> --- a/block/blk.h
-> +++ b/block/blk.h
-> @@ -331,4 +331,17 @@ void blk_queue_free_zone_bitmaps(struct request_queue *q);
->  static inline void blk_queue_free_zone_bitmaps(struct request_queue *q) {}
->  #endif
->  
-> +#ifdef CONFIG_LEDS_TRIGGERS
-> +int blk_ledtrig_register(struct gendisk *disk);
-> +void blk_ledtrig_unregister(struct gendisk *disk);
-> +#else
-> +static inline int blk_ledtrig_register(struct gendisk *disk)
-> +{
-> +	return 0;
-> +}
-> +static inline void blk_ledtrig_unregister(struct gendisk *disk)
-> +{
-> +}
-> +#endif /* CONFIG_LEDS_TRIGGERS */
+James Smart (8):
+  nvme-cli: ignore arguments that pass in "none"
+  nvme-cli: allow discover to address discovery controller by persistent
+    name
+  nvme-cli: Refactor to create a get_nvme_ctrl_info routine
+  nvme-cli: extend ctrl_list_item for connect attributes
+  nvme-cli: Add routine to compare ctrl_list_item to connect args
+  nvme-cli: Add routine to search for controller with specific
+    attributes
+  nvme-cli: Expand --device argument processing
+  nvme-cli: nvmf auto-connect scripts
 
-Please move this part to include/linux/leds.h, next to the other
-triggers' facilities.
+Sagi Grimberg (2):
+  nvme-cli: support persistent connections to a discovery controller
+  nvme-cli: add --quiet option
 
->  #endif /* BLK_INTERNAL_H */
-> diff --git a/block/genhd.c b/block/genhd.c
-> index 24654e1..dfd210c 100644
-> --- a/block/genhd.c
-> +++ b/block/genhd.c
-> @@ -745,6 +745,7 @@ static void __device_add_disk(struct device *parent, struct gendisk *disk,
->  
->  	disk_add_events(disk);
->  	blk_integrity_add(disk);
-> +	blk_ledtrig_register(disk);
->  }
->  
->  void device_add_disk(struct device *parent, struct gendisk *disk,
-> @@ -766,6 +767,7 @@ void del_gendisk(struct gendisk *disk)
->  	struct disk_part_iter piter;
->  	struct hd_struct *part;
->  
-> +	blk_ledtrig_unregister(disk);
->  	blk_integrity_del(disk);
->  	disk_del_events(disk);
->  
-> diff --git a/include/linux/genhd.h b/include/linux/genhd.h
-> index 8b5330d..9250e9c 100644
-> --- a/include/linux/genhd.h
-> +++ b/include/linux/genhd.h
-> @@ -17,6 +17,7 @@
->  #include <linux/percpu-refcount.h>
->  #include <linux/uuid.h>
->  #include <linux/blk_types.h>
-> +#include <linux/leds.h>
->  #include <asm/local.h>
->  
->  #ifdef CONFIG_BLOCK
-> @@ -219,6 +220,9 @@ struct gendisk {
->  	int node_id;
->  	struct badblocks *bb;
->  	struct lockdep_map lockdep_map;
-> +#ifdef CONFIG_LEDS_TRIGGERS
-> +	struct led_trigger led_trig;
-> +#endif
->  };
->  
->  static inline struct gendisk *part_to_disk(struct hd_struct *part)
-> 
+ Makefile                                         |  22 ++-
+ fabrics.c                                        | 118 +++++++++---
+ fabrics.h                                        |   2 +
+ nvme.c                                           | 226 +++++++++++++++++++----
+ nvme.h                                           |  24 +++
+ nvme.spec.in                                     |   9 +
+ nvmf-autoconnect/70-nvmf-autoconnect.conf        |   1 +
+ nvmf-autoconnect/70-nvmf-autoconnect.rules       |  18 ++
+ nvmf-autoconnect/nvmefc-boot-connections.service |   9 +
+ nvmf-autoconnect/nvmf-connect.target             |   2 +
+ nvmf-autoconnect/nvmf-connect@.service           |  14 ++
+ 11 files changed, 386 insertions(+), 59 deletions(-)
+ create mode 100644 nvmf-autoconnect/70-nvmf-autoconnect.conf
+ create mode 100644 nvmf-autoconnect/70-nvmf-autoconnect.rules
+ create mode 100644 nvmf-autoconnect/nvmefc-boot-connections.service
+ create mode 100644 nvmf-autoconnect/nvmf-connect.target
+ create mode 100644 nvmf-autoconnect/nvmf-connect@.service
 
 -- 
-Best regards,
-Jacek Anaszewski
+2.13.7
+
 
 _______________________________________________
 Linux-nvme mailing list
