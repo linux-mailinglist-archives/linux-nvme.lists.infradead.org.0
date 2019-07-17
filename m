@@ -2,53 +2,50 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 122676B2B8
-	for <lists+linux-nvme@lfdr.de>; Wed, 17 Jul 2019 02:15:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0293C6B2E5
+	for <lists+linux-nvme@lfdr.de>; Wed, 17 Jul 2019 02:46:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dnXmDW7Aqd22cE09uQ66Li0u+NyBeVKhmTY+dmdhxqM=; b=Vl0RUktkibKW/h
-	qWvnqpTsL8K4LWl3TX3qaIAKitNpcxILBn3KXrYHWvahdgAF7e4oMtl6b0Kcumf/IV5Umd2GN8w/S
-	e1GXBVGvJmHQajje5HKrQB+ywdivYNEu7hspGpymZREYpxve8Uhl4nrXd6/TxF2qPnc7jskSnCJRt
-	cTQm48JH7wYc+F2rOSQ4ZHoFGV12I4SAwVjBmOe/u4koG/o+fvAxBbgUhyO60jq3plbF/3a7jHqiI
-	H2IEryJ5MaYe27ze1K3y6BBbEJIb4E0setmFOK5e4d/MAoiMee4B5cJY9T+8QcSHLYzZ36ppEghkw
-	OqjoHwjrP00OQN0i3ncQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=I1gfKXZR+p46yJyCUcIIgHNqQbHEb75tfkU9yM6wzPs=; b=FOV
+	ZQSDHxX6E8jce+CUOuWKdLvnHBhen0mfJcSn2mG7vKPoPsW07OXj8t09MLU5Ty0fq3Hst0kLN93tl
+	xUkM5qGpuEAFgotDQQqrVzSIFFrKy//x2ZHI1eYShaXtF1+0tns44q8pHpFPwvbcywN+JMTEUhV9S
+	csd2Yf5O1/7ZRwIUXaUdpk47RoQuavnhQvgcGlAZArfX8+DHaJDZrG4p9Cu5NVwKzjlCqhIHL6B0d
+	qQ0s9u1/JksZ4HauWBXvq7gCfmesH5SlqKYNQpBE+FhD69sNyBuKd4Xlv+3v31IDukBGDqWSgxzA9
+	ucX9YKGVYnAIv7i73mTq8/SjuqJWyIA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnXbH-0001EC-EG; Wed, 17 Jul 2019 00:15:15 +0000
+	id 1hnY4r-0001WS-JU; Wed, 17 Jul 2019 00:45:49 +0000
 Received: from gate.crashing.org ([63.228.1.57])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnXbB-00013L-BK
- for linux-nvme@lists.infradead.org; Wed, 17 Jul 2019 00:15:10 +0000
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by gate.crashing.org (8.14.1/8.14.1) with ESMTP id x6H0F0Ho031412;
- Tue, 16 Jul 2019 19:15:01 -0500
-Message-ID: <6863e5fa43409c370395cc66e7499dd7c150c497.camel@kernel.crashing.org>
-Subject: Re: nvme-5.3 ssd performance regression
+ id 1hnY4l-0001Vi-Ny
+ for linux-nvme@lists.infradead.org; Wed, 17 Jul 2019 00:45:45 +0000
+Received: from ufdda393ec48b57.ant.amazon.com (localhost.localdomain
+ [127.0.0.1])
+ by gate.crashing.org (8.14.1/8.14.1) with ESMTP id x6H0jXnh032429;
+ Tue, 16 Jul 2019 19:45:34 -0500
 From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-To: Ming Lei <tom.leiming@gmail.com>
-Date: Wed, 17 Jul 2019 10:15:00 +1000
-In-Reply-To: <CACVXFVP8w3mzQ8XVgeif=Nq3kyiZopS0XDB+-c2x5CcT9V3djA@mail.gmail.com>
-References: <798a3907573b910fbb102036afe3dfc1405fb353.camel@kernel.crashing.org>
- <CACVXFVP8w3mzQ8XVgeif=Nq3kyiZopS0XDB+-c2x5CcT9V3djA@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
-Mime-Version: 1.0
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH v2 1/3] nvme-pci: Pass the queue to SQ_SIZE/CQ_SIZE macros
+Date: Wed, 17 Jul 2019 10:45:25 +1000
+Message-Id: <20190717004527.30363-1-benh@kernel.crashing.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190716_171509_537463_3A93EE7D 
-X-CRM114-Status: UNSURE (   4.48  )
+X-CRM114-CacheID: sfid-20190716_174543_934617_269D5194 
+X-CRM114-Status: UNSURE (   9.59  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- 0.0 T_SPF_HELO_PERMERROR   SPF: test of HELO record failed (permerror)
- 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
  no trust [63.228.1.57 listed in list.dnswl.org]
+ 0.0 T_SPF_HELO_PERMERROR   SPF: test of HELO record failed (permerror)
+ 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,27 +57,134 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Christoph Hellwig <hch@lst.de>,
- linux-nvme <linux-nvme@lists.infradead.org>
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ linux-kernel@vger.kernel.org, Paul Pawlowski <paul@mrarm.io>,
+ Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
+ Christoph Hellwig <hch@lst.de>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, 2019-07-16 at 15:12 +0800, Ming Lei wrote:
-> I feel we might need the max segment size limit too.
-> 
-> commit 7637de311bd2124b298a072852448b940d8a34b9
-> Author: Christoph Hellwig <hch@lst.de>
-> Date:   Wed Jul 3 09:54:44 2019 -0700
-> 
->     nvme-pci: limit max_hw_sectors based on the DMA max mapping size
+This will make it easier to handle variable queue entry sizes
+later. No functional change.
 
-Yes. Reverting this brings the speed back to 2GB/s
+Signed-off-by: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+---
+ drivers/nvme/host/pci.c | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
 
-Cheers,
-Ben.
-
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index dd10cf78f2d3..8f006638452b 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -28,8 +28,8 @@
+ #include "trace.h"
+ #include "nvme.h"
+ 
+-#define SQ_SIZE(depth)		(depth * sizeof(struct nvme_command))
+-#define CQ_SIZE(depth)		(depth * sizeof(struct nvme_completion))
++#define SQ_SIZE(q)	((q)->q_depth * sizeof(struct nvme_command))
++#define CQ_SIZE(q)	((q)->q_depth * sizeof(struct nvme_completion))
+ 
+ #define SGES_PER_PAGE	(PAGE_SIZE / sizeof(struct nvme_sgl_desc))
+ 
+@@ -1344,16 +1344,16 @@ static enum blk_eh_timer_return nvme_timeout(struct request *req, bool reserved)
+ 
+ static void nvme_free_queue(struct nvme_queue *nvmeq)
+ {
+-	dma_free_coherent(nvmeq->dev->dev, CQ_SIZE(nvmeq->q_depth),
++	dma_free_coherent(nvmeq->dev->dev, CQ_SIZE(nvmeq),
+ 				(void *)nvmeq->cqes, nvmeq->cq_dma_addr);
+ 	if (!nvmeq->sq_cmds)
+ 		return;
+ 
+ 	if (test_and_clear_bit(NVMEQ_SQ_CMB, &nvmeq->flags)) {
+ 		pci_free_p2pmem(to_pci_dev(nvmeq->dev->dev),
+-				nvmeq->sq_cmds, SQ_SIZE(nvmeq->q_depth));
++				nvmeq->sq_cmds, SQ_SIZE(nvmeq));
+ 	} else {
+-		dma_free_coherent(nvmeq->dev->dev, SQ_SIZE(nvmeq->q_depth),
++		dma_free_coherent(nvmeq->dev->dev, SQ_SIZE(nvmeq),
+ 				nvmeq->sq_cmds, nvmeq->sq_dma_addr);
+ 	}
+ }
+@@ -1433,12 +1433,12 @@ static int nvme_cmb_qdepth(struct nvme_dev *dev, int nr_io_queues,
+ }
+ 
+ static int nvme_alloc_sq_cmds(struct nvme_dev *dev, struct nvme_queue *nvmeq,
+-				int qid, int depth)
++				int qid)
+ {
+ 	struct pci_dev *pdev = to_pci_dev(dev->dev);
+ 
+ 	if (qid && dev->cmb_use_sqes && (dev->cmbsz & NVME_CMBSZ_SQS)) {
+-		nvmeq->sq_cmds = pci_alloc_p2pmem(pdev, SQ_SIZE(depth));
++		nvmeq->sq_cmds = pci_alloc_p2pmem(pdev, SQ_SIZE(nvmeq));
+ 		if (nvmeq->sq_cmds) {
+ 			nvmeq->sq_dma_addr = pci_p2pmem_virt_to_bus(pdev,
+ 							nvmeq->sq_cmds);
+@@ -1447,11 +1447,11 @@ static int nvme_alloc_sq_cmds(struct nvme_dev *dev, struct nvme_queue *nvmeq,
+ 				return 0;
+ 			}
+ 
+-			pci_free_p2pmem(pdev, nvmeq->sq_cmds, SQ_SIZE(depth));
++			pci_free_p2pmem(pdev, nvmeq->sq_cmds, SQ_SIZE(nvmeq));
+ 		}
+ 	}
+ 
+-	nvmeq->sq_cmds = dma_alloc_coherent(dev->dev, SQ_SIZE(depth),
++	nvmeq->sq_cmds = dma_alloc_coherent(dev->dev, SQ_SIZE(nvmeq),
+ 				&nvmeq->sq_dma_addr, GFP_KERNEL);
+ 	if (!nvmeq->sq_cmds)
+ 		return -ENOMEM;
+@@ -1465,12 +1465,13 @@ static int nvme_alloc_queue(struct nvme_dev *dev, int qid, int depth)
+ 	if (dev->ctrl.queue_count > qid)
+ 		return 0;
+ 
+-	nvmeq->cqes = dma_alloc_coherent(dev->dev, CQ_SIZE(depth),
++	nvmeq->q_depth = depth;
++	nvmeq->cqes = dma_alloc_coherent(dev->dev, CQ_SIZE(nvmeq),
+ 					 &nvmeq->cq_dma_addr, GFP_KERNEL);
+ 	if (!nvmeq->cqes)
+ 		goto free_nvmeq;
+ 
+-	if (nvme_alloc_sq_cmds(dev, nvmeq, qid, depth))
++	if (nvme_alloc_sq_cmds(dev, nvmeq, qid))
+ 		goto free_cqdma;
+ 
+ 	nvmeq->dev = dev;
+@@ -1479,15 +1480,14 @@ static int nvme_alloc_queue(struct nvme_dev *dev, int qid, int depth)
+ 	nvmeq->cq_head = 0;
+ 	nvmeq->cq_phase = 1;
+ 	nvmeq->q_db = &dev->dbs[qid * 2 * dev->db_stride];
+-	nvmeq->q_depth = depth;
+ 	nvmeq->qid = qid;
+ 	dev->ctrl.queue_count++;
+ 
+ 	return 0;
+ 
+  free_cqdma:
+-	dma_free_coherent(dev->dev, CQ_SIZE(depth), (void *)nvmeq->cqes,
+-							nvmeq->cq_dma_addr);
++	dma_free_coherent(dev->dev, CQ_SIZE(nvmeq), (void *)nvmeq->cqes,
++			  nvmeq->cq_dma_addr);
+  free_nvmeq:
+ 	return -ENOMEM;
+ }
+@@ -1515,7 +1515,7 @@ static void nvme_init_queue(struct nvme_queue *nvmeq, u16 qid)
+ 	nvmeq->cq_head = 0;
+ 	nvmeq->cq_phase = 1;
+ 	nvmeq->q_db = &dev->dbs[qid * 2 * dev->db_stride];
+-	memset((void *)nvmeq->cqes, 0, CQ_SIZE(nvmeq->q_depth));
++	memset((void *)nvmeq->cqes, 0, CQ_SIZE(nvmeq));
+ 	nvme_dbbuf_init(dev, nvmeq, qid);
+ 	dev->online_queues++;
+ 	wmb(); /* ensure the first interrupt sees the initialization */
+-- 
+2.17.1
 
 
 _______________________________________________
