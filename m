@@ -2,39 +2,39 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C9D76C027
-	for <lists+linux-nvme@lfdr.de>; Wed, 17 Jul 2019 19:13:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14A9D6C036
+	for <lists+linux-nvme@lfdr.de>; Wed, 17 Jul 2019 19:15:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
 	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LsMIzzH4fWAdAl580wqvbjwX4eKYNUv73YOTXXbH0WQ=; b=WZO++69kd07nz2
-	A/M+K7GYdrgR7C/CziwZYny+gJ5ReLV/qPHBhgoYzbIlyjLvN6YX8fOeyXGB3jDCUf1yczkCore5W
-	UHAJkDBJl+RZyowT+6Fnwftg+0uHSPqI8Rm7i1u6xVQT62q0A8dvguOdcz0kpnohFwEFC18Kla3L7
-	Qm+xqg6wrPZwwuh3fXuYIaHwEbgtdDvMh9LrMmfxbW5stJuwuv5PLN+u9YSPiQFHth51gk3pWsv4u
-	ASOWsPADvRZdOXzVZ4SA+N8zQOJHDIicvhabLJ+rUukCsVOdOYFKXHmf0XRrBbfhIyOrN0xj3AGCT
-	gUxY0WM9nH5m6EE4KCwg==;
+	List-Owner; bh=omeJN3uGP+JHMWiTpTjYZhz5x3pv6/nVkrtwN7DQbDg=; b=M37GT5nYlXu/AQ
+	2d3uxWQmVu1uyfIo3k8mnOHVozZbfd0NpK18jVllPONLnbtcMFeLthTP3vPzvB9eIZtEwg5TW1RYu
+	h5yxsLc+saFNOdTW9HhzDObOD/hzx72pLyTD2bBfXdjBLFlhqDPr8y2ecFIlKDe7yfYqjDaPBYXx6
+	OPep5IUrpxG/IbvSeDYAm0pE6agiva0O5R64ROAlT6Qx60E6Wb0IF2KpYPCAyaayBJs1EShvteGD5
+	p21nyXPWYFodEsWGzP2TppQGH9kGxKAQHpbQ2pcVCX6uWZUMyhPKaRBomRwoNETrplI0UKkpUKiIT
+	+48l9b+ctZcgZ1G8wzTA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnnUt-0000WE-6l; Wed, 17 Jul 2019 17:13:43 +0000
+	id 1hnnWx-0003B9-3l; Wed, 17 Jul 2019 17:15:51 +0000
 Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnnUS-0000Px-Ej
- for linux-nvme@lists.infradead.org; Wed, 17 Jul 2019 17:13:18 +0000
+ id 1hnnUS-0000Q9-EZ
+ for linux-nvme@lists.infradead.org; Wed, 17 Jul 2019 17:13:20 +0000
 Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
  by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1hnnUM-00012r-Uz; Wed, 17 Jul 2019 11:13:12 -0600
+ id 1hnnUM-00012s-Uz; Wed, 17 Jul 2019 11:13:13 -0600
 Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
  (envelope-from <gunthorp@deltatee.com>)
- id 1hnnUK-0000sU-F9; Wed, 17 Jul 2019 11:13:08 -0600
+ id 1hnnUK-0000sX-Hx; Wed, 17 Jul 2019 11:13:08 -0600
 From: Logan Gunthorpe <logang@deltatee.com>
 To: linux-block@vger.kernel.org, linux-nvme@lists.infradead.org,
  Omar Sandoval <osandov@fb.com>
-Date: Wed, 17 Jul 2019 11:12:51 -0600
-Message-Id: <20190717171259.3311-5-logang@deltatee.com>
+Date: Wed, 17 Jul 2019 11:12:52 -0600
+Message-Id: <20190717171259.3311-6-logang@deltatee.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190717171259.3311-1-logang@deltatee.com>
 References: <20190717171259.3311-1-logang@deltatee.com>
@@ -49,14 +49,13 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
  GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
  version=3.4.2
-Subject: [PATCH blktests v2 04/12] nvme/003,
- 004: Add missing calls to nvme disconnect
+Subject: [PATCH blktests v2 05/12] nvme/005: Don't rely on modprobing to set
+ the multipath paramater
 X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190717_101316_584168_DF9834F1 
-X-CRM114-Status: UNSURE (   8.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190717_101316_853069_0748192D 
+X-CRM114-Status: GOOD (  11.78  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -86,59 +85,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Tests 003 and 004 do not call  nvme disconnect. In most cases it is
-cleaned up by removing the modules but it should be made explicit.
+On test systems with existing nvme drives or built-in modules it may not
+be possible to remove nvme-core in order to re-probe it with
+multipath=1.
+
+Instead, skip the test if the multipath parameter is not already set
+ahead of time.
+
+Note: the multipath parameter of nvme-core is set by default if
+CONFIG_NVME_MULTIPATH is set so this will only affect systems
+that explicitly disable it via the module parameter.
 
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 ---
- tests/nvme/003     | 1 +
- tests/nvme/003.out | 1 +
- tests/nvme/004     | 1 +
- tests/nvme/004.out | 1 +
- 4 files changed, 4 insertions(+)
+ common/rc      | 18 ++++++++++++++++++
+ tests/nvme/005 | 10 ++--------
+ 2 files changed, 20 insertions(+), 8 deletions(-)
 
-diff --git a/tests/nvme/003 b/tests/nvme/003
-index c6b3d4037aa6..374e6af0ca6f 100755
---- a/tests/nvme/003
-+++ b/tests/nvme/003
-@@ -42,6 +42,7 @@ test() {
- 		echo "Fail"
- 	fi
+diff --git a/common/rc b/common/rc
+index 5dd2c9512fd2..a487cc69026c 100644
+--- a/common/rc
++++ b/common/rc
+@@ -55,6 +55,24 @@ _have_module_param() {
+ 	return 0
+ }
  
-+	nvme disconnect -n nqn.2014-08.org.nvmexpress.discovery
- 	_remove_nvmet_subsystem_from_port "${port}" "blktests-subsystem-1"
- 	_remove_nvmet_subsystem "blktests-subsystem-1"
- 	_remove_nvmet_port "${port}"
-diff --git a/tests/nvme/003.out b/tests/nvme/003.out
-index 01b275612159..beb356128c9d 100644
---- a/tests/nvme/003.out
-+++ b/tests/nvme/003.out
-@@ -1,2 +1,3 @@
- Running nvme/003
-+NQN:nqn.2014-08.org.nvmexpress.discovery disconnected 1 controller(s)
- Test complete
-diff --git a/tests/nvme/004 b/tests/nvme/004
-index 0506fa220de3..767aedaa0263 100755
---- a/tests/nvme/004
-+++ b/tests/nvme/004
-@@ -40,6 +40,7 @@ test() {
- 	cat "/sys/block/${nvmedev}n1/uuid"
- 	cat "/sys/block/${nvmedev}n1/wwid"
++_have_module_param_value() {
++	local value
++
++	modprobe "$1"
++
++	if ! _have_module_param "$1" "$2"; then
++		return 1
++	fi
++
++	value=$(cat "/sys/module/$1/parameters/$2")
++	if [[ "${value}" != "$3" ]]; then
++		SKIP_REASON="$1 module parameter $2 must be set to $3"
++		return 1
++	fi
++
++	return 0
++}
++
+ _have_program() {
+ 	if command -v "$1" >/dev/null 2>&1; then
+ 		return 0
+diff --git a/tests/nvme/005 b/tests/nvme/005
+index e72fc809c936..91c164de73e6 100755
+--- a/tests/nvme/005
++++ b/tests/nvme/005
+@@ -12,18 +12,13 @@ QUICK=1
  
-+	nvme disconnect -n "blktests-subsystem-1"
- 	_remove_nvmet_subsystem_from_port "${port}" "blktests-subsystem-1"
- 	_remove_nvmet_subsystem "blktests-subsystem-1"
- 	_remove_nvmet_port "${port}"
-diff --git a/tests/nvme/004.out b/tests/nvme/004.out
-index 53f911ecf329..51f605227320 100644
---- a/tests/nvme/004.out
-+++ b/tests/nvme/004.out
-@@ -1,4 +1,5 @@
- Running nvme/004
- 91fdba0d-f87b-4c25-b80f-db7be1418b9e
- uuid.91fdba0d-f87b-4c25-b80f-db7be1418b9e
-+NQN:blktests-subsystem-1 disconnected 1 controller(s)
- Test complete
+ requires() {
+ 	_have_modules loop nvme-core nvme-loop nvmet && \
+-		_have_module_param nvme-core multipath && _have_configfs
++		_have_module_param_value nvme_core multipath Y && \
++		_have_configfs
+ }
+ 
+ test() {
+ 	echo "Running ${TEST_NAME}"
+ 
+-	# Clean up all stale modules
+-	modprobe -r nvme-loop
+-	modprobe -r nvme-core
+-	modprobe -r nvmet
+-
+-	modprobe nvme-core multipath=1
+ 	modprobe nvmet
+ 	modprobe nvme-loop
+ 
+@@ -57,7 +52,6 @@ test() {
+ 	rm "$TMPDIR/img"
+ 
+ 	modprobe -r nvme-loop
+-	modprobe -r nvme-core
+ 	modprobe -r nvmet
+ 
+ 	echo "Test complete"
 -- 
 2.17.1
 
