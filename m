@@ -2,55 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E20756C9C4
-	for <lists+linux-nvme@lfdr.de>; Thu, 18 Jul 2019 09:09:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC8CC6C9CC
+	for <lists+linux-nvme@lfdr.de>; Thu, 18 Jul 2019 09:12:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/fAGW5Fr9IZt9fxcdzUXnJ5sccSyYf0328VuRpPp1lg=; b=eVHdySMoOD9sZo
-	HWhkFx/U3oSy3Pini8v7wzoho5INcb9G/lY1KdK5wPXd7SW0Mc+0Ubd1bxcFJK/tw/KvCwSBSADF5
-	0M7m+i+IIQWIlZqk7+dDRE4vnQ7zf5atrc8iHQ12hvILBIfxZnnVwmQIjkuoUp53GVG/TAzBrxijQ
-	e236DBFk7qfebwsHCnAjP2MRSoEoc5Pj8VwbUVhLMW0lRN9RU6yFwLa6ad/owhGfVhvl2mE4QfnlI
-	xyo3prqKh1JHEsUF590/qAB5NJbSmCNl7y8253cftPRhP/o4tdZe9cox96pm8v/SxRJoK6+4Qqvii
-	xTKksNc/nx9dnS1G3JlQ==;
+	List-Owner; bh=abNSdpAZqbyjuAUGhtn2lYxPi5EPCvgjF2J3b1Chhzs=; b=lWqmrszXmJlryl
+	4plCdv7KzA6GBtYhQZbGQ4fKPdM+x47rci1X6nSJQqS6lD8a4azFR6TNbS6S2+F+n7HfCxY+kg2Ms
+	hVmufvCpOFdLwUwns6HlFaWk+qXwEpsWJB8Ksd2zRNKJ7nkX6qrfVNqfqKODqSwgz8lz5TdSu/SaF
+	TfiQPyjqAwO8Vs3LJbJm7DpOyBvfM3X95Uw+uHaBUKVQ+6XLfPuCNYDoCaNxtZvcBAaYCSqNXgMl/
+	Q97M2EYThBXK0TKfI5Eb9dAYqybVhYlWlWmjT6BgNu/Hxe8+0TtE5pgQh20ddUmNdaalDyE5UqvWG
+	xooj8BsGvCUL6/n0E51w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1ho0XX-0006UH-48; Thu, 18 Jul 2019 07:09:19 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1ho0Zt-00082Y-82; Thu, 18 Jul 2019 07:11:45 +0000
+Received: from gate.crashing.org ([63.228.1.57])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1ho0XG-0006Q9-Gu
- for linux-nvme@lists.infradead.org; Thu, 18 Jul 2019 07:09:04 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 1CE95ABC6;
- Thu, 18 Jul 2019 07:09:01 +0000 (UTC)
-Date: Thu, 18 Jul 2019 09:09:00 +0200
-From: Johannes Thumshirn <jthumshirn@suse.de>
-To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH blktests v2 12/12] nvme: Ignore errors when removing
- modules
-Message-ID: <20190718070900.GL15760@x250.microfocus.com>
-References: <20190717171259.3311-1-logang@deltatee.com>
- <20190717171259.3311-13-logang@deltatee.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190717171259.3311-13-logang@deltatee.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1ho0ZP-00081u-5G
+ for linux-nvme@lists.infradead.org; Thu, 18 Jul 2019 07:11:18 +0000
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by gate.crashing.org (8.14.1/8.14.1) with ESMTP id x6I7B3j6009151;
+ Thu, 18 Jul 2019 02:11:03 -0500
+Message-ID: <ee80e26d2eda385a709d749e5f0ec9e42b442090.camel@kernel.crashing.org>
+Subject: [PATCH] nvme-pci: Support shared tags across queues for Apple 2018
+ controllers
+From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+To: linux-nvme@lists.infradead.org
+Date: Thu, 18 Jul 2019 17:11:02 +1000
+In-Reply-To: <2cc90b8cfa935e345ec2b185b087f1859a040176.camel@kernel.crashing.org>
+References: <20190717004527.30363-1-benh@kernel.crashing.org>
+ <20190717004527.30363-2-benh@kernel.crashing.org>
+ <20190717115145.GB10495@minwoo-desktop>
+ <2cc90b8cfa935e345ec2b185b087f1859a040176.camel@kernel.crashing.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
+Mime-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190718_000903_236988_0BF26C07 
-X-CRM114-Status: GOOD (  14.09  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190718_001116_420822_B888ABBD 
+X-CRM114-Status: GOOD (  13.82  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [63.228.1.57 listed in list.dnswl.org]
+ 0.0 T_SPF_HELO_PERMERROR   SPF: test of HELO record failed (permerror)
+ 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,26 +62,147 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Theodore Ts'o <tytso@mit.edu>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
- linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
- linux-block@vger.kernel.org, Omar Sandoval <osandov@fb.com>,
- Michael Moese <mmoese@suse.de>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: linux-kernel@vger.kernel.org, Paul Pawlowski <paul@mrarm.io>,
+ Jens Axboe <axboe@fb.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
+ Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Looks good,
-Reviewed-by: Johannes Thumshirn <jthumshirn@suse.de>
--- =
+Another issue with the Apple T2 based 2018 controllers seem to be
+that they blow up (and shut the machine down) if there's a tag
+collision between the IO queue and the Admin queue.
 
-Johannes Thumshirn                            SUSE Labs Filesystems
-jthumshirn@suse.de                                +49 911 74053 689
-SUSE LINUX GmbH, Maxfeldstr. 5, 90409 N=FCrnberg
-GF: Felix Imend=F6rffer, Mary Higgins, Sri Rasiah
-HRB 21284 (AG N=FCrnberg)
-Key fingerprint =3D EC38 9CAB C2C4 F25D 8600 D0D0 0393 969D 2D76 0850
+This adds a quirk that offsets all the tags in the IO queue by 32
+to avoid those collisions. It also limits the number of IO queues
+to 1 since the code wouldn't otherwise make sense (the device
+supports only one queue anyway but better safe than sorry).
+
+The bug is typically triggered by tag collisions between SMART
+commands from smartd and IO commands, often at boot time.
+
+Signed-off-by: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+---
+
+Note: This is the smallest way I found of doing this that keeps
+the impact self contained to pci.c. Feel free to suggest alternatives.
+
+ drivers/nvme/host/nvme.h |  5 +++++
+ drivers/nvme/host/pci.c  | 26 ++++++++++++++++++++------
+ 2 files changed, 25 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 564b967058f4..eeb99e485898 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -102,6 +102,11 @@ enum nvme_quirks {
+ 	 * Use non-standard 128 bytes SQEs.
+ 	 */
+ 	NVME_QUIRK_128_BYTES_SQES		= (1 << 11),
++
++	/*
++	 * Prevent tag overlap between queues
++	 */
++	NVME_QUIRK_SHARED_TAGS			= (1 << 12),
+ };
+ 
+ /*
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index e399e59863c7..1055f19e57a4 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -194,6 +194,7 @@ struct nvme_queue {
+ 	u16 cq_head;
+ 	u16 last_cq_head;
+ 	u16 qid;
++	u16 tag_offset;
+ 	u8 cq_phase;
+ 	u8 sqes;
+ 	unsigned long flags;
+@@ -506,6 +507,7 @@ static void nvme_submit_cmd(struct nvme_queue *nvmeq, struct nvme_command *cmd,
+ 			    bool write_sq)
+ {
+ 	spin_lock(&nvmeq->sq_lock);
++	cmd->common.command_id += nvmeq->tag_offset;
+ 	memcpy(nvmeq->sq_cmds + (nvmeq->sq_tail << nvmeq->sqes),
+ 	       cmd, sizeof(*cmd));
+ 	if (++nvmeq->sq_tail == nvmeq->q_depth)
+@@ -967,9 +969,10 @@ static inline void nvme_ring_cq_doorbell(struct nvme_queue *nvmeq)
+ static inline void nvme_handle_cqe(struct nvme_queue *nvmeq, u16 idx)
+ {
+ 	volatile struct nvme_completion *cqe = &nvmeq->cqes[idx];
++	u16 ctag = cqe->command_id - nvmeq->tag_offset;
+ 	struct request *req;
+ 
+-	if (unlikely(cqe->command_id >= nvmeq->q_depth)) {
++	if (unlikely(ctag >= nvmeq->q_depth)) {
+ 		dev_warn(nvmeq->dev->ctrl.device,
+ 			"invalid id %d completed on queue %d\n",
+ 			cqe->command_id, le16_to_cpu(cqe->sq_id));
+@@ -982,14 +985,13 @@ static inline void nvme_handle_cqe(struct nvme_queue *nvmeq, u16 idx)
+ 	 * aborts.  We don't even bother to allocate a struct request
+ 	 * for them but rather special case them here.
+ 	 */
+-	if (unlikely(nvmeq->qid == 0 &&
+-			cqe->command_id >= NVME_AQ_BLK_MQ_DEPTH)) {
++	if (unlikely(nvmeq->qid == 0 && ctag >= NVME_AQ_BLK_MQ_DEPTH)) {
+ 		nvme_complete_async_event(&nvmeq->dev->ctrl,
+ 				cqe->status, &cqe->result);
+ 		return;
+ 	}
+ 
+-	req = blk_mq_tag_to_rq(*nvmeq->tags, cqe->command_id);
++	req = blk_mq_tag_to_rq(*nvmeq->tags, ctag);
+ 	trace_nvme_sq(req, cqe->sq_head, nvmeq->sq_tail);
+ 	nvme_end_request(req, cqe->status, cqe->result);
+ }
+@@ -1020,7 +1022,10 @@ static inline int nvme_process_cq(struct nvme_queue *nvmeq, u16 *start,
+ 
+ 	*start = nvmeq->cq_head;
+ 	while (nvme_cqe_pending(nvmeq)) {
+-		if (tag == -1U || nvmeq->cqes[nvmeq->cq_head].command_id == tag)
++		u16 ctag = nvmeq->cqes[nvmeq->cq_head].command_id;
++
++		ctag -= nvmeq->tag_offset;
++		if (tag == -1U || ctag == tag)
+ 			found++;
+ 		nvme_update_cq_head(nvmeq);
+ 	}
+@@ -1499,6 +1504,10 @@ static int nvme_alloc_queue(struct nvme_dev *dev, int qid, int depth)
+ 	nvmeq->qid = qid;
+ 	dev->ctrl.queue_count++;
+ 
++	if (qid && (dev->ctrl.quirks & NVME_QUIRK_SHARED_TAGS))
++		nvmeq->tag_offset = NVME_AQ_DEPTH;
++	else
++		nvmeq->tag_offset = 0;
+ 	return 0;
+ 
+  free_cqdma:
+@@ -2110,6 +2119,10 @@ static int nvme_setup_io_queues(struct nvme_dev *dev)
+ 	unsigned long size;
+ 
+ 	nr_io_queues = max_io_queues();
++
++	if (dev->ctrl.quirks & NVME_QUIRK_SHARED_TAGS)
++		nr_io_queues = 1;
++
+ 	result = nvme_set_queue_count(&dev->ctrl, &nr_io_queues);
+ 	if (result < 0)
+ 		return result;
+@@ -2957,7 +2970,8 @@ static const struct pci_device_id nvme_id_table[] = {
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2003) },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2005),
+ 		.driver_data = NVME_QUIRK_SINGLE_VECTOR |
+-				NVME_QUIRK_128_BYTES_SQES },
++				NVME_QUIRK_128_BYTES_SQES |
++				NVME_QUIRK_SHARED_TAGS },
+ 	{ 0, }
+ };
+ MODULE_DEVICE_TABLE(pci, nvme_id_table);
+
+
 
 _______________________________________________
 Linux-nvme mailing list
