@@ -2,57 +2,99 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7A4A6C8F6
-	for <lists+linux-nvme@lfdr.de>; Thu, 18 Jul 2019 08:01:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D733C6C904
+	for <lists+linux-nvme@lfdr.de>; Thu, 18 Jul 2019 08:02:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S3UVKCsVWkw2FCuOTYsRbU0EEhxZfJ/U63/jk90PpJw=; b=o6aKophvNlweq6
-	0UJM4ZNMxZ0XvnP5iZ8joY/zkvW3lqN6PumhuKNyfo7rW/gGRk6QJ6ezcQ7tsbyomGAn8qMdy/Ek+
-	voXMSh1t7dOw+U3q4U9RGzMlNAF+aeNFiqhSZ/5NOE81pDa+yfY7KNegHBz+/Vf6BTqbVJqXaKuxp
-	UPgkc0A7ayMt87yRjAjif3mJgVagJ01bo/cvTg9OHOoyxlXgdt1aQBM/ad8NiUU/OsN/Nw8l0zSJ2
-	reD9DnTzos0XOzbcU5kkgKyuXW/OQa0lSlhNbYozB6UFDmuW7iK7vGHphSBS4/lvZ5rCA8VbpNwhs
-	eHzJDsHS4Zx1Kw3FbJ6A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HMT0+/a1TdIF0k+OGA4xyykHmW5xGsjqz4Pm0F7mhI8=; b=CL6OLqxC9kC1La
+	0ASMQiRZubWAkrVfeuTIctLQuqKo2ZmUdASXsKsL1G0U1lf5rBb6LmCq9E7n/gEssYMj7rBn0+g9K
+	3MXj7eQGpegjBFegawazjqGlRUBsv83zEMevD0HdGkYJ/E99BEA1f4H/eqSB21W9AynurJ9HfEjEF
+	tqFtYV7c4Aq5bdQcodzM6P3lX4Z0PSCfuGOONPJYM+UEUrWXyNnL8VL7jUjSYA08krZUGjUlXNMGH
+	axyplU/4zzrk6Rbww7OPB/pSDDTVJf0gq6zud1R1zTg/nYtUgEsun7Afwp7bbYLhJh01slmZ+6FoC
+	h7z2gnpM5W7/AORUaRpg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hnzTS-00013D-T4; Thu, 18 Jul 2019 06:01:02 +0000
-Received: from gate.crashing.org ([63.228.1.57])
+	id 1hnzV4-0002Wk-99; Thu, 18 Jul 2019 06:02:42 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hnzTI-0000uZ-JR
- for linux-nvme@lists.infradead.org; Thu, 18 Jul 2019 06:00:53 +0000
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by gate.crashing.org (8.14.1/8.14.1) with ESMTP id x6I60mdw007030;
- Thu, 18 Jul 2019 01:00:49 -0500
-Message-ID: <8936e370b7ae272c8810780ee26ae3cebc8525b9.camel@kernel.crashing.org>
-Subject: Re: Duplicate tag error with 5.2
-From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-To: Keith Busch <keith.busch@gmail.com>
-Date: Thu, 18 Jul 2019 16:00:48 +1000
-In-Reply-To: <f5de042adc383df7cb040859f13ce92412977467.camel@kernel.crashing.org>
-References: <0007d555cf4586c4ae43fdca66766b6b11863078.camel@kernel.crashing.org>
- <dbb6572c3d0b8ad1f20fd5f89ee112995676375b.camel@kernel.crashing.org>
- <6e4b08daaa0482bd863b63cc5a85fa58ed871045.camel@kernel.crashing.org>
- <CAOSXXT6Z=zEpWqac2k1ydk2LynAEtFr-4jXJVCtTa5yn8H7f3Q@mail.gmail.com>
- <ee8eb3c8855942eb22391dd6137f3b969abce303.camel@kernel.crashing.org>
- <f5de042adc383df7cb040859f13ce92412977467.camel@kernel.crashing.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
-Mime-Version: 1.0
+ id 1hnzUs-0002WJ-AW
+ for linux-nvme@lists.infradead.org; Thu, 18 Jul 2019 06:02:32 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 0A359AF19;
+ Thu, 18 Jul 2019 06:02:29 +0000 (UTC)
+Subject: Re: [PATCH 10/10] nvme-cli: nvmf auto-connect scripts
+To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
+References: <20190716211241.7650-1-jsmart2021@gmail.com>
+ <20190716211241.7650-11-jsmart2021@gmail.com>
+From: Hannes Reinecke <hare@suse.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
+ 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
+ azzYF4VRJsdl+d0MCaSy8mUh
+Message-ID: <2bd2a068-dbbd-84e8-250e-d9d4afa640d3@suse.de>
+Date: Thu, 18 Jul 2019 08:02:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
+MIME-Version: 1.0
+In-Reply-To: <20190716211241.7650-11-jsmart2021@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190717_230052_791241_0BEB0DDE 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190717_230230_656502_98904F96 
+X-CRM114-Status: GOOD (  23.94  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [63.228.1.57 listed in list.dnswl.org]
- 0.0 T_SPF_HELO_PERMERROR   SPF: test of HELO record failed (permerror)
- 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,48 +106,86 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-nvme <linux-nvme@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Hannes Reinecke <hare@suse.com>, Simon Schricker <sschricker@suse.com>,
+ Sagi Grimberg <sagi@grimberg.me>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, 2019-07-18 at 15:27 +1000, Benjamin Herrenschmidt wrote:
-> 
-> Actually the original printk's ignored the qid. I have a theory, trying
-> to test it now.
-> 
-> The problem tends to happens around when smartd starts. I wonder if the
-> Apple drive is assuming a unique tag set accross both IO and admin
-> queue...
-> 
-> I'll do more digging.
-
-Ok. I think that's it.
-
-I reduced the IO queue to 4 entries (3 usable) and the admin queue to 6
-(4 usable), and added printk's of submitted and completed tags.
-
-I can trigger the problem easily now running smartctl -c /dev/nvme0n1
-and doing a bit of IOs. It seems to happen when the IO and Admin queue
-use the same tag.
-
-I verified after the crash, going to MacOS and getting the log from the
-T2 chip, that the tag it complains about *is* the one that we happened
-to have used accross both queues at the point where it dies.
-
-Now, I am not that familiar with the tag management/allocation code,
-how hard would it be to split the tags accross the queues ? I suppose I
-could easily add a quirk to do +32 to the tags used on the IO queue...
-
-(Provided they support arbitrary sized tags up to 16 bits).
-
-Cheers,
-Ben.
-
-
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNy8xNi8xOSAxMToxMiBQTSwgSmFtZXMgU21hcnQgd3JvdGU6Cj4gVGhpcyBzZXQgb2Ygc2Ny
+aXB0cyBpcyBhIGNvbWJpbmF0aW9uIG9mIHRob3NlIHNlbnQgYnkgSGFubmVzLCBTYWdpLAo+IGFu
+ZCBJIGluIGVhcmxpZXIgcGF0Y2hlcyBhbmQgUkZDJ3MuCj4gCj4gQXV0by1jb25uZWN0IG9wZXJh
+dGVzIGJ5IHRoZSBudm1lIGNvcmUgbGF5ZXIgb3IgbnZtZS1mYyB0cmFuc3BvcnQKPiBnZW5lcmF0
+aW5nIGEgdWRldiBldmVudCB3aXRoIGRpcmVjdG9yeS1jb250cm9sbGVyIGFkZHJlc3NpbmcKPiBp
+bmZvcm1hdGlvbi4gVGhlIG52bWUgY29yZSBsYXllciBnZW5lcmF0ZXMgYW4gZXZlbnQgd2hlbiBh
+Cj4gcGVyc2lzdGVudCBkaXNjb3ZlcnkgY29udHJvbGxlciBnZW5lcmF0ZXMgYSBEaXNjb3Zlcnkg
+TG9nIENoYW5nZQo+IE5vdGlmaWNhdGlvbiBBRU4uICBUaGUgbnZtZS1mYyB0cmFuc3BvcnQgZ2Vu
+ZXJhdGVzIGFuIGV2ZW50IHdoZW4KPiBhbiBGQyBycG9ydCB0aGF0IGhhcyBhIE5WTUUgRGlzY292
+ZXJ5IGNvbnRyb2xsZXIgaXMgZGV0ZWN0ZWQgb3IKPiB3aGVuIGEgRkMgc3RhdGUgY2hhbmdlIGV2
+ZW50IG9jY3VycyBmb3IgZm9yIGFuIEZDIHJwb3J0IHRoYXQgaGFzCj4gYSBOVk1FIERpc2NvdmVy
+eSBjb250cm9sbGVyCj4gCj4gVGhlIHVkZXYgZXZlbnQgaXMgaGFuZGxlZCBieSBhIHNjcmlwdCB0
+aGF0IGV4dHJhY3RzIHRoZSBEaXNjb3ZlcnkKPiBjb250cm9sbGVyIGFkZHJlc3NpbmcgaW5mb3Jt
+YXRpb24gYW5kIGluaXRpYXRlcyBhIHN5c3RlbWQgc2VydmljZQo+IHRvIHBlcmZvcm0gYSAibnZt
+ZSBjb25uZWN0LWFsbCIgdG8gdGhlIERpc2NvdmVyeSBjb250cm9sbGVyLgo+IFRoZSAibnZtZSBj
+b25uZWN0LWFsbCIgcmVxdWVzdCBpcyBub3QgY2FsbGVkIGRpcmVjdGx5IGZyb20gdGhlIHVkZXYK
+PiBoYW5kbGVyIGl0c2VsZiBhcyB0aGUgcmVxdWVzdCBtYXkgdGFrZSBzb21lIHRpbWUgb3Igc3Rh
+bGwgYWx0b2dldGhlciwKPiB3aGljaCB3b3VsZCBibG9jayBvdGhlciB1ZGV2IGV2ZW50IGhhbmRs
+aW5nLiAgQnkgdHJhbnNpdGlvbmluZyB0bwo+IGEgc3l0ZW1kIHNlcnZpY2UsIHRoZSBjYWxsIGNh
+biB0YWtlIGFzIG11Y2ggdGltZSBhcyBuZWVkZWQgdG8KPiBjb21wbGV0ZS4KPiAKPiBUaGUgc2Ny
+aXB0cyBjb25zaXN0IG9mOgo+IC0gQSB1ZGV2IHNjcmlwdCB0aGF0IGhhbmRsZXMgbnZtZSBjb3Jl
+IGFuZCBudm1lLWZjIHVkZXYgZXZlbnRzLgo+ICAgVGhlIHVkZXYgaGFuZGxlciBzdGFydHMgYSBu
+dm1mLWNvbm5lY3Qgc3lzdGVtZCBzZXJ2aWNlLgo+IC0gQSBudm1mLWNvbm5lY3Qgc3lzdGVtZCBz
+ZXJ2aWNlLiBUaGUgc2VydmljZSwgaW4gaXRzIGluc3RhbmNlCj4gICBuYW1lLCBpcyBwYXNzZWQg
+dGhlIGNvbm5lY3QgYXJndW1lbnRzIGZvciB0aGUgZGlzY292ZXJ5Cj4gICBjb250cm9sbGVyLiBU
+aGUgc2VydmljZSBwZXJmb3JtcyBhICJudm1lIGNvbm5lY3QtYWxsIiB0byB0aGUKPiAgIGRpc2Nv
+dmVyeSBjb250cm9sbGVyLgo+IC0gQSBudm1lZmMtYm9vdC1jb25uZWN0aW9ucyBzeXN0ZW1kIHNl
+cnZpY2UuIFRoaXMgaXMgYSBydW4tb25jZQo+ICAgc2VydmljZSBydW4gYWZ0ZXIgdWRldiBpcyBl
+bmFibGVkLCB3aGljaCB3aWxsIHJlcGxheSBldmVudHMKPiAgIGdlbmVyYXRlZCBieSBOVk1FLUZD
+IGRldmljZXMgZGV0ZWN0ZWQgZHVyaW5nIGJvb3Qgd2hpbGUgdWRldgo+ICAgaXMgbm90IHlldCBy
+dW5uaW5nLgo+IC0gVG8gc3RvcCBhdXRvY29ubmVjdCBhbiBhZGRpdGlvbmFsIG52bWVmYy1jb25u
+ZWN0LnRhcmdldCBoYXMKPiAgIGJlZW4gYWRkZWQsIHdoaWNoIHdpbGwgaW5zdHJ1Y3Qgc3lzdGVt
+ZCB0byBjYW5jZWwgYWxsCj4gICBvdXRzdGFuZGluZyBhdXRvY29ubmVjdCBzZXJ2aWNlcy4KPiAK
+PiBOb3RlOiBBbHRob3VnaCB0aGUgbnZtZS1mYyBzdWJzeXN0ZW0gaXMgY29udmVydGluZyB0byB1
+c2UgdGhlCj4gICBzYW1lIG52bWUgY29yZSBsYXllciBldmVudCBtZWNoYW5pc20sIHRoZSBudm1l
+LWZjLXNwZWNpZmljCj4gICB1ZGV2IGV2ZW50IHRoYXQgaGFzIGJlZW4gaW4gZXhpc3RlbmNlIGZv
+ciBhIHdoaWxlIGlzIGNvbnRhaW5lZAo+ICAgaW4gaW4gdGhlIHNjcmlwdCBzbyB0aGF0IHRoZSB1
+dGlsaXRpZXMgbWF5IHJ1biBhZ2FpbnN0IG9sZGVyCj4gICBrZXJuZWxzLgo+IAo+IFNpZ25lZC1v
+ZmYtYnk6IEphbWVzIFNtYXJ0IDxqc21hcnQyMDIxQGdtYWlsLmNvbT4KPiBDQzogU2ltb24gU2No
+cmlja2VyIDxzc2Nocmlja2VyQHN1c2UuY29tPgo+IENDOiBIYW5uZXMgUmVpbmVja2UgPGhhcmVA
+c3VzZS5jb20+Cj4gQ0M6IFNhZ2kgR3JpbWJlcmcgPHNhZ2lAZ3JpbWJlcmcubWU+Cj4gCj4gLS0t
+Cj4gZnJvbSByZmMgdG8gYWN0dWFsIHBvc3Rpbmc6Cj4gICBDaGFuZ2VkIHVkZXYgZGV2aWNlIHZh
+cmlhYmxlIHRvIE5WTUVfQ1RSTF9OQU1FCj4gICBSZW1vdmVkIGZ1bGwgcGF0aG5hbWUgZm9yIG52
+bWUgYW5kIGVjaG8gaW4gc3lzdGVtZCBzZXJ2aWNlIHRoYXQKPiAgICAgaW52b2tlcyBjb25uZWN0
+LWFsbAo+ICAgTW92ZWQgLS1xdWlldCBvcHRpb24uIFJhdGhlciB0aGFuIGluY2x1ZGUgaW4gImFy
+Z3VtZW50cyIgaW4KPiAgICAgc3lzdGVtZCBzZXJ2aWNlIG5hbWUsIGFkZCBkaXJlY3RseSB0byBz
+eXN0ZW1kIHNlcnZpY2UgdGhhdAo+ICAgICBpbnZva2VzIGNvbm5lY3QtYWxsCj4gICBDcmVhdGVk
+IGluc3RhbGwtc3lzdGVtZCBhbmQgaW5zdGFsbC1kcmFjdXQgTWFrZSB0YXJnZXRzCj4gICBDaGFu
+Z2VkIFBSRUZJWCB0byAvdXNyIHRvIG1hdGNoIG52bWUuc3BlYy5pbidzICVpbnN0YWxsIHRhcmdl
+dAo+ICAgQ2hhbmdlZCBMSUJESVIgdG8gdXNlIFBSRUZJWCBhcyBiYXNlIHBhdGgKPiAtLS0KPiAg
+TWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMjIgKysr
+KysrKysrKysrKysrKysrKy0tLQo+ICBudm1lLnNwZWMuaW4gICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgfCAgOSArKysrKysrKysKPiAgbnZtZi1hdXRvY29ubmVjdC83MC1udm1m
+LWF1dG9jb25uZWN0LmNvbmYgICAgICAgIHwgIDEgKwo+ICBudm1mLWF1dG9jb25uZWN0LzcwLW52
+bWYtYXV0b2Nvbm5lY3QucnVsZXMgICAgICAgfCAxOCArKysrKysrKysrKysrKysrKysKPiAgbnZt
+Zi1hdXRvY29ubmVjdC9udm1lZmMtYm9vdC1jb25uZWN0aW9ucy5zZXJ2aWNlIHwgIDkgKysrKysr
+KysrCj4gIG52bWYtYXV0b2Nvbm5lY3QvbnZtZi1jb25uZWN0LnRhcmdldCAgICAgICAgICAgICB8
+ICAyICsrCj4gIG52bWYtYXV0b2Nvbm5lY3QvbnZtZi1jb25uZWN0QC5zZXJ2aWNlICAgICAgICAg
+ICB8IDE0ICsrKysrKysrKysrKysrCj4gIDcgZmlsZXMgY2hhbmdlZCwgNzIgaW5zZXJ0aW9ucygr
+KSwgMyBkZWxldGlvbnMoLSkKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IG52bWYtYXV0b2Nvbm5lY3Qv
+NzAtbnZtZi1hdXRvY29ubmVjdC5jb25mCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBudm1mLWF1dG9j
+b25uZWN0LzcwLW52bWYtYXV0b2Nvbm5lY3QucnVsZXMKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IG52
+bWYtYXV0b2Nvbm5lY3QvbnZtZWZjLWJvb3QtY29ubmVjdGlvbnMuc2VydmljZQo+ICBjcmVhdGUg
+bW9kZSAxMDA2NDQgbnZtZi1hdXRvY29ubmVjdC9udm1mLWNvbm5lY3QudGFyZ2V0Cj4gIGNyZWF0
+ZSBtb2RlIDEwMDY0NCBudm1mLWF1dG9jb25uZWN0L252bWYtY29ubmVjdEAuc2VydmljZQo+IApU
+aGUgaW5zdGFsbCBzZXF1ZW5jZSBpcyBzbGlnaHRseSBvZGQsIGJ1dCBub3QgZW5vdWdoIHRvIGNv
+bXBsYWluLgoodWRldmFkbSB0cmlnZ2VyIGJlZm9yZSBzeXN0ZW1kIGRhZW1vbi1yZWxvYWQ/IEkn
+ZCByYXRoZXIgZG8gaXQgdGhlCm90aGVyIHdheSByb3VuZC4gQW55d2F5LikKClNvOgoKUmV2aWV3
+ZWQtYnk6IEhhbm5lcyBSZWluZWNrZSA8aGFyZUBzdXNlLmNvbT4KCkNoZWVycywKCkhhbm5lcwot
+LSAKRHIuIEhhbm5lcyBSZWluZWNrZQkJICAgVGVhbWxlYWQgU3RvcmFnZSAmIE5ldHdvcmtpbmcK
+aGFyZUBzdXNlLmRlCQkJICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1MyA2ODgKU1VTRSBMSU5V
+WCBHbWJILCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJlcmcKR0Y6IEZlbGl4IEltZW5kw7Zy
+ZmZlciwgTWFyeSBIaWdnaW5zLCBTcmkgUmFzaWFoCkhSQiAyMTI4NCAoQUcgTsO8cm5iZXJnKQoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZt
+ZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
