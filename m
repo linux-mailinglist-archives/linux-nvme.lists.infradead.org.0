@@ -2,47 +2,47 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84B286DBA8
-	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 06:10:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 92AB66DBB6
+	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 06:11:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p78NF1iRDsS6mQZ+nEAShxLwXVI2WkuNSbAHIZtZJ+A=; b=Mhl6Z8yA5TtBmK
-	0lfP5xurnHw5+fsRpVRrwk3dZuuxk+JlhN20OFvgjowTJMrQQVzYFq8cQyn9FZJRt4qeHaTJgPFt0
-	iFhcbndyWy/hXv3bbDKSA4rbTfufLpr8er3vOUzU8t01pvx2jnL5lPX3Gw90uxhqd2dCPQrPgJXC+
-	aDwtkhmlv6PtpK+cwxAnk/dTcZqmTXHSHxjrsSuhu/n7KqCu7vYJ8j8A/360elURipMjKZPwoPtwK
-	s1RlHPbuGU3zsSB/wOAMzScSczrRdn7nG04OQ8SrpSn5sLcXZzRD8D0HPXmxlKIAntP/bLGvNlbk0
-	koWobZFt/envEVyNleMQ==;
+	List-Owner; bh=LukEHOvi3We9cis5l2xWfzwuV/V9w4cMEqamowZqzAI=; b=k1UVqb9XX/iFiP
+	aZiyb3XshfpgUd0IrlPqSNJosxaS1wE9SY5dnCcu7YnbWzuAtefFgIhW3Q+Amlxjv/ic2UxX55A3Y
+	LGDake8l/PUTrhYuOFU5Osg1iqnMXGKc2XJF9YAYaSpcO5E8RrhW7pAqUCcfPdIVPJoRvdJCpRtGY
+	NPnKXfzbrnfahDZvDsiiNiOtwcjZqIVYlMKvu5JbFWaERTGLNf8M/4oa/wUtPkI7WkrpZAp9AcFxG
+	3hqywMmSeLHOwzwruJ9oKJTZDNnPiJg4WgOsSHQ1LMUMukiIOKPB1DFPy0KJoY96K7FAyAnTDmv13
+	o0PeEHip5K4nacC9iCjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hoKEB-0006HM-2n; Fri, 19 Jul 2019 04:10:39 +0000
+	id 1hoKEV-0006VU-7p; Fri, 19 Jul 2019 04:10:59 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hoKA1-0002y5-Fp
- for linux-nvme@lists.infradead.org; Fri, 19 Jul 2019 04:06:25 +0000
+ id 1hoKA3-0002yh-5A
+ for linux-nvme@lists.infradead.org; Fri, 19 Jul 2019 04:06:27 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 28C1E218BA;
- Fri, 19 Jul 2019 04:06:20 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 49AD3218BB;
+ Fri, 19 Jul 2019 04:06:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1563509180;
- bh=CH3O2LPFoEMwAWzghnExfL2XH60fUknYpeXbotU+tPI=;
+ s=default; t=1563509182;
+ bh=tUs7HuC82WX+TAG+gnhX976cxKA3Uz7SIO2KeVgJG9Y=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BR3yCQYMhFHd1fBjZiSyiiIKfOp9uab1arTjeXsuTux/F9Il3bn/hItr4NUE3GeJf
- TdzY3tSxbegvHW/kTiET/uoHun1jzFSfk1dmPx1mdGvLHhLY6+WKV+2PjA24mSbYgF
- /2n31MApgMEkFFK2icHUkf0VC0RuJuxByHLL+7Kw=
+ b=V/w1Juf7Vt13qoW7uGPq86ftZpaEeISgvCKxnR3KWv35ZA6ZuxiMQEIzbZ0Yr2lta
+ 6vVeb7/0vZDJw+00P7uT5jGev/6wNTDtIA0LVDgRGy273DsjysR+yEOYJUiAcUdhL8
+ JEuItBO+3S8TCpSCgIvX7mbly58gYVy2TabTNTAg=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.1 110/141] nvme-tcp: don't use sendpage for SLAB
- pages
-Date: Fri, 19 Jul 2019 00:02:15 -0400
-Message-Id: <20190719040246.15945-110-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.1 111/141] nvme-tcp: set the STABLE_WRITES flag when
+ data digests are enabled
+Date: Fri, 19 Jul 2019 00:02:16 -0400
+Message-Id: <20190719040246.15945-111-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190719040246.15945-1-sashal@kernel.org>
 References: <20190719040246.15945-1-sashal@kernel.org>
@@ -50,8 +50,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190718_210621_703438_94B5C5D4 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20190718_210623_351544_27069B2B 
+X-CRM114-Status: GOOD (  12.98  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -80,9 +80,10 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Christoph Hellwig <hch@lst.de>,
+Cc: Sasha Levin <sashal@kernel.org>, Sagi Grimberg <sagi@grimberg.me>,
+ Mike Playle <mplayle@solarflare.com>, linux-nvme@lists.infradead.org,
  Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>,
- linux-nvme@lists.infradead.org, Sagi Grimberg <sagi@grimberg.me>
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
@@ -90,41 +91,53 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
 
-[ Upstream commit 37c15219599f7a4baa73f6e3432afc69ba7cc530 ]
+[ Upstream commit 958f2a0f8121ae36a5cbff383ab94fadf1fba5eb ]
 
-According to commit a10674bf2406 ("tcp: detecting the misuse of
-.sendpage for Slab objects") and previous discussion, tcp_sendpage
-should not be used for pages that is managed by SLAB, as SLAB is not
-taking page reference counters into consideration.
+There was a few false alarms sighted on target side about wrong data
+digest while performing high throughput load to XFS filesystem shared
+through NVMoF TCP.
+
+This flag tells the rest of the kernel to ensure that the data buffer
+does not change while the write is in flight.  It incurs a performance
+penalty, so only enable it when it is actually needed, i.e. when we are
+calculating data digests.
+
+Although even with this change in place, ext2 users can steel experience
+false positives, as ext2 is not respecting this flag. This may be apply
+to vfat as well.
 
 Signed-off-by: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
+Signed-off-by: Mike Playle <mplayle@solarflare.com>
 Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/tcp.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ drivers/nvme/host/core.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 08a2501b9357..606b13d35d16 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -860,7 +860,14 @@ static int nvme_tcp_try_send_data(struct nvme_tcp_request *req)
- 		else
- 			flags |= MSG_MORE;
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 3a390b2c7540..d4c0bc88dd1e 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -11,6 +11,7 @@
+ #include <linux/hdreg.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
++#include <linux/backing-dev.h>
+ #include <linux/list_sort.h>
+ #include <linux/slab.h>
+ #include <linux/types.h>
+@@ -3253,6 +3254,10 @@ static int nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+ 		goto out_free_ns;
+ 	}
  
--		ret = kernel_sendpage(queue->sock, page, offset, len, flags);
-+		/* can't zcopy slab pages */
-+		if (unlikely(PageSlab(page))) {
-+			ret = sock_no_sendpage(queue->sock, page, offset, len,
-+					flags);
-+		} else {
-+			ret = kernel_sendpage(queue->sock, page, offset, len,
-+					flags);
-+		}
- 		if (ret <= 0)
- 			return ret;
- 
++	if (ctrl->opts->data_digest)
++		ns->queue->backing_dev_info->capabilities
++			|= BDI_CAP_STABLE_WRITES;
++
+ 	blk_queue_flag_set(QUEUE_FLAG_NONROT, ns->queue);
+ 	if (ctrl->ops->flags & NVME_F_PCI_P2PDMA)
+ 		blk_queue_flag_set(QUEUE_FLAG_PCI_P2PDMA, ns->queue);
 -- 
 2.20.1
 
