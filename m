@@ -2,33 +2,36 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F8B76EB49
-	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 21:46:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B3736EB50
+	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 21:46:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=U0Us9zgd5lAidzcEEErqfVE8DACJB5tIPlWOrFG6Mkc=; b=L4g
-	qf+ZrHTdBR92VSIDeZKZRVPcHVyYx0kWO8TfR5KrPF4K1DnS9W69vv3ogWQRF0BuRs/JQqzoOysB+
-	0WWLweyfnEssuL9mqz3tXCXwVbZgIZJQu5E0YGcBVN9Y2VLZJbS8aUC/LKpWYfdSGbpSIX2U5D0g7
-	S8dVZfpo0rJzvo7wpRSR8Xoba12LudQfKGe6qopOKF5UE72XKdjydPICg5Ngy4TokiylrQ+92Dcih
-	mn08BlZpUyX4b1I8d9bSfanq9mpllazDg/7YrUrwkiaa8p3PXmBWgRGgsyX39V5cNXvLOAW8aWuhv
-	3lgX9w6Oap//MhI6oJQPF/vLJ130u+Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=ABnuYSF/xDINxSo0sHEfaFGTpYRh9xbsOEhXsktNcpI=; b=MUJwJTWv7BEtn9u66sLVf+KOZT
+	T+sIOcPrBxuY3T/62gQRmwoaS77wIDF1IvqjymwxdkqG/DxagMjunml2TkEnPqWKjr5rndhkb7+uI
+	Mcxfx77wJgnhCFcs/KDcfyyyDrUgOnp0Xd1ivF7zecMsT1y9oju58jXBPS/QZI7tZRwQNIQSC9kRd
+	MzI+lKtUCivFZcFQXBv1yEJzTgZFN//nGRR1GVnMPObI1wPNBgSyrHGeYv2ueDXqouEFvGQar5gYN
+	C9J355GaP7vfB3zBroHdGsa1UlqaC54/oO3Ad836iaulRT4lG3UVc6GUDmw9FY1iEtVszhzS/zO+o
+	QsQZ+/OA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hoYpJ-0000YN-KF; Fri, 19 Jul 2019 19:45:57 +0000
+	id 1hoYpa-0000kt-Hv; Fri, 19 Jul 2019 19:46:14 +0000
 Received: from [2600:1700:65a0:78e0:514:7862:1503:8e4d]
  (helo=sagi-Latitude-E7470.lbits)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hoYp9-0000XJ-6q; Fri, 19 Jul 2019 19:45:47 +0000
+ id 1hoYp9-0000XJ-Ck; Fri, 19 Jul 2019 19:45:47 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 0/4] small set of nvme cleanups
-Date: Fri, 19 Jul 2019 12:45:42 -0700
-Message-Id: <20190719194546.24229-1-sagi@grimberg.me>
+Subject: [PATCH 1/4] nvme: have nvme_init_identify set ctrl->cap
+Date: Fri, 19 Jul 2019 12:45:43 -0700
+Message-Id: <20190719194546.24229-2-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190719194546.24229-1-sagi@grimberg.me>
+References: <20190719194546.24229-1-sagi@grimberg.me>
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,24 +50,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Centralizes queue size settings for fabrics and
-removes redundant argument to nvme_disable/enable_ctrl.
+No need to use a stack cap variable.
 
-Sagi Grimberg (4):
-  nvme: have nvme_init_identify set ctrl->cap
-  nvme: move sqsize setting to the core
-  nvme: don't pass cap to nvme_disable_ctrl
-  nvme: don't pass cap to nvme_enable_ctrl
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+---
+ drivers/nvme/host/core.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
- drivers/nvme/host/core.c   | 19 ++++++++++---------
- drivers/nvme/host/fc.c     | 12 +-----------
- drivers/nvme/host/nvme.h   |  4 ++--
- drivers/nvme/host/pci.c    |  7 ++++---
- drivers/nvme/host/rdma.c   | 15 ++-------------
- drivers/nvme/host/tcp.c    | 13 ++-----------
- drivers/nvme/target/loop.c | 12 +-----------
- 7 files changed, 22 insertions(+), 60 deletions(-)
-
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 76cd3dd8736a..058e06e40df8 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -2563,7 +2563,6 @@ static int nvme_get_effects_log(struct nvme_ctrl *ctrl)
+ int nvme_init_identify(struct nvme_ctrl *ctrl)
+ {
+ 	struct nvme_id_ctrl *id;
+-	u64 cap;
+ 	int ret, page_shift;
+ 	u32 max_hw_sectors;
+ 	bool prev_apst_enabled;
+@@ -2574,15 +2573,15 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+ 		return ret;
+ 	}
+ 
+-	ret = ctrl->ops->reg_read64(ctrl, NVME_REG_CAP, &cap);
++	ret = ctrl->ops->reg_read64(ctrl, NVME_REG_CAP, &ctrl->cap);
+ 	if (ret) {
+ 		dev_err(ctrl->device, "Reading CAP failed (%d)\n", ret);
+ 		return ret;
+ 	}
+-	page_shift = NVME_CAP_MPSMIN(cap) + 12;
++	page_shift = NVME_CAP_MPSMIN(ctrl->cap) + 12;
+ 
+ 	if (ctrl->vs >= NVME_VS(1, 1, 0))
+-		ctrl->subsystem = NVME_CAP_NSSRC(cap);
++		ctrl->subsystem = NVME_CAP_NSSRC(ctrl->cap);
+ 
+ 	ret = nvme_identify_ctrl(ctrl, &id);
+ 	if (ret) {
 -- 
 2.17.1
 
