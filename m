@@ -2,88 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D1956D850
-	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 03:21:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 138346D855
+	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 03:22:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=R8VXecou5OohMUzKE2IhOdJr1h4DjMh36KwA7SVwC4g=; b=npVhKV9Vbm2Hv3rzRT+tu7su2
-	UXTklqoUCx45KtalxTehNq3q/87PTyueb+S/hd3fjpkFofKEzXs6VOcxD5Ws7DeYEk6eBZ+k3pMym
-	JUGWTUVNWpEC4Ej9PQdI/pt6CmlgTO84I4K+e1bdXharmd2ZY0hRnTpwfl18LOwYDhuOo+x5Lwpd6
-	EebHqp2NLH9nEks7pJsBglWk6JkoCx0E7gLHLhUojIRqmB89kM36OLQ2cAcv4W3D8/wMyPvUR9u7k
-	J5t45lb1LfeZQYsAIf9ol8HP+ClRXfq1xO0KpDg+pBUj0x4xAKcUZo+IHkdKo5RSsNeSfa9LC3v+H
-	vEo2Xeosw==;
+	 bh=b7RUJmvTytmwXKyzBRZcR2Z/rQuTkBBgArh7tKqJmJg=; b=ReMe3gEuzTRcukOR/Tq9eE3HA
+	p7DmHNfytmaDNPVqP6CBho2x+M7SstvFfzE30h3crMjpmsx70pxcl6eV2K2B2aEbjQjy2UpGKIqT5
+	cl4SD2u3iw5sRZyKNyyAO82oh/8aR3Rz4x6hpgqVkuDjuJKazt0lXh0KzEU3sR4nTjxEMIQXmeztx
+	gtE0cliJm88Fe9UtDylDWQRGT/8Yn8QgEiVbZw3QTQ9ibf3APKEs894yDe6RRLaw3St8kpq4aiC1Z
+	X0uFojkVkNAttkTgej98p73xTstKpvRnqwvV9tciAmS0mayQtKPR88LlVxVlzjj/a6pJi6R3bg8xl
+	nItqNK6pg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hoHZu-0002sG-TU; Fri, 19 Jul 2019 01:20:54 +0000
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242])
+	id 1hoHbl-00036r-3q; Fri, 19 Jul 2019 01:22:49 +0000
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hoHZm-0002rb-Qg
- for linux-nvme@lists.infradead.org; Fri, 19 Jul 2019 01:20:48 +0000
-Received: by mail-oi1-x242.google.com with SMTP id g7so23046120oia.8
- for <linux-nvme@lists.infradead.org>; Thu, 18 Jul 2019 18:20:43 -0700 (PDT)
+ id 1hoHbb-00036V-Ov
+ for linux-nvme@lists.infradead.org; Fri, 19 Jul 2019 01:22:41 +0000
+Received: by mail-oi1-x241.google.com with SMTP id m202so23063601oig.6
+ for <linux-nvme@lists.infradead.org>; Thu, 18 Jul 2019 18:22:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KT1MhPvP2yDUbhqQgsjF/Vrhs5O1fEJGwJYkZiz6Vdk=;
- b=rracO4S/2FbZ8E6CzQ/VSltRUSUDwpyFDzd/P2NmvSe59PZNF2wIL/Bqr/8aUF0CgY
- 8ZU9NfpPxFZ2aVFgxf4xf7TrfzRNGPIswbPhOf3lrEx2BQnkTAdbx01yGxRwRWDGzZNs
- 4opaIrsnrrZBCS4uaO5Q7wTp5xErtPmgNTYfVg9qIY6aZBVB7Fy72c7zkjfBH8PcwqeY
- 5vJwvOVDBQZTrY7jAuAKShf+Y2ijhNrTHzfsdO7xCvKGanLngNA7KxuImnINDic69lP1
- 0oG4aSAotUlrFHKIoTMw5mui89zzIXugnF/xRm+Igp0ht6T9S65BpPU1zDGHQE6r94qF
- UsXw==
+ bh=AgPnGBNj1RH/lF27U2z3sjplbH83GLxpRaI1v+WHR14=;
+ b=Fyql4ENrOerClyOWVCctUiLcwDIgjwxvpwnKhmkmx9WU782dXLtHK0kEy2w67lgCpd
+ s5wl93tWrai8c+ydOwTJEnNV7hFBPAs/7dBFiE8TBclccSE23Y+A5+0wy7yH/+jLon2j
+ PVB9j8PGYMs78H6YWm4MVD6smxxAe5vpMVsWZ03MrC9MS1+qq8+sGu3Gr0f0IMTGJFT4
+ PogjXC5PFrq6Jl7dI9g1KMerzw26PraxCEKwGGii/t5vhzVwASj6oLFLSvFvuGbqwLbX
+ foyiGFh4Ar8/sQZIAcPOnv/NreAiHHrg8I61gW+92HIkqC6UByL2o6XbU8a6+Mxqf7sV
+ aROg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=KT1MhPvP2yDUbhqQgsjF/Vrhs5O1fEJGwJYkZiz6Vdk=;
- b=OjuxcFJojRibiGPcZn9TmLjE6bS7yZYWqD+uf946k9scx+UTp3MHLgJG4phki0AyXV
- hkWQy+2bfFEi9bYKABo/ivfp6tfKm65Jt9QDAiYlrPYml8i5EycLAdR569+Zuvb2njtg
- /XVs8m/bjN8rGihAyrxl0pE3YXGET5lsuGu0N4WXR9Ic4olHcENGfdvzhOG14Jvh3ssH
- gfmQFOXZ32Ke4YYGbgnbd1abDnD6G7eji8eALpDJSHGLs8EzBBHplKssxsV5QJ+E07H1
- hJfr4YSz/dXuH72aNjB1ZNg3KZApqHoBVHcj0sin3nWVrpUq+QGSNTKExkxXtyf0Eh/8
- bgIg==
-X-Gm-Message-State: APjAAAVwjAJWuvmNH1zXwR4xOlsI80CYwoTG7c7ahTN5DGjFW59nqNBA
- lBzYNQBwjR+gpQPMlX1GQZWdTZ2v
-X-Google-Smtp-Source: APXvYqwTHNzcssrz4oxD+OtNKvlp9ztoZgiq1oUGqKO2GHct0VcU50QliFijl6fa+H+YW1gaf8de9g==
-X-Received: by 2002:aca:3787:: with SMTP id
- e129mr25862542oia.145.1563499242550; 
- Thu, 18 Jul 2019 18:20:42 -0700 (PDT)
+ bh=AgPnGBNj1RH/lF27U2z3sjplbH83GLxpRaI1v+WHR14=;
+ b=Fgd8X4rmPOa5QTxqraoo9dn/Lb+J6hYG/UcwvI+bzY7EB0EazgpK2OiNeojACnopFE
+ j1g8IIq5yfzUIsYw9Lq0oKvhL53nZ1aqiVIraL8GdYN/i80XQSbTgrVj5/0TXhMdiqmg
+ pfLs3ExR9Fp2KmK6AHUfi5FfL87QlZU9N1/JCbIm/EqOjkP8BMTausux4ia0fWP1wBXA
+ gFSk2E8ct7Yq27MBpfpgHynRONF7M+O38qDP+gmPgzV7JFv081EcWklaYgAzngifOHbj
+ ajRFNiuSSkMA1ZpNQUHA/ue4pdE63nhgexZj8T8IiXa0a/Nu5c4y/3NlcavghebRyp3x
+ 8wKA==
+X-Gm-Message-State: APjAAAXuHJWvzT5Nf4tL4Y6/pKnjlCbrN6EshCOHkZ+7PlZmz4ai6TKQ
+ XQH85mt8I4vKJZhWXN/PEls55Dyp
+X-Google-Smtp-Source: APXvYqxsQsnMXPgTHLlr1uzMT4bbpF0FwavxS4RrP4nTHk5VfQusRGbDxR+ty4DMsMcNBqHQuduqmg==
+X-Received: by 2002:aca:7585:: with SMTP id
+ q127mr26100161oic.113.1563499358283; 
+ Thu, 18 Jul 2019 18:22:38 -0700 (PDT)
 Received: from [192.168.1.237] (ip68-5-145-143.oc.oc.cox.net. [68.5.145.143])
  by smtp.gmail.com with ESMTPSA id
- l13sm10801596ota.17.2019.07.18.18.20.40
+ d200sm10861446oih.26.2019.07.18.18.22.37
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 18 Jul 2019 18:20:41 -0700 (PDT)
-Subject: Re: [PATCH 10/10] nvme-cli: nvmf auto-connect scripts
-To: Sagi Grimberg <sagi@grimberg.me>, Hannes Reinecke <hare@suse.de>,
- linux-nvme@lists.infradead.org
+ Thu, 18 Jul 2019 18:22:37 -0700 (PDT)
+Subject: Re: [PATCH 07/10] nvme-cli: Add routine to search for controller with
+ specific attributes
+To: Sagi Grimberg <sagi@grimberg.me>, Minwoo Im <minwoo.im.dev@gmail.com>
 References: <20190716211241.7650-1-jsmart2021@gmail.com>
- <20190716211241.7650-11-jsmart2021@gmail.com>
- <2bd2a068-dbbd-84e8-250e-d9d4afa640d3@suse.de>
- <5669f502-e931-d0ed-71f7-91d3fca01816@grimberg.me>
+ <20190716211241.7650-8-jsmart2021@gmail.com>
+ <20190717115711.GD10495@minwoo-desktop>
+ <6b3ebb18-4b8c-c18e-501d-cd8f1f41c676@grimberg.me>
 From: James Smart <jsmart2021@gmail.com>
-Message-ID: <3a2ddff8-d900-1eee-2179-43539fcc1383@gmail.com>
-Date: Thu, 18 Jul 2019 18:20:41 -0700
+Message-ID: <daca2393-86ff-f9ec-cf7c-15c33990de7c@gmail.com>
+Date: Thu, 18 Jul 2019 18:22:37 -0700
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <5669f502-e931-d0ed-71f7-91d3fca01816@grimberg.me>
+In-Reply-To: <6b3ebb18-4b8c-c18e-501d-cd8f1f41c676@grimberg.me>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190718_182046_881330_14FE2EE7 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190718_182239_837456_C659A568 
+X-CRM114-Status: GOOD (  11.99  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:242 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:241 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (jsmart2021[at]gmail.com)
@@ -109,31 +108,29 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>, Simon Schricker <sschricker@suse.com>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: linux-nvme@lists.infradead.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 7/18/2019 5:33 PM, Sagi Grimberg wrote:
-> 
->> The install sequence is slightly odd, but not enough to complain.
-> 
-> Whats odd the udevadm vs. systemctl?
-> 
->> (udevadm trigger before systemd daemon-reload? I'd rather do it the
->> other way round. Anyway.)
-> 
-> Why? just out of curiosity?
-
-I assume it's - if you load udev first, it can trigger systemd services 
-that don't exit yet. Thus cleaner to have systemd setup then udev 
-enabled to call it.
-
--- james
-
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNy8xOC8yMDE5IDU6MzUgUE0sIFNhZ2kgR3JpbWJlcmcgd3JvdGU6Cj4gCj4+PiArwqDCoMKg
+IGZvciAoaSA9IDA7IGkgPCBuOyBpKyspIHsKPj4+ICvCoMKgwqDCoMKgwqDCoCBpZiAoY3RybF9t
+YXRjaGVzX2Nvbm5lY3RhcmdzKGRldmljZXNbaV0tPmRfbmFtZSwgYXJncykpIHsKPj4+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIGRldm5hbWUgPSBzdHJkdXAoZGV2aWNlc1tpXS0+ZF9uYW1lKTsK
+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGlmIChkZXZuYW1lID09IE5VTEwpCj4+PiArwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGZwcmludGYoc3RkZXJyLCAibm8gbWVtb3J5IGZv
+ciBjdGxyIG5hbWUgJXNcbiIsCj4+Cj4+IG5pdHBpY2s6IHMvY3Rsci9jdHJsCj4+Cj4+IE1heWJl
+IGl0IGNhbiBiZSB1cGRhdGVkIHdoZW4gaXQgZ2V0cyBtZXJnZWQuCj4gCj4gWWVhLCBsZXRzIGNo
+YW5nZSB0aGF0IChlaXRoZXIgamFtZXMgb3Iga2VpdGgpCgpOUC4gSSdsbCBwbGFuIG9uIHBvc3Rp
+bmcgYSB2MiB3aXRoIHRoZSAyIHNtYWxsIGNvbW1lbnRzIHJlc29sdmVkICh0aGlzIApwcmludCwg
+SGFubmVzJ3Mgb3JkZXIpLgoKSSd2ZSBiZWVuIHRveWluZyB3aXRoIHR3ZWFraW5nIHRoZSBwYXJz
+ZSByb3V0aW5lcy4gSSdtIHdvbmRlcmluZyBpZiAKcGFzc2luZyB0aGUgY29ubmVjdCBhcmdzIHN0
+cmluZyB0byBjdHJsX21hdGNoZXNfY29ubmVjdGFyZ3MoKSBpcyBiZXR0ZXIgCnRoYW4gY3JlYXRp
+bmcgYSBuZXcgc3RydWN0dXJlIHRvIHBhc3MgaXQuICBJdCB3b3VsZCBtZWFuIHdlIHdvdWxkIHBh
+cnNlIAp0aGUgYmFzZSBjb25uZWN0IGFyZ3Mgc3RyaW5ncyBwZXJoYXBzIG11bHRpcGxlIHRpbWVz
+LCBidXQgaXQgc3VyZSAKbG9jYWxpemVzIHRoZSBwYXJzaW5nIHRvIHRoZSBtYXRjaGVzIHJvdXRp
+bmUgYW5kIGVsaW1pbmF0ZXMgdGhlIG5ldyAKc3RydWN0dXJlLiAgVGhvdWdodHMgPwoKLS0gamFt
+ZXMKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1udm1lIG1haWxpbmcgbGlzdApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
