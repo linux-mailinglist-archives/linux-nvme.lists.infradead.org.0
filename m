@@ -2,54 +2,33 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1410A6E6DE
-	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 15:52:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DD5236EB33
+	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 21:43:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mf4VgBaXdTxlHNHwS/2EctSHALDN4Q0eHrKwEi7k6Tk=; b=P2+fueJpU6hT5q
-	/W29Gu/9ejA4ER4vfxBKoWCaU8Ze7rooj00Q4trjV0vV5NB/rT30OYOCFZAvefR6odvmGczVgq20z
-	lyMVS2F5OsYeRmtlLtNsXvK0DwwVXd6aLyUSr+fLptGOXrV4em5jKHWLCpx3RbI10wCOovds3zYtE
-	BVP/1IGJ6UT7l1Y5JJnykw0pZXHLEL+Ge3BYFgqyZqLBhkoewJ7rc4Y/UwHUmqMmyuwXTubyST5t6
-	DxOlsWtrKjOCBXvlUGRMiURifXHIcaNJ/4o5z1xsoUx6ZIU9t25B182TBLP4NesFMO3aPysDYhebV
-	phAzb1gdMhd6gzF0vu5w==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=gsjC0n7S6kiOTo4EGTWNbxU7AhgdPuCz7S6SOJ/7SUw=; b=WDe
+	oaJIIw3OgvxLZHGPy0ETPL3nJ7YpmrMVdwTReLWQDNA9Sll2+DuSPynYaK2qNXgxmSWGjLP5VJ452
+	p1crLsK2Hj0LRaJpoBMgTGe+8Sksf6Z79lo29cmlT8v/sPlbqBV8wjIv5kbYf5QXqfLOGTGefPc1I
+	HrJRp3fHI5CX9E7JALw1Dop2sulM/5yOlOxVb3lIkoCmqRMV8qija0UNhBJgGYfNIDW3gfO99qnIO
+	g6XbcFjUp9fmCH3D9jkdafeasEnOTosw3Nx84961/WfwRhgweYowppgEBy2Jo78HVP1pzN9QafEvA
+	tDN0AvDvm6YxJcUt84opjyG7hddFQQQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hoTJ5-0003Lm-KC; Fri, 19 Jul 2019 13:52:19 +0000
-Received: from gate.crashing.org ([63.228.1.57])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hoTIx-0003LK-7o
- for linux-nvme@lists.infradead.org; Fri, 19 Jul 2019 13:52:12 +0000
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by gate.crashing.org (8.14.1/8.14.1) with ESMTP id x6JDpvjO023083;
- Fri, 19 Jul 2019 08:51:58 -0500
-Message-ID: <91ef44522140bf83720f6c377648b307964d34e4.camel@kernel.crashing.org>
-Subject: Re: [PATCH v3] nvme-pci: Support shared tags across queues for
- Apple 2018 controllers
-From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-To: Christoph Hellwig <hch@lst.de>
-Date: Fri, 19 Jul 2019 23:51:56 +1000
-In-Reply-To: <20190719122859.GA30193@lst.de>
-References: <b1f9bdf0294b8d87d292de3c7462c8e99551b02d.camel@kernel.crashing.org>
- <20190719122859.GA30193@lst.de>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
-Mime-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190719_065211_428957_C10F0DC9 
-X-CRM114-Status: UNSURE (   8.05  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [63.228.1.57 listed in list.dnswl.org]
- 0.0 T_SPF_HELO_PERMERROR   SPF: test of HELO record failed (permerror)
- 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
+	id 1hoYmZ-0006pj-U6; Fri, 19 Jul 2019 19:43:07 +0000
+Received: from [2600:1700:65a0:78e0:514:7862:1503:8e4d]
+ (helo=sagi-Latitude-E7470.lbits)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
+ id 1hoYmS-0006pT-Im; Fri, 19 Jul 2019 19:43:00 +0000
+From: Sagi Grimberg <sagi@grimberg.me>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme-pci: fix probe and remove race
+Date: Fri, 19 Jul 2019 12:42:56 -0700
+Message-Id: <20190719194256.23618-1-sagi@grimberg.me>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,29 +40,81 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, linux-kernel@vger.kernel.org,
- Paul Pawlowski <paul@mrarm.io>, Jens Axboe <axboe@fb.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, linux-nvme@lists.infradead.org,
- Keith Busch <kbusch@kernel.org>
+Cc: Keith Busch <keith.busch@intel.com>, lizhongfs@gmail.com,
+ Christoph Hellwig <hch@lst.de>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, 2019-07-19 at 14:28 +0200, Christoph Hellwig wrote:
-> Yikes, that things looks worse and worse.  I think at this point
-> we'll
-> have to defer the support to 5.4 unfortunately as it is getting more
-> and more involved..
+It is possible that nvme_remove() being ran concurrently with
+nvme_reset_work(), with following sequence:
 
-Well, at least v3 of that patch, thanks to Damien's idea, isn't
-particularly invasive and I've hammered the SSD with it over night with
-a combination of IOs and smart commands, it's solid.
+nvme_probe()
+  nvme_init_ctrl()
+    //set to NEW
+  nvme_async_probe()
+                                                      nvme_remove()
+                                                        //can not change to
+                                                        //DELETING from NEW
+    nvme_reset_ctrl_sync()
+        nvme_reset_ctrl()
+          //change from NEW
+          //to RESETTING
+                                                       flush reset_work()
+                                                       //not yet queued
+          queue reset_work
+            nvme_reset_work()
+              ....                                     ....
 
-But if you prefer waiting for 5.4, no worries.
+With the above running concurrently, then it is possible to cause some
+strange issues, like kernel crash with illegal memory accessing
+or something like:
+kernel: pci 0000:00:1f.0: can't enable device: BAR 0
+ [mem 0xc0000000-0xc0003fff] not claimed
 
-Cheers,
-Ben.
+Fix this by waiting for the async probe to complete before allowing
+remove to make forward progress.
+
+Reported-by: Li Zhong <lizhongfs@gmail.com>
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+---
+ drivers/nvme/host/pci.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 4b508d5e45cf..50061abe49c6 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -127,6 +127,7 @@ struct nvme_dev {
+ 	dma_addr_t host_mem_descs_dma;
+ 	struct nvme_host_mem_buf_desc *host_mem_descs;
+ 	void **host_mem_desc_bufs;
++	async_cookie_t async_probe;
+ };
+ 
+ static int io_queue_depth_set(const char *val, const struct kernel_param *kp)
+@@ -2765,7 +2766,7 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 	dev_info(dev->ctrl.device, "pci function %s\n", dev_name(&pdev->dev));
+ 
+ 	nvme_get_ctrl(&dev->ctrl);
+-	async_schedule(nvme_async_probe, dev);
++	dev->async_probe = async_schedule(nvme_async_probe, dev);
+ 
+ 	return 0;
+ 
+@@ -2810,6 +2811,8 @@ static void nvme_remove(struct pci_dev *pdev)
+ {
+ 	struct nvme_dev *dev = pci_get_drvdata(pdev);
+ 
++	/* wait for async probe to complete */
++	async_synchronize_cookie(dev->async_probe + 1);
+ 	nvme_change_ctrl_state(&dev->ctrl, NVME_CTRL_DELETING);
+ 	pci_set_drvdata(pdev, NULL);
+ 
+-- 
+2.17.1
 
 
 _______________________________________________
