@@ -2,46 +2,47 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0095F6DB97
-	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 06:10:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 04E186DB9E
+	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jul 2019 06:10:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n3q5vAJrXBFUN/OfsiMIIMaQcLTPwti1P+KEmKycJhQ=; b=G/qlhXQYM71vjn
-	km6ZLkwe/zNv3VU/1wgPilBY39TWINOPdTAzyhiF3qaINPaWXt+JXzaFq8bFJLXUlUjR3Bojdld9m
-	hh7MZuIJYo7K7Bo1J5TOQEtSNracDcWsKxH2esbeFH1OlN6D64X/AdVsJWtKHkioe6Dzr+MubX2qo
-	kvqtJ+N9RmAZcfWneuAfvuIRNm1SrSRgs2pS62HZEVy3Y93V+Xzp6HbUt9p07MBxVfYjh45IoSCYN
-	CfaofCScIXd4jqGUuCUI/SBraEaE0cwugADUuXwedm5q/JM6uDeAAAZV5wSB7k6dh+0iv6qj8CecW
-	qyrRPWJKCp/l+Wm8P+Lg==;
+	List-Owner; bh=37ypNdHX237F59G8UQaJqeqez+X7J/s2Ropx/UkgIAM=; b=BVhG1/MYQfkPC5
+	IDgvQVn1HBougXEMUTr5QUucH96DfVEFuxSNy3eT2DrL/mxpT1RwVEE0Nyom1/hAG24ntdOCIEtDb
+	vyv5QQvv5jwj3Qe6Sxml5X6sJ1PrygfXYsOsKjK/aYPYCo6rrMYo8uiNTwclP9UpuSBhiJ6XWFkck
+	F0xsbtU83qPGPLsiFptOmhGNpKddClMNkVTgQ5XYeELVuehAq+sfRIdWVQcp/y4CF7TN+5mclU0VM
+	ZTvBGRGlhsS7Q6KvfZUbcq85XzsDtyhEu+OOUSAIDQLXpghdczpPharKInJindDTDDWqOpl8+1PfB
+	aiL3+BqPDkGMY3d37Mwg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hoKDT-0004jM-SA; Fri, 19 Jul 2019 04:09:57 +0000
+	id 1hoKDu-0004tD-F8; Fri, 19 Jul 2019 04:10:22 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hoK9z-0002wl-IY; Fri, 19 Jul 2019 04:06:22 +0000
+ id 1hoKA0-0002xV-I9
+ for linux-nvme@lists.infradead.org; Fri, 19 Jul 2019 04:06:23 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E4E9021852;
- Fri, 19 Jul 2019 04:06:17 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0BEA8218BC;
+ Fri, 19 Jul 2019 04:06:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1563509178;
- bh=chNTen6JXbK3wZOrgnl+fXOyxD3HJQ6t0xrmB/mIbpM=;
+ s=default; t=1563509179;
+ bh=A6R18evUCaptpdOweBZB//YzgLJ/mugOzxrSr/UlB6Y=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=p+y7U4JAlWGLgp/G9Ias1hFBcYWqguZRDzBlSZ/mZ9bai0ekNoRhuGkcOqV/a3W3N
- GjINBPqEgFnI8+FnUOvPX01CVxbDPbVtDA+FBQukia1ZKYG9pn9Kd3Je77M4o/t1tm
- EgCaqxfvAEl4of8fxlPDbLP9Tz4ogWtR+31BmmJY=
+ b=VF58oREiyDeR0tygmVU9U9dn+Q15jACOavh/jgwMD7+d/iWLQswQk58yUlpABqZyo
+ WsDFP3S7NOHMB38Rb7qjZ3WCo8uMdAm+8gW6ZwcyktVKCyfgu0OwKwjzV5E679uRmh
+ c+FQsSko4Ic/rBmc7iQmS4G7qARfCOAFHsKku6BE=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.1 108/141] nvme-pci: check for NULL return from
- pci_alloc_p2pmem()
-Date: Fri, 19 Jul 2019 00:02:13 -0400
-Message-Id: <20190719040246.15945-108-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.1 109/141] nvme-pci: limit max_hw_sectors based on
+ the DMA max mapping size
+Date: Fri, 19 Jul 2019 00:02:14 -0400
+Message-Id: <20190719040246.15945-109-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190719040246.15945-1-sashal@kernel.org>
 References: <20190719040246.15945-1-sashal@kernel.org>
@@ -49,8 +50,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190718_210619_803476_5DCAD48F 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20190718_210620_813517_6C401527 
+X-CRM114-Status: GOOD (  11.66  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -79,61 +80,46 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Alan Mikhak <alan.mikhak@sifive.com>,
- linux-riscv@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
- linux-nvme@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, Atish Patra <Atish.Patra@wdc.com>,
+ Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Alan Mikhak <alan.mikhak@sifive.com>
+From: Christoph Hellwig <hch@lst.de>
 
-[ Upstream commit bfac8e9f55cf62a000b643a0081488badbe92d96 ]
+[ Upstream commit 7637de311bd2124b298a072852448b940d8a34b9 ]
 
-Modify nvme_alloc_sq_cmds() to call pci_free_p2pmem() to free the memory
-it allocated using pci_alloc_p2pmem() in case pci_p2pmem_virt_to_bus()
-returns null.
+When running a NVMe device that is attached to a addressing
+challenged PCIe root port that requires bounce buffering, our
+request sizes can easily overflow the swiotlb bounce buffer
+size.  Limit the maximum I/O size to the limit exposed by
+the DMA mapping subsystem.
 
-Makes sure not to call pci_free_p2pmem() if pci_alloc_p2pmem() returned
-NULL, which can happen if CONFIG_PCI_P2PDMA is not configured.
-
-The current implementation is not expected to leak since
-pci_p2pmem_virt_to_bus() is expected to fail only if pci_alloc_p2pmem()
-returns null. However, checking the return value of pci_alloc_p2pmem()
-is more explicit.
-
-Signed-off-by: Alan Mikhak <alan.mikhak@sifive.com>
 Signed-off-by: Christoph Hellwig <hch@lst.de>
+Reported-by: Atish Patra <Atish.Patra@wdc.com>
+Tested-by: Atish Patra <Atish.Patra@wdc.com>
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/pci.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+ drivers/nvme/host/pci.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 693f2a856200..b97ba5ea0e61 100644
+index b97ba5ea0e61..5112983a59fb 100644
 --- a/drivers/nvme/host/pci.c
 +++ b/drivers/nvme/host/pci.c
-@@ -1471,11 +1471,15 @@ static int nvme_alloc_sq_cmds(struct nvme_dev *dev, struct nvme_queue *nvmeq,
- 
- 	if (qid && dev->cmb_use_sqes && (dev->cmbsz & NVME_CMBSZ_SQS)) {
- 		nvmeq->sq_cmds = pci_alloc_p2pmem(pdev, SQ_SIZE(depth));
--		nvmeq->sq_dma_addr = pci_p2pmem_virt_to_bus(pdev,
--						nvmeq->sq_cmds);
--		if (nvmeq->sq_dma_addr) {
--			set_bit(NVMEQ_SQ_CMB, &nvmeq->flags);
--			return 0; 
-+		if (nvmeq->sq_cmds) {
-+			nvmeq->sq_dma_addr = pci_p2pmem_virt_to_bus(pdev,
-+							nvmeq->sq_cmds);
-+			if (nvmeq->sq_dma_addr) {
-+				set_bit(NVMEQ_SQ_CMB, &nvmeq->flags);
-+				return 0;
-+			}
-+
-+			pci_free_p2pmem(pdev, nvmeq->sq_cmds, SQ_SIZE(depth));
- 		}
- 	}
+@@ -2538,7 +2538,8 @@ static void nvme_reset_work(struct work_struct *work)
+ 	 * Limit the max command size to prevent iod->sg allocations going
+ 	 * over a single page.
+ 	 */
+-	dev->ctrl.max_hw_sectors = NVME_MAX_KB_SZ << 1;
++	dev->ctrl.max_hw_sectors = min_t(u32,
++		NVME_MAX_KB_SZ << 1, dma_max_mapping_size(dev->dev) >> 9);
+ 	dev->ctrl.max_segments = NVME_MAX_SEGS;
+ 	mutex_unlock(&dev->shutdown_lock);
  
 -- 
 2.20.1
