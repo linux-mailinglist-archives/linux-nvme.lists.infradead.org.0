@@ -2,81 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9FDC6F0C2
-	for <lists+linux-nvme@lfdr.de>; Sat, 20 Jul 2019 23:15:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1EC136F0C4
+	for <lists+linux-nvme@lfdr.de>; Sat, 20 Jul 2019 23:19:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=ygvG2CrrgZvbCj7szQB81EXnDJK81e2g3ks8VX/ylmQ=; b=kQV6yvAqmKvOK/
-	WxOvDR97VBBTOSv6GeH5S1o98FKn7671/NuJ3m7lNLFc5c9HsGRKUpVFVOnUiE4zDQD5iE2iKPpm/
-	BmTLtghplQdpidoiADAnETdBsOELJ+TSE62gUmx2mGRwMx1a2dl5vRRkm2c8YQNcyAJlG7mqmSYCj
-	GOsU6Ypmakz/JxriPqGtOi53ZuQh+iQnVQgFt0lc54zKF1cBVN5zsZ6aeyDi5S1PnK1ltvM+M1/iG
-	t/o8uzxBAw2QXowp8jMmhIV33IFBKw7eSRVI9jvQ4UwZIbywWjBfgk/YdqKCKggP+YyTZKkBC1rGe
-	bMIu8dnVwgeT5MwXWhAw==;
+	List-Owner; bh=35WQvyuYIzgp4TpGmkrRbK+QP9+i1b2YrNrlpzHVwtI=; b=EnXxZzhB4/ReM+
+	NDOF++j68Q42FqAUTJs0Yzn/iAZD0IjlPuGfLbx2ZXBrxyxfJKgulyCWJ2kUqsDLyc0OL/eFmJbrM
+	f2LAMxGWUAyOFVvYHIaypfW86Q17UJuC2FyBeQgHxWuSCIk3meEmQFvb6f0gD3nGf7N1iJEtyKImF
+	vWae6YgJ/7WoMMsJfpvQfnf3u4F8+u2s3ahMd7uMDbP3/WsM1HDGViparzPyMNojpFk4g9BrJFPtx
+	NLyxwidhtULVEx4SsJ6d26NQDaonS1wxhuxRMKku+AWbzJ1a181fEb2PNp3HAlEHGXuK57f38d3yi
+	5S7KDDuYEyS2CK64KA7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1howhX-0006tt-Ho; Sat, 20 Jul 2019 21:15:34 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1howkt-0007Bz-UF; Sat, 20 Jul 2019 21:19:02 +0000
+Received: from esa2.hgst.iphmx.com ([68.232.143.124])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1howhP-0006tM-Et
- for linux-nvme@lists.infradead.org; Sat, 20 Jul 2019 21:15:25 +0000
+ id 1howkf-0007BS-9K
+ for linux-nvme@lists.infradead.org; Sat, 20 Jul 2019 21:18:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1563657323; x=1595193323;
+ t=1563657547; x=1595193547;
  h=from:to:cc:subject:date:message-id:references:
  content-transfer-encoding:mime-version;
- bh=/xwauXEa8/puIhsRf/wMukcjU8hFhnT/VY9N6srYDoY=;
- b=rNpGidS3Uew+cKDhuaxVV0Or+bZaY2+Xl2+LOVp52f/qtEa70h8OHYXK
- TgXgqFQOX+WKWnUqGsxOtU3Z6dwtprtH5xN7jHCE3BHabQJF/5nos0AG2
- m0XIHWxzodvxykCm92sn9a5J53pGX5eHKTW5m8iwRn1a4LPVSv5a82wT2
- IzI2CR65Kpbpj391AJE36GKxNXuuBqtUksCcNHq8iRBR5qgNUNTANI+7G
- tAkvQI/2ZcCqdOG9ycE0WCGMmH/SbPaW39atXKwMwAn08jBSXC6MuTX1r
- 9zP5fbAwFxacw/+YHAEmYyPwsKpdpQ/lk+bA+IkJKdaHkzjtAxAdBWTfh Q==;
-IronPort-SDR: jQGD2hkXHIlePOy2N8TUIWmRGJcfsw58MUkNYliz10EYZmQZnbwC7ASgAC7tFdLHqeMXIioMYi
- NU+omrRjSiyKu7FIJdtU0GNJBIpxmdeK6gQ2xJyIAdkYg+ApL9y/w+Yw/qXL337VeHsoHbYD1h
- HcFw7QgcwI0OnwlsheSSF+EFx3PZz3bMDBFYhTlH+HweB+mzdVwFe0cBdpZtd/xvIADEul6Ofj
- GTcAi+rbZXPFvz+UnEAwSRVl57mO5GIL7zT3ONJdHw0J9u3gSmk8jQ5QqdAm0ljKdKzyzBO6ei
- 5yU=
-X-IronPort-AV: E=Sophos;i="5.64,288,1559491200"; d="scan'208";a="118340474"
+ bh=eXB1Rgx7xPFGGppnfxccClaNz3c7DJ5h98N3ln2xQ0Q=;
+ b=d89kGTOfAeB/Kh9DA3xAZifixsHl/ue61oBISsglrIVEDl22SAwT54pK
+ WqREPAAUEKee0AKRBLdA3+dN1jWwDRKmJvfZszYte/FpiKvv0bL/G2s+X
+ WUqlOwdrelZ+Tgbt+4qKqISn+2x0D2Nsk+qd2xHmAohWXPvgyyyfr+N0O
+ SneTVxKxDYIkB1Kt7440sz2+bwnn6jM+S3/KBoeo0clkoYTsPhjqv1smI
+ RinBgr3C9XFRY6xKSjwU0d8gv6PKQoDodrJOiZDOe8PODZYitNBhQJ89I
+ dKit8Ziim0XNFZJkS1SKVe1EfTrjRZ2m5KurhfJBh3iyFX9sHikJiheoN Q==;
+IronPort-SDR: HHB5ifEtAveoaqV3Bgw6SbrU3knKU000ytUGfjVGJxw98mYTNv1dIQirUV6QRVVo2UGNooK1Tx
+ rf/Wj9zJuw7O+A3aQMxLjX9P+Wq0vBturFvyqc76JRHiJXEaPD51WCWT4vYBtGwVeIw9gW6XB2
+ lXYA95KljahmGWmqFubhrzdIJKawelU6XmZS9XrFNHldhL6GFDy2R136sgkqsDdYRL8Cy6KJzE
+ tTL95HSOfoMjP3lTm9B7gFXSQGr7GX2ZlFcjAM3LYUSgtJI/JSAQKLvdAl9IH/820VqXrq54Vr
+ dWg=
+X-IronPort-AV: E=Sophos;i="5.64,288,1559491200"; d="scan'208";a="213624243"
 Received: from mail-dm3nam03lp2055.outbound.protection.outlook.com (HELO
  NAM03-DM3-obe.outbound.protection.outlook.com) ([104.47.41.55])
- by ob1.hgst.iphmx.com with ESMTP; 21 Jul 2019 05:15:15 +0800
+ by ob1.hgst.iphmx.com with ESMTP; 21 Jul 2019 05:19:01 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NFZ+vJgWjIDzqaP5Up1izat4ad+VytoXHzGhagzP1o+ZRlz+KjH+p4VijuxKLEoqqo0NYs5ifLsx0W8+FgcOoHj3qnEURtIV7LktstVFf5QsIVm2tqOu9gBH0eRjc5p5d6ARZOSTxhNvgfD7a1UqigHGqoYjBaZ93AVIlMhD1z0DRHvyXwKts8VQ+SR7HVby39EIR+oW52aGmbMyRGHhenmLnUCMjqs7PXlLDK+Tlq3NxuUguOfItKjUUzYQMWvENM0N+vV9XlRfshwLCSiZrMP9N51OBPQcyYz+C0Sw1VJ/xu4j3a5tze6Gr8GcKBEFvzK/FbR4b5izqUIMk/495w==
+ b=DrMZ/HApoQjp9+6piaBx7tXah4egBC6nVn9lxkO+sQrvDh1FyJACgqDZn84dbO3j1KNcERzx8O1mRbtwn1TgzLP4Hu8U0DNrO/RYJdK0JItlwxTOwEgspKI14yBVkCVjlsNA+TlE5y8K0rybzo1VZB/2ictoH2H9REcFnY79puMdTNjWO0guL6/l0cr3wcA1CQRxkZ/3q2iLN9CTn9oZnJFLYUk+D4gPWB3os7NItCutLTPEqB/EQvVF5coSsqe1vc1jmmRPZa+uLB9obror4OLCYlZ8bbDwldkZ2+qjd36Lb32u2lN/K2AH7I026NRr+hUgv8DwgqQLUV9nt9L0dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sJHOTwGbVsDrmRacXORDVi2gwXrxi7g83l0kP/dPbH0=;
- b=h9EbOXJGyFzme5z5HE/eNSJhVVKXgXObB5wAgMZiZ0xjEpHF3bbrI8KjMaajXzE9Fp655C0GXTWl3jam8N1Kn2y2rDzjCU6GaVS5lvsnu/B+mGGbm9E5tvIcMwHQSrqQr5lrlZEAVMIBe9lX+HOBrKep7EvKNJUCsO9ueis2ZXztqc5pxTDC+fFPaWbDULfYIrkDf9Yb9ojVAtK3Ht6b2iZHO3UNfd4tyj+ehAhfhoznEPI8MY97kD8zYNz5LD+Glj6tgfaJJMBkE/p6fv7CvlLQy+9TkUalwulraIteTR0uXGvx2ORR1mz8QPNrKyg97oLF0KEJq4LdCjXgUs2zZw==
+ bh=yq0sY15KzesGB610iyTQZFfnCCxRZ0eOfufItjHir8U=;
+ b=NKadVkvZEBupez+M3jp1Ew4NqBsMstX+9OPC/fkOaEd6+jLQti7mRgsh4+l6H+NT2rxjEJUSSQuWQZ4Rut/SR/ZKISheIznK3JpMJtOQKT94T3dccEKzJY6ZrOBWUdM/oIzYXvSeioAlrItX/dbDAh7zMNbvbEf1PNhg19JIY6eqxnBhLt3JPxtyofo/Bm+Mbyj8kYa1P5oALiOfqCLHuxLVUyEEXQz5SYrKafi+iOn66LLcGR1YwzCES8lHj+4al6kLNUwsYMK6IxCjTAdqnFcd0iMrbuJlP6ioE3cTmbWpo3mt0/9keeqelcOFZeAws/o2rwsIwkyf/OZ9wXtRHg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
  smtp.mailfrom=wdc.com;dmarc=pass action=none header.from=wdc.com;dkim=pass
  header.d=wdc.com;arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sJHOTwGbVsDrmRacXORDVi2gwXrxi7g83l0kP/dPbH0=;
- b=ffoiBRBI1NXwZ92Jb6x+S57HCtAQ5r3x4Agu8Ilhf8y8vD3CSOwqD8dhKP3oIEQgUcVb25PoCksi/+rXj/6mEpLDorrWxVhyxV8EHxaVUqE8yLQl0nyOiY3SmG4UkdFUDvNXDo/y6sIh+SrZjW49htxzvkP3/lewjI6TTKixjjk=
+ bh=yq0sY15KzesGB610iyTQZFfnCCxRZ0eOfufItjHir8U=;
+ b=ROi7nKzcVIvJ8I/aioV22eYgr4QPrDnES3rSdrOMFDGD3LbS1i666OJO+LLTT9o24M+DqjY5ixk3/XRpug+76U9Vivc/dEAYbSVMAFl+u1eUSQNtBJen1U1tf//okVATSIp+RRApOrcs5RCrwkiYoIbAdBT4Gfs43BAmtOzEfy0=
 Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.58.26) by
  BYAPR04MB3846.namprd04.prod.outlook.com (52.135.214.29) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2094.12; Sat, 20 Jul 2019 21:15:14 +0000
+ 15.20.2094.12; Sat, 20 Jul 2019 21:18:39 +0000
 Received: from BYAPR04MB5749.namprd04.prod.outlook.com
  ([fe80::8025:ccea:a0e6:9078]) by BYAPR04MB5749.namprd04.prod.outlook.com
  ([fe80::8025:ccea:a0e6:9078%5]) with mapi id 15.20.2094.013; Sat, 20 Jul 2019
- 21:15:14 +0000
+ 21:18:39 +0000
 From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
 To: Sagi Grimberg <sagi@grimberg.me>, "linux-nvme@lists.infradead.org"
  <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH 1/4] nvme: have nvme_init_identify set ctrl->cap
-Thread-Topic: [PATCH 1/4] nvme: have nvme_init_identify set ctrl->cap
-Thread-Index: AQHVPmqb4Tld6IhZVU2rJnEDb42L9w==
-Date: Sat, 20 Jul 2019 21:15:14 +0000
-Message-ID: <BYAPR04MB57496536D23B276FA3E9BFDA86CA0@BYAPR04MB5749.namprd04.prod.outlook.com>
+Subject: Re: [PATCH 2/4] nvme: move sqsize setting to the core
+Thread-Topic: [PATCH 2/4] nvme: move sqsize setting to the core
+Thread-Index: AQHVPmqq++qeZJLAMkSr7ZokVouoAA==
+Date: Sat, 20 Jul 2019 21:18:39 +0000
+Message-ID: <BYAPR04MB5749A02F2DE52E8392786E8F86CA0@BYAPR04MB5749.namprd04.prod.outlook.com>
 References: <20190719194546.24229-1-sagi@grimberg.me>
- <20190719194546.24229-2-sagi@grimberg.me>
+ <20190719194546.24229-3-sagi@grimberg.me>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -85,42 +85,42 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
 x-originating-ip: [199.255.45.63]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 269549d7-afdb-4140-be06-08d70d575ba0
+x-ms-office365-filtering-correlation-id: 23fbb195-0055-44f4-b884-08d70d57d5b0
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
  SRVR:BYAPR04MB3846; 
 x-ms-traffictypediagnostic: BYAPR04MB3846:
-x-microsoft-antispam-prvs: <BYAPR04MB3846EB31E253F13355A8A2B486CA0@BYAPR04MB3846.namprd04.prod.outlook.com>
+x-microsoft-antispam-prvs: <BYAPR04MB3846A3164BFD5AE1E62EC10686CA0@BYAPR04MB3846.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:419;
+x-ms-oob-tlc-oobclassifiers: OLM:3631;
 x-forefront-prvs: 0104247462
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(396003)(376002)(39860400002)(136003)(346002)(366004)(189003)(199004)(52536014)(76116006)(66066001)(6116002)(3846002)(6436002)(71200400001)(86362001)(71190400001)(316002)(5660300002)(81166006)(229853002)(81156014)(8936002)(54906003)(8676002)(66446008)(64756008)(53936002)(99286004)(110136005)(66946007)(66476007)(66556008)(74316002)(7736002)(33656002)(14454004)(4326008)(478600001)(25786009)(305945005)(68736007)(6246003)(76176011)(2906002)(7696005)(55016002)(9686003)(2501003)(256004)(486006)(6506007)(53546011)(186003)(102836004)(26005)(476003)(446003);
+ SFS:(10019020)(4636009)(366004)(346002)(136003)(376002)(39860400002)(396003)(199004)(189003)(25786009)(478600001)(6246003)(305945005)(68736007)(7736002)(33656002)(74316002)(14454004)(4326008)(53546011)(6506007)(26005)(102836004)(186003)(256004)(2501003)(486006)(446003)(476003)(2906002)(7696005)(76176011)(9686003)(55016002)(66066001)(6436002)(3846002)(6116002)(52536014)(76116006)(8936002)(54906003)(110136005)(99286004)(66556008)(66476007)(66946007)(53936002)(66446008)(8676002)(64756008)(71190400001)(86362001)(5660300002)(316002)(71200400001)(81166006)(229853002)(81156014);
  DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB3846;
  H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
+ PTR:InfoNoRecords; A:1; MX:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: L7Ue7qusWRFU3GK1wvqFBgpy/oJ4CoPh+9VZY1sgI6uu5kRqkjHGNOT5AfFsSfK1r/qfaHltyUEPkbk/1X3OL7cGKXCDjj+ITmAD32rSOpaBPu/K1WaU11MRnNDhFeFb92an+LJQWwWUcWA98T6dS8CWgmddGWnclNiAhJPrrVQz0BbpU627cDkLWKcirBfxVCly74mNZOOAz1F7HxCvab+TPrBH93np/JnP/Fdla5YrSYr+RKErkZJjMMboGzpXBiE2exxuAvuH86487QzvJLkONF/tnWQ32gIMf0siUXCCEEqxuj7l3ghUAJqEmSGEV5tZrOT8HgP2zaNPztc9GYDXlLALLkI17qghdRvZ00g+9jW/8LjgeoPzfSG8lQ1vJCsc9EPu37JGnDk0zBi9h9WCldgYJdA2qedZVa3Zln8=
+x-microsoft-antispam-message-info: 0Aj9HCJfbc5gL8sIXG7u0DSfSZv9q77HwRrWlNCGnoYAH+niEZjCBIN61QQbWsRONfBDL+ZBzlhiLSpXzYxZGNKdvNuPvs44/rGx8Xu7QTfiHRLzHvnUPfqFK3iEHSWq+beqmpnxxPG0ixe0/OngREgQ9QjcphzGhcZdZ6QSyntKE2vQsVeZ5/4nLvblPLrvQ6q2xwO7hV1XQ8oI2l4EMKBb4+HLOxrDqC1fIXFW8xXdCvX6d4xpn0jKY4O3/I3do5OEyABTCHE0v5oxO2N/fEk38x30TzuWpj7gCt/UNYu/QgN7LcsfXOozp7a5kzV4hu+pTjlyshzkS55d4xB5WnVVrYRjqE7fZiKt1h7d8p5kvjzbn4Gtme1Wcsm342dx2XJjFyXeoMB4SdIeBHmNsjdTi2j5ynp9FMWKJqj3Zq4=
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 269549d7-afdb-4140-be06-08d70d575ba0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Jul 2019 21:15:14.6141 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 23fbb195-0055-44f4-b884-08d70d57d5b0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Jul 2019 21:18:39.3429 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
 X-MS-Exchange-CrossTenant-userprincipalname: Chaitanya.Kulkarni@wdc.com
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB3846
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190720_141523_697054_353B15E5 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20190720_141845_435677_632FA150 
+X-CRM114-Status: GOOD (  15.37  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
+ medium trust [68.232.143.124 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -150,45 +150,129 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 Looks good to me.
 
 Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+
 On 07/19/2019 12:46 PM, Sagi Grimberg wrote:
-> No need to use a stack cap variable.
+> nvme_init_identify reads the cap register right after, so
+> no need to do that locally in the transport driver.
 >
 > Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 > ---
->   drivers/nvme/host/core.c | 7 +++----
->   1 file changed, 3 insertions(+), 4 deletions(-)
+>   drivers/nvme/host/core.c   |  1 +
+>   drivers/nvme/host/fc.c     | 10 ----------
+>   drivers/nvme/host/pci.c    |  1 +
+>   drivers/nvme/host/rdma.c   | 11 -----------
+>   drivers/nvme/host/tcp.c    |  9 ---------
+>   drivers/nvme/target/loop.c | 10 ----------
+>   6 files changed, 2 insertions(+), 40 deletions(-)
 >
 > diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index 76cd3dd8736a..058e06e40df8 100644
+> index 058e06e40df8..da4182aa16b0 100644
 > --- a/drivers/nvme/host/core.c
 > +++ b/drivers/nvme/host/core.c
-> @@ -2563,7 +2563,6 @@ static int nvme_get_effects_log(struct nvme_ctrl *ctrl)
->   int nvme_init_identify(struct nvme_ctrl *ctrl)
->   {
->   	struct nvme_id_ctrl *id;
-> -	u64 cap;
->   	int ret, page_shift;
->   	u32 max_hw_sectors;
->   	bool prev_apst_enabled;
-> @@ -2574,15 +2573,15 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+> @@ -2579,6 +2579,7 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
 >   		return ret;
 >   	}
->
-> -	ret = ctrl->ops->reg_read64(ctrl, NVME_REG_CAP, &cap);
-> +	ret = ctrl->ops->reg_read64(ctrl, NVME_REG_CAP, &ctrl->cap);
->   	if (ret) {
->   		dev_err(ctrl->device, "Reading CAP failed (%d)\n", ret);
->   		return ret;
->   	}
-> -	page_shift = NVME_CAP_MPSMIN(cap) + 12;
-> +	page_shift = NVME_CAP_MPSMIN(ctrl->cap) + 12;
+>   	page_shift = NVME_CAP_MPSMIN(ctrl->cap) + 12;
+> +	ctrl->sqsize = min_t(int, NVME_CAP_MQES(ctrl->cap), ctrl->sqsize);
 >
 >   	if (ctrl->vs >= NVME_VS(1, 1, 0))
-> -		ctrl->subsystem = NVME_CAP_NSSRC(cap);
-> +		ctrl->subsystem = NVME_CAP_NSSRC(ctrl->cap);
+>   		ctrl->subsystem = NVME_CAP_NSSRC(ctrl->cap);
+> diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
+> index 1a391aa1f7d5..67d420bd79f6 100644
+> --- a/drivers/nvme/host/fc.c
+> +++ b/drivers/nvme/host/fc.c
+> @@ -2647,16 +2647,6 @@ nvme_fc_create_association(struct nvme_fc_ctrl *ctrl)
+>   	 * prior connection values
+>   	 */
 >
->   	ret = nvme_identify_ctrl(ctrl, &id);
->   	if (ret) {
+> -	ret = nvmf_reg_read64(&ctrl->ctrl, NVME_REG_CAP, &ctrl->ctrl.cap);
+> -	if (ret) {
+> -		dev_err(ctrl->ctrl.device,
+> -			"prop_get NVME_REG_CAP failed\n");
+> -		goto out_disconnect_admin_queue;
+> -	}
+> -
+> -	ctrl->ctrl.sqsize =
+> -		min_t(int, NVME_CAP_MQES(ctrl->ctrl.cap), ctrl->ctrl.sqsize);
+> -
+>   	ret = nvme_enable_ctrl(&ctrl->ctrl, ctrl->ctrl.cap);
+>   	if (ret)
+>   		goto out_disconnect_admin_queue;
+> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+> index bb970ca82517..0f38c1d96d19 100644
+> --- a/drivers/nvme/host/pci.c
+> +++ b/drivers/nvme/host/pci.c
+> @@ -2316,6 +2316,7 @@ static int nvme_pci_enable(struct nvme_dev *dev)
+>
+>   	dev->q_depth = min_t(int, NVME_CAP_MQES(dev->ctrl.cap) + 1,
+>   				io_queue_depth);
+> +	dev->ctrl.sqsize = dev->q_depth - 1; /* 0's based queue depth */
+>   	dev->db_stride = 1 << NVME_CAP_STRIDE(dev->ctrl.cap);
+>   	dev->dbs = dev->bar + 4096;
+>
+> diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+> index 7b074323bcdf..8e9f0fd5b01f 100644
+> --- a/drivers/nvme/host/rdma.c
+> +++ b/drivers/nvme/host/rdma.c
+> @@ -809,17 +809,6 @@ static int nvme_rdma_configure_admin_queue(struct nvme_rdma_ctrl *ctrl,
+>   	if (error)
+>   		goto out_cleanup_queue;
+>
+> -	error = ctrl->ctrl.ops->reg_read64(&ctrl->ctrl, NVME_REG_CAP,
+> -			&ctrl->ctrl.cap);
+> -	if (error) {
+> -		dev_err(ctrl->ctrl.device,
+> -			"prop_get NVME_REG_CAP failed\n");
+> -		goto out_stop_queue;
+> -	}
+> -
+> -	ctrl->ctrl.sqsize =
+> -		min_t(int, NVME_CAP_MQES(ctrl->ctrl.cap), ctrl->ctrl.sqsize);
+> -
+>   	error = nvme_enable_ctrl(&ctrl->ctrl, ctrl->ctrl.cap);
+>   	if (error)
+>   		goto out_stop_queue;
+> diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+> index 8d4965031399..fba80dc61ce1 100644
+> --- a/drivers/nvme/host/tcp.c
+> +++ b/drivers/nvme/host/tcp.c
+> @@ -1721,15 +1721,6 @@ static int nvme_tcp_configure_admin_queue(struct nvme_ctrl *ctrl, bool new)
+>   	if (error)
+>   		goto out_cleanup_queue;
+>
+> -	error = ctrl->ops->reg_read64(ctrl, NVME_REG_CAP, &ctrl->cap);
+> -	if (error) {
+> -		dev_err(ctrl->device,
+> -			"prop_get NVME_REG_CAP failed\n");
+> -		goto out_stop_queue;
+> -	}
+> -
+> -	ctrl->sqsize = min_t(int, NVME_CAP_MQES(ctrl->cap), ctrl->sqsize);
+> -
+>   	error = nvme_enable_ctrl(ctrl, ctrl->cap);
+>   	if (error)
+>   		goto out_stop_queue;
+> diff --git a/drivers/nvme/target/loop.c b/drivers/nvme/target/loop.c
+> index 9e211ad6bdd3..d901a019e3a2 100644
+> --- a/drivers/nvme/target/loop.c
+> +++ b/drivers/nvme/target/loop.c
+> @@ -369,16 +369,6 @@ static int nvme_loop_configure_admin_queue(struct nvme_loop_ctrl *ctrl)
+>
+>   	set_bit(NVME_LOOP_Q_LIVE, &ctrl->queues[0].flags);
+>
+> -	error = nvmf_reg_read64(&ctrl->ctrl, NVME_REG_CAP, &ctrl->ctrl.cap);
+> -	if (error) {
+> -		dev_err(ctrl->ctrl.device,
+> -			"prop_get NVME_REG_CAP failed\n");
+> -		goto out_cleanup_queue;
+> -	}
+> -
+> -	ctrl->ctrl.sqsize =
+> -		min_t(int, NVME_CAP_MQES(ctrl->ctrl.cap), ctrl->ctrl.sqsize);
+> -
+>   	error = nvme_enable_ctrl(&ctrl->ctrl, ctrl->ctrl.cap);
+>   	if (error)
+>   		goto out_cleanup_queue;
 >
 
 
