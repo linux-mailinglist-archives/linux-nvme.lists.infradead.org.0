@@ -2,73 +2,74 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C666B6EE53
-	for <lists+linux-nvme@lfdr.de>; Sat, 20 Jul 2019 09:59:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D3DD56EE55
+	for <lists+linux-nvme@lfdr.de>; Sat, 20 Jul 2019 10:00:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xD5kCloaysVCno2RwgFCEcw2eG8ZXYB2fR772ou/qm8=; b=Ld4CsG9bl4Wcql
-	+57AS/yLZ2nWt8O+vajUvPhzyHRH/DxoAMsxsDAnR8XcOP0qZKQBJMKHlcFc/VWLcANQAlwwhC8aH
-	HdDepgKt1t2RVu8KwhQjgQ0SQGxos5lqaWBjisEnBpVanhmZw251G3RqgcvsGGK33ITwLW0PToFmW
-	/EV5QtvsBhT1OEvZdNibunsRxPj/L28nGg8egrjQd9GVznqBmPYWKM66pqmKDnB3t7pg8GPcXqnQp
-	YWtkuV5eOa3ACcb8mdvEAjW0m4lDX+Xtj09MqgqmBz/vuISyWQTrin3c+SkMyKIYla3/PJmlc2n4o
-	wDw6fT/ZRu21SnH6z7OA==;
+	List-Owner; bh=8By9DAlQe9ZpKI4GKciLs6vkgIYAW26C1sD12jrPQ0E=; b=maRt7u+abxyy29
+	7+hIQ/AyeKeqBXLzwMcdL0sKCS/CgrjPG0hrJDerVRWf8BdE1spVg7rp6edvJwPCdY4SwQ1XKmpYX
+	MOkek8lfJy2ZlhXcipHw9jP+YEUXZjf/EW7rBGDqvORlGlTT6Aic31KGjcOJajkKQcX6Qmq81bNhF
+	mMgGnVkt9to68JU9Qbu7zE6Rms1TP8wPSVs6anliCbI5Z23VoW5hta8Nf9PJl9CkK2SOz53ThBNQx
+	8iKBKo30klL4lvVaDvqNz5FkzYObO+yrTlKWV7R/xwEJMh6cH1c7vuTBMdU0JcxVcHJP4dUeKBnYs
+	lfZKTce6KigfoO6UwEjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hokHK-0000cl-44; Sat, 20 Jul 2019 07:59:38 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1hokI3-00024B-Ea; Sat, 20 Jul 2019 08:00:23 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hokH9-0000cD-Qu
- for linux-nvme@lists.infradead.org; Sat, 20 Jul 2019 07:59:29 +0000
-Received: by mail-pf1-x444.google.com with SMTP id u14so15166723pfn.2
- for <linux-nvme@lists.infradead.org>; Sat, 20 Jul 2019 00:59:27 -0700 (PDT)
+ id 1hokHu-00023u-4U
+ for linux-nvme@lists.infradead.org; Sat, 20 Jul 2019 08:00:15 +0000
+Received: by mail-pf1-x443.google.com with SMTP id r1so15138914pfq.12
+ for <linux-nvme@lists.infradead.org>; Sat, 20 Jul 2019 01:00:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=aLs80WxuxfRxX9/H7O1BTGsQ44zIAvD7FiSfD7ORtWU=;
- b=hMrauXckK+M6QcnfALM3v5HP743D7eyiLXh+jdVFn9nusofbl+OCggh1QGw6clQnhe
- zGabPeHuvZsdn/QK3rRLvsdSU0HRKf0zQffDedxC8LUQ6oaXJ6VHCA+Yzd35u9oxlRLC
- MAcSDU0H/hyO2L8fylllA71jzZZ11cJHIQc49l3nd9ybuXx2fXzUTIdTwnVF5xGrXsmd
- nUhIuxORbSdidYUFjU/Bz5jLBC65KEdIMSpG9wW0TMmpN5q/1Qp5XX499Z9gFCcBg/Xd
- 3D1VQwSk+u0RSGFI7a3gOeq3OWbhiaSChp6osrsyz2cCo8wWBLlgAVEH0eR2kb3qdclO
- l/8A==
+ bh=S1n5/5rkKojpxTQAcZHI91OsxlpkbmEKgjw090b1LMk=;
+ b=ndUUm7AstrZClaG2kra0JK3O+81yqkiZqPG4LPUuMpmCWEq3luZkZyMyyWLoImK0u3
+ x6C8WtoNX2gALxPiC6cJ7etATzfnlO+QYQxo8lqyOrOZINMA+IXBcSjrUEnipCs/Vz2O
+ tXHiW9qVxgRQ+M9TVZMHBAVFLdYN/u5YlFGkkjGi8abxSLKyzwT3xrvu81V2ZZMw+eSY
+ 6ppjDHZC/epJwJ83s5O/Uepgm5yHN9CDgRQiUe6EbLppJyvxsLhRY6fq2ASNm1hkwpBi
+ AvrZ4KoqTIjVyyQhzxXDlmZqiDv1ypKyLy+fR5G2LgUcJg49hXw0dwGFbGoa1UyEwBy7
+ YVdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=aLs80WxuxfRxX9/H7O1BTGsQ44zIAvD7FiSfD7ORtWU=;
- b=V2SXvccKZbigzZsmqR1pR9DV+andwrIWq7T20Ja8tzMWxFDPy4nVf7ZfOZ03gh37yG
- 8sH7qrc7iNWiufwec9HsbfHJ5LYr6ww0NKbOPwHfV/XpQ+agtnk8cmu4npwGzaIbf5uO
- jpU4T97/u+BI0S/XQjJO4O8FJn5KGKMkP3wUI7dupy41N2cDJSQz4xPK78/4dFO90AHX
- IJsUubk8jkWvHJdjkSv87XjaDot7+PMmDWuxE4ffZ88kYWPuUPUfMmydkbJ2EwTruVSr
- AmNha3oSpriI0pLXbHlsaFiVllGYAZoDKdpdspy78fUNvI4XcBlmpCeuZ/LzpBKJmChc
- Bx7g==
-X-Gm-Message-State: APjAAAVx+3Cr4KVC19v78z0ST0XxPEdzEi3d4TvhIZviRCLKgWDz6ox1
- Qua/71UQFdsOZz78UHscZO0=
-X-Google-Smtp-Source: APXvYqw+0gyDUIJ0uAteDKCD03DsPx8BcZJBw+2n/+u3udxC6TehHdRK8CFoHrFHaS5ad+Y2QDDT/g==
-X-Received: by 2002:a63:4c46:: with SMTP id m6mr60113151pgl.59.1563609566864; 
- Sat, 20 Jul 2019 00:59:26 -0700 (PDT)
+ bh=S1n5/5rkKojpxTQAcZHI91OsxlpkbmEKgjw090b1LMk=;
+ b=dt+zrJ1WB+aFFy6U66ngdhBDaiMp2qsAWDzeUQ94Bs6208Xx+uGtz+tJ5SeYqiven9
+ beQK0lr+OxEsT96tuyuxEIiPiTzkCLGQgbmWA76Ko4HqNNdcYPfVv1uY1K/DUPM3A2xh
+ KF0ODbwrFWP/pShae7hwowW5QOTp2lSyVO8RwqcUcPeMQYBDBrwlsaE2Jsy2Vv/4W+Qz
+ 4Q72q7ij1HuO3n93Ch0BIcqLtuQju16rhMe0nA/uYv3Pt2I5b/Kc+24S74jTN6kkguqq
+ r1IUxZQq+R/yraiMIHcN3P2LLbc8e6aMKtxNn+5PBXkg5RV1hvyLBtCkYvWFFovvvDQc
+ +liw==
+X-Gm-Message-State: APjAAAWOQlmy98nXm3dM2x3/RDo7v0vvZBj+S9J342brexFErYiuuBVI
+ a1sefK05sLSdrBYAHVAR89U=
+X-Google-Smtp-Source: APXvYqzxyl2jBJ6wARpKidTSdOZO7yihBMDOonU6Iq3xBFdABL8kLlJUidx+gMr81ITdWsFyojy/PA==
+X-Received: by 2002:a17:90a:bb8a:: with SMTP id
+ v10mr63702608pjr.78.1563609613666; 
+ Sat, 20 Jul 2019 01:00:13 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id g4sm43895211pfo.93.2019.07.20.00.59.25
+ by smtp.gmail.com with ESMTPSA id o9sm7075737pgv.19.2019.07.20.01.00.12
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 20 Jul 2019 00:59:26 -0700 (PDT)
-Date: Sat, 20 Jul 2019 16:59:23 +0900
+ Sat, 20 Jul 2019 01:00:12 -0700 (PDT)
+Date: Sat, 20 Jul 2019 17:00:10 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH 2/4] nvme: move sqsize setting to the core
-Message-ID: <20190720075923.GC22395@minwoo-desktop>
+Subject: Re: [PATCH 3/4] nvme: don't pass cap to nvme_disable_ctrl
+Message-ID: <20190720080010.GD22395@minwoo-desktop>
 References: <20190719194546.24229-1-sagi@grimberg.me>
- <20190719194546.24229-3-sagi@grimberg.me>
+ <20190719194546.24229-4-sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190719194546.24229-3-sagi@grimberg.me>
+In-Reply-To: <20190719194546.24229-4-sagi@grimberg.me>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190720_005927_899404_7AC640B0 
-X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-CacheID: sfid-20190720_010014_173576_50BDC9B3 
+X-CRM114-Status: UNSURE (   9.23  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -76,7 +77,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -107,13 +108,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-07-19 12:45:44, Sagi Grimberg wrote:
-> nvme_init_identify reads the cap register right after, so
-> no need to do that locally in the transport driver.
+On 19-07-19 12:45:45, Sagi Grimberg wrote:
+> All seem to call it with ctrl->cap so no need to pass it
+> at all.
 > 
 > Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 
-If the first patch is good to be picked up, I'm fine with this patch.
+Looks good to me.
 
 Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
 
