@@ -2,79 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 21D966EE67
-	for <lists+linux-nvme@lfdr.de>; Sat, 20 Jul 2019 10:15:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B257C6EE6A
+	for <lists+linux-nvme@lfdr.de>; Sat, 20 Jul 2019 10:25:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QDMpjK9LdhUy3FphD/ZvSZl5uFpSnxfMia4vG8Tn56o=; b=LP4G44gDlVOI+R
-	f9bM1tOa4/H1vOIouQjjTaBrXf3tAsJSOWu4PabcWxVBtDoBEKqRMLoKFf10X0dSG3VJuzOiW++8K
-	qW1xRlHPDr5eSzNlKPrrvNpdj0djgRtYRBEopz38zwLsg6QMFO7tjO8c+nnQMCvWwkWMoBLAaUCBj
-	PbrilZ6CGf/JvjO3lkxCYMp0b6dqshCONhU7p+5kzOIHjlebMMp6H1e+CVxrgImdnCSAzIvbDR5z8
-	qPSegDwgvxyYpmW9b2Z9DFEE0FHxKgvZC/8Nl32P9cUGZnBnQltcUpgcI3c/YlHROMtsHx6VdCfoq
-	R9CRUyHWhrAyH03jnkRQ==;
+	List-Owner; bh=xfGNDHxMRJ7Q61/A+cZAsmghCyAVRzVY6as7NkhKv14=; b=LHKNbhGTfOrUuE
+	NYpXeGRfHWAH62DyvMbe54UwpWNlfWbCrp8lA34xSrJ9+K1pzkLwihJMjsXQFLS0NtUvhF6SlxdgX
+	rf3taNbcAlgHELghifgTWikx0dqa3P440JSeRu9T4/hOmttvWKIbS9YmlAG/nqzARAnBUqQOPwuVm
+	6lAhngiKIWM0jmOkUoxOdTTPrR43jsGRzL4uLoqhTzYKQmECwdphhgebVYQx8vUuu5KN0yArxGp3O
+	U29z55MVbBwpV9WdENTnYCU852y6SugL3YfnZsmPp66O6FxZACK/D8ZUPmZO1WzaMVMtQ5t5HVn52
+	jGGdWFi2NOVp0BF8Q75Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hokWA-0006cA-OP; Sat, 20 Jul 2019 08:14:58 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1hokgH-0002SV-No; Sat, 20 Jul 2019 08:25:25 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hokW0-0006bp-O8
- for linux-nvme@lists.infradead.org; Sat, 20 Jul 2019 08:14:50 +0000
-Received: by mail-pg1-x544.google.com with SMTP id u17so15447288pgi.6
- for <linux-nvme@lists.infradead.org>; Sat, 20 Jul 2019 01:14:48 -0700 (PDT)
+ id 1hokg8-0002Rs-Ph
+ for linux-nvme@lists.infradead.org; Sat, 20 Jul 2019 08:25:18 +0000
+Received: by mail-pf1-x442.google.com with SMTP id p184so15157425pfp.7
+ for <linux-nvme@lists.infradead.org>; Sat, 20 Jul 2019 01:25:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=VMj5C2Pth7my1Gv4ynmg9Lq0ufISM/hcsGUcQpV08CQ=;
- b=Sl3riGu4HqzrluUk5vC6D/05Vh4FrMTiHRKk4qycqqMz8ANSrQqWvek0weQtHIKIWD
- jfGhlTAy3abmeAytuJp+1Mwim0o875cr1ruKhAx6Pwi7Gn/j6+mU18MqC2e3M1WGBe8F
- AIznqnlVQ7rnxHzdE6HA3Y58PV9SFoSw32NqDBrSzW7l56axfpTup0NTJtQbesv2n4U5
- uyr5kT8uW2jE2c06/FEQr/k1qRNOeXjkRE+sRHHj3qzM02PdbNNenIY++Wnl4oz2gRmv
- kQaGFStnHRHuojxwu+k5+vBTJH/8TK1VW4qMdFsGzJljwlKQHqbH85xeHbS00etl9B7y
- hDpQ==
+ bh=Q7Y5ZZs8kegr5H6wnuRReedynDUt+9NZDHg9wJYtMik=;
+ b=Sh3hLAUs+aW2S/OAg0Lv9JaH31R3FLD7im/yRbj2fB93MkcS5O0x2VB3E/dcacRqv0
+ 43hx/9Zw0Dk8UlRWWk7uPr8TmNBX3EqA5umipZjCjQBJb/y0b+/JVsdnnjTFhZ46mdKm
+ Y3+0urI3ZWdSbVtCCcijVEHPzhz2S2XAOqyxcUXRII1AagmEjj2TgK9GryNIX2d3/HJs
+ qwhLalVwc+gc+HuNUwJ1ImJf5v5evqVjXkyKe8QurMJtklJf4s9rPW7Q0N3gQdjEYY5s
+ pjcBFTEmMkGi3Al/fal0OzJucUGUyrb5knqbzx1bomJiMioCwKK0PLX9V5SfuY33ugAo
+ scAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=VMj5C2Pth7my1Gv4ynmg9Lq0ufISM/hcsGUcQpV08CQ=;
- b=tHNLv0l4Pv4wFIHG7NZ5BZ23VkeqB/qy6iXcLeMQeHvrBFXOsvHMk6YEFXDBdrkqte
- QuoSXcJ69sCCA2rKr3LM+jKlSkNbKp+e+fCthHPBJspf8B0MlocL0Y5wuhqnZoLZ80bI
- XHx2DQPXc1LXcZgqB02oewRA5mafqrlorOZzGiy/Q58NnMK3xgmcg1fbGJnvnwfOYeRP
- yGDiWokA4kZ2DnwzTMzL5RjUIJ0mTS5mEYcoJL9NIjBF62WsE8ZVYNtGMj3ohE/VmyCw
- OxpTEIv1wRpLN9/OQRTgITSKngjDW1T3QNAL0N8AX9PEdyIzAvm6UiYZk0eOxFBXQGSz
- ndkA==
-X-Gm-Message-State: APjAAAXUTDeGmx/5wavyCDMjTjIDJIYZJdi9Dl6yM5BRNajfuoLF526s
- tOm0QcX5qh8GuypeZKDErNw=
-X-Google-Smtp-Source: APXvYqyycSOP9U/1IkusqGjIrf96JiPANeqlw5wQNXprClTk/kPnaiWM2nynZ8AB0m9Cpmvf6mnCEg==
-X-Received: by 2002:a65:6815:: with SMTP id l21mr12386904pgt.146.1563610488238; 
- Sat, 20 Jul 2019 01:14:48 -0700 (PDT)
+ bh=Q7Y5ZZs8kegr5H6wnuRReedynDUt+9NZDHg9wJYtMik=;
+ b=hFik5t1+TT7ZnTUL/Ndu0Z6JEi7UlppLQ8dYy2vdNKoiZ0WFLyboWdObEgD1NrDy7m
+ 8up2iKzDlt0E/lt5skr5M6jD+2xKkNZATgCuK4R7RhMMQOas2NCJHVhq4Gm0lCRvq6b3
+ cwoLY7AXPGy1c3i4bPsJp7Pbs3zH50kuMRZc5I46twU9YCsgFcc7Ev6mr+Zx7N4C2dlF
+ wp+GMlIs4IJdSTHC05u8oIcv/0rHEPRwjy1LaRsGYVD2HhUHHOAny7GpUGC0naBWSVfi
+ C6DVQSDD9VJsrAYI0rPZ1SpUW6vi4m/UNaSny0fy/XXbFV31NMBPTDol2aH11Njb3XA2
+ DK/Q==
+X-Gm-Message-State: APjAAAU+e0WF9EdqSLpKOgUrv7v2UfD9xY0J4sgGqeS/i/l45ON/cLna
+ miJXWjUg9WMdQqLYTszWcxa8QS1BdCY=
+X-Google-Smtp-Source: APXvYqwNZQRT5j2dY+X1kM7cHARI6w+6tufoMf3+cv6I6NtOP89+T+U4M5TxSnMMaLTXLqhnbJQm4w==
+X-Received: by 2002:a63:2148:: with SMTP id s8mr57493380pgm.336.1563611112949; 
+ Sat, 20 Jul 2019 01:25:12 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id g2sm41513543pfb.95.2019.07.20.01.14.46
+ by smtp.gmail.com with ESMTPSA id v12sm29473842pgr.86.2019.07.20.01.25.11
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 20 Jul 2019 01:14:47 -0700 (PDT)
-Date: Sat, 20 Jul 2019 17:14:44 +0900
+ Sat, 20 Jul 2019 01:25:12 -0700 (PDT)
+Date: Sat, 20 Jul 2019 17:25:04 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH] nvme-tcp: cleanup nvme_tcp_recv_pdu
-Message-ID: <20190720081444.GF22395@minwoo-desktop>
-References: <20190719194646.24826-1-sagi@grimberg.me>
+To: James Smart <jsmart2021@gmail.com>
+Subject: Re: [PATCH v2 07/10] nvme-cli: Add routine to search for controller
+ with specific attributes
+Message-ID: <20190720082504.GG22395@minwoo-desktop>
+References: <20190719225305.11397-1-jsmart2021@gmail.com>
+ <20190719225305.11397-8-jsmart2021@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190719194646.24826-1-sagi@grimberg.me>
+In-Reply-To: <20190719225305.11397-8-jsmart2021@gmail.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190720_011448_791198_429DCB8F 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20190720_012516_862362_4E4C2500 
+X-CRM114-Status: GOOD (  20.76  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -98,54 +100,83 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org
+Cc: Minwoo Im <minwoo.im.dev@gmail.com>, linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-07-19 12:46:46, Sagi Grimberg wrote:
-> Can return directly in the switch statement
+On 19-07-19 15:53:02, James Smart wrote:
+> In preparation for searching controllers to match with connect args:
 > 
-> Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+> Create a new routine find_ctrl_with_connectargs() that will search the
+> controllers that exist in the system to find one that has attributes
+> that match the connect arguments specified.  If found, the routine
+> returns the controller name ("nvme?"). If not found, a NULL is returned.
+> 
+> Routine is defined as a global as a subsequent patch will use it
+> from the fabrics routines.
+> 
+> Signed-off-by: James Smart <jsmart2021@gmail.com>
+> Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+> Reviewed-by: Hannes Reinecke <hare@suse.com>
+> 
 > ---
->  drivers/nvme/host/tcp.c | 11 +++--------
->  1 file changed, 3 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-> index 361e4bd6338e..8d4965031399 100644
-> --- a/drivers/nvme/host/tcp.c
-> +++ b/drivers/nvme/host/tcp.c
-> @@ -611,23 +611,18 @@ static int nvme_tcp_recv_pdu(struct nvme_tcp_queue *queue, struct sk_buff *skb,
->  
->  	switch (hdr->type) {
->  	case nvme_tcp_c2h_data:
-> -		ret = nvme_tcp_handle_c2h_data(queue, (void *)queue->pdu);
-> -		break;
-> +		return nvme_tcp_handle_c2h_data(queue, (void *)queue->pdu);
->  	case nvme_tcp_rsp:
->  		nvme_tcp_init_recv_ctx(queue);
-> -		ret = nvme_tcp_handle_comp(queue, (void *)queue->pdu);
-> -		break;
-> +		return nvme_tcp_handle_comp(queue, (void *)queue->pdu);
->  	case nvme_tcp_r2t:
->  		nvme_tcp_init_recv_ctx(queue);
-> -		ret = nvme_tcp_handle_r2t(queue, (void *)queue->pdu);
-> -		break;
-> +		return nvme_tcp_handle_r2t(queue, (void *)queue->pdu);
->  	default:
->  		dev_err(queue->ctrl->ctrl.device,
->  			"unsupported pdu type (%d)\n", hdr->type);
->  		return -EINVAL;
->  	}
-> -
-> -	return ret;
->  }
+> v2:
+>   change "ctlr" to "ctrl" in fprintf
 
-For the non-functional changes here by early-return:
+This looks good to me.
 
 Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+
+> ---
+>  nvme.c | 37 +++++++++++++++++++++++++++++++++++++
+>  nvme.h |  1 +
+>  2 files changed, 38 insertions(+)
+> 
+> diff --git a/nvme.c b/nvme.c
+> index 7f706c8..e4fdb4e 100644
+> --- a/nvme.c
+> +++ b/nvme.c
+> @@ -2048,6 +2048,43 @@ cleanup_exit:
+>  	return found;
+>  }
+>  
+> +/*
+> + * Look through the system to find an existing controller whose
+> + * attributes match the connect arguments specified
+> + * If found, a string containing the controller name (ex: "nvme?")
+> + * is returned.
+> + * If not found, a NULL is returned.
+> + */
+> +char *find_ctrl_with_connectargs(struct connect_args *args)
+> +{
+> +	struct dirent **devices;
+> +	char *devname = NULL;
+> +	int i, n;
+> +
+> +	n = scandir(SYS_NVME, &devices, scan_ctrls_filter, alphasort);
+> +	if (n < 0) {
+> +		fprintf(stderr, "no NVMe controller(s) detected.\n");
+> +		return NULL;
+> +	}
+> +
+> +	for (i = 0; i < n; i++) {
+> +		if (ctrl_matches_connectargs(devices[i]->d_name, args)) {
+
+James,
+
+It might be too late to discuss about this argument, but did you decided
+to have (struct connect_args) as a parameter for this function?
+
+Sorry for not giving any thoughts on the following mail[1], but I would
+prefer not introducing a new data structure for this because it's just a
+bypass argument from a perspective of find_ctrl_with_connetargs().  But
+If you think it's okay to go with, then I'm fine with that too.
+
+[1] http://lists.infradead.org/pipermail/linux-nvme/2019-July/025646.html
+
+Thanks!
 
 _______________________________________________
 Linux-nvme mailing list
