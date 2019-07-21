@@ -2,73 +2,77 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83D1B6F3F2
-	for <lists+linux-nvme@lfdr.de>; Sun, 21 Jul 2019 17:27:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CE0966F3F3
+	for <lists+linux-nvme@lfdr.de>; Sun, 21 Jul 2019 17:27:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=WWbw0bECevRKrBJKRQGn4Y3TVWD6IKiY5VVxijYp8+k=; b=MDU
-	zlpSebskNyn9QQZDsnD8Aaj1IT0RbIKNPnutBxUZBrM17+/DWIrnvrT93z1dUf0e7ZHwN89RhWbuz
-	y8QVQeUUkO8q9a+tA110EVpea/q86Pnvl6I+R+H0Wjl3FDWPrw6WoeiRWM2bTNbryJqc9uWaU8r+n
-	+skAG1vNJe5jsNRdC+F5/cDJr69AKeP8yR+yz53N/kAkbv9et7YY81MM2Gn7BBOH0xxdmoYY3gPpT
-	drYkbAuFBwjtG4Ng9quvrblVmcgV+OiCwurPIusew8RbryPHi8gqvwmarTc5IJ2MKPZTxDFOWHesG
-	aoTEtgB91pSGnmT8EMHw7pVymeGEFBg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=0hoR2L8wsHRFAoBRPAl+mJn+KJX9qEic3tzvBNP6E/0=; b=kWezEW06Vnoaqkb2bQ90rQkLH1
+	0jXL3IcIqkALKFie7+swsJxojdvd5Fa0fJaZeHalyKbcxNONuVVPAnAlSx7zvXJId2NhLr2wDoh8X
+	EmhvaMkI6jMxNv0maUCXxNV0UvvQRwalgLh9BtQOyTyM761kHzGc/SgBN6iVfeX5nn8eqWgaTn92O
+	rzv81s0gd1Hq48nA0SmBBmEIki39GhpE9LWox4chRGcvECJpRhNX4and2PmrhjD7IjhqTV7RwM9I/
+	UR6iQ5lAAe3JGm/9a7z/oxef+NY+6dje5NRLc1+B+SGEkmny7b8WKdyVYltmaO2UdbAzwKP3ZsbCS
+	1sdNKgMA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpDkL-0006Do-Aq; Sun, 21 Jul 2019 15:27:33 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1hpDkc-0006JW-Ko; Sun, 21 Jul 2019 15:27:50 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpDk5-0006A7-Jz
- for linux-nvme@lists.infradead.org; Sun, 21 Jul 2019 15:27:18 +0000
-Received: by mail-pg1-x542.google.com with SMTP id i8so16433928pgm.13
- for <linux-nvme@lists.infradead.org>; Sun, 21 Jul 2019 08:27:16 -0700 (PDT)
+ id 1hpDk7-0006BO-R3
+ for linux-nvme@lists.infradead.org; Sun, 21 Jul 2019 15:27:21 +0000
+Received: by mail-pf1-x442.google.com with SMTP id q10so16152490pff.9
+ for <linux-nvme@lists.infradead.org>; Sun, 21 Jul 2019 08:27:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=skeuJmNKK5qo+WnnC5InsJR/0JemS9LCeOFK4XEcNTk=;
- b=ZhS8R2Yve/uuMzgW6HggkVbA0vZusRya+KpSccSStOTtKLRCoSag0ZRZ9/hxom6dR7
- JKhOkDhKRnooT+3WH/rREOFsb55hBgpBTehL3tUZirZfZi9H7bD+Ilunq2D6S0edSj2y
- 11yfu615TRAm433O+M/YUsF4ZIB0tHaFEEKkls86BCnX4eNqWkf2DocY/lSiz930wCCL
- FjzVxDU8S0tX8cInMMk+lSySafXZxe945LxMb5mYyvAJsX4iqBhDi84pdmDmD13rEX0F
- hCinMGBXL2BoqYbAiIohwRDU++ZaMzDH1ql1GvTYlb7AzKySRZnttgFZ0pWj+JTJ6X/p
- 1htg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=a2Not50VUXG3ThhKIQW/YZ7dUDNvCNWFSqh0y5GfpgA=;
+ b=YvMrf44dec5HFIi3HyuybVFjx8NnaLEYHufdclF431wAZJ8ZlzC12JKf0xzudPlBR6
+ GW+QYDiW5JOJEwYIQL15MpwejLzmETcnpvdSQjutgNX1Ibv3dMbuGJ5ab9D88xadEeqc
+ hKy0txWnOhjolk4KZ69Jlp/CZCDifsD0Eh8nhcjvaixBjzjnV0fwasrIewFV5vb3XqBr
+ VPViXB7HzSrc3+o95bstme0q5p6VPredC07R/nNUvpsnfiJDjNKVYuEgIiqlkr5b+BsW
+ EaIC9GpzJNHfUL0ly46YdN+KmzWUx2ow1UIFt9/FopTFrjuvhwK1Lq+54NTb3eZnto+F
+ 7qTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=skeuJmNKK5qo+WnnC5InsJR/0JemS9LCeOFK4XEcNTk=;
- b=YUSWCL9lFiyt9RP5IZ/tgborCHxLOQkrwxsHps0Cx8plCk7PdQjd2XUt6hE0nK0ZNn
- +ObP+yDkxJDzC9B6H8YfxzG/08NXgGWQJF14UpuSXyla+EGB+tSc3eMjoC4cNPahmuux
- CztiASPjbGRU6s8ZfXGib9IAHkAqfKDmt6H5LLzwtMjetbJWd7XKY8skEtM9RXKm0MKy
- SwLEqSS4vN0g9f4YvUY8IjY4dhOoNesivNGrsYiuBgv9MukNWpx9u3C8q3IjGo6JloSd
- l6vtmGGCgU6IGZC5vXrveVkbkjcu+UCy5PqWSE/P9A2eTYKb5g79pCWmpzXGNQHRZ7Cg
- PwMw==
-X-Gm-Message-State: APjAAAUxxsZqOL1fqv7Op4DqjXC9phy4TRtM2Sol4Lz1IEVvdOmjW5EH
- pn3+1wglSHlmoxXQU+r27/wo1NviD7I=
-X-Google-Smtp-Source: APXvYqzenTMtiAoXLE0AI18gIztOfFBZminOInFNPGT3Z20opVyoyoRhuLvkbgq0bYwcL4ayfb4NQg==
-X-Received: by 2002:a63:a35c:: with SMTP id v28mr23438254pgn.144.1563722835066; 
- Sun, 21 Jul 2019 08:27:15 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=a2Not50VUXG3ThhKIQW/YZ7dUDNvCNWFSqh0y5GfpgA=;
+ b=M0XX7t5jBu3P7Hdb6XXiHV0zI4fmPkSuXPRbAc5aqC+df0y8P0tXZpgqHHKaSH/IvH
+ VkS5gO71hbEzUq49VNLDUGuCzqBoqI3yi3q8d3fgUe3hkZleSymiA9R8KYh7O49kTQwg
+ /tJza4lUCn0+VXPcLGpjmX391suEMF7wP9VFc2YdOsNJGhk+2wVGfipHwZEutoeasiwk
+ g0aM2ZA7FMUlmTae0N0gbEFv0iwAJveFgUAlmCbnakSNP8V8fPYsRwuJ42ImegEw7JB3
+ 1C8lxPvBD77y4dNf7mi6atR/zBD7TtTdFykBidMJYgNzH/qkP9mY19ZwsL6v0ZOjOiHO
+ uSNg==
+X-Gm-Message-State: APjAAAVQZYXkawQy0gGEmwy+IUx0egn/sMp+k2jHMGHLc76fhDMvi6uX
+ p7+q0T9jhwH0bqhk6kUBDqJH3g3WeLE=
+X-Google-Smtp-Source: APXvYqyUnUXM+g3TxvBEVNoLBgkDwU/TB+T2HQ+2nlzuqmBuGHJao7jd/vkYW0Riadud7RC2O9oxzw==
+X-Received: by 2002:a63:1d4:: with SMTP id 203mr49611588pgb.441.1563722838780; 
+ Sun, 21 Jul 2019 08:27:18 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id e189sm7802512pgc.15.2019.07.21.08.27.12
+ by smtp.gmail.com with ESMTPSA id e189sm7802512pgc.15.2019.07.21.08.27.16
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 21 Jul 2019 08:27:14 -0700 (PDT)
+ Sun, 21 Jul 2019 08:27:18 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 0/4] lnvm: minor clean-ups
-Date: Mon, 22 Jul 2019 00:26:45 +0900
-Message-Id: <20190721152649.4894-1-minwoo.im.dev@gmail.com>
+Subject: [PATCH 1/4] lnvm: remove redundant whitespace in lnvm_init()
+Date: Mon, 22 Jul 2019 00:26:46 +0900
+Message-Id: <20190721152649.4894-2-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190721152649.4894-1-minwoo.im.dev@gmail.com>
+References: <20190721152649.4894-1-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190721_082717_684189_43795DE5 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20190721_082719_891501_6C6A309D 
+X-CRM114-Status: GOOD (  12.76  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -101,33 +105,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi,
+The description for lnvm-init subcommand has a redundant whitespace.
 
-This series is nothing but a clean-up patch series.  I hope it's not a
-just code churns, but a good start to do something for lnvm.
+Cc: Keith Busch <kbusch@kernel.org>
+Cc: Matias Bjorling <mb@lightnvm.io>
+Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+---
+ plugins/lnvm/lnvm-nvme.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The first one removed a redundant whitespace in the command description.
-The second one removed unnecessary print for the sizeof(dev) which will
-always be zero in case user does not give any argument for the device.
-The third patch removed temp variable instead casting the pinter
-directly.  The last one just sync-up the kernel UAPI header file to the
-latest.
-
-Please review.
-
-Thanks,
-
-Minwoo Im (4):
-  lnvm: remove redundant whitespace in lnvm_init()
-  lnvm: do not print 0 when the arg is not given
-  lnvm: cast identity structure to (void *) directly
-  lnvm: sync-up uapi lightnvm.h header from kernel
-
- linux/lightnvm.h         | 52 +++++++++++++++++++++++++++++++++++++++-
- nvme-lightnvm.c          |  5 ++--
- plugins/lnvm/lnvm-nvme.c |  8 +++----
- 3 files changed, 57 insertions(+), 8 deletions(-)
-
+diff --git a/plugins/lnvm/lnvm-nvme.c b/plugins/lnvm/lnvm-nvme.c
+index 754931a..37b6733 100644
+--- a/plugins/lnvm/lnvm-nvme.c
++++ b/plugins/lnvm/lnvm-nvme.c
+@@ -17,7 +17,7 @@
+ static int lnvm_init(int argc, char **argv, struct command *cmd, struct plugin *plugin)
+ {
+ 	const char *desc = "Initialize LightNVM device. A LightNVM/Open-Channel SSD"\
+-			   " must have a media manager associated before it can "\
++			   " must have a media manager associated before it can"\
+ 			   " be exposed to the user. The default is to initialize"
+ 			   " the general media manager on top of the device.\n\n"
+ 			   "Example:"
 -- 
 2.17.1
 
