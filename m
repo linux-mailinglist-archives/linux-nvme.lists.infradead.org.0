@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE0966F3F3
-	for <lists+linux-nvme@lfdr.de>; Sun, 21 Jul 2019 17:27:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 872806F3F6
+	for <lists+linux-nvme@lfdr.de>; Sun, 21 Jul 2019 17:28:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,68 +11,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=0hoR2L8wsHRFAoBRPAl+mJn+KJX9qEic3tzvBNP6E/0=; b=kWezEW06Vnoaqkb2bQ90rQkLH1
-	0jXL3IcIqkALKFie7+swsJxojdvd5Fa0fJaZeHalyKbcxNONuVVPAnAlSx7zvXJId2NhLr2wDoh8X
-	EmhvaMkI6jMxNv0maUCXxNV0UvvQRwalgLh9BtQOyTyM761kHzGc/SgBN6iVfeX5nn8eqWgaTn92O
-	rzv81s0gd1Hq48nA0SmBBmEIki39GhpE9LWox4chRGcvECJpRhNX4and2PmrhjD7IjhqTV7RwM9I/
-	UR6iQ5lAAe3JGm/9a7z/oxef+NY+6dje5NRLc1+B+SGEkmny7b8WKdyVYltmaO2UdbAzwKP3ZsbCS
-	1sdNKgMA==;
+	bh=75H/p0TR79+yQ2sEBa01yJsYfvO3tW9gXEQKjt6VlCY=; b=PU6IxkvKkAEoIhV7xKj6lmpNU3
+	6QZBwCxWYNzixX1sY2XE/ZfgtbekPz0E+J7EoZ5BTolsu1HVFzUlDtLqKayLM9ENZnnWNGZCSvwLa
+	OikKx7KCLmwsU4QX2oWMBaBVQqYr1ENGY7moNBGeiTAuJkinmmAZn0dxBsgobNrkTo993mqYAw/jt
+	c4GnBbw9ANkoAF3k/9LSZcE2TBLFwHqPqWzFQ1tisIXW5nS51bvMYDq5LZ3rn9gqDxu7izCOgC/0e
+	y/W/T+rqcjl7nbRCQtupSeaNb7ZdVk8I/bRi8pJg0JlcnVn072KVi4IaNVzc3sPI2sSLNBmUPu6jA
+	ga8DiK7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpDkc-0006JW-Ko; Sun, 21 Jul 2019 15:27:50 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1hpDku-0006WV-C4; Sun, 21 Jul 2019 15:28:08 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpDk7-0006BO-R3
- for linux-nvme@lists.infradead.org; Sun, 21 Jul 2019 15:27:21 +0000
-Received: by mail-pf1-x442.google.com with SMTP id q10so16152490pff.9
- for <linux-nvme@lists.infradead.org>; Sun, 21 Jul 2019 08:27:19 -0700 (PDT)
+ id 1hpDkB-0006EF-9L
+ for linux-nvme@lists.infradead.org; Sun, 21 Jul 2019 15:27:25 +0000
+Received: by mail-pl1-x643.google.com with SMTP id w24so17934247plp.2
+ for <linux-nvme@lists.infradead.org>; Sun, 21 Jul 2019 08:27:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=a2Not50VUXG3ThhKIQW/YZ7dUDNvCNWFSqh0y5GfpgA=;
- b=YvMrf44dec5HFIi3HyuybVFjx8NnaLEYHufdclF431wAZJ8ZlzC12JKf0xzudPlBR6
- GW+QYDiW5JOJEwYIQL15MpwejLzmETcnpvdSQjutgNX1Ibv3dMbuGJ5ab9D88xadEeqc
- hKy0txWnOhjolk4KZ69Jlp/CZCDifsD0Eh8nhcjvaixBjzjnV0fwasrIewFV5vb3XqBr
- VPViXB7HzSrc3+o95bstme0q5p6VPredC07R/nNUvpsnfiJDjNKVYuEgIiqlkr5b+BsW
- EaIC9GpzJNHfUL0ly46YdN+KmzWUx2ow1UIFt9/FopTFrjuvhwK1Lq+54NTb3eZnto+F
- 7qTw==
+ bh=8Hq4Md4bKLnj8XiyOlxJPU/ke/wJoF43KvBMqyGJEwg=;
+ b=QkM8QoBX9kVGxyGFq6vKjrEX59JX0Sf8CvQerjzd+LvnX8gukvjZydmvt0hOg3oqYM
+ Gwht2hn9UnR/1JTeceDWMWnIDaUTZ1Q/VN20Q4NmQPwBAAD+dfIVTim/Te3ncVogLDq7
+ y0NOHu0ERZ1H2kSxX+0H693GJVoT6Os5cdEZBxngZ8tOmGhEssNZdn65v8ugEb0OZ9HC
+ OqC6pCaXraZJdybpzpjSbLbVt2wBtzpAI0MEgCZtV2XAWAwXDMskJM4kb7GNjC5Ff7tb
+ DuY3bD2ow3wpIIaW7sHnhDKss96tNKPBHn3qIF9WQ0V97gGskVTTv0vT5LEShZ+SwYJw
+ kHWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=a2Not50VUXG3ThhKIQW/YZ7dUDNvCNWFSqh0y5GfpgA=;
- b=M0XX7t5jBu3P7Hdb6XXiHV0zI4fmPkSuXPRbAc5aqC+df0y8P0tXZpgqHHKaSH/IvH
- VkS5gO71hbEzUq49VNLDUGuCzqBoqI3yi3q8d3fgUe3hkZleSymiA9R8KYh7O49kTQwg
- /tJza4lUCn0+VXPcLGpjmX391suEMF7wP9VFc2YdOsNJGhk+2wVGfipHwZEutoeasiwk
- g0aM2ZA7FMUlmTae0N0gbEFv0iwAJveFgUAlmCbnakSNP8V8fPYsRwuJ42ImegEw7JB3
- 1C8lxPvBD77y4dNf7mi6atR/zBD7TtTdFykBidMJYgNzH/qkP9mY19ZwsL6v0ZOjOiHO
- uSNg==
-X-Gm-Message-State: APjAAAVQZYXkawQy0gGEmwy+IUx0egn/sMp+k2jHMGHLc76fhDMvi6uX
- p7+q0T9jhwH0bqhk6kUBDqJH3g3WeLE=
-X-Google-Smtp-Source: APXvYqyUnUXM+g3TxvBEVNoLBgkDwU/TB+T2HQ+2nlzuqmBuGHJao7jd/vkYW0Riadud7RC2O9oxzw==
-X-Received: by 2002:a63:1d4:: with SMTP id 203mr49611588pgb.441.1563722838780; 
- Sun, 21 Jul 2019 08:27:18 -0700 (PDT)
+ bh=8Hq4Md4bKLnj8XiyOlxJPU/ke/wJoF43KvBMqyGJEwg=;
+ b=WQed8vog6SQZLeK2aKsqg89qrr5la3ZqYQ8+SfNqNayx7oc1eyv3JY/WNlxiedfTHt
+ m1duuJ9L602HUIt+GSAzDSFDI7mjGUdWFQMbLALMfmrJ8XgJlU6p3EzAKHufOFKBUje2
+ nwFr6VsJ/Z6ZLKMG9iXY3BH8D8/wzv118/V7P5d8z65rGqx/YYgkA/FKoACrdvm5132R
+ 3ZzfURGdkA1lBfeHY9tivV9LywmbPLMVepqwp4qfJifgHlnHdjqRRrb+d8dPfoIOR3W0
+ FGCzuZ85Bnt7bT4KJsx0x+hkkwtMZ37Jw0XWPHt/pKTkVcw32IGiPAzDa8pxOBXBNSEN
+ xhlg==
+X-Gm-Message-State: APjAAAXdBo67D/iaOjBxM8uI/eJux6bWqOZH8TORd0dKSrHfKkAJ8JGu
+ VKd+NYox8D8a3jnvEpHkp/cac/xWa38=
+X-Google-Smtp-Source: APXvYqyunzc+vA3bIF8fdn2nhqmkHwi6m6TICop70CZ4UpaAfJfLeO4L7ZgNtyzqxn/HFN4g+SjCNw==
+X-Received: by 2002:a17:902:24a2:: with SMTP id
+ w31mr71963585pla.324.1563722841959; 
+ Sun, 21 Jul 2019 08:27:21 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id e189sm7802512pgc.15.2019.07.21.08.27.16
+ by smtp.gmail.com with ESMTPSA id e189sm7802512pgc.15.2019.07.21.08.27.19
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 21 Jul 2019 08:27:18 -0700 (PDT)
+ Sun, 21 Jul 2019 08:27:21 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 1/4] lnvm: remove redundant whitespace in lnvm_init()
-Date: Mon, 22 Jul 2019 00:26:46 +0900
-Message-Id: <20190721152649.4894-2-minwoo.im.dev@gmail.com>
+Subject: [PATCH 2/4] lnvm: do not print 0 when the arg is not given
+Date: Mon, 22 Jul 2019 00:26:47 +0900
+Message-Id: <20190721152649.4894-3-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190721152649.4894-1-minwoo.im.dev@gmail.com>
+In-Reply-To: <20190721152649.4894-2-minwoo.im.dev@gmail.com>
 References: <20190721152649.4894-1-minwoo.im.dev@gmail.com>
+ <20190721152649.4894-2-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190721_082719_891501_6C6A309D 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20190721_082724_315162_7A303CE9 
+X-CRM114-Status: GOOD (  13.29  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -105,28 +107,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The description for lnvm-init subcommand has a redundant whitespace.
+If an argument is not given by the user, it just needs to show the
+situation, not a prominent 0 which indicates the size of the argument
+variable.
 
 Cc: Keith Busch <kbusch@kernel.org>
 Cc: Matias Bjorling <mb@lightnvm.io>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- plugins/lnvm/lnvm-nvme.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ plugins/lnvm/lnvm-nvme.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/plugins/lnvm/lnvm-nvme.c b/plugins/lnvm/lnvm-nvme.c
-index 754931a..37b6733 100644
+index 37b6733..aacd469 100644
 --- a/plugins/lnvm/lnvm-nvme.c
 +++ b/plugins/lnvm/lnvm-nvme.c
-@@ -17,7 +17,7 @@
- static int lnvm_init(int argc, char **argv, struct command *cmd, struct plugin *plugin)
- {
- 	const char *desc = "Initialize LightNVM device. A LightNVM/Open-Channel SSD"\
--			   " must have a media manager associated before it can "\
-+			   " must have a media manager associated before it can"\
- 			   " be exposed to the user. The default is to initialize"
- 			   " the general media manager on top of the device.\n\n"
- 			   "Example:"
+@@ -48,7 +48,7 @@ static int lnvm_init(int argc, char **argv, struct command *cmd, struct plugin *
+ 		return ret;
+ 
+ 	if (!strlen(cfg.devname)) {
+-		fprintf(stderr, "device name missing %d\n", (int)strlen(cfg.devname));
++		fprintf(stderr, "device name missing\n");
+ 		return -EINVAL;
+ 	}
+ 
+@@ -179,7 +179,7 @@ static int lnvm_create_tgt(int argc, char **argv, struct command *cmd, struct pl
+ 		return ret;
+ 
+ 	if (!strlen(cfg.devname)) {
+-		fprintf(stderr, "device name missing %d\n", (int)strlen(cfg.devname));
++		fprintf(stderr, "device name missing\n");
+ 		return -EINVAL;
+ 	}
+ 	if (!strlen(cfg.tgtname)) {
+@@ -265,7 +265,7 @@ static int lnvm_factory_init(int argc, char **argv, struct command *cmd, struct
+ 		return ret;
+ 
+ 	if (!strlen(cfg.devname)) {
+-		fprintf(stderr, "device name missing %d\n", (int)strlen(cfg.devname));
++		fprintf(stderr, "device name missing\n");
+ 		return -EINVAL;
+ 	}
+ 
 -- 
 2.17.1
 
