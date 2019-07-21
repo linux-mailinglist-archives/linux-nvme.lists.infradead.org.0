@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F18D16F403
-	for <lists+linux-nvme@lfdr.de>; Sun, 21 Jul 2019 17:33:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CE4FD6F404
+	for <lists+linux-nvme@lfdr.de>; Sun, 21 Jul 2019 17:34:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,68 +11,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=QOjqGcv3fM+OTM9J+77kkV3BgKsCEM9UHkewNuv1BTw=; b=LE4EEBjAmXHKcTBvJmJvyuHYWW
-	NdBVMM1O9D2pAxMdUiGEjQVh3bpgWtqCrg3y/Yvl/SY9XrcJ97aE4uCJzbjX89FnCT1FenUJ4zRJC
-	ktDeutTgdAZ8U3ZKWUuz7QlYKBwWq8lzm/halcSIocDtp1zOsNUlkW0iu3X4xk3yNW6K0UZ+fVIzB
-	zyb89Dwe4Whhxpzlt5CX/QerMg8pOAx44vBYAYyl8qFiMtkZ+J7cX+m7NRvnLAYv3pzZZsvK+f/qw
-	yIp5711sJdz7dssIiLsYdXeaijiO0Pi0yDMEs9yLtCs8OuB9M6W1AKJh4r6/kihOX0MN97slboZ8I
-	42yj2Z7g==;
+	bh=r7SyT0fYbH4xZuwv+9FBwjibSbZgEnEe2hd9mwfhEnk=; b=QqyqBmi5R1FNDUXDjrZjtk5P4d
+	0mJxzqAxsThzNNT9/ShkGzO1ro/LmRr0tkLgmw3AcBKvD8oCysMJ9VJ+C1+sRZS5rDtgbmzf9428t
+	M6VhVxUu0IuRrwhK4bOGGNzXbkYcp+ySVY7t2Io8icHLtUpPttWgt6I59crF+Ka6IUXby2WnvbL22
+	xtBBqxEpqIOlB+31YKz1enzz4Dw0w18mtpJ52uITBmZtBRIqqoDTbdC7uMi9f/4EG+Mo/UT1xoxaP
+	qI+881BoS+zE91bgTiMUcFCAIKP64QmKAMNiGacgMOHvw/eNlf6jut7D+uPAZI3rkP+a4/kRGQWrW
+	+oMTVmcw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpDq9-0000jG-Bn; Sun, 21 Jul 2019 15:33:33 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1hpDqW-0000yi-GW; Sun, 21 Jul 2019 15:33:56 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpDpR-0000LK-Mg
- for linux-nvme@lists.infradead.org; Sun, 21 Jul 2019 15:32:51 +0000
-Received: by mail-pf1-x442.google.com with SMTP id q10so16155524pff.9
- for <linux-nvme@lists.infradead.org>; Sun, 21 Jul 2019 08:32:49 -0700 (PDT)
+ id 1hpDpU-0000Ny-PM
+ for linux-nvme@lists.infradead.org; Sun, 21 Jul 2019 15:32:57 +0000
+Received: by mail-pl1-x642.google.com with SMTP id t14so17904834plr.11
+ for <linux-nvme@lists.infradead.org>; Sun, 21 Jul 2019 08:32:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=78xp/VhVjT81UnQyQsFSx39J8ttDf65WeokOJ4NSM3Q=;
- b=ncdvzWAq7WxZlSSxzmv1oQ9Rs6D68eid1OH62sxMxWDzWvyexllzAA7lh9VyU8TAJe
- cY24L2WYFDldIU0EUEyx9WxNOTjZeTrl9fyYMV5Ok4yw0Iza9TaTyewX1veV1P66RkpY
- iE/1yty4hGPjHof3xV1kquqhTueNdS+FG+ndwkS4TPaRvaRBSLcyoGEh5LSpyY+fJCSN
- 7P2l15qzUi5UWkT8M5rg5Dsw20v0HY2s/z34WgTTK5M5OucY4oaDfKmFIUkXUZOeg5eJ
- PQTIOulhROIOjEZ52xkNewsRla5BjobtezBB6cFGEi4TDo/lADK/6f45pzMgU7W9P0c9
- VRGw==
+ bh=klex8wyreZ+Dlzf75cRgF/AScaMNmoCn0btnAAuMIzA=;
+ b=aUR5q9rLIY1SW2tMmg+E1P+JuhqlinOaJK4ucoAxw3Gwfp0e1+kLuzODGoW1NifRAT
+ pb0icIM5gIpBUQZYxQhlVVv1DLiGa1CDp4UqLoPFAzMYUn208Riay9ZAGpzq+2A5UTEA
+ 6WmW9UAq6JCWpLkL37DxTSsrRUyv1vJqAR/+Ictcm5mmMwlBtMi65FDdzACUwCXxGNho
+ iSHTGfiT4bGXnN4aOQYgLgG4bp0ix1YnM2+iwPcTaGWuRiFtQhoS6ETjrK+0IxvjrBBt
+ M/f+wMcNYb3enEKNVU4shTswM26eg6iQH/nDfVc6saFpPuVW92ahS1ycMRH8RNPC2Voj
+ v0hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=78xp/VhVjT81UnQyQsFSx39J8ttDf65WeokOJ4NSM3Q=;
- b=fOo+CmTn0+rBooIj3E5zQf75psP+lbq+64c+CEyYJlE9HAX/0hrnVp7NsBKjLrpOkC
- YBy0Mm+KTTsdxdWQwMEpITpmf4vv/5HD9grtBTtZIoejLDZIeskPRQqAQOf+6ZWQpwav
- Lvxt7Dr5fNUtdU9nOH+hCnm5G/6WdxllmHl7TbfRHxff/7jjAGAexAqV2rnu3Bq320m1
- EbQY7E/nXejqe1FYleCyrB/ZnyilV5jXDc0I2CCD2nuYryRax2B8mTpZ1qSkZt/L3cl8
- DoRM51lXDE3IwK/Q03v/HCWJWjJmCfwFFOWvn6xCrWgga1POUdr9nRvMBpMixGEWiULe
- TFdg==
-X-Gm-Message-State: APjAAAXaRUo+F4nMkv6fd5T3uYnz6qhKaMVwy8i/q5y9MKMrqMlZANpl
- Dmed8COFddiw+o1HhyQh3H2xDfxljww=
-X-Google-Smtp-Source: APXvYqx8TFYP4u/HH4pGFxOEB8RrOu/w4KcV2ILN48swhUgOs4l7+PiAm2dgtRZbwgWTWcKlHVdDDg==
-X-Received: by 2002:a63:eb06:: with SMTP id t6mr61830230pgh.107.1563723168859; 
- Sun, 21 Jul 2019 08:32:48 -0700 (PDT)
+ bh=klex8wyreZ+Dlzf75cRgF/AScaMNmoCn0btnAAuMIzA=;
+ b=bh6/TaxsMXBRQ9+LeU6OsnR1I4UnJJ5NVLb6DTX4NB3z+AlbmHwcsi1W92OWuYEKLW
+ /WZqt3ngvjKTgLykCGEiOECo5xHRm2POHP1HhoHCfs9zr8JlrENVt0uuYIzX31j/q0MJ
+ y1Jrac4P719MRr2tmS8xrsh9Clyi88TXLQvILTe+m0Uvdx0z0GAiAIuMxkZoznyfWmKD
+ UpKg0SF5mVrfchg3NDMZMrnjC7++Je006Ta01+k97EVAx2i87hyF4rUPeekGRW9U1IQo
+ SmsHfjbPX5mivEj7jPIcsPeauSUp9BOSEU4X1WjIv3xyATHwZKK3PCkPfgl7XBr9kJgq
+ igxw==
+X-Gm-Message-State: APjAAAXETQZPkvdm3FdmfUEWYlW4JUadB+9cB2L7G5MJehwScgpZdcV4
+ lnaxC1yv28+Xj0KgWU9cTIOKQJfT3mU=
+X-Google-Smtp-Source: APXvYqxI3C2RDJFDUHnmzZDGMAoV8ThQj5odPT2smCSgIsGOBuAX1bGXgCK4yR1fBGDfJEKZdWmW9w==
+X-Received: by 2002:a17:902:aa41:: with SMTP id
+ c1mr69888464plr.201.1563723171530; 
+ Sun, 21 Jul 2019 08:32:51 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id a3sm28957384pfc.70.2019.07.21.08.32.46
+ by smtp.gmail.com with ESMTPSA id a3sm28957384pfc.70.2019.07.21.08.32.49
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 21 Jul 2019 08:32:48 -0700 (PDT)
+ Sun, 21 Jul 2019 08:32:50 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 3/4] lnvm: cast identity structure to (void *) directly
-Date: Mon, 22 Jul 2019 00:32:18 +0900
-Message-Id: <20190721153219.5730-4-minwoo.im.dev@gmail.com>
+Subject: [PATCH 4/4] lnvm: sync-up uapi lightnvm.h header from kernel
+Date: Mon, 22 Jul 2019 00:32:19 +0900
+Message-Id: <20190721153219.5730-5-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190721153219.5730-1-minwoo.im.dev@gmail.com>
 References: <20190721153219.5730-1-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190721_083249_794490_830DF3BA 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20190721_083252_882321_A8CA7BEC 
+X-CRM114-Status: GOOD (  13.10  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -105,37 +106,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-If we use "tmp" or something like this, we can expect that it just
-stores the previous pointer and do something else with the previous
-pointer.  But, in this function, it just to cast it out.
+This patch just syncs-up UAPI header from the kernel.  No functional
+changes included.
 
 Cc: Keith Busch <kbusch@kernel.org>
 Cc: Matias Bjorling <mb@lightnvm.io>
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- nvme-lightnvm.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ linux/lightnvm.h | 52 +++++++++++++++++++++++++++++++++++++++++++++++-
+ nvme-lightnvm.c  |  2 +-
+ 2 files changed, 52 insertions(+), 2 deletions(-)
 
+diff --git a/linux/lightnvm.h b/linux/lightnvm.h
+index f678ffb..c937160 100644
+--- a/linux/lightnvm.h
++++ b/linux/lightnvm.h
+@@ -77,7 +77,7 @@ struct nvm_ioctl_create_simple {
+ struct nvm_ioctl_create_extended {
+ 	__u16 lun_begin;
+ 	__u16 lun_end;
+-	__u16 over_prov;
++	__u16 op;
+ 	__u16 rsv;
+ };
+ 
+@@ -135,6 +135,44 @@ struct nvm_ioctl_dev_factory {
+ 	__u32 flags;
+ };
+ 
++struct nvm_user_vio {
++	__u8 opcode;
++	__u8 flags;
++	__u16 control;
++	__u16 nppas;
++	__u16 rsvd;
++	__u64 metadata;
++	__u64 addr;
++	__u64 ppa_list;
++	__u32 metadata_len;
++	__u32 data_len;
++	__u64 status;
++	__u32 result;
++	__u32 rsvd3[3];
++};
++
++struct nvm_passthru_vio {
++	__u8 opcode;
++	__u8 flags;
++	__u8 rsvd[2];
++	__u32 nsid;
++	__u32 cdw2;
++	__u32 cdw3;
++	__u64 metadata;
++	__u64 addr;
++	__u32 metadata_len;
++	__u32 data_len;
++	__u64 ppa_list;
++	__u16 nppas;
++	__u16 control;
++	__u32 cdw13;
++	__u32 cdw14;
++	__u32 cdw15;
++	__u64 status;
++	__u32 result;
++	__u32 timeout_ms;
++};
++
+ /* The ioctl type, 'L', 0x20 - 0x2F documented in ioctl-number.txt */
+ enum {
+ 	/* top level cmds */
+@@ -150,6 +188,11 @@ enum {
+ 
+ 	/* Factory reset device */
+ 	NVM_DEV_FACTORY_CMD,
++
++	/* Vector user I/O */
++	NVM_DEV_VIO_ADMIN_CMD = 0x41,
++	NVM_DEV_VIO_CMD = 0x42,
++	NVM_DEV_VIO_USER_CMD = 0x43,
+ };
+ 
+ #define NVM_IOCTL 'L' /* 0x4c */
+@@ -167,6 +210,13 @@ enum {
+ #define NVM_DEV_FACTORY		_IOW(NVM_IOCTL, NVM_DEV_FACTORY_CMD, \
+ 						struct nvm_ioctl_dev_factory)
+ 
++#define NVME_NVM_IOCTL_IO_VIO		_IOWR(NVM_IOCTL, NVM_DEV_VIO_USER_CMD, \
++						struct nvm_passthru_vio)
++#define NVME_NVM_IOCTL_ADMIN_VIO	_IOWR(NVM_IOCTL, NVM_DEV_VIO_ADMIN_CMD,\
++						struct nvm_passthru_vio)
++#define NVME_NVM_IOCTL_SUBMIT_VIO	_IOWR(NVM_IOCTL, NVM_DEV_VIO_CMD,\
++						struct nvm_user_vio)
++
+ #define NVM_VERSION_MAJOR	1
+ #define NVM_VERSION_MINOR	0
+ #define NVM_VERSION_PATCHLEVEL	0
 diff --git a/nvme-lightnvm.c b/nvme-lightnvm.c
-index 0b99786..62bdc40 100644
+index 62bdc40..b4b20ec 100644
 --- a/nvme-lightnvm.c
 +++ b/nvme-lightnvm.c
-@@ -422,13 +422,12 @@ static void show_lnvm_id20_ns(struct nvme_nvm_id20 *id, unsigned int flags)
- 
- static void show_lnvm_id_ns(struct nvme_nvm_id *id, unsigned int flags)
- {
--	void *tmp = id;
- 	switch (id->ver_id) {
- 		case 1:
--			show_lnvm_id12_ns(tmp, flags);
-+			show_lnvm_id12_ns((void *) id, flags);
- 		break;
- 		case 2:
--			show_lnvm_id20_ns(tmp, flags);
-+			show_lnvm_id20_ns((void *) id, flags);
- 		break;
- 		default:
- 			fprintf(stderr, "Version %d not supported.\n",
+@@ -167,7 +167,7 @@ int lnvm_do_create_tgt(char *devname, char *tgtname, char *tgttype,
+ 		c.conf.type = NVM_CONFIG_TYPE_EXTENDED;
+ 		c.conf.e.lun_begin = lun_begin;
+ 		c.conf.e.lun_end = lun_end;
+-		c.conf.e.over_prov = over_prov;
++		c.conf.e.op = over_prov;
+ 	} else {
+ 		c.conf.type = NVM_CONFIG_TYPE_SIMPLE;
+ 		c.conf.s.lun_begin = lun_begin;
 -- 
 2.17.1
 
