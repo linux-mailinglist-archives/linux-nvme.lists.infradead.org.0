@@ -2,81 +2,70 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBD3670CD6
-	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 00:44:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DC5C70D13
+	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 01:10:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=sJXpQjNTB8lJJhNB5f8APkCe/VOMkMMf2W14EvgHcwA=; b=roXIpKggRhpaOEG1fECk5SXpA
-	qnSQyjsTDWvQ0dWj4OgZg3TfuJagxI5f/P2iMfxYNTeZS7cZ/qSpQAuyCoBtIFWF00j5lhixGadpC
-	6/Oou6xXIxmUr/9gY0xC2rXssQnazszSxh90oGNp9urYoXXelGmcbtglJrUTaQTIO5iaErNPVRIWc
-	Bk6UVLO9W99wuekfeSBWzvxA1CgpjrM3VQ+//so/jhknpJGt0lw11v4hjqf/K62ma5/HB5AtIlfJP
-	3cdPMtfVkxEAQt/d784sArBMo+LgMEof6JxQfABOZ3dBY91kvjBdTQ8J8tmFx3N/wIkoeovwsV6OX
-	fAoxqELLg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
+	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oatpbdiP3utmDlwFtGpYWA4t+oCEDUImTwpVo4ZfbTg=; b=tMQluoXMxIQDRm
+	7Bw2ePsE6rfppTqOhnNGIbCrIRRV6PwE/F7H/mc/KMzbmbRCs7iWqBDBG/aNASq2pSC1oiJDj14+e
+	Ald4OU0t8H3qfliOXBH872iDiUZzOrnn7cPSJXOUxBf6NGACbErPIRWCUw9V19T2iv113rApgLUwC
+	hR/Uxt/EBPj1GfnjyyAxnZlL6kfeuUPQhxMkE6lzxqD3XFK1lMQPtY2Qh3QG4ngtfF53rLW8bZJ9X
+	i4SD9CU76KFcz2KmjfPmZ2vqeO1U4vSLCuVDwNThBQrMzuoGeEvvLEeVbVPVvxx1Of808dhTf9j9R
+	BWa1KnW2OWJTck8PjU3A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hph2E-0000Gs-Rv; Mon, 22 Jul 2019 22:43:58 +0000
-Received: from mail-ot1-f65.google.com ([209.85.210.65])
+	id 1hphR2-00018f-Lg; Mon, 22 Jul 2019 23:09:37 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hph23-0000GM-EI
- for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 22:43:48 +0000
-Received: by mail-ot1-f65.google.com with SMTP id o101so42007330ota.8
- for <linux-nvme@lists.infradead.org>; Mon, 22 Jul 2019 15:43:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ykvbeBHNL2cK+/o5noRZkBi4y8aeINgthyJNnEhc9hk=;
- b=re+E4HbDpcibbYDZYOAgf32j5ZUoecM319ERcVCDZqqM8LQ4hZ4StyL9TB4Jcm9XPp
- eso+2Rn4R24PHwpDPolGaClDNCCnQbPGylt9yalc8bKYJZsuVNYCZplFA8rmUcBIcM1P
- gk5ahz/hOLZ3xa5aZDR0xB2fTaHvXUVAFAOYYZx2XrwLb7+ilFDp6y6aSldj5JkaRmC9
- IcaUk0i70pLeU5x2QM+KPNSuAHEhoxe2KKgnNLTYAtkQ9RjzMwQQ4/j4Pi/ZPx/7SR5K
- RpVUZklG+VSvvvvkJxu3LPKPhFcZcr8uuZicHFxnX1RVS06goO+E0RZkR3GhgGBcL3uC
- 5R6g==
-X-Gm-Message-State: APjAAAVDWd8iJalOP3zNVFLLa3mDwgIE2VvysIkuSt/6iArMnmVOB6Wt
- vuAqcTHBuKgux9zL1NYjAO1ZEowv
-X-Google-Smtp-Source: APXvYqyQlQV1nll7vj7gGYwlyLKEXairf8JhSLzj1ZuSA4f1QwsXYjuOiKASZWVn2j6JYp3f5PTtzw==
-X-Received: by 2002:a9d:3d8a:: with SMTP id l10mr51533469otc.343.1563835425821; 
- Mon, 22 Jul 2019 15:43:45 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id w22sm13391821otp.73.2019.07.22.15.43.44
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 22 Jul 2019 15:43:45 -0700 (PDT)
-Subject: Re: [PATCH v2 00/10] nvme-cli: nvmf auto-connect scripts
-To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org,
- Keith Busch <keith.busch@intel.com>
-References: <20190719225305.11397-1-jsmart2021@gmail.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <226c6913-cda8-e692-4dfb-a6714592ed53@grimberg.me>
-Date: Mon, 22 Jul 2019 15:43:43 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ id 1hphQh-000156-5m
+ for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 23:09:16 +0000
+Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
+ by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
+ id 1hphQb-0002jx-Dj; Mon, 22 Jul 2019 17:09:10 -0600
+Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
+ (envelope-from <gunthorp@deltatee.com>)
+ id 1hphQU-0001Qk-VM; Mon, 22 Jul 2019 17:09:03 -0600
+From: Logan Gunthorpe <logang@deltatee.com>
+To: linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-nvme@lists.infradead.org, linux-rdma@vger.kernel.org
+Date: Mon, 22 Jul 2019 17:08:48 -0600
+Message-Id: <20190722230859.5436-4-logang@deltatee.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190722230859.5436-1-logang@deltatee.com>
+References: <20190722230859.5436-1-logang@deltatee.com>
 MIME-Version: 1.0
-In-Reply-To: <20190719225305.11397-1-jsmart2021@gmail.com>
-Content-Language: en-US
+X-SA-Exim-Connect-IP: 172.16.1.31
+X-SA-Exim-Rcpt-To: linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-rdma@vger.kernel.org, bhelgaas@google.com,
+ hch@lst.de, Christian.Koenig@amd.com, jgg@mellanox.com, sagi@grimberg.me,
+ kbusch@kernel.org, axboe@fb.com, dan.j.williams@intel.com, epilmore@gigaio.com,
+ sbates@raithlin.com, logang@deltatee.com
+X-SA-Exim-Mail-From: gunthorp@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
+ version=3.4.2
+Subject: [PATCH 03/14] PCI/P2PDMA: Apply host bridge white list for ACS
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190722_154347_487907_7F3BE893 
-X-CRM114-Status: GOOD (  11.19  )
-X-Spam-Score: 0.3 (/)
+X-CRM114-CacheID: sfid-20190722_160915_274816_B8FC2984 
+X-CRM114-Status: GOOD (  13.69  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.3 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.65 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [207.54.116.67 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,20 +77,81 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ Christian Koenig <Christian.Koenig@amd.com>, Jens Axboe <axboe@fb.com>,
+ Keith Busch <kbusch@kernel.org>, Jason Gunthorpe <jgg@mellanox.com>,
+ Stephen Bates <sbates@raithlin.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Dan Williams <dan.j.williams@intel.com>, Eric Pilmore <epilmore@gigaio.com>,
+ Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> This is a formal posting of the patches, not an RFC.
+When a P2PDMA transfer is rejected due to ACS being set, we
+can also check the white list and allow the transactions.
 
-I think we are good to go here.
+Do this by pushing the whitelist check into the
+upstream_bridge_distance() function.
 
-Keith,
-We will probably pick up the kernel component as soon as
-we create nvme-5.4 tree. I think its safe to get these in
-as is to nvme-cli. It's transparent to the existing usage
-and will not be triggered without the kernel firing uevents.
+Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
+---
+ drivers/pci/p2pdma.c | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/pci/p2pdma.c b/drivers/pci/p2pdma.c
+index 289d03a31e7d..d5034e28d1e1 100644
+--- a/drivers/pci/p2pdma.c
++++ b/drivers/pci/p2pdma.c
+@@ -324,15 +324,7 @@ static int __upstream_bridge_distance(struct pci_dev *provider,
+ 		dist_a++;
+ 	}
+ 
+-	/*
+-	 * Allow the connection if both devices are on a whitelisted root
+-	 * complex, but add an arbitrary large value to the distance.
+-	 */
+-	if (root_complex_whitelist(provider) &&
+-	    root_complex_whitelist(client))
+-		return (dist_a + dist_b) | P2PDMA_THRU_HOST_BRIDGE;
+-
+-	return (dist_a + dist_b) | P2PDMA_NOT_SUPPORTED;
++	return (dist_a + dist_b) | P2PDMA_THRU_HOST_BRIDGE;
+ 
+ check_b_path_acs:
+ 	bb = b;
+@@ -350,7 +342,8 @@ static int __upstream_bridge_distance(struct pci_dev *provider,
+ 	}
+ 
+ 	if (acs_cnt)
+-		return P2PDMA_NOT_SUPPORTED | P2PDMA_ACS_FORCES_UPSTREAM;
++		return (dist_a + dist_b) | P2PDMA_ACS_FORCES_UPSTREAM |
++			P2PDMA_THRU_HOST_BRIDGE;
+ 
+ 	return dist_a + dist_b;
+ }
+@@ -397,7 +390,17 @@ static int upstream_bridge_distance(struct pci_dev *provider,
+ 				    struct pci_dev *client,
+ 				    struct seq_buf *acs_list)
+ {
+-	return __upstream_bridge_distance(provider, client, acs_list);
++	int dist;
++
++	dist = __upstream_bridge_distance(provider, client, acs_list);
++
++	if (!(dist & P2PDMA_THRU_HOST_BRIDGE))
++		return dist;
++
++	if (root_complex_whitelist(provider) && root_complex_whitelist(client))
++		return dist;
++
++	return dist | P2PDMA_NOT_SUPPORTED;
+ }
+ 
+ static int upstream_bridge_distance_warn(struct pci_dev *provider,
+-- 
+2.20.1
+
 
 _______________________________________________
 Linux-nvme mailing list
