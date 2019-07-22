@@ -2,82 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FA6370C5F
-	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 00:10:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CC3670C72
+	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 00:17:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=sh2Uma4v5WpwTJRTxcEgEjfeuihfkXFC8dTmdci4CnE=; b=OAR1Wei1YABXOtgaPq9kIg4bK
-	Bg3JxXkSc5Z4FbwDwPG4ZW5WZzkPsf2/7jdPuHQfWdGYYzu9cs3BXMxUfmoX5S9/970wDInAMF86S
-	/fpbj7WaTZL81dYMnX1w1sGwUBDnNX2wZuMEaYYsIgmvziC4DdX1sfKu2Q2sH56Uq/RDYIwOYHKSM
-	ZjrycYQurg9U1/RXqzxiziLHerKHXfCx7nDum9lW1bFiLV4rq8ysKDWzMVsadKEjhUdb/UrXyAfDq
-	gJVk8j9luhIeHOrRxDj9AxHECbirFUB8Uzf4PWHslpPxyH8L43o/jmaFlo8enMgjAPK8ksPjGBh5R
-	v3Wmy103g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jSlx5cgwohoLxnt2oQ2l4Jyh4dp7NnFN/dwMXpADIlc=; b=JXgM6EAY028EfI
+	CokBb8YltnxjmZY7Sdp1/jZHajburOOBnTSDzt46qVCRtFzESm4xkkkIEiSmZJRjGGWxmm8CbOkHS
+	CHDX1s41mWFunHhWEYY74ZZM+AJoFnCv/2GawWX+ULKO/UwqNjtXqS1FA7v6+GHowZtAmg+549vcW
+	7M4UX9cnpcfXEi9jHgWu5Gr6dzIAs3syLVTHm1HCx0PHRZZtotA5MghvRwilr1FbX2dIr/EPbxNhe
+	yrJxpuLIePZhYMAJIYP3+uGVRyeBS0kuveOrwkzkhPNvBf+KfPEzaFW7/g0FnQuF6BDIOWZy8igBS
+	Gh0iTBcZVBZ+WjD+fdqA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpgVH-0003t8-ML; Mon, 22 Jul 2019 22:09:55 +0000
-Received: from mail-oi1-f196.google.com ([209.85.167.196])
+	id 1hpgcC-0008E7-VP; Mon, 22 Jul 2019 22:17:05 +0000
+Received: from mail-io1-f65.google.com ([209.85.166.65])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpgUg-0003sX-UM
- for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 22:09:20 +0000
-Received: by mail-oi1-f196.google.com with SMTP id v186so30775798oie.5
- for <linux-nvme@lists.infradead.org>; Mon, 22 Jul 2019 15:09:18 -0700 (PDT)
+ id 1hpgbv-0008DX-Fo
+ for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 22:16:49 +0000
+Received: by mail-io1-f65.google.com with SMTP id m24so77566829ioo.2
+ for <linux-nvme@lists.infradead.org>; Mon, 22 Jul 2019 15:16:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=W91lkZO+1m22Z8Voyv2hQnbZtUSm0nskwrUf/PW1Wpk=;
- b=gV9OF8YLBMBGmgOR4ygsmsmOBznoz/aEsO3QcSbXUNltF1x1dVuNoPxVZ2mm3WOF1H
- 5gty/SxEX+BvA8Rq/wPEXDJSEOZ7rBJmkwr0nfs1Us1BtM/Nb959k2vweVTFlsH7ekSH
- db6yU2R32QwbHcuiWi4Wfxa4VAune4DsBnpajuPehaCNkkwzig1qftS8SvpUTasb+K0A
- 2ymzrk2cyQYplLQf9Lo2U5R2o3xqWL3joi6AVHI57/42Q7jpdkw9phShQoNDE9E4xE/T
- 4VCuPCPsXbg0Nww4C6R5JupCSdg+DxgmfwzizDq9yUd7Ga7htvo5ukpclwl4IkOikqVH
- hPwQ==
-X-Gm-Message-State: APjAAAULRSuu0BQ+iq0T606GTcmSBqGnQUFlOwODdH4cJ+j/lwFXaVsY
- Td3Xp9BKXHWJknm1IdP0dK8=
-X-Google-Smtp-Source: APXvYqyGemKjO7w1HjIZmkbY135eDLh8qEMdDLNZ7Mm9IVW/hVC9hy+lEbaG73spJnib/RnTUdZ0/w==
-X-Received: by 2002:a05:6808:8f0:: with SMTP id
- d16mr34451127oic.173.1563833357527; 
- Mon, 22 Jul 2019 15:09:17 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id 103sm14304211otu.33.2019.07.22.15.09.16
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 22 Jul 2019 15:09:16 -0700 (PDT)
-Subject: Re: [PATCH] nvme-pci: fix probe and remove race
-To: Bart Van Assche <bvanassche@acm.org>, linux-nvme@lists.infradead.org
-References: <20190719194256.23618-1-sagi@grimberg.me>
- <ef8149f9-b7e0-d2ba-6bcb-ff51d8e2a908@acm.org>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <045c47a4-0844-ec0f-bb5a-6d6c0bf386fe@grimberg.me>
-Date: Mon, 22 Jul 2019 15:09:14 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=GjaIw+OIOqnuVMPluGpxJ5ZQQXD25h9ZXkf8XCLJ1LQ=;
+ b=bJuBgU7I5OfTXjWEdpa/10xPxq0lFmBYNflIdnFOkNFGCLCKG6i4yL37Ou6uFLy+ww
+ 5sVmjnXoh5NUmX//vpDbtVn1U0mLJJqkEm80L/35NYzq+0rsSVOC7MN3fmzmlG3cZVoT
+ cES1TUpjQ0g4Pr0+V8CnIYr2gy7LTM6XLNSeIDMzNZYAsykFQdFvkxc5jW4jLBEFWKwG
+ LYYODXyx9Jw784JWMbCPdmTUCvW/YKXolxD/Kz09xWUvppwrAwT16/cDsWAOzQ1lxRnl
+ PcHGzerFcfzLp5COuyennDhwPd/IVozkI77G735u6FjdELVlYPrQJscDzHsxCPb0Q/52
+ EaqQ==
+X-Gm-Message-State: APjAAAXW42qeFMQir+9Ih3LN/xRreEO3DXGdSf4lQC3jsWFAqlsQO2EM
+ TbZLEk2iWLy8QB9A7fQ//A==
+X-Google-Smtp-Source: APXvYqweE1pmwMeEtkIP3+qOvfvr0a4dd6g5i87s1QCiHsWjaTPPGkEO/aZ9P3kxWiaUCc8OppzTRA==
+X-Received: by 2002:a5d:8747:: with SMTP id k7mr53543542iol.20.1563833806389; 
+ Mon, 22 Jul 2019 15:16:46 -0700 (PDT)
+Received: from localhost ([64.188.179.254])
+ by smtp.gmail.com with ESMTPSA id x22sm29275248ioh.87.2019.07.22.15.16.45
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 22 Jul 2019 15:16:45 -0700 (PDT)
+Date: Mon, 22 Jul 2019 16:16:45 -0600
+From: Rob Herring <robh@kernel.org>
+To: Akinobu Mita <akinobu.mita@gmail.com>
+Subject: Re: [PATCH v5 2/4] dt-bindings: thermal: nvme: Add binding
+ documentation
+Message-ID: <20190722221645.GA32515@bogus>
+References: <1561990354-4084-1-git-send-email-akinobu.mita@gmail.com>
+ <1561990354-4084-3-git-send-email-akinobu.mita@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <ef8149f9-b7e0-d2ba-6bcb-ff51d8e2a908@acm.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1561990354-4084-3-git-send-email-akinobu.mita@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190722_150918_985177_803A817D 
-X-CRM114-Status: GOOD (  16.14  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190722_151647_540468_9E4B8D1A 
+X-CRM114-Status: GOOD (  18.69  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.196 listed in list.dnswl.org]
+ no trust [209.85.166.65 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.167.196 listed in wl.mailspike.net]
+ provider (robherring2[at]gmail.com)
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit (robherring2[at]gmail.com)
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -91,45 +88,116 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, lizhongfs@gmail.com,
+Cc: devicetree@vger.kernel.org, Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, linux-pm@vger.kernel.org,
+ Jens Axboe <axboe@fb.com>, Kenneth Heitke <kenneth.heitke@intel.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, linux-nvme@lists.infradead.org,
+ Eduardo Valentin <edubezval@gmail.com>, Minwoo Im <minwoo.im.dev@gmail.com>,
+ Keith Busch <kbusch@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
  Christoph Hellwig <hch@lst.de>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL252bWUvaG9zdC9wY2kuYyBiL2RyaXZlcnMvbnZtZS9o
-b3N0L3BjaS5jCj4+IGluZGV4IDRiNTA4ZDVlNDVjZi4uNTAwNjFhYmU0OWM2IDEwMDY0NAo+PiAt
-LS0gYS9kcml2ZXJzL252bWUvaG9zdC9wY2kuYwo+PiArKysgYi9kcml2ZXJzL252bWUvaG9zdC9w
-Y2kuYwo+PiBAQCAtMTI3LDYgKzEyNyw3IEBAIHN0cnVjdCBudm1lX2RldiB7Cj4+IMKgwqDCoMKg
-wqAgZG1hX2FkZHJfdCBob3N0X21lbV9kZXNjc19kbWE7Cj4+IMKgwqDCoMKgwqAgc3RydWN0IG52
-bWVfaG9zdF9tZW1fYnVmX2Rlc2MgKmhvc3RfbWVtX2Rlc2NzOwo+PiDCoMKgwqDCoMKgIHZvaWQg
-Kipob3N0X21lbV9kZXNjX2J1ZnM7Cj4+ICvCoMKgwqAgYXN5bmNfY29va2llX3QgYXN5bmNfcHJv
-YmU7Cj4+IMKgIH07Cj4+IMKgIHN0YXRpYyBpbnQgaW9fcXVldWVfZGVwdGhfc2V0KGNvbnN0IGNo
-YXIgKnZhbCwgY29uc3Qgc3RydWN0IAo+PiBrZXJuZWxfcGFyYW0gKmtwKQo+PiBAQCAtMjc2NSw3
-ICsyNzY2LDcgQEAgc3RhdGljIGludCBudm1lX3Byb2JlKHN0cnVjdCBwY2lfZGV2ICpwZGV2LCAK
-Pj4gY29uc3Qgc3RydWN0IHBjaV9kZXZpY2VfaWQgKmlkKQo+PiDCoMKgwqDCoMKgIGRldl9pbmZv
-KGRldi0+Y3RybC5kZXZpY2UsICJwY2kgZnVuY3Rpb24gJXNcbiIsIAo+PiBkZXZfbmFtZSgmcGRl
-di0+ZGV2KSk7Cj4+IMKgwqDCoMKgwqAgbnZtZV9nZXRfY3RybCgmZGV2LT5jdHJsKTsKPj4gLcKg
-wqDCoCBhc3luY19zY2hlZHVsZShudm1lX2FzeW5jX3Byb2JlLCBkZXYpOwo+PiArwqDCoMKgIGRl
-di0+YXN5bmNfcHJvYmUgPSBhc3luY19zY2hlZHVsZShudm1lX2FzeW5jX3Byb2JlLCBkZXYpOwo+
-PiDCoMKgwqDCoMKgIHJldHVybiAwOwo+PiBAQCAtMjgxMCw2ICsyODExLDggQEAgc3RhdGljIHZv
-aWQgbnZtZV9yZW1vdmUoc3RydWN0IHBjaV9kZXYgKnBkZXYpCj4+IMKgIHsKPj4gwqDCoMKgwqDC
-oCBzdHJ1Y3QgbnZtZV9kZXYgKmRldiA9IHBjaV9nZXRfZHJ2ZGF0YShwZGV2KTsKPj4gK8KgwqDC
-oCAvKiB3YWl0IGZvciBhc3luYyBwcm9iZSB0byBjb21wbGV0ZSAqLwo+PiArwqDCoMKgIGFzeW5j
-X3N5bmNocm9uaXplX2Nvb2tpZShkZXYtPmFzeW5jX3Byb2JlICsgMSk7Cj4+IMKgwqDCoMKgwqAg
-bnZtZV9jaGFuZ2VfY3RybF9zdGF0ZSgmZGV2LT5jdHJsLCBOVk1FX0NUUkxfREVMRVRJTkcpOwo+
-PiDCoMKgwqDCoMKgIHBjaV9zZXRfZHJ2ZGF0YShwZGV2LCBOVUxMKTsKPiAKPiBIaSBTYWdpLAo+
-IAo+IERvZXMgdGhlIGFzeW5jX3N5bmNocm9uaXplX2Nvb2tpZSgpIGNhbGwgd2FpdCB1bnRpbCBh
-bGwgcHJldmlvdXNseSAKPiBzdGFydGVkIHByb2JlcyBoYXZlIGZpbmlzaGVkPyBJbiBvdGhlciB3
-b3JkcywgZG9lcyB0aGUgY2hhbmdlIGluIAo+IG52bWVfcmVtb3ZlKCkgaW50cm9kdWNlIGEgZGVw
-ZW5kZW5jeSBiZXR3ZWVuIHByb2JlIGFuZCByZW1vdmUgY2FsbHMgb2YgCj4gZGlmZmVyZW50IE5W
-TWUgZGV2aWNlcz8gSXMgdGhhdCBkZXBlbmRlbmN5IGltcG9ydGFudD8gSWYgbm90LCBjYW4gaXQg
-YmUgCj4gYXZvaWRlZCB0byBpbnRyb2R1Y2UgdGhhdCBkZXBlbmRlbmN5PwoKSXQgZG9lcyBjcmVh
-dGUgZGVwZW5kZW5jeSBhcyB0aGV5IGFyZSBpbiB0aGUgc2FtZSBkb21haW4gSSBhc3N1bWUuIEdp
-dmVuCnRoYXQgbnZtZV9yZW1vdmUoKSBpcyByZWFsbHkgYSBob3QtdW5wbHVnIG9wZXJhdGlvbiAo
-b3Igc2h1dGRvd24pIEkgYW0Kbm90IHN1cmUgaWYgdGhpcyBkZXBlbmRlbmN5IGlzIGEgbGltaXRh
-dGlvbiBpbiBhbnkgcmVhbCB1c2UtY2FzZQp0aG91Z2guLgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgt
-bnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+On Mon, Jul 01, 2019 at 11:12:32PM +0900, Akinobu Mita wrote:
+> Add thermal binding documentation for NVMe temperature sensor.
+> 
+> Cc: Rob Herring <robh@kernel.org>
+> Cc: Zhang Rui <rui.zhang@intel.com>
+> Cc: Eduardo Valentin <edubezval@gmail.com>
+> Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Cc: Keith Busch <kbusch@kernel.org>
+> Cc: Jens Axboe <axboe@fb.com>
+> Cc: Christoph Hellwig <hch@lst.de>
+> Cc: Sagi Grimberg <sagi@grimberg.me>
+> Cc: Minwoo Im <minwoo.im.dev@gmail.com>
+> Cc: Kenneth Heitke <kenneth.heitke@intel.com>
+> Cc: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+> Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
+> ---
+> * v5
+> - New patch
+> 
+>  Documentation/devicetree/bindings/thermal/nvme.txt | 56 ++++++++++++++++++++++
+>  1 file changed, 56 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/thermal/nvme.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/thermal/nvme.txt b/Documentation/devicetree/bindings/thermal/nvme.txt
+> new file mode 100644
+> index 0000000..60b90de
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/thermal/nvme.txt
+> @@ -0,0 +1,56 @@
+> +Binding for NVMe temperature sensor
+> +
+> +An NVMe controller reports up to nine temperature values in the SMART / Health
+> +log.
+> +
+> +Required properties:
+> +- reg: A five-cell address encoded as (phys.hi phys.mid phys.lo size.hi
+> +  size.lo). phys.hi should contain the device's BDF (Bus/Device/Function)
+> +  as 0b00000000 bbbbbbbb dddddfff 00000000. The other cells should be zero.
+> +  See also Documentation/devicetree/bindings/pci/pci.txt
+> +
+> +- #thermal-sensor-cells: Must be 1. See ./thermal.txt for a description.
+> +  In the thermal-sensors property, the sensor ID 0 for composite temperature,
+> +  1 through 8 for NVMe temperature sensor N.
+> +
+> +Example:
+> +
+> +&pcie0 {
+> +	...
+> +	nvme: nvme@0,0 {
+> +		reg = <0x0000 0 0 0 0>;
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +
+> +		nvmetemp: nvmetemp {
+> +			reg = <0x0000 0 0 0 0>; /* DEVFN = 0x00 (0:0) */
+
+I'm not sure this is really valid PCI addressing as the parent has the 
+same address.
+
+> +			#thermal-sensor-cells = <1>;
+
+Can't you just put this in the parent? Is this really a separate 
+addressable device from the parent?
+
+> +		};
+> +	};
+> +};
+> +
+> +&thermal_zones {
+> +	nvme_thermal: nvme {
+> +		polling-delay-passive = <2000>; /* milliseconds */
+> +		polling-delay = <0>; /* asynchronous event driven */
+> +
+> +				/* sensor	ID */
+> +		thermal-sensors = <&nvmetemp	0>;
+> +
+> +		trips {
+> +			nvme_alert0: nvme_alert0 {
+> +				temperature = <80000>; /* millicelsius */
+> +				hysteresis = <2000>; /* millicelsius */
+> +				type = "passive";
+> +			};
+> +		};
+> +
+> +		cooling-maps {
+> +			map0 {
+> +				trip = <&nvme_alert0>;
+> +				cooling-device =
+> +				<&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +			};
+> +		};
+> +	};
+> +};
+> -- 
+> 2.7.4
+> 
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
