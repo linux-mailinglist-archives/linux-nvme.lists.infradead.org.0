@@ -2,78 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83B4D70460
-	for <lists+linux-nvme@lfdr.de>; Mon, 22 Jul 2019 17:46:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7840B7081F
+	for <lists+linux-nvme@lfdr.de>; Mon, 22 Jul 2019 20:08:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=oDgLwaBWiwGJQjmSRK29wZbzlREiPq2E7DM8vIR0/0g=; b=qUOjHd6u8yT8Ji/gQ7QnEWx++
-	LBGKEJku0EgXFmFvu9nIXcq8GPYS9ojcxw7nRN/veYwuSzd1G86pzkpasdJZWp9FPfGtbfVkSfUtv
-	g6zY3uka9fWbIeTJYV6Ny22qGO7I93GzfIuleOociSdU+UUWTNeR/ucNJxpDgsVfLa0703AZQBUgH
-	qoaTrol2AVMFcJUGVvhnMZOJ1a+G/Wr6Qfk04w+fb6d0nidGcZYHjkcPOEWLxiYVPIjc2YuzGNvHx
-	vTt2GhZCuPaUnecCqGoAa/wvZpVWi9Y7X4+dSqBRZRVkBjXs9lf19/yRmD0UanggcQHlKkakVzdW3
-	m8+4k9zdw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VtW3fuqqjKFoZvVlkaf4EOD5fyVIRjH2FJah7mNJ3kU=; b=SnjA4Q4xTLM7v3
+	ru3IIDhiDTAL19OjathnoDontwJlGOn86aCn9exsY8Xo5ytF4xkBoaiKfTrw1zTPW/rZBcx8d16JS
+	ibCZVVlBR8S31e/K0uZK+F+J7McmNZZ5sdxA1ggHJVOaJARhB/sfeqAJezbzk3WVlZjn4EbgxKBoe
+	7S1PnvpjUjU6S6lbHcbir/AJcHphrDWKg0s4FOGjkEO3em0QfEktjwyTlDRJm8XheYcFYiHAbQAw7
+	Z/J/Nm2A/HmKLIvTLh4nRQ8YBqhLKoKYMXKOfA+8ONQeFYKWcIYAXhhLIP/lA7ke+c52lK4MVgVJ9
+	88+wHSvhTHsiPLWPq8LA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpaWK-0005d1-J9; Mon, 22 Jul 2019 15:46:36 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1hpcjI-0002SL-Ke; Mon, 22 Jul 2019 18:08:08 +0000
+Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpaSd-0001sb-Ex
- for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 15:42:49 +0000
-Received: by mail-pg1-x543.google.com with SMTP id i8so17827275pgm.13
- for <linux-nvme@lists.infradead.org>; Mon, 22 Jul 2019 08:42:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=eoMt+myMqTWPBODYVD4pEnNpObU9i8VmyLC89Cz9vyY=;
- b=Og4U4GsJgRRPLnmq8rQyPaTHLPwqrGrEdatvWC7GK55dSK7OcAWZ9sFQk2SAxiNfXS
- Gz7T/bUZZapctlKN/9ZjpVbsqQk1B89LKL3NKHg0tc0a3QwUynNTGmt6qQzEstHbvDKx
- VxHAI83Y7kOhIbaNiR2hGWXsW/QWPbT3M0TbU=
+ id 1hpcj1-0002RA-SQ
+ for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 18:07:53 +0000
+Received: by mail-vs1-xe41.google.com with SMTP id 2so26831945vso.8
+ for <linux-nvme@lists.infradead.org>; Mon, 22 Jul 2019 11:07:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ziepe.ca; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=cmW+iIJBcAPXYuBJ0X70RuJw3nKWx6Ck24ISTbz4CEs=;
+ b=ecr7HpkJ/GPjpuVFLx7tTl5nq1d1iUDbKwdlnIYeT6V8ma1d+wg9/MJjuQwtyKqzih
+ QeHMj6zOIBFJhbLoTvcDZGPbJSferveTR0mu/KI/setje9er6O5qXDyom3wHCufV7/Pi
+ 3UQymcesV8YMc+MJ0dOZcKfviFC5gRKW1JnakN5ef7VDFeCkicby89KgbFRCg0yaM4C/
+ o1j3+ySz3Lkbzfti+4RHITgEG9bqsPDppPOfcTvMhnuz7JyPwElNZSI371i7FV0IYolf
+ mofl8nmvAiy33e4bbe8MvQ3PZsA+U642zpBMIy3r5E++TuInZ8ltgdP0Mgt+Rbzndl5u
+ Ff1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=eoMt+myMqTWPBODYVD4pEnNpObU9i8VmyLC89Cz9vyY=;
- b=D2W8NS768rrrwDDrZDnVS/32NjJz6aKl3sV+Pza/yHhsNZKt2d4VUYZ14mEbHtaQSU
- jCCAzrJoTLjCBEc04M+SBeHiaX8t+xLvyxH9eRgjhh+qYAN7Wsg9WPyNfJo3vkMn0rgx
- 5kwDVEgI3mNRg28hN6gP1z0+gK+cevlQC/5K1fjoWDPHj7kMwKwSoGOCCr0TyYwPX1tw
- WapCINmjQhAURFL868sJF7uM4kyMVjGifkRbQtyWzBSsQssSI9nqdXr60l2V9nSpKpUp
- 9BGBKV2Q00yXVT1O3IS/DkpZVmzekdPBK9WKDdPFqQrlx4r2R+UvTBHxAo1H7xYkdAfd
- 7/6Q==
-X-Gm-Message-State: APjAAAVLLRqqu9nVqvKeibilay6nKzEjjz+Cm+XIY1BBrBLRAbk35tno
- gTnEGL98t7PExPeQg9bPtybCcGyzG+w=
-X-Google-Smtp-Source: APXvYqzTxDCUzUc9UxliX5M7GyRHaNacsWX4m8H/ut/sct1iN1wYuPSlKHNrqErCtHmSG7fSNkR29g==
-X-Received: by 2002:a63:e306:: with SMTP id f6mr71029157pgh.39.1563810166386; 
- Mon, 22 Jul 2019 08:42:46 -0700 (PDT)
-Received: from [10.230.29.90] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id s3sm1613797pgq.17.2019.07.22.08.42.45
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 22 Jul 2019 08:42:45 -0700 (PDT)
-Subject: Re: [PATCH 0/4] small set of nvme cleanups
-To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
-References: <20190719194546.24229-1-sagi@grimberg.me>
-From: James Smart <james.smart@broadcom.com>
-Message-ID: <3086fcef-efb2-85e4-4e36-2c5734cf3068@broadcom.com>
-Date: Mon, 22 Jul 2019 08:42:44 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=cmW+iIJBcAPXYuBJ0X70RuJw3nKWx6Ck24ISTbz4CEs=;
+ b=SOPhgonE/6BL5WgA2G6+Zsw4LddHy4Paz/YPhvCNZKKZYHps2KAxPgjlAuBysykh36
+ dM8arcqf4sRfcm2ErfQIdK3lsm7SDooc98E1YhlTAZMOhi1SMcE4JpLOwmgDf2t0mTNs
+ 4UG+21bBZPMMQZApvE+/snx13V8Eo0CuaLkaywq1K7frviUxKGf1oDkGIqQrW0JPDdmi
+ y/yFoe/7NsmhrDlmaz/V9qhllcRNTLlTe7jkqalR5tyY20heJvF7fjNM+Jc2Na75Snec
+ D9//oG/EfNDASw/uqqss/2sBC8t9Uf0lEtCwJxs+s4hI8hrfdCHWR1QnqHb3R1J5C3WT
+ fk9Q==
+X-Gm-Message-State: APjAAAWAuAWfO6aUYyKxYoo+Nd3on8ttasZ7NwPWTqsG3okPYnxd0SuS
+ 6CCOGOQywhTV7FQyCK57waMR8Q==
+X-Google-Smtp-Source: APXvYqx5Od80W34I1fDAgrOP6mzw1I8zF4ZN9uUihErCnhuyEo+zpkg3qx27zyPVZSVitQtTLpxDGg==
+X-Received: by 2002:a67:eb93:: with SMTP id e19mr44004699vso.208.1563818868687; 
+ Mon, 22 Jul 2019 11:07:48 -0700 (PDT)
+Received: from ziepe.ca
+ (hlfxns017vw-156-34-55-100.dhcp-dynamic.fibreop.ns.bellaliant.net.
+ [156.34.55.100])
+ by smtp.gmail.com with ESMTPSA id u8sm15170119vke.34.2019.07.22.11.07.47
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 22 Jul 2019 11:07:48 -0700 (PDT)
+Received: from jgg by mlx.ziepe.ca with local (Exim 4.90_1)
+ (envelope-from <jgg@ziepe.ca>)
+ id 1hpciw-0002TP-Hf; Mon, 22 Jul 2019 15:07:46 -0300
+Date: Mon, 22 Jul 2019 15:07:46 -0300
+From: Jason Gunthorpe <jgg@ziepe.ca>
+To: Selvin Xavier <selvin.xavier@broadcom.com>
+Subject: Re: [PATCH for-rc] RDMA/bnxt_re: Honor vlan_id in GID entry comparison
+Message-ID: <20190722180746.GA9441@ziepe.ca>
+References: <20190715091913.15726-1-selvin.xavier@broadcom.com>
 MIME-Version: 1.0
-In-Reply-To: <20190719194546.24229-1-sagi@grimberg.me>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20190715091913.15726-1-selvin.xavier@broadcom.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190722_084247_529780_99852C53 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20190722_110751_927469_26E72601 
+X-CRM114-Status: GOOD (  10.09  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:e41 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -84,7 +90,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,29 +101,46 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: linux-rdma@vger.kernel.org, dledford@redhat.com, stable@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Parav Pandit <parav@mellanox.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-CgpPbiA3LzE5LzIwMTkgMTI6NDUgUE0sIFNhZ2kgR3JpbWJlcmcgd3JvdGU6Cj4gQ2VudHJhbGl6
-ZXMgcXVldWUgc2l6ZSBzZXR0aW5ncyBmb3IgZmFicmljcyBhbmQKPiByZW1vdmVzIHJlZHVuZGFu
-dCBhcmd1bWVudCB0byBudm1lX2Rpc2FibGUvZW5hYmxlX2N0cmwuCj4KPiBTYWdpIEdyaW1iZXJn
-ICg0KToKPiAgICBudm1lOiBoYXZlIG52bWVfaW5pdF9pZGVudGlmeSBzZXQgY3RybC0+Y2FwCj4g
-ICAgbnZtZTogbW92ZSBzcXNpemUgc2V0dGluZyB0byB0aGUgY29yZQo+ICAgIG52bWU6IGRvbid0
-IHBhc3MgY2FwIHRvIG52bWVfZGlzYWJsZV9jdHJsCj4gICAgbnZtZTogZG9uJ3QgcGFzcyBjYXAg
-dG8gbnZtZV9lbmFibGVfY3RybAo+Cj4gICBkcml2ZXJzL252bWUvaG9zdC9jb3JlLmMgICB8IDE5
-ICsrKysrKysrKystLS0tLS0tLS0KPiAgIGRyaXZlcnMvbnZtZS9ob3N0L2ZjLmMgICAgIHwgMTIg
-Ky0tLS0tLS0tLS0tCj4gICBkcml2ZXJzL252bWUvaG9zdC9udm1lLmggICB8ICA0ICsrLS0KPiAg
-IGRyaXZlcnMvbnZtZS9ob3N0L3BjaS5jICAgIHwgIDcgKysrKy0tLQo+ICAgZHJpdmVycy9udm1l
-L2hvc3QvcmRtYS5jICAgfCAxNSArKy0tLS0tLS0tLS0tLS0KPiAgIGRyaXZlcnMvbnZtZS9ob3N0
-L3RjcC5jICAgIHwgMTMgKystLS0tLS0tLS0tLQo+ICAgZHJpdmVycy9udm1lL3RhcmdldC9sb29w
-LmMgfCAxMiArLS0tLS0tLS0tLS0KPiAgIDcgZmlsZXMgY2hhbmdlZCwgMjIgaW5zZXJ0aW9ucygr
-KSwgNjAgZGVsZXRpb25zKC0pCj4KClRoZSBjaGFuZ2VzIGxvb2sgZmluZSBleGNlcHQgZm9yIDEg
-bWFpbiBpc3N1ZTrCoCBBbGwgb2YgdGhlIG52bWYgCnRyYW5zcG9ydHMgY2FsbCBudm1lX2VuYWJs
-ZV9jdHJsKCksIHdoaWNoIHN0aWxsIHJlZmVyZW5jZXMgY3RybC0+Y2FwLCAKYmVmb3JlIHRoZXkg
-Y2FsbCBudm1lX2luaXRfaWRlbnRpZnkoKS4KCi0tIGphbWVzCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGlu
-dXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+On Mon, Jul 15, 2019 at 05:19:13AM -0400, Selvin Xavier wrote:
+> GID entry consist of GID, vlan, netdev and smac.
+> Extend GID duplicate check companions to consider vlan_id as well
+> to support IPv6 VLAN based link local addresses. Introduce
+> a new structure (bnxt_qplib_gid_info) to hold gid and vlan_id information.
+> 
+> The issue is discussed in the following thread
+> https://www.spinics.net/lists/linux-rdma/msg81594.html
+> 
+> Fixes: 823b23da7113 ("IB/core: Allow vlan link local address based RoCE GIDs")
+> Cc: <stable@vger.kernel.org> # v5.2+
+> Reported-by: Yi Zhang <yi.zhang@redhat.com>
+> Co-developed-by: Parav Pandit <parav@mellanox.com>
+> Signed-off-by: Parav Pandit <parav@mellanox.com>
+> Signed-off-by: Selvin Xavier <selvin.xavier@broadcom.com>
+> Tested-by: Yi Zhang <yi.zhang@redhat.com>
+> Reviewed-By: Leon R...
+> Tested-by: Leon R...
+> ---
+>  drivers/infiniband/hw/bnxt_re/ib_verbs.c  |  7 +++++--
+>  drivers/infiniband/hw/bnxt_re/qplib_res.c | 13 +++++++++----
+>  drivers/infiniband/hw/bnxt_re/qplib_res.h |  2 +-
+>  drivers/infiniband/hw/bnxt_re/qplib_sp.c  | 14 +++++++++-----
+>  drivers/infiniband/hw/bnxt_re/qplib_sp.h  |  7 ++++++-
+>  5 files changed, 30 insertions(+), 13 deletions(-)
+
+Applied to for-rc, thanks
+
+Please also fix that sketchy use of the gid_index
+
+Jason
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
