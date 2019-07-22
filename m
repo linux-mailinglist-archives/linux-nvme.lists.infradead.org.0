@@ -2,39 +2,39 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5469B70D2F
-	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 01:14:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A027070D29
+	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 01:12:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
 	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aXwLS5ZfO1RPbCfwrUfXHkQUSnjEGwEiDkhZKu7MNVQ=; b=l/MWni2GOI7Jfy
-	iTsmFfrR4ZCbtOmwtKwyukR0sqdFAhre+3u0N01dAEC5MCdiDlI3M91cKbm1Lowr3XMD3Xu6U4TbG
-	VMoZqgkOXucVHOwUbSWrabFm7AYC1WRAMgUzFcvK4jjgpRvk6sWhjshW7xyPRu81eOq0QGtpFVr/u
-	r1Re9a9o3nlprOylvAjqU1Ds2cgSWXN2uf087e/aMbvcNpvHjQ0AUgId4afmNaVf6ScKEo3ft299M
-	kEzgECwlckRwurTIoTwGdgbkgotj43RjXBRkoRwgomGA4s0mXO0yqUx3FmhDJSv56Hv2IfpE6ht3V
-	2/kf6NYZQ2fWiwV2oVbA==;
+	List-Owner; bh=gg8kA09rbSdCQtp5Cx7CUghYNRufo7zEdUKXnK8bd8o=; b=DF2UxFg8kDsaBV
+	6G0sPzFamxaEovrNAOA+eKdDxG+XwhgqRznDoivi7sHtU//sub2mBeyJctLMp8qdslqlXGED53dSr
+	hCopqiA7nPQyTddyjldgGEx4qd09+xCq4ByzL4VI041S5FbDBEcvaw26tZm6rkCv1JD6h2twZ/qTI
+	leGp8BLdl80d7rH2KLr+JX8W+OkGHKQkvr477pVhV8uyzxvt5n0qynD0VqC0anQixd51TAYSQuEr4
+	B49LbMb+Q5nNR+ekdHK+FY5vLUxKrSQvREpog533Kfve3Rn7iKapvW5ITG+pKzyHNjvWGd3q9RCfy
+	/F0gmrABnqa6zKvES0MA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hphV7-00052X-M8; Mon, 22 Jul 2019 23:13:50 +0000
+	id 1hphTB-0003Y3-PY; Mon, 22 Jul 2019 23:11:49 +0000
 Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hphQj-00018d-Ky
- for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 23:09:21 +0000
+ id 1hphQh-00015R-68
+ for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 23:09:18 +0000
 Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
  by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1hphQb-0002jw-Dk; Mon, 22 Jul 2019 17:09:17 -0600
+ id 1hphQb-0002jy-Dj; Mon, 22 Jul 2019 17:09:13 -0600
 Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
  (envelope-from <gunthorp@deltatee.com>)
- id 1hphQU-0001Qg-Mi; Mon, 22 Jul 2019 17:09:02 -0600
+ id 1hphQV-0001Qn-7B; Mon, 22 Jul 2019 17:09:03 -0600
 From: Logan Gunthorpe <logang@deltatee.com>
 To: linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
  linux-nvme@lists.infradead.org, linux-rdma@vger.kernel.org
-Date: Mon, 22 Jul 2019 17:08:47 -0600
-Message-Id: <20190722230859.5436-3-logang@deltatee.com>
+Date: Mon, 22 Jul 2019 17:08:49 -0600
+Message-Id: <20190722230859.5436-5-logang@deltatee.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190722230859.5436-1-logang@deltatee.com>
 References: <20190722230859.5436-1-logang@deltatee.com>
@@ -51,12 +51,13 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
  GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
  version=3.4.2
-Subject: [PATCH 02/14] PCI/P2PDMA: Factor out __upstream_bridge_distance()
+Subject: [PATCH 04/14] PCI/P2PDMA: Cache the result of
+ upstream_bridge_distance()
 X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190722_160917_753799_8AB119CB 
-X-CRM114-Status: GOOD (  17.61  )
+X-CRM114-CacheID: sfid-20190722_160915_590490_1BE8710A 
+X-CRM114-Status: GOOD (  11.81  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -88,124 +89,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This is a prep patch to create a second level helper. There are no
-functional changes.
-
-The root complex whitelist code will be moved into this function in
-a subsequent patch.
+The result of upstream_bridge_distance() will be needed every time
+we map the dma address so cache it in an xarray stored in the
+provider's p2pdma struct.
 
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 ---
- drivers/pci/p2pdma.c | 89 ++++++++++++++++++++++++--------------------
- 1 file changed, 48 insertions(+), 41 deletions(-)
+ drivers/pci/p2pdma.c | 29 +++++++++++++++++++++++++----
+ 1 file changed, 25 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/pci/p2pdma.c b/drivers/pci/p2pdma.c
-index e8ec86e1dd00..289d03a31e7d 100644
+index d5034e28d1e1..25663c1d8bc9 100644
 --- a/drivers/pci/p2pdma.c
 +++ b/drivers/pci/p2pdma.c
-@@ -287,47 +287,9 @@ enum {
- 	P2PDMA_NOT_SUPPORTED		= 0x08000000,
+@@ -19,10 +19,12 @@
+ #include <linux/random.h>
+ #include <linux/seq_buf.h>
+ #include <linux/iommu.h>
++#include <linux/xarray.h>
+ 
+ struct pci_p2pdma {
+ 	struct gen_pool *pool;
+ 	bool p2pmem_published;
++	struct xarray dist_cache;
  };
  
--/*
-- * Find the distance through the nearest common upstream bridge between
-- * two PCI devices.
-- *
-- * If the two devices are the same device then 0 will be returned.
-- *
-- * If there are two virtual functions of the same device behind the same
-- * bridge port then 2 will be returned (one step down to the PCIe switch,
-- * then one step back to the same device).
-- *
-- * In the case where two devices are connected to the same PCIe switch, the
-- * value 4 will be returned. This corresponds to the following PCI tree:
-- *
-- *     -+  Root Port
-- *      \+ Switch Upstream Port
-- *       +-+ Switch Downstream Port
-- *       + \- Device A
-- *       \-+ Switch Downstream Port
-- *         \- Device B
-- *
-- * The distance is 4 because we traverse from Device A through the downstream
-- * port of the switch, to the common upstream port, back up to the second
-- * downstream port and then to Device B.
-- *
-- * Any two devices that cannot communicate using p2pdma will return the distance
-- * with the flag P2PDMA_NOT_SUPPORTED.
-- *
-- * Any two devices that have a data path that goes through the host bridge
-- * will consult a whitelist. If the host bridges are on the whitelist,
-- * then the distance will be returned with the flag P2PDMA_THRU_HOST_BRIDGE set.
-- * If either bridge is not on the whitelist, the flag P2PDMA_NOT_SUPPORTED will
-- * be set.
-- *
-- * If a bridge which has any ACS redirection bits set is in the path
-- * then this functions will flag the result with P2PDMA_ACS_FORCES_UPSTREAM.
-- * In this case, a list of all infringing bridge addresses will be
-- * populated in acs_list (assuming it's non-null) for printk purposes.
-- */
--static int upstream_bridge_distance(struct pci_dev *provider,
--				    struct pci_dev *client,
--				    struct seq_buf *acs_list)
-+static int __upstream_bridge_distance(struct pci_dev *provider,
-+				      struct pci_dev *client,
-+				      struct seq_buf *acs_list)
+ static ssize_t size_show(struct device *dev, struct device_attribute *attr,
+@@ -98,6 +100,8 @@ static int pci_p2pdma_setup(struct pci_dev *pdev)
+ 	if (!p2p)
+ 		return -ENOMEM;
+ 
++	xa_init(&p2p->dist_cache);
++
+ 	p2p->pool = gen_pool_create(PAGE_SHIFT, dev_to_node(&pdev->dev));
+ 	if (!p2p->pool)
+ 		goto out;
+@@ -390,17 +394,34 @@ static int upstream_bridge_distance(struct pci_dev *provider,
+ 				    struct pci_dev *client,
+ 				    struct seq_buf *acs_list)
  {
- 	struct pci_dev *a = provider, *b = client, *bb;
- 	int dist_a = 0;
-@@ -393,6 +355,51 @@ static int upstream_bridge_distance(struct pci_dev *provider,
- 	return dist_a + dist_b;
++	void *entry;
+ 	int dist;
++	int idx;
++
++	idx = (pci_domain_nr(client->bus) << 16) |
++		(client->bus->number << 8) | client->devfn;
++
++	if (provider->p2pdma) {
++		entry = xa_load(&provider->p2pdma->dist_cache, idx);
++		if (entry)
++			return xa_to_value(entry);
++	}
+ 
+ 	dist = __upstream_bridge_distance(provider, client, acs_list);
+ 
+ 	if (!(dist & P2PDMA_THRU_HOST_BRIDGE))
+-		return dist;
++		goto store_and_return;
++
++	if (!root_complex_whitelist(provider) ||
++	    !root_complex_whitelist(client))
++		dist |= P2PDMA_NOT_SUPPORTED;
+ 
+-	if (root_complex_whitelist(provider) && root_complex_whitelist(client))
+-		return dist;
++store_and_return:
++	if (provider->p2pdma)
++		xa_store(&provider->p2pdma->dist_cache, idx,
++			 xa_mk_value(dist), GFP_KERNEL);
+ 
+-	return dist | P2PDMA_NOT_SUPPORTED;
++	return dist;
  }
  
-+/*
-+ * Find the distance through the nearest common upstream bridge between
-+ * two PCI devices.
-+ *
-+ * If the two devices are the same device then 0 will be returned.
-+ *
-+ * If there are two virtual functions of the same device behind the same
-+ * bridge port then 2 will be returned (one step down to the PCIe switch,
-+ * then one step back to the same device).
-+ *
-+ * In the case where two devices are connected to the same PCIe switch, the
-+ * value 4 will be returned. This corresponds to the following PCI tree:
-+ *
-+ *     -+  Root Port
-+ *      \+ Switch Upstream Port
-+ *       +-+ Switch Downstream Port
-+ *       + \- Device A
-+ *       \-+ Switch Downstream Port
-+ *         \- Device B
-+ *
-+ * The distance is 4 because we traverse from Device A through the downstream
-+ * port of the switch, to the common upstream port, back up to the second
-+ * downstream port and then to Device B.
-+ *
-+ * Any two devices that cannot communicate using p2pdma will return the distance
-+ * with the flag P2PDMA_NOT_SUPPORTED.
-+ *
-+ * Any two devices that have a data path that goes through the host bridge
-+ * will consult a whitelist. If the host bridges are on the whitelist,
-+ * then the distance will be returned with the flag P2PDMA_THRU_HOST_BRIDGE set.
-+ * If either bridge is not on the whitelist, the flag P2PDMA_NOT_SUPPORTED will
-+ * be set.
-+ *
-+ * If a bridge which has any ACS redirection bits set is in the path
-+ * then this functions will flag the result with P2PDMA_ACS_FORCES_UPSTREAM.
-+ * In this case, a list of all infringing bridge addresses will be
-+ * populated in acs_list (assuming it's non-null) for printk purposes.
-+ */
-+static int upstream_bridge_distance(struct pci_dev *provider,
-+				    struct pci_dev *client,
-+				    struct seq_buf *acs_list)
-+{
-+	return __upstream_bridge_distance(provider, client, acs_list);
-+}
-+
  static int upstream_bridge_distance_warn(struct pci_dev *provider,
- 					 struct pci_dev *client)
- {
 -- 
 2.20.1
 
