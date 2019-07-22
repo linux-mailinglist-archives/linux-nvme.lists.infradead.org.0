@@ -2,70 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 077E870D27
-	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 01:11:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38BB670D4B
+	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 01:23:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XP4YnqmtlbxM0V9J6pt+ixkobaW7EjoVx5G/i4JT9qo=; b=bemWCrkABrf9aw
-	cXwPQQlzOIBNPO1An1ypeaefwsicI1iSB4IMjly9+KgUy43Sp/Cx3fQc/9AQIMxw1dqQNrGOaFe7z
-	M6odZdvpW0iY0Bkuzc+OyoO9EJhXC7FnnqStluMuzJQBeAyF/31UHkjCVA9Fl4qcW1Ep+d1zu7X37
-	tZcU7UqrR4Lr+pPNNl0qcXEU3Dcylx8B9LdX9vbWTd345KN0r8aHORXK2xwIHT3jFdYZhBS+ikl3o
-	RGhoJ79ga3jY3Ievmr65a4ootdCMGn3s2G3G7s+K/eYyjsy5VA46wRjNwAfuY/LPiH9dl4vyvGLHR
-	mpVu4Fdw6BI79I7q51jA==;
+	List-Owner; bh=kR9f2x8lvyRhqTjgeNLhZNE3jAjKYcOq6FMSNAcFjMI=; b=Wk9Ie+5p/oB2eR
+	esPyS0rTDukebkgPzznNH11os4AiwrdELwk8yTyg6AO/4iiz6JPiqW/c9ZwUk7OCOtcVjZK97vMas
+	nUiB1IBqXvJe+WzhBDgl+Nh+l0ZHU4w+ovPqTERR7Fx7Ue0Rop0KLIwK0hfj0nKU0wI/g5Ke6TP9i
+	XEOxe6/A3otvKnUWytQnEQ2ARqaxkIPS/BrPPyFnrZCaTC/JAWAfd0zybjPAgTgQs6JSPosaFEob4
+	ie7xyV8FzKXNMQPJAIZqw7xceNVy2WGUazhHWpk2gXz/ln4z13AsmkPkicBZJTvcI1jqMTcm4azN+
+	VbFNqB7k5bs6nMXW0rlw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hphSu-0003Ne-0h; Mon, 22 Jul 2019 23:11:32 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1hphdz-0000Dc-Rf; Mon, 22 Jul 2019 23:23:00 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hphQh-00015E-5p
- for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 23:09:18 +0000
-Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
- by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1hphQb-0002k9-Dj; Mon, 22 Jul 2019 17:09:11 -0600
-Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
- (envelope-from <gunthorp@deltatee.com>)
- id 1hphQX-0001RH-V5; Mon, 22 Jul 2019 17:09:06 -0600
-From: Logan Gunthorpe <logang@deltatee.com>
-To: linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-rdma@vger.kernel.org
-Date: Mon, 22 Jul 2019 17:08:59 -0600
-Message-Id: <20190722230859.5436-15-logang@deltatee.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190722230859.5436-1-logang@deltatee.com>
-References: <20190722230859.5436-1-logang@deltatee.com>
+ id 1hphdn-0000CO-1D
+ for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 23:22:48 +0000
+Received: by mail-wr1-x442.google.com with SMTP id n9so16026301wrr.4
+ for <linux-nvme@lists.infradead.org>; Mon, 22 Jul 2019 16:22:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=w8RmrKCLNV6A0HgHZ+FerLtUh99eSc8LM/7Qtq8LAJo=;
+ b=u0kI8lG+YC0TmWykIx8xQEGsoI+nGMJ/i3uHiGKfD5w7rR1bJKBeN9YhhoU5JtdZ8c
+ WaHQbZckfqd6y+R4tWVCnlj/Xzo42nMktJqCLnAfOp6gz/mL9IAFsyTBfl4XQE3OOvA1
+ Hg+MEa4vo4YJibO6ezdJY4091FMcOmHRd23IAGnx+annB2AZb87UQjZzdDmuATaZccym
+ 59AecHUOdFhbZi7G77EKZyM0Fw+EI+R9mVz4v7cUz5QE8DVkNSoWkZ+r43uV/5W6menk
+ Y/gJwPsn5tN9Tg3DpmV9EuIxgDl3z7c1m4fjpmUak7RpVx5ZdVg68HPo9dPbKB3ky3tr
+ JWRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=w8RmrKCLNV6A0HgHZ+FerLtUh99eSc8LM/7Qtq8LAJo=;
+ b=WRb6lTnw2YNaksUF75HOB1GKI37cjNwvFDefhJddPm5AtLR7knF8JvBKZ3eK9CKqPz
+ AowN09tvg1/z8HK37K3hAijo78yytCHdNffbqtok9lt+anGb+L7qWhX7p7vnzCjVJ+cD
+ JtCQ05hPkWeCeut4jDscIQ8BXgX/6qr5/pJrecilAa+t/uxGrsvAdkf7vJZXlD3C3pav
+ UpVtSL8Rp12R4s+oWMpbM5FeZmxamSq5GD0L/qZNWO+2FX0aVVdA+MdadIn3kLIg4+9I
+ bXvXSCTqRom8CDajqPiFxqp9Xrj2VCPFQMtdKNaFY4IX8qIke6yLfuJdGqLishidiAjP
+ eMMQ==
+X-Gm-Message-State: APjAAAX6NPgiKAhbren+SMYRYvFdGZ+wmjmX4fai2Yk33BZH66+UfXmG
+ YBAxGEL6gOTfasVE+Jxfqw5Y7vNuZfzws/jSLws=
+X-Google-Smtp-Source: APXvYqzhZz7CnaC0oTLchBJevUk/xHJs7yT2V0xsuTZrWkdrGh4pYTmo6wXaIICBDEdvD1m0kMEXHiC9ZzOuoQal53Q=
+X-Received: by 2002:a5d:630c:: with SMTP id i12mr71823262wru.312.1563837764191; 
+ Mon, 22 Jul 2019 16:22:44 -0700 (PDT)
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 172.16.1.31
-X-SA-Exim-Rcpt-To: linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pci@vger.kernel.org, linux-rdma@vger.kernel.org, bhelgaas@google.com,
- hch@lst.de, Christian.Koenig@amd.com, jgg@mellanox.com, sagi@grimberg.me,
- kbusch@kernel.org, axboe@fb.com, dan.j.williams@intel.com, epilmore@gigaio.com,
- sbates@raithlin.com, logang@deltatee.com
-X-SA-Exim-Mail-From: gunthorp@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
- version=3.4.2
-Subject: [PATCH 14/14] PCI/P2PDMA: Introduce pci_p2pdma_[un]map_resource()
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+References: <20190722053954.25423-1-ming.lei@redhat.com>
+ <20190722053954.25423-4-ming.lei@redhat.com>
+ <d82ead02-c893-4d14-307e-70a6d4596439@acm.org>
+In-Reply-To: <d82ead02-c893-4d14-307e-70a6d4596439@acm.org>
+From: Keith Busch <keith.busch@gmail.com>
+Date: Mon, 22 Jul 2019 17:22:33 -0600
+Message-ID: <CAOSXXT5TkrfH0AFZCV0c+YtbFCQ4MnShKM-gkZrj8Qex+Z7Png@mail.gmail.com>
+Subject: Re: [PATCH 3/5] nvme: don't abort completed request in
+ nvme_cancel_request
+To: Bart Van Assche <bvanassche@acm.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190722_160915_619405_3911B35B 
-X-CRM114-Status: GOOD (  11.74  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190722_162247_102999_FB22A344 
+X-CRM114-Status: GOOD (  15.19  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
+ no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (keith.busch[at]gmail.com)
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,129 +94,55 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Christian Koenig <Christian.Koenig@amd.com>, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>, Jason Gunthorpe <jgg@mellanox.com>,
- Stephen Bates <sbates@raithlin.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Dan Williams <dan.j.williams@intel.com>, Eric Pilmore <epilmore@gigaio.com>,
- Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
+Cc: Jens Axboe <axboe@kernel.dk>, Keith Busch <keith.busch@intel.com>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme <linux-nvme@lists.infradead.org>,
+ Ming Lei <ming.lei@redhat.com>, linux-block@vger.kernel.org,
+ Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-pci_p2pdma_[un]map_resource() can be used to map a resource given
-it's physical address and the backing pci_dev. The functions will call
-dma_[un]map_resource() when appropriate.
+On Mon, Jul 22, 2019 at 9:27 AM Bart Van Assche <bvanassche@acm.org> wrote:
+> On 7/21/19 10:39 PM, Ming Lei wrote:
+> > Before aborting in-flight requests, all IO queues have been shutdown.
+> > However, request's completion fn may not be done yet because it may
+> > be scheduled to run via IPI.
+> >
+> > So don't abort one request if it is marked as completed, otherwise
+> > we may abort one normal completed request.
+> >
+> > Cc: Max Gurtovoy <maxg@mellanox.com>
+> > Cc: Sagi Grimberg <sagi@grimberg.me>
+> > Cc: Keith Busch <keith.busch@intel.com>
+> > Cc: Christoph Hellwig <hch@lst.de>
+> > Signed-off-by: Ming Lei <ming.lei@redhat.com>
+> > ---
+> >   drivers/nvme/host/core.c | 4 ++++
+> >   1 file changed, 4 insertions(+)
+> >
+> > diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> > index cc09b81fc7f4..cb8007cce4d1 100644
+> > --- a/drivers/nvme/host/core.c
+> > +++ b/drivers/nvme/host/core.c
+> > @@ -285,6 +285,10 @@ EXPORT_SYMBOL_GPL(nvme_complete_rq);
+> >
+> >   bool nvme_cancel_request(struct request *req, void *data, bool reserved)
+> >   {
+> > +     /* don't abort one completed request */
+> > +     if (blk_mq_request_completed(req))
+> > +             return;
+> > +
+> >       dev_dbg_ratelimited(((struct nvme_ctrl *) data)->device,
+> >                               "Cancelling I/O %d", req->tag);
+>
+> Something I probably already asked before: what prevents that
+> nvme_cancel_request() is executed concurrently with the completion
+> handler of the same request?
 
-This is for demonstration purposes only as there are no users of this
-function at this time. Thus, this patch should not be merged at
-this time.
-
-Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
----
- drivers/pci/p2pdma.c | 85 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 85 insertions(+)
-
-diff --git a/drivers/pci/p2pdma.c b/drivers/pci/p2pdma.c
-index baf476039396..20c834cfd2d3 100644
---- a/drivers/pci/p2pdma.c
-+++ b/drivers/pci/p2pdma.c
-@@ -874,6 +874,91 @@ void pci_p2pdma_unmap_sg_attrs(struct device *dev, struct scatterlist *sg,
- }
- EXPORT_SYMBOL_GPL(pci_p2pdma_unmap_sg_attrs);
- 
-+static pci_bus_addr_t pci_p2pdma_phys_to_bus(struct pci_dev *dev,
-+		phys_addr_t start, size_t size)
-+{
-+	struct pci_host_bridge *bridge = pci_find_host_bridge(dev->bus);
-+	phys_addr_t end = start + size;
-+	struct resource_entry *window;
-+
-+	resource_list_for_each_entry(window, &bridge->windows) {
-+		if (window->res->start <= start && window->res->end >= end)
-+			return start - window->offset;
-+	}
-+
-+	return DMA_MAPPING_ERROR;
-+}
-+EXPORT_SYMBOL_GPL(pci_p2pdma_phys_to_bus);
-+
-+/**
-+ * pci_p2pdma_map_resource - map a PCI peer-to-peer physical address for DMA
-+ * @provider: pci device that provides the memory backed by phys_addr
-+ * @dma_dev: device doing the DMA request
-+ * @phys_addr: physical address of the memory to map
-+ * @size: size of the memory to map
-+ * @dir: DMA direction
-+ * @attrs: dma attributes passed to dma_map_resource() (if called)
-+ *
-+ * Maps a BAR physical address for programming a DMA engine.
-+ *
-+ * Returns the dma_addr_t to map or DMA_MAPPING_ERROR on failure
-+ */
-+dma_addr_t pci_p2pdma_map_resource(struct pci_dev *provider,
-+		struct device *dma_dev, phys_addr_t phys_addr, size_t size,
-+		enum dma_data_direction dir, unsigned long attrs)
-+{
-+	struct pci_dev *client;
-+	int dist;
-+
-+	client = find_parent_pci_dev(dma_dev);
-+	if (!client)
-+		return DMA_MAPPING_ERROR;
-+
-+	dist = upstream_bridge_distance(provider, client, NULL);
-+	if (dist & P2PDMA_NOT_SUPPORTED)
-+		return DMA_MAPPING_ERROR;
-+
-+	if (dist & P2PDMA_THRU_HOST_BRIDGE)
-+		return dma_map_resource(dma_dev, phys_addr, size, dir, attrs);
-+	else
-+		return pci_p2pdma_phys_to_bus(provider, phys_addr, size);
-+}
-+EXPORT_SYMBOL_GPL(pci_p2pdma_map_resource);
-+
-+/**
-+ * pci_p2pdma_unmap_resource - unmap a resource mapped with
-+ *		pci_p2pdma_map_resource()
-+ * @provider: pci device that provides the memory backed by phys_addr
-+ * @dma_dev: device doing the DMA request
-+ * @addr: dma address returned by pci_p2pdma_unmap_resource()
-+ * @size: size of the memory to map
-+ * @dir: DMA direction
-+ * @attrs: dma attributes passed to dma_unmap_resource() (if called)
-+ *
-+ * Maps a BAR physical address for programming a DMA engine.
-+ *
-+ * Returns the dma_addr_t to map or DMA_MAPPING_ERROR on failure
-+ */
-+void pci_p2pdma_unmap_resource(struct pci_dev *provider,
-+		struct device *dma_dev, dma_addr_t addr, size_t size,
-+		enum dma_data_direction dir, unsigned long attrs)
-+{
-+	struct pci_dev *client;
-+	int dist;
-+
-+	client = find_parent_pci_dev(dma_dev);
-+	if (!client)
-+		return;
-+
-+	dist = upstream_bridge_distance(provider, client, NULL);
-+	if (dist & P2PDMA_NOT_SUPPORTED)
-+		return;
-+
-+	if (dist & P2PDMA_THRU_HOST_BRIDGE)
-+		dma_unmap_resource(dma_dev, addr, size, dir, attrs);
-+}
-+EXPORT_SYMBOL_GPL(pci_p2pdma_unmap_resource);
-+
- /**
-  * pci_p2pdma_enable_store - parse a configfs/sysfs attribute store
-  *		to enable p2pdma
--- 
-2.20.1
-
+At least for pci, we've shutdown the queues and their interrupts prior
+to tagset iteration, so we can't concurrently execute a natural
+completion for in-flight requests while cancelling them.
 
 _______________________________________________
 Linux-nvme mailing list
