@@ -2,93 +2,86 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 24208702F0
-	for <lists+linux-nvme@lfdr.de>; Mon, 22 Jul 2019 17:01:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D8528703AA
+	for <lists+linux-nvme@lfdr.de>; Mon, 22 Jul 2019 17:25:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=R/EKF5iESFmtxtvIMKyzeMIL7LcYkpMis4cjC8q6Dcc=; b=fNk0h4e9PkCuNTaKpkqAthKSBt
-	wmkZjveV/v9LpyeCabN7cHyxDjMBGgRTlRc0ouwfrFc0WCcfFF/PeVX82Jt+BECJJzpm7xrlQMj+L
-	UXurkCPrweZTFXyxPk/kpYI9M6UdC7GxCZj0z5D0G5euX8Wr/1GgY5xZyyCw/TJsem+ueAZ97jCu1
-	z2NerooRzkwQwrDvQyt6X0+mlhOPkuIIsv7hVBcIkPfX8mWOolUQNz4z8tGCHHZ9eniEoLyUl5uYU
-	FDLIQ27J3MxmyuKrXEz3FNdZ0Ku9rTwVvGOuppatHSDs6ENJBX2inkJtFzaqDdrfQncZ95cuf+OKb
-	4lfKvqpA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4sVKB4cOc4wmJzaC4yZe8yLpYNTalEIcWGJzuS89sco=; b=oENkROomzVo349kTK0Ev6RdiV
+	Jh/ajIVwRuvPk43gk4B4sMF8QK773BfcOoUDO9x6MiQbQBiihdqE7EKMc75GUFS4UMUTwTZg2Aj/l
+	MS/e9MXWwwlTM9ZZcftPfxJP7+/HOaXNFyaPxbDbHHkmVtEopFGNIcTbz/laS2AlOTrsNGtNMFnLf
+	NT4XDLq7GSd01A84WByMgavOAQoJLkEJf2xQnQxCTzRccsIaYor+j9G9ypvsBP+FBAlQO/wCeds1s
+	4W9jRVwYH8PQr+zohdoKedGpXDXie44FDaX7ktpfus5WZvGbB6NI9DqLxFiCL0W9W2fmQ0nX2VhEo
+	EpMQusa5g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpZon-0006iJ-9U; Mon, 22 Jul 2019 15:01:37 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1hpaBw-0002FQ-Mv; Mon, 22 Jul 2019 15:25:32 +0000
+Received: from mail-pg1-f193.google.com ([209.85.215.193])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpZnI-0005Au-In
- for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 15:00:06 +0000
-Received: by mail-pl1-x641.google.com with SMTP id ay6so19341240plb.9
- for <linux-nvme@lists.infradead.org>; Mon, 22 Jul 2019 08:00:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=H/mgA5Q6Tay1+ixdoqgmaZ9E59OoWK8q1G0jb5mfWTU=;
- b=T/wva0ycJqMHPLQKhAXy5V2lfzKN76yWpvWsrPHtca0NDIyzmovmqZgvwVqF14v2L8
- fBrD47foZqJBwmOlF5kvBbL5MtnGVvtp6/bOZvyElrrjnl63poUJtgV/ycVD0VAkKCe0
- IJWuezmPWL2Onh1qDU+eD3K5ATWu2YrINCgSIrdoGFLXUa5IyTfvzNGUJAblJbCNi3p5
- 8fPvWMfBE8yA5Y1Gts097/nIort/T/1wP1L1J4wFIhOKveGGWVIYyN8/YbCTc6HmCYI5
- r7xdAi1ReLdIIJwpHR+9VK//9e7Uz4d7vSNv9p/9skFEMIpNHEgnPE1wGq4kbPK2N+3H
- Pqlw==
+ id 1hpaBc-0002EZ-0Q
+ for linux-nvme@lists.infradead.org; Mon, 22 Jul 2019 15:25:15 +0000
+Received: by mail-pg1-f193.google.com with SMTP id w10so17826338pgj.7
+ for <linux-nvme@lists.infradead.org>; Mon, 22 Jul 2019 08:25:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=H/mgA5Q6Tay1+ixdoqgmaZ9E59OoWK8q1G0jb5mfWTU=;
- b=Zv++3BDwCnKpJTdaYg/YAn0B3Ag76gpki7UKpxrdO9blUlH13pAxmVuAKFrAxYt/kX
- hLGwpOT6ljkRoe3KKF73FMfdHU0qVEqt72gN04zB/ClLIqByyPqytXA33rDeS+1V73SH
- 6DTiGblESCSgHjFI0UOODvxxA4j9suo4x1J1nVFoopLxUAOXIbkmvRiUVU9bcJkuIF7o
- 9l199YDJ9iplTtp5BaqL12XNv4zlDAUSyfVuRCbz8974/3Jj/S7eC+amJbj7kQSb5fVG
- /J6PJVnjkyCZEc1MGRb5bqRM5a4gXtlzwz4eVt3khHqNJRUilL6yOMJrLy+DQ8pHaeJx
- v6FA==
-X-Gm-Message-State: APjAAAUBJ9CjKcJN0Z0qSWRBYvbdOV6KkWd70y9qsgIr178ik7S6m+El
- LovOWD6JORtvulIvKC9lkkk=
-X-Google-Smtp-Source: APXvYqxgJ+C74y1G4cEu9kZN1sEr0LOAv6Ih4XmhsV8n8HLqX2VM3eQps23ZbUAPOuHVbaq3um9WrQ==
-X-Received: by 2002:a17:902:8ec3:: with SMTP id
- x3mr74560918plo.313.1563807602716; 
- Mon, 22 Jul 2019 08:00:02 -0700 (PDT)
-Received: from mita-MS-7A45.lan (KD027092233113.ppp-bb.dion.ne.jp.
- [27.92.233.113])
- by smtp.gmail.com with ESMTPSA id a16sm42533174pfd.68.2019.07.22.07.59.49
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Mon, 22 Jul 2019 08:00:02 -0700 (PDT)
-From: Akinobu Mita <akinobu.mita@gmail.com>
-To: linux-block@vger.kernel.org, linux-leds@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-scsi@vger.kernel.org
-Subject: [PATCH v2 3/3] scsi: sd: stop polling disk stats by ledtrig-blk
- during runtime suspend
-Date: Mon, 22 Jul 2019 23:59:12 +0900
-Message-Id: <1563807552-23498-4-git-send-email-akinobu.mita@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1563807552-23498-1-git-send-email-akinobu.mita@gmail.com>
-References: <1563807552-23498-1-git-send-email-akinobu.mita@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9jCVali6gKyIf+iTVA7FGys0/plNy2aSpdO4EPkxFHY=;
+ b=aiH6hB93A+QKhzXvrtzVgLw0MiIR4MUQUf7jBH+ZB30nHw4uuDIFh7AWnw4aWD79BS
+ SaCjWT2jrFHDnnzKYaJDk5ICJCxUavKRWhIKxjg4+wRv6XV7YE/GjO3tMPqN8UfxCACN
+ +xggKmWx+AAFDYsots7oq9r8tWzGmrPIOTHlQqJKIwVLNyeYH+qb8/O+YQQuRP/vh4eo
+ qubAaD/WCzPhS9+ezLqFVHyxLbkPE+thgTkX9YAvPS81G344Zp6KHa7gHeq6aJ7RKDg/
+ qxWbisn9ttwpNvZkV0tMlBWTWFs9JR9xWFDxfWp3a8VujaQ8Tpsyx7AojrPoBgeiR9yZ
+ yJ4w==
+X-Gm-Message-State: APjAAAU9d9Nv6r5ua8TtdN59F1p/xaSdoWM+Y4L8wJuiLnlqOA4sFwWO
+ SHNwLsKW0i/sLxGrZc0zqQc=
+X-Google-Smtp-Source: APXvYqzIStTvg9h7MwNPMWX/s1A/lVS1FdstXi9YHhtd8dwEX5Skqs1eRYLn0XS50glRBzcMKyx//w==
+X-Received: by 2002:a17:90a:d343:: with SMTP id
+ i3mr80813836pjx.15.1563809109921; 
+ Mon, 22 Jul 2019 08:25:09 -0700 (PDT)
+Received: from desktop-bart.svl.corp.google.com
+ ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
+ by smtp.gmail.com with ESMTPSA id g4sm51862448pfo.93.2019.07.22.08.25.08
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 22 Jul 2019 08:25:08 -0700 (PDT)
+Subject: Re: [PATCH 2/5] blk-mq: introduce
+ blk_mq_tagset_wait_completed_request()
+To: Ming Lei <ming.lei@redhat.com>, Jens Axboe <axboe@kernel.dk>
+References: <20190722053954.25423-1-ming.lei@redhat.com>
+ <20190722053954.25423-3-ming.lei@redhat.com>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <c2722892-9cbf-0747-58a8-91a99b72bc53@acm.org>
+Date: Mon, 22 Jul 2019 08:25:07 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
+MIME-Version: 1.0
+In-Reply-To: <20190722053954.25423-3-ming.lei@redhat.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190722_080005_045451_AB46C493 
-X-CRM114-Status: GOOD (  18.12  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190722_082512_466306_7DA35F5F 
+X-CRM114-Status: GOOD (  14.12  )
+X-Spam-Score: 0.3 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
- [list.dnswl.org]
+ no trust [209.85.215.193 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (akinobu.mita[at]gmail.com)
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ provider (bart.vanassche[at]gmail.com)
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.215.193 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,127 +93,32 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>,
- Akinobu Mita <akinobu.mita@gmail.com>, Dan Murphy <dmurphy@ti.com>,
- Pavel Machek <pavel@ucw.cz>, Jacek Anaszewski <jacek.anaszewski@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-block@vger.kernel.org, Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
+ Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The LED block device activity trigger periodically polls the disk stats
-to collect the activity.  However, it is pointless to poll while the
-scsi device is in runtime suspend.
+On 7/21/19 10:39 PM, Ming Lei wrote:
+> blk-mq may schedule to call queue's complete function on remote CPU via
+> IPI, but doesn't provide any way to synchronize the request's complete
+> fn.
+> 
+> In some driver's EH(such as NVMe), hardware queue's resource may be freed &
+> re-allocated. If the completed request's complete fn is run finally after the
+> hardware queue's resource is released, kernel crash will be triggered.
+> 
+> Prepare for fixing this kind of issue by introducing
+> blk_mq_tagset_wait_completed_request().
 
-This stops polling disk stats when the device is successfully runtime
-suspended, and restarts polling when the device is successfully runtime
-resumed.
+An explanation is missing of why the block layer is modified to fix this 
+instead of the NVMe driver.
 
-Cc: Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>
-Cc: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Cc: Pavel Machek <pavel@ucw.cz>
-Cc: Dan Murphy <dmurphy@ti.com>
-Cc: Jens Axboe <axboe@kernel.dk>
-Cc: "James E.J. Bottomley" <jejb@linux.ibm.com>
-Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
-Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
----
- drivers/scsi/sd.c | 40 +++++++++++++++++++++++-----------------
- 1 file changed, 23 insertions(+), 17 deletions(-)
+Thanks,
 
-diff --git a/drivers/scsi/sd.c b/drivers/scsi/sd.c
-index 149d406..5f73142 100644
---- a/drivers/scsi/sd.c
-+++ b/drivers/scsi/sd.c
-@@ -3538,7 +3538,7 @@ static int sd_suspend_common(struct device *dev, bool ignore_stop_errors)
- {
- 	struct scsi_disk *sdkp = dev_get_drvdata(dev);
- 	struct scsi_sense_hdr sshdr;
--	int ret = 0;
-+	int ret;
- 
- 	if (!sdkp)	/* E.g.: runtime suspend following sd_remove() */
- 		return 0;
-@@ -3550,18 +3550,16 @@ static int sd_suspend_common(struct device *dev, bool ignore_stop_errors)
- 		if (ret) {
- 			/* ignore OFFLINE device */
- 			if (ret == -ENODEV)
--				return 0;
--
--			if (!scsi_sense_valid(&sshdr) ||
--			    sshdr.sense_key != ILLEGAL_REQUEST)
--				return ret;
-+				goto success;
- 
- 			/*
- 			 * sshdr.sense_key == ILLEGAL_REQUEST means this drive
- 			 * doesn't support sync. There's not much to do and
- 			 * suspend shouldn't fail.
- 			 */
--			ret = 0;
-+			if (!scsi_sense_valid(&sshdr) ||
-+			    sshdr.sense_key != ILLEGAL_REQUEST)
-+				return ret;
- 		}
- 	}
- 
-@@ -3569,11 +3567,14 @@ static int sd_suspend_common(struct device *dev, bool ignore_stop_errors)
- 		sd_printk(KERN_NOTICE, sdkp, "Stopping disk\n");
- 		/* an error is not worth aborting a system sleep */
- 		ret = sd_start_stop_device(sdkp, 0);
--		if (ignore_stop_errors)
--			ret = 0;
-+		if (ret && !ignore_stop_errors)
-+			return ret;
- 	}
- 
--	return ret;
-+success:
-+	ledtrig_blk_disable(sdkp->disk);
-+
-+	return 0;
- }
- 
- static int sd_suspend_system(struct device *dev)
-@@ -3589,19 +3590,24 @@ static int sd_suspend_runtime(struct device *dev)
- static int sd_resume(struct device *dev)
- {
- 	struct scsi_disk *sdkp = dev_get_drvdata(dev);
--	int ret;
- 
- 	if (!sdkp)	/* E.g.: runtime resume at the start of sd_probe() */
- 		return 0;
- 
--	if (!sdkp->device->manage_start_stop)
--		return 0;
-+	if (sdkp->device->manage_start_stop) {
-+		int ret;
-+
-+		sd_printk(KERN_NOTICE, sdkp, "Starting disk\n");
-+		ret = sd_start_stop_device(sdkp, 1);
-+		if (ret)
-+			return ret;
- 
--	sd_printk(KERN_NOTICE, sdkp, "Starting disk\n");
--	ret = sd_start_stop_device(sdkp, 1);
--	if (!ret)
- 		opal_unlock_from_suspend(sdkp->opal_dev);
--	return ret;
-+	}
-+
-+	ledtrig_blk_enable(sdkp->disk);
-+
-+	return 0;
- }
- 
- /**
--- 
-2.7.4
-
+Bart.
 
 _______________________________________________
 Linux-nvme mailing list
