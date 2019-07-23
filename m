@@ -2,83 +2,56 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1AB470F5B
-	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 04:53:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6026770FFE
+	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 05:18:22 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Q2YfbPwdXf0wnlPfOoV26+1PlNnzYWZW08+NHh794HA=; b=ayVoZK8R9g1i8u4Wt6b0aU6U6
-	K/t5aDsWgAMTRxBqxTKJrYnOx11sJ2bnmtC731QAlL1qaxYa5/13Al1hX5L5u729Rn4Kk6veUMOu9
-	OnuONJDTTTJe9Vw02Aj2HK2JpjFBPPrDuv13OnxoekFEtDLY93rnZCHUrdyeX58TNVZVGoLcWH8xA
-	uYFPXjSM7jeUxhWphHqnIJaBv7bWaQFKMiQinMkHqPBm1BZlg8qarXCZI9bzJT84TMXwk/NMNJzIo
-	mTjxm1g7/ojxUvSWIIbcayLRIpcT7axj5XVbNVY1VXAHIF14GYz4kMxLUYhsTKQtVFyB4/KXyIBEE
-	8FuIeO0zA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=I39uKMH4aATDfAPMmD1/g6j7LJ5YR9D2hJLj2Jij/os=; b=H8CfzGgBqyu0bN
+	bwNCAlbLsXInJY0BX81TylGojEB/Teh4s1vCAzg0SjN2+ahyw65Dhp1z0uuwomWZjYkmB0nDfIJZo
+	TRj5e27HLIGdbnqZirjT+dvs55ttVKbncSXjOrAnXrDF+N15ettHS8LvU5qcdD94g82niKaKu/hgl
+	tCYI4J+qyi7Xb1XfDLgDVgaLd1DRvkSSMJPXuUdWKadRl8W4J6o82djEyiHZLt2HtYQvxACCpH076
+	Gpijl8Q1lyTSoVXkRBstYYVOhJGi7sf3w5ChBiyKZYHDbj+jXq/Qvc3K6V+8jXIBkIYJ+6k7Djy64
+	WPpYr13GU/tuhJ+Xk5ag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpkvn-0005Ur-Te; Tue, 23 Jul 2019 02:53:36 +0000
-Received: from mail-oi1-f193.google.com ([209.85.167.193])
+	id 1hplJN-000768-TY; Tue, 23 Jul 2019 03:17:58 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190] helo=huawei.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpkuf-0005Ki-LX
- for linux-nvme@lists.infradead.org; Tue, 23 Jul 2019 02:52:29 +0000
-Received: by mail-oi1-f193.google.com with SMTP id v186so31178467oie.5
- for <linux-nvme@lists.infradead.org>; Mon, 22 Jul 2019 19:52:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=UlMnKcU1n2LnO056FmI8HcLgF0YdiOp946rQLaJjvXk=;
- b=tBlkyGCgOH+nAe8f7HZqqgXMbPnTVpMZzQ9BmIf2TwxIzTnzGBHw7rEGjU6vic5u8Y
- kVJQq6uy6aW+uRPwMGoQNp3K+ako/mGvbz7D2bSZmU+XO7EtZZhtMMm4F2qds1pUXGWn
- X4lY9zJOkuCgi541u0UciRmzOmSWxi4L898Yp3kBYN8WDu0jHnyHElEp5QOWOnWp2Yum
- hJP0bZuztt7SfTY7NtHKSpOxPOQbMGssAW1D661mv/y74HgryaOh4ef1kIe8L9ZQKKsH
- lIUitm+fktlQE0lATin3BPAktdKMHk4IIQG8eOcJI0oPi1x/8qKJmvR8Spoj5xus4A6S
- lWUQ==
-X-Gm-Message-State: APjAAAW9c9E6ZehpXGga737LA9xUeX+2fQdKayOICu0EYSBsRmkJPzWh
- 1u/Gm1rUVdgg0qiWjVoM6Vo=
-X-Google-Smtp-Source: APXvYqwZYAOPKQuHe4/kFYmPTNnwzNxazUqce3i8GWR89jDJ+gSZy1Q8+/PP9Vi6PbIw90ywPllbnA==
-X-Received: by 2002:aca:4f52:: with SMTP id d79mr32978730oib.15.1563850344480; 
- Mon, 22 Jul 2019 19:52:24 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id n26sm14503811otq.10.2019.07.22.19.52.23
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 22 Jul 2019 19:52:23 -0700 (PDT)
-Subject: Re: [PATCH v2 10/10] nvme-cli: nvmf auto-connect scripts
-To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
-References: <20190719225305.11397-1-jsmart2021@gmail.com>
- <20190719225305.11397-11-jsmart2021@gmail.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <27688d4f-49b1-9fcd-d315-d0a33ecd248d@grimberg.me>
-Date: Mon, 22 Jul 2019 19:52:22 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ id 1hplJ8-000752-SL
+ for linux-nvme@lists.infradead.org; Tue, 23 Jul 2019 03:17:44 +0000
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id BDB69CEBB8EAB33448FB;
+ Tue, 23 Jul 2019 11:17:34 +0800 (CST)
+Received: from RH5885H-V3.huawei.com (10.90.53.225) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 23 Jul 2019 11:17:24 +0800
+From: yangerkun <yangerkun@huawei.com>
+To: <alan.mikhak@sifive.com>, <hch@lst.de>, <linux-nvme@lists.infradead.org>
+Subject: [PATCH] Revert "nvme-pci: don't create a read hctx mapping without
+ read queues"
+Date: Tue, 23 Jul 2019 11:23:13 +0800
+Message-ID: <1563852193-6895-1-git-send-email-yangerkun@huawei.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-In-Reply-To: <20190719225305.11397-11-jsmart2021@gmail.com>
-Content-Language: en-US
+X-Originating-IP: [10.90.53.225]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190722_195227_078869_429B660A 
-X-CRM114-Status: GOOD (  11.66  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190722_201743_481023_5FF1A0F1 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.193 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [45.249.212.190 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.167.193 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,32 +63,41 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Simon Schricker <sschricker@suse.com>
+Cc: yangerkun@huawei.com, yi.zhang@huawei.com, houtao1@huawei.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+This reverts commit 0298d5435276e7795b0b939d74827f6e775e7009.
 
->   Makefile                                         | 22 +++++++++++++++++++---
->   nvme.spec.in                                     |  9 +++++++++
->   nvmf-autoconnect/70-nvmf-autoconnect.conf        |  1 +
->   nvmf-autoconnect/70-nvmf-autoconnect.rules       | 18 ++++++++++++++++++
->   nvmf-autoconnect/nvmefc-boot-connections.service |  9 +++++++++
->   nvmf-autoconnect/nvmf-connect.target             |  2 ++
->   nvmf-autoconnect/nvmf-connect@.service           | 14 ++++++++++++++
->   7 files changed, 72 insertions(+), 3 deletions(-)
->   create mode 100644 nvmf-autoconnect/70-nvmf-autoconnect.conf
->   create mode 100644 nvmf-autoconnect/70-nvmf-autoconnect.rules
->   create mode 100644 nvmf-autoconnect/nvmefc-boot-connections.service
->   create mode 100644 nvmf-autoconnect/nvmf-connect.target
->   create mode 100644 nvmf-autoconnect/nvmf-connect@.service
+With this patch, set 'poll_queues > hard queues' will lead to 'nr_read_queues = 0'
+in nvme_calc_irq_sets. Then poll_queues setting can fail since dev->tagset.nr_maps
+equals to 2 and nvme_pci_map_queues will not do map for poll queues.
 
-James, didn't we agree we are going to split these into local
-directories: systemd/ rules/ dracut/ ?
+Signed-off-by: yangerkun <yangerkun@huawei.com>
+---
+ drivers/nvme/host/pci.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-I asked this for us to be able to add more scripts easily that
-would not necessarily be related to autoconnect...
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index bb970ca..77555ad 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -2254,9 +2254,7 @@ static int nvme_dev_add(struct nvme_dev *dev)
+ 	if (!dev->ctrl.tagset) {
+ 		dev->tagset.ops = &nvme_mq_ops;
+ 		dev->tagset.nr_hw_queues = dev->online_queues - 1;
+-		dev->tagset.nr_maps = 1; /* default */
+-		if (dev->io_queues[HCTX_TYPE_READ])
+-			dev->tagset.nr_maps++;
++		dev->tagset.nr_maps = 2; /* default + read */
+ 		if (dev->io_queues[HCTX_TYPE_POLL])
+ 			dev->tagset.nr_maps++;
+ 		dev->tagset.timeout = NVME_IO_TIMEOUT;
+-- 
+2.7.4
+
 
 _______________________________________________
 Linux-nvme mailing list
