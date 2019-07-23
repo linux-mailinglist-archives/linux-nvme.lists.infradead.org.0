@@ -2,60 +2,93 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C58AF71C70
-	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 18:05:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FA0371C6F
+	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 18:05:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s0LM5oYYEmypdaqT5FRG35ZPKwU0doua+eCReE6Iaz8=; b=YuaYMg6TGc/FIu
-	HWcHYFKJlciqoKySeDKpbVzFQEa6gIm8GlVfnfokC7Fuz/wXtKFzKjcdyGEaNjHQVWK9hGGwVsPSP
-	vvOz8rQDTAaeVHrNl+iUjw9oFNBMKCoolviQm/4UCe9ebSmqE2xXfJ+37Em5oM+di39fLMgQOicEl
-	jbIlCS7gneCCnTUEvVBT+12oZK+sCYrmKnP7G6Pz1iwKj2HUeYQhNi2V7GgypryHxWTU2Glc0BaO9
-	7s1G/L/x0xykUgEj3oXF4gdIM02wMJYZaz+xDIDNIEWtD2XGU6AtD3TKnOc3JXWlHes1ANYg8ocqz
-	1rbDraxtudSaUQxiGAEg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4e/quXu/EDYFlFWlgmUjbSsE/enPncX29Coap3qeHX0=; b=aCbWMMPKejwKsEY8Qd5Kojg+3
+	lIyQjaZUtIKGQr9meyCQ3+eGbnJCC8T4KK//QoR1C3+z9cb/dHYOxLZ78ElrqYnR8k4VuH9Ba8hZq
+	AnQNK68QR98Oe9kTzcQPFkmXROezDLjnrpQZcSFG2JendJAC02y832hdSxe6xDJrZTDXHs3eU8nK5
+	wVUFjmqzCLBYr9KhMxcicIjyudnzDlKdsXilF7rQD39LRdzp1UZ+dFxWsm+np6SvdFKyfvR7jeTZp
+	4oBo1LmE8jJYiPmhh3Yw/LhkOUvIBJUryltY5GvpQkc+TbRda0Rzqz6idIEsL/i+qq8wiaO5XDcOl
+	ZQ6wbTINQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpxIG-0005Ve-Gu; Tue, 23 Jul 2019 16:05:36 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1hpxHr-0004KQ-B0; Tue, 23 Jul 2019 16:05:11 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpxHN-0004DO-EN
- for linux-nvme@lists.infradead.org; Tue, 23 Jul 2019 16:04:43 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 Jul 2019 09:04:40 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="197173385"
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by fmsmga002.fm.intel.com with ESMTP; 23 Jul 2019 09:04:39 -0700
-Date: Tue, 23 Jul 2019 10:01:42 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Matias =?iso-8859-1?Q?Bj=F8rling?= <mb@lightnvm.io>
-Subject: Re: [PATCH V2 0/4] lnvm: minor clean-ups
-Message-ID: <20190723160141.GA4002@localhost.localdomain>
-References: <20190721153219.5730-1-minwoo.im.dev@gmail.com>
- <744d9561-0710-6428-6135-cb1902fc66ad@lightnvm.io>
+ id 1hpxHK-0004Ap-1R
+ for linux-nvme@lists.infradead.org; Tue, 23 Jul 2019 16:04:39 +0000
+Received: by mail-pf1-x444.google.com with SMTP id p184so19362905pfp.7
+ for <linux-nvme@lists.infradead.org>; Tue, 23 Jul 2019 09:04:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=6J48SvRxl9jceiIQzQWw6OWDzeiX0SS9ElCCyMHE3hs=;
+ b=dFLH8fJmSMcitnumx8Z08FVEWdXbHr3jGUgMHB1bHiR2cPeTtN9GNXelxrEcI8btGc
+ aXhtmGWHUh4gqH81aTeLamRC4cE09Q3gF52xERwne5R8R4LKm3WDaQ+X3ocyJgTJaryJ
+ JGJS5sPQEuQEB8RZcxqZxfmqnkdayFGCP1QNU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=6J48SvRxl9jceiIQzQWw6OWDzeiX0SS9ElCCyMHE3hs=;
+ b=Ww9owvAxJajdReGmU2QN+HnU9uM6XuoqWMwlLTp1hD4kXYvRCYuEllUGCyMOWB0cQK
+ az/hL3cyXSHVDW2roH0xuitSnibzctDEV2UuEweyZUpDXKD5pR3XT2XfHcHQLR9047EA
+ tCm0vPHZsOpOAhQcDbHakrkgX8JuRMH826eGx7jVUqiLI80EWd0o0UfYIxflge8Zhp6W
+ 7+xA/vxAXFLqJTI2lLLO0cAF/DFEFAao5TDuI5R3Muhix5o0ujeCzBdOqB06Yb3mp8nD
+ 1RHDsbhBu4rTBBgJEj692bAQo7X4FVyXHX8O61pHTTR63K21Ee18Fk38hD4Dtvkn00Ra
+ Cnyg==
+X-Gm-Message-State: APjAAAWEp+8/jDD/WDQ3HkLvqhTRWJbQDPG46EqygGuwUGI2zKOekcNR
+ 0vwA44V1EBOawYxrcGgNO9ju2MpSG34=
+X-Google-Smtp-Source: APXvYqzKSTqEzNpvhuuBjLqnEHEmnWP5gd5r5K5J+mBNpS459vziUmGUYXNHnaliJZ5RbMOfE6JZEw==
+X-Received: by 2002:aa7:858b:: with SMTP id w11mr6235244pfn.68.1563897876800; 
+ Tue, 23 Jul 2019 09:04:36 -0700 (PDT)
+Received: from [10.230.29.90] ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id v12sm37372785pjk.13.2019.07.23.09.04.35
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 23 Jul 2019 09:04:36 -0700 (PDT)
+Subject: Re: [PATCH v2 10/10] nvme-cli: nvmf auto-connect scripts
+To: Sagi Grimberg <sagi@grimberg.me>, James Smart <jsmart2021@gmail.com>,
+ linux-nvme@lists.infradead.org
+References: <20190719225305.11397-1-jsmart2021@gmail.com>
+ <20190719225305.11397-11-jsmart2021@gmail.com>
+ <4efefb70-7ab1-69af-4f41-63223e9f4ff8@grimberg.me>
+From: James Smart <james.smart@broadcom.com>
+Message-ID: <d5b4ef61-cf1d-ce9c-1bd0-7f372f874320@broadcom.com>
+Date: Tue, 23 Jul 2019 09:04:34 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <744d9561-0710-6428-6135-cb1902fc66ad@lightnvm.io>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+In-Reply-To: <4efefb70-7ab1-69af-4f41-63223e9f4ff8@grimberg.me>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190723_090441_586885_37A9DCC5 
-X-CRM114-Status: GOOD (  17.83  )
-X-Spam-Score: -1.3 (-)
+X-CRM114-CacheID: sfid-20190723_090438_201394_FC6B3A04 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [134.134.136.100 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,67 +100,25 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Klaus Birkelund <birkelund@gmail.com>,
- Javier =?iso-8859-1?Q?Gonz=E1lez?= <javier@javigon.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, linux-nvme@lists.infradead.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Simon Schricker <sschricker@suse.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Jul 23, 2019 at 10:58:11AM +0200, Matias Bj=F8rling wrote:
-> On 7/21/19 5:32 PM, Minwoo Im wrote:
-> > Hi,
-> > =
-
-> > This series is nothing but a clean-up patch series.  I hope it's not a
-> > just code churns, but a good start to do something for lnvm.
-> > =
-
-> > The first one removed a redundant whitespace in the command description.
-> > The second one removed unnecessary print for the sizeof(dev) which will
-> > always be zero in case user does not give any argument for the device.
-> > The third patch removed temp variable instead casting the pinter
-> > directly.  The last one just sync-up the kernel UAPI header file to the
-> > latest.
-> > =
-
-> > Please review.
-> > =
-
-> > Thanks,
-> > =
-
-> > Changes to V2:
-> >    - Resend the series with the latest patch commits.
-> > =
-
-> > Minwoo Im (4):
-> >    lnvm: remove redundant whitespace in lnvm_init()
-> >    lnvm: do not print 0 when the arg is not given
-> >    lnvm: cast identity structure to (void *) directly
-> >    lnvm: sync-up uapi lightnvm.h header from kernel
-> > =
-
-> >   linux/lightnvm.h         | 52 +++++++++++++++++++++++++++++++++++++++-
-> >   nvme-lightnvm.c          |  7 +++---
-> >   plugins/lnvm/lnvm-nvme.c |  8 +++----
-> >   3 files changed, 58 insertions(+), 9 deletions(-)
-> > =
-
-> =
-
-> Thanks Minwoo.
-> =
-
-> Patch 1-3 looks good to me. Keith, feel free to pick them up.
-> =
-
-> Patch 4 can wait until there is a use for the data structures.
-
-Sounds good, series applied from the pull-request.
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+CgpPbiA3LzIyLzIwMTkgODo1NyBQTSwgU2FnaSBHcmltYmVyZyB3cm90ZToKPgo+PiArIyBFdmVu
+dHMgZnJvbSBwZXJzaXN0ZW50IGRpc2NvdmVyeSBjb250cm9sbGVycyBvciBudm1lLWZjIHRyYW5z
+cG9ydCAKPj4gZXZlbnRzCj4+ICtBQ1RJT049PSJjaGFuZ2UiLCBTVUJTWVNURU09PSJudm1lIiwg
+RU5We05WTUVfRVZFTlR9PT0iZGlzY292ZXJ5IixcCj4+ICvCoCBFTlZ7TlZNRV9DVFJMX05BTUV9
+PT0iKiIsIEVOVntOVk1FX1RSVFlQRX09PSIqIiwgCj4+IEVOVntOVk1FX1RSQUREUn09PSIqIiwg
+XAo+PiArwqAgRU5We05WTUVfVFJTVkNJRH09PSIqIiwgRU5We05WTUVfSE9TVF9UUkFERFJ9PT0i
+KiIsIFwKPj4gK8KgIFJVTis9Ii91c3IvYmluL3N5c3RlbWN0bCAtLW5vLWJsb2NrIHN0YXJ0IAo+
+PiBudm1mLWNvbm5lY3RALS1kZXZpY2U9JGVudntOVk1FX0NUUkxfTkFNRX1cdC0tdHJhbnNwb3J0
+PSRlbnZ7TlZNRV9UUlRZUEV9XHQtLXRyYWRkcj0kZW52e05WTUVfVFJBRERSfVx0LS10cnN2Y2lk
+PSRlbnZ7TlZNRV9UUlNWQ0lEfVx0LS1ob3N0LXRyYWRkcj0kZW52e05WTUVfSE9TVF9UUkFERFJ9
+LnNlcnZpY2UiCj4KPiBKYW1lcywgc2hvdWxkbid0IHRoaXMgYmUgL2Jpbi9zeXN0ZW1jdGw/CgpJ
+IGRvbid0IGJlbGlldmUgc28uwqDCoCBPbiB0aGUgZGlzdHJvcyBJIGNoZWNrZWQsIC9iaW4vc3lz
+dGVtY3RsIGlzIGEgc29mdCAKb3IgaGFyZCBsaW5rIHRvIC91c3IvYmluL3N5c3RlbWN0bAoKLS0g
+amFtZXMKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1udm1lIG1haWxpbmcgbGlzdApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
