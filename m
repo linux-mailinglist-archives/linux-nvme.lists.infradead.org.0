@@ -2,75 +2,78 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95F7C71F5F
-	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 20:36:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AD39471F60
+	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 20:36:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=0L9JNgfoy1uBRwGCtZ5Oryefhi/Sm5fJ315rvepgVVg=; b=Vp+
-	Zhv7MDJjqQB+io5N/0qeyyPi8BAKXJEARDKJDuFfT44OIg7JvDBFI0VoOxn3r9V9Z8OjhscA/dDwK
-	p15/rNagj1X5LUuvbBsJXIvlF31Y0MqnHv9GtXeF7mqh3TUoEZUgiykIV5jusm2sSkNlzJpSG4DDV
-	2QiKK06QF064lTq6Vz2jYHDeZTiIYAtuWJMERxK8cNQ72jugNGM12sVheMRq7u1oJ5+hHgmZQZQTF
-	UYpRAAOd5R+WPQoTtJhMUn/2lR4tIJdrxP9IbJQUrUafik4D60OlqOnsNPWJ+v9RdCRIkEWTGx3TH
-	yu2leOWzcxrZWdfjwMDn8LKJ0BPxlZQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=oP+bJpgU7TDdb1Yx3dpDOX7hlq2fr4k11kjLM26f0eo=; b=PAo1wPXkKNrLkRBzCeox3/KQAf
+	YlUx7PRxIq6P3kFLtrbedgD78GvHdDd31g6qIuwyC46BRfjmTAr4dUx1WbItKJM7S18hmXE0bTGGi
+	ZcsSjJz1/svXdj1D3MMEroctj7Aj4gmxJTbuT/1nKk6+9MZZLygYUvxdOYM1SQVc86WC4pNrj38dz
+	Z0OFxhPIEY29AZXDHAbz9vN6phMvFtSBMMOBjWQqVgLUPyJf1H6Obf/gZUshsER6Swp+sMVOq2YxW
+	/d0eU5b2A0oxz5yw6scssqzKjfPL7aP9fyr4jVHlxvDueRDu9NaxvC2lzQ09ubGGz7hpMG1mugsC1
+	+hWA7r/Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hpze8-0002Ui-DS; Tue, 23 Jul 2019 18:36:20 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1hpzeL-0002cQ-AI; Tue, 23 Jul 2019 18:36:33 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hpzdz-0002UQ-Hs
- for linux-nvme@lists.infradead.org; Tue, 23 Jul 2019 18:36:12 +0000
-Received: by mail-pf1-x442.google.com with SMTP id p184so19558706pfp.7
- for <linux-nvme@lists.infradead.org>; Tue, 23 Jul 2019 11:36:11 -0700 (PDT)
+ id 1hpze3-0002Uh-7Y
+ for linux-nvme@lists.infradead.org; Tue, 23 Jul 2019 18:36:16 +0000
+Received: by mail-pl1-x643.google.com with SMTP id az7so20920782plb.5
+ for <linux-nvme@lists.infradead.org>; Tue, 23 Jul 2019 11:36:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=HsSEHTwi//qOixKaMwaFd4CJmSQ7xyDSxJH9Cih0jd4=;
- b=hfrcB59eDc2jb8LGTBWVVS9/LBbP6ySlRfqnImfVMY6UGSjz3gUsMO92QFB57SC0BR
- 6+Y3XEYIGBPWP/+VZjALxZ3Sx0uTuqmM7U8EHrgkSvN3fJ3R3o/ysR1Y8Bp5CfMjj/wF
- OoUCG4qcQziJg9xQgRyiNiiw6YSv2U8KNNB6mZ7NO6wKQEL7xnH7ZIsmLBwQydEGow3E
- HrSZpsjgt3aD/pSDD5qKy989Ztuqa/4PbfOuwWbjKuRRfep78gYKqZC/6GS5HZNIU9Yh
- 3wRI8uqQQu3qiCnQ44VRnV6PBhCpRPpCPuVQHZ6234JSbikhttZSV2H1QVeqgY7bJpcX
- OBbA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=fQ4NcLefdFM2Yxw8rDjnw+RdkrSXkxogNc6DEZd2fQM=;
+ b=mHQwwJ+Vr74ZyDmvzRdcZkDaApErzyEzJc+oaJIazSHrq20CgiTY5lHaEaUIkjI6e0
+ XmWevQEZc3WNN9+30lYwHQ90hnpMFG6u7oNK32xwER0SNXKveA6Q32fe/w/OnD3RVWYE
+ +HTGViPXXAoD95EHrjqX8/EjApuPjo0vbNRO0K2ejDoXVI+Hj+8Izl3RpA2BlYe5irgJ
+ UzX/VkmGr3in8TkOSjN+GeHzOHIp/clrnkuqaH8D0QozqOUJwEwHZXcdkLEJsTstn52i
+ V2ZfiQJ3Y/NzotfgShRbyVe0JUGeeUpLAJSWGtJfpOn2dKv6LFSX8HCmqnNbUbiFrBVm
+ 27xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=HsSEHTwi//qOixKaMwaFd4CJmSQ7xyDSxJH9Cih0jd4=;
- b=blENVXlj7cwrQ50DILFkNDRlNDY/wIRxgFt/zb2W24LZjRfxUArZn9Hn2F+MvdEr8P
- iPaxvEXIMXbtB4CzTUbQw9pxLjXjMLmo8o/qWm/tl4SDPJShFtm/jRs+nZgvUGXSkSa9
- ReG7dxxOMBxAfTh8QLXxqekOJ66osTmrnVdXCKpmhJfH1XJP8Xyb0LW0/OL5JpWNWtsO
- h4qYu7lJyrjybXpwEwVEOqq+8DvghhttyJrEl6QdTCajcPTIbM2Qoz4gZZvGIyJ1CzFO
- JXSjCT+QyAPnwSPWJPp5GKXI+GSD+mTsoy4HvAmeUi/+GxmaRj09XUrV8bqWm8zPGP+s
- w/uw==
-X-Gm-Message-State: APjAAAWIdyti3+wT/HRzekXQ1k1VjyhQbFYBuor7bhB28tLKhTdo/Tdd
- 14WM/6sngamJVXs+L0TKRRQqz/i4dMU=
-X-Google-Smtp-Source: APXvYqwjSdHgJsNqjMup4a67gT8EB+HKzKXyNI6k0UwA/I9WateksjEve6Q/QLMtc6AUk8CBXF3L/g==
-X-Received: by 2002:a17:90a:4f0e:: with SMTP id
- p14mr80867962pjh.40.1563906970505; 
- Tue, 23 Jul 2019 11:36:10 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=fQ4NcLefdFM2Yxw8rDjnw+RdkrSXkxogNc6DEZd2fQM=;
+ b=asKPiusJYjy7QQrhb6xQrkK6VQYJe3sni/XHPoRGh3V/uD/qeVxLEnqtBSXSojc6LG
+ djdZrvZcO3m6nVUQbrzeolG/Dq4nGoSJ4vpVurdHnmVxOPl7T4VIAPtML5SbJIBbezjI
+ EC4/VnEtMV/tnuEqFAaqJCKaxW7Zje4Qn2lh+rU9o/EXg4tGheRMtu1qlj2ex6Oq86dW
+ H41wv1WNfmkcNopEQz1jeIBWTPAMQSFIcVewAIuX3RdDriBk4IU21qjErGeb1msHAAvA
+ BlNJVlhXGhLxT5EB35yPQWnVDy4g+LbX1k2bs9bW8h2n56tLs2Qoe2BhAkw/7N724AoX
+ r3JQ==
+X-Gm-Message-State: APjAAAUe4TieNjCaqtpYDCVVWkSXWfO9Di18HZ4UxH/JpSUXg8sU33Qp
+ zgYaQrr2L2TXxQ/4aZswgKyIlzSAzRo=
+X-Google-Smtp-Source: APXvYqx9Kqm0mulp7QRD7qTMjsYwB/k2I3NuPg3omUhGf7SwEg5b20Q3qho3mwkgKGWfYVFFDEBaIw==
+X-Received: by 2002:a17:902:a413:: with SMTP id
+ p19mr82453665plq.134.1563906973103; 
+ Tue, 23 Jul 2019 11:36:13 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id g6sm38548400pgh.64.2019.07.23.11.36.08
+ by smtp.gmail.com with ESMTPSA id g6sm38548400pgh.64.2019.07.23.11.36.10
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 23 Jul 2019 11:36:09 -0700 (PDT)
+ Tue, 23 Jul 2019 11:36:12 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 0/5] nvme-cli: lnvm: introduce chunk-log command
-Date: Wed, 24 Jul 2019 03:35:56 +0900
-Message-Id: <20190723183601.29370-1-minwoo.im.dev@gmail.com>
+Subject: [PATCH 1/5] lnvm: make data_len to sizeof() instead of magic number
+Date: Wed, 24 Jul 2019 03:35:57 +0900
+Message-Id: <20190723183601.29370-2-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190723183601.29370-1-minwoo.im.dev@gmail.com>
+References: <20190723183601.29370-1-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190723_113611_591165_A82475AE 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190723_113615_359104_A0EF0363 
+X-CRM114-Status: GOOD (  11.65  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -103,40 +106,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi all,
+We can have it as a sizeof() instead of the hard-coded value for the
+data structure.
 
-This series introduces a "chunk-log" subcommand for lnvm extension
-plugin.  This command will send a get-log page NVMe admin command to the
-given namespace which is for OCSSD.  We just can use nvme get-log
-command with log id, but this subcommand is much more easier to use
-because it gives parameters.
+Cc: Keith Busch <kbusch@kernel.org>
+Cc: Matias Bjorling <mb@lightnvm.io>
+Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+---
+ nvme-lightnvm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-liblightnvm also provides nvm_cmd rprt_all command to retrieve this
-information, but nvme-cli can do it also.  If you have something else
-for this, please let me know.
-
-This series also holds few clean-ups for the existing codes.
-
-The last patch is introducing alias command name "geometry" for the
-id-ns subcommand.
-
-Please reivew.
-
-Thanks!
-
-Minwoo Im (5):
-  lnvm: make data_len to sizeof() instead of magic number
-  lnvm: export lnvm_get_identity
-  lnvm: add chunk_info log page structure
-  lnvm: introduce chunk-log command for chunk info
-  lnvm: introduce alias geometry for id-ns for lnvm
-
- nvme-lightnvm.c          | 41 +++++++++++++++++++-
- nvme-lightnvm.h          | 17 ++++++++
- plugins/lnvm/lnvm-nvme.c | 84 ++++++++++++++++++++++++++++++++++++++++
- plugins/lnvm/lnvm-nvme.h |  3 +-
- 4 files changed, 142 insertions(+), 3 deletions(-)
-
+diff --git a/nvme-lightnvm.c b/nvme-lightnvm.c
+index 0b99786..e8cdccd 100644
+--- a/nvme-lightnvm.c
++++ b/nvme-lightnvm.c
+@@ -442,7 +442,7 @@ static int lnvm_get_identity(int fd, int nsid, struct nvme_nvm_id *nvm_id)
+ 		.opcode		= nvme_nvm_admin_identity,
+ 		.nsid		= nsid,
+ 		.addr		= (__u64)(uintptr_t)nvm_id,
+-		.data_len	= 0x1000,
++		.data_len	= sizeof(struct nvme_nvm_id),
+ 	};
+ 
+ 	return nvme_submit_passthru(fd, NVME_IOCTL_ADMIN_CMD, &cmd);
 -- 
 2.17.1
 
