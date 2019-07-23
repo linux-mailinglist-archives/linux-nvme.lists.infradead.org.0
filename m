@@ -2,85 +2,83 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13BF472010
-	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 21:23:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 285D1720BE
+	for <lists+linux-nvme@lfdr.de>; Tue, 23 Jul 2019 22:27:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dcPbAzTKZVMvbj8GqxhEOC1ZE8Qy/yfFIGfEpQE4wn8=; b=tWtOZnqswuDooimy4Kf53EMru
-	cSmODXk1zEHW8B7LAovO91FrUllLQ5LdFNmX8Fkshl/JiBWdVT3HyjvuxqWMIKe8Myhxg9yrziP7A
-	XOzMnsclK4NsSyr5CaS1Jw15Ppuujq2hqKMiQkEMfLz1TvC0ljiBRH2sGH3reTm4ndjWroayVthqa
-	aW/ayHWnEllmCzGjYLQHxE6lrgRWwgyaesGqnbWXJj5mFAOLZ91EeVUCJHWRp6Zyuql2xEcDmuztk
-	WUCH3fhN79lG18JoZ0pEUI4wlTPGjjDh9kM16ljZ60uzNGvLbNJB7jsf6JdBaDzaE4h34QHe8YehO
-	LJSjDXJfw==;
+	 bh=EnlpFBr4ldsEYdTWBNvHAUFVmiRjTr9fPn7cEHVgDLQ=; b=sqF0N+s+4Hg3kIje8xM98Ch7V
+	UmTq0sBUhriTP9LsySSlFUBvAwysCPrxuKRq2R5pxlRPZWEy77S4MXGA45QplFVbDieyEl4mW5lVH
+	qoJs9AifipgJO4w0dei4d6A222bYZqtsKrk0AzUEBuSHb0Y1z/GGGAQlieC1bzMckJYblQ1l8yYbl
+	zO/zUdaVA/jFITFV9cWCJTHpxE8eOPvwr91ogpUsvi6fA9m6PAPzvyLbxFbljBxkd7rmqAGW+hg1T
+	ZI+C0Jloa3wgQC1lQTHrV1voLGAK2FEiNWBR75g3SiekqDPv52zHpqDL1ejGIcFUeA8266fBHlcmV
+	sMZRXoPWA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hq0NF-000670-GM; Tue, 23 Jul 2019 19:22:57 +0000
-Received: from mail-pf1-f195.google.com ([209.85.210.195])
+	id 1hq1NH-0007yP-Ry; Tue, 23 Jul 2019 20:27:04 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hq0N8-00066R-64
- for linux-nvme@lists.infradead.org; Tue, 23 Jul 2019 19:22:51 +0000
-Received: by mail-pf1-f195.google.com with SMTP id q10so19616884pff.9
- for <linux-nvme@lists.infradead.org>; Tue, 23 Jul 2019 12:22:49 -0700 (PDT)
+ id 1hq1NA-0007xs-4g
+ for linux-nvme@lists.infradead.org; Tue, 23 Jul 2019 20:26:57 +0000
+Received: by mail-ot1-f68.google.com with SMTP id q20so45386248otl.0
+ for <linux-nvme@lists.infradead.org>; Tue, 23 Jul 2019 13:26:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=I7H9WuepZHm6Wu+kvlLtlyscOcPVk1KhXWvH7V20mi8=;
- b=plBSDoweMLQEsIBncUGRsFcMXtmBslCb8+trPovKHGatlRNq7mjdifHuqWESbR1OJK
- m/gNMfc71yto0V+KY9bEe+RwOygGABjYJQRFq8KXkBPFyaiKsS1KdPMf9AnYngKDqOdU
- MmfwkipYXiU8fOzOsWGun2iyy0G/cCvHZPkAJsFluDcOjfnk3BUqHBlD0tHRBtIqTdFV
- ObNBjA/ZsfLNLB/Y5Fs1fQeUOSMxgUEN9DzfYDpjoXXHDzWm6x4xvDxzNXYHU2h/Udxw
- uIRD50Kt5g11TDTUlVTc0vE7Qo8rR9z3jaZi0vw5gbpUvsDSHnQ/OCa5fcSAJnvjBU1S
- wO0A==
-X-Gm-Message-State: APjAAAU3gsxD24AZUpAL+XUGmtyV7hVq+jKSHcUeeW1QCMFZGU9FbEW1
- 9S4QQTd6Z30B144QXTqWnqI=
-X-Google-Smtp-Source: APXvYqxjE4Y2rGs5mdh8ZNkeDWgeKP2d1HmOqHBZfr1CZ924v2aIYcbdPWqf+hxKJ2VEcNr13Tpnrw==
-X-Received: by 2002:a17:90a:1785:: with SMTP id
- q5mr83146483pja.106.1563909768770; 
- Tue, 23 Jul 2019 12:22:48 -0700 (PDT)
-Received: from desktop-bart.svl.corp.google.com
- ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
- by smtp.gmail.com with ESMTPSA id 85sm45303752pfv.130.2019.07.23.12.22.46
+ bh=nWpDQmZNg8zKVk12QskQ7NNS05C4fI/JmZBKLdKyu8Q=;
+ b=lXTj3uIXY7t+4UhqYTF21sutcoXMdI5xlBlyHPUsB6n+jzUIjiMfaPu71UB925pAKB
+ 8/Q+X0ovP5QDjLvZ89dTMFwExnuX72g9eL6TCv9Zq1ii8jmmlcg4UtkZTSLNGFXWNzq7
+ bcwvw1O3tIO2EkVYU6Y6Nqh3M5AenZYqUI195OZHNivaBUfioITG8dWKXeoirCHNwWXL
+ L7MIqTmEYJr9zIpOSn2BbnbC/Plu9WIPUiFq6bSdAR1NvZwdjSlD1mX3V0yzfl0zma8H
+ AaW4I84cmfZL6yqS8H3eCWpriJ4UhAlrtDiwAn7+0kWmu3nQzRjocgoKeQCFCXkGNB9q
+ 9qEg==
+X-Gm-Message-State: APjAAAVOFvAyFFrtgTzATGK31AQpFyM4M0ymWI3SCzrUqL9ndVeOqNyv
+ LvzHxzf0lTQAHQTjvWc3bws=
+X-Google-Smtp-Source: APXvYqyImRGHkCa4ehPFItKG+s5UmjCxA9i/WdJAEsBhdV3pdYzZYeaCF9xFEhq0VyAyDlwIwbj9gA==
+X-Received: by 2002:a9d:65da:: with SMTP id z26mr47375238oth.257.1563913614566; 
+ Tue, 23 Jul 2019 13:26:54 -0700 (PDT)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id q82sm12695965oif.30.2019.07.23.13.26.52
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 23 Jul 2019 12:22:47 -0700 (PDT)
-Subject: Re: [PATCH 3/5] nvme: don't abort completed request in
- nvme_cancel_request
-To: Ming Lei <ming.lei@redhat.com>
+ Tue, 23 Jul 2019 13:26:53 -0700 (PDT)
+Subject: Re: [PATCH 1/5] blk-mq: introduce blk_mq_request_completed()
+To: Ming Lei <ming.lei@redhat.com>, Jens Axboe <axboe@kernel.dk>
 References: <20190722053954.25423-1-ming.lei@redhat.com>
- <20190722053954.25423-4-ming.lei@redhat.com>
- <d82ead02-c893-4d14-307e-70a6d4596439@acm.org>
- <20190723010845.GD30776@ming.t460p>
-From: Bart Van Assche <bvanassche@acm.org>
-Message-ID: <7e484af3-15d5-06fd-5c7b-2fbe38e5b8f1@acm.org>
-Date: Tue, 23 Jul 2019 12:22:46 -0700
+ <20190722053954.25423-2-ming.lei@redhat.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <f89fffec-59ec-c911-83e9-bbe5feaa40f7@grimberg.me>
+Date: Tue, 23 Jul 2019 13:26:51 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190723010845.GD30776@ming.t460p>
+In-Reply-To: <20190722053954.25423-2-ming.lei@redhat.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190723_122250_225364_706E4F3C 
-X-CRM114-Status: GOOD (  16.97  )
+X-CRM114-CacheID: sfid-20190723_132656_180803_A63F92E6 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.3 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.195 listed in list.dnswl.org]
+ no trust [209.85.210.68 listed in list.dnswl.org]
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.195 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bart.vanassche[at]gmail.com)
+ provider (sagigrim[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.68 listed in wl.mailspike.net]
+ 0.0 TVD_SPACE_RATIO        No description available.
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
@@ -95,65 +93,15 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, linux-block@vger.kernel.org,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
- Keith Busch <keith.busch@intel.com>, Max Gurtovoy <maxg@mellanox.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: linux-block@vger.kernel.org, Max Gurtovoy <maxg@mellanox.com>,
+ Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
+ linux-nvme@lists.infradead.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 7/22/19 6:08 PM, Ming Lei wrote:
-> On Mon, Jul 22, 2019 at 08:27:32AM -0700, Bart Van Assche wrote:
->> On 7/21/19 10:39 PM, Ming Lei wrote:
->>> Before aborting in-flight requests, all IO queues have been shutdown.
->>> However, request's completion fn may not be done yet because it may
->>> be scheduled to run via IPI.
->>>
->>> So don't abort one request if it is marked as completed, otherwise
->>> we may abort one normal completed request.
->>>
->>> Cc: Max Gurtovoy <maxg@mellanox.com>
->>> Cc: Sagi Grimberg <sagi@grimberg.me>
->>> Cc: Keith Busch <keith.busch@intel.com>
->>> Cc: Christoph Hellwig <hch@lst.de>
->>> Signed-off-by: Ming Lei <ming.lei@redhat.com>
->>> ---
->>>    drivers/nvme/host/core.c | 4 ++++
->>>    1 file changed, 4 insertions(+)
->>>
->>> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
->>> index cc09b81fc7f4..cb8007cce4d1 100644
->>> --- a/drivers/nvme/host/core.c
->>> +++ b/drivers/nvme/host/core.c
->>> @@ -285,6 +285,10 @@ EXPORT_SYMBOL_GPL(nvme_complete_rq);
->>>    bool nvme_cancel_request(struct request *req, void *data, bool reserved)
->>>    {
->>> +	/* don't abort one completed request */
->>> +	if (blk_mq_request_completed(req))
->>> +		return;
->>> +
->>>    	dev_dbg_ratelimited(((struct nvme_ctrl *) data)->device,
->>>    				"Cancelling I/O %d", req->tag);
->>
->> Something I probably already asked before: what prevents that
->> nvme_cancel_request() is executed concurrently with the completion handler
->> of the same request?
-> 
-> The commit log did mention the point:
-> 
-> 	Before aborting in-flight requests, all IO queues have been shutdown.
-> 
-> which implies that no concurrent normal completion.
-
-How about adding that explanation as a comment above
-nvme_cancel_request()? That would make that explanation much easier to 
-find compared to having to search through commit logs.
-
-Thanks,
-
-Bart.
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 
 _______________________________________________
 Linux-nvme mailing list
