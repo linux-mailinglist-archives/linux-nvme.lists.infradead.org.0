@@ -2,101 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27D0E7322E
-	for <lists+linux-nvme@lfdr.de>; Wed, 24 Jul 2019 16:52:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25E3B7328C
+	for <lists+linux-nvme@lfdr.de>; Wed, 24 Jul 2019 17:15:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:Subject:Mime-Version
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aWBdaNBAoxbW/dgF6qp4zdmqKhuI3/gt/PpfvmSNt8Q=; b=OKXCdmQhVgMozf
-	TpHpNvKIPja/hSFRVWtLaYD+t3OPu9FjrAYVuuyYLXSNsRUeiE3Xq2Fv/RE4Es0ENhR4FdwEWp22H
-	whcEDCOpS4MGsQHnDKPxHa79W2xEvO6FEGpKBOUSLadONK9b4qbCjqjbYi/5WkoEcM28PJrrncTf5
-	EuFj6gZ6BFGV+HKQ4//QfjB/d5ID+stPL/35QyiWmVNWtpPoP1MuTQJEM+1/s7LRlDfRTB3Bb1Vu1
-	W0fGZHgNab+Xsys5rr1JrRF/pdDvARR8Y5+zB+uTlWkbUm1CkZk69e3dUm7QZ5Cp/C3JrkF4v6L2i
-	NOA+YJUeC7iFuP13A/Og==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=U1n3rLg6TK7Df/YTaumyBATdyWkPMIjpsTp4HF2O2ho=; b=VPomx5Bjct3Akl
+	mwg9n1zyhrndZ/MYP7/MPsQvIMBt9CFy7/xg9DvnHkCo82umdZUCdnbOXaLCPXjnoJVILZ8fDtmy1
+	z6355PfZcu9v3L2lEPjZb0Vg/GLhoDCDU2VyTVFDed2u8g77I6aU6L0MPM9gYilC2rBzumP3SvREN
+	LEFnVMNugJiU2a8P9mSVIUb40Ujk4YeWcFMFV208Mp2RddEFzKrDHl7wuPXWdpi+1GKshciGOve/n
+	SiKWVqy0dJJB43EPwWLY9XslcscQMxf854BhubznRitF2LaZ+A0Wd7n9BRdry5MBmnvaONiu+CQUN
+	Inuc6OousJob8pdPeogg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hqIcS-0004XV-MW; Wed, 24 Jul 2019 14:51:52 +0000
-Received: from userp2130.oracle.com ([156.151.31.86])
+	id 1hqIyw-0003zj-4J; Wed, 24 Jul 2019 15:15:06 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hqIcN-0004X0-6E
- for linux-nvme@lists.infradead.org; Wed, 24 Jul 2019 14:51:48 +0000
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x6OEmkRv088334
- for <linux-nvme@lists.infradead.org>; Wed, 24 Jul 2019 14:51:39 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : content-type :
- content-transfer-encoding : mime-version : subject : message-id : date :
- to; s=corp-2018-07-02; bh=hQa2lUT2EOhJ5Fn0wiut5TLlOOJ3t57P6m+HcL1I1Bo=;
- b=WWUtlyJWnoFxa0ZXP84IF41WoZyWvGo8qPgrS5v2m9uWziIlSl0AGAHslErUy9aVqBAQ
- 3p2p88N3KSCqTs64aBRpyyJg8pKDgoZTaU2w3MQB8H1HVbvzBaJPY1E2H4pOt51gGWP6
- fnj+pADcwhIdUOOL9LTjvuV2V0AZYdihtZPkiNxAgzmNOPLFRsWE7s13j1cP3+GKchOL
- EFBoRD+tUQ/vA/g/D8ASGh1JGUFJjvJXjnH3tgWDhipGPLT1ED3zJW6prJp5uGIeyiUE
- JkHQnHL1zw4wJKHVADYvlCtaTvpQPG0fOB2niDICMB6h2ICKB4rG+pNFjWTSWBVRnit2 OA== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2130.oracle.com with ESMTP id 2tx61bwybf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
- for <linux-nvme@lists.infradead.org>; Wed, 24 Jul 2019 14:51:38 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x6OEmTx1166322
- for <linux-nvme@lists.infradead.org>; Wed, 24 Jul 2019 14:51:38 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3030.oracle.com with ESMTP id 2tx60xs4yx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
- for <linux-nvme@lists.infradead.org>; Wed, 24 Jul 2019 14:51:38 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x6OEpbZq005505
- for <linux-nvme@lists.infradead.org>; Wed, 24 Jul 2019 14:51:38 GMT
-Received: from dhcp-10-154-107-10.vpn.oracle.com (/10.154.107.10)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 24 Jul 2019 07:51:37 -0700
-From: John Donnelly <john.p.donnelly@oracle.com>
-Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
-Subject: nvme statistics :  iostat vs  sar 
-Message-Id: <D4F9A3CB-489A-4946-ADF2-C7C17A21E076@oracle.com>
-Date: Wed, 24 Jul 2019 09:51:36 -0500
-To: linux-nvme@lists.infradead.org
-X-Mailer: Apple Mail (2.3445.9.1)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9327
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=5
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=695
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1906280000 definitions=main-1907240166
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9327
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=5 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=737 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1907240166
+ id 1hqIyn-0003zE-Un
+ for linux-nvme@lists.infradead.org; Wed, 24 Jul 2019 15:14:59 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 24 Jul 2019 08:14:57 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,303,1559545200"; d="scan'208";a="321369214"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga004.jf.intel.com with ESMTP; 24 Jul 2019 08:14:56 -0700
+Date: Wed, 24 Jul 2019 09:12:01 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: John Donnelly <john.p.donnelly@oracle.com>
+Subject: Re: nvme statistics :  iostat vs  sar
+Message-ID: <20190724151200.GA5379@localhost.localdomain>
+References: <D4F9A3CB-489A-4946-ADF2-C7C17A21E076@oracle.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <D4F9A3CB-489A-4946-ADF2-C7C17A21E076@oracle.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190724_075147_325194_9B29C284 
-X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-CacheID: sfid-20190724_081458_038238_44172A32 
+X-CRM114-Status: UNSURE (   9.04  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.5 (--)
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [156.151.31.86 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ medium trust [134.134.136.126 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,62 +67,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi,
+On Wed, Jul 24, 2019 at 09:51:36AM -0500, John Donnelly wrote:
+> Hi,
+> 
+> I noticed  nvme I/O  does not appear  in sar disk data (-d ) ,  but it does appear with  sar block (-b)  and iostat.
+> 
+> Is this expected ?
 
-I noticed  nvme I/O  does not appear  in sar disk data (-d ) ,  but it does appear with  sar block (-b)  and iostat.
+'sar -d' should show activity. It does work as expected on my test machine:
 
-Is this expected ?
+# ls -l /dev/nvme*n*
+brw-rw----. 1 root disk 259, 0 May 23 09:07 /dev/nvme0n1
+brw-rw----. 1 root disk 259, 1 May 23 09:07 /dev/nvme1n1
+brw-rw----. 1 root disk 259, 2 May 23 09:07 /dev/nvme2n1
+brw-rw----. 1 root disk 259, 3 May 23 09:07 /dev/nvme3n1
 
-sar -d 
+# sar -d 2 10
+Linux 5.2.0-rc1+ (localhost.localdomain)        07/24/2019      _x86_64_        (112 CPU)
 
+09:03:06 AM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+09:03:08 AM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:08 AM  dev253-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:08 AM  dev253-1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:08 AM  dev259-1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:08 AM  dev259-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:08 AM  dev259-2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:08 AM  dev259-3      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
 
-07:49:47 AM       DEV       tps  rd_sec/s  wr_sec/s  avgrq-sz  avgqu-sz     await     svctm     %util
-07:49:49 AM   dev8-32      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
-07:49:49 AM   dev8-16      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
-07:49:49 AM   dev8-48      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
-07:49:49 AM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
-07:49:49 AM  dev259-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
-07:49:49 AM  dev252-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
-07:49:49 AM  dev252-1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
-07:49:49 AM  dev252-2      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:08 AM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+09:03:10 AM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:10 AM  dev253-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:10 AM  dev253-1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:10 AM  dev259-1  26370.50 105482.00      0.00      4.00      0.00      0.02      0.00     12.75
+09:03:10 AM  dev259-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:10 AM  dev259-2  26384.00 105532.00      0.00      4.00      0.00      0.03      0.00     12.75
+09:03:10 AM  dev259-3  26389.50 105556.00      0.00      4.00      0.00      0.02      0.00     12.75
 
-
-
-sar -b   2 2 
-
-07:47:35 AM       tps      rtps      wtps   bread/s   bwrtn/s
-07:47:37 AM    792.50    395.50    397.00  25312.00  25316.00
-07:47:39 AM    796.50    394.00    402.50  25216.00  25760.00
-Average:       794.50    394.75    399.75  25264.00  25538.00
-
-
-
-iostat:
-
-
-avg-cpu:  %user   %nice %system %iowait  %steal   %idle
-           0.05    0.00    0.33    0.33    0.00   99.29
-
-Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
-sdc               0.07         2.43         0.00       6295          0
-sdb               0.07         2.43         0.00       6295          0
-sdd               0.07         2.43         0.00       6295          0
-sda               6.07       117.40        21.34     303739      55202
-nvme0n1           0.48        15.18         0.00      39283          0
-dm-0              5.60       103.39        19.45     267499      50321
-dm-1              0.03         0.95         0.00       2460          0
-dm-2              0.23         1.40         0.79       3617       2048
-nvme1c1n1       284.39      3011.48      2814.17    7791448    7280960
-nvme1c1n2        96.70       756.17       750.80    1956388    1942520
-nvme1c3n2         0.00         0.00         0.00          0          0
-nvme1c2n2        60.15       962.11       962.63    2489220    2490560
-nvme1c4n2         0.00         0.00         0.00          0          0
-
+09:03:10 AM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+09:03:12 AM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:12 AM  dev253-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:12 AM  dev253-1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:12 AM  dev259-1 225306.00 901224.00      0.00      4.00      0.00      0.02      0.00    100.00
+09:03:12 AM  dev259-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+09:03:12 AM  dev259-2 225304.50 901220.00      0.00      4.00      0.00      0.03      0.00    100.00
+09:03:12 AM  dev259-3 225306.50 901228.00      0.00      4.00      0.00      0.02      0.00    100.00
 
 _______________________________________________
 Linux-nvme mailing list
