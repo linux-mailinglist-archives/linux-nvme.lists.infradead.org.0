@@ -2,61 +2,66 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 65E157226F
-	for <lists+linux-nvme@lfdr.de>; Wed, 24 Jul 2019 00:35:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 46256723C2
+	for <lists+linux-nvme@lfdr.de>; Wed, 24 Jul 2019 03:35:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dlP8VM53b0j/sCb6pNcdt3Z+TewHZuH4LmNrIjF3tMI=; b=IDAbpyg/FduEgy
-	JRJzzL7/6+asBIR5iZ+aI9rWdoe3ehsDfCy0GL4iE1MuSHMp17cQUohk4FFQGYUEVUlla25N8ZMWV
-	onRyYeTBki7OU7C80oFFqn/wd6LF6ukndqZHNImEW0rizHYYPPQg1NWa8YSbaIRaWlzzOCyaUQ9VI
-	idUS1eBDVE1hoZaViHpXOZatjDAFyqKkxvc0dne5gwgNsOmE0+96fNi5kJmoMWgxnKRKahP1OUKlo
-	BvE2DURC3BF2F/0zVqh6OakY3oBPeJ6ZM5DFbOka2o8ilz+awrVBkDYwDe2D8XexVq3Z33ocifEL3
-	AoLSsf1T4caHyI0NuOQQ==;
+	List-Owner; bh=ZIRLl1UfLGl5np89ZVbheHG5jsidWX9nVFQyyeScXko=; b=ewmuCvFpgnh2lQ
+	yqNsKVg5Bwixi00nXMN2gItzAPNAfoVq1GFM8/GrQgPEE1kw7JzHTAZHkppgYsdrcc119KHk1GvYs
+	vvCBvggJNGdBFd3ZZqbsMyi6ILqWKtYnqmKqO2dj8x3CEzTBHcfH7XCWcL6Fs/1PklAFFTHqVX3GN
+	53esPyJZvpuP5zE0px2O0CwFOEKOAg5uMQZFf9XcNAlC4bt/yBsl37LbrWaxMkJ6O2xQRWyzsCTNj
+	0iUtW/cTXv38GAOttRGFFZ1Uns8cvyAvq+t6cON+jAjDwbJF89OXOE29ovXAxNZk33RlciQ9iS7m/
+	jiWkCAtIYv83/tELSEoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hq3N6-0007bJ-HY; Tue, 23 Jul 2019 22:35:01 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1hq6BV-00070M-Iq; Wed, 24 Jul 2019 01:35:13 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hq3Mo-0007as-CU
- for linux-nvme@lists.infradead.org; Tue, 23 Jul 2019 22:34:43 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 Jul 2019 15:34:41 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,300,1559545200"; d="scan'208";a="188933763"
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by fmsmga001.fm.intel.com with ESMTP; 23 Jul 2019 15:34:41 -0700
-Date: Tue, 23 Jul 2019 16:31:45 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH] nvme-pci: fix probe and remove race
-Message-ID: <20190723223144.GE4002@localhost.localdomain>
-References: <20190719194256.23618-1-sagi@grimberg.me>
- <20190723204643.GC4002@localhost.localdomain>
- <6e5af7f5-be2a-6cf8-81fc-84ed831cbacd@grimberg.me>
+ id 1hq6BG-0006xm-87
+ for linux-nvme@lists.infradead.org; Wed, 24 Jul 2019 01:34:59 +0000
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 32AF2308C21E;
+ Wed, 24 Jul 2019 01:34:55 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-24.pek2.redhat.com [10.72.8.24])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 335431001DD7;
+ Wed, 24 Jul 2019 01:34:42 +0000 (UTC)
+Date: Wed, 24 Jul 2019 09:34:34 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Bart Van Assche <bvanassche@acm.org>
+Subject: Re: [PATCH 2/5] blk-mq: introduce
+ blk_mq_tagset_wait_completed_request()
+Message-ID: <20190724013432.GB22421@ming.t460p>
+References: <20190722053954.25423-1-ming.lei@redhat.com>
+ <20190722053954.25423-3-ming.lei@redhat.com>
+ <c2722892-9cbf-0747-58a8-91a99b72bc53@acm.org>
+ <20190723010616.GC30776@ming.t460p>
+ <d4d3ded9-0012-68c1-7511-f5ac3aa7b1fb@acm.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6e5af7f5-be2a-6cf8-81fc-84ed831cbacd@grimberg.me>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+In-Reply-To: <d4d3ded9-0012-68c1-7511-f5ac3aa7b1fb@acm.org>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.48]); Wed, 24 Jul 2019 01:34:55 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190723_153442_441113_053FF05A 
-X-CRM114-Status: GOOD (  15.38  )
-X-Spam-Score: -1.3 (-)
+X-CRM114-CacheID: sfid-20190723_183458_314807_2A7FF62A 
+X-CRM114-Status: GOOD (  19.27  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.151 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,44 +73,48 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "Busch, Keith" <keith.busch@intel.com>,
- "lizhongfs@gmail.com" <lizhongfs@gmail.com>, Christoph Hellwig <hch@lst.de>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Cc: Jens Axboe <axboe@kernel.dk>, linux-block@vger.kernel.org,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
+ Keith Busch <keith.busch@intel.com>, Max Gurtovoy <maxg@mellanox.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Jul 23, 2019 at 03:21:49PM -0700, Sagi Grimberg wrote:
-> 
-> > I still think we'd prefer not adding that async domain dependency and
-> > relying on timeout to unstuck a hot-removal. So how about we schedule
-> > the reset work in probe and have the async part just flush the reset
-> > and scan work?
+On Tue, Jul 23, 2019 at 01:54:52PM -0700, Bart Van Assche wrote:
+> On 7/22/19 6:06 PM, Ming Lei wrote:
+> > On Mon, Jul 22, 2019 at 08:25:07AM -0700, Bart Van Assche wrote:
+> > > On 7/21/19 10:39 PM, Ming Lei wrote:
+> > > > blk-mq may schedule to call queue's complete function on remote CPU via
+> > > > IPI, but doesn't provide any way to synchronize the request's complete
+> > > > fn.
+> > > > 
+> > > > In some driver's EH(such as NVMe), hardware queue's resource may be freed &
+> > > > re-allocated. If the completed request's complete fn is run finally after the
+> > > > hardware queue's resource is released, kernel crash will be triggered.
+> > > > 
+> > > > Prepare for fixing this kind of issue by introducing
+> > > > blk_mq_tagset_wait_completed_request().
+> > > 
+> > > An explanation is missing of why the block layer is modified to fix this
+> > > instead of the NVMe driver.
 > > 
-> > ---
-> > diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-> > index db160cee42ad..0c2c4b0c6655 100644
-> > --- a/drivers/nvme/host/pci.c
-> > +++ b/drivers/nvme/host/pci.c
-> > @@ -2695,7 +2695,7 @@ static void nvme_async_probe(void *data, async_cookie_t cookie)
-> >   {
-> >   	struct nvme_dev *dev = data;
-> > -	nvme_reset_ctrl_sync(&dev->ctrl);
-> > +	flush_work(&dev->ctrl.reset_work);
-> >   	flush_work(&dev->ctrl.scan_work);
-> >   	nvme_put_ctrl(&dev->ctrl);
-> >   }
-> > @@ -2761,6 +2761,7 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
-> >   	dev_info(dev->ctrl.device, "pci function %s\n", dev_name(&pdev->dev));
-> > +	nvme_reset_ctrl(&dev->ctrl);
-> >   	nvme_get_ctrl(&dev->ctrl);
+> > The above commit log has explained that there isn't sync mechanism in
+> > blk-mq wrt. request completion, and there might be similar issue in other
+> > future drivers.
 > 
-> I think you need to get the ref first and then fire the work right?
+> That is not sufficient as a motivation to modify the block layer because
+> there is already a way to wait until request completions have finished,
+> namely the request queue freeze mechanism. Have you considered to use that
+> mechanism instead of introducing blk_mq_tagset_wait_completed_request()?
 
-That ref order doesn't actually matter here. We can't call nvme_remove
-during the synchronous part of probe, and the extra ref is just for the
-async_schedule callback.
+The introduced interface is used in EH, during which the aborted
+requests will stay at blk-mq sw/scheduler queue, so queue freeze will
+cause deadlock. We simply can't use it.
+
+Thanks,
+Ming
 
 _______________________________________________
 Linux-nvme mailing list
