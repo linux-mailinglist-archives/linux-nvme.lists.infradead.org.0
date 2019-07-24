@@ -2,88 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 463C972EC4
-	for <lists+linux-nvme@lfdr.de>; Wed, 24 Jul 2019 14:22:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0261672ED2
+	for <lists+linux-nvme@lfdr.de>; Wed, 24 Jul 2019 14:27:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RqKuZF8yBebe27kFiU9tGlxf9Pr6tdF4vr3mo6ncHM0=; b=Ingu8VQbTs/2ur
-	z90kwRjn9bs3JSgA+DsB8qOzoId6cVGnA5QLae9pqsScGLffevakMg9undn8gTmS0Hxcotp5yRtOC
-	+KJF6vNVa1saSqOW75wW4r6rdbHICVykXGGT0bpA3dx7OezSki9zRkRLWtL43ET7Zec0m2BLpgP7Q
-	G0ph4n1R3MgrchwZKYtHyXV5yLb01JGwVkmh1DAn1/XAZRx9S7bt3YYglR8NupdyqJH6xTmxqZrbf
-	bE+kMrjzzgBj+pmSrqiooSnczYCkb6iyeQ52sB3W9btQttGG2tYfV2Sn4WnSYQDwE3rLmScgC2N83
-	B7uqDgo7Sd/dXI8NwuKg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=U4ypIZk4VxqXjZjNntKU78UbZDpNo9n7YTv6GNG34LI=; b=qf+6jM7oAMKappRIqzf3Edz6O
+	ZJOfzsRJX9fI+ttIhQ9+Fj0jpNjreOE5PAxGiFgZo48m0Jz8aQp7LkQGfz37jC6tqEFYB1fEZtYnq
+	pPJUBkxwwZYHwQXNOuJ97gMbMa6Kl73QYom7Yj4VmarrBIL8K6DahWaYXdDMAvLUZn+8tcl/hZf83
+	fLp3ZO/crG30O9ReNmJ+M9Rux3vOYMGXKnBrYSIb9ksn71la2esD5UvL92+yO4wZgPEtswYLEnH5N
+	kUFG0NWUmF1pgSuZh31JsG7xrpiaBrtkFrOcyYDYd/Nqp75nXXZsTVnyKg5NSYMbkMEFeYSPlthGS
+	yHbMtM82w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hqGIE-00047w-0Y; Wed, 24 Jul 2019 12:22:50 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1hqGMZ-00063M-Gl; Wed, 24 Jul 2019 12:27:19 +0000
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hqGI8-00046q-Nv
- for linux-nvme@lists.infradead.org; Wed, 24 Jul 2019 12:22:46 +0000
-Received: by mail-pg1-x544.google.com with SMTP id f5so12335478pgu.5
- for <linux-nvme@lists.infradead.org>; Wed, 24 Jul 2019 05:22:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DnYeQcZ+3/cVOK0YzE3A8jbfV436G2iFovE9bOEsOP0=;
- b=n80Q06E2UaCRMU/QOCTD6GPRnCPN9AfdEkmDzRzxRwDdy4JKzrw5Gi9EBM0Ka72w9Y
- SOPTvBTXfKMoXfoPvtyOtNHjOXVN1HQZ/uoOuK/e18AGB83AeHy6VKC4ej/M5dka1fPd
- UFjPLb5j/2JMvJJKI7X6+8zSex0IyrOvGzaUC8p4PDaufr7+G5BGloroRg8+RVFMGpac
- Cr6cMAiwOWEP2bx2gdVgTyD9JIbvg6Ey7e75J2hYgdBUnfBSbQlbHUEp5BX77t5aqi1H
- YqVhwDKlA9c7Sw5/0/49h6FILmGdH9sXLe9w2iUOu5jsbyTly5LVd4wWjsD2vIFzK6yP
- GDZQ==
+ id 1hqGMS-00062v-Vb
+ for linux-nvme@lists.infradead.org; Wed, 24 Jul 2019 12:27:14 +0000
+Received: by mail-lf1-x142.google.com with SMTP id s19so31831977lfb.9
+ for <linux-nvme@lists.infradead.org>; Wed, 24 Jul 2019 05:27:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=lightnvm-io.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=N6NwInf0OU97XMsSifgiHUPI7twbEVd8+ipgKWwNHZI=;
+ b=s4DUMV7C8vwJLzEQSALN4BRozhoj5d0stv6vshcYmgaaR0Gd6uQh3X2zADI9LTJj8D
+ fGqXRYJMiNENilqMlVO6n4Z96Tcsyiyr2GbosWPkJiYof5TouzxXMNmFbpiIqKBZjITx
+ z0yg5oXVMs9x293rKreNF+deAMutadIAaBOfzVPuGjHxdwP3oc/TTERUM1sBySeq5dGe
+ hkwQ/my+7Z0vT9hryztUzgJHFeF4DrN2lY03Tt5fLhnZOMPNxvK66s/YbeNDVm1nzTCg
+ BNLrcmbt6wAKCRd+BtIeqVPI4+nLodCwg7sniagmDYlZyirPIpexu1tMjwLu5TZ5FHya
+ T24Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DnYeQcZ+3/cVOK0YzE3A8jbfV436G2iFovE9bOEsOP0=;
- b=Doqp/35WVzQGhef+MZRR3F4ectyNBGIjQ/6ohmzFAJunfYyMRgiFM2FvAbi0u+GcwI
- DjciGWoHK7RHV/l+RXNV1YpxDMB1XOnNsVGbJQtqDQ8Nd9vpSEy2sB3uRZzlB3LB9veC
- 2vDOtJ/aGGm7o4Bp6erKiQTFog4RrAt3VJ3w5+FW92Lz4orGl87MTtsqbFkiFdOWLuAN
- NdwS4Nz2TQS/oEvOEYyFZvQR0UQZN7x40KLxh5XLGwxaNo6iBuCDdL7dZchk3CBJdrNu
- pGHJV9kl9ITWb89kXX9xfOZYUziX5zDJrfPL/eqvsg/9FN8R2qqKl8IrARKY2s4KFqEx
- pnZg==
-X-Gm-Message-State: APjAAAVNbzc30g8MIARlEYSaa8K+FEXDT57BOfqXJyhn7lcf81hxK7di
- /DOkmfpLMtmPWMfRFIooXmM=
-X-Google-Smtp-Source: APXvYqzncmJ0bUgd6dB1KkSDBrJ2k1U8j8owNx0skXvoZOM5bAK43HhX7oDWYqv7Ggl0AwX+SEBDww==
-X-Received: by 2002:a65:6152:: with SMTP id o18mr78419888pgv.279.1563970960118; 
- Wed, 24 Jul 2019 05:22:40 -0700 (PDT)
-Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([89.31.126.54])
- by smtp.gmail.com with ESMTPSA id h26sm49952796pfq.64.2019.07.24.05.22.37
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 24 Jul 2019 05:22:39 -0700 (PDT)
-From: Chuhong Yuan <hslester96@gmail.com>
-To: 
-Subject: [PATCH] nvme-pci: Use dev_get_drvdata where possible
-Date: Wed, 24 Jul 2019 20:22:35 +0800
-Message-Id: <20190724122235.21639-1-hslester96@gmail.com>
-X-Mailer: git-send-email 2.20.1
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=N6NwInf0OU97XMsSifgiHUPI7twbEVd8+ipgKWwNHZI=;
+ b=JNQgdmXUUcC9CRskRQpEoTc4qpbKUHGG+MdEC2iKTS5u/iGLJs/oCAxP94kaIJPVg/
+ 4LATCHPWleWLmOHj4Crux1k/Q6WnhuoieA6SISaiYDRipMXWnMz+28SYBSIIkCfoVC6r
+ 9y/+A3dmkjQ+mcACIEjfRI8iZcqyyeY0jgk3ncKGj+YAZmdU+4xJfDV1oqh7yzoqbSE9
+ rnK22CYTWSdeTvO5Mz7/5cuhR/V0PBhkYfgV+OLeFpTmYqwutBPDAR+aQbBxxye/VGIx
+ sCVmI7Nwk7H0CCFPHA9MBYrStMZtP+poF+6G0dG7YDC1RwjCMHOWCFRIlXFJoFlWoKhI
+ YZxg==
+X-Gm-Message-State: APjAAAWJneior+22pObBEPD4J/XA5pqFe+TzVjbnU3UCztV4m95pwLpI
+ u81NzbKe7V/tSaJDF7g+JSEkzhb2
+X-Google-Smtp-Source: APXvYqybCJAQGgUt3RcYvEcnXp/xjj6pdRjmmujURdf5wRtLNtKhbUkm/sipDyuEqW5WeRji/60X2w==
+X-Received: by 2002:ac2:4a78:: with SMTP id q24mr35593064lfp.59.1563971230687; 
+ Wed, 24 Jul 2019 05:27:10 -0700 (PDT)
+Received: from [192.168.0.12] (2-111-91-225-cable.dk.customer.tdc.net.
+ [2.111.91.225])
+ by smtp.gmail.com with ESMTPSA id j3sm7046951lfp.34.2019.07.24.05.27.09
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 24 Jul 2019 05:27:10 -0700 (PDT)
+Subject: Re: [PATCH 4/5] lnvm: introduce chunk-log command for chunk info
+To: Minwoo Im <minwoo.im.dev@gmail.com>, linux-nvme@lists.infradead.org
+References: <20190723183601.29370-1-minwoo.im.dev@gmail.com>
+ <20190723183601.29370-5-minwoo.im.dev@gmail.com>
+From: =?UTF-8?Q?Matias_Bj=c3=b8rling?= <mb@lightnvm.io>
+Message-ID: <a40ea502-e293-e07c-9f7b-e5f9cc118adf@lightnvm.io>
+Date: Wed, 24 Jul 2019 14:27:10 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <20190723183601.29370-5-minwoo.im.dev@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190724_052244_781829_81CF9C42 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20190724_052713_083125_F04586FF 
+X-CRM114-Status: GOOD (  24.06  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:142 listed in]
  [list.dnswl.org]
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (hslester96[at]gmail.com)
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (hslester96[at]gmail.com)
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -98,57 +97,223 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, Chuhong Yuan <hslester96@gmail.com>,
- linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Keith Busch <kbusch@kernel.org>,
+ =?UTF-8?Q?Javier_Gonz=c3=a1lez?= <javier@javigon.com>,
+ Klaus Birkelund <birkelund@gmail.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Instead of using to_pci_dev + pci_get_drvdata,
-use dev_get_drvdata to make code simpler.
+On 23/07/2019 20.36, Minwoo Im wrote:
+> To retrieve the chunk information from the nvme namespae for the given
+> OCSSD, we can just do like:
+> 	nvme lnvm chunk-log /dev/nvme0n1 --output-format=normal
+>
+> This will calculate the data length from the geometry data structure
+> which might be retrieved by a Geometry command(Identity for 1.2 spec.).
+> Then it will request get log page API for 1.3 NVMe spec to get the
+> entries which indicate chunk information.
+>
+> Cc: Keith Busch <kbusch@kernel.org>
+> Cc: Matias Bjorling <mb@lightnvm.io>
+> Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+> ---
+>   nvme-lightnvm.c          | 37 ++++++++++++++++++
+>   nvme-lightnvm.h          |  1 +
+>   plugins/lnvm/lnvm-nvme.c | 84 ++++++++++++++++++++++++++++++++++++++++
+>   plugins/lnvm/lnvm-nvme.h |  1 +
+>   4 files changed, 123 insertions(+)
+>
+> diff --git a/nvme-lightnvm.c b/nvme-lightnvm.c
+> index 2e665bf..8fa8f3f 100644
+> --- a/nvme-lightnvm.c
+> +++ b/nvme-lightnvm.c
+> @@ -465,6 +465,43 @@ int lnvm_do_id_ns(int fd, int nsid, unsigned int flags)
+>   	return err;
+>   }
+>   
+> +static void show_lnvm_chunk_log(struct nvme_nvm_chunk_desc *chunk_log,
+> +				__u32 data_len)
+> +{
+> +	int nr_entry = data_len / sizeof(struct nvme_nvm_chunk_desc);
+> +	int idx;
+> +
+> +	for (idx = 0; idx < nr_entry; idx++) {
+> +		struct nvme_nvm_chunk_desc *desc = &chunk_log[idx];
+> +
+> +		printf(" [%5d] { ", idx);
+> +		printf("cs: %#x", desc->cs);
+> +		printf(", ct: %#x", desc->ct);
+> +		printf(", wli: %d", desc->wli);
+> +		printf(", slba: 0x%016"PRIx64, le64_to_cpu(desc->slba));
+> +		printf(", cnlb: 0x%016"PRIx64, le64_to_cpu(desc->cnlb));
+> +		printf(", wp: 0x%016"PRIx64" }\n", le64_to_cpu(desc->wp));
+> +	}
+> +}
+> +
+> +int lnvm_do_chunk_log(int fd, __u32 nsid, __u32 data_len, void *data,
+> +			unsigned int flags)
+> +{
+> +	int err;
+> +
+> +	err = nvme_get_log13(fd, nsid, NVM_LID_CHUNK_INFO, 0, 0, 0,
+> +			false, data_len, data);
+> +	if (!err) {
+> +		if (flags & RAW)
+> +			d_raw(data, data_len);
+> +		else
+> +			show_lnvm_chunk_log(data, data_len);
+> +	} else if (err > 0)
+> +		fprintf(stderr, "NVMe Status:%s(%x) NSID:%d\n",
+> +			nvme_status_to_string(err), err, nsid);
+> +	return err;
+> +}
+> +
+>   static void show_lnvm_bbtbl(struct nvme_nvm_bb_tbl *tbl)
+>   {
+>   	printf("verid    : %#x\n", (uint16_t)le16_to_cpu(tbl->verid));
+> diff --git a/nvme-lightnvm.h b/nvme-lightnvm.h
+> index 7a8ef7d..19660b7 100644
+> --- a/nvme-lightnvm.h
+> +++ b/nvme-lightnvm.h
+> @@ -322,6 +322,7 @@ int lnvm_do_create_tgt(char *, char *, char *, int, int, int, int);
+>   int lnvm_do_remove_tgt(char *);
+>   int lnvm_do_factory_init(char *, int, int, int);
+>   int lnvm_do_id_ns(int, int, unsigned int);
+> +int lnvm_do_chunk_log(int, __u32, __u32, void *, unsigned int);
+>   int lnvm_do_get_bbtbl(int, int, int, int, unsigned int);
+>   int lnvm_do_set_bbtbl(int, int, int, int, int, int, __u8);
+>   
+> diff --git a/plugins/lnvm/lnvm-nvme.c b/plugins/lnvm/lnvm-nvme.c
+> index 754931a..6f2724a 100644
+> --- a/plugins/lnvm/lnvm-nvme.c
+> +++ b/plugins/lnvm/lnvm-nvme.c
+> @@ -1,5 +1,7 @@
+>   #include <stdio.h>
+>   #include <errno.h>
+> +#include <stdlib.h>
+> +#include <unistd.h>
+>   
+>   #include "nvme.h"
+>   #include "nvme-print.h"
+> @@ -127,6 +129,88 @@ static int lnvm_id_ns(int argc, char **argv, struct command *cmd, struct plugin
+>   	return lnvm_do_id_ns(fd, cfg.namespace_id, flags);
+>   }
+>   
+> +static int lnvm_chunk_log(int argc, char **argv, struct command *cmd, struct plugin *plugin)
+> +{
+> +	const char *desc = "Retrieve the chunk information log for the "\
+> +		"specified given LightNVM device, returns in either "\
+> +		"human-readable or binary format.\n"\
+> +		"This will request Geometry first to get the "\
+> +		"num_grp,num_pu,num_chk first to figure out the total size "\
+> +		"of the log pages."\
+> +		;
+> +	const char *output_format = "Output format: normal|binary";
+> +	const char *human_readable = "Print normal in readable format";
+> +	int err, fmt, fd;
+> +	struct nvme_nvm_id20 geo;
+> +	struct nvme_nvm_chunk_desc *chunk_log;
+> +	__u32 nsid;
+> +	__u32 data_len;
+> +	unsigned int flags = 0;
+> +
+> +	struct config {
+> +		char *output_format;
+> +		int human_readable;
+> +	};
+> +
+> +	struct config cfg = {
+> +		.output_format = "normal",
+> +	};
+> +
+> +	const struct argconfig_commandline_options command_line_options[] = {
+> +		{"output-format", 'o', "FMT", CFG_STRING, &cfg.output_format, required_argument, output_format},
+> +		{"human-readable",'H', "",    CFG_NONE,   &cfg.human_readable,no_argument,       human_readable},
+> +		{NULL}
+> +	};
+> +
+> +	fd = parse_and_open(argc, argv, desc, command_line_options, &cfg,
+> +				sizeof(cfg));
+> +	if (fd < 0) {
+> +		err = fd;
+> +		goto ret;
+> +	}
+> +
+> +	fmt = validate_output_format(cfg.output_format);
+> +	if (fmt < 0) {
+> +		err = fmt;
+> +		goto close;
+> +	}
+> +
+> +	if (fmt == BINARY)
+> +		flags |= RAW;
+> +	else if (cfg.human_readable)
+> +		flags |= HUMAN;
+> +
+> +	nsid = nvme_get_nsid(fd);
+> +
+> +	/*
+> +	 * It needs to figure out how many bytes will be requested by this
+> +	 * subcommand by the (num_grp * num_pu * num_chk) from the Geometry.
+> +	 */
+> +	err = lnvm_get_identity(fd, nsid, (struct nvme_nvm_id *) &geo);
+> +	if (err)
+> +		goto close;
+> +
+> +	data_len = (geo.num_grp * geo.num_pu * geo.num_chk) *
+> +			sizeof(struct nvme_nvm_chunk_desc);
+> +	chunk_log = malloc(data_len);
+> +	if (!chunk_log) {
+> +		fprintf(stderr, "cound not alloc for chunk log %dbytes\n",
+> +				data_len);
+> +		err = -ENOMEM;
+> +		goto close;
+> +	}
+> +
+> +	err = lnvm_do_chunk_log(fd, nsid, data_len, chunk_log, flags);
+> +	if (err)
+> +		fprintf(stderr, "get log page for chunk information failed\n");
+> +
+> +	free(chunk_log);
+> +close:
+> +	close(fd);
+> +ret:
+> +	return err;
+> +}
+> +
+>   static int lnvm_create_tgt(int argc, char **argv, struct command *cmd, struct plugin *plugin)
+>   {
+>   	const char *desc = "Instantiate a target on top of a LightNVM enabled device.";
+> diff --git a/plugins/lnvm/lnvm-nvme.h b/plugins/lnvm/lnvm-nvme.h
+> index 3d5cbc5..f091f7b 100644
+> --- a/plugins/lnvm/lnvm-nvme.h
+> +++ b/plugins/lnvm/lnvm-nvme.h
+> @@ -12,6 +12,7 @@ PLUGIN(NAME("lnvm", "LightNVM specific extensions"),
+>   		ENTRY("list", "List available LightNVM devices", lnvm_list)
+>   		ENTRY("info", "List general information and available target engines", lnvm_info)
+>   		ENTRY("id-ns", "List geometry for LightNVM device", lnvm_id_ns)
+> +		ENTRY("chunk-log", "Chunk information by Get Log Page", lnvm_chunk_log)
 
-Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
----
- drivers/nvme/host/pci.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+Chunk Information Log Page ?
 
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index bb970ca82517..3c6411f4d590 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -2845,7 +2845,7 @@ static int nvme_set_power_state(struct nvme_ctrl *ctrl, u32 ps)
- 
- static int nvme_resume(struct device *dev)
- {
--	struct nvme_dev *ndev = pci_get_drvdata(to_pci_dev(dev));
-+	struct nvme_dev *ndev = dev_get_drvdata(dev);
- 	struct nvme_ctrl *ctrl = &ndev->ctrl;
- 
- 	if (pm_resume_via_firmware() || !ctrl->npss ||
-@@ -2914,7 +2914,7 @@ static int nvme_suspend(struct device *dev)
- 
- static int nvme_simple_suspend(struct device *dev)
- {
--	struct nvme_dev *ndev = pci_get_drvdata(to_pci_dev(dev));
-+	struct nvme_dev *ndev = dev_get_drvdata(dev);
- 
- 	nvme_dev_disable(ndev, true);
- 	return 0;
-@@ -2922,8 +2922,7 @@ static int nvme_simple_suspend(struct device *dev)
- 
- static int nvme_simple_resume(struct device *dev)
- {
--	struct pci_dev *pdev = to_pci_dev(dev);
--	struct nvme_dev *ndev = pci_get_drvdata(pdev);
-+	struct nvme_dev *ndev = dev_get_drvdata(dev);
- 
- 	nvme_reset_ctrl(&ndev->ctrl);
- 	return 0;
--- 
-2.20.1
+>   		ENTRY("init", "Initialize media manager on LightNVM device", lnvm_init)
+>   		ENTRY("create", "Create target on top of a LightNVM device", lnvm_create_tgt)
+>   		ENTRY("remove", "Remove target from device", lnvm_remove_tgt)
+
+Hi Minwoo,
+
+Could you squash patch 2, 3 and 4 together (4 being the main patch) - 
+They belong together to implement one feature.
+
+As a side-note, we have the same command for ZNS (that will be pushed 
+when the ZNS TP is ratified) - In that, we've also added support for 
+supplying start lba and number of chunks (zones) to return. Could you 
+add that as well to this? Then there is coherency between the two?
+
+-Matias
+
 
 
 _______________________________________________
