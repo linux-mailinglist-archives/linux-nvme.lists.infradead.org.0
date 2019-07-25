@@ -2,53 +2,34 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FBBC7580E
-	for <lists+linux-nvme@lfdr.de>; Thu, 25 Jul 2019 21:37:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C2C3675824
+	for <lists+linux-nvme@lfdr.de>; Thu, 25 Jul 2019 21:41:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CH2dLWx2oGlMk7C6VK8QS5vOFhw6GR/mN4EQ9I0f2/U=; b=fizDKtWbUVJdLCFYBfpWzguRc
-	iA3ysdZcwCABSjMrtw2H4hxZ1Uutfx/E5XOlD9SsAJY/MWg7sUKpzLGvGScj6qv9oB8J1HiG+nYl1
-	gGNWHHt9IFAWIYeO8kOpMPPecZrVhp7jzLi8toK0SG5KkPVeKIKCTb5K3tBmziKZiMmn5pXASbFeH
-	NVPL+FmIWuDLVdsicRWbmbSKDkDzTSl9usysAbWq//1CM6TCTSRKaunnbHoPMbUDhqO7CFIDn05yy
-	VV0rgocK4wo8iyqRLrvF5LBSltzXnOzFABF9qf6ELWjH0SQnJP8Qz0iTbZ+VG6Kv8F6/Xa+qFz+1U
-	LQnbOd6ZQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+zPoAK8qEmRYXjeFbERkl/uyT7c7HPSkBFzX0jqJdL0=; b=K6mUaR9YOz8qUS
+	yrAlMwnKTAr2zN6u0Wlt15lIr/CmA199c6mc/zadiCcFke0nNCbkkm9XCKkAxBrQLGZmya+fZYGyC
+	xmarkx/sUczJvWjLfsR5XBD//a5yr0Zc7pWefbRBclkgC74BEkAFqjzqs/pc+KjkR8Cq5voWAGnE0
+	4Jpgo4mvf+sUPj8AF3KhstfIdHGISxYbU9prv7TXOsTVdaR6KM8u1lbbsO65GpV85OMCn/y77luaN
+	kjsmzaAVUpMHVohd5PAUOUJ1+2sfwI8S4OjXeLBRJ/PtkE9VSml5I7nTG2cNlFzlVYGil2qdlk0ZF
+	eBYLiu9qhz1xJvndYU1A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hqjYN-00083O-N2; Thu, 25 Jul 2019 19:37:27 +0000
-Received: from mail-ot1-f68.google.com ([209.85.210.68])
+	id 1hqjcP-0001BK-D2; Thu, 25 Jul 2019 19:41:37 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hqjYD-00082j-NX
- for linux-nvme@lists.infradead.org; Thu, 25 Jul 2019 19:37:18 +0000
-Received: by mail-ot1-f68.google.com with SMTP id l15so52857874otn.9
- for <linux-nvme@lists.infradead.org>; Thu, 25 Jul 2019 12:37:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=bRrEPEVgexSO2qJ+xF9O3stEIjJPqaaPVCD0SdqrQlc=;
- b=cqa6CoJT1//K4t5tQwGukWDHf27B3BsbvDFz07rCy85CUSral0N5l9ZGGl+LlaWeVz
- fAfOvsR3ccliu2YsbvqKXc0ytwXngQGj0NT22MIpF4yCUhcvi857K8DpL/Rgu+kyNV+9
- PNp3UP3eMQlVZLZbcdmDR7Byg+G4l3FyyHnpDf02nHnRtF7D1AnNDQ6WSJlz3q9sIId8
- iu3EZVEpnE+u6IQeNujJGr0stRssGhL0PZS4csms+MVzpwp77jOwuP21ZPNxvYMBuKNh
- sclnA0jbEpWE2oOz2ilLtPnYyjnXwHaqmaovDT79BpUJXDRS1nAjDHK7Eb3lkIeXE5CV
- DfSg==
-X-Gm-Message-State: APjAAAXPzLqFoAiUpvrSQnGFHyOcFGvqshZyFSiEsKK/Cu1CySeKIJt4
- dar89h5bPGHYLFoRAMOvuu8=
-X-Google-Smtp-Source: APXvYqz9bV6QeYb15MSNKNxP2VfnI+u9Ca2BFAT2KloajK/flSPNHX4CrsZFsKbSXnU3PDj2zYBIPQ==
-X-Received: by 2002:a9d:7a4e:: with SMTP id z14mr40017650otm.258.1564083436737; 
- Thu, 25 Jul 2019 12:37:16 -0700 (PDT)
-Received: from [192.168.1.114]
- (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
- by smtp.gmail.com with ESMTPSA id w22sm16304470otp.73.2019.07.25.12.37.15
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 25 Jul 2019 12:37:16 -0700 (PDT)
-Subject: Re: [PATCH v6 02/16] chardev: introduce cdev_get_by_path()
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+ id 1hqjcF-0001B1-Gj
+ for linux-nvme@lists.infradead.org; Thu, 25 Jul 2019 19:41:29 +0000
+Received: from s01061831bf6ec98c.cg.shawcable.net ([68.147.80.180]
+ helo=[192.168.6.132])
+ by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <logang@deltatee.com>)
+ id 1hqjc6-0004BV-00; Thu, 25 Jul 2019 13:41:18 -0600
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sagi Grimberg <sagi@grimberg.me>
 References: <20190725172335.6825-1-logang@deltatee.com>
  <20190725172335.6825-3-logang@deltatee.com>
  <20190725174032.GA27818@kroah.com>
@@ -59,35 +40,40 @@ References: <20190725172335.6825-1-logang@deltatee.com>
  <a3262a7f-b78e-05ba-cda3-a7587946bd91@deltatee.com>
  <5951e0f5-cc90-f3de-0083-088fecfd43bb@grimberg.me>
  <20190725193415.GA12117@kroah.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <966fa988-de56-effe-dd52-3515ee83629c@grimberg.me>
-Date: Thu, 25 Jul 2019 12:37:11 -0700
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <77a3e81d-2542-6782-0fc1-1d25bcc75598@deltatee.com>
+Date: Thu, 25 Jul 2019 13:41:16 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
 In-Reply-To: <20190725193415.GA12117@kroah.com>
 Content-Language: en-US
+X-SA-Exim-Connect-IP: 68.147.80.180
+X-SA-Exim-Rcpt-To: viro@zeniv.linux.org.uk, sbates@raithlin.com,
+ maxg@mellanox.com, Chaitanya.Kulkarni@wdc.com, axboe@fb.com, kbusch@kernel.org,
+ hch@lst.de, linux-fsdevel@vger.kernel.org, linux-block@vger.kernel.org,
+ linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org, sagi@grimberg.me,
+ gregkh@linuxfoundation.org
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: [PATCH v6 02/16] chardev: introduce cdev_get_by_path()
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190725_123717_768756_5C7886C3 
-X-CRM114-Status: GOOD (  17.65  )
-X-Spam-Score: 0.3 (/)
+X-CRM114-CacheID: sfid-20190725_124127_881342_EE271722 
+X-CRM114-Status: GOOD (  20.80  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.3 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.68 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ no trust [207.54.116.67 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.68 listed in wl.mailspike.net]
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,13 +90,17 @@ Cc: Jens Axboe <axboe@fb.com>, Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
  Stephen Bates <sbates@raithlin.com>, linux-block@vger.kernel.org,
  Keith Busch <kbusch@kernel.org>, Alexander Viro <viro@zeniv.linux.org.uk>,
  linux-fsdevel@vger.kernel.org, Max Gurtovoy <maxg@mellanox.com>,
- Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
+
+On 2019-07-25 1:34 p.m., Greg Kroah-Hartman wrote:
+> On Thu, Jul 25, 2019 at 12:02:30PM -0700, Sagi Grimberg wrote:
+>>
 >>>>>> Why do you have a "string" within the kernel and are not using the
 >>>>>> normal open() call from userspace on the character device node on the
 >>>>>> filesystem in your namespace/mount/whatever?
@@ -136,8 +126,17 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 > device node and away it goes?  What if you give it a "wrong" one?  Char
 > devices are very different from block devices this way.
 
-We could condition any configfs operation on capable(CAP_NET_ADMIN) to
-close that hole for now..
+Well the permission question is no different from the block-device case
+we already have. The user has to be root to configure a target so it has
+access to the block/char device. Containers and NVMe-of are really not
+designed to mix and would take a lot of work to make this make any sense
+(And that's way out of scope of what I'm trying to do here and doesn't
+change the need for a the cdev_get_by_path()).
+
+If the user specifies a non-nvme char device, it is rejected by the code
+in nvme_ctrl_get_by_path() when it compares the fops. See patch 4.
+
+Logan
 
 _______________________________________________
 Linux-nvme mailing list
