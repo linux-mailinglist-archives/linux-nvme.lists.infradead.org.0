@@ -2,84 +2,72 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B5CF758B4
-	for <lists+linux-nvme@lfdr.de>; Thu, 25 Jul 2019 22:12:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 865B4758D7
+	for <lists+linux-nvme@lfdr.de>; Thu, 25 Jul 2019 22:28:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9PmQs7x3SpctbbQRe6t8wNbvl4NxLsAKmpLGRKkQQDw=; b=KXbRVN5qtWWD15XiwFO4fn+2f
-	4XIRwZUGCc9i+TrEWYvHBvU2lzi9isAHeoXu87Qw8t35s5mmNEqAkrkjb49/77FV0WVT9lwFgCjlr
-	mlKOLQ92ofMpPKZKBSweQEwRlx+/rwSFOPj1KG1fJ5fXzUm6wpCsxBpigtEeeJ3mCYivXfA+N8pY0
-	IlDx5uEkQLB2esKZhmGRM7qIriWgoTxQdC2uUR663zyXWC88oNrr86n4Y7nbxKcDFFg71PNnLQ6wf
-	ojsu7q7qVr+U4Z636aE8gxh3N1rF9u7Kwo2QsGU2xyl9X+juUr9VlrKSsGK8sPZrxiIi3mvMgzwz1
-	HHhXFRb8g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yW5yOlfle5Akapuc1ZDeVjMDVQkM2C2PMrQuILt5jCo=; b=tXuyBTad/BjHj2
+	ekrU8I6YnBfNwVjii5Pj2XFDKsFoRg1aoBVe83GDdU2QxPfyevQdbYdkoYa6LVubwB3ABu3RGWVTn
+	eESapHWcV5wGhSaLPOlp5MClySqeS0j0F9u9NLfflP9W/5MRnePiuGSRt2CuljgaHLZpc6kEPtAcR
+	WPri0c4jBVTH1FMUbI/rf/IUjfcPr5MdPFBuXxAJp2t0qGfhhm+vSACbUEWcDnFsmSec6QJNs3ODr
+	8NfVdiXsaMrQONUI0QYHQTgsFwkKpyUQveAekkVsuD+FqAO1RoS6VEen3+5skvBqecWJ/BFTqwFms
+	mcV2K23ElPNqFQjEsOOA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hqk6Z-0005Tm-Gi; Thu, 25 Jul 2019 20:12:47 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1hqkM1-0003wg-PJ; Thu, 25 Jul 2019 20:28:45 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hqk6S-0005TM-C0
- for linux-nvme@lists.infradead.org; Thu, 25 Jul 2019 20:12:41 +0000
-Received: by mail-ot1-f67.google.com with SMTP id j19so14514470otq.2
- for <linux-nvme@lists.infradead.org>; Thu, 25 Jul 2019 13:12:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=upMmfHcaeRgVvK81CCV//tdiGx+ZtNGeUUY24jsfROs=;
- b=PACN87ScM+Rl/NO2xGvCP8g6fiNo2dzkdzJk98WgNDAedUrT48MUQ9a3ae49beYtKo
- 1EVX7mF+AL0MMKutHFNL86FDT94+UYDzogj2AF9LU5aX10mitomxK4y/T9cikdflqBgX
- ik33ggGt6Dtmm8nmSEbmOOSekEO1Efa+/IGeKqBSSebfMf5CCJGSDmylO+ZlewhSJb0j
- oRtKthJj+DbAkOzIbgtYk/8hzoJbW320x0KpURnGj7Q7ydGKGn6Y8rhQN4gmpV8GZrqm
- XbQ1Xee+grHNp9N6J9S0SpP0c8XHRPu0L05PaBKtxUSu54N9hBhC/4XaX4KP1fhgRk8H
- +u6A==
-X-Gm-Message-State: APjAAAXq3oJu3A2hUhrtVR3uTlruZI4SGg07Ow1VjYH78QE/MjEDk4dg
- Av9p9hU65AKVtR67I45PJHQ=
-X-Google-Smtp-Source: APXvYqwoBViFnDcf+6pZDHGyFoMwEdvzaHQEty7ZB96NCnpf03fgmpW+suC4/aEJXauiaGWPDAcRcQ==
-X-Received: by 2002:a05:6830:6:: with SMTP id c6mr3006263otp.14.1564085559039; 
- Thu, 25 Jul 2019 13:12:39 -0700 (PDT)
-Received: from [192.168.1.114]
- (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
- by smtp.gmail.com with ESMTPSA id 20sm8615958oth.43.2019.07.25.13.12.37
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 25 Jul 2019 13:12:38 -0700 (PDT)
-Subject: Re: [PATCH v6 04/16] nvme-core: introduce nvme_get_by_path()
-To: Keith Busch <kbusch@kernel.org>, Logan Gunthorpe <logang@deltatee.com>
+ id 1hqkLv-0003wH-GS
+ for linux-nvme@lists.infradead.org; Thu, 25 Jul 2019 20:28:40 +0000
+Received: from s01061831bf6ec98c.cg.shawcable.net ([68.147.80.180]
+ helo=[192.168.6.132])
+ by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <logang@deltatee.com>)
+ id 1hqkLl-0005E4-Ra; Thu, 25 Jul 2019 14:28:30 -0600
+To: Keith Busch <kbusch@kernel.org>
 References: <20190725172335.6825-1-logang@deltatee.com>
  <20190725172335.6825-5-logang@deltatee.com>
  <20190725175023.GA30641@bombadil.infradead.org>
  <da58f91e-6cfa-02e0-dd89-3cfa23764a0e@deltatee.com>
  <20190725195835.GA7317@localhost.localdomain>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <0b7e5d9f-207c-ee4e-a992-024c178cdd49@grimberg.me>
-Date: Thu, 25 Jul 2019 13:12:32 -0700
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <5dd6a41d-21c4-cf8d-a81d-271549de6763@deltatee.com>
+Date: Thu, 25 Jul 2019 14:28:28 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
 In-Reply-To: <20190725195835.GA7317@localhost.localdomain>
 Content-Language: en-US
+X-SA-Exim-Connect-IP: 68.147.80.180
+X-SA-Exim-Rcpt-To: sbates@raithlin.com, maxg@mellanox.com,
+ Chaitanya.Kulkarni@wdc.com, axboe@fb.com, sagi@grimberg.me, hch@lst.de,
+ linux-fsdevel@vger.kernel.org, linux-block@vger.kernel.org,
+ linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
+ willy@infradead.org, kbusch@kernel.org
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: [PATCH v6 04/16] nvme-core: introduce nvme_get_by_path()
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190725_131240_413005_456D8939 
-X-CRM114-Status: GOOD (  13.44  )
-X-Spam-Score: 0.3 (/)
+X-CRM114-CacheID: sfid-20190725_132839_586060_E42A0530 
+X-CRM114-Status: GOOD (  13.39  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.3 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.67 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ no trust [207.54.116.67 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,17 +79,25 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- Stephen Bates <sbates@raithlin.com>, linux-block@vger.kernel.org,
- Matthew Wilcox <willy@infradead.org>, linux-fsdevel@vger.kernel.org,
- Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
+Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ linux-block@vger.kernel.org, Matthew Wilcox <willy@infradead.org>,
+ linux-fsdevel@vger.kernel.org, Max Gurtovoy <maxg@mellanox.com>,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
+
+On 2019-07-25 1:58 p.m., Keith Busch wrote:
+> On Thu, Jul 25, 2019 at 11:54:18AM -0600, Logan Gunthorpe wrote:
+>>
+>>
+>> On 2019-07-25 11:50 a.m., Matthew Wilcox wrote:
+>>> On Thu, Jul 25, 2019 at 11:23:23AM -0600, Logan Gunthorpe wrote:
 >>>> nvme_get_by_path() is analagous to blkdev_get_by_path() except it
 >>>> gets a struct nvme_ctrl from the path to its char dev (/dev/nvme0).
 >>>>
@@ -118,9 +114,13 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 > than how we handle blocks and files, but that way nvme core can lookup
 > the cooresponding controller without adding new cdev dependencies.
 
-We could... but did we find sufficient justification to have the user
-handle passthru devices differently than any other backend?
-once we commit to an interface its very hard to change.
+Well the previous version of the patchset just used the ctrl name
+("nvme1") and looped through all the controllers to find a match. But
+this sucks because of the inconsistency and the fact that the name can
+change if hardware changes and the number changes. Allowing the user to
+make use of standard udev rules seems important to me.
+
+Logan
 
 
 _______________________________________________
