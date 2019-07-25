@@ -2,32 +2,32 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF4CC7574D
-	for <lists+linux-nvme@lfdr.de>; Thu, 25 Jul 2019 20:54:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B81C37576D
+	for <lists+linux-nvme@lfdr.de>; Thu, 25 Jul 2019 20:58:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=WNBTKAH7sviTjlDE1Hb/QHuO4eZUgJbll56C/N3Qm5w=; b=A3Y
-	26uRqBzZ1aOrpZt9KL6lFQL/eczSbjWVyXjSHOBPfFZL4QVPv/+J/w6irMuW4SwTj5YE260svqhr8
-	NjGnKSX719Mc1lzhFrel329RkFRCdwFJeP55DFlSV+30JUKMlMCufl/zzt6Yd+5/JEOSSPVlr8nyZ
-	aiyYGNCbor3ZAFA17o2Md3stoIewztyrPD2KVUVRawrrBkpcPKXPx2duEEBnMS95t+Dw5AgSK11oy
-	sstOa2Rx5RmaEEpNOTdrxrQEcx3ePUagM8LtyYxg3lWSV8KbBEYl92NZUI0fzIfuYbh0DqSj6kd34
-	kSlUr/A/LGTNRBVh9f7FfuNbOV/tcBg==;
+	References:List-Owner; bh=cqzE7zdpSGyfCI0+Tq2WZ41HKIk/cWtkujF9xA5lw0w=; b=J+Z
+	mbQPkv+BUhCgTfAOiFsK8BOvkUyQNKRlQ21oolYN9C5hh3RVDcyChrFBA9Eaq6d4WdWrgug+CyC60
+	VbzJU7qn2y/SE/IE1tQeOqx+tIBNgY+h7gN0bARW8Oc6fPPoOCCG5KDLD9pMvw+yfsSFCyW4gROFO
+	2n7iEsPhFkqw1MHJs+GyVgGoywaFuchA/LBx0VKpG4cY0oWiJMsY39Df+Vn9XoUe89/njXAkQmBfG
+	u3IFwX7agUp9+vjB3CPCvQoKolmQQaSLVUTvXTLZpWYCVrQjDgRvaUrxUO7JLyCS7VjoCcvdfMFDk
+	EKhvFjubBJc7Cpq3mj+fo6AvqdWv57A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hqit2-0004rY-02; Thu, 25 Jul 2019 18:54:44 +0000
+	id 1hqiwb-0007dV-7C; Thu, 25 Jul 2019 18:58:25 +0000
 Received: from 162-195-240-247.lightspeed.sntcca.sbcglobal.net
  ([162.195.240.247] helo=sagi-Latitude-E7470.lbits)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hqiss-0004rN-UB; Thu, 25 Jul 2019 18:54:34 +0000
+ id 1hqivG-0006ku-KR; Thu, 25 Jul 2019 18:57:02 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2] nvme: fix controller removal race with scan work
-Date: Thu, 25 Jul 2019 11:54:27 -0700
-Message-Id: <20190725185427.6340-1-sagi@grimberg.me>
+Subject: [PATCH v3] nvme: fix controller removal race with scan work
+Date: Thu, 25 Jul 2019 11:56:57 -0700
+Message-Id: <20190725185657.9025-1-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -117,13 +117,16 @@ request will fast fail upon requeuing.
 Reported-by: Logan Gunthorpe <logang@deltatee.com>
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 ---
+Changes from v2:
+- fix silly compilation error (undiclared variable)
+
 Changes from v1:
 - fix compilation with CONFIG_NVME_MULTIPATH=n (Logan)
 
  drivers/nvme/host/core.c      |  7 ++++++
- drivers/nvme/host/multipath.c | 44 ++++++++++++++++++++++++++++++-----
+ drivers/nvme/host/multipath.c | 46 ++++++++++++++++++++++++++++++-----
  drivers/nvme/host/nvme.h      |  9 +++++--
- 3 files changed, 52 insertions(+), 8 deletions(-)
+ 3 files changed, 54 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
 index 1c2863216082..c657e38f0554 100644
@@ -144,10 +147,10 @@ index 1c2863216082..c657e38f0554 100644
  	flush_work(&ctrl->scan_work);
  
 diff --git a/drivers/nvme/host/multipath.c b/drivers/nvme/host/multipath.c
-index a9a927677970..1f14cc991fbc 100644
+index a9a927677970..45ffa17f844e 100644
 --- a/drivers/nvme/host/multipath.c
 +++ b/drivers/nvme/host/multipath.c
-@@ -109,18 +109,32 @@ static const char *nvme_ana_state_names[] = {
+@@ -109,18 +109,34 @@ static const char *nvme_ana_state_names[] = {
  	[NVME_ANA_CHANGE]		= "change",
  };
  
@@ -175,6 +178,8 @@ index a9a927677970..1f14cc991fbc 100644
 +
 +void nvme_mpath_clear_ctrl_paths(struct nvme_ctrl *ctrl)
 +{
++	struct nvme_ns *ns;
++
 +	mutex_lock(&ctrl->scan_lock);
 +	list_for_each_entry(ns, &ctrl->namespaces, list)
 +		if (nvme_mpath_clear_current_path(ns))
@@ -183,7 +188,7 @@ index a9a927677970..1f14cc991fbc 100644
  }
  
  static bool nvme_path_is_disabled(struct nvme_ns *ns)
-@@ -231,6 +245,24 @@ inline struct nvme_ns *nvme_find_path(struct nvme_ns_head *head)
+@@ -231,6 +247,24 @@ inline struct nvme_ns *nvme_find_path(struct nvme_ns_head *head)
  	return ns;
  }
  
@@ -208,7 +213,7 @@ index a9a927677970..1f14cc991fbc 100644
  static blk_qc_t nvme_ns_head_make_request(struct request_queue *q,
  		struct bio *bio)
  {
-@@ -257,14 +289,14 @@ static blk_qc_t nvme_ns_head_make_request(struct request_queue *q,
+@@ -257,14 +291,14 @@ static blk_qc_t nvme_ns_head_make_request(struct request_queue *q,
  				      disk_devt(ns->head->disk),
  				      bio->bi_iter.bi_sector);
  		ret = direct_make_request(bio);
