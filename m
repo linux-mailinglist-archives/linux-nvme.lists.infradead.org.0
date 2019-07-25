@@ -2,93 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6C3B74FF8
-	for <lists+linux-nvme@lfdr.de>; Thu, 25 Jul 2019 15:46:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DAA07502D
+	for <lists+linux-nvme@lfdr.de>; Thu, 25 Jul 2019 15:53:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+lY68ZsQ1Kifexq4fO91wg4cOtqNeXUykP+Skw8y12M=; b=sDAovEisrzv8Q0
-	Ft+hI6O2BbjIKyf7MvI0CHxKi5sMPuykVnl4geye11mdH1ksDGy9KHv/MpSSYr0Hjtc39iRD0EoSY
-	StCSze5PhECJ90gZH7tGA6rrhuOsrDSW93NVfLatYltf1iAsgbhDnD5ZcXWAXEZm/EKyr1O4JH6zT
-	wq+TkKEE3vfLSrmu7fPHGSsblrbIjF+QexeLItfaC7aX26Rv7V8A6CGe+8J5GOXB989s/7bSHhdsR
-	OaH4rjpXOM4roALu2z1htIMtDQMXP7BB9vlmGX3ZUBPitecP9vGesLFZmoXfja2bDbxoHW9LfSK2e
-	5+1RRkB3MoE0tiY7hJNg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	References:To:In-Reply-To:Date:Subject:Mime-Version:Message-Id:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=DLQlWWVfkxY0zfdQ4uXaGtpBRLpkLLbiPZiFtTbyB54=; b=Cvooq86/CJsm6H5/EZtebQtxs
+	Ff7vhm6j+DzfGQPpRaSTKj0tNCw0iPYLAvg+6mV36wd+yZQrgunDq1yIrgJUhC/Xwem5aGjBlN0WC
+	+ugQeDh5bWnDhnrjFuWHHeF7Nfz+ddPHJdgCJzcatEF1HSRd1TSVU378W4RVH40rnt01i8nDLW5Fd
+	zzj2ncyF94N3eZhW8lG+Qx3VoYFqfaveIwCieox4oYpIymjvzHVVQeqAPxafQV7sxt22Hw0kiG9Ex
+	GKwIKbmk3cz2VG7tWsfmdKiV4bkZbMjj1UaG7+oXPxqkrfLKvA51dY0yeOhguR2s38DuWQPcOxtok
+	QWpNx5+1w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hqe4b-0003FY-H8; Thu, 25 Jul 2019 13:46:21 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1hqeBN-0008PG-EK; Thu, 25 Jul 2019 13:53:21 +0000
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hqe4S-0003FD-JK
- for linux-nvme@lists.infradead.org; Thu, 25 Jul 2019 13:46:13 +0000
-Received: by mail-pg1-x543.google.com with SMTP id o13so23064367pgp.12
- for <linux-nvme@lists.infradead.org>; Thu, 25 Jul 2019 06:46:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=/oA5bfcDUO9szxdQwATowzn0/JOyrlcqbX2EW5yDYBA=;
- b=hbb7Moiv1RVTeQz1Go3elc9/SAFA4uK6nCh/mQY3BNNKPMZ6oWABjNXFuc4tE53R6W
- GlWEBc5yD8CpPAndnEHai0YXsA71eUcrKrnUUITEqsoyJ2MyH80zg6f6aTcWBbw7JDOC
- odWolqytMhLkETEhabjWxMVUgP7bq842kq6XAJ2KbwBBT7uXCem5dJSYSYhLKla+NZhL
- bUJxjTRl/ATrw5/Dl3Hlf2sKiczYr5N7y2viG9nzioVrgVJW3mKoJBwbUmXdjVq3MvwX
- GA7CfXPowwvFRoO6mEZkwZqpQFvtTOFRFpp898ENABLpkFnY+40TlRRSuJ9fnWy1vYEv
- +uOg==
+ id 1hqeBD-0008Op-SF
+ for linux-nvme@lists.infradead.org; Thu, 25 Jul 2019 13:53:13 +0000
+Received: by mail-lj1-x244.google.com with SMTP id v24so48174185ljg.13
+ for <linux-nvme@lists.infradead.org>; Thu, 25 Jul 2019 06:53:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=javigon-com.20150623.gappssmtp.com; s=20150623;
+ h=from:message-id:mime-version:subject:date:in-reply-to:cc:to
+ :references; bh=l8JJat7LbJp5ZxHYIuek/mQ5vD4s1CeCwSLmoxEkMbI=;
+ b=AGsja8/Ercmu4sE2cFYZd5fwJiysvtcaXbVxnNjESllR8UpjvMse1tb5nfd/t13EZv
+ +HEgPE5LHP4p2uwcad7sO2myw/Dg8PmF9dfPlUTM7GdN0fqX0SRwTYuHfGvWbFwcRqKU
+ ZO1rjC+6J+QFDKOLEQxxbOy/4inkydQO6hvUv1kV6OQ4ifS+8pMmndR10P/QRHKAzujh
+ oQddOQnyeRsUb4w7xdbPLpaKSNNuziGewVb52kAZHyuJvtkmfqBR4DqxqCbuapEjDvR9
+ HxSp/GYusxnAVac/Ld7mp6VPELWqglQisMX2wYhJAA0DqnMIlh50WDniFjYw/CUp4NMn
+ +ufg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=/oA5bfcDUO9szxdQwATowzn0/JOyrlcqbX2EW5yDYBA=;
- b=GiPOLllNemWatKMBtuj53n7F33d/kjL52N/RAix3ucwQJGMhThdMHpsdzCl1wsg3P3
- 2rN9uRDOfajGGiSIwq5ujsOTZq+E+ZbWEtmw9isj4x0T/WEXFOj3+BGJIDkKR1rAPWG0
- 28CkJl4j/+d2PIoNlbLq47PqfDWDZfhq91imSEfPmoZ9MqRc60UnvGIBTkDIPx0evAt2
- wnZWXTPKr8Xn5MH5kXQWWddjA5A/AKK3L6IMnZW1OhaqBRjGOljMHSpxygqj68xFava7
- XBDEqp9ZrkFitn3OZwgRah4Pw6w9R+LebAyA5XNEOy+TkwvJdo7+T5MlSTjM+jFwFz6p
- H9sA==
-X-Gm-Message-State: APjAAAWpj584wZGQBiKKJ42PwnVzELL1lHqXU7jewOQhfwEMQSIJwpY+
- k8Z5Djqv1ugBDOFpkiEjek8=
-X-Google-Smtp-Source: APXvYqwodT7bv4wB4aL6zul6/C47bEbbx/xMv4gVLKdAwH0Fk1tAvcQ00+hdgj0eInitxbNVS1TSwQ==
-X-Received: by 2002:a63:904:: with SMTP id 4mr15210540pgj.19.1564062372073;
- Thu, 25 Jul 2019 06:46:12 -0700 (PDT)
-Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id j12sm41520352pff.4.2019.07.25.06.46.10
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 25 Jul 2019 06:46:11 -0700 (PDT)
-Date: Thu, 25 Jul 2019 22:46:09 +0900
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Matias =?utf-8?B?QmrDuHJsaW5n?= <mb@lightnvm.io>
-Subject: Re: [PATCH 1/5] lnvm: make data_len to sizeof() instead of magic
- number
-Message-ID: <20190725134609.GD3018@minwoo-desktop>
+ h=x-gm-message-state:from:message-id:mime-version:subject:date
+ :in-reply-to:cc:to:references;
+ bh=l8JJat7LbJp5ZxHYIuek/mQ5vD4s1CeCwSLmoxEkMbI=;
+ b=qAWkgV8pAthlVJc8CMDv3ThhX+DF5MASaBPojwzQXjFgwjdh8Z1aBLV2AsmwfXXhXO
+ 8fewvqPKB8GGWK2bOTqLvxfrMqthyqToWUYlSir8hgprjjJ/vLxESrGpmtCSAdKJZ4IV
+ 0GAcynxR6Tz3ZPaN+crMnWaWPccjjZSldk7E6gQ1uzMm9mhnWwKz4B5VGs0A3CYDo2KN
+ bPfiD9lZIP+CkS27JFMhAPseABcVVDdnAT7ijhkyM9Mu3KcIOH+z0ofNIDaVDDmiBCzz
+ m77qqD0E8fyXTJBzznDNGm38vrq9Ib0MgdkPtxnJJSPHb1usnci4cI/MaOY9GsDbwBII
+ q/yg==
+X-Gm-Message-State: APjAAAXC7QN1VvhJcMRjhK6p/lRVnq7vxlBkRjdQW6a6f7XWFsnoGZjZ
+ CWcGLAEFx35z46eJ44rjbtXvqQts
+X-Google-Smtp-Source: APXvYqy4zDl1R7sGQ7FOzu4fn7gox9v3WKLxtcCWeW3CO1bSo7On2f6tiribuh0IVoWhdEP6psiPPg==
+X-Received: by 2002:a2e:87d0:: with SMTP id v16mr6796609ljj.24.1564062789486; 
+ Thu, 25 Jul 2019 06:53:09 -0700 (PDT)
+Received: from [172.20.10.13] (212.27.21.176.bredband.3.dk. [212.27.21.176])
+ by smtp.gmail.com with ESMTPSA id m5sm7434168lfa.47.2019.07.25.06.53.08
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 25 Jul 2019 06:53:08 -0700 (PDT)
+From: =?utf-8?Q?Javier_Gonz=C3=A1lez?= <javier@javigon.com>
+Message-Id: <C15E06A5-2093-4023-8B32-43005D27D898@javigon.com>
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+Subject: Re: [PATCH 4/5] lnvm: introduce chunk-log command for chunk info
+Date: Thu, 25 Jul 2019 15:53:06 +0200
+In-Reply-To: <20190725133736.GB3018@minwoo-desktop>
+To: Minwoo Im <minwoo.im.dev@gmail.com>
 References: <20190723183601.29370-1-minwoo.im.dev@gmail.com>
- <20190723183601.29370-2-minwoo.im.dev@gmail.com>
- <80d59219-12b7-47da-d37e-9fd9941260de@lightnvm.io>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <80d59219-12b7-47da-d37e-9fd9941260de@lightnvm.io>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+ <20190723183601.29370-5-minwoo.im.dev@gmail.com>
+ <20B9C888-532C-4762-9886-8C5E196CB5A4@javigon.com>
+ <20190725133736.GB3018@minwoo-desktop>
+X-Mailer: Apple Mail (2.3445.104.11)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190725_064612_642324_8621522D 
-X-CRM114-Status: GOOD (  18.38  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190725_065312_050364_71E91BA4 
+X-CRM114-Status: GOOD (  15.88  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:244 listed in]
  [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -103,42 +95,195 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Keith Busch <kbusch@kernel.org>,
- Klaus Birkelund <birkelund.eu@minwoo-desktop>,
- Javier =?utf-8?B?R29uesOhbGV6?= <javier@javigon.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, linux-nvme@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ =?utf-8?Q?Matias_Bj=C3=B8rling?= <mb@lightnvm.io>,
+ Klaus Birkelund Jensen <birkelund@gmail.com>, linux-nvme@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============5052038161787875705=="
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-SGkgTWF0aWFzLAoKT24gMTktMDctMjQgMTQ6MzM6MzksIE1hdGlhcyBCasO4cmxpbmcgd3JvdGU6
-Cj4gT24gMjMvMDcvMjAxOSAyMC4zNSwgTWlud29vIEltIHdyb3RlOgo+ID4gV2UgY2FuIGhhdmUg
-aXQgYXMgYSBzaXplb2YoKSBpbnN0ZWFkIG9mIHRoZSBoYXJkLWNvZGVkIHZhbHVlIGZvciB0aGUK
-PiA+IGRhdGEgc3RydWN0dXJlLgo+ID4gCj4gPiBDYzogS2VpdGggQnVzY2ggPGtidXNjaEBrZXJu
-ZWwub3JnPgo+ID4gQ2M6IE1hdGlhcyBCam9ybGluZyA8bWJAbGlnaHRudm0uaW8+Cj4gPiBTaWdu
-ZWQtb2ZmLWJ5OiBNaW53b28gSW0gPG1pbndvby5pbS5kZXZAZ21haWwuY29tPgo+ID4gLS0tCj4g
-PiAgIG52bWUtbGlnaHRudm0uYyB8IDIgKy0KPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0
-aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9udm1lLWxpZ2h0bnZt
-LmMgYi9udm1lLWxpZ2h0bnZtLmMKPiA+IGluZGV4IDBiOTk3ODYuLmU4Y2RjY2QgMTAwNjQ0Cj4g
-PiAtLS0gYS9udm1lLWxpZ2h0bnZtLmMKPiA+ICsrKyBiL252bWUtbGlnaHRudm0uYwo+ID4gQEAg
-LTQ0Miw3ICs0NDIsNyBAQCBzdGF0aWMgaW50IGxudm1fZ2V0X2lkZW50aXR5KGludCBmZCwgaW50
-IG5zaWQsIHN0cnVjdCBudm1lX252bV9pZCAqbnZtX2lkKQo+ID4gICAJCS5vcGNvZGUJCT0gbnZt
-ZV9udm1fYWRtaW5faWRlbnRpdHksCj4gPiAgIAkJLm5zaWQJCT0gbnNpZCwKPiA+ICAgCQkuYWRk
-cgkJPSAoX191NjQpKHVpbnRwdHJfdCludm1faWQsCj4gPiAtCQkuZGF0YV9sZW4JPSAweDEwMDAs
-Cj4gPiArCQkuZGF0YV9sZW4JPSBzaXplb2Yoc3RydWN0IG52bWVfbnZtX2lkKSwKPiA+ICAgCX07
-Cj4gPiAgIAlyZXR1cm4gbnZtZV9zdWJtaXRfcGFzc3RocnUoZmQsIE5WTUVfSU9DVExfQURNSU5f
-Q01ELCAmY21kKTsKPiAKPiBXb3JrcyBmb3IgbWUuCj4gCj4gUGxlYXNlIHVzZSB1c2UgbXkgU2ln
-bmVkLW9mZi1ieSBpbnN0ZWFkIG9mIFJldmlld2VkLWJ5IC0gdHJhZGl0aW9uYWxseSBLZWl0aAo+
-IGhhcyBiZWVuIGtpbmQgdG8gd2FpdCB0byBwdWxsIGluIHBhdGNoZXMgdW50aWwgSSBnb3QgYSBj
-aGFuY2UgdG8gbG9vayBhdAo+IHRoZW0gb24gR2l0aHViLiBIYXZpbmcgdGhlIHJldmlldyBoZXJl
-IG9uIHRoZSBtYWlsaW5nIGxpc3QgYW5kIGxhdGVyIGFzIGEKPiBwdWxsIHJlcXVlc3Qgb24gZ2l0
-aHViIG1ha2VzIGl0IGV4cGxpY2l0IHRoYXQgSSBzaWduZWQgb2ZmIG9uIGl0LgoKT2ggb2theS4g
-IEknbGwga2VlcCB0aGF0IGluIG1pbmQuICBCdXQgbm93IEknbGwgcHJlcGFyZSBhIFYyIHNlcmll
-cyBzbwp0aGF0IGlmIHlvdSByZXZpZXcgdGhhdCBvbmUgYWxzbywgSSdsbCBwdXQgeW91ciB0YWcg
-YmVsb3cgaW50byB0aGUKY29tbWl0IGFuZCBwb3N0IGFzIGEgUFIgb24gR2l0aHViIG9uY2UgSmF2
-aWVyIGdpdmVzIHNvbWUgY29tbWVudHMgb24gdGhlCnByZXZpb3VzIHBhdGNoIHJldmlldy4KClRo
-YW5rcyEKCj4gU2lnbmVkLW9mZi1ieTogTWF0aWFzIEJqw7hybGluZyA8bWF0aWFzLmJqb3JsaW5n
-QHdkYy5jb20+Cj4gCj4gVGhhbmsgeW91IQo+IAo+IC0gTWF0aWFzCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1udm1lIG1haWxpbmcgbGlzdApM
-aW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
+
+--===============5052038161787875705==
+Content-Type: multipart/signed;
+	boundary="Apple-Mail=_2B59B429-DDDA-4B50-9AC0-0FD1E710A1CE";
+	protocol="application/pgp-signature";
+	micalg=pgp-sha256
+
+
+--Apple-Mail=_2B59B429-DDDA-4B50-9AC0-0FD1E710A1CE
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
+
+> On 25 Jul 2019, at 15.37, Minwoo Im <minwoo.im.dev@gmail.com> wrote:
+>=20
+> Hi Javier,
+>=20
+> Thanks for the review.
+>=20
+>>> +int lnvm_do_chunk_log(int fd, __u32 nsid, __u32 data_len, void =
+*data,
+>>> +			unsigned int flags)
+>>> +{
+>>> +	int err;
+>>> +
+>>> +	err =3D nvme_get_log13(fd, nsid, NVM_LID_CHUNK_INFO, 0, 0, 0,
+>>> +			false, data_len, data);
+>>> +	if (!err) {
+>>> +		if (flags & RAW)
+>>> +			d_raw(data, data_len);
+>>> +		else
+>>> +			show_lnvm_chunk_log(data, data_len);
+>>> +	} else if (err > 0)
+>>> +		fprintf(stderr, "NVMe Status:%s(%x) NSID:%d\n",
+>>> +			nvme_status_to_string(err), err, nsid);
+>>> +	return err;
+>>=20
+>> What about avoiding the nested if?
+>>=20
+>> If (err) {
+>> 	fprintf(stderr, "NVMe Status:%s(%x) NSID:%d\n",
+>> 			nvme_status_to_string(err), err, nsid);
+>>=20
+>> 	goto out;
+>> }
+>>=20
+>> If (flags & RAW)
+>> 	d_raw(data, data_len);
+>> else
+>> 	show_lnvm_chunk_log(data, data_len);
+>>=20
+>> out:
+>> return err;
+>=20
+> That makes sense, we should avoid the case when "err" is negative =
+value
+> which means the internal error from the nvme_get_log13() in printing =
+the
+> nvme status.  So how about this?
+>=20
+> ```c
+> 	if (err > 0) {
+> 		fprintf(stderr, "NVMe Status:%s(%x) NSID:%d\n",
+> 			nvme_status_to_string(err), err, nsid);
+>=20
+> 		goto out;
+> 	} else if (err < 0) {
+> 		err =3D -errno;
+> 		perror("nvme_get_log13");
+>=20
+> 		goto out;
+> 	}
+>=20
+> 	if (flags & RAW)
+> 		d_raw(data, data_len);
+> 	else
+> 		show_lnvm_chunk_log(data, data_len);
+>=20
+> out:
+> 	return err;
+> ```
+
+Looks good.
+
+>=20
+>>> +}
+>>> +
+>>> static void show_lnvm_bbtbl(struct nvme_nvm_bb_tbl *tbl)
+>>> {
+>>> 	printf("verid    : %#x\n", (uint16_t)le16_to_cpu(tbl->verid));
+>>> diff --git a/nvme-lightnvm.h b/nvme-lightnvm.h
+>>> index 7a8ef7d..19660b7 100644
+>>> --- a/nvme-lightnvm.h
+>>> +++ b/nvme-lightnvm.h
+>>> @@ -322,6 +322,7 @@ int lnvm_do_create_tgt(char *, char *, char *, =
+int, int, int, int);
+>>> int lnvm_do_remove_tgt(char *);
+>>> int lnvm_do_factory_init(char *, int, int, int);
+>>> int lnvm_do_id_ns(int, int, unsigned int);
+>>> +int lnvm_do_chunk_log(int, __u32, __u32, void *, unsigned int);
+>>> int lnvm_do_get_bbtbl(int, int, int, int, unsigned int);
+>>> int lnvm_do_set_bbtbl(int, int, int, int, int, int, __u8);
+>>>=20
+>>> diff --git a/plugins/lnvm/lnvm-nvme.c b/plugins/lnvm/lnvm-nvme.c
+>>> index 754931a..6f2724a 100644
+>>> --- a/plugins/lnvm/lnvm-nvme.c
+>>> +++ b/plugins/lnvm/lnvm-nvme.c
+>>> @@ -1,5 +1,7 @@
+>>> #include <stdio.h>
+>>> #include <errno.h>
+>>> +#include <stdlib.h>
+>>> +#include <unistd.h>
+>>>=20
+>>> #include "nvme.h"
+>>> #include "nvme-print.h"
+>>> @@ -127,6 +129,88 @@ static int lnvm_id_ns(int argc, char **argv, =
+struct command *cmd, struct plugin
+>>> 	return lnvm_do_id_ns(fd, cfg.namespace_id, flags);
+>>> }
+>>>=20
+>>> +static int lnvm_chunk_log(int argc, char **argv, struct command =
+*cmd, struct plugin *plugin)
+>>> +{
+>>> +	const char *desc =3D "Retrieve the chunk information log for the =
+"\
+>>> +		"specified given LightNVM device, returns in either "\
+>>> +		"human-readable or binary format.\n"\
+>>> +		"This will request Geometry first to get the "\
+>>> +		"num_grp,num_pu,num_chk first to figure out the total =
+size "\
+>>> +		"of the log pages."\
+>>> +		;
+>>> +	const char *output_format =3D "Output format: normal|binary=E2=80=9D=
+;
+>>=20
+>> normalbinary -> normal binary?
+>=20
+> Oh It has "|" between them.  But I'm fine with that too.  It was just
+> derieved from the nvme.c core module which builtin commands are taking
+> now.
+
+Oh, I didn=E2=80=99t see that. My mistake.
+
+Javier
+
+--Apple-Mail=_2B59B429-DDDA-4B50-9AC0-0FD1E710A1CE
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename=signature.asc
+Content-Type: application/pgp-signature;
+	name=signature.asc
+Content-Description: Message signed with OpenPGP
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEU1dMZpvMIkj0jATvPEYBfS0leOAFAl05tEIACgkQPEYBfS0l
+eODMHhAAkhEVv1Ryu61JIr+PCtbCm/6tG2uTjwD8XyBeKCYDTaDqaaPYt+Imvt28
+pIYv9FlfOgXxnPk+SM2RzjK1nUFfBsXeDTGouprsenKMj8KS2NHASwMP/T3aZjwN
+lENtLuTf79mlUMxeEc9WWqOsk6jsR+t+X04dJWeFm///Z4my2xwp24aw+ZtTfMHU
+QUplU+b7aEE/SSiFTdw8oStxAD7VG15M1y5JLbaxh+GEiDS0eHOjvPZPzyF2+Hl1
+r31gyXAA+3MWuXl/awTaYG93z4EQK0RHLhY5MZ1dgYTaD/4C493xirbmY8+Sj/01
+G7pcwmSkO/l6qvspdFlSk/Rlhs+kdQOo5RSgg9WpCmPxQKXlrwGYjPeQ/437bHEK
+yPq2jKQocW/z3kpyRcW4q43bFXPgcgDE5qgasc1+shz83mZbu20aNUdo+vgTdJ3e
+wKHFx0l5T3gI/p6xrB+e7SSeHaeAO7ua7g5QmC5y4TGwVIRTGJQ5upouBeXGwanL
+ohUY0rOxahJXZ99ZOu9mKxpFgew99LYvllABKn4F/5tBHQWqrltVIao1a3ZTnQYw
+QurmFGWiZMR3EfKytOR9cX4Bd23iaxp8MqBHe8OjK/2fG4F0pkfKp+KLx8TpMR1f
+BUnV56PYxRZEsmnXPn4Z9cmpmKjlkU+or6VnK+K4km+6HrcnVnM=
+=0jJx
+-----END PGP SIGNATURE-----
+
+--Apple-Mail=_2B59B429-DDDA-4B50-9AC0-0FD1E710A1CE--
+
+
+--===============5052038161787875705==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
+
+--===============5052038161787875705==--
+
