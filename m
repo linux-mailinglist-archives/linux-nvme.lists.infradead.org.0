@@ -2,89 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D7657677F
-	for <lists+linux-nvme@lfdr.de>; Fri, 26 Jul 2019 15:30:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB51176AEB
+	for <lists+linux-nvme@lfdr.de>; Fri, 26 Jul 2019 16:03:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:References:Message-Id:Date:In-Reply-To:From:
+	Subject:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/5Wcn00cYWl44FTaxMomR3wsSAy4N/xyC5yP1JCsGdg=; b=o9cLPHysZuA6d0fS6tmBBQ4s1
-	b0QmZw8qBONAWcpvjbD7xO0xUEroNBc+aVm5/MT60jBqiEfBbsBotX55u3eJrhNwOEq2tNgnEuTF9
-	qzCkAZiLb6jG/a8og+6UKHYeSZIXS/vWcNw5fgG/4pQmmqNbsohSchlDzBOFA1Y5z5utx5ZFlK40S
-	3J1tb9SvS8VCCXTtFPzE+RaHczorMSfKsxT0VB/dNK47SGmU405IgBUmXh31PiU+3uIZD8s36UGP2
-	u1EEkAMAknYWDnCgm1ympMYSaLDFAv9xPPRg3ukVb9CyXTWA8a79G1yyJrLLWvjZeZN5hw2XnQUUx
-	XWBTu2FvQ==;
+	 bh=oKYNG5nRL9wtjOACATRqr6EkLoCwglV90NyXpRzkEpM=; b=AWNm7UAw0TEdTGV7cvMPWbH2K
+	ydGbyvOJ8xaQCgzYjT7JdXh4VxFlyVD0khnUoGbRKnD4gABExhawuCx1u8CN32f6PQUYOJXJg4r4E
+	KPIF9yuK3W1TcKtGRMN0brAGZTS7NDtpGEUyhTb9tS3/732jHGvGl4dORg68Qz6yQBV+VX++pkqvW
+	7vNFUIfFogQcdKowN3h1UNDs0fchyOwKkkaPw1jlrnbKiTpXXjbnhlhyvQigjBXiOehDGDwSAyhMX
+	fzba2l3S358mS/pIyY+RgBGSX6qZoMPSZHKYoywPV3AEAnzKMzDsqxWQCAo5M9YTLQ0jvbnx0reCH
+	2YGqvb9JQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hr0Iy-0007NP-VY; Fri, 26 Jul 2019 13:30:40 +0000
-Received: from smtp.tds.cmh.synacor.com ([64.8.70.105] helo=mail.tds.net)
- by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
- id 1hr0Ij-0007Mv-QC
- for linux-nvme@lists.infradead.org; Fri, 26 Jul 2019 13:30:27 +0000
-DKIM-Signature: v=1; a=rsa-sha1; d=tds.net; s=20180112; c=relaxed/simple;
- q=dns/txt; i=@tds.net; t=1564147822;
- h=From:Subject:Date:To:MIME-Version:Content-Type;
- bh=c4XJqzh+0S/Bu07gYj4dcWrvoRE=;
- b=CxWnEyEU8lDwEb56YMcnb1zdmeJIio5wPyOs41VMdpoUI7wWNQBmF+Z2nMAyd4bI
- JKhYDZ4w6xUP/Yf33D0c47Draxu3VXhFVrNRryMF/QY+1FGrobM2HvqpeevvYHgE
- bKOcVUDrOGsuExsFtGmaQ8ubJCT+vzf18/dVp+2pV8NCRy/9UfPIgRfZd2xVEg+0
- lhHg//ke94hQdmDQq+9IXdSPbUCJFnqKsxOgj5wwaAdGGVxLK0vG7bfDwf74RBjm
- 9RGw4EPcoane+rA0RHNI1dlAmgJrINgKGlK5z3/aE4U9ICjsfdbtJi45eWVakvfj
- y4gAdSNeXHEIOoTPMg8QSQ==;
-X_CMAE_Category: , ,
-X-CNFS-Analysis: v=2.3 cv=LLQYv6e9 c=1 sm=1 tr=0
- a=QQ1z/TRHJLkw7QGu0419XQ==:117 a=QQ1z/TRHJLkw7QGu0419XQ==:17
- a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=KGjhK52YXX0A:10 a=IkcTkHD0fZMA:10
- a=nHvWMnLLnzEA:10 a=0o9FgrsRnhwA:10 a=C9He5zk_2WUA:10 a=crcc2pDzAAAA:8
- a=qAO9bXRTk1DLrHm59VgA:9 a=QEXdDO2ut3YA:10 a=Qx42hhkp_cWVdQ1Fdq1G:22
-X-CM-Score: 0
-X-Scanned-by: Cloudmark Authority Engine
-X-Authed-Username: ZGF2aWRjNTAyQHRkcy5uZXQ=
-Authentication-Results: smtp01.tds.cmh.synacor.com smtp.user=davidc502;
- auth=pass (LOGIN)
-Received: from [69.21.125.220] ([69.21.125.220:54232] helo=[192.168.2.226])
- by mail.tds.net (envelope-from <davidc502@tds.net>)
- (ecelerity 3.6.5.45644 r(Core:3.6.5.0)) with ESMTPSA (cipher=AES128-SHA) 
- id 8B/E9-10387-D600B3D5; Fri, 26 Jul 2019 09:30:21 -0400
-Subject: Re: fstrim error - AORUS NVMe Gen4 SSD
-To: linux-nvme@lists.infradead.org
-References: <fb510e33-5c81-6d62-fcde-a2989b3a1a8f@tds.net>
- <20190723021928.GF30776@ming.t460p>
- <4a7ec7aa-f6ee-f9dc-4a17-38f2b169c721@tds.net>
- <20190723043803.GB13829@ming.t460p>
- <20190724213054.GA5921@localhost.localdomain>
-From: davidc502 <davidc502@tds.net>
-Message-ID: <f3c74f5d-12c8-d7cf-2d7b-c06f04f4b738@tds.net>
-Date: Fri, 26 Jul 2019 08:30:21 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190724213054.GA5921@localhost.localdomain>
-Content-Language: en-US
+	id 1hr0oU-0007YQ-EU; Fri, 26 Jul 2019 14:03:14 +0000
+Received: from youngberry.canonical.com ([91.189.89.112])
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hr0oM-0007XL-V9
+ for linux-nvme@lists.infradead.org; Fri, 26 Jul 2019 14:03:08 +0000
+Received: from mail-pg1-f199.google.com ([209.85.215.199])
+ by youngberry.canonical.com with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.76) (envelope-from <kai.heng.feng@canonical.com>)
+ id 1hr0oJ-0006AT-Ah
+ for linux-nvme@lists.infradead.org; Fri, 26 Jul 2019 14:03:03 +0000
+Received: by mail-pg1-f199.google.com with SMTP id n3so23201871pgh.12
+ for <linux-nvme@lists.infradead.org>; Fri, 26 Jul 2019 07:03:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=zgKsD0vS61TwqaiMc5Bxbo+tuGL4q/knIykLeSFgHUE=;
+ b=fn8fTBKndJGzJz5UMFUbfxfSfGyjwyAI+wtNSCt4Dq0CARKU/tmcGn//R72MbN6Vma
+ Q6h8qBqN9XxaWMzjZTsS9caIqo7UTkfoW/Pywj2ofzbVllrqQWUEmJ/yLs8gt/v04IZE
+ YX/aOBNmFPyiwUxOoJxGkVVLctaeMGdkTruCIT74jmNths8e/Bxa6ffTkz19VBDkIEcA
+ x3iJwFtv2vYjaHdabbla8o96NWvjsiyon36bzMyM0lQeWa7bLfaNy2cyWokOxSFTxGu3
+ PNaUsgWXERRqqQANR61k+afFIprpoNA7iIkDYw6+iKhbl+v0WDGN9NBHC7nmgSGnqalY
+ PZ3Q==
+X-Gm-Message-State: APjAAAWi6xB1wXfY+gNKe/2wqKFXsAOOzJJnIHjq2G4R+duycxg8IzWc
+ ZPGRw2p6ARPiAI3zs+g8i/Qmt3owfPThXDJjUcEzoYmwKFamwE6uoBR8b3sX/ZY0xcpcNYhd8vO
+ Pn1plBgmUtvbyygXZ96gCLZfsbuTiiar2crpJwLo4VsgF
+X-Received: by 2002:a17:90b:d82:: with SMTP id
+ bg2mr55822729pjb.87.1564149781622; 
+ Fri, 26 Jul 2019 07:03:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxGjVFm3iMZdHa8/bpEy8jQL6sS/HSuRjQlLlbJZHDjj7/gKO7kf1TjhItkgv13p7LIplasGw==
+X-Received: by 2002:a17:90b:d82:: with SMTP id
+ bg2mr55822693pjb.87.1564149781331; 
+ Fri, 26 Jul 2019 07:03:01 -0700 (PDT)
+Received: from 2001-b011-380f-37d3-3494-cf95-ca69-bfbd.dynamic-ip6.hinet.net
+ (2001-b011-380f-37d3-3494-cf95-ca69-bfbd.dynamic-ip6.hinet.net.
+ [2001:b011:380f:37d3:3494:cf95:ca69:bfbd])
+ by smtp.gmail.com with ESMTPSA id n26sm56226280pfa.83.2019.07.26.07.02.58
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 26 Jul 2019 07:03:00 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
+ suspend" has problems
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+In-Reply-To: <15043168.halW6uqc8m@kreacher>
+Date: Fri, 26 Jul 2019 22:02:57 +0800
+Message-Id: <D33632F4-E119-4833-816C-79084DA03DE4@canonical.com>
+References: <2332799.izEFUvJP67@kreacher> <2428826.VBuqOhikiK@kreacher>
+ <20190725195258.GA7307@localhost.localdomain> <15043168.halW6uqc8m@kreacher>
+To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+X-Mailer: Apple Mail (2.3445.104.11)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190726_063025_918220_111DDCCC 
-X-CRM114-Status: UNSURE (   8.41  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.9 (/)
+X-CRM114-CacheID: sfid-20190726_070307_132275_D9B3D345 
+X-CRM114-Status: GOOD (  10.33  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.9 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [64.8.70.105 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [64.8.70.105 listed in wl.mailspike.net]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [91.189.89.112 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,29 +91,121 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ Mario Limonciello <Mario.Limonciello@dell.com>,
+ Linux PM <linux-pm@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>, "Busch,
+ Keith" <keith.busch@intel.com>, Keith Busch <kbusch@kernel.org>,
+ Christoph Hellwig <hch@lst.de>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"; DelSp="yes"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-SGVsbG8sCgpPbiA3LzI0LzE5IDQ6MzAgUE0sIEtlaXRoIEJ1c2NoIHdyb3RlOgo+IE9uIFR1ZSwg
-SnVsIDIzLCAyMDE5IGF0IDEyOjM4OjA0UE0gKzA4MDAsIE1pbmcgTGVpIHdyb3RlOgo+PiAgRnJv
-bSB0aGUgSU8gdHJhY2UsIGRpc2NhcmQgY29tbWFuZChudm1lX2NtZF9kc20pIGlzIGZhaWxlZDoK
-Pj4KPj4gICAga3dvcmtlci8xNToxSC00NjIgICBbMDE1XSAuLi4uIDkxODE0LjM0MjQ1MjogbnZt
-ZV9zZXR1cF9jbWQ6IG52bWUwOiBkaXNrPW52bWUwbjEsIHFpZD03LCBjbWRpZD01NTIsIG5zaWQ9
-MSwgZmxhZ3M9MHgwLCBtZXRhPTB4MCwgY21kPShudm1lX2NtZF9kc20gbnI9MCwgYXR0cmlidXRl
-cz00KQo+PiAgICAgICAgICAgIDxpZGxlPi0wICAgICBbMDEzXSBkLmguIDkxODE0LjM0MjcwODog
-bnZtZV9jb21wbGV0ZV9ycTogbnZtZTA6IGRpc2s9bnZtZTBuMSwgcWlkPTcsIGNtZGlkPTU1Miwg
-cmVzPTAsIHJldHJpZXM9MCwgZmxhZ3M9MHgwLCBzdGF0dXM9ODE5OAo+Pgo+PiBBbmQgdGhlIHJl
-dHVybmVkIGVycm9yIGNvZGUgaXMgMHg4MTk4LCBJIGFtIG5vdCBzdXJlIGhvdyB0byBwYXJzZSB0
-aGUKPj4gJ0NvbW1hbmQgU3BlY2lmaWMgU3RhdHVzIFZhbHVlcycgb2YgMHg5OCwgbWF5YmUgQ2hy
-aXN0b3BoLCBLZWl0aCBvciBvdXIgb3RoZXIKPj4gTlZNZSBndXlzIGNhbiBoZWxwIHRvIHVuZGVy
-c3RhbmQgdGhlIGZhaWx1cmUuCj4gVGhlIDE5OGggc3RhdHVzIGNvZGUgaXMgc3RpbGwgbWFya2Vk
-IHJlc2VydmVkIGluIHRoZSBsYXRlc3Qgc3BlYyBmb3IgYW4KPiBOVk0gY29tbWFuZCBzZXQsIHNv
-IG5vdCBzdXJlIHdoYXQgdG8gbWFrZSBvZiBpdC4gSSB0aGluayB3ZSB3b3VsZCBoYXZlCj4gdG8g
-cmVmZXIgYmFjayB0byB0aGUgdmVuZG9yLgoKVGhhbmsgeW91wqAgZm9yIHRha2luZyBhIGxvb2sg
-YXQgdGhpcy4gSSBndWVzcyBteSBxdWVzdGlvbiB3b3VsZCBiZSBpZiAKeW91IGhhdmUgYSB2ZWhp
-Y2xlIGluIHBsYWNlIHRvIGJlIGFibGUgdG8gcmVmZXIgYmFjayB0byB0aGUgdmVuZG9yPwoKRGF2
-aWQKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+at 04:02, Rafael J. Wysocki <rjw@rjwysocki.net> wrote:
+
+> On Thursday, July 25, 2019 9:52:59 PM CEST Keith Busch wrote:
+>> On Thu, Jul 25, 2019 at 09:48:57PM +0200, Rafael J. Wysocki wrote:
+>>> NVME Identify Controller:
+>>> vid     : 0x1c5c
+>>> ssvid   : 0x1c5c
+>>> sn      : MS92N171312902J0N
+>>> mn      : PC401 NVMe SK hynix 256GB
+>>> fr      : 80007E00
+>>> rab     : 2
+>>> ieee    : ace42e
+>>> cmic    : 0
+>>> mdts    : 5
+>>> cntlid  : 1
+>>> ver     : 10200
+>>> rtd3r   : 7a120
+>>> rtd3e   : 1e8480
+>>> oaes    : 0x200
+>>> ctratt  : 0
+>>> oacs    : 0x17
+>>> acl     : 7
+>>> aerl    : 3
+>>> frmw    : 0x14
+>>> lpa     : 0x2
+>>> elpe    : 255
+>>> npss    : 4
+>>> avscc   : 0x1
+>>> apsta   : 0x1
+>>> wctemp  : 352
+>>> cctemp  : 354
+>>> mtfa    : 0
+>>> hmpre   : 0
+>>> hmmin   : 0
+>>> tnvmcap : 0
+>>> unvmcap : 0
+>>> rpmbs   : 0
+>>> edstt   : 10
+>>> dsto    : 0
+>>> fwug    : 0
+>>> kas     : 0
+>>> hctma   : 0
+>>> mntmt   : 0
+>>> mxtmt   : 0
+>>> sanicap : 0
+>>> hmminds : 0
+>>> hmmaxd  : 0
+>>> nsetidmax : 0
+>>> anatt   : 0
+>>> anacap  : 0
+>>> anagrpmax : 0
+>>> nanagrpid : 0
+>>> sqes    : 0x66
+>>> cqes    : 0x44
+>>> maxcmd  : 0
+>>> nn      : 1
+>>> oncs    : 0x1f
+>>> fuses   : 0x1
+>>> fna     : 0
+>>> vwc     : 0x1
+>>> awun    : 7
+>>> awupf   : 7
+>>> nvscc   : 1
+>>> acwu    : 7
+>>> sgls    : 0
+>>> mnan    : 0
+>>> subnqn  :
+>>> ioccsz  : 0
+>>> iorcsz  : 0
+>>> icdoff  : 0
+>>> ctrattr : 0
+>>> msdbd   : 0
+>>> ps    0 : mp:6.00W operational enlat:5 exlat:5 rrt:0 rrl:0
+>>>           rwt:0 rwl:0 idle_power:- active_power:-
+>>> ps    1 : mp:3.80W operational enlat:30 exlat:30 rrt:1 rrl:1
+>>>           rwt:1 rwl:1 idle_power:- active_power:-
+>>> ps    2 : mp:2.40W operational enlat:100 exlat:100 rrt:2 rrl:2
+>>>           rwt:2 rwl:2 idle_power:- active_power:-
+>>> ps    3 : mp:0.0700W non-operational enlat:1000 exlat:1000 rrt:3 rrl:3
+>>>           rwt:3 rwl:3 idle_power:- active_power:-
+>>> ps    4 : mp:0.0070W non-operational enlat:1000 exlat:5000 rrt:3 rrl:3
+>>>           rwt:3 rwl:3 idle_power:- active_power:-
+>>
+>> Hm, nothing stands out as something we can use to determine if we should
+>> skip the nvme specific settings or allow D3. I've no other ideas at the
+>> moment for what we may check.
+>
+> Well, do ASPM settings matter here?
+
+Seems like it's a regression in the firmware.
+
+The issue happens in version 80007E00 but not version 80006E00.
+I am not sure how to downgrade it under Linux though.
+The firmware changelog [1] is very interesting:
+- Improves the performance of the solid-state drive (SSD) by distributing  
+power into the SSD efficiently according to the power state of the system.
+
+[1]  
+https://www.dell.com/support/home/us/en/04/drivers/driversdetails?driverid=mcxm8
+
+Kai-Heng
+
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
