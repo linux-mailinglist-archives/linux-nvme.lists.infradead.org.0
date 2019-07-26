@@ -2,154 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5B7577359
-	for <lists+linux-nvme@lfdr.de>; Fri, 26 Jul 2019 23:22:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09892773F4
+	for <lists+linux-nvme@lfdr.de>; Sat, 27 Jul 2019 00:21:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DYKzyorx5eHFLfNWUamxsjrNJgfosw7N2AuMvE1OPPM=; b=DCucMfnR+ujVaS
-	0rL/GNpWzodUx3wl2i6Iup7qvRJ5L0KGJeER5OiTnPjsPEo+BnJc/k0A0NlC7OEKD/iNqrshhbczL
-	8UAMpc6VjEBX9D8V2chiY4orhaQ2Si7EJpMnJn07i6ZSnlUEY5WJ+IY6ZKqjhctMPi5rrX/0SBGsa
-	q8viGPax7bGA3rZcxbo21jCLdUksPKXj46KqPEhq4t3K3yi4haKnNPs13+1gPGvvMZ3RbyWosV2h5
-	8viS8K/Iu9d19ktu5zlTxFo4+oZZA16qdZmEEdDqiASdZeHvvwVQBx7mq7xkHRgAc6ZaY+QNsNIiM
-	31LS4y9wXSQ1LNSfos3w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=i6DjuYd3+U/BlIpH6Qc7HPjFojdBlgaquiya8E3Snmc=; b=fM81tzftsCl9WhjEhHwZ1MYZ6
+	gbK1hD73BtDI3w7CA43H+AofnYzPmwn06pmtkh6By5I9o9bCQcc2wI7JNVaoUBg7+Ab+OWxKqj2JL
+	GOUzFM8N4IdToVNiZSylsHlc3B+gnDK3z437nMC9kuJGe8ncwfl9KVlX5zvvt7rVAxYq6VSji439g
+	hcWDtfAc+h0ZqlTcOQgOEMDaYkuL4GeS78R+HyIw/832ORcPVnLyT5ApuNjBKT1ZoPbINmJkXRLEh
+	jBVbc5CKltVZeyh0phtiT/JRC0HHePXKTBuuegkFHkvchPkXjtssi7nhXUBGYEgssPY1DRM7zMM3P
+	GJIgRE9iQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hr7fd-0004GA-OG; Fri, 26 Jul 2019 21:22:34 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1hr8ah-0005eu-Be; Fri, 26 Jul 2019 22:21:31 +0000
+Received: from mail-pg1-f195.google.com ([209.85.215.195])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hr7fO-0004FK-63
- for linux-nvme@lists.infradead.org; Fri, 26 Jul 2019 21:22:19 +0000
-Received: by mail-wr1-x444.google.com with SMTP id r1so55741431wrl.7
- for <linux-nvme@lists.infradead.org>; Fri, 26 Jul 2019 14:22:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:openpgp:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=J/Z4p59UpJ2kdNYIeNHf5l0EBK+uKJZt8bYxkA5sARU=;
- b=FqWQrmFr2B62ymmLcANwCR1UXKLJLfPFimuas2Ct2enVPXugXRTlPRgZcZBX+lCqYs
- SOGvmunyHdCTgnysUhdYYx/AwCbZx6lQNRjj9H0CDM9O/S4ZZXkWiQQuV9VmNzX2Qsmz
- ePNmpNSWvKGex3so3S3O3J9vD/ylSDQvLge8dBW9sHegwfgmBgdlwSMuaggl1ovpctyx
- HPv43jM34EdzApiJO3T5v48eibA/zCn089bQuvu5/qryOwkScB4BkbTDK6uxnafJxIr7
- bLIurhS4Vz41a7w3dQ2Po+fI8sGBkIgvXDxZzIJJIkDVuvgV0OIZj8wmQLNiP2W4RIoH
- KY0w==
+ id 1hr8aY-0005e9-2U
+ for linux-nvme@lists.infradead.org; Fri, 26 Jul 2019 22:21:23 +0000
+Received: by mail-pg1-f195.google.com with SMTP id i18so25390528pgl.11
+ for <linux-nvme@lists.infradead.org>; Fri, 26 Jul 2019 15:21:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=J/Z4p59UpJ2kdNYIeNHf5l0EBK+uKJZt8bYxkA5sARU=;
- b=VI/ruWqr28tS13fKA9uDKIZX1jcllr7Wdg1HL8MA7bqfwIWFqA+DGaFXOtmKDz6wRh
- PkzF8lNaNzkupzbRl35nouklEagc5uct/gZcWUYUvpT32SrpVMAhyK+SYO/cAjPeJsIh
- NZ4gZgauiyoUZBwSIAW/fEWwpXZTsJS047QnFAuqnwjeQXngQEHwmmyPg8f88LgFIV4y
- IyIxolGZhB8dcJPzuS6raU6A64IS9+cvhrJyR0I1cx4UlxwlTbe0CGkKRzT06efO2zer
- ElGD0FnRhB8zCZsPHR1aFjq7dZctykyj3F9eoK9eTS9RlGul9IioEjpkomJxwicamG0o
- 74YQ==
-X-Gm-Message-State: APjAAAW1agJyO1x1ORG+pXu00FTBw9nBc7ExNWARtTRzTkGwhGB7zFIo
- kLdPCLllubPiqpo5ixKLIsw=
-X-Google-Smtp-Source: APXvYqzzlfaypWyuEKHD9AWsKaclzZaGzNVmmxaTTV7VSUiTmXi/w9MxvxlnY5L6Kllq9LoUzNCnvg==
-X-Received: by 2002:adf:ec0f:: with SMTP id x15mr7002435wrn.165.1564176133158; 
- Fri, 26 Jul 2019 14:22:13 -0700 (PDT)
-Received: from [192.168.1.19] (bgv114.neoplus.adsl.tpnet.pl. [83.28.85.114])
- by smtp.gmail.com with ESMTPSA id g12sm76797569wrv.9.2019.07.26.14.22.11
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=tX/zH/PNuI497S7quCepGSwc6KOajrviepHED1Ldz1U=;
+ b=nKiHfRinOa+04pWY/Hky4NSeDNnU7VTbJaLaO/0miucsdHx4zfXa0sAdI0feAHgwvi
+ Jd6aqkJDOPhw1DodF97DO/RzIKbo6HIyDoI2JeDlkwbGsdkv/R74hm3x/NpK6IZMBW8R
+ mhdgPLTzk1jHTKyLLju0wmbs6oQaYr8UG2BzagwhLBiugKW0d7hXJd4GxECOHj/gtfcv
+ cRyptSQEqyjK2dAr/IXyMST0Emz0oZV+HXuiZbLW9M6zxB5Q1MpRMPFFWXQkiFCDebzy
+ n8CfVTL8MC7FfUfb5tUVQRTcy4154O8iZw3Ix3M1ZqatBuHAOBYm6XRpvm2BRkRNKApx
+ wjlg==
+X-Gm-Message-State: APjAAAWODtTgLuU2NAzlG96C8Z9uy6qd6hBZgJxLo7mTKTWowBBvqCmO
+ 4l5t1ibv1NAAyatpPQEqOGc=
+X-Google-Smtp-Source: APXvYqxRjRSPO/J+H5WK/f/tD4obqHr9uk/zzNMYETV1oB/hr82CB+shC60k4aOdcZjrzFAIe9rhfA==
+X-Received: by 2002:a17:90a:f498:: with SMTP id
+ bx24mr101682492pjb.91.1564179679768; 
+ Fri, 26 Jul 2019 15:21:19 -0700 (PDT)
+Received: from ?IPv6:2601:647:4800:973f:3044:7ea3:7e19:4d2c?
+ ([2601:647:4800:973f:3044:7ea3:7e19:4d2c])
+ by smtp.gmail.com with ESMTPSA id k25sm43828641pgt.53.2019.07.26.15.21.17
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 26 Jul 2019 14:22:12 -0700 (PDT)
-Subject: Re: [PATCH v2 1/3] block: introduce LED block device activity trigger
-To: Akinobu Mita <akinobu.mita@gmail.com>, linux-block@vger.kernel.org,
- linux-leds@vger.kernel.org, linux-nvme@lists.infradead.org,
- linux-scsi@vger.kernel.org
-References: <1563807552-23498-1-git-send-email-akinobu.mita@gmail.com>
- <1563807552-23498-2-git-send-email-akinobu.mita@gmail.com>
-From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jacek.anaszewski@gmail.com; prefer-encrypt=mutual; keydata=
- mQINBFWjfaEBEADd66EQbd6yd8YjG0kbEDT2QIkx8C7BqMXR8AdmA1OMApbfSvEZFT1D/ECR
- eWFBS8XtApKQx1xAs1j5z70k3zebk2eeNs5ahxi6vM4Qh89vBM46biSKeeX5fLcv7asmGb/a
- FnHPAfQaKFyG/Bj9V+//ef67hpjJWR3s74C6LZCFLcbZM0z/wTH+baA5Jwcnqr4h/ygosvhP
- X3gkRzJLSFYekmEv+WHieeKXLrJdsUPUvPJTZtvi3ELUxHNOZwX2oRJStWpmL2QGMwPokRNQ
- 29GvnueQdQrIl2ylhul6TSrClMrKZqOajDFng7TLgvNfyVZE8WQwmrkTrdzBLfu3kScjE14Q
- Volq8OtQpTsw5570D4plVKh2ahlhrwXdneSot0STk9Dh1grEB/Jfw8dknvqkdjALUrrM45eF
- FM4FSMxIlNV8WxueHDss9vXRbCUxzGw37Ck9JWYo0EpcpcvwPf33yntYCbnt+RQRjv7vy3w5
- osVwRR4hpbL/fWt1AnZ+RvbP4kYSptOCPQ+Pp1tCw16BOaPjtlqSTcrlD2fo2IbaB5D21SUa
- IsdZ/XkD+V2S9jCrN1yyK2iKgxtDoUkWiqlfRgH2Ep1tZtb4NLF/S0oCr7rNLO7WbqLZQh1q
- ShfZR16h7YW//1/NFwnyCVaG1CP/L/io719dPWgEd/sVSKT2TwARAQABtC1KYWNlayBBbmFz
- emV3c2tpIDxqYWNlay5hbmFzemV3c2tpQGdtYWlsLmNvbT6JAlgEEwEIAEICGwMHCwkIBwMC
- AQYVCAIJCgsDFgIBAh4BAheABQkJZgNMFiEEvx38ClaPBfeVdXCQvWpQHLeLfCYFAl05/9sC
- GQEACgkQvWpQHLeLfCarMQ/9FN/WqJdN2tf6xkP0RFyS4ft0sT04zkOCFfOMxs8mZ+KZoMU+
- X3a+fEppDL7xgRFpHyGaEel7lSi1eqtzsqZ5JiHbDS1Ht1G8TtATb8q8id68qeSeW2mfzaLQ
- 98NPELGfUXFoUqUQkG5z2p92UrGF4Muj1vOIW93pwvE4uDpNsl+jriwHomLtjIUoZtIRjGfZ
- RCyUQI0vi5LYzXCebuzAjGD7Jh2YAp7fDGrv3qTq8sX+DUJ4H/+I8PiL+jXKkEeppqIhlBJJ
- l4WcgggMu3c2uljYDuqRYghte33BXyCPAocfO2/sN+yJRUTVuRFlOxUk4srz/W8SQDwOAwtK
- V7TzdyF1/jOGBxWwS13EjMb4u3XwPMzcPlEQNdIqz76NFmJ99xYEvgkAmFmRioxuBTRv8Fs1
- c1jQ00WWJ5vezqY6lccdDroPalXWeFzfPjIhKbV3LAYTlqv0It75GW9+0TBhPqdTM15DrCVX
- B7Ues7UnD5FBtWwewTnwr+cu8te449VDMzN2I+a9YKJ1s6uZmzh5HnuKn6tAfGyQh8MujSOM
- lZrNHrRsIsLXOjeGVa84Qk/watEcOoyQ7d+YaVosU0OCZl0GldvbGp1z2u8cd2N/HJ7dAgFh
- Q7dtGXmdXpt2WKQvTvQXhIrCWVQErNYbDZDD2V0TZtlPBaZP4fkUDkvH+Sy5Ag0EVaN9oQEQ
- AMPNymBNoCWc13U6qOztXrIKBVsLGZXq/yOaR2n7gFbFACD0TU7XuH2UcnwvNR+uQFwSrRqa
- EczX2V6iIy2CITXKg5Yvg12yn09gTmafuoIyKoU16XvC3aZQQ2Bn3LO2sRP0j/NuMD9GlO37
- pHCVRpI2DPxFE39TMm1PLbHnDG8+lZql+dpNwWw8dDaRgyXx2Le542CcTBT52VCeeWDtqd2M
- wOr4LioYlfGfAqmwcwucBdTEBUxklQaOR3VbJQx6ntI2oDOBlNGvjnVDzZe+iREd5l40l+Oj
- TaiWvBGXkv6OI+wx5TFPp+BM6ATU+6UzFRTUWbj+LqVA/JMqYHQp04Y4H5GtjbHCa8abRvBw
- IKEvpwTyWZlfXPtp8gRlNmxYn6gQlTyEZAWodXwE7CE+KxNnq7bPHeLvrSn8bLNK682PoTGr
- 0Y00bguYLfyvEwuDYek1/h9YSXtHaCR3CEj4LU1B561G1j7FVaeYbX9bKBAoy/GxAW8J5O1n
- mmw7FnkSHuwO/QDe0COoO0QZ620Cf9IBWYHW4m2M2yh5981lUaiMcNM2kPgsJFYloFo2XGn6
- lWU9BrWjEoNDhHZtF+yaPEuwjZo6x/3E2Tu3E5Jj0VpVcE9U1Zq/fquDY79l2RJn5ENogOs5
- +Pi0GjVpEYQVWfm0PTCxNPOzOzGR4QB3BNFvABEBAAGJAiUEGAEIAA8FAlWjfaECGwwFCQlm
- AYAACgkQvWpQHLeLfCZqGxAAlWBWVvjU6xj70GwengiqYZwmW1i8gfS4TNibQT/KRq0zkBnE
- wgKwXRbVoW38pYVuGa5x/JDQMJDrLAJ0wrCOS3XxbSHCWOl/k2ZD9OaxUeXq6N+OmGTzfrYv
- PUvWS1Hy04q9AD1dIaMNruZQmvnRfkOk2UDncDIg0166/NTHiYI09H5mpWGpHn/2aT6dmpVw
- uoM9/rHlF5s5qAAo95tZ0QW2BtIceG9/rbYlL57waSMPF49awvwLQX5RhWoF8mPS5LsBrXXK
- hmizIsn40tLbi2RtWjzDWgZYitqmmqijeCnDvISN4qJ/nCLO4DjiSGs59w5HR+l0nwePDhOC
- A4RYZqS1e2Clx1VSkDXFpL3egabcIsqK7CZ6a21r8lXVpo4RnMlQsmXZTnRx4SajFvX7PrRg
- /02C811fLfh2r5O5if8sKQ6BKKlHpuuioqfj/w9z3B0aQ71e4n1zNJBO1kcdznikPLAbr7jG
- gkBUXT1yJiwpTfRQr5y2Uo12IJsKxohnNFVYtK8X/R6S0deKPjrZWvAkllgIPcHjMi2Va8yw
- KTj/JgcpUO5KN906Pf7ywZISe7Kbcc/qnE0YjPPSqFOvoeZvHe6EZCMW9+xZsaipvlqpByQV
- UHnVg09K9YFvjUBsBPdC8ef6YwgfR9o6AnPmxl0oMUIXkCCC5c99fzJY/k+JAq0EGAEIACAW
- IQS/HfwKVo8F95V1cJC9alAct4t8JgUCWwqKhgIbAgCBCRC9alAct4t8JnYgBBkWCAAdFiEE
- FMMcSshOZf56bfAEYhBsURv0pdsFAlsKioYACgkQYhBsURv0pdvELgD/U+y3/hsz0bIjMQJY
- 0LLxM/rFY9Vz1L43+lQHXjL3MPsA/1lNm5sailsY7aFBVJxAzTa8ZAGWBdVaGo6KCvimDB8G
- 7joP/jx+oGOmdRogs7mG//H+w9DTnBfPpnfkeiiokGYo/+huWO5V0Ac9tTqZeFc//t/YuYJn
- wWvS0Rx+KL0fT3eh9BQo47uF4yDiZIiWLNh4Agpup1MUSVsz4MjD0lW6ghtnLcGlIgoVHW0v
- tPW1m9jATYyJSOG/MC1iDrcYcp9uVYn5tKfkEeQNspuG6iSfS0q3tajPKnT1nJxMTxVOD2RW
- EIGfaV9Scrou92VD/eC+/8INRsiWS93j3hOKIAV5XRNINFqtzkagPYAP8r6wksjSjh01fSTB
- p5zxjfsIwWDDzDrqgzwv83CvrLXRV3OlG1DNUDYA52qJr47paH5QMWmHW5TNuoBX8qb6RW/H
- M3DzPgT+l+r1pPjMPfvL1t7civZUoPuNzoyFpQRj6TvWi2bGGMQKryeYksXG2zi2+avMFnLe
- lOxGdUZ7jn1SJ6Abba5WL3VrXCP+TUE6bZLgfw8kYa8QSXP3ysyeMI0topHFntBZ8a0KXBNs
- qqFCBWmTHXfwsfW0VgBmRtPO7eXVBybjJ1VXKR2RZxwSq/GoNXh/yrRXQxbcpZ+QP3/Tttsb
- FdKciZ4u3ts+5UwYra0BRuvb51RiZR2wRNnUeBnXWagJVTlG7RHBO/2jJOE6wrcdCMjs0Iiw
- PNWmiVoZA930TvHA5UeGENxdGqo2MvMdRJ54YaIR
-Message-ID: <44a6093f-7df7-9442-c33b-5827eb5f187b@gmail.com>
-Date: Fri, 26 Jul 2019 23:22:10 +0200
+ Fri, 26 Jul 2019 15:21:18 -0700 (PDT)
+Subject: Re: [PATCH v6 00/16] nvmet: add target passthru commands support
+To: Logan Gunthorpe <logang@deltatee.com>, Hannes Reinecke <hare@suse.de>,
+ linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
+ linux-block@vger.kernel.org, linux-fsdevel@vger.kernel.org
+References: <20190725172335.6825-1-logang@deltatee.com>
+ <1f202de3-1122-f4a3-debd-0d169f545047@suse.de>
+ <8fd8813f-f8e1-2139-13bf-b0635a03bc30@deltatee.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <175fa142-4815-ee48-82a4-18eb411db1ae@grimberg.me>
+Date: Fri, 26 Jul 2019 15:21:14 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <1563807552-23498-2-git-send-email-akinobu.mita@gmail.com>
+In-Reply-To: <8fd8813f-f8e1-2139-13bf-b0635a03bc30@deltatee.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190726_142218_231406_CD280AFE 
-X-CRM114-Status: GOOD (  14.89  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190726_152122_115120_5A716B8F 
+X-CRM114-Status: GOOD (  22.87  )
+X-Spam-Score: 0.3 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ no trust [209.85.215.195 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (jacek.anaszewski[at]gmail.com)
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ provider (sagigrim[at]gmail.com)
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -161,61 +92,84 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>, Dan Murphy <dmurphy@ti.com>,
- Pavel Machek <pavel@ucw.cz>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
+ Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>,
+ Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi Akinobu,
 
-Thank you for the v2. I've checked and it works as expected.
+>> How do you handle subsystem naming?
+>> If you enable the 'passthru' device, the (nvmet) subsystem (and its
+>> name) is already created. Yet the passthru device will have its own
+>> internal subsystem naming, so if you're not extra careful you'll end up
+>> with a nvmet subsystem which doesn't have any relationship with the
+>> passthru subsystem, making addressing etc ... tricky.
+>> Any thoughts about that?
+> 
+> Well I can't say I have a great understanding of how multipath works, but...
 
-One thing is missing though - ABI documentation.
+Why is this related to multipath?
 
-Please add Documentation/ABI/testing/sysfs-class-led-trigger-blk
-and document read, write and discard files.
+> I don't think it necessarily makes sense for the target subsynqn and the
+> target's device nqn to be the same. It would be weird for a user to want
+> to use the same device and a passed through device (through a loop) as
+> part of the same subsystem. That being said, it's possible for the user
+> to use the subsysnqn from the passed through device for the name of the
+> subsys of the target. I tried this and it works except for the fact that
+> the device I'm passing through doesn't set id->cmic.
 
-Best regards,
-Jacek Anaszewski
+I don't see why should the subsystem nqn should be the same name. Its
+just like any other nvmet subsystem, just happens to have a nvme
+controller in the backend (which it knows about). No reason to have
+the same name IMO.
 
-On 7/22/19 4:59 PM, Akinobu Mita wrote:
-> This allows LEDs to be controlled by block device activity.
+>> Similarly: how do you propose to handle multipath devices?
+>> Any NVMe with several paths will be enabling NVMe multipathing
+>> automatically, presenting you with a single multipathed namespace.
+>> How will these devices be treated?
 > 
-> We already have ledtrig-disk (LED disk activity trigger), but the lower
-> level disk drivers need to utilize ledtrig_disk_activity() to make the
-> LED blink.
+> Well passthru works on the controller level not on the namespace level.
+> So it can't make use of the multipath handling on the target system.
+
+Why? if nvmet is capable, why shouldn't we support it?
+
+> The one case that I think makes sense to me, but I don't know how if we
+> can handle, is if the user had a couple multipath enabled controllers
+> with the same subsynqn
+
+That is usually the case, there is no multipathing defined across NVM
+subsystems (at least for now).
+
+> and wanted to passthru all of them to another
+> system and use multipath on the host with both controllers. This would
+> require having multiple target subsystems with the same name which I
+> don't think will work too well.
+
+Don't understand why this is the case?
+
+AFAICT, all nvmet needs to do is:
+1. override cimc
+2. allow allocating multiple controllers to the pt ctrl as long as the
+hostnqn match.
+3. answer all the ana stuff.
+
+What else is missing?
+
+>> Will the multipathed namespace be used for passthru?
 > 
-> The LED block device trigger doesn't require the lower level drivers to
-> have any instrumentation. The activity is collected by polling the disk
-> stats.
+> Nope.
 > 
-> Example:
-> 
-> echo block-nvme0n1 > /sys/class/leds/diy/trigger
-> 
-> Cc: Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>
-> Cc: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-> Cc: Pavel Machek <pavel@ucw.cz>
-> Cc: Dan Murphy <dmurphy@ti.com>
-> Cc: Jens Axboe <axboe@kernel.dk>
-> Cc: "James E.J. Bottomley" <jejb@linux.ibm.com>
-> Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
-> Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
-> ---
->  block/genhd.c                      |   2 +
->  drivers/leds/trigger/Kconfig       |   7 ++
->  drivers/leds/trigger/Makefile      |   1 +
->  drivers/leds/trigger/ledtrig-blk.c | 225 +++++++++++++++++++++++++++++++++++++
->  include/linux/genhd.h              |   3 +
->  include/linux/leds.h               |  27 +++++
->  6 files changed, 265 insertions(+)
->  create mode 100644 drivers/leds/trigger/ledtrig-blk.c
-[...]
+> Honestly, I think the answer is if someone wants to use multipathed
+> controllers they should use regular NVMe-of as it doesn't really mesh
+> well with the passthru approach.
+
+Maybe I'm missing something, but they should be orthogonal.. I know that
+its sort of not real passthru, but we are exposing an nvme device across
+a fabric, I think its reasonable to have some adjustments on top.
 
 _______________________________________________
 Linux-nvme mailing list
