@@ -2,53 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF2507B458
-	for <lists+linux-nvme@lfdr.de>; Tue, 30 Jul 2019 22:29:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 87E997B48C
+	for <lists+linux-nvme@lfdr.de>; Tue, 30 Jul 2019 22:51:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AHhIR5BuluDb4guEYR5XxKfr3ukvn2GJmrz7nzYd26I=; b=imZvpH4Wre7JsS
-	e6HfwEIHMavwCUKPSDZcDvLOLXcZTwLd+vadImFKiGbe/+1jpbk1umP14t5nms9f6d5NWc0nMrize
-	CLtahgKXVqWhgFD33drAUniXOoGCPc0Y8zhQs03Vy0WEL31dCUwiA1ht7zvr/prbMANdbFHpZJJd2
-	8bCGvJ1K0KG8MZ1qUIaONuFRDbA2D1QQraTNI1sgmhGzxXvQM5wigLPspiUUkwxRZGBdbAyPMPNLP
-	0mQakgKUMHB8lIzfw8sFvMduuIScOz5w/1R1+oTXSGE4IWXL3zrZQNh0bubfo0gBB6AaIS6nLsDz6
-	6lFEJ8rzfTFbFMcGDyFw==;
+	List-Owner; bh=Rk1MMV6X6rTlpiy7hMwFLccTxo2HjEg311ra+ml6Sdg=; b=UuT2i1YYimBWi9
+	3fBC0CXBpBFo3ZvEg+aOY5UKn8XY5lnk0gBUbvZ4Xv49EF92q/CxVywliZ19ReHN9AB8I2LHlrBxx
+	kPoNY9yBRHRu0I4QQuoOIBRRGIe+UiwFZqN+0hIyCRLZmJoIpqRdrKePYRrix+f72IPUpxe5938hz
+	MkU3smeyKa6SjjOAoE6MlZxXh/kKf9DrExUs7+oWjmEd2BHueKuM3Xj2GUABP291UEwP1eGAujBAl
+	X9nGnCqW5+dV852fhpfTi4ZB0u16DhiyrmTVzj4lDL9U7zRMgKWtOYnRV6/hdpoiTNXbVR97iSdLm
+	GkfVwiZvYhOdJgxDhjhg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsYkC-0007zZ-9Z; Tue, 30 Jul 2019 20:29:12 +0000
-Received: from gate.crashing.org ([63.228.1.57])
+	id 1hsZ5b-0007vx-9P; Tue, 30 Jul 2019 20:51:19 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsYk7-0007zE-36
- for linux-nvme@lists.infradead.org; Tue, 30 Jul 2019 20:29:08 +0000
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by gate.crashing.org (8.14.1/8.14.1) with ESMTP id x6UKSwii027076;
- Tue, 30 Jul 2019 15:28:58 -0500
-Message-ID: <2030a028664a9af9e96fffca3ab352faf1f739e5.camel@kernel.crashing.org>
-Subject: Re: [PATCH v3] nvme-pci: Support shared tags across queues for
- Apple 2018 controllers
-From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-To: Keith Busch <kbusch@kernel.org>
-Date: Tue, 30 Jul 2019 13:28:57 -0700
-In-Reply-To: <20190730153044.GA13948@localhost.localdomain>
-References: <b1f9bdf0294b8d87d292de3c7462c8e99551b02d.camel@kernel.crashing.org>
- <20190730153044.GA13948@localhost.localdomain>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
-Mime-Version: 1.0
+ id 1hsZ5V-0007vf-SZ
+ for linux-nvme@lists.infradead.org; Tue, 30 Jul 2019 20:51:15 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Jul 2019 13:51:13 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,327,1559545200"; d="scan'208";a="183368958"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga002.jf.intel.com with ESMTP; 30 Jul 2019 13:51:12 -0700
+Date: Tue, 30 Jul 2019 14:48:29 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Charles.Hyde@dellteam.com
+Subject: Re: [PATCH] drivers/nvme: save/restore HMB on suspend/resume
+Message-ID: <20190730204829.GI13948@localhost.localdomain>
+References: <362aad7f1cf547c2a73e1c4f564984db@AUSX13MPS303.AMER.DELL.COM>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <362aad7f1cf547c2a73e1c4f564984db@AUSX13MPS303.AMER.DELL.COM>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190730_132907_282603_B6C6EE70 
-X-CRM114-Status: GOOD (  15.17  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190730_135113_932138_30ABB9B4 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [63.228.1.57 listed in list.dnswl.org]
- 0.0 T_SPF_PERMERROR        SPF: test of record failed (permerror)
- 0.0 T_SPF_HELO_PERMERROR   SPF: test of HELO record failed (permerror)
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [192.55.52.120 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,60 +67,25 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, linux-kernel@vger.kernel.org,
- Paul Pawlowski <paul@mrarm.io>, Jens Axboe <axboe@fb.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, linux-nvme@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>
+Cc: axboe@fb.com, Mario.Limonciello@dell.com, hch@lst.de,
+ linux-nvme@lists.infradead.org, sagi@grimberg.me
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, 2019-07-30 at 09:30 -0600, Keith Busch wrote:
-> On Fri, Jul 19, 2019 at 03:31:02PM +1000, Benjamin Herrenschmidt wrote:
-> > From 8dcba2ef5b1466b023b88b4eca463b30de78d9eb Mon Sep 17 00:00:00 2001
-> > From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-> > Date: Fri, 19 Jul 2019 15:03:06 +1000
-> > Subject: 
-> > 
-> > Another issue with the Apple T2 based 2018 controllers seem to be
-> > that they blow up (and shut the machine down) if there's a tag
-> > collision between the IO queue and the Admin queue.
-> > 
-> > My suspicion is that they use our tags for their internal tracking
-> > and don't mix them with the queue id. They also seem to not like
-> > when tags go beyond the IO queue depth, ie 128 tags.
-> > 
-> > This adds a quirk that marks tags 0..31 of the IO queue reserved
-> > 
-> > Signed-off-by: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-> > ---
-> 
-> One problem is that we've an nvme parameter, io_queue_depth, that a user
-> could set to something less than 32, and then you won't be able to do
-> any IO. I'd recommend enforce the admin queue to QD1 for this device so
-> that you have more potential IO tags.
+On Tue, Jul 30, 2019 at 08:09:15PM +0000, Charles.Hyde@dellteam.com wrote:
+> LiteOn CL1 devices allocate host memory buffer at initialization.
+> This patch saves and restores the host memory buffer allocation
+> for any NVMe device which has HMB.  Devices which have on-board
+> memory buffers are not impacted.  This patch has been tested locally
+> with the following devices: LiteOn CL1 and CA3, Hynix BC511 and
+> PC601, WDC SN520 and SN720.  This patch has also been tested by
+> our partners at Wistron and Compal.
 
-So I had a look and it's not that trivial. I would have to change
-a few things that use constants for the admin queue depth, such as
-the AEN tag etc...
-
-For such a special case, I am tempted instead to do the much simpler:
-
-	if (dev->ctrl.quirks & NVME_QUIRK_SHARED_TAGS) {
-		if (dev->q_depth < (NVME_AQ_DEPTH + 2))
-			dev->q_depth = NVME_AQ_DEPTH + 2;
-	}
-
-In nvme_pci_enable() next to the existing q_depth hackery for other
-controllers.
-
-Thoughts ?
-
-Cheers,
-Ben.
-
-
+Please explain why you're doing this rather than what you're doing. We
+previously concluded that NVMe power states have no spec defined impact
+on HMB, so changing driver behavior requires justification.
 
 _______________________________________________
 Linux-nvme mailing list
