@@ -2,60 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A85B7AB48
-	for <lists+linux-nvme@lfdr.de>; Tue, 30 Jul 2019 16:44:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 090347AC76
+	for <lists+linux-nvme@lfdr.de>; Tue, 30 Jul 2019 17:33:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6sf4ImKRWy4HgwEVN6x7qAv3T+0N6zMRI5HxQug+ZgI=; b=YSpk538NF2mq4i
-	x/JH6Rnh/Dr2cm5ICtCGzBuOyUyroR3I5JfCjnuBf8O8XBOG6QwHqMAt/BsThWbr+lkXsDqcsBrZH
-	tErqOHgv5Fo28BJBL2031cQtiL5Kk42E0XxUe8O0yr8QH2i/+uyMLAmdVT8WYTbli+kaZMMwWsIr2
-	9zmWOe3KZJzv+nJUF6McgH7bF5idu8o3IeBQyyeeDjUdj1P/2efieeZCaqQuFGX7cMVs8DdxIlC4s
-	kPYPPoOohZ60OFfBOGrXmwhb+f/wGx6huL2pHV+0AQukDtMt6Uvyb0iIz7UTRGryNZvT97VQvFtxv
-	yMSQndlBAb40ENr6SfAg==;
+	List-Owner; bh=EhbCnxEWkGgU1wRZZfLGPGcVt914j67DeQs+G5OjyyA=; b=UROkZXrEltfD/0
+	59SH5Ycmhl1zUsiv3UlkLd2fjOBLkRFDBhG23h7Y5aBF0FyPHlyEDbFFeq4dWfW1nWwEiklTViMMz
+	d2enurKXjIjfiWQIgG8Dz3vnWo6QV2LZ9syCxzncrIbELK5/P0k48169oPeM1aXjoGaj6h0oXIAUc
+	qQZThDW6zoGkxdTpBsDNjS9n7Pbj1kJ9cS2t+QxZ24qBL6lCynTF3UlKrpRGNFxXc35TAi9Ab1Z0h
+	fHP3MZKc5gXQnM8td3Wp4ODjORZkmu18L15HcLsc76hWdu/J59GUu2FbeSPTfVdgg7EpdtY8DpxS1
+	dfeCNYDsj4ej6LH9Y7EQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsTMi-0002xZ-1S; Tue, 30 Jul 2019 14:44:36 +0000
-Received: from mga06.intel.com ([134.134.136.31])
+	id 1hsU8A-0003rs-Hr; Tue, 30 Jul 2019 15:33:38 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsTMT-0002wi-GU
- for linux-nvme@lists.infradead.org; Tue, 30 Jul 2019 14:44:22 +0000
-X-Amp-Result: UNSCANNABLE
+ id 1hsU81-0003rE-I3
+ for linux-nvme@lists.infradead.org; Tue, 30 Jul 2019 15:33:30 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 Jul 2019 07:44:18 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Jul 2019 08:33:28 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,327,1559545200"; d="scan'208";a="195815593"
+X-IronPort-AV: E=Sophos;i="5.64,327,1559545200"; d="scan'208";a="255640802"
 Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by fmsmga004.fm.intel.com with ESMTP; 30 Jul 2019 07:44:18 -0700
-Date: Tue, 30 Jul 2019 08:41:35 -0600
+ by orsmga001.jf.intel.com with ESMTP; 30 Jul 2019 08:33:27 -0700
+Date: Tue, 30 Jul 2019 09:30:44 -0600
 From: Keith Busch <kbusch@kernel.org>
-To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
- suspend" has problems
-Message-ID: <20190730144134.GA12844@localhost.localdomain>
-References: <2332799.izEFUvJP67@kreacher>
- <4323ed84dd07474eab65699b4d007aaf@AUSX13MPC105.AMER.DELL.COM>
- <CAJZ5v0iDQ4=kTUgW94tKGt7oJzA_3uVU_M6HAMbNCRXwp_do8A@mail.gmail.com>
- <47415939.KV5G6iaeJG@kreacher>
+To: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+Subject: Re: [PATCH v3] nvme-pci: Support shared tags across queues for Apple
+ 2018 controllers
+Message-ID: <20190730153044.GA13948@localhost.localdomain>
+References: <b1f9bdf0294b8d87d292de3c7462c8e99551b02d.camel@kernel.crashing.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <47415939.KV5G6iaeJG@kreacher>
+In-Reply-To: <b1f9bdf0294b8d87d292de3c7462c8e99551b02d.camel@kernel.crashing.org>
 User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190730_074421_594814_69680367 
-X-CRM114-Status: GOOD (  21.52  )
+X-CRM114-CacheID: sfid-20190730_083329_652276_3FBA9C8D 
+X-CRM114-Status: GOOD (  23.71  )
 X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [134.134.136.31 listed in list.dnswl.org]
+ medium trust [192.55.52.120 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -69,75 +67,108 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Mario Limonciello <Mario.Limonciello@dell.com>,
- Linux PM <linux-pm@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>, "Busch,
- Keith" <keith.busch@intel.com>, Kai-Heng Feng <kai.heng.feng@canonical.com>,
- Rajat Jain <rajatja@google.com>, Christoph Hellwig <hch@lst.de>
+Cc: Damien Le Moal <Damien.LeMoal@wdc.com>, linux-kernel@vger.kernel.org,
+ Paul Pawlowski <paul@mrarm.io>, Jens Axboe <axboe@fb.com>,
+ Minwoo Im <minwoo.im.dev@gmail.com>, linux-nvme@lists.infradead.org,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Jul 30, 2019 at 03:45:31AM -0700, Rafael J. Wysocki wrote:
-> So I can reproduce this problem with plain 5.3-rc1 and the patch below fixes it.
+On Fri, Jul 19, 2019 at 03:31:02PM +1000, Benjamin Herrenschmidt wrote:
+> From 8dcba2ef5b1466b023b88b4eca463b30de78d9eb Mon Sep 17 00:00:00 2001
+> From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+> Date: Fri, 19 Jul 2019 15:03:06 +1000
+> Subject: 
 > 
-> Also Mario reports that the same patch needs to be applied for his 9380 to reach
-> SLP_S0 after some additional changes under testing/review now, so here it goes.
+> Another issue with the Apple T2 based 2018 controllers seem to be
+> that they blow up (and shut the machine down) if there's a tag
+> collision between the IO queue and the Admin queue.
 > 
-> [The changes mentioned above are in the pm-s2idle-testing branch in the
->  linux-pm.git tree at kernel.org.]
+> My suspicion is that they use our tags for their internal tracking
+> and don't mix them with the queue id. They also seem to not like
+> when tags go beyond the IO queue depth, ie 128 tags.
 > 
+> This adds a quirk that marks tags 0..31 of the IO queue reserved
+> 
+> Signed-off-by: Benjamin Herrenschmidt <benh@kernel.crashing.org>
 > ---
-> From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> Subject: [PATCH] nvme-pci: Do not prevent PCI bus-level PM from being used
-> 
-> One of the modifications made by commit d916b1be94b6 ("nvme-pci: use
-> host managed power state for suspend") was adding a pci_save_state()
-> call to nvme_suspend() in order to prevent the PCI bus-level PM from
-> being applied to the suspended NVMe devices, but that causes the NVMe
-> drive (PC401 NVMe SK hynix 256GB) in my Dell XPS13 9380 to prevent
-> the SoC from reaching package idle states deeper than PC3, which is
-> way insufficient for system suspend.
-> 
-> Fix this issue by removing the pci_save_state() call in question.
 
-I'm okay with the patch if we can get confirmation this doesn't break
-any previously tested devices. I recall we add the pci_save_state() in
-the first place specifically to prevent PCI D3 since that was reported
-to break some devices' low power settings. Kai-Heng or Mario, any input
-here?
-
+One problem is that we've an nvme parameter, io_queue_depth, that a user
+could set to something less than 32, and then you won't be able to do
+any IO. I'd recommend enforce the admin queue to QD1 for this device so
+that you have more potential IO tags.
 
  
-> Fixes: d916b1be94b6 ("nvme-pci: use host managed power state for suspend")
-> Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> ---
->  drivers/nvme/host/pci.c |    8 +-------
->  1 file changed, 1 insertion(+), 7 deletions(-)
+> Thanks Damien, reserved tags work and make this a lot simpler !
 > 
-> Index: linux-pm/drivers/nvme/host/pci.c
-> ===================================================================
-> --- linux-pm.orig/drivers/nvme/host/pci.c
-> +++ linux-pm/drivers/nvme/host/pci.c
-> @@ -2897,14 +2897,8 @@ static int nvme_suspend(struct device *d
->  		nvme_dev_disable(ndev, true);
->  		ctrl->npss = 0;
->  		ret = 0;
-> -		goto unfreeze;
->  	}
-> -	/*
-> -	 * A saved state prevents pci pm from generically controlling the
-> -	 * device's power. If we're using protocol specific settings, we don't
-> -	 * want pci interfering.
-> -	 */
-> -	pci_save_state(pdev);
+>  drivers/nvme/host/nvme.h |  5 +++++
+>  drivers/nvme/host/pci.c  | 19 ++++++++++++++++++-
+>  2 files changed, 23 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+> index ced0e0a7e039..8732da6df555 100644
+> --- a/drivers/nvme/host/nvme.h
+> +++ b/drivers/nvme/host/nvme.h
+> @@ -102,6 +102,11 @@ enum nvme_quirks {
+>  	 * Use non-standard 128 bytes SQEs.
+>  	 */
+>  	NVME_QUIRK_128_BYTES_SQES		= (1 << 11),
 > +
->  unfreeze:
->  	nvme_unfreeze(ctrl);
->  	return ret;
+> +	/*
+> +	 * Prevent tag overlap between queues
+> +	 */
+> +	NVME_QUIRK_SHARED_TAGS                  = (1 << 12),
+>  };
+>  
+>  /*
+> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+> index 7088971d4c42..fc74395a028b 100644
+> --- a/drivers/nvme/host/pci.c
+> +++ b/drivers/nvme/host/pci.c
+> @@ -2106,6 +2106,14 @@ static int nvme_setup_io_queues(struct nvme_dev *dev)
+>  	unsigned long size;
+>  
+>  	nr_io_queues = max_io_queues();
+> +
+> +	/*
+> +	 * If tags are shared with admin queue (Apple bug), then
+> +	 * make sure we only use one IO queue.
+> +	 */
+> +	if (dev->ctrl.quirks & NVME_QUIRK_SHARED_TAGS)
+> +		nr_io_queues = 1;
+> +
+>  	result = nvme_set_queue_count(&dev->ctrl, &nr_io_queues);
+>  	if (result < 0)
+>  		return result;
+> @@ -2278,6 +2286,14 @@ static int nvme_dev_add(struct nvme_dev *dev)
+>  		dev->tagset.flags = BLK_MQ_F_SHOULD_MERGE;
+>  		dev->tagset.driver_data = dev;
+>  
+> +		/*
+> +		 * Some Apple controllers requires tags to be unique
+> +		 * across admin and IO queue, so reserve the first 32
+> +		 * tags of the IO queue.
+> +		 */
+> +		if (dev->ctrl.quirks & NVME_QUIRK_SHARED_TAGS)
+> +			dev->tagset.reserved_tags = NVME_AQ_DEPTH;
+> +
+>  		ret = blk_mq_alloc_tag_set(&dev->tagset);
+>  		if (ret) {
+>  			dev_warn(dev->ctrl.device,
+> @@ -3057,7 +3073,8 @@ static const struct pci_device_id nvme_id_table[] = {
+>  	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2003) },
+>  	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2005),
+>  		.driver_data = NVME_QUIRK_SINGLE_VECTOR |
+> -				NVME_QUIRK_128_BYTES_SQES },
+> +				NVME_QUIRK_128_BYTES_SQES |
+> +				NVME_QUIRK_SHARED_TAGS },
+>  	{ 0, }
+>  };
+>  MODULE_DEVICE_TABLE(pci, nvme_id_table);
+> 
+> 
 
 _______________________________________________
 Linux-nvme mailing list
