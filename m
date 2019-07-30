@@ -2,122 +2,68 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4355A7AF6D
-	for <lists+linux-nvme@lfdr.de>; Tue, 30 Jul 2019 19:15:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D94CF7B021
+	for <lists+linux-nvme@lfdr.de>; Tue, 30 Jul 2019 19:33:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eLUff/DwhHyJMa1xd03ginXSNCWczUZD5RVE7OuV0C8=; b=CjUyNMf0HhB9ti
-	cytiCrEXc5j5QV1LBfwxumVjQWdBVtS9hvbN3k+PF9unyYDImwnjJ9gpHkTRg+WubUm6H8+zr1vIH
-	hCj04gHugHZcTZzw8MKlt5Mmw0fN8AoRg9YannV22+eUAEPNBNqLNQRn23TzQ1T7RZ94gtHOYKKh/
-	yt6qt5wpj7T8QXB4u7mOfb9hxAoecdY+UvgOMLfDVSt/p/AaWJmsg9YiSGbLws4IRR+m3fT3J1ojB
-	QBAyAPKDURd8ByOEx+lj7LbjJv5ugy4wOnwesj+zI8AOjN5PVGMh+Wf5rBm6ToXR55JxgxMqpAncy
-	obZlTdClhNQYQkjbuw7w==;
+	List-Owner; bh=xxBEfk64VG9IFZTtxflhRR1KH5h7ozW/zzI4wyy7bPY=; b=QD/BuufPfxT5V0
+	VJhaBG1KLG+rPeL8DMAkoX+tfXIWaE/jEiH2sqNH6dSrd3QJxR3es31qpRpqJIf8l5JJBnjLujQWE
+	ombRnIqNAsMf+jcNVGlDikwtIAxjhNxlaYQjZfBB3wpIvIw3QphwJlGufp7o6ldTL7A7LlVfHIEnc
+	j5L37y66JYe7692NeHL4JuQRkdqynfS3I3At0EX1atoRZHcchUCsyPobfTgcyLX1salM5ieVsi1bt
+	7BA2GHn3s131uo1XXi2JZ4HcxHO+FLmeoyofufeDWuVos2MPfyx153srzIAiuCy6n01D+o3AvPm18
+	8PoMBXPuYMPT5CoVD7TQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsViX-00007E-Oh; Tue, 30 Jul 2019 17:15:18 +0000
-Received: from mx0b-00154904.pphosted.com ([148.163.137.20])
+	id 1hsW0I-00071h-LM; Tue, 30 Jul 2019 17:33:38 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsViG-0008Cz-41
- for linux-nvme@lists.infradead.org; Tue, 30 Jul 2019 17:15:01 +0000
-Received: from pps.filterd (m0170396.ppops.net [127.0.0.1])
- by mx0b-00154904.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x6UHAkmv031664
- for <linux-nvme@lists.infradead.org>; Tue, 30 Jul 2019 13:14:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=smtpout1;
- bh=RMjHjkmRIljGcoRTDzfV1VDswcuS2fCCA1qfE4N+knk=;
- b=KRkclfMsm5RZ4Xf7ND4oKHRp4qrA8ObE2/3POnXYmm6q59Z8+94H4+0xhXlAurv7R5YV
- gF1mocfTw7BiBg4JxqsET3EhhJKnCpkJH5/1mx3yABm2AJgGFKKu97QutpjsiWxyN1ZF
- JhJT6DiF40m9ZqWsklPvNS95+tEXI3xtzGh8h2Zleg2rw8UtnSarfmwjzSY0GnAAMUGZ
- hz0KwkMNwTxgxDzstsTdoo+qmSB+8wvCWLyPu6s5IavcoJ8VQlx4IB6REnf+aJV7oylu
- fr/lxadUXv5DjhCeb2v64ZA0f0yiqkxkXFDIdCCywO0d5qZlRbgYHoLzwIOjrSpoeQzS RQ== 
-Received: from mx0b-00154901.pphosted.com (mx0b-00154901.pphosted.com
- [67.231.157.37])
- by mx0b-00154904.pphosted.com with ESMTP id 2u2kxtsvwb-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
- for <linux-nvme@lists.infradead.org>; Tue, 30 Jul 2019 13:14:57 -0400
-Received: from pps.filterd (m0089483.ppops.net [127.0.0.1])
- by mx0b-00154901.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x6UHEeQ9060860
- for <linux-nvme@lists.infradead.org>; Tue, 30 Jul 2019 13:14:57 -0400
-Received: from ausc60pc101.us.dell.com (ausc60pc101.us.dell.com
- [143.166.85.206])
- by mx0b-00154901.pphosted.com with ESMTP id 2u2sx1r77f-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
- for <linux-nvme@lists.infradead.org>; Tue, 30 Jul 2019 13:14:56 -0400
-X-LoopCount0: from 10.166.132.127
-X-PREM-Routing: D-Outbound
-X-IronPort-AV: E=Sophos;i="5.60,349,1549951200"; d="scan'208";a="1447641413"
-From: <Mario.Limonciello@dell.com>
-To: <kbusch@kernel.org>, <rjw@rjwysocki.net>
-Subject: RE: [Regression] Commit "nvme/pci: Use host managed power state for
- suspend" has problems
-Thread-Topic: [Regression] Commit "nvme/pci: Use host managed power state for
- suspend" has problems
-Thread-Index: AQHVQs6UiIesxZzK0UKkUWrQRuKoE6bbsW+A///PBcCAAGObgIAHcfaAgABB9YD//9WSkA==
-Date: Tue, 30 Jul 2019 17:14:54 +0000
-Message-ID: <100ba4aff1c6434a81e47774ab4acddc@AUSX13MPC105.AMER.DELL.COM>
-References: <2332799.izEFUvJP67@kreacher>
- <4323ed84dd07474eab65699b4d007aaf@AUSX13MPC105.AMER.DELL.COM>
- <CAJZ5v0iDQ4=kTUgW94tKGt7oJzA_3uVU_M6HAMbNCRXwp_do8A@mail.gmail.com>
- <47415939.KV5G6iaeJG@kreacher> <20190730144134.GA12844@localhost.localdomain>
-In-Reply-To: <20190730144134.GA12844@localhost.localdomain>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Enabled=True;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_SiteId=945c199a-83a2-4e80-9f8c-5a91be5752dd;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Owner=Mario_Limonciello@Dell.com;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_SetDate=2019-07-30T17:14:52.5849194Z;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Name=External Public;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Extended_MSFT_Method=Manual;
- aiplabel=External Public
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.143.18.86]
+ id 1hsW0C-00071K-EN
+ for linux-nvme@lists.infradead.org; Tue, 30 Jul 2019 17:33:33 +0000
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Jul 2019 10:33:31 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,327,1559545200"; d="scan'208";a="176858900"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga006.jf.intel.com with ESMTP; 30 Jul 2019 10:33:31 -0700
+Date: Tue, 30 Jul 2019 11:30:48 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Sagi Grimberg <sagi@grimberg.me>
+Subject: Re: [PATCH rfc 1/2] nvme: don't remove namespace if revalidate
+ failed because of controller reset
+Message-ID: <20190730173048.GC13948@localhost.localdomain>
+References: <20190729233201.27993-1-sagi@grimberg.me>
+ <20190729233201.27993-2-sagi@grimberg.me>
+ <CACVXFVM+WGwQeqiK-poVKoQR4hVxCMWu0n0-HdVGb8EDDCySSA@mail.gmail.com>
+ <464bb489-552f-b67e-545d-48616a1e76dd@grimberg.me>
+ <CACVXFVO+e5De4+o8cqzvaVbMU22geicCbpmfk6zZStykEiDVmw@mail.gmail.com>
+ <82a91815-f7ed-5931-58ac-5893e68cc940@grimberg.me>
+ <CACVXFVN6o+dOFwDV=FPSHjVnhYSLBUWNHsXc4B=fwE5PAny_dQ@mail.gmail.com>
+ <8bd6d219-f4fd-de58-a341-257c6274eddd@grimberg.me>
+ <CACVXFVNT5sjk4MC6qJoBFug8K9YgEFQEy6LSknJT6=O-2ispMg@mail.gmail.com>
+ <2825eb74-1df5-5dd2-3e90-c696bc7fa3d1@grimberg.me>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-07-30_08:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1906280000 definitions=main-1907300180
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1907300179
+Content-Disposition: inline
+In-Reply-To: <2825eb74-1df5-5dd2-3e90-c696bc7fa3d1@grimberg.me>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190730_101500_331810_51A834B3 
-X-CRM114-Status: GOOD (  29.41  )
-X-Spam-Score: -0.9 (/)
+X-CRM114-CacheID: sfid-20190730_103332_527216_A1FAFF93 
+X-CRM114-Status: GOOD (  25.41  )
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.9 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.137.20 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [134.134.136.31 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -129,97 +75,73 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: sagi@grimberg.me, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, keith.busch@intel.com,
- kai.heng.feng@canonical.com, rajatja@google.com, hch@lst.de
+Cc: Keith Busch <keith.busch@intel.com>, Ming Lei <tom.leiming@gmail.com>,
+ Hannes Reinecke <hare@suse.de>, linux-nvme <linux-nvme@lists.infradead.org>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> -----Original Message-----
-> From: Keith Busch <kbusch@kernel.org>
-> Sent: Tuesday, July 30, 2019 9:42 AM
-> To: Rafael J. Wysocki
-> Cc: Busch, Keith; Limonciello, Mario; Kai-Heng Feng; Christoph Hellwig; Sagi
-> Grimberg; linux-nvme; Linux PM; Linux Kernel Mailing List; Rajat Jain
-> Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
-> suspend" has problems
+On Tue, Jul 30, 2019 at 10:12:42AM -0700, Sagi Grimberg wrote:
 > 
+> > > Yes, and again, addresses the case that the namespace is going away.
+> > > 
+> > > So I think we are in agreement? I only need to change the commit
+> > > message from: "the revalidation I/O" to "the admin I/O" ?
+> > 
+> > That words of 'admin I/O' isn't related with the patch or issue.
 > 
-> [EXTERNAL EMAIL]
+> But it is, the original issue was due to the fact that
+> nvme_revalidate_disk() I/Os such as nvme_identify_ns() or
+> nvme_identify_ns_descs(). This was the original issue.
 > 
-> On Tue, Jul 30, 2019 at 03:45:31AM -0700, Rafael J. Wysocki wrote:
-> > So I can reproduce this problem with plain 5.3-rc1 and the patch below fixes it.
-> >
-> > Also Mario reports that the same patch needs to be applied for his 9380 to
-> reach
-> > SLP_S0 after some additional changes under testing/review now, so here it
-> goes.
-> >
-> > [The changes mentioned above are in the pm-s2idle-testing branch in the
-> >  linux-pm.git tree at kernel.org.]
-> >
-> > ---
-> > From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> > Subject: [PATCH] nvme-pci: Do not prevent PCI bus-level PM from being used
-> >
-> > One of the modifications made by commit d916b1be94b6 ("nvme-pci: use
-> > host managed power state for suspend") was adding a pci_save_state()
-> > call to nvme_suspend() in order to prevent the PCI bus-level PM from
-> > being applied to the suspended NVMe devices, but that causes the NVMe
-> > drive (PC401 NVMe SK hynix 256GB) in my Dell XPS13 9380 to prevent
-> > the SoC from reaching package idle states deeper than PC3, which is
-> > way insufficient for system suspend.
-> >
-> > Fix this issue by removing the pci_save_state() call in question.
+> > > Yea, this should do the trick I guess:
+> > > --
+> > > diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> > > index fa31da0762b9..d01976c93160 100644
+> > > --- a/drivers/nvme/host/core.c
+> > > +++ b/drivers/nvme/host/core.c
+> > > @@ -3428,7 +3428,8 @@ static void nvme_validate_ns(struct nvme_ctrl
+> > > *ctrl, unsigned nsid)
+> > > 
+> > >           ns = nvme_find_get_ns(ctrl, nsid);
+> > >           if (ns) {
+> > > -               if (ns->disk && revalidate_disk(ns->disk))
+> > > +               if (ns->disk && ctrl->state == NVME_CTRL_LIVE &&
+> > > +                   revalidate_disk(ns->disk)
+> > >                           nvme_ns_remove(ns);
+> > >                   nvme_put_ns(ns);
+> > >           } else
+> > 
+> > If RESET is triggered just inside revalidate_disk(), and not done after
+> > revalidate_disk() returns,  there is still race between reset and scan work.
+> > 
 > 
-> I'm okay with the patch if we can get confirmation this doesn't break
-> any previously tested devices. I recall we add the pci_save_state() in
-> the first place specifically to prevent PCI D3 since that was reported
-> to break some devices' low power settings. Kai-Heng or Mario, any input
-> here?
+> You are correct, this was why I had the ctrl->state check after
+> revalidate_disk so if it failed because we are in a reset we should
+> not remove the namespace.
 > 
+> We need a reliable way to NOT remove the namespace if revalidate_disk
+> failed because the controller is resetting and we don't have a channel
+> to the controller at this very moment...
+> 
+> Keith,
+> 
+> As for the failure during reset scenario, this is happening only when
+> the namespace is about to go away or something is seriously wrong right
+> (looking from where nvme_kill_queues is called).
+> 
+> Do you still think we should avoid calling the revalidate_disk if the
+> controller is resetting?
 
-It's entirely possible that in fixing the shutdown/flush/send NVME power state command
-that D3 will be OK now but it will take some time to double check across the variety of disks that
-we tested before.
+I was considering if a reset happens to trigger when nvme's
+revalidate_disk tries to read identify namespace. It's possible that
+command gets aborted, and we don't retry admin commands, so we'd return
+-ENODEV and nvme_validate_ns() removes an otherwise healthy namespace.
 
-What's kernel policy in terms of adding a module parameter and removing it later?  My gut
-reaction is I'd like to see that behind a module parameter and if we see that all the disks
-are actually OK we can potentially rip it out in a future release.  Also gives us a knob for easier
-wider testing outside of the 4 of us.
-
-> 
-> 
-> > Fixes: d916b1be94b6 ("nvme-pci: use host managed power state for suspend")
-> > Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> > ---
-> >  drivers/nvme/host/pci.c |    8 +-------
-> >  1 file changed, 1 insertion(+), 7 deletions(-)
-> >
-> > Index: linux-pm/drivers/nvme/host/pci.c
-> >
-> ==============================================================
-> =====
-> > --- linux-pm.orig/drivers/nvme/host/pci.c
-> > +++ linux-pm/drivers/nvme/host/pci.c
-> > @@ -2897,14 +2897,8 @@ static int nvme_suspend(struct device *d
-> >  		nvme_dev_disable(ndev, true);
-> >  		ctrl->npss = 0;
-> >  		ret = 0;
-> > -		goto unfreeze;
-> >  	}
-> > -	/*
-> > -	 * A saved state prevents pci pm from generically controlling the
-> > -	 * device's power. If we're using protocol specific settings, we don't
-> > -	 * want pci interfering.
-> > -	 */
-> > -	pci_save_state(pdev);
-> > +
-> >  unfreeze:
-> >  	nvme_unfreeze(ctrl);
-> >  	return ret;
+I'm not too concerned about this corner case actually occuring in
+practice, though.
 
 _______________________________________________
 Linux-nvme mailing list
