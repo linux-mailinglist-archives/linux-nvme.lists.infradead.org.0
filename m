@@ -2,83 +2,69 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 237C57CFFF
-	for <lists+linux-nvme@lfdr.de>; Wed, 31 Jul 2019 23:26:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 962DB7D062
+	for <lists+linux-nvme@lfdr.de>; Wed, 31 Jul 2019 23:57:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=753ncRZhLqKumqD/ydvaL2iNAuj+LzRHOA1lQCtkv4M=; b=keU0zX1SSOY3w9
-	VqAUCDcknqOA42k++4Xkg0UW335F8/etU/47MFXPtk/UIdZlEpqlgQDmMGIihWIIsR3+B7aTB2yAw
-	HRN34JcB/pRoe2h3Qz7i1YD2f0m2668xlzh8GJQGWXTZgiuhgHdMYjhEX4f4nXCawJETwXbOPOOnw
-	0JY+bGG8FqBMD97vVT1nbKLVnjfWMRlEMuudEXneW2CsIXCYq9qN5tfVzOD3M33Z1Hn14g7voWihz
-	cEeJJ2DNXy5y4f3XV5by/EXEDvFsBt84GHWnMqCiMbLc/GxNYJmtsirnS0xEqb0rTTj3ZGE1FwXvW
-	dcMFFg+timcnJ2QmyOyg==;
+	List-Owner; bh=7b732x1ifWeX8+394WS1AEWNVeHec/zPx328KhFYN2U=; b=ZEZGixyIg0c/p0
+	RHBQHNlfC5PSBFJuEzEEeoAKzG1fZYGt/BEeNYdOJBCM2SiBSKNq+uTMRXOJjO6jZmTv33UbMZ0cV
+	1wcsDc/tlhdk4xJncsdGEo0AdALskmuRaey/D8br/ouMvf5U+B9C6YAiUXv4bGfQ8YlSWs+UGiHyi
+	ABpj8qLC4ReyEf7hZfW2v/kgfHgU+oNNB3PH8LDIyO+NUZtBsrrqx9S8JL+bt6y4G1XwZYRbSI+gH
+	huiO9lAUblEg/Z2vpFlC+NRAWV9CPp46YkEUfns3WWgHJYU3dbKXHWFPgQ77SnaQN0BRpCNGwqH4y
+	rEFEFUi9FHqKNFVk+tKQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsw6v-00019l-9P; Wed, 31 Jul 2019 21:26:13 +0000
-Received: from mail-ot1-f66.google.com ([209.85.210.66])
+	id 1hswb5-0003uB-9D; Wed, 31 Jul 2019 21:57:23 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsw6p-00018z-RF
- for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 21:26:09 +0000
-Received: by mail-ot1-f66.google.com with SMTP id q20so71677629otl.0
- for <linux-nvme@lists.infradead.org>; Wed, 31 Jul 2019 14:26:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gY7HXwIot63TGp2osyGwD6oiBom7P9dQMkdrdkS2Nes=;
- b=bvZ976XD/WXRyX6jmKuygwz/1cwJjXES3eYU2IUDyvSWrVbIW0U9A6UU7qZWRfyKEa
- nfO/bgu01fsGFFhfA2PgHiWOoer3lTxvPZCCNvBGjA9dbNJ24bEYhQfLi9ZlOEKA9Mso
- JGavDtRI4ljLF2qn9IZuNmuuZA3mW7rdSq7gg1Tl9nLZOug9LVINUk3AzPSvZe0coLfy
- UW8Y43pXI6fcS9TajyBbQ3qO93JyGuiJ0OPExpLqMNp/r9nSyrfgzplSpATz5XbnXLJK
- A2bKWfoH7ohNfTsXj+Ahd9I7/AYtxZEr4W63wU3VuOXLFjer2QaZzj4rASGEsmjeY3tI
- Z3wg==
-X-Gm-Message-State: APjAAAWzVC23AmBeIuhrUe9e4r9O4/m9FOiqHbCOkuTrzjiWcJd2vK8+
- 4clemYL5ALMKCTCXTMQwnirZZ8iR3g72e394XOY=
-X-Google-Smtp-Source: APXvYqxVGX9+K7Xz5YfWvC/qL8u+R2fzXeqHac2HeS0SiwVZBa8gOPNuLZONFh1YvGWdr401W9asQoBJ7Yn/hXUPwSg=
-X-Received: by 2002:a9d:6959:: with SMTP id p25mr10015636oto.118.1564608365363; 
- Wed, 31 Jul 2019 14:26:05 -0700 (PDT)
+ id 1hswb1-0003ri-Ge
+ for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 21:57:20 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2019 14:57:18 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,331,1559545200"; d="scan'208";a="256330109"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga001.jf.intel.com with ESMTP; 31 Jul 2019 14:57:17 -0700
+Date: Wed, 31 Jul 2019 15:54:37 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Sagi Grimberg <sagi@grimberg.me>
+Subject: Re: [PATCH rfc 1/2] nvme: don't remove namespace if revalidate
+ failed because of controller reset
+Message-ID: <20190731215437.GA15795@localhost.localdomain>
+References: <2825eb74-1df5-5dd2-3e90-c696bc7fa3d1@grimberg.me>
+ <20190730173048.GC13948@localhost.localdomain>
+ <61445d6f-f4ca-f8d4-cef2-5bfe40aa1e7f@suse.de>
+ <2f7535ab-3d45-b24d-1512-a937e16e620f@grimberg.me>
+ <20190731193257.GB15643@localhost.localdomain>
+ <0720636c-8706-e927-3c0b-c2687694664f@grimberg.me>
+ <20190731201634.GC15643@localhost.localdomain>
+ <cb8a1faf-ea19-06c8-35dc-08cd11180974@grimberg.me>
+ <20190731205836.GD15643@localhost.localdomain>
+ <68358e82-cbd5-6199-1329-89421c778dc0@grimberg.me>
 MIME-Version: 1.0
-References: <2332799.izEFUvJP67@kreacher>
- <4323ed84dd07474eab65699b4d007aaf@AUSX13MPC105.AMER.DELL.COM>
- <CAJZ5v0iDQ4=kTUgW94tKGt7oJzA_3uVU_M6HAMbNCRXwp_do8A@mail.gmail.com>
- <47415939.KV5G6iaeJG@kreacher> <20190730144134.GA12844@localhost.localdomain>
- <100ba4aff1c6434a81e47774ab4acddc@AUSX13MPC105.AMER.DELL.COM>
- <8246360B-F7D9-42EB-94FC-82995A769E28@canonical.com>
- <20190730191934.GD13948@localhost.localdomain>
- <7d3e0b8ba1444194a153c93faa1cabb3@AUSX13MPC105.AMER.DELL.COM>
- <20190730213114.GK13948@localhost.localdomain>
-In-Reply-To: <20190730213114.GK13948@localhost.localdomain>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Wed, 31 Jul 2019 23:25:51 +0200
-Message-ID: <CAJZ5v0gxfeMN8eCNRjcXmUOkReVsdozb3EccaYMpnmSHu3771g@mail.gmail.com>
-Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
- suspend" has problems
-To: Keith Busch <kbusch@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <68358e82-cbd5-6199-1329-89421c778dc0@grimberg.me>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190731_142607_883008_10C23CD4 
-X-CRM114-Status: GOOD (  19.60  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190731_145719_562702_8CE93005 
+X-CRM114-Status: GOOD (  16.90  )
+X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.66 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (rjwysocki[at]gmail.com)
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [192.55.52.115 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.66 listed in wl.mailspike.net]
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,64 +76,45 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Mario Limonciello <Mario.Limonciello@dell.com>,
- Linux PM <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>,
- Keith Busch <keith.busch@intel.com>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, Rajat Jain <rajatja@google.com>,
+Cc: Keith Busch <keith.busch@intel.com>, Ming Lei <tom.leiming@gmail.com>,
+ Hannes Reinecke <hare@suse.de>, linux-nvme <linux-nvme@lists.infradead.org>,
  Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Jul 30, 2019 at 11:33 PM Keith Busch <kbusch@kernel.org> wrote:
->
-> On Tue, Jul 30, 2019 at 09:05:22PM +0000, Mario.Limonciello@dell.com wrote:
-> > > -----Original Message-----
-> > > From: Keith Busch <kbusch@kernel.org>
-> > > Sent: Tuesday, July 30, 2019 2:20 PM
-> > > To: Kai-Heng Feng
-> > > Cc: Limonciello, Mario; rjw@rjwysocki.net; keith.busch@intel.com; hch@lst.de;
-> > > sagi@grimberg.me; linux-nvme@lists.infradead.org; linux-pm@vger.kernel.org;
-> > > linux-kernel@vger.kernel.org; rajatja@google.com
-> > > Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
-> > > suspend" has problems
-> > >
-> > >
-> > > [EXTERNAL EMAIL]
-> > >
-> > > On Wed, Jul 31, 2019 at 02:50:01AM +0800, Kai-Heng Feng wrote:
-> > > >
-> > > > Just did a quick test, this patch regress SK Hynix BC501, the SoC stays at
-> > > > PC3 once the patch is applied.
-> > >
-> > > Okay, I'm afraid device/platform quirks may be required unless there are
-> > > any other ideas out there.
-> >
-> > I think if a quirk goes in for Rafael's SSD it would have to be a quirk specific to this
-> > device and FW version per the findings on KH checking the same device with the
-> > older FW version.
->
-> That's fine, we have the infrastructure in place for fw specific quirks.
-> See drivers/nvme/host/core.c:nvme_core_quirk_entry
+On Wed, Jul 31, 2019 at 02:14:25PM -0700, Sagi Grimberg wrote:
+> 
+> > > > The other way it may fail to revalidate is if its identify has changed
+> > > > since we last discovered it, so removal is better than data corruption.
+> > > 
+> > > Well, perhaps we can mark failures resulting from reset with a transport
+> > > error.
+> > > 
+> > > For example, nvme_cancel_request is setting:NVME_SC_ABORT_REQ, perhaps
+> > > we can modify nvme_error_status to set that into BLK_STS_TRANSPORT and
+> > > check for that as the return code for revalidate_disk?
+> > > 
+> > > Thoughts?
+> > 
+> > Would it be sufficient to let these admin commands requeue? Instead of
+> > flushing the scan work, we can let it block for IO on a reset, and the
+> > IO will resume when the reset completes.
+> 
+> Well, I don't think we should do that. Unlike I/O commands, which can
+> failover to a different path, these admin commands are bound to the
+> specific controller. In case it takes minutes/hours/days for the
+> controller to restore normal operation, it will be unpleasant to say
+> the least to have admin operations get stuck for so long.
 
-A couple of remarks if you will.
+Unpleasant for who? The scan_work is the only thing waiting for these
+commands, no one else should care because you can't run IO if you're
+stuck in very long reset anyway.
 
-First, we don't know which case is the majority at this point.  For
-now, there is one example of each, but it may very well turn out that
-the SK Hynix BC501 above needs to be quirked.
-
-Second, the reference here really is 5.2, so if there are any systems
-that are not better off with 5.3-rc than they were with 5.2, well, we
-have not made progress.  However, if there are systems that are worse
-off with 5.3, that's bad.  In the face of the latest findings the only
-way to avoid that is to be backwards compatible with 5.2 and that's
-where my patch is going.  That cannot be achieved by quirking all
-cases that are reported as "bad", because there still may be
-unreported ones.
+I think the main point is that we don't want to take a delete action on
+a transient condition, but sprinkling NVME_CTRL_LIVE checks is open to
+many other races.
 
 _______________________________________________
 Linux-nvme mailing list
