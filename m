@@ -2,81 +2,67 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45AA77D138
-	for <lists+linux-nvme@lfdr.de>; Thu,  1 Aug 2019 00:33:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 517C57D1FB
+	for <lists+linux-nvme@lfdr.de>; Thu,  1 Aug 2019 01:36:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7lCk345f/aLapDQ+7zuQYkjpFiUi0HhkYjyFgUJ4gbU=; b=OUCriiT01HwW6B
-	IYBZjSoaoMESvgjUKIZL3z1qVJgJzddLoc7vfSYbL8UWpzj02IuEu0z2WYxAhGq0SQxtl9fmUBcC9
-	de5fGgN/Gxk2tL/YafhBuZ1LoQt9jv0/2mPtqeyieDzfNoSfIj0t+Nypnsg7nWGVCHktyWYMjNNQl
-	P284gIXfIizvQrE75PjEGHYOYVhYN7afhemg+pZm2a3dRWkU+FcNC3f8QzcTY+KT3NxhjpSZqPmGb
-	i/YmZkBd6mxb6kD/klkWXYLgn2c6eqDnFO7sh+u5disMl2UpZ4e4ZhN4HN9Bu2G6wKZHOJmc+gk+s
-	2viWqKmiNMFC1IoKvEsQ==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:Message-Id:Date:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=buBP0NWr5dj9xNXTcoe3zF6O32QA0CYlwLiVe7/i5Rs=; b=IynJOrN+qn57GJ
+	S5hZetOzrh6eoas8sR1ww6FtY+8Cic9egD9x8Fo73jGB8jDBCCOJmBliPTDeXQKqPI97DSUxeg4VT
+	LPrFaKEcK70NEsWVKPdv3BFbbVUdiN0ajHjeCLLf/DWV/mZ37/wK1bQc6DRKesbofbFh/hlVsnX1w
+	Dq0s23lQQiDcsB26x/jR/IAmOKP09sr2cLxks3IP2U3oM6657tl+6AzBK85hHPTXV67XNAQG4qT5t
+	EHJSvRIcGV5miRQ3z7T7AaAEYTtFvKR+DkVzcK7ew6YeBYimUfil3ywpRmoStpjAuCzYuIAgZ0oKe
+	2Rdv5M+8FFCHz2FbVd0g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsxAB-0000Bb-0W; Wed, 31 Jul 2019 22:33:39 +0000
-Received: from mail-oi1-f194.google.com ([209.85.167.194])
+	id 1hsy8c-0007lC-NQ; Wed, 31 Jul 2019 23:36:06 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsxA6-0000Ah-0P
- for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 22:33:35 +0000
-Received: by mail-oi1-f194.google.com with SMTP id m202so52039275oig.6
- for <linux-nvme@lists.infradead.org>; Wed, 31 Jul 2019 15:33:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VaXwfXqQ6zKWmX/DQNzZhY9vhSL25uLPNg24lm+Z3A8=;
- b=QpetznkNR/O0kCS42eqJZkewVf1Z1Nt+cuaxCXN/oVeNLUoQkVEy8RDv7bGVgbjd+1
- z2W1M4NhxkEn+FThWfAmk4XpC9pX9vAo2+G/4gT6TsWjCg9ouZf9hj1v+jKRPYBCKdNJ
- VOIqtxZ6PKyt77hSTAaM/6yBldD7k9wwgnLWkYZyTLlbEwZ6jfYC9IL0feEcwv2i0zUd
- dXHD1vi8Gq1hPN3Dl4yyCF93e1WZBgneIyuYpmukR0jSjPQLB0nva57ECo8URxMFHJjz
- StYxk+GaktyRJsRXJWR1TXz95v+zKfP1tINGvaJgDrNuJ9i3JrkZXrgz/HIDRFuXWfLo
- 5wXQ==
-X-Gm-Message-State: APjAAAXWHM3l0iEj/MRk2/OP39q0gwMFN5GXuN8D9HJO3CaSyXHB5kNN
- PbhoIDG8+eTLmaxcH2VqfkVyLOmzIhagrrs1K3A=
-X-Google-Smtp-Source: APXvYqy8K7rZdrHVIEm+dsJBeW1kcKphsprmEu9CobF2YPMA7ZXivzELY8vw8GCI9RouGZeDmDxamMQKdzwozZVARMY=
-X-Received: by 2002:aca:5a41:: with SMTP id o62mr60704040oib.110.1564612412985; 
- Wed, 31 Jul 2019 15:33:32 -0700 (PDT)
+ id 1hsy8F-0007U6-Mz
+ for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 23:35:44 +0000
+Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
+ by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
+ id 1hsy8B-0003W3-Ki; Wed, 31 Jul 2019 17:35:43 -0600
+Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
+ (envelope-from <gunthorp@deltatee.com>)
+ id 1hsy89-0001Gr-IZ; Wed, 31 Jul 2019 17:35:37 -0600
+From: Logan Gunthorpe <logang@deltatee.com>
+To: linux-kernel@vger.kernel.org,
+	linux-nvme@lists.infradead.org
+Date: Wed, 31 Jul 2019 17:35:30 -0600
+Message-Id: <20190731233534.4841-1-logang@deltatee.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <4323ed84dd07474eab65699b4d007aaf@AUSX13MPC105.AMER.DELL.COM>
- <CAJZ5v0iDQ4=kTUgW94tKGt7oJzA_3uVU_M6HAMbNCRXwp_do8A@mail.gmail.com>
- <47415939.KV5G6iaeJG@kreacher> <20190730144134.GA12844@localhost.localdomain>
- <100ba4aff1c6434a81e47774ab4acddc@AUSX13MPC105.AMER.DELL.COM>
- <8246360B-F7D9-42EB-94FC-82995A769E28@canonical.com>
- <20190730191934.GD13948@localhost.localdomain>
- <7d3e0b8ba1444194a153c93faa1cabb3@AUSX13MPC105.AMER.DELL.COM>
- <20190730213114.GK13948@localhost.localdomain>
- <CAJZ5v0gxfeMN8eCNRjcXmUOkReVsdozb3EccaYMpnmSHu3771g@mail.gmail.com>
- <20190731221956.GB15795@localhost.localdomain>
-In-Reply-To: <20190731221956.GB15795@localhost.localdomain>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Thu, 1 Aug 2019 00:33:20 +0200
-Message-ID: <CAJZ5v0hxYGBXau39sb80MQ8jbZZCzH0JU2DYZvn9JOtYT2+30g@mail.gmail.com>
-Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
- suspend" has problems
-To: Keith Busch <kbusch@kernel.org>
+X-SA-Exim-Connect-IP: 172.16.1.31
+X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
+ hch@lst.de, kbusch@kernel.org, axboe@fb.com, sagi@grimberg.me,
+ chaitanya.kulkarni@wdc.com, maxg@mellanox.com, logang@deltatee.com
+X-SA-Exim-Mail-From: gunthorp@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.5 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE,MYRULES_FREE,MYRULES_NO_TEXT autolearn=ham
+ autolearn_force=no version=3.4.2
+Subject: [PATCH v3 0/4] Varios NVMe Fixes
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190731_153334_054523_2A089D27 
-X-CRM114-Status: GOOD (  16.19  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190731_163543_792677_E443DEA5 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.194 listed in list.dnswl.org]
+ no trust [207.54.116.67 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (rjwysocki[at]gmail.com)
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,45 +75,40 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Sagi Grimberg <sagi@grimberg.me>,
- Mario Limonciello <Mario.Limonciello@dell.com>,
- Linux PM <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>,
- Keith Busch <keith.busch@intel.com>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, Rajat Jain <rajatja@google.com>,
- Christoph Hellwig <hch@lst.de>
+ Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>, Jens Axboe <axboe@fb.com>,
+ Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
+ Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Aug 1, 2019 at 12:22 AM Keith Busch <kbusch@kernel.org> wrote:
->
-> On Wed, Jul 31, 2019 at 11:25:51PM +0200, Rafael J. Wysocki wrote:
-> >
-> > A couple of remarks if you will.
-> >
-> > First, we don't know which case is the majority at this point.  For
-> > now, there is one example of each, but it may very well turn out that
-> > the SK Hynix BC501 above needs to be quirked.
-> >
-> > Second, the reference here really is 5.2, so if there are any systems
-> > that are not better off with 5.3-rc than they were with 5.2, well, we
-> > have not made progress.  However, if there are systems that are worse
-> > off with 5.3, that's bad.  In the face of the latest findings the only
-> > way to avoid that is to be backwards compatible with 5.2 and that's
-> > where my patch is going.  That cannot be achieved by quirking all
-> > cases that are reported as "bad", because there still may be
-> > unreported ones.
->
-> I have to agree. I think your proposal may allow PCI D3cold,
+Hey,
 
-Yes, it may.
+These patches are just a resend of a bunch I've sent that
+haven't been picked up yet. I don't want them to get forgotten.
 
-> In which case we do need to reintroduce the HMB handling.
+Thanks,
 
-Right.
+Logan
+
+--
+
+Logan Gunthorpe (4):
+  nvmet: Fix use-after-free bug when a port is removed
+  nvmet-loop: Flush nvme_delete_wq when removing the port
+  nvmet-file: fix nvmet_file_flush() always returning an error
+  nvme-core: Fix extra device_put() call on error path
+
+ drivers/nvme/host/core.c       |  2 +-
+ drivers/nvme/target/configfs.c |  1 +
+ drivers/nvme/target/core.c     | 15 +++++++++++++++
+ drivers/nvme/target/loop.c     |  8 ++++++++
+ drivers/nvme/target/nvmet.h    |  3 +++
+ 5 files changed, 28 insertions(+), 1 deletion(-)
+
+--
+2.20.1
 
 _______________________________________________
 Linux-nvme mailing list
