@@ -2,87 +2,92 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 306C87CEC3
-	for <lists+linux-nvme@lfdr.de>; Wed, 31 Jul 2019 22:37:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 121057CF03
+	for <lists+linux-nvme@lfdr.de>; Wed, 31 Jul 2019 22:45:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=keiSmpxOZ+TLi6ZTn/3s5vyt1HHreDskr2rcz+hxIDw=; b=X9o6pQSm3NlmqqUrTd5TA2rBf
-	JuGB+uHrDYtjzlpKtW6Usps00I4S7ch1jPUDbJCyMLi1qVvaDS3bZRjD/UlNveN85Ni+QKq/vU5Da
-	p2hRAIUexKvaarAY6+zdceqe+G0K9AWY+EMJywh8NVgz1myBdObXOYM8zM2rNHoCLmEzOJc3SjlNf
-	zz3qYUAFPUDSNapE64oHhbKMEmAxlt3lWI1OredUdHtvYdl33913XFl81YaX90hYIA29TCHQewWJQ
-	m+uS2M74vx5p3By9LuShsXqAwfcWUZMcFs3cNtSCIRyUm97luMVi6lnw5pOyRUwwTXrxZrDzj9m+M
-	IwO2tGrdA==;
+	 bh=RdUyN0LTW1V4l7P/6bLJ5Jr0Agx8YZVT86B4pVPNBvQ=; b=np357X2sAHcWta79vWydzJ7Ed
+	f9nCbv+bS56rk3Gqy5Efu8a+he+C8VB+NfNfwDq/LUUnQxIir0qig2gR/4a+rSDzBNk79owxk44x8
+	UDsY0Vlynd/S8MAWD44PdXlhcu02GRnhlKRKNtduu69+RFfpZ5AAe7e7gXPz0K+StPHUMpnQsYkpH
+	NZixgPo1hTW6HvGWdBzEloV+JH2kkcr/U/+kySCdQ9KX1x2hqpCCQCYPuqTNMO3MH3MAzqCY0E12C
+	orcfDZoNIXUGra3Ertcj3gr5tZHeWwvdmgpOXggYc8C82VvlTiiGkoInCFF6KrPP9QtV3jaA2uGM8
+	gyfBJWhgw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsvLw-0001Er-SS; Wed, 31 Jul 2019 20:37:40 +0000
-Received: from mail-ot1-f66.google.com ([209.85.210.66])
+	id 1hsvTQ-0005Dg-07; Wed, 31 Jul 2019 20:45:24 +0000
+Received: from mail-oi1-f193.google.com ([209.85.167.193])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsvLq-0001Ah-1g
- for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 20:37:35 +0000
-Received: by mail-ot1-f66.google.com with SMTP id q20so71539721otl.0
- for <linux-nvme@lists.infradead.org>; Wed, 31 Jul 2019 13:37:33 -0700 (PDT)
+ id 1hsvTK-0005DI-JR
+ for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 20:45:19 +0000
+Received: by mail-oi1-f193.google.com with SMTP id a127so51772898oii.2
+ for <linux-nvme@lists.infradead.org>; Wed, 31 Jul 2019 13:45:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=9p/91zWmqmXczukRwckQfhTqWARVByCDEhmN4/s9nXA=;
- b=Xq9vQalZxyn69Bo6qupPkpp26sGDB+01qAvM7Hv7aDygBdSme2Q4wkDWcqcMCPlkHA
- 0DW0aYCbnKTU+4GCD4xJpWD3lBKH3wfZVzgUqNs0+qtTTlFBRMDV+RQv7ggW9jlo+qGh
- ATSVf04oWuxnmUAmChBhwYyT6IPYikq8O4Xtfx2q/wKXsQ6sp0eRPfvogIBlqtuDKAGe
- 1KnrJrrtWPWt4bOcab/2YxqjWiUNt/HjT5XHyqV4j2MzjHlHhAE3H+fAJv+tyuEfB/ew
- LYsUm6N82rdwnKmk7y6zxi7YQNlZhB4UCrMTaJ6CTWCkNz68vmUBgqABdrjlqvQEewPe
- hQLA==
-X-Gm-Message-State: APjAAAWGqqSqlBoMK5rADDL2dHpKdn0m+TaNUHFMacxLQs/wTpxuDZhS
- D846o8/CUfj0DKc5Ld12vUKAE8Vi
-X-Google-Smtp-Source: APXvYqw+UndiH+Hfa2fyWL0la1nd/YkxPJ/adZI7j5EtfpZaSamUFFzgjlwWYmW6rWfLcaHNUHp9lQ==
-X-Received: by 2002:a05:6830:2148:: with SMTP id
- r8mr86988041otd.179.1564605453348; 
- Wed, 31 Jul 2019 13:37:33 -0700 (PDT)
+ bh=thKu2Bkh/dGX8klKWoymWTLU8p62EgCYvrtdewNMDnw=;
+ b=hijAsI/j7sfjoG8qLTNGj3gDmMx4KmDBCLAR946s3YheuWUgWiWdJwMCSERTxdCJGW
+ CSdTW5io48il0A/gUUkSOWXIVJ3LAcC1G1ihFD33/UDuqdY1mBDhbSijqe+6gi97aUdU
+ LB6wi7oPy9CGkgcux0yFGkUJxnYNHjW4Vc0+BnySgFnRSiDlG86uTHOdarlCmliuGU9L
+ u3A1sny+ErCxrSeY2ddahXCijLcKAwcXmnEaTKl4XuWp21YM2SFwVE+oxW/LK+BNr+ec
+ xJFFtYWyW7JNUglyChI2zUzoEf5hUrCd+bRdZXh6YXDMcUkdetQr1qxR7yF/dAh6NYO7
+ 0+9A==
+X-Gm-Message-State: APjAAAW6/hX6oTFZGoFS1tKJSXRRbGzuDdx0bXzwFuqPXzkDrtjF/9Ac
+ CtXXeOD6RljveT5SuxnDiME=
+X-Google-Smtp-Source: APXvYqzEwSmkUw0ejr5LhU25yCpj4NAoXx3oOXxNLRVZ976j09mlnR0CSa/EYJw3gP2ssceLOa6RHw==
+X-Received: by 2002:a05:6808:3d5:: with SMTP id
+ o21mr47412685oie.108.1564605917566; 
+ Wed, 31 Jul 2019 13:45:17 -0700 (PDT)
 Received: from [192.168.1.114]
  (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
- by smtp.gmail.com with ESMTPSA id i19sm23307641oib.12.2019.07.31.13.37.31
+ by smtp.gmail.com with ESMTPSA id k10sm23620100otl.21.2019.07.31.13.45.16
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 31 Jul 2019 13:37:32 -0700 (PDT)
+ Wed, 31 Jul 2019 13:45:16 -0700 (PDT)
 Subject: Re: [PATCH rfc 1/2] nvme: don't remove namespace if revalidate failed
  because of controller reset
-To: Hannes Reinecke <hare@suse.de>, linux-nvme@lists.infradead.org
-References: <20190729233201.27993-1-sagi@grimberg.me>
- <20190729233201.27993-2-sagi@grimberg.me>
- <993aee4e-9f9e-4af1-07e6-69218a12bc1b@suse.de>
- <886831d7-7035-7c38-7b1f-9945c222564e@grimberg.me>
- <695cad74-aaed-d1aa-9381-b4430cd27925@suse.de>
+To: Keith Busch <kbusch@kernel.org>
+References: <82a91815-f7ed-5931-58ac-5893e68cc940@grimberg.me>
+ <CACVXFVN6o+dOFwDV=FPSHjVnhYSLBUWNHsXc4B=fwE5PAny_dQ@mail.gmail.com>
+ <8bd6d219-f4fd-de58-a341-257c6274eddd@grimberg.me>
+ <CACVXFVNT5sjk4MC6qJoBFug8K9YgEFQEy6LSknJT6=O-2ispMg@mail.gmail.com>
+ <2825eb74-1df5-5dd2-3e90-c696bc7fa3d1@grimberg.me>
+ <20190730173048.GC13948@localhost.localdomain>
+ <61445d6f-f4ca-f8d4-cef2-5bfe40aa1e7f@suse.de>
+ <2f7535ab-3d45-b24d-1512-a937e16e620f@grimberg.me>
+ <20190731193257.GB15643@localhost.localdomain>
+ <0720636c-8706-e927-3c0b-c2687694664f@grimberg.me>
+ <20190731201634.GC15643@localhost.localdomain>
 From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <b3731d28-fdb7-988a-7b3a-019e86f66f0c@grimberg.me>
-Date: Wed, 31 Jul 2019 13:37:28 -0700
+Message-ID: <cb8a1faf-ea19-06c8-35dc-08cd11180974@grimberg.me>
+Date: Wed, 31 Jul 2019 13:45:12 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <695cad74-aaed-d1aa-9381-b4430cd27925@suse.de>
+In-Reply-To: <20190731201634.GC15643@localhost.localdomain>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190731_133734_100448_87933409 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20190731_134518_639812_8BD0754B 
+X-CRM114-Status: GOOD (  16.42  )
 X-Spam-Score: 0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.66 listed in list.dnswl.org]
+ no trust [209.85.167.193 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.66 listed in wl.mailspike.net]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.167.193 listed in wl.mailspike.net]
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (sagigrim[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -96,42 +101,52 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <keith.busch@intel.com>, Ming Lei <tom.leiming@gmail.com>,
+ Hannes Reinecke <hare@suse.de>, linux-nvme <linux-nvme@lists.infradead.org>,
+ Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
->> Exactly because of the race that you are indicating. We can't reliably
->> know if the controller is resetting (or will be starting a reset soon)
->> so we go ahead with the revalidate knowing that if the controller is
->> resetting it will fail. That is why the state check is after (this tells
->> us if the revalidation failed because of a reset or something else).
+>>>> I think I asked this but was not answered, why are we removing
+>>>> the namespace at all? do others do the same thing (remove the
+>>>> disk if revalidation fails)?
+>>>
+>>> If a namespace no longer exists,
+>>
+>> Why is it no longer exists? it failed revalidate..
 > 
-> Okay, fair enough.
+> One way it fails to validate is if it doesn't exist, i.e., the
+> controller returned an error when attempting to identify it.
 > 
-> Reviewed-by: Hannes Reinecke <hare@suse.com>
+> The other way it may fail to revalidate is if its identify has changed
+> since we last discovered it, so removal is better than data corruption.
 
-Hannes,
+Well, perhaps we can mark failures resulting from reset with a transport
+error.
 
-Can we understand if this addresses the issues you have reported?
+For example, nvme_cancel_request is setting:NVME_SC_ABORT_REQ, perhaps
+we can modify nvme_error_status to set that into BLK_STS_TRANSPORT and
+check for that as the return code for revalidate_disk?
 
- From the cover-letter:
-Hey Hannes,
+Thoughts?
 
-Here is two patches that to my understanding of the issues you describe
-in your patchset: "nvme: flush rescan worker before resetting" and your
-report of "spurious I/O errors during failover".
+> Either scenario could happen from administrative namespace management
+> commands to any controller in the subsystem.
+>   
+>>> what do you want to do with it instead of removing it?
+>>
+>> Well, I don't see anyone else even checking the return
+>> status of revalidate_disk.. Perhaps Hannes can share more
+>> on how scsi handles this?
+> 
+> Other drivers may have a different path to this, but I'd imagine they
+> handle a LUN deletion somehow.
 
-[...]
-
-Can you please apply the following two patches and report if
-they address the issues you are seeing? And if not, can you please
-report a call trace of the hanged threads?
-
-And, given that your are in a multipath environment, can you apply
-these on top of: "nvme: fix controller removal race with scan work"?
+Well, its not coming from revalidate_disk failure as the return status
+is not checked...
 
 _______________________________________________
 Linux-nvme mailing list
