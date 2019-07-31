@@ -2,57 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 372937CDDB
-	for <lists+linux-nvme@lfdr.de>; Wed, 31 Jul 2019 22:08:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A95D07CE0B
+	for <lists+linux-nvme@lfdr.de>; Wed, 31 Jul 2019 22:19:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EQeQLOrd+YJYMXO/CI4hGzSiz5iZkpWNDhYa1q1WISs=; b=Zi1Xx8xllmUK0a4/Y8NwMBd34
-	ZBnEvlBXqC3xytMmg9uK9XvDeh0mbWRtKFL7Ht+8IaffIKlcfn/SJYTH6YfyOi8Zc13IaJHO9R5tR
-	jXXtt4+HlxMLKjDC69WEqH8rAdOI3OlzPNdcIaZP4QIPv+9WQtzxLx7DRQ4AiA0KEUiG9Qy3HRsGE
-	evxW4FDbeykfx2b4+mObZCH2CUtkkHawejpeIP88yvZFaZ0cHl/T2AewDZqDg4Sgkzc2cpCJCCzFU
-	sf0g0XxZ5my+G25oyAEAE5ZDQ+tMhx0jELKRl0f8mSluTTzUvfAlCuVEAMyGJyBodAiF5hvZ+hf7Z
-	zMTut1ozA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yU0WgTFEIwIswK3o/YrLq6zgZX6oP7enIsv0hUIrdt8=; b=BcIvok9FChISqm
+	6Da1xs+fO8GIXI1PT8hyNDH8lor61Ct48JyoKOMBvUIkzHpRIBLrNTc9DOd6c6OZqOB5zVPJLe3oj
+	g/krgI/rTTvi2WnP3/ixqtdwVqqd2fxQr0CO73mBCKSzT9WiQYvRjUD5akqPnTzdVOVH0txGkCpvT
+	EuCGmcD/vjhszvT6DSDAKJrEuADSWnslUnTBxfK2kozGKiEJz7xYupg8UqzLETMSLPgrKiVpfh/0m
+	yb6naGytCLGEgYa+zNl1aE299JW+qo8zncRlbFFLj0TLHg98DX/otPfYlxs/TiLdn+G2woyEalsot
+	rtEeDvfd3/+V/pfU8jMg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hsutU-0007eB-QB; Wed, 31 Jul 2019 20:08:16 +0000
-Received: from mail-ot1-f66.google.com ([209.85.210.66])
+	id 1hsv4D-0003yy-ES; Wed, 31 Jul 2019 20:19:21 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hsutP-0007df-CU
- for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 20:08:12 +0000
-Received: by mail-ot1-f66.google.com with SMTP id j19so33054706otq.2
- for <linux-nvme@lists.infradead.org>; Wed, 31 Jul 2019 13:08:10 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=i/H12EKSrKBNKPhjTsjeiHs1LxasTyJjfeDLYCt6vEA=;
- b=mmVKpIQbvNKCKkivBoXgpSvYfqFEzANUSB1eg4B7dP1GM43hxoWjdpdR8xx66znywU
- NhwxiygbzcLOxtiXjQnLzAND3k/3DlasHpKlGweiI2cukUrtvRy8msbZgVLoH2B5ZDOn
- /mMR+Fn98GRVPphzqlGlLhIGIIcNhc57fnmbyX49GsF6dQapmyybiKGjcUer7ScRA3v5
- a93zH3iWDOPKDyZ2k/20waGHc9tx9BJjA/nVaLuSHe9qNM3iq6KlPBS4RC88FkGOOPIe
- pXpgE1Q6X/0SLzq4b1FY2b5sVkduxB7I8PXR4SGz1E6afP3xhozHRqg148Zb7mBHXX4m
- tbdQ==
-X-Gm-Message-State: APjAAAVvjjroxRcrwddghxMZJNGBjP5axWlooVoG3oRkwUexVrD8MOyw
- K8iUv+Lol8Vrt4x8lEj+Uco=
-X-Google-Smtp-Source: APXvYqxtQVv3yr1e0khKUv9wYsndviyH/zqlYUvd2YHpCXwZz7fr7m5qh0TLwCE9GRqYw81MGbLFwg==
-X-Received: by 2002:a9d:6a5a:: with SMTP id h26mr19444149otn.319.1564603690234; 
- Wed, 31 Jul 2019 13:08:10 -0700 (PDT)
-Received: from [192.168.1.114]
- (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
- by smtp.gmail.com with ESMTPSA id e78sm24578484oib.50.2019.07.31.13.08.08
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 31 Jul 2019 13:08:09 -0700 (PDT)
-Subject: Re: [PATCH rfc 1/2] nvme: don't remove namespace if revalidate failed
- because of controller reset
-To: Keith Busch <kbusch@kernel.org>
-References: <464bb489-552f-b67e-545d-48616a1e76dd@grimberg.me>
- <CACVXFVO+e5De4+o8cqzvaVbMU22geicCbpmfk6zZStykEiDVmw@mail.gmail.com>
- <82a91815-f7ed-5931-58ac-5893e68cc940@grimberg.me>
+ id 1hsv48-0003yf-QU
+ for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 20:19:18 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2019 13:19:16 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,331,1559545200"; d="scan'208";a="256286767"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga001.jf.intel.com with ESMTP; 31 Jul 2019 13:19:15 -0700
+Date: Wed, 31 Jul 2019 14:16:34 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Sagi Grimberg <sagi@grimberg.me>
+Subject: Re: [PATCH rfc 1/2] nvme: don't remove namespace if revalidate
+ failed because of controller reset
+Message-ID: <20190731201634.GC15643@localhost.localdomain>
+References: <82a91815-f7ed-5931-58ac-5893e68cc940@grimberg.me>
  <CACVXFVN6o+dOFwDV=FPSHjVnhYSLBUWNHsXc4B=fwE5PAny_dQ@mail.gmail.com>
  <8bd6d219-f4fd-de58-a341-257c6274eddd@grimberg.me>
  <CACVXFVNT5sjk4MC6qJoBFug8K9YgEFQEy6LSknJT6=O-2ispMg@mail.gmail.com>
@@ -61,35 +48,23 @@ References: <464bb489-552f-b67e-545d-48616a1e76dd@grimberg.me>
  <61445d6f-f4ca-f8d4-cef2-5bfe40aa1e7f@suse.de>
  <2f7535ab-3d45-b24d-1512-a937e16e620f@grimberg.me>
  <20190731193257.GB15643@localhost.localdomain>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <0720636c-8706-e927-3c0b-c2687694664f@grimberg.me>
-Date: Wed, 31 Jul 2019 13:08:05 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <0720636c-8706-e927-3c0b-c2687694664f@grimberg.me>
 MIME-Version: 1.0
-In-Reply-To: <20190731193257.GB15643@localhost.localdomain>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <0720636c-8706-e927-3c0b-c2687694664f@grimberg.me>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190731_130811_425152_F819AF49 
-X-CRM114-Status: GOOD (  13.07  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190731_131916_872642_32DAF985 
+X-CRM114-Status: GOOD (  15.73  )
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.66 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.66 listed in wl.mailspike.net]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [192.55.52.136 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,25 +79,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
 Cc: Keith Busch <keith.busch@intel.com>, Ming Lei <tom.leiming@gmail.com>,
  Hannes Reinecke <hare@suse.de>, linux-nvme <linux-nvme@lists.infradead.org>,
  Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
->> I think I asked this but was not answered, why are we removing
->> the namespace at all? do others do the same thing (remove the
->> disk if revalidation fails)?
+On Wed, Jul 31, 2019 at 01:08:05PM -0700, Sagi Grimberg wrote:
 > 
-> If a namespace no longer exists,
+> > > I think I asked this but was not answered, why are we removing
+> > > the namespace at all? do others do the same thing (remove the
+> > > disk if revalidation fails)?
+> > 
+> > If a namespace no longer exists,
+> 
+> Why is it no longer exists? it failed revalidate..
 
-Why is it no longer exists? it failed revalidate..
+One way it fails to validate is if it doesn't exist, i.e., the
+controller returned an error when attempting to identify it.
 
-> what do you want to do with it instead of removing it?
+The other way it may fail to revalidate is if its identify has changed
+since we last discovered it, so removal is better than data corruption.
 
-Well, I don't see anyone else even checking the return
-status of revalidate_disk.. Perhaps Hannes can share more
-on how scsi handles this?
+Either scenario could happen from administrative namespace management
+commands to any controller in the subsystem.
+ 
+> > what do you want to do with it instead of removing it?
+> 
+> Well, I don't see anyone else even checking the return
+> status of revalidate_disk.. Perhaps Hannes can share more
+> on how scsi handles this?
+
+Other drivers may have a different path to this, but I'd imagine they
+handle a LUN deletion somehow.
 
 _______________________________________________
 Linux-nvme mailing list
