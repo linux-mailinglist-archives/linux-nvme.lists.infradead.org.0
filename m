@@ -2,67 +2,67 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 962DB7D062
-	for <lists+linux-nvme@lfdr.de>; Wed, 31 Jul 2019 23:57:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F7D57D115
+	for <lists+linux-nvme@lfdr.de>; Thu,  1 Aug 2019 00:22:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7b732x1ifWeX8+394WS1AEWNVeHec/zPx328KhFYN2U=; b=ZEZGixyIg0c/p0
-	RHBQHNlfC5PSBFJuEzEEeoAKzG1fZYGt/BEeNYdOJBCM2SiBSKNq+uTMRXOJjO6jZmTv33UbMZ0cV
-	1wcsDc/tlhdk4xJncsdGEo0AdALskmuRaey/D8br/ouMvf5U+B9C6YAiUXv4bGfQ8YlSWs+UGiHyi
-	ABpj8qLC4ReyEf7hZfW2v/kgfHgU+oNNB3PH8LDIyO+NUZtBsrrqx9S8JL+bt6y4G1XwZYRbSI+gH
-	huiO9lAUblEg/Z2vpFlC+NRAWV9CPp46YkEUfns3WWgHJYU3dbKXHWFPgQ77SnaQN0BRpCNGwqH4y
-	rEFEFUi9FHqKNFVk+tKQ==;
+	List-Owner; bh=E+8tQR+F60Y3Pt75me9PrL1oFe9drSaHPS84iz8vONs=; b=nqm1AKx452hMyt
+	OHQ74Jh8jYxj8d6vs+LIBinrAGJXHhlyaZujfezY7ePPS1CHb6MXJBJfkW6jQkbPT8uP2OdKQrwG6
+	acyy3UJT7BmiGW0tAnUKtvmzvrCRJjBLYGMbtHo5tYmfjop0LHoWoJvzWJ37vz843R+hPQxcQNblW
+	TydQSepL4SZKOeZ6k9kylN0ErX25eduJQEi6cxEa35rlAPvdgVxWbIGyAs7+xTNZN5Y2aFMYmbWa9
+	ECmgDOEng0/3cbwDjyNao+CYaj2Do1XEF+pqu37wkZLqJTJzX7i7ERGV3NFkMCnH7PaKR406HBuzo
+	pwbawRjybJgwBL/mFzgQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hswb5-0003uB-9D; Wed, 31 Jul 2019 21:57:23 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1hswza-0004Qd-AA; Wed, 31 Jul 2019 22:22:42 +0000
+Received: from mga11.intel.com ([192.55.52.93])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hswb1-0003ri-Ge
- for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 21:57:20 +0000
+ id 1hswzW-0004QG-6r
+ for linux-nvme@lists.infradead.org; Wed, 31 Jul 2019 22:22:39 +0000
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Jul 2019 14:57:18 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2019 15:22:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,331,1559545200"; d="scan'208";a="256330109"
+X-IronPort-AV: E=Sophos;i="5.64,331,1559545200"; d="scan'208";a="371719160"
 Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga001.jf.intel.com with ESMTP; 31 Jul 2019 14:57:17 -0700
-Date: Wed, 31 Jul 2019 15:54:37 -0600
+ by fmsmga005.fm.intel.com with ESMTP; 31 Jul 2019 15:22:36 -0700
+Date: Wed, 31 Jul 2019 16:19:56 -0600
 From: Keith Busch <kbusch@kernel.org>
-To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH rfc 1/2] nvme: don't remove namespace if revalidate
- failed because of controller reset
-Message-ID: <20190731215437.GA15795@localhost.localdomain>
-References: <2825eb74-1df5-5dd2-3e90-c696bc7fa3d1@grimberg.me>
- <20190730173048.GC13948@localhost.localdomain>
- <61445d6f-f4ca-f8d4-cef2-5bfe40aa1e7f@suse.de>
- <2f7535ab-3d45-b24d-1512-a937e16e620f@grimberg.me>
- <20190731193257.GB15643@localhost.localdomain>
- <0720636c-8706-e927-3c0b-c2687694664f@grimberg.me>
- <20190731201634.GC15643@localhost.localdomain>
- <cb8a1faf-ea19-06c8-35dc-08cd11180974@grimberg.me>
- <20190731205836.GD15643@localhost.localdomain>
- <68358e82-cbd5-6199-1329-89421c778dc0@grimberg.me>
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
+ suspend" has problems
+Message-ID: <20190731221956.GB15795@localhost.localdomain>
+References: <4323ed84dd07474eab65699b4d007aaf@AUSX13MPC105.AMER.DELL.COM>
+ <CAJZ5v0iDQ4=kTUgW94tKGt7oJzA_3uVU_M6HAMbNCRXwp_do8A@mail.gmail.com>
+ <47415939.KV5G6iaeJG@kreacher>
+ <20190730144134.GA12844@localhost.localdomain>
+ <100ba4aff1c6434a81e47774ab4acddc@AUSX13MPC105.AMER.DELL.COM>
+ <8246360B-F7D9-42EB-94FC-82995A769E28@canonical.com>
+ <20190730191934.GD13948@localhost.localdomain>
+ <7d3e0b8ba1444194a153c93faa1cabb3@AUSX13MPC105.AMER.DELL.COM>
+ <20190730213114.GK13948@localhost.localdomain>
+ <CAJZ5v0gxfeMN8eCNRjcXmUOkReVsdozb3EccaYMpnmSHu3771g@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <68358e82-cbd5-6199-1329-89421c778dc0@grimberg.me>
+In-Reply-To: <CAJZ5v0gxfeMN8eCNRjcXmUOkReVsdozb3EccaYMpnmSHu3771g@mail.gmail.com>
 User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190731_145719_562702_8CE93005 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20190731_152238_264125_1807C65D 
+X-CRM114-Status: GOOD (  13.58  )
 X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [192.55.52.115 listed in list.dnswl.org]
+ high trust [192.55.52.93 listed in list.dnswl.org]
  1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -76,45 +76,38 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Ming Lei <tom.leiming@gmail.com>,
- Hannes Reinecke <hare@suse.de>, linux-nvme <linux-nvme@lists.infradead.org>,
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ Mario Limonciello <Mario.Limonciello@dell.com>,
+ Linux PM <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>,
+ Keith Busch <keith.busch@intel.com>,
+ Kai-Heng Feng <kai.heng.feng@canonical.com>, Rajat Jain <rajatja@google.com>,
  Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Jul 31, 2019 at 02:14:25PM -0700, Sagi Grimberg wrote:
+On Wed, Jul 31, 2019 at 11:25:51PM +0200, Rafael J. Wysocki wrote:
 > 
-> > > > The other way it may fail to revalidate is if its identify has changed
-> > > > since we last discovered it, so removal is better than data corruption.
-> > > 
-> > > Well, perhaps we can mark failures resulting from reset with a transport
-> > > error.
-> > > 
-> > > For example, nvme_cancel_request is setting:NVME_SC_ABORT_REQ, perhaps
-> > > we can modify nvme_error_status to set that into BLK_STS_TRANSPORT and
-> > > check for that as the return code for revalidate_disk?
-> > > 
-> > > Thoughts?
-> > 
-> > Would it be sufficient to let these admin commands requeue? Instead of
-> > flushing the scan work, we can let it block for IO on a reset, and the
-> > IO will resume when the reset completes.
+> A couple of remarks if you will.
 > 
-> Well, I don't think we should do that. Unlike I/O commands, which can
-> failover to a different path, these admin commands are bound to the
-> specific controller. In case it takes minutes/hours/days for the
-> controller to restore normal operation, it will be unpleasant to say
-> the least to have admin operations get stuck for so long.
+> First, we don't know which case is the majority at this point.  For
+> now, there is one example of each, but it may very well turn out that
+> the SK Hynix BC501 above needs to be quirked.
+> 
+> Second, the reference here really is 5.2, so if there are any systems
+> that are not better off with 5.3-rc than they were with 5.2, well, we
+> have not made progress.  However, if there are systems that are worse
+> off with 5.3, that's bad.  In the face of the latest findings the only
+> way to avoid that is to be backwards compatible with 5.2 and that's
+> where my patch is going.  That cannot be achieved by quirking all
+> cases that are reported as "bad", because there still may be
+> unreported ones.
 
-Unpleasant for who? The scan_work is the only thing waiting for these
-commands, no one else should care because you can't run IO if you're
-stuck in very long reset anyway.
-
-I think the main point is that we don't want to take a delete action on
-a transient condition, but sprinkling NVME_CTRL_LIVE checks is open to
-many other races.
+I have to agree. I think your proposal may allow PCI D3cold, in which
+case we do need to reintroduce the HMB handling.
 
 _______________________________________________
 Linux-nvme mailing list
