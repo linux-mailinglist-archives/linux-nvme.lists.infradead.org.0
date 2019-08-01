@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2AFA7E64F
-	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 01:15:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 59BD57E650
+	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 01:15:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,70 +11,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=CTAdh7bthjbuY5ADRRuCRfyxcLZn1s3wCsbuqrq32qg=; b=MURNCekZqxeNKgHtnSTvCxfLiS
-	juQUDM7NyFJdLmnbDSoTaYb9AV5WONi0BmevquNchxz0wvEZNh3YaW/sTxGMNXCR7IFJErbdpXnde
-	N9Pck4pw/cTBBAu2iHf7Q2m5CgeohkDaD44+o1V2JUs1FlDDxlXhgSh6zt2JvtOBtzXPaOkpTymxL
-	bM/o0rsnDYDcKDFA1lIKZq3EnbZkCr85pCJ9SXFG+LQJuRuIhbHIMzVrQrUyayK+nWE0iP3IBApCq
-	Cfn8eyXmbKEi2JGdwTc1/SjvfK1dxcCDgxKhVKKf8EHrayny0GYdPU7EMdQ+UGR8TJh7VUaWpfQil
-	unBg4VTg==;
+	bh=Gr79rj14eBqi2eHPuAT8i0DvZi9vEDgUTkJpUW4BZQU=; b=eWCmM5smIC7khBbFLtSSqf+fqe
+	H008KM/nwcLO0JTUZ3E3utu9sdxmYrMKCTzaY0gtdCnvqRVQaFheTiSZrgHOGENcLthQjGWvae7rP
+	x0FqVjbr2Pga0fgXfQHi43UCVaMXUlj5K2ZWcva26fz0yn7hgI1O/zUi6J6UxRVgi141zbWRG6Xzg
+	et/qbLix2UxnvwWCMd72b/NzioG7ml0pET6rWvC8wlVJucW5XG/3TQZWbt92FvxnapJ+O8VEIv4lQ
+	NI0xuHv2MkKGdB78Khzm7GkD00zvXKFXC0h3lbqh5tqwkR8JhkDKw5u7knP0ak9FcDklqfGCKULkr
+	/XTENJjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htKHt-00065Q-LE; Thu, 01 Aug 2019 23:15:09 +0000
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+	id 1htKI3-0007En-9s; Thu, 01 Aug 2019 23:15:19 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htKGo-000595-1t
- for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 23:14:03 +0000
-Received: by mail-pl1-x642.google.com with SMTP id b3so32875168plr.4
+ id 1htKGp-00059X-5h
+ for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 23:14:05 +0000
+Received: by mail-pf1-x442.google.com with SMTP id g2so34929124pfq.0
  for <linux-nvme@lists.infradead.org>; Thu, 01 Aug 2019 16:14:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=DHeFs8NFh0ijcNo7Vvj42mw3qASEFpK4N8CRp9reFhg=;
- b=CV4irher1loGMv1R0IfT0mSUihChCJU7Howxt9JjCnHGxOoS17eWUGfj01wEtLP5G/
- 54OhwW4m26RkX0YdRF5N7d4p2CcamxLBlRYvJikY7bfp48MrOY87LKfnrBdO7FK972EM
- Z2Ev84qDjpz2JE114Oxq1Tz8EXczWjwJL8QFd6wBq1eASGnKfWY6QVfcFhYBXbIRFM9C
- 8x7IQkFAYSs1eDuRcJ3jpggH2wmT4TNO3TNbp5s/nhFBJ8oe8r/8qMP98/z2l6GRXuFJ
- oApvSwT7VdwFItVAZLmKl7RkamUVqecZMb+CFYokQTnq6BxVa2eaUQcyyXx/vrzQWStG
- 4e3A==
+ bh=phUPlJ4bFwnT5ColvzHABgXVifRV46pmGqZruPA86ws=;
+ b=s4PA8e0efaqdopLz+D6jnrcerLL/+qPTuNUYiGA86UMy8mr+9kwuezb8/xN/MXYCiL
+ KeiDLf0aYxhdu/vJXQxlaiBd71dZlcnkiotQQvm8yNvP80oNU3X7E6tH7yOH7tFEOUbN
+ ZbFjBVswljM51DtOuFe4EY3O//yBcOZ34e8cnJ94qlZPqxjg1THvPHasqBPtFlMxaQeK
+ BvIugd1d/yiZ/p0Nzh36dCRhrBlVEhaBYU+I5h2XihgvtwzF4fGL5+FDShQklrquAFu4
+ h0hNxZ67qlNywY32A138RusTgaRpDXtqTjOMnXcZELFZkX4eDOTnU+NHk7b2/IHCePp3
+ DAZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=DHeFs8NFh0ijcNo7Vvj42mw3qASEFpK4N8CRp9reFhg=;
- b=XMlmAd+fELtkGRl2218/XuWnKmudR3vTdk/7OqjhGVy/J/ysuPaJ+3AO8IiSt+qZ0R
- fdKLVaoPGFoWQyYb0wJ1z/Xel0PoHsRsDmpB+vnHCV9ukS+0kUW4iyc2RmvMOK+SNSM3
- B2ku0LIAX4PIf5b4HEwOykfWq3anilhob/NvvcAXi0XN0EU4HdNCvsvsVpO8tGM9cC8T
- mVWbNFkYeUq3+/6gfQAWOQWgcQ97q9W/HDAPeXKDwLcFpBnI+Lp3XbJ0EVN8CypnxQCn
- csqpLM+0OAFgsgV7b/na6IPt76Lo9wP3GELF7dA304Var7ma3eBb5+o85Pzy1MI9IH6Z
- qEyA==
-X-Gm-Message-State: APjAAAU2/9ve2d10DkUCu0a0/VnBbDzJ9d505EBEJneHOxq5KLrXABWr
- VfgrSZLvKPnErycqu9XL5wA93PbK
-X-Google-Smtp-Source: APXvYqzsCdW8xN3Cp1+gJFk63xOf3/+nsBhAC4EOks1f8rBA8rRDG4eknPb6dopyTJcUN+Iqh0myxw==
-X-Received: by 2002:a17:902:694a:: with SMTP id
- k10mr127116981plt.255.1564701241470; 
- Thu, 01 Aug 2019 16:14:01 -0700 (PDT)
+ bh=phUPlJ4bFwnT5ColvzHABgXVifRV46pmGqZruPA86ws=;
+ b=c+n4yHHLHqmOyAuQA50IyjsP7tJ6fPWW1RQxxiYCmzyUM28f3/8MGDkZNauJF94SnU
+ dDAkfDbCWPJStz9IrG6zO8UimTCzOfPbpzVL2gQWXYcCIQ3nfcu0bCCroPFxPlpPgSlS
+ 8h6+5pz0BeLsN5FHX6iesLHrCFa3bAEebZz4Bt3nzso3AykmG3QFDS2I4XnZs7NqdfD3
+ 9IGhmkuKYedQF6iKssG5WVvzYka93bxbSUbQ/M1b8lhBpSK841XcyePRmcBpwND3Y5ER
+ jGh4/iOsj2FjinCL2tggE1NxUeawDrA8hhzwSrnVbwZZUalPFXiNoIixUtyLcProxZeg
+ UFXw==
+X-Gm-Message-State: APjAAAVA2LQ9SkS2sW6d8eE4JdMdou91H3b2taEBhCqIKEXstpM4Lja/
+ 80KTIv05+anVYMVh8nBFK0lWgeq/
+X-Google-Smtp-Source: APXvYqxsBlsjfPffUWMPGpWoqmFf0zK5O/FySsi9ilzNGOSo7QeDkRSI2ZlJmj9Pk7hecDMQYWX5bQ==
+X-Received: by 2002:a63:184b:: with SMTP id 11mr61325083pgy.112.1564701242095; 
+ Thu, 01 Aug 2019 16:14:02 -0700 (PDT)
 Received: from pallmd1.broadcom.com ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id q144sm74358669pfc.103.2019.08.01.16.14.00
+ by smtp.gmail.com with ESMTPSA id q144sm74358669pfc.103.2019.08.01.16.14.01
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 01 Aug 2019 16:14:00 -0700 (PDT)
+ Thu, 01 Aug 2019 16:14:01 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v3 06/10] nvme-cli: Add routine to compare ctrl_list_item to
- connect args
-Date: Thu,  1 Aug 2019 16:13:44 -0700
-Message-Id: <20190801231348.21397-7-jsmart2021@gmail.com>
+Subject: [PATCH v3 07/10] nvme-cli: Add routine to search for controller with
+ specific attributes
+Date: Thu,  1 Aug 2019 16:13:45 -0700
+Message-Id: <20190801231348.21397-8-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.13.7
 In-Reply-To: <20190801231348.21397-1-jsmart2021@gmail.com>
 References: <20190801231348.21397-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_161402_098984_ABCA5098 
-X-CRM114-Status: GOOD (  17.35  )
+X-CRM114-CacheID: sfid-20190801_161403_220959_B328A411 
+X-CRM114-Status: GOOD (  17.27  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:642 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
  in digit (jsmart2021[at]gmail.com)
@@ -109,104 +108,79 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 In preparation for searching controllers to match with connect args:
 
-Create a new routine that receives a structure containing connect
-arguments and a device name. The routine will build and fill in a
-ctrl_list_item for the device and compare its attributes with the
-connect arguments. The routine returns true/false on whether they
-match.
+Create a new routine find_ctrl_with_connectargs() that will search the
+controllers that exist in the system to find one that has attributes
+that match the connect arguments specified.  If found, the routine
+returns the controller name ("nvme?"). If not found, a NULL is returned.
 
 Routine is defined as a global as a subsequent patch will use it
 from the fabrics routines.
 
 Signed-off-by: James Smart <jsmart2021@gmail.com>
-Reviewed-by: Hannes Reinecke <hare@suse.com>
 Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+Reviewed-by: Hannes Reinecke <hare@suse.com>
 ---
- fabrics.c |  1 -
- nvme.c    | 38 ++++++++++++++++++++++++++++++++++++++
- nvme.h    | 11 +++++++++++
- 3 files changed, 49 insertions(+), 1 deletion(-)
+ nvme.c | 37 +++++++++++++++++++++++++++++++++++++
+ nvme.h |  1 +
+ 2 files changed, 38 insertions(+)
 
-diff --git a/fabrics.c b/fabrics.c
-index d92c2ff..f3afa0b 100644
---- a/fabrics.c
-+++ b/fabrics.c
-@@ -74,7 +74,6 @@ static struct config {
- #define PATH_NVMF_DISC		"/etc/nvme/discovery.conf"
- #define PATH_NVMF_HOSTNQN	"/etc/nvme/hostnqn"
- #define PATH_NVMF_HOSTID	"/etc/nvme/hostid"
--#define SYS_NVME		"/sys/class/nvme"
- #define MAX_DISC_ARGS		10
- #define MAX_DISC_RETRIES	10
- 
 diff --git a/nvme.c b/nvme.c
-index b93d9da..875b2c8 100644
+index 875b2c8..bbf1a2c 100644
 --- a/nvme.c
 +++ b/nvme.c
-@@ -2010,6 +2010,44 @@ ret:
- 	return nvme_status_to_errno(ret, false);
+@@ -2048,6 +2048,43 @@ cleanup_exit:
+ 	return found;
  }
  
 +/*
-+ * Given a controller name, create a ctrl_list_item with its
-+ * attributes and compare the attributes against the connect args
-+ * given.
-+ * Return true/false based on whether it matches
++ * Look through the system to find an existing controller whose
++ * attributes match the connect arguments specified
++ * If found, a string containing the controller name (ex: "nvme?")
++ * is returned.
++ * If not found, a NULL is returned.
 + */
-+bool ctrl_matches_connectargs(char *name, struct connect_args *args)
++char *find_ctrl_with_connectargs(struct connect_args *args)
 +{
-+	struct ctrl_list_item *ctrl;
-+	bool found = false;
++	struct dirent **devices;
++	char *devname = NULL;
++	int i, n;
 +
-+	ctrl = malloc(sizeof(*ctrl));
-+	if (!ctrl) {
-+		fprintf(stderr, "Failed to allocate controller list element\n");
-+		return false;
++	n = scandir(SYS_NVME, &devices, scan_ctrls_filter, alphasort);
++	if (n < 0) {
++		fprintf(stderr, "no NVMe controller(s) detected.\n");
++		return NULL;
 +	}
-+	memset(ctrl, 0, sizeof(*ctrl));
 +
-+	if (get_nvme_ctrl_info(name, SYS_NVME, ctrl, NVME_NSID_ALL))
-+		goto cleanup_exit;
++	for (i = 0; i < n; i++) {
++		if (ctrl_matches_connectargs(devices[i]->d_name, args)) {
++			devname = strdup(devices[i]->d_name);
++			if (devname == NULL)
++				fprintf(stderr, "no memory for ctrl name %s\n",
++						devices[i]->d_name);
++			goto cleanup_devices;
++		}
++	}
 +
-+	if (!strcmp(ctrl->subsysnqn, args->subsysnqn) &&
-+	    !strcmp(ctrl->transport, args->transport) &&
-+	    (!strcmp(ctrl->traddr, args->traddr) ||
-+	     !strcmp(args->traddr, "none")) &&
-+	    (!strcmp(ctrl->trsvcid, args->trsvcid) ||
-+	     !strcmp(args->trsvcid, "none")) &&
-+	    (!strcmp(ctrl->host_traddr, args->host_traddr) ||
-+	     !strcmp(args->host_traddr, "none")))
-+		found = true;
++cleanup_devices:
++	for (i = 0; i < n; i++)
++		free(devices[i]);
++	free(devices);
 +
-+cleanup_exit:
-+	free_ctrl_list_item(ctrl);
-+	free(ctrl);
-+
-+	return found;
++	return devname;
 +}
 +
  int __id_ctrl(int argc, char **argv, struct command *cmd, struct plugin *plugin, void (*vs)(__u8 *vs, struct json_object *root))
  {
  	const char *desc = "Send an Identify Controller command to "\
 diff --git a/nvme.h b/nvme.h
-index 470f702..2fecb68 100644
+index 2fecb68..b91a22c 100644
 --- a/nvme.h
 +++ b/nvme.h
-@@ -179,6 +179,17 @@ enum {
- 	BINARY,
- };
+@@ -190,6 +190,7 @@ struct connect_args {
+ #define SYS_NVME		"/sys/class/nvme"
  
-+struct connect_args {
-+	char *subsysnqn;
-+	char *transport;
-+	char *traddr;
-+	char *trsvcid;
-+	char *host_traddr;
-+};
-+
-+#define SYS_NVME		"/sys/class/nvme"
-+
-+bool ctrl_matches_connectargs(char *name, struct connect_args *args);
+ bool ctrl_matches_connectargs(char *name, struct connect_args *args);
++char *find_ctrl_with_connectargs(struct connect_args *args);
  char *__parse_connect_arg(char *conargs, const char delim, const char *fieldnm);
  
  extern const char *conarg_traddr;
