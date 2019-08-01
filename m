@@ -2,74 +2,78 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EDD57E64E
-	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 01:15:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 370C77E648
+	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 01:14:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=4OLFfcMqM9v5/uqDtCZf8jqJr+31B34Z9oBrA7LhqfQ=; b=Pp/
-	f+fPni8W2vZpgmQylgaVgKo6N+mXD8aqCbI4aje9MNoz+OlYoeLRr3ZwloOcqvP3hFBGF+LmrMJWJ
-	f/xl4vKZoCo+emzlOP6kf0AOY6NASGEkDzyRwFLvTE3WvylfW6bDNtvZBm5OCqt9xFPdV2703sAqL
-	DcFa2bvZ50fjQqOOdX7VXA52/8IwHki4djichDyUwPt767sxZPxYiCyR5CsAuJM4oQL7Sql4STqvU
-	sycWHX2yClcKWINZXKWxrcV9VoeXdjllcy1JuWKbhZ1CaOarx855XW+gWgga6uYqsJmpq6XPqW6lB
-	MYY+ve98RAZ2Rdj41qnnEPl8koTv/MQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=z1lY+9+KqEoAgZsG2jm8XRap6bfHdRykRFg/wGYiP2E=; b=oWPrIggyDWGAakghnNGKUjgZIH
+	8Za5Ene9UdFyHKnflgZ2hwwEBFuZUYR5NfFgsDQyBJmN/2Fzv3jWwJ+pB0l/lS4YdxMhxJtFWcbS8
+	Cr6xoDc/ULH/uo8SsoDRA4QQKafusD+JioWocfP/A3Eync5v7Wl3mBMRvSXkY4ssy6uKjtJ7N2fMp
+	aegYCsIZ4OIjQwrJS0ZjYhQtS47oMNGpG7Ph9/e/hK0StGJ+Pvf5Gj+rCWak/m31SmIOqUNdsJAwe
+	C3vmois+h0EpsORsfFZWmst3D1olUDWsRHELKdI+ghhEXyly6Hi0f4CDgNGXT6LGAgdolHD01D5Df
+	ddpEAylw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htKHg-0005vy-Gj; Thu, 01 Aug 2019 23:14:56 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1htKGs-00059Z-G8; Thu, 01 Aug 2019 23:14:06 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htKGn-00057e-3B
- for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 23:14:03 +0000
-Received: by mail-pl1-x635.google.com with SMTP id 4so25852312pld.10
+ id 1htKGm-00057g-O3
+ for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 23:14:02 +0000
+Received: by mail-pl1-x643.google.com with SMTP id az7so32822124plb.5
  for <linux-nvme@lists.infradead.org>; Thu, 01 Aug 2019 16:13:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=9uRK8PrwAmvNAjWlI/WqMxYN0MICcUBmbPxoHwI4HMw=;
- b=U1Ro6St1GaNh5vCiDG2RDue8SVaHMye84KZOFIYxf0OL43eV5zp0Mu8A2NWfGXXKx/
- Wp4DTQlfj3iRtXlHuQwV/c6HpdsFBNQPhw9M0Qo1UGieXPcuo4As/slh6luAdFsFhoC5
- 9vcSGaA6JAMVCeiyc3CKJJkTYTlt5Qn7dSxIqs6PVI8IwElHGbtkYZJfTL2H8sWahc/m
- +8E3L4eJcXlRyVBPRvbGSzVK/FNIf4dWDBObKsGbhWb3OabiW1xKJ7OFoUTeyoj/I/pK
- L+8sjDSFv6dokKnjrfiMkGasdC53Aes8C3zdwYO4DGfUoYOxE02kth5KxZ/y6JF093d5
- f7CA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=ZyeUwWZrjoJk8YuG5ItQD/AE4j2AEnG7HJfeMyj3vvY=;
+ b=I/UNBd8fNZ42t0xf3qtgNGDiZ/kxYzSq8w7R9ip+rRuCCvQYpr+wjvCAgQ54DK1bMw
+ YX4e/0RGaTDIFn/HBIYdPy22IeJifi4H7sqYDcuQQC4RhXk6UJY2uAnl19P/EKBCZLu8
+ coWb/2tcNrIATrvQn5xfMIPLXftC0oAQWQcg1jhWLVDQKw/rSTOPS7fMJjh6kcMIEzXw
+ rN1TfzOIZNLoGH2ZImXiFdU8lFLgfehn45yGXe3yJB05HRzKj0n5e8rURJ0ZeYW6TOmV
+ Av+rv1c6r/WmUpKZYlWrRk19xvN+OcATZ6Vj6Q8nE0J5h2U2I9peX0oOnrUeDAWOgxGT
+ nB4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=9uRK8PrwAmvNAjWlI/WqMxYN0MICcUBmbPxoHwI4HMw=;
- b=Oi+h008lZ9W82wrVEFW2pY4GHE2gROixr2Ge+TGKnvtQJJS24brhAl30gRypSSK2TT
- gUYgB+kGiSWsWrfAzAtw933jjgZyuYTz+k3j6kjm+eI77eQ5phqrARIa/cAP7NG6rYn7
- ZrkwpkI9a9d7ne2dEmcLCXvz5a1ffcuMOOIrzXBMrsljuzsazX+JzOaxkScTvu9Mn1Zs
- 2ueXcy0cDAGyfkxHjEKf1+cm6cJF2CHrPh9jYq2LhdpngxGldXdo9bHoznr6dhihC5Vd
- JEa5noGwDrvbAz01kPh5EqrW9rJssCNx0oo1nammK+oVmMXE3xCHxQJ6aSHvQOwwEMI8
- SjOw==
-X-Gm-Message-State: APjAAAWAQRgxcycWmOUX/7wzUbwjzw8nMvVmJlSJNJ3cF9KOp4VR/bzy
- JXD5mOBVNcMp6Y+renbjaCen8vc0
-X-Google-Smtp-Source: APXvYqy7N0bmQu7Yg7CohD4xdfSO3MDv81gJYTgGJkAlXZ/ksow8gBeslevI7UdHEEQW/bq2WmFJ8Q==
-X-Received: by 2002:a17:902:e383:: with SMTP id
- ch3mr127893838plb.23.1564701236653; 
- Thu, 01 Aug 2019 16:13:56 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=ZyeUwWZrjoJk8YuG5ItQD/AE4j2AEnG7HJfeMyj3vvY=;
+ b=jXXIHgcDPrJFMub/E5cWxyc8nI+yWVykjmlTaNg2nWqjwmwnYZq47KaTlwUnjIZTjo
+ xw2mvHjji8kp+zYDJo9TyQ/GcAx4A83N6FWPDIdjNONKuwUGP55dZH0gCmsQpeWfxHqP
+ dPco6LQw4NnunS5Uvtv+D6+zIAHtyJ5EkVXBg7sC0tFwIfgYn+7m1WklLYy+Sies0oEf
+ RBuMHtqzT2sr3w6Na8DiGxfO3bOasSBh4thKfEz7SRzGd/k/yuG9DohKedd0VyA9dc7H
+ BKEdOL7bXzIUvroizlz1SykF49gFfZMyDL7/dSM2w1ajMyC9+s7SCI5cBFFinxlKXBW8
+ dSWg==
+X-Gm-Message-State: APjAAAV9+6Wl02SJpe4bu+oMbjOgjwFKiXXmUBOXzkwJtDssjcHQCDoP
+ FeMY77jdRcKKQqcOM9vAInoQwG68
+X-Google-Smtp-Source: APXvYqxoMd5UNAV2ALEBqe6A7jEDJ7W4cy3zNj3Ie3M9wD0nOLJnmgj+Z/yGhi7yKyWtXHEwTMrH4g==
+X-Received: by 2002:a17:902:2ae7:: with SMTP id
+ j94mr128274315plb.270.1564701237430; 
+ Thu, 01 Aug 2019 16:13:57 -0700 (PDT)
 Received: from pallmd1.broadcom.com ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id q144sm74358669pfc.103.2019.08.01.16.13.55
+ by smtp.gmail.com with ESMTPSA id q144sm74358669pfc.103.2019.08.01.16.13.56
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 01 Aug 2019 16:13:55 -0700 (PDT)
+ Thu, 01 Aug 2019 16:13:56 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v3 00/10] nvme-cli: nvmf auto-connect scripts
-Date: Thu,  1 Aug 2019 16:13:38 -0700
-Message-Id: <20190801231348.21397-1-jsmart2021@gmail.com>
+Subject: [PATCH v3 01/10] nvme-cli: ignore arguments that pass in "none"
+Date: Thu,  1 Aug 2019 16:13:39 -0700
+Message-Id: <20190801231348.21397-2-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.13.7
+In-Reply-To: <20190801231348.21397-1-jsmart2021@gmail.com>
+References: <20190801231348.21397-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_161401_136492_97F4DB3B 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20190801_161400_811063_4D67F452 
+X-CRM114-Status: GOOD (  14.52  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:635 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:643 listed in]
  [list.dnswl.org]
  0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
  in digit (jsmart2021[at]gmail.com)
@@ -95,93 +99,74 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: James Smart <jsmart2021@gmail.com>
+Cc: James Smart <jsmart2021@gmail.com>, Sagi Grimberg <sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This is a formal posting of the patches, not an RFC.
+As we want to support discovery uevents over different
+transports, we want to allow the kernel to provide missing
+information in the form of none and have nvme-cli properly
+ignore it.
 
-This posting is a combination of the RFC postings of nvme-fc
-auto-connect scripts by Hannes, Sagi, and I. The auto-connect
-scripts are utilized on nvme-fc and for persistent discovery
-controllers that send AENs.  It does not contain the code that
-handles the persistent discovery controller AEN and generates the
-event.
+One example is the host_traddr. If it is not set (which means
+that the default route determined the host address) we will
+want to do the same for newly discovered controllers.
 
-The auto-connect scripts are now commonized with the exception
-of the nvme-fc boot connections service.  It's expected that both
-the persistent discovery controllers and nvme-fc can post the same
-udev event. Whenever the discovery aen generates an event, the
-new --device=<name> argument will be used to identify the persistent
-discovery controller. When --device is used, the other connect
-attributes will be specified, set to the values of the discovery
-controller, and will be used by the cli to validate the device is
-who it should be or a new discovery controller will be created.
-When nvme-fc generates it's events, it will specify --device=none
-and specify the discovery controller addressing arguments.  If a
-persistent discovery controller exists on nvme-fc, will do nothing
-special and AEN's from it will follow the --device=<name> syntax.
+So allow users to pass 'none' arguments as well.
 
-The udev event handler supports both the new event to be used
-by discovery controllers as well as the existing nvme-fc transport
-event. The nvme-fc transport will be migrated to issue the new
-event syntax. The udev script will continue to support the older
-style nvme-fc event info in case the cli is running against an
-older kernel.
+Example:
+  nvme connect-all ... --hostnqn=none --hostid=none --host_traddr=none
 
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+Signed-off-by: James Smart <jsmart2021@gmail.com>
+Reviewed-by: Hannes Reinecke <hare@suse.com>
+Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+---
+ fabrics.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-v2:
-  Change "ctlr" to "ctrl" in fprintf string in patch 7.
-  Swap enablement order of systemd vs udev in patch 10.
-
-v3:
-  Revise patch 10 scripts:
-    70-nvmf-autoconnect.rules:
-      change from "/usr/bin/systemctl" to "systemctl".
-      remove blank line at end of file
-    Created dracut-conf, systemd, udev-rules sub directories under
-       nvmf-autoconnect.  Moved the respective files into their
-       proper subdirectory. Updated the makefile install targets
-         accordingly.
-
-
-James Smart (8):
-  nvme-cli: ignore arguments that pass in "none"
-  nvme-cli: allow discover to address discovery controller by persistent
-    name
-  nvme-cli: Refactor to create a get_nvme_ctrl_info routine
-  nvme-cli: extend ctrl_list_item for connect attributes
-  nvme-cli: Add routine to compare ctrl_list_item to connect args
-  nvme-cli: Add routine to search for controller with specific
-    attributes
-  nvme-cli: Expand --device argument processing
-  nvme-cli: nvmf auto-connect scripts
-
-Sagi Grimberg (2):
-  nvme-cli: support persistent connections to a discovery controller
-  nvme-cli: add --quiet option
-
- Makefile                                           |  22 +-
- fabrics.c                                          | 118 ++++++++---
- fabrics.h                                          |   2 +
- nvme.c                                             | 226 ++++++++++++++++++---
- nvme.h                                             |  24 +++
- nvme.spec.in                                       |   9 +
- .../dracut-conf/70-nvmf-autoconnect.conf           |   1 +
- .../systemd/nvmefc-boot-connections.service        |   9 +
- nvmf-autoconnect/systemd/nvmf-connect.target       |   2 +
- nvmf-autoconnect/systemd/nvmf-connect@.service     |  14 ++
- .../udev-rules/70-nvmf-autoconnect.rules           |  17 ++
- 11 files changed, 385 insertions(+), 59 deletions(-)
- create mode 100644 nvmf-autoconnect/dracut-conf/70-nvmf-autoconnect.conf
- create mode 100644 nvmf-autoconnect/systemd/nvmefc-boot-connections.service
- create mode 100644 nvmf-autoconnect/systemd/nvmf-connect.target
- create mode 100644 nvmf-autoconnect/systemd/nvmf-connect@.service
- create mode 100644 nvmf-autoconnect/udev-rules/70-nvmf-autoconnect.rules
-
+diff --git a/fabrics.c b/fabrics.c
+index 32c3a9c..5757aaf 100644
+--- a/fabrics.c
++++ b/fabrics.c
+@@ -578,7 +578,7 @@ add_argument(char **argstr, int *max_len, char *arg_str, char *arg)
+ {
+ 	int len;
+ 
+-	if (arg) {
++	if (arg && strcmp(arg, "none")) {
+ 		len = snprintf(*argstr, *max_len, ",%s=%s", arg_str, arg);
+ 		if (len < 0)
+ 			return -EINVAL;
+@@ -671,14 +671,14 @@ retry:
+ 		return -EINVAL;
+ 	p += len;
+ 
+-	if (cfg.hostnqn) {
++	if (cfg.hostnqn && strcmp(cfg.hostnqn, "none")) {
+ 		len = sprintf(p, ",hostnqn=%s", cfg.hostnqn);
+ 		if (len < 0)
+ 			return -EINVAL;
+ 		p += len;
+ 	}
+ 
+-	if (cfg.hostid) {
++	if (cfg.hostid && strcmp(cfg.hostid, "none")) {
+ 		len = sprintf(p, ",hostid=%s", cfg.hostid);
+ 		if (len < 0)
+ 			return -EINVAL;
+@@ -713,7 +713,7 @@ retry:
+ 		p += len;
+ 	}
+ 
+-	if (cfg.host_traddr) {
++	if (cfg.host_traddr && strcmp(cfg.host_traddr, "none")) {
+ 		len = sprintf(p, ",host_traddr=%s", cfg.host_traddr);
+ 		if (len < 0)
+ 			return -EINVAL;
 -- 
 2.13.7
 
