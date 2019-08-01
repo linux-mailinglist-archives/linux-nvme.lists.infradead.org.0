@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A09E07D62D
-	for <lists+linux-nvme@lfdr.de>; Thu,  1 Aug 2019 09:17:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB1257D62C
+	for <lists+linux-nvme@lfdr.de>; Thu,  1 Aug 2019 09:17:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,34 +11,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=eMtTTmwc0u51qbO3ABCBlMKVPJryErQY7BDEpZY+7G4=; b=lHneUPXpPqACoxaHgkMlhsOgbE
-	BBfCPLKIE8lE1f2d+08rptFuydHK8JWMRXgtWkybueRMdTqladw8d9JhOXbud2WdgJOLVCWJX80IY
-	XfClG9NannODQ9v9AN3/p7I4roxtqL0QicR5N7v7bdA+QT9I9PxRPAGervg6Ow+EyqY5hlAAjgUhX
-	zqiW6YbnoQY6GwLxekkCbFgPO5RatTSGXZeNjqtyPcv8eUruo8klYPtWeIFcPzPl2XI6uLng9KQvo
-	rtcEIN+AEjwh9DDJG+1HSJj9nyk0mP9yi6AiOPij9KeNjVfwdSRhupC+2x7Brq06h3jCjICaxEx6A
-	KQlDRoQQ==;
+	bh=3Uzdan7E/BTXThpbrNvgJ3yBfLIsqtRW9T8Q1cvV8ms=; b=ScsUfGKLP3FA6TndL0prTDUtkY
+	PpxDbwS6J+ssBRJi4uoHmRAlZSQQiP1ynCuO/EKkXPl3k4ua1wFKINWmCvJL2cauRLGrIjOIHVoA5
+	5cwFqRhMEouCqA+w7eNF7OL9gJ7oM0L0K6hdTymU/Iky4nJ3+Dff5I+6WHXXR+a64okzkKnsee/5v
+	YCOo290kduaMLTY/4LKWznDJZBmWNFtHFeGqfo6uscvMPLDbZc7KgVqLp4DQ+BrHV473DhfC3FGr3
+	iwOY0q+xRyhktoxzVIJGCb5nKr04i6CEOdhZsyo+n8nMsji1A1HhOAuz6rqCv86kJ3VZl9pp46BX4
+	Oj7vWxbA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1ht5Ki-0002Zn-Kw; Thu, 01 Aug 2019 07:17:04 +0000
+	id 1ht5Kb-0002VZ-4h; Thu, 01 Aug 2019 07:16:57 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1ht5KT-0002UV-Mr
+ id 1ht5KT-0002UW-P6
  for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 07:16:51 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 0969CADC4;
+ by mx1.suse.de (Postfix) with ESMTP id 09F73AE9E;
  Thu,  1 Aug 2019 07:16:46 +0000 (UTC)
 From: Hannes Reinecke <hare@suse.de>
 To: Christoph Hellwig <hch@lst.de>
-Subject: [PATCH 1/2] nvme: skip namespaces which are about to be removed
-Date: Thu,  1 Aug 2019 09:16:43 +0200
-Message-Id: <20190801071644.66690-2-hare@suse.de>
+Subject: [PATCH 2/2] nvme: do not remove namespaces during reset
+Date: Thu,  1 Aug 2019 09:16:44 +0200
+Message-Id: <20190801071644.66690-3-hare@suse.de>
 X-Mailer: git-send-email 2.16.4
 In-Reply-To: <20190801071644.66690-1-hare@suse.de>
 References: <20190801071644.66690-1-hare@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_001649_947830_5B1A6D50 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20190801_001649_956667_43013183 
+X-CRM114-Status: GOOD (  12.18  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -68,77 +68,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-nvme_ns_remove() will only remove the namespaces from the list at
-the very last step, so we might run into situations where we iterate
-over namespaces which are about to be deleted.
-To avoid crashes we should be skipping all namespaces with the
-NVME_NS_REMOVING flag set.
+Whenever the controller is resetting or connecting we cannot make
+any decisions about the attached namespaces, and consequently we
+shouldn't remove them. So skip namespace removal during reset;
+a scan will be triggered anyway after reconnecting which will
+clean up any stale namespaces.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- drivers/nvme/host/core.c | 19 ++++++++++++++++++-
- 1 file changed, 18 insertions(+), 1 deletion(-)
+ drivers/nvme/host/core.c | 25 ++++++++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index fcfff0a17a17..177fa4185775 100644
+index 177fa4185775..b24cf21f34d0 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -1303,9 +1303,12 @@ static void nvme_update_formats(struct nvme_ctrl *ctrl)
- 	struct nvme_ns *ns;
+@@ -3410,7 +3410,7 @@ static int nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+ 	return ret;
+ }
  
- 	down_read(&ctrl->namespaces_rwsem);
--	list_for_each_entry(ns, &ctrl->namespaces, list)
-+	list_for_each_entry(ns, &ctrl->namespaces, list) {
-+		if (test_bit(NVME_NS_REMOVING, &ns->flags))
-+			continue;
- 		if (ns->disk && nvme_revalidate_disk(ns->disk))
- 			nvme_set_queue_dying(ns);
-+	}
- 	up_read(&ctrl->namespaces_rwsem);
- 
- 	nvme_remove_invalid_namespaces(ctrl, NVME_NSID_ALL);
-@@ -1698,6 +1701,10 @@ static void __nvme_revalidate_disk(struct gendisk *disk, struct nvme_id_ns *id)
+-static void nvme_ns_remove(struct nvme_ns *ns)
++static void __nvme_ns_remove(struct nvme_ns *ns)
  {
- 	struct nvme_ns *ns = disk->private_data;
+ 	if (test_and_set_bit(NVME_NS_REMOVING, &ns->flags))
+ 		return;
+@@ -3439,6 +3439,21 @@ static void nvme_ns_remove(struct nvme_ns *ns)
+ 	nvme_put_ns(ns);
+ }
  
-+	/* if ns is removing we cannot mangle with the request queue */
-+	if (test_bit(NVME_NS_REMOVING, &ns->flags))
++static void nvme_ns_remove(struct nvme_ns *ns)
++{
++	/*
++	 * We cannot make any assumptions about namespaces during
++	 * reset; in particular we shouldn't attempt to remove them
++	 * as I/O might still be queued to them.
++	 * So ignore this call during reset and rely on the
++	 * rescan after reset to clean up things again.
++	 */
++	if (ns->ctrl->state == NVME_CTRL_RESETTING ||
++	    ns->ctrl->state == NVME_CTRL_CONNECTING)
++		return;
++	__nvme_ns_remove(ns);
++}
++
+ static void nvme_validate_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+ {
+ 	struct nvme_ns *ns;
+@@ -3458,6 +3473,10 @@ static void nvme_remove_invalid_namespaces(struct nvme_ctrl *ctrl,
+ 	struct nvme_ns *ns, *next;
+ 	LIST_HEAD(rm_list);
+ 
++	if (ctrl->state == NVME_CTRL_RESETTING ||
++	    ctrl->state == NVME_CTRL_CONNECTING)
 +		return;
 +
- 	/*
- 	 * If identify namespace failed, use default 512 byte block size so
- 	 * block layer can use before failing read/write for 0 capacity.
-@@ -2776,6 +2783,10 @@ static int nvme_dev_user_cmd(struct nvme_ctrl *ctrl, void __user *argp)
- 		ret = -EINVAL;
- 		goto out_unlock;
- 	}
-+	if (test_bit(NVME_NS_REMOVING, &ns->flags)) {
-+		ret = -ENODEV;
-+		goto out_unlock;
-+	}
- 
- 	dev_warn(ctrl->device,
- 		"using deprecated NVME_IOCTL_IO_CMD ioctl on the char device!\n");
-@@ -3255,6 +3266,10 @@ static struct nvme_ns *nvme_find_get_ns(struct nvme_ctrl *ctrl, unsigned nsid)
- 		if (ns->head->ns_id == nsid) {
- 			if (!kref_get_unless_zero(&ns->kref))
- 				continue;
-+			if (test_bit(NVME_NS_REMOVING, &ns->flags)) {
-+				nvme_put_ns(ns);
-+				continue;
-+			}
- 			ret = ns;
- 			break;
- 		}
-@@ -3445,6 +3460,8 @@ static void nvme_remove_invalid_namespaces(struct nvme_ctrl *ctrl,
- 
  	down_write(&ctrl->namespaces_rwsem);
  	list_for_each_entry_safe(ns, next, &ctrl->namespaces, list) {
-+		if (test_bit(NVME_NS_REMOVING, &ns->flags))
-+			continue;
- 		if (ns->head->ns_id > nsid || test_bit(NVME_NS_DEAD, &ns->flags))
- 			list_move_tail(&ns->list, &rm_list);
- 	}
+ 		if (test_bit(NVME_NS_REMOVING, &ns->flags))
+@@ -3468,7 +3487,7 @@ static void nvme_remove_invalid_namespaces(struct nvme_ctrl *ctrl,
+ 	up_write(&ctrl->namespaces_rwsem);
+ 
+ 	list_for_each_entry_safe(ns, next, &rm_list, list)
+-		nvme_ns_remove(ns);
++		__nvme_ns_remove(ns);
+ 
+ }
+ 
+@@ -3618,7 +3637,7 @@ void nvme_remove_namespaces(struct nvme_ctrl *ctrl)
+ 	up_write(&ctrl->namespaces_rwsem);
+ 
+ 	list_for_each_entry_safe(ns, next, &ns_list, list)
+-		nvme_ns_remove(ns);
++		__nvme_ns_remove(ns);
+ }
+ EXPORT_SYMBOL_GPL(nvme_remove_namespaces);
+ 
 -- 
 2.16.4
 
