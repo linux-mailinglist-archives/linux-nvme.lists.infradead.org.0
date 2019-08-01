@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92A0E7E64A
-	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 01:14:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 435647E64C
+	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 01:14:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,69 +11,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=FgapxMCMturyGtZMtKHGSzR2KkfnyCCCQNsX1Uq+cUw=; b=iqFfT/+aA7Hr+Yw/xhC7hmr9EM
-	4I41XF5JjFNHuzFCtCe/KBtkWSuay44vZ2nR+rxE4DXYjV5SgWcDDmVYEYyQf6ROZxRKbPKMtNXg4
-	T4sXB7TtLIdnSF9fy5PFmK9nFgttXTxOq/zgKdtlUyvmaN7FXMbycXeQiOlGEM3c+zBKDO4w9v08p
-	yDjbWG680GsxMx6sOvGHbxQblIaTVq9zjIbMhD/Rg3Ql7KcL0qHMPJbOGMQMPAysb2VIT28XNb1Gr
-	DefI3wMPyTAnHDKrRHrwE4z5+j/5pJMplLW3soOoz0eabPMNzQ8WGOq7p79GMF3sdX586KConA3L8
-	q+1EkjNA==;
+	bh=UjjSHfdE48Pmm6aTYnpSymNnWCVUnqdHNf2WZ11UX6k=; b=nV8dl5Pk7sx1A8RkF9sZSeWexK
+	j3khGw0Ebtk+Hq1O7O/HRQMVNEmLcKqdQi08NgrOJBsRXDBn+1//tQ7Bq5QmUSWFH08ri0xAzQr51
+	r2jug4VVDfzC2Dz7W7fto02Ue75TGxuPaVm5QxsKqplXzir6a0i2Gs4kW17Fy6yTytV7B3VwZHDE2
+	cJE++PZSpMeMQ1y32AHO/1d+fOfvz87LhQfgtx64fW/2DmN6q1UJlzwn2TnHnxagk8431YW0BRK6Z
+	VplF0aXxLSqgf55hLJR12Wh+OFdMwn6K9//9Xxl6o85VGsNfgZihowED+XKY3rKdZbFfBmxiLqfkB
+	GXQ5e++w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htKH2-0005FA-76; Thu, 01 Aug 2019 23:14:16 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1htKHM-0005bU-9Q; Thu, 01 Aug 2019 23:14:36 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htKGm-00057l-Oo
- for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 23:14:02 +0000
-Received: by mail-pg1-x544.google.com with SMTP id l21so35017967pgm.3
- for <linux-nvme@lists.infradead.org>; Thu, 01 Aug 2019 16:14:00 -0700 (PDT)
+ id 1htKGn-00058P-L0
+ for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 23:14:03 +0000
+Received: by mail-pg1-x529.google.com with SMTP id t132so35012633pgb.9
+ for <linux-nvme@lists.infradead.org>; Thu, 01 Aug 2019 16:14:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=18sy6RLW5pXnKUEWKTdvq8qFocD23iqBZP/xrfb/5F4=;
- b=gbkIooKSI2BGWRdYO0M8fQg36PgjMxXTiS6WWEuiyFfLMY8mpgXWwWTkQ2E/Sc2PJr
- JholtAgzFX5wnbKk/RQWS8vDRnc3BoWl1WZhl6nQbMBr/6huT4/6cL2Hmd/fQMqDAXUb
- WcZM8A+v1LHIk9bOP98V0HPrDIWJKTn36D/0EhXeYoHapxmC97dR54iE7VYbzGBpTLda
- M28IhN7Mm6vyUfFxB7CBGNvQB9qtG0byTX3nWmuuGOjICHjmwJTT2aJpuFYp+REq9gs1
- LKKW/mj0Rlj6gL2VnVY8z2CLEij+0JGyHzjbl+t/H1c2rvW4gSMd4Fbs1VHXXjGbIZVJ
- 92uA==
+ bh=YgOirw3E1YFT5hqbL/JkN4DqMFGUk0MFtMU/VdSq3Tw=;
+ b=NWhZ48e/4cARMAD4QwluYun93HCKTsgHrjqQ2cJwUpF5ZF7J5HHr00jAtl44zw0e3w
+ fRvcUdcL3uaomaXsdXncwk53XLUifWwNu9uLmPcGbjJxWCvZFUsic0X2dASL8QvqvIOo
+ e+OKdPrHRKwrK1DxSgg+XmVPy3xazZY2OHgcOQdPc3YIFTd8gS4HeJflU+vCi6nG8AVW
+ xjGjj4Io3I/Nsm46CNEvRvYjhmpmBKl7h+OOYEFzvBB/rjAeL1CvGPQupjWTExN149UN
+ NkGqob6ocP26MTC8BHXWebVRBY+rNvVs3H/f27krFTdijdxirLb7qQO/L+3B/pM5w6lW
+ Dc9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=18sy6RLW5pXnKUEWKTdvq8qFocD23iqBZP/xrfb/5F4=;
- b=q00jDyt5uOvwwa3rcDcTpQcZP2FnYzF4tWnX2wDEHstTpInzQ5DarmmYrytMZQbAOG
- Fy52d+xAzWuy9FaWLj/jLoIxJqDsJbrFSN2XISD2BK5kbD84WGF2pxr+c6Q0plefY6T0
- /4toCBMvlzBnqIrkV+z/O0NANVyRwHIXSn+jPkW1hFyQ7rifNNhJt0fQOQIx8W7NPtZh
- /QkNCyp8pmZK7CUfqUpQ+suogdL6jRtIHqpaZP8Qfr4XN3qczfn8a+hy1VIg1bdTAQg6
- 4ob755iTO1JLZfKHCq7CHMEilDxKKG2zCw7lHC7U5oGV3RpzkN38D5Hx4RwOPKB8xjqj
- Yv2Q==
-X-Gm-Message-State: APjAAAVYgvinwoRwSYdlcQ1EcgN2UgpoBwpwj7hwNJocgUlxS2kDeeL1
- U5Joi3nmDvXPk1qX9bu98dXm6JuN
-X-Google-Smtp-Source: APXvYqx6k3piEhu7sEPl3orVJCSlXmwGPoWbF1gmpnV41E4WCscOKOio7H0fgjPLX6szCme7l6HHfw==
-X-Received: by 2002:a63:1045:: with SMTP id 5mr120658503pgq.165.1564701239713; 
- Thu, 01 Aug 2019 16:13:59 -0700 (PDT)
+ bh=YgOirw3E1YFT5hqbL/JkN4DqMFGUk0MFtMU/VdSq3Tw=;
+ b=X3lN3f7zXFH6Us5SSq1OYiHqVqHXwNrlmSeFegt6+Tzn/X/z2GVe8fmX5leDiXjXgg
+ 8OKmk62n/dNT/lKXqKNwalWu/mQK26ho3gmbkcsuH2OuK7lAbTKza7cze0PpiJd4jvf1
+ rZAGHY1LYdtL3+Yg5UfFc4AyrzjkEtRle2GDDwNHmBlgZVwPkZ/Mho91K8arPIssNqT1
+ QUBlK9ebe/SVzLVimTiJe5bnj6sHbXsZgfQowSR2zAveP9yCyGTh5WU6p/97CWfIiX+5
+ a3Fcj8ddTlBUZgB/8F8cMusVGLkhQN/gY+rzbEaGG0MR6gnF84DX3oc21LtqsCxrZgLd
+ 3QoA==
+X-Gm-Message-State: APjAAAWZReuDXCpRhJREyeDu/MAjvdgFBVkq+4W16ThxldR1+vthdhzq
+ 61TYtE1X8cDDw+w6HlKJ6kIcvU/B
+X-Google-Smtp-Source: APXvYqxO/sJ0lmyW+8pktm+4S0J7BFcP9BdYxSjDj1ibIfU/TXcVf8V4Ss9FBzLYcAtrQG3k4varEw==
+X-Received: by 2002:a63:e148:: with SMTP id h8mr10316900pgk.275.1564701240549; 
+ Thu, 01 Aug 2019 16:14:00 -0700 (PDT)
 Received: from pallmd1.broadcom.com ([192.19.223.252])
  by smtp.gmail.com with ESMTPSA id q144sm74358669pfc.103.2019.08.01.16.13.59
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 01 Aug 2019 16:13:59 -0700 (PDT)
+ Thu, 01 Aug 2019 16:14:00 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v3 04/10] nvme-cli: Refactor to create a get_nvme_ctrl_info
- routine
-Date: Thu,  1 Aug 2019 16:13:42 -0700
-Message-Id: <20190801231348.21397-5-jsmart2021@gmail.com>
+Subject: [PATCH v3 05/10] nvme-cli: extend ctrl_list_item for connect
+ attributes
+Date: Thu,  1 Aug 2019 16:13:43 -0700
+Message-Id: <20190801231348.21397-6-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.13.7
 In-Reply-To: <20190801231348.21397-1-jsmart2021@gmail.com>
 References: <20190801231348.21397-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_161400_811057_10FE7481 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20190801_161401_686617_87739837 
+X-CRM114-Status: GOOD (  19.86  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:529 listed in]
  [list.dnswl.org]
  0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
  in digit (jsmart2021[at]gmail.com)
@@ -108,116 +108,147 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 In preparation for searching controllers to match with connect args:
 
-Refactor the get_nvme_subsystem_info() routine to take the portion
-that creates a ctrl_list_item and sets its values and put it in a
-separate get_nvme_ctrl_info() routine.
+Extend the ctrl_list_item with elements that can be compared against
+connect arguments. Extend the get_nvme_ctrl_info() routine to set
+the fields.
+
+subsysnqn was added as the ctrl_list_item may now be used outside of
+a subsystem listing.
+
+traddr, trsvid, and host_traddr are added. Their values come from
+the address attribute.  A new parsing routine was added that extracts
+the values from the address string.
+
+The new parsing routine and supporting field names strings are
+declared as a global interface as a subsequent patch will call it
+from the fabrics routines.
 
 Signed-off-by: James Smart <jsmart2021@gmail.com>
-Reviewed-by: Hannes Reinecke <hare@suse.com>
 Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+Reviewed-by: Hannes Reinecke <hare@suse.com>
 ---
- nvme.c | 77 ++++++++++++++++++++++++++++++++++++++----------------------------
- 1 file changed, 45 insertions(+), 32 deletions(-)
+ nvme.c | 72 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ nvme.h | 10 ++++++++++
+ 2 files changed, 82 insertions(+)
 
 diff --git a/nvme.c b/nvme.c
-index cfe3844..a5c2961 100644
+index a5c2961..b93d9da 100644
 --- a/nvme.c
 +++ b/nvme.c
-@@ -1544,10 +1544,50 @@ static void free_ctrl_list_item(struct ctrl_list_item *ctrls)
+@@ -1542,6 +1542,64 @@ static void free_ctrl_list_item(struct ctrl_list_item *ctrls)
+ 	free(ctrls->address);
+ 	free(ctrls->state);
  	free(ctrls->ana_state);
- }
- 
-+static int get_nvme_ctrl_info(char *name, char *path,
-+			struct ctrl_list_item *ctrl, __u32 nsid)
-+{
-+	char ctrl_path[512];
-+
-+	ctrl->name = strdup(name);
-+
-+	snprintf(ctrl_path, sizeof(ctrl_path), "%s/%s", path, ctrl->name);
-+
-+	ctrl->address = get_nvme_ctrl_attr(ctrl_path, "address");
-+	if (!ctrl->address) {
-+		fprintf(stderr, "%s: failed to get controller address.\n",
-+			ctrl->name);
-+		goto free_ctrl_items;
-+	}
-+
-+	ctrl->transport = get_nvme_ctrl_attr(ctrl_path, "transport");
-+	if (!ctrl->transport) {
-+		fprintf(stderr, "%s: failed to get controller transport.\n",
-+			ctrl->name);
-+		goto free_ctrl_items;
-+	}
-+
-+	ctrl->state = get_nvme_ctrl_attr(ctrl_path, "state");
-+	if (!ctrl->state) {
-+		fprintf(stderr, "%s: failed to get controller state.\n",
-+			ctrl->name);
-+		goto free_ctrl_items;
-+	}
-+
-+	if (nsid != NVME_NSID_ALL)
-+		ctrl->ana_state = get_nvme_ctrl_path_ana_state(ctrl_path, nsid);
-+
-+	return 0;	/* success */
-+
-+free_ctrl_items:
-+	free_ctrl_list_item(ctrl);
-+
-+	return 1;	/* failure */
++	free(ctrls->subsysnqn);
++	free(ctrls->traddr);
++	free(ctrls->trsvcid);
++	free(ctrls->host_traddr);
 +}
 +
- static int get_nvme_subsystem_info(char *name, char *path,
- 				struct subsys_list_item *item, __u32 nsid)
- {
--	char ctrl_path[512];
- 	struct dirent **ctrls;
- 	int n, i, ret = 1, ccnt = 0;
++static const char delim_space  = ' ';
++const char *conarg_traddr = "traddr";
++const char *conarg_trsvcid = "trsvcid";
++const char *conarg_host_traddr = "host_traddr";
++
++/*
++ * parse strings with connect arguments to find a particular field.
++ * If field found, return string containing field value. If field
++ * not found, return an empty string.
++ */
++char *__parse_connect_arg(char *conargs, const char delim, const char *fieldnm)
++{
++	char *s, *e;
++	size_t cnt;
++
++	/*
++	 * There are field name overlaps: traddr and host_traddr.
++	 * By chance, both connect arg strings are set up to
++	 * have traddr field followed by host_traddr field. Thus field
++	 * name matching doesn't overlap in the searches. Technically,
++	 * as is, the loop and delimiter checking isn't necessary.
++	 * However, better to be prepared.
++	 */
++	do {
++		s = strstr(conargs, fieldnm);
++		if (!s)
++			goto empty_field;
++		/* validate prior character is delimiter */
++		if (s == conargs || *(s - 1) == delim) {
++			/* match requires next character to be assignment */
++			s += strlen(fieldnm);
++			if (*s == '=')
++				/* match */
++				break;
++		}
++		/* field overlap: seek to delimiter and keep looking */
++		conargs = strchr(s, delim);
++		if (!conargs)
++			goto empty_field;
++		conargs++;	/* skip delimiter */
++	} while (1);
++	s++;		/* skip assignment character */
++	e = strchr(s, delim);
++	if (e)
++		cnt = e - s;
++	else
++		cnt = strlen(s);
++
++	return strndup(s, cnt);
++
++empty_field:
++	return strdup("\0");
+ }
  
-@@ -1574,38 +1614,11 @@ static int get_nvme_subsystem_info(char *name, char *path,
- 	item->nctrls = n;
+ static int get_nvme_ctrl_info(char *name, char *path,
+@@ -1577,6 +1635,20 @@ static int get_nvme_ctrl_info(char *name, char *path,
+ 	if (nsid != NVME_NSID_ALL)
+ 		ctrl->ana_state = get_nvme_ctrl_path_ana_state(ctrl_path, nsid);
  
- 	for (i = 0; i < n; i++) {
--		item->ctrls[ccnt].name = strdup(ctrls[i]->d_name);
--
--		snprintf(ctrl_path, sizeof(ctrl_path), "%s/%s", path,
--			 item->ctrls[ccnt].name);
--
--		item->ctrls[ccnt].address =
--				get_nvme_ctrl_attr(ctrl_path, "address");
--		if (!item->ctrls[ccnt].address) {
--			fprintf(stderr, "failed to get controller[%d] address.\n", i);
--			free_ctrl_list_item(&item->ctrls[ccnt]);
--			continue;
-+		if (get_nvme_ctrl_info(ctrls[i]->d_name, path,
-+				&item->ctrls[ccnt], nsid)) {
-+			fprintf(stderr, "failed to get controller[%d] info.\n",
-+					i);
- 		}
--
--		item->ctrls[ccnt].transport =
--				get_nvme_ctrl_attr(ctrl_path, "transport");
--		if (!item->ctrls[ccnt].transport) {
--			fprintf(stderr, "failed to get controller[%d] transport.\n", i);
--			free_ctrl_list_item(&item->ctrls[ccnt]);
--			continue;
--		}
--
--		item->ctrls[ccnt].state =
--				get_nvme_ctrl_attr(ctrl_path, "state");
--		if (!item->ctrls[ccnt].state) {
--			fprintf(stderr, "failed to get controller[%d] state.\n", i);
--			free_ctrl_list_item(&item->ctrls[ccnt]);
--			continue;
--		}
--
--		if (nsid != NVME_NSID_ALL)
--			item->ctrls[ccnt].ana_state =
--				get_nvme_ctrl_path_ana_state(ctrl_path, nsid);
- 		ccnt++;
- 	}
++	ctrl->subsysnqn = get_nvme_ctrl_attr(ctrl_path, "subsysnqn");
++	if (!ctrl->subsysnqn) {
++		fprintf(stderr, "%s: failed to get controller subsysnqn.\n",
++			ctrl->name);
++		goto free_ctrl_items;
++	}
++
++	ctrl->traddr = __parse_connect_arg(ctrl->address, delim_space,
++					conarg_traddr);
++	ctrl->trsvcid = __parse_connect_arg(ctrl->address, delim_space,
++					conarg_trsvcid);
++	ctrl->host_traddr = __parse_connect_arg(ctrl->address, delim_space,
++					conarg_host_traddr);
++
+ 	return 0;	/* success */
  
+ free_ctrl_items:
+diff --git a/nvme.h b/nvme.h
+index 3409515..470f702 100644
+--- a/nvme.h
++++ b/nvme.h
+@@ -160,6 +160,10 @@ struct ctrl_list_item {
+ 	char *transport;
+ 	char *state;
+ 	char *ana_state;
++	char *subsysnqn;
++	char *traddr;
++	char *trsvcid;
++	char *host_traddr;
+ };
+ 
+ struct subsys_list_item {
+@@ -175,6 +179,12 @@ enum {
+ 	BINARY,
+ };
+ 
++char *__parse_connect_arg(char *conargs, const char delim, const char *fieldnm);
++
++extern const char *conarg_traddr;
++extern const char *conarg_trsvcid;
++extern const char *conarg_host_traddr;
++
+ void register_extension(struct plugin *plugin);
+ 
+ #include "argconfig.h"
 -- 
 2.13.7
 
