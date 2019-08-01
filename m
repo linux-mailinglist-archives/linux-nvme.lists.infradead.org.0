@@ -2,68 +2,57 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F2AC7E3E4
-	for <lists+linux-nvme@lfdr.de>; Thu,  1 Aug 2019 22:25:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 173DC7E4D7
+	for <lists+linux-nvme@lfdr.de>; Thu,  1 Aug 2019 23:38:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B3vihqfkyPBNvgrggAZ/6DTibEs5dkVrP0HWfGBgu4I=; b=CKzvYOoB76o9Xt
-	9CHO6aiHw1r8zTsD1FcRwrvMt++XVb8xcTXge6e92nEPqZE9fSRrbhREDoPOZNDNONMqL5QNzj1DC
-	qrhkGMjW/Gfyj6s8lmWEbBS5C+ZfP9RWEdhT9CBtAL2j9LmtR800OdlHxaLQcTdZxNqGF2VfIcMXL
-	7cUClBYglRBf9soE+MxRKXWerdYiqslHEky6hpxsCzUPQhpFdf1ZIKQGfihNIGQGZ8XXF3O8Fk671
-	vNrXYxEfGJR8tPScSnf6gU/bv+OExCspkBPHuYC8hRXzWaCvoAQklpYTxyFDDSy4mTT9KmYl0A/Ze
-	Et12sHR+JgZjBSH/RdgA==;
+	List-Owner; bh=CuqVBV/HuaI6LwZPD9RBmG9d7PuFZHw2jEU6rIldIKc=; b=AqCQxK/n1UQjYD
+	O9IEFTpHdrk9KYBNIB6dmFv3Q8L8WDUyI0ykTb8zW3rtEjimxmGKITzbsx6v5Y1DMSVabqWwK/prn
+	EuH/hiYX4S29YrGVA19M/CDIADnoAQDQs95CFeT6pYOK59lmSl24bqpCnGFH+oC9z7LK1TBflR++1
+	QaDTL881hBZtdh9Cb53a0o0lH71gaCmwhj8QcU0MsJnSXZH8L5uBhdBFYmhyS1WrjT2u22SFs7mxD
+	LlXy3AXi7mu8Opqt5+GUgX9h/5n42Lm8pgPVVr/fh2WjEz+ksJq4yzNDNRiFvweKzBxb59MHqjEEb
+	68wvBLRMsnkMLDAoEx5A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htHdq-0001gP-1N; Thu, 01 Aug 2019 20:25:38 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1htImb-0001Gg-7I; Thu, 01 Aug 2019 21:38:45 +0000
+Received: from mga09.intel.com ([134.134.136.24])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htHdl-0001VX-IF
- for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 20:25:34 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ id 1htImW-0001GJ-SA
+ for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 21:38:42 +0000
+X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 01 Aug 2019 13:25:32 -0700
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 01 Aug 2019 14:38:39 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,335,1559545200"; d="scan'208";a="163729047"
+X-IronPort-AV: E=Sophos;i="5.64,335,1559545200"; d="scan'208";a="324373296"
 Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga007.jf.intel.com with ESMTP; 01 Aug 2019 13:25:30 -0700
-Date: Thu, 1 Aug 2019 14:22:51 -0600
+ by orsmga004.jf.intel.com with ESMTP; 01 Aug 2019 14:38:39 -0700
+Date: Thu, 1 Aug 2019 15:36:00 -0600
 From: Keith Busch <kbusch@kernel.org>
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>
-Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
- suspend" has problems
-Message-ID: <20190801202251.GD15795@localhost.localdomain>
-References: <20190730144134.GA12844@localhost.localdomain>
- <100ba4aff1c6434a81e47774ab4acddc@AUSX13MPC105.AMER.DELL.COM>
- <8246360B-F7D9-42EB-94FC-82995A769E28@canonical.com>
- <20190730191934.GD13948@localhost.localdomain>
- <7d3e0b8ba1444194a153c93faa1cabb3@AUSX13MPC105.AMER.DELL.COM>
- <20190730213114.GK13948@localhost.localdomain>
- <CAJZ5v0gxfeMN8eCNRjcXmUOkReVsdozb3EccaYMpnmSHu3771g@mail.gmail.com>
- <20190731221956.GB15795@localhost.localdomain>
- <CAJZ5v0hxYGBXau39sb80MQ8jbZZCzH0JU2DYZvn9JOtYT2+30g@mail.gmail.com>
- <70D536BE-8DC7-4CA2-84A9-AFB067BA520E@canonical.com>
+To: Hannes Reinecke <hare@suse.de>
+Subject: Re: [PATCH 1/2] nvme: skip namespaces which are about to be removed
+Message-ID: <20190801213600.GG15795@localhost.localdomain>
+References: <20190801071644.66690-1-hare@suse.de>
+ <20190801071644.66690-2-hare@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <70D536BE-8DC7-4CA2-84A9-AFB067BA520E@canonical.com>
+In-Reply-To: <20190801071644.66690-2-hare@suse.de>
 User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_132533_609948_32E14B37 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.3 (-)
+X-CRM114-CacheID: sfid-20190801_143840_954003_878044D2 
+X-CRM114-Status: GOOD (  22.83  )
+X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
+ Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.120 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [134.134.136.24 listed in list.dnswl.org]
  1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -77,28 +66,102 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Mario Limonciello <Mario.Limonciello@dell.com>,
- Linux PM <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>, "Busch,
- Keith" <keith.busch@intel.com>, Rajat Jain <rajatja@google.com>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "Busch, Keith" <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
+ Christoph Hellwig <hch@lst.de>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Sagi Grimberg <sagi@grimberg.me>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gVGh1LCBBdWcgMDEsIDIwMTkgYXQgMDI6MDU6NTRBTSAtMDcwMCwgS2FpLUhlbmcgRmVuZyB3
-cm90ZToKPiBhdCAwNjozMywgUmFmYWVsIEouIFd5c29ja2kgPHJhZmFlbEBrZXJuZWwub3JnPiB3
-cm90ZToKPiA+IE9uIFRodSwgQXVnIDEsIDIwMTkgYXQgMTI6MjIgQU0gS2VpdGggQnVzY2ggPGti
-dXNjaEBrZXJuZWwub3JnPiB3cm90ZToKPiA+Cj4gPj4gSW4gd2hpY2ggY2FzZSB3ZSBkbyBuZWVk
-IHRvIHJlaW50cm9kdWNlIHRoZSBITUIgaGFuZGxpbmcuCj4gPgo+ID4gUmlnaHQuCj4gCj4gVGhl
-IHBhdGNoIGFsb25lIGRvZXNu4oCZdCBicmVhayBITUIgVG9zaGliYSBOVk1lIEkgdGVzdGVkLiBC
-dXQgSSB0aGluayBpdOKAmXMgIAo+IHN0aWxsIHNhZmVyIHRvIGRvIHByb3BlciBITUIgaGFuZGxp
-bmcuCgpTcGVjIHJlcXVpcmVzIGhvc3QgcmVxdWVzdCBjb250cm9sbGVyIHJlbGVhc2UgSE1CIGZv
-ciBEM2NvbGQuIEkgc3VzcGVjdAp5b3UncmUgb25seSBnZXR0aW5nIHRvIEQzaG90LgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWls
-aW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+On Thu, Aug 01, 2019 at 12:16:43AM -0700, Hannes Reinecke wrote:
+> nvme_ns_remove() will only remove the namespaces from the list at
+> the very last step, so we might run into situations where we iterate
+> over namespaces which are about to be deleted.
+> To avoid crashes we should be skipping all namespaces with the
+> NVME_NS_REMOVING flag set.
+
+This all looks to be racing with whatever task is going to call
+nvme_ns_remove().
+
+Could we instead move these invalid namespaces off the ctrl->namespaces
+list prior to calling nvme_ns_remove(), and while holding the write
+lock? That way nothing can iterate the namespaces that we're deleting.
+We already do that in some places, so that looks like it may be the safe
+way to do this.
+
+> 
+> Signed-off-by: Hannes Reinecke <hare@suse.com>
+> ---
+>  drivers/nvme/host/core.c | 19 ++++++++++++++++++-
+>  1 file changed, 18 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index fcfff0a17a17..177fa4185775 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -1303,9 +1303,12 @@ static void nvme_update_formats(struct nvme_ctrl *ctrl)
+>  	struct nvme_ns *ns;
+>  
+>  	down_read(&ctrl->namespaces_rwsem);
+> -	list_for_each_entry(ns, &ctrl->namespaces, list)
+> +	list_for_each_entry(ns, &ctrl->namespaces, list) {
+> +		if (test_bit(NVME_NS_REMOVING, &ns->flags))
+> +			continue;
+>  		if (ns->disk && nvme_revalidate_disk(ns->disk))
+>  			nvme_set_queue_dying(ns);
+> +	}
+>  	up_read(&ctrl->namespaces_rwsem);
+>  
+>  	nvme_remove_invalid_namespaces(ctrl, NVME_NSID_ALL);
+> @@ -1698,6 +1701,10 @@ static void __nvme_revalidate_disk(struct gendisk *disk, struct nvme_id_ns *id)
+>  {
+>  	struct nvme_ns *ns = disk->private_data;
+>  
+> +	/* if ns is removing we cannot mangle with the request queue */
+> +	if (test_bit(NVME_NS_REMOVING, &ns->flags))
+> +		return;
+> +
+>  	/*
+>  	 * If identify namespace failed, use default 512 byte block size so
+>  	 * block layer can use before failing read/write for 0 capacity.
+> @@ -2776,6 +2783,10 @@ static int nvme_dev_user_cmd(struct nvme_ctrl *ctrl, void __user *argp)
+>  		ret = -EINVAL;
+>  		goto out_unlock;
+>  	}
+> +	if (test_bit(NVME_NS_REMOVING, &ns->flags)) {
+> +		ret = -ENODEV;
+> +		goto out_unlock;
+> +	}
+>  
+>  	dev_warn(ctrl->device,
+>  		"using deprecated NVME_IOCTL_IO_CMD ioctl on the char device!\n");
+> @@ -3255,6 +3266,10 @@ static struct nvme_ns *nvme_find_get_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+>  		if (ns->head->ns_id == nsid) {
+>  			if (!kref_get_unless_zero(&ns->kref))
+>  				continue;
+> +			if (test_bit(NVME_NS_REMOVING, &ns->flags)) {
+> +				nvme_put_ns(ns);
+> +				continue;
+> +			}
+>  			ret = ns;
+>  			break;
+>  		}
+> @@ -3445,6 +3460,8 @@ static void nvme_remove_invalid_namespaces(struct nvme_ctrl *ctrl,
+>  
+>  	down_write(&ctrl->namespaces_rwsem);
+>  	list_for_each_entry_safe(ns, next, &ctrl->namespaces, list) {
+> +		if (test_bit(NVME_NS_REMOVING, &ns->flags))
+> +			continue;
+>  		if (ns->head->ns_id > nsid || test_bit(NVME_NS_DEAD, &ns->flags))
+>  			list_move_tail(&ns->list, &rm_list);
+>  	}
+> -- 
+> 2.16.4
+> 
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
