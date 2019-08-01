@@ -2,88 +2,68 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D16637DDE5
-	for <lists+linux-nvme@lfdr.de>; Thu,  1 Aug 2019 16:28:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DFFFA7DE00
+	for <lists+linux-nvme@lfdr.de>; Thu,  1 Aug 2019 16:36:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xk34E+M1H7JTGGu/MaIJVWQAa8pfN1wRSeczHIY/YxQ=; b=qE16D+Tc3dZAXHoRNTtL6h0/j
-	afKQ2Rji8P7WdHe4RtWfwvb3iQ0lLgOZHoyqAUxofRsAt0492CbtDsu9Rp2DeLabk+ro5xHPzr+o2
-	28UKlcfUAOqNR44bHZ67LMFAAIaeJW1kQtnorJBkN3YVlv/tAOzixWiXrYHVllW1HPblIQUwJJ1vc
-	WVQTHVAFSdLomhluG0iX20yJ8bSei2H4D0wSS61kc1BfDXAjv3Yh136KaATVR857mWM/ju0UfmhQc
-	6jEfT6e+AHdwodloSMuN7nHCX3385nJBEglnTabONtfhlcaT2Zxfn03QW0JX03GYpyFTPqLH34N5E
-	ymlqCLBVA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Wf9O4S/V7FCipAR6y/xw1WhV3QbFfJsUTCruiZVtP/A=; b=YPrW3r/Sm7GKX/
+	sAeFrEKjmuBvGPwtGgz1Qzb1TzCugoxGBlHBR3Qc1yDchAYRxxiLHJo4+4BlbHcV5I/zUztcjBixa
+	Yg+XU4XfUalFFGeaO1uSsH82FCpm4mUX8603v2gQgr3iW6EtKEqOGG8p/xcOuqNQ4QS/PR+mvjnxK
+	FiYdDS2OcN7I6cQVdjiAGG+o4C/wCvVbOLXNVLrqRmdEWMMnUJ3U7b9Rdu3/xeEbBDLVIW4B5k7su
+	z+1YxiB1c7sTv91Ve1UmdyyJYP+vxIJwkPblh/STmQeuATCrQSI8a2y+tcy5nX3ptV7Iv9KUip9O/
+	19QJO8VuNUntVAX90uxA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htC4P-0002vx-MU; Thu, 01 Aug 2019 14:28:41 +0000
-Received: from mail-pg1-f196.google.com ([209.85.215.196])
+	id 1htCBs-00062w-DL; Thu, 01 Aug 2019 14:36:24 +0000
+Received: from mga09.intel.com ([134.134.136.24])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htC4F-0002vJ-H1
- for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 14:28:32 +0000
-Received: by mail-pg1-f196.google.com with SMTP id r22so6708752pgk.10
- for <linux-nvme@lists.infradead.org>; Thu, 01 Aug 2019 07:28:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=3+pyBVpWrGWFwo6CRFg6HFI3k917P3uucTxDT1CY470=;
- b=S6LR1N9Y505QUZP9wUNaht7/EycIf3kM2zg1oWPYhAW1chRTjmz06nSRUBmFT4sNo0
- xlB3wJl1mugo3ZTDaxIVeT2zP1nkDfYUvvr6VnAblnUkT67ZrTZMZOg7NvbU31OyTLh7
- F4oP7YvhSgDAKUFC2KwtXVE7ISesNL1RUZRxhyBA/EVhSNMbV6qc9Amgtz/cPW68BN+E
- hHiVU6uDmwCWaurFMhQPcf6mOnRNAieAa7azE6yweG8tgpkI5xg3DZdl7bvCdG8Fxr5K
- yGBgWlVeDNcvwuFlds/qQX7toidanPXu/TyEHXcazT//jUHXWmGUYLLLP7sMGDmCXqcm
- yeeA==
-X-Gm-Message-State: APjAAAUCYH2wdSms6As23HvCWS0PLgtVnLAcPZBikfPDLD6QASeDHemJ
- NOUeRUaig3l9MhOnDy9KkZ7AfTQ6
-X-Google-Smtp-Source: APXvYqzioTwzejHNkwFExVF/K0FB6CyilQfkFintItvAcOz9DFpqR6FzepR6NdWlQbjAlKMHrkbxDg==
-X-Received: by 2002:a17:90a:1785:: with SMTP id
- q5mr9005763pja.106.1564669709983; 
- Thu, 01 Aug 2019 07:28:29 -0700 (PDT)
-Received: from ?IPv6:2601:647:4800:973f:45eb:53c1:ba3f:2a0a?
- ([2601:647:4800:973f:45eb:53c1:ba3f:2a0a])
- by smtp.gmail.com with ESMTPSA id 97sm9803018pjz.12.2019.08.01.07.28.28
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 01 Aug 2019 07:28:29 -0700 (PDT)
-Subject: Re: [PATCH V2 0/5] blk-mq: wait until completed req's complete fn is
- run
-To: Jens Axboe <axboe@kernel.dk>, Ming Lei <ming.lei@redhat.com>
-References: <20190724034843.10879-1-ming.lei@redhat.com>
- <20190730004525.GB28708@ming.t460p>
- <7eeb2e89-a056-456a-8be3-6edbda83b7bc@grimberg.me>
- <944c6735-f03e-c055-33d8-fe7f9a760b8a@kernel.dk>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <4788e1e5-6874-c510-5fa9-f07c98ec42e5@grimberg.me>
-Date: Thu, 1 Aug 2019 07:28:28 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1htCBi-00062M-3o
+ for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 14:36:15 +0000
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 01 Aug 2019 07:36:11 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,334,1559545200"; d="scan'208";a="177837292"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga006.jf.intel.com with ESMTP; 01 Aug 2019 07:36:10 -0700
+Date: Thu, 1 Aug 2019 08:33:31 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Sagi Grimberg <sagi@grimberg.me>
+Subject: Re: [PATCH rfc 1/2] nvme: don't remove namespace if revalidate
+ failed because of controller reset
+Message-ID: <20190801143331.GC15795@localhost.localdomain>
+References: <61445d6f-f4ca-f8d4-cef2-5bfe40aa1e7f@suse.de>
+ <2f7535ab-3d45-b24d-1512-a937e16e620f@grimberg.me>
+ <20190731193257.GB15643@localhost.localdomain>
+ <0720636c-8706-e927-3c0b-c2687694664f@grimberg.me>
+ <20190731201634.GC15643@localhost.localdomain>
+ <cb8a1faf-ea19-06c8-35dc-08cd11180974@grimberg.me>
+ <20190731205836.GD15643@localhost.localdomain>
+ <68358e82-cbd5-6199-1329-89421c778dc0@grimberg.me>
+ <20190731215437.GA15795@localhost.localdomain>
+ <55631812-bc90-9dc1-53b7-a76696a7140e@grimberg.me>
 MIME-Version: 1.0
-In-Reply-To: <944c6735-f03e-c055-33d8-fe7f9a760b8a@kernel.dk>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <55631812-bc90-9dc1-53b7-a76696a7140e@grimberg.me>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_072831_558058_6919860A 
-X-CRM114-Status: GOOD (  12.77  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20190801_073614_200540_621ED1D0 
+X-CRM114-Status: GOOD (  16.41  )
+X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.215.196 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.215.196 listed in wl.mailspike.net]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [134.134.136.24 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,28 +75,43 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-block@vger.kernel.org, Max Gurtovoy <maxg@mellanox.com>,
- Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
- linux-nvme@lists.infradead.org
+Cc: "Busch, Keith" <keith.busch@intel.com>, Ming Lei <tom.leiming@gmail.com>,
+ Hannes Reinecke <hare@suse.de>, linux-nvme <linux-nvme@lists.infradead.org>,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
->>> Hello Jens, Chritoph and Guys,
->>>
->>> Ping on this fix.
->>
->> Given that this is nvme related, we could feed
->> it to jens from the nvme tree.
->> Applying to nvme-5.4 tree for now, if Jens picks
->> it up, we'll drop it.
+On Wed, Jul 31, 2019 at 06:13:06PM -0700, Sagi Grimberg wrote:
 > 
-> It's on my top of list to review, I'd like to take it through
-> the block tree though. I think that makes the most sense.
+> >> Well, I don't think we should do that. Unlike I/O commands, which can
+> >> failover to a different path, these admin commands are bound to the
+> >> specific controller. In case it takes minutes/hours/days for the
+> >> controller to restore normal operation, it will be unpleasant to say
+> >> the least to have admin operations get stuck for so long.
+> > 
+> > Unpleasant for who? The scan_work is the only thing waiting for these
+> > commands, no one else should care because you can't run IO if you're
+> > stuck in very long reset anyway.
+> 
+> The hung task detector would care, and a user who will attempt to issue
+> a passthru command, and the rest of the system that have one of the
+> kworkers sacrificed for a significant amount of time...
 
-No problem at all. removing it from the nvme tree.
+blk_execute_rq already defeats hung task detection for stalled IO.
+
+My point, though, was passthru doesn't care about scan_work. A submitted
+passthru command is blocked for reset, so blocking scan_work doesn't
+make that situation any better or worse.
+ 
+> > I think the main point is that we don't want to take a delete action on
+> > a transient condition, but sprinkling NVME_CTRL_LIVE checks is open to
+> > many other races.
+> 
+> Hence I suggested the transport error code...
+
+That should work too.
 
 _______________________________________________
 Linux-nvme mailing list
