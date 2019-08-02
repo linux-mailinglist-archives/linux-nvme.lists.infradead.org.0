@@ -2,91 +2,59 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D3617FA92
-	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 15:34:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 59A0F7FDD7
+	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 17:53:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zBOn9KwNRv8jJBLxxGy5EOvbepQdThBPmiKQvh1UwiI=; b=ueLkqAL1TksLE8
-	KvvAJ8wSiuKZeh8y0BrA2GwcVlpYLdArQDavnxIguy66mX8z6cgfgnnM3phCBqoihl2Be4s5iPPAK
-	JlXhb2UlnEBZMpg1LqjLF0u8OHpY6CGe43AFxeL00Q/Eg7+Qh7x6hEmgn0BGHZNfSJn0LESefynE6
-	smaGfWNxKov8EZI5ZJupCm3Ub2gqrGVo52rN8f593TCqj/b2nsXdM9FsDQxnCkR+WNMNC6dLLt8Ty
-	nvs/dZZ/wIpv+1GBNDSoX3Q3g09b4VcQH95M6QhyLqoehWY4BSlKA3adkffhtirVa84sB3QMaCEqc
-	dxlHKuaTa2Cof5MyIMmg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=L6WIqwNXXH9puvbeAstAhWXSWVaOCCjfFyA8suT5t68=; b=AUJ4FCOTgUFk1i
+	Tm8rCm9c0oBs4xeHlSBTwumhjF11bCZsQg/qykEwAGBBpZn5GL1efLucHSdypWLxqgnwkNjAwc+qV
+	DFZ7OaSbNDvTVNhdDo1EUY66zXl9X9dWeTLV9OgwtXQwjURQ2dr5qsF1/nxsnP+/r9w7D1b5tSt2+
+	GgKJes2vOITj5CSdQ0KcIr5l5WNzHz1o5mgp+AXYCvKgyLcux6UDQBcrgxW0fC6GB6kSJOTS0m0OD
+	u8WDMwwNAAG8HRLrj5zGfcVvLNzukU1qYoD/yoh0LEUzzmROzvDmi5/KaOYnykQ6Kt90z62PfTnFq
+	Ro4YQRPva/60u7U0MtQQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htXhO-0004vR-7g; Fri, 02 Aug 2019 13:34:22 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1htZrM-0000mm-Fd; Fri, 02 Aug 2019 15:52:48 +0000
+Received: from mga05.intel.com ([192.55.52.43])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htXhI-0004uu-Le
- for linux-nvme@lists.infradead.org; Fri, 02 Aug 2019 13:34:18 +0000
-Received: by mail-pf1-x444.google.com with SMTP id g2so36070133pfq.0
- for <linux-nvme@lists.infradead.org>; Fri, 02 Aug 2019 06:34:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel-dk.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Uv11iay6UFn4yJKiuRstOy4WPPsctn3pPbReDqThk3Q=;
- b=kRGXaQzIzBD52EJQZLvx4W+R0mDukgkxPnTUtTJlin+4rhjjL3JwTS/DVVx5rwAkSa
- SIWKf2ijtW91Uttw2C1OI59ojRKF9ryFw8rVixagdxpZTimERrrCNasTGB5/stbhoari
- +i3LXap+w1gTBsArj8PxA2/skOLPWE3VOP8nLSd6EST6CCsevy3JQvSmilf7ie9ynLMQ
- /W/JIrlISKOvINrxvwJqf4wbqIFZh+EhwSBmHBfnY8+hi6Qv4U3RQFux+3WROQ6WpAv/
- p0TVqRVUi+DcebHtKU9uGycN8/+n/kp1eD6FBxPvVC7DsDZVXYagIhXsUwGkOyIpqPPV
- 7Baw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Uv11iay6UFn4yJKiuRstOy4WPPsctn3pPbReDqThk3Q=;
- b=C77zzLbnFilpOBVFjjZO+zPPmbnxRJ65Hk1WfJdftN/fiiaGrOBaPR+Expob19JlG0
- o99NFxfrSg+TZ9U5KkxntnadnAGaQ17AJCId598OALu/rrre3PJ9ZVipHXQoLGjmfAXx
- EmU9sVqgCb2PN/5fPDqhE5FvChYpcVXu06ggFGjXy8p1x577T/0FJAdIELuCkoLLf3ni
- mighy5BcKsy+2NtJ9mY58zH5Ss6H/4MAsmnxz65JeHlKVZceXy1mdq78r00JRK+t3xH5
- UdL6PiW2HeYza2BYJZpKMcHtouy4lsKrIL7Wb82fbu/QiVssXtvtccOmWFtb6yZyhnyN
- 8gfQ==
-X-Gm-Message-State: APjAAAVRo6Z8gT8DKtoxpwQE9wb2mpsTUrxvEeRnWcDALmkE5mdeoBLw
- nuKQRE31b3MDssMo2Rs825s=
-X-Google-Smtp-Source: APXvYqx/wS2ev9Ujce/PRf10xzsSqr2moZjX9x1IBr/b4cR0jjJrYFw4BFRr9McpP2lKE+D895IgUg==
-X-Received: by 2002:a17:90a:36a7:: with SMTP id
- t36mr4347365pjb.34.1564752855745; 
- Fri, 02 Aug 2019 06:34:15 -0700 (PDT)
-Received: from [192.168.200.229] (rrcs-76-80-14-36.west.biz.rr.com.
- [76.80.14.36])
- by smtp.gmail.com with ESMTPSA id v12sm67199728pgr.86.2019.08.02.06.34.14
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 02 Aug 2019 06:34:14 -0700 (PDT)
-Subject: Re: [PATCH V2 0/5] blk-mq: wait until completed req's complete fn is
- run
-To: Ming Lei <ming.lei@redhat.com>
-References: <20190724034843.10879-1-ming.lei@redhat.com>
-From: Jens Axboe <axboe@kernel.dk>
-Message-ID: <040caa53-897e-287b-00be-7541bce88b7d@kernel.dk>
-Date: Fri, 2 Aug 2019 07:34:13 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1htZrG-0000mL-Oa
+ for linux-nvme@lists.infradead.org; Fri, 02 Aug 2019 15:52:44 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Aug 2019 08:52:40 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,338,1559545200"; d="scan'208";a="197241880"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by fmsmga004.fm.intel.com with ESMTP; 02 Aug 2019 08:52:40 -0700
+Date: Fri, 2 Aug 2019 09:50:03 -0600
+From: Keith Busch <keith.busch@intel.com>
+To: James Smart <jsmart2021@gmail.com>
+Subject: Re: [PATCH v3 00/10] nvme-cli: nvmf auto-connect scripts
+Message-ID: <20190802155003.GB18214@localhost.localdomain>
+References: <20190801231348.21397-1-jsmart2021@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20190724034843.10879-1-ming.lei@redhat.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20190801231348.21397-1-jsmart2021@gmail.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190802_063416_757573_C930ED28 
-X-CRM114-Status: GOOD (  13.17  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190802_085242_814071_96582B66 
+X-CRM114-Status: GOOD (  18.55  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [192.55.52.43 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,32 +66,47 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
- Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
+Cc: linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 7/23/19 9:48 PM, Ming Lei wrote:
-> Hi,
+On Thu, Aug 01, 2019 at 04:13:38PM -0700, James Smart wrote:
+> This is a formal posting of the patches, not an RFC.
 > 
-> blk-mq may schedule to call queue's complete function on remote CPU via
-> IPI, but never provide any way to synchronize the request's complete
-> fn.
+> This posting is a combination of the RFC postings of nvme-fc
+> auto-connect scripts by Hannes, Sagi, and I. The auto-connect
+> scripts are utilized on nvme-fc and for persistent discovery
+> controllers that send AENs.  It does not contain the code that
+> handles the persistent discovery controller AEN and generates the
+> event.
 > 
-> In some driver's EH(such as NVMe), hardware queue's resource may be freed &
-> re-allocated. If the completed request's complete fn is run finally after the
-> hardware queue's resource is released, kernel crash will be triggered.
+> The auto-connect scripts are now commonized with the exception
+> of the nvme-fc boot connections service.  It's expected that both
+> the persistent discovery controllers and nvme-fc can post the same
+> udev event. Whenever the discovery aen generates an event, the
+> new --device=<name> argument will be used to identify the persistent
+> discovery controller. When --device is used, the other connect
+> attributes will be specified, set to the values of the discovery
+> controller, and will be used by the cli to validate the device is
+> who it should be or a new discovery controller will be created.
+> When nvme-fc generates it's events, it will specify --device=none
+> and specify the discovery controller addressing arguments.  If a
+> persistent discovery controller exists on nvme-fc, will do nothing
+> special and AEN's from it will follow the --device=<name> syntax.
 > 
-> Fixes this issue by waitting until completed req's complete fn is run.
+> The udev event handler supports both the new event to be used
+> by discovery controllers as well as the existing nvme-fc transport
+> event. The nvme-fc transport will be migrated to issue the new
+> event syntax. The udev script will continue to support the older
+> style nvme-fc event info in case the cli is running against an
+> older kernel.
 
-Queued up for 5.4, thanks Ming.
+Series looks good to me, patches applied.
 
--- 
-Jens Axboe
-
+We've a lot of new stuff now, I'll plan to tag a release within the next
+week if I don't observe or hear of any alarming issues.
 
 _______________________________________________
 Linux-nvme mailing list
