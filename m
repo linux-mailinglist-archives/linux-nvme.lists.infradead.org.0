@@ -2,55 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDAAC7F8CC
-	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 15:23:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 851C97F8DD
+	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 15:24:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8DhQoz9h8tbT2t1RlnmJP3xm0sQOAB3zCxPsj6ayUfg=; b=h1tLT7iVr3Hze0
-	CJM/d/rv+7JgnDMN6dZnKLMIxDyeg6XqWw7uRiSFfcTy833P7WbmSD2t7tmP5+mD2wCImjmzRFqUc
-	9Vq3fJi+baJajv3oplpxZ2krja4SWEN/xLvZ2+iBdzA9b/F7yzax+/Vv3xjTKOJmxKkJgZew8XVm9
-	1tlgl/YOLNdWIalEs76HoydGYCgrrVdITmMUUcHCyend+fneLT1h0aUgKTVH4h+KF0HQdEejrOGyi
-	z5yVw0jNk9DbUVd50NOV3eSAc6HTFH8znva9b6/pop/I1Hv5Vq/OyNWiSLAEX5dI3cmOnarxLLAJi
-	ZgFq8y6DuZCkzoF+G1AA==;
+	List-Owner; bh=gtuBwb7KmhuhmUqNY3jEa0DCSd9mfTn6f1jaMczdjh8=; b=pO8yzby4jF4nq2
+	lYPsDRD/8Jbsw6szjLg+mZeqAXDIMAMmPDdA8Wd5CkuiCZj42wQxrqGpcRz5BauC6P4I7Huya0KWi
+	UOOGgvAtbvsrYGBU/BMmniIWDePj4Zm34EX16uaSL19wnDf54s/cz06gpiLLuzbo/ucB9AyQO2g2n
+	pe3j6yYQ1w+DWFmdFDJiajeA4WqbZeUzJMJxs4xl6SuJHBvb6sb4UN018zqPbnI+5l39tmJMyln5D
+	y6hSzpOqCVlgR/Ql2mdfLG+BysRgm9ImI9UCJkn3hyFyAKcEZvzeeTiWRpqnBBKMNd2wIsbjZe6Jg
+	Ly5yehFjHPo3uaoQ7PFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htXWI-0004Rc-0o; Fri, 02 Aug 2019 13:22:54 +0000
+	id 1htXXR-00054B-1i; Fri, 02 Aug 2019 13:24:05 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htXVo-00044c-Ix
- for linux-nvme@lists.infradead.org; Fri, 02 Aug 2019 13:22:26 +0000
+ id 1htXXM-00053J-B3
+ for linux-nvme@lists.infradead.org; Fri, 02 Aug 2019 13:24:01 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7584921841;
- Fri,  2 Aug 2019 13:22:23 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 30ABF21850;
+ Fri,  2 Aug 2019 13:23:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1564752144;
- bh=bzUI1CGt06M2B3ynUGZQxcbu7EQG4vNXUTOYUdThYu8=;
+ s=default; t=1564752240;
+ bh=EcsuI+g39qTBmjUcacw7kMGLcPEQ3i7hCV+lyVy9SMM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Uem8n2R+OYeCBO6CZ+vLCrFk2q4ADLyC+ne/z8dZkYL01STGGttgfWjNQW0rewVMY
- FMLlWrufzTEgLnE2L1PNB14ya6MQ12UuliWGHajC7iHqj0WjoZgppZmwv8al4xWsyJ
- /36KlqUvhx7TMi7C3fxcIsIYe882sC7yIB2ph3lY=
+ b=CAGVg/RPMwnMoJ7GmfK0FtjGZJ9QiFUI10M3Wd4e49MZbwBmf11MFNuTHmAwxxZA2
+ iF9+kh8ienyz7UwrYrNSLTa3g0ujKfrQdNuKHwas8vnfwR/P0AEL17XSbJOie5QQCc
+ nBv2HM2G+HqPU8WjXDR1PN1p0OC3MCuLcrCtcWDY=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.2 61/76] nvme: fix multipath crash when ANA is
+Subject: [PATCH AUTOSEL 4.19 31/42] nvme: fix multipath crash when ANA is
  deactivated
-Date: Fri,  2 Aug 2019 09:19:35 -0400
-Message-Id: <20190802131951.11600-61-sashal@kernel.org>
+Date: Fri,  2 Aug 2019 09:22:51 -0400
+Message-Id: <20190802132302.13537-31-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190802131951.11600-1-sashal@kernel.org>
-References: <20190802131951.11600-1-sashal@kernel.org>
+In-Reply-To: <20190802132302.13537-1-sashal@kernel.org>
+References: <20190802132302.13537-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190802_062224_665097_33DCFED4 
+X-CRM114-CacheID: sfid-20190802_062400_422539_60D784D0 
 X-CRM114-Status: GOOD (  14.92  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -165,10 +165,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  2 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/nvme/host/multipath.c b/drivers/nvme/host/multipath.c
-index 499acf07d61a7..e942b3e840687 100644
+index 260248fbb8feb..a11e210d173e4 100644
 --- a/drivers/nvme/host/multipath.c
 +++ b/drivers/nvme/host/multipath.c
-@@ -12,11 +12,6 @@ module_param(multipath, bool, 0444);
+@@ -20,11 +20,6 @@ module_param(multipath, bool, 0444);
  MODULE_PARM_DESC(multipath,
  	"turn on native support for multiple controllers per subsystem");
  
@@ -180,7 +180,7 @@ index 499acf07d61a7..e942b3e840687 100644
  /*
   * If multipathing is enabled we need to always use the subsystem instance
   * number for numbering our devices to avoid conflicts between subsystems that
-@@ -614,7 +609,8 @@ int nvme_mpath_init(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+@@ -516,7 +511,8 @@ int nvme_mpath_init(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
  {
  	int error;
  
@@ -191,10 +191,10 @@ index 499acf07d61a7..e942b3e840687 100644
  
  	ctrl->anacap = id->anacap;
 diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 55553d293a98a..7391cd0a7739e 100644
+index e82cdaec81c9c..d5e29b57eb340 100644
 --- a/drivers/nvme/host/nvme.h
 +++ b/drivers/nvme/host/nvme.h
-@@ -472,7 +472,11 @@ extern const struct attribute_group *nvme_ns_id_attr_groups[];
+@@ -464,7 +464,11 @@ extern const struct attribute_group nvme_ns_id_attr_group;
  extern const struct block_device_operations nvme_ns_head_ops;
  
  #ifdef CONFIG_NVME_MULTIPATH
