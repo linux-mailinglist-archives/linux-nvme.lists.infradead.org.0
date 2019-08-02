@@ -2,68 +2,72 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 147177E693
-	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 01:45:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 96C837E6FF
+	for <lists+linux-nvme@lfdr.de>; Fri,  2 Aug 2019 02:04:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B6cjyqlETMrgxblWxMp0Q3HmEvLOnW2bE0HA9fCgpG8=; b=WZkcxPcIDqXVaQ
-	xW2dEPKhd8dP8AMKcHplQfYQ+lAXBnFffPQIcY4XH8ov7ydkJAQ9scUFhla0HpLuhyJxkpPJbKvdO
-	E8ZVlYfgj2HZdCAeJ21X9UJiaeonkWbcnW7ZquVoiEjjXI5gFCt8FJiOuc3llRI2cw5ib32SmOL5x
-	iJIoRacK1GXgnLALCS7w2Uoaq0AfQiBOI5qL0Vrvoe81u4wv7NHJGY/FMAkE0QdntJTVHc5/JinGA
-	2hp+LfvW9i2mOsRddtDJmmdp2Ivguk/5/SENCiq8rrdnnz6gP7zDgjhEK8WWoRifMy8FmYQ6Vp/Pc
-	LGXQxTtJy5dSI+JF8iew==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=U1INSimx9M9ppaqHkBw3yy9/yuP/ZIPReiNaxrhcJQ8=; b=fG7lWJ1BFvqAxt
+	Yc1BSis2bm0P1aCJoGHwOvepT0qmDRx8/U5fbUzgxgI4Ae5SPPNUvhVUXUBdw+eenLH1P/VdK8vyB
+	kuMUvfwFXMnpJ+iLeEqfLwzjaCe5/m7ymapmjW8uiasR9VOzGokBSkuJoJA+zNTvpyMWytOmDBkOl
+	0skX+rCqWPj2EqdSfeFzoiGJfFCzw0W1CoD7zPP2foZe/NsjvUJvZhTimLoQ6l7n6fihBl9VUI4Q+
+	cx5+BJP8UwtPh3OQPWRuvEt2WdKJ7fp21NT7F+IkIdjjTGF9MjPAkM5Fndy6TgAquLzMKolRenNDc
+	lMqBTO1FdmeGTRTdcSDw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htKlQ-0008By-Nb; Thu, 01 Aug 2019 23:45:40 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1htL3r-0001Ja-4T; Fri, 02 Aug 2019 00:04:43 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1htKl9-00083y-1l
- for linux-nvme@lists.infradead.org; Thu, 01 Aug 2019 23:45:24 +0000
-Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
- by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1htKl2-0002MZ-Tp; Thu, 01 Aug 2019 17:45:21 -0600
-Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
- (envelope-from <gunthorp@deltatee.com>)
- id 1htKl2-00025g-Ol; Thu, 01 Aug 2019 17:45:16 -0600
-From: Logan Gunthorpe <logang@deltatee.com>
-To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- linux-block@vger.kernel.org, linux-fsdevel@vger.kernel.org
-Date: Thu,  1 Aug 2019 17:45:13 -0600
-Message-Id: <20190801234514.7941-15-logang@deltatee.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190801234514.7941-1-logang@deltatee.com>
-References: <20190801234514.7941-1-logang@deltatee.com>
+ id 1htL3l-0001JF-QE
+ for linux-nvme@lists.infradead.org; Fri, 02 Aug 2019 00:04:39 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 01 Aug 2019 17:04:31 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,336,1559545200"; d="scan'208";a="177992754"
+Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
+ by orsmga006.jf.intel.com with ESMTP; 01 Aug 2019 17:04:31 -0700
+Received: from orsmsx125.amr.corp.intel.com (10.22.240.125) by
+ ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 1 Aug 2019 17:04:31 -0700
+Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
+ ORSMSX125.amr.corp.intel.com ([169.254.3.92]) with mapi id 14.03.0439.000;
+ Thu, 1 Aug 2019 17:04:30 -0700
+From: "Wunderlich, Mark" <mark.wunderlich@intel.com>
+To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Subject: nvmet_tcp: panic out of memory on writes
+Thread-Topic: nvmet_tcp: panic out of memory on writes
+Thread-Index: AdVIxM+oYBNoFtZLQjyML/YbDGJvqwAALcbw
+Date: Fri, 2 Aug 2019 00:04:31 +0000
+Message-ID: <B33B37937B7F3D4CB878107E305D4916D165B5@ORSMSX104.amr.corp.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.0.600.7
+dlp-reaction: no-action
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMWI3NTE0N2QtZGZhMC00ODY2LThjZDAtNmM2NGU1OTRhMDI2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiNEFibkdzQ1lNdmd1Y0RxRVNlUkRhMVV6TWM2dm4wOTBPN0V3VXFlOUJrcFp0SXZUR2NQR2FITUluN3dwRHZEeSJ9
+x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 172.16.1.31
-X-SA-Exim-Rcpt-To: linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-block@vger.kernel.org, linux-fsdevel@vger.kernel.org, hch@lst.de,
- sagi@grimberg.me, kbusch@kernel.org, axboe@fb.com, Chaitanya.Kulkarni@wdc.com,
- maxg@mellanox.com, sbates@raithlin.com, logang@deltatee.com
-X-SA-Exim-Mail-From: gunthorp@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
- version=3.4.2
-Subject: [PATCH v7 14/14] nvmet-passthru: support block accounting
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190801_164523_145777_FD4CA2F0 
-X-CRM114-Status: GOOD (  10.36  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190801_170437_892054_C7E6F2CC 
+X-CRM114-Status: UNSURE (   7.29  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [134.134.136.126 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -76,52 +80,49 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
- Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Support block disk accounting by setting the RQF_IO_STAT flag
-and gendisk in the request.
 
-After this change, IO counts will be reflected correctly in
-/proc/diskstats for drives being used by passthru.
+Am seeing the following Panic during 100% 4K write activity on NVMf tcp tar=
+get since 5.2.1_stable.
+Exposed device (ram_disk or actual nvme disk) target makes no difference.
+Testing shows this occurring back on 5.0.7 as well.
 
-Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
----
- drivers/nvme/target/io-cmd-passthru.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Anyone else see this and working on it, as I dig deeper..
 
-diff --git a/drivers/nvme/target/io-cmd-passthru.c b/drivers/nvme/target/io-cmd-passthru.c
-index 06a919283cc5..cb193b434545 100644
---- a/drivers/nvme/target/io-cmd-passthru.c
-+++ b/drivers/nvme/target/io-cmd-passthru.c
-@@ -441,6 +441,9 @@ static struct request *nvmet_passthru_blk_make_request(struct nvmet_req *req,
- 	if (unlikely(IS_ERR(rq)))
- 		return rq;
- 
-+	if (blk_queue_io_stat(q) && cmd->common.opcode != nvme_cmd_flush)
-+		rq->rq_flags |= RQF_IO_STAT;
-+
- 	if (req->sg_cnt) {
- 		ret = nvmet_passthru_map_sg(req, rq);
- 		if (unlikely(ret)) {
-@@ -505,7 +508,7 @@ static void nvmet_passthru_execute_cmd(struct nvmet_req *req)
- 
- 	rq->end_io_data = req;
- 	if (req->sq->qid != 0) {
--		blk_execute_rq_nowait(rq->q, NULL, rq, 0,
-+		blk_execute_rq_nowait(rq->q, ns->disk, rq, 0,
- 				      nvmet_passthru_req_done);
- 	} else {
- 		req->p.rq = rq;
--- 
-2.20.1
+[=A0 654.335950] Workqueue: nvmet_tcp_wq nvmet_tcp_io_work [nvmet_tcp]
+[=A0 654.335951] Call Trace:
+[=A0 654.335957]=A0 dump_stack+0x5c/0x80
+[=A0 654.335961]=A0 dump_header+0x51/0x307
+[=A0 654.335964]=A0 ? try_to_del_timer_sync+0x4d/0x80
+[=A0 654.335966]=A0 ? oom_unkillable_task+0x94/0xc0
+[=A0 654.335967]=A0 oom_kill_process.cold.31+0xb/0x10
+[=A0 654.335968]=A0 out_of_memory+0x1c0/0x490
+[=A0 654.335971]=A0 __alloc_pages_slowpath+0xc61/0xd40
+[=A0 654.335974]=A0 ? recalibrate_cpu_khz+0x10/0x10
+[=A0 654.335977]=A0 ? tcp_rcv_space_adjust+0x1d/0x1c0
+[=A0 654.335978] =A0__alloc_pages_nodemask+0x2db/0x330
+[=A0 654.335980]=A0 sgl_alloc_order+0xb8/0x160
+[=A0 654.335982]=A0 nvmet_tcp_map_data+0x7b/0x120 [nvmet_tcp]
+[=A0 654.335984]=A0 nvmet_tcp_try_recv_pdu+0x2df/0x4f0 [nvmet_tcp]
+[=A0 654.335986]=A0 ? tcp_sendpage_locked+0x44/0x60
+[=A0 654.335988]=A0 nvmet_tcp_io_work+0x71/0xa90 [nvmet_tcp]
+[=A0 654.335992]=A0 process_one_work+0x1a1/0x3a0
+[=A0 654.335993]=A0 worker_thread+0x30/0x380
+[=A0 654.335995]=A0 ? pwq_unbound_release_workfn+0xd0/0xd0
+[=A0 654.335996]=A0 kthread+0x112/0x130
+[=A0 654.335997]=A0 ? kthread_create_on_node+0x60/0x60
+[=A0 654.336000]=A0 ret_from_fork+0x35/0x40
+[=A0 654.336001] Mem-Info:
+[=A0 654.336013] active_anon:27 inactive_anon:47 isolated_anon:0
+active_file:45 inactive_file:309 isolated_file:0
+unevictable:0 dirty:0 writeback:0 unstable:0
+slab_reclaimable:89975 slab_unreclaimable:63857
+
+Cheers --- Mark
 
 
 _______________________________________________
