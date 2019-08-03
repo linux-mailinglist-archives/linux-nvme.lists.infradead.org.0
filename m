@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F3408040E
-	for <lists+linux-nvme@lfdr.de>; Sat,  3 Aug 2019 04:50:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E5148040F
+	for <lists+linux-nvme@lfdr.de>; Sat,  3 Aug 2019 04:51:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,25 +11,26 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=nCiTNbx2YANb84qq3PNtHFRBuh7wv5cJ+VWjU0V9uDw=; b=nyZyMpqyVIpvxSK5KCN9lbn7eY
-	a/aR+Ty6ODyB0gNNeweMhfhJTaJDEuQT2NXKdClwfES4YUWjiPb1ptwzyGU5w9Gt/FqT9UrvNQcTF
-	CHGyMS+H79VbLMAL9LmUAbk1PW9BOHAd/cf0IA8W07h3c0V24woKBDXTebr1nDjBvjiOj9JOsGq8S
-	5gtxK2/6ue2+U+7sxFcSs211wwB+CeVlgkHNZj1zjH/cSa8Bclgy+Q2tKPgkEtxSLJRoZfBRfRdD6
-	MUZwFe6IacATsMfzRVrhth3XU4gI3wIR7o6NOSL/P1jgDRh/4OclbaouRrwSBUnlTmg2jB6qWk0pj
-	LwP58DPQ==;
+	bh=ZZ+JwJMQl1T1v5k3mzeTLX/E6pOM5gzFXVqL4pA5gjc=; b=oefAzDBzPKvc978Vm674+2RIPM
+	20ZWIgJmTYOBtlf0/gaH+PSNpzFrrAgFtRtloEgMbaaLqe2N7JqYy81S5sx8ZcIQEWA2Mwt2a3CM1
+	L1F8ulxm3MiG4hif6qkLpfKthW4dnaxjJQYMazIOVwbfrQ6GVV5nWz1NZ1XXbwLM5MI8bppzTTxva
+	Qayl3lzLnteXC/CHv8PZ+SGO7I74URJtCGjkFHoHOWUktNNiSVNCEo9aNa+ZrZfZh8iZ1FdE7zzmv
+	41dI20gxLKaQWMkdkleU70/F7de04+ZR01DzQ6E7F+YbJugucxtlxIhXKHXjyPrdijGrXRN0kbTUz
+	Delktq0A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1htk8A-0007s0-B7; Sat, 03 Aug 2019 02:50:50 +0000
+	id 1htk8K-00082s-Dp; Sat, 03 Aug 2019 02:51:00 +0000
 Received: from 162-195-240-247.lightspeed.sntcca.sbcglobal.net
  ([162.195.240.247] helo=sagi-Latitude-E7470.lbits)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1htk7N-00060U-Fl; Sat, 03 Aug 2019 02:50:01 +0000
+ id 1htk7N-00060U-MA; Sat, 03 Aug 2019 02:50:01 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
  Hannes Reinecke <hare@suse.de>
-Subject: [PATCH rfc v2 4/6] nvme: make nvme_report_ns_ids propagate error back
-Date: Fri,  2 Aug 2019 19:49:53 -0700
-Message-Id: <20190803024955.29508-5-sagi@grimberg.me>
+Subject: [PATCH rfc v2 5/6] nvme-tcp: fail command with
+ NVME_SC_HOST_PATH_ERROR send failed
+Date: Fri,  2 Aug 2019 19:49:54 -0700
+Message-Id: <20190803024955.29508-6-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190803024955.29508-1-sagi@grimberg.me>
 References: <20190803024955.29508-1-sagi@grimberg.me>
@@ -51,80 +52,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-And make the callers check the return status and propagate
-back accordingly.
+This is a more appropriate error status for a transport error
+detected by us (the host).
 
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- drivers/nvme/host/core.c | 22 +++++++++++++++++-----
- 1 file changed, 17 insertions(+), 5 deletions(-)
+ drivers/nvme/host/tcp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 802d1b49ecff..b561b61b35d9 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -1601,9 +1601,11 @@ static void nvme_config_write_zeroes(struct gendisk *disk, struct nvme_ns *ns)
- 	blk_queue_max_write_zeroes_sectors(disk->queue, max_sectors);
- }
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 2de33c4c5d14..7daf39f31b08 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -842,7 +842,7 @@ static inline void nvme_tcp_done_send_req(struct nvme_tcp_queue *queue)
  
--static void nvme_report_ns_ids(struct nvme_ctrl *ctrl, unsigned int nsid,
-+static int nvme_report_ns_ids(struct nvme_ctrl *ctrl, unsigned int nsid,
- 		struct nvme_id_ns *id, struct nvme_ns_ids *ids)
+ static void nvme_tcp_fail_request(struct nvme_tcp_request *req)
  {
-+	int ret = 0;
-+
- 	memset(ids, 0, sizeof(*ids));
- 
- 	if (ctrl->vs >= NVME_VS(1, 1, 0))
-@@ -1614,10 +1616,12 @@ static void nvme_report_ns_ids(struct nvme_ctrl *ctrl, unsigned int nsid,
- 		 /* Don't treat error as fatal we potentially
- 		  * already have a NGUID or EUI-64
- 		  */
--		if (nvme_identify_ns_descs(ctrl, nsid, ids))
-+		ret = nvme_identify_ns_descs(ctrl, nsid, ids);
-+		if (ret)
- 			dev_warn(ctrl->device,
- 				 "%s: Identify Descriptors failed\n", __func__);
- 	}
-+	return ret;
+-	nvme_tcp_end_request(blk_mq_rq_from_pdu(req), NVME_SC_DATA_XFER_ERROR);
++	nvme_tcp_end_request(blk_mq_rq_from_pdu(req), NVME_SC_HOST_PATH_ERROR);
  }
  
- static bool nvme_ns_ids_valid(struct nvme_ns_ids *ids)
-@@ -1755,7 +1759,10 @@ static int nvme_revalidate_disk(struct gendisk *disk)
- 	}
- 
- 	__nvme_revalidate_disk(disk, id);
--	nvme_report_ns_ids(ctrl, ns->head->ns_id, id, &ids);
-+	ret = nvme_report_ns_ids(ctrl, ns->head->ns_id, id, &ids);
-+	if (ret)
-+		goto out;
-+
- 	if (!nvme_ns_ids_equal(&ns->head->ids, &ids)) {
- 		dev_err(ctrl->device,
- 			"identifiers changed for nsid %d\n", ns->head->ns_id);
-@@ -3180,7 +3187,9 @@ static struct nvme_ns_head *nvme_alloc_ns_head(struct nvme_ctrl *ctrl,
- 	head->ns_id = nsid;
- 	kref_init(&head->ref);
- 
--	nvme_report_ns_ids(ctrl, nsid, id, &head->ids);
-+	ret = nvme_report_ns_ids(ctrl, nsid, id, &head->ids);
-+	if (ret)
-+		goto out_cleanup_srcu;
- 
- 	ret = __nvme_check_ids(ctrl->subsys, head);
- 	if (ret) {
-@@ -3228,7 +3237,10 @@ static int nvme_init_ns_head(struct nvme_ns *ns, unsigned nsid,
- 	} else {
- 		struct nvme_ns_ids ids;
- 
--		nvme_report_ns_ids(ctrl, nsid, id, &ids);
-+		ret = nvme_report_ns_ids(ctrl, nsid, id, &ids);
-+		if (ret)
-+			goto out_unlock;
-+
- 		if (!nvme_ns_ids_equal(&head->ids, &ids)) {
- 			dev_err(ctrl->device,
- 				"IDs don't match for shared namespace %d\n",
+ static int nvme_tcp_try_send_data(struct nvme_tcp_request *req)
 -- 
 2.17.1
 
