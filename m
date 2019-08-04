@@ -2,68 +2,71 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D9CA809C4
-	for <lists+linux-nvme@lfdr.de>; Sun,  4 Aug 2019 09:11:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E9FC809C6
+	for <lists+linux-nvme@lfdr.de>; Sun,  4 Aug 2019 09:11:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=75bEZCXx1oARHaIKOVA+Qy/nbbwUbWj/28EsbTKvPUk=; b=BT7
-	5Em/8Nka3geUykWyIJMKXaFhzclwa7GMybWejhDIpKlF30OBlv+IwEoo0plW+kxl41PWjdaqU4Eut
-	WSN46QehtGaLKhPdeJ1e46yZqdtlihEMMq9Ng4uyA7/XsQyTKPwZf59tY5ybxlttvEmLLd9zCEtwd
-	Pt/TXephzPNTo3m+XQmZnDouyrqv/+KTxITMr/6Y+WPN1OOcfBrrwwnzednd7AybShEY6m/6llFKX
-	31kdk3VhClRqwCCO8JL2+dp0GcWTOEUdKMkHDp163Wk71K4XXJo8fpqVuNM/XcrmAzLv1LJL8RpB8
-	puX+TFweqCK+c6DmdfxUWkk2psi+G7g==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=SMa7v4cY3o/MWtdRH2PIsLiGIMAtq0W6r/bNWdIfX6U=; b=uB/FGCuZWTHyFwmJwNN8nr+6pk
+	JsWYCHn5Qz1JnkqC6paWfEQ0LmMW6k2AVFBbrDv5iIElurGUVST9GoCebXZmP765EtW3DqTDynAxE
+	NzG5Ricz3pyraGJONhHmpsy8Tn0Pt6LNrFn76ygPEh7LT2NBALR+Aay3niYiQk6U+Dms8xkJ21YKK
+	ifty48KGVNh9VKCgqgMiS5jb3BlL1rkwTupeffOq8lFL4MwGrBncsiMwKtmigA2pSIcWnrc1antIu
+	11JJAgQqi6r6f3l7hIt7vcCRJ9muZhDCVoWKKbB2pMxcuEEW5Nldyp62CLc03G8a5S1sc96rc0h/k
+	990f9o+w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1huAfQ-0003xX-Lk; Sun, 04 Aug 2019 07:10:57 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1huAfx-0004QT-4i; Sun, 04 Aug 2019 07:11:29 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1huAfG-0003wD-LQ
- for linux-nvme@lists.infradead.org; Sun, 04 Aug 2019 07:10:49 +0000
-Received: by mail-pl1-x644.google.com with SMTP id 4so28230007pld.10
- for <linux-nvme@lists.infradead.org>; Sun, 04 Aug 2019 00:10:41 -0700 (PDT)
+ id 1huAfJ-0003wE-Ma
+ for linux-nvme@lists.infradead.org; Sun, 04 Aug 2019 07:10:51 +0000
+Received: by mail-pl1-x641.google.com with SMTP id m9so35101871pls.8
+ for <linux-nvme@lists.infradead.org>; Sun, 04 Aug 2019 00:10:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=e1sWyeggBXIl3SFjMpQ00lDF37d9kKjTCfqhZMyIozI=;
- b=Ewl89YJKVKzwtdR8FcwGO+gH+jtRZvi8e3y1BHwSoAkfjKDcrA87VWaV67uwuRN5hC
- bJKfVU/Ldd6JOgVVMJ007dfOmgdO7MYT6FP7132mg3tNXJ/vuH16hBxZQ2d+dWTO5Hk7
- Gg/8jUjYQQAMmGod7PRJSHhx8a6raYbw8vcq5bULOZGvzhcqAl6bhC7hUM6ulAaWCKI0
- GKM46Xg62qBU50ngYaky0YOnD74dSLtYSrFA7PdQNIepU53Yxgeg547ou9bSgEta26LZ
- wXL3E9xANzUvdKKy27eIU+07+X5rcj1aR6E19tZ+n9Kod2Aqq98Wb0n8GzJma75X4I38
- D2Jg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=eniiE3qKSz7L8eXyyB5KDh+HPasxFA247h7E3O4cQ9s=;
+ b=VmEosp5ncub/BSxMnOwW7A8rYL+IXOipCtKWRVvyh8Pn394w/sGao8PtsrUI1KH2Zj
+ xkLC7uirjAyMDAtgtYPZctvadDMj6wemoeoUHHQ0QajaBRoC3uuNdC+fXNChGPi7AfXx
+ yFbb+j5xdGZw3qOZgEqlE9xd5qxxW7F4VJd+y7pm96S69N+cdpd3XbJUiI1EaV0h7fLH
+ I3gnzVr52dPRCSr7slEJ5txT3P0/ls25TNz+Uez12rsSjd6Jx/fT0WjeVrjQkPYSoYnE
+ J4HRjtdjMQUlZZni31l8V9FRFWFxsHTGG2lu133kIccjcLfoiPtbQYi8lYfn6hDOs0tu
+ B/fQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=e1sWyeggBXIl3SFjMpQ00lDF37d9kKjTCfqhZMyIozI=;
- b=I9Sa+15XgkVeDSXqbf1blBPat7BlJmxj5PImqL6hyir2vrb9N0+xJlp1/e3dzUQe+n
- nuvEjsCmYguIk9r2M9Dh2CXPaV9UWqTmwIG+1oe2fJsencuBo6jSE7GVoOgTs3YAuFj8
- NVfK1pX0/xAr6u5Q++T/K3PDQxW7Ob5/ZKsbyjzGoalqj4gYpGZ0rjmIkPnqz9kTCgQZ
- DRpsSTxU+S5Bs911jfiVLLTZf7RPFdIMrzxHTfquMaV/lOK7JgRCW8wexRtIeAn3bii3
- Ihrp1MCFsumNA5kAKc7Xc+uMtx5yhhqAFnfypex6I2Ktma+IrCDw/iFIZt4LzKsqOKgs
- c1YA==
-X-Gm-Message-State: APjAAAXYnDA8XpEvG0NHPlarnjSmNXfNkkYuuo23vpmvjryV3PfMkqKZ
- ys7x+ndtaGQCqj/S5hClHWonE01c3TQ=
-X-Google-Smtp-Source: APXvYqzqs0t6Vejz1PkSpAh8zJoi+jVonAS0j7V6bQG02pISfcJ/fnrTa35d4gaNtcLwp9Bs6D/koQ==
-X-Received: by 2002:a17:902:9004:: with SMTP id
- a4mr15222226plp.109.1564902640667; 
- Sun, 04 Aug 2019 00:10:40 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=eniiE3qKSz7L8eXyyB5KDh+HPasxFA247h7E3O4cQ9s=;
+ b=V24UfIbRbUCcZrOwRiRuryI5CZ3njdKws8AnIBBcFfV+ONS17GN452W+N0pD7BWl58
+ yUEvnbhNHi5sgCIzpWL5dN3foc49UKXuF9cYzGe1/ykHaNWcCXLeEaWh///dq9u1xQ5/
+ Ihb7SD1tmJVz6NxHlD+egS5rxBvT+sSBAE4nTXKpRj0M2nz2JRaepkC1p52PEAQ+/5MR
+ 8XkYLZ2JATJpmFotIbIVJEzu/d0+dskOdTUzvb3L+Jp/E3g943t65nGiCLVkNzSCJoZX
+ hdKqjEXvVVYMx02oy5fgX28MEJsGnSpu+RPPgcnVN+LvjEZ2OCrweIgTZPxuvOOwed2Y
+ z8jg==
+X-Gm-Message-State: APjAAAXgK7KCRqfT2mcqXUAFefNKf5UbxB8v7RqnRT9TjUaY+Sm12GKO
+ NH6brN9hNZf1IrZrt/luuGFRqq6Pp3o=
+X-Google-Smtp-Source: APXvYqyYpaNisIpQEDV6xa8iJ0TR6kx13zt+NtEMc1F3/W5c3j8FvrdGDiV6LmHLNwdIR1I2a3oiQw==
+X-Received: by 2002:a17:902:8207:: with SMTP id
+ x7mr139348088pln.63.1564902642856; 
+ Sun, 04 Aug 2019 00:10:42 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id p7sm88033964pfp.131.2019.08.04.00.10.38
+ by smtp.gmail.com with ESMTPSA id p7sm88033964pfp.131.2019.08.04.00.10.40
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 04 Aug 2019 00:10:39 -0700 (PDT)
+ Sun, 04 Aug 2019 00:10:42 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 0/3] nvme-cli: add Get LBA Status command for 1.4
-Date: Sun,  4 Aug 2019 16:10:23 +0900
-Message-Id: <20190804071026.16149-1-minwoo.im.dev@gmail.com>
+Subject: [PATCH 1/3] id-ctrl: add an indicator for get lba status capability
+Date: Sun,  4 Aug 2019 16:10:24 +0900
+Message-Id: <20190804071026.16149-2-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190804071026.16149-1-minwoo.im.dev@gmail.com>
+References: <20190804071026.16149-1-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190804_001046_729617_82C2BC73 
-X-CRM114-Status: UNSURE (   8.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190804_001049_731276_77CC8796 
+X-CRM114-Status: GOOD (  10.69  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -73,6 +76,9 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (minwoo.im.dev[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
+ [list.dnswl.org]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -80,9 +86,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
- [list.dnswl.org]
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,29 +104,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi All,
+NVMe 1.4 supports for the Get LBA Status Capability which can be
+referred to 8.22.  The Identify Controller is now able to indicate
+whether or not the Get LBA Status Capability is supported.
 
-This series adds Get LBA Status command which has been introduced in
-NVMe 1.4 spec.  Also it covers new fields in Identify controller data.
+Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
+---
+ nvme-print.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Github PR: https://github.com/linux-nvme/nvme-cli/pull/546
-
-Thanks,
-
-Minwoo Im (3):
-  id-ctrl: add an indicator for get lba status capability
-  id-ctrl: add 1.4 features to OAES
-  get-lba-status: add Get LBA Status command
-
- linux/nvme.h   | 16 ++++++++++
- nvme-builtin.h |  1 +
- nvme-ioctl.c   | 15 +++++++++
- nvme-ioctl.h   |  2 ++
- nvme-print.c   | 49 ++++++++++++++++++++++++++++--
- nvme-print.h   |  1 +
- nvme.c         | 82 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 7 files changed, 164 insertions(+), 2 deletions(-)
-
+diff --git a/nvme-print.c b/nvme-print.c
+index 2b6bc389015b..b6e18d488a8e 100644
+--- a/nvme-print.c
++++ b/nvme-print.c
+@@ -169,7 +169,8 @@ static void show_nvme_id_ctrl_ctratt(__le32 ctrl_ctratt)
+ static void show_nvme_id_ctrl_oacs(__le16 ctrl_oacs)
+ {
+ 	__u16 oacs = le16_to_cpu(ctrl_oacs);
+-	__u16 rsvd = (oacs & 0xFE00) >> 9;
++	__u16 rsvd = (oacs & 0xFC00) >> 10;
++	__u16 glbas = (oacs & 0x200) >> 9;
+ 	__u16 dbc = (oacs & 0x100) >> 8;
+ 	__u16 vir = (oacs & 0x80) >> 7;
+ 	__u16 nmi = (oacs & 0x40) >> 6;
+@@ -182,6 +183,8 @@ static void show_nvme_id_ctrl_oacs(__le16 ctrl_oacs)
+ 
+ 	if (rsvd)
+ 		printf(" [15:9] : %#x\tReserved\n", rsvd);
++	printf("  [9:9] : %#x\tGet LBA Status Capability %sSupported\n",
++		glbas, glbas ? "" : "Not ");
+ 	printf("  [8:8] : %#x\tDoorbell Buffer Config %sSupported\n",
+ 		dbc, dbc ? "" : "Not ");
+ 	printf("  [7:7] : %#x\tVirtualization Management %sSupported\n",
 -- 
 2.17.1
 
