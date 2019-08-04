@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E9FC809C6
-	for <lists+linux-nvme@lfdr.de>; Sun,  4 Aug 2019 09:11:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 47511809C7
+	for <lists+linux-nvme@lfdr.de>; Sun,  4 Aug 2019 09:11:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,62 +11,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=SMa7v4cY3o/MWtdRH2PIsLiGIMAtq0W6r/bNWdIfX6U=; b=uB/FGCuZWTHyFwmJwNN8nr+6pk
-	JsWYCHn5Qz1JnkqC6paWfEQ0LmMW6k2AVFBbrDv5iIElurGUVST9GoCebXZmP765EtW3DqTDynAxE
-	NzG5Ricz3pyraGJONhHmpsy8Tn0Pt6LNrFn76ygPEh7LT2NBALR+Aay3niYiQk6U+Dms8xkJ21YKK
-	ifty48KGVNh9VKCgqgMiS5jb3BlL1rkwTupeffOq8lFL4MwGrBncsiMwKtmigA2pSIcWnrc1antIu
-	11JJAgQqi6r6f3l7hIt7vcCRJ9muZhDCVoWKKbB2pMxcuEEW5Nldyp62CLc03G8a5S1sc96rc0h/k
-	990f9o+w==;
+	bh=aRSZQEFbkZpZvh2rUJBTZsQmIUObGlSVDi9OkAogcRo=; b=h2v9H3VwU0ZIqascxHYwv8HoNE
+	RHNKdK1RBelahbcULXJs1q/PtzSatHq0qav61cCN68ZKwwxmPYK3kD8IdktHeS2z+lBj8152zuaVf
+	kTaSpLrHLhGNCuMIB+0uKBijCk26Mp1qICRS6CNu7k7A8hD4MQqwiP08PZlKzLSG5rg13m68LZaKP
+	33iF28ReWmxFmePQuMqjry6V523QyyihT40b84CgJIjcA0xrDXfZ7OM6Rj4MFsGqHRuZzZcZc4o9h
+	CRhAqDaS/aPAwdhTXbf8nHql/gbplX4VHY0ejjexJOT8Z0l23V7/vWpGZSeWeEMClld6u6/k1jKVM
+	ZcyVbBDA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1huAfx-0004QT-4i; Sun, 04 Aug 2019 07:11:29 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1huAgA-0004a3-U5; Sun, 04 Aug 2019 07:11:43 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1huAfJ-0003wE-Ma
- for linux-nvme@lists.infradead.org; Sun, 04 Aug 2019 07:10:51 +0000
-Received: by mail-pl1-x641.google.com with SMTP id m9so35101871pls.8
- for <linux-nvme@lists.infradead.org>; Sun, 04 Aug 2019 00:10:43 -0700 (PDT)
+ id 1huAfJ-0003wG-Mc
+ for linux-nvme@lists.infradead.org; Sun, 04 Aug 2019 07:10:52 +0000
+Received: by mail-pf1-x444.google.com with SMTP id m30so38058160pff.8
+ for <linux-nvme@lists.infradead.org>; Sun, 04 Aug 2019 00:10:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=eniiE3qKSz7L8eXyyB5KDh+HPasxFA247h7E3O4cQ9s=;
- b=VmEosp5ncub/BSxMnOwW7A8rYL+IXOipCtKWRVvyh8Pn394w/sGao8PtsrUI1KH2Zj
- xkLC7uirjAyMDAtgtYPZctvadDMj6wemoeoUHHQ0QajaBRoC3uuNdC+fXNChGPi7AfXx
- yFbb+j5xdGZw3qOZgEqlE9xd5qxxW7F4VJd+y7pm96S69N+cdpd3XbJUiI1EaV0h7fLH
- I3gnzVr52dPRCSr7slEJ5txT3P0/ls25TNz+Uez12rsSjd6Jx/fT0WjeVrjQkPYSoYnE
- J4HRjtdjMQUlZZni31l8V9FRFWFxsHTGG2lu133kIccjcLfoiPtbQYi8lYfn6hDOs0tu
- B/fQ==
+ bh=HOu2v72Ssnzbh2gxZpycpIH64s67bIa2wo1Ht6Hrpts=;
+ b=ZIp9mxJ5owXee6rckRGc5QYnsIfTJ4uYH4u7d5HISNla+wkX3bqRJfURak5EN0uYuo
+ GwhxbFmbwgMx9waINOOJKrfpO05Cac+14v3h+ZqvXE5ralsx9iFhfEayUrzfbjmXPlh7
+ CPodsrqgDXG1gm9QgKQbrcoOIcYIU0O0CRJqLqsJI4w0Ovt8PnbNj74bsJHnVYnhKqWJ
+ ocD5/HnBP9J3/b/MBQC6yP/e1Uml6LQxsqvv0IosNMGgZgXMJlSAbL2nocEYLoDoq5Rl
+ +yh0l/4+rW+ctJIImwhW6+Ecd7Nbs7xZioPf+VT2tN0xDT35nIg6tZyMIEiGuGptxs3G
+ C82g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=eniiE3qKSz7L8eXyyB5KDh+HPasxFA247h7E3O4cQ9s=;
- b=V24UfIbRbUCcZrOwRiRuryI5CZ3njdKws8AnIBBcFfV+ONS17GN452W+N0pD7BWl58
- yUEvnbhNHi5sgCIzpWL5dN3foc49UKXuF9cYzGe1/ykHaNWcCXLeEaWh///dq9u1xQ5/
- Ihb7SD1tmJVz6NxHlD+egS5rxBvT+sSBAE4nTXKpRj0M2nz2JRaepkC1p52PEAQ+/5MR
- 8XkYLZ2JATJpmFotIbIVJEzu/d0+dskOdTUzvb3L+Jp/E3g943t65nGiCLVkNzSCJoZX
- hdKqjEXvVVYMx02oy5fgX28MEJsGnSpu+RPPgcnVN+LvjEZ2OCrweIgTZPxuvOOwed2Y
- z8jg==
-X-Gm-Message-State: APjAAAXgK7KCRqfT2mcqXUAFefNKf5UbxB8v7RqnRT9TjUaY+Sm12GKO
- NH6brN9hNZf1IrZrt/luuGFRqq6Pp3o=
-X-Google-Smtp-Source: APXvYqyYpaNisIpQEDV6xa8iJ0TR6kx13zt+NtEMc1F3/W5c3j8FvrdGDiV6LmHLNwdIR1I2a3oiQw==
-X-Received: by 2002:a17:902:8207:: with SMTP id
- x7mr139348088pln.63.1564902642856; 
- Sun, 04 Aug 2019 00:10:42 -0700 (PDT)
+ bh=HOu2v72Ssnzbh2gxZpycpIH64s67bIa2wo1Ht6Hrpts=;
+ b=Wp3FOR05MdOco+YMt81HnfR7DW3xDgQmaQWew46nqWPVHK3ESj3p1I59W11vxDO2E7
+ k4zFaRla3fgn73LMp1/hBNax5BuYX82C+torRfkk1zrkZqzrWrRuXM5sPFx0dTVE1XaZ
+ RwHhW+uJD5uXteniawCJI5XuF8hDPVUREV30+LaDu3SfYu6tIMdUtMaqRhfQyUmsB5y7
+ i4ZHYN24i4HxxpUCbHwM8/fSf7P2/vH8nT0cfOMMRhR1f6o9DSXM/Xrey6aY+HMBsDfK
+ MxxNB1Y2Qxwj4hVamSafhSFo6bjmSC9p9v/7cQQem3foWgGW4BOHgI1Kp7iw030GgQSP
+ yrnQ==
+X-Gm-Message-State: APjAAAVAmmQ//qGXEScTbB8+T6hJ3GxiAWD5B92fWguGHx5mKtjc6CnD
+ 2151lHkf5yoxcmB0mqWu3nxR5qEZ7r0=
+X-Google-Smtp-Source: APXvYqztRAhvjOa+sLQpes4JV34I62bm0RZ4wO/K2BRXxPzeNbWzrLzGrOxZXkntoQA80ThyB1nS8A==
+X-Received: by 2002:a65:504c:: with SMTP id
+ k12mr133240354pgo.252.1564902644911; 
+ Sun, 04 Aug 2019 00:10:44 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id p7sm88033964pfp.131.2019.08.04.00.10.40
+ by smtp.gmail.com with ESMTPSA id p7sm88033964pfp.131.2019.08.04.00.10.43
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 04 Aug 2019 00:10:42 -0700 (PDT)
+ Sun, 04 Aug 2019 00:10:44 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 1/3] id-ctrl: add an indicator for get lba status capability
-Date: Sun,  4 Aug 2019 16:10:24 +0900
-Message-Id: <20190804071026.16149-2-minwoo.im.dev@gmail.com>
+Subject: [PATCH 2/3] id-ctrl: add 1.4 features to OAES
+Date: Sun,  4 Aug 2019 16:10:25 +0900
+Message-Id: <20190804071026.16149-3-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190804071026.16149-1-minwoo.im.dev@gmail.com>
 References: <20190804071026.16149-1-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190804_001049_731276_77CC8796 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20190804_001049_737579_164DF035 
+X-CRM114-Status: GOOD (  10.18  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -77,7 +77,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  provider (minwoo.im.dev[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
  [list.dnswl.org]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -104,38 +104,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-NVMe 1.4 supports for the Get LBA Status Capability which can be
-referred to 8.22.  The Identify Controller is now able to indicate
-whether or not the Get LBA Status Capability is supported.
+Optional Asynchronous Events Supported now has few more fields from 1.4.
 
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- nvme-print.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ nvme-print.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
 diff --git a/nvme-print.c b/nvme-print.c
-index 2b6bc389015b..b6e18d488a8e 100644
+index b6e18d488a8e..91eb326157f2 100644
 --- a/nvme-print.c
 +++ b/nvme-print.c
-@@ -169,7 +169,8 @@ static void show_nvme_id_ctrl_ctratt(__le32 ctrl_ctratt)
- static void show_nvme_id_ctrl_oacs(__le16 ctrl_oacs)
+@@ -122,13 +122,27 @@ static void show_nvme_id_ctrl_cmic(__u8 cmic)
+ static void show_nvme_id_ctrl_oaes(__le32 ctrl_oaes)
  {
- 	__u16 oacs = le16_to_cpu(ctrl_oacs);
--	__u16 rsvd = (oacs & 0xFE00) >> 9;
-+	__u16 rsvd = (oacs & 0xFC00) >> 10;
-+	__u16 glbas = (oacs & 0x200) >> 9;
- 	__u16 dbc = (oacs & 0x100) >> 8;
- 	__u16 vir = (oacs & 0x80) >> 7;
- 	__u16 nmi = (oacs & 0x40) >> 6;
-@@ -182,6 +183,8 @@ static void show_nvme_id_ctrl_oacs(__le16 ctrl_oacs)
+ 	__u32 oaes = le32_to_cpu(ctrl_oaes);
+-	__u32 rsvd0 = (oaes & 0xFFFFFC00) >> 10;
++	__u32 rsvd0 = (oaes & 0xFFFF8000) >> 15;
+ 	__u32 nace = (oaes & 0x100) >> 8;
+ 	__u32 fan = (oaes & 0x200) >> 9;
++	__u32 anacn = (oaes & 800) >> 11;
++	__u32 plealcn = (oaes & 0x1000) >> 12;
++	__u32 lbasin = (oaes & 0x2000) >> 13;
++	__u32 egealpcn = (oaes & 0x4000) >> 14;
+ 	__u32 rsvd1 = oaes & 0xFF;
  
- 	if (rsvd)
- 		printf(" [15:9] : %#x\tReserved\n", rsvd);
-+	printf("  [9:9] : %#x\tGet LBA Status Capability %sSupported\n",
-+		glbas, glbas ? "" : "Not ");
- 	printf("  [8:8] : %#x\tDoorbell Buffer Config %sSupported\n",
- 		dbc, dbc ? "" : "Not ");
- 	printf("  [7:7] : %#x\tVirtualization Management %sSupported\n",
+ 	if (rsvd0)
+ 		printf(" [31:10] : %#x\tReserved\n", rsvd0);
++	printf("[14:14] : %#x\tEndurance Group Event Aggregate Log Page"\
++			" Change Notice %sSupported\n",
++			egealpcn, egealpcn ? "" : "Not ");
++	printf("[13:13] : %#x\tLBA Status Information Notices %sSupported\n",
++			lbasin, lbasin ? "" : "Not ");
++	printf("[12:12] : %#x\tPredictable Latency Event Aggregate Log Change"\
++			" Notices %sSupported\n",
++			plealcn, plealcn ? "" : "Not ");
++	printf("[11:11] : %#x\tAsymmetric Namespace Access Change Notices"\
++			" %sSupported\n", anacn, anacn ? "" : "Not ");
+ 	printf("  [9:9] : %#x\tFirmware Activation Notices %sSupported\n",
+ 		fan, fan ? "" : "Not ");
+ 	printf("  [8:8] : %#x\tNamespace Attribute Changed Event %sSupported\n",
 -- 
 2.17.1
 
