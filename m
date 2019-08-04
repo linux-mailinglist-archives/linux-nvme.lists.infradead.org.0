@@ -2,75 +2,74 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6A00809E7
-	for <lists+linux-nvme@lfdr.de>; Sun,  4 Aug 2019 09:58:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC8FA809E9
+	for <lists+linux-nvme@lfdr.de>; Sun,  4 Aug 2019 10:07:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rg9IE/rW1nYBEnKM8Mko6lIFsX5jEWM6znY6Vb1TvuI=; b=Z5IkQMSmWQodvM
-	ewS6WhWahQZ0u9gcRwvA/3fnXe+vg4AuzHaqbiDt2ZmBNt05l7aSJKAdGUVqNe/P9kbxkpIJp8t/S
-	h5HpioBM0LDdlzh1yrtJFktnoY3G1RHG+NqvbQvdltDA0hYFq/30/gxuRA4DNGDgD/IqKlPDa0QKq
-	8pw7pNuX1KebTrEc82/IabtzfCJNlG3oFD+PJLzuil7P9tgFQWHvf1iWtKwg97VTBig+zH+9pwzfx
-	pem+PwpXouZ30Cy04Pwe4PcDUMa24gdANXZcbwLL2EYDMBieujwBSzMPzd+OEAKGjp1pleFC7oEfS
-	SvxQeXQhVG68AH7jacwQ==;
+	List-Owner; bh=zInw1TKoSyZ5s97zElRoo42MfYGqJRuTt6Gg/XhDPSo=; b=s7qw80hlb5PyQl
+	OwJhMr+xLtB1pWJ0F6BRWuWCG92+lAoxa0pzuloYRtHNFWHIJN8yQcFYJsloTEtYnIBCzh0fdO6TY
+	ecqPuUzeS/ulkHywN2HPhZhVQ34jULdphitNIBU/WRDvlQzd6SIjLyF3WGKqVFRKWJY9Ej77bSuR2
+	toG3Lxy9d/SvLvnClL5t/v+wxIUrzRtTO5GV5gxcswwUNDrJwD5CPlGDIIecQi06fbAee8ZIFOWst
+	nsTepE1yeZikhT+V0EaLiWn4AIKh8lcBSYjdskun5QB3T/t63FoYFFeLPQK61x3e0IcdmBnHkzhpd
+	0Sl8FraI4KyUguYYgTyQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1huBPA-00051V-Gg; Sun, 04 Aug 2019 07:58:12 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1huBXl-0008Qr-Se; Sun, 04 Aug 2019 08:07:06 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1huBP0-00050c-2j
- for linux-nvme@lists.infradead.org; Sun, 04 Aug 2019 07:58:03 +0000
-Received: by mail-pg1-x542.google.com with SMTP id u17so38132763pgi.6
- for <linux-nvme@lists.infradead.org>; Sun, 04 Aug 2019 00:58:01 -0700 (PDT)
+ id 1huBXd-0008QY-6v
+ for linux-nvme@lists.infradead.org; Sun, 04 Aug 2019 08:06:58 +0000
+Received: by mail-pg1-x541.google.com with SMTP id x15so27786633pgg.8
+ for <linux-nvme@lists.infradead.org>; Sun, 04 Aug 2019 01:06:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=iQZhcKsuyV8JcTJOyx5G4wCNMYszfBfDbgcKZW8Qw7E=;
- b=iYSpcozIlU6wOPwmp06uNJOqHuITfOq5aWATqxhYI2kKEZW9AHX8AzGyLW7yK/uswu
- kV5NACEk1o/wCswpl2p3tVE+V+qYVVYurNLHyvUeDWLAKyei39gV9S4No6akgHdTambA
- d4IBcD25u+7WlUCI2EqOsF5nN4gK0IGRuKfIMDOtd+TB55mjKm8Xk1i0BpfNa0W/IOSU
- vhwNuv/dGpAXM8BHfrKvR3ZFe2stHJmAipft699Mcn3SG1eAB96ad5bWb4M9WCy+oWne
- fgDgv+ujJmeginTRcR5UtXl3hb0s5FGiPEj9NOM9t5iY32uJmtma1PsjVRnhSjRv8S3g
- Ua0Q==
+ bh=s5Ztwvsq30L5mlryY2m1yn4U1oLoTPwA7Uh6tAZ1CpM=;
+ b=I4I83NHgn7zpW1nAppcY9gxp9llaSYfkycuq2Ov5VDzWC7pIysOai9WNSllP3mP+vD
+ u4fETSLgqSaoFMPgVm7en+Ah6DmamcRGxwT9cjzDPduvJRrWkTaz+XEpxF3jymLF86PY
+ Cc+lZDXCMUfmplKKo7sEEamRTOF+an0PTsKhzuV58gzjMhVjSt6X7NtC6ZyeFIvn+yGz
+ 2Pdl6/9U9vJQBzCbYOywme3W5niSE1TocA8Z8SAp1o5AXf+KvST7WWmIF0y2oRIPWlAv
+ FYz/iCUF3AzNMinxIUHYlprwZsrtfzN7mVTOOfJJ/a9vGiBlytoUzDuatItqzUIVO7xf
+ HWxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=iQZhcKsuyV8JcTJOyx5G4wCNMYszfBfDbgcKZW8Qw7E=;
- b=Ehmy0FLQhEk66TlHHvQha75PomVaQXu5pLI6ff8ELf3KjRIptRV+ThCUJ90GQ+RhVo
- dZp46Ue1+qdCeXj7FrYHG0JASm5wkeChhNpepvv1CUS7VOF0LpU80/98ZsNJY7n2ZnxO
- 96JnNCR5aWq0oCy2LNfxjcI5RpVJVLbbnDMtd+ws/IIxDcq+H53NwgURue/e7z3EtkIv
- u9+91wQxL6erdFKK+ng0VdaSqt9aT5FWkLeQR9PPYaRgrb6CGh1gMyIGbNh4xfYgX3Wy
- HQ3mSF8FuewkkbGq7j88Y400asf/j0AV7xFI6UFx5P/4yZMMhGys/HMADT06eAOpEZ+T
- sxLQ==
-X-Gm-Message-State: APjAAAVPTmIUbXNtbtdJfzyE73e2T2ygnqOZuti5EWnclMPdbfMU4nix
- loaOdE4v1mWmFFZWbcQQQds=
-X-Google-Smtp-Source: APXvYqw7YVWkIT3i17RLJXKqhLLi5FKNzOyoIYPiinvGRhRDjCaqHSFKR7XigTiakRhj9QRrNbJ0uQ==
-X-Received: by 2002:a63:7358:: with SMTP id
- d24mr131228314pgn.224.1564905481500; 
- Sun, 04 Aug 2019 00:58:01 -0700 (PDT)
+ bh=s5Ztwvsq30L5mlryY2m1yn4U1oLoTPwA7Uh6tAZ1CpM=;
+ b=MkxivQ9KiUNKtl0LkEQvCv6vm+gO5qxl+S9PrdxegNJcQ2HenZGU8EuhfnuGyie/7G
+ zRhjl+j1+xDVb1qNZ/eqkP8piWzPTIwVtslT1l00XxFmSrifYQJ6oxpgu7wP3nQlwpj4
+ DUsEfSR2fU6dZyUosi4FwwSYIVaIszz9sbxT3UHww2kMI7FW2uPS81PbyCWAClj7Z95Y
+ tKfMgznEpVnAenUMvbNbDq39/WRwoNRTU7c+qAPd+mwY9OR98wIc9JMZ3LblhjSPLR3I
+ uhbecrmhpZylns5KTnZFDg/7/Fv0c110EAEJP3IcOUFktPQbqeH2u5y/Ii5DHXh4U4X5
+ xBhw==
+X-Gm-Message-State: APjAAAUCARJ1qX9Bv/WTBS7Y8yol+UycmdBeSsqFxDOirXSJJ0bBrVaq
+ 58rDewwQm/FmlAUonjVnB5g=
+X-Google-Smtp-Source: APXvYqwOepr8bMgw2ZrJ5zVbpmr7VlDaDS60fJOEhTVp730gcDl0my3bUtQXXwVUZ0yTZwvXV3uW9g==
+X-Received: by 2002:aa7:914e:: with SMTP id 14mr67505547pfi.136.1564906016619; 
+ Sun, 04 Aug 2019 01:06:56 -0700 (PDT)
 Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id f19sm116983974pfk.180.2019.08.04.00.58.00
+ by smtp.gmail.com with ESMTPSA id o13sm15533505pje.28.2019.08.04.01.06.54
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 04 Aug 2019 00:58:00 -0700 (PDT)
-Date: Sun, 4 Aug 2019 16:57:58 +0900
+ Sun, 04 Aug 2019 01:06:55 -0700 (PDT)
+Date: Sun, 4 Aug 2019 17:06:53 +0900
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH rfc v2 2/6] nvme: return nvme_error_status for sync
- commands failure
-Message-ID: <20190804075758.GB14486@minwoo-desktop>
+Subject: Re: [PATCH rfc v2 3/6] nvme: make nvme_identify_ns propagate errors
+ back
+Message-ID: <20190804080653.GC14486@minwoo-desktop>
 References: <20190803024955.29508-1-sagi@grimberg.me>
- <20190803024955.29508-3-sagi@grimberg.me>
+ <20190803024955.29508-4-sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190803024955.29508-3-sagi@grimberg.me>
+In-Reply-To: <20190803024955.29508-4-sagi@grimberg.me>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190804_005802_119225_EB96D3EF 
-X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-CacheID: sfid-20190804_010657_279320_B20DD35E 
+X-CRM114-Status: UNSURE (   8.69  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -78,7 +77,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -110,15 +109,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi Sagi,
+On 19-08-02 19:49:52, Sagi Grimberg wrote:
+> right now callers of nvme_identify_ns only know that
+> it failed, but don't know why. Make nvme_identify_ns propagate
+> the error back (like nvme_identify_ctrl).
+> 
+> Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 
-On 19-08-02 19:49:51, Sagi Grimberg wrote:
-> callers should not rely on raw nvme status, blk_status_t
-> is more appropriate.
-
-May I ask why caller should not rely on the nvme status?
-
-Thanks!
+Reviewd-by: Minwoo Im <minwoo.im.dev@gmail.com>
 
 _______________________________________________
 Linux-nvme mailing list
