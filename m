@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3FD9809DC
-	for <lists+linux-nvme@lfdr.de>; Sun,  4 Aug 2019 09:52:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A42FD809DD
+	for <lists+linux-nvme@lfdr.de>; Sun,  4 Aug 2019 09:52:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,69 +11,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=O5aIxMhv0qdgy29PoyBfaKSERz19hCJBCIUykS2FOng=; b=qIHbs9hs/NmJ2GyFBmtzt7bcLQ
-	P+MLB0NYLCQabWGOwiBzfer0MLg+XIrFb+HkmbTrsffMIJZH/nQj16foU154fW1bFkOgDXhnosm7k
-	1/WIN2a3kof6Q4lBmqIO1CwwPju4IvPrQqMEooRT54KIE9UyZXF+kWroM41jPTEqwZ0+/6WJvL0MW
-	qnI+eH+KqJ3jDc2X6UBoje2eGZGKVLDPExtwkJkSAGhtD+Zo04l8Rqhs/XXrZS14RpRJfqIdmPAfn
-	t7nNldn6HMYNKb5wbKwIfYr8ov9JU5vw2juTkWv5YNaMW/1TGM3JIkyMWXP23RJEbOoRIXGj92/15
-	Dun2zWLw==;
+	bh=SVproJxtAyMr8LhZMZTqAZd1U5D8y0tXcR8Ef6z2iDM=; b=mbjHrWsnQec+Hmpi8i7RSUvVp9
+	K/z+85Ar4xqC1z3bJRUXwyLyyJex28FtWWlje9fOymRY3YWUUeE6VZlZ9ot1VT58+8zMj9ycpaKg+
+	wj9powwPy1p8FO4AS3AISO0+jqdcDwIshf+yb/uJReW/DOBQsRDey/3Q4P05XAdxF7YciYurzEB05
+	I2l1VVE0OxmOV0gMi/Q/t+1VbqW89Xs9v3MLHHhWuVeGEWjQNJaBk3310bqnwmTFdxQMWND4oN1E6
+	iWgRZ6gJz/dqV2pQe1kIUtp3YmSYcuHXax18C7NVe5DNyNTzYIOe1qykuALv9027Cgv93R++beDgk
+	u11QWRyw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1huBJ6-0002kF-1w; Sun, 04 Aug 2019 07:51:56 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1huBJH-0002vf-31; Sun, 04 Aug 2019 07:52:07 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1huBII-0002HQ-9Y
- for linux-nvme@lists.infradead.org; Sun, 04 Aug 2019 07:51:08 +0000
-Received: by mail-pl1-x644.google.com with SMTP id c2so35225469plz.13
- for <linux-nvme@lists.infradead.org>; Sun, 04 Aug 2019 00:51:06 -0700 (PDT)
+ id 1huBIL-0002J3-6d
+ for linux-nvme@lists.infradead.org; Sun, 04 Aug 2019 07:51:10 +0000
+Received: by mail-pg1-x544.google.com with SMTP id w10so38125087pgj.7
+ for <linux-nvme@lists.infradead.org>; Sun, 04 Aug 2019 00:51:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=qe8bWZI+mFZMm3Hn7SDNZhqpCWWmzI+jkOJzjlgVfF4=;
- b=pElDmd/BsAhdo5C5am4Lz2f6N/+XkgOfNaGhyV9dDM1AMkcKM72C6OX99mm6NGKdWn
- +NsvPYNz8XTXUkf7SHMKFJy2LpyN6Sliih73BRSbLyqmUMaNVTX1HTJqwvfEAg0OPTso
- DiGb2E4gCZg/uoaMulf91zluSKv2euqiVWWI+7HuzsdSroisUMQ6qC4uuaPomVAc3I0q
- ziiGKOA/4BN/qInYPAkzlePqGKizH7Q2+n/p/5mwbi5H5OkKQMUEJUR9w8CuvWsj0+iu
- +EAsAmGWmHm2V7CmTSyZobgqKXgay/lL8JW6Qo6CFf4Hqo68m6uZJj64xc0+ffHlbONq
- ae7A==
+ bh=b270Z5VoEXh143IOoA65JGI3MM6BrZhoqlGvp1EnZv8=;
+ b=Y4hXwJQc++LUWfK/kLeH3ywufqKdw+aSeHAwHGc6KIN+Pm8rtpZtCIWouPVaydrRdW
+ wWgj3+8D4iWrsU8P/o1yek5Kyua2ELrrbCgL0K92lpTejqs0xGIJqyuX8Okou1hnt94k
+ 6FGt7izHVrWfqe0C0SR8iFlE785eWyIyvg0PXbG0hs888FnXPKewnFYBReCPXcm60yV+
+ O0h/UVBkMrR4dWatBC/sGuhfMyDfIsES1Zh0U/TTePGITqJYxH6aKDgbIAe4J/KYFx7d
+ My1V57u1eaW40J/XlKSKd6duJDe48UXVQHCOtqZxuV/29O4mGYtKLIIX8fq3qc3UlhWM
+ 9o9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=qe8bWZI+mFZMm3Hn7SDNZhqpCWWmzI+jkOJzjlgVfF4=;
- b=mShdG5vWLqlbKoSCIT1NQA0vPd4eQNwkEOhw6Lpw5ME2Tawqy08vjFDv9EzXjO0yQC
- WWHASLHy/WSMCltktckufg9WX9vdMOlnYwdVIGdhKtt7sr+AMnJ16LgoQ0cxkZbEj2t9
- RhjjIBnJ+liHlmzWz+I94cHXO1QFLT0NCd+DHYte34FFtwas9Y3sCOwa+WfH9qWb80Qc
- 5o23kQCxrVparGB4cE8+9rFVxxZiXHCbsJFz4Ot/oDT2Yw74c5C+1fi9ET0W9g/eOk5m
- ZbMNkRtbHZEAqga8WM/xXvvuRtRCQRRj9pEdrbhfGtmWDH5/PS951DSGJ7K8gwUb0s4r
- NRcw==
-X-Gm-Message-State: APjAAAVbX2TfCfe/2hSyHQJffYip6UvF6F8mhtFktJDCuOqAMEEYq3/x
- bctxmzPmreiRV2TQ7PwmMj5EYtj6FGA=
-X-Google-Smtp-Source: APXvYqwRpyvDaaX4HFMlJPxVvc467dKdiv0CV4u5HNnCZT+uELXahKb2CWjvNdL1/EuNSxtCF/FB/Q==
-X-Received: by 2002:a17:902:424:: with SMTP id
- 33mr59114265ple.151.1564905065523; 
- Sun, 04 Aug 2019 00:51:05 -0700 (PDT)
+ bh=b270Z5VoEXh143IOoA65JGI3MM6BrZhoqlGvp1EnZv8=;
+ b=YhBdXjdShO0/ifuVc5PMB4O1eeXphalHV9xyIyo8THC0dfUzTYiPtcHatQTc+ua3Pn
+ tD6j8OFo06ibw517EwHI22wL3Aa+SZFwAMSq3RVbEnugLVWkGrylE6st1fOHALQDRYzH
+ 8eVvYHqmJdosBAsxaffMqdxh0Me5gnC12GmD6sg4XUFqU2BZuX+j5Qr8zcgMWEbNcvbt
+ GrbuIasW03teMsqBIDBQ4vAHj7JIBjkasm+lsB/QQd48aMwWD2nWc+W0cmsLG6kNEzCB
+ DrgBnw3VLzyNBOEJ1pCqxf8kLoWAm/OUtAWHKFaAv7F3bbSFiKFyETmyuLEGPW9XO1cy
+ jgNg==
+X-Gm-Message-State: APjAAAWYiJnXcReQ6BxIz6Gjj5L8aUsXvpJvmY1QDtbuBLIS8pdPovmT
+ qkGkFS+ksDdrCwSZNG/qWu5oya7nPmg=
+X-Google-Smtp-Source: APXvYqzNQctlARSpKaY9T4eQwB3GIflLVzKEZv2OUnkAAe5oFEDhYHzw/sGC3Mw8ky31UNfDhHi0jg==
+X-Received: by 2002:a17:90a:9a83:: with SMTP id
+ e3mr12258057pjp.105.1564905068252; 
+ Sun, 04 Aug 2019 00:51:08 -0700 (PDT)
 Received: from localhost.localdomain ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id i126sm94091652pfb.32.2019.08.04.00.51.03
+ by smtp.gmail.com with ESMTPSA id i126sm94091652pfb.32.2019.08.04.00.51.05
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sun, 04 Aug 2019 00:51:04 -0700 (PDT)
+ Sun, 04 Aug 2019 00:51:07 -0700 (PDT)
 From: Minwoo Im <minwoo.im.dev@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 3/4] nvme: trace: parse Get LBA Status command in detail
-Date: Sun,  4 Aug 2019 16:50:49 +0900
-Message-Id: <20190804075050.14642-4-minwoo.im.dev@gmail.com>
+Subject: [PATCH 4/4] nvmet: trace: parse Get LBA Status command in detail
+Date: Sun,  4 Aug 2019 16:50:50 +0900
+Message-Id: <20190804075050.14642-5-minwoo.im.dev@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190804075050.14642-1-minwoo.im.dev@gmail.com>
 References: <20190804075050.14642-1-minwoo.im.dev@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190804_005106_896368_593E389C 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20190804_005109_467416_3E91E1D6 
+X-CRM114-Status: GOOD (  10.75  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -107,22 +107,23 @@ Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 Four different fields are in CDWs of Get LBA Status command which means
-it would be great if we can see in detail when tracing.
+it would be great if we can see in detail when tracing in target side
+also.
 
 Signed-off-by: Minwoo Im <minwoo.im.dev@gmail.com>
 ---
- drivers/nvme/host/trace.c | 18 ++++++++++++++++++
+ drivers/nvme/target/trace.c | 18 ++++++++++++++++++
  1 file changed, 18 insertions(+)
 
-diff --git a/drivers/nvme/host/trace.c b/drivers/nvme/host/trace.c
-index 9778eb0406b3..5c3cb6928f3c 100644
---- a/drivers/nvme/host/trace.c
-+++ b/drivers/nvme/host/trace.c
-@@ -86,6 +86,22 @@ static const char *nvme_trace_admin_get_features(struct trace_seq *p,
+diff --git a/drivers/nvme/target/trace.c b/drivers/nvme/target/trace.c
+index 6af11d493271..1373a3c67962 100644
+--- a/drivers/nvme/target/trace.c
++++ b/drivers/nvme/target/trace.c
+@@ -33,6 +33,22 @@ static const char *nvmet_trace_admin_get_features(struct trace_seq *p,
  	return ret;
  }
  
-+static const char *nvme_trace_get_lba_status(struct trace_seq *p,
++static const char *nvmet_trace_get_lba_status(struct trace_seq *p,
 +					     u8 *cdw10)
 +{
 +	const char *ret = trace_seq_buffer_ptr(p);
@@ -138,17 +139,17 @@ index 9778eb0406b3..5c3cb6928f3c 100644
 +	return ret;
 +}
 +
- static const char *nvme_trace_read_write(struct trace_seq *p, u8 *cdw10)
+ static const char *nvmet_trace_read_write(struct trace_seq *p, u8 *cdw10)
  {
  	const char *ret = trace_seq_buffer_ptr(p);
-@@ -141,6 +157,8 @@ const char *nvme_trace_parse_admin_cmd(struct trace_seq *p,
- 		return nvme_trace_admin_identify(p, cdw10);
+@@ -80,6 +96,8 @@ const char *nvmet_trace_parse_admin_cmd(struct trace_seq *p,
+ 		return nvmet_trace_admin_identify(p, cdw10);
  	case nvme_admin_get_features:
- 		return nvme_trace_admin_get_features(p, cdw10);
+ 		return nvmet_trace_admin_get_features(p, cdw10);
 +	case nvme_admin_get_lba_status:
-+		return nvme_trace_get_lba_status(p, cdw10);
++		return nvmet_trace_get_lba_status(p, cdw10);
  	default:
- 		return nvme_trace_common(p, cdw10);
+ 		return nvmet_trace_common(p, cdw10);
  	}
 -- 
 2.17.1
