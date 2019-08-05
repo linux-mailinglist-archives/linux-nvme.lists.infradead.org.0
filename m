@@ -2,114 +2,83 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0BFD82008
-	for <lists+linux-nvme@lfdr.de>; Mon,  5 Aug 2019 17:24:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3EBEE82289
+	for <lists+linux-nvme@lfdr.de>; Mon,  5 Aug 2019 18:37:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7ksQleEypLnalCIVG8x2daHD0WClk7m/amMDFptnHrk=; b=mHlC6iweqwUFvf
-	2+N/saFwmXsa85J/gQNHDg2FJtnnS5Nm1p0mbhRRRp12BOutT7c4cmsJZjXciOll3PTw4VmFbuRCw
-	YQAkZXUznRnobfZ2ZW3m4mKVuZsxZ8lVedp4arcnPh1We0lEWrxJogIHwlq/oXh9qzp51S5hkgN6O
-	kyuLHvceJ/ZH0Z4ujIFBlrCW2Rb5ltbxJ/rD7DL2Ot7Aysx5xkNtbcfgmJHI725dI2ew2mnSQshgn
-	+/C10dsyiVQTbrSzATFRWIYbr6CwkP8IVKouz725ASqVtOzYZZSQZLuwoiVQsg0D/kJ5nEfxek9Bp
-	+eh+fFkdHwt+6rE0G3XA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=zDnmFRqXaKL260zbOEKofzYCPpnJvTTEBQR3LMpkfU4=; b=nMVzPQTsWv9n9rpaoV26MTXy3
+	tag3pPkC4SFXxvZ6QD9ibW20MOEgnZvYPpGB1XpyVbbz0MjeQ11Wgy/l0zDwhrKc4WXfOP0Y+8s1i
+	q+D3lx8CIH7xAb5VzyMIsEg87HLnT0JrG+/JR8WcagHZCbXdwJABwEJvIKYxy2qGHlSm0xnpDZnuS
+	UijcHRewyQ/+llTuaHzNJx223zv+N6YDm5qT0I9+kmjNP2a4/rJSIqpiwhrPICfVRJWQPcUCcH2DI
+	5B12iJl3fbKEZFO4D5rVSvrZ90JLNGrK+lV2RangFmbE3nb70dkCi9vmbmLSq+TePKtjxxaW6S7Th
+	4eI3GaXdw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hueqw-0005VG-Vg; Mon, 05 Aug 2019 15:24:51 +0000
-Received: from mail-eopbgr10053.outbound.protection.outlook.com ([40.107.1.53]
- helo=EUR02-HE1-obe.outbound.protection.outlook.com)
+	id 1hufya-0008Nc-FT; Mon, 05 Aug 2019 16:36:49 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hueqq-0005Uq-MX
- for linux-nvme@lists.infradead.org; Mon, 05 Aug 2019 15:24:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Tfo1MgUQmqdtnFMA5cF7myU9LaOBD7KJofH6QGue6iruJubpRRt106ExV2F7MwWO2WSD9mTC+sonMvFYw60ieBqkRrWpbfmW9Lb5LHQvSxYCpzrNJsvvXi+6qpiPv7PjfVH6XoTg9g4GlHkdIadCf3OWqmsUST0bBb60BNF4iOA/g4GqdaM2fSH+KePrvqHYsNvn4gkLkRB+3PipmFB597rm/QxIhIV8VCNWSvLZ3oW+jMiIKIPPeqQpALTiHq1HH+mLqJpH6A1mXU9vlxgk87KByczFqQRd2rM1C5bbAzmpQT4iDCl8AX0PbGwWB4mlaPEjpktKKMXBk+h8VSri/Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0N17ZITwPPRVKD6SjLiyMoBN24/4kIPLNBSle8JArLU=;
- b=aqDoLZYAjeD8YCATA76tbRIcBE95yme9bnGbV8bY94QdtCQb+yAVLCPcWx6rc3ArPW1WmREz5CVQ91XaU12d24gFwKUvmbn6bhoZwatIcLsdhqIS3DhRE7wzBZ+kej7AN/LUfJb9cCkVd4qpCURJ0CAmObkbleQsQzkdOKHmtkJgUR8++nGTtd/Uu3Is8hzhxS/sf/0iibYklyq9nj6PEWJTnfkBvSqRp4kyRkEHVdzEksqUTGC2PHL5BUzdqgg96adH7DUMJouUMub31U7QmzETE3VfEtJqE0OAqCP3e0QRbWgDeIn3Xee/mZvsOMjnJ4T90cJZhbIyXOlHJWnT/g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=mellanox.com;dmarc=pass action=none
- header.from=mellanox.com;dkim=pass header.d=mellanox.com;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0N17ZITwPPRVKD6SjLiyMoBN24/4kIPLNBSle8JArLU=;
- b=VuENGiyfO9kpsp/X8zsAhSNeYNqQYfqiMPndV8P+h8OGGXM7Z6JcVx55ED37/GRRNc6vuWwjTAPgCzs5JbbSUN14IfuBRhOsNO/BK10Xe8FqNSe59P1hkNZnBvKZzsLuyLrxLOAfAvIJcM8WcLtBAHGMXZVsbvc33zmtnoipXws=
-Received: from AM6PR0502MB4070.eurprd05.prod.outlook.com (52.133.28.22) by
- AM6PR0502MB3877.eurprd05.prod.outlook.com (52.133.17.147) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2136.17; Mon, 5 Aug 2019 15:24:40 +0000
-Received: from AM6PR0502MB4070.eurprd05.prod.outlook.com
- ([fe80::b415:1370:dc19:2c3]) by AM6PR0502MB4070.eurprd05.prod.outlook.com
- ([fe80::b415:1370:dc19:2c3%7]) with mapi id 15.20.2136.018; Mon, 5 Aug 2019
- 15:24:39 +0000
-From: Israel Rukshin <israelr@mellanox.com>
-To: Sagi Grimberg <sagi@grimberg.me>, Linux-nvme
- <linux-nvme@lists.infradead.org>
+ id 1huftP-0002sl-SS
+ for linux-nvme@lists.infradead.org; Mon, 05 Aug 2019 16:31:29 +0000
+Received: by mail-pg1-x544.google.com with SMTP id o13so39995252pgp.12
+ for <linux-nvme@lists.infradead.org>; Mon, 05 Aug 2019 09:31:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=RNV59Qy0yIRA0rrUasgywv7AnatbnUxxzTEj/vkiEts=;
+ b=Lbi6jLo5FE8tib9mmr8Y5zZfp0wwb9No5+4b53o2w2ZUi2vrpLVySz/4f5a2CzxJWD
+ zpTTqnvfKHLw2zgdYhYpebB8+WUooeHzQ6JG6z4/1vlv+jm2UQJsv66QsI2hPDxBQCkZ
+ 0cS9aw+dDBGPZQKGcoVZrrc1nbxDn7oh8tQmk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=RNV59Qy0yIRA0rrUasgywv7AnatbnUxxzTEj/vkiEts=;
+ b=NuAexlQvYpZb01B6PvIZOO+nboVAh/yfU6EinTvq14b/0BmUeSl5q4Ms9+f5oei7Kx
+ Bro3v79hu2WhlbsZ8Nst8u18VMUW+1/SB5vqDJIISvZ/1/CznOj79oIfRK/SZV1pqWl4
+ Zbl5PX6Doqg0WykDn660O83rdxSUHLq12bumUBwXPpNoeJg4eauII9SL0zNZ3n9uD+Ww
+ 8hnZjVibSWAM9pOoAgbqpinxokEP+BABSLiGsFpyAcT3AY+UIYwJAU9ti7N3Z4aIjNsk
+ m4MjVxmz7FyiCJIkrrjiHMsHhrkf9WdSkLhnZOH7ifYASdXNBZ1xwHbKt3scVw8OHLgY
+ lSPg==
+X-Gm-Message-State: APjAAAXSvU51ZYy4c3Kiuf0wwK4gw5WF/WMmiyN5hlct/oALdMFxkiVj
+ W4e4n5l+mKInLcsNGbc/C2yRzQ==
+X-Google-Smtp-Source: APXvYqzTeM9WEoQykzEfEiF2B80uuDn210Yzhc6wodQxfliNfebv93nYEFIl6CRcXRU2vOc6i0e8qA==
+X-Received: by 2002:a17:90a:de02:: with SMTP id
+ m2mr19025701pjv.18.1565022686392; 
+ Mon, 05 Aug 2019 09:31:26 -0700 (PDT)
+Received: from [10.69.45.46] ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id v12sm16296850pjk.13.2019.08.05.09.31.23
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 05 Aug 2019 09:31:25 -0700 (PDT)
 Subject: Re: [PATCH 1/2] nvme-fabrics: Add type of service (TOS) configuration
-Thread-Topic: [PATCH 1/2] nvme-fabrics: Add type of service (TOS) configuration
-Thread-Index: AQHVSqrJyniEbpiJHkWA9FONndt1cKbsqpkAgAAD2oA=
-Date: Mon, 5 Aug 2019 15:24:39 +0000
-Message-ID: <94d485bf-d1db-b75f-e918-32d46ca1c4c1@mellanox.com>
+To: Israel Rukshin <israelr@mellanox.com>,
+ Linux-nvme <linux-nvme@lists.infradead.org>
 References: <1564912530-15404-1-git-send-email-israelr@mellanox.com>
- <04c776f4-a04a-8256-c659-daa11fe78a29@grimberg.me>
-In-Reply-To: <04c776f4-a04a-8256-c659-daa11fe78a29@grimberg.me>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: PR0P264CA0087.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:18::27) To AM6PR0502MB4070.eurprd05.prod.outlook.com
- (2603:10a6:209:18::22)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=israelr@mellanox.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [193.47.165.251]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 99e925f9-cbee-4178-0788-08d719b90859
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:AM6PR0502MB3877; 
-x-ms-traffictypediagnostic: AM6PR0502MB3877:
-x-microsoft-antispam-prvs: <AM6PR0502MB387783EF43F0CB0D29CC9723D7DA0@AM6PR0502MB3877.eurprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 01208B1E18
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(366004)(39860400002)(376002)(136003)(346002)(396003)(189003)(199004)(31696002)(305945005)(6116002)(54906003)(186003)(99286004)(110136005)(36756003)(66446008)(66476007)(64756008)(66556008)(66946007)(2616005)(76176011)(3846002)(66066001)(229853002)(486006)(52116002)(6486002)(316002)(6436002)(26005)(6512007)(476003)(446003)(11346002)(53546011)(478600001)(386003)(53936002)(2906002)(102836004)(6506007)(6246003)(107886003)(68736007)(4744005)(71190400001)(4326008)(86362001)(7736002)(71200400001)(31686004)(81166006)(8676002)(25786009)(14454004)(5660300002)(8936002)(81156014)(256004);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM6PR0502MB3877;
- H:AM6PR0502MB4070.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: mellanox.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: P9iQLAB1McG15padtYv8xPT0DgBrr6cC3YDA2MRPaozpp2dS8W+05kyrW9SsunKMIf4th0wM5m1KE6OUmU8MhOQCB2Nc7llRB+cYftTAWtVIDC5Wyos06yga+SvgA79WoxNmNjI7a6Gd6ru1NXkQvr2dEKQO/FhxQxi0QR8Nu2shcTk740lEm9iSK16XfhdQsLvwh9r80mCIA1RDOVaXY0f33d30bxEKP3+D3pxawCPL3s3Z9OKnLqCSUHd7hgptUakyKipuQjl2uPEEfLsSRR0W0JaqOduBceFhbm2k7YNIt2PhfxvL/oibHoLGOg8f/wzP0Vm1G3AvxFkO1Gu06qX9KMTvlNaW+wYVNcBqAwtp1E1fGJ9XxS7nxdSoh86OTaPC7m8JW0XsdV8OnaYq+35YblkpJ699efJvbx8aHtM=
-Content-ID: <39284780DCBDB344ACCDCEE0C286C941@eurprd05.prod.outlook.com>
+From: James Smart <james.smart@broadcom.com>
+Message-ID: <0fb2cf8c-3657-31bf-0df5-ee2495282f57@broadcom.com>
+Date: Mon, 5 Aug 2019 09:31:21 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 99e925f9-cbee-4178-0788-08d719b90859
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Aug 2019 15:24:39.8379 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: israelr@mellanox.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR0502MB3877
+In-Reply-To: <1564912530-15404-1-git-send-email-israelr@mellanox.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190805_082444_796789_69861294 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20190805_093128_170464_07C7460D 
+X-CRM114-Status: GOOD (  18.46  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.1.53 listed in list.dnswl.org]
+ no trust [2607:f8b0:4864:20:0:0:0:544 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -117,6 +86,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -128,20 +98,43 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
+Cc: Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gOC81LzIwMTkgNjoxMCBQTSwgU2FnaSBHcmltYmVyZyB3cm90ZToNCj4NCj4+IFRPUyBpcyB1
-c2VyLWRlZmluZWQgYW5kIG5lZWRzIHRvIGJlIGNvbmZpZ3VyZWQgdmlhIG52bWUtY2xpLg0KPj4g
-SXQgbXVzdCBiZSBzZXQgYmVmb3JlIGluaXRpYXRpbmcgYW55IHRyYWZmaWMgYW5kIG9uY2Ugc2V0
-IHRoZSBUT1MNCj4+IGNhbm5vdCBiZSBjaGFuZ2VkLg0KPg0KPiBDYW4geW91IHBsZWFzZSBoYXZl
-IHRjcCBzdXBwb3J0IGl0IHRvbyBpbiB0aGUgcGF0Y2ggc2V0IChhbmQgdGVzdA0KPiB0aGF0IGl0
-IHdvcmtzKT8NCj4NCj4gSXRzIHNpbXBseSBzZXRzb2Nrb3B0IHdpdGggU09fUFJJT1JJVFkuDQoN
-CkhpLA0KDQpZZXMgc3VyZSzCoCBsIHdpbGwgYWRkIHN1cHBvcnQgYWxzbyBmb3IgdGNwLg0KDQpS
-ZWdhcmRzLA0KDQpJc3JhZWwNCg0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1udm1lIG1haWxpbmcgbGlzdApMaW51eC1udm1lQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1udm1lCg==
+T24gOC80LzIwMTkgMjo1NSBBTSwgSXNyYWVsIFJ1a3NoaW4gd3JvdGU6Cj4gVE9TIGlzIHVzZXIt
+ZGVmaW5lZCBhbmQgbmVlZHMgdG8gYmUgY29uZmlndXJlZCB2aWEgbnZtZS1jbGkuCj4gSXQgbXVz
+dCBiZSBzZXQgYmVmb3JlIGluaXRpYXRpbmcgYW55IHRyYWZmaWMgYW5kIG9uY2Ugc2V0IHRoZSBU
+T1MKPiBjYW5ub3QgYmUgY2hhbmdlZC4KPgo+IFNpZ25lZC1vZmYtYnk6IElzcmFlbCBSdWtzaGlu
+IDxpc3JhZWxyQG1lbGxhbm94LmNvbT4KPiAtLS0KPiAgIGRyaXZlcnMvbnZtZS9ob3N0L2ZhYnJp
+Y3MuYyB8IDE2ICsrKysrKysrKysrKysrKy0KPiAgIGRyaXZlcnMvbnZtZS9ob3N0L2ZhYnJpY3Mu
+aCB8ICAzICsrKwo+ICAgMiBmaWxlcyBjaGFuZ2VkLCAxOCBpbnNlcnRpb25zKCspLCAxIGRlbGV0
+aW9uKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9udm1lL2hvc3QvZmFicmljcy5jIGIvZHJp
+dmVycy9udm1lL2hvc3QvZmFicmljcy5jCj4gaW5kZXggNTgzOGY3Y2Q1M2FjLi5kYmNlN2ZmZTZj
+MmMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9udm1lL2hvc3QvZmFicmljcy5jCj4gKysrIGIvZHJp
+dmVycy9udm1lL2hvc3QvZmFicmljcy5jCj4gQEAgLTYxMSw2ICs2MTEsNyBAQCBzdGF0aWMgY29u
+c3QgbWF0Y2hfdGFibGVfdCBvcHRfdG9rZW5zID0gewo+ICAgCXsgTlZNRl9PUFRfREFUQV9ESUdF
+U1QsCQkiZGF0YV9kaWdlc3QiCQl9LAo+ICAgCXsgTlZNRl9PUFRfTlJfV1JJVEVfUVVFVUVTLAki
+bnJfd3JpdGVfcXVldWVzPSVkIgl9LAo+ICAgCXsgTlZNRl9PUFRfTlJfUE9MTF9RVUVVRVMsCSJu
+cl9wb2xsX3F1ZXVlcz0lZCIJfSwKPiArCXsgTlZNRl9PUFRfVE9TLAkJCSJ0b3M9JWQiCQl9LAo+
+ICAgCXsgTlZNRl9PUFRfRVJSLAkJCU5VTEwJCQl9Cj4gICB9Owo+CgpJIHRoaW5rIHdlIG5lZWQg
+dG8gY3JlYXRlIGEgZnJhbWV3b3JrIGZvciB0cmFuc3BvcnQtc3BlY2lmaWMgb3B0aW9ucy7CoCAK
+S2VlcGluZyB0aGVtIGF0IHRoZSBzYW1lIGZsYXQgbGV2ZWwgYXMgdGhlIGdlbmVyaWMgb3B0aW9u
+cyBpc24ndCBhIGdyZWF0IAppZGVhIGFzIHRoZXkgc3RhcnQgdG8gZ3JvdyBhbmQgYWx3YXlzIG1v
+ZGlmeWluZyBjb3JlIGZvciBhIHRyYW5zcG9ydCAKb3B0aW9uIGlzbid0IGdvb2QgZWl0aGVyLgoK
+SG93IGFib3V0IHdlIHN0YXJ0IHRoZSBjb252ZW50aW9uICI8dHJhbnNwb3J0X25hbWU+OjxvcHRp
+b24+IiBmb3IgYW4gCm9wdGlvbi7CoCBUaGUgb3B0cyBzdHJ1Y3QgY2FuIGhhdmUgYSBwb2ludGVy
+IHRoYXQgaXMgb3duZWQgYnkgdGhlIAp0cmFuc3BvcnQuwqAgVGhlIHRyYW5zcG9ydCBjYW4gc3Vw
+cGx5IGEgcGFyc2luZyBmdW5jdGlvbiBmb3IgYW4gb3B0aW9uLsKgIApUaGUgY29yZSBsYXllciBj
+YW4gbWF0Y2ggdGhlIHRyYW5zcG9ydCBuYW1lIGluIHRoZSBwcmVmaXgsIHRoZW4gaW52b2tlIAp0
+aGUgdHJhbnNwb3J0IGhhbmRsZXIgaW5zdGVhZCBvZiB0aGUgZ2VuZXJpYyBwYXJzaW5nLiBUcmFu
+c3BvcnQgaGFuZGxlciAKY2FuIHBhcnNlIGFuZCBzZXQgaXQncyBvd24gdmFsdWUgaW4gaXRzIG93
+biBvcHRzIHN0cnVjdC4gVHJhbnNwb3J0IGNhbiAKdmFsaWRhdGUgaXQgaGFzIHRoZSBuZWNlc3Nh
+cnkgdHJhbnNwb3J0IG9wdHMgYXMgdGhlIGZpcnN0IHRoaW5nIGl0IGRvZXMgCmluIGl0J3MgY3Jl
+YXRlX2N0cmwgcm91dGluZS4KCi0tIGphbWVzCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LW52bWUK
