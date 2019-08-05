@@ -2,156 +2,99 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A98782553
-	for <lists+linux-nvme@lfdr.de>; Mon,  5 Aug 2019 21:09:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6939182561
+	for <lists+linux-nvme@lfdr.de>; Mon,  5 Aug 2019 21:14:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tlWz9nd89EOx1YN5oHLLt7HrWxPu/IYdzoe7PrP2OEk=; b=n6ftydz6p7yyk4
-	uQLTYVApN2XNPnFD/vp1AUGGzpx6H3nIWBC/7NY5Fdv1BCrxty2tN7l1vvpDQK3UDMgIv59ZPYm+T
-	K33X8vuFGe9eNtWBDYwxCRxRrC+uBM76X4Slopoh2m5fxV3k767aUsBAx53kcoQDx1uBsyCq7PAsg
-	3tSB4bE9UlDH/oibgGx9otCu5w0eu8opwF62cwLECev1X6MqPMLdBSkFMe4teTjpcV3wocjUR3Z9h
-	ww29aEupVi8flZ60vpXnNYND7q12DIXkSK0kIPuBgCIUE/mD+t6G/SrbnFk+ZCrKFj6NJuZd8J9mJ
-	QuFQtis81E9n96QlRPRw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:References:Message-Id:Date:In-Reply-To:From:
+	Subject:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=1xW/wJhtid6T+CGLVwcYmkh+m4dPmkcQe6lnqrNVJyA=; b=NuN01ogK9i2DY71A/3sL/MLIE
+	x3+Tyo2voDJ4jfp3Z+aPC1/xux3pYYekfikuxF3CKFUVfgqJk7r+CsXHVa2uF8izCm2icQSJS1QnB
+	N7XbjVPbXKjcvWmOmlcEPp1VFftbxViy/QVHQW1qLnJOWnVXSlGGECY4isq59XPhY4oVAqwXcC0cK
+	ZZWf4mXWrHF4uKcCx8sZXPhz7lGFDtqo9DOipc+4ASC3l0XHA36GjwvAOk+Q0FkqbQqaVUHH/yz7R
+	VBLDf7CW4ptlWdkSPuLEJxdKyyA9/iovif6OZndF4DbyvRDndo85OGbAzhPGbhYDJ4UFnV/sWwPuf
+	0jFcCbxRg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1huiM3-0007Pu-7Z; Mon, 05 Aug 2019 19:09:11 +0000
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42])
+	id 1huiQw-0000Xl-OQ; Mon, 05 Aug 2019 19:14:14 +0000
+Received: from youngberry.canonical.com ([91.189.89.112])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1huiLx-0007PN-6I
- for linux-nvme@lists.infradead.org; Mon, 05 Aug 2019 19:09:06 +0000
-Received: from pps.filterd (m0044012.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x75IosqV013459; Mon, 5 Aug 2019 12:08:32 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : references : in-reply-to : content-type : content-id
- : content-transfer-encoding : mime-version; s=facebook;
- bh=iyylftj8lgJWLostEtcujS3Hk7uwen7o+/nMgchgXgA=;
- b=bpRdN7NWSar6bIyx8BHeRu7Qg43dkyLdhnPs7+i2q7XmFswH8173i2dsEqsJ7iLmRmtm
- 3bUlSl9F4ZNaQ276KIrtfGAULUF6Xj5O12kTBVssA2ijxJ+c4KFE6S+MBkdl0yfAnf2A
- IzVDLzXNY4yPp1W983EqWjkIvChLj98avDo= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com with ESMTP id 2u6seq877w-2
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Mon, 05 Aug 2019 12:08:32 -0700
-Received: from ash-exhub102.TheFacebook.com (2620:10d:c0a8:82::f) by
- ash-exhub104.TheFacebook.com (2620:10d:c0a8:82::d) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 5 Aug 2019 12:08:00 -0700
-Received: from NAM04-CO1-obe.outbound.protection.outlook.com (100.104.31.183)
- by o365-in.thefacebook.com (100.104.35.172) with Microsoft SMTP
- Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Mon, 5 Aug 2019 12:08:00 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Oxzf+/U0v8PYD4CC/h8ylaf4HQ+/8cR76ep/PwbaS6f7tcN/Q2D5UaWXMJTgvXnIuEQvnQlkSMwmDTyAKdXn/vOw3QaBxtkzeZZ03U/rATl9mZKzn0O32tKx4Sq3GOPoiDMQ5OiVD/q0enlhdt25zdtR9zGHszabvJeiKjOyO76l7xvXYbXjynwi1WUJgw+i62vqmYI1F3TYuHuv3culP7vLQGpcmKMMs4q3IK8FKhHxDYN5vjisUkbUyLvJZIyORQjbDEiRgtEe9pmXxj5tgnyES7YSHJ33AMwCFV5AASVcXaeZ2EPt4CYC5KKk/P1UaRqbdLJJadQJfW13JViffw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iyylftj8lgJWLostEtcujS3Hk7uwen7o+/nMgchgXgA=;
- b=VIfMUNSwB38OI5P89xHISHD4J0wO0lzfKgrD5D2vSx++TCswochvwv4vytT/0Nce4lW4kvOGEHWeGMBsz1oS12kp9fqDArSAmzPzLyqLJR/PVj1J5xUvtobuwGGx5QD9Hj77qAT2yIBzSuq5HZx20jtLTTqdq+BX/f9wvjzydlQmZJgHAFPqmaFwW5ZdUVsZBVBcvYq0gdnaSL5v+NHUBBfv42BTQUsNLc0h6ukynlQnu+Mcusvheu7fnjmVK2PphxCa8xTSni/WTXVVj014KUW/Kw6qLkPiI3H9zcn7Yh3OGM0QtyqS/GOg3heOfmMIctyCc3OiZi7+Q2+cc+4E7A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=fb.com;dmarc=pass action=none header.from=fb.com;dkim=pass
- header.d=fb.com;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.onmicrosoft.com;
- s=selector2-fb-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iyylftj8lgJWLostEtcujS3Hk7uwen7o+/nMgchgXgA=;
- b=GyMgRzTqxAANGOjV+L3avcAdj3vb9L2s0HfJ2g1a12sff2gUNzUWtT8tKT+UfHhIU43tjaZV1mtZT8OnkWBrtI8+Vfx7PruixA+0msRPNwbM/jpwVQF7b1Mn3eV3mM/Yo+O2LC1WFBLled/7Oh2LGWTAJl7PPIIqNiRHV4qNkcM=
-Received: from BYAPR15MB2790.namprd15.prod.outlook.com (20.179.158.31) by
- BYAPR15MB2456.namprd15.prod.outlook.com (52.135.200.20) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2136.19; Mon, 5 Aug 2019 19:07:57 +0000
-Received: from BYAPR15MB2790.namprd15.prod.outlook.com
- ([fe80::4531:ecb8:acf6:5802]) by BYAPR15MB2790.namprd15.prod.outlook.com
- ([fe80::4531:ecb8:acf6:5802%6]) with mapi id 15.20.2136.018; Mon, 5 Aug 2019
- 19:07:57 +0000
-From: Jens Axboe <axboe@fb.com>
-To: Sagi Grimberg <sagi@grimberg.me>, Keith Busch <keith.busch@intel.com>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>
-Subject: Re: [PATCH v3] nvme-pci: Support shared tags across queues for Apple
- 2018 controllers
-Thread-Topic: [PATCH v3] nvme-pci: Support shared tags across queues for Apple
- 2018 controllers
-Thread-Index: AQHVPfMwAGvmUolnXkGHxRRRQYYlF6bjW5oAgABTUoCACIkBgIAAw0jGgAALDwA=
-Date: Mon, 5 Aug 2019 19:07:56 +0000
-Message-ID: <caa04d02-05a0-dd1f-2072-df41a21f2aa8@fb.com>
-References: <b1f9bdf0294b8d87d292de3c7462c8e99551b02d.camel@kernel.crashing.org>
- <20190730153044.GA13948@localhost.localdomain>
- <2030a028664a9af9e96fffca3ab352faf1f739e5.camel@kernel.crashing.org>
- <6290507e1b2830b1729fc858cd5c20b85d092728.camel@kernel.crashing.org>
- <20190805134907.GC18647@localhost.localdomain>
- <40a6acc2-beae-3e36-ca20-af5801038a1e@grimberg.me>
-In-Reply-To: <40a6acc2-beae-3e36-ca20-af5801038a1e@grimberg.me>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: BYAPR05CA0016.namprd05.prod.outlook.com
- (2603:10b6:a03:c0::29) To BYAPR15MB2790.namprd15.prod.outlook.com
- (2603:10b6:a03:15a::31)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [2605:e000:100e:83a1:3cf5:36ed:899e:8d54]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ff886c8a-ddf6-43ba-9cbd-08d719d8399b
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:BYAPR15MB2456; 
-x-ms-traffictypediagnostic: BYAPR15MB2456:
-x-microsoft-antispam-prvs: <BYAPR15MB24561E38013C69EFA74222F8C0DA0@BYAPR15MB2456.namprd15.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1201;
-x-forefront-prvs: 01208B1E18
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(366004)(396003)(136003)(39860400002)(376002)(346002)(47660400002)(189003)(199004)(25786009)(7416002)(76176011)(52116002)(6436002)(66476007)(6486002)(6506007)(53546011)(316002)(386003)(64756008)(66946007)(66446008)(110136005)(102836004)(4744005)(229853002)(5660300002)(54906003)(81156014)(6116002)(36756003)(2906002)(8676002)(305945005)(81166006)(7736002)(53936002)(8936002)(6246003)(186003)(256004)(486006)(71200400001)(2616005)(476003)(11346002)(446003)(71190400001)(46003)(31686004)(99286004)(66556008)(14444005)(14454004)(68736007)(6512007)(478600001)(31696002)(4326008)(86362001)(46800400005);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR15MB2456;
- H:BYAPR15MB2790.namprd15.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: fb.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: GtgfUn3wNQNwi+VQIqxmFMrHgGFGwMOAlvkfVSkR/P5RdgBmty8L1gbjXUpFzcHcAVABOLzPt9/pFjyOa9icY4FHwdDZfOHh32lADSFONLoj89Fspcdlnl7fpM8Ho5nNPNtzw4HirrVKjUMg77pXAPqDVTx2f6QCy1YBaDpqgdjqok3uyYkYFZLi0WLgvyoodUe8m1IYDPidNDN9Yu383WxnvLBFrKtjWB8OzPjt+A/E7XzsRl0fL49a//wIi9188MqbKx5JpYTEErMksXJ8ZJlLF11RnzMZU52T6JElbkzgkdIKGnR2Gynt5ddor844lR5QuB6y4qsAgEgtHvwYNkxouhLqdkUYxFOfFDenTRygWNIPe4w4QqO9sPSlf6aQNH3TIyhzCzFve0sz3e5Q1Id3ugdnwCxs/h9QTcIxtcM=
-Content-ID: <7EE2C77BE146FD4CB5FD83E83E3E0E85@namprd15.prod.outlook.com>
-MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: ff886c8a-ddf6-43ba-9cbd-08d719d8399b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Aug 2019 19:07:56.8643 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: axboe@fb.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR15MB2456
-X-OriginatorOrg: fb.com
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-08-05_10:, , signatures=0
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=964 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1906280000 definitions=main-1908050191
-X-FB-Internal: deliver
+ id 1huiQo-0000Ww-Lo
+ for linux-nvme@lists.infradead.org; Mon, 05 Aug 2019 19:14:08 +0000
+Received: from mail-pf1-f199.google.com ([209.85.210.199])
+ by youngberry.canonical.com with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.76) (envelope-from <kai.heng.feng@canonical.com>)
+ id 1huiQk-0006XO-Nz
+ for linux-nvme@lists.infradead.org; Mon, 05 Aug 2019 19:14:02 +0000
+Received: by mail-pf1-f199.google.com with SMTP id x18so54074911pfj.4
+ for <linux-nvme@lists.infradead.org>; Mon, 05 Aug 2019 12:14:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=4dWsHtjse4Kk9Git6Bu5ITVptOPxfe5QlK/iNi9AwCA=;
+ b=DHp/uNFGATCKYWpj6yYhN8BVd+6TeGxOq4PBbDpkNTeH5KRZ6HJdtZ3x5R/0+fkziY
+ uDEk+mCWQ+jcwa17pCh0I4iLXiKbqIEpLgnZlxFfTsqlcFUYrNo7rwLrc53y8Eq+es/h
+ Y48UyXSGNhCmNNe5bzKeVBxPgr04uUK9oDdxQiXoHMxDJqNBGv3xO8PQ16KtOesMUXS1
+ UIZ1zIRcPAtxyQn38xc35L/WjtZVe97GIjLgFAeaovfFRQ0UC8aZIZGE+nIcjE8OTaCW
+ 9ncpRgRgIoIt7Mbhi6yr7M+/Y5CjdizK/3N5TVpyhlqnt7rLJkHbwH8QC1Fnoli77tKf
+ yX/A==
+X-Gm-Message-State: APjAAAV+/OTStEwR5kYpCgSBz7yIcWV/3lLBmlKccKDLA37A2BeoNkfL
+ sh1iMp2ySNJaxfYv87mik35H5XqwXtWSozOmbtRUYJKqWVjbIrQxSK2zCI7eHLZXBT1A3Dqo68D
+ VndP0YQKJwLxSWPKJwm5rtrZ901vTHq2Rf9jyJc+57ddc
+X-Received: by 2002:a62:1ccd:: with SMTP id
+ c196mr75140042pfc.102.1565032441418; 
+ Mon, 05 Aug 2019 12:14:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzGckPxqY0vwW+zLWOZY31pM4wFsYRr748iKaZ96qdRFeNpy1KaPsLZQAVzoHYtt2hUH/LOmw==
+X-Received: by 2002:a62:1ccd:: with SMTP id
+ c196mr75140014pfc.102.1565032441028; 
+ Mon, 05 Aug 2019 12:14:01 -0700 (PDT)
+Received: from 2001-b011-380f-37d3-6851-7bc4-3469-2fa7.dynamic-ip6.hinet.net
+ (2001-b011-380f-37d3-6851-7bc4-3469-2fa7.dynamic-ip6.hinet.net.
+ [2001:b011:380f:37d3:6851:7bc4:3469:2fa7])
+ by smtp.gmail.com with ESMTPSA id b14sm19802255pga.20.2019.08.05.12.13.58
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 05 Aug 2019 12:14:00 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
+ suspend" has problems
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+In-Reply-To: <CAJZ5v0ipG-MJjERBL9fjx29QktaYEKSmMCbWiEGPHsbF=Xfxtw@mail.gmail.com>
+Date: Tue, 6 Aug 2019 03:13:56 +0800
+Message-Id: <1FA3D56B-80C6-496C-8772-2F773AA8043C@canonical.com>
+References: <4323ed84dd07474eab65699b4d007aaf@AUSX13MPC105.AMER.DELL.COM>
+ <CAJZ5v0iDQ4=kTUgW94tKGt7oJzA_3uVU_M6HAMbNCRXwp_do8A@mail.gmail.com>
+ <47415939.KV5G6iaeJG@kreacher> <20190730144134.GA12844@localhost.localdomain>
+ <100ba4aff1c6434a81e47774ab4acddc@AUSX13MPC105.AMER.DELL.COM>
+ <8246360B-F7D9-42EB-94FC-82995A769E28@canonical.com>
+ <20190730191934.GD13948@localhost.localdomain>
+ <7d3e0b8ba1444194a153c93faa1cabb3@AUSX13MPC105.AMER.DELL.COM>
+ <20190730213114.GK13948@localhost.localdomain>
+ <CAJZ5v0gxfeMN8eCNRjcXmUOkReVsdozb3EccaYMpnmSHu3771g@mail.gmail.com>
+ <20190731221956.GB15795@localhost.localdomain>
+ <CAJZ5v0hxYGBXau39sb80MQ8jbZZCzH0JU2DYZvn9JOtYT2+30g@mail.gmail.com>
+ <70D536BE-8DC7-4CA2-84A9-AFB067BA520E@canonical.com>
+ <CAJZ5v0hFYEv_+vFkrxaCn_pNAbyqmO_cLb5GOLNn_xxRRwjh2g@mail.gmail.com>
+ <38d4b4b107154454a932781acde0fa5a@AUSX13MPC105.AMER.DELL.COM>
+ <CAJZ5v0jmO4FMOVYs62wkvPrUW81scD2H7cJyRc+tfoj+vODVbQ@mail.gmail.com>
+ <43A8DF53-8463-4314-9E8E-47A7D3C5A709@canonical.com>
+ <CAJZ5v0ipG-MJjERBL9fjx29QktaYEKSmMCbWiEGPHsbF=Xfxtw@mail.gmail.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+X-Mailer: Apple Mail (2.3445.104.11)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190805_120905_240868_9BAA0B34 
-X-CRM114-Status: GOOD (  13.46  )
-X-Spam-Score: -0.9 (/)
+X-CRM114-CacheID: sfid-20190805_121407_112918_14954BEE 
+X-CRM114-Status: GOOD (  23.01  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.9 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [67.231.145.42 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [91.189.89.112 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -163,40 +106,110 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Damien Le Moal <Damien.LeMoal@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- Minwoo Im <minwoo.im.dev@gmail.com>, Paul Pawlowski <paul@mrarm.io>,
- Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ Mario Limonciello <Mario.Limonciello@dell.com>,
+ Linux PM <linux-pm@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>,
+ Keith Busch <keith.busch@intel.com>, Keith Busch <kbusch@kernel.org>,
+ Rajat Jain <rajatja@google.com>, Christoph Hellwig <hch@lst.de>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="yes"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 8/5/19 11:27 AM, Sagi Grimberg wrote:
-> 
->>> Ping ? I had another look today and I don't feel like mucking around
->>> with all the AQ size logic, AEN magic tag etc... just for that sake of
->>> that Apple gunk. I'm happy to have it give up IO tags, it doesn't seem
->>> to make much of a difference in practice anyway.
->>>
->>> But if you feel strongly about it, then I'll implement the "proper" way
->>> sometimes this week, adding a way to shrink the AQ down to something
->>> like 3 (one admin request, one async event (AEN), and the empty slot)
->>> by making a bunch of the constants involved variables instead.
->>
->> I don't feel too strongly about it. I think your patch is fine, so
->>
->> Acked-by: Keith Busch <keith.busch@intel.com>
-> 
-> Should we pick this up for 5.3-rc?
-
-No, it's not a regression fix. Queue it up for 5.4 instead.
-
--- 
-Jens Axboe
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+YXQgMTk6MDQsIFJhZmFlbCBKLiBXeXNvY2tpIDxyYWZhZWxAa2VybmVsLm9yZz4gd3JvdGU6Cgo+
+IE9uIEZyaSwgQXVnIDIsIDIwMTkgYXQgMTI6NTUgUE0gS2FpLUhlbmcgRmVuZwo+IDxrYWkuaGVu
+Zy5mZW5nQGNhbm9uaWNhbC5jb20+IHdyb3RlOgo+PiBhdCAwNjoyNiwgUmFmYWVsIEouIFd5c29j
+a2kgPHJhZmFlbEBrZXJuZWwub3JnPiB3cm90ZToKPj4KPj4+IE9uIFRodSwgQXVnIDEsIDIwMTkg
+YXQgOTowNSBQTSA8TWFyaW8uTGltb25jaWVsbG9AZGVsbC5jb20+IHdyb3RlOgo+Pj4+PiAtLS0t
+LU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQo+Pj4+PiBGcm9tOiBSYWZhZWwgSi4gV3lzb2NraSA8cmFm
+YWVsQGtlcm5lbC5vcmc+Cj4+Pj4+IFNlbnQ6IFRodXJzZGF5LCBBdWd1c3QgMSwgMjAxOSAxMjoz
+MCBQTQo+Pj4+PiBUbzogS2FpLUhlbmcgRmVuZzsgS2VpdGggQnVzY2g7IExpbW9uY2llbGxvLCBN
+YXJpbwo+Pj4+PiBDYzogS2VpdGggQnVzY2g7IENocmlzdG9waCBIZWxsd2lnOyBTYWdpIEdyaW1i
+ZXJnOyBsaW51eC1udm1lOyBMaW51eAo+Pj4+PiBQTTsgTGludXgKPj4+Pj4gS2VybmVsIE1haWxp
+bmcgTGlzdDsgUmFqYXQgSmFpbgo+Pj4+PiBTdWJqZWN0OiBSZTogW1JlZ3Jlc3Npb25dIENvbW1p
+dCAibnZtZS9wY2k6IFVzZSBob3N0IG1hbmFnZWQgcG93ZXIKPj4+Pj4gc3RhdGUgZm9yCj4+Pj4+
+IHN1c3BlbmQiIGhhcyBwcm9ibGVtcwo+Pj4+Pgo+Pj4+Pgo+Pj4+PiBbRVhURVJOQUwgRU1BSUxd
+Cj4+Pj4+Cj4+Pj4+IE9uIFRodSwgQXVnIDEsIDIwMTkgYXQgMTE6MDYgQU0gS2FpLUhlbmcgRmVu
+Zwo+Pj4+PiA8a2FpLmhlbmcuZmVuZ0BjYW5vbmljYWwuY29tPiB3cm90ZToKPj4+Pj4+IGF0IDA2
+OjMzLCBSYWZhZWwgSi4gV3lzb2NraSA8cmFmYWVsQGtlcm5lbC5vcmc+IHdyb3RlOgo+Pj4+Pj4K
+Pj4+Pj4+PiBPbiBUaHUsIEF1ZyAxLCAyMDE5IGF0IDEyOjIyIEFNIEtlaXRoIEJ1c2NoIDxrYnVz
+Y2hAa2VybmVsLm9yZz4gIAo+Pj4+Pj4+IHdyb3RlOgo+Pj4+Pj4+PiBPbiBXZWQsIEp1bCAzMSwg
+MjAxOSBhdCAxMToyNTo1MVBNICswMjAwLCBSYWZhZWwgSi4gV3lzb2NraSB3cm90ZToKPj4+Pj4+
+Pj4+IEEgY291cGxlIG9mIHJlbWFya3MgaWYgeW91IHdpbGwuCj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4g
+Rmlyc3QsIHdlIGRvbid0IGtub3cgd2hpY2ggY2FzZSBpcyB0aGUgbWFqb3JpdHkgYXQgdGhpcyBw
+b2ludC4gIEZvcgo+Pj4+Pj4+Pj4gbm93LCB0aGVyZSBpcyBvbmUgZXhhbXBsZSBvZiBlYWNoLCBi
+dXQgaXQgbWF5IHZlcnkgd2VsbCB0dXJuIG91dCAgCj4+Pj4+Pj4+PiB0aGF0Cj4+Pj4+Pj4+PiB0
+aGUgU0sgSHluaXggQkM1MDEgYWJvdmUgbmVlZHMgdG8gYmUgcXVpcmtlZC4KPj4+Pj4+Pj4+Cj4+
+Pj4+Pj4+PiBTZWNvbmQsIHRoZSByZWZlcmVuY2UgaGVyZSByZWFsbHkgaXMgNS4yLCBzbyBpZiB0
+aGVyZSBhcmUgYW55ICAKPj4+Pj4+Pj4+IHN5c3RlbXMKPj4+Pj4+Pj4+IHRoYXQgYXJlIG5vdCBi
+ZXR0ZXIgb2ZmIHdpdGggNS4zLXJjIHRoYW4gdGhleSB3ZXJlIHdpdGggNS4yLCAgCj4+Pj4+Pj4+
+PiB3ZWxsLCB3ZQo+Pj4+Pj4+Pj4gaGF2ZSBub3QgbWFkZSBwcm9ncmVzcy4gIEhvd2V2ZXIsIGlm
+IHRoZXJlIGFyZSBzeXN0ZW1zIHRoYXQgYXJlICAKPj4+Pj4+Pj4+IHdvcnNlCj4+Pj4+Pj4+PiBv
+ZmYgd2l0aCA1LjMsIHRoYXQncyBiYWQuICBJbiB0aGUgZmFjZSBvZiB0aGUgbGF0ZXN0IGZpbmRp
+bmdzIHRoZQo+Pj4+Pj4+Pj4gb25seQo+Pj4+Pj4+Pj4gd2F5IHRvIGF2b2lkIHRoYXQgaXMgdG8g
+YmUgYmFja3dhcmRzIGNvbXBhdGlibGUgd2l0aCA1LjIgYW5kIHRoYXQncwo+Pj4+Pj4+Pj4gd2hl
+cmUgbXkgcGF0Y2ggaXMgZ29pbmcuICBUaGF0IGNhbm5vdCBiZSBhY2hpZXZlZCBieSBxdWlya2lu
+ZyBhbGwKPj4+Pj4+Pj4+IGNhc2VzIHRoYXQgYXJlIHJlcG9ydGVkIGFzICJiYWQiLCBiZWNhdXNl
+IHRoZXJlIHN0aWxsIG1heSBiZQo+Pj4+Pj4+Pj4gdW5yZXBvcnRlZCBvbmVzLgo+Pj4+Pj4+Pgo+
+Pj4+Pj4+PiBJIGhhdmUgdG8gYWdyZWUuIEkgdGhpbmsgeW91ciBwcm9wb3NhbCBtYXkgYWxsb3cg
+UENJIEQzY29sZCwKPj4+Pj4+Pgo+Pj4+Pj4+IFllcywgaXQgbWF5Lgo+Pj4+Pj4KPj4+Pj4+IFNv
+bWVob3cgdGhlIDkzODAgd2l0aCBUb3NoaWJhIE5WTWUgbmV2ZXIgaGl0cyBTTFBfUzAgd2l0aCBv
+ciB3aXRob3V0Cj4+Pj4+PiBSYWZhZWzigJlzIHBhdGNoLgo+Pj4+Pj4gQnV0IHRoZSDigJxyZWFs
+4oCdIHMyaWRsZSBwb3dlciBjb25zdW1wdGlvbiBkb2VzIGltcHJvdmUgd2l0aCB0aGUgcGF0Y2gu
+Cj4+Pj4+Cj4+Pj4+IERvIHlvdSBtZWFuIHRoaXMgcGF0Y2g6Cj4+Pj4+Cj4+Pj4+IGh0dHBzOi8v
+bG9yZS5rZXJuZWwub3JnL2xpbnV4LXBtLzcwRDUzNkJFLThEQzctNENBMi04NEE5LQo+Pj4+PiBB
+RkIwNjdCQTUyMEVAY2Fub25pY2FsLmNvbS9ULyNtNDU2YWE1YzY5OTczYTNiNjhmMmNkZDQ3MTNh
+MWNlODNiZTUxNDUKPj4+Pj4gOGYKPj4+Pj4KPj4+Pj4gb3IgdGhlICRzdWJqZWN0IG9uZSB3aXRo
+b3V0IHRoZSBhYm92ZT8KPj4+Pj4KPj4+Pj4+IENhbiB3ZSB1c2UgYSBETUkgYmFzZWQgcXVpcmsg
+Zm9yIHRoaXMgcGxhdGZvcm0/IEl0IHNlZW1zIGxpa2UgYSAgCj4+Pj4+PiBwbGF0Zm9ybQo+Pj4+
+Pj4gc3BlY2lmaWMgaXNzdWUuCj4+Pj4+Cj4+Pj4+IFdlIHNlZW0gdG8gc2VlIHRvbyBtYW55ICJw
+bGF0Zm9ybS1zcGVjaWZpYyBpc3N1ZXMiIGhlcmUuIDotKQo+Pj4+Pgo+Pj4+PiBUbyBtZSwgdGhl
+IHN0YXR1cyBxdW8gKGllLiB3aGF0IHdlIGhhdmUgaW4gNS4zLXJjMikgaXMgbm90IGRlZmVuc2li
+bGUuCj4+Pj4+IFNvbWV0aGluZyBuZWVkcyB0byBiZSBkb25lIHRvIGltcHJvdmUgdGhlIHNpdHVh
+dGlvbi4KPj4+Pgo+Pj4+IFJhZmFlbCwgd291bGQgaXQgYmUgcG9zc2libGUgdG8gdHJ5IHBvcHBp
+bmcgb3V0IFBDNDAxIGZyb20gdGhlIDkzODAgYW5kCj4+Pj4gaW50byBhIDkzNjAgdG8KPj4+PiBj
+b25maXJtIHRoZXJlIGFjdHVhbGx5IGJlaW5nIGEgcGxhdGZvcm0gaW1wYWN0IG9yIG5vdD8KPj4+
+Cj4+PiBOb3QgcmVhbGx5LCBzb3JyeS4KPj4+Cj4+Pj4gSSB3YXMgaG9waW5nIHRvIGhhdmUgc29t
+ZXRoaW5nIHVzZWZ1bCBmcm9tIEh5bml4IGJ5IG5vdyBiZWZvcmUKPj4+PiByZXNwb25kaW5nLCBi
+dXQgb2ggd2VsbC4KPj4+Pgo+Pj4+IEluIHRlcm1zIG9mIHdoYXQgaXMgdGhlIG1ham9yaXR5LCBJ
+IGRvIGtub3cgdGhhdCBiZXR3ZWVuIGZvbGtzIGF0IERlbGwsCj4+Pj4gR29vZ2xlLCBDb21wYWws
+Cj4+Pj4gV2lzdHJvbiwgQ2Fub25pY2FsLCBNaWNyb24sIEh5bml4LCBUb3NoaWJhLCBMaXRlT24s
+IGFuZCBXZXN0ZXJuIERpZ2l0YWwKPj4+PiB3ZSB0ZXN0ZWQgYSB3aWRlCj4+Pj4gdmFyaWV0eSBv
+ZiBTU0RzIHdpdGggdGhpcyBwYXRjaCBzZXJpZXMuICBJIHdvdWxkIGxpa2UgdG8gdGhpbmsgdGhh
+dCB0aGV5Cj4+Pj4gYXJlIHJlcHJlc2VudGF0aXZlIG9mCj4+Pj4gd2hhdCdzIGJlaW5nIG1hbnVm
+YWN0dXJlZCBpbnRvIG1hY2hpbmVzIG5vdy4KPj4+Cj4+PiBXZWxsLCB3aGF0IGFib3V0IGRyaXZl
+cyBhbHJlYWR5IGluIHRoZSBmaWVsZD8gIE15IGNvbmNlcm4gaXMgbW9zdGx5Cj4+PiBhYm91dCB0
+aG9zZSBvbmVzLgo+Pj4KPj4+PiBOb3RhYmx5IHRoZSBMaXRlT24gQ0wxIHdhcyB0ZXN0ZWQgd2l0
+aCB0aGUgSE1CIGZsdXNoaW5nIHN1cHBvcnQgYW5kCj4+Pj4gYW5kIEh5bml4IFBDNDAxIHdhcyB0
+ZXN0ZWQgd2l0aCBvbGRlciBmaXJtd2FyZSB0aG91Z2guCj4+Pj4KPj4+Pj4+Pj4gSW4gd2hpY2gg
+Y2FzZSB3ZSBkbyBuZWVkIHRvIHJlaW50cm9kdWNlIHRoZSBITUIgaGFuZGxpbmcuCj4+Pj4+Pj4K
+Pj4+Pj4+PiBSaWdodC4KPj4+Pj4+Cj4+Pj4+PiBUaGUgcGF0Y2ggYWxvbmUgZG9lc27igJl0IGJy
+ZWFrIEhNQiBUb3NoaWJhIE5WTWUgSSB0ZXN0ZWQuIEJ1dCBJIHRoaW5rCj4+Pj4+PiBpdOKAmXMK
+Pj4+Pj4+IHN0aWxsIHNhZmVyIHRvIGRvIHByb3BlciBITUIgaGFuZGxpbmcuCj4+Pj4+Cj4+Pj4+
+IFdlbGwsIHNvIGNhbiBhbnlvbmUgcGxlYXNlIHByb3Bvc2Ugc29tZXRoaW5nIHNwZWNpZmljPyAg
+TGlrZSBhbgo+Pj4+PiBhbHRlcm5hdGl2ZSBwYXRjaD8KPj4+Pgo+Pj4+IFRoaXMgd2FzIHByb3Bv
+c2VkIGEgZmV3IGRheXMgYWdvOgo+Pj4+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL3BpcGVy
+bWFpbC9saW51eC1udm1lLzIwMTktSnVseS8wMjYwNTYuaHRtbAo+Pj4+Cj4+Pj4gSG93ZXZlciB3
+ZSdyZSBzdGlsbCBub3Qgc3VyZSB3aHkgaXQgaXMgbmVlZGVkLCBhbmQgaXQgd2lsbCB0YWtlIHNv
+bWUKPj4+PiB0aW1lIHRvIGdldAo+Pj4+IGEgcHJvcGVyIGZhaWx1cmUgYW5hbHlzaXMgZnJvbSBM
+aXRlT24gIHJlZ2FyZGluZyB0aGUgQ0wxLgo+Pj4KPj4+IFRoYW5rcyBmb3IgdGhlIHVwZGF0ZSwg
+YnV0IElNTyB3ZSBzdGlsbCBuZWVkIHRvIGRvIHNvbWV0aGluZyBiZWZvcmUKPj4+IGZpbmFsIDUu
+MyB3aGlsZSB0aGUgaW52ZXN0aWdhdGlvbiBjb250aW51ZXMuCj4+Pgo+Pj4gSG9uZXN0bHksIGF0
+IHRoaXMgcG9pbnQgSSB3b3VsZCB2b3RlIGZvciBnb2luZyBiYWNrIHRvIHRoZSA1LjIKPj4+IGJl
+aGF2aW9yIGF0IGxlYXN0IGJ5IGRlZmF1bHQgYW5kIG9ubHkgcnVubmluZyB0aGUgbmV3IGNvZGUg
+b24gdGhlCj4+PiBkcml2ZXMga25vd24gdG8gcmVxdWlyZSBpdCAoYmVjYXVzZSB0aGV5IHdpbGwg
+YmxvY2sgUEMxMCBvdGhlcndpc2UpLgo+Pj4KPj4+IFBvc3NpYmx5IChpZGVhbGx5KSB3aXRoIGFu
+IG9wdGlvbiBmb3IgdXNlcnMgd2hvIGNhbid0IGdldCBiZXlvbmQgUEMzCj4+PiB0byB0ZXN0IHdo
+ZXRoZXIgb3Igbm90IHRoZSBuZXcgY29kZSBoZWxwcyB0aGVtLgo+Pgo+PiBJIGp1c3QgZm91bmQg
+b3V0IHRoYXQgdGhlIFhQUyA5MzgwIGF0IG15IGhhbmQgbmV2ZXIgcmVhY2hlcyBTTFBfUzAgYnV0
+ICAKPj4gb25seQo+PiBQQzEwLgo+Cj4gVGhhdCdzIHRoZSBjYXNlIGZvciBtZSB0b28uCj4KPj4g
+VGhpcyBoYXBwZW5zIHdpdGggb3Igd2l0aG91dCBwdXR0aW5nIHRoZSBkZXZpY2UgdG8gRDMuCj4K
+PiBPbiBteSBzeXN0ZW0sIHRob3VnaCwgaXQgb25seSBjYW4gZ2V0IHRvIFBDMyB3aXRob3V0IHB1
+dHRpbmcgdGhlIE5WTWUKPiBpbnRvIEQzIChhcyByZXBvcnRlZCBwcmV2aW91c2x5KS4KCkkgZm9y
+Z290IHRvIGFzaywgd2hhdCBCSU9TIHZlcnNpb24gZG9lcyB0aGUgc3lzdGVtIGhhdmU/CkkgZG9u
+4oCZdCBzZWUgdGhpcyBpc3N1ZSBvbiBCSU9TIHYxLjUuMC4KCkthaS1IZW5nCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1udm1lIG1haWxpbmcg
+bGlzdApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
