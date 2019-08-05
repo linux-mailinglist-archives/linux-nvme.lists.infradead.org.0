@@ -2,57 +2,61 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8BE980FF9
-	for <lists+linux-nvme@lfdr.de>; Mon,  5 Aug 2019 03:19:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B46C281010
+	for <lists+linux-nvme@lfdr.de>; Mon,  5 Aug 2019 03:58:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=a6bQphiuprH0DpMJz3E4+8slSxxRfF2/uD1u+C1pXH0=; b=Mfb5HLMao82FKj
-	1HCcBQEvgLFBHWeu2jv4bJAPbNc79vSWY08K1iBmmao4iiW3m81RGM73M2DYVVFuWWhnblzXtyChA
-	OdHXqCxphPVeOykO7P4MWkxBtyrWGIX2JvciUSqeHfEDFxtlW+F+XUCYYnZurWuIk7cwyVE7LbL4r
-	uU/dI8wwL3RgSsOEYAVHAfnh/Uy6I2ilPVeATo8CB3BNeGgClqkNPbGSR55H1QfA0cbMWXGFa7X0q
-	BibJsEFrX2NtlwttWzQHdpeHWiihAiaq8jukq38kDepR/kjsxaGU5O2Pj/xCXU5RMZL8Oivmjujgs
-	/9FW4H3m2TqlRuUMpQkA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=WX37AKHSkjt7wISd3DjqyaIaFzUOvXiBGf+xwPeSp0U=; b=nBc
+	WZMM2Lzzbb8oR0JpAoeszsjAnh1il7pijdGUSkO597R0lGYrjQIieqCiBUpk1yptVmlGKAhj51D3z
+	cWTmEXw6XYcartBJGObqFj4cmTyG5Wh1oW2alEVWdxufaE54pEW2oDc1rJb699IixNigU+YBC2gCt
+	IRNz63C2rYgAlAHzZJiDPTIqGDGXku6Zcc9xLTdwk4rFXmXxXa5OS5Ri7AzEk7OqmmrAl98ruSYqS
+	uQaWrxzS5LXNwhgKru4SwXpULGyk7js319Wbygjp+PJVB/rb48vk5VkoDre4Xw/ASWu6Y3OgtrGNr
+	UGHaq9RPxUWiidTVPgLmbNSReG6npjg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1huReu-0007bX-Du; Mon, 05 Aug 2019 01:19:32 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1huRei-0007a8-1O
- for linux-nvme@lists.infradead.org; Mon, 05 Aug 2019 01:19:21 +0000
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 822A5B2DC5;
- Mon,  5 Aug 2019 01:19:16 +0000 (UTC)
-Received: from localhost (ovpn-8-20.pek2.redhat.com [10.72.8.20])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 59F81608A5;
- Mon,  5 Aug 2019 01:19:13 +0000 (UTC)
-From: Ming Lei <ming.lei@redhat.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Subject: [PATCH] genirq/affinity: create affinity mask for single vector
-Date: Mon,  5 Aug 2019 09:19:06 +0800
-Message-Id: <20190805011906.5020-1-ming.lei@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.26]); Mon, 05 Aug 2019 01:19:16 +0000 (UTC)
+	id 1huSGH-0001Vd-IX; Mon, 05 Aug 2019 01:58:09 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
+ id 1huSGA-0001VK-AL
+ for linux-nvme@lists.infradead.org; Mon, 05 Aug 2019 01:58:04 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ tomwu@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 5 Aug 2019 04:57:52 +0300
+Received: from rsws46.mtr.labs.mlnx (rsws46.mtr.labs.mlnx [10.209.40.46])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x751vqmj001032;
+ Mon, 5 Aug 2019 04:57:52 +0300
+Received: from rsws46.mtr.labs.mlnx (localhost [127.0.0.1])
+ by rsws46.mtr.labs.mlnx (8.14.7/8.14.7) with ESMTP id x751vpWL012322;
+ Mon, 5 Aug 2019 01:57:51 GMT
+Received: (from tomwu@localhost)
+ by rsws46.mtr.labs.mlnx (8.14.7/8.14.7/Submit) id x751vmXk012318;
+ Mon, 5 Aug 2019 01:57:48 GMT
+From: Tom Wu <tomwu@mellanox.com>
+To: Linux-nvme <linux-nvme@lists.infradead.org>, <keith.busch@intel.com>,
+ <hch@lst.de>, <sagi@grimberg.me>
+Subject: [PATCH] nvmet: fix data units read and written counters in SMART log
+Date: Mon,  5 Aug 2019 01:57:39 +0000
+Message-Id: <1564970259-12279-1-git-send-email-tomwu@mellanox.com>
+X-Mailer: git-send-email 1.8.4.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190804_181920_105206_B832F6E2 
-X-CRM114-Status: GOOD (  18.24  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190804_185802_762589_8033ECD5 
+X-CRM114-Status: UNSURE (   5.98  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [193.47.165.129 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,71 +68,55 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Keith Busch <keith.busch@intel.com>,
- Sagi Grimberg <sagi@grimberg.me>, Marc Zyngier <marc.zyngier@arm.com>,
- linux-pci@vger.kernel.org,
- Shivasharan Srikanteshwara <shivasharan.srikanteshwara@broadcom.com>,
- linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- Ming Lei <ming.lei@redhat.com>, linux-block@vger.kernel.org,
- Sumit Saxena <sumit.saxena@broadcom.com>, Bjorn Helgaas <helgaas@kernel.org>,
- Kashyap Desai <kashyap.desai@broadcom.com>, Christoph Hellwig <hch@lst.de>
+Cc: Shlomi Nimrodi <shlomin@mellanox.com>, Max Gurtovoy <maxg@mellanox.com>,
+ Tom Wu <tomwu@mellanox.com>, Israel Rukshin <israelr@mellanox.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Since commit c66d4bd110a1f8 ("genirq/affinity: Add new callback for
-(re)calculating interrupt sets"), irq_create_affinity_masks() returns
-NULL in case of single vector. This change has caused regression on some
-drivers, such as lpfc.
+In nvme spec 1.3 there is a definition for data write/read counters
+from SMART log. (See section 5.14.1.2):
+	This value is reported in thousands (i.e., a value of 1
+	corresponds to 1000 units of 512 bytes read) and is rounded up.
 
-The problem is that single vector may be triggered in some generic cases:
-1) kdump kernel 2) irq vectors resource is close to exhaustion.
+However, in nvme target where value is reported with actual units,
+but not thousands of units as the spec requires.
 
-If we don't create affinity mask for single vector, almost every caller
-has to handle the special case.
-
-So still create affinity mask for single vector, since irq_create_affinity_masks()
-is capable of handling that.
-
-Cc: Marc Zyngier <marc.zyngier@arm.com>
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Jens Axboe <axboe@kernel.dk>
-Cc: linux-block@vger.kernel.org
-Cc: Sagi Grimberg <sagi@grimberg.me>
-Cc: linux-nvme@lists.infradead.org
-Cc: linux-pci@vger.kernel.org
-Cc: Keith Busch <keith.busch@intel.com>
-Cc: Sumit Saxena <sumit.saxena@broadcom.com>
-Cc: Kashyap Desai <kashyap.desai@broadcom.com>
-Cc: Shivasharan Srikanteshwara <shivasharan.srikanteshwara@broadcom.com>
-Fixes: c66d4bd110a1f8 ("genirq/affinity: Add new callback for (re)calculating interrupt sets")
-Signed-off-by: Ming Lei <ming.lei@redhat.com>
+Signed-off-by: Tom Wu <tomwu@mellanox.com>
+Reviewed-by: Israel Rukshin <israelr@mellanox.com>
+Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- kernel/irq/affinity.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/nvme/target/admin-cmd.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
-index 4352b08ae48d..6fef48033f96 100644
---- a/kernel/irq/affinity.c
-+++ b/kernel/irq/affinity.c
-@@ -251,11 +251,9 @@ irq_create_affinity_masks(unsigned int nvecs, struct irq_affinity *affd)
- 	 * Determine the number of vectors which need interrupt affinities
- 	 * assigned. If the pre/post request exhausts the available vectors
- 	 * then nothing to do here except for invoking the calc_sets()
--	 * callback so the device driver can adjust to the situation. If there
--	 * is only a single vector, then managing the queue is pointless as
--	 * well.
-+	 * callback so the device driver can adjust to the situation.
- 	 */
--	if (nvecs > 1 && nvecs > affd->pre_vectors + affd->post_vectors)
-+	if (nvecs > affd->pre_vectors + affd->post_vectors)
- 		affvecs = nvecs - affd->pre_vectors - affd->post_vectors;
- 	else
- 		affvecs = 0;
+diff --git a/drivers/nvme/target/admin-cmd.c b/drivers/nvme/target/admin-cmd.c
+index 9f72d51..acbadbe 100644
+--- a/drivers/nvme/target/admin-cmd.c
++++ b/drivers/nvme/target/admin-cmd.c
+@@ -85,6 +85,9 @@ static u16 nvmet_get_smart_log_nsid(struct nvmet_req *req,
+ 	host_writes = part_stat_read(ns->bdev->bd_part, ios[WRITE]);
+ 	data_units_written = part_stat_read(ns->bdev->bd_part, sectors[WRITE]);
+ 
++	data_units_read = DIV_ROUND_UP(data_units_read, 1000);
++	data_units_written = DIV_ROUND_UP(data_units_written, 1000);
++
+ 	put_unaligned_le64(host_reads, &slog->host_reads[0]);
+ 	put_unaligned_le64(data_units_read, &slog->data_units_read[0]);
+ 	put_unaligned_le64(host_writes, &slog->host_writes[0]);
+@@ -120,6 +123,9 @@ static u16 nvmet_get_smart_log_all(struct nvmet_req *req,
+ 	}
+ 	rcu_read_unlock();
+ 
++	data_units_read = DIV_ROUND_UP(data_units_read, 1000);
++	data_units_written = DIV_ROUND_UP(data_units_written, 1000);
++
+ 	put_unaligned_le64(host_reads, &slog->host_reads[0]);
+ 	put_unaligned_le64(data_units_read, &slog->data_units_read[0]);
+ 	put_unaligned_le64(host_writes, &slog->host_writes[0]);
 -- 
-2.20.1
+1.8.4.3
 
 
 _______________________________________________
