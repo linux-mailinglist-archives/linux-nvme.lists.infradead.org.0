@@ -2,91 +2,70 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF8FD8349B
-	for <lists+linux-nvme@lfdr.de>; Tue,  6 Aug 2019 17:01:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A1B183DF2
+	for <lists+linux-nvme@lfdr.de>; Wed,  7 Aug 2019 01:45:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gm5cnoy5nHK9NIORAEQ0QYx12Ksd+Nu6LBZPxygZBWc=; b=ldiipqXbAIp0dz
-	JzmAHXZS7wLyunNobraDwvMIhArJ95HHmaT97f30M6AxTYsWzbLhguCUEV1lfGoL3+Ik8r83cKfgO
-	gc7dCeltrkvl9+7Kac0wiCy30+NIefKGdbj3NpUJjsMH6C/IKZVOJEbtJpYAildc6sk/jZKolQmhO
-	RC8rZKvkMu0PQ8GSx6deDReeFfg0OdE4EtRKESPxl0nbecJjx1MtWaaYLuUBKfeLb/SyBPFgPIpD9
-	Vwv6IQ7lSAN3vUMZrSpwrOxao3nE4zwiyYs+LWGoTJpUllc2oRnXmE0HGa+SrN1o5xCHJhGGa5WUH
-	klATeYiHsiPglQlY5vhg==;
+	List-Owner; bh=Mi+mNA3XUnkZ/gVPBzhdCtg904Qnpu2O1+r+DNw+aI8=; b=LkVwIS1Kgfk6cE
+	CdJk2PIjfx6bqBpvj83GYpk7u9zifwIKHwLeBfMJeymvmuXrl49QQBh7rxqc2/+I8cTEnN0g74Hkq
+	BKizAkepSNWkOA5w1BImh2dYkM/dDTd+17wzq5UjvLmBGQ1AfGKONlFAEqOJiBpZjk6pGZBP0xLbF
+	mZQwQLx19Dt/FQQtqTR+1pV+A/COLjw0JRon8c5dTD+KJY/MgtI5Duu7PegLvwYu6LecB6lCc8hXE
+	+zi0W/cBGmTN6t7j3O8Tck/MVqkyeZBhKAgQbdjyV5gxYA8lRoDFySBuUvj+LKsg+f8oeVtG5NtQm
+	PmPM5KVr4twALGrEfQLg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hv0xV-0007T8-6T; Tue, 06 Aug 2019 15:01:05 +0000
-Received: from mail-ot1-f65.google.com ([209.85.210.65])
+	id 1hv98R-00073S-3A; Tue, 06 Aug 2019 23:44:55 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hv0wm-0006ix-PI
- for linux-nvme@lists.infradead.org; Tue, 06 Aug 2019 15:00:23 +0000
-Received: by mail-ot1-f65.google.com with SMTP id r6so93207988oti.3
- for <linux-nvme@lists.infradead.org>; Tue, 06 Aug 2019 08:00:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=RxscOdQ0kyBswnMzdbZHYfByGlVUrX+tfvvqdJiBFoE=;
- b=OWxYHqMoCfuQ+CN09zyFIaXAFrAVKlmEfCsrKUXJPNu/vwoJSp4a6QP8AErr/99lu2
- Vchag/LZfj+BnGcbZcO+1q+wsYPQx4xmQSRR9y5fAm8IIAOs+Ypek+wOW6J4qee4cxMr
- hylR8gruetXa7gG3TMDkQ0pw88PnK578rjraGdwwC/4RaSX8Bz/uUelMDxbOvvL9VdRx
- IjOEd/8LS+zwyCRfjuBA42tab8R6s62kSM+9cl8Ie+3hrAUH+BvO0XMWSaQrlxklh9vi
- ZgyDyARKYeRWi/0iZNp7up1+tVefEHZdb3/z8TDPiyaF4BpdV94izlQQkBFpR2U7Bi/p
- XDtA==
-X-Gm-Message-State: APjAAAUhrrBtqlrjQgGXhkYaa/t6MdOYxrhqXtPmIr0jCsjIFjTtqYCd
- UahziOaNfJdqhNEWbF8I19i5h0cZk04FFCIce0U=
-X-Google-Smtp-Source: APXvYqx8ItX5xoIIAX4vHz++TW/l+PdKzaANPtE5r8IzO3glW5pLIh9f66W8bKa5i983pNTmH/Pbg6Ga79cH2/85Qks=
-X-Received: by 2002:a9d:6959:: with SMTP id p25mr3267007oto.118.1565103618356; 
- Tue, 06 Aug 2019 08:00:18 -0700 (PDT)
+ id 1hv98E-00072M-Ac
+ for linux-nvme@lists.infradead.org; Tue, 06 Aug 2019 23:44:44 +0000
+Received: from localhost (unknown [69.71.4.100])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E57F7214C6;
+ Tue,  6 Aug 2019 23:44:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1565135081;
+ bh=SOMBSaDc8nxdDI/az2lKZSoxOMnNPsmkpBZmMYOUojI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=gw/NWCnHIe70JmgFGthWObyODCSyQBllFbs3c3PnI1E980XzvGktYm/v85YJkpfI2
+ 2o13F61/KwT6B3Zj1o2ci7Y4InfNVb5TiZpt1crsv+hqtrF9hwym0f7OweZlosCnda
+ NVLprZCXXg1My2UaYv0tFUMbBqnG32Sjt0jDaN4s=
+Date: Tue, 6 Aug 2019 18:44:39 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [PATCH v2 00/14] PCI/P2PDMA: Support transactions that hit the
+ host bridge
+Message-ID: <20190806234439.GW151852@google.com>
+References: <20190730163545.4915-1-logang@deltatee.com>
 MIME-Version: 1.0
-References: <4323ed84dd07474eab65699b4d007aaf@AUSX13MPC105.AMER.DELL.COM>
- <CAJZ5v0iDQ4=kTUgW94tKGt7oJzA_3uVU_M6HAMbNCRXwp_do8A@mail.gmail.com>
- <47415939.KV5G6iaeJG@kreacher> <20190730144134.GA12844@localhost.localdomain>
- <100ba4aff1c6434a81e47774ab4acddc@AUSX13MPC105.AMER.DELL.COM>
- <8246360B-F7D9-42EB-94FC-82995A769E28@canonical.com>
- <20190730191934.GD13948@localhost.localdomain>
- <7d3e0b8ba1444194a153c93faa1cabb3@AUSX13MPC105.AMER.DELL.COM>
- <20190730213114.GK13948@localhost.localdomain>
- <CAJZ5v0gxfeMN8eCNRjcXmUOkReVsdozb3EccaYMpnmSHu3771g@mail.gmail.com>
- <20190731221956.GB15795@localhost.localdomain>
- <CAJZ5v0hxYGBXau39sb80MQ8jbZZCzH0JU2DYZvn9JOtYT2+30g@mail.gmail.com>
- <70D536BE-8DC7-4CA2-84A9-AFB067BA520E@canonical.com>
- <CAJZ5v0hFYEv_+vFkrxaCn_pNAbyqmO_cLb5GOLNn_xxRRwjh2g@mail.gmail.com>
- <38d4b4b107154454a932781acde0fa5a@AUSX13MPC105.AMER.DELL.COM>
- <CAJZ5v0jmO4FMOVYs62wkvPrUW81scD2H7cJyRc+tfoj+vODVbQ@mail.gmail.com>
- <43A8DF53-8463-4314-9E8E-47A7D3C5A709@canonical.com>
- <CAJZ5v0ipG-MJjERBL9fjx29QktaYEKSmMCbWiEGPHsbF=Xfxtw@mail.gmail.com>
- <1FA3D56B-80C6-496C-8772-2F773AA8043C@canonical.com>
- <CAJZ5v0g_yAP=zgYDXtJWtwceQp4wWPWFghDDD0opdZ4zT-yo5Q@mail.gmail.com>
- <1d05e26a91f94e5b92eaf5854fa85289@AUSX13MPC105.AMER.DELL.COM>
-In-Reply-To: <1d05e26a91f94e5b92eaf5854fa85289@AUSX13MPC105.AMER.DELL.COM>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Tue, 6 Aug 2019 17:00:06 +0200
-Message-ID: <CAJZ5v0gBCTyRwg0ePHOD4qQvcSwXzHjb5hkswQ7=Ki=gO_nx0A@mail.gmail.com>
-Subject: Re: [Regression] Commit "nvme/pci: Use host managed power state for
- suspend" has problems
-To: Mario Limonciello <Mario.Limonciello@dell.com>
+Content-Disposition: inline
+In-Reply-To: <20190730163545.4915-1-logang@deltatee.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190806_080021_097220_ECDEF408 
-X-CRM114-Status: GOOD (  38.93  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20190806_164442_413214_8E61C0C8 
+X-CRM114-Status: GOOD (  31.74  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.65 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (rjwysocki[at]gmail.com)
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,154 +77,153 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Linux PM <linux-pm@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>,
- Keith Busch <keith.busch@intel.com>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>, Keith Busch <kbusch@kernel.org>,
- Rajat Jain <rajatja@google.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Sagi Grimberg <sagi@grimberg.me>, linux-rdma@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ Jens Axboe <axboe@fb.com>, Jason Gunthorpe <jgg@mellanox.com>,
+ Keith Busch <kbusch@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
+ Eric Pilmore <epilmore@gigaio.com>, Christoph Hellwig <hch@lst.de>,
+ Christian Koenig <Christian.Koenig@amd.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gVHVlLCBBdWcgNiwgMjAxOSBhdCA0OjAyIFBNIDxNYXJpby5MaW1vbmNpZWxsb0BkZWxsLmNv
-bT4gd3JvdGU6Cj4KPgo+Cj4gPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQo+ID4gRnJvbTog
-UmFmYWVsIEouIFd5c29ja2kgPHJhZmFlbEBrZXJuZWwub3JnPgo+ID4gU2VudDogTW9uZGF5LCBB
-dWd1c3QgNSwgMjAxOSA0OjI5IFBNCj4gPiBUbzogS2FpLUhlbmcgRmVuZwo+ID4gQ2M6IFJhZmFl
-bCBKLiBXeXNvY2tpOyBMaW1vbmNpZWxsbywgTWFyaW87IEtlaXRoIEJ1c2NoOyBLZWl0aCBCdXNj
-aDsgQ2hyaXN0b3BoCj4gPiBIZWxsd2lnOyBTYWdpIEdyaW1iZXJnOyBsaW51eC1udm1lOyBMaW51
-eCBQTTsgTGludXggS2VybmVsIE1haWxpbmcgTGlzdDsgUmFqYXQgSmFpbgo+ID4gU3ViamVjdDog
-UmU6IFtSZWdyZXNzaW9uXSBDb21taXQgIm52bWUvcGNpOiBVc2UgaG9zdCBtYW5hZ2VkIHBvd2Vy
-IHN0YXRlIGZvcgo+ID4gc3VzcGVuZCIgaGFzIHByb2JsZW1zCj4gPgo+ID4KPiA+IFtFWFRFUk5B
-TCBFTUFJTF0KPiA+Cj4gPiBPbiBNb24sIEF1ZyA1LCAyMDE5IGF0IDk6MTQgUE0gS2FpLUhlbmcg
-RmVuZwo+ID4gPGthaS5oZW5nLmZlbmdAY2Fub25pY2FsLmNvbT4gd3JvdGU6Cj4gPiA+Cj4gPiA+
-IGF0IDE5OjA0LCBSYWZhZWwgSi4gV3lzb2NraSA8cmFmYWVsQGtlcm5lbC5vcmc+IHdyb3RlOgo+
-ID4gPgo+ID4gPiA+IE9uIEZyaSwgQXVnIDIsIDIwMTkgYXQgMTI6NTUgUE0gS2FpLUhlbmcgRmVu
-Zwo+ID4gPiA+IDxrYWkuaGVuZy5mZW5nQGNhbm9uaWNhbC5jb20+IHdyb3RlOgo+ID4gPiA+PiBh
-dCAwNjoyNiwgUmFmYWVsIEouIFd5c29ja2kgPHJhZmFlbEBrZXJuZWwub3JnPiB3cm90ZToKPiA+
-ID4gPj4KPiA+ID4gPj4+IE9uIFRodSwgQXVnIDEsIDIwMTkgYXQgOTowNSBQTSA8TWFyaW8uTGlt
-b25jaWVsbG9AZGVsbC5jb20+IHdyb3RlOgo+ID4gPiA+Pj4+PiAtLS0tLU9yaWdpbmFsIE1lc3Nh
-Z2UtLS0tLQo+ID4gPiA+Pj4+PiBGcm9tOiBSYWZhZWwgSi4gV3lzb2NraSA8cmFmYWVsQGtlcm5l
-bC5vcmc+Cj4gPiA+ID4+Pj4+IFNlbnQ6IFRodXJzZGF5LCBBdWd1c3QgMSwgMjAxOSAxMjozMCBQ
-TQo+ID4gPiA+Pj4+PiBUbzogS2FpLUhlbmcgRmVuZzsgS2VpdGggQnVzY2g7IExpbW9uY2llbGxv
-LCBNYXJpbwo+ID4gPiA+Pj4+PiBDYzogS2VpdGggQnVzY2g7IENocmlzdG9waCBIZWxsd2lnOyBT
-YWdpIEdyaW1iZXJnOyBsaW51eC1udm1lOyBMaW51eAo+ID4gPiA+Pj4+PiBQTTsgTGludXgKPiA+
-ID4gPj4+Pj4gS2VybmVsIE1haWxpbmcgTGlzdDsgUmFqYXQgSmFpbgo+ID4gPiA+Pj4+PiBTdWJq
-ZWN0OiBSZTogW1JlZ3Jlc3Npb25dIENvbW1pdCAibnZtZS9wY2k6IFVzZSBob3N0IG1hbmFnZWQg
-cG93ZXIKPiA+ID4gPj4+Pj4gc3RhdGUgZm9yCj4gPiA+ID4+Pj4+IHN1c3BlbmQiIGhhcyBwcm9i
-bGVtcwo+ID4gPiA+Pj4+Pgo+ID4gPiA+Pj4+Pgo+ID4gPiA+Pj4+PiBbRVhURVJOQUwgRU1BSUxd
-Cj4gPiA+ID4+Pj4+Cj4gPiA+ID4+Pj4+IE9uIFRodSwgQXVnIDEsIDIwMTkgYXQgMTE6MDYgQU0g
-S2FpLUhlbmcgRmVuZwo+ID4gPiA+Pj4+PiA8a2FpLmhlbmcuZmVuZ0BjYW5vbmljYWwuY29tPiB3
-cm90ZToKPiA+ID4gPj4+Pj4+IGF0IDA2OjMzLCBSYWZhZWwgSi4gV3lzb2NraSA8cmFmYWVsQGtl
-cm5lbC5vcmc+IHdyb3RlOgo+ID4gPiA+Pj4+Pj4KPiA+ID4gPj4+Pj4+PiBPbiBUaHUsIEF1ZyAx
-LCAyMDE5IGF0IDEyOjIyIEFNIEtlaXRoIEJ1c2NoIDxrYnVzY2hAa2VybmVsLm9yZz4KPiA+ID4g
-Pj4+Pj4+PiB3cm90ZToKPiA+ID4gPj4+Pj4+Pj4gT24gV2VkLCBKdWwgMzEsIDIwMTkgYXQgMTE6
-MjU6NTFQTSArMDIwMCwgUmFmYWVsIEouIFd5c29ja2kgd3JvdGU6Cj4gPiA+ID4+Pj4+Pj4+PiBB
-IGNvdXBsZSBvZiByZW1hcmtzIGlmIHlvdSB3aWxsLgo+ID4gPiA+Pj4+Pj4+Pj4KPiA+ID4gPj4+
-Pj4+Pj4+IEZpcnN0LCB3ZSBkb24ndCBrbm93IHdoaWNoIGNhc2UgaXMgdGhlIG1ham9yaXR5IGF0
-IHRoaXMgcG9pbnQuICBGb3IKPiA+ID4gPj4+Pj4+Pj4+IG5vdywgdGhlcmUgaXMgb25lIGV4YW1w
-bGUgb2YgZWFjaCwgYnV0IGl0IG1heSB2ZXJ5IHdlbGwgdHVybiBvdXQKPiA+ID4gPj4+Pj4+Pj4+
-IHRoYXQKPiA+ID4gPj4+Pj4+Pj4+IHRoZSBTSyBIeW5peCBCQzUwMSBhYm92ZSBuZWVkcyB0byBi
-ZSBxdWlya2VkLgo+ID4gPiA+Pj4+Pj4+Pj4KPiA+ID4gPj4+Pj4+Pj4+IFNlY29uZCwgdGhlIHJl
-ZmVyZW5jZSBoZXJlIHJlYWxseSBpcyA1LjIsIHNvIGlmIHRoZXJlIGFyZSBhbnkKPiA+ID4gPj4+
-Pj4+Pj4+IHN5c3RlbXMKPiA+ID4gPj4+Pj4+Pj4+IHRoYXQgYXJlIG5vdCBiZXR0ZXIgb2ZmIHdp
-dGggNS4zLXJjIHRoYW4gdGhleSB3ZXJlIHdpdGggNS4yLAo+ID4gPiA+Pj4+Pj4+Pj4gd2VsbCwg
-d2UKPiA+ID4gPj4+Pj4+Pj4+IGhhdmUgbm90IG1hZGUgcHJvZ3Jlc3MuICBIb3dldmVyLCBpZiB0
-aGVyZSBhcmUgc3lzdGVtcyB0aGF0IGFyZQo+ID4gPiA+Pj4+Pj4+Pj4gd29yc2UKPiA+ID4gPj4+
-Pj4+Pj4+IG9mZiB3aXRoIDUuMywgdGhhdCdzIGJhZC4gIEluIHRoZSBmYWNlIG9mIHRoZSBsYXRl
-c3QgZmluZGluZ3MgdGhlCj4gPiA+ID4+Pj4+Pj4+PiBvbmx5Cj4gPiA+ID4+Pj4+Pj4+PiB3YXkg
-dG8gYXZvaWQgdGhhdCBpcyB0byBiZSBiYWNrd2FyZHMgY29tcGF0aWJsZSB3aXRoIDUuMiBhbmQg
-dGhhdCdzCj4gPiA+ID4+Pj4+Pj4+PiB3aGVyZSBteSBwYXRjaCBpcyBnb2luZy4gIFRoYXQgY2Fu
-bm90IGJlIGFjaGlldmVkIGJ5IHF1aXJraW5nIGFsbAo+ID4gPiA+Pj4+Pj4+Pj4gY2FzZXMgdGhh
-dCBhcmUgcmVwb3J0ZWQgYXMgImJhZCIsIGJlY2F1c2UgdGhlcmUgc3RpbGwgbWF5IGJlCj4gPiA+
-ID4+Pj4+Pj4+PiB1bnJlcG9ydGVkIG9uZXMuCj4gPiA+ID4+Pj4+Pj4+Cj4gPiA+ID4+Pj4+Pj4+
-IEkgaGF2ZSB0byBhZ3JlZS4gSSB0aGluayB5b3VyIHByb3Bvc2FsIG1heSBhbGxvdyBQQ0kgRDNj
-b2xkLAo+ID4gPiA+Pj4+Pj4+Cj4gPiA+ID4+Pj4+Pj4gWWVzLCBpdCBtYXkuCj4gPiA+ID4+Pj4+
-Pgo+ID4gPiA+Pj4+Pj4gU29tZWhvdyB0aGUgOTM4MCB3aXRoIFRvc2hpYmEgTlZNZSBuZXZlciBo
-aXRzIFNMUF9TMCB3aXRoIG9yCj4gPiB3aXRob3V0Cj4gPiA+ID4+Pj4+PiBSYWZhZWzigJlzIHBh
-dGNoLgo+ID4gPiA+Pj4+Pj4gQnV0IHRoZSDigJxyZWFs4oCdIHMyaWRsZSBwb3dlciBjb25zdW1w
-dGlvbiBkb2VzIGltcHJvdmUgd2l0aCB0aGUgcGF0Y2guCj4gPiA+ID4+Pj4+Cj4gPiA+ID4+Pj4+
-IERvIHlvdSBtZWFuIHRoaXMgcGF0Y2g6Cj4gPiA+ID4+Pj4+Cj4gPiA+ID4+Pj4+IGh0dHBzOi8v
-bG9yZS5rZXJuZWwub3JnL2xpbnV4LXBtLzcwRDUzNkJFLThEQzctNENBMi04NEE5LQo+ID4gPiA+
-Pj4+Pgo+ID4gQUZCMDY3QkE1MjBFQGNhbm9uaWNhbC5jb20vVC8jbTQ1NmFhNWM2OTk3M2EzYjY4
-ZjJjZGQ0NzEzYTFjZTgzYmU1MTQ1Cj4gPiA+ID4+Pj4+IDhmCj4gPiA+ID4+Pj4+Cj4gPiA+ID4+
-Pj4+IG9yIHRoZSAkc3ViamVjdCBvbmUgd2l0aG91dCB0aGUgYWJvdmU/Cj4gPiA+ID4+Pj4+Cj4g
-PiA+ID4+Pj4+PiBDYW4gd2UgdXNlIGEgRE1JIGJhc2VkIHF1aXJrIGZvciB0aGlzIHBsYXRmb3Jt
-PyBJdCBzZWVtcyBsaWtlIGEKPiA+ID4gPj4+Pj4+IHBsYXRmb3JtCj4gPiA+ID4+Pj4+PiBzcGVj
-aWZpYyBpc3N1ZS4KPiA+ID4gPj4+Pj4KPiA+ID4gPj4+Pj4gV2Ugc2VlbSB0byBzZWUgdG9vIG1h
-bnkgInBsYXRmb3JtLXNwZWNpZmljIGlzc3VlcyIgaGVyZS4gOi0pCj4gPiA+ID4+Pj4+Cj4gPiA+
-ID4+Pj4+IFRvIG1lLCB0aGUgc3RhdHVzIHF1byAoaWUuIHdoYXQgd2UgaGF2ZSBpbiA1LjMtcmMy
-KSBpcyBub3QgZGVmZW5zaWJsZS4KPiA+ID4gPj4+Pj4gU29tZXRoaW5nIG5lZWRzIHRvIGJlIGRv
-bmUgdG8gaW1wcm92ZSB0aGUgc2l0dWF0aW9uLgo+ID4gPiA+Pj4+Cj4gPiA+ID4+Pj4gUmFmYWVs
-LCB3b3VsZCBpdCBiZSBwb3NzaWJsZSB0byB0cnkgcG9wcGluZyBvdXQgUEM0MDEgZnJvbSB0aGUg
-OTM4MCBhbmQKPiA+ID4gPj4+PiBpbnRvIGEgOTM2MCB0bwo+ID4gPiA+Pj4+IGNvbmZpcm0gdGhl
-cmUgYWN0dWFsbHkgYmVpbmcgYSBwbGF0Zm9ybSBpbXBhY3Qgb3Igbm90Pwo+ID4gPiA+Pj4KPiA+
-ID4gPj4+IE5vdCByZWFsbHksIHNvcnJ5Lgo+ID4gPiA+Pj4KPiA+ID4gPj4+PiBJIHdhcyBob3Bp
-bmcgdG8gaGF2ZSBzb21ldGhpbmcgdXNlZnVsIGZyb20gSHluaXggYnkgbm93IGJlZm9yZQo+ID4g
-PiA+Pj4+IHJlc3BvbmRpbmcsIGJ1dCBvaCB3ZWxsLgo+ID4gPiA+Pj4+Cj4gPiA+ID4+Pj4gSW4g
-dGVybXMgb2Ygd2hhdCBpcyB0aGUgbWFqb3JpdHksIEkgZG8ga25vdyB0aGF0IGJldHdlZW4gZm9s
-a3MgYXQgRGVsbCwKPiA+ID4gPj4+PiBHb29nbGUsIENvbXBhbCwKPiA+ID4gPj4+PiBXaXN0cm9u
-LCBDYW5vbmljYWwsIE1pY3JvbiwgSHluaXgsIFRvc2hpYmEsIExpdGVPbiwgYW5kIFdlc3Rlcm4g
-RGlnaXRhbAo+ID4gPiA+Pj4+IHdlIHRlc3RlZCBhIHdpZGUKPiA+ID4gPj4+PiB2YXJpZXR5IG9m
-IFNTRHMgd2l0aCB0aGlzIHBhdGNoIHNlcmllcy4gIEkgd291bGQgbGlrZSB0byB0aGluayB0aGF0
-IHRoZXkKPiA+ID4gPj4+PiBhcmUgcmVwcmVzZW50YXRpdmUgb2YKPiA+ID4gPj4+PiB3aGF0J3Mg
-YmVpbmcgbWFudWZhY3R1cmVkIGludG8gbWFjaGluZXMgbm93Lgo+ID4gPiA+Pj4KPiA+ID4gPj4+
-IFdlbGwsIHdoYXQgYWJvdXQgZHJpdmVzIGFscmVhZHkgaW4gdGhlIGZpZWxkPyAgTXkgY29uY2Vy
-biBpcyBtb3N0bHkKPiA+ID4gPj4+IGFib3V0IHRob3NlIG9uZXMuCj4gPiA+ID4+Pgo+ID4gPiA+
-Pj4+IE5vdGFibHkgdGhlIExpdGVPbiBDTDEgd2FzIHRlc3RlZCB3aXRoIHRoZSBITUIgZmx1c2hp
-bmcgc3VwcG9ydCBhbmQKPiA+ID4gPj4+PiBhbmQgSHluaXggUEM0MDEgd2FzIHRlc3RlZCB3aXRo
-IG9sZGVyIGZpcm13YXJlIHRob3VnaC4KPiA+ID4gPj4+Pgo+ID4gPiA+Pj4+Pj4+PiBJbiB3aGlj
-aCBjYXNlIHdlIGRvIG5lZWQgdG8gcmVpbnRyb2R1Y2UgdGhlIEhNQiBoYW5kbGluZy4KPiA+ID4g
-Pj4+Pj4+Pgo+ID4gPiA+Pj4+Pj4+IFJpZ2h0Lgo+ID4gPiA+Pj4+Pj4KPiA+ID4gPj4+Pj4+IFRo
-ZSBwYXRjaCBhbG9uZSBkb2VzbuKAmXQgYnJlYWsgSE1CIFRvc2hpYmEgTlZNZSBJIHRlc3RlZC4g
-QnV0IEkgdGhpbmsKPiA+ID4gPj4+Pj4+IGl04oCZcwo+ID4gPiA+Pj4+Pj4gc3RpbGwgc2FmZXIg
-dG8gZG8gcHJvcGVyIEhNQiBoYW5kbGluZy4KPiA+ID4gPj4+Pj4KPiA+ID4gPj4+Pj4gV2VsbCwg
-c28gY2FuIGFueW9uZSBwbGVhc2UgcHJvcG9zZSBzb21ldGhpbmcgc3BlY2lmaWM/ICBMaWtlIGFu
-Cj4gPiA+ID4+Pj4+IGFsdGVybmF0aXZlIHBhdGNoPwo+ID4gPiA+Pj4+Cj4gPiA+ID4+Pj4gVGhp
-cyB3YXMgcHJvcG9zZWQgYSBmZXcgZGF5cyBhZ286Cj4gPiA+ID4+Pj4gaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvcGlwZXJtYWlsL2xpbnV4LW52bWUvMjAxOS1KdWx5LzAyNjA1Ni5odG1sCj4g
-PiA+ID4+Pj4KPiA+ID4gPj4+PiBIb3dldmVyIHdlJ3JlIHN0aWxsIG5vdCBzdXJlIHdoeSBpdCBp
-cyBuZWVkZWQsIGFuZCBpdCB3aWxsIHRha2Ugc29tZQo+ID4gPiA+Pj4+IHRpbWUgdG8gZ2V0Cj4g
-PiA+ID4+Pj4gYSBwcm9wZXIgZmFpbHVyZSBhbmFseXNpcyBmcm9tIExpdGVPbiAgcmVnYXJkaW5n
-IHRoZSBDTDEuCj4gPiA+ID4+Pgo+ID4gPiA+Pj4gVGhhbmtzIGZvciB0aGUgdXBkYXRlLCBidXQg
-SU1PIHdlIHN0aWxsIG5lZWQgdG8gZG8gc29tZXRoaW5nIGJlZm9yZQo+ID4gPiA+Pj4gZmluYWwg
-NS4zIHdoaWxlIHRoZSBpbnZlc3RpZ2F0aW9uIGNvbnRpbnVlcy4KPiA+ID4gPj4+Cj4gPiA+ID4+
-PiBIb25lc3RseSwgYXQgdGhpcyBwb2ludCBJIHdvdWxkIHZvdGUgZm9yIGdvaW5nIGJhY2sgdG8g
-dGhlIDUuMgo+ID4gPiA+Pj4gYmVoYXZpb3IgYXQgbGVhc3QgYnkgZGVmYXVsdCBhbmQgb25seSBy
-dW5uaW5nIHRoZSBuZXcgY29kZSBvbiB0aGUKPiA+ID4gPj4+IGRyaXZlcyBrbm93biB0byByZXF1
-aXJlIGl0IChiZWNhdXNlIHRoZXkgd2lsbCBibG9jayBQQzEwIG90aGVyd2lzZSkuCj4gPiA+ID4+
-Pgo+ID4gPiA+Pj4gUG9zc2libHkgKGlkZWFsbHkpIHdpdGggYW4gb3B0aW9uIGZvciB1c2VycyB3
-aG8gY2FuJ3QgZ2V0IGJleW9uZCBQQzMKPiA+ID4gPj4+IHRvIHRlc3Qgd2hldGhlciBvciBub3Qg
-dGhlIG5ldyBjb2RlIGhlbHBzIHRoZW0uCj4gPiA+ID4+Cj4gPiA+ID4+IEkganVzdCBmb3VuZCBv
-dXQgdGhhdCB0aGUgWFBTIDkzODAgYXQgbXkgaGFuZCBuZXZlciByZWFjaGVzIFNMUF9TMCBidXQK
-PiA+ID4gPj4gb25seQo+ID4gPiA+PiBQQzEwLgo+ID4gPiA+Cj4gPiA+ID4gVGhhdCdzIHRoZSBj
-YXNlIGZvciBtZSB0b28uCj4gPiA+ID4KPiA+ID4gPj4gVGhpcyBoYXBwZW5zIHdpdGggb3Igd2l0
-aG91dCBwdXR0aW5nIHRoZSBkZXZpY2UgdG8gRDMuCj4gPiA+ID4KPiA+ID4gPiBPbiBteSBzeXN0
-ZW0sIHRob3VnaCwgaXQgb25seSBjYW4gZ2V0IHRvIFBDMyB3aXRob3V0IHB1dHRpbmcgdGhlIE5W
-TWUKPiA+ID4gPiBpbnRvIEQzIChhcyByZXBvcnRlZCBwcmV2aW91c2x5KS4KPiA+ID4KPiA+ID4g
-SSBmb3Jnb3QgdG8gYXNrLCB3aGF0IEJJT1MgdmVyc2lvbiBkb2VzIHRoZSBzeXN0ZW0gaGF2ZT8K
-PiA+ID4gSSBkb27igJl0IHNlZSB0aGlzIGlzc3VlIG9uIEJJT1MgdjEuNS4wLgo+ID4KPiA+IEl0
-IGlzIDEuNS4wIGhlcmUgdG9vLgo+Cj4gQWxsLCByZWdhcmRpbmcgdGhlIG5lZWQgZm9yIHRoZSBw
-YXRjaCBwcm9wb3NlZCBieSBSYWZhZWwgb24gUEM0MDEsIEkgaGF2ZSBzb21lIHVwZGF0ZXMKPiB0
-byBzaGFyZSBmcm9tIEh5bml4Lgo+IEZpcnN0IG9mZiAtIHRoZSBmaXJtd2FyZSBjaGFuZ2Vsb2cg
-aXMgbWlzbGVhZGluZyBmcm9tIDgwMDA2RTAwIHRvIDgwMDA3RTAwLgo+Cj4gVGhlIGNoYW5nZSB3
-YXMgbWFkZSBpbiB0aGUgZmlybXdhcmUgc3BlY2lmaWNhbGx5IGJlY2F1c2Ugb2YgYSBjaGFuZ2Ug
-aW4gYmVoYXZpb3IgZnJvbQo+IEludGVsIEtCTCB0byBDRkwgYW5kIFdITC4gIE9uIENGTC9XSEwg
-dGhlIHBlcmlvZCBvZiB0aW1lIHRoYXQgUmVmQ2xrIHdhcyB0dXJuZWQgb24gYWZ0ZXIgTDEuMgo+
-IHdhcyBsYXJnZXIgdGhhbiBLQkwgcGxhdGZvcm1zLiAgU28gdGhpcyBtZWFudCB0aGF0IEh5bml4
-IGNvdWxkbid0IGxvY2sgdXAgZnJvbSBDTEtSRVEjCj4gdG8gUmVmQ2xrIGFzIHF1aWNrbHkgb24g
-Q0ZML1dITC4gIFNvIHRoZXJlIGlzIGEgImxhcmdlciIgZml4ZWQgZGVsYXkgaW50cm9kdWNlZCBp
-biB0aGVpciBGVy4KPgo+IFRvIHRob3NlIHRoYXQgZG9uJ3Qga25vdyAtIFhQUyA5MzgwIGlzIGEg
-V0hMIHBsYXRmb3JtLgo+Cj4gU2Vjb25kIC0gYSBoeXBvdGhlc2lzIG9mIHdoYXQgaXMgaGFwcGVu
-aW5nIHdpdGggdGhlIHBhdGNoIHByb3Bvc2VkIGJ5IFJhZmFlbCBpcyB0aGF0IHRoZSBsaW5rCj4g
-aXMgb25seSB0cmFuc2l0aW9uaW5nIHRvIEwxLjAgcmF0aGVyIHRoYW4gTDEuMi4gIFRoaXMgbWF5
-IHNhdGlzZnkgdGhlIFBNQyBidXQgaXQgc2hvdWxkbid0IGxlYWQgdG8KPiB0aGUgbG93ZXN0IGFj
-dHVhbCBkZXZpY2UgcG93ZXIgc3RhdGUuCgpUaGUgbm9ydGggY29tcGxleCBkb2Vzbid0IGdldCB0
-byBQQzEwIHdpdGhvdXQgdGhpcyBwYXRjaCwgc28gdGhpcyBpcwptb3JlIGFib3V0IHRoZSBQQ0ll
-IHJvb3QgY29tcGxleCB0aGFuIHRoZSBQTUMuCgpQQzMgdnMgUEMxMCBpcyBhIGJpZyBkZWFsIHJl
-Z2FyZGxlc3Mgb2Ygd2hhdCB0aGUgTlZNZSBjYW4gYWNoaWV2ZS4KCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0Ckxp
-bnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+On Tue, Jul 30, 2019 at 10:35:31AM -0600, Logan Gunthorpe wrote:
+> Here's v2 of the patchset. It doesn't sound like there's anything
+> terribly controversial here so this version is mostly just some
+> cleanup changes for clarity.
+> 
+> Changes in v2:
+>  * Rebase on v5.3-rc2 (No changes)
+>  * Re-introduce the private pagemap structure and move the p2p-specific
+>    elements out of the commond dev_pagemap (per Christoph)
+>  * Use flags instead of bool in the whitelist (per Jason)
+>  * Only store the mapping type in the xarray (instead of the distance
+>    with flags) such that a function can return the mapping method
+>    with a switch statement to decide how to map. (per Christoph)
+>  * Drop find_parent_pci_dev() on the fast path and rely on the fact
+>    that the struct device passed to the mapping functions *must* be
+>    a PCI device and convert it directly. (per suggestions from
+>    Christoph and Jason)
+>  * Collected Christian's Reviewed-by's
+> --
+> 
+> As discussed on the list previously, in order to fully support the
+> whitelist Christian added with the IOMMU, we must ensure that we
+> map any buffer going through the IOMMU with an aprropriate dma_map
+> call. This patchset accomplishes this by cleaning up the output of
+> upstream_bridge_distance() to better indicate the mapping requirements,
+> caching these requirements in an xarray, then looking them up at map
+> time and applying the appropriate mapping method.
+> 
+> After this patchset, it's possible to use the NVMe-of P2P support to
+> transfer between devices without a switch on the whitelisted root
+> complexes. A couple Intel device I have tested this on have also
+> been added to the white list.
+> 
+> Most of the changes are contained within the p2pdma.c, but there are
+> a few minor touches to other subsystems, mostly to add support
+> to call an unmap function.
+> 
+> The final patch in this series demonstrates a possible
+> pci_p2pdma_map_resource() function that I expect Christian will need
+> but does not have any users at this time so I don't intend for it to be
+> considered for merging.
+
+I don't see pci_p2pdma_map_resource() in any of these patches.
+
+I tentatively applied these to pci/p2pdma with minor typographical
+updates (below), but I'll update the branch if necessary.
+
+> This patchset is based on 5.3-rc2 and a git branch is available here:
+> 
+> https://github.com/sbates130272/linux-p2pmem/ p2pdma_rc_map_v2
+> 
+> --
+> 
+> Logan Gunthorpe (14):
+>   PCI/P2PDMA: Introduce private pagemap structure
+>   PCI/P2PDMA: Add the provider's pci_dev to the pci_p2pdma_pagemap
+>     struct
+>   PCI/P2PDMA: Add constants for not-supported result
+>     upstream_bridge_distance()
+>   PCI/P2PDMA: Factor out __upstream_bridge_distance()
+>   PCI/P2PDMA: Apply host bridge white list for ACS
+>   PCI/P2PDMA: Factor out host_bridge_whitelist()
+>   PCI/P2PDMA: Add whitelist support for Intel Host Bridges
+>   PCI/P2PDMA: Add attrs argument to pci_p2pdma_map_sg()
+>   PCI/P2PDMA: Introduce pci_p2pdma_unmap_sg()
+>   PCI/P2PDMA: Factor out __pci_p2pdma_map_sg()
+>   PCI/P2PDMA: Store mapping method in an xarray
+>   PCI/P2PDMA: dma_map P2PDMA map requests that traverse the host bridge
+>   PCI/P2PDMA: No longer require no-mmu for host bridge whitelist
+>   PCI/P2PDMA: Update documentation for pci_p2pdma_distance_many()
+> 
+>  drivers/infiniband/core/rw.c |   6 +-
+>  drivers/nvme/host/pci.c      |  10 +-
+>  drivers/pci/p2pdma.c         | 361 +++++++++++++++++++++++++----------
+>  include/linux/memremap.h     |   1 -
+>  include/linux/pci-p2pdma.h   |  28 ++-
+>  5 files changed, 296 insertions(+), 110 deletions(-)
+
+diff --git a/drivers/pci/p2pdma.c b/drivers/pci/p2pdma.c
+index ac6b599a10ef..afa42512e604 100644
+--- a/drivers/pci/p2pdma.c
++++ b/drivers/pci/p2pdma.c
+@@ -442,17 +442,17 @@ static int map_types_idx(struct pci_dev *client)
+  * port of the switch, to the common upstream port, back up to the second
+  * downstream port and then to Device B.
+  *
+- * Any two devices that cannot communicate using p2pdma will return the distance
+- * with the flag P2PDMA_NOT_SUPPORTED.
++ * Any two devices that cannot communicate using p2pdma will return the
++ * distance with the flag P2PDMA_NOT_SUPPORTED.
+  *
+  * Any two devices that have a data path that goes through the host bridge
+  * will consult a whitelist. If the host bridges are on the whitelist,
+- * then the distance will be returned with the flag P2PDMA_THRU_HOST_BRIDGE set.
++ * the distance will be returned with the flag P2PDMA_THRU_HOST_BRIDGE set.
+  * If either bridge is not on the whitelist, the flag P2PDMA_NOT_SUPPORTED will
+  * be set.
+  *
+  * If a bridge which has any ACS redirection bits set is in the path
+- * then this functions will flag the result with P2PDMA_ACS_FORCES_UPSTREAM.
++ * this function will flag the result with P2PDMA_ACS_FORCES_UPSTREAM.
+  * In this case, a list of all infringing bridge addresses will be
+  * populated in acs_list (assuming it's non-null) for printk purposes.
+  */
+@@ -529,8 +529,8 @@ static int upstream_bridge_distance_warn(struct pci_dev *provider,
+  * choice).
+  *
+  * "compatible" means the provider and the clients are either all behind
+- * the same PCI root port or the host bridge connected to each of the devices
+- * are is listed in the 'pci_p2pdma_whitelist'.
++ * the same PCI root port or the host bridges connected to each of the devices
++ * are listed in the 'pci_p2pdma_whitelist'.
+  */
+ int pci_p2pdma_distance_many(struct pci_dev *provider, struct device **clients,
+ 			     int num_clients, bool verbose)
+@@ -850,7 +850,7 @@ static int __pci_p2pdma_map_sg(struct pci_p2pdma_pagemap *p2p_pgmap,
+  * @sg: scatter list to map
+  * @nents: elements in the scatterlist
+  * @dir: DMA direction
+- * @attrs: dma attributes passed to dma_map_sg() (if called)
++ * @attrs: DMA attributes passed to dma_map_sg() (if called)
+  *
+  * Scatterlists mapped with this function should be unmapped using
+  * pci_p2pdma_unmap_sg_attrs().
+@@ -888,7 +888,7 @@ EXPORT_SYMBOL_GPL(pci_p2pdma_map_sg_attrs);
+  * @sg: scatter list to map
+  * @nents: number of elements returned by pci_p2pdma_map_sg()
+  * @dir: DMA direction
+- * @attrs: dma attributes passed to dma_unmap_sg() (if called)
++ * @attrs: DMA attributes passed to dma_unmap_sg() (if called)
+  */
+ void pci_p2pdma_unmap_sg_attrs(struct device *dev, struct scatterlist *sg,
+ 		int nents, enum dma_data_direction dir, unsigned long attrs)
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
