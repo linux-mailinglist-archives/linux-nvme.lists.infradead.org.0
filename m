@@ -2,82 +2,128 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0524B8291F
-	for <lists+linux-nvme@lfdr.de>; Tue,  6 Aug 2019 03:18:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B1750829B0
+	for <lists+linux-nvme@lfdr.de>; Tue,  6 Aug 2019 04:37:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gLqAe0rA/nuuiOQc73kBgw+EbFadqRxIiB+udkHziEo=; b=k0uhaE8FrE7tAu
-	dXxtq4UeoYDuN9mc9LAd3hF+38inx/uaDA/vHVmf+Ci5+F72r0ZP6lDu0zsc/hmLiDIBjMfQO1QRT
-	gapBX7X09RC9T5ASX7X5tl6TqZep/QaeJbrgSF2JkylXoamitmTXPbNmqEOR7DdSZwjqjKmPqvgbJ
-	rIx/PTW6NDM4/XJr064i3y3voeUBUkLwzOthVVhwUotyZKc/F2hJCbtwd8CWzYIitUTZz52lTdyPv
-	vaNfnAIx//c+G8W3lMrdYcbneqqhMZT5RKNpfrVSjftm4ePkuxwULRoMk7r1HQy+rgVzkZJTFRb67
-	SWVhC7NEdwr0kd9HXP+Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=9mJImHJDXfNcNoD/tQpKhX3Lv/uHeKe8s1G7llkVdok=; b=UcjP3ewpMM7xbhW3ZXI5jjYn5
+	8OrxPyeHLSBEwXa+e8Khm1nuBcKpaTkIJqqwEeLfPAGqcORNWk9lv6gPH70hSQ/IlZ3T+1mLp3tc2
+	DyiHRdUjy6kDjU/CKGJbMUsiFZDfndtSOiRwiVx53XTguiwk2wbpiawWWRrvXhpCQk1WA4qTqjxTA
+	ygmHZtk97hZY4YS2AhoI5yJePqFKKHrHSY824r0/OrJc+czhTH+NUBY+RdLIrOpTDimMWAOOdDdFR
+	9Yx3wCEOB+QIxShHdnoDyEXkg+vKpwDy6oiTyv+ILXdHXqKyhagyEtcZzE2X+u/WxI/3ibh30GIjO
+	k2xw+gDjg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1huo6u-0004IT-Fh; Tue, 06 Aug 2019 01:17:56 +0000
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
+	id 1hupM8-0003CA-VZ; Tue, 06 Aug 2019 02:37:44 +0000
+Received: from mail-eopbgr50082.outbound.protection.outlook.com ([40.107.5.82]
+ helo=EUR03-VE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1huo6p-0004I6-JW
- for linux-nvme@lists.infradead.org; Tue, 06 Aug 2019 01:17:53 +0000
-Received: by mail-ed1-x542.google.com with SMTP id k8so80730862edr.11
- for <linux-nvme@lists.infradead.org>; Mon, 05 Aug 2019 18:17:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=5e8Zy3qMHi7fpLdz6sImwL9ZFSla79CW9csr8/GTRmM=;
- b=csaL0vAhtMjECcYDSbDIgojP6+FNInNKSfbJyY072457295WKVz1FTg1UZED7rEfvx
- vN1/pdLnxPlw1LI3h8j27yPjBjVAcNxqIwnly5H5s0ri8odOjtLdufmsbZAc2AAK5s96
- z3KlsLqZzbvUGVEZRSL/AaNYDm9hHTL8jGWLteyL1nqCxrnxi8b1knf1Ud70/dRbiBYl
- V5mHS8Ed9Vpym31SCXCm71sUxxfXOJ0QsAL7bgv6/Tk3OXvoYhlRfIZsltgg9p51tnMD
- hF2XCKKopLWrl2tVgx3E+iDN4qCaj9L6kn6HQbdaCBFhZg/2p2vewF+yjP/qyFC0L7xm
- Y0XA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=5e8Zy3qMHi7fpLdz6sImwL9ZFSla79CW9csr8/GTRmM=;
- b=pCtI5KfACkV82XCmZdUI2ZeRMwa9bxAoBOJ4oSWdKsVriAqu7RDDkXyHkpRqE2sKbF
- QwVfqVCJHBq2t5DwcQFV8CLLudXEUqLCgDbjgQS4JUQB35QlTVXC4we7Fp8Snc5F1FBZ
- 4dqItyTXDTQpyK1BCbalnYA510YURqBlSJYsGKLHqJ030KzsBBj/jzDQFrMQ2tm3AHTw
- j5fdauGJnhnpoB5KL0FtnrwmzTokzYlOXvWw/466FEMqCiy1590RGc8eFIqXkEemID2F
- VjCCe0DvFYDzpvxp2gU9992Gi6bEXrtQYjvHy+jVbbtxHJ7zUkbE+1d0RQEt3wczHPWJ
- Qtgg==
-X-Gm-Message-State: APjAAAXCmbdbeqixzR8OdwmFG1Lp/AOpCCdhmWb2JHGaQc70Re9r2O+k
- pADG/0NcnhGufwVfGoTuz4o=
-X-Google-Smtp-Source: APXvYqzmjErW7M3YapC8kM/npn7BwqQtn6yNDra+F90niWgRJnTG+HHGA102sLCcspVZnSNQF3ehYA==
-X-Received: by 2002:a50:cd91:: with SMTP id p17mr1217425edi.35.1565054268037; 
- Mon, 05 Aug 2019 18:17:48 -0700 (PDT)
-Received: from continental.suse.de ([187.112.244.117])
- by smtp.gmail.com with ESMTPSA id y22sm14473192ejr.81.2019.08.05.18.17.41
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 05 Aug 2019 18:17:47 -0700 (PDT)
-From: Marcos Paulo de Souza <marcos.souza.org@gmail.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] block: Remove request_queue argument from
- blk_execute_rq_nowait
-Date: Mon,  5 Aug 2019 22:17:51 -0300
-Message-Id: <20190806011754.7722-1-marcos.souza.org@gmail.com>
-X-Mailer: git-send-email 2.22.0
+ id 1hupM3-0003Bn-Bv
+ for linux-nvme@lists.infradead.org; Tue, 06 Aug 2019 02:37:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LUUCCMCj47VAs373PeeFy6W0QwyzW9eZaN//3gAH1muBW8iwcoYPQQf2AQGzZ0wtzT1PbfBfh2bXFuwKwfKsNMtliZ6bAUHvL/uQVoUFRbH+R0wTiW361LTk42PBi0OLURqkesGRopN7GszBkg9vDmClcRiPOXa2UhJqrqJM9h1F8/bnvc+eBv5QL5e3CDU5N+wlfYVM+3MPoS6qkPchr/GdwkmuLbFlEPHv+tTTSG2fUUo6AilfzlS4XNTdlH9mmgOfSzDBnN27RXBST7NVMzPh5vqViPW8LRx5uZoW+16oug8K8b0/Cg+MiK380tWLgJM9nDAsyL60NO95uJZkgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PRLpjP+MdgE6X9F+zwTZc9Z3yTWP32M+AhPesPVjeiU=;
+ b=VFaiCzM0ZZYhew3zoBtSw9dtOPs0ZGrznKEBuq9fmf6be7Z82ChkblJUtwUCtZKrM7gMe8XNy9zCbZIy5hbl9SJlXjn1ARaqkHIFx4XpLEvaP5nYPomw5b6K0n4M7eg55oBN3HYOQ0AVrOBixzOO6cVy5rfmgTlUMnjNdOIs6zyTmPBA7d9X+YAtuq52XvGQJge2+P0dHKcS+3rWH0Hk57yHqFIZg0lvVZqR+nYJBSRfvg9bQagveyy60xHmsv9rrbrGJ4/WoH3IHuF/TQ77JkTZndA4KlloTJJvy2imje7t12vWaTZ+xDBDdUH3LCBe49fLzvoXWCJKo/EK2Eg4GQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass (sender ip is
+ 193.47.165.251) smtp.rcpttodomain=lst.de
+ smtp.mailfrom=mellanox.com;dmarc=pass (p=none sp=none pct=100) action=none
+ header.from=mellanox.com;dkim=none (message not signed);arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PRLpjP+MdgE6X9F+zwTZc9Z3yTWP32M+AhPesPVjeiU=;
+ b=HVSV4EWzvExpvajbDPnvM6IJ/0N6T7nKAkKNdV6zIydMZX/6Q0FlwxzyrIP7B4Lt5WD9qw+ga+gGGx83efuIK8N9xw90M6VkjnAdKR4YU1q4mew5FzmCud0t9ufTDZBkflLffwaGdappA4ya+CuSLlSP3f8YrsiXmPWmQcDJVvg=
+Received: from HE1PR05CA0144.eurprd05.prod.outlook.com (2603:10a6:7:28::31) by
+ AM6PR0502MB3974.eurprd05.prod.outlook.com (2603:10a6:209:19::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2136.16; Tue, 6 Aug
+ 2019 02:37:33 +0000
+Received: from DB5EUR03FT033.eop-EUR03.prod.protection.outlook.com
+ (2a01:111:f400:7e0a::201) by HE1PR05CA0144.outlook.office365.com
+ (2603:10a6:7:28::31) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.16 via Frontend
+ Transport; Tue, 6 Aug 2019 02:37:33 +0000
+Authentication-Results: spf=pass (sender IP is 193.47.165.251)
+ smtp.mailfrom=mellanox.com; lst.de; dkim=none (message not signed)
+ header.d=none;lst.de; dmarc=pass action=none header.from=mellanox.com;
+Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
+ 193.47.165.251 as permitted sender)
+ receiver=protection.outlook.com; 
+ client-ip=193.47.165.251; helo=mtlcas13.mtl.com;
+Received: from mtlcas13.mtl.com (193.47.165.251) by
+ DB5EUR03FT033.mail.protection.outlook.com (10.152.20.76) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.2052.18 via Frontend Transport; Tue, 6 Aug 2019 02:37:32 +0000
+Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4; Tue, 6 Aug 2019 05:37:31
+ +0300
+Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Tue,
+ 6 Aug 2019 05:37:31 +0300
+Received: from [172.16.8.22] (172.16.8.22) by MTLCAS01.mtl.com (10.0.8.71)
+ with Microsoft SMTP Server (TLS) id 14.3.301.0; Tue, 6 Aug 2019 05:36:59
+ +0300
+Subject: Re: [PATCH 1/2] nvme-fabrics: Add type of service (TOS) configuration
+To: Sagi Grimberg <sagi@grimberg.me>, James Smart <james.smart@broadcom.com>, 
+ Israel Rukshin <israelr@mellanox.com>, Linux-nvme
+ <linux-nvme@lists.infradead.org>
+References: <1564912530-15404-1-git-send-email-israelr@mellanox.com>
+ <0fb2cf8c-3657-31bf-0df5-ee2495282f57@broadcom.com>
+ <a934378c-af6a-6c31-7d72-58f4295ad5b5@grimberg.me>
+From: Max Gurtovoy <maxg@mellanox.com>
+Message-ID: <5b634bfb-80df-5620-dbb1-7d09015bcdf5@mellanox.com>
+Date: Tue, 6 Aug 2019 10:36:54 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <a934378c-af6a-6c31-7d72-58f4295ad5b5@grimberg.me>
+Content-Language: en-US
+X-Originating-IP: [172.16.8.22]
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:193.47.165.251; IPV:NLI; CTRY:IL; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(4636009)(136003)(396003)(39860400002)(346002)(376002)(2980300002)(199004)(189003)(68736007)(81166006)(5660300002)(2870700001)(106002)(58126008)(356004)(4326008)(6246003)(81156014)(2906002)(110136005)(8676002)(16576012)(316002)(31686004)(229853002)(478600001)(6116002)(70586007)(8936002)(305945005)(7736002)(70206006)(3846002)(446003)(11346002)(2616005)(476003)(126002)(36756003)(486006)(67846002)(14444005)(50466002)(76176011)(336012)(186003)(16526019)(26005)(65826007)(6666004)(86362001)(64126003)(31696002)(65806001)(53546011)(65956001)(2486003)(47776003)(23676004)(53936002)(3940600001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:AM6PR0502MB3974; H:mtlcas13.mtl.com; FPR:;
+ SPF:Pass; LANG:en; PTR:InfoDomainNonexistent; A:1; MX:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: d0fb1663-6d5d-4129-8c69-08d71a1708a8
+X-Microsoft-Antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(4709080)(1401327)(2017052603328)(7193020);
+ SRVR:AM6PR0502MB3974; 
+X-MS-TrafficTypeDiagnostic: AM6PR0502MB3974:
+X-Microsoft-Antispam-PRVS: <AM6PR0502MB3974EB979621C88C636D8071B6D50@AM6PR0502MB3974.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Forefront-PRVS: 0121F24F22
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Message-Info: Y3rkjtxjw5JjL/In2HhIbVvGOD8oHweouhGz97sTaoCZWNiCLTaUbGTCK7LqMZZW6lbOph+9sl/845MZzJgghXkOfQrBohttbJr2jzMdpT2LKCSHdShwynBSdPkd0TMN9IRRFk3D+BqOaghAUT+aQ+74djrIob7KaFMK6WQuHH38OUClwOewBXxrWPoMLuQ79+Nb7Q3CBUsXiDi41dOxcgW051CA68/1H0Lzseq4H6bdvpm99ywdsU4HisnQhwve1aE+T4F9cA4Vzg/Ws/GekYOD1oQb1WjmIT8TRa6nvJnmi9SOiszU5gCOIzjkm0v1EQSbfmaA8qxPKANO6jcsrPGOvs0BJ+Qtt5xD7ZqKFhC1kXsK6ekYjabZRjpPGkaSlOVYh0mPqT3yyvWp3/ZKAh5WS1DiBhlkLC2Ud4416IM=
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Aug 2019 02:37:32.6046 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d0fb1663-6d5d-4129-8c69-08d71a1708a8
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.251];
+ Helo=[mtlcas13.mtl.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR0502MB3974
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190805_181751_673617_26F432F5 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20190805_193739_469522_72843BC0 
+X-CRM114-Status: GOOD (  18.65  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:542 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ no trust [40.107.5.82 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (marcos.souza.org[at]gmail.com)
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -96,229 +142,61 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Omar Sandoval <osandov@fb.com>,
- Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Damien Le Moal <damien.lemoal@wdc.com>,
- "open list:NVM EXPRESS DRIVER" <linux-nvme@lists.infradead.org>,
- =?UTF-8?q?Kai=20M=C3=A4kisara?= <Kai.Makisara@kolumbus.fi>,
- "open list:BLOCK LAYER" <linux-block@vger.kernel.org>,
- "open list:SCSI TARGET SUBSYSTEM" <target-devel@vger.kernel.org>,
- Doug Gilbert <dgilbert@interlog.com>, Keith Busch <kbusch@kernel.org>,
- Ming Lei <ming.lei@redhat.com>,
- "open list:SCSI SUBSYSTEM" <linux-scsi@vger.kernel.org>,
- Christoph Hellwig <hch@lst.de>,
- Marcos Paulo de Souza <marcos.souza.org@gmail.com>,
- Bart Van Assche <bvanassche@acm.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Christoph Hellwig <hch@lst.de>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Commit a1ce35fa4985 ("block: remove dead elevator code") removed code
-that was using the request_queue argument. This got simplified by
-calling blk_mq_sched_insert_request which already gets the request_queue
-from the request being inserted in the scheduler queue for execution.
-
-Signed-off-by: Marcos Paulo de Souza <marcos.souza.org@gmail.com>
----
- block/blk-exec.c                   | 7 +++----
- drivers/block/sx8.c                | 4 ++--
- drivers/nvme/host/core.c           | 4 ++--
- drivers/nvme/host/lightnvm.c       | 2 +-
- drivers/nvme/host/pci.c            | 7 +++----
- drivers/scsi/scsi_error.c          | 2 +-
- drivers/scsi/sg.c                  | 3 +--
- drivers/scsi/st.c                  | 2 +-
- drivers/target/target_core_pscsi.c | 5 ++---
- include/linux/blkdev.h             | 4 ++--
- 10 files changed, 18 insertions(+), 22 deletions(-)
-
-diff --git a/block/blk-exec.c b/block/blk-exec.c
-index 1db44ca0f4a6..dc9f37f2602f 100644
---- a/block/blk-exec.c
-+++ b/block/blk-exec.c
-@@ -45,9 +45,8 @@ static void blk_end_sync_rq(struct request *rq, blk_status_t error)
-  * Note:
-  *    This function will invoke @done directly if the queue is dead.
-  */
--void blk_execute_rq_nowait(struct request_queue *q, struct gendisk *bd_disk,
--			   struct request *rq, int at_head,
--			   rq_end_io_fn *done)
-+void blk_execute_rq_nowait(struct gendisk *bd_disk, struct request *rq,
-+			int at_head, rq_end_io_fn *done)
- {
- 	WARN_ON(irqs_disabled());
- 	WARN_ON(!blk_rq_is_passthrough(rq));
-@@ -81,7 +80,7 @@ void blk_execute_rq(struct request_queue *q, struct gendisk *bd_disk,
- 	unsigned long hang_check;
- 
- 	rq->end_io_data = &wait;
--	blk_execute_rq_nowait(q, bd_disk, rq, at_head, blk_end_sync_rq);
-+	blk_execute_rq_nowait(bd_disk, rq, at_head, blk_end_sync_rq);
- 
- 	/* Prevent hang_check timer from firing at us during very long I/O */
- 	hang_check = sysctl_hung_task_timeout_secs;
-diff --git a/drivers/block/sx8.c b/drivers/block/sx8.c
-index 4478eb7efee0..2cdf2771f8e8 100644
---- a/drivers/block/sx8.c
-+++ b/drivers/block/sx8.c
-@@ -539,7 +539,7 @@ static int carm_array_info (struct carm_host *host, unsigned int array_idx)
- 	spin_unlock_irq(&host->lock);
- 
- 	DPRINTK("blk_execute_rq_nowait, tag == %u\n", rq->tag);
--	blk_execute_rq_nowait(host->oob_q, NULL, rq, true, NULL);
-+	blk_execute_rq_nowait(NULL, rq, true, NULL);
- 
- 	return 0;
- 
-@@ -578,7 +578,7 @@ static int carm_send_special (struct carm_host *host, carm_sspc_t func)
- 	crq->msg_bucket = (u32) rc;
- 
- 	DPRINTK("blk_execute_rq_nowait, tag == %u\n", rq->tag);
--	blk_execute_rq_nowait(host->oob_q, NULL, rq, true, NULL);
-+	blk_execute_rq_nowait(NULL, rq, true, NULL);
- 
- 	return 0;
- }
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 8f3fbe5ca937..6682fdcece0f 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -756,7 +756,7 @@ static void nvme_execute_rq_polled(struct request_queue *q,
- 
- 	rq->cmd_flags |= REQ_HIPRI;
- 	rq->end_io_data = &wait;
--	blk_execute_rq_nowait(q, bd_disk, rq, at_head, nvme_end_sync_rq);
-+	blk_execute_rq_nowait(bd_disk, rq, at_head, nvme_end_sync_rq);
- 
- 	while (!completion_done(&wait)) {
- 		blk_poll(q, request_to_qc_t(rq->mq_hctx, rq), true);
-@@ -941,7 +941,7 @@ static int nvme_keep_alive(struct nvme_ctrl *ctrl)
- 	rq->timeout = ctrl->kato * HZ;
- 	rq->end_io_data = ctrl;
- 
--	blk_execute_rq_nowait(rq->q, NULL, rq, 0, nvme_keep_alive_end_io);
-+	blk_execute_rq_nowait(NULL, rq, 0, nvme_keep_alive_end_io);
- 
- 	return 0;
- }
-diff --git a/drivers/nvme/host/lightnvm.c b/drivers/nvme/host/lightnvm.c
-index ba009d4c9dfa..5d0e330e86d0 100644
---- a/drivers/nvme/host/lightnvm.c
-+++ b/drivers/nvme/host/lightnvm.c
-@@ -685,7 +685,7 @@ static int nvme_nvm_submit_io(struct nvm_dev *dev, struct nvm_rq *rqd)
- 
- 	rq->end_io_data = rqd;
- 
--	blk_execute_rq_nowait(q, NULL, rq, 0, nvme_nvm_end_io);
-+	blk_execute_rq_nowait(NULL, rq, 0, nvme_nvm_end_io);
- 
- 	return 0;
- }
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index db160cee42ad..d8f83696b4ba 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -1332,7 +1332,7 @@ static enum blk_eh_timer_return nvme_timeout(struct request *req, bool reserved)
- 
- 	abort_req->timeout = ADMIN_TIMEOUT;
- 	abort_req->end_io_data = NULL;
--	blk_execute_rq_nowait(abort_req->q, NULL, abort_req, 0, abort_endio);
-+	blk_execute_rq_nowait(NULL, abort_req, 0, abort_endio);
- 
- 	/*
- 	 * The aborted req will be completed on receiving the abort req.
-@@ -2205,9 +2205,8 @@ static int nvme_delete_queue(struct nvme_queue *nvmeq, u8 opcode)
- 	req->end_io_data = nvmeq;
- 
- 	init_completion(&nvmeq->delete_done);
--	blk_execute_rq_nowait(q, NULL, req, false,
--			opcode == nvme_admin_delete_cq ?
--				nvme_del_cq_end : nvme_del_queue_end);
-+	blk_execute_rq_nowait(NULL, req, false,
-+			      opcode == nvme_admin_delete_cq ? nvme_del_cq_end : nvme_del_queue_end);
- 	return 0;
- }
- 
-diff --git a/drivers/scsi/scsi_error.c b/drivers/scsi/scsi_error.c
-index 1c470e31ae81..49cda23c7fb8 100644
---- a/drivers/scsi/scsi_error.c
-+++ b/drivers/scsi/scsi_error.c
-@@ -1988,7 +1988,7 @@ static void scsi_eh_lock_door(struct scsi_device *sdev)
- 	req->timeout = 10 * HZ;
- 	rq->retries = 5;
- 
--	blk_execute_rq_nowait(req->q, NULL, req, 1, eh_lock_door_done);
-+	blk_execute_rq_nowait(NULL, req, 1, eh_lock_door_done);
- }
- 
- /**
-diff --git a/drivers/scsi/sg.c b/drivers/scsi/sg.c
-index cce757506383..81ece3ed0474 100644
---- a/drivers/scsi/sg.c
-+++ b/drivers/scsi/sg.c
-@@ -835,8 +835,7 @@ sg_common_write(Sg_fd * sfp, Sg_request * srp,
- 
- 	srp->rq->timeout = timeout;
- 	kref_get(&sfp->f_ref); /* sg_rq_end_io() does kref_put(). */
--	blk_execute_rq_nowait(sdp->device->request_queue, sdp->disk,
--			      srp->rq, at_head, sg_rq_end_io);
-+	blk_execute_rq_nowait(sdp->disk, srp->rq, at_head, sg_rq_end_io);
- 	return 0;
- }
- 
-diff --git a/drivers/scsi/st.c b/drivers/scsi/st.c
-index e3266a64a477..3b828f260294 100644
---- a/drivers/scsi/st.c
-+++ b/drivers/scsi/st.c
-@@ -583,7 +583,7 @@ static int st_scsi_execute(struct st_request *SRpnt, const unsigned char *cmd,
- 	rq->retries = retries;
- 	req->end_io_data = SRpnt;
- 
--	blk_execute_rq_nowait(req->q, NULL, req, 1, st_scsi_execute_end);
-+	blk_execute_rq_nowait(NULL, req, 1, st_scsi_execute_end);
- 	return 0;
- }
- 
-diff --git a/drivers/target/target_core_pscsi.c b/drivers/target/target_core_pscsi.c
-index c9d92b3e777d..021212569d1b 100644
---- a/drivers/target/target_core_pscsi.c
-+++ b/drivers/target/target_core_pscsi.c
-@@ -1000,9 +1000,8 @@ pscsi_execute_cmd(struct se_cmd *cmd)
- 		req->timeout = PS_TIMEOUT_OTHER;
- 	scsi_req(req)->retries = PS_RETRY;
- 
--	blk_execute_rq_nowait(pdv->pdv_sd->request_queue, NULL, req,
--			(cmd->sam_task_attr == TCM_HEAD_TAG),
--			pscsi_req_done);
-+	blk_execute_rq_nowait(NULL, req, (cmd->sam_task_attr == TCM_HEAD_TAG),
-+			      pscsi_req_done);
- 
- 	return 0;
- 
-diff --git a/include/linux/blkdev.h b/include/linux/blkdev.h
-index 1ef375dafb1c..8e8f088c75a5 100644
---- a/include/linux/blkdev.h
-+++ b/include/linux/blkdev.h
-@@ -867,8 +867,8 @@ extern int blk_rq_map_user_iov(struct request_queue *, struct request *,
- 			       gfp_t);
- extern void blk_execute_rq(struct request_queue *, struct gendisk *,
- 			  struct request *, int);
--extern void blk_execute_rq_nowait(struct request_queue *, struct gendisk *,
--				  struct request *, int, rq_end_io_fn *);
-+extern void blk_execute_rq_nowait(struct gendisk *, struct request *, int,
-+				rq_end_io_fn *);
- 
- /* Helper to convert REQ_OP_XXX to its string format XXX */
- extern const char *blk_op_str(unsigned int op);
--- 
-2.22.0
-
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+Ck9uIDgvNi8yMDE5IDI6MTcgQU0sIFNhZ2kgR3JpbWJlcmcgd3JvdGU6Cj4KPj4gT24gOC80LzIw
+MTkgMjo1NSBBTSwgSXNyYWVsIFJ1a3NoaW4gd3JvdGU6Cj4+PiBUT1MgaXMgdXNlci1kZWZpbmVk
+IGFuZCBuZWVkcyB0byBiZSBjb25maWd1cmVkIHZpYSBudm1lLWNsaS4KPj4+IEl0IG11c3QgYmUg
+c2V0IGJlZm9yZSBpbml0aWF0aW5nIGFueSB0cmFmZmljIGFuZCBvbmNlIHNldCB0aGUgVE9TCj4+
+PiBjYW5ub3QgYmUgY2hhbmdlZC4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBJc3JhZWwgUnVrc2hp
+biA8aXNyYWVsckBtZWxsYW5veC5jb20+Cj4+PiAtLS0KPj4+IMKgIGRyaXZlcnMvbnZtZS9ob3N0
+L2ZhYnJpY3MuYyB8IDE2ICsrKysrKysrKysrKysrKy0KPj4+IMKgIGRyaXZlcnMvbnZtZS9ob3N0
+L2ZhYnJpY3MuaCB8wqAgMyArKysKPj4+IMKgIDIgZmlsZXMgY2hhbmdlZCwgMTggaW5zZXJ0aW9u
+cygrKSwgMSBkZWxldGlvbigtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL252bWUvaG9z
+dC9mYWJyaWNzLmMgYi9kcml2ZXJzL252bWUvaG9zdC9mYWJyaWNzLmMKPj4+IGluZGV4IDU4Mzhm
+N2NkNTNhYy4uZGJjZTdmZmU2YzJjIDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9udm1lL2hvc3Qv
+ZmFicmljcy5jCj4+PiArKysgYi9kcml2ZXJzL252bWUvaG9zdC9mYWJyaWNzLmMKPj4+IEBAIC02
+MTEsNiArNjExLDcgQEAgc3RhdGljIGNvbnN0IG1hdGNoX3RhYmxlX3Qgb3B0X3Rva2VucyA9IHsK
+Pj4+IMKgwqDCoMKgwqAgeyBOVk1GX09QVF9EQVRBX0RJR0VTVCzCoMKgwqDCoMKgwqDCoCAiZGF0
+YV9kaWdlc3QiwqDCoMKgwqDCoMKgwqAgfSwKPj4+IMKgwqDCoMKgwqAgeyBOVk1GX09QVF9OUl9X
+UklURV9RVUVVRVMswqDCoMKgICJucl93cml0ZV9xdWV1ZXM9JWQiIH0sCj4+PiDCoMKgwqDCoMKg
+IHsgTlZNRl9PUFRfTlJfUE9MTF9RVUVVRVMswqDCoMKgICJucl9wb2xsX3F1ZXVlcz0lZCLCoMKg
+wqAgfSwKPj4+ICvCoMKgwqAgeyBOVk1GX09QVF9UT1MswqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAi
+dG9zPSVkIsKgwqDCoMKgwqDCoMKgIH0sCj4+PiDCoMKgwqDCoMKgIHsgTlZNRl9PUFRfRVJSLMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgTlVMTMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfQo+Pj4gwqAg
+fTsKPj4+Cj4+Cj4+IEkgdGhpbmsgd2UgbmVlZCB0byBjcmVhdGUgYSBmcmFtZXdvcmsgZm9yIHRy
+YW5zcG9ydC1zcGVjaWZpYyBvcHRpb25zLiAKPj4gS2VlcGluZyB0aGVtIGF0IHRoZSBzYW1lIGZs
+YXQgbGV2ZWwgYXMgdGhlIGdlbmVyaWMgb3B0aW9ucyBpc24ndCBhIAo+PiBncmVhdCBpZGVhIGFz
+IHRoZXkgc3RhcnQgdG8gZ3JvdyBhbmQgYWx3YXlzIG1vZGlmeWluZyBjb3JlIGZvciBhIAo+PiB0
+cmFuc3BvcnQgb3B0aW9uIGlzbid0IGdvb2QgZWl0aGVyLgo+Cj4gV2VsbCwgbm90IGRpc2FncmVl
+aW5nLCBidXQgSSBwZXJzb25hbGx5IHRoaW5rIHRoYXQgdGhpcyBjYW4gYmUKPiBhcHBsaWNhYmxl
+IHRvIGFsbCB0cmFuc3BvcnRzIGFzIHRoaXMgaXMgYSBnZW5lcmljIHRlcm0gdGhhdCBoYXBwZW5z
+Cj4gdG8gbWFwIHRvIGEgc3BlY2lmaWMgbWFya2luZyBpbiBpcCB0cmFuc3BvcnRzLgo+Cj4gQWxz
+bywgSSBhY3R1YWxseSB0aGluayB0aGF0IGtlZXBpbmcgYSBzaW5nbGUgcGFyc2VyIHNpbXBsaWZp
+ZXMgdGhpbmdzLgo+IFVubGVzcyB3ZSBtYXkgcnVuIG91dCBvZiBzaG9ydCBhcmcgb3B0aW9ucywg
+d2hpY2ggaW4gdGhhdCBjYXNlIGl0IGlzCj4gYmVuZWZpY2lhbC4uLgo+Cj4+IEhvdyBhYm91dCB3
+ZSBzdGFydCB0aGUgY29udmVudGlvbiAiPHRyYW5zcG9ydF9uYW1lPjo8b3B0aW9uPiIgZm9yIGFu
+IAo+PiBvcHRpb24uwqAgVGhlIG9wdHMgc3RydWN0IGNhbiBoYXZlIGEgcG9pbnRlciB0aGF0IGlz
+IG93bmVkIGJ5IHRoZSAKPj4gdHJhbnNwb3J0LsKgIFRoZSB0cmFuc3BvcnQgY2FuIHN1cHBseSBh
+IHBhcnNpbmcgZnVuY3Rpb24gZm9yIGFuIAo+PiBvcHRpb24uIFRoZSBjb3JlIGxheWVyIGNhbiBt
+YXRjaCB0aGUgdHJhbnNwb3J0IG5hbWUgaW4gdGhlIHByZWZpeCwgCj4+IHRoZW4gaW52b2tlIHRo
+ZSB0cmFuc3BvcnQgaGFuZGxlciBpbnN0ZWFkIG9mIHRoZSBnZW5lcmljIHBhcnNpbmcuIAo+PiBU
+cmFuc3BvcnQgaGFuZGxlciBjYW4gcGFyc2UgYW5kIHNldCBpdCdzIG93biB2YWx1ZSBpbiBpdHMg
+b3duIG9wdHMgCj4+IHN0cnVjdC4gVHJhbnNwb3J0IGNhbiB2YWxpZGF0ZSBpdCBoYXMgdGhlIG5l
+Y2Vzc2FyeSB0cmFuc3BvcnQgb3B0cyBhcyAKPj4gdGhlIGZpcnN0IHRoaW5nIGl0IGRvZXMgaW4g
+aXQncyBjcmVhdGVfY3RybCByb3V0aW5lLgo+Cj4gVGhhdCBpcyBvbmUgd2F5IHRvIGdvLi4uCj4K
+PiBJIGRvbid0IGhhdmUgYSBzdHJvbmcgc3RhbmQgaGVyZSwgd2hhdCBkbyBvdGhlcnMgdGhpbms/
+CgpJIHRoaW5rIHdlIGNhbiByZS11c2UgdGhlIGNvZGUgaW4gdGhlIGdlbmVyYWwgZmFicmljcyBh
+bmQganVzdCBhZGQgCmhlbHBlcnMgZm9yIGVhY2ggb3B0aW9uIHRvIGRlY3JlYXNlIHRoZSBsaW5l
+cyBvZiBudm1mX3BhcnNlX29wdGlvbnMgZnVuYyAKYW5kIG1ha2UgaXQgbW9yZSByZWFkYWJsZS4K
+CkkgcHJlZmVyIHRvIGF2b2lkIG9mIHBhcnNpbmcgcGVyIHRyYW5zcG9ydC4KCnNvbWV0aGluZyBs
+aWtlOgoKY2FzZSBOVk1GX09QVF9OUl9QT0xMX1FVRVVFUzoKCiDCoMKgwqAgbnZtZl9wYXJzZV9u
+cl9wb2xsX3F1ZXVlcyhvcHRzLCBhcmdzKTsKCiDCoMKgwqAgYnJlYWs7CgpjYXNlIE5WTUZfT1BU
+X1RPUzoKCiDCoMKgwqAgbnZtZl9wYXJzZV90b3Mob3B0cywgYXJncyk7CgogwqDCoMKgIGJyZWFr
+OwoKLU1heC4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1udm1lIG1haWxpbmcgbGlzdApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
