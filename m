@@ -2,59 +2,50 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 953DD84EE7
-	for <lists+linux-nvme@lfdr.de>; Wed,  7 Aug 2019 16:40:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C9DF384F18
+	for <lists+linux-nvme@lfdr.de>; Wed,  7 Aug 2019 16:50:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JMyM6IzegnM2cdKgTYRGEiVwVm5nvdA8hOeoaI6KEmc=; b=nxAnDU+puJjuP1
-	Xi6SQ3a/RIIKYb4x5C3ACfQMoXRKpoLAuxjqcgcnI810nFd3bfTHewLxuIt4qN7hQOhsx4Eq2g0cY
-	cEHDUOGI97FTDqtNI98WU6HTepM3JdHjYXJfVYtBQpaOghiGGpugBd3Tw/kHoV7AMMIAXL2AXCF1y
-	RjsJoRq9KsNjTTuA6DXDBGTz6V4qUygGeTSawONKeqDaEyekmIQSLUAV2V0V8WwDTY8Ti/JrPPdak
-	E2NGhv+Nc+mcbSF/coVhg65i89fhIWjOe00d3CUPoR21OT3Tlkj71u07Cgk8cTy/g13QSEJUxL5sq
-	7czUD0o8OGw/fNdh6IoA==;
+	List-Owner; bh=oIVkXze8gcq1/mUVRVtrVgVydd5ljQnZ5HRDfMMKvwA=; b=tQALsIHOzM91R0
+	G2XrdK+ZgQqeLm8YeGqb68epUeatdXSB2fPjgwWegL9KY68qX7zD05NHnzJL0j7/rsoOdaUW+R80k
+	1HGKsapDoX1n/NKoVl+5XjdgVYJwyzRQKKHeCkr3aIEgFLIrASK/5vZbHhH8AvANmHQh2NrmEcxHx
+	2BxCw9X2biIV9DlboUjAh7sx8j6AZknF2lP4D2IgWaPs30r7xErBwhV8iXmY3pGHln/oj1ZIU9S9X
+	ZWGP9yXZ2EkdvCuZhGdvixuAUNdA6XFjWy25TOV75hLIYXfnRFp/xn3/bRU2h4f3oZD7Sz9B3sCvj
+	vlHiIgFURQ0YTyPxs7bw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvN6w-0000f7-GK; Wed, 07 Aug 2019 14:40:18 +0000
+	id 1hvNGM-00053f-LD; Wed, 07 Aug 2019 14:50:02 +0000
 Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvN6i-0008K4-9S
- for linux-nvme@lists.infradead.org; Wed, 07 Aug 2019 14:40:05 +0000
+ id 1hvNGD-00053K-F0
+ for linux-nvme@lists.infradead.org; Wed, 07 Aug 2019 14:49:54 +0000
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2019 07:40:03 -0700
+ 07 Aug 2019 07:49:53 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,357,1559545200"; d="scan'208";a="165338496"
+X-IronPort-AV: E=Sophos;i="5.64,357,1559545200"; d="scan'208";a="374434857"
 Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga007.jf.intel.com with ESMTP; 07 Aug 2019 07:40:01 -0700
-Date: Wed, 7 Aug 2019 08:37:34 -0600
+ by fmsmga006.fm.intel.com with ESMTP; 07 Aug 2019 07:49:52 -0700
+Date: Wed, 7 Aug 2019 08:47:25 -0600
 From: Keith Busch <kbusch@kernel.org>
-To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Subject: Re: [PATCH] nvme-pci: Do not prevent PCI bus-level PM from being used
-Message-ID: <20190807143733.GA25621@localhost.localdomain>
-References: <47415939.KV5G6iaeJG@kreacher>
- <20190730144134.GA12844@localhost.localdomain>
- <100ba4aff1c6434a81e47774ab4acddc@AUSX13MPC105.AMER.DELL.COM>
- <8246360B-F7D9-42EB-94FC-82995A769E28@canonical.com>
- <20190730191934.GD13948@localhost.localdomain>
- <7d3e0b8ba1444194a153c93faa1cabb3@AUSX13MPC105.AMER.DELL.COM>
- <20190730213114.GK13948@localhost.localdomain>
- <CAJZ5v0gxfeMN8eCNRjcXmUOkReVsdozb3EccaYMpnmSHu3771g@mail.gmail.com>
- <20190731221956.GB15795@localhost.localdomain>
- <1893355.EP2830DdO9@kreacher>
+To: Hannes Reinecke <hare@suse.de>
+Subject: Re: [PATCHv2] nvme: Return BLK_STS_TARGET if the DNR bit is set
+Message-ID: <20190807144725.GB25621@localhost.localdomain>
+References: <20190807071208.101882-1-hare@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1893355.EP2830DdO9@kreacher>
+In-Reply-To: <20190807071208.101882-1-hare@suse.de>
 User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190807_074004_350196_FCFD4E93 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20190807_074953_521789_F5BACA19 
+X-CRM114-Status: GOOD (  20.60  )
 X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-4.0 points)
@@ -75,65 +66,85 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Mario Limonciello <Mario.Limonciello@dell.com>,
- Linux PCI <linux-pci@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>, "Busch,
- Keith" <keith.busch@intel.com>, Kai-Heng Feng <kai.heng.feng@canonical.com>,
- Bjorn Helgaas <helgaas@kernel.org>, Rajat Jain <rajatja@google.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: "Busch, Keith" <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
+ Christoph Hellwig <hch@lst.de>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Aug 07, 2019 at 02:53:44AM -0700, Rafael J. Wysocki wrote:
-> From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+On Wed, Aug 07, 2019 at 12:12:08AM -0700, Hannes Reinecke wrote:
+> If the DNR bit is set we should not retry the command, even if
+> the standard status evaluation indicates so.
 > 
-> One of the modifications made by commit d916b1be94b6 ("nvme-pci: use
-> host managed power state for suspend") was adding a pci_save_state()
-> call to nvme_suspend() in order to prevent the PCI bus-level PM from
-> being applied to the suspended NVMe devices, but if ASPM is not
-> enabled for the target NVMe device, that causes its PCIe link to stay
-> up and the platform may not be able to get into its optimum low-power
-> state because of that.
+> Signed-off-by: Hannes Reinecke <hare@suse.com>
+> ---
+>  drivers/nvme/host/core.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-> For example, if ASPM is disabled for the NVMe drive (PC401 NVMe SK
-> hynix 256GB) in my Dell XPS13 9380, leaving it in D0 during
-> suspend-to-idle prevents the SoC from reaching package idle states
-> deeper than PC3, which is way insufficient for system suspend.
-> 
-> To address this shortcoming, make nvme_suspend() check if ASPM is
-> enabled for the target device and fall back to full device shutdown
-> and PCI bus-level PM if that is not the case.
-> 
-> Fixes: d916b1be94b6 ("nvme-pci: use host managed power state for suspend")
-> Link: https://lore.kernel.org/linux-pm/2763495.NmdaWeg79L@kreacher/T/#t
-> Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index cc09b81fc7f4..2c6c9460adea 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -274,6 +274,10 @@ void nvme_complete_rq(struct request *req)
+>  			return;
+>  		}
+>  
+> +		if (nvme_req(req)->status & NVME_SC_DNR) {
+> +			blk_mq_end_request(req, BLK_STS_TARGET);
+> +			return;
+> +		}
+>  		if (!blk_queue_dying(req->q)) {
+>  			nvme_retry_req(req);
+>  			return;
+> -- 
 
-Thanks for tracking down the cause. Sounds like your earlier assumption
-on ASPM's involvement was spot on.
+Ah, that's unreachable code since it wouldn't get past the
+nvme_req_needs_retry() check for this branch. We'd need to reshuffle
+this a bit, but at least it gets all the error handling in a single
+case. Something like this:
 
-> +/*
-> + * pcie_aspm_enabled - Return the mask of enabled ASPM link states.
-> + * @pci_device: Target device.
-> + */
-> +u32 pcie_aspm_enabled(struct pci_dev *pci_device)
-> +{
-> +	struct pci_dev *bridge = pci_device->bus->self;
-
-You may want use pci_upstream_bridge() instead, just in case someone
-calls this on a virtual function's pci_dev.
-
-> +	u32 aspm_enabled;
-> +
-> +	mutex_lock(&aspm_lock);
-> +	aspm_enabled = bridge->link_state ? bridge->link_state->aspm_enabled : 0;
-> +	mutex_unlock(&aspm_lock);
-> +
-> +	return aspm_enabled;
-> +}
+---
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 8f3fbe5ca937..50522267247d 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -267,17 +267,23 @@ void nvme_complete_rq(struct request *req)
+ 	if (nvme_req(req)->ctrl->kas)
+ 		nvme_req(req)->ctrl->comp_seen = true;
+ 
+-	if (unlikely(status != BLK_STS_OK && nvme_req_needs_retry(req))) {
+-		if ((req->cmd_flags & REQ_NVME_MPATH) &&
+-		    blk_path_error(status)) {
+-			nvme_failover_req(req);
+-			return;
+-		}
++	if (unlikely(status != BLK_STS_OK)) {
++		if (nvme_req_needs_retry(req)) {
++			if ((req->cmd_flags & REQ_NVME_MPATH) &&
++			    blk_path_error(status)) {
++				nvme_failover_req(req);
++				return;
++			}
+ 
+-		if (!blk_queue_dying(req->q)) {
+-			nvme_retry_req(req);
+-			return;
++			if (!blk_queue_dying(req->q)) {
++				nvme_retry_req(req);
++				return;
++			}
+ 		}
++
++		if (blk_path_error(status) &&
++		    nvme_req(req)->status & NVME_SC_DNR)
++			status = BLK_STS_TARGET;
+ 	}
+ 	blk_mq_end_request(req, status);
+ }
+--
 
 _______________________________________________
 Linux-nvme mailing list
