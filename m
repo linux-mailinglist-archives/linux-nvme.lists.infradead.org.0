@@ -2,53 +2,49 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7796184418
-	for <lists+linux-nvme@lfdr.de>; Wed,  7 Aug 2019 08:00:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38C5184576
+	for <lists+linux-nvme@lfdr.de>; Wed,  7 Aug 2019 09:12:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O49lVX3ucd1NyJxE2etI/tKIxl/LH6SDz+ua45iNSQI=; b=IrlEyoPX2Y3jMN
-	+m2XWsJOQfQSmbxMcfrG/BdaTY8wO0KczoGH1HK5UcaO4k2RTVnZfwiA/gD2WlsM5zb014rZ2I0WS
-	8sSTjzR71aHrmILc0u4xYpjM187+sJYFHc4DLuJHFL41r3xWja9NuA7nkHt6chUgDuukPqbxXq5Me
-	/2yqYvdBc+iag7XMe1WYVehmM5h/bb6wrftbK4aBz68slsvg0TO8+k+/ZYRQHS6tQNTJv3F/ihcIH
-	qs+oOmZmdlmsA5p6q5APUxCZP2AJAFstZmFpf6aCre+rybn9AcbcHaUd0ND4LnSQFeGJBAtGZSuZQ
-	DmU8gFF2Vj3nE1dQvyZg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=5fAv3YeEpxNzIAcWQSEjcLevoSPbhqX0aDP5iFHFO1w=; b=rhl
+	5wBlpo1lQAhLxxm23LVHvPd4wq2PWJMRgbQnf0qZ0WKx9eMA5mUy0q5QlPSpuVxpmUj2xsR0Oxd29
+	XwEb2t3haCuH1URuZWD8ZlESFdcQu8vDoocXIDVSdmxgqMb3Grgdc2I+OWMw9FZqiFFXFp92WMAJa
+	VLSV4JA3dtvq1LMR25OabnBbgZfCQukZHpXPFEv90XdojcZBlIdNc55PYgtlhle94OaLGja5FkgBs
+	M92DNkrj+8J7Clkz3gXK0o6yhujckLyIf7eMe8t11yn9KsbIS8xRneKQro7BdQZ5Gmo4bKqj+Z51+
+	ODKdT3W/7CnxfhhgJzwIZ3ApxFsyeQQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvEzZ-0008Fc-WF; Wed, 07 Aug 2019 06:00:10 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1hvG7Y-0001PC-JX; Wed, 07 Aug 2019 07:12:29 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvEzR-0007hv-NC
- for linux-nvme@lists.infradead.org; Wed, 07 Aug 2019 06:00:02 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id E66AF68BFE; Wed,  7 Aug 2019 07:59:58 +0200 (CEST)
-Date: Wed, 7 Aug 2019 07:59:58 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH v2 13/14] PCI/P2PDMA: No longer require no-mmu for host
- bridge whitelist
-Message-ID: <20190807055958.GC6627@lst.de>
-References: <20190730163545.4915-1-logang@deltatee.com>
- <20190730163545.4915-14-logang@deltatee.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190730163545.4915-14-logang@deltatee.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+ id 1hvG7I-0001Ot-M1
+ for linux-nvme@lists.infradead.org; Wed, 07 Aug 2019 07:12:14 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id CFFD9B021;
+ Wed,  7 Aug 2019 07:12:09 +0000 (UTC)
+From: Hannes Reinecke <hare@suse.de>
+To: Christoph Hellwig <hch@lst.de>
+Subject: [PATCHv2] nvme: Return BLK_STS_TARGET if the DNR bit is set
+Date: Wed,  7 Aug 2019 09:12:08 +0200
+Message-Id: <20190807071208.101882-1-hare@suse.de>
+X-Mailer: git-send-email 2.16.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190806_230001_908622_22C82895 
-X-CRM114-Status: UNSURE (   5.83  )
+X-CRM114-CacheID: sfid-20190807_001212_865827_862DF928 
+X-CRM114-Status: UNSURE (   9.24  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -61,20 +57,41 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, linux-rdma@vger.kernel.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Christian Koenig <Christian.Koenig@amd.com>,
- Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
- Jason Gunthorpe <jgg@mellanox.com>, Stephen Bates <sbates@raithlin.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Dan Williams <dan.j.williams@intel.com>,
- Eric Pilmore <epilmore@gigaio.com>, Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
+ Hannes Reinecke <hare@suse.de>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-no-mmu sounds stange, as we use that for linux ports without paging
-hardware.  I think an "io" got lost somewhere..
+If the DNR bit is set we should not retry the command, even if
+the standard status evaluation indicates so.
+
+Signed-off-by: Hannes Reinecke <hare@suse.com>
+---
+ drivers/nvme/host/core.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index cc09b81fc7f4..2c6c9460adea 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -274,6 +274,10 @@ void nvme_complete_rq(struct request *req)
+ 			return;
+ 		}
+ 
++		if (nvme_req(req)->status & NVME_SC_DNR) {
++			blk_mq_end_request(req, BLK_STS_TARGET);
++			return;
++		}
+ 		if (!blk_queue_dying(req->q)) {
+ 			nvme_retry_req(req);
+ 			return;
+-- 
+2.16.4
+
 
 _______________________________________________
 Linux-nvme mailing list
