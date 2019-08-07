@@ -2,70 +2,73 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D94178507D
-	for <lists+linux-nvme@lfdr.de>; Wed,  7 Aug 2019 18:00:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EF2E585391
+	for <lists+linux-nvme@lfdr.de>; Wed,  7 Aug 2019 21:29:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hJEBSN1U02kquIb7OamrMBpgeeuUjQ5K2dbiAgxCcls=; b=fKhK7v5N63oSiX
-	rXo3POPqwpHWe7l0zc6h8S8kHMzeaiiSu/Y0exazE/qnRkKzIF8LPedlmhVXg7EnJC46SEsw7HM5h
-	IyuRbgn7PulxEL9r9/CNiqDoRBe/r2fvggQAAz5MQlFgaJh4tSfJjp10JeLDIY7Z/6qE8ekNzNzaN
-	Y4Wkcj/88JX2+bGe6aXAsT6U9OxoQz0eX9Q5MtEGOaReCJ9qTEm3g+2lBSP2QdsFsOv1prXkF+w/N
-	Ni3QndOi+OrfJKbQLp7KwCFw0oABCnbsuTw9BHdagemYP95qHNd5XmQI7aLkpjjABwe5vv6lrDpGP
-	HY8jVpu5NVF7rJsxnQzw==;
+	List-Owner; bh=l36lGuYUhalp9aMkafTEsNYD7wH8OumZQxlvgOL8ulc=; b=kEmhnFyEJ6Hskd
+	giSI7IGZYOTg8vxGNtMzR8E58/+8MnDNT/S9DCrZKKqLZ7fvY5IyMI3NxlrLbRo3J+52IvFQGiXIB
+	NTUqZXtHVUWsKQ7TgwiG3o1klRfSShcplsFpSj4MxDQIna/h1v0zWekOG7pvs7QnSV1Wc4cYJeSpL
+	yTakHhPrvwUz8wLR098eJf8aJqNkJ+Lggc8j3So8LJeQ8QGpXXziudG2nUecOSFKGVLGQtO3UxBlf
+	ZAWr/hXyWbI0LBYYCWCUTGoFq/YreBLkU96TQp04iZyqqCjTC6WIbGD4XDcdvkFH5oe+mujLi6SwJ
+	pOvU76WZA/RvcYVpPH2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvOMM-00022h-Fq; Wed, 07 Aug 2019 16:00:18 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1hvRd6-0007M0-TN; Wed, 07 Aug 2019 19:29:49 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvOKh-0000Ni-H7
- for linux-nvme@lists.infradead.org; Wed, 07 Aug 2019 15:58:37 +0000
-Received: from s0106ac1f6bb1ecac.cg.shawcable.net ([70.73.163.230]
- helo=[192.168.11.155])
- by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <logang@deltatee.com>)
- id 1hvOKK-0002XL-O8; Wed, 07 Aug 2019 09:58:13 -0600
-To: Christoph Hellwig <hch@lst.de>
+ id 1hvRcf-0007A0-W9
+ for linux-nvme@lists.infradead.org; Wed, 07 Aug 2019 19:29:23 +0000
+Received: from localhost (unknown [69.71.4.100])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 66D2D2086D;
+ Wed,  7 Aug 2019 19:29:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1565206161;
+ bh=yXgPGJFs+0VUo2NWm5PbQV6rtXGmgZ7WNLD2jaMJULA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=dsHOLQIqia0vm7jEQwRvEfaIJiT4oNspPc3C3XhOQkCr/aELbAHdwvZ58J3aP8C6n
+ FhNN6PBh/8gfW37xhCWtyvdJfkM02m1cZ4TO7+L840PtPLMickXdOYayXWcHaI2JIp
+ 6rVgsht/L1OyTZ46I85rFiLdIOS4uF5UPd4w+0PQ=
+Date: Wed, 7 Aug 2019 14:29:19 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [PATCH v2 00/14] PCI/P2PDMA: Support transactions that hit the
+ host bridge
+Message-ID: <20190807192919.GY151852@google.com>
 References: <20190730163545.4915-1-logang@deltatee.com>
- <20190730163545.4915-4-logang@deltatee.com> <20190807055455.GA6627@lst.de>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <4b0c012a-c3a1-a1c0-b098-8b350963aed1@deltatee.com>
-Date: Wed, 7 Aug 2019 09:58:06 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <20190806234439.GW151852@google.com>
+ <e31f13f8-5afd-6f38-a206-163e9f77c91a@deltatee.com>
 MIME-Version: 1.0
-In-Reply-To: <20190807055455.GA6627@lst.de>
-Content-Language: en-US
-X-SA-Exim-Connect-IP: 70.73.163.230
-X-SA-Exim-Rcpt-To: sbates@raithlin.com, epilmore@gigaio.com,
- dan.j.williams@intel.com, axboe@fb.com, kbusch@kernel.org, sagi@grimberg.me,
- jgg@mellanox.com, Christian.Koenig@amd.com, bhelgaas@google.com,
- linux-rdma@vger.kernel.org, linux-nvme@lists.infradead.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, hch@lst.de
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=5.0 tests=ALL_TRUSTED,BAYES_00
- autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [PATCH v2 03/14] PCI/P2PDMA: Add constants for not-supported
- result upstream_bridge_distance()
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+Content-Disposition: inline
+In-Reply-To: <e31f13f8-5afd-6f38-a206-163e9f77c91a@deltatee.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190807_085835_934703_3FA4D5EF 
-X-CRM114-Status: GOOD (  16.47  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190807_122922_059923_E3BA20FF 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,38 +82,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Sagi Grimberg <sagi@grimberg.me>, linux-rdma@vger.kernel.org,
  linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Eric Pilmore <epilmore@gigaio.com>,
- Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
- Jason Gunthorpe <jgg@mellanox.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Dan Williams <dan.j.williams@intel.com>, Stephen Bates <sbates@raithlin.com>,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ Jens Axboe <axboe@fb.com>, Jason Gunthorpe <jgg@mellanox.com>,
+ Keith Busch <kbusch@kernel.org>, Dan Williams <dan.j.williams@intel.com>,
+ Eric Pilmore <epilmore@gigaio.com>, Christoph Hellwig <hch@lst.de>,
  Christian Koenig <Christian.Koenig@amd.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-CgpPbiAyMDE5LTA4LTA2IDExOjU0IHAubS4sIENocmlzdG9waCBIZWxsd2lnIHdyb3RlOgo+IE9u
-IFR1ZSwgSnVsIDMwLCAyMDE5IGF0IDEwOjM1OjM0QU0gLTA2MDAsIExvZ2FuIEd1bnRob3JwZSB3
-cm90ZToKPj4gQWRkIGNvbnN0YW50IGZsYWdzIHRvIGluZGljYXRlIHR3byBkZXZpY2VzIGFyZSBu
-b3Qgc3VwcG9ydGVkIG9yIHdoZXRoZXIKPj4gdGhlIGRhdGEgcGF0aCBnb2VzIHRocm91Z2ggdGhl
-IGhvc3QgYnJpZGdlIGluc3RlYWQgb2YgdXNpbmcgdGhlIG5lZ2F0aXZlCj4+IHZhbHVlcyAtMSBh
-bmQgLTIuCj4+Cj4+IFRoaXMgaGVscHMgYW5ub3RhdGUgdGhlIGNvZGUgYmV0dGVyLCBidXQgdGhl
-IG1haW4gcmVhc29uIGlzIHNvIHdlCj4+IGNhbiB1c2UgdGhlIGluZm9ybWF0aW9uIHRvIHN0b3Jl
-IHRoZSByZXF1aXJlZCBtYXBwaW5nIG1ldGhvZCBpbiBhbgo+PiB4YXJyYXkuCj4+Cj4+IFNpZ25l
-ZC1vZmYtYnk6IExvZ2FuIEd1bnRob3JwZSA8bG9nYW5nQGRlbHRhdGVlLmNvbT4KPj4gUmV2aWV3
-ZWQtYnk6IENocmlzdGlhbiBLw7ZuaWcgPGNocmlzdGlhbi5rb2VuaWdAYW1kLmNvbT4KPiAKPiBJ
-cyB0aGVyZSByZWFsbHkgbm8gd2F5IHRvIGtlZXAgdGhlIGRpc3RhbmNlIHNlcGFyYXRlIGZyb20g
-dGhlIHR5cGUgb2YKPiB0aGUgY29ubmVjdGlvbiBhcyBJIHJlcXVlc3RlZD8gIEkgdGhpbmsgdGhh
-dCB3b3VsZCBhdm9pZCBhIGxvdCBvZgo+IGNvbmZ1c2lvbiBkb3duIHRoZSByb2FkLgoKV2VsbCBJ
-IHNlcGFyYXRlZCBpdCBpbiB0aGUgeGFycmF5IGFuZCB0aGUgaW50ZXJmYWNlLiBJdCBvbmx5IHN0
-b3JlcyB0aGUKdHlwZSBvZiBtYXBwaW5nLCBub3QgdGhlIGRpc3RhbmNlIGFuZCB1c2VzIHBjaV9w
-MnBkbWFfbWFwX3R5cGUoKSB0bwpyZXRyaWV2ZSBpdC4KCldlIG9ubHkgY2FsY3VsYXRlIGl0IGF0
-IHRoZSBzYW1lIHRpbWUgYXMgd2UgY2FsY3VsYXRlIHRoZSBkaXN0YW5jZS4gVGhpcwppcyBuZWNl
-c3NhcnkgYmVjYXVzZSwgdG8gY2FsY3VsYXRlIHRoZSB0eXBlLCB3ZSBoYXZlIHRvIHdhbGsgdGhl
-IHRyZWUKYW5kIGNoZWNrIHRoZSBBQ1MgYml0cy4gSWYgd2Ugc2VwYXJhdGVkIGl0LCB3ZSdkIGhh
-dmUgdG8gd2FsayB0aGUgdHJlZQp0d2ljZSBpbiBhIHZlcnkgc2ltaWxhciB3YXkganVzdCB0byBk
-ZXRlcm1pbmUgYm90aCB0aGUgZGlzdGFuY2UgYW5kIHRoZQptYXBwaW5nIHR5cGUuCgpJJ2xsIGFw
-cGx5IHlvdXIgb3RoZXIgZmVlZGJhY2sgdG8gYSB2MyBuZXh0IHdlZWsuCgpMb2dhbgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWls
-aW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+On Tue, Aug 06, 2019 at 06:31:07PM -0600, Logan Gunthorpe wrote:
+> On 2019-08-06 5:44 p.m., Bjorn Helgaas wrote:
+
+> > I tentatively applied these to pci/p2pdma with minor typographical
+> > updates (below), but I'll update the branch if necessary.
+> 
+> Great, thanks! The typographical changes look good.
+> 
+> I already have one very minor change queued up for these. Should I just
+> send you a small patch against your branch for you to squash?
+
+Yes, an incremental patch against my branch would be nice.
+
+Bjorn
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
