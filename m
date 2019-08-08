@@ -2,62 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78D5B86DBA
-	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 01:11:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E7BD86DDA
+	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 01:22:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZrfEW+27soyasM4ZgcQHKh9tc5nD9woiuKwj3OQkLSk=; b=jvjIEa5iLPZbEn
-	ARVCKzp6s9pO4x4KUv9tTOjB+DQb5Lr/eKOrjye5M2EiRkzJzs3//aUmWtXedXa0FadGIq5Kan9oz
-	zcBeJa9c9vJFl9A/SG5mmDgnwyD4gXHEjOpAZwBNJlbxu1dyKIMs/bI+21uRodewq5J0yCzx5CvVJ
-	FaIJKz/5koENAgJwahCU/irr/GUAgunqDCZi0Eyq+o1du7DCtKN8dT3Rb9NBDYz/JvgcKxVVAA6J5
-	t4sLC6ekLFMKsZOF6k7F048igiUWV4SoSrlSFp3019SlK+WTIk8XVEH4N42BSi6y5rD+vEQ7WJO4E
-	sg126NqMV+6TZ2ekwFoA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=TPoqqUWDSxPvaR59eyhvOQc6r8gsu+oMBhMneX9T/4g=; b=c7Q68S9d7Io33Wm8olw1uswKt
+	DDt5dC/mc9Vg8muhQ7qWDXgrNPQzmtc1QA/WQUWnAksum1rRHB+G+pnD0mPjo3HI4aaBdazjoSEoJ
+	v9PuN/WYYcUoyE58/9ju6qHqnwfIuJEr0HM7s28MFkiiABKK6UruANEHaCIlS8x0TtJnhP/XCzsvG
+	+NRFLKz3dR2fiLvLoEaAKo3OrXa5RkMlLob2dWfLGTr5bAT3aaGaZMDhCwuMp4QF4SGuhk6bNQmPY
+	VyrqBXmHVmHWUPbMYksJuhwYkQEqCj/JpVfnORhtR6UavTK1b3ZhQShRY173df0JMBoLoHK2F97uW
+	vokJrlpMw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvrYo-0004ab-4v; Thu, 08 Aug 2019 23:11:06 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1hvrjz-0007fw-TH; Thu, 08 Aug 2019 23:22:40 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvrYj-0004aF-3R
- for linux-nvme@lists.infradead.org; Thu, 08 Aug 2019 23:11:02 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Aug 2019 16:11:00 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,363,1559545200"; d="scan'208";a="169142712"
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by orsmga008.jf.intel.com with ESMTP; 08 Aug 2019 16:10:59 -0700
-Date: Thu, 8 Aug 2019 17:08:35 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: "Derrick, Jonathan" <jonathan.derrick@intel.com>
-Subject: Re: [PATCH] genirq/affinity: report extra vectors on uneven nodes
-Message-ID: <20190808230835.GB27570@localhost.localdomain>
-References: <20190807201051.32662-1-jonathan.derrick@intel.com>
- <alpine.DEB.2.21.1908080903360.2882@nanos.tec.linutronix.de>
- <20190808163224.GB27077@localhost.localdomain>
- <1a6ab898b8800c3e660054f77ac81bfc3921d45a.camel@intel.com>
+ id 1hvrjv-0007eV-1q
+ for linux-nvme@lists.infradead.org; Thu, 08 Aug 2019 23:22:35 +0000
+Received: by mail-ot1-f68.google.com with SMTP id b7so75344665otl.11
+ for <linux-nvme@lists.infradead.org>; Thu, 08 Aug 2019 16:22:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JJBJE9eL1uf47A5OO+0AOCEydzCcMyJZDoqWv+FsHqY=;
+ b=cPxwd8uxJsgkXCcOUjI5m2MozGXfvLbDXfcN66Q13M96QRxM57cN1cjil1nncLGx7A
+ 3ebt6xzeFTZNUXCwtAjZiQtFGA7XCMAIbGzAGtvu2kDVVxENwdUrVnKbsXzxZmeTl0sq
+ gHDB5pBaMAhFtKIyJc6vM3jDbnfT4v8djZobvEJkyTJKc5nZ4EzLGuJQWMzVir+OtGgt
+ 3GljBkw66ADLZm+tgvOPkNgNNyIAF81yG6Vlwm//mihuN6ZBRqUfznCpQeQrRuXQBPRm
+ lnREccQe4I4JKDIhlAJyTekvNftnJIhoyheM1z+pCTMswXr+UneHSSHix3PCjOhNwm96
+ 7K7A==
+X-Gm-Message-State: APjAAAX5RdJ3YMbcRpC7Sg8AzREA9w3qtRbOdnIT0zBMv+/OrmC/+UvZ
+ nv4l2lY9fYxOSY7dDCGSiMg=
+X-Google-Smtp-Source: APXvYqwhewuQzvK0g1CnmsZQuyWNHJL7l2+C9EcxY9Y6i1cmf2wzcQ38gnav2L3Tf7NmzzkRwHYprA==
+X-Received: by 2002:a9d:738b:: with SMTP id j11mr15594271otk.185.1565306553396; 
+ Thu, 08 Aug 2019 16:22:33 -0700 (PDT)
+Received: from [192.168.1.114]
+ (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
+ by smtp.gmail.com with ESMTPSA id f125sm32219862oia.44.2019.08.08.16.22.32
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 08 Aug 2019 16:22:32 -0700 (PDT)
+Subject: Re: [PATCH v3 3/7] nvme: make nvme_identify_ns propagate errors back
+To: Keith Busch <kbusch@kernel.org>
+References: <20190808205325.24036-1-sagi@grimberg.me>
+ <20190808205325.24036-4-sagi@grimberg.me>
+ <20190808211839.GA27519@localhost.localdomain>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <bb1dd49b-eb3c-1e83-a635-ee558299fe41@grimberg.me>
+Date: Thu, 8 Aug 2019 16:22:28 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1a6ab898b8800c3e660054f77ac81bfc3921d45a.camel@intel.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+In-Reply-To: <20190808211839.GA27519@localhost.localdomain>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_161102_200876_AEFA96B2 
-X-CRM114-Status: GOOD (  14.10  )
-X-Spam-Score: -4.0 (----)
+X-CRM114-CacheID: sfid-20190808_162235_094039_5359A522 
+X-CRM114-Status: GOOD (  18.00  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-4.0 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [192.55.52.115 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.68 listed in list.dnswl.org]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.68 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,47 +92,53 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "tglx@linutronix.de" <tglx@linutronix.de>, "hch@lst.de" <hch@lst.de>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- "ming.lei@redhat.com" <ming.lei@redhat.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Keith Busch <keith.busch@intel.com>, James Smart <james.smart@broadcom.com>,
+ Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
+ Hannes Reinecke <hare@suse.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Aug 08, 2019 at 10:46:06PM +0000, Derrick, Jonathan wrote:
-> On Thu, 2019-08-08 at 10:32 -0600, Keith Busch wrote:
-> > 
-> > I think the real problem is the spread's vecs_per_node doesn't account
-> > which nodes contribute more CPUs than others. For example:
-> > 
-> >   Node 0 has 32 CPUs
-> >   Node 1 has 8 CPUs
-> >   Assign 32 vectors
-> > 
-> > The current algorithm assigns 16 vectors to node 0 because vecs_per_node
-> > is calculated as 32 vectors / 2 nodes on the first iteration. The
-> > subsequent iteration for node 1 gets 8 vectors because it has only 8
-> > CPUs, leaving 8 vectors unassigned.
-> > 
-> > A more fair spread would give node 0 the remaining 8 vectors. This
-> > optimization, however, is a bit more complex than the current algorithm,
-> > which is probably why it wasn't done, so I think the warning should just
-> > be removed.
+
+>> right now callers of nvme_identify_ns only know that it failed,
+>> but don't know why. Make nvme_identify_ns propagate the error back.
+>>
+>> Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+>> Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+>> ---
+>>   drivers/nvme/host/core.c | 12 ++++++------
+>>   1 file changed, 6 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+>> index f435c85c4062..e503fd14de81 100644
+>> --- a/drivers/nvme/host/core.c
+>> +++ b/drivers/nvme/host/core.c
+>> @@ -1108,13 +1108,13 @@ static struct nvme_id_ns *nvme_identify_ns(struct nvme_ctrl *ctrl,
+>>   
+>>   	id = kmalloc(sizeof(*id), GFP_KERNEL);
+>>   	if (!id)
+>> -		return NULL;
+>> +		return ERR_PTR(-ENOMEM);
+>>   
+>>   	error = nvme_submit_sync_cmd(ctrl->admin_q, &c, id, sizeof(*id));
+>>   	if (error) {
+>>   		dev_warn(ctrl->device, "Identify namespace failed (%d)\n", error);
+>>   		kfree(id);
+>> -		return NULL;
+>> +		return ERR_PTR(error);
 > 
-> It does get a bit complex for the rare scenario in this case
-> Maybe just an informational warning rather than a stackdumping warning
+> The previous patch has nvme_submit_sync_cmd() return a BLK_STS_* value in
+> some cases, but ERR_PTR requires -errno's in order for IS_ERR to detect
+> errors. I think you need:
+> 
+> 		if (error > 0)
+> 			return ERR_PTR(blk_status_to_errno(error));
+> 		else
+> 			return ERR_PTR(error);
+> 
 
-I think the easiest way to ensure all vectors are assigned is iterate
-the nodes in a sorted order from fewest CPUs to most. That should fix
-the warning, though it may not have the best possible assignment ratio
-(but better than what we're currently doing).
-
-Unfortunately the kernel's sort() doesn't take a 'void *priv' for the
-compare callback, so we wouldn't have all the information needed to weigh
-each node, but maybe we can fix that if there's agreement to iterate
-the nodes this way.
+You are right. sending a respin soon
 
 _______________________________________________
 Linux-nvme mailing list
