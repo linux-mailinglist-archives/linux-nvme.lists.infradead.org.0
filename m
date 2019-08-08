@@ -2,37 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4416186DE3
-	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 01:27:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A97886DE4
+	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 01:27:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=kjh38O4kQcSCU6yINk9vniqYAoYwL0VPszextpyLy1k=; b=nAgZ9wEXZuYjK0mnuKfjpsthVQ
-	yCThpp1wBpq9/YMryXWvyfKcsZmC7qM5wTibl5LPumfFgn5HUCEv04JrgdeHjk/90BrH9siO8K7LU
-	LxqPz3rhEuq/jp4MkVwWbrO9DJzRr4byDpDwH/rMzHVqMu9PCkUGKRvb9Q6a0a2Ic3bKiEE6jSSE5
-	CZ1ibcq6xnOFy2GLSpBem8GkZ52zV4wKC1jnXgG9pnJRNTwfjY2okMh8xmEMR/+FNVhmbfYlYh9qr
-	5Q0LJDDGNsk68bz8asXXOxXyZrb6eM+YBdBoIE8Jiux9nAveurwApnMvbqzjU06e1OO3HYa7SViXw
-	UcHy4/AA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=BGmhJZhhiMy7k1+Ta98/pp7lYpK6YcZyLjuB7Usz0wI=; b=nrluI17UN+eKmvzTGGub+6vZx
+	MXik8T8cyTNSmTtsfeoa6O6aRa+FzNK00qVKCpjzUtHNH93fewNVrpo/NfLbtyq8xwaNvM4v+NisU
+	4Bc/kVXXx6c9/pBmSUbFSU7oHzunAGu8MIS8O9GTWz/lp/PSCYYAuglHOutCwde2JV+24MWb8hOKJ
+	x4//qhnTZGEt4d7PUNVjDGsPl8mvTJrSJB1SR1TtXTsHqoFFkF70nuq+WC1tj/YyOXuqA0r/fjDMU
+	pozYgDKT6Ac/gJMUe+rnQwQPYTgmF5wCd5aHHEZXXF/5Dsc6gsh+a8NraEJh1I2q6PJ65o6RIgSFl
+	Tjq7qGJPA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvro8-0001yM-UF; Thu, 08 Aug 2019 23:26:57 +0000
-Received: from 162-195-240-247.lightspeed.sntcca.sbcglobal.net
- ([162.195.240.247] helo=sagi-Latitude-E7470.lbits)
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hvrmx-0000h8-LQ; Thu, 08 Aug 2019 23:25:43 +0000
-From: Sagi Grimberg <sagi@grimberg.me>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH v4 7/7] nvme: fix ns removal hang when failing to revalidate
- due to a transient error
-Date: Thu,  8 Aug 2019 16:25:36 -0700
-Message-Id: <20190808232536.4258-8-sagi@grimberg.me>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190808232536.4258-1-sagi@grimberg.me>
-References: <20190808232536.4258-1-sagi@grimberg.me>
+	id 1hvroK-00029g-0U; Thu, 08 Aug 2019 23:27:08 +0000
+Received: from mail-pl1-f193.google.com ([209.85.214.193])
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hvrnU-0001Q2-RS
+ for linux-nvme@lists.infradead.org; Thu, 08 Aug 2019 23:26:18 +0000
+Received: by mail-pl1-f193.google.com with SMTP id 4so37173317pld.10
+ for <linux-nvme@lists.infradead.org>; Thu, 08 Aug 2019 16:26:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=h/QW1tjQyis/dQeBrAedureb5Kcw4iYiOFhPyWoqkHA=;
+ b=NFtcj2p/4jjqXongkUTwPjgJMgjW+NOt85lT0f1akI+O0+GDIfEn3PE2/qE+Zr0g9l
+ zNxrGYRvspW0XyeWaqbT30ul5KUfj5zn6nILXil3XKNe8cH9VMgFlJggankfORXMOilH
+ GAH2CoQLR/6uRGSFLMFfg94gMEfW38RWWvFZvQwdWCA7bz4xxsBaG06nWjkrPuwbOAB8
+ /HFyhnvMrRFEB8Dl3JftMox0BMxJm6jOzzsKs9MkE/ZZ8FkFXaLj2U2x3buw1kLWUfpO
+ tf13xEfmzPGLzTpVV/lqkOOjqQNL1Bkq1fWL3P1tONHpm8Q+8Z118CyYQVjcMyfKX/ZN
+ qCfg==
+X-Gm-Message-State: APjAAAVX1zjcsXCqHk52eMMtA9NmqQRBnbGxR9JHn3fUrjTntPpkn/4s
+ ZV696U99hfq1WmtOuYXxTME=
+X-Google-Smtp-Source: APXvYqyiQm+selTb/gOVWuzbWBC6vAX37IvqmyaMFUOHQi546jEl9MESH25kARfyomwvTVHxUaSiWA==
+X-Received: by 2002:a17:902:2aa8:: with SMTP id
+ j37mr15396403plb.316.1565306775461; 
+ Thu, 08 Aug 2019 16:26:15 -0700 (PDT)
+Received: from desktop-bart.svl.corp.google.com
+ ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
+ by smtp.gmail.com with ESMTPSA id v10sm93780975pfe.163.2019.08.08.16.26.14
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Thu, 08 Aug 2019 16:26:14 -0700 (PDT)
+Subject: Re: [PATCH v3 0/7] nvme controller reset and namespace scan work race
+ conditions
+To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
+References: <20190808205325.24036-1-sagi@grimberg.me>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <779b707b-5892-bf23-52d8-5c8affe524b6@acm.org>
+Date: Thu, 8 Aug 2019 16:26:13 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <20190808205325.24036-1-sagi@grimberg.me>
+Content-Language: en-US
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190808_162616_977776_26260D42 
+X-CRM114-Status: GOOD (  12.08  )
+X-Spam-Score: 0.5 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.5 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.214.193 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.214.193 listed in wl.mailspike.net]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (bart.vanassche[at]gmail.com)
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,77 +92,22 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, James Smart <james.smart@broadcom.com>,
- Christoph Hellwig <hch@lst.de>, Hannes Reinecke <hare@suse.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
+ James Smart <james.smart@broadcom.com>, Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-If a controller reset is racing with a namespace revalidation, the
-revalidation (admin) I/O will surely fail, but we should not remove the
-namespace as we will execute the I/O when the controller is back up.
-Same for spurious allocation errors (return -ENOMEM).
+On 8/8/19 1:53 PM, Sagi Grimberg wrote:
+> for j in `seq 50`; do for i in `seq 50`; do nvme reset /dev/nvme0; done ; nvme disconnect-all; nvme connect-all; done
 
-Fix this by checking the specific error code that revalidate_disk
-returns, and if it is a transient error (for example ENOLINK correlates
-to BLK_STS_TRANSPORT or ENOMEM correlates to BLK_STS_RESOURCE or an
-allocation failure), do not remove the namespace as it will either
-recover when the controller is back up and schedule a subsequent scan,
-or the controller is going away and the namespaces will be removed anyways.
+Has anyone already volunteered to convert this into a patch for the 
+blktests project?
 
-This fixes a hang namespace scanning racing with a controller reset and
-also sporious I/O errors in path failover coditions where the
-controller reset is racing with the namespace scan work with multipath
-enabled.
+Thanks,
 
-Reported-by: Hannes Reinecke  <hare@suse.de>
-Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
-
-2
-
-Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
----
- drivers/nvme/host/core.c | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index fcac41a76f0c..ae30ed75dad9 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -228,6 +228,8 @@ static blk_status_t nvme_error_status(struct request *req)
- 		return BLK_STS_PROTECTION;
- 	case NVME_SC_RESERVATION_CONFLICT:
- 		return BLK_STS_NEXUS;
-+	case NVME_SC_HOST_PATH_ERROR:
-+		return BLK_STS_TRANSPORT;
- 	default:
- 		return BLK_STS_IOERR;
- 	}
-@@ -3452,8 +3454,17 @@ static void nvme_validate_ns(struct nvme_ctrl *ctrl, unsigned nsid)
- 
- 	ns = nvme_find_get_ns(ctrl, nsid);
- 	if (ns) {
--		if (ns->disk && revalidate_disk(ns->disk))
--			nvme_ns_remove(ns);
-+		if (ns->disk) {
-+			int ret = revalidate_disk(ns->disk);
-+
-+			/*
-+			 * remove the ns only if the return status is
-+			 * not a temporal execution error.
-+			 */
-+			if (ret && ret != -ENOLINK && ret != -ENOMEM &&
-+			    ret != -EAGAIN && ret != -EBUSY)
-+				nvme_ns_remove(ns);
-+		}
- 		nvme_put_ns(ns);
- 	} else
- 		nvme_alloc_ns(ctrl, nsid);
--- 
-2.17.1
-
+Bart.
 
 _______________________________________________
 Linux-nvme mailing list
