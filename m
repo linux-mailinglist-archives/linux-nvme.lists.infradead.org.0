@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B443286DDE
-	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 01:26:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E311586DDF
+	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 01:26:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,24 +11,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=MS3Vx0uXlXC9B/e1YTaH62NYkp/t1l1N/Z+9Un0HJDI=; b=f10LbdktCnvmHxKEdAUc9qn9hy
-	vmTQGdDUV2hSgwbvcb2bCk9IihiTEW2s1MkO9AIS3NRj2mAkpzRwFRPe5IYcsOwm1upW71uBhh4pU
-	SRSQ6wGQK40rrFWlgqiD6A8z6oW9/IOhXs7072nSa7c27x71MWsYH+SUV1BgPqutslB6HUh5saaNW
-	85IuuUDpMTeHbkq129Zg9KxubCEcLFi3FTfwurHvC/Gy7BxuApWn/1vG7kjztlZmhEgDcp7XCK3wb
-	6D5bmNAKVxJnnyRfoEgJw+A03hb4eWL3s6n244O8CRc8rE8q2/cYF4GF+vF0NqjqOFuS4AyAyG8jH
-	Qi4P9X8A==;
+	bh=f2EAhisHeEm4Zm8+pbE1LlHs9QtdE7S1DlaMTTmo/xs=; b=XsW1Gve8YcqCrx5d2jdC2Smnwr
+	+7zBYKMwFgSlsdKMhhB8T8wqAU/z8kXvU523MQ2oxedBDqCmRzrTc3IXFuXmzQEelww+AlRhqayLX
+	mx5WO2p6nvTLePPlmJM2zjcyLtnpmtgHp3XwRCtSWmFYu+GBUuaULAsdnkfTLMCSlaUdZ+oz18vkn
+	zUSs2N6ZmwJpXCtgCUniBKDiWWptDLdriKIxMnOSKNRE+OP/W0AFLfrhImGay4Ho9XFkWm3gScw0c
+	aKbuwQPsAdfU+qixffX+vG9+grR7BdW6jj8NzbKTeJggWeg3oN7aq7Yj2z7s8YiGykuTQ9Egn+dtq
+	qWpFz3TA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvrnJ-0000yw-CW; Thu, 08 Aug 2019 23:26:05 +0000
+	id 1hvrnV-0001C5-0B; Thu, 08 Aug 2019 23:26:17 +0000
 Received: from 162-195-240-247.lightspeed.sntcca.sbcglobal.net
  ([162.195.240.247] helo=sagi-Latitude-E7470.lbits)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hvrmw-0000h8-Fh; Thu, 08 Aug 2019 23:25:42 +0000
+ id 1hvrmw-0000h8-O9; Thu, 08 Aug 2019 23:25:42 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v4 2/7] nvme: return a proper errno for sync commands failure
-Date: Thu,  8 Aug 2019 16:25:31 -0700
-Message-Id: <20190808232536.4258-3-sagi@grimberg.me>
+Subject: [PATCH v4 3/7] nvme: make nvme_identify_ns propagate errors back
+Date: Thu,  8 Aug 2019 16:25:32 -0700
+Message-Id: <20190808232536.4258-4-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190808232536.4258-1-sagi@grimberg.me>
 References: <20190808232536.4258-1-sagi@grimberg.me>
@@ -51,36 +51,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-callers should not rely on raw nvme status, instead return
-is more appropriate errno that relates to blk_status_t.
+right now callers of nvme_identify_ns only know that it failed,
+but don't know why. Make nvme_identify_ns propagate the error back.
 
+Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- drivers/nvme/host/core.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/nvme/host/core.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index d2b4f57fa67e..c259586eeadc 100644
+index c259586eeadc..6fac09b24733 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -803,7 +803,7 @@ int __nvme_submit_sync_cmd(struct request_queue *q, struct nvme_command *cmd,
- 	if (nvme_req(req)->flags & NVME_REQ_CANCELLED)
- 		ret = -EINTR;
- 	else
--		ret = nvme_req(req)->status;
-+		ret = blk_status_to_errno(nvme_error_status(req));
-  out:
- 	blk_mq_free_request(req);
- 	return ret;
-@@ -894,7 +894,7 @@ static int nvme_submit_user_cmd(struct request_queue *q,
- 	if (nvme_req(req)->flags & NVME_REQ_CANCELLED)
- 		ret = -EINTR;
- 	else
--		ret = nvme_req(req)->status;
-+		ret = blk_status_to_errno(nvme_error_status(req));
- 	if (result)
- 		*result = le32_to_cpu(nvme_req(req)->result.u32);
- 	if (meta && !ret && !write) {
+@@ -1108,13 +1108,13 @@ static struct nvme_id_ns *nvme_identify_ns(struct nvme_ctrl *ctrl,
+ 
+ 	id = kmalloc(sizeof(*id), GFP_KERNEL);
+ 	if (!id)
+-		return NULL;
++		return ERR_PTR(-ENOMEM);
+ 
+ 	error = nvme_submit_sync_cmd(ctrl->admin_q, &c, id, sizeof(*id));
+ 	if (error) {
+ 		dev_warn(ctrl->device, "Identify namespace failed (%d)\n", error);
+ 		kfree(id);
+-		return NULL;
++		return ERR_PTR(error);
+ 	}
+ 
+ 	return id;
+@@ -1748,8 +1748,8 @@ static int nvme_revalidate_disk(struct gendisk *disk)
+ 	}
+ 
+ 	id = nvme_identify_ns(ctrl, ns->head->ns_id);
+-	if (!id)
+-		return -ENODEV;
++	if (IS_ERR(id))
++		return PTR_ERR(id);
+ 
+ 	if (id->ncap == 0) {
+ 		ret = -ENODEV;
+@@ -3337,8 +3337,8 @@ static int nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+ 	nvme_set_queue_limits(ctrl, ns->queue);
+ 
+ 	id = nvme_identify_ns(ctrl, nsid);
+-	if (!id) {
+-		ret = -EIO;
++	if (IS_ERR(id)) {
++		ret = PTR_ERR(id);
+ 		goto out_free_queue;
+ 	}
+ 
 -- 
 2.17.1
 
