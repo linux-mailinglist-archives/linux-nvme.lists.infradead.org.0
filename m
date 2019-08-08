@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 216DC86BF6
-	for <lists+linux-nvme@lfdr.de>; Thu,  8 Aug 2019 22:54:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 43DC486BF7
+	for <lists+linux-nvme@lfdr.de>; Thu,  8 Aug 2019 22:54:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,24 +11,25 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=1XCMvVCUgcGA9/49TLjFXjULZ42x85PYxiFwJvsh8PU=; b=YfO/FSStvrWecTGIa2McX28gkj
-	BPrIedODTICLihSHhpN65jS5vxhH2HzNCpye1MYFPOu6UBByKa7xfgkEC5IURpjrJklnL4aLut8ea
-	XvZDkH6D0jAvLJxA1u7UNsCanTFjeNwC9ijNWgNBTc15PJUwO3yHxhwqU4TiWQAs2mWicmavT20vk
-	Sy9HA2bL4JihtTExcZ83EfiuKM2jNDoBR7iXLWX5wF7AtxnjZLel28BKx6OEd7HBy2SCr1e1td9IK
-	kHCDho/XsfOaoWRvqmHfgUJt6VbSw/EVrz932yIm9RBKBWb5opBCdKVI7CAMOtjKfETa9vgudR6JX
-	xsuhdI6w==;
+	bh=DkT585uPOBHM9Km+SZ1jHL5fy5kdFbze4eUGOO1ReI0=; b=bUbCblofsDUv1wi6LsHQOAf+3Q
+	B7r5bpEhRAQktdIEMX6rtWOvX/ZrETOdIu75rnoAmu391c8spYHhvQtgTun+kmDyjwEsOpPmZBzAp
+	HxIdCkqEf7jXPAcT+C4rp57hcLq4L0A9BVhqJ9vwPCtoXGF+N0qfLHcQ97ET3TGWqy3TOeivGjtPp
+	wHt6Hvwlsry+ZmGbgXH7qzt9r56NFA3em4m387HXXo5LHs+mulUZiJNvHXQ1BHvhOXtVWZ3uP2ztf
+	m1zde7Hhl9PW+I3YfQH+Llw1KH+Wswp1MkyqW+U1lmoFhm6rg4aDn5761wLcFFnB3jFnI6Q2F1swv
+	m8elsU+g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvpQj-00029B-Gw; Thu, 08 Aug 2019 20:54:37 +0000
+	id 1hvpQs-0002Ke-ME; Thu, 08 Aug 2019 20:54:46 +0000
 Received: from 162-195-240-247.lightspeed.sntcca.sbcglobal.net
  ([162.195.240.247] helo=sagi-Latitude-E7470.lbits)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hvpPg-00013b-Qn; Thu, 08 Aug 2019 20:53:32 +0000
+ id 1hvpPh-00013b-2N; Thu, 08 Aug 2019 20:53:33 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v3 6/7] nvme-fc: Fail transport errors with NVME_SC_HOST_PATH
-Date: Thu,  8 Aug 2019 13:53:24 -0700
-Message-Id: <20190808205325.24036-7-sagi@grimberg.me>
+Subject: [PATCH v3 7/7] nvme: don't remove namespace if revalidate failed
+ because of a transport error
+Date: Thu,  8 Aug 2019 13:53:25 -0700
+Message-Id: <20190808205325.24036-8-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190808205325.24036-1-sagi@grimberg.me>
 References: <20190808205325.24036-1-sagi@grimberg.me>
@@ -51,88 +52,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: James Smart <james.smart@broadcom.com>
+If a controller reset is racing with a namespace revalidation, the
+revalidation (admin) I/O will surely fail, but we should not remove the
+namespace as we will execute the I/O when the controller is back up.
 
-NVME_SC_INTERNAL should indicate an internal controller errors
-and not host transport errors. These errors will propagate to
-upper layers (essentially nvme core) and be interpereted as
-transport errors which should not be taken into account for
-namespace state or condition.
+Fix this by checking the specific error code that revalidate_disk
+returns, and if it is a transport related error, do not remove
+the namespace as it will either recover when the controller is
+back up and schedule a subsequent scan, or the controller is
+going away and the namespaces will be removed anyways.
 
+This fixes a hang namespace scanning racing with a controller reset and
+also sporious I/O errors in path failover coditions where the
+controller reset is racing with the namespace scan work with multipath
+enabled.
+
+Reported-by: Hannes Reinecke  <hare@suse.de>
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- drivers/nvme/host/fc.c | 37 ++++++++++++++++++++++++++++++-------
- 1 file changed, 30 insertions(+), 7 deletions(-)
+ drivers/nvme/host/core.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
-index 3f3725d1eca1..c289f46f6d13 100644
---- a/drivers/nvme/host/fc.c
-+++ b/drivers/nvme/host/fc.c
-@@ -1608,9 +1608,13 @@ nvme_fc_fcpio_done(struct nvmefc_fcp_req *req)
- 				sizeof(op->rsp_iu), DMA_FROM_DEVICE);
- 
- 	if (opstate == FCPOP_STATE_ABORTED)
--		status = cpu_to_le16(NVME_SC_ABORT_REQ << 1);
--	else if (freq->status)
--		status = cpu_to_le16(NVME_SC_INTERNAL << 1);
-+		status = cpu_to_le16(NVME_SC_HOST_PATH_ERROR << 1);
-+	else if (freq->status) {
-+		status = cpu_to_le16(NVME_SC_HOST_PATH_ERROR << 1);
-+		dev_info(ctrl->ctrl.device,
-+			"NVME-FC{%d}: io failed due to lldd error %d\n",
-+			ctrl->cnum, freq->status);
-+	}
- 
- 	/*
- 	 * For the linux implementation, if we have an unsuccesful
-@@ -1637,8 +1641,13 @@ nvme_fc_fcpio_done(struct nvmefc_fcp_req *req)
- 		 * no payload in the CQE by the transport.
- 		 */
- 		if (freq->transferred_length !=
--			be32_to_cpu(op->cmd_iu.data_len)) {
--			status = cpu_to_le16(NVME_SC_INTERNAL << 1);
-+		    be32_to_cpu(op->cmd_iu.data_len)) {
-+			status = cpu_to_le16(NVME_SC_HOST_PATH_ERROR << 1);
-+			dev_info(ctrl->ctrl.device,
-+				"NVME-FC{%d}: io failed due to bad transfer "
-+				"length: %d vs expected %d\n",
-+				ctrl->cnum, freq->transferred_length,
-+				be32_to_cpu(op->cmd_iu.data_len));
- 			goto done;
- 		}
- 		result.u64 = 0;
-@@ -1655,7 +1664,17 @@ nvme_fc_fcpio_done(struct nvmefc_fcp_req *req)
- 					freq->transferred_length ||
- 			     op->rsp_iu.status_code ||
- 			     sqe->common.command_id != cqe->command_id)) {
--			status = cpu_to_le16(NVME_SC_INTERNAL << 1);
-+			status = cpu_to_le16(NVME_SC_HOST_PATH_ERROR << 1);
-+			dev_info(ctrl->ctrl.device,
-+				"NVME-FC{%d}: io failed due to bad NVMe_ERSP: "
-+				"iu len %d, xfr len %d vs %d, status code "
-+				"%d, cmdid %d vs %d\n",
-+				ctrl->cnum, be16_to_cpu(op->rsp_iu.iu_len),
-+				be32_to_cpu(op->rsp_iu.xfrd_len),
-+				freq->transferred_length,
-+				op->rsp_iu.status_code,
-+				sqe->common.command_id,
-+				cqe->command_id);
- 			goto done;
- 		}
- 		result = cqe->result;
-@@ -1663,7 +1682,11 @@ nvme_fc_fcpio_done(struct nvmefc_fcp_req *req)
- 		break;
- 
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 49ffccd72091..001bcc8a8d3e 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -228,6 +228,8 @@ static blk_status_t nvme_error_status(struct request *req)
+ 		return BLK_STS_PROTECTION;
+ 	case NVME_SC_RESERVATION_CONFLICT:
+ 		return BLK_STS_NEXUS;
++	case NVME_SC_HOST_PATH_ERROR:
++		return BLK_STS_TRANSPORT;
  	default:
--		status = cpu_to_le16(NVME_SC_INTERNAL << 1);
-+		status = cpu_to_le16(NVME_SC_HOST_PATH_ERROR << 1);
-+		dev_info(ctrl->ctrl.device,
-+			"NVME-FC{%d}: io failed due to odd NVMe_xRSP iu "
-+			"len %d\n",
-+			ctrl->cnum, freq->rcv_rsplen);
- 		goto done;
+ 		return BLK_STS_IOERR;
  	}
+@@ -3452,8 +3454,11 @@ static void nvme_validate_ns(struct nvme_ctrl *ctrl, unsigned nsid)
  
+ 	ns = nvme_find_get_ns(ctrl, nsid);
+ 	if (ns) {
+-		if (ns->disk && revalidate_disk(ns->disk))
+-			nvme_ns_remove(ns);
++		if (ns->disk) {
++			blk_status_t sts = revalidate_disk(ns->disk);
++			if (sts && sts != BLK_STS_TRANSPORT)
++				nvme_ns_remove(ns);
++		}
+ 		nvme_put_ns(ns);
+ 	} else
+ 		nvme_alloc_ns(ctrl, nsid);
 -- 
 2.17.1
 
