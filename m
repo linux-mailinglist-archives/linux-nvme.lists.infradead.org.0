@@ -2,86 +2,63 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 050AB86F7C
-	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 03:58:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C168E8700C
+	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 05:05:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d+VrIBsnI5tQepEQ+Cg9d7T/4UGIhmekKB3yKHEWXag=; b=FEmL2brGi/YR2A
-	Ik12fagc8qfrUXdducYcQVsnVbZbmgMLwQz0CE4coYIGi69agdlAYTHpoJJU7qMOWN8FqEmo9qa1v
-	onm01Ppw6QABI8S2Z9Sey6BkoaQZhBTlzzHujP3azDiFxkb9cKXqkBDWAE8zwbW+GogZs4TBJRQTt
-	OZlHPJo18bAUsSTNjnrhEGo/bcEuWwYMeyTHgu5Tq4hJzhqk5uj63zJtk3ryr9rQ3/nt4/+/ePnL4
-	F7VLxfK6DRPBt1FHUAw4fYpE2kYtgqnOPVzi81bl4WwXxHn+EtpEb7lpoYbpOO/CQ4tcC/TwMS9Fg
-	s9M+bvZCz9d7O6nE26ow==;
+	List-Owner; bh=NvSqntKTZXnWSyxhkbERSU+qxrkUSF2U3KVJxS6XXQc=; b=SIfnObQ8aCE01+
+	rO3FEOfdkqvl0HWwcSuc6DY994ZuPxPgrEOKaGUV6Vobh8jP+JUbGDbhWV6FdP57670fYqZr27s/f
+	sEROi8qNdasTCi262h8A71/c1+md/LOSHIKCK70dzk8eeuAKlZbWzzaeGbVNfj4gsV1s/QsUEddlZ
+	6yfMuP0ZiQRT/3MPCUFC6pGIyZp/Iw/iIeqhU+lAINncOFBLnYAygMhtVufIf5k2uWNEobbLRljhq
+	ivNFLt+OfADSYymvCfjgsSgqlTxhYbyAxDqmYSf0UPu8hNZF4qQSaL+3cNbx0kpd3J9e79lGgsGM3
+	hoZpVEm0jlHJ3dSYMphw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvuAY-0008Vc-Mj; Fri, 09 Aug 2019 01:58:14 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1hvvD0-00049C-AK; Fri, 09 Aug 2019 03:04:50 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvuAR-0008VI-2x
- for linux-nvme@lists.infradead.org; Fri, 09 Aug 2019 01:58:07 +0000
-Received: by mail-wr1-x441.google.com with SMTP id p17so96705178wrf.11
- for <linux-nvme@lists.infradead.org>; Thu, 08 Aug 2019 18:58:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kGxztj3NnBFpv27S84plIbdQ7EM/Lf6akhP1bIaC/w4=;
- b=mQ4xP84vpF8EUZwrtRI9uuHlaj1I5SxJwYOmbjy+4FrqQm6Yx279O5HSCF97LZIo6c
- zp4YXDV3NWRxo7q9iPOBq8xlBsbEVZtdPFKQGRpqMaWz9XeSN/pWMTQQVs7x8mvkc8sy
- Td25zZfmenZa+rUik8S3IluBVprUMSFMy9+N668PArNkmHh/ZaTV0705xII0dSSV02Hw
- VbzFTAaT933Xl4MvTcYrh/7iF9TWHSx1vjvcZxC7534vkkqLCgVZ4/7lSn91t0mjGTxQ
- CQnsThroq24ZZVRbeWBBXH8QvUU1QKFtAjoHh08Jq/rAYyHaR2w2k1yWhTTywSr0oP4r
- tcnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kGxztj3NnBFpv27S84plIbdQ7EM/Lf6akhP1bIaC/w4=;
- b=QNEWrG9GRxVhvBM8S01ZyIl1Ei2n/nVA50tCdUvTsgSdUIbnKxo2uSDLF8xZqveWGL
- V0kz4LSU/NctXLLnUiQ8yz+NDhwWZrcnDnCsfYg1MgBkVgiULfLgSrV0/VMum6kWAfZ6
- lRluqwIHksg3rIRCx3h1BGuzav51bV61Jj68Hzfe2t+Q4w6nvDB+g3BYZL5DamrCXfZs
- JIfKKnRQyicmVU6GLzYrtFOQ/KrXcj0ow1EMMWkw35gmRrdvghyMz5XkQ62XbD0T+s66
- PPV22c7YLE7amPla4b11Coz2mpT8opiWe7hyNSpfj4bsn4KEB7+xTIqilmzZxkn07aTr
- q13A==
-X-Gm-Message-State: APjAAAURHuMrQi7NZc1HcY3kziQznYLP8X6UcdYO1QkTXqRKPTqhr1TF
- zPVjBqyIZIfXeMV+Ofe1prhG3D2I8MnyyTlFYi0=
-X-Google-Smtp-Source: APXvYqzUw4NJMeAG/HhSnG6a2gCAISQW747RnFFV6+JL+kRvFTlNq63KtndtKfGNNF8XhXJWjdSw6lZIfKsc6QH9gYI=
-X-Received: by 2002:a5d:4a4e:: with SMTP id v14mr2332586wrs.200.1565315884514; 
- Thu, 08 Aug 2019 18:58:04 -0700 (PDT)
+ id 1hvvCr-00048P-GX
+ for linux-nvme@lists.infradead.org; Fri, 09 Aug 2019 03:04:43 +0000
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 51D764F1BA;
+ Fri,  9 Aug 2019 03:04:36 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-27.pek2.redhat.com [10.72.8.27])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7DFB019C70;
+ Fri,  9 Aug 2019 03:04:30 +0000 (UTC)
+Date: Fri, 9 Aug 2019 11:04:25 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCH] genirq/affinity: report extra vectors on uneven nodes
+Message-ID: <20190809030424.GA17485@ming.t460p>
+References: <20190807201051.32662-1-jonathan.derrick@intel.com>
+ <alpine.DEB.2.21.1908080903360.2882@nanos.tec.linutronix.de>
+ <20190808163224.GB27077@localhost.localdomain>
 MIME-Version: 1.0
-References: <20190808232536.4258-1-sagi@grimberg.me>
- <20190808232536.4258-3-sagi@grimberg.me>
-In-Reply-To: <20190808232536.4258-3-sagi@grimberg.me>
-From: Keith Busch <keith.busch@gmail.com>
-Date: Thu, 8 Aug 2019 19:57:53 -0600
-Message-ID: <CAOSXXT4HByc7QXdUrfGgYB93jDRKsFETUsYxw7LL7=AEsOmipQ@mail.gmail.com>
-Subject: Re: [PATCH v4 2/7] nvme: return a proper errno for sync commands
- failure
-To: Sagi Grimberg <sagi@grimberg.me>
+Content-Disposition: inline
+In-Reply-To: <20190808163224.GB27077@localhost.localdomain>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Fri, 09 Aug 2019 03:04:36 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_185807_157067_7BFFCF06 
-X-CRM114-Status: GOOD (  10.24  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190808_200441_587483_85EA1526 
+X-CRM114-Status: GOOD (  29.76  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:441 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (keith.busch[at]gmail.com)
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,25 +70,170 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
- James Smart <james.smart@broadcom.com>,
- linux-nvme <linux-nvme@lists.infradead.org>, Christoph Hellwig <hch@lst.de>
+Cc: Thomas Gleixner <tglx@linutronix.de>,
+ Jon Derrick <jonathan.derrick@intel.com>, Christoph Hellwig <hch@lst.de>,
+ linux-nvme@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Aug 8, 2019 at 5:25 PM Sagi Grimberg <sagi@grimberg.me> wrote:
-> callers should not rely on raw nvme status, instead return
-> is more appropriate errno that relates to blk_status_t.
+On Thu, Aug 08, 2019 at 10:32:24AM -0600, Keith Busch wrote:
+> On Thu, Aug 08, 2019 at 09:04:28AM +0200, Thomas Gleixner wrote:
+> > On Wed, 7 Aug 2019, Jon Derrick wrote:
+> > > The current irq spreading algorithm spreads vectors amongst cpus evenly
+> > > per node. If a node has more cpus than another node, the extra vectors
+> > > being spread may not be reported back to the caller.
+> > > 
+> > > This is most apparent with the NVMe driver and nr_cpus < vectors, where
+> > > the underreporting results in the caller's WARN being triggered:
+> > > 
+> > > irq_build_affinity_masks()
+> > > ...
+> > > 	if (nr_present < numvecs)
+> > > 		WARN_ON(nr_present + nr_others < numvecs);
+> > > 
+> > > Signed-off-by: Jon Derrick <jonathan.derrick@intel.com>
+> > > ---
+> > >  kernel/irq/affinity.c | 7 +++++--
+> > >  1 file changed, 5 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
+> > > index 4352b08ae48d..9beafb8c7e92 100644
+> > > --- a/kernel/irq/affinity.c
+> > > +++ b/kernel/irq/affinity.c
+> > > @@ -127,7 +127,8 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+> > >  	}
+> > >  
+> > >  	for_each_node_mask(n, nodemsk) {
+> > > -		unsigned int ncpus, v, vecs_to_assign, vecs_per_node;
+> > > +		unsigned int ncpus, v, vecs_to_assign, total_vecs_to_assign,
+> > > +			vecs_per_node;
+> > >  
+> > >  		/* Spread the vectors per node */
+> > >  		vecs_per_node = (numvecs - (curvec - firstvec)) / nodes;
+> > > @@ -141,14 +142,16 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+> > >  
+> > >  		/* Account for rounding errors */
+> > >  		extra_vecs = ncpus - vecs_to_assign * (ncpus / vecs_to_assign);
+> > > +		total_vecs_to_assign = vecs_to_assign + extra_vecs;
+> > >  
+> > > -		for (v = 0; curvec < last_affv && v < vecs_to_assign;
+> > > +		for (v = 0; curvec < last_affv && v < total_vecs_to_assign;
+> > >  		     curvec++, v++) {
+> > >  			cpus_per_vec = ncpus / vecs_to_assign;
+> > >  
+> > >  			/* Account for extra vectors to compensate rounding errors */
+> > >  			if (extra_vecs) {
+> > >  				cpus_per_vec++;
+> > > +				v++;
+> > >  				--extra_vecs;
+> > >  			}
+> > >  			irq_spread_init_one(&masks[curvec].mask, nmsk,
+> > > -- 
+> 
+> This looks like it will break the spread to non-present CPUs since
+> it's not accurately reporting how many vectors were assigned for the
+> present spread.
+> 
+> I think the real problem is the spread's vecs_per_node doesn't account
+> which nodes contribute more CPUs than others. For example:
+> 
+>   Node 0 has 32 CPUs
+>   Node 1 has 8 CPUs
+>   Assign 32 vectors
+> 
+> The current algorithm assigns 16 vectors to node 0 because vecs_per_node
+> is calculated as 32 vectors / 2 nodes on the first iteration. The
+> subsequent iteration for node 1 gets 8 vectors because it has only 8
+> CPUs, leaving 8 vectors unassigned.
+> 
+> A more fair spread would give node 0 the remaining 8 vectors. This
+> optimization, however, is a bit more complex than the current algorithm,
+> which is probably why it wasn't done, so I think the warning should just
+> be removed.
 
-We can't readily return a negative value if the controller did provide
-a real response. There are a lot of driver assumptions that a return <
-0 to nvme_submit_sync_cmd() means the controller didn't provide a
-response, and we should abort initialization, and >= 0 is a command
-status returned from a responsive controller. I don't think there's
-any driver use for specific nvme statuses, though, so returning >= 0
-blk_sts_t is probably okay.
+Another policy is to assign vectors among nodes according to the
+following ratio:
+
+	ncpus in this node / total ncpus in un-assigned nodes  
+
+I have tried the following patch, looks it works fine:
+
+diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
+index 6fef48033f96..a598f20701a3 100644
+--- a/kernel/irq/affinity.c
++++ b/kernel/irq/affinity.c
+@@ -94,6 +94,28 @@ static int get_nodes_in_cpumask(cpumask_var_t *node_to_cpumask,
+ 	return nodes;
+ }
+ 
++static int nodes_cpus(unsigned start_node, const nodemask_t nodemsk,
++		const cpumask_var_t *node_to_cpumask,
++		const struct cpumask *cpu_mask, struct cpumask *nmsk)
++{
++	unsigned n, ncpus, total_cpus = 0;
++
++	for_each_node_mask(n, nodemsk) {
++		if (n < start_node)
++			continue;
++
++		/* Get the cpus on this node which are in the mask */
++		cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
++
++		/* Calculate the number of cpus per vector */
++		ncpus = cpumask_weight(nmsk);
++
++		total_cpus += ncpus;
++	}
++
++	return total_cpus;
++}
++
+ static int __irq_build_affinity_masks(unsigned int startvec,
+ 				      unsigned int numvecs,
+ 				      unsigned int firstvec,
+@@ -128,15 +150,25 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+ 
+ 	for_each_node_mask(n, nodemsk) {
+ 		unsigned int ncpus, v, vecs_to_assign, vecs_per_node;
+-
+-		/* Spread the vectors per node */
+-		vecs_per_node = (numvecs - (curvec - firstvec)) / nodes;
++		unsigned int ncpus_left = nodes_cpus(n, nodemsk,
++				node_to_cpumask, cpu_mask, nmsk);
+ 
+ 		/* Get the cpus on this node which are in the mask */
+ 		cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
+ 
+ 		/* Calculate the number of cpus per vector */
+ 		ncpus = cpumask_weight(nmsk);
++
++		/*
++		 * Spread the vectors per node, and node with more CPUs will be
++		 * assigned to more vectors
++		 */
++		vecs_per_node = (numvecs - (curvec - firstvec)) * ncpus / ncpus_left;
++
++		/* at least assign one vector for this node */
++		if (!vecs_per_node)
++			vecs_per_node = 1;
++
+ 		vecs_to_assign = min(vecs_per_node, ncpus);
+ 
+ 		/* Account for rounding errors */
+@@ -160,7 +192,6 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+ 			break;
+ 		if (curvec >= last_affv)
+ 			curvec = firstvec;
+-		--nodes;
+ 	}
+ 	return done;
+ }
+
+
+thanks,
+Ming
 
 _______________________________________________
 Linux-nvme mailing list
