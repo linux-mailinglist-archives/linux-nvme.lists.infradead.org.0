@@ -2,34 +2,37 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76D34885A6
-	for <lists+linux-nvme@lfdr.de>; Sat, 10 Aug 2019 00:13:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 55C86885A2
+	for <lists+linux-nvme@lfdr.de>; Sat, 10 Aug 2019 00:12:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=1OrHOP1UlSKrHktEXIjhPZ5UiIwwrzFccLvBgDFmDJo=; b=KHk
-	XGpr6/BIcCxYcPSUFZwCzXGcxcIPKlSbIVnHcztgOT1wvVWUt3YugX9mx/vizA4FP7gSk1D2LyYu0
-	BtlIqpJaxVkTcWc6k6FKOZJetX2jGcab5una6nPmc53jmSuuNm7Rg8pd7vRKOWKiH5HjE6driTssB
-	Gkdqwn/ayEoJRs8CfCm1nY/O2YzLK0xNwNesPtSG5+Aov4MmONKrbxuyc8RHj8cdntOW2Zso7GmfG
-	3QMQAuyhKkDOJCtGbG1PG8GBXt2p4f9eXMK1V3wQUUUckvINoey2Q+TC17VohZZJq6Z3AO+JNIvWN
-	9JGk2SoYAtcNBhs5IoukUlVg/umU7IA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=CIzm9Ew2SreYPq0fHUBlGrQ19+Alb7QpYbHPiw5BXIY=; b=DX8RDhzXu7qLTdKGzuAysaxXS+
+	RNaZNESSk4cV+CHaECXTnmWtjFZJkENgEpsmGJdTusi6si8sKIihZhwtCdmWEarg/da3IGhddqj4e
+	ksrj4dEQesSWLDiL5SJwrySxiJubpCsgRb9mfKKKSi2mqYHAgvW0rADmWQG2OHMU0jdaZUnrvpyis
+	KNu040SKGQshc1JW9h/ciPIN60fykiLHRo+2l8CHgVkvTFnd456yiMbt5FtWWyDo42owHwZf6heaG
+	GYBDdRrkL4Idwv9mAcxccImOOBXry/0MCc+FCYosy2CLqJjIeyVDwMjog4G1s7tl3k+xNyWxd7N1y
+	JPgwxtzw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hwD8A-00051n-Jo; Fri, 09 Aug 2019 22:13:02 +0000
+	id 1hwD7V-0004N5-N8; Fri, 09 Aug 2019 22:12:21 +0000
 Received: from 162-195-240-247.lightspeed.sntcca.sbcglobal.net
  ([162.195.240.247] helo=sagi-Latitude-E7470.lbits)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hwD7Q-0004M4-DM; Fri, 09 Aug 2019 22:12:16 +0000
+ id 1hwD7Q-0004M4-K4; Fri, 09 Aug 2019 22:12:16 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v5 0/7] nvme controller reset and namespace scan work race
- conditions
-Date: Fri,  9 Aug 2019 15:12:04 -0700
-Message-Id: <20190809221211.21157-1-sagi@grimberg.me>
+Subject: [PATCH v5 1/7] nvme: fail cancelled commands with
+ NVME_SC_HOST_PATH_ERROR
+Date: Fri,  9 Aug 2019 15:12:05 -0700
+Message-Id: <20190809221211.21157-2-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190809221211.21157-1-sagi@grimberg.me>
+References: <20190809221211.21157-1-sagi@grimberg.me>
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,60 +52,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hey Hannes and Keith,
+NVME_SC_ABORT_REQ means that the request was aborted due to
+an abort command received. In our case, this is a transport
+cancellation, so host pathing error is much more appropriate.
 
-This series handles the reset and scanning race saga.
+Also, convert NVME_SC_HOST_PATH_ERROR to BLK_STS_TRANSPORT for
+such that callers can understand that the status is a transport
+related error. This will be used by the ns scanning code to
+understand if it got an error from the controller or that the
+controller happens to be unreachable by the transport.
 
-The approach is to have the relevant admin commands return a proper
-status code that reflects that we had a transport error and
-not remove the namepsace if that is indeed the case.
+Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+---
+ drivers/nvme/host/core.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-This should be a reliable way to know if the revalidate_disk failed
-due to a transport error or not.
-
-I am able to reproduce this race with the following command (using
-tcp/rdma):
-for j in `seq 50`; do nvme connect-all; for i in `seq 50`; do nvme reset /dev/nvme0; done ; nvme disconnect-all; done
-
-With this patch set (plus two more tcp/rdma transport specific patches
-that address a other issues) I was able to pass the test without
-reproducing the hang that you hannes reported.
-
-Changes from v4:
-- return nvme_error_status in __nvme_submit_sync_cmd and cast to
-  errno in nvme_identify_ns
-- modified status print in nvme_report_ns_ids
-
-Changes from v3:
-- return blk_status_to_errno instead of blk_status_t in sync cmds
-- check for normal return errno from revalidate_disk, this covers
-  transport errors, but also spurious allocation errors and any
-  type of transient errors.
-
-Changes from v2:
-- added fc patch from James (can you test please?)
-- made nvme_identify_ns return id or PTR_ERR (Hannes)
-
-Changes from v1:
-- different approach
-
-James Smart (1):
-  nvme-fc: Fail transport errors with NVME_SC_HOST_PATH
-
-Sagi Grimberg (6):
-  nvme: fail cancelled commands with NVME_SC_HOST_PATH_ERROR
-  nvme: return a proper status for sync commands failure
-  nvme: make nvme_identify_ns propagate errors back
-  nvme: make nvme_report_ns_ids propagate error back
-  nvme-tcp: fail command with NVME_SC_HOST_PATH_ERROR send failed
-  nvme: fix ns removal hang when failing to revalidate due to a
-    transient error
-
- drivers/nvme/host/core.c | 60 ++++++++++++++++++++++++++++------------
- drivers/nvme/host/fc.c   | 37 ++++++++++++++++++++-----
- drivers/nvme/host/tcp.c  |  2 +-
- 3 files changed, 74 insertions(+), 25 deletions(-)
-
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 6956041224ec..867c8977eb3e 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -228,6 +228,8 @@ static blk_status_t nvme_error_status(struct request *req)
+ 		return BLK_STS_PROTECTION;
+ 	case NVME_SC_RESERVATION_CONFLICT:
+ 		return BLK_STS_NEXUS;
++	case NVME_SC_HOST_PATH_ERROR:
++		return BLK_STS_TRANSPORT;
+ 	default:
+ 		return BLK_STS_IOERR;
+ 	}
+@@ -294,7 +296,7 @@ bool nvme_cancel_request(struct request *req, void *data, bool reserved)
+ 	dev_dbg_ratelimited(((struct nvme_ctrl *) data)->device,
+ 				"Cancelling I/O %d", req->tag);
+ 
+-	nvme_req(req)->status = NVME_SC_ABORT_REQ;
++	nvme_req(req)->status = NVME_SC_HOST_PATH_ERROR;
+ 	blk_mq_complete_request_sync(req);
+ 	return true;
+ }
 -- 
 2.17.1
 
