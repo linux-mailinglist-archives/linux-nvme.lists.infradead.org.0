@@ -2,86 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EA9E86EA2
-	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 01:58:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A100386EA6
+	for <lists+linux-nvme@lfdr.de>; Fri,  9 Aug 2019 02:01:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RIP/2HjrM7DAZlYHyiw84rAHdDYulyizGD5Idh8WjMI=; b=Yf8ksMqG2uTtzxLd1hZFHhsE6
-	h5VGusMgJoC8U9ytlIQUrwRo9PqOI/XA6mx93IqYYuYrCX6TzCHATPjeFC2idj/cWzB5LTF/hOmfw
-	cKoJxmu5Mv7Zzyap+4SfilhYBsQcwQTU8Ca5Efbq8+R/e2st2NbHL60MiH3XleNaQKcHuzzmo4ktW
-	yZEZvvNuaKlrc2azoMiIIRtJncpT0Xjjd7A+WFmtvjd17TFch5eQzfSaANuaFqLjcG0sq8JOyvu4F
-	X8ai9c0Bbf0+GrsYcbejAdqqgJlSWN17hBoN7gqYSQGLUKwpuG/aWNrC65F4o2EY8nXC4jITUPUu1
-	wmbnCb3lw==;
+	 bh=po/rA9fmDk6uYT3AYc7B7WMBx8+Z8fdGswTWlINSDHE=; b=IGdKx/ZfuaI4zo3uytC+OdAB+
+	y26BZl8sXWUBfKvthuRHcc20uGCAsdQ+pCWA5sOMQCWgF5NGQxJqDZ164BRPAQOoh55f/El+8qbxF
+	GkA71y+q7oRe0SPIOrQTWHgKsukjDwCXm/FoKvExeUoCdeJUOnTCmfP8p8Aq40lZfmXaeDmvp2p1y
+	w4e69VB3Ux31U22qb2WSEAMW/pMOZbvQDaUaS5mG/lxRuqLT56pdiI7RZKxPNy/rGez34Geoo9io/
+	8ZcP9Sm8Kys2lwszwBbzoMhnSJcsIyDvCngJA/5XbD3p+nsWwG3vO8SNX/ZG/lPtALQIsXKnD7O7t
+	QZaEKmlEQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hvsID-0004Bu-Sv; Thu, 08 Aug 2019 23:58:01 +0000
-Received: from mail-pf1-f196.google.com ([209.85.210.196])
+	id 1hvsL4-0005fU-Aq; Fri, 09 Aug 2019 00:00:58 +0000
+Received: from mail-ot1-f65.google.com ([209.85.210.65])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hvsI9-0004An-Kh
- for linux-nvme@lists.infradead.org; Thu, 08 Aug 2019 23:57:58 +0000
-Received: by mail-pf1-f196.google.com with SMTP id b13so44998054pfo.1
- for <linux-nvme@lists.infradead.org>; Thu, 08 Aug 2019 16:57:56 -0700 (PDT)
+ id 1hvsKz-0005fB-Nw
+ for linux-nvme@lists.infradead.org; Fri, 09 Aug 2019 00:00:54 +0000
+Received: by mail-ot1-f65.google.com with SMTP id j19so49212724otq.2
+ for <linux-nvme@lists.infradead.org>; Thu, 08 Aug 2019 17:00:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0CGjr/yE31ABWo5ivg9XIKVtf2nzCWMXv3rPJAoc88g=;
- b=emBOvvdPKre1NAwlf8Zoz/JDlwRGAR4qxSPn25ECIvn2NjfGeB8ZIwwsvuXsqTGNZN
- jikmD07Vy56JdZDXxIIKeeBMuyrcwRbjhaXdWx5jbQ3iWXwnzD1SU8fPw585+JOT8yiC
- ao9RgH3823q4N9hyEdaN8kGl8s+NuGG/Kzitc/bftw3Leq/sfPvJ2JtgD4v9VCtoVVnN
- N9YhEIxKTAps2eY0MeXD+WMkcg4moWC1GsZqnGw7++j+20WQI1gNCejmkUcjSd0fdjnb
- gNBlKqzBCgM0Rpmi/+CC0P0vT39ucTUoRAHJ6FsaAbHlfIv5HL7EoxTU45Zr03zUYnEp
- RU/w==
-X-Gm-Message-State: APjAAAUN60Li8Tz2YATWq8J6IepLM+q4q5RxqyqVhgdoYS2ftNg2edSH
- NLGrg6Dtq6yFl649+zLZ/jWDkq79
-X-Google-Smtp-Source: APXvYqwtQoKaiDT0dcPcZAxYtgxs3Mjf1ymbXEw1FxpagJdRuWkaqZNwFo6XceXd6J5YBlCfK6aH6w==
-X-Received: by 2002:a63:7b4d:: with SMTP id k13mr5373369pgn.182.1565308676226; 
- Thu, 08 Aug 2019 16:57:56 -0700 (PDT)
-Received: from desktop-bart.svl.corp.google.com
- ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
- by smtp.gmail.com with ESMTPSA id o14sm188952469pfh.153.2019.08.08.16.57.54
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Thu, 08 Aug 2019 16:57:55 -0700 (PDT)
-Subject: Re: [PATCH v3 0/7] nvme controller reset and namespace scan work race
- conditions
-To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
-References: <20190808205325.24036-1-sagi@grimberg.me>
- <779b707b-5892-bf23-52d8-5c8affe524b6@acm.org>
- <32b4c64f-4565-5a1c-269e-9a9059570e99@grimberg.me>
-From: Bart Van Assche <bvanassche@acm.org>
-Message-ID: <90120210-7740-d0c8-10cf-93e2c8977e99@acm.org>
-Date: Thu, 8 Aug 2019 16:57:53 -0700
+ bh=To7lp4nO4KYBp0T9knEgNzVApC5WBg6ghS/p4Kjswyg=;
+ b=q29cjjcpUUjFQXB7tbDMehLvRkreup/Eikb8Rie+vLLLHSwwtypPXRkSGxqtvwcxu6
+ zhtWZqLfBOjapT20AhrVUepoASw/64XdBlmsm8kjBVvGVkd1YLdnmVmVciTQwFBsKFyW
+ ArqOD9NdL9784yHoOn9b1TixslNnPxwzN9IKeEzqLF6xATPIb7TEw6sdNEB+it+7SmcM
+ ri0p3Y6IXv+e9RJ1ZjTLClrPg8ZVy9cvprfPQmYPx5dF4/O2FDLdNNDlgGvJ16b2KfWP
+ t1u5VqOmGiiezSzfmjKTTjpjf17+9wg78thvYXxzCrWVyWPcZ/2qkhwSHZtOlO5TUIsa
+ kB4A==
+X-Gm-Message-State: APjAAAWOeuHDxIwX5qiHAnO9IbpLMr3OYCqW17orR/Dyta153L1vmTk2
+ jYGiZXeI7WR0DfYhfv/kXIyqrSxh
+X-Google-Smtp-Source: APXvYqxI98DlKM5XV+oGnmzRgEXoq5990yyhBX4FDHky9PTQffUL8hND8pcjF9S2UzP+7j5Em8QDtg==
+X-Received: by 2002:aca:c5d0:: with SMTP id v199mr4073209oif.144.1565308852723; 
+ Thu, 08 Aug 2019 17:00:52 -0700 (PDT)
+Received: from [192.168.1.114]
+ (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
+ by smtp.gmail.com with ESMTPSA id 94sm32978283otl.62.2019.08.08.17.00.51
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 08 Aug 2019 17:00:52 -0700 (PDT)
+Subject: Re: [PATCH] nvme: exclude completion trace from non-multipath builds
+To: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>,
+ linux-nvme@lists.infradead.org
+References: <9efc495c41b7bf050362a3a7eb64b5809092afd6.1565280170.git.mskorzhinskiy@solarflare.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <1febf497-e92e-6acd-1968-50ae7735ec79@grimberg.me>
+Date: Thu, 8 Aug 2019 17:00:41 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <32b4c64f-4565-5a1c-269e-9a9059570e99@grimberg.me>
+In-Reply-To: <9efc495c41b7bf050362a3a7eb64b5809092afd6.1565280170.git.mskorzhinskiy@solarflare.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190808_165757_678016_61AFED3A 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20190808_170053_783823_FF41A5DF 
+X-CRM114-Status: GOOD (  18.62  )
 X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.196 listed in list.dnswl.org]
+ no trust [209.85.210.65 listed in list.dnswl.org]
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bart.vanassche[at]gmail.com)
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.196 listed in wl.mailspike.net]
+ provider (sagigrim[at]gmail.com)
  0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,30 +88,66 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
- James Smart <james.smart@broadcom.com>, Christoph Hellwig <hch@lst.de>
+Cc: Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 8/8/19 4:33 PM, Sagi Grimberg wrote:
-> 
->>> for j in `seq 50`; do for i in `seq 50`; do nvme reset /dev/nvme0; 
->>> done ; nvme disconnect-all; nvme connect-all; done
->>
->> Has anyone already volunteered to convert this into a patch for the 
->> blktests project?
-> 
-> I'll see if it can reliably reproduce it for loop. Or perhaps I can
-> run this with tcp on 127.0.0.1?
 
-There are more tests in blktests that use loopback over a local network 
-interface, e.g. the SRP tests. You may want to have a look at 
-get_ipv4_addr(), get_ipv6_addr() and other functions in 
-common/multipath-over-rdma.
 
-Bart.
+On 8/8/19 8:35 AM, Mikhail Skorzhinskii wrote:
+> This trace point have no meaning without native multipath support and
+> break compilation on configurations without enabled multipath.
+> 
+> Signed-off-by: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
+> ---
+>   drivers/nvme/host/core.c | 19 +++++++++++++++----
+>   1 file changed, 15 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index 6956041224ec..9fd4397ff158 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -260,10 +260,20 @@ static void nvme_retry_req(struct request *req)
+>   	blk_mq_delay_kick_requeue_list(req->q, delay);
+>   }
+>   
+> +#ifdef CONFIG_NVME_MULTIPATH
+> +static void nvme_trace_compl(struct request *req, blk_status_t status)
+> +{
+> +	struct nvme_ns *ns = req->q->queuedata;
+> +
+> +	if (req->bio && ns && ns->head->disk)
+> +		trace_block_bio_complete(ns->head->disk->queue,
+> +					 req->bio, status);
+> +}
+> +#endif
+> +
+>   void nvme_complete_rq(struct request *req)
+>   {
+>   	blk_status_t status = nvme_error_status(req);
+> -	struct nvme_ns *ns = req->q->queuedata;
+>   
+>   	trace_nvme_complete_rq(req);
+>   
+> @@ -282,9 +292,10 @@ void nvme_complete_rq(struct request *req)
+>   			return;
+>   		}
+>   	}
+> -	if (req->bio && ns && ns->head->disk)
+> -		trace_block_bio_complete(ns->head->disk->queue,
+> -					 req->bio, status);
+> +
+> +#ifdef CONFIG_NVME_MULTIPATH
+> +	nvme_trace_compl(req, status);
+> +#endif
+
+The call should not condition on CONFIG_NVME_MULTIPATH, but the function
+implementation should be left empty if CONFIG_NVME_MULTIPATH is not
+enabled (see nvme.h).
+
+Also, lets call it nvme_trace_bio_complete..
 
 _______________________________________________
 Linux-nvme mailing list
