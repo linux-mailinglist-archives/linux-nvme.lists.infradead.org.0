@@ -2,125 +2,80 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C1E989217
-	for <lists+linux-nvme@lfdr.de>; Sun, 11 Aug 2019 16:59:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B2BD389695
+	for <lists+linux-nvme@lfdr.de>; Mon, 12 Aug 2019 07:07:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NrisqVmSwd0I3HBSFWrsYiHI9u34akHOnuW+gppkD2E=; b=KX7GpYAtKeLiJMWBkGN+sAokh
-	qwaMAJrdiqzNle/KE1/DAwBDjx7AsB1KAt/fM6ZtDzMJ6rAwOr8GpQVblls4y2y20kRtuHDVjvHDo
-	s66lYqdISv4hR9QeIwLLQLbvmLfa046fELsnDomDSw9uk9W4LIck3aHUYKqD+mGZP2KB+fupKqRHl
-	y0ngijApMWAcrut+y4uzys5GWQ7QYGI+kvq7CYUbwOUufsw2ds7R7500+Fdqg7KJzPTTZA8IQlDK8
-	HYOYGSR4faj+Y6bqOTO/19HgLujOXKUeF2f2EEjJt1Vwyo4FX0WopyCv6kErL4xPWESrehFQzMPFb
-	z40colLoA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9Y/8ADfITi96BMOBF5eLQjt+Cpv6mZ2VMO7a7iZiRds=; b=QXTKAiZ/LvHETZ
+	yyQWix5oaYhws5+f6OiBszhBadJ/rIiivbZUh43zKSpoY1avb+lcdVqJwPEV5KYDQfFcynwKZYKl8
+	q7AEiTDZeRpYHyW1Q0xIHt6c2PDR9DTHGLBv4Bd4XD3EWE9isKXfaE8F5chwdSNwCafa3Wu9xu6IC
+	gzZR/zZfAhHP04mbyE/qqcGD/ycL7WQVWf/XSkSUxKzZTftoa2faL0sxAncilKQsRGJ/sq7KhYMqJ
+	N7WQYPw2xx0D62aod7WExr8qFLtiiOhuHVnB32nZQ4jS+2GNiF4m4RhhbJGobpJ59Qg0bdF/Zr0cX
+	d1NVeZFzJ/5VTzWUeBhg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hwpJg-0001Ck-Ks; Sun, 11 Aug 2019 14:59:28 +0000
-Received: from mail-eopbgr20088.outbound.protection.outlook.com ([40.107.2.88]
- helo=EUR02-VE1-obe.outbound.protection.outlook.com)
+	id 1hx2YD-0001x1-4Q; Mon, 12 Aug 2019 05:07:21 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hwpJc-0001CN-FU
- for linux-nvme@lists.infradead.org; Sun, 11 Aug 2019 14:59:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=k4u3AZ8jRSmE3AwGwNCCS6TyD2lanzSo9CPEF6C8nZnldO+eWMl/MDW7eE8A2tTrMxEPEk1D0skeISUbWmeZLbyh4z2p9ucGlk2n6XtEXfOhPpirJ6BO8WRBwi8IjYhEkhVASahjAKxfTsjzYHd1xDkHHdN5EYjY1XGpfixnBPF1ET+gXK4Wth4YYGiBcW/oFxWqApPmGG7jpkyFle3Rbwya3u5yauK/WcwirVdNwT5wXvYWwkKIrtJKgWHwDNWv9camoKadrzzfQ2VrUb8v8yhe7oqyOkYp0RUTjoCgQvVA7rgP9DNW8XDOfQ5SxWHNwhsCclm0uBFrhoPCUF/tGA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5AwENEJWJX2nYJcN/Gen+uO5s3hyoCaCUNK2VEgxvAo=;
- b=ArCqbYlmSrGJYONjpfHAau/Ydwr/HO2PllXafQcYkM3awZON7fIR8xptESP2auc0gA+ZndSezzBf20jR4TMC2cHekLDt18zAFBGFAvHcB41OYVpviaFlbw9nWhOf8z38jkuU8sXLnHVPUPJDXQ1Q0uDa9m8IJJGbapLCZKyJXemirtSHF4ETcpYeC4IL69JXRXZ3kB4tKM6ntuBThDqYBD5AePLbltqpEoiIB8kcocLBpWaWKxjISYUYrfig5Z7q/yjMMqqyUyCGcSVotaHlGa4/2vF0nAxyOkQey7Fbb0/AQrllXp21c/6l6SFjllTGQ6pPGLS8Xd5kHeRnbH1Ohw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 193.47.165.251) smtp.rcpttodomain=lst.de smtp.mailfrom=mellanox.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=mellanox.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5AwENEJWJX2nYJcN/Gen+uO5s3hyoCaCUNK2VEgxvAo=;
- b=od8cdrM+VWzKINOXDR+UZxqQPTwb57DYo9WuB1Va8tUQ5GLGlBD6pax3YJp+XU1eQStL0MWIaFja+wn3M8GW3nwrmzYSwr0h7CGv6MpVs9OzKJ+bgN6oqKYqNDmh2ABA18GBxQngOrTwwhythsWKqmr6kg0cgrXwMVB3BopLvcM=
-Received: from AM0PR05CA0076.eurprd05.prod.outlook.com (2603:10a6:208:136::16)
- by DB6PR0502MB3062.eurprd05.prod.outlook.com (2603:10a6:4:94::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2157.21; Sun, 11 Aug
- 2019 14:59:15 +0000
-Received: from DB5EUR03FT003.eop-EUR03.prod.protection.outlook.com
- (2a01:111:f400:7e0a::207) by AM0PR05CA0076.outlook.office365.com
- (2603:10a6:208:136::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2157.14 via Frontend
- Transport; Sun, 11 Aug 2019 14:59:15 +0000
-Authentication-Results: spf=pass (sender IP is 193.47.165.251)
- smtp.mailfrom=mellanox.com; lst.de; dkim=none (message not signed)
- header.d=none;lst.de; dmarc=pass action=none header.from=mellanox.com;
-Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
- 193.47.165.251 as permitted sender)
- receiver=protection.outlook.com; 
- client-ip=193.47.165.251; helo=mtlcas13.mtl.com;
-Received: from mtlcas13.mtl.com (193.47.165.251) by
- DB5EUR03FT003.mail.protection.outlook.com (10.152.20.157) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.2052.18 via Frontend Transport; Sun, 11 Aug 2019 14:59:15 +0000
-Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4; Sun, 11 Aug 2019 17:59:13
- +0300
-Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Sun,
- 11 Aug 2019 17:59:13 +0300
-Received: from [10.223.0.54] (10.223.0.54) by MTLCAS01.mtl.com (10.0.8.71)
- with Microsoft SMTP Server (TLS) id 14.3.301.0; Sun, 11 Aug 2019 17:59:00
- +0300
-Subject: Re: [PATCH 2/2] nvmet-tcp: fix possible memory leak
-To: Sagi Grimberg <sagi@grimberg.me>, <linux-nvme@lists.infradead.org>
-References: <20190808205522.24638-1-sagi@grimberg.me>
- <20190808205522.24638-2-sagi@grimberg.me>
-From: Max Gurtovoy <maxg@mellanox.com>
-Message-ID: <62ac1147-18d5-fff6-5571-1a592ddd2ae4@mellanox.com>
-Date: Sun, 11 Aug 2019 17:58:59 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1hx2Xy-0001wM-Ne
+ for linux-nvme@lists.infradead.org; Mon, 12 Aug 2019 05:07:08 +0000
+Received: by mail-wr1-x443.google.com with SMTP id n9so103541712wru.0
+ for <linux-nvme@lists.infradead.org>; Sun, 11 Aug 2019 22:07:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=aP8VNbJwdQYaSZJ1imIyz0RI5Crt+YbRZvNDlL4/jpQ=;
+ b=AMZ7Kqc93TaUacKOBAYc7uklS99HA0k/mkqvk9yP3Zts5PfjWZ32QGlh0AcAmkyyR3
+ pz+JT/K2vJJBXZjFY3KylPNT3bcJLuJyh0axFIbghBqA58nXLl8QZFm+FPJ8QHYCkJnx
+ Dn8BEplVzVSnW/V084uYmssUioe6RJzX+TCmAb2HaLU5Pij9Aqd3Ls0EY3GUmPexHhCn
+ MqCLe+HGHbcmliU6OYooDNMqFTa63lckjB2lqoG6KTEVVceEJq9mcQybrnJOHI08YFTC
+ YNIPE2xj0YShqL9hsI/1eNwILNat72Pa4MmFK5UUQjrD6hdBjnsettYCLkHv2GUrM7Ei
+ cdVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=aP8VNbJwdQYaSZJ1imIyz0RI5Crt+YbRZvNDlL4/jpQ=;
+ b=gENyjKy2HR+UIHEg25h3Bru+uYIv5x9hvfa77Y/V9QUjbs1FF9dHr9fU9gxClF/vFC
+ vjqY2YBIfrIVk4EX1+2FGxD4///At34Yz50/CN3CdFzbfxAA/Ieiy01r8meAl/9OSJaU
+ cdiMnqCkv67q13K0srbmbfGB878m7ilYkW+uSeDTs5rpiY7sh215El719BFPMK/LFZwN
+ gqvNkdAFb2bAf4v0WXbKwTWadI9mCyhlSs6suOlEllEjLmNQq4yN5RfW8fOebZLZJ16z
+ L7gPHov5+Abzuaoff2Hy5lk8ci+qpd8EzKTDtesEaSkyuq2feTBm/XGIpXKiX/UZ1wv8
+ xGbQ==
+X-Gm-Message-State: APjAAAUFXpt840B2CR+eoZ++BgX9iQdX8Taf/aF4EO3dZ78fRewfMC0R
+ Ev4Cu11IPT5InLf2aWasFHNXpTmVDD3gLM95+jc=
+X-Google-Smtp-Source: APXvYqxQT0vmwxz66zVU1Q++t5xosJoGJRxTW6fYwUtcWL0gm4jiEWPQjRbPqkBh2NsDqmRohe3dSXtbHwQRiQ3/8us=
+X-Received: by 2002:adf:91c2:: with SMTP id 60mr40582385wri.334.1565586423303; 
+ Sun, 11 Aug 2019 22:07:03 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190808205522.24638-2-sagi@grimberg.me>
-Content-Language: en-US
-X-Originating-IP: [10.223.0.54]
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:193.47.165.251; IPV:NLI; CTRY:IL; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(4636009)(39860400002)(346002)(376002)(136003)(396003)(2980300002)(199004)(189003)(486006)(106002)(316002)(110136005)(186003)(54906003)(16576012)(126002)(53936002)(50466002)(4744005)(229853002)(336012)(478600001)(2616005)(11346002)(58126008)(476003)(5660300002)(36756003)(6246003)(26005)(76176011)(16526019)(70206006)(53546011)(65806001)(23676004)(2486003)(65956001)(4326008)(47776003)(70586007)(7736002)(305945005)(446003)(64126003)(356004)(2906002)(230700001)(8936002)(8676002)(3846002)(81166006)(81156014)(6116002)(31686004)(86362001)(65826007)(31696002)(3940600001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DB6PR0502MB3062; H:mtlcas13.mtl.com; FPR:;
- SPF:Pass; LANG:en; PTR:InfoDomainNonexistent; A:1; MX:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 927907c5-ce3d-4add-0090-08d71e6c7a42
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(4709080)(1401327)(2017052603328)(7193020);
- SRVR:DB6PR0502MB3062; 
-X-MS-TrafficTypeDiagnostic: DB6PR0502MB3062:
-X-Microsoft-Antispam-PRVS: <DB6PR0502MB3062BF11A8A30F3EC4BCFF86B6D00@DB6PR0502MB3062.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:2958;
-X-Forefront-PRVS: 0126A32F74
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: iQ3wbzaLehcEDDxXyH27hOpzPje6ZOupAIP1/oVKp1LXjDylJPeo691CtAjW3+t4DJGJBy3B6pY4R72ZLfk00AIbqfySbtY+w3kHqEDCq+nWgLhxXz9+6Rt/5UAw3j34D1QfJODtzZcCAuh/YWb75fxy5DloQgA9DZqeao8RqqYd3CifGj9Ze+2VW1XFaR4NuzuUBxJExkx7yQtyDDq+8hU1l+io8IYjttLIKriMMKhJS2C23sFwZPpo48mfZKX4uUhw6Ihx2T+jxBrX/KO27vlXUQWADGPzSxlRTV54nNWjnFRnCz3wfEnWZQAVFxUXVayeWUgyy2OcGOHfLPa6UTmWYTgjJ0LhidU3HGGqaqkSARR5tIT2sVJC/fY6uCnFkuOOEEsQ5P6d8LSn/18HyUWHo5rBq9gEG9Aw5kHGYrI=
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Aug 2019 14:59:15.0840 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 927907c5-ce3d-4add-0090-08d71e6c7a42
-X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.251];
- Helo=[mtlcas13.mtl.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB6PR0502MB3062
+References: <20190809102310.27246-1-ming.lei@redhat.com>
+ <20190809102310.27246-2-ming.lei@redhat.com>
+ <20190809144204.GA28515@localhost.localdomain>
+ <CACVXFVMT=rkZC7LwK5quXgudS7fb7bQ_LunA1tEE-Z-9s1uvaA@mail.gmail.com>
+In-Reply-To: <CACVXFVMT=rkZC7LwK5quXgudS7fb7bQ_LunA1tEE-Z-9s1uvaA@mail.gmail.com>
+From: Ming Lei <tom.leiming@gmail.com>
+Date: Mon, 12 Aug 2019 13:06:49 +0800
+Message-ID: <CACVXFVNMu3tnEgi0+jcdgv5CD-ZAy7xnff4GxpPrVaKDh_fULA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] genirq/affinity: improve __irq_build_affinity_masks()
+To: Keith Busch <kbusch@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190811_075924_521421_248CD52B 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20190811_220706_797350_291F83CE 
+X-CRM114-Status: GOOD (  24.25  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.2.88 listed in list.dnswl.org]
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (tom.leiming[at]gmail.com)
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -139,40 +94,97 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>, Ming Lei <ming.lei@redhat.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Christoph Hellwig <hch@lst.de>,
+ Jon Derrick <jonathan.derrick@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-On 8/8/2019 11:55 PM, Sagi Grimberg wrote:
-> when we uninit a command in error flow we also need to
-> free an iovec if it was allocated.
+On Sat, Aug 10, 2019 at 7:05 AM Ming Lei <tom.leiming@gmail.com> wrote:
 >
-> Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
-> ---
->   drivers/nvme/target/tcp.c | 1 +
->   1 file changed, 1 insertion(+)
+> On Fri, Aug 9, 2019 at 10:44 PM Keith Busch <kbusch@kernel.org> wrote:
+> >
+> > On Fri, Aug 09, 2019 at 06:23:09PM +0800, Ming Lei wrote:
+> > > One invariant of __irq_build_affinity_masks() is that all CPUs in the
+> > > specified masks( cpu_mask AND node_to_cpumask for each node) should be
+> > > covered during the spread. Even though all requested vectors have been
+> > > reached, we still need to spread vectors among left CPUs. The similar
+> > > policy has been taken in case of 'numvecs <= nodes'.
+> > >
+> > > So remove the following check inside the loop:
+> > >
+> > >       if (done >= numvecs)
+> > >               break;
+> > >
+> > > Meantime assign at least 1 vector for left nodes if 'numvecs' vectors
+> > > have been spread.
+> > >
+> > > Also, if the specified cpumask for one numa node is empty, simply not
+> > > spread vectors on this node.
+> > >
+> > > Cc: Christoph Hellwig <hch@lst.de>
+> > > Cc: Keith Busch <kbusch@kernel.org>
+> > > Cc: linux-nvme@lists.infradead.org,
+> > > Cc: Jon Derrick <jonathan.derrick@intel.com>
+> > > Signed-off-by: Ming Lei <ming.lei@redhat.com>
+> > > ---
+> > >  kernel/irq/affinity.c | 33 +++++++++++++++++++++------------
+> > >  1 file changed, 21 insertions(+), 12 deletions(-)
+> > >
+> > > diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
+> > > index 6fef48033f96..bc3652a2c61b 100644
+> > > --- a/kernel/irq/affinity.c
+> > > +++ b/kernel/irq/affinity.c
+> > > @@ -129,21 +129,32 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+> > >       for_each_node_mask(n, nodemsk) {
+> > >               unsigned int ncpus, v, vecs_to_assign, vecs_per_node;
+> > >
+> > > -             /* Spread the vectors per node */
+> > > -             vecs_per_node = (numvecs - (curvec - firstvec)) / nodes;
+> > > -
+> > >               /* Get the cpus on this node which are in the mask */
+> > >               cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
+> > > -
+> > > -             /* Calculate the number of cpus per vector */
+> > >               ncpus = cpumask_weight(nmsk);
+> > > +             if (!ncpus)
+> > > +                     continue;
+> >
+> > This shouldn't be possible, right? The nodemsk we're looping  wouldn't
+> > have had that node set if no CPUs intersect the node_to_cpu_mask for
+> > that node, so the resulting cpumask should always have a non-zero weight.
 >
-> diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-> index 0d63f3da0117..76e43750b9e5 100644
-> --- a/drivers/nvme/target/tcp.c
-> +++ b/drivers/nvme/target/tcp.c
-> @@ -1309,6 +1309,7 @@ static void nvmet_tcp_finish_cmd(struct nvmet_tcp_cmd *cmd)
->   {
->   	nvmet_req_uninit(&cmd->req);
->   	nvmet_tcp_unmap_pdu_iovec(cmd);
-> +	kfree(cmd->iov);
->   	if (cmd->req.sg_cnt)
->   		sgl_free(cmd->req.sg);
->   }
+>      cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
+>
+> It is often true, see the following cases:
+>
+> 1) all CPUs in one node are not present
+>
+> OR
+>
+> 2) all CPUs in one node are present
+>
+> >
+> > > @@ -153,16 +164,14 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+> > >                       }
+> > >                       irq_spread_init_one(&masks[curvec].mask, nmsk,
+> > >                                               cpus_per_vec);
+> > > +                     if (++curvec >= last_affv)
+> > > +                             curvec = firstvec;
+> >
+> > I'm not so sure about wrapping the vector to share it across nodes. We
+>
+> The wrapping is always there, not added by this patch.
+
+We could avoid the wrapping completely given 'numvecs' > 'nodes', and
+it can be done by sorting each node's nr_cpus, will do it in V2.
 
 
-Looks good,
-
-Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
-
+Thanks,
+Ming Lei
 
 _______________________________________________
 Linux-nvme mailing list
