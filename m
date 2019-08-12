@@ -2,61 +2,68 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40F198A24E
-	for <lists+linux-nvme@lfdr.de>; Mon, 12 Aug 2019 17:30:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DC16C8A493
+	for <lists+linux-nvme@lfdr.de>; Mon, 12 Aug 2019 19:32:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QoyK9AUWVKHfnYbPrpRQgEso/s54Q4Ebid2J/RTeJ4I=; b=mpX7c6K01msurj
-	ASLr0m/8pGhVWNrxHyNFfC6EccsB0VQDmTw0ykUoC5TvG/3Mw2zlGCEOyzs5O/1JNnOn03Tjc2FLu
-	pTQKitS7XgaI8Kj5JXaqcMwvkuY1zBcoS9UnfZ4pBE8hkEelHoLiTerr1GAVdSv23/yXBsohdOhvw
-	pAgl0JknOCKRHunYydJp04tpdwF7TmDTo1aD0N6i/N544ky41CFWIaq5rERLcL8ugBUORbm9MbOx2
-	dD1fHMzwDusLS9C8yTRQn+PoOdNCqVzErr7jJ7ID4yXjDBGixg6xXIfoJNNnj4ZvtOgVZBpNvWAHa
-	3N88wEVAejAuTrQEAF5A==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:Message-Id:Date:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/VPCqtiB5cfLhCwvMgKAwH/KhbsDyE4n/9nwcp4or3w=; b=jwKh/s94cpkd0Z
+	Hm62G2FHRYNnbxz+ZZZj5uXynUWkduLHkdI62SR7D6ET8UNTHNzkIKN17AzLumMGoBnLZLnENdFHe
+	q243EMmaYxHW1Q20byyH2x6RTOZpA+zhiG1boehbh29P9qmLqjOXyT8+9NhyuMPHODMMMBiF3omqF
+	Ku3KtmSmT93zXei5QrSzXj7xzftyIoqYVJ7ZYXbPtAwWSowb8l+rLqQeTGrvlL107nauGabKIKYT/
+	TBj5I8TXN4I//8QxIgLcFRuX5A9q2ZPUTKhPtM0A3qCvLAH7AG2JHj0Pq0be7zu/8rbX1l9n3U4m8
+	dfxDK9NgntCCT5sWP1Ag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxCGb-0007Kc-Jk; Mon, 12 Aug 2019 15:29:49 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1hxEBe-00086o-Az; Mon, 12 Aug 2019 17:32:50 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxCGP-0007Jt-Mm
- for linux-nvme@lists.infradead.org; Mon, 12 Aug 2019 15:29:39 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 Aug 2019 08:29:35 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,377,1559545200"; d="scan'208";a="177514233"
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by fmsmga007.fm.intel.com with ESMTP; 12 Aug 2019 08:29:35 -0700
-Date: Mon, 12 Aug 2019 09:27:18 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Ming Lei <ming.lei@redhat.com>
-Subject: Re: [PATCH V2 2/3] genirq/affinity: Spread vectors on node according
- to nr_cpu ratio
-Message-ID: <20190812152718.GA32550@localhost.localdomain>
-References: <20190812095709.25623-1-ming.lei@redhat.com>
- <20190812095709.25623-3-ming.lei@redhat.com>
+ id 1hxE9t-0006Us-JW
+ for linux-nvme@lists.infradead.org; Mon, 12 Aug 2019 17:31:07 +0000
+Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
+ by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
+ id 1hxE9l-0002sT-OD; Mon, 12 Aug 2019 11:31:00 -0600
+Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
+ (envelope-from <gunthorp@deltatee.com>)
+ id 1hxE9i-0002P7-Jc; Mon, 12 Aug 2019 11:30:50 -0600
+From: Logan Gunthorpe <logang@deltatee.com>
+To: linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-nvme@lists.infradead.org, linux-rdma@vger.kernel.org
+Date: Mon, 12 Aug 2019 11:30:34 -0600
+Message-Id: <20190812173048.9186-1-logang@deltatee.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190812095709.25623-3-ming.lei@redhat.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+X-SA-Exim-Connect-IP: 172.16.1.31
+X-SA-Exim-Rcpt-To: linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-rdma@vger.kernel.org, bhelgaas@google.com,
+ hch@lst.de, Christian.Koenig@amd.com, jgg@mellanox.com, sagi@grimberg.me,
+ kbusch@kernel.org, axboe@fb.com, dan.j.williams@intel.com, epilmore@gigaio.com,
+ sbates@raithlin.com, logang@deltatee.com
+X-SA-Exim-Mail-From: gunthorp@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
+Subject: [PATCH v3 00/14] PCI/P2PDMA: Support transactions that hit the host
+ bridge
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190812_082937_759189_9AEBDDE5 
-X-CRM114-Status: GOOD (  28.75  )
-X-Spam-Score: -4.0 (----)
+X-CRM114-CacheID: sfid-20190812_103101_780036_5A5E49E3 
+X-CRM114-Status: GOOD (  24.70  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-4.0 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [192.55.52.115 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [207.54.116.67 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,243 +75,345 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
- Christoph Hellwig <hch@lst.de>, Jon Derrick <jonathan.derrick@intel.com>
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ Christian Koenig <Christian.Koenig@amd.com>, Jens Axboe <axboe@fb.com>,
+ Keith Busch <kbusch@kernel.org>, Jason Gunthorpe <jgg@mellanox.com>,
+ Stephen Bates <sbates@raithlin.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Dan Williams <dan.j.williams@intel.com>, Eric Pilmore <epilmore@gigaio.com>,
+ Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Aug 12, 2019 at 05:57:08PM +0800, Ming Lei wrote:
-> Now __irq_build_affinity_masks() spreads vectors evenly per node, and
-> all vectors may not be spread in case that each numa node has different
-> CPU number, then the following warning in irq_build_affinity_masks() can
-> be triggered:
-> 
-> 	if (nr_present < numvecs)
-> 		WARN_ON(nr_present + nr_others < numvecs);
-> 
-> Improve current spreading algorithm by assigning vectors according to
-> the ratio of node's nr_cpu to nr_remaining_cpus, meantime running the
-> assignment from smaller nodes to bigger nodes to guarantee that every
-> active node gets allocated at least one vector, then we can avoid
-> cross-node spread.
-> 
-> Meantime the reported warning can be fixed.
-> 
-> Another big goodness is that the spread approach becomes more fair if
-> node has different CPU number.
-> 
-> For example, on the following machine:
-> 	[root@ktest-01 ~]# lscpu
-> 	...
-> 	CPU(s):              16
-> 	On-line CPU(s) list: 0-15
-> 	Thread(s) per core:  1
-> 	Core(s) per socket:  8
-> 	Socket(s):           2
-> 	NUMA node(s):        2
-> 	...
-> 	NUMA node0 CPU(s):   0,1,3,5-9,11,13-15
-> 	NUMA node1 CPU(s):   2,4,10,12
-> 
-> When driver requests to allocate 8 vectors, the following spread can
-> be got:
-> 	irq 31, cpu list 2,4
-> 	irq 32, cpu list 10,12
-> 	irq 33, cpu list 0-1
-> 	irq 34, cpu list 3,5
-> 	irq 35, cpu list 6-7
-> 	irq 36, cpu list 8-9
-> 	irq 37, cpu list 11,13
-> 	irq 38, cpu list 14-15
-> 
-> Without this patch, kernel warning is triggered on above situation, and
-> allocation result was supposed to be 4 vectors for each node.
-> 
-> Cc: Christoph Hellwig <hch@lst.de>
-> Cc: Keith Busch <kbusch@kernel.org>
-> Cc: linux-nvme@lists.infradead.org,
-> Cc: Jon Derrick <jonathan.derrick@intel.com>
-> Cc: Jens Axboe <axboe@kernel.dk>
-> Reported-by: Jon Derrick <jonathan.derrick@intel.com>
-> Signed-off-by: Ming Lei <ming.lei@redhat.com>
-> ---
->  kernel/irq/affinity.c | 141 +++++++++++++++++++++++++++++++++++-------
->  1 file changed, 117 insertions(+), 24 deletions(-)
-> 
-> diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
-> index c7cca942bd8a..927dcbe80482 100644
-> --- a/kernel/irq/affinity.c
-> +++ b/kernel/irq/affinity.c
-> @@ -7,6 +7,7 @@
->  #include <linux/kernel.h>
->  #include <linux/slab.h>
->  #include <linux/cpu.h>
-> +#include <linux/sort.h>
->  
->  static void irq_spread_init_one(struct cpumask *irqmsk, struct cpumask *nmsk,
->  				unsigned int cpus_per_vec)
-> @@ -94,6 +95,87 @@ static int get_nodes_in_cpumask(cpumask_var_t *node_to_cpumask,
->  	return nodes;
->  }
->  
-> +struct node_nr_vectors {
-> +	unsigned n;
-> +
-> +	union {
-> +		unsigned nvectors;
-> +		unsigned ncpus;
-> +	};
-> +};
-> +
-> +static int ncpus_cmp_func(const void *l, const void *r)
-> +{
-> +	const struct node_nr_vectors *ln = l;
-> +	const struct node_nr_vectors *rn = r;
-> +
-> +	if (ln->ncpus < rn->ncpus)
-> +		return -1;
-> +	if (ln->ncpus > rn->ncpus)
-> +		return 1;
-> +	return 0;
+Bjorn, this is v3 of the patchset. Christophs suggestion's required a
+bit more rework than could be expressed in incremental patches so
+I've resent the whole thing. I started with your p2pdma branch though
+so it should have all the changes you already made. I've included a
+range-diff from your p2pdma branch below.
 
-You can collapse these to one line:
+A git branch is available here:
 
-	return ln->ncpus - rn->ncpus;
+https://github.com/sbates130272/linux-p2pmem/ p2pdma_rc_map_v3
 
-> +}
-> +
-> +static void alloc_nodes_vectors(unsigned int numvecs,
-> +				const cpumask_var_t *node_to_cpumask,
-> +				const struct cpumask *cpu_mask,
-> +				const nodemask_t nodemsk,
-> +				struct cpumask *nmsk,
-> +				struct node_nr_vectors *node_vectors)
-> +{
-> +	unsigned remaining_ncpus = 0;
-> +	unsigned n;
-> +
-> +	for (n = 0; n < nr_node_ids; n++) {
-> +		node_vectors[n].n = n;
-> +		node_vectors[n].ncpus = UINT_MAX;
-> +	}
-> +
-> +	for_each_node_mask(n, nodemsk) {
-> +		unsigned ncpus;
-> +
-> +		cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
-> +		ncpus = cpumask_weight(nmsk);
-> +
-> +		if (!ncpus)
-> +			continue;
-> +		remaining_ncpus += ncpus;
-> +		node_vectors[n].ncpus = ncpus;
-> +	}
-> +
-> +	sort(node_vectors, nr_node_ids, sizeof(node_vectors[0]),
-> +	     ncpus_cmp_func, NULL);
-> +
-> +	/*
-> +	 * Allocate vectors for each node according to the ratio of this
-> +	 * node's nr_cpus to remaining un-assigned ncpus. 'numvecs' is
-> +	 * bigger than number of active numa nodes. Always start the
-> +	 * allocation from the node with minimized nr_cpus.
-> +	 *
-> +	 * This way guarantees that each active node gets allocated at
-> +	 * least one vector, and the theory is simple: over-allocation
-> +	 * is only done when this node is assigned by one vector, so
-> +	 * other nodes will be allocated >= 1 vector, since 'numvecs' is
-> +	 * bigger than number of numa nodes.
-> +	 */
-> +	for (n = 0; n < nr_node_ids; n++) {
-> +		unsigned nvectors, ncpus;
-> +
-> +		if (node_vectors[n].ncpus == UINT_MAX)
-> +			continue;
-> +
-> +		WARN_ON_ONCE(numvecs == 0);
-> +
-> +		ncpus = node_vectors[n].ncpus;
-> +		nvectors = max_t(unsigned, 1,
-> +				 numvecs * ncpus / remaining_ncpus);
-> +
-> +		node_vectors[n].nvectors = nvectors;
-> +		remaining_ncpus -= ncpus;
-> +		numvecs -= nvectors;
-> +	}
+--
 
-This looks good to me.
+Changes in v3:
+ * Rebase on v5.3-rc3 (No changes)
+ * Bjorn's edits for a bunch of the comments and commit messages
+ * Rework upstream_bridge_distance() changes to split the distance,
+   mapping type and ACS flag into separate pass-by-reference parameters
+   (per Christoph's suggestion)
+ * Jonathan Derrick (Intel) reported the domains can be 32-bits on
+   some machines and thus the map_type_index() needed to be an unsigned long
+   to accomadate this.
 
-> +}
-> +
->  static int __irq_build_affinity_masks(unsigned int startvec,
->  				      unsigned int numvecs,
->  				      unsigned int firstvec,
-> @@ -102,10 +184,11 @@ static int __irq_build_affinity_masks(unsigned int startvec,
->  				      struct cpumask *nmsk,
->  				      struct irq_affinity_desc *masks)
->  {
-> -	unsigned int n, nodes, cpus_per_vec, extra_vecs, done = 0;
-> +	unsigned int i, n, nodes, cpus_per_vec, extra_vecs, done = 0;
->  	unsigned int last_affv = firstvec + numvecs;
->  	unsigned int curvec = startvec;
->  	nodemask_t nodemsk = NODE_MASK_NONE;
-> +	struct node_nr_vectors *node_vectors;
->  
->  	if (!cpumask_weight(cpu_mask))
->  		return 0;
-> @@ -126,8 +209,23 @@ static int __irq_build_affinity_masks(unsigned int startvec,
->  		return numvecs;
->  	}
->  
-> -	for_each_node_mask(n, nodemsk) {
-> -		unsigned int ncpus, v, vecs_to_assign, vecs_per_node;
-> +	node_vectors = kcalloc(nr_node_ids,
-> +			       sizeof(struct node_nr_vectors),
-> +			       GFP_KERNEL);
-> +	if (!node_vectors)
-> +		return 0;
+Changes in v2:
+ * Rebase on v5.3-rc2 (No changes)
+ * Re-introduce the private pagemap structure and move the p2p-specific
+   elements out of the commond dev_pagemap (per Christoph)
+ * Use flags instead of bool in the whitelist (per Jason)
+ * Only store the mapping type in the xarray (instead of the distance
+   with flags) such that a function can return the mapping method
+   with a switch statement to decide how to map. (per Christoph)
+ * Drop find_parent_pci_dev() on the fast path and rely on the fact
+   that the struct device passed to the mapping functions *must* be
+   a PCI device and convert it directly. (per suggestions from
+   Christoph and Jason)
+ * Collected Christian's Reviewed-by's
 
-I think we need to get this -ENOMEM condition back to the caller and
-have that condition handled.
+--
 
-> @@ -165,13 +250,21 @@ static int __irq_build_affinity_masks(unsigned int startvec,
->  			}
->  			irq_spread_init_one(&masks[curvec].mask, nmsk,
->  						cpus_per_vec);
-> +			/*
-> +			 * alloc_nodes_vectors() is intelligent enough to
-> +			 * allocate vectors on all nodes, so wrapping
-> +			 * shouldn't be triggered usually. However, if it
-> +			 * happens when allocated vectors is bigger than
-> +			 * node's CPU number becasue of round down, wraps
-> +			 * to the first vector allocated for this node, then
-> +			 * cross-node spread can be avoided.
-> +			 */
-> +			if (curvec >= last_affv)
-> +				curvec -= v;
+As discussed on the list previously, in order to fully support the
+whitelist Christian added with the IOMMU, we must ensure that we
+map any buffer going through the IOMMU with an aprropriate dma_map
+call. This patchset accomplishes this by cleaning up the output of
+upstream_bridge_distance() to better indicate the mapping requirements,
+caching these requirements in an xarray, then looking them up at map
+time and applying the appropriate mapping method.
 
-Could you explain again how this could happen? The round-down should mean we
-apply a vector to more CPUs so that the number of vectors applied to a
-node wthin the loop should never require wrapping to hit all those CPUs.
-And if that's true, the check should probably be a warn because it
-should never happen.
+After this patchset, it's possible to use the NVMe-of P2P support to
+transfer between devices without a switch on the whitelisted root
+complexes. A couple Intel device I have tested this on have also
+been added to the white list.
 
-In any case, if you can hit that condition where curvec >= last_affv,
-the assignment to masks[curvec] just above may be out-of-bounds.
+Most of the changes are contained within the p2pdma.c, but there are
+a few minor touches to other subsystems, mostly to add support
+to call an unmap function.
 
->  		}
-> -
->  		done += v;
-> -		if (curvec >= last_affv)
-> -			curvec = firstvec;
-> -		--nodes;
->  	}
-> +	kfree(node_vectors);
->  	return done < numvecs ? done : numvecs;
->  }
+--
+
+Logan Gunthorpe (14):
+  PCI/P2PDMA: Introduce private pagemap structure
+  PCI/P2PDMA: Add provider's pci_dev to pci_p2pdma_pagemap struct
+  PCI/P2PDMA: Add constants for map type results to
+    upstream_bridge_distance()
+  PCI/P2PDMA: Factor out __upstream_bridge_distance()
+  PCI/P2PDMA: Apply host bridge whitelist for ACS
+  PCI/P2PDMA: Factor out host_bridge_whitelist()
+  PCI/P2PDMA: Whitelist some Intel host bridges
+  PCI/P2PDMA: Add attrs argument to pci_p2pdma_map_sg()
+  PCI/P2PDMA: Introduce pci_p2pdma_unmap_sg()
+  PCI/P2PDMA: Factor out __pci_p2pdma_map_sg()
+  PCI/P2PDMA: Store mapping method in an xarray
+  PCI/P2PDMA: dma_map() requests that traverse the host bridge
+  PCI/P2PDMA: Allow IOMMU for host bridge whitelist
+  PCI/P2PDMA: Update pci_p2pdma_distance_many() documentation
+
+ drivers/infiniband/core/rw.c |   6 +-
+ drivers/nvme/host/pci.c      |  10 +-
+ drivers/pci/p2pdma.c         | 374 +++++++++++++++++++++++++----------
+ include/linux/memremap.h     |   1 -
+ include/linux/pci-p2pdma.h   |  28 ++-
+ 5 files changed, 300 insertions(+), 119 deletions(-)
+
+--
+
+$ git range-diff bjorn/master..bjorn/pci/p2pdma master..p2pdma_rc_map_v3
+
+ 1:  5173c82b3571 =  1:  78cc3a5be538 PCI/P2PDMA: Introduce private pagemap structure
+ 2:  f33fd6b8da93 =  2:  9fb388dff957 PCI/P2PDMA: Add provider's pci_dev to pci_p2pdma_pagemap struct
+ 3:  767f47b59702 <  -:  ------------ PCI/P2PDMA: Add constants for not-supported result upstream_bridge_distance()
+ -:  ------------ >  3:  ed105432f644 PCI/P2PDMA: Add constants for map type results to upstream_bridge_distance()
+ 4:  93ed41974d69 !  4:  590aaea31997 PCI/P2PDMA: Factor out __upstream_bridge_distance()
+    @@ -17,8 +17,8 @@
+      --- a/drivers/pci/p2pdma.c
+      +++ b/drivers/pci/p2pdma.c
+     @@
+    - 	P2PDMA_NOT_SUPPORTED		= 0x08000000,
+    - };
+    + 	return false;
+    + }
+
+     -/*
+     - * Find the distance through the nearest common upstream bridge between
+    @@ -44,31 +44,29 @@
+     - * port of the switch, to the common upstream port, back up to the second
+     - * downstream port and then to Device B.
+     - *
+    -- * Any two devices that cannot communicate using p2pdma will return the
+    -- * distance with the flag P2PDMA_NOT_SUPPORTED.
+    +- * Any two devices that cannot communicate using p2pdma will return
+    +- * PCI_P2PDMA_MAP_NOT_SUPPORTED.
+     - *
+     - * Any two devices that have a data path that goes through the host bridge
+     - * will consult a whitelist. If the host bridges are on the whitelist,
+    -- * the distance will be returned with the flag P2PDMA_THRU_HOST_BRIDGE set.
+    -- * If either bridge is not on the whitelist, the flag P2PDMA_NOT_SUPPORTED will
+    -- * be set.
+    +- * this function will return PCI_P2PDMA_MAP_THRU_HOST_BRIDGE.
+    +- *
+    +- * If either bridge is not on the whitelist this function returns
+    +- * PCI_P2PDMA_MAP_NOT_SUPPORTED.
+     - *
+    -- * If a bridge which has any ACS redirection bits set is in the path
+    -- * this function will flag the result with P2PDMA_ACS_FORCES_UPSTREAM.
+    -- * In this case, a list of all infringing bridge addresses will be
+    -- * populated in acs_list (assuming it's non-null) for printk purposes.
+    +- * If a bridge which has any ACS redirection bits set is in the path,
+    +- * acs_redirects will be set to true. In this case, a list of all infringing
+    +- * bridge addresses will be populated in acs_list (assuming it's non-null)
+    +- * for printk purposes.
+     - */
+    --static int upstream_bridge_distance(struct pci_dev *provider,
+    --				    struct pci_dev *client,
+    --				    struct seq_buf *acs_list)
+    -+static int __upstream_bridge_distance(struct pci_dev *provider,
+    -+				      struct pci_dev *client,
+    -+				      struct seq_buf *acs_list)
+    + static enum pci_p2pdma_map_type
+    +-upstream_bridge_distance(struct pci_dev *provider, struct pci_dev *client,
+    ++__upstream_bridge_distance(struct pci_dev *provider, struct pci_dev *client,
+    + 		int *dist, bool *acs_redirects, struct seq_buf *acs_list)
+      {
+      	struct pci_dev *a = provider, *b = client, *bb;
+    - 	int dist_a = 0;
+     @@
+    - 	return dist_a + dist_b;
+    + 	return PCI_P2PDMA_MAP_BUS_ADDR;
+      }
+
+     +/*
+    @@ -95,27 +93,29 @@
+     + * port of the switch, to the common upstream port, back up to the second
+     + * downstream port and then to Device B.
+     + *
+    -+ * Any two devices that cannot communicate using p2pdma will return the
+    -+ * distance with the flag P2PDMA_NOT_SUPPORTED.
+    ++ * Any two devices that cannot communicate using p2pdma will return
+    ++ * PCI_P2PDMA_MAP_NOT_SUPPORTED.
+     + *
+     + * Any two devices that have a data path that goes through the host bridge
+     + * will consult a whitelist. If the host bridges are on the whitelist,
+    -+ * the distance will be returned with the flag P2PDMA_THRU_HOST_BRIDGE set.
+    -+ * If either bridge is not on the whitelist, the flag P2PDMA_NOT_SUPPORTED will
+    -+ * be set.
+    ++ * this function will return PCI_P2PDMA_MAP_THRU_HOST_BRIDGE.
+     + *
+    -+ * If a bridge which has any ACS redirection bits set is in the path
+    -+ * this function will flag the result with P2PDMA_ACS_FORCES_UPSTREAM.
+    -+ * In this case, a list of all infringing bridge addresses will be
+    -+ * populated in acs_list (assuming it's non-null) for printk purposes.
+    ++ * If either bridge is not on the whitelist this function returns
+    ++ * PCI_P2PDMA_MAP_NOT_SUPPORTED.
+    ++ *
+    ++ * If a bridge which has any ACS redirection bits set is in the path,
+    ++ * acs_redirects will be set to true. In this case, a list of all infringing
+    ++ * bridge addresses will be populated in acs_list (assuming it's non-null)
+    ++ * for printk purposes.
+     + */
+    -+static int upstream_bridge_distance(struct pci_dev *provider,
+    -+				    struct pci_dev *client,
+    -+				    struct seq_buf *acs_list)
+    ++static enum pci_p2pdma_map_type
+    ++upstream_bridge_distance(struct pci_dev *provider, struct pci_dev *client,
+    ++		int *dist, bool *acs_redirects, struct seq_buf *acs_list)
+     +{
+    -+	return __upstream_bridge_distance(provider, client, acs_list);
+    ++	return __upstream_bridge_distance(provider, client, dist,
+    ++					  acs_redirects, acs_list);
+     +}
+     +
+    - static int upstream_bridge_distance_warn(struct pci_dev *provider,
+    - 					 struct pci_dev *client)
+    - {
+    + static enum pci_p2pdma_map_type
+    + upstream_bridge_distance_warn(struct pci_dev *provider, struct pci_dev *client,
+    + 			      int *dist)
+ 5:  f975e51cf5df <  -:  ------------ PCI/P2PDMA: Apply host bridge whitelist for ACS
+ -:  ------------ >  5:  336e968f075b PCI/P2PDMA: Apply host bridge whitelist for ACS
+ 6:  59b6507ac07c !  6:  3f565ce6e1d4 PCI/P2PDMA: Factor out host_bridge_whitelist()
+    @@ -58,15 +58,16 @@
+     +	return false;
+     +}
+     +
+    - enum {
+    - 	/*
+    - 	 * These arbitrary offset are or'd onto the upstream distance
+    + static enum pci_p2pdma_map_type
+    + __upstream_bridge_distance(struct pci_dev *provider, struct pci_dev *client,
+    + 		int *dist, bool *acs_redirects, struct seq_buf *acs_list)
+     @@
+    - 	if (!(dist & P2PDMA_THRU_HOST_BRIDGE))
+    - 		return dist;
+    + 					      acs_redirects, acs_list);
+
+    --	if (root_complex_whitelist(provider) && root_complex_whitelist(client))
+    -+	if (host_bridge_whitelist(provider, client))
+    - 		return dist;
+    + 	if (map_type == PCI_P2PDMA_MAP_THRU_HOST_BRIDGE) {
+    +-		if (!root_complex_whitelist(provider) ||
+    +-		    !root_complex_whitelist(client))
+    ++		if (!host_bridge_whitelist(provider, client))
+    + 			return PCI_P2PDMA_MAP_NOT_SUPPORTED;
+    + 	}
+
+    - 	return dist | P2PDMA_NOT_SUPPORTED;
+ 7:  5ecec567445f =  7:  7b8701dd45e0 PCI/P2PDMA: Whitelist some Intel host bridges
+ 8:  68a37758d5cf =  8:  b52771ae7f95 PCI/P2PDMA: Add attrs argument to pci_p2pdma_map_sg()
+ 9:  4b821298d4f7 =  9:  88a554eb39c9 PCI/P2PDMA: Introduce pci_p2pdma_unmap_sg()
+10:  3f2dac803737 = 10:  604260bd186a PCI/P2PDMA: Factor out __pci_p2pdma_map_sg()
+11:  fc402d621534 ! 11:  b55fc423a41a PCI/P2PDMA: Store mapping method in an xarray
+    @@ -18,14 +18,10 @@
+      #include <linux/seq_buf.h>
+      #include <linux/iommu.h>
+     +#include <linux/xarray.h>
+    -+
+    -+enum pci_p2pdma_map_type {
+    -+	PCI_P2PDMA_MAP_UNKNOWN = 0,
+    -+	PCI_P2PDMA_MAP_NOT_SUPPORTED,
+    -+	PCI_P2PDMA_MAP_BUS_ADDR,
+    -+	PCI_P2PDMA_MAP_THRU_IOMMU,
+    -+};
+
+    + enum pci_p2pdma_map_type {
+    + 	PCI_P2PDMA_MAP_UNKNOWN = 0,
+    +@@
+      struct pci_p2pdma {
+      	struct gen_pool *pool;
+      	bool p2pmem_published;
+    @@ -51,10 +47,10 @@
+      	if (!p2p->pool)
+      		goto out;
+     @@
+    - 	return dist_a + dist_b;
+    + 	return PCI_P2PDMA_MAP_BUS_ADDR;
+      }
+
+    -+static int map_types_idx(struct pci_dev *client)
+    ++static unsigned long map_types_idx(struct pci_dev *client)
+     +{
+     +	return (pci_domain_nr(client->bus) << 16) |
+     +		(client->bus->number << 8) | client->devfn;
+    @@ -64,37 +60,17 @@
+       * Find the distance through the nearest common upstream bridge between
+       * two PCI devices.
+     @@
+    - 				    struct pci_dev *client,
+    - 				    struct seq_buf *acs_list)
+    - {
+    -+	enum pci_p2pdma_map_type map_type;
+    - 	int dist;
+    -
+    - 	dist = __upstream_bridge_distance(provider, client, acs_list);
+
+    --	if (!(dist & P2PDMA_THRU_HOST_BRIDGE))
+    --		return dist;
+    -+	if (!(dist & P2PDMA_THRU_HOST_BRIDGE)) {
+    -+		map_type = PCI_P2PDMA_MAP_BUS_ADDR;
+    -+		goto store_map_type_and_return;
+    -+	}
+    -+
+    -+	if (host_bridge_whitelist(provider, client)) {
+    -+		map_type = PCI_P2PDMA_MAP_THRU_IOMMU;
+    -+	} else {
+    -+		dist |= P2PDMA_NOT_SUPPORTED;
+    -+		map_type = PCI_P2PDMA_MAP_NOT_SUPPORTED;
+    -+	}
+    + 	if (map_type == PCI_P2PDMA_MAP_THRU_HOST_BRIDGE) {
+    + 		if (!host_bridge_whitelist(provider, client))
+    +-			return PCI_P2PDMA_MAP_NOT_SUPPORTED;
+    ++			map_type = PCI_P2PDMA_MAP_NOT_SUPPORTED;
+    + 	}
+
+    --	if (host_bridge_whitelist(provider, client))
+    --		return dist;
+    -+store_map_type_and_return:
+     +	if (provider->p2pdma)
+     +		xa_store(&provider->p2pdma->map_types, map_types_idx(client),
+     +			 xa_mk_value(map_type), GFP_KERNEL);
+    -
+    --	return dist | P2PDMA_NOT_SUPPORTED;
+    -+	return dist;
+    ++
+    + 	return map_type;
+      }
+
+    - static int upstream_bridge_distance_warn(struct pci_dev *provider,
+12:  c51eb851e9da ! 12:  94e4c8633459 PCI/P2PDMA: dma_map() requests that traverse the host bridge
+    @@ -44,7 +44,7 @@
+     +	client = to_pci_dev(dev);
+     +
+     +	switch (pci_p2pdma_map_type(p2p_pgmap->provider, client)) {
+    -+	case PCI_P2PDMA_MAP_THRU_IOMMU:
+    ++	case PCI_P2PDMA_MAP_THRU_HOST_BRIDGE:
+     +		return dma_map_sg_attrs(dev, sg, nents, dir, attrs);
+     +	case PCI_P2PDMA_MAP_BUS_ADDR:
+     +		return __pci_p2pdma_map_sg(p2p_pgmap, dev, sg, nents);
+    @@ -71,7 +71,7 @@
+     +
+     +	map_type = pci_p2pdma_map_type(p2p_pgmap->provider, client);
+     +
+    -+	if (map_type == PCI_P2PDMA_MAP_THRU_IOMMU)
+    ++	if (map_type == PCI_P2PDMA_MAP_THRU_HOST_BRIDGE)
+     +		dma_unmap_sg_attrs(dev, sg, nents, dir, attrs);
+      }
+      EXPORT_SYMBOL_GPL(pci_p2pdma_unmap_sg_attrs);
+13:  0a3468f51621 = 13:  f067cdb5b963 PCI/P2PDMA: Allow IOMMU for host bridge whitelist
+14:  20c0cf9f4c9c = 14:  87c84b001dfa PCI/P2PDMA: Update pci_p2pdma_distance_many() documentation
+
+--
+2.20.1
 
 _______________________________________________
 Linux-nvme mailing list
