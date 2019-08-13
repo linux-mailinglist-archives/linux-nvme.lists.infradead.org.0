@@ -2,89 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FF958BD62
-	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 17:40:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D0798BEB5
+	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 18:36:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=02GB3gtRWxBtXtFuQdBZ22Lde+1SwFZcrcczD3v/YH8=; b=VE3vPMF3arzlzd
-	46VtzZJL/jJYh3iY5/alh87A35WyfWTrkk3wyL0Df2zLFPTdm3orWuc9I84qwOmWaZbnAgJT99mBP
-	BRgBgfYFsv/RbwaSIsaYaFvNgnTnTvbaP9eeCf9+2YSJFoFa0to4Yg12zXZ9XD581DD3MB9sB+LJF
-	LsCcCPR87IDTpS4uMYMwS/RAIkCzOu5AAMu7lwOs/3ANuxevDrBRmZoQbRk5R7RhJ64Cuu+5asfja
-	GANalZqE/cDb4v/Ao9TOF6YKSNQFLgAGXilgjR3/HabRZlpfKnp2iidSe8Zd3HXgXejjpTVH/nrVR
-	Rs7eTgpjeDbv4ZfZNaMQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=TXVQYpaTMLez7bavgkchAjZw2Qgr3COopQ/01D+p2tU=; b=R9dGcy7WTFUfeXZemeILEYGbJ
+	4lKhdb8KohtRbnNrybg69CIb0TyrV2q3tsKcUMRkf+PB//Ukpn6rYoK6PzAVFcp8kAwUuSWGqLV7Z
+	UPemdpk4cfFHypKH1EtVyCFyH5osDIuhf23SQB+ZE96c1tz8ZlBjBXfKZ1/mXBJ0M7y4sTePB4UX9
+	fMqcAmzZ6gfFbRWpfIijWfTUWKHj++PXyQ4K+KGPw90Ra56x90sozcLx8ajcQ5OLpxVrI552W+S1Y
+	CS+T5KUViFgd0vPZzctXm9IAUP54puOpKYbN1iY7iOdVST6G8NnY0LKdpujpr1TZ1Y3cWPQZU4RCc
+	UedFeM/8w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxYuQ-0002a2-UG; Tue, 13 Aug 2019 15:40:27 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1hxZmU-0006jr-Rp; Tue, 13 Aug 2019 16:36:18 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxYuG-0002Wz-8L
- for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 15:40:17 +0000
-Received: by mail-pl1-x644.google.com with SMTP id a93so49381817pla.7
- for <linux-nvme@lists.infradead.org>; Tue, 13 Aug 2019 08:40:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=IFpHEZmO8P8ibZrjmbskVYzECLFyHY2hgPRhajuorfs=;
- b=sGF94uH4H9+S8YPc2Ukpi/1ZXz9Nz5ogn48iUe10002eaQGeW9R76QEXvloVxsJ8O5
- HHftRakxcyAtdpvm67SMNg/n8Ms24pXF0JFkGxKiA9TSjLsTxHN4KiK1qDDaENtFYpBt
- pmPZipPh5fmh3J6IRmnn807Dr6BBZ6KL4t3OwWfjNFfSGg/FtMNgrTbl42hETtN6zrxc
- XR3dq0hBHLWzqTvDFUd7bvaxJ20xYbY6J6UGBaoyO/YfbNb7xjWwF/yuUSlnsoywXPkN
- fTJ2EQilg187cc0fxhxA7//cI8yhQ83tgZtcbR/xaZDvN63r5FpSi9ydJ1D3w7zAenm+
- iedA==
+ id 1hxZmM-0006jO-2D
+ for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 16:36:11 +0000
+Received: by mail-ot1-f68.google.com with SMTP id m24so21908795otp.12
+ for <linux-nvme@lists.infradead.org>; Tue, 13 Aug 2019 09:36:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=IFpHEZmO8P8ibZrjmbskVYzECLFyHY2hgPRhajuorfs=;
- b=Ur4izfgUh+/Z9QJBQHqpyX7dGziaKQ79wia2Yy5mK//TMVmythgdkqsOjjwE92xyFK
- ka+Fh4hyOZ/37SlBJ0oRT2VE4dsORQefk0hjrcbPRQNM1xKHPL94N4OXe6v78ALWEqzo
- df3knj+ewmXvjYGC3K+2phAocDtH6+6bSTatL4/CmrNdHVH5qOf7maVLFtxKxhIFHUXz
- rNdeJHh/twzS6xv3a85V/8gJNxQO9SQ/VV7BMveX65AgCMaFJjEGWX9edHX7/vdECjLI
- Q1eWqjUaSsYBApYiN/8581oM5gBGbJ/16FuYA1WInj4e+9eIFrUVzmywaGD3XZayr7l1
- I7sg==
-X-Gm-Message-State: APjAAAUgXaM2fq7OFe4zGnW52XGTaaPsaSfV9rTT5QuxycH/eytXLnLO
- oJLlS0qRAZaowguUH6SfI79AfaqzCf5x5Jaxr1I=
-X-Google-Smtp-Source: APXvYqyi5GZcial+3zjrwPbvHTkx2yuaQQdgUEbv9P1uEG6WC3VBx9CpmJ5hPZttqtau7i2XXxydh7GEOMuGWFo/Izc=
-X-Received: by 2002:a17:902:44f:: with SMTP id
- 73mr38874274ple.192.1565710815744; 
- Tue, 13 Aug 2019 08:40:15 -0700 (PDT)
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=4a+U8WL+FBy8BYTmH62GQFHRGrsovVeVMNGME156CXs=;
+ b=IJmcYORFdJbfu6F4Ug6EeMXy1XR8q9pIbrc3JdiOnCDOcxdzwo6DWWnfKxf2fsgs8l
+ 6s/j7Ic9HK6K2e+ws9i3PyNYnz5gOp0yrcGnp+td77CsmSub8gvOHQq+ysEfCJHd6EnY
+ iJT6BcikDC7VDU4VISwbiGHUs0LoNvEF9xOUAmZGxQW9s0ITamc6FgliU4kTozUu0tp5
+ ZLZSPW+Uyh+tCljfvUZAYm4TeT29GtfuBXR+IO6/JxJoLbcuUkWFZRS3bTNFEdzW5Eol
+ 91Vq75x2Ck6BDYGeKuSkqySMVvLQsocFv9NulBOW/w2QoAHD9g/hULhNMGtejzJ8gm86
+ GfXg==
+X-Gm-Message-State: APjAAAVC8MKneY43WcFlvg4Srz9urZp+aiOBhMrd+St92dPKU4zN06WF
+ Nv66MR9nEtcYXfpil4yWoMa74p/J
+X-Google-Smtp-Source: APXvYqyOkmafln3Id+oBnsHwHY4NvnlWqR9Jy8sfBA8PFhGvDAgCv2QBVKkWdXvC5z6yNdj61LZDtA==
+X-Received: by 2002:aca:b303:: with SMTP id c3mr1887032oif.95.1565714168656;
+ Tue, 13 Aug 2019 09:36:08 -0700 (PDT)
+Received: from [192.168.1.114]
+ (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
+ by smtp.gmail.com with ESMTPSA id x20sm2610858otk.79.2019.08.13.09.36.07
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 13 Aug 2019 09:36:08 -0700 (PDT)
+Subject: Re: [PATCH] nvme-tcp: Make nvme_tcp_mq_ops constant
+To: Nishka Dasgupta <nishkadg.linux@gmail.com>, kbusch@kernel.org,
+ axboe@fb.com, hch@lst.de, linux-nvme@lists.infradead.org
+References: <20190813090253.8813-1-nishkadg.linux@gmail.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <9e4598f0-dfc6-0fa6-8081-dbd568c39d9a@grimberg.me>
+Date: Tue, 13 Aug 2019 09:35:59 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <1565459703-30513-1-git-send-email-akinobu.mita@gmail.com>
- <1565459703-30513-5-git-send-email-akinobu.mita@gmail.com>
- <20190813103313.GC26337@amd>
-In-Reply-To: <20190813103313.GC26337@amd>
-From: Akinobu Mita <akinobu.mita@gmail.com>
-Date: Wed, 14 Aug 2019 00:40:04 +0900
-Message-ID: <CAC5umyhpVdMwrm_U7RGq=q4F+mrgGJC01rLvjs4HbF5_C-kXQw@mail.gmail.com>
-Subject: Re: [PATCH v3 4/6] block: introduce LED block device activity trigger
-To: Pavel Machek <pavel@ucw.cz>
+In-Reply-To: <20190813090253.8813-1-nishkadg.linux@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_084016_345355_BC9FE874 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190813_093610_101431_4EF2EFB9 
+X-CRM114-Status: GOOD (  10.94  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
- [list.dnswl.org]
+ no trust [209.85.210.68 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (akinobu.mita[at]gmail.com)
+ provider (sagigrim[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.68 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,33 +91,27 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Hannes Reinecke <hare@suse.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>, linux-scsi@vger.kernel.org,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>, linux-nvme@lists.infradead.org,
- linux-block@vger.kernel.org, Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- linux-leds@vger.kernel.org, Dan Murphy <dmurphy@ti.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-MjAxOeW5tDjmnIgxM+aXpSjngaspIDE5OjMzIFBhdmVsIE1hY2hlayA8cGF2ZWxAdWN3LmN6PjoK
-Pgo+IE9uIFN1biAyMDE5LTA4LTExIDAyOjU1OjAxLCBBa2lub2J1IE1pdGEgd3JvdGU6Cj4gPiBU
-aGlzIGFsbG93cyBMRURzIHRvIGJlIGNvbnRyb2xsZWQgYnkgYmxvY2sgZGV2aWNlIGFjdGl2aXR5
-Lgo+ID4KPiA+IFdlIGFscmVhZHkgaGF2ZSBsZWR0cmlnLWRpc2sgKExFRCBkaXNrIGFjdGl2aXR5
-IHRyaWdnZXIpLCBidXQgdGhlIGxvd2VyCj4gPiBsZXZlbCBkaXNrIGRyaXZlcnMgbmVlZCB0byB1
-dGlsaXplIGxlZHRyaWdfZGlza19hY3Rpdml0eSgpIHRvIG1ha2UgdGhlCj4gPiBMRUQgYmxpbmsu
-Cj4gPgo+ID4gVGhlIExFRCBibG9jayBkZXZpY2UgdHJpZ2dlciBkb2Vzbid0IHJlcXVpcmUgdGhl
-IGxvd2VyIGxldmVsIGRyaXZlcnMgdG8KPiA+IGhhdmUgYW55IGluc3RydW1lbnRhdGlvbi4gVGhl
-IGFjdGl2aXR5IGlzIGNvbGxlY3RlZCBieSBwb2xsaW5nIHRoZSBkaXNrCj4gPiBzdGF0cy4KPiA+
-Cj4gPiBFeGFtcGxlOgo+ID4KPiA+IGVjaG8gYmxvY2stbnZtZTBuMSA+IC9zeXMvY2xhc3MvbGVk
-cy9kaXkvdHJpZ2dlcgo+Cj4gU29tZSBtYWNoaW5lcyBoYXZlIGxvdHMgb2YgYmxvY2sgZGV2aWNl
-cy4uLiBTaG91bGQgd2UgcGVyaGFwcyBoYXZlCj4gImVjaG8gYmxvY2sgPiB0cmlnZ2VyOyBlY2hv
-IG52bWUwbjEgPiBkZXZpY2UiPwoKSSBvcmlnaW5hbGx5IGNvbnNpZGVyZWQgZG9pbmcgc28sIGp1
-c3QgbGlrZSBsZWR0cmlnLW5ldGRldi4gSG93ZXZlciwgaXQKdHVybmVkIG91dCB0aGF0IHdlIG5l
-ZWRlZCBhbiBhZGRpdGlvbmFsIG1lY2hhbmlzbSB0byBtZWRpYXRlIGJldHdlZW4KdGhlIGxlZCB0
-cmlnZ2VyIHJlZ2lzdHJhdGlvbiBhbmQgdGhlIGJsb2NrIGRldmljZSB1bnJlZ2lzdHJhdGlvbi4K
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52
-bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+> Static structure nvme_tcp_mq_ops, of type blk_mq_ops, is not used except
+> to be assigned to field ops of variable set. Variable set itself has
+> type blk_mq_tag_set, whose field ops is declared as const. Hence
+> nvme_tcp_mq_ops cannot be modified after being assigned to field ops of
+> variable set. Therefore declare nvme_tcp_mq_ops const as well.
+> Issue found with Coccinelle.
+> 
+> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+
+Looks fine,
+
+Can you please respin a patch that applies cleanly on nvme-5.4?
+
+You can add my: Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
