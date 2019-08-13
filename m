@@ -2,84 +2,83 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D0798BEB5
-	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 18:36:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0FDF8BEBD
+	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 18:37:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TXVQYpaTMLez7bavgkchAjZw2Qgr3COopQ/01D+p2tU=; b=R9dGcy7WTFUfeXZemeILEYGbJ
-	4lKhdb8KohtRbnNrybg69CIb0TyrV2q3tsKcUMRkf+PB//Ukpn6rYoK6PzAVFcp8kAwUuSWGqLV7Z
-	UPemdpk4cfFHypKH1EtVyCFyH5osDIuhf23SQB+ZE96c1tz8ZlBjBXfKZ1/mXBJ0M7y4sTePB4UX9
-	fMqcAmzZ6gfFbRWpfIijWfTUWKHj++PXyQ4K+KGPw90Ra56x90sozcLx8ajcQ5OLpxVrI552W+S1Y
-	CS+T5KUViFgd0vPZzctXm9IAUP54puOpKYbN1iY7iOdVST6G8NnY0LKdpujpr1TZ1Y3cWPQZU4RCc
-	UedFeM/8w==;
+	 bh=wScNCChziHtN09V+NUKDH3M5yCjoKYpAjgwb+ZI+gRA=; b=KDWmySavXk/kZyk+aI0T5eFTh
+	a2V30eqO7PTgXuknNG7uSGCLM8e54y0BXdzRR/xV7Ltb96YT25jpGfsekgNR0iYysgmeotNJX0ASN
+	tq157dvt/Zz12gqp7CfzdwxbhvNIYldt4561farbveMxOoRVd7pd8fj54XFJ7mdztpzs6ksDgtLx9
+	kqXPLuFXUzLjjj8wvSW14BtK1rJ3R7JoFfAbiQfD+CVGBXQQVK8PISbaXBzaZFUshe0Ns9nCcfEbL
+	elbOGkwcd4hwBhhuYK/G8PnKx9RhYZ2Zp41+DHcfkKGQRC5spuFBKY/ih3vxuTCKjrQ7mWgybJSI3
+	XWI2+x8DA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxZmU-0006jr-Rp; Tue, 13 Aug 2019 16:36:18 +0000
-Received: from mail-ot1-f68.google.com ([209.85.210.68])
+	id 1hxZnY-00072O-JM; Tue, 13 Aug 2019 16:37:24 +0000
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxZmM-0006jO-2D
- for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 16:36:11 +0000
-Received: by mail-ot1-f68.google.com with SMTP id m24so21908795otp.12
- for <linux-nvme@lists.infradead.org>; Tue, 13 Aug 2019 09:36:09 -0700 (PDT)
+ id 1hxZnO-00071q-JT
+ for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 16:37:15 +0000
+Received: by mail-ot1-f46.google.com with SMTP id w4so7735057ote.11
+ for <linux-nvme@lists.infradead.org>; Tue, 13 Aug 2019 09:37:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=4a+U8WL+FBy8BYTmH62GQFHRGrsovVeVMNGME156CXs=;
- b=IJmcYORFdJbfu6F4Ug6EeMXy1XR8q9pIbrc3JdiOnCDOcxdzwo6DWWnfKxf2fsgs8l
- 6s/j7Ic9HK6K2e+ws9i3PyNYnz5gOp0yrcGnp+td77CsmSub8gvOHQq+ysEfCJHd6EnY
- iJT6BcikDC7VDU4VISwbiGHUs0LoNvEF9xOUAmZGxQW9s0ITamc6FgliU4kTozUu0tp5
- ZLZSPW+Uyh+tCljfvUZAYm4TeT29GtfuBXR+IO6/JxJoLbcuUkWFZRS3bTNFEdzW5Eol
- 91Vq75x2Ck6BDYGeKuSkqySMVvLQsocFv9NulBOW/w2QoAHD9g/hULhNMGtejzJ8gm86
- GfXg==
-X-Gm-Message-State: APjAAAVC8MKneY43WcFlvg4Srz9urZp+aiOBhMrd+St92dPKU4zN06WF
- Nv66MR9nEtcYXfpil4yWoMa74p/J
-X-Google-Smtp-Source: APXvYqyOkmafln3Id+oBnsHwHY4NvnlWqR9Jy8sfBA8PFhGvDAgCv2QBVKkWdXvC5z6yNdj61LZDtA==
-X-Received: by 2002:aca:b303:: with SMTP id c3mr1887032oif.95.1565714168656;
- Tue, 13 Aug 2019 09:36:08 -0700 (PDT)
+ bh=NDui+iMLPf82DFGGrbj5sf9vH2VQ15P7EPB6Qnqz4zU=;
+ b=r8Z8DKJzdhc/nVtNJShYP4q6fcr5RqNOU1IGyxA9XMrHjT3wzOyVWSoGmpx4bbgnSu
+ n1HFzo8gR2eHfu8vm/RWRsEBoxyqhDPqwRwcVOjBV/h3zYIK8/QbpORDj3LEbpCROpQt
+ DXBT3ZmjDq16Q8CKbxgguT+ld4uPhucCptGpwak25Ked5dcMRi/iZzBzU4FQ9415yqAn
+ GG+RQUocRivP1WPE0wQIr0DNdlKpBP3XpBZx+Zl3ziDlZDx1+80ZfR/cK5ab+kiXl//9
+ cOZZqWG6tMuSi4hz6a0lLkkxepRk5Ruu6IFZGOzc3s8MFP55EK22Eksrrb7tv8BzrSO/
+ HVJg==
+X-Gm-Message-State: APjAAAUu24iPmVUDjy16nTwOEnqD4PRPsOJS0JiYuLf+3ZomovVrYGQw
+ n3nsHw4WYlPDa6O8PAgwwQg18WMb
+X-Google-Smtp-Source: APXvYqxDHhAYGj1P926GQegAQdwmLxdPPZPuKuSk549QTzcDGz8ejTqibbkED/caSj3CV1MZkWYWuQ==
+X-Received: by 2002:a9d:1cf:: with SMTP id e73mr9699797ote.38.1565714233100;
+ Tue, 13 Aug 2019 09:37:13 -0700 (PDT)
 Received: from [192.168.1.114]
  (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
- by smtp.gmail.com with ESMTPSA id x20sm2610858otk.79.2019.08.13.09.36.07
+ by smtp.gmail.com with ESMTPSA id s24sm13130324otd.81.2019.08.13.09.37.11
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 13 Aug 2019 09:36:08 -0700 (PDT)
-Subject: Re: [PATCH] nvme-tcp: Make nvme_tcp_mq_ops constant
-To: Nishka Dasgupta <nishkadg.linux@gmail.com>, kbusch@kernel.org,
- axboe@fb.com, hch@lst.de, linux-nvme@lists.infradead.org
-References: <20190813090253.8813-1-nishkadg.linux@gmail.com>
+ Tue, 13 Aug 2019 09:37:12 -0700 (PDT)
+Subject: Re: [PATCHv3] nvme: Return BLK_STS_TARGET if the DNR bit is set
+To: Keith Busch <kbusch@kernel.org>
+References: <20190812075147.79598-1-hare@suse.de>
+ <a8b400cf-94ef-a4a1-e196-a74e115357ea@intel.com>
+ <1f2025d7-b79e-ad46-df73-66fdff1b5f28@grimberg.me>
+ <20190813141510.GB32686@localhost.localdomain>
 From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <9e4598f0-dfc6-0fa6-8081-dbd568c39d9a@grimberg.me>
-Date: Tue, 13 Aug 2019 09:35:59 -0700
+Message-ID: <5c6ec6e6-d2ae-2e3b-0adc-e30cbcce528b@grimberg.me>
+Date: Tue, 13 Aug 2019 09:37:07 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190813090253.8813-1-nishkadg.linux@gmail.com>
+In-Reply-To: <20190813141510.GB32686@localhost.localdomain>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_093610_101431_4EF2EFB9 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20190813_093714_643633_2AFE3280 
+X-CRM114-Status: GOOD (  17.22  )
 X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.68 listed in list.dnswl.org]
+ no trust [209.85.210.46 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (sagigrim[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.68 listed in wl.mailspike.net]
  0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,25 +90,40 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: Hannes Reinecke <hare@suse.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>, "Busch,
+ Keith" <keith.busch@intel.com>, "Nadolski, Edmund" <edmund.nadolski@intel.com>,
+ Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> Static structure nvme_tcp_mq_ops, of type blk_mq_ops, is not used except
-> to be assigned to field ops of variable set. Variable set itself has
-> type blk_mq_tag_set, whose field ops is declared as const. Hence
-> nvme_tcp_mq_ops cannot be modified after being assigned to field ops of
-> variable set. Therefore declare nvme_tcp_mq_ops const as well.
-> Issue found with Coccinelle.
+
+> We need to override the default nvme_error_status() to BLK_STS_TARGET
+> when DNR is set to prevent upper layers from their own retries/failover.
+> I suggested adding that check in the existing unlikely() case, but maybe
+> it's more obvious if we teach nvme_error_status() to default to return
+> BLK_STS_TARGET for this condition?
 > 
-> Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
+> ---
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index 8f3fbe5ca937..50adcdde44d5 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -199,6 +199,9 @@ static inline bool nvme_ns_has_pi(struct nvme_ns *ns)
+>   
+>   static blk_status_t nvme_error_status(struct request *req)
+>   {
+> +	if (unlikely(nvme_req(req)->status & NVME_SC_DNR))
+> +		return BLK_STS_TARGET;
+> +
+>   	switch (nvme_req(req)->status & 0x7ff) {
+>   	case NVME_SC_SUCCESS:
+>   		return BLK_STS_OK;
+> --
 
-Looks fine,
-
-Can you please respin a patch that applies cleanly on nvme-5.4?
-
-You can add my: Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+Makes sense to me, Hannes does this address your issue?
 
 _______________________________________________
 Linux-nvme mailing list
