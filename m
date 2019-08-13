@@ -2,60 +2,90 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C2DC8B226
-	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 10:16:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 686AC8B355
+	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 11:05:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NJ2/4wPoRwt7soxdShdJGVoTQe87k3jRa9VK60DqVNY=; b=m70ASI7Ltbeo5a
-	tH5MtbS/n+IW7XVgSrWedLoxpse4qNRL5S3FuR+MVXQy9/dnF3VBaD1i/xHZ4Ryk0W3EtQKqOievI
-	X86XBxtFwMT055edKT7hXm25vl/s7c+Ql08w3Kmc+bjAFzW8geygW6e76CReDtrvnWcNmEZHEki3e
-	fZNFBc96NvQgQ+OUQyHua9UZIyCyM/b/LPePnKekAvhKdDcYFiwMaLpHPifouDOJ0p+PNolHzGLOU
-	ZRyDPefd7FFai8NzJaM51FiouB4FL5s+XZNTbdjjTy1kl6M0HLLcZkWXMhEONVOLaPkckpfDEJPt7
-	14UKNjYzY26FliDji0UQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ucbXdOXMb/TAWfCQe0hsffjbsHiyHy5EpdN97i5oOtM=; b=oFbqLQ0GbSHepD
+	8O7XPjL+aQqCUZVQYvI1bbpYwLb7owBb/Ulv9N6mkk+tAx8eZtvW+lTl0w6/tYMDnVQ7/Calr714T
+	9KvUtfVm4Q2QFeuGkKH5eG8ggiKUinqA39n8/FHk0ppm4XDH9hYZu7GPrxo84vJzjs0avVs86dCBj
+	rqDYTyHjd8Yo6niMFnEjdyYJhhHPn4tGgwFgxVBLN1G1R1o2EgnsS5jyWDGC5wdZr5rpR9EtwxyB/
+	yv3YJ4Ni12z6Edv3/qJElTv5Nz1SvPlGkPE/fdxLih9HLApspQqx4qH/88PeIAOuYe5p9eO1vkD9V
+	DLkv11HQMYuURDCu1bcQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxRyF-0000QK-2E; Tue, 13 Aug 2019 08:15:55 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
+	id 1hxSjj-0008OD-2s; Tue, 13 Aug 2019 09:04:59 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxRxe-0008Uz-2x
- for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 08:15:20 +0000
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A7E0520ABB;
- Tue, 13 Aug 2019 08:15:17 +0000 (UTC)
-Received: from localhost (ovpn-8-25.pek2.redhat.com [10.72.8.25])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E556C7981E;
- Tue, 13 Aug 2019 08:15:15 +0000 (UTC)
-From: Ming Lei <ming.lei@redhat.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Subject: [PATCH V3 3/3] genirq/affinity: Spread vectors on node according to
- nr_cpu ratio
-Date: Tue, 13 Aug 2019 16:14:47 +0800
-Message-Id: <20190813081447.1396-4-ming.lei@redhat.com>
-In-Reply-To: <20190813081447.1396-1-ming.lei@redhat.com>
-References: <20190813081447.1396-1-ming.lei@redhat.com>
+ id 1hxSht-0007P0-VW
+ for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 09:03:08 +0000
+Received: by mail-pg1-x542.google.com with SMTP id n4so9188456pgv.2
+ for <linux-nvme@lists.infradead.org>; Tue, 13 Aug 2019 02:03:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ldGFvKia9F8Sx+jOY5qd40RFqTP+nJV4f/BRCD1ngao=;
+ b=jE1IRIlfpMIFKW4LpoTHvgf0JMNQ258aUeNx8Kh9t1Li7ZiEdV3IvPtdUKm81sF0YT
+ eTiL2U+bGVws+YJYLbM6VjZgMrDMfdeAcrksxYKzvU2KnGr4dphZXc3TM51stI3LocmB
+ /mqHnWL9YdgA3MnOJiXYyhMut7aB81spoUdU63CLxZI04NIK0jjmVc+Itvjsrzoy7sFu
+ zZfADNMcFOjH3JYmE7H8DRrefx8cBmDjAYt30LeLbsHoAQItmKXxRtieIkZGN4zmg8li
+ nWzMycYJPdSkR7RXUxhx1xnMAHrlG6FWWvcmhCHtj/v0nzy5ZLq0qUCepGwUWyC6NBs1
+ CRkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ldGFvKia9F8Sx+jOY5qd40RFqTP+nJV4f/BRCD1ngao=;
+ b=ay44Z9QsfuHjcpmEzeF4ZfwifoiYvY3W+18bAk0aB67Jczq8Ot9XBSKAaN/SfHfuMp
+ e8wfVfPn0KdHcugM+38ZYSnG1F9SlW6rZ6rqO2C6XF+gMkqQcVJxko30idNDRIL/XpTU
+ p/mcRlDWXPZbaQgOqfCfcXFdRWgNyIIgU/pzHO3dN3Fp40eWaNEJUljuBWJ2wJNFmOsm
+ 0JI8KknBuR5+u6z8nAxAiLYsOlHAnVFoG+OUDByyLtIu0oGP2Y2sloluRWkEka5OXcbv
+ UeQbqIZZrnN2sXQIbVAmLmrbIlDWNmlDHGW/yRgXJiObr0sqHyN8qYGWMkD8RTdH3IyJ
+ tHoQ==
+X-Gm-Message-State: APjAAAU/hX76bVkYd2wSYuSx1t1siTEISiXvdAk+R5bW4HbaAqwfgny7
+ VRpjeyg1XMkLwrlvoD+w5pI=
+X-Google-Smtp-Source: APXvYqzGEmb4ytEjP+LRVMTr9F0Y6MTK4X3gXyiIQEIGzvMK8+oJNzblWVSr8d3KYulpWfq3E293gw==
+X-Received: by 2002:a17:90a:ae15:: with SMTP id
+ t21mr1258885pjq.50.1565686985490; 
+ Tue, 13 Aug 2019 02:03:05 -0700 (PDT)
+Received: from localhost.localdomain ([122.163.110.75])
+ by smtp.gmail.com with ESMTPSA id m4sm126927406pgs.71.2019.08.13.02.03.02
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Tue, 13 Aug 2019 02:03:05 -0700 (PDT)
+From: Nishka Dasgupta <nishkadg.linux@gmail.com>
+To: kbusch@kernel.org, axboe@fb.com, hch@lst.de, sagi@grimberg.me,
+ linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme-tcp: Make nvme_tcp_mq_ops constant
+Date: Tue, 13 Aug 2019 14:32:53 +0530
+Message-Id: <20190813090253.8813-1-nishkadg.linux@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.30]); Tue, 13 Aug 2019 08:15:17 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_011518_216417_64DD4349 
-X-CRM114-Status: GOOD (  24.24  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190813_020306_347125_2E7EB848 
+X-CRM114-Status: GOOD (  11.60  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (nishkadg.linux[at]gmail.com)
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,329 +97,48 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Ming Lei <ming.lei@redhat.com>,
- Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>,
- Jon Derrick <jonathan.derrick@intel.com>
+Cc: Nishka Dasgupta <nishkadg.linux@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Now __irq_build_affinity_masks() spreads vectors evenly per node, and
-all vectors may not be spread in case that each numa node has different
-CPU number, then the following warning in irq_build_affinity_masks() can
-be triggered:
+Static structure nvme_tcp_mq_ops, of type blk_mq_ops, is not used except
+to be assigned to field ops of variable set. Variable set itself has
+type blk_mq_tag_set, whose field ops is declared as const. Hence
+nvme_tcp_mq_ops cannot be modified after being assigned to field ops of
+variable set. Therefore declare nvme_tcp_mq_ops const as well.
+Issue found with Coccinelle.
 
-	if (nr_present < numvecs)
-		WARN_ON(nr_present + nr_others < numvecs);
-
-Improve current spreading algorithm by assigning vectors according to
-the ratio of node's nr_cpu to nr_remaining_cpus, meantime running the
-assignment from smaller nodes to bigger nodes to guarantee that every
-active node gets allocated at least one vector, then we can avoid
-cross-node spread.
-
-Meantime the reported warning can be fixed.
-
-Another big goodness is that the spread approach becomes more fair if
-node has different CPU number.
-
-For example, on the following machine:
-	[root@ktest-01 ~]# lscpu
-	...
-	CPU(s):              16
-	On-line CPU(s) list: 0-15
-	Thread(s) per core:  1
-	Core(s) per socket:  8
-	Socket(s):           2
-	NUMA node(s):        2
-	...
-	NUMA node0 CPU(s):   0,1,3,5-9,11,13-15
-	NUMA node1 CPU(s):   2,4,10,12
-
-When driver requests to allocate 8 vectors, the following spread can
-be got:
-	irq 31, cpu list 2,4
-	irq 32, cpu list 10,12
-	irq 33, cpu list 0-1
-	irq 34, cpu list 3,5
-	irq 35, cpu list 6-7
-	irq 36, cpu list 8-9
-	irq 37, cpu list 11,13
-	irq 38, cpu list 14-15
-
-Without this patch, kernel warning is triggered on above situation, and
-allocation result was supposed to be 4 vectors for each node.
-
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Keith Busch <kbusch@kernel.org>
-Cc: linux-nvme@lists.infradead.org,
-Cc: Jon Derrick <jonathan.derrick@intel.com>
-Cc: Jens Axboe <axboe@kernel.dk>
-Reported-by: Jon Derrick <jonathan.derrick@intel.com>
-Signed-off-by: Ming Lei <ming.lei@redhat.com>
+Signed-off-by: Nishka Dasgupta <nishkadg.linux@gmail.com>
 ---
- kernel/irq/affinity.c | 196 +++++++++++++++++++++++++++++++++---------
- 1 file changed, 156 insertions(+), 40 deletions(-)
+ drivers/nvme/host/tcp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
-index 4e329495e9dc..717592879a54 100644
---- a/kernel/irq/affinity.c
-+++ b/kernel/irq/affinity.c
-@@ -7,6 +7,7 @@
- #include <linux/kernel.h>
- #include <linux/slab.h>
- #include <linux/cpu.h>
-+#include <linux/sort.h>
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 606b13d35d16..a777cb157d70 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -117,7 +117,7 @@ struct nvme_tcp_ctrl {
+ static LIST_HEAD(nvme_tcp_ctrl_list);
+ static DEFINE_MUTEX(nvme_tcp_ctrl_mutex);
+ static struct workqueue_struct *nvme_tcp_wq;
+-static struct blk_mq_ops nvme_tcp_mq_ops;
++static const struct blk_mq_ops nvme_tcp_mq_ops;
+ static struct blk_mq_ops nvme_tcp_admin_mq_ops;
  
- static void irq_spread_init_one(struct cpumask *irqmsk, struct cpumask *nmsk,
- 				unsigned int cpus_per_vec)
-@@ -94,6 +95,127 @@ static int get_nodes_in_cpumask(cpumask_var_t *node_to_cpumask,
- 	return nodes;
+ static inline struct nvme_tcp_ctrl *to_tcp_ctrl(struct nvme_ctrl *ctrl)
+@@ -2159,7 +2159,7 @@ static int nvme_tcp_map_queues(struct blk_mq_tag_set *set)
+ 	return 0;
  }
  
-+struct node_nr_vectors {
-+	unsigned n;
-+
-+	union {
-+		unsigned nvectors;
-+		unsigned ncpus;
-+	};
-+};
-+
-+static int ncpus_cmp_func(const void *l, const void *r)
-+{
-+	const struct node_nr_vectors *ln = l;
-+	const struct node_nr_vectors *rn = r;
-+
-+	return ln->ncpus - rn->ncpus;
-+}
-+
-+static void alloc_nodes_vectors(unsigned int numvecs,
-+				const cpumask_var_t *node_to_cpumask,
-+				const struct cpumask *cpu_mask,
-+				const nodemask_t nodemsk,
-+				struct cpumask *nmsk,
-+				struct node_nr_vectors *node_vectors)
-+{
-+	unsigned remaining_ncpus = 0;
-+	unsigned n;
-+
-+	for (n = 0; n < nr_node_ids; n++) {
-+		node_vectors[n].n = n;
-+		node_vectors[n].ncpus = UINT_MAX;
-+	}
-+
-+	for_each_node_mask(n, nodemsk) {
-+		unsigned ncpus;
-+
-+		cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
-+		ncpus = cpumask_weight(nmsk);
-+
-+		if (!ncpus)
-+			continue;
-+		remaining_ncpus += ncpus;
-+		node_vectors[n].ncpus = ncpus;
-+	}
-+
-+	sort(node_vectors, nr_node_ids, sizeof(node_vectors[0]),
-+	     ncpus_cmp_func, NULL);
-+
-+	/*
-+	 * Allocate vectors for each node according to the ratio of this
-+	 * node's nr_cpus to remaining un-assigned ncpus. 'numvecs' is
-+	 * bigger than number of active numa nodes. Always start the
-+	 * allocation from the node with minimized nr_cpus.
-+	 *
-+	 * This way guarantees that each active node gets allocated at
-+	 * least one vector, and the theory is simple: over-allocation
-+	 * is only done when this node is assigned by one vector, so
-+	 * other nodes will be allocated >= 1 vector, since 'numvecs' is
-+	 * bigger than number of numa nodes.
-+	 */
-+	for (n = 0; n < nr_node_ids; n++) {
-+		unsigned nvectors, ncpus;
-+
-+		if (node_vectors[n].ncpus == UINT_MAX)
-+			continue;
-+
-+		WARN_ON_ONCE(numvecs == 0);
-+
-+		ncpus = node_vectors[n].ncpus;
-+		nvectors = max_t(unsigned, 1,
-+				 numvecs * ncpus / remaining_ncpus);
-+
-+		node_vectors[n].nvectors = nvectors;
-+		remaining_ncpus -= ncpus;
-+		numvecs -= nvectors;
-+	}
-+}
-+
-+/**
-+ * irq_spread_vectors_on_node - Spread vectors on one node
-+ * @startvec:	The 1st vector to be spread
-+ * @numvecs:	The number of vectors to be spread
-+ * @nmsk:	The cpumask of this node
-+ * @masks:	The cpumask array for storing vector affinity
-+ */
-+static void irq_spread_vectors_on_node(unsigned startvec, unsigned numvecs,
-+				       struct cpumask *nmsk,
-+				       struct irq_affinity_desc *masks)
-+{
-+	unsigned ncpus = cpumask_weight(nmsk);
-+
-+	while (numvecs > 0) {
-+		unsigned v, vecs_to_assign, extra_vecs;
-+		unsigned curvec = startvec;
-+
-+		/*
-+		 * alloc_nodes_vectors() is intelligent enough to
-+		 * allocate vectors for each node. If the allocated
-+		 * vectors is bigger than node's CPU number because
-+		 * of rounddown, wraps to the first vector for this
-+		 * node, then cross-node spread can be avoided.
-+		 */
-+		vecs_to_assign = min(numvecs, ncpus);
-+
-+		/* Account for rounding errors */
-+		extra_vecs = ncpus - vecs_to_assign * (ncpus / vecs_to_assign);
-+
-+		for (v = 0; v < vecs_to_assign; v++, curvec++) {
-+			unsigned cpus_per_vec = ncpus / vecs_to_assign;
-+
-+			/* Account for extra vectors to compensate rounding errors */
-+			if (extra_vecs) {
-+				cpus_per_vec++;
-+				--extra_vecs;
-+			}
-+			irq_spread_init_one(&masks[curvec].mask, nmsk,
-+						cpus_per_vec);
-+		}
-+		numvecs -= vecs_to_assign;
-+	}
-+}
-+
- static int __irq_build_affinity_masks(unsigned int startvec,
- 				      unsigned int numvecs,
- 				      unsigned int firstvec,
-@@ -102,10 +224,11 @@ static int __irq_build_affinity_masks(unsigned int startvec,
- 				      struct cpumask *nmsk,
- 				      struct irq_affinity_desc *masks)
- {
--	unsigned int n, nodes, cpus_per_vec, extra_vecs, done = 0;
-+	unsigned int i, n, nodes, done = 0;
- 	unsigned int last_affv = firstvec + numvecs;
- 	unsigned int curvec = startvec;
- 	nodemask_t nodemsk = NODE_MASK_NONE;
-+	struct node_nr_vectors *node_vectors;
- 
- 	if (!cpumask_weight(cpu_mask))
- 		return 0;
-@@ -126,52 +249,36 @@ static int __irq_build_affinity_masks(unsigned int startvec,
- 		return numvecs;
- 	}
- 
--	for_each_node_mask(n, nodemsk) {
--		unsigned int ncpus, v, vecs_to_assign, vecs_per_node;
-+	node_vectors = kcalloc(nr_node_ids,
-+			       sizeof(struct node_nr_vectors),
-+			       GFP_KERNEL);
-+	if (!node_vectors)
-+		return -ENOMEM;
-+
-+	alloc_nodes_vectors(numvecs, node_to_cpumask, cpu_mask,
-+			    nodemsk, nmsk, node_vectors);
-+
-+	for (i = 0; i < nr_node_ids; i++) {
-+		unsigned int ncpus;
-+		struct node_nr_vectors *nv = &node_vectors[i];
-+
-+		if (nv->nvectors == UINT_MAX)
-+			continue;
- 
- 		/* Get the cpus on this node which are in the mask */
--		cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
-+		cpumask_and(nmsk, cpu_mask, node_to_cpumask[nv->n]);
- 		ncpus = cpumask_weight(nmsk);
- 		if (!ncpus)
- 			continue;
- 
--		/*
--		 * Calculate the number of cpus per vector
--		 *
--		 * Spread the vectors evenly per node. If the requested
--		 * vector number has been reached, simply allocate one
--		 * vector for each remaining node so that all nodes can
--		 * be covered
--		 */
--		if (numvecs > done)
--			vecs_per_node = max_t(unsigned,
--					(numvecs - done) / nodes, 1);
--		else
--			vecs_per_node = 1;
--
--		vecs_to_assign = min(vecs_per_node, ncpus);
--
--		/* Account for rounding errors */
--		extra_vecs = ncpus - vecs_to_assign * (ncpus / vecs_to_assign);
--
--		for (v = 0; curvec < last_affv && v < vecs_to_assign;
--		     curvec++, v++) {
--			cpus_per_vec = ncpus / vecs_to_assign;
-+		WARN_ON_ONCE(nv->nvectors == UINT_MAX);
-+		WARN_ON_ONCE(curvec + nv->nvectors > last_affv);
-+		irq_spread_vectors_on_node(curvec, nv->nvectors, nmsk, masks);
- 
--			/* Account for extra vectors to compensate rounding errors */
--			if (extra_vecs) {
--				cpus_per_vec++;
--				--extra_vecs;
--			}
--			irq_spread_init_one(&masks[curvec].mask, nmsk,
--						cpus_per_vec);
--		}
--
--		done += v;
--		if (curvec >= last_affv)
--			curvec = firstvec;
--		--nodes;
-+		curvec += nv->nvectors;
-+		done += nv->nvectors;
- 	}
-+	kfree(node_vectors);
- 	return done < numvecs ? done : numvecs;
- }
- 
-@@ -208,6 +315,10 @@ static int irq_build_affinity_masks(unsigned int startvec, unsigned int numvecs,
- 	nr_present = __irq_build_affinity_masks(curvec, numvecs,
- 						firstvec, node_to_cpumask,
- 						cpu_present_mask, nmsk, masks);
-+	if (nr_present < 0) {
-+		ret = nr_present;
-+		goto fail_build_affinity;
-+	}
- 
- 	/*
- 	 * Spread on non present CPUs starting from the next vector to be
-@@ -223,9 +334,14 @@ static int irq_build_affinity_masks(unsigned int startvec, unsigned int numvecs,
- 	nr_others = __irq_build_affinity_masks(curvec, numvecs,
- 					       firstvec, node_to_cpumask,
- 					       npresmsk, nmsk, masks);
-+	if (nr_others < 0)
-+		ret = nr_others;
-+
-+ fail_build_affinity:
- 	put_online_cpus();
- 
--	WARN_ON(max(nr_present, nr_others) < numvecs);
-+	WARN_ON(min(nr_present, nr_others) >= 0 &&
-+			max(nr_present, nr_others) < numvecs);
- 
- 	free_node_to_cpumask(node_to_cpumask);
- 
+-static struct blk_mq_ops nvme_tcp_mq_ops = {
++static const struct blk_mq_ops nvme_tcp_mq_ops = {
+ 	.queue_rq	= nvme_tcp_queue_rq,
+ 	.complete	= nvme_complete_rq,
+ 	.init_request	= nvme_tcp_init_request,
 -- 
-2.20.1
+2.19.1
 
 
 _______________________________________________
