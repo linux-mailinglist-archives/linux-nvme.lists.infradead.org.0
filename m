@@ -2,55 +2,50 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8918F8B43E
-	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 11:34:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E43998B526
+	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 12:12:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4tCV0k1cfRm78pM1mox453IYx7IGkdWxnRL4KBmqHdw=; b=khN7rTpBoeBopjDVb618S826W
-	NYEyZ34CFjXyQ81fWr65H8HMD7EGnwGnf76VlI87hi6Zzcip0+smBnVATf7g4CtnpKS7r255cPyYi
-	ii9tN/kPk4uVY/YhV2HbsmpAhAVIdjcBbRdlc4CYl08Qc17nrLxXAd5eeSVFHkShu0LHLqjjAloxJ
-	mBKRiyJ48mS4h9sqc5cT0CFbqEfLyiPDJI1bi6xiGyOu8xp5IOjmNNBNDN8omWEveeyiGjPz0zQxn
-	wU421O3WkO4syOTuP5a13if6AUKPROghPiv1tZLH2t6a1YawP4HYJaAODhKp5gmEz0wcciZyIiqkX
-	26mnmCJOg==;
+	 bh=Pc22iz4gEUGxeYX2FjNJ/+QPa/ExASfCPbiUTA/qys8=; b=Xv4o/RuAGtPkbRSeqLoJSJEG4
+	xkvHGuaWVkf7hY4mjIXz/UbWtRT2Yl6Phmfu5KAFBfcFqs1w9zD8TnQVtIplob2eshbrmjFUxGrGT
+	3x3rwH2oQMb8oxmqN3ttw+PiXfh5gNdUlox/u09eINdSmfrp9RNnUO/k0VosdYyqu44hyFy3G9D4/
+	E1r23wfY82aK0aoynd617B3IAkvTGS3XKKSnH2LqyDSuhPCA7q9brMoT6jTFrG1DLI2xeUQxkP4P/
+	wXl/uZFDHK4Z6nRh1hSif1Lq2bDAw1oJX1Djck+uSB9ANzjL5zccivYkM0wTpzpbg1MQDSovu/dUt
+	H5rhqIbjQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxTCY-0003tM-GC; Tue, 13 Aug 2019 09:34:46 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1hxTmp-0002FO-Re; Tue, 13 Aug 2019 10:12:16 +0000
+Received: from atrey.karlin.mff.cuni.cz ([195.113.26.193])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxTCK-0003rb-5n
- for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 09:34:33 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id D1578ABD0;
- Tue, 13 Aug 2019 09:34:28 +0000 (UTC)
-Subject: Re: [PATCH V3 3/3] genirq/affinity: Spread vectors on node according
- to nr_cpu ratio
-To: Ming Lei <ming.lei@redhat.com>
-References: <20190813081447.1396-1-ming.lei@redhat.com>
- <20190813081447.1396-4-ming.lei@redhat.com>
-From: Daniel Wagner <dwagner@suse.de>
-Message-ID: <7579c5b8-3992-e685-d559-98e9b0f7baad@suse.de>
-Date: Tue, 13 Aug 2019 11:34:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1hxTmX-0002EL-Sr
+ for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 10:11:59 +0000
+Received: by atrey.karlin.mff.cuni.cz (Postfix, from userid 512)
+ id 4917480719; Tue, 13 Aug 2019 12:11:38 +0200 (CEST)
+Date: Tue, 13 Aug 2019 12:11:50 +0200
+From: Pavel Machek <pavel@ucw.cz>
+To: Akinobu Mita <akinobu.mita@gmail.com>
+Subject: Re: [PATCH v3 1/6] block: umem: rename LED_* macros to MEMCTRL_LED_*
+Message-ID: <20190813101150.GA26337@amd>
+References: <1565459703-30513-1-git-send-email-akinobu.mita@gmail.com>
+ <1565459703-30513-2-git-send-email-akinobu.mita@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20190813081447.1396-4-ming.lei@redhat.com>
-Content-Language: en-US
+In-Reply-To: <1565459703-30513-2-git-send-email-akinobu.mita@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_023432_359276_23A21B0F 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20190813_031158_084614_1D032E31 
+X-CRM114-Status: GOOD (  10.07  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ medium trust [195.113.26.193 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -63,32 +58,70 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Keith Busch <kbusch@kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, Christoph Hellwig <hch@lst.de>,
- Jon Derrick <jonathan.derrick@intel.com>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Jens Axboe <axboe@kernel.dk>, Hannes Reinecke <hare@suse.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>, linux-scsi@vger.kernel.org,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>, linux-nvme@lists.infradead.org,
+ linux-block@vger.kernel.org, Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ linux-leds@vger.kernel.org, Dan Murphy <dmurphy@ti.com>
+Content-Type: multipart/mixed; boundary="===============0923560206586380120=="
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi,
 
-On 8/13/19 10:14 AM, Ming Lei wrote:
-> Now __irq_build_affinity_masks() spreads vectors evenly per node, and
-> all vectors may not be spread in case that each numa node has different
-> CPU number, then the following warning in irq_build_affinity_masks() can
-> be triggered:
-> 
-> 	if (nr_present < numvecs)
-> 		WARN_ON(nr_present + nr_others < numvecs);
+--===============0923560206586380120==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="Q68bSM7Ycu6FN28Q"
+Content-Disposition: inline
 
-Is this the warning which is changed in patch #1?
 
-Thanks,
-Daniel
+--Q68bSM7Ycu6FN28Q
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun 2019-08-11 02:54:58, Akinobu Mita wrote:
+> The umem driver defines LED_* macros for MEMCTRLCMD_LEDCTRL register
+> values.  The LED_OFF and LED_ON macros conflict with the LED subsystem's
+> LED_OFF and LED_ON enums.
+>=20
+> This renames these LED_* macros to MEMCTRL_LED_* in umem driver.
+>=20
+> Cc: Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>
+> Cc: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+
+Acked-by: Pavel Machek <pavel@ucw.cz>
+
+--=20
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
+g.html
+
+--Q68bSM7Ycu6FN28Q
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iEYEARECAAYFAl1SjOYACgkQMOfwapXb+vI9qACeIJl9nHuP1L2LH6REEIo6sUeq
+13QAoLnEWSiplV5fRmJs5ogCsMqgo9z7
+=NbtT
+-----END PGP SIGNATURE-----
+
+--Q68bSM7Ycu6FN28Q--
+
+
+--===============0923560206586380120==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-nvme mailing list
 Linux-nvme@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-nvme
+
+--===============0923560206586380120==--
+
