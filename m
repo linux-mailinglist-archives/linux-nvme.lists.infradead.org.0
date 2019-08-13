@@ -2,100 +2,64 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE2AC8B07F
-	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 09:10:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 116FC8B153
+	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 09:41:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6lC3KV86+W6AMh/usmVcW4yPOl3o3sOkjxFCkpGE8is=; b=Oyj0nZailcT4zj
-	V3e3231guq+vA4npho4MDzWNHy5bKflJWrigPrmqQdDzsGFAv63Y0oSFaP3sRiw1ne3p3vtcD5VNp
-	wQMA8UHaTXa1y7zkrezz4uLPwZywX6k3rVc6SVoXki0mag8MSjdALBmQGlB4ZcsLQKSQtfNxNhqnc
-	pHkGXXog67IMqPcMHKmzmmal9ah+BDkZlo8QqhV9TmtKpwfAn3yBeDSGZS0q4obm+E21oTGXfkED+
-	qhQ1uvH5crsrYGwbxpXipop6OWmfV+fk+C9k45U84i2zBdywMlv+rOGwLGE3+Z4FFGfHhw0n4FTmo
-	iK9yENpoBs8EK2/yqrfQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+KASU9dYbOoff/y5u2n/aA3UE3c0iEHAoP5pY+ldjmQ=; b=srIXTVRzzl0Ucw
+	lFpDXtdvo2t7iTvFrrNW30BBLPr4g13G1uy08f4PI+yxdrUpJBtw1KXc7ZPBVjv1pG66Oc18AkRbk
+	9DjXxeVZ/It+n6Ys1A9oumdrWk8VPPlCncTKHqp9u9Lh4dA84pd3xJLEjtqXODTg32fc832oHaeDF
+	rD4vBhIceHYlTFuzWhjyF2HZGr5XpnugQ65MDhBWwpSgDwho4I8W4BDSlhyumrUaCrHfJ3hcWNp1U
+	3cPlaR9qH8VdOOLORB7bGdSVndOIbNWRxuZQW2UEn+d8KDTrsv+LrFNcQt02CLzcr0ZRw0VJs962v
+	hapt3mXkVcKbVneV1gYA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxQwY-0008AP-L4; Tue, 13 Aug 2019 07:10:06 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1hxRR5-0004tM-Mj; Tue, 13 Aug 2019 07:41:40 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxQwI-0008A2-Td
- for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 07:09:53 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 604BEADDC;
- Tue, 13 Aug 2019 07:09:45 +0000 (UTC)
-Subject: Re: [PATCH v6 2/7] nvme: return a proper status for sync commands
- failure
-To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
-References: <20190813064304.7344-1-sagi@grimberg.me>
- <20190813064304.7344-3-sagi@grimberg.me>
-From: Hannes Reinecke <hare@suse.de>
-Openpgp: preference=signencrypt
-Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
- 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
- azzYF4VRJsdl+d0MCaSy8mUh
-Message-ID: <83640ee9-15c4-2e00-c7c5-39fe3db58b88@suse.de>
-Date: Tue, 13 Aug 2019 09:09:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ id 1hxRQr-0004sd-N0
+ for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 07:41:27 +0000
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id D49C8308A968;
+ Tue, 13 Aug 2019 07:41:23 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-25.pek2.redhat.com [10.72.8.25])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2DBD91710C;
+ Tue, 13 Aug 2019 07:41:16 +0000 (UTC)
+Date: Tue, 13 Aug 2019 15:41:14 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCH V2 2/3] genirq/affinity: Spread vectors on node according
+ to nr_cpu ratio
+Message-ID: <20190813074112.GA8610@ming.t460p>
+References: <20190812095709.25623-1-ming.lei@redhat.com>
+ <20190812095709.25623-3-ming.lei@redhat.com>
+ <20190812152718.GA32550@localhost.localdomain>
 MIME-Version: 1.0
-In-Reply-To: <20190813064304.7344-3-sagi@grimberg.me>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20190812152718.GA32550@localhost.localdomain>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.41]); Tue, 13 Aug 2019 07:41:24 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_000951_430556_22DFE77F 
-X-CRM114-Status: GOOD (  20.69  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190813_004125_786794_AF8FCED7 
+X-CRM114-Status: GOOD (  34.75  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,40 +71,255 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
- James Smart <james.smart@broadcom.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Jens Axboe <axboe@kernel.dk>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
+ Christoph Hellwig <hch@lst.de>, Jon Derrick <jonathan.derrick@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gOC8xMy8xOSA4OjQyIEFNLCBTYWdpIEdyaW1iZXJnIHdyb3RlOgo+IGNhbGxlcnMgc2hvdWxk
-IG5vdCByZWx5IG9uIHJhdyBudm1lIHN0YXR1cywgaW5zdGVhZCByZXR1cm4KPiBpcyBtb3JlIGFw
-cHJvcHJpYXRlIGJsa19zdGF0dXNfdC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBTYWdpIEdyaW1iZXJn
-IDxzYWdpQGdyaW1iZXJnLm1lPgo+IC0tLQo+ICBkcml2ZXJzL252bWUvaG9zdC9jb3JlLmMgfCA0
-ICsrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkK
-PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9udm1lL2hvc3QvY29yZS5jIGIvZHJpdmVycy9udm1l
-L2hvc3QvY29yZS5jCj4gaW5kZXggODY3Yzg5NzdlYjNlLi5mOWJjMTA0MDdmMWIgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9udm1lL2hvc3QvY29yZS5jCj4gKysrIGIvZHJpdmVycy9udm1lL2hvc3Qv
-Y29yZS5jCj4gQEAgLTc3NCw3ICs3NzQsNyBAQCBzdGF0aWMgdm9pZCBudm1lX2V4ZWN1dGVfcnFf
-cG9sbGVkKHN0cnVjdCByZXF1ZXN0X3F1ZXVlICpxLAo+ICAKPiAgLyoKPiAgICogUmV0dXJucyAw
-IG9uIHN1Y2Nlc3MuICBJZiB0aGUgcmVzdWx0IGlzIG5lZ2F0aXZlLCBpdCdzIGEgTGludXggZXJy
-b3IgY29kZTsKPiAtICogaWYgdGhlIHJlc3VsdCBpcyBwb3NpdGl2ZSwgaXQncyBhbiBOVk0gRXhw
-cmVzcyBzdGF0dXMgY29kZQo+ICsgKiBpZiB0aGUgcmVzdWx0IGlzIHBvc2l0aXZlLCBpdCdzIGEg
-YmxrX3N0YXR1c190IHN0YXR1cyBjb2RlCj4gICAqLwo+ICBpbnQgX19udm1lX3N1Ym1pdF9zeW5j
-X2NtZChzdHJ1Y3QgcmVxdWVzdF9xdWV1ZSAqcSwgc3RydWN0IG52bWVfY29tbWFuZCAqY21kLAo+
-ICAJCXVuaW9uIG52bWVfcmVzdWx0ICpyZXN1bHQsIHZvaWQgKmJ1ZmZlciwgdW5zaWduZWQgYnVm
-ZmxlbiwKPiBAQCAtODA1LDcgKzgwNSw3IEBAIGludCBfX252bWVfc3VibWl0X3N5bmNfY21kKHN0
-cnVjdCByZXF1ZXN0X3F1ZXVlICpxLCBzdHJ1Y3QgbnZtZV9jb21tYW5kICpjbWQsCj4gIAlpZiAo
-bnZtZV9yZXEocmVxKS0+ZmxhZ3MgJiBOVk1FX1JFUV9DQU5DRUxMRUQpCj4gIAkJcmV0ID0gLUVJ
-TlRSOwo+ICAJZWxzZQo+IC0JCXJldCA9IG52bWVfcmVxKHJlcSktPnN0YXR1czsKPiArCQlyZXQg
-PSBudm1lX2Vycm9yX3N0YXR1cyhyZXEpOwo+ICAgb3V0Ogo+ICAJYmxrX21xX2ZyZWVfcmVxdWVz
-dChyZXEpOwo+ICAJcmV0dXJuIHJldDsKPiAKUmV2aWV3ZWQtYnk6IEhhbm5lcyBSZWluZWNrZSA8
-aGFyZUBzdXNlLmNvbT4KCkNoZWVycywKCkhhbm5lcwotLSAKRHIuIEhhbm5lcyBSZWluZWNrZQkJ
-ICAgVGVhbWxlYWQgU3RvcmFnZSAmIE5ldHdvcmtpbmcKaGFyZUBzdXNlLmRlCQkJICAgICAgICAg
-ICAgICAgKzQ5IDkxMSA3NDA1MyA2ODgKU1VTRSBMSU5VWCBHbWJILCBNYXhmZWxkc3RyLiA1LCA5
-MDQwOSBOw7xybmJlcmcKR0Y6IEZlbGl4IEltZW5kw7ZyZmZlciwgTWFyeSBIaWdnaW5zLCBTcmkg
-UmFzaWFoCkhSQiAyMTI4NCAoQUcgTsO8cm5iZXJnKQoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZt
-ZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbnZtZQo=
+On Mon, Aug 12, 2019 at 09:27:18AM -0600, Keith Busch wrote:
+> On Mon, Aug 12, 2019 at 05:57:08PM +0800, Ming Lei wrote:
+> > Now __irq_build_affinity_masks() spreads vectors evenly per node, and
+> > all vectors may not be spread in case that each numa node has different
+> > CPU number, then the following warning in irq_build_affinity_masks() can
+> > be triggered:
+> > 
+> > 	if (nr_present < numvecs)
+> > 		WARN_ON(nr_present + nr_others < numvecs);
+> > 
+> > Improve current spreading algorithm by assigning vectors according to
+> > the ratio of node's nr_cpu to nr_remaining_cpus, meantime running the
+> > assignment from smaller nodes to bigger nodes to guarantee that every
+> > active node gets allocated at least one vector, then we can avoid
+> > cross-node spread.
+> > 
+> > Meantime the reported warning can be fixed.
+> > 
+> > Another big goodness is that the spread approach becomes more fair if
+> > node has different CPU number.
+> > 
+> > For example, on the following machine:
+> > 	[root@ktest-01 ~]# lscpu
+> > 	...
+> > 	CPU(s):              16
+> > 	On-line CPU(s) list: 0-15
+> > 	Thread(s) per core:  1
+> > 	Core(s) per socket:  8
+> > 	Socket(s):           2
+> > 	NUMA node(s):        2
+> > 	...
+> > 	NUMA node0 CPU(s):   0,1,3,5-9,11,13-15
+> > 	NUMA node1 CPU(s):   2,4,10,12
+> > 
+> > When driver requests to allocate 8 vectors, the following spread can
+> > be got:
+> > 	irq 31, cpu list 2,4
+> > 	irq 32, cpu list 10,12
+> > 	irq 33, cpu list 0-1
+> > 	irq 34, cpu list 3,5
+> > 	irq 35, cpu list 6-7
+> > 	irq 36, cpu list 8-9
+> > 	irq 37, cpu list 11,13
+> > 	irq 38, cpu list 14-15
+> > 
+> > Without this patch, kernel warning is triggered on above situation, and
+> > allocation result was supposed to be 4 vectors for each node.
+> > 
+> > Cc: Christoph Hellwig <hch@lst.de>
+> > Cc: Keith Busch <kbusch@kernel.org>
+> > Cc: linux-nvme@lists.infradead.org,
+> > Cc: Jon Derrick <jonathan.derrick@intel.com>
+> > Cc: Jens Axboe <axboe@kernel.dk>
+> > Reported-by: Jon Derrick <jonathan.derrick@intel.com>
+> > Signed-off-by: Ming Lei <ming.lei@redhat.com>
+> > ---
+> >  kernel/irq/affinity.c | 141 +++++++++++++++++++++++++++++++++++-------
+> >  1 file changed, 117 insertions(+), 24 deletions(-)
+> > 
+> > diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
+> > index c7cca942bd8a..927dcbe80482 100644
+> > --- a/kernel/irq/affinity.c
+> > +++ b/kernel/irq/affinity.c
+> > @@ -7,6 +7,7 @@
+> >  #include <linux/kernel.h>
+> >  #include <linux/slab.h>
+> >  #include <linux/cpu.h>
+> > +#include <linux/sort.h>
+> >  
+> >  static void irq_spread_init_one(struct cpumask *irqmsk, struct cpumask *nmsk,
+> >  				unsigned int cpus_per_vec)
+> > @@ -94,6 +95,87 @@ static int get_nodes_in_cpumask(cpumask_var_t *node_to_cpumask,
+> >  	return nodes;
+> >  }
+> >  
+> > +struct node_nr_vectors {
+> > +	unsigned n;
+> > +
+> > +	union {
+> > +		unsigned nvectors;
+> > +		unsigned ncpus;
+> > +	};
+> > +};
+> > +
+> > +static int ncpus_cmp_func(const void *l, const void *r)
+> > +{
+> > +	const struct node_nr_vectors *ln = l;
+> > +	const struct node_nr_vectors *rn = r;
+> > +
+> > +	if (ln->ncpus < rn->ncpus)
+> > +		return -1;
+> > +	if (ln->ncpus > rn->ncpus)
+> > +		return 1;
+> > +	return 0;
+> 
+> You can collapse these to one line:
+> 
+> 	return ln->ncpus - rn->ncpus;
+
+OK.
+
+> 
+> > +}
+> > +
+> > +static void alloc_nodes_vectors(unsigned int numvecs,
+> > +				const cpumask_var_t *node_to_cpumask,
+> > +				const struct cpumask *cpu_mask,
+> > +				const nodemask_t nodemsk,
+> > +				struct cpumask *nmsk,
+> > +				struct node_nr_vectors *node_vectors)
+> > +{
+> > +	unsigned remaining_ncpus = 0;
+> > +	unsigned n;
+> > +
+> > +	for (n = 0; n < nr_node_ids; n++) {
+> > +		node_vectors[n].n = n;
+> > +		node_vectors[n].ncpus = UINT_MAX;
+> > +	}
+> > +
+> > +	for_each_node_mask(n, nodemsk) {
+> > +		unsigned ncpus;
+> > +
+> > +		cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
+> > +		ncpus = cpumask_weight(nmsk);
+> > +
+> > +		if (!ncpus)
+> > +			continue;
+> > +		remaining_ncpus += ncpus;
+> > +		node_vectors[n].ncpus = ncpus;
+> > +	}
+> > +
+> > +	sort(node_vectors, nr_node_ids, sizeof(node_vectors[0]),
+> > +	     ncpus_cmp_func, NULL);
+> > +
+> > +	/*
+> > +	 * Allocate vectors for each node according to the ratio of this
+> > +	 * node's nr_cpus to remaining un-assigned ncpus. 'numvecs' is
+> > +	 * bigger than number of active numa nodes. Always start the
+> > +	 * allocation from the node with minimized nr_cpus.
+> > +	 *
+> > +	 * This way guarantees that each active node gets allocated at
+> > +	 * least one vector, and the theory is simple: over-allocation
+> > +	 * is only done when this node is assigned by one vector, so
+> > +	 * other nodes will be allocated >= 1 vector, since 'numvecs' is
+> > +	 * bigger than number of numa nodes.
+> > +	 */
+> > +	for (n = 0; n < nr_node_ids; n++) {
+> > +		unsigned nvectors, ncpus;
+> > +
+> > +		if (node_vectors[n].ncpus == UINT_MAX)
+> > +			continue;
+> > +
+> > +		WARN_ON_ONCE(numvecs == 0);
+> > +
+> > +		ncpus = node_vectors[n].ncpus;
+> > +		nvectors = max_t(unsigned, 1,
+> > +				 numvecs * ncpus / remaining_ncpus);
+> > +
+> > +		node_vectors[n].nvectors = nvectors;
+> > +		remaining_ncpus -= ncpus;
+> > +		numvecs -= nvectors;
+> > +	}
+> 
+> This looks good to me.
+> 
+> > +}
+> > +
+> >  static int __irq_build_affinity_masks(unsigned int startvec,
+> >  				      unsigned int numvecs,
+> >  				      unsigned int firstvec,
+> > @@ -102,10 +184,11 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+> >  				      struct cpumask *nmsk,
+> >  				      struct irq_affinity_desc *masks)
+> >  {
+> > -	unsigned int n, nodes, cpus_per_vec, extra_vecs, done = 0;
+> > +	unsigned int i, n, nodes, cpus_per_vec, extra_vecs, done = 0;
+> >  	unsigned int last_affv = firstvec + numvecs;
+> >  	unsigned int curvec = startvec;
+> >  	nodemask_t nodemsk = NODE_MASK_NONE;
+> > +	struct node_nr_vectors *node_vectors;
+> >  
+> >  	if (!cpumask_weight(cpu_mask))
+> >  		return 0;
+> > @@ -126,8 +209,23 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+> >  		return numvecs;
+> >  	}
+> >  
+> > -	for_each_node_mask(n, nodemsk) {
+> > -		unsigned int ncpus, v, vecs_to_assign, vecs_per_node;
+> > +	node_vectors = kcalloc(nr_node_ids,
+> > +			       sizeof(struct node_nr_vectors),
+> > +			       GFP_KERNEL);
+> > +	if (!node_vectors)
+> > +		return 0;
+> 
+> I think we need to get this -ENOMEM condition back to the caller and
+> have that condition handled.
+
+Good point.
+
+> 
+> > @@ -165,13 +250,21 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+> >  			}
+> >  			irq_spread_init_one(&masks[curvec].mask, nmsk,
+> >  						cpus_per_vec);
+> > +			/*
+> > +			 * alloc_nodes_vectors() is intelligent enough to
+> > +			 * allocate vectors on all nodes, so wrapping
+> > +			 * shouldn't be triggered usually. However, if it
+> > +			 * happens when allocated vectors is bigger than
+> > +			 * node's CPU number becasue of round down, wraps
+> > +			 * to the first vector allocated for this node, then
+> > +			 * cross-node spread can be avoided.
+> > +			 */
+> > +			if (curvec >= last_affv)
+> > +				curvec -= v;
+> 
+> Could you explain again how this could happen? The round-down should mean we
+> apply a vector to more CPUs so that the number of vectors applied to a
+> node wthin the loop should never require wrapping to hit all those CPUs.
+> And if that's true, the check should probably be a warn because it
+> should never happen.
+
+You are right.
+
+We should simply spread from the 1st vector for this node if there is
+more vectors not done.
+
+> 
+> In any case, if you can hit that condition where curvec >= last_affv,
+> the assignment to masks[curvec] just above may be out-of-bounds.
+
+Yeah, 'curvec >= last_affv' shouldn't be needed.
+
+Will fix them in V3.
+
+
+Thanks,
+Ming
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
