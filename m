@@ -2,74 +2,75 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 260248BECF
-	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 18:40:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 27FC68BED0
+	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 18:40:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=w0X0FFvHcZ5Nz9WYZuURDiKHEumA7BEreJDZa5vd4rQ=; b=o1/4FJ0hAmYebhy/y3ltyaSUn
-	c42lCXCdhdut+1Gy8miak9DlvH4Y5wfy5nTKJAgtORUMJaTPeh6RGNHcW+XD+5l5cIrJ/hxAFisLr
-	pEE827MiQM+OnoYqe9i9ujH1SJ/px6UlMvfaZS8leqEuVbSEiGVbt58/rAHbMj1+Kp26GPh4n0zgF
-	1XBZSp6V15WgJCYOpBwttTeNIRe087bYU8dAdyO70PFDpQrEm6Rz0Qeo67vPkaTQR5YB9zmZQ1pad
-	GwsL1t1ERqJQ4sJh2iAfgZB/DlS5KkU1n0ZpYhnvGJ2svs2qiLw8xYZKVB7ijfCY4xfz759Lekifp
-	WFDD5hj/A==;
+	 bh=EnlpFBr4ldsEYdTWBNvHAUFVmiRjTr9fPn7cEHVgDLQ=; b=XytPMSkPcydEBqFralG3hRQbq
+	RQJdtjKYFYWBFBk5uuSyoXXhXXlpZ01U28PoV9zi47+/NEXw69O7Uk0lgg8+ALO3joVAfocrxcCLQ
+	Grv0Qp/BJG1Zu7kK/lapnRX6G62WWroyd64b9ZZyV+2ldneKzyopZX5FNuDZZ6gHCksEMgI3bJAaP
+	5sk3swafJqqJv+oBmnD+bYvv8Qi2EzEp+QxS5khO85st55iZQ/DPndSR1087N9dmhOvaeV3EDnTLd
+	J8Is69cuqcuU29758zVL3Zk4+xJsQFuKSk1NLDkXPE6yftubyY6dSq/wgT5W8ks8q/ohqDS7Nao5r
+	hlGQZDhdQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxZqV-0000E7-QI; Tue, 13 Aug 2019 16:40:27 +0000
-Received: from mail-ot1-f65.google.com ([209.85.210.65])
+	id 1hxZqt-0000TW-QB; Tue, 13 Aug 2019 16:40:51 +0000
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxZqL-0000Dj-WB
- for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 16:40:19 +0000
-Received: by mail-ot1-f65.google.com with SMTP id j7so30185694ota.9
- for <linux-nvme@lists.infradead.org>; Tue, 13 Aug 2019 09:40:17 -0700 (PDT)
+ id 1hxZqf-0000Qk-0T
+ for linux-nvme@lists.infradead.org; Tue, 13 Aug 2019 16:40:39 +0000
+Received: by mail-ot1-f46.google.com with SMTP id f17so39592124otq.4
+ for <linux-nvme@lists.infradead.org>; Tue, 13 Aug 2019 09:40:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=7Y9SrmY4DP5gLIpa0c/SZ3n8lzftntAkSz9N6afj9ao=;
- b=EANUPt6XtE9B6NdeJ2q0wPz+40vtlbnJLgt09Z2azWUYrGGYEoT/qgBHOixvF1VJMN
- Ep2m45oH0FQ/xFt3btv7BZ7PU/HOm49jPw5j1a690f6wQnwiL7foW3KRhU1hXkZAF9P3
- K3tMWyiFYxQSbjCOhkfKV5rVF3vsKzJW9vk/PGxUWvFr0N8y3FGjkvItVx7zmqDzB1wO
- Q0J4+8jg0nVP5VjSPbTnscMui68p6LWfPdMIJjnWDa761m1GzgWwoHbrubRDDC1YVqdX
- mK6nAov6CCnzR7b9bsj81Pa1uWIUN2XdCjihZxt2t83LXOYwEgFXYsDR461qFYOIKxD4
- WLfg==
-X-Gm-Message-State: APjAAAUFKVK3r/qP2pOynJlT1iKGIIHSfTABcn9bcvOyuGa0mBIZevEF
- p1r1+Yt7p0mNeAqS66wSuKE=
-X-Google-Smtp-Source: APXvYqwj7Wc/4oIj8DoxZgrXYlun9IIjVl4pfiF2S6AtLLFyTFc3Cefc5kfmwOrAdBeQBJsChjv0Gg==
-X-Received: by 2002:a9d:65c4:: with SMTP id z4mr8126525oth.115.1565714415485; 
- Tue, 13 Aug 2019 09:40:15 -0700 (PDT)
+ bh=nWpDQmZNg8zKVk12QskQ7NNS05C4fI/JmZBKLdKyu8Q=;
+ b=jscYnS/YkQ0SG8unsu4XqF/lh1MuRfSDdloyoZmrD2MaYbQbPeO0d91k1B4OSAZ3H3
+ vgM0yNjs1/dh5+prj+/Bj+H+LjTfRRm0+Bb1y98aiWSbeirTGrgi0Ir8uXGEOPmTTYC6
+ WjuzJeaWf1FvkIYMmM8eHXTpqk2iEdlWMEtGdEUIishixn6KYwhoHLzCIKd/33WDdr3t
+ ou4h9D+DLXEg3PntFvip2B30TdKQsSqpASAe1ze4AUzRHd274ib4sUCskMYt0BPC/OQF
+ Xfq2QfcXF4Cj1TRKT3zMJxUkRggrDdnNFL4iYo0ZPQYdgl0h4VTs738J4UuG1iLL2F8m
+ M0IQ==
+X-Gm-Message-State: APjAAAWyJYr0I9IOoH+B+KMijCtsEhL9JZ7vdsMdNRf1/fLrVMydz5Xc
+ RQwkcrQvy1etNBQP8NgYHh4=
+X-Google-Smtp-Source: APXvYqwKnHZ8ZbfA1yaG8EzvBLv8/UMDJSoQqriTKLLcorYOnbReXWYovHa+3NXmEObwh+FfbgDhQw==
+X-Received: by 2002:a9d:4e97:: with SMTP id v23mr10220255otk.112.1565714436259; 
+ Tue, 13 Aug 2019 09:40:36 -0700 (PDT)
 Received: from [192.168.1.114]
  (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
- by smtp.gmail.com with ESMTPSA id 44sm13801370otf.30.2019.08.13.09.40.14
+ by smtp.gmail.com with ESMTPSA id i1sm35120400oie.45.2019.08.13.09.40.35
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 13 Aug 2019 09:40:14 -0700 (PDT)
-Subject: Re: [PATCH 1/5] nvme-fabrics: Add type of service (TOS) configuration
+ Tue, 13 Aug 2019 09:40:35 -0700 (PDT)
+Subject: Re: [PATCH 2/5] nvme-rdma: Add TOS for rdma transport
 To: Israel Rukshin <israelr@mellanox.com>,
  Linux-nvme <linux-nvme@lists.infradead.org>
 References: <1565702251-17198-1-git-send-email-israelr@mellanox.com>
- <1565702251-17198-3-git-send-email-israelr@mellanox.com>
+ <1565702251-17198-4-git-send-email-israelr@mellanox.com>
 From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <7054c205-5490-9329-8dc9-8c0bbb78e4d7@grimberg.me>
-Date: Tue, 13 Aug 2019 09:40:04 -0700
+Message-ID: <bbca18cc-ad30-464b-3b67-6e11f87fb525@grimberg.me>
+Date: Tue, 13 Aug 2019 09:40:34 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <1565702251-17198-3-git-send-email-israelr@mellanox.com>
+In-Reply-To: <1565702251-17198-4-git-send-email-israelr@mellanox.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190813_094018_037514_137F782E 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20190813_094037_196859_8C6722AE 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.65 listed in list.dnswl.org]
+ no trust [209.85.210.46 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (sagigrim[at]gmail.com)
@@ -95,63 +96,7 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-> TOS is user-defined and needs to be configured via nvme-cli.
-> It must be set before initiating any traffic and once set the TOS
-> cannot be changed.
-> 
-> Signed-off-by: Israel Rukshin <israelr@mellanox.com>
-> Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
-> ---
->   drivers/nvme/host/fabrics.c | 16 +++++++++++++++-
->   drivers/nvme/host/fabrics.h |  3 +++
->   2 files changed, 18 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/nvme/host/fabrics.c b/drivers/nvme/host/fabrics.c
-> index 1994d5b..9e9ee07 100644
-> --- a/drivers/nvme/host/fabrics.c
-> +++ b/drivers/nvme/host/fabrics.c
-> @@ -611,6 +611,7 @@ bool __nvmf_check_ready(struct nvme_ctrl *ctrl, struct request *rq,
->   	{ NVMF_OPT_DATA_DIGEST,		"data_digest"		},
->   	{ NVMF_OPT_NR_WRITE_QUEUES,	"nr_write_queues=%d"	},
->   	{ NVMF_OPT_NR_POLL_QUEUES,	"nr_poll_queues=%d"	},
-> +	{ NVMF_OPT_TOS,			"tos=%d"		},
->   	{ NVMF_OPT_ERR,			NULL			}
->   };
->   
-> @@ -632,6 +633,7 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
->   	opts->duplicate_connect = false;
->   	opts->hdr_digest = false;
->   	opts->data_digest = false;
-> +	opts->tos = -1; /* < 0 == use transport default */
->   
->   	options = o = kstrdup(buf, GFP_KERNEL);
->   	if (!options)
-> @@ -856,6 +858,18 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
->   			}
->   			opts->nr_poll_queues = token;
->   			break;
-> +		case NVMF_OPT_TOS:
-> +			if (match_int(args, &token)) {
-> +				ret = -EINVAL;
-> +				goto out;
-> +			}
-> +			if (token < 0 || token > 255) {
-> +				pr_err("Invalid type of service %d\n", token);
-> +				ret = -EINVAL;
-> +				goto out;
-> +			}
-> +			opts->tos = token;
-> +			break;
-
-If we treat it like a transport agnostic parameter, we should handle
-these limits in the individual transports. Also I think we can simply
-clamp down tos>255 (we can still fail negative tos here though).
-
-James, Christoph, Keith,
-
-What do you think, do we want to start individual transport parameters
-support like James suggested?
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 
 _______________________________________________
 Linux-nvme mailing list
