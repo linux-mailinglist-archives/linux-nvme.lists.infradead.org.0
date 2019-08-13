@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E6F78B00C
-	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 08:43:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 209628B00F
+	for <lists+linux-nvme@lfdr.de>; Tue, 13 Aug 2019 08:44:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,25 +11,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=HuSQI7tpNzHQO9tAK9ifB8kUZz8N6+DJbYX7AfzGbxc=; b=t22uO2l+LHRmhfscqsQzSZcOwD
-	/e49jDzq0wavfdfS+8Nqbv92WxeMkDv9KMn4lqD5xTga88upTneiYUHNBqgEFuMfqb/2XxqnZ7j0W
-	SmXi+NIgnK+8ld/t3taHHu1Oo1ehC9tkCD68Rt1h1PlgE7eNKsvVPa38pdlLL4PhUAkxQVxV1l3Om
-	fO3ebOUFVuGbI5ukk11FTu/q4I8hPzNvzOLDT+Uh00QS55nbD2ctD+hj+skxUEd8hKIgtP6Lp3mEl
-	cNRPcJbZ97i8oHBDMacHUjFgIi2R9kMTSawAjJKITnHOGGzqOw7h4sJyHHbklGNBk9UZVQYMygaIG
-	wFX+NU1A==;
+	bh=y4hgtArTMczzLSUumT5p/lUzU2eyDHd+IuvIi8yvxp8=; b=oSk7ud7/5/MozNmxRBzcm5Y5mA
+	mJEajoigpAnSB80RstzTO7nIAjJWewLD9Hna6VuHwle7Ir55YqZQYCm+4AEWp3SVdjYDvwbIt+Vm1
+	XYATwzAMRSypQDsE4kE2a504eCpiGY3rtOYMXeMGKr/OjL+BxuQW2e678gkRuNMxH7o2E9/MiV0zx
+	fvpsuZYRyy1cyP6fSH1lo+a5cNWEgQmGvfPgegC0MuiNIgrU6GSaL4KC4AVGr6cXC0qFJsZpNJgC+
+	9wvcG9XjTv/rMuu4ydxb1AOIAeI96XVcBL8+Yu7SM5wQYa9j5dfmKnJMCuPWe1V5WdsPGSM66y0Vq
+	Hwd8JDRA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxQWc-0007a5-K6; Tue, 13 Aug 2019 06:43:18 +0000
+	id 1hxQXM-00085b-9r; Tue, 13 Aug 2019 06:44:04 +0000
 Received: from [2601:647:4800:973f:a183:2905:6842:b7c]
  (helo=bombadil.infradead.org)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hxQWP-0007Z2-Fa; Tue, 13 Aug 2019 06:43:05 +0000
+ id 1hxQWP-0007Z2-M7; Tue, 13 Aug 2019 06:43:05 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v6 1/7] nvme: fail cancelled commands with
- NVME_SC_HOST_PATH_ERROR
-Date: Mon, 12 Aug 2019 23:42:58 -0700
-Message-Id: <20190813064304.7344-2-sagi@grimberg.me>
+Subject: [PATCH v6 2/7] nvme: return a proper status for sync commands failure
+Date: Mon, 12 Aug 2019 23:42:59 -0700
+Message-Id: <20190813064304.7344-3-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190813064304.7344-1-sagi@grimberg.me>
 References: <20190813064304.7344-1-sagi@grimberg.me>
@@ -52,45 +51,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-NVME_SC_ABORT_REQ means that the request was aborted due to
-an abort command received. In our case, this is a transport
-cancellation, so host pathing error is much more appropriate.
+callers should not rely on raw nvme status, instead return
+is more appropriate blk_status_t.
 
-Also, convert NVME_SC_HOST_PATH_ERROR to BLK_STS_TRANSPORT for
-such that callers can understand that the status is a transport
-related error. This will be used by the ns scanning code to
-understand if it got an error from the controller or that the
-controller happens to be unreachable by the transport.
-
-Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
-Reviewed-by: Hannes Reinecke <hare@suse.com>
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- drivers/nvme/host/core.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/nvme/host/core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 6956041224ec..867c8977eb3e 100644
+index 867c8977eb3e..f9bc10407f1b 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -228,6 +228,8 @@ static blk_status_t nvme_error_status(struct request *req)
- 		return BLK_STS_PROTECTION;
- 	case NVME_SC_RESERVATION_CONFLICT:
- 		return BLK_STS_NEXUS;
-+	case NVME_SC_HOST_PATH_ERROR:
-+		return BLK_STS_TRANSPORT;
- 	default:
- 		return BLK_STS_IOERR;
- 	}
-@@ -294,7 +296,7 @@ bool nvme_cancel_request(struct request *req, void *data, bool reserved)
- 	dev_dbg_ratelimited(((struct nvme_ctrl *) data)->device,
- 				"Cancelling I/O %d", req->tag);
+@@ -774,7 +774,7 @@ static void nvme_execute_rq_polled(struct request_queue *q,
  
--	nvme_req(req)->status = NVME_SC_ABORT_REQ;
-+	nvme_req(req)->status = NVME_SC_HOST_PATH_ERROR;
- 	blk_mq_complete_request_sync(req);
- 	return true;
- }
+ /*
+  * Returns 0 on success.  If the result is negative, it's a Linux error code;
+- * if the result is positive, it's an NVM Express status code
++ * if the result is positive, it's a blk_status_t status code
+  */
+ int __nvme_submit_sync_cmd(struct request_queue *q, struct nvme_command *cmd,
+ 		union nvme_result *result, void *buffer, unsigned bufflen,
+@@ -805,7 +805,7 @@ int __nvme_submit_sync_cmd(struct request_queue *q, struct nvme_command *cmd,
+ 	if (nvme_req(req)->flags & NVME_REQ_CANCELLED)
+ 		ret = -EINTR;
+ 	else
+-		ret = nvme_req(req)->status;
++		ret = nvme_error_status(req);
+  out:
+ 	blk_mq_free_request(req);
+ 	return ret;
 -- 
 2.17.1
 
