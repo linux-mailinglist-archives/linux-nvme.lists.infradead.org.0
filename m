@@ -2,128 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34E058D648
-	for <lists+linux-nvme@lfdr.de>; Wed, 14 Aug 2019 16:34:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 17A858D79D
+	for <lists+linux-nvme@lfdr.de>; Wed, 14 Aug 2019 18:06:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XAAQBsg2eeGp+4pvOC+qlBetj7JlackmEVyRGKRzq4g=; b=fCyjcl+8OQ76fl9Hml12Ahej9
-	HK8IoJydkl7kmpPrljzPcVgDC3i8KrnfGww70551svVw8APV6vg1UYIiPByLsWQh2mYTBQhuGduK1
-	rjE8/hA58KlqTMHvG95QQ+G0T0U1kN6doV5k4IcdKwYT6f0dO5W6kxZ57RiqvTB8nLyzHraVRDkmu
-	EDoO0Yzr1z21zG8SP6WCtIxMCYI72dUk4+gJ+ElxEOyqZBpOoQrxB2vVxI7q8XSZZqEbU1loP7TiP
-	ip+eSMevNsXkthicLi1AivCDj9+jF48QjI0FuhR+Ilqwr3+qNlq8wBUI11triXE+Fd6kDRniUy6ia
-	PbJq6f43Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=zGqgsS+n4BqUmcKmhI1U7IIROdikZovLaXt++6IA5+0=; b=dvu
+	YyTcDnuSn/8RXKGga7gT56ChAnQXECmqoqOKGDV11sbaFkpCXsEVpI+1TPMF0C/9jvq58IqHuzlfe
+	jB/zOCkDAgPzZwQnA5t8Qz2oQLEb8/2MEZ9pSj+hp6G0+uGrVRfHwGRhZfrF9mPSnSy4Bi5l6QNX7
+	yV9u7eG7l9gWoVxXTm/5OGq6PQm/9GLqH0bburBafdW0nMw2aNm0YLL9qA0/LOaio7j56fqaiUfVP
+	t1b4IvGCRn/nm2/wPDYexPeR5Rd/WBOeEMoAEYXPlL+ttRBPp1QUKDH325daGNXipKYn3lKUnwoBU
+	geAOo3/rFQs+DkoHuNtL57GVXQwa9+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxuME-0000L2-JJ; Wed, 14 Aug 2019 14:34:34 +0000
-Received: from mail-eopbgr80040.outbound.protection.outlook.com ([40.107.8.40]
- helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+	id 1hxvmu-0001rY-8X; Wed, 14 Aug 2019 16:06:12 +0000
+Received: from mx0a-00154904.pphosted.com ([148.163.133.20])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxuKJ-0006oe-6t
- for linux-nvme@lists.infradead.org; Wed, 14 Aug 2019 14:32:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ad7qBpeMg7gha4QnXU2Es3fT0jv9oGgM44lTe7SYbl7HdtNu8Qtr6QQrBDTWESaKidyK2zEEOL5h0/wOUVm+Iqz3YKuXlY2fDWTDHrWPJKtyN9ZaZdZZnRZX0KX1LYVsnH6FZfay0icU9LqONU88emexE6mAbsFB9QhtEcM2JEuoZG/fH86GXanklctEgZANreNdpnMRL2RDCDH9ijsCXbKyqp7MKGPghGSkIsTMYCNJE332kl7gxdIAEvOgEMsQ4Q4SVxMgPlKN1X7d03CBNC3nhAnjlICK6RXhftkhyCsn/KgMX+XpEeZLOA2znxzMXAKYJEFKNQnvKdQN1eYsGg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4FgTCsVUoW2DvaClEoPrCkBK4AtqZbkvGA9QVk4wv7Y=;
- b=VT40dRgf5W743jJk5YE+h7OTywrPXnmBvnKjruR9TWIl79ExQCzY/8vn0PzIXKwiAnvW1AaJX4GyWN+v02xg/Vxr9K+mt9AUXTc4Q7eUULqM5KuGwSDXsBwkkYikvOfQmeZB821IdJMdObtnQtEr4wfK+95ULGYbomulZ9sLyXxLOPfINQKxVwB+oY7a13RbFocrxIr5Axhl1wlWBqBDCBgTJ01Ty2JFYntSFpyt82U8IXjYaKm9dwD+x1fkoujGVpaKDeAxQQ56gkw8IxnPpwdtjVb1kk3+A55MYSwYW8xoVIJxmmS0Y9zY3Cu02MFo773Yb42cnH/b3l+YD95msg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 193.47.165.251) smtp.rcpttodomain=raithlin.com smtp.mailfrom=mellanox.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=mellanox.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4FgTCsVUoW2DvaClEoPrCkBK4AtqZbkvGA9QVk4wv7Y=;
- b=EfUKxgMU2jcVB3RWlhZYncWv6OJ6XW7rEcq0nLBYj/QrNXs4xY+pTSbMxtpICTHPuKOz7p3DN+Rk36nFN3HsBLa4MFXbCZHbnhh65V2GGxQZ4mmKH9owk8l7m2p4W3DabRdk4Zc7QObNvTEy6wjju9Fjb5NfIhGojSbmrkFsgMo=
-Received: from DB6PR05CA0010.eurprd05.prod.outlook.com (2603:10a6:6:14::23) by
- AM5PR0502MB3057.eurprd05.prod.outlook.com (2603:10a6:203:9c::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2157.18; Wed, 14 Aug
- 2019 14:32:31 +0000
-Received: from VE1EUR03FT041.eop-EUR03.prod.protection.outlook.com
- (2a01:111:f400:7e09::200) by DB6PR05CA0010.outlook.office365.com
- (2603:10a6:6:14::23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2157.14 via Frontend
- Transport; Wed, 14 Aug 2019 14:31:49 +0000
-Authentication-Results: spf=pass (sender IP is 193.47.165.251)
- smtp.mailfrom=mellanox.com; raithlin.com; dkim=none (message not signed)
- header.d=none;raithlin.com; dmarc=pass action=none header.from=mellanox.com;
-Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
- 193.47.165.251 as permitted sender)
- receiver=protection.outlook.com; 
- client-ip=193.47.165.251; helo=mtlcas13.mtl.com;
-Received: from mtlcas13.mtl.com (193.47.165.251) by
- VE1EUR03FT041.mail.protection.outlook.com (10.152.19.163) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.2115.18 via Frontend Transport; Wed, 14 Aug 2019 14:31:48 +0000
-Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4; Wed, 14 Aug 2019 17:31:48
- +0300
-Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Wed,
- 14 Aug 2019 17:31:48 +0300
-Received: from [10.223.0.54] (10.223.0.54) by MTLCAS01.mtl.com (10.0.8.71)
- with Microsoft SMTP Server (TLS) id 14.3.301.0; Wed, 14 Aug 2019 17:31:46
- +0300
-Subject: Re: [PATCH v7 05/14] nvmet-passthru: update KConfig with config
- passthru option
-To: Logan Gunthorpe <logang@deltatee.com>, <linux-kernel@vger.kernel.org>,
- <linux-nvme@lists.infradead.org>, <linux-block@vger.kernel.org>,
- <linux-fsdevel@vger.kernel.org>
-References: <20190801234514.7941-1-logang@deltatee.com>
- <20190801234514.7941-6-logang@deltatee.com>
-From: Max Gurtovoy <maxg@mellanox.com>
-Message-ID: <68173412-f3e3-df6f-78f0-296b03eaaf13@mellanox.com>
-Date: Wed, 14 Aug 2019 17:31:45 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190801234514.7941-6-logang@deltatee.com>
-Content-Language: en-US
-X-Originating-IP: [10.223.0.54]
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:193.47.165.251; IPV:NLI; CTRY:IL; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(4636009)(396003)(136003)(346002)(376002)(39860400002)(2980300002)(199004)(189003)(53546011)(16576012)(229853002)(2616005)(31686004)(966005)(36906005)(186003)(316002)(23676004)(2420400007)(305945005)(76176011)(65806001)(478600001)(336012)(7736002)(36756003)(2486003)(15650500001)(26005)(476003)(11346002)(64126003)(446003)(50466002)(65956001)(486006)(126002)(47776003)(65826007)(8936002)(81156014)(8676002)(106002)(14444005)(31696002)(7416002)(6116002)(3846002)(6306002)(2201001)(58126008)(230700001)(356004)(6246003)(110136005)(54906003)(81166006)(70206006)(16526019)(86362001)(70586007)(5660300002)(2906002)(53936002)(4326008)(3940600001)(2101003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM5PR0502MB3057; H:mtlcas13.mtl.com; FPR:;
- SPF:Pass; LANG:en; PTR:InfoDomainNonexistent; A:1; MX:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 84a77063-c4ba-45ba-8708-08d720c42460
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(4709080)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
- SRVR:AM5PR0502MB3057; 
-X-MS-TrafficTypeDiagnostic: AM5PR0502MB3057:
-X-MS-Exchange-PUrlCount: 1
-X-Microsoft-Antispam-PRVS: <AM5PR0502MB3057C3FA03691D6ADE8A98B6B6AD0@AM5PR0502MB3057.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:3044;
-X-Forefront-PRVS: 01294F875B
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: tGYpTaB4/RKGgnNxm8yCZV/zeFoE3eHFYrQGcKPzwzrbjtjt0HIjh98fq9/mEFrsguhlWsPumiWORp58k8Hm9LmemrNWIOI5I3kNTWo7NsE3Im0E7bnoJ0GRZ9n95zh4xcIqWryKKWtH6QUKekNnzkwuw++k8V0vIc5eFN/Q0DCIuW0cGHPb/hPmiSOqmlH6a2YovpGtyjgQtKGKavVpaS9yVmbZYpfoZ33LS0/yuAUXwbAWGEfrgaGd84h68ZqBkw3NlaOAdrJ5KtXFlEjCSUrNI84jUN0bUGaIEkyWz6g1BtsOVIczfEgKMXYR9tcxicJx65UnyL/Kl1oVqT9QrEznvN6SUpegR03vv4Lc2hV5sIqSPOOibGPPgQxfTMhNzxNTPl+dK1qI60r5xn0XH/2mSFmlW0LCzh4ie/Cm5iE=
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Aug 2019 14:31:48.8295 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 84a77063-c4ba-45ba-8708-08d720c42460
-X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.251];
- Helo=[mtlcas13.mtl.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR0502MB3057
+ id 1hxvmn-0001qk-3q
+ for linux-nvme@lists.infradead.org; Wed, 14 Aug 2019 16:06:08 +0000
+Received: from pps.filterd (m0170393.ppops.net [127.0.0.1])
+ by mx0a-00154904.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x7EG0P9N020892
+ for <linux-nvme@lists.infradead.org>; Wed, 14 Aug 2019 12:06:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
+ h=from : to : cc : subject : date : message-id; s=smtpout1;
+ bh=H42DR47df8ElRFvzxdqBTjD/Mndv2GKa5zPkZ4jEeOE=;
+ b=Kg7xatecRmVWoyvgv6t64Wtg+XTPXrTY7Hh4e2kuYLhbqxwnBfd9Xb82mGRe8vynDrFj
+ Mq6kaqn+lGGTvTCslcHLWQL1V4WI+cx7YuLj0H+hCx3rLjvFc6sAkoyv5fYRt5yWjAz3
+ +/vlGV/X9ZNc3/0G0jtQL/g0CtC+VU++zoo5HJZeqrJ4wxgkkNrcZ/OeAi+2Fy3EhluJ
+ vxnAA8v53/FP/Rqcx3eEBUjmpVDdYDRa59KgbLI9Zzs5QwEL1cwgUeFhW/XjOvWz68kN
+ caDI42dA7Y6b9SIy9cQEO61UBsrgbeaPykkPOeQhCicJgcAG7goQO28goAGZUxi/zIQP 4g== 
+Received: from mx0b-00154901.pphosted.com (mx0a-00154901.pphosted.com
+ [67.231.149.39])
+ by mx0a-00154904.pphosted.com with ESMTP id 2uc19cn610-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <linux-nvme@lists.infradead.org>; Wed, 14 Aug 2019 12:06:02 -0400
+Received: from pps.filterd (m0090350.ppops.net [127.0.0.1])
+ by mx0b-00154901.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x7EFvmmJ013564
+ for <linux-nvme@lists.infradead.org>; Wed, 14 Aug 2019 12:06:02 -0400
+Received: from ausxipps301.us.dell.com (ausxipps301.us.dell.com
+ [143.166.148.223])
+ by mx0b-00154901.pphosted.com with ESMTP id 2ucjgrumbr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
+ for <linux-nvme@lists.infradead.org>; Wed, 14 Aug 2019 12:06:01 -0400
+X-LoopCount0: from 10.173.37.27
+X-PREM-Routing: D-Outbound
+X-IronPort-AV: E=Sophos;i="5.60,349,1549951200"; d="scan'208";a="382587204"
+From: Mario Limonciello <mario.limonciello@dell.com>
+To: Keith Busch <kbusch@kernel.org>
+Subject: [PATCH] nvme: Add quirk for LiteON CL1 devices running FW 22301111
+Date: Wed, 14 Aug 2019 11:05:49 -0500
+Message-Id: <1565798749-15672-1-git-send-email-mario.limonciello@dell.com>
+X-Mailer: git-send-email 2.7.4
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-08-14_06:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=921 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1906280000 definitions=main-1908140155
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
+ definitions=main-1908140155
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190814_073235_267245_13DC63B8 
-X-CRM114-Status: GOOD (  15.80  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190814_090605_210895_BE870BD4 
+X-CRM114-Status: GOOD (  18.82  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.8.40 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.133.20 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
@@ -132,6 +91,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -143,56 +103,119 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>, Keith
- Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
+Cc: Crag Wang <Crag.Wang@dell.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Mario Limonciello <mario.limonciello@dell.com>, sjg@google.com,
+ LKML <linux-kernel@vger.kernel.org>, linux-nvme@lists.infradead.org,
+ Jens Axboe <axboe@fb.com>, Ryan Hong <Ryan.Hong@Dell.com>,
+ Jared Dominguez <jared.dominguez@dell.com>,
+ Charles Hyde <charles.hyde@dellteam.com>, Christoph Hellwig <hch@lst.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+One of the components in LiteON CL1 device has limitations that
+can be encountered based upon boundary race conditions using the
+nvme bus specific suspend to idle flow.
 
-On 8/2/2019 2:45 AM, Logan Gunthorpe wrote:
-> From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
->
-> This patch updates KConfig file for the NVMeOF target where we add new
-> option so that user can selectively enable/disable passthru code.
->
-> Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-> [logang@deltatee.com: fixed some of the wording in the help message]
-> Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
-> ---
->   drivers/nvme/target/Kconfig | 10 ++++++++++
->   1 file changed, 10 insertions(+)
->
-> diff --git a/drivers/nvme/target/Kconfig b/drivers/nvme/target/Kconfig
-> index d7f48c0fb311..2478cb5a932d 100644
-> --- a/drivers/nvme/target/Kconfig
-> +++ b/drivers/nvme/target/Kconfig
-> @@ -15,6 +15,16 @@ config NVME_TARGET
->   	  To configure the NVMe target you probably want to use the nvmetcli
->   	  tool from http://git.infradead.org/users/hch/nvmetcli.git.
->   
-> +config NVME_TARGET_PASSTHRU
-> +	bool "NVMe Target Passthrough support"
-> +	depends on NVME_CORE
-> +	depends on NVME_TARGET
-> +	help
-> +	  This enables target side NVMe passthru controller support for the
-> +	  NVMe Over Fabrics protocol. It allows for hosts to manage and
-> +	  directly access an actual NVMe controller residing on the target
-> +	  side, incuding executing Vendor Unique Commands.
-> +
->   config NVME_TARGET_LOOP
->   	tristate "NVMe loopback device support"
->   	depends on NVME_TARGET
+When this situation occurs the drive doesn't resume properly from
+suspend-to-idle.
 
+LiteON has confirmed this problem and fixed in the next firmware
+version.  As this firmware is already in the field, avoid running
+nvme specific suspend to idle flow.
 
-Looks good,
+Fixes: d916b1be94b6 ("nvme-pci: use host managed power state for suspend")
+Link: http://lists.infradead.org/pipermail/linux-nvme/2019-July/thread.html
+Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
+Signed-off-by: Charles Hyde <charles.hyde@dellteam.com>
+---
+ drivers/nvme/host/core.c | 23 +++++++++++++++++++++++
+ drivers/nvme/host/nvme.h |  5 +++++
+ drivers/nvme/host/pci.c  |  4 +++-
+ 3 files changed, 31 insertions(+), 1 deletion(-)
 
-Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+This patch is the spiritual successor to the previously submitted
+patch "[PATCH] drivers/nvme: save/restore HMB on suspend/resume".
 
+After discussion with LiteON, they agreed to resolve the issue
+in their next firwmare release.
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 8f3fbe5..47c7754 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -2251,6 +2251,29 @@ static const struct nvme_core_quirk_entry core_quirks[] = {
+ 		.vid = 0x1179,
+ 		.mn = "THNSF5256GPUK TOSHIBA",
+ 		.quirks = NVME_QUIRK_NO_APST,
++	},
++	/*
++	 * This LiteON CL1 firmware version has a race condition associated with
++	 * actions related to suspend to idle.  LiteON has resolved the problem
++	 * in future firmware.
++	 */
++	{
++		.vid = 0x14a4,
++		.mn = "CL1-3D128-Q11 NVMe LITEON 128GB",
++		.fr = "22301111",
++		.quirks = NVME_QUIRK_SIMPLE_SUSPEND,
++	},
++	{
++		.vid = 0x14a4,
++		.mn = "CL1-3D256-Q11 NVMe LITEON 256GB",
++		.fr = "22301111",
++		.quirks = NVME_QUIRK_SIMPLE_SUSPEND,
++	},
++	{
++		.vid = 0x14a4,
++		.mn = "CL1-3D512-Q11 NVMe LITEON 512GB",
++		.fr = "22301111",
++		.quirks = NVME_QUIRK_SIMPLE_SUSPEND,
+ 	}
+ };
+ 
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 26b563f..fe1ca0d 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -92,6 +92,11 @@ enum nvme_quirks {
+ 	 * Broken Write Zeroes.
+ 	 */
+ 	NVME_QUIRK_DISABLE_WRITE_ZEROES		= (1 << 9),
++
++	/*
++	 * Force simple suspend/resume path.
++	 */
++	NVME_QUIRK_SIMPLE_SUSPEND		= (1 << 10),
+ };
+ 
+ /*
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 108e109..55effb5 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -2847,6 +2847,7 @@ static int nvme_resume(struct device *dev)
+ 	struct nvme_ctrl *ctrl = &ndev->ctrl;
+ 
+ 	if (ndev->last_ps == U32_MAX ||
++	    (ndev->ctrl.quirks & NVME_QUIRK_SIMPLE_SUSPEND) ||
+ 	    nvme_set_power_state(ctrl, ndev->last_ps) != 0)
+ 		nvme_reset_ctrl(ctrl);
+ 	return 0;
+@@ -2875,7 +2876,8 @@ static int nvme_suspend(struct device *dev)
+ 	 * state (which may not be possible if the link is up).
+ 	 */
+ 	if (pm_suspend_via_firmware() || !ctrl->npss ||
+-	    !pcie_aspm_enabled(pdev)) {
++	    !pcie_aspm_enabled(pdev) ||
++	    (ndev->ctrl.quirks & NVME_QUIRK_SIMPLE_SUSPEND)) {
+ 		nvme_dev_disable(ndev, true);
+ 		return 0;
+ 	}
+-- 
+2.7.4
 
 
 _______________________________________________
