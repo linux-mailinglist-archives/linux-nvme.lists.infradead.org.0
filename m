@@ -2,63 +2,54 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BC758CEE3
-	for <lists+linux-nvme@lfdr.de>; Wed, 14 Aug 2019 10:59:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BC8FC8D09D
+	for <lists+linux-nvme@lfdr.de>; Wed, 14 Aug 2019 12:20:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T2+UofkGjGVFHWN1PUcpnkCJW2T+oQq3PBpPsctA2v0=; b=mGdeu8Jta6Qh1B
-	FFQYmFOU2W1UahmwU9uCIQGaZOZCaB6YTxwqgcDHWyNno8OejvlClvOuxR3r/lW30jHn2S4HpKCXv
-	qHUJvy3tqv9lLLS+3yrY3kuDHrnHqaG5y/3XNGsUjAZBwwaZWeNGHD5LEdljmLNk/VYFf4/crh0jF
-	WhT3gCeUF34H/CFqZIpMPuzBWJJGQBgxirc6BM9lmojYJM2OihNYygruhg8VrbyKcqPDAPemvfA5Q
-	aHxsQoiStKfSPr3tlrj8mUV9wB3NWGWRrUOMCuqtcv9fMqLGmqnyNHaFbAB3hLcKaiHcNllwg1eCP
-	dSlcZ3E/c4nrzRMfzt/g==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=EaQghOMTia9P9IweaBr7d0qjMC9TTHAsrib67lwmKFs=; b=svP
+	wjPbLhjT/VjK++4BF07QALnUzJGud9/J8me4ulEOwmwn/5/H2D5wW5++qCGQ5NrIHlBXk37iP8GX9
+	GuXwPynMIwGoEAbbQl4VdCgfDFOsLuwOuEZGAnT3bAadvtj77YFNtJU/PgJpcdGnZGm5ERvKenNfo
+	HiPZavozr1MVXXOaJ9Cc6FMSKDJpSvAQJwZ4/VDgwjD2Os11CYVubbptxwteHtSGvquxAANc4er88
+	DwBTw4Mxq6SLRjc9qlYK1GZAR0V0XWmCrazZ+nLIqvbMtNm94Q8Fer19/8Qqm30zttao7ZX+MKPGV
+	2Qeg2X5lmkR5vKJ5QB/yV6XjC8AA3Lg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxp7c-0006pD-7n; Wed, 14 Aug 2019 08:59:08 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxp7S-0006oo-Mu
- for linux-nvme@lists.infradead.org; Wed, 14 Aug 2019 08:59:00 +0000
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 475864E926;
- Wed, 14 Aug 2019 08:58:58 +0000 (UTC)
-Received: from ming.t460p (ovpn-8-16.pek2.redhat.com [10.72.8.16])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id AE7A710016F3;
- Wed, 14 Aug 2019 08:58:51 +0000 (UTC)
-Date: Wed, 14 Aug 2019 16:58:46 +0800
-From: Ming Lei <ming.lei@redhat.com>
-To: "Derrick, Jonathan" <jonathan.derrick@intel.com>
-Subject: Re: [PATCH V3 1/3] genirq/affinity: Enhance warning check
-Message-ID: <20190814085845.GA21802@ming.t460p>
-References: <20190813081447.1396-1-ming.lei@redhat.com>
- <20190813081447.1396-2-ming.lei@redhat.com>
- <ac920ba3996d0feedc924045b54724ba5482e427.camel@intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ac920ba3996d0feedc924045b54724ba5482e427.camel@intel.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.38]); Wed, 14 Aug 2019 08:58:58 +0000 (UTC)
+	id 1hxqOL-0000u6-K7; Wed, 14 Aug 2019 10:20:29 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
+ id 1hxqNp-0007oL-Cr
+ for linux-nvme@lists.infradead.org; Wed, 14 Aug 2019 10:20:00 +0000
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ israelr@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 14 Aug 2019 13:19:43 +0300
+Received: from rsws50.mtr.labs.mlnx (rsws50.mtr.labs.mlnx [10.209.40.61])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x7EAJhbB029349;
+ Wed, 14 Aug 2019 13:19:43 +0300
+From: Israel Rukshin <israelr@mellanox.com>
+To: Linux-nvme <linux-nvme@lists.infradead.org>
+Subject: [PATCH 0/5 V3] nvme: Add type of service (TOS) configuration
+Date: Wed, 14 Aug 2019 13:19:35 +0300
+Message-Id: <1565777981-18755-1-git-send-email-israelr@mellanox.com>
+X-Mailer: git-send-email 1.8.4.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190814_015858_779946_23021DF4 
-X-CRM114-Status: GOOD (  22.04  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190814_031957_887613_0E2DC9F1 
+X-CRM114-Status: UNSURE (   6.09  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [193.47.165.129 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,78 +61,46 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "axboe@kernel.dk" <axboe@kernel.dk>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- "kbusch@kernel.org" <kbusch@kernel.org>,
- "tglx@linutronix.de" <tglx@linutronix.de>, "hch@lst.de" <hch@lst.de>
+Cc: Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>,
+ Israel Rukshin <israelr@mellanox.com>, Sagi Grimberg <sagi@grimberg.me>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Aug 13, 2019 at 07:31:39PM +0000, Derrick, Jonathan wrote:
-> Hi Ming,
-> 
-> On Tue, 2019-08-13 at 16:14 +0800, Ming Lei wrote:
-> > The two-stage spread is done on same irq vectors, and we just need that
-> > either one stage covers all vector, not two stage work together to cover
-> > all vectors.
-> > 
-> > So enhance the warning check to make sure all vectors are spread.
-> > 
-> > Cc: Christoph Hellwig <hch@lst.de>
-> > Cc: Keith Busch <kbusch@kernel.org>
-> > Cc: linux-nvme@lists.infradead.org,
-> > Cc: Jon Derrick <jonathan.derrick@intel.com>
-> > Cc: Jens Axboe <axboe@kernel.dk>
-> > Fixes: 6da4b3ab9a6 ("genirq/affinity: Add support for allocating interrupt sets")
-> > Signed-off-by: Ming Lei <ming.lei@redhat.com>
-> > ---
-> >  kernel/irq/affinity.c | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> > 
-> > diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
-> > index 6fef48033f96..265b3076f16b 100644
-> > --- a/kernel/irq/affinity.c
-> > +++ b/kernel/irq/affinity.c
-> > @@ -215,8 +215,7 @@ static int irq_build_affinity_masks(unsigned int startvec, unsigned int numvecs,
-> >  					       npresmsk, nmsk, masks);
-> >  	put_online_cpus();
-> >  
-> > -	if (nr_present < numvecs)
-> > -		WARN_ON(nr_present + nr_others < numvecs);
-> > +	WARN_ON(max(nr_present, nr_others) < numvecs);
-> 
-> I think the patch description assumes the first condition
-> "The two-stage spread is done on same irq vectors"
-> 
->     /*
->      * Spread on non present CPUs starting from the next vector to be
->      * handled. If the spreading of present CPUs already exhausted the
->      * vector space, assign the non present CPUs to the already spread
->      * out vectors.
->      */
->     if (nr_present >= numvecs)
->             curvec = firstvec;
-> 
-> But doesn't following condition imply nr_others spread is potentionally
-> different vector set?
-> 
->     else
->             curvec = firstvec + nr_present;
-> 
+Hi All,
 
-Most times, __irq_build_affinity_masks() returns numvecs.
+This series adds TOS configuration for TCP and RDMA transports.
+It provides clients the ability to segregate traffic flows for different
+type of data.
+One of the TOS usage is bandwidth management which allows setting bandwidth
+limits for QoS classes, e.g. 80% bandwidth to controllers at QoS class A
+and 20% to controllers at QoS class B.
 
-However, each stage may expose less CPU number than num_vecs, then less
-vectors than 'numvecs' can be spread.
+Changes from v2:
+ - Clamping tos to 255
 
-So this patch is actually wrong.
+Changes from v1:
+ - Add TCP TOS configuration
 
+Israel Rukshin (5):
+  nvme-fabrics: Add type of service (TOS) configuration
+  nvme-rdma: Add TOS for rdma transport
+  nvme-tcp: Use struct nvme_ctrl directly
+  nvme-tcp: Add TOS for tcp transport
+  nvmet-tcp: Add TOS for tcp transport
 
-Thank,
-Ming
+ drivers/nvme/host/fabrics.c | 20 +++++++++++++++++++-
+ drivers/nvme/host/fabrics.h |  3 +++
+ drivers/nvme/host/rdma.c    |  6 ++++--
+ drivers/nvme/host/tcp.c     | 32 ++++++++++++++++++++++----------
+ drivers/nvme/target/tcp.c   | 11 +++++++++++
+ 5 files changed, 59 insertions(+), 13 deletions(-)
+
+-- 
+1.8.3.1
+
 
 _______________________________________________
 Linux-nvme mailing list
