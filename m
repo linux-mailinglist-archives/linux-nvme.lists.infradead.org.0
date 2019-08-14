@@ -2,73 +2,82 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F87E8D8A8
-	for <lists+linux-nvme@lfdr.de>; Wed, 14 Aug 2019 19:00:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A175F8D949
+	for <lists+linux-nvme@lfdr.de>; Wed, 14 Aug 2019 19:07:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A9Im0wxKRf/dq+vav4dZLkMv0RJ+tBOTpVsv/iAWEdA=; b=OYJFhpZ8gYdui8
-	yY/xd6ZAsUlHIpzRqxywKcI64Z1q4o1p3dyGIBS97TjM00g48X/N7n+5qwU832Bgm7DmL2AF+JoEM
-	5f7rxeJEn4VN+pzcYpi6cCb9SoOWOdhwxu6k/oPaaAlT/fSRO5VqYVLs5lBl9VJ+Iwd93MsGkOpmL
-	K7sB418evP+qEHJjA8zXN4VsRvg2pGczFGdi/iQtD3KzX6fPXTrme+zwr9DsMW9Rto4yh24lGdtlQ
-	HG+iGUxBO0LLsPKOcNSJF421UkQiT1qkNJTFZQiP8EI8LBI2Zh9YFD2EMKZ67YzkWWGDE2w8OauDd
-	obalBDWZDMTnOezJ0frw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=vPqVwv5PLftUkflvQxfhvuXXCPhoHgSzr27o8XINCZw=; b=dRZ8ZjeavHYAITm/mjFveBrd2
+	GDWQEc/HLMjAMyi56ihaWJyuk8j6h5Hv2RYrD8eHikfMrgKt51fVGptFuHSB3NDggWrVaZPAaqjSW
+	/M/8F4MDdoOUw9byS33Yg+PPBEq/oI1lhKQzYs6eWNbgLb6Mzjv2z+tDd+xqsmhUHNChJfNcPcUWM
+	5FGqsJpkJE0MOCZmlo8bII2wf9KTLokwctEd7JHUcaPpYi+F2UhkoKS1qLAqG0tlyMx6hri5XwbQZ
+	G4Lf8P6lUsoqFnwcloR24Ix1ofmn6fPZ7YPGrLimtwkjwizzbORIiLVRC5Xp6noBH38SCtpmJ05Se
+	tbCzwmKgg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hxwd2-0003Gi-AH; Wed, 14 Aug 2019 17:00:04 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1hxwjn-0006Vx-5v; Wed, 14 Aug 2019 17:07:03 +0000
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hxwcs-0003GL-Fx
- for linux-nvme@lists.infradead.org; Wed, 14 Aug 2019 16:59:56 +0000
-Received: from s0106ac1f6bb1ecac.cg.shawcable.net ([70.73.163.230]
- helo=[192.168.11.155])
- by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <logang@deltatee.com>)
- id 1hxwck-0007a8-0b; Wed, 14 Aug 2019 10:59:47 -0600
-To: Max Gurtovoy <maxg@mellanox.com>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
- linux-fsdevel@vger.kernel.org
-References: <20190801234514.7941-1-logang@deltatee.com>
- <20190801234514.7941-4-logang@deltatee.com>
- <9bb2966a-0d7c-a492-7628-37916a941cfb@mellanox.com>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <f83cacb8-de44-05b9-dfbc-73e1d5ed02e2@deltatee.com>
-Date: Wed, 14 Aug 2019 10:59:44 -0600
+ id 1hxwjW-0006VF-D3
+ for linux-nvme@lists.infradead.org; Wed, 14 Aug 2019 17:06:47 +0000
+Received: by mail-oi1-f194.google.com with SMTP id t24so4744784oij.13
+ for <linux-nvme@lists.infradead.org>; Wed, 14 Aug 2019 10:06:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=2owrcVmpycq56LJg3ogKL7ea12bh0WQCG68QvsuOUP4=;
+ b=RxYm6oITL6SPARD0bzbSsjxMM0wqYsk7XQboKNP6SaTcg2+TtGosybl1CXx4fWmRsd
+ 7y5fi0Avhb5KrFS/ZoHoFRpWvZSxRvNcslAiSzJCmIycnjdw+uiwxS+l2eGRiuEGqvPm
+ 8InHhMKARIMLO+B+R2ttUUpRyPWf9yfx2JihqFonNSoo4xA9/f93kEZuNNuZEF/Z7uZS
+ aVQ7SuWQbUI2+uJEPG60z37HxiIfzpkdRBoRJlfgKMraBSImR0nqUtr2zImBsbr4dcjg
+ tQ//1On9nz6LVDotXDSaOKidu8k/cUYz620KBheNPly3cTuUw0GdhK3p+i0FCO11l4eF
+ g6aQ==
+X-Gm-Message-State: APjAAAVhDBzI3UyvTo1/50BPXKoIjPyfjL1wHt8tBvTG+ycLztIJrLXQ
+ l6/EvWh/asvnkIbQjemnKas=
+X-Google-Smtp-Source: APXvYqzLBKsYz1yLY+qCuKIiwo8otY9xcCEaZ95kLGGElAaGwtXM4rSqQQs/2/eW3DM10Oi39zVixg==
+X-Received: by 2002:aca:420b:: with SMTP id p11mr623745oia.124.1565802404157; 
+ Wed, 14 Aug 2019 10:06:44 -0700 (PDT)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id p2sm58310otl.59.2019.08.14.10.06.42
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 14 Aug 2019 10:06:43 -0700 (PDT)
+Subject: Re: [PATCH 1/5] nvme-fabrics: Add type of service (TOS) configuration
+To: Israel Rukshin <israelr@mellanox.com>,
+ Linux-nvme <linux-nvme@lists.infradead.org>
+References: <1565777981-18755-1-git-send-email-israelr@mellanox.com>
+ <1565777981-18755-3-git-send-email-israelr@mellanox.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <6dc92c98-146e-206b-d3cb-127e5c7c3ac9@grimberg.me>
+Date: Wed, 14 Aug 2019 10:06:41 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <9bb2966a-0d7c-a492-7628-37916a941cfb@mellanox.com>
+In-Reply-To: <1565777981-18755-3-git-send-email-israelr@mellanox.com>
 Content-Language: en-US
-X-SA-Exim-Connect-IP: 70.73.163.230
-X-SA-Exim-Rcpt-To: sbates@raithlin.com, Chaitanya.Kulkarni@wdc.com,
- axboe@fb.com, kbusch@kernel.org, sagi@grimberg.me, hch@lst.de,
- linux-fsdevel@vger.kernel.org, linux-block@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
- maxg@mellanox.com
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [PATCH v7 03/14] nvmet: add return value to
- nvmet_add_async_event()
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190814_095954_870894_17429147 
-X-CRM114-Status: GOOD (  12.32  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190814_100646_443639_AA6E74F2 
+X-CRM114-Status: GOOD (  19.63  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ no trust [209.85.167.194 listed in list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,37 +89,67 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
 
-On 2019-08-14 8:26 a.m., Max Gurtovoy wrote:
+On 8/14/19 3:19 AM, Israel Rukshin wrote:
+> TOS is user-defined and needs to be configured via nvme-cli.
+> It must be set before initiating any traffic and once set the TOS
+> cannot be changed.
 > 
-> On 8/2/2019 2:45 AM, Logan Gunthorpe wrote:
->> From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
->>
->> Change the return value for nvmet_add_async_event().
->>
->> This change is needed for the target passthru code to generate async
->> events.
+> Signed-off-by: Israel Rukshin <israelr@mellanox.com>
+> Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+> ---
+>   drivers/nvme/host/fabrics.c | 20 +++++++++++++++++++-
+>   drivers/nvme/host/fabrics.h |  3 +++
+>   2 files changed, 22 insertions(+), 1 deletion(-)
 > 
-> As a stand alone commit it's not clear what is the purpose of it.
-> 
-> Please add some extra explanation in the commit message.
-> 
-> Also better to use integer as return value if the return value should
-> reflect return code.
+> diff --git a/drivers/nvme/host/fabrics.c b/drivers/nvme/host/fabrics.c
+> index 1994d5b..d343c22 100644
+> --- a/drivers/nvme/host/fabrics.c
+> +++ b/drivers/nvme/host/fabrics.c
+> @@ -611,6 +611,7 @@ bool __nvmf_check_ready(struct nvme_ctrl *ctrl, struct request *rq,
+>   	{ NVMF_OPT_DATA_DIGEST,		"data_digest"		},
+>   	{ NVMF_OPT_NR_WRITE_QUEUES,	"nr_write_queues=%d"	},
+>   	{ NVMF_OPT_NR_POLL_QUEUES,	"nr_poll_queues=%d"	},
+> +	{ NVMF_OPT_TOS,			"tos=%d"		},
+>   	{ NVMF_OPT_ERR,			NULL			}
+>   };
+>   
+> @@ -632,6 +633,7 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
+>   	opts->duplicate_connect = false;
+>   	opts->hdr_digest = false;
+>   	opts->data_digest = false;
+> +	opts->tos = -1; /* < 0 == use transport default */
+>   
+>   	options = o = kstrdup(buf, GFP_KERNEL);
+>   	if (!options)
+> @@ -856,6 +858,22 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
+>   			}
+>   			opts->nr_poll_queues = token;
+>   			break;
+> +		case NVMF_OPT_TOS:
+> +			if (match_int(args, &token)) {
+> +				ret = -EINVAL;
+> +				goto out;
+> +			}
+> +			if (token < 0) {
+> +				pr_err("Invalid type of service %d\n", token);
+> +				ret = -EINVAL;
+> +				goto out;
+> +			}
+> +			if (token > 255) {
+> +				pr_warn("Clamping type of service to 255\n");
+> +				token = 255;
+> +			}
 
-Thanks for the Review, Max. I'll queue up these changes for v8.
-
-Logan
+Again, if tos is an abstract opaque, this needs to happen in the
+individual transports, not in the generic part.
 
 _______________________________________________
 Linux-nvme mailing list
