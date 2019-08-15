@@ -2,74 +2,74 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A2EB8F54A
-	for <lists+linux-nvme@lfdr.de>; Thu, 15 Aug 2019 22:02:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F1F38F62A
+	for <lists+linux-nvme@lfdr.de>; Thu, 15 Aug 2019 23:04:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CXsh1T+k8+Q66RzT9ZCwCY8A9gDOa6y2r476/XAot+w=; b=Ss3wjXhzobfx1hXuNROv1MivG
-	btJGmQrjj1eX3Iz31JplhlgEKOOUNpV4E27S+ZQgNhVAZhF91gt9IxY2qsZaFUdhtbLyLoRxvhRdx
-	TzDK3ZmHtKA8GMmB8tsd0iL9rUBHjgmgS4caMnTT3w3gC8N175j7J2GtdEScaFA3biK8Ted1J7yaL
-	UDSA2EN5wQkaRO68AxwEi072zG4tnCjhBEYSMki/Ry17/7oEnlEfyRd/oP3qnwlcfe4YgU5PZC/EY
-	lM37ZcbkRdx0ZFvy7oKnr/DVjaaxzySNR6CSX158mzeGNRs0Yb+AzsrynQrDbqlu29PfDQ+MYbdm1
-	mVa9OtMZg==;
+	 bh=aw+w3trLpJUAWDzcRWGGnKDe+eW0Im1KAY66atZ5ygg=; b=u+caz7dpTErLH9sFPMiUiQYos
+	vAZ+56PRr/0Rt31lzYHlS+OHpGFR+yxAAyREHKIzWj0x2OwEs+B4IFJ+n2gqFFR2NLKX+PW4OcbAo
+	DJGbZog5XwWxnIhWl8ZAm/O5Dz1EraCiw1lnODSgu/gckHFF5/nFtHrRjo9TRDGUsZ1xEF0qCAiuS
+	p8O8aKVYZNJZzU26A54DXB6jkbKdr1NApDpQD4V8PmJ9iDXht3SWhaz/HytYa5hnp2rHGZEjGQEW7
+	zzspeB2bXiLq5IpX1YuY82EEg79gX4eUxhnjXxaronLc/bXonbxAlxNzmCGjgh7dkExwuTBbGo5wO
+	AvBH+/wRA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hyLwk-0001lj-4t; Thu, 15 Aug 2019 20:02:06 +0000
+	id 1hyMup-0007AK-1K; Thu, 15 Aug 2019 21:04:11 +0000
 Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hyLwU-0001lP-0M
- for linux-nvme@lists.infradead.org; Thu, 15 Aug 2019 20:01:52 +0000
-Received: by mail-pl1-x643.google.com with SMTP id c2so1452796plz.13
- for <linux-nvme@lists.infradead.org>; Thu, 15 Aug 2019 13:01:49 -0700 (PDT)
+ id 1hyMuh-00079q-1y
+ for linux-nvme@lists.infradead.org; Thu, 15 Aug 2019 21:04:05 +0000
+Received: by mail-pl1-x643.google.com with SMTP id y1so1514527plp.9
+ for <linux-nvme@lists.infradead.org>; Thu, 15 Aug 2019 14:04:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=Ni14dV1XPHQN88rD//yKN0F+2JKYrUwYhGiByBATV1w=;
- b=LRE9+nvTAVJLGVXhIRgE847Sm2UPYY9tIkJnKyu88L/nfzEc0nxlo8sq6EOjtrYegY
- 1Ukj2/AuBx8KT3CJuxgvv26PFNaeWTfqmvmhUZUWu0QxtWm7NvF1THi9Rw6Wu+5Kpid3
- tpAoxQm6ewTHsBvmHWtq9A7Qt4SklWm6EF/08=
+ bh=EsNT2br9KBcSscrKMvmQHvxrj63S6ZtvbSUyaX8e3Lo=;
+ b=ffnktzyx0gGI6vmwE2scF7KOSjj/S36jKiPElOYQQzdnHe2zoNBEfGiP4r5ahI+uFY
+ uJfyEU1LqEpqSbX8XU/XWKhV/YJkW9XUAy6uWjt12lwGG00spAQxHGe+Y/RH9Cjvgm7v
+ 29eh+/hbM625hQsGPc8vGSg7osQaIKdt46y60=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-transfer-encoding
  :content-language;
- bh=Ni14dV1XPHQN88rD//yKN0F+2JKYrUwYhGiByBATV1w=;
- b=m1RK6VaivnRTxy2G9JuKYATD0tPi0zb360KST/M7pbLScleAJ1mklZtXkw3SMa4PDh
- teUs2UsInQNljeoKBJwkw1FEN+0dotse4T5gk0JJ8nySouAeL0Zld3GtT0g+3EvAXnMl
- poQBJnfVxVBvw1D4cK9nnARyADudH7FzfLaGyrAzLGvCnSWQ9ibtvF0zzimdXJZf7YSu
- xuC37I19dMX0P5hBZYPv44OXwGm3ArBpCMrrLihFCb5bL4htEbRDljTKLGUdt1qe8B2C
- 4TKUqN4hM51wCE12vYGO6E09YDS5iUBbmiWrj98rj3iF3YaTZUmXkMleWKow1epSSsLi
- Agsw==
-X-Gm-Message-State: APjAAAVZU6OonevzjjAPevGsJGDJKkwKvc87uFacZtmgxF+Hi2+wtFPM
- +NoWVgJBuLvJ5aXrD0bIallODQ==
-X-Google-Smtp-Source: APXvYqzaUhbKKYG6q4FCNj+lY/hIENqgPhwKEpuOUkuN5VVTNY/0bx5nHbsLdnYWynHLuD7eTqHMcg==
-X-Received: by 2002:a17:902:54d:: with SMTP id
- 71mr5694478plf.140.1565899309025; 
- Thu, 15 Aug 2019 13:01:49 -0700 (PDT)
+ bh=EsNT2br9KBcSscrKMvmQHvxrj63S6ZtvbSUyaX8e3Lo=;
+ b=dUj1n7wtruZopp8kDlH9OWeQ2aGyrgNtunET0GCOgPvZ0V818TeMrB3o47OxkeWdym
+ yx3NEO/GRWFS4dCoLaXtYd5zHyflFxGTsyDWlw6JXjzU0scabnRP6YxFoyKJnZaZQqeT
+ S84snJcscpR6SjWIsFuBocGcUycVRpDPh/Efs7JT0UIiO6ez+p/ezOVxOdKFt1gqeW+p
+ x0f1k7Hu6Ndq1BgzM64WQyhz+6QCdR7utz19YNA6uxOvrUPZTBtHr+p4BqfOC9+IWtjB
+ dShYvyAkNpWLpN/21fkLLv685mS7z2Mno9T5+1yVLpefSrtCNI+Ltox0Ll2LrGGOp3xt
+ TbXQ==
+X-Gm-Message-State: APjAAAWIYPLO40Ukv6fd4lAqv4Y1wlXEtAaA22RNmDYjUUioidiOBXaD
+ PPGnpa09ijvPUzDMRiYxCV2tIg==
+X-Google-Smtp-Source: APXvYqx3ZAKnvuM3lxDVN1UunH+S+xwAL/Wup869+0SdoCpfICIzGxSXkiMF7WGLVFOKCV17ITsIBQ==
+X-Received: by 2002:a17:902:6b88:: with SMTP id
+ p8mr5820766plk.95.1565903041619; 
+ Thu, 15 Aug 2019 14:04:01 -0700 (PDT)
 Received: from [10.230.29.90] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id 97sm2104599pjz.12.2019.08.15.13.01.47
+ by smtp.gmail.com with ESMTPSA id j6sm4335370pfg.158.2019.08.15.14.03.59
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 15 Aug 2019 13:01:48 -0700 (PDT)
-Subject: Re: [PATCH v6 0/7] nvme controller reset and namespace scan work race
- conditions
+ Thu, 15 Aug 2019 14:04:00 -0700 (PDT)
+Subject: Re: [PATCH v6 1/7] nvme: fail cancelled commands with
+ NVME_SC_HOST_PATH_ERROR
 To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
 References: <20190813064304.7344-1-sagi@grimberg.me>
- <0c8606d6-a841-a24b-0a8e-64edc4c3ccbd@grimberg.me>
+ <20190813064304.7344-2-sagi@grimberg.me>
 From: James Smart <james.smart@broadcom.com>
-Message-ID: <0984162b-187e-5711-911c-c354bc37e9a5@broadcom.com>
-Date: Thu, 15 Aug 2019 13:01:47 -0700
+Message-ID: <b5d5c95b-c63d-a285-e9b8-836d240274f4@broadcom.com>
+Date: Thu, 15 Aug 2019 14:03:58 -0700
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <0c8606d6-a841-a24b-0a8e-64edc4c3ccbd@grimberg.me>
+In-Reply-To: <20190813064304.7344-2-sagi@grimberg.me>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190815_130150_054879_22CFABCA 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20190815_140403_103424_64D9B247 
+X-CRM114-Status: GOOD (  16.07  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -106,16 +106,32 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 8/15/2019 10:45 AM, Sagi Grimberg wrote:
-> Hannes, Keith, James,
->
-> I think this series got the blessing from Hannes and Keith, but
-> I also want to hear from James.
->
-> Also Hannes, did you happen to give this a try? it would help a lot
-> knowing that it fixes the issues you were seeing.
 
-I'll look through it shortly.
+
+On 8/12/2019 11:42 PM, Sagi Grimberg wrote:
+> NVME_SC_ABORT_REQ means that the request was aborted due to
+> an abort command received. In our case, this is a transport
+> cancellation, so host pathing error is much more appropriate.
+>
+> Also, convert NVME_SC_HOST_PATH_ERROR to BLK_STS_TRANSPORT for
+> such that callers can understand that the status is a transport
+> related error. This will be used by the ns scanning code to
+> understand if it got an error from the controller or that the
+> controller happens to be unreachable by the transport.
+>
+> Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+> Reviewed-by: Hannes Reinecke <hare@suse.com>
+> Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+> ---
+>   drivers/nvme/host/core.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+>
+
+Reviewed-by: James Smart <james.smart@broadcom.com>
+
+-- james
+
+
 
 _______________________________________________
 Linux-nvme mailing list
