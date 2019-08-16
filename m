@@ -2,44 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56B4B8FD35
-	for <lists+linux-nvme@lfdr.de>; Fri, 16 Aug 2019 10:08:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B56578FD3B
+	for <lists+linux-nvme@lfdr.de>; Fri, 16 Aug 2019 10:09:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N2HJA/3Naet348UPxWIPMuzRRUv0OZbM7XlblTwliMI=; b=a7JlTY/pkPblja
-	B5TJmsd6eOjXrQeXkCdsO4YUCdsCKy30Ofl1IyYsEly1GOp623Dycio8kTMBt5LkL5h3bQN75dQ4f
-	kcaJvPzDxrwd7yZ/62CmOYCVHyxgqS/zoC8qdQSJxiT5xrIkjMnhs9Ir747KARk5sUOz39sv4AVM7
-	qcyjHqhkFAnsrRIZ/s1FA4BvzPZjQv5LdU/ilb8g0JqdibfZbh9nxASO+Lmag1RPUtfyfGPWjIouD
-	S7v9zzDM4QxFG3LNWn7BA40pfiZBF9yTu1mXVN96u5cJlfUTrhIgA0J6Fdr9BhS/KePuNHic5K7eq
-	PNeWDNMjCxTAHn1O5r4g==;
+	List-Owner; bh=zQL/ghFj/sXnEzcT5qP4S+GcO4G4WUO/4nULA+YQHYU=; b=NsyCxz0NlXsOip
+	Ytybe+XcRfQQpIo8kF5ZAib5mW8cKQbqgteGJf9cAtETcuA3WRxC2bq4DSWG9B+HNfADL3FMkm65p
+	nKS+Ymy14OSIUhqZyVGXtsrvQoMDk1qWfLGLfP8e6GLMEqSc+gRE+L1J8SpUiGfaWLqeTbt9Qoh/w
+	XyIlGVPqKJcZ3ynEXr8T9qFP2GyIcNyWmhgbvHzCTss0a2MJDWmtMIGrF7Sh+VRPYWoz2GT5baP7j
+	bLHrheh1pupltA+gGpb9kW8+7E5ofnLYa95SwHZlRJY39hXlNMpnOuCfOvGrbiIl5rEMTyjHBvJZN
+	q/kLywDxDLIFfTTy74gQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hyXHz-0003du-Md; Fri, 16 Aug 2019 08:08:47 +0000
+	id 1hyXIe-0003xU-Gd; Fri, 16 Aug 2019 08:09:28 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hyXHo-0003cM-T5
- for linux-nvme@lists.infradead.org; Fri, 16 Aug 2019 08:08:39 +0000
+ id 1hyXIT-0003x6-BY
+ for linux-nvme@lists.infradead.org; Fri, 16 Aug 2019 08:09:18 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 19BBC68B05; Fri, 16 Aug 2019 10:08:34 +0200 (CEST)
-Date: Fri, 16 Aug 2019 10:08:33 +0200
+ id 7AE4368B02; Fri, 16 Aug 2019 10:09:14 +0200 (CEST)
+Date: Fri, 16 Aug 2019 10:09:14 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH v3 04/14] PCI/P2PDMA: Factor out
- __upstream_bridge_distance()
-Message-ID: <20190816080833.GD9249@lst.de>
+Subject: Re: [PATCH v3 05/14] PCI/P2PDMA: Apply host bridge whitelist for ACS
+Message-ID: <20190816080914.GE9249@lst.de>
 References: <20190812173048.9186-1-logang@deltatee.com>
- <20190812173048.9186-5-logang@deltatee.com>
+ <20190812173048.9186-6-logang@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190812173048.9186-5-logang@deltatee.com>
+In-Reply-To: <20190812173048.9186-6-logang@deltatee.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190816_010837_097665_03646391 
-X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-CacheID: sfid-20190816_010917_539252_CACFC170 
+X-CRM114-Status: UNSURE (   8.72  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -73,19 +72,21 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Aug 12, 2019 at 11:30:38AM -0600, Logan Gunthorpe wrote:
-> This is a prep patch to create a second level helper. There are no
-> functional changes.
+On Mon, Aug 12, 2019 at 11:30:39AM -0600, Logan Gunthorpe wrote:
+> When a P2PDMA transfer is rejected due to ACS being set, we can also check
+> the whitelist and allow the transactions.
 > =
 
-> The root complex whitelist code will be moved into this function in a
-> subsequent patch.
+> Do this by pushing the whitelist check into the upstream_bridge_distance()
+> function.
 > =
 
-> Link: https://lore.kernel.org/r/20190730163545.4915-5-logang@deltatee.com
+> Link: https://lore.kernel.org/r/20190730163545.4915-6-logang@deltatee.com
 > Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 > Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 > Reviewed-by: Christian K=F6nig <christian.koenig@amd.com>
+
+Looks good,
 
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 
