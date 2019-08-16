@@ -2,43 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 429598FD79
-	for <lists+linux-nvme@lfdr.de>; Fri, 16 Aug 2019 10:15:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B283F8FD80
+	for <lists+linux-nvme@lfdr.de>; Fri, 16 Aug 2019 10:16:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2+tq+n7mCvXuAjXIh/EIxJoBXUT1okuzuaHn4gVtQ6c=; b=OlKbhSrmeFaONo
-	Cvd4nrPIDdmchpsZkI9tMDIcH2fM9O1wjAgheINxKFYbqCCCsodtarKVbg2Dx0V0jG1P1FrbCsHwB
-	fC7c7u2PJmb0gr5qDRJULprqx3SddWHHYEphWU5TDlInOIyCoXmrtPrdWqwBoi8d+7RAqzA3Ke6E/
-	q8lokruUO0Wiz5HcBdrEGDvoaFf0yZkGy8PYzQEUz9heA+p3+wc4ry0CWmS58fkyp1wJ0wqj1Csp2
-	u+nD/qNnCgHWkDggUe+EPptfY0tA9cRYZX/4V09tgeZI3M40aoSS/rz4QvjBU+0Jshd5Swr9cY+r2
-	Il2rh88ku96sxY7pkBag==;
+	List-Owner; bh=FEF/7yfRTfEapDRTd05IILiDDEgcwy2LQFJEP7g36fY=; b=pPAWwO9z23G3ly
+	gTFz7Ddxtc176YWkydh83PQChKbz+RamttEB3rfRqLYMz0bbrNqnyyZDHBRTmggVHA315F+cc5Ztg
+	i/eU8JWHEXaX4p4P6pM0WpwP910/qO4T+WgYwidYpyGsLQ9UncwUj1JO9q/MeyeOirdiH+UzAtk8V
+	/Bqu2svxCRes/KcDHU9hMxo2oKWoZrVRJ55EvcQce5k33ZVYwOabM6vXJ283Qf6EbfUYU+XfsS8XV
+	RQg6+BRTC7lNLdX44Q/wutG5czAfGaWBy2LEIiDxP3V44/GcMG3Dlqn8G0laaLBzFTmT6GZm3Bw4y
+	zCdLV77gGyvabPyCE8aQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hyXO8-0006ZK-QK; Fri, 16 Aug 2019 08:15:08 +0000
+	id 1hyXP7-00087w-UY; Fri, 16 Aug 2019 08:16:10 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hyXNx-0006Yo-13
- for linux-nvme@lists.infradead.org; Fri, 16 Aug 2019 08:14:58 +0000
+ id 1hyXOp-000829-88
+ for linux-nvme@lists.infradead.org; Fri, 16 Aug 2019 08:15:52 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 392F368B02; Fri, 16 Aug 2019 10:14:54 +0200 (CEST)
-Date: Fri, 16 Aug 2019 10:14:54 +0200
+ id 65D7468B02; Fri, 16 Aug 2019 10:15:48 +0200 (CEST)
+Date: Fri, 16 Aug 2019 10:15:48 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH v3 11/14] PCI/P2PDMA: Store mapping method in an xarray
-Message-ID: <20190816081454.GK9249@lst.de>
+Subject: Re: [PATCH v3 12/14] PCI/P2PDMA: dma_map() requests that traverse
+ the host bridge
+Message-ID: <20190816081548.GL9249@lst.de>
 References: <20190812173048.9186-1-logang@deltatee.com>
- <20190812173048.9186-12-logang@deltatee.com>
+ <20190812173048.9186-13-logang@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190812173048.9186-12-logang@deltatee.com>
+In-Reply-To: <20190812173048.9186-13-logang@deltatee.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190816_011457_221056_55CD70E6 
-X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-CacheID: sfid-20190816_011551_557788_88995E05 
+X-CRM114-Status: UNSURE (   8.44  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -72,12 +73,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Aug 12, 2019 at 11:30:45AM -0600, Logan Gunthorpe wrote:
-> When upstream_bridge_distance() is called, store the method required to map
-> the DMA transfers in an xarray so it can be looked up efficiently on the
-> hot path in pci_p2pdma_map_sg().
+On Mon, Aug 12, 2019 at 11:30:46AM -0600, Logan Gunthorpe wrote:
+> Any requests that traverse the host bridge will need to be mapped into the
+> IOMMU, so call dma_map_sg() inside pci_p2pdma_map_sg() when appropriate.
 > 
-> Link: https://lore.kernel.org/r/20190730163545.4915-12-logang@deltatee.com
+> Similarly, call dma_unmap_sg() inside pci_p2pdma_unmap_sg().
+> 
+> Link: https://lore.kernel.org/r/20190730163545.4915-13-logang@deltatee.com
 > Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 > Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 
