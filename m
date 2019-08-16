@@ -2,43 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C0B88FD15
-	for <lists+linux-nvme@lfdr.de>; Fri, 16 Aug 2019 10:06:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C1BD8FD17
+	for <lists+linux-nvme@lfdr.de>; Fri, 16 Aug 2019 10:07:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SgVXsRM8nyq8ICljSRkYNbIhlxVgL9zei0pShmBmFlY=; b=bMCAK4O9A6zBbK
-	K9BZ+6lBUvHsBOQ6DctkAJZjdEU4idiEmyNpWV2XJcbPWFGjmzXnE16DMDlrcZKxzNUAyIiXyHbRg
-	NMOCCyO/Dww35E/St2xiWYzjEkDK3oQvLxpZ0VYaSCMobyBwSbzzf2iD7T5PClcipmakpoi9AFMOl
-	VSIr4SYJFfnx0bBdOHaWflltZPxxPhhWXohhTnHRXu688HK8TTMrCT8FlinUbYTIMODBxaz1XFGmF
-	d7xEhVYuyX47EDsE4FfDztAjP7zhiGdF3rJXxmf8CTKavwUMy2j230bu/haqAXIEcSovdGx12q+b7
-	KL0qA9HdOxB19pjoLYvw==;
+	List-Owner; bh=aJ5YBV+EGo3nrdmTHEb9f8L5MVOU3DHAOVV17sVZK5M=; b=DE0sLv7rEhUpwd
+	8Eh3CJHfsI92r4sJLi/CGIEqj3T42YN9i8EyU5+7lqU01fBzAPsMHwI1goLxFqru9yAcZJq3o7lBl
+	kd+OuG/ofKTdFSyZREELtzIEH1llN05pT/5/aCP3FMyyoLnDGWAEs/vFYLFqdxDCHfdcWQvrzr/zf
+	JBijXgm4WlUoRfks+hDsRyX7fMzxaW+9CV3DJ0Tg+TOaGMsTSWiZw3o4Zz/zkEumo4xJhW/7/1Q4m
+	PwTC5kIlxuLBmfwABoxxBNIZ6sZOTUr5HMFcAqAFOtI+TimijwQ/2I4/I99pxPgyl1KMflvyI7tue
+	ORAdVhbWKjZRdTlu6YPw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hyXFu-0002zm-C4; Fri, 16 Aug 2019 08:06:38 +0000
+	id 1hyXG9-000365-TA; Fri, 16 Aug 2019 08:06:53 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hyXFe-0002yX-M8
- for linux-nvme@lists.infradead.org; Fri, 16 Aug 2019 08:06:24 +0000
+ id 1hyXFp-00032J-Kh
+ for linux-nvme@lists.infradead.org; Fri, 16 Aug 2019 08:06:35 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id CECC868B02; Fri, 16 Aug 2019 10:06:15 +0200 (CEST)
-Date: Fri, 16 Aug 2019 10:06:15 +0200
+ id CDB0568B05; Fri, 16 Aug 2019 10:06:30 +0200 (CEST)
+Date: Fri, 16 Aug 2019 10:06:30 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH v3 01/14] PCI/P2PDMA: Introduce private pagemap structure
-Message-ID: <20190816080615.GA9249@lst.de>
+Subject: Re: [PATCH v3 02/14] PCI/P2PDMA: Add provider's pci_dev to
+ pci_p2pdma_pagemap struct
+Message-ID: <20190816080630.GB9249@lst.de>
 References: <20190812173048.9186-1-logang@deltatee.com>
- <20190812173048.9186-2-logang@deltatee.com>
+ <20190812173048.9186-3-logang@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190812173048.9186-2-logang@deltatee.com>
+In-Reply-To: <20190812173048.9186-3-logang@deltatee.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190816_010622_875458_F0F51AB7 
-X-CRM114-Status: UNSURE (   5.90  )
+X-CRM114-CacheID: sfid-20190816_010633_894333_7A4F2D68 
+X-CRM114-Status: UNSURE (   8.76  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -71,6 +72,13 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
+
+On Mon, Aug 12, 2019 at 11:30:36AM -0600, Logan Gunthorpe wrote:
+> The provider will be needed to figure out how to map a device.
+> 
+> Link: https://lore.kernel.org/r/20190730163545.4915-3-logang@deltatee.com
+> Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
+> Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 
 Looks good,
 
