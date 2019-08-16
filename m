@@ -2,44 +2,45 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEEA58FD31
-	for <lists+linux-nvme@lfdr.de>; Fri, 16 Aug 2019 10:08:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 56B4B8FD35
+	for <lists+linux-nvme@lfdr.de>; Fri, 16 Aug 2019 10:08:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qOYtX4bqOpj0+qn9dP9GO/3wItBedk2UBltfS5TDqes=; b=mflDFr9DnQMzjm
-	hvATLIgNqii8nsqW8W7BO3Lz/osHCfHTZEG6fLSUo+zgbk1nopymsJ+2OwI0eMyypwFYvXL7LIlan
-	tEKupplWgRL8yN5IjKNBtTruE+O/8jaIDzgFhUY4qJutSAh/SAaUkVUdxjWXWaW+U3sVtijqLjDEX
-	goWVK74XvUhp5EchMbf8EB8nurJ2Tmw+O6HixszqSzJwIZcTBxJg5rV8EDitFMsVlFYT2aur8nhIL
-	YG+yAlIdMZ70rLxowdn3mYc6Y8Cn3Zno/wpbXlDUGxyhhiD5x8rVcEAfM74jqOJKLNMtIsVo4OTIA
-	3CFjwzaZdcgJpWEHQ07w==;
+	List-Owner; bh=N2HJA/3Naet348UPxWIPMuzRRUv0OZbM7XlblTwliMI=; b=a7JlTY/pkPblja
+	B5TJmsd6eOjXrQeXkCdsO4YUCdsCKy30Ofl1IyYsEly1GOp623Dycio8kTMBt5LkL5h3bQN75dQ4f
+	kcaJvPzDxrwd7yZ/62CmOYCVHyxgqS/zoC8qdQSJxiT5xrIkjMnhs9Ir747KARk5sUOz39sv4AVM7
+	qcyjHqhkFAnsrRIZ/s1FA4BvzPZjQv5LdU/ilb8g0JqdibfZbh9nxASO+Lmag1RPUtfyfGPWjIouD
+	S7v9zzDM4QxFG3LNWn7BA40pfiZBF9yTu1mXVN96u5cJlfUTrhIgA0J6Fdr9BhS/KePuNHic5K7eq
+	PNeWDNMjCxTAHn1O5r4g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hyXHh-0003Rx-Uw; Fri, 16 Aug 2019 08:08:29 +0000
+	id 1hyXHz-0003du-Md; Fri, 16 Aug 2019 08:08:47 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hyXHY-0003Ra-6I
- for linux-nvme@lists.infradead.org; Fri, 16 Aug 2019 08:08:21 +0000
+ id 1hyXHo-0003cM-T5
+ for linux-nvme@lists.infradead.org; Fri, 16 Aug 2019 08:08:39 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 16B1368B02; Fri, 16 Aug 2019 10:08:16 +0200 (CEST)
-Date: Fri, 16 Aug 2019 10:08:15 +0200
+ id 19BBC68B05; Fri, 16 Aug 2019 10:08:34 +0200 (CEST)
+Date: Fri, 16 Aug 2019 10:08:33 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH v3 03/14] PCI/P2PDMA: Add constants for map type
- results to upstream_bridge_distance()
-Message-ID: <20190816080815.GC9249@lst.de>
+Subject: Re: [PATCH v3 04/14] PCI/P2PDMA: Factor out
+ __upstream_bridge_distance()
+Message-ID: <20190816080833.GD9249@lst.de>
 References: <20190812173048.9186-1-logang@deltatee.com>
- <20190812173048.9186-4-logang@deltatee.com>
+ <20190812173048.9186-5-logang@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190812173048.9186-4-logang@deltatee.com>
+In-Reply-To: <20190812173048.9186-5-logang@deltatee.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190816_010820_383046_B48D09B9 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20190816_010837_097665_03646391 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -72,22 +73,19 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Aug 12, 2019 at 11:30:37AM -0600, Logan Gunthorpe wrote:
-> Add constant flags to indicate how two devices will be mapped or if they
-> are unsupported. upstream_bridge_distance() will now return the
-> mapping type and the distance in a passed-by-reference argument.
+On Mon, Aug 12, 2019 at 11:30:38AM -0600, Logan Gunthorpe wrote:
+> This is a prep patch to create a second level helper. There are no
+> functional changes.
 > =
 
-> This helps annotate the code better, but the main reason is so we can use
-> the information to store the required mapping method in an xarray.
+> The root complex whitelist code will be moved into this function in a
+> subsequent patch.
 > =
 
-> Link: https://lore.kernel.org/r/20190730163545.4915-4-logang@deltatee.com
+> Link: https://lore.kernel.org/r/20190730163545.4915-5-logang@deltatee.com
 > Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 > Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 > Reviewed-by: Christian K=F6nig <christian.koenig@amd.com>
-
-Looks good,
 
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 
