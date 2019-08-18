@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BE06915C0
-	for <lists+linux-nvme@lfdr.de>; Sun, 18 Aug 2019 11:10:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 058C9915C5
+	for <lists+linux-nvme@lfdr.de>; Sun, 18 Aug 2019 11:10:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,37 +11,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=jmdeCbOILltgfSAeW6qlb1pphXU+ay5bfnGvOH3D3B4=; b=BQMEiJxshVvOpgreN/yMxG6juV
-	C5ujMWLgZQr7WDbSnyDcuNOhh/kpWSmtGt9C+//n3VyFVOKS4MCB79CRJcJfKZYOZRLaJZ5MR7XgW
-	uWLEb1cOifVS1ejTKb47J04mZ5Rv4SSKypk7G0uc+ToA+vbExHEtH1CNi/QkunDE9lMP1iqvvvk3n
-	nvFQUNgRjceUQXf5UzqhbLzV8FZkGGgQC7nRMivmObT8lGgif5DLF7Azxw20ig0fx2DIVt2PilLoV
-	P7PP0xoJBk6B1kqYE3VFg64Zpkjjk+LkbjZ7mUTQ8DSlN3OmUeFxyM4eHKQ2RhQve/12Sxbh8bEfj
-	J8r2weHQ==;
+	bh=UoqiCnYpxSnQMRbk4bVI1d8P87/1v4/NAGgIFmW3hdU=; b=u9V+86eGhG5XKJJS1EAz0gMeLv
+	08b/F+zX2tER98mwuxQ0Efbuo7SDDTImeR7/MABjzVrb/csW/jVwY1X0akQatlRjCwNOFsSKEaLmS
+	+K1Y2VlckTU6uww1CXQ3iwUuP0/l+1ewNUmsI25TCEGNH5kduQ4ntjavkmPtebx7CtNyJew13BbNw
+	Won2WmhOf+Uuxg99GPDMvJfOUvc7csj4T5HAnbZo/Oiwvk3A6dnl72JST2Yl8N7wo4KqVDIVprxwc
+	nBM8/PBfyY9JK3+UebI+XeyI4UrgoLhqWs54QA9BN1TuiWQeuuamRUPiqwULfBDUyMmkJzx99c6A4
+	dQy/NtCQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzHCc-0006WP-R0; Sun, 18 Aug 2019 09:10:19 +0000
+	id 1hzHD3-0007ul-2x; Sun, 18 Aug 2019 09:10:45 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
- id 1hzHBT-0005MW-PA
- for linux-nvme@lists.infradead.org; Sun, 18 Aug 2019 09:09:10 +0000
+ id 1hzHBX-0005MV-0r
+ for linux-nvme@lists.infradead.org; Sun, 18 Aug 2019 09:09:13 +0000
 Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  israelr@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 18 Aug 2019 12:08:57 +0300
 Received: from rsws50.mtr.labs.mlnx (rsws50.mtr.labs.mlnx [10.209.40.61])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x7I98veb013804;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x7I98vec013804;
  Sun, 18 Aug 2019 12:08:57 +0300
 From: Israel Rukshin <israelr@mellanox.com>
 To: Linux-nvme <linux-nvme@lists.infradead.org>
-Subject: [PATCH] nvme-cli/fabrics: Add tos param to connect cmd
-Date: Sun, 18 Aug 2019 12:08:50 +0300
-Message-Id: <1566119335-15058-2-git-send-email-israelr@mellanox.com>
+Subject: [PATCH 1/5] nvme-fabrics: Add type of service (TOS) configuration
+Date: Sun, 18 Aug 2019 12:08:51 +0300
+Message-Id: <1566119335-15058-3-git-send-email-israelr@mellanox.com>
 X-Mailer: git-send-email 1.8.4.3
 In-Reply-To: <1566119335-15058-1-git-send-email-israelr@mellanox.com>
 References: <1566119335-15058-1-git-send-email-israelr@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190818_020908_424098_97906A9E 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190818_020911_960648_56679F5E 
+X-CRM114-Status: GOOD (  10.58  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -72,122 +71,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Added 'tos' to 'connect' command so users can specify the type of service.
-
-usage examples:
-nvme connect --tos=0 --transport=rdma --traddr=10.0.1.1 --nqn=test-nvme
-nvme connect -T 0 -t rdma -a 10.0.1.1 -n test_nvme
+TOS is user-defined and needs to be configured via nvme-cli.
+It must be set before initiating any traffic and once set the TOS
+cannot be changed.
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
 Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- fabrics.c | 33 ++++++++++++++++++++++++---------
- 1 file changed, 24 insertions(+), 9 deletions(-)
+ drivers/nvme/host/fabrics.c | 18 ++++++++++++++++++
+ drivers/nvme/host/fabrics.h |  3 +++
+ 2 files changed, 21 insertions(+)
 
-diff --git a/fabrics.c b/fabrics.c
-index 333669f..f952722 100644
---- a/fabrics.c
-+++ b/fabrics.c
-@@ -60,6 +60,7 @@ static struct config {
- 	int  keep_alive_tmo;
- 	int  reconnect_delay;
- 	int  ctrl_loss_tmo;
-+	int  tos;
- 	char *raw;
- 	char *device;
- 	int  duplicate_connect;
-@@ -576,11 +577,12 @@ add_bool_argument(char **argstr, int *max_len, char *arg_str, bool arg)
- }
+diff --git a/drivers/nvme/host/fabrics.c b/drivers/nvme/host/fabrics.c
+index d0d0663..6a8bcaa 100644
+--- a/drivers/nvme/host/fabrics.c
++++ b/drivers/nvme/host/fabrics.c
+@@ -611,6 +611,7 @@ bool __nvmf_check_ready(struct nvme_ctrl *ctrl, struct request *rq,
+ 	{ NVMF_OPT_DATA_DIGEST,		"data_digest"		},
+ 	{ NVMF_OPT_NR_WRITE_QUEUES,	"nr_write_queues=%d"	},
+ 	{ NVMF_OPT_NR_POLL_QUEUES,	"nr_poll_queues=%d"	},
++	{ NVMF_OPT_TOS,			"tos=%d"		},
+ 	{ NVMF_OPT_ERR,			NULL			}
+ };
  
- static int
--add_int_argument(char **argstr, int *max_len, char *arg_str, int arg)
-+add_int_argument(char **argstr, int *max_len, char *arg_str, int arg,
-+		 bool allow_zero)
- {
- 	int len;
+@@ -632,6 +633,7 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
+ 	opts->duplicate_connect = false;
+ 	opts->hdr_digest = false;
+ 	opts->data_digest = false;
++	opts->tos = -1; /* < 0 == use transport default */
  
--	if (arg) {
-+	if ((arg && !allow_zero) || (arg != -1 && allow_zero)) {
- 		len = snprintf(*argstr, *max_len, ",%s=%d", arg_str, arg);
- 		if (len < 0)
- 			return -EINVAL;
-@@ -640,21 +642,23 @@ static int build_options(char *argstr, int max_len, bool discover)
- 		    add_argument(&argstr, &max_len, "hostid", cfg.hostid)) ||
- 	    (!discover &&
- 	      add_int_argument(&argstr, &max_len, "nr_io_queues",
--				cfg.nr_io_queues)) ||
-+				cfg.nr_io_queues, false)) ||
- 	    add_int_argument(&argstr, &max_len, "nr_write_queues",
--				cfg.nr_write_queues) ||
-+				cfg.nr_write_queues, false) ||
- 	    add_int_argument(&argstr, &max_len, "nr_poll_queues",
--				cfg.nr_poll_queues) ||
-+				cfg.nr_poll_queues, false) ||
- 	    (!discover &&
- 	      add_int_argument(&argstr, &max_len, "queue_size",
--				cfg.queue_size)) ||
-+				cfg.queue_size, false)) ||
- 	    (!discover &&
- 	      add_int_argument(&argstr, &max_len, "keep_alive_tmo",
--				cfg.keep_alive_tmo)) ||
-+				cfg.keep_alive_tmo, false)) ||
- 	    add_int_argument(&argstr, &max_len, "reconnect_delay",
--				cfg.reconnect_delay) ||
-+				cfg.reconnect_delay, false) ||
- 	    add_int_argument(&argstr, &max_len, "ctrl_loss_tmo",
--				cfg.ctrl_loss_tmo) ||
-+				cfg.ctrl_loss_tmo, false) ||
-+	    add_int_argument(&argstr, &max_len, "tos",
-+				cfg.tos, true) ||
- 	    add_bool_argument(&argstr, &max_len, "duplicate_connect",
- 				cfg.duplicate_connect) ||
- 	    add_bool_argument(&argstr, &max_len, "disable_sqflow",
-@@ -749,6 +753,13 @@ retry:
- 		p += len;
- 	}
+ 	options = o = kstrdup(buf, GFP_KERNEL);
+ 	if (!options)
+@@ -849,6 +851,22 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
+ 			}
+ 			opts->nr_poll_queues = token;
+ 			break;
++		case NVMF_OPT_TOS:
++			if (match_int(args, &token)) {
++				ret = -EINVAL;
++				goto out;
++			}
++			if (token < 0) {
++				pr_err("Invalid type of service %d\n", token);
++				ret = -EINVAL;
++				goto out;
++			}
++			if (token > 255) {
++				pr_warn("Clamping type of service to 255\n");
++				token = 255;
++			}
++			opts->tos = token;
++			break;
+ 		default:
+ 			pr_warn("unknown parameter or missing value '%s' in ctrl creation request\n",
+ 				p);
+diff --git a/drivers/nvme/host/fabrics.h b/drivers/nvme/host/fabrics.h
+index 3044d8b..93f08d7 100644
+--- a/drivers/nvme/host/fabrics.h
++++ b/drivers/nvme/host/fabrics.h
+@@ -55,6 +55,7 @@ enum {
+ 	NVMF_OPT_DATA_DIGEST	= 1 << 16,
+ 	NVMF_OPT_NR_WRITE_QUEUES = 1 << 17,
+ 	NVMF_OPT_NR_POLL_QUEUES = 1 << 18,
++	NVMF_OPT_TOS		= 1 << 19,
+ };
  
-+	if (cfg.tos != -1) {
-+		len = sprintf(p, ",tos=%d", cfg.tos);
-+		if (len < 0)
-+			return -EINVAL;
-+		p += len;
-+	}
-+
- 	if (cfg.keep_alive_tmo && !discover) {
- 		len = sprintf(p, ",keep_alive_tmo=%d", cfg.keep_alive_tmo);
- 		if (len < 0)
-@@ -1065,6 +1076,7 @@ int discover(const char *desc, int argc, char **argv, bool connect)
- 		{"keep-alive-tmo",  'k', "LIST", CFG_INT, &cfg.keep_alive_tmo,  required_argument, "keep alive timeout period in seconds" },
- 		{"reconnect-delay", 'c', "LIST", CFG_INT, &cfg.reconnect_delay, required_argument, "reconnect timeout period in seconds" },
- 		{"ctrl-loss-tmo",   'l', "LIST", CFG_INT, &cfg.ctrl_loss_tmo,   required_argument, "controller loss timeout period in seconds" },
-+		{"tos",             'T', "LIST", CFG_INT, &cfg.tos,             required_argument, "type of service" },
- 		{"hdr_digest", 'g', "", CFG_NONE, &cfg.hdr_digest, no_argument, "enable transport protocol header digest (TCP transport)" },
- 		{"data_digest", 'G', "", CFG_NONE, &cfg.data_digest, no_argument, "enable transport protocol data digest (TCP transport)" },
- 		{"nr-io-queues",    'i', "LIST", CFG_INT, &cfg.nr_io_queues,    required_argument, "number of io queues to use (default is core count)" },
-@@ -1076,6 +1088,7 @@ int discover(const char *desc, int argc, char **argv, bool connect)
- 		{NULL},
- 	};
+ /**
+@@ -87,6 +88,7 @@ enum {
+  * @data_digest: generate/verify data digest (TCP)
+  * @nr_write_queues: number of queues for write I/O
+  * @nr_poll_queues: number of queues for polling I/O
++ * @tos: type of service
+  */
+ struct nvmf_ctrl_options {
+ 	unsigned		mask;
+@@ -108,6 +110,7 @@ struct nvmf_ctrl_options {
+ 	bool			data_digest;
+ 	unsigned int		nr_write_queues;
+ 	unsigned int		nr_poll_queues;
++	int			tos;
+ };
  
-+	cfg.tos = -1;
- 	ret = argconfig_parse(argc, argv, desc, command_line_options, &cfg,
- 			sizeof(cfg));
- 	if (ret)
-@@ -1122,6 +1135,7 @@ int connect(const char *desc, int argc, char **argv)
- 		{"keep-alive-tmo",  'k', "LIST", CFG_INT, &cfg.keep_alive_tmo,  required_argument, "keep alive timeout period in seconds" },
- 		{"reconnect-delay", 'c', "LIST", CFG_INT, &cfg.reconnect_delay, required_argument, "reconnect timeout period in seconds" },
- 		{"ctrl-loss-tmo",   'l', "LIST", CFG_INT, &cfg.ctrl_loss_tmo,   required_argument, "controller loss timeout period in seconds" },
-+		{"tos",             'T', "LIST", CFG_INT, &cfg.tos,             required_argument, "type of service" },
- 		{"duplicate_connect", 'D', "", CFG_NONE, &cfg.duplicate_connect, no_argument, "allow duplicate connections between same transport host and subsystem port" },
- 		{"disable_sqflow", 'd', "", CFG_NONE, &cfg.disable_sqflow, no_argument, "disable controller sq flow control (default false)" },
- 		{"hdr_digest", 'g', "", CFG_NONE, &cfg.hdr_digest, no_argument, "enable transport protocol header digest (TCP transport)" },
-@@ -1129,6 +1143,7 @@ int connect(const char *desc, int argc, char **argv)
- 		{NULL},
- 	};
- 
-+	cfg.tos = -1;
- 	ret = argconfig_parse(argc, argv, desc, command_line_options, &cfg,
- 			sizeof(cfg));
- 	if (ret)
+ /*
 -- 
 1.8.3.1
 
