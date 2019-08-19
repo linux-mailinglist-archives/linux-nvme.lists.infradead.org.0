@@ -2,60 +2,99 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C89A79278E
-	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 16:51:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E73C9282D
+	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 17:17:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5z4BRnOj16/YzJinWnvQoA/RXV2O2rd8UAA72mRExJY=; b=puUsSLzaNAHNCk
-	4SclGal1mattpzB0K1pvJkodcgK9hE8t0LMtcLHz9pdFVapn4h8Z4T2U7EzD25lrmRX+1EZawFvBt
-	D5JPvoX3XiRFQYpONKrEjPJRIg8EyBgbm0ctdaxKY8KSsUrQC26c/wTvPaZHA5uAuoJGRt8Bkn2a1
-	xQWDQ0QSpnHYLmfbH5YpL24EWUo87TV22kBSJzuJLBzMQfMOyG8JEkKq0iB52r7xf1ik8ahGVFAeu
-	VKn1I/306NDXuu+J/gQPouZyo0VNxA6JnUpPkoIvxJL7taM0SBCvqIF4RY8LYCOf1BHyZJdUzuYr0
-	Gkgfp6iONgeNblmZN5kw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iZmKELLic9RAYkAtnTbZPGiLhLhbrfuiCj11YTD4j+Q=; b=DzMU8/I7aUEq3t
+	N+wJ9v/CCj2LChp16b0TOCtF9l32wsAnQWmGDldtkEZ31WyrIK1zVqX7FiCkQiyohslD781kEFrhe
+	+G0X+PzeUzL/IdXiICpIFRnA3ibxz350DH+zmUiokUMocqzy7ZAGlzW2oxUmAwN/PKpmbnaaNOy6D
+	+THZogLyw/cc6t8J3WXjnYyQ+tuvx2bhdiBQG7bLjnYOkrYSDksxVowpHwNvtmOB0ZuBSDmvRmidN
+	gPglKyYnWoY7KkeFLjlx2lOArmiHEyLIu7JR57Jw/EltnnL+K86sU5PE+duYN1Unk2V3MJn9Jix81
+	mLyIfgrFhftx3L8MIb7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzj0O-0002vt-Kw; Mon, 19 Aug 2019 14:51:32 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1hzjPS-0006Fm-NT; Mon, 19 Aug 2019 15:17:26 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzj0K-0002vB-9U
- for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 14:51:29 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Aug 2019 07:51:26 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,405,1559545200"; d="scan'208";a="195551635"
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by fmsmga001.fm.intel.com with ESMTP; 19 Aug 2019 07:51:26 -0700
-Date: Mon, 19 Aug 2019 08:49:22 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Marta Rybczynska <mrybczyn@kalray.eu>
-Subject: Re: [PATCH v2] nvme: allow 64-bit results in passthru commands
-Message-ID: <20190819144922.GC6883@localhost.localdomain>
-References: <89520652.56920183.1565948841909.JavaMail.zimbra@kalray.eu>
- <20190816131606.GA26191@lst.de>
- <469829119.56970464.1566198383932.JavaMail.zimbra@kalray.eu>
+ id 1hzjPN-0006FP-86
+ for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 15:17:23 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 2C54BAF50;
+ Mon, 19 Aug 2019 15:17:18 +0000 (UTC)
+Subject: Re: [PATCH rfc] nvme: make all fabrics command run on a separate
+ request queue
+To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
+References: <20190808234643.8180-1-sagi@grimberg.me>
+ <bbba1841-a35f-567b-63e8-9c68c0bf1504@grimberg.me>
+From: Hannes Reinecke <hare@suse.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
+ 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
+ azzYF4VRJsdl+d0MCaSy8mUh
+Message-ID: <07cc3a26-c622-975b-8e02-dcf281715f23@suse.de>
+Date: Mon, 19 Aug 2019 17:17:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <469829119.56970464.1566198383932.JavaMail.zimbra@kalray.eu>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+In-Reply-To: <bbba1841-a35f-567b-63e8-9c68c0bf1504@grimberg.me>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_075128_343612_25AED891 
-X-CRM114-Status: GOOD (  12.26  )
-X-Spam-Score: -4.0 (----)
+X-CRM114-CacheID: sfid-20190819_081721_584179_2346571B 
+X-CRM114-Status: GOOD (  19.83  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-4.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [192.55.52.88 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -68,34 +107,54 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, Samuel Jones <sjones@kalray.eu>,
- Guillaume Missonnier <gmissonnier@kalray.eu>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>, axboe <axboe@fb.com>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
+ James Smart <james.smart@broadcom.com>,
+ Johannes Thumshirn <jthumshirn@suse.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Aug 19, 2019 at 12:06:23AM -0700, Marta Rybczynska wrote:
-> ----- On 16 Aug, 2019, at 15:16, Christoph Hellwig hch@lst.de wrote:
-> > Sorry for not replying to the earlier version, and thanks for doing
-> > this work.
-> > 
-> > I wonder if instead of using our own structure we'd just use
-> > a full nvme SQE for the input and CQE for that output.  Even if we
-> > reserve a few fields that means we are ready for any newly used
-> > field (at least until the SQE/CQE sizes are expanded..).
-> 
-> We could do that, nvme_command and nvme_completion are already UAPI.
-> On the other hand that would mean not filling out certain fields like
-> command_id. Can do an approach like this.
-
-Well, we need to pass user space addresses and lengths, which isn't
-captured in struct nvme_command.
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gOC8xNS8xOSA3OjA3IFBNLCBTYWdpIEdyaW1iZXJnIHdyb3RlOgo+IFBpbmc/IEhhbm5lcywg
+SmFtZXM/Cj4gCj4gT24gOC84LzE5IDQ6NDYgUE0sIFNhZ2kgR3JpbWJlcmcgd3JvdGU6Cj4+IFdl
+IGhhdmUgYSBmdW5kYW1lbnRhbCBpc3N1ZSB0aGF0IGZhYnJpYyBjb21tYW5kcyB1c2UgdGhlIGFk
+bWluX3EuCj4+IFRoZSByZWFzb24gaXMsIHRoYXQgYWRtaW4tY29ubmVjdCwgcmVnaXN0ZXIgcmVh
+ZHMgYW5kIHdyaXRlcyBhbmQKPj4gYWRtaW4gY29tbWFuZHMgY2Fubm90IGJlIGd1YXJhbnRlZWQg
+b3JkZXJpbmcgd2hpbGUgd2UgYXJlIHJ1bm5pbmcKPj4gY29udHJvbGxlciByZXNldHMuCj4+Cj4+
+IEZvciBleGFtcGxlLCB3aGVuIHdlIHJlc2V0IGEgY29udHJvbGxlciB3ZSBwZXJmb3JtOgo+PiAx
+LiBkaXNhYmxlIHRoZSBjb250cm9sbGVyCj4+IDIuIHRlYXJkb3duIHRoZSBhZG1pbiBxdWV1ZQo+
+PiAzLiByZS1lc3RhYmxpc2ggdGhlIGFkbWluIHF1ZXVlCj4+IDQuIGVuYWJsZSB0aGUgY29udHJv
+bGxlcgo+Pgo+PiBJbiBvcmRlciB0byBwZXJmb3JtICgzKSwgd2UgbmVlZCB0byB1bnF1aWVzY2Ug
+dGhlIGFkbWluIHF1ZXVlLCBob3dldmVyCj4+IHdlIG1heSBoYXZlIHNvbWUgYWRtaW4gY29tbWFu
+ZHMgdGhhdCBhcmUgYWxyZWFkeSBwZW5kaW5nIG9uIHRoZQo+PiBxdWllc2NlZCBhZG1pbl9xIGFu
+ZCB3aWxsIGltbWVkaWF0ZSBleGVjdXRlIHdoZW4gd2UgdW5xdWllc2NlIGl0IGJlZm9yZQo+PiB3
+ZSBleGVjdXRlICg0KS4gVGhlIGhvc3QgbXVzdCBub3Qgc2VuZCBhZG1pbiBjb21tYW5kcyB0byB0
+aGUgY29udHJvbGxlcgo+PiBiZWZvcmUgZW5hYmxpbmcgdGhlIGNvbnRyb2xsZXIuCj4+Cj4+IFRv
+IGZpeCB0aGlzLCB3ZSBoYXZlIHRoZSBmYWJyaWMgY29tbWFuZHMgKGFkbWluIGNvbm5lY3QgYW5k
+IHByb3BlcnR5Cj4+IGdldC9zZXQpIHVzZSBhIHNlcGFyYXRlIGZhYnJpY3NfcSBhbmQgbWFrZSBz
+dXJlIHRvIHF1aWVzY2UgdGhlIGFkbWluX3EKPj4gYmVmb3JlIHdlIGRpc2FibGUgdGhlIGNvbnRy
+b2xsZXIsIGFuZCB1bnF1aWVzY2UgaXQgb25seSBhZnRlciB3ZSBlbmFibGUKPj4gdGhlIGNvbnRy
+b2xsZXIuIFRoaXMgYWxzbyBmaXRzIHRoZSBwY2kgbW9kZWwgd2hlcmUgdGhlIGFkbWluIGNvbW1h
+bmRzCj4+IGFuZCBjb250cm9sbGVyIGJhciByZWdpc3RlcnMgYXJlIGFjY2Vzc2VkIGluIGRpZmZl
+cmVudCAiY2hhbm5lbHMiLgo+Pgo+PiBUaGlzIGZpeGVzIHRoZSBlcnJvciBwcmludHMgZnJvbSBu
+dm1ldCBpbiBhIGNvbnRyb2xsZXIgcmVzZXQgc3Rvcm0gdGVzdDoKPj4ga2VybmVsOiBudm1ldDog
+Z290IGNtZCA2IHdoaWxlIENDLkVOID09IDAgb24gcWlkID0gMAo+PiBXaGljaCBpbmRpY2F0ZSB0
+aGF0IHRoZSBob3N0IGlzIHNlbmRpbmcgYW4gYWRtaW4gY29tbWFuZCB3aGVuIHRoZQo+PiBjb250
+cm9sbGVyIGlzIG5vdCBlbmFibGVkLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBTYWdpIEdyaW1iZXJn
+IDxzYWdpQGdyaW1iZXJnLm1lPgo+PiAtLS0KPj4gwqAgZHJpdmVycy9udm1lL2hvc3QvY29yZS5j
+wqDCoMKgIHzCoCAzICsrLQo+PiDCoCBkcml2ZXJzL252bWUvaG9zdC9mYWJyaWNzLmMgfMKgIDgg
+KysrKy0tLS0KPj4gwqAgZHJpdmVycy9udm1lL2hvc3QvZmMuY8KgwqDCoMKgwqAgfCAxNSArKysr
+KysrKysrKystLS0KPj4gwqAgZHJpdmVycy9udm1lL2hvc3QvbnZtZS5owqDCoMKgIHzCoCAxICsK
+Pj4gwqAgZHJpdmVycy9udm1lL2hvc3QvcmRtYS5jwqDCoMKgIHwgMTkgKysrKysrKysrKysrKysr
+KystLQo+PiDCoCBkcml2ZXJzL252bWUvaG9zdC90Y3AuY8KgwqDCoMKgIHwgMTkgKysrKysrKysr
+KysrKysrKystLQo+PiDCoCBkcml2ZXJzL252bWUvdGFyZ2V0L2xvb3AuY8KgIHwgMTYgKysrKysr
+KysrKysrKy0tLQo+PiDCoCA3IGZpbGVzIGNoYW5nZWQsIDY2IGluc2VydGlvbnMoKyksIDE1IGRl
+bGV0aW9ucygtKQo+PgpMb29rcyBnb29kOyBJJ2xsIGJlIGdpdmluZyBpdCBhIGdvLgoKUmV2aWV3
+ZWQtYnk6IEhhbm5lcyBSZWluZWNrZSA8aGFyZUBzdXNlLmNvbT4KCkNoZWVycywKCkhhbm5lcwot
+LSAKRHIuIEhhbm5lcyBSZWluZWNrZQkJICAgVGVhbWxlYWQgU3RvcmFnZSAmIE5ldHdvcmtpbmcK
+aGFyZUBzdXNlLmRlCQkJICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1MyA2ODgKU1VTRSBMSU5V
+WCBHbWJILCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJlcmcKR0Y6IEZlbGl4IEltZW5kw7Zy
+ZmZlciwgTWFyeSBIaWdnaW5zLCBTcmkgUmFzaWFoCkhSQiAyMTI4NCAoQUcgTsO8cm5iZXJnKQoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbnZt
+ZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
