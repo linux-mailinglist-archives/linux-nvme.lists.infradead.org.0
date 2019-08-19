@@ -2,56 +2,64 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CD7192472
-	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 15:14:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A52F692589
+	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 15:52:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MCA/jbLuIA9A2e709jBDUcVaGcJUpIycwjxHcuH1UO0=; b=p8hA5co2arxkTs
-	l/1QCUwkidpm6g9AH/txlB7lj4tSkv1fwjFoZJhD8VoyEcCw8nTEvq5Vhjw4Bw9G2xFahdwA4v0VW
-	+wkBuoKGc7UVsHgCUFTPYqfiNwydTxIgZhYCUwESUcpoE5DoQamz/Ma5ZWeae58P6t3FteYLE+RFY
-	Dx4C4shH60JMi2/YDeilLr7HFevfE/bnEB1PI18jLhjZbgVJOsJk/U0Wmn8uaaCwErF2Aw191rpHz
-	8NxKWdHutIQfLz8WiuyLRKBUUAY/+iMsHsWm1+jh6YunokQbjNWR2XcVBSWBKnIraLx+dJU65ZNRZ
-	EIeiKX+nk8lRKiST5hPw==;
+	List-Owner; bh=/bPc3j+f2+JsYPLMOy4sSMq9v1jP/FEP+73CJB0JlXE=; b=qjp9cOyG+xBl8G
+	WZ61N5ATb02OsfnE0TM5sqAWon5Mk7TQn7iCA/FINOOj51s/YhDMKN47XSDs2eo298sA4MWkhq+2n
+	CndoVRAEBTG4g4vDStTxGLpNguHKqCuoxecPcMsuU5j4rPuUEXXpaYTVr/jA9TsGRRD0odM4mXP3T
+	QdCs6/pfmZ/JM9mn8IN/ieLZkLpalRseC9h7hzzgvxzmpmtSeF9alenVp7lBIp8EM+Teav92burB4
+	+pYwRDLoLwFleOfYiXBDQZQ3V5QIzd2K/aUfWAcRPhGhFMVqmVHknOv3+7wRaontzplD18Bu5oOyG
+	7BOhfDbPmGciAxhqHv/g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzhUE-00073H-KT; Mon, 19 Aug 2019 13:14:14 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1hzi5O-0001NL-9j; Mon, 19 Aug 2019 13:52:38 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzhU8-00072n-Qt
- for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 13:14:10 +0000
-Received: from [5.158.153.52] (helo=nanos.tec.linutronix.de)
- by Galois.linutronix.de with esmtpsa (TLS1.2:DHE_RSA_AES_256_CBC_SHA256:256)
- (Exim 4.80) (envelope-from <tglx@linutronix.de>)
- id 1hzhTy-0004Bx-LY; Mon, 19 Aug 2019 15:13:58 +0200
-Date: Mon, 19 Aug 2019 15:13:58 +0200 (CEST)
-From: Thomas Gleixner <tglx@linutronix.de>
-To: Ming Lei <ming.lei@redhat.com>
+ id 1hzi5H-0001Mh-Ef
+ for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 13:52:32 +0000
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 573411089041;
+ Mon, 19 Aug 2019 13:52:30 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-19.pek2.redhat.com [10.72.8.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B77FE27CDB;
+ Mon, 19 Aug 2019 13:52:23 +0000 (UTC)
+Date: Mon, 19 Aug 2019 21:52:18 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Thomas Gleixner <tglx@linutronix.de>
 Subject: Re: [PATCH V6 2/2] genirq/affinity: Spread vectors on node according
  to nr_cpu ratio
-In-Reply-To: <20190819124937.9948-3-ming.lei@redhat.com>
-Message-ID: <alpine.DEB.2.21.1908191511440.2147@nanos.tec.linutronix.de>
+Message-ID: <20190819135217.GA10108@ming.t460p>
 References: <20190819124937.9948-1-ming.lei@redhat.com>
  <20190819124937.9948-3-ming.lei@redhat.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ <alpine.DEB.2.21.1908191511440.2147@nanos.tec.linutronix.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.1908191511440.2147@nanos.tec.linutronix.de>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.64]); Mon, 19 Aug 2019 13:52:30 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_061409_015779_1CF1E01D 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190819_065231_519126_3979280A 
+X-CRM114-Status: GOOD (  12.78  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [2a0a:51c0:0:12e:550:0:0:1 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,21 +79,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, 19 Aug 2019, Ming Lei wrote:
+On Mon, Aug 19, 2019 at 03:13:58PM +0200, Thomas Gleixner wrote:
+> On Mon, 19 Aug 2019, Ming Lei wrote:
+> 
+> > Cc: Jon Derrick <jonathan.derrick@intel.com>
+> > Cc: Jens Axboe <axboe@kernel.dk>
+> > Reported-by: Jon Derrick <jonathan.derrick@intel.com>
+> > Reviewed-by: Jon Derrick <jonathan.derrick@intel.com>
+> > Reviewed-by: Keith Busch <kbusch@kernel.org>
+> 
+> This version is sufficiently different from the previous one, so I do not
+> consider the reviewed-by tags still being valid and meaningful. Don't
+> include them unless you just do cosmetic changes.
 
-> Cc: Jon Derrick <jonathan.derrick@intel.com>
-> Cc: Jens Axboe <axboe@kernel.dk>
-> Reported-by: Jon Derrick <jonathan.derrick@intel.com>
-> Reviewed-by: Jon Derrick <jonathan.derrick@intel.com>
-> Reviewed-by: Keith Busch <kbusch@kernel.org>
+Fine.
 
-This version is sufficiently different from the previous one, so I do not
-consider the reviewed-by tags still being valid and meaningful. Don't
-include them unless you just do cosmetic changes.
+However, the V6 only change isn't big, just for addressing the un-initialized
+warning, and the change is only done on function of irq_build_affinity_masks().
 
-Thanks
-
-	tglx
+Thanks,
+Ming
 
 _______________________________________________
 Linux-nvme mailing list
