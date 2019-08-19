@@ -2,82 +2,62 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87A8C94D52
-	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 20:58:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC1EE94D67
+	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 21:00:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=k2XEPNzEWJtmUJNMg6JofqeQC8+ycfc2T3WViEZidw4=; b=Tf62vLMVWh3+lcmGtQewcuYr0
-	QXAGxoZVVKI1k0RJBsNd933fo8UkqNGUtln2yRHG8bjfXT2Hi5yRtH8pN18aRDOastif7yI3qUqzs
-	eXZ/KIMYd7zrtKbipf7Lycab5yGXf5NNc7HsDomFv2uTpSxbIBJJR9V9LALQjoRHdQe635s6/WSr8
-	U0wPwfO7ezb2yJhgAvbEC4RCVkrNQfWurdkjGR9IxcvT/pOoS0wM4jsSHhbyHxoazvLO/jUds5fy4
-	jVGdlOSyHWaBurmIq3CMhQwzP8SrVZ2v9GUOs0sAXOsi2aDGIx9Sw59zE5G+FQEk1Gd+RQesUB1XE
-	R/dG1c58g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SYekM+/vjvxZGU82RIrOXIdmcVCNKu2EDGX8s61GalI=; b=tPHn9EIUZEAKdQ
+	jw7H5Q6LXQSldjEhTwV1xkVRHvdDMNeWRva638nHJuSBtrc2hPJJuNDsENAybbrwnSLrg0wf39kI+
+	hGk2hA/4M18ginxh2i91YmK0Jqj/UCqLQOkJb7vQsunDLYDYKSH5qRrVfEqj/zS689tUE4l2ojw5q
+	m/R5vvj/QYJsAk8xX3b9zaIeP7Xj5LU7xhFozF7KiP/1iDuIr2fQDHt6N6n/eJ4pDM36g+kYlGqfl
+	D57xNrMR41ORF6dnY8GCpE61Icd++t71tCw4KOaRqIx6bxa1JEACCmE7MwrCORbE40bpZ2lN9cC3O
+	dzvXxf1EmKhJ2meRi0ig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzmr9-0003PH-3W; Mon, 19 Aug 2019 18:58:15 +0000
-Received: from mail-oi1-f194.google.com ([209.85.167.194])
+	id 1hzmt3-0003jf-46; Mon, 19 Aug 2019 19:00:13 +0000
+Received: from mga03.intel.com ([134.134.136.65])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzmqs-0003On-Mk
- for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 18:58:00 +0000
-Received: by mail-oi1-f194.google.com with SMTP id h21so2133013oie.7
- for <linux-nvme@lists.infradead.org>; Mon, 19 Aug 2019 11:57:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=epBwfbywhqGj6/Txp0wEnIqhhkUDSBU1c4DDd4zaWhE=;
- b=exv+n4WtrMxWj0nsVdNpJuEYO1Md6gCDsucm+2M/jBmpXWzDb7l7RH/FN8dF+mRSFp
- +yN6ioTnVdxVm6zYw5mekeKARz0pN2I2L42cGGJNGiYCZFiS+28YQ44q0XDCYhqTqUTD
- EW06E36M7GhrfMNopSO5IhYNvkgJ/Bij8NIwF/ns8DSD7WpOHiQ42DWCUdJ5vISCMGYV
- HyTmFkqcSLsYkbceEEjZ4oQl3OAxaMy06iwc5c4Rn7XMFfBTDGLeD8Tw0Ucyrhkap8/g
- 6n8BDox8UXYCCt8rc0KIlmwuhcuUzjxvE76AzhgS4TNTUaPmvxS8DA1mDK/xCWaTJvP8
- gRTg==
-X-Gm-Message-State: APjAAAWrfeU3Qp8AtM/rtledPKeHQCR4qkzIjxG5++7SrTG4rvmQtW32
- YFvyC6enhJYLayIxgvZ53tqR8GpE
-X-Google-Smtp-Source: APXvYqyPxFwJuZH9ewhvaT43uWW7EVT9DpjXXfGo8Fo4ATfdTuU3+8Znf78pYmMPzOvs6K6TZUjYCA==
-X-Received: by 2002:aca:4813:: with SMTP id v19mr1919384oia.17.1566241077612; 
- Mon, 19 Aug 2019 11:57:57 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id 98sm6073398oti.18.2019.08.19.11.57.55
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 19 Aug 2019 11:57:56 -0700 (PDT)
-Subject: Re: [PATCH v3] nvme: Add quirk for LiteON CL1 devices running FW
- 22301111
-To: Mario Limonciello <mario.limonciello@dell.com>,
- Keith Busch <kbusch@kernel.org>
-References: <1565986579-10466-1-git-send-email-mario.limonciello@dell.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <b4456ee7-6f5d-5968-2167-9900f049e5c6@grimberg.me>
-Date: Mon, 19 Aug 2019 11:57:55 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1hzmsm-0003ix-SM
+ for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 18:59:58 +0000
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Aug 2019 11:59:52 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,405,1559545200"; d="scan'208";a="195595817"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by fmsmga001.fm.intel.com with ESMTP; 19 Aug 2019 11:59:52 -0700
+Date: Mon, 19 Aug 2019 12:57:49 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Sagi Grimberg <sagi@grimberg.me>
+Subject: Re: [PATCH v2] nvme: allow 64-bit results in passthru commands
+Message-ID: <20190819185749.GA11202@localhost.localdomain>
+References: <89520652.56920183.1565948841909.JavaMail.zimbra@kalray.eu>
+ <20190816131606.GA26191@lst.de>
+ <469829119.56970464.1566198383932.JavaMail.zimbra@kalray.eu>
+ <20190819144922.GC6883@localhost.localdomain>
+ <1d7819a9-9504-2dc6-fca4-fbde4f99d92c@grimberg.me>
 MIME-Version: 1.0
-In-Reply-To: <1565986579-10466-1-git-send-email-mario.limonciello@dell.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1d7819a9-9504-2dc6-fca4-fbde4f99d92c@grimberg.me>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_115758_751484_C1125395 
-X-CRM114-Status: GOOD (  14.66  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20190819_115956_960366_91EBB9A4 
+X-CRM114-Status: GOOD (  14.12  )
+X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.194 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [134.134.136.65 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,38 +69,37 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Crag Wang <Crag.Wang@dell.com>, sjg@google.com,
- LKML <linux-kernel@vger.kernel.org>, linux-nvme@lists.infradead.org,
- Jens Axboe <axboe@fb.com>, Ryan Hong <Ryan.Hong@Dell.com>,
- Jared Dominguez <jared.dominguez@dell.com>,
- Charles Hyde <charles.hyde@dellteam.com>, Christoph Hellwig <hch@lst.de>
+Cc: Marta Rybczynska <mrybczyn@kalray.eu>,
+ Guillaume Missonnier <gmissonnier@kalray.eu>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>, axboe <axboe@fb.com>,
+ Samuel Jones <sjones@kalray.eu>, Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-
-On 8/16/19 1:16 PM, Mario Limonciello wrote:
-> One of the components in LiteON CL1 device has limitations that
-> can be encountered based upon boundary race conditions using the
-> nvme bus specific suspend to idle flow.
+On Mon, Aug 19, 2019 at 11:56:28AM -0700, Sagi Grimberg wrote:
 > 
-> When this situation occurs the drive doesn't resume properly from
-> suspend-to-idle.
+> >> ----- On 16 Aug, 2019, at 15:16, Christoph Hellwig hch@lst.de wrote:
+> >>> Sorry for not replying to the earlier version, and thanks for doing
+> >>> this work.
+> >>>
+> >>> I wonder if instead of using our own structure we'd just use
+> >>> a full nvme SQE for the input and CQE for that output.  Even if we
+> >>> reserve a few fields that means we are ready for any newly used
+> >>> field (at least until the SQE/CQE sizes are expanded..).
+> >>
+> >> We could do that, nvme_command and nvme_completion are already UAPI.
+> >> On the other hand that would mean not filling out certain fields like
+> >> command_id. Can do an approach like this.
+> > 
+> > Well, we need to pass user space addresses and lengths, which isn't
+> > captured in struct nvme_command.
 > 
-> LiteON has confirmed this problem and fixed in the next firmware
-> version.  As this firmware is already in the field, avoid running
-> nvme specific suspend to idle flow.
-> 
-> Fixes: d916b1be94b6 ("nvme-pci: use host managed power state for suspend")
-> Link: http://lists.infradead.org/pipermail/linux-nvme/2019-July/thread.html
-> Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
-> Signed-off-by: Charles Hyde <charles.hyde@dellteam.com>
-> ---
+> Isn't simply having a 64 variant simpler?
 
-Jens, can you please rebase for-linus so we have the needed dependency:
-4eaefe8c621c6195c91044396ed8060c179f7aae
+Could you provide more details on what you mean by this?
 
 _______________________________________________
 Linux-nvme mailing list
