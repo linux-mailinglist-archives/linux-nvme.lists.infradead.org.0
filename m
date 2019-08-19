@@ -2,70 +2,57 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F8B691E1A
-	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 09:42:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE8ED923CD
+	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 14:50:06 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=oObWwgVd9ttZi9Srd7tR3VlbhuiS3cofr6FcES/1HaY=; b=fhpvwUCzeyErlu
-	YmWthzHMXqboxJ5JoBiax8vyaOmuipSQfvG0AZX8ruTQtdWKxdHVU0Q7c3zBpOOk8C1kndbxOuTZf
-	bVpMwVNVuYC8O+wLFC93eJnVpU2vX9ZBvu2iFscrNImiuWMfEm6MnhTDR+fYqq1r9zmXjVglLcweC
-	Nc4IyhVSyeKhhjfqFzhmyO5Wgcmwe0/J38nMgIta2TOlMPuJKN02AiE/Or0lVgPCUvcMZoZDVsrsB
-	yplTKmDaiPNlTh59WX3QIou5aL44cWmIbu6tC+KHakv4cwRDDbYeLjvBKT6UX+E+tUBx1vY4DeZFP
-	D1Uzf1BCCFwpHKpLepLg==;
+	List-Owner; bh=svfGZTksur8GTb2LcV4/atEYZwC6NFiiv9wOh/Bb+Rw=; b=pyCJ/MkgJnsQrw
+	6p5vZ053NA+fX3c8VXGTqBkZzH6hYq+SKtU49Qm2BMg/3ewUqGzGRRps8fZVfvGcJhZtwIDTTrkl3
+	G+QRfZYjEOq47JdceaxoFDrAUbEYtrpWGa7G9G1o87jldo37PO0HtMugDHFTrxO6BM/oDAU0vp2by
+	yWGjOP3OFn0uCl4nl+k5pYn7gb6NQPD/tmQGpU5fPpLzy39vUXqtj9Cn86rYANxVCUzOlJ7tzGDPQ
+	NyyhhSrTB797sSeG3NRWs/aOS8Wi7P10kXm0BgyyqSnVFpIYzAlV+qp8Qzl5ZJZaQouI9vnDij3av
+	plTlDKKgU7TrBUT7VSBA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzcIn-00050m-St; Mon, 19 Aug 2019 07:42:05 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.52])
+	id 1hzh6e-0002Ps-Q0; Mon, 19 Aug 2019 12:49:52 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzcIP-0004t6-RD
- for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 07:41:44 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from webmail.solarflare.com (uk.solarflare.com [193.34.186.16])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ id 1hzh6a-0002P5-LV
+ for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 12:49:50 +0000
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1-us2.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id BA5F770006D;
- Mon, 19 Aug 2019 07:41:40 +0000 (UTC)
-Received: from linux-m89u (134.19.179.139) by ukex01.SolarFlarecom.com
- (10.17.10.4) with Microsoft SMTP Server (TLS) id 15.0.1395.4; Mon, 19 Aug
- 2019 08:41:35 +0100
-User-agent: mu4e 1.3.3; emacs 26.2
-From: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
-To: <linux-nvme@lists.infradead.org>
-Subject: [PATCH v2] nvme: exclude completion trace from non-multipath builds
-Date: Mon, 19 Aug 2019 09:40:49 +0200
-Message-ID: <87d0h138n2.fsf@solarflare.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id A7C923091D73;
+ Mon, 19 Aug 2019 12:49:44 +0000 (UTC)
+Received: from localhost (ovpn-8-19.pek2.redhat.com [10.72.8.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8BFE1871FB;
+ Mon, 19 Aug 2019 12:49:41 +0000 (UTC)
+From: Ming Lei <ming.lei@redhat.com>
+To: Thomas Gleixner <tglx@linutronix.de>
+Subject: [PATCH V6 0/2] genriq/affinity: Make vectors allocation fair
+Date: Mon, 19 Aug 2019 20:49:35 +0800
+Message-Id: <20190819124937.9948-1-ming.lei@redhat.com>
 MIME-Version: 1.0
-X-Originating-IP: [134.19.179.139]
-X-ClientProxiedBy: ocex03.SolarFlarecom.com (10.20.40.36) To
- ukex01.SolarFlarecom.com (10.17.10.4)
-X-TM-AS-Product-Ver: SMEX-12.5.0.1300-8.5.1010-24856.003
-X-TM-AS-Result: No-6.223500-8.000000-10
-X-TMASE-MatchedRID: p1A4x3TSosyS0tPiucGxC/KUR83BvqItEhHgAtjqBcljLp8Cm8vwF0Ac
- 6DyoS2rIj6kCfX0Edc6Q9+qvPFYkdf8HOAZkrPDd6L2XbjtgBfdvV3/OnMClWj8+jJyNeEYpfuh
- AcjCJZ/d9LQinZ4QefPcjNeVeWlqY+gtHj7OwNO2BSJy8ngwKGX1GF/Cl9IdKHf5iw27lAFCd2g
- ahaMip9cQjnmWo1g2bwsBBga2wgM4=
-X-TM-AS-User-Approved-Sender: Yes
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.223500-8.000000
-X-TMASE-Version: SMEX-12.5.0.1300-8.5.1010-24856.003
-X-MDID: 1566200501-Y6df8d1Xkpa6
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.42]); Mon, 19 Aug 2019 12:49:44 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_004141_904621_A90AC06A 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20190819_054948_729102_9797E70B 
+X-CRM114-Status: GOOD (  13.07  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.129.52 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,65 +64,73 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, Hannes Reinecke <hare@suse.de>,
- Christoph Hellwig <hch@lst.de>
+Cc: Jens Axboe <axboe@kernel.dk>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Ming Lei <ming.lei@redhat.com>,
+ Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ Jon Derrick <jonathan.derrick@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This trace point have no meaning without native multipath support and
-break compilation on configurations without enabled multipath.
+Hi Thomas,
 
-Signed-off-by: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
----
- drivers/nvme/host/core.c | 21 +++++++++++++++++----
- 1 file changed, 17 insertions(+), 4 deletions(-)
+The 1st patch makes __irq_build_affinity_masks() more reliable, such as,
+all nodes can be covered in the spread.
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 6956041224ec..1202b7461031 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -260,10 +260,24 @@ static void nvme_retry_req(struct request *req)
- 	blk_mq_delay_kick_requeue_list(req->q, delay);
- }
- 
-+#ifdef CONFIG_NVME_MULTIPATH
-+static void nvme_trace_bio_complete(struct request *req, blk_status_t status)
-+{
-+	struct nvme_ns *ns = req->q->queuedata;
-+
-+	if (req->bio && ns && ns->head->disk)
-+		trace_block_bio_complete(ns->head->disk->queue,
-+					 req->bio, status);
-+}
-+#else
-+static void nvme_trace_bio_complete(struct request *req, blk_status_t status)
-+{
-+}
-+#endif
-+
- void nvme_complete_rq(struct request *req)
- {
- 	blk_status_t status = nvme_error_status(req);
--	struct nvme_ns *ns = req->q->queuedata;
- 
- 	trace_nvme_complete_rq(req);
- 
-@@ -282,9 +296,8 @@ void nvme_complete_rq(struct request *req)
- 			return;
- 		}
- 	}
--	if (req->bio && ns && ns->head->disk)
--		trace_block_bio_complete(ns->head->disk->queue,
--					 req->bio, status);
-+
-+	nvme_trace_bio_complete(req, status);
- 	blk_mq_end_request(req, status);
- }
- EXPORT_SYMBOL_GPL(nvme_complete_rq);
+The 2nd patch spread vectors on node according to the ratio of this node's
+CPU number to number of all remaining CPUs, then vectors assignment can
+become more fair. Meantime, the warning report from Jon Derrick can be
+fixed.
+
+Please consider it for V5.4.
+
+V6:
+	- fix build waring reported by zero day, and extra change is only
+	done on irq_build_affinity_masks()
+
+V5:
+	- remove patch 1 of V4, which is wrong
+	- handle vector wrapping because the 'start vector' may begin
+	  anywhere, especially for the 2nd stage spread
+	- add more comment on the vector allocation algorithm
+	- cleanup code a bit
+	- run more tests to verify the change, which always get the
+	expected result. Covers lots of num_queues, numa topo, CPU
+	unpresent setting.
+
+V4:
+	- provide proof why number of allocated vectors for each node is <= CPU
+	  count of this node
+
+V3:
+	- re-order the patchset
+	- add helper of irq_spread_vectors_on_node()
+	- handle vector spread correctly in case that numvecs is > ncpus
+	- return -ENOMEM to API's caller
+
+V2:
+	- add patch3
+	- start to allocate vectors from node with minimized CPU number,
+	  then every node is guaranteed to be allocated at least one vector.
+	- avoid cross node spread
+
+
+
+Ming Lei (2):
+  genirq/affinity: Improve __irq_build_affinity_masks()
+  genirq/affinity: Spread vectors on node according to nr_cpu ratio
+
+ kernel/irq/affinity.c | 231 ++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 201 insertions(+), 30 deletions(-)
+
+Cc: Jens Axboe <axboe@kernel.dk>
+Cc: Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <kbusch@kernel.org>
+Cc: linux-nvme@lists.infradead.org,
+Cc: Jon Derrick <jonathan.derrick@intel.com>
 -- 
-2.22.0
+2.20.1
 
 
 _______________________________________________
