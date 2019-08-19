@@ -2,67 +2,68 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB9C294D3F
-	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 20:53:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DA5894D47
+	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 20:56:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tDKoUO70BqsU5ILa5aJSdcZVUXSwtdpF/ZORXI41sg8=; b=M69o05oyIwLiFay02Llvl99Lp
-	h8Z7nChD603opcDIywc/isBu12Sdxi+3ivzGM6BMUZ3ch027YTFKAjinYE0px4buqWa75VrJ3mkqD
-	6v5j8iXvkVdbk0c25oIutQ/WgSY3GSC2+82BO6RtdlyvS4YmRrSW5/uno9p2mssy8RIeHK557DCqp
-	nOEUQ0p1sk2vP+EdIFDN90QkXYvVHP6zwpbxKiolVn+UmaeOa2hdYM9HqxgO9aXpsbUzYFCV1k3C6
-	WM9NZbXu0GcAIwVfczG67lA/3DgSxpt/yNNvP+1QEPjvL5FoeGgnbJ+L4zDOgsVFQM9BmPv1Rqs9A
-	i0lTjsJdQ==;
+	 bh=qepnWXlSGKiSLfAkibIi/FLnpGr4rL8fiYgWwU/2iTE=; b=Q38cAEgAw4/uVLOZTbIoLA/rn
+	dbXQH/E3QYZ+7mSq4X8PVRGNC5Cd3bwuI5gt217IJLqY85RwtEaCj1oJ6PbzI3KLP/+VXhylwjoM2
+	du41IuD1y81C+mNErLkkkFhUguQ9UpCmHEaoU2QupJaBSiAjIOaNCwmWnkcbbNvOLIojNSWBKqXDa
+	y+Ney0yxI0Zs6gsVIlEdxVBOGZ2i9RZOXrN4rgPuq9aCDiJOBDdJBE0w6PiNinj9Qcp1r5vtEOywy
+	0pqWbZwxdC0bF9jrRF8Rz3vvlf4C+yT/hnhsk3oIL1Z+2BbU9EIAx0qTzy3EyB/6pzOw36uF/hItY
+	zzR6ZlmFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzmm1-000151-OW; Mon, 19 Aug 2019 18:52:58 +0000
+	id 1hzmpk-0002rU-H0; Mon, 19 Aug 2019 18:56:49 +0000
 Received: from mail-oi1-f196.google.com ([209.85.167.196])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzmlp-00014Q-S5
- for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 18:52:47 +0000
-Received: by mail-oi1-f196.google.com with SMTP id c15so2125826oic.3
- for <linux-nvme@lists.infradead.org>; Mon, 19 Aug 2019 11:52:44 -0700 (PDT)
+ id 1hzmpT-0002qx-O3
+ for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 18:56:32 +0000
+Received: by mail-oi1-f196.google.com with SMTP id 16so2133286oiq.6
+ for <linux-nvme@lists.infradead.org>; Mon, 19 Aug 2019 11:56:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=arGdO97Wy2/MGIyROmxoBQxu3BojRepaUH+hgaeO5YQ=;
- b=V0KuA3N5vc2cZqaFp2b7lcfpzpa5fnslB49sk2QcnxhUJ4QogqrOMXyqanx0ds6Pmt
- 0faqP1JwePirvYQTsR4bNDwUcFF3ghILObC4IRnaOKT3T4Ffaxq+vxcgfyIGsrmkwA9i
- 7O8JZa7dr3PehY5MjpVloWzNm5MNECCUAfxRYPH8hsBxDAaZatHuI9qXAYiErOMv0AZ+
- xC4+4vBwcvfp69rAtFpKjTWKuRsvG08rnbGsHqfcUeAz49363tiwAks3YbCxE3OWhsjU
- AHTZOqhV4JvRyBXsfpsctzw0vjvB3WTlJcmkNWJERwiIQ2hOcD/eq7vJ7EdbINzFHIni
- V+Ag==
-X-Gm-Message-State: APjAAAWFx1f2Atofp6WrFv/2II4e3VtAbiKXjz7rb9aApnl/9T7A7lzy
- zgFu18K8WPoudlyikUTCXUM=
-X-Google-Smtp-Source: APXvYqywS+e/8//6rvRVi4mplj51qw+myL1FqRQ4WPgs1OuI/gKnsqEmp5SPn69hoxaqjQF9Jp937A==
-X-Received: by 2002:aca:f443:: with SMTP id s64mr15053189oih.108.1566240763602; 
- Mon, 19 Aug 2019 11:52:43 -0700 (PDT)
+ bh=tJabmsRw01PznvjuHTMzfnUeC7QEKWTxZb/URwGZ0WQ=;
+ b=ZvVFkAf71G49HXumwmIqBRZtxftzLx7DCQfc4RgHdxKA68FB2f8UNjipDAevpcJlgi
+ oN2WMp/KYnzAAciZjenQq7OFJDbHlTzA4wnnMvSFCD+EkzOTYVYtCuH62MXcY13/hRPC
+ YTrjnWVLUH6t3aEhBvQnK909Qd5wIk23QsGKl0zUSFdPml9ihuT9rU7R0N00V0BkvXv8
+ m8VaJ3zQINRZp9OTPkdA1NASUfn6Z1k+7rwgIFNwd/OUTpYipKyD0Ne+yQ61MiBsjnqY
+ dWM6UhXEqN83r6ZU4cYF1Qmq19srd/iiCC2gqrPGR1znGscBvZvSVBHUBEeAdtTxISUG
+ b8ag==
+X-Gm-Message-State: APjAAAVNroSbST2Hx0e6I6NfdAaysriROwoqUVH7c2/mWJMK2P/4eB5l
+ 0VLMLCHJdg11fkSePD90RwZE9MG3
+X-Google-Smtp-Source: APXvYqx6UzH+ZYpAr3LPh+sJddeZPmFeTiRX5UUvg9/w+dTM7uk2IFNSKk4q9oC2k6K+O2IQln+QrQ==
+X-Received: by 2002:aca:5e06:: with SMTP id s6mr14751814oib.171.1566240990991; 
+ Mon, 19 Aug 2019 11:56:30 -0700 (PDT)
 Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
  ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id t142sm4643915oif.4.2019.08.19.11.52.42
+ by smtp.gmail.com with ESMTPSA id n22sm5366303otk.28.2019.08.19.11.56.29
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 19 Aug 2019 11:52:42 -0700 (PDT)
-Subject: Re: [PATCH v2] nvme: exclude completion trace from non-multipath
- builds
-To: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>,
- linux-nvme@lists.infradead.org
-References: <87d0h138n2.fsf@solarflare.com>
+ Mon, 19 Aug 2019 11:56:30 -0700 (PDT)
+Subject: Re: [PATCH v2] nvme: allow 64-bit results in passthru commands
+To: Keith Busch <kbusch@kernel.org>, Marta Rybczynska <mrybczyn@kalray.eu>
+References: <89520652.56920183.1565948841909.JavaMail.zimbra@kalray.eu>
+ <20190816131606.GA26191@lst.de>
+ <469829119.56970464.1566198383932.JavaMail.zimbra@kalray.eu>
+ <20190819144922.GC6883@localhost.localdomain>
 From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <e62f142f-15d0-2c4f-d3c4-62c4c6ff8f29@grimberg.me>
-Date: Mon, 19 Aug 2019 11:52:41 -0700
+Message-ID: <1d7819a9-9504-2dc6-fca4-fbde4f99d92c@grimberg.me>
+Date: Mon, 19 Aug 2019 11:56:28 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <87d0h138n2.fsf@solarflare.com>
+In-Reply-To: <20190819144922.GC6883@localhost.localdomain>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_115245_906635_51B47AD6 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20190819_115631_786296_3180A289 
+X-CRM114-Status: GOOD (  12.49  )
 X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.5 points)
@@ -91,39 +92,34 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
+Cc: Samuel Jones <sjones@kalray.eu>,
+ Guillaume Missonnier <gmissonnier@kalray.eu>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>, axboe <axboe@fb.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
-> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index 6956041224ec..1202b7461031 100644
-> --- a/drivers/nvme/host/core.c
-> +++ b/drivers/nvme/host/core.c
-> @@ -260,10 +260,24 @@ static void nvme_retry_req(struct request *req)
->   	blk_mq_delay_kick_requeue_list(req->q, delay);
->   }
->   
-> +#ifdef CONFIG_NVME_MULTIPATH
-> +static void nvme_trace_bio_complete(struct request *req, blk_status_t status)
-> +{
-> +	struct nvme_ns *ns = req->q->queuedata;
-> +
-> +	if (req->bio && ns && ns->head->disk)
-> +		trace_block_bio_complete(ns->head->disk->queue,
-> +					 req->bio, status);
-> +}
-> +#else
-> +static void nvme_trace_bio_complete(struct request *req, blk_status_t status)
-> +{
-> +}
-> +#endif
-> +
+>> ----- On 16 Aug, 2019, at 15:16, Christoph Hellwig hch@lst.de wrote:
+>>> Sorry for not replying to the earlier version, and thanks for doing
+>>> this work.
+>>>
+>>> I wonder if instead of using our own structure we'd just use
+>>> a full nvme SQE for the input and CQE for that output.  Even if we
+>>> reserve a few fields that means we are ready for any newly used
+>>> field (at least until the SQE/CQE sizes are expanded..).
+>>
+>> We could do that, nvme_command and nvme_completion are already UAPI.
+>> On the other hand that would mean not filling out certain fields like
+>> command_id. Can do an approach like this.
+> 
+> Well, we need to pass user space addresses and lengths, which isn't
+> captured in struct nvme_command.
 
-Please move it to nvme.h where we already have CONFIG_NVME_MULTIPATH
-condition.
+Isn't simply having a 64 variant simpler?
 
 _______________________________________________
 Linux-nvme mailing list
