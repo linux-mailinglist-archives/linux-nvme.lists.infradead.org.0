@@ -2,53 +2,61 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 246A19271E
-	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 16:38:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C89A79278E
+	for <lists+linux-nvme@lfdr.de>; Mon, 19 Aug 2019 16:51:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MYQgyXeupxJHv0/cT7T0UAAYwqol5bBSDnDcBVV4PAs=; b=SUOgSDAQTTaR76S2s5UVP+tnS
-	pkBHCNx4SrFNIsTAdjJsFDjtwOUyrKSAE45chUAzkQi2KZnDBEgBESLo2EX7YFi3hqtC0RYGBkDtS
-	pltPxQitndxk4MYdl/zv8nUau/dxhQIAUukYc8BFB4kj2wTzj1awwHfDVpHgTqWGLtLcZS4UxrjaE
-	1tNufAFN7AIC1c0JqvACxCo1QZRnOVUY8u1924jKLaHHXcvFiFzoBab/2rH5WdTjxQ4UmSNns9BRF
-	77LvpVO4dcZEDSUgPhBiehg7Ma1i4D5mvMxLwcGVZLrlDG1VlUwfj7KrmlD1xMTKwo26IyTIjNqhx
-	+kWgJTslQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5z4BRnOj16/YzJinWnvQoA/RXV2O2rd8UAA72mRExJY=; b=puUsSLzaNAHNCk
+	4SclGal1mattpzB0K1pvJkodcgK9hE8t0LMtcLHz9pdFVapn4h8Z4T2U7EzD25lrmRX+1EZawFvBt
+	D5JPvoX3XiRFQYpONKrEjPJRIg8EyBgbm0ctdaxKY8KSsUrQC26c/wTvPaZHA5uAuoJGRt8Bkn2a1
+	xQWDQ0QSpnHYLmfbH5YpL24EWUo87TV22kBSJzuJLBzMQfMOyG8JEkKq0iB52r7xf1ik8ahGVFAeu
+	VKn1I/306NDXuu+J/gQPouZyo0VNxA6JnUpPkoIvxJL7taM0SBCvqIF4RY8LYCOf1BHyZJdUzuYr0
+	Gkgfp6iONgeNblmZN5kw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzio7-0004n6-AC; Mon, 19 Aug 2019 14:38:51 +0000
-Received: from atrey.karlin.mff.cuni.cz ([195.113.26.193])
+	id 1hzj0O-0002vt-Kw; Mon, 19 Aug 2019 14:51:32 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1hzio1-0004mF-Sa
- for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 14:38:48 +0000
-Received: by atrey.karlin.mff.cuni.cz (Postfix, from userid 512)
- id D573480BA7; Mon, 19 Aug 2019 16:38:29 +0200 (CEST)
-Date: Mon, 19 Aug 2019 16:38:42 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Subject: Re: [PATCH v4 4/5] block: introduce LED block device activity trigger
-Message-ID: <20190819143842.GA25401@amd>
-References: <1565888399-21550-1-git-send-email-akinobu.mita@gmail.com>
- <1565888399-21550-5-git-send-email-akinobu.mita@gmail.com>
- <20190817145509.GA18381@amd>
- <925633c4-a459-5e84-9c9a-502a504fdc82@gmail.com>
+ id 1hzj0K-0002vB-9U
+ for linux-nvme@lists.infradead.org; Mon, 19 Aug 2019 14:51:29 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Aug 2019 07:51:26 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,405,1559545200"; d="scan'208";a="195551635"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by fmsmga001.fm.intel.com with ESMTP; 19 Aug 2019 07:51:26 -0700
+Date: Mon, 19 Aug 2019 08:49:22 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Marta Rybczynska <mrybczyn@kalray.eu>
+Subject: Re: [PATCH v2] nvme: allow 64-bit results in passthru commands
+Message-ID: <20190819144922.GC6883@localhost.localdomain>
+References: <89520652.56920183.1565948841909.JavaMail.zimbra@kalray.eu>
+ <20190816131606.GA26191@lst.de>
+ <469829119.56970464.1566198383932.JavaMail.zimbra@kalray.eu>
 MIME-Version: 1.0
-In-Reply-To: <925633c4-a459-5e84-9c9a-502a504fdc82@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
+Content-Disposition: inline
+In-Reply-To: <469829119.56970464.1566198383932.JavaMail.zimbra@kalray.eu>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_073846_166978_2E2C81CE 
-X-CRM114-Status: GOOD (  17.48  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190819_075128_343612_25AED891 
+X-CRM114-Status: GOOD (  12.26  )
+X-Spam-Score: -4.0 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-4.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.113.26.193 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [192.55.52.88 listed in list.dnswl.org]
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,99 +68,34 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Hannes Reinecke <hare@suse.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>, linux-scsi@vger.kernel.org,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Frank Steiner <fsteiner-mail1@bio.ifi.lmu.de>,
- Akinobu Mita <akinobu.mita@gmail.com>, linux-nvme@lists.infradead.org,
- linux-block@vger.kernel.org, Dan Murphy <dmurphy@ti.com>,
- linux-leds@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============3439753189794008334=="
+Cc: Sagi Grimberg <sagi@grimberg.me>, Samuel Jones <sjones@kalray.eu>,
+ Guillaume Missonnier <gmissonnier@kalray.eu>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>, axboe <axboe@fb.com>,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+On Mon, Aug 19, 2019 at 12:06:23AM -0700, Marta Rybczynska wrote:
+> ----- On 16 Aug, 2019, at 15:16, Christoph Hellwig hch@lst.de wrote:
+> > Sorry for not replying to the earlier version, and thanks for doing
+> > this work.
+> > 
+> > I wonder if instead of using our own structure we'd just use
+> > a full nvme SQE for the input and CQE for that output.  Even if we
+> > reserve a few fields that means we are ready for any newly used
+> > field (at least until the SQE/CQE sizes are expanded..).
+> 
+> We could do that, nvme_command and nvme_completion are already UAPI.
+> On the other hand that would mean not filling out certain fields like
+> command_id. Can do an approach like this.
 
---===============3439753189794008334==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="d6Gm4EdcadzBjdND"
-Content-Disposition: inline
-
-
---d6Gm4EdcadzBjdND
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sat 2019-08-17 22:07:43, Jacek Anaszewski wrote:
-> On 8/17/19 4:55 PM, Pavel Machek wrote:
-> > On Fri 2019-08-16 01:59:58, Akinobu Mita wrote:
-> >> This allows LEDs to be controlled by block device activity.
-> >>
-> >> We already have ledtrig-disk (LED disk activity trigger), but the lower
-> >> level disk drivers need to utilize ledtrig_disk_activity() to make the
-> >> LED blink.
-> >>
-> >> The LED block device trigger doesn't require the lower level drivers to
-> >> have any instrumentation. The activity is collected by polling the disk
-> >> stats.
-> >>
-> >> Example:
-> >>
-> >> echo block-nvme0n1 > /sys/class/leds/diy/trigger
-> >=20
-> > Lets use one trigger "block" and have the device as a parameter,
-> > please.
-> >=20
-> > We already have 1000 cpu triggers on 1000 cpu machines, and yes, its a
-> > disaster we'll need to fix. Lets not repeat the same mistake here.
-> >=20
-> > I guess it may be slightly more work. Sorry about that.
->=20
-> We should be able to list available block devices to set,
-> so the problem would be not avoided anyway.
-
-Should we? We need to list triggers, but we may not list all the devices...
-
-> And Greg already proposed
-> a solution for trigger file PAGE_SIZE overflow, so this should not pose
-> a big problem in the future once that is implemented.
-
-Which still leaves us with pretty big/ugly triggers file... and we do
-not have the fix in the tree yet.
-
-Best regards,
-
-									Pavel
---=20
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
-g.html
-
---d6Gm4EdcadzBjdND
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iEYEARECAAYFAl1atHIACgkQMOfwapXb+vJUHgCgkeT3UaFwfpz7+MSgycx3Oc4s
-Oc8An3rmb4OVTm//ScEzJqndWpDtv96c
-=dfr0
------END PGP SIGNATURE-----
-
---d6Gm4EdcadzBjdND--
-
-
---===============3439753189794008334==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Well, we need to pass user space addresses and lengths, which isn't
+captured in struct nvme_command.
 
 _______________________________________________
 Linux-nvme mailing list
 Linux-nvme@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-nvme
-
---===============3439753189794008334==--
-
