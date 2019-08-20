@@ -2,69 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB48D9572E
-	for <lists+linux-nvme@lfdr.de>; Tue, 20 Aug 2019 08:15:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63D8595967
+	for <lists+linux-nvme@lfdr.de>; Tue, 20 Aug 2019 10:26:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=c0RbkPW2gVd+8khW3uWykTw7ZkJI4R3jeLoZ2sCeY4Y=; b=IlaloJ6z4Oxej64Ng8umM+hosd
-	qQxWv6qf3K3WmcZshwy9hpe0quJ3Uzc3noJTElkcxV7H9S/IpIZUQY/sxE2bNRwqV5nt22khEU5Br
-	Y82RPXULZ3ns52HqhEQZ90RMkIzQCU2xbHPmYHVPNfpBZjOx5PnE9IUVdsoiq/J7QRAt5JmJjT/Cw
-	n7yMLQKjFx1MAMv60QfTY8iRnNMVwa94XVaVhVUFeQIrQNqfaVCx5JzbLr2Z9aBKEbGndN5Op2Boc
-	RCYyoIFoQ98CLVK+TCB0SeaJ/BFe9icGOdFauRTkadkptmuJusTpembUauw/AoRbYbnJrgnLqFywu
-	y0SeK8Xw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1+uAn+v2JW3kssFYkOO1HJAWcWEBEX9hYLdg/C2RLAs=; b=S87XLcFC4MAG66
+	OQ+RuowoRF4GQh1zTEAA/R4r5xEvAgKKrK/TDQbQ9rwQYHjrHcmuDze24In/VpgCvZg9NrmCsyInK
+	4PzgVZl9iday/W5/rfguZahsQki/5pTzb1TMX5nxvBApBaIMwk4Z3IpCEWJmIsYKo7IdYA5/8/CLW
+	l328+v+dau9doWhoSwt0w7tAKh7UbIOdcitXb3zt4tk8XMP8OJnCC7C2eUrFaEH9OP7k/nw3k4w//
+	zwBZFhIW8lPLusMT3fJ/3kJA0R92iWKnIFXmvW7JE/2X0mT84auoDYG7JjUGTa9kwCtVynmuMSUU2
+	xqSWLDpci9OifwW2kjbQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzxQh-0006jI-BX; Tue, 20 Aug 2019 06:15:39 +0000
-Received: from linux.microsoft.com ([13.77.154.182])
- by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
- id 1hzxPv-00056B-Aa
- for linux-nvme@lists.infradead.org; Tue, 20 Aug 2019 06:14:53 +0000
-Received: by linux.microsoft.com (Postfix, from userid 1004)
- id 25C1720B7194; Mon, 19 Aug 2019 23:14:51 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 25C1720B7194
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxonhyperv.com;
- s=default; t=1566281691;
- bh=9eZGSjk9dhxH6WYp4/QnLQB2seQhgmMP3Tb2BUTFLsA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BjESw9kS3G3OQvSm8ATP5gO76PZ/Cbr6HpGYDVg4sUBi3b0CXjGfQRwaBUNwhTxo3
- qJSyqjjTAdgWVH9Rx2SuNRKb2joqYtvWq7CrH/aGyUaVjbPDy0NX08yqsnG84xPdX9
- 9RQSluDRSO8hif87nZ5yVKmJrVldkXulHP2cpFOY=
-From: longli@linuxonhyperv.com
-To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
- Keith Busch <keith.busch@intel.com>, Jens Axboe <axboe@fb.com>,
- Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 3/3] nvme: complete request in work queue on CPU with flooded
- interrupts
-Date: Mon, 19 Aug 2019 23:14:29 -0700
-Message-Id: <1566281669-48212-4-git-send-email-longli@linuxonhyperv.com>
-X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <1566281669-48212-1-git-send-email-longli@linuxonhyperv.com>
+	id 1hzzTG-00052E-Tj; Tue, 20 Aug 2019 08:26:26 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+ by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
+ id 1hzzT1-00051b-Sp
+ for linux-nvme@lists.infradead.org; Tue, 20 Aug 2019 08:26:13 +0000
+Received: by mail-wm1-x341.google.com with SMTP id e8so1822861wme.1
+ for <linux-nvme@lists.infradead.org>; Tue, 20 Aug 2019 01:26:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=iKEgXsaZBb/YCND5t1KYTz/egS4PVDxIgI7teEb3ZVY=;
+ b=gUxZ5m5R+J9KkZtmTbJbeoKhALYY0BXOQpA62gdGh7oGOhHrSvK6A4dkiLBrCthxfW
+ cLVcP7zFwBZY+oI3GFeT+amQBp0Vmz6FMj8JH4jlBPKcoyzO+lwkHz4uSNt664DmOZ/H
+ fxBA4GMSsNTCJlI30ufNmQJ9et6lQHTcLFKZOoOO1NxfpraopNIAchWM92L7cYP+fcay
+ PnPO1qKmbVZAxApaqJDO8fObLd5ey2r7tg6c2fwC5W0b9TpGknA1NhVQhTMeIVjZ4v00
+ YZWJuWtbfMFfXLgmjYNVFJz5e7SRLu3sDvXOw9MIvp2oAr4Ag+QUABNgp9TYbLJ4qmHf
+ iiBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=iKEgXsaZBb/YCND5t1KYTz/egS4PVDxIgI7teEb3ZVY=;
+ b=ckDoMy48XPsLOWTgquoObvk2nNdjw8/S619zt7tUwRtylHKDVZMbESkjzHO8zV0KJe
+ pIenI5ROOn32eWrRlOoZ4s8u0EMOETB9Ro2JaOdc0RCijX6H9ugdpvc5p4ZatmbAfRfR
+ ClBwdBzP9fZLzFb4r80gNV5sLaRftRmY/HM6Sr+LnkXOFkQdxA2QhRD5kq/N/CeArTim
+ IKjrZjXQOKFIhHfwXljlQ6I5SV16dN5RX2Z2WsVaIfkpPUe0zIYjJkrGcU6yviJUAVBt
+ +b5KtMVsciCLjqeKEGy8IwxLsAykjbpCe7tGbCkf9okTV49+20/UItvjdh5SydX0fhAy
+ Lu6g==
+X-Gm-Message-State: APjAAAUlAYyKrln/x1pqQQn1KAJU0xjSSb0L9eYzVHKGeneC8grpaiEC
+ 9ipeOjRFljBMU7FnOCtQ0/4m1Ow7eHoyk6w6cxc=
+X-Google-Smtp-Source: APXvYqyJjqjhoNihgnyi7oHEnuV+8LCHW4txggAiWNfWs/GpXlRyY7nincPH3loeNx0KJ9NjXAp/aRjtSrorrzqvtMA=
+X-Received: by 2002:a1c:a985:: with SMTP id
+ s127mr24086524wme.163.1566289569347; 
+ Tue, 20 Aug 2019 01:26:09 -0700 (PDT)
+MIME-Version: 1.0
 References: <1566281669-48212-1-git-send-email-longli@linuxonhyperv.com>
+In-Reply-To: <1566281669-48212-1-git-send-email-longli@linuxonhyperv.com>
+From: Ming Lei <tom.leiming@gmail.com>
+Date: Tue, 20 Aug 2019 16:25:57 +0800
+Message-ID: <CACVXFVPCiTU0mtXKS0fyMccPXN6hAdZNHv6y-f8-tz=FE=BV=g@mail.gmail.com>
+Subject: Re: [PATCH 0/3] fix interrupt swamp in NVMe
+To: longli@linuxonhyperv.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_231451_863476_F08133F5 
-X-CRM114-Status: GOOD (  18.94  )
-X-Spam-Score: -7.4 (-------)
+X-CRM114-CacheID: sfid-20190820_012611_935511_13932F85 
+X-CRM114-Status: GOOD (  17.64  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-7.4 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (tom.leiming[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
- white-list
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,146 +92,59 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Long Li <longli@microsoft.com>
-MIME-Version: 1.0
+Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Peter Zijlstra <peterz@infradead.org>, Long Li <longli@microsoft.com>,
+ John Garry <john.garry@huawei.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-nvme <linux-nvme@lists.infradead.org>,
+ Keith Busch <keith.busch@intel.com>, Ingo Molnar <mingo@redhat.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Long Li <longli@microsoft.com>
+On Tue, Aug 20, 2019 at 2:14 PM <longli@linuxonhyperv.com> wrote:
+>
+> From: Long Li <longli@microsoft.com>
+>
+> This patch set tries to fix interrupt swamp in NVMe devices.
+>
+> On large systems with many CPUs, a number of CPUs may share one NVMe hardware
+> queue. It may have this situation where several CPUs are issuing I/Os, and
+> all the I/Os are returned on the CPU where the hardware queue is bound to.
+> This may result in that CPU swamped by interrupts and stay in interrupt mode
+> for extended time while other CPUs continue to issue I/O. This can trigger
+> Watchdog and RCU timeout, and make the system unresponsive.
+>
+> This patch set addresses this by enforcing scheduling and throttling I/O when
+> CPU is starved in this situation.
+>
+> Long Li (3):
+>   sched: define a function to report the number of context switches on a
+>     CPU
+>   sched: export idle_cpu()
+>   nvme: complete request in work queue on CPU with flooded interrupts
+>
+>  drivers/nvme/host/core.c | 57 +++++++++++++++++++++++++++++++++++++++-
+>  drivers/nvme/host/nvme.h |  1 +
+>  include/linux/sched.h    |  2 ++
+>  kernel/sched/core.c      |  7 +++++
+>  4 files changed, 66 insertions(+), 1 deletion(-)
 
-When a NVMe hardware queue is mapped to several CPU queues, it is possible
-that the CPU this hardware queue is bound to is flooded by returning I/O for
-other CPUs.
+Another simpler solution may be to complete request in threaded interrupt
+handler for this case. Meantime allow scheduler to run the interrupt thread
+handler on CPUs specified by the irq affinity mask, which was discussed by
+the following link:
 
-For example, consider the following scenario:
-1. CPU 0, 1, 2 and 3 share the same hardware queue
-2. the hardware queue interrupts CPU 0 for I/O response
-3. processes from CPU 1, 2 and 3 keep sending I/Os
+https://lore.kernel.org/lkml/e0e9478e-62a5-ca24-3b12-58f7d056383e@huawei.com/
 
-CPU 0 may be flooded with interrupts from NVMe device that are I/O responses
-for CPU 1, 2 and 3. Under heavy I/O load, it is possible that CPU 0 spends
-all the time serving NVMe and other system interrupts, but doesn't have a
-chance to run in process context.
+Could you try the above solution and see if the lockup can be avoided?
+John Garry
+should have workable patch.
 
-To fix this, CPU 0 can schedule a work to complete the I/O request when it
-detects the scheduler is not making progress. This serves multiple purposes:
-
-1. This CPU has to be scheduled to complete the request. The other CPUs can't
-issue more I/Os until some previous I/Os are completed. This helps this CPU
-get out of NVMe interrupts.
-
-2. This acts a throttling mechanisum for NVMe devices, in that it can not
-starve a CPU while servicing I/Os from other CPUs.
-
-3. This CPU can make progress on RCU and other work items on its queue.
-
-Signed-off-by: Long Li <longli@microsoft.com>
----
- drivers/nvme/host/core.c | 57 +++++++++++++++++++++++++++++++++++++++-
- drivers/nvme/host/nvme.h |  1 +
- 2 files changed, 57 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 6a9dd68c0f4f..576bb6fce293 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -28,6 +28,7 @@
- #include <linux/t10-pi.h>
- #include <linux/pm_qos.h>
- #include <asm/unaligned.h>
-+#include <linux/sched.h>
- 
- #define CREATE_TRACE_POINTS
- #include "trace.h"
-@@ -97,6 +98,15 @@ static dev_t nvme_chr_devt;
- static struct class *nvme_class;
- static struct class *nvme_subsys_class;
- 
-+/*
-+ * The following are for detecting if this CPU is flooded with interrupts.
-+ * The timestamp for the last context switch is recorded. If that is at least
-+ * MAX_SCHED_TIMEOUT ago, try to recover from interrupt flood
-+ */
-+static DEFINE_PER_CPU(u64, last_switch);
-+static DEFINE_PER_CPU(u64, last_clock);
-+#define MAX_SCHED_TIMEOUT 2000000000	// 2 seconds in ns
-+
- static int nvme_revalidate_disk(struct gendisk *disk);
- static void nvme_put_subsystem(struct nvme_subsystem *subsys);
- static void nvme_remove_invalid_namespaces(struct nvme_ctrl *ctrl,
-@@ -260,9 +270,54 @@ static void nvme_retry_req(struct request *req)
- 	blk_mq_delay_kick_requeue_list(req->q, delay);
- }
- 
-+static void nvme_complete_rq_work(struct work_struct *work)
-+{
-+	struct nvme_request *nvme_rq =
-+		container_of(work, struct nvme_request, work);
-+	struct request *req = blk_mq_rq_from_pdu(nvme_rq);
-+
-+	nvme_complete_rq(req);
-+}
-+
-+
- void nvme_complete_rq(struct request *req)
- {
--	blk_status_t status = nvme_error_status(req);
-+	blk_status_t status;
-+	int cpu;
-+	u64 switches;
-+	struct nvme_request *nvme_rq;
-+
-+	if (!in_interrupt())
-+		goto skip_check;
-+
-+	nvme_rq = nvme_req(req);
-+	cpu = smp_processor_id();
-+	if (idle_cpu(cpu))
-+		goto skip_check;
-+
-+	/* Check if this CPU is flooded with interrupts */
-+	switches = get_cpu_rq_switches(cpu);
-+	if (this_cpu_read(last_switch) == switches) {
-+		/*
-+		 * If this CPU hasn't made a context switch in
-+		 * MAX_SCHED_TIMEOUT ns (and it's not idle), schedule a work to
-+		 * complete this I/O. This forces this CPU run non-interrupt
-+		 * code and throttle the other CPU issuing the I/O
-+		 */
-+		if (sched_clock() - this_cpu_read(last_clock)
-+				> MAX_SCHED_TIMEOUT) {
-+			INIT_WORK(&nvme_rq->work, nvme_complete_rq_work);
-+			schedule_work_on(cpu, &nvme_rq->work);
-+			return;
-+		}
-+
-+	} else {
-+		this_cpu_write(last_switch, switches);
-+		this_cpu_write(last_clock, sched_clock());
-+	}
-+
-+skip_check:
-+	status = nvme_error_status(req);
- 
- 	trace_nvme_complete_rq(req);
- 
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 0a4a7f5e0de7..a8876e69e476 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -113,6 +113,7 @@ struct nvme_request {
- 	u8			flags;
- 	u16			status;
- 	struct nvme_ctrl	*ctrl;
-+	struct work_struct	work;
- };
- 
- /*
--- 
-2.17.1
-
+Thanks,
+Ming Lei
 
 _______________________________________________
 Linux-nvme mailing list
