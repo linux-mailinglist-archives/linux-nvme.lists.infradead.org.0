@@ -2,86 +2,33 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6D1F96812
-	for <lists+linux-nvme@lfdr.de>; Tue, 20 Aug 2019 19:55:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 21F3796C99
+	for <lists+linux-nvme@lfdr.de>; Wed, 21 Aug 2019 01:00:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xStRUl/msNKSCdvS6Gb86mYnmvS35ZnX2+oenVd7vps=; b=LHjiDjo54L2VY8vmYEkDXVzSL
-	xnT9iuWLPh7vnOkYW0THyspvnMvjxyRACzvAuiAnK5aKIV1N3HJxS27GuRtc6ca2LVFFVa3LqNTa2
-	MA3ja2ko3bQ8Z8Js/TvB/0GZlX4yM/hfoDaClhCkPsdOGYAl68Wyz0YGwICrP2+oAXh243heL/E/x
-	XMZMCM+Js+CHplScRuzBUWOXXT4Leg5viXMuJ2iDv/eMQ9FTpFlisaVbBioZ0Xsh+E5h5lXrtpK7H
-	qXiWxx804EfjthCu+hwHaB5690+/9JZ9MpyKqqwOk/hiC1Bqd89By0FVbswTZCvHthoRZzHHYe5uG
-	/pTrAnQpw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=mEMkAieVdK4eeOXciITnTutyesj7ih0EVhREFNN3kho=; b=U57
+	ThXS4ivEnDH9M/DGro7ypq4aP/DZL2YyfnJlf/oryulYVNW8aCFhV6tCi4nrsn49WD3XU0EzdaMLQ
+	PMIe9/P8861zpinA7FJUrXuYjgWbJlt1vWS1aJyLUVRrffSm7JT82kBqWyNWLoWC3EC8q4HplDCHx
+	N7FL5rpJWuBWu06lwkzZdPHGYT5606ak47NaOSlVCLByQnIXWtKwVV43jbkAl8MuvrVfzJNscvn9A
+	AQWUr+m+u4xFUBtn80yOvreSCjTAZDK6iXHT2YnnBcJ0N0IgMgB4b8xidJ8a2S67n0OeL0gzSTV3f
+	sc2KHB7jwEtaJvTf+KFkcouDCsuadGg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i08Le-0003ju-Nz; Tue, 20 Aug 2019 17:55:10 +0000
-Received: from mail-ot1-f50.google.com ([209.85.210.50])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i08LY-0003Cu-Sk
- for linux-nvme@lists.infradead.org; Tue, 20 Aug 2019 17:55:06 +0000
-Received: by mail-ot1-f50.google.com with SMTP id e12so5847317otp.10
- for <linux-nvme@lists.infradead.org>; Tue, 20 Aug 2019 10:55:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=RWJ6swHyq/g+wNW09x/SpPUvKn5UMsfXEwlPpk3sMbw=;
- b=saIaFw8TbLFD+720pSBeyG7Cuq6NrLarq2yurMakIOFL5ENgN/cDpF/2qgnEE/htwg
- i4DPGj14O36qzLnXXQTNeAlBs+tVbadLA0jldPMj0gr8MJOGTW+PGn8EleU7GHJbEWL1
- ioqYtni33jhXYUXdTDXUREqgB81ZJ9xYG7CDzfqJd9VKzac/8tujJcCMpHc1R7pdiOrl
- O+NUwy6nKuZ/t4xPfNTyV66p6wh16q0FiUn9rCsLVdtH6LDiZYS4vOpzwNhApEPWtaYX
- VV6NvHt5g68cGO+FwbIG8tt7hq5NxMjHF07MyvU3VmzCtp5OEm7exstYBq+DQsMQ+aOB
- autg==
-X-Gm-Message-State: APjAAAW0hi9umRqSYx48xD2w0Ux6z+JojK56vSp4Ra28Gs4cjYOBwIZC
- Gbdm2D9sx7JNuEJ+t+17keI=
-X-Google-Smtp-Source: APXvYqwOx7CqR7rx9g9lrqrtQn8mOhZZZHgUb88mcrl9jmFfL3aORuwK5O3wQwFBhyYQgVwxPI92hQ==
-X-Received: by 2002:a9d:7c97:: with SMTP id q23mr23393950otn.271.1566323703601; 
- Tue, 20 Aug 2019 10:55:03 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id o26sm6426747otl.34.2019.08.20.10.55.02
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 20 Aug 2019 10:55:02 -0700 (PDT)
-Subject: Re: [PATCH v3] nvme: exclude completion trace from non-multipath
- builds
-To: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>,
- linux-nvme@lists.infradead.org
-References: <396d507f9a0e312998bd6805b151ab166f53a5be.1566290451.git.mskorzhinskiy@solarflare.com>
+	id 1i0D7E-00011n-Es; Tue, 20 Aug 2019 23:00:36 +0000
+Received: from [2600:1700:65a0:78e0:514:7862:1503:8e4d]
+ (helo=bombadil.infradead.org)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
+ id 1i0D7A-00010r-1h; Tue, 20 Aug 2019 23:00:32 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <c30e51da-9ef1-cfb4-c950-06fe218f7a54@grimberg.me>
-Date: Tue, 20 Aug 2019 10:55:01 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <396d507f9a0e312998bd6805b151ab166f53a5be.1566290451.git.mskorzhinskiy@solarflare.com>
-Content-Language: en-US
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190820_105504_935381_93E22CAE 
-X-CRM114-Status: UNSURE (   9.13  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.5 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.50 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.50 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme-multipath: fix ana log nsid lookup when nsid is not found
+Date: Tue, 20 Aug 2019 16:00:27 -0700
+Message-Id: <20190820230027.14025-1-sagi@grimberg.me>
+X-Mailer: git-send-email 2.17.1
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,15 +40,86 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <keith.busch@intel.com>,
+ Anton Eidelman <anton@lightbitslabs.com>, Christoph Hellwig <hch@lst.de>,
+ Hannes Reinecke <hare@suse.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Looks fine,
+From: Anton Eidelman <anton@lightbitslabs.com>
 
-Applied to nvme-5.4
+ANA log parsing invokes nvme_update_ana_state() per ANA group desc.
+This updates the state of namespaces with nsids in desc->nsids[].
+
+Both ctrl->namespaces list and desc->nsids[] array are sorted by nsid.
+Hence nvme_update_ana_state() performs a single walk over ctrl->namespaces:
+- if current namespace matches the current desc->nsids[n],
+  this namespace is updated, and n is incremented.
+- the process stops when it encounters the end of either
+  ctrl->namespaces end or desc->nsids[]
+
+In case desc->nsids[n] does not match any of ctrl->namespaces,
+the remaining nsids following desc->nsids[n] will not be updated.
+Such situation was considered abnormal and generated WARN_ON_ONCE.
+
+However ANA log MAY contain nsids not (yet) found in ctrl->namespaces.
+For example, lets consider the following scenario:
+- nvme0 exposes namespaces with nsids = [2, 3] to the host
+- a new namespace nsid = 1 is added dynamically
+- also, a ANA topology change is triggered
+- NS_CHANGED aen is generated and triggers scan_work
+- before scan_work discovers nsid=1 and creates a namespace, a NOTICE_ANA
+  aen was issues and ana_work receives ANA log with nsids=[1, 2, 3]
+
+Result: ana_work fails to update ANA state on existing namespaces [2, 3]
+
+Solution:
+Change the way nvme_update_ana_state() namespace list walk
+checks the current namespace against desc->nsids[n] as follows:
+a) ns->head->ns_id < desc->nsids[n]: keep walking ctrl->namespaces.
+b) ns->head->ns_id == desc->nsids[n]: match, update the namespace
+c) ns->head->ns_id >= desc->nsids[n]: skip to desc->nsids[n+1]
+
+This enables correct operation in the scenario described above.
+This also allows ANA log to contain nsids currently invisible
+to the host, i.e. inactive nsids.
+
+Signed-off-by: Anton Eidelman <anton@lightbitslabs.com>
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+---
+ drivers/nvme/host/multipath.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/nvme/host/multipath.c b/drivers/nvme/host/multipath.c
+index af831d3d15d0..30de7efef003 100644
+--- a/drivers/nvme/host/multipath.c
++++ b/drivers/nvme/host/multipath.c
+@@ -509,14 +509,16 @@ static int nvme_update_ana_state(struct nvme_ctrl *ctrl,
+ 
+ 	down_write(&ctrl->namespaces_rwsem);
+ 	list_for_each_entry(ns, &ctrl->namespaces, list) {
+-		if (ns->head->ns_id != le32_to_cpu(desc->nsids[n]))
++		unsigned nsid = le32_to_cpu(desc->nsids[n]);
++
++		if (ns->head->ns_id < nsid)
+ 			continue;
+-		nvme_update_ns_ana_state(desc, ns);
++		if (ns->head->ns_id == nsid)
++			nvme_update_ns_ana_state(desc, ns);
+ 		if (++n == nr_nsids)
+ 			break;
+ 	}
+ 	up_write(&ctrl->namespaces_rwsem);
+-	WARN_ON_ONCE(n < nr_nsids);
+ 	return 0;
+ }
+ 
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-nvme mailing list
