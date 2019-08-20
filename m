@@ -2,46 +2,46 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0143996067
-	for <lists+linux-nvme@lfdr.de>; Tue, 20 Aug 2019 15:41:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DBDC96081
+	for <lists+linux-nvme@lfdr.de>; Tue, 20 Aug 2019 15:41:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yvEh9mNOuQD48xHzFEPlnNDToXCpWt0zD7j3RWAtjJU=; b=UjWgHKXVo7s9CK
-	szX4MOjvcFQ2LCIuXF8Ll8vceghCrBcy9q8vICj49MH0+YUSsQGxuvZgCWyE3yD/z+cT5agLvXKeV
-	WD4wT8gWtEAetRlJUZ3RlwPxqw45B6OJtnyDnHHmBNZc5h2iTkE5kgU/fz/MPMnDxe61Wsf2rS1qC
-	gEEk+7dJOMpUpjCzJZYyzfFdgtCinMwMpShTpxgqLSxPCIT17aIdZesFOb20PSMXMSSG+yncUJXH8
-	/q5TzqLGsRsyTb5L89xQ5UEMhUKrVxeXCqP8GW91PV+FXE4v4ma0swvGjoVcXGl9QIzP2xXZp3603
-	RS6fYx7MDAk1OtTWDV2Q==;
+	List-Owner; bh=9Ulmm55eciA56B6qxm93ZyVUosfSprA3b1jrw33LwCw=; b=cPlYasV/UW+coo
+	I7W4IbqO4kKORMMCyhyHNT8FVvA5SrrD2b2qIRCyXpGL3kHJ67p34thrYwSPkx6Ab9z91Oq+d4p/+
+	w+y64eXzo55IWbz7s9WkgSVg9q/BefX6TIgQtmg92FiXdrPfAByPF72YCiba92SfRoxbDldLX6zhg
+	UvcprAZaHNbLADQcj3GkPuNTfhA/ej4R4aj7gFjYevUAGYHEP6Q8BpUzfEAygomTOzk6l2Cj2yTvM
+	kGcwejtHcTvgFb2l1XkiS89LjyDzubc5laj6ui7tf6Y/eNJk/a8ZyENMpmv6lqQKVOIIHsoX/r2+n
+	a4G5cIfvtwu49thSj7Lg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i04OD-0003CL-Cw; Tue, 20 Aug 2019 13:41:33 +0000
+	id 1i04OO-0003Pb-Fc; Tue, 20 Aug 2019 13:41:44 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i04NK-0002kS-GK
+ id 1i04NL-0002l2-CB
  for linux-nvme@lists.infradead.org; Tue, 20 Aug 2019 13:40:40 +0000
 Received: from sasha-vm.mshome.net (unknown [12.236.144.82])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BCF6422DA9;
- Tue, 20 Aug 2019 13:40:37 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8B9B9230F2;
+ Tue, 20 Aug 2019 13:40:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1566308438;
- bh=6Qop+X5mrgk58CnhImkOZqXfjfCqjcRE6X3Fin3xA2g=;
+ s=default; t=1566308439;
+ bh=8o/LSptQLsr6zpE2YbbmP/Z5u/j0QrHLq0kkAVY5C8o=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=e0hb6TXXPiXLBqkT7QtU8egSW4fp//oUJQE3dM60Xba6qhrY0dXTaQqmQTif2Lf3x
- A1KCBngRgYU6CTx1iyic2tolYdjfGkOKyr9VqgqaZPM4/yuuovPzfXuODGeRze8OsZ
- fJjdRgR01DFlWUWXmUPCwtYj53JkbMY0P4sFbTEw=
+ b=WEDCrNkT65/hZYRN7Uf6CnYvWGgcjmG1O0eOPv+86gPcsRhyQZIwx3721CR5y8sF8
+ HC4JY8iHH8kCxew/Eb/VAcJInG3ShI9wsox4STT0BzG9YbfBrgA0OUrqeBn04iAGYb
+ +FgNjes0WKlsnQHYdDqFkKkid/sjSZE5kj7SIx5k=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.2 10/44] nvmet: Fix use-after-free bug when a port
- is removed
-Date: Tue, 20 Aug 2019 09:39:54 -0400
-Message-Id: <20190820134028.10829-10-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.2 11/44] nvmet-loop: Flush nvme_delete_wq when
+ removing the port
+Date: Tue, 20 Aug 2019 09:39:55 -0400
+Message-Id: <20190820134028.10829-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190820134028.10829-1-sashal@kernel.org>
 References: <20190820134028.10829-1-sashal@kernel.org>
@@ -49,8 +49,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190820_064038_753403_093EAA64 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20190820_064039_548394_01CE1731 
+X-CRM114-Status: GOOD (  11.56  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -89,16 +89,18 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Logan Gunthorpe <logang@deltatee.com>
 
-[ Upstream commit 3aed86731ee2b23e4dc4d2c6d943d33992cd551b ]
+[ Upstream commit 86b9a63e595ff03f9d0a7b92b6acc231fecefc29 ]
 
-When a port is removed through configfs, any connected controllers
-are still active and can still send commands. This causes a
-use-after-free bug which is detected by KASAN for any admin command
-that dereferences req->port (like in nvmet_execute_identify_ctrl).
+After calling nvme_loop_delete_ctrl(), the controllers will not
+yet be deleted because nvme_delete_ctrl() only schedules work
+to do the delete.
 
-To fix this, disconnect all active controllers when a subsystem is
-removed from a port. This ensures there are no active controllers
-when the port is eventually removed.
+This means a race can occur if a port is removed but there
+are still active controllers trying to access that memory.
+
+To fix this, flush the nvme_delete_wq before returning from
+nvme_loop_remove_port() so that any controllers that might
+be in the process of being deleted won't access a freed port.
 
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
@@ -107,60 +109,28 @@ Reviewed-by : Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/target/configfs.c |  1 +
- drivers/nvme/target/core.c     | 12 ++++++++++++
- drivers/nvme/target/nvmet.h    |  3 +++
- 3 files changed, 16 insertions(+)
+ drivers/nvme/target/loop.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
-index 08dd5af357f7c..3854363118ccf 100644
---- a/drivers/nvme/target/configfs.c
-+++ b/drivers/nvme/target/configfs.c
-@@ -673,6 +673,7 @@ static void nvmet_port_subsys_drop_link(struct config_item *parent,
- 
- found:
- 	list_del(&p->entry);
-+	nvmet_port_del_ctrls(port, subsys);
- 	nvmet_port_disc_changed(port, subsys);
- 
- 	if (list_empty(&port->subsystems))
-diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
-index 7734a6acff851..e4db9a4411681 100644
---- a/drivers/nvme/target/core.c
-+++ b/drivers/nvme/target/core.c
-@@ -277,6 +277,18 @@ void nvmet_unregister_transport(const struct nvmet_fabrics_ops *ops)
+diff --git a/drivers/nvme/target/loop.c b/drivers/nvme/target/loop.c
+index 9e211ad6bdd3d..da9cd07461fbb 100644
+--- a/drivers/nvme/target/loop.c
++++ b/drivers/nvme/target/loop.c
+@@ -654,6 +654,14 @@ static void nvme_loop_remove_port(struct nvmet_port *port)
+ 	mutex_lock(&nvme_loop_ports_mutex);
+ 	list_del_init(&port->entry);
+ 	mutex_unlock(&nvme_loop_ports_mutex);
++
++	/*
++	 * Ensure any ctrls that are in the process of being
++	 * deleted are in fact deleted before we return
++	 * and free the port. This is to prevent active
++	 * ctrls from using a port after it's freed.
++	 */
++	flush_workqueue(nvme_delete_wq);
  }
- EXPORT_SYMBOL_GPL(nvmet_unregister_transport);
  
-+void nvmet_port_del_ctrls(struct nvmet_port *port, struct nvmet_subsys *subsys)
-+{
-+	struct nvmet_ctrl *ctrl;
-+
-+	mutex_lock(&subsys->lock);
-+	list_for_each_entry(ctrl, &subsys->ctrls, subsys_entry) {
-+		if (ctrl->port == port)
-+			ctrl->ops->delete_ctrl(ctrl);
-+	}
-+	mutex_unlock(&subsys->lock);
-+}
-+
- int nvmet_enable_port(struct nvmet_port *port)
- {
- 	const struct nvmet_fabrics_ops *ops;
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index c25d88fc9dec8..b6b0d483e0c50 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -415,6 +415,9 @@ void nvmet_port_send_ana_event(struct nvmet_port *port);
- int nvmet_register_transport(const struct nvmet_fabrics_ops *ops);
- void nvmet_unregister_transport(const struct nvmet_fabrics_ops *ops);
- 
-+void nvmet_port_del_ctrls(struct nvmet_port *port,
-+			  struct nvmet_subsys *subsys);
-+
- int nvmet_enable_port(struct nvmet_port *port);
- void nvmet_disable_port(struct nvmet_port *port);
- 
+ static const struct nvmet_fabrics_ops nvme_loop_ops = {
 -- 
 2.20.1
 
