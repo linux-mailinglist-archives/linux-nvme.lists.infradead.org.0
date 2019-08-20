@@ -2,63 +2,72 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40C4195BAC
-	for <lists+linux-nvme@lfdr.de>; Tue, 20 Aug 2019 11:53:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F73096055
+	for <lists+linux-nvme@lfdr.de>; Tue, 20 Aug 2019 15:41:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jnyL5X0QhMrR7EC2fEUp7lA1+bmLlCIH/KB0u5z2Piw=; b=KESEU+Iu9oo4Th
-	jE+wjrzLEfF0Pnca66DdYBQx6Lx2OIxH5j9MaBdFg6BYeyRiKK1emoRBgUEiH1Oeqa99iG2LmR6pX
-	SBMQ/C4PQeNpcBxw5r9I48D26Luf/hfY8iFIF8z7hEMgtCI7+6HzC3pufAz4/U8Ll1dCJzvyjX7cf
-	RJ5Wu4SgUFhta8ZVSSyoBjXAafA9amLqebql4JH2xnwCxTGGpgKXRy73flLxWHP21/w3wHTNsphU9
-	kXQmRVro1+B/rQSRgtC4v2at9YzWJ4HT5dyW203rnoNXeRLWHE2yNb/0IOX30d9Lvb8qU4eSTHcKm
-	PEhfGi1Lx333BguCgybQ==;
+	List-Owner; bh=nxd1cfFgpgl2dtyp3nTjbXWQzAFEt3ZRG7fGmZ2/KpA=; b=UiBf1SyLBpq4cb
+	Z96d3k4r1mcqIcf6P51UizIsMQF/52BurU+I3j61cH4NHCyMBQHilPLHtDRqzD9UKSnxjPvdsEBej
+	pjxzk1oPfyfizjbj1UgIaloCArY+J5dUwsgwn1TCDLCTcQIjlPDLxZ91NOrEbD6yLW7P9aXd3AZSP
+	+Q3nJ1Z/jSIl7HQYZFikhh0j8s2OFzli72iE2Nz+jqxE8pGFsp/mDmOUV/VohGQcv8vtcIDnF/0jV
+	qDNt/X8vBP7FziinIaC4fCMHRSuwxJYA3MKp01nm9JPDxKzF5c/qcu2s+jomvGHBYusb9Fxnd/Qfr
+	8MtLnScJwPNNmVifLAKg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i00ov-00062R-Uo; Tue, 20 Aug 2019 09:52:54 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1i04NZ-0002jr-Pr; Tue, 20 Aug 2019 13:40:54 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i00on-00062J-P9
- for linux-nvme@bombadil.infradead.org; Tue, 20 Aug 2019 09:52:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=m/VeeB1txYl9LrpUKmYi6hLIqRVHICwSEO8ccK7zPqQ=; b=cX79k9qIGHk70iAtA7L+kNknE
- IcD6MPHy79ORNPM6Q+lm6OtmMmNlK7OEpIeSxsQ3qhK0xvi8qrs5++FxxuSVOe38r2pzDeW6eeWAs
- y+VAGxO5XfKlxP3Y6NSjU0wWqwoX529OrDYScvq8oQF3DSDaPSHXJLIJz70PNMMz1a0k9OoG26mT6
- 2kvU+U2hYZPuxuyu5Yo8SeB5+VUG4JSGYGl3yHWlkAi2oGFgoGkxTVW7aPBMJT9XULb5Iej+0oJjl
- Z1T5D9xGTtpYhZdE8YBN5Fsx+PVHQ6sX/MSf1N+739V6aG+rSmhe2KlJRIByfAmzg8XT7EIsR3l8a
- ZhZ4n2T5w==;
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=noisy.programming.kicks-ass.net)
- by merlin.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1i00ok-00068l-08; Tue, 20 Aug 2019 09:52:42 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 48E32307603;
- Tue, 20 Aug 2019 11:52:09 +0200 (CEST)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id 6FEBB20CE7743; Tue, 20 Aug 2019 11:52:40 +0200 (CEST)
-Date: Tue, 20 Aug 2019 11:52:40 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: longli@linuxonhyperv.com
-Subject: Re: [PATCH 3/3] nvme: complete request in work queue on CPU with
- flooded interrupts
-Message-ID: <20190820095240.GH2332@hirez.programming.kicks-ass.net>
-References: <1566281669-48212-1-git-send-email-longli@linuxonhyperv.com>
- <1566281669-48212-4-git-send-email-longli@linuxonhyperv.com>
+ id 1i04NF-0002hD-LV
+ for linux-nvme@lists.infradead.org; Tue, 20 Aug 2019 13:40:35 +0000
+Received: from sasha-vm.mshome.net (unknown [12.236.144.82])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BE48422DD3;
+ Tue, 20 Aug 2019 13:40:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1566308431;
+ bh=Ojf029T/GINdDfJhgOlTarSq5bSruD2ny86RKaBuS60=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=O3iIHskuxQbrSitGI1/KHpzh3mjV8DnhVIEQfkzYRXueovHtC7jODnvhGdC6/v/Kv
+ vudAMxVTmcZeTpUZd1Q3NE3wpAjgrIZ7kfjkDIlsE0u/EB9+nUnzeIrnY/25DmpBWb
+ rSzM9uyOnRpO24KKnc0xqd6SWZ+rvxx+o+f/Ij24=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.2 02/44] nvme-multipath: revalidate nvme_ns_head
+ gendisk in nvme_validate_ns
+Date: Tue, 20 Aug 2019 09:39:46 -0400
+Message-Id: <20190820134028.10829-2-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190820134028.10829-1-sashal@kernel.org>
+References: <20190820134028.10829-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1566281669-48212-4-git-send-email-longli@linuxonhyperv.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190820_064033_782342_FE527C16 
+X-CRM114-Status: GOOD (  10.97  )
+X-Spam-Score: -5.2 (-----)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-5.2 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,135 +79,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
- Long Li <longli@microsoft.com>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
- Ingo Molnar <mingo@redhat.com>, Christoph Hellwig <hch@lst.de>
+Cc: Sasha Levin <sashal@kernel.org>, Anthony Iliopoulos <ailiopoulos@suse.com>,
+ linux-nvme@lists.infradead.org, Johannes Thumshirn <jthumshirn@suse.de>,
+ Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Aug 19, 2019 at 11:14:29PM -0700, longli@linuxonhyperv.com wrote:
-> From: Long Li <longli@microsoft.com>
-> 
-> When a NVMe hardware queue is mapped to several CPU queues, it is possible
-> that the CPU this hardware queue is bound to is flooded by returning I/O for
-> other CPUs.
-> 
-> For example, consider the following scenario:
-> 1. CPU 0, 1, 2 and 3 share the same hardware queue
-> 2. the hardware queue interrupts CPU 0 for I/O response
-> 3. processes from CPU 1, 2 and 3 keep sending I/Os
-> 
-> CPU 0 may be flooded with interrupts from NVMe device that are I/O responses
-> for CPU 1, 2 and 3. Under heavy I/O load, it is possible that CPU 0 spends
-> all the time serving NVMe and other system interrupts, but doesn't have a
-> chance to run in process context.
+From: Anthony Iliopoulos <ailiopoulos@suse.com>
 
-Ideally -- and there is some code to affect this, the load-balancer will
-move tasks away from this CPU.
+[ Upstream commit fab7772bfbcfe8fb8e3e352a6a8fcaf044cded17 ]
 
-> To fix this, CPU 0 can schedule a work to complete the I/O request when it
-> detects the scheduler is not making progress. This serves multiple purposes:
+When CONFIG_NVME_MULTIPATH is set, only the hidden gendisk associated
+with the per-controller ns is run through revalidate_disk when a
+rescan is triggered, while the visible blockdev never gets its size
+(bdev->bd_inode->i_size) updated to reflect any capacity changes that
+may have occurred.
 
-Suppose the task waiting for the IO completion is a RT task, and you've
-just queued it to a regular work. This is an instant priority inversion.
+This prevents online resizing of nvme block devices and in extension of
+any filesystems atop that will are unable to expand while mounted, as
+userspace relies on the blockdev size for obtaining the disk capacity
+(via BLKGETSIZE/64 ioctls).
 
-> 1. This CPU has to be scheduled to complete the request. The other CPUs can't
-> issue more I/Os until some previous I/Os are completed. This helps this CPU
-> get out of NVMe interrupts.
-> 
-> 2. This acts a throttling mechanisum for NVMe devices, in that it can not
-> starve a CPU while servicing I/Os from other CPUs.
-> 
-> 3. This CPU can make progress on RCU and other work items on its queue.
-> 
-> Signed-off-by: Long Li <longli@microsoft.com>
-> ---
->  drivers/nvme/host/core.c | 57 +++++++++++++++++++++++++++++++++++++++-
->  drivers/nvme/host/nvme.h |  1 +
->  2 files changed, 57 insertions(+), 1 deletion(-)
+Fix this by explicitly revalidating the actual namespace gendisk in
+addition to the per-controller gendisk, when multipath is enabled.
 
-WTH does this live in the NVME driver? Surely something like this should
-be in the block layer. I'm thinking there's fiber channel connected
-storage that should be able to trigger much the same issues.
+Signed-off-by: Anthony Iliopoulos <ailiopoulos@suse.com>
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+Reviewed-by: Johannes Thumshirn <jthumshirn@suse.de>
+Signed-off-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/nvme/host/core.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index 6a9dd68c0f4f..576bb6fce293 100644
-> --- a/drivers/nvme/host/core.c
-> +++ b/drivers/nvme/host/core.c
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 5deb4deb38209..ab1a2b1ec3637 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1668,6 +1668,7 @@ static void __nvme_revalidate_disk(struct gendisk *disk, struct nvme_id_ns *id)
+ 	if (ns->head->disk) {
+ 		nvme_update_disk_info(ns->head->disk, ns, id);
+ 		blk_queue_stack_limits(ns->head->disk->queue, ns->queue);
++		revalidate_disk(ns->head->disk);
+ 	}
+ #endif
+ }
+-- 
+2.20.1
 
-> @@ -260,9 +270,54 @@ static void nvme_retry_req(struct request *req)
->  	blk_mq_delay_kick_requeue_list(req->q, delay);
->  }
->  
-> +static void nvme_complete_rq_work(struct work_struct *work)
-> +{
-> +	struct nvme_request *nvme_rq =
-> +		container_of(work, struct nvme_request, work);
-> +	struct request *req = blk_mq_rq_from_pdu(nvme_rq);
-> +
-> +	nvme_complete_rq(req);
-> +}
-> +
-> +
->  void nvme_complete_rq(struct request *req)
->  {
-> -	blk_status_t status = nvme_error_status(req);
-> +	blk_status_t status;
-> +	int cpu;
-> +	u64 switches;
-> +	struct nvme_request *nvme_rq;
-> +
-> +	if (!in_interrupt())
-> +		goto skip_check;
-> +
-> +	nvme_rq = nvme_req(req);
-> +	cpu = smp_processor_id();
-> +	if (idle_cpu(cpu))
-> +		goto skip_check;
-> +
-> +	/* Check if this CPU is flooded with interrupts */
-> +	switches = get_cpu_rq_switches(cpu);
-> +	if (this_cpu_read(last_switch) == switches) {
-> +		/*
-> +		 * If this CPU hasn't made a context switch in
-> +		 * MAX_SCHED_TIMEOUT ns (and it's not idle), schedule a work to
-> +		 * complete this I/O. This forces this CPU run non-interrupt
-> +		 * code and throttle the other CPU issuing the I/O
-> +		 */
-
-What if there was only a single task on that CPU? Then we'd never
-need/want to context switch in the first place.
-
-AFAICT all this is just a whole bunch of gruesome hacks piled on top one
-another.
-
-> +		if (sched_clock() - this_cpu_read(last_clock)
-> +				> MAX_SCHED_TIMEOUT) {
-> +			INIT_WORK(&nvme_rq->work, nvme_complete_rq_work);
-> +			schedule_work_on(cpu, &nvme_rq->work);
-> +			return;
-> +		}
-> +
-> +	} else {
-> +		this_cpu_write(last_switch, switches);
-> +		this_cpu_write(last_clock, sched_clock());
-> +	}
-> +
-> +skip_check:
-
-Aside from everything else; this is just sodding poor coding style. What
-is wrong with something like:
-
-	if (nvme_complete_throttle(...))
-		return;
-
-> +	status = nvme_error_status(req);
->  
->  	trace_nvme_complete_rq(req);
->  
 
 _______________________________________________
 Linux-nvme mailing list
