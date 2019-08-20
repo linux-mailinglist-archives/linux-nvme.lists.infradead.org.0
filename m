@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB1849572C
-	for <lists+linux-nvme@lfdr.de>; Tue, 20 Aug 2019 08:15:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F5849572D
+	for <lists+linux-nvme@lfdr.de>; Tue, 20 Aug 2019 08:15:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,44 +11,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=49CHQicvHuHPcighlYX2TF/bHtuRM9LmM819BRMfVho=; b=RNJTTWeXijiCx9UX/6L/JV+y8X
-	fg34UvjamSolUCfLhlb6sXXV0SKVqKrDEkCaSDDFxtgGtoXHC+bzgIvYy75zLriXTy+LjMM6ZsdXS
-	ngBgp66/d5ArfPmHpLn7YFh7eKz49DiePYoTLkiRisxgpdaX0DQ7rxifYnVSsW4iX9LY4P+IXq/Kg
-	pVRheaszcZ7CBGtuyKa6E47R0LFO5YCBF2xFF0sNAxc0rK2L6qGmFEQ5SEWxLlvXe8cxQDJFzei9+
-	0EBe0upbK0AZi2tiU1V6d8Ddbuk7Qzx+fdgtKsxisjieD20jQU2hI9HQvB0+LTjvWx8Ld+T4I+sKD
-	sz6eLjXQ==;
+	bh=bwV+H2r4SgJ+OfQcnjk9KwK8M96/mevi/VFPEFp4KzQ=; b=DaG/J+eJldpLv7MJU7R+CpRPtW
+	a5ZlswoLz8hNCAc4WrZj/9usHnLDZmj4mVdTlutT34dVVUlxyQ1+wXxCNbws4ukxDtZD4k1qsSQD2
+	f5/QgeJvqV18Cd41hDrAaZd8ANY9w9CsKCrcXP+JWCWT8z+zhL2hWCRg8nh7H2wfi6UXC3itJo27r
+	fX+fsSFb8A9UkQmLTAKf0KIvW0O6V7I7ZobXN5U5HUhIbZMCD3bQ2AdvyPaFDRNaSn4SpkBPtiuyy
+	vc/iScB/1ALSwHXhiguymh7VVd6pLgdmnAyF11ebB2yFPyBtpiicF6L4X3RNl0HDDdBNAdE6z/8jR
+	Jy71e/sg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1hzxQJ-0005C7-VW; Tue, 20 Aug 2019 06:15:15 +0000
+	id 1hzxQV-0006Z3-6M; Tue, 20 Aug 2019 06:15:27 +0000
 Received: from linux.microsoft.com ([13.77.154.182])
  by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
- id 1hzxPp-0004yy-Ox
- for linux-nvme@lists.infradead.org; Tue, 20 Aug 2019 06:14:47 +0000
+ id 1hzxPt-00051X-KO
+ for linux-nvme@lists.infradead.org; Tue, 20 Aug 2019 06:14:50 +0000
 Received: by linux.microsoft.com (Postfix, from userid 1004)
- id 5E08120B718C; Mon, 19 Aug 2019 23:14:45 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 5E08120B718C
+ id 663C820B7195; Mon, 19 Aug 2019 23:14:49 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 663C820B7195
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxonhyperv.com;
- s=default; t=1566281685;
- bh=8ETceY5cQaIbFG6NG3N9TrVwSxmoSIPofIv/ugh7xNc=;
+ s=default; t=1566281689;
+ bh=2Rkx1o6sWSNY21Q3MnNz1y4rcc7n1BW0NJRzScVJzSE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=KZ4UvmaJuWQuuZ7mjqup9jeBTEBinwWveOX1EHHL5IVVRorgpXPpxLUxLKvFJoQ1e
- sPZ5oBfIaskBUJqKDZY79Lr9Umjo4dHNDhFl9RPr+YJAFf8iv03tCqEPniIl4EAMW1
- UxyAVs+/wGicnq8o3OwNkV0pfLr1aoMnGXz+3n4g=
+ b=eNXF2VaEip8OvlyZdhnOxMPgL2MMdaGBG5sf8QGulyP7h4zd0gqGfoja+4kQ7Zm92
+ Tlby/vtpIdQvo8AU0hccvMtO4XTEhpQ7tb+2Cw0Dkkog8OWU9kqiAegnC07oV75kzp
+ UtAHGYhmAqIx7Lc4ctLsrXkZ9HCWQYx2ruNVqRpQ=
 From: longli@linuxonhyperv.com
 To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
  Keith Busch <keith.busch@intel.com>, Jens Axboe <axboe@fb.com>,
  Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
  linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/3] sched: define a function to report the number of context
- switches on a CPU
-Date: Mon, 19 Aug 2019 23:14:27 -0700
-Message-Id: <1566281669-48212-2-git-send-email-longli@linuxonhyperv.com>
+Subject: [PATCH 2/3] sched: export idle_cpu()
+Date: Mon, 19 Aug 2019 23:14:28 -0700
+Message-Id: <1566281669-48212-3-git-send-email-longli@linuxonhyperv.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1566281669-48212-1-git-send-email-longli@linuxonhyperv.com>
 References: <1566281669-48212-1-git-send-email-longli@linuxonhyperv.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190819_231445_882431_703ABA4D 
-X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-CacheID: sfid-20190819_231449_787052_8EFFF610 
+X-CRM114-Status: UNSURE (   9.67  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -7.4 (-------)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -86,45 +85,39 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Long Li <longli@microsoft.com>
 
-The number of context switches on a CPU is useful to determine how busy this
-CPU is on processing IRQs. Export this information so it can be used by device
-drivers.
+This function is useful for device drivers to check if this CPU has work to
+do in process context.
 
 Signed-off-by: Long Li <longli@microsoft.com>
 ---
  include/linux/sched.h | 1 +
- kernel/sched/core.c   | 6 ++++++
- 2 files changed, 7 insertions(+)
+ kernel/sched/core.c   | 1 +
+ 2 files changed, 2 insertions(+)
 
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 9b35aff09f70..575f1ef7b159 100644
+index 575f1ef7b159..a209941c1770 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
-@@ -1500,6 +1500,7 @@ current_restore_flags(unsigned long orig_flags, unsigned long flags)
- 
+@@ -1501,6 +1501,7 @@ current_restore_flags(unsigned long orig_flags, unsigned long flags)
  extern int cpuset_cpumask_can_shrink(const struct cpumask *cur, const struct cpumask *trial);
  extern int task_can_attach(struct task_struct *p, const struct cpumask *cs_cpus_allowed);
-+extern u64 get_cpu_rq_switches(int cpu);
+ extern u64 get_cpu_rq_switches(int cpu);
++extern int idle_cpu(int cpu);
  #ifdef CONFIG_SMP
  extern void do_set_cpus_allowed(struct task_struct *p, const struct cpumask *new_mask);
  extern int set_cpus_allowed_ptr(struct task_struct *p, const struct cpumask *new_mask);
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 4a8e7207cafa..1a76f0e97c2d 100644
+index 1a76f0e97c2d..d1cedfb38174 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1143,6 +1143,12 @@ int set_cpus_allowed_ptr(struct task_struct *p, const struct cpumask *new_mask)
- }
- EXPORT_SYMBOL_GPL(set_cpus_allowed_ptr);
+@@ -4023,6 +4023,7 @@ int idle_cpu(int cpu)
  
-+u64 get_cpu_rq_switches(int cpu)
-+{
-+	return cpu_rq(cpu)->nr_switches;
-+}
-+EXPORT_SYMBOL_GPL(get_cpu_rq_switches);
-+
- void set_task_cpu(struct task_struct *p, unsigned int new_cpu)
- {
- #ifdef CONFIG_SCHED_DEBUG
+ 	return 1;
+ }
++EXPORT_SYMBOL_GPL(idle_cpu);
+ 
+ /**
+  * available_idle_cpu - is a given CPU idle for enqueuing work.
 -- 
 2.17.1
 
