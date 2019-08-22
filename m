@@ -2,34 +2,37 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7ECE29A2A1
-	for <lists+linux-nvme@lfdr.de>; Fri, 23 Aug 2019 00:10:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D56469A2A0
+	for <lists+linux-nvme@lfdr.de>; Fri, 23 Aug 2019 00:10:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=NwjitodTcionX8Aa8222CbC1umKU198iMH2nnltQtl4=; b=edO
-	Do6dVAcP4XB/AkQPAF/KlhvD+c2J/1ZmY94vG04oOG9lSwaSCx8Ogpe6AaUdOJOIeKvl3uHeXXird
-	GJAYH9Lx/tuJJL/qmD3lTLquWo9SutPCsZrjC7iMMwS1dfdykYngBIZZd6RKaNW4w5NmWJe+yBwVY
-	LLIKb9qLa2VIZsCjRbbWY0wEYeJ4emGMZQU3mIl7aA1BJ4JRQLgRbjFDc90y7RziQ1HRPlqBT8QXZ
-	4S7gGkwcuBuwkiU74kAEa6tOLQQObT6EuP2xgkM47HvXm1IQ9Qn88NuyaB11KlhQnBRcVOlFj6lNO
-	WIEVox3h9sw5wDGMtiWwYEDcfqQUKqQ==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Gx+Ra65jAmJXMfqR+2vyI/1B96fs1oxYm+zKwcMNFMA=; b=lvcJ2mdWnlDmk+icz8g2cgnMz/
+	FqlR7BlNCXgh1nc+W6OQr1unnTAQ8ClbCVtbOSEVVuaDdFQXvoUF17dm1ABEfogpEkOXBMkUyxceo
+	3z5smw3caSZ/X/oLZG65ZMEMWCzYLBuD/p4ILBY85Y08Ctrtq+yydPSedRqcQH7p2UtkqyaCZJdEY
+	2E2XevnU6zeZdA2CmMRrw0Z9usbyAq6krfbAPM0LVU8sB7B6R59ZlX6D6iIBWRbksy0sJsIkHh9f1
+	QBIYn6Q2N+uu77TQN7YVKms7bdPNHDlAS0VJpK8O3eoLuSN3EXg0PTwBxmukltb5vMSujCEeaVRUb
+	VbwG1B6Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0vHh-0003W9-62; Thu, 22 Aug 2019 22:10:21 +0000
+	id 1i0vHY-00027B-HX; Thu, 22 Aug 2019 22:10:12 +0000
 Received: from [2600:1700:65a0:78e0:514:7862:1503:8e4d]
  (helo=sagi-Latitude-E7470.lbits)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1i0vGz-0001hC-Je; Thu, 22 Aug 2019 22:09:37 +0000
+ id 1i0vGz-0001hC-St; Thu, 22 Aug 2019 22:09:37 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org,
 	Keith Busch <keith.busch@intel.com>
-Subject: [PATCH 1/3] make: install udev rules in sysconfdir
-Date: Thu, 22 Aug 2019 15:09:35 -0700
-Message-Id: <20190822220937.8021-1-sagi@grimberg.me>
+Subject: [PATCH 2/3] nvmf-autoconnect: fix absolute path for systemctl
+Date: Thu, 22 Aug 2019 15:09:36 -0700
+Message-Id: <20190822220937.8021-2-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190822220937.8021-1-sagi@grimberg.me>
+References: <20190822220937.8021-1-sagi@grimberg.me>
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,27 +51,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-When the libdir is set to /usr/lib the nvmf connect udev rules are
-ignored, when placing it in /etc/udev rules are working as expected.
+Without the absolute path udev gets the error:
+failed to execute '/lib/udev/systemctl' 'systemctl --no-block start nvmf-connect@[...].service': No such file or directory
 
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ nvmf-autoconnect/udev-rules/70-nvmf-autoconnect.rules | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index 6409c9e13a87..64684a88d9f9 100644
---- a/Makefile
-+++ b/Makefile
-@@ -10,7 +10,7 @@ SYSCONFDIR = /etc
- SBINDIR = $(PREFIX)/sbin
- LIBDIR ?= $(PREFIX)/lib
- SYSTEMDDIR ?= $(LIBDIR)/systemd
--UDEVDIR ?= $(LIBDIR)/udev
-+UDEVDIR ?= $(SYSCONFDIR)/udev
- DRACUTDIR ?= $(LIBDIR)/dracut
- LIB_DEPENDS =
+diff --git a/nvmf-autoconnect/udev-rules/70-nvmf-autoconnect.rules b/nvmf-autoconnect/udev-rules/70-nvmf-autoconnect.rules
+index 789a2c837e3f..c909fb036d54 100644
+--- a/nvmf-autoconnect/udev-rules/70-nvmf-autoconnect.rules
++++ b/nvmf-autoconnect/udev-rules/70-nvmf-autoconnect.rules
+@@ -9,9 +9,9 @@
+ ACTION=="change", SUBSYSTEM=="nvme", ENV{NVME_EVENT}=="discovery",\
+   ENV{NVME_CTRL_NAME}=="*", ENV{NVME_TRTYPE}=="*", ENV{NVME_TRADDR}=="*", \
+   ENV{NVME_TRSVCID}=="*", ENV{NVME_HOST_TRADDR}=="*", \
+-  RUN+="systemctl --no-block start nvmf-connect@--device=$env{NVME_CTRL_NAME}\t--transport=$env{NVME_TRTYPE}\t--traddr=$env{NVME_TRADDR}\t--trsvcid=$env{NVME_TRSVCID}\t--host-traddr=$env{NVME_HOST_TRADDR}.service"
++  RUN+="/bin/systemctl --no-block start nvmf-connect@--device=$env{NVME_CTRL_NAME}\t--transport=$env{NVME_TRTYPE}\t--traddr=$env{NVME_TRADDR}\t--trsvcid=$env{NVME_TRSVCID}\t--host-traddr=$env{NVME_HOST_TRADDR}.service"
  
+ # nvme-fc transport generated events (old-style for compatibility)
+ ACTION=="change", SUBSYSTEM=="fc", ENV{FC_EVENT}=="nvmediscovery", \
+   ENV{NVMEFC_HOST_TRADDR}=="*",  ENV{NVMEFC_TRADDR}=="*", \
+-  RUN+="systemctl --no-block start nvmf-connect@--device=none\t--transport=fc\t--traddr=$env{NVMEFC_TRADDR}\t--trsvcid=none\t--host-traddr=$env{NVMEFC_HOST_TRADDR}.service"
++  RUN+="/bin/systemctl --no-block start nvmf-connect@--device=none\t--transport=fc\t--traddr=$env{NVMEFC_TRADDR}\t--trsvcid=none\t--host-traddr=$env{NVMEFC_HOST_TRADDR}.service"
 -- 
 2.17.1
 
