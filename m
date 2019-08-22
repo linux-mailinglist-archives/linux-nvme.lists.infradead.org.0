@@ -2,42 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A978E9888C
-	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 02:34:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 108939888D
+	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 02:34:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mof86zTN8wkKhKsAEdCqbL0jDSSKoGG20C4rsy+EHhM=; b=DqKRWPfWBRi76d
-	nQCha6oj5LdKDo9NBaJhMOED10sHbZiH6PuWE0TWIfgolrxn2VYNDH0cOD1+4Ir8Z6Ta75inbz/tY
-	r+4Q29t0dxmAhlL+yiN+WLwnp8FJSHuBVcR3eIortEinCvDHivoyJ6bhsl31e1N7TEIBYeCVpCiDG
-	4RaLfJ1AspRTXOil0PZYqQpXNqoHJrKjmCVgRLepBLgdumJ/1FRFsJdTXIvxmW9x+Lgv1AkTOesZR
-	CkX0Nv8BLGWlzO5wybG+++d5YERja8mZpdcuLvTJxuCgqVXEzlMUXPgBpjY1yp57TIj3l19rKZ/rW
-	d1Odo7MSKoN3wpAGnn5A==;
+	List-Owner; bh=yFwOzo8MNqW8ys/VyMSAwS/ohUI81qx1xd0uB63IeYA=; b=Zbn4q6qKZb8XCU
+	GwjOd8tZSwC7xWdGTiDy5O4Dntr01w2BqfuucF+moFCz6gqNl7grBkCHrAQG+CtqNHS/SYSZHg5lD
+	JBUSDdyNBU4C1S/Fwr+Y2hhdMeBDEIokEajA7YPTom843UrQp8E+GK5YRnQuYn2cIbf+DIvdzTYp2
+	UXAxM5+adLmOj8ocwY54Ea7yxYwZFH+4vHJWNLoSZvab1xARdglNPj9IiWCdWWLI+NsLYupy4kcuM
+	heG1W7vuD67+6cwHGau6T0bcAnyLS5a9Y7vYNWZRnCxNffLvPko+8x4rVzKRtAoZQPk8+kSw2DAhB
+	VRNP3Lbkmg23ULLyfvhQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0b3P-0004Aw-1u; Thu, 22 Aug 2019 00:34:15 +0000
+	id 1i0b3h-0004Md-Oz; Thu, 22 Aug 2019 00:34:33 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0b3J-0004AE-Ln
- for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 00:34:10 +0000
+ id 1i0b3a-0004Ld-R9
+ for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 00:34:28 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id E5AB268BFE; Thu, 22 Aug 2019 02:34:06 +0200 (CEST)
-Date: Thu, 22 Aug 2019 02:34:06 +0200
+ id 21D0968BFE; Thu, 22 Aug 2019 02:34:24 +0200 (CEST)
+Date: Thu, 22 Aug 2019 02:34:23 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH 1/2] nvmet-tcp: fix possible NULL deref
-Message-ID: <20190822003406.GF10391@lst.de>
+Subject: Re: [PATCH 2/2] nvmet-tcp: fix possible memory leak
+Message-ID: <20190822003423.GG10391@lst.de>
 References: <20190808205522.24638-1-sagi@grimberg.me>
+ <20190808205522.24638-2-sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190808205522.24638-1-sagi@grimberg.me>
+In-Reply-To: <20190808205522.24638-2-sagi@grimberg.me>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190821_173409_864039_56E1BB64 
-X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-CacheID: sfid-20190821_173427_021209_1D502F29 
+X-CRM114-Status: UNSURE (   9.16  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -66,14 +67,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Aug 08, 2019 at 01:55:21PM -0700, Sagi Grimberg wrote:
-> We must only call sgl_free for sgl that we actually
-> allocated.
+On Thu, Aug 08, 2019 at 01:55:22PM -0700, Sagi Grimberg wrote:
+> when we uninit a command in error flow we also need to
+> free an iovec if it was allocated.
 > 
 > Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 
-Looks ok for now, but can you also look into handling a NULL pointer
-in sgl_free like in all other kernel free routines?
+Looks good,
 
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 
