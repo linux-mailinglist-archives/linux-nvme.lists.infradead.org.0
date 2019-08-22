@@ -2,87 +2,103 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A34B099165
-	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 12:53:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6EA1299599
+	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 15:56:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:References:
-	In-Reply-To:Message-ID:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j1ZZrpVsV5XdeJPJn0Cc49H+bN1WpPpRIddIcRvpX3s=; b=XgLO3cjB9kF1tn
-	Gr4Quj0lIUHBovcCS6c8prjoznolcOxi/n9zDbJ9iGNBCqaEn0OjqHz+UwjRAwqZSrZ9OucVbFu+I
-	8R5yd49TpfcRtfXwghT7tiiKYJXy+yemrC6cYr7j0iWe5m1cy6mAucgPc03qexmsIFFuk0Z1BICse
-	d8M649CSgewhDiRH2VgPF9WV7Q6nq/YlGRB2EqxcGuC5vPRy3eGr1Cl/Y8b/LsomnvXp8btVMZN9P
-	k7UY7nY4t0jZ9oOs7TLLKBirDxBsGnhm9nichMl2xxDOwKdpq3YGh0nHsq6kPsTqk66rH6jPKUR9P
-	XHvjHu+JI+viKt3TS/3Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kKg28j600L15E/O1z8YlBk0LmymsqK5Z1/l2WqPG3bc=; b=PUvL9pFSfzRMXQ
+	+XVVOWj+lGHMcED2qZeASYJlyy1maXUbkxv/ILcRoGV7eIdq/8pE6JpDUyMWL1AOJqiHKwXCbQ5Hf
+	Xp+mD0cPbZial1ZbAL9kTrVcc3yTkCKB6D6SYRFR3FNLb0JTLRU/+h1aC9+Ky+4edX+3/VWY5qoym
+	1G46RDiO39jz6GrVrHDmlWcYZmfxhJFOBho5YupLGV3ps1GaPdpHaL54k7iUlTNNwRrqmmRML7A4b
+	deLZ/kNIsAw0tPA9tAvkbeCCTQ9iTOZq3Ah4yn8vKN4T/phYuA9vmVjIyNBqsYa1fAgBmS10glvcs
+	VrApNr+Rk/n0Q+Pr6/lQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0kiT-000304-Cj; Thu, 22 Aug 2019 10:53:17 +0000
-Received: from zimbra2.kalray.eu ([92.103.151.219])
+	id 1i0nZy-0006pJ-Cb; Thu, 22 Aug 2019 13:56:42 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0kiF-0002zj-4F
- for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 10:53:04 +0000
-Received: from localhost (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id 4303027E65B3;
- Thu, 22 Aug 2019 12:52:57 +0200 (CEST)
-Received: from zimbra2.kalray.eu ([127.0.0.1])
- by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id gXEFEOPTfLHv; Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id D2AFB27E65BE;
- Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra2.kalray.eu D2AFB27E65BE
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kalray.eu;
- s=32AE1B44-9502-11E5-BA35-3734643DEF29; t=1566471176;
- bh=UonVEMHAoQtGvoWXN6MKA4LIqAMQjb5RHuEqBn/xFYM=;
- h=Date:From:To:Message-ID:MIME-Version;
- b=Kkq5RhhuxO/BVos28Pue6Jj0wZtmGdClXShB/fy7ZQdEJ9h7f3pQCOsJr8Ym5eSda
- QOu25qFhBfcxYwET8g3X4SlXIxxZQGOA572IzxndYI5v5tdzAWgReqDQ2QbfL/iIxa
- m3axLlbOD7qIkA/GMfPmBE31NoounwzHm013cf+s=
-X-Virus-Scanned: amavisd-new at zimbra2.kalray.eu
-Received: from zimbra2.kalray.eu ([127.0.0.1])
- by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id rb7fczkU69AI; Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
-Received: from zimbra2.kalray.eu (zimbra2.kalray.eu [192.168.40.202])
- by zimbra2.kalray.eu (Postfix) with ESMTP id BAB6F27E65B3;
- Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
-Date: Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
-From: Marta Rybczynska <mrybczyn@kalray.eu>
-To: Bart Van Assche <bvanassche@acm.org>
-Message-ID: <283732915.57667901.1566471176686.JavaMail.zimbra@kalray.eu>
-In-Reply-To: <1492173308.27223699.1561477502288.JavaMail.zimbra@kalray.eu>
-References: <20190403230402.119428-1-bvanassche@acm.org>
- <1554392625.118779.243.camel@acm.org>
- <1035014818.27150671.1561441925414.JavaMail.zimbra@kalray.eu>
- <7d28ee3d-0326-6d31-1cc6-13acc48e0d4d@acm.org>
- <1492173308.27223699.1561477502288.JavaMail.zimbra@kalray.eu>
-Subject: Re: [PATCH] nvmet-rdma: Suppress a lockdep complaint
+ id 1i0nZk-0006ot-5v
+ for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 13:56:29 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 3421AB128;
+ Thu, 22 Aug 2019 13:56:25 +0000 (UTC)
+Subject: Re: [PATCH v3] nvme: exclude completion trace from non-multipath
+ builds
+To: Sagi Grimberg <sagi@grimberg.me>, Christoph Hellwig <hch@lst.de>
+References: <396d507f9a0e312998bd6805b151ab166f53a5be.1566290451.git.mskorzhinskiy@solarflare.com>
+ <20190822000939.GG9511@lst.de>
+ <acaf9334-3c5c-8f25-d436-0c87e94a6064@grimberg.me>
+ <20190822003549.GH10391@lst.de>
+ <43b9eeab-9e5b-e5c3-235f-d2d050886d28@grimberg.me>
+From: Hannes Reinecke <hare@suse.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=hare@suse.de; prefer-encrypt=mutual; keydata=
+ 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
+ azzYF4VRJsdl+d0MCaSy8mUh
+Message-ID: <bf77e846-b319-0d6e-ece6-812257f33d57@suse.de>
+Date: Thu, 22 Aug 2019 15:56:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-X-Originating-IP: [192.168.40.202]
-X-Mailer: Zimbra 8.8.12_GA_3794 (ZimbraWebClient - FF57 (Linux)/8.8.12_GA_3794)
-Thread-Topic: nvmet-rdma: Suppress a lockdep complaint
-Thread-Index: P3j1iDAp70PbfYiWz9FntAbarrublNSYn0jQ
+In-Reply-To: <43b9eeab-9e5b-e5c3-235f-d2d050886d28@grimberg.me>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_035303_562801_70FA79E2 
-X-CRM114-Status: UNSURE (   8.35  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190822_065628_508898_BCA262BA 
+X-CRM114-Status: GOOD (  13.48  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [92.103.151.219 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,68 +110,26 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme <linux-nvme@lists.infradead.org>,
- Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
- Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>,
+ linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
-
------ On 25 Jun, 2019, at 17:45, Marta Rybczynska mrybczyn@kalray.eu wrote:
-
-> ----- On 25 Jun, 2019, at 17:18, Bart Van Assche bvanassche@acm.org wrote:
-> 
->> On 6/24/19 10:52 PM, Marta Rybczynska wrote:
->>> ----- On 4 Apr, 2019, at 17:43, Bart Van Assche bvanassche@acm.org wrote:
->>>> On Wed, 2019-04-03 at 16:04 -0700, Bart Van Assche wrote:
->>>>> Although the code that waits for controllers that are being teared down
->>>>> in nvmet_rdma_queue_connect() is fine, lockdep complains about that code.
->>>>> Lockdep complains because all release_work instances are assigned the
->>>>> same static lockdep key. Avoid that lockdep complains by using dynamic
->>>>> lockdep keys instead of static lockdep keys. See also the following
->>>>> commits:
->>>>> * 87915adc3f0a ("workqueue: re-add lockdep dependencies for flushing").
->>>>> * 777dc82395de ("nvmet-rdma: occasionally flush ongoing controller teardown").
->>>>> * 108c14858b9e ("locking/lockdep: Add support for dynamic keys").
->>>>>
->>>>> This patch avoids that lockdep reports the following:
->>>>>
->>>>> ======================================================
->>>>> WARNING: possible circular locking dependency detected
->>>>> 4.19.0-dbg #1 Not tainted
->>>>> ------------------------------------------------------
->>>>> kworker/u12:0/7 is trying to acquire lock:
->>>>
->>>> Please drop this patch - it is not sufficient to suppress the lockdep complaint.
->>>> I will see whether I can come up with a better solution.
->>>>
->>> 
->>> Have you had time to work on this one further? We're seeing the same issue.
->> 
->> Hi Marta,
->> 
->> I'm running all NVMe tests on my setup with the attached patch applied.
->> 
->> Bart.
-> 
-> Thanks Bart! We're going to test it out in our setup and I let you know what
-> the result is.
-> 
-
-Hello Bart,
-We've tested the patch and it makes disappear the lockdep warning. However,
-a new problem appears: there's a NULL pointer dereference in nvmet_rdma_release_queue_work
-in the condition of fast disconnects. The call trace is partially corrupted so not
-all data is available. Have you seen a similar issue?
-
-Regards,
-Marta
-
-_______________________________________________
-Linux-nvme mailing list
-Linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gOC8yMi8xOSAzOjA1IEFNLCBTYWdpIEdyaW1iZXJnIHdyb3RlOgo+IAo+Pj4+IEJ0dywgSSBh
+bHNvIHRoaW5rIHdlIHNob3VsZCBwcm9iYWJseSBwdWxsIHRoZSBvcmlnaW5hbCBwYXRjaAo+Pj4+
+IGZyb20gSGFubmVzIGFuZCBqdXN0IGFwcGx5IGEgY2xlYW4gb25lIGdpdmVuIHRoYXQgdGhpcyBp
+cyBqdXN0IHF1ZXVlZAo+Pj4+IHVwIGluIG52bWUtNS40Lgo+Pj4KPj4+IFRob3VnaHQgYWJvdXQg
+aXQgdG9vLi4uIEkgY2FuIGZvbGQgaXQgaW50byBIYW5uZXMgcGF0Y2guCj4+Cj4+IEknZCBzYXkg
+bGV0IE1pa2hhaWwgb3IgSGFubmVzIHJlc2VuZCBhIG5ldyBvbmUgYWdhaW5zdCBhIGNsZWFuIHN0
+YXRlCj4+IHdpdGggYWxsIHRoZSByZXF1ZXN0ZWQgaW1wcm92ZW1lbnRzLgo+IAo+IE1pa2hhaWwv
+SGFubmVzLCBjYXJlIHRvIHNlbmQgb25lIHBhdGNoIHRvIHJlcGxhY2UgYm90aD8KClllcywgSSds
+bCBiZSBzZW5kaW5nIGEgcmVwbGFjZW1lbnQuCgpDaGVlcnMsCgpIYW5uZXMKLS0gCkRyLiBIYW5u
+ZXMgUmVpbmVja2UJCSAgIFRlYW1sZWFkIFN0b3JhZ2UgJiBOZXR3b3JraW5nCmhhcmVAc3VzZS5k
+ZQkJCSAgICAgICAgICAgICAgICs0OSA5MTEgNzQwNTMgNjg4ClNVU0UgTElOVVggR21iSCwgTWF4
+ZmVsZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnCkdGOiBGZWxpeCBJbWVuZMO2cmZmZXIsIE1hcnkg
+SGlnZ2lucywgU3JpIFJhc2lhaApIUkIgMjEyODQgKEFHIE7DvHJuYmVyZykKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBs
+aXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
