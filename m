@@ -2,82 +2,36 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 887749A2E8
-	for <lists+linux-nvme@lfdr.de>; Fri, 23 Aug 2019 00:30:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CEF849A35C
+	for <lists+linux-nvme@lfdr.de>; Fri, 23 Aug 2019 01:00:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=A0K/wbTQnF9wVL2lDUFZoNIEU/LN5pww88rlkS/ww6M=; b=ZBB9w2fkDQGSYC5oWt0O/8wIw
-	gtNBAoqy50bCG3q9obqTmk6GOwHEfjM0sJYRc/r1ZwmMHHp3lvBs0GRe9zHjQRDIywjy+K5Om0APQ
-	6BoA0i1/Lstfpf3WqKfCTwQO6CpIb3kJsfXzkTxxon6xG3nZDiCWCtN9vBmU2iIXrzFQoCsCt6tZx
-	s+/XGFU3x0xg+dsg2yGlS7L3sn46UrPQXwf15W6nDeYbO6W0OSKf9hZ6aRaeq4Tz4keWKgszFgxnU
-	EH3uEL6US+ALlgLfniV35g9+X9fJRXY9agq0crVNN0TPAsKOdAcbWK5LxdNTknLaf2h3aWU9PUer+
-	DufMDuRTw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=63LJHmXiw1KPntRXRRbClJ/eFBbH6TU64O8KfW6WAIw=; b=jHSWicgzz/CcoexrpKkHmq5M+P
+	E028crqZq33KBx/+Ko9qEjinEsCFdkan8Rq/lEHQ0zrjJMMuG9v9nVcYEbVdsFX7xeMIMl9tXHjmt
+	S0bbKAl2cmj2xhZ59xpp85rVBow7PD0jP3Z1q52weJvfURfFYbZLepl0t88vV/nuXt5AU2mFf4kqu
+	XQnw0oXvsIMiymTisV610RkqxmU0jZqsvgFZfxQevc2XV53E4NLsspgDmDN315IMpwk/P4ZkRaVbw
+	Sv4LK80DBxDnmyFgO5GGlhTnfdGHBZKZ1xFEPUYv2N6rG6OYkS89IG02v5L9+S5ualR0MKEqbzvDA
+	mBxokwkw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0vaw-0004SI-LR; Thu, 22 Aug 2019 22:30:14 +0000
-Received: from mail-oi1-f194.google.com ([209.85.167.194])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0vaq-0004Rx-Vf
- for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 22:30:10 +0000
-Received: by mail-oi1-f194.google.com with SMTP id n1so5604389oic.3
- for <linux-nvme@lists.infradead.org>; Thu, 22 Aug 2019 15:30:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=rHFLmC/98XYhJnpAO0UO/SlpC4+bex3mTDbmVH54yjs=;
- b=K3lJdsQlt3iFsk1fS8SVdG14eTDrKxtYXsWgyj22eOQooRwb8Nb/KttinorbrbzEk7
- s34p3ILTpDjI9+5pkvFfQS9had3gYCEd9T5kv1U6PNsHKOPAg4zlCG1IrZT7HvqJTyDu
- KO6WaaqQLrtt9s1Znm8VIgYjCBCoBHa8Wgdi0nKkgS0Epm+I1qoF7xqlITPkTG4w20oE
- rj8V4n5JjrugB9QYyztQZu9X3uvUJIi+pyLAVUwOMrZ97trDsS46X9Wpt7L2oMMGKhsq
- QPTbDtcw0QLK9IMM2qQM3kc9Gf+lyOjbcvmAkmztW7VuEp2r53HL32zco6optCelb+yq
- G22g==
-X-Gm-Message-State: APjAAAWIodfIiQCpv4o5500seMZCxpwEHSS67GeFi/BgRecnsK1kB6qU
- Wx9p/TZX6t/K1yEH4XoLYkOTuKFd
-X-Google-Smtp-Source: APXvYqzA1/oIsmrlzb2013pVI9a0VcJ4jo8KMeE7AxzbZhBRpIlAihrEOswy601ru6eWXBEfGUEhXg==
-X-Received: by 2002:aca:ea45:: with SMTP id i66mr1034138oih.17.1566513008054; 
- Thu, 22 Aug 2019 15:30:08 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id z17sm322601oth.48.2019.08.22.15.30.06
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 22 Aug 2019 15:30:07 -0700 (PDT)
-Subject: Re: [PATCH v3 4/4] nvme: fire discovery log page change events to
- userspace
+	id 1i0w3j-0005L2-EI; Thu, 22 Aug 2019 22:59:59 +0000
+Received: from [2600:1700:65a0:78e0:514:7862:1503:8e4d]
+ (helo=sagi-Latitude-E7470.lbits)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
+ id 1i0w3V-0005G0-4I; Thu, 22 Aug 2019 22:59:45 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org
-References: <20190822222818.9845-1-sagi@grimberg.me>
- <20190822222818.9845-5-sagi@grimberg.me>
-Message-ID: <00952f2f-f41b-bed0-0487-25447756f492@grimberg.me>
-Date: Thu, 22 Aug 2019 15:30:05 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190822222818.9845-5-sagi@grimberg.me>
-Content-Language: en-US
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_153009_021060_E2C707C2 
-X-CRM114-Status: GOOD (  11.99  )
-X-Spam-Score: 0.5 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.194 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+Subject: [PATCH v7 3/6] nvme: make nvme_report_ns_ids propagate error back
+Date: Thu, 22 Aug 2019 15:59:40 -0700
+Message-Id: <20190822225943.20072-4-sagi@grimberg.me>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190822225943.20072-1-sagi@grimberg.me>
+References: <20190822225943.20072-1-sagi@grimberg.me>
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,27 +44,94 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Keith Busch <keith.busch@intel.com>, James Smart <james.smart@broadcom.com>,
- Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
+ Christoph Hellwig <hch@lst.de>, Hannes Reinecke <hare@suse.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+And make the callers check the return status and propagate
+back accordingly. Also print the return status.
 
-> +static void nvme_disc_aen_uevent(struct nvme_ctrl *ctrl)
-> +{
-> +	struct nvmf_ctrl_options *opts = ctrl->opts;
-> +	char *envp[16];
-> +	int i, envloc = 0;
-> +
-> +	envp[envloc++] = kasprintf(GFP_KERNEL, "NVME_EVENT=discovery");
-> +	envp[envloc++] = kasprintf(GFP_KERNEL, "NVME_CTRL_NAME=%s",
-> +			dev_name(ctrl->device));
-> +	envp[envloc++] = kasprintf(GFP_KERNEL, "NVME_TRTYPE=%s", opts->transport);
+Reviewed-by: Hannes Reinecke <hare@suse.com>
+Reviewed-by: James Smart <james.smart@broadcom.com>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+---
+ drivers/nvme/host/core.c | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
 
-Bleh, left out in the rebase...
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 37ed5506d3ba..a90d05598fc8 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1597,9 +1597,11 @@ static void nvme_config_write_zeroes(struct gendisk *disk, struct nvme_ns *ns)
+ 	blk_queue_max_write_zeroes_sectors(disk->queue, max_sectors);
+ }
+ 
+-static void nvme_report_ns_ids(struct nvme_ctrl *ctrl, unsigned int nsid,
++static int nvme_report_ns_ids(struct nvme_ctrl *ctrl, unsigned int nsid,
+ 		struct nvme_id_ns *id, struct nvme_ns_ids *ids)
+ {
++	int ret = 0;
++
+ 	memset(ids, 0, sizeof(*ids));
+ 
+ 	if (ctrl->vs >= NVME_VS(1, 1, 0))
+@@ -1610,10 +1612,12 @@ static void nvme_report_ns_ids(struct nvme_ctrl *ctrl, unsigned int nsid,
+ 		 /* Don't treat error as fatal we potentially
+ 		  * already have a NGUID or EUI-64
+ 		  */
+-		if (nvme_identify_ns_descs(ctrl, nsid, ids))
++		ret = nvme_identify_ns_descs(ctrl, nsid, ids);
++		if (ret)
+ 			dev_warn(ctrl->device,
+-				 "%s: Identify Descriptors failed\n", __func__);
++				 "Identify Descriptors failed (%d)\n", ret);
+ 	}
++	return ret;
+ }
+ 
+ static bool nvme_ns_ids_valid(struct nvme_ns_ids *ids)
+@@ -1751,7 +1755,10 @@ static int nvme_revalidate_disk(struct gendisk *disk)
+ 	}
+ 
+ 	__nvme_revalidate_disk(disk, id);
+-	nvme_report_ns_ids(ctrl, ns->head->ns_id, id, &ids);
++	ret = nvme_report_ns_ids(ctrl, ns->head->ns_id, id, &ids);
++	if (ret)
++		goto out;
++
+ 	if (!nvme_ns_ids_equal(&ns->head->ids, &ids)) {
+ 		dev_err(ctrl->device,
+ 			"identifiers changed for nsid %d\n", ns->head->ns_id);
+@@ -3188,7 +3195,9 @@ static struct nvme_ns_head *nvme_alloc_ns_head(struct nvme_ctrl *ctrl,
+ 	head->ns_id = nsid;
+ 	kref_init(&head->ref);
+ 
+-	nvme_report_ns_ids(ctrl, nsid, id, &head->ids);
++	ret = nvme_report_ns_ids(ctrl, nsid, id, &head->ids);
++	if (ret)
++		goto out_cleanup_srcu;
+ 
+ 	ret = __nvme_check_ids(ctrl->subsys, head);
+ 	if (ret) {
+@@ -3236,7 +3245,10 @@ static int nvme_init_ns_head(struct nvme_ns *ns, unsigned nsid,
+ 	} else {
+ 		struct nvme_ns_ids ids;
+ 
+-		nvme_report_ns_ids(ctrl, nsid, id, &ids);
++		ret = nvme_report_ns_ids(ctrl, nsid, id, &ids);
++		if (ret)
++			goto out_unlock;
++
+ 		if (!nvme_ns_ids_equal(&head->ids, &ids)) {
+ 			dev_err(ctrl->device,
+ 				"IDs don't match for shared namespace %d\n",
+-- 
+2.17.1
 
-Will fix when applying...
 
 _______________________________________________
 Linux-nvme mailing list
