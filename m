@@ -2,48 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E5F998865
-	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 02:16:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4ED359886A
+	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 02:18:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=opOj6o6m6Bq+wZbtCArf2xKxyV/g0psU36oBzo/RtI8=; b=rPcL5vpnvgwXpI
-	PHqPXunVkO4ReusWskfxbfK/iv1shSsHdmFe2dFSufoNGV8c+ozH9olue8hPRCAwXZb0m4Q5SAqQp
-	CjeGqDRV6+PEtS2Nlf27iftDh03MJ0pH6vDXp38wAOUU/N9aFZRR+nUfmR73EE1DMGlwiVR5KDwF5
-	oKV7foPKhkXZIwfd8wxa9RXAWZlxCGa5rvYZEfxnqOgDkt8db0MgowekQib1cxxozglBXYZUctYJQ
-	cQZxv2n3Dd5ThJ7jtK/Scu+iV1hAh5kMjvlFgKuKDzablqoWruYBrtciQwumA5MYXo1b0gPnMZ7d9
-	7gv3pWGELerWFz1nekwA==;
+	List-Owner; bh=AmsmtLeMS5ZWCgBimqX3Q/gK5NfR7JTHTqADGbd4klw=; b=bx1GQFE4rQ2R3Y
+	vIqhjnn1VT0p2b+EdIPsglNdIz3+N/aFiHwlDKKoAM19CXV8yL0j1ZBTkfg59EBSYT2T30MZ+UC8m
+	uFkA/7DkCZHNgCJbKuTH0OOMNidB80sqsUQibwTyPUpPKf2Lo5byRhZYfKxO/a5nF7vmktI0DPVjx
+	wJA0wv87+WNPTMx5OA0QwiAeVoSAUCH93igwFnSkrdV9UVhDAX/fxzHqeECvN+vwJbO75/zjtl8Cd
+	o8bXIlLXbHGQJV1lmQr0uVtmGpeBK3vnAQgj5uaARmkEXuwnfRZcnzq5UnR+EbeXlF9wcm/Hd8/ud
+	SlXuziGgFsEVa8EOpJUQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0amW-0005JJ-Kw; Thu, 22 Aug 2019 00:16:48 +0000
+	id 1i0anb-0005Wk-P5; Thu, 22 Aug 2019 00:17:55 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0amR-0005Iw-7S
- for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 00:16:44 +0000
+ id 1i0anW-0005WR-IF
+ for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 00:17:51 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 83B1868BFE; Thu, 22 Aug 2019 02:16:40 +0200 (CEST)
-Date: Thu, 22 Aug 2019 02:16:40 +0200
+ id D7C2568BFE; Thu, 22 Aug 2019 02:17:47 +0200 (CEST)
+Date: Thu, 22 Aug 2019 02:17:47 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH rfc] nvme-tcp: support simple polling
-Message-ID: <20190822001640.GM9511@lst.de>
-References: <20190703210804.23137-1-sagi@grimberg.me>
- <20190709202201.GB8405@lst.de>
- <70b60d78-1a77-ddb0-3414-e0c26d657e4f@grimberg.me>
- <20190709212717.GA9636@lst.de>
- <e7e4ec9a-b644-58a3-77b0-7828d73831ca@kernel.dk>
- <4e8ec90b-b2d9-685f-6b39-1113688dce5c@grimberg.me>
+Subject: Re: [PATCH v2 1/3] nvme-fabrics: allow discovery subsystems accept
+ a kato
+Message-ID: <20190822001747.GN9511@lst.de>
+References: <20190712180211.26333-1-sagi@grimberg.me>
+ <20190712180211.26333-2-sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <4e8ec90b-b2d9-685f-6b39-1113688dce5c@grimberg.me>
+In-Reply-To: <20190712180211.26333-2-sagi@grimberg.me>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190821_171643_419870_9C87F246 
-X-CRM114-Status: UNSURE (   7.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20190821_171750_752788_0B82F131 
+X-CRM114-Status: GOOD (  10.15  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -64,14 +60,23 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Keith Busch <keith.busch@intel.com>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org
+Cc: Keith Busch <keith.busch@intel.com>, Christoph Hellwig <hch@lst.de>,
+ linux-nvme@lists.infradead.org, James Smart <james.smart@broadcom.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Looks good for 5.4:
+On Fri, Jul 12, 2019 at 11:02:09AM -0700, Sagi Grimberg wrote:
+> This modifies the behavior of discovery subsystems to accept
+> a kato as a preparation to support discovery log change
+> events. This also means that now every discovery controller
+> will have a default kato value, and for non-persistent connections
+> the host needs to pass in a zero kato value (keep_alive_tmo=0).
+> 
+> Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+
+Looks good,
 
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 
