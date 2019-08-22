@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 386429A2DF
-	for <lists+linux-nvme@lfdr.de>; Fri, 23 Aug 2019 00:28:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 88FFD9A2E1
+	for <lists+linux-nvme@lfdr.de>; Fri, 23 Aug 2019 00:28:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,24 +11,25 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=+erilCHWapt5VE8VdGS1+d/zw6GUbd+zAvDViNQvp+g=; b=PzYLrLbVjaC1NWOdKvYsnolyeS
-	8w6Xa1StSf3Y9WhGXqEhJV+ietKRAQ4IQP3Ctn3clS9D06egBzo1nzENli6xw/BhQQrm6fgQbuqas
-	WUcE0YTsuIcxVloR+urM6vrqU9IYuVKuBKPO3nXC7oeaO8TyoghFxsEFMStDUWnRzZpc+X/DQORX9
-	4qVYVWXUH0PdmnpbQWo95su7gbtTyMyQtGERqzue1XHCQK3dvB72iwL+01/WMiS2oiPHhh3phF9gd
-	HEHxhNkGTsb/RSVy/K4UeWl7mS+sqbVye8EOVEX5R0WphLx/BLJFB49lHazqSAF55mebGsiZqCxK3
-	tv0xOg5w==;
+	bh=wm+ihS0VbgrGz598SpXuB5YqcbnOS47nGyu5F98gQgU=; b=GyIzaxK1qGfjmWr7708JG8tL8I
+	elIxkMh2Pf0QXjj/ESlxjgPqunACLVvegnVd64QEVxoPiOpTggyBDRLsozP3ks1bMN0/DNIAZOAcv
+	Dj/8eMTZREIMW0tqGVphbG0whEnZdQHYErPmEPBzbPdr+/OFAOyAF6LTa6RcjaPAI9zm1bkbuON0O
+	CNvh/yTYqI68qykodrAGJmQHmb93VJdWi+aEXpOOhWFpokO4oToRVVoyFMckTOW/XNKK8KIDeJdel
+	cy9WIEtL6jsB5FMpqcLXxb1UrpBGW+OvS5GddONuhCimYmNodW4SScmlBPxmPH/miEhln8Qj7O5XJ
+	DH118z2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0vZJ-0002Mv-Jm; Thu, 22 Aug 2019 22:28:33 +0000
+	id 1i0vZT-0002Yk-FK; Thu, 22 Aug 2019 22:28:43 +0000
 Received: from [2600:1700:65a0:78e0:514:7862:1503:8e4d]
  (helo=sagi-Latitude-E7470.lbits)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1i0vZ6-0002Gi-8P; Thu, 22 Aug 2019 22:28:20 +0000
+ id 1i0vZ6-0002Gi-FX; Thu, 22 Aug 2019 22:28:20 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v3 1/4] nvme-fabrics: allow discovery subsystems accept a kato
-Date: Thu, 22 Aug 2019 15:28:15 -0700
-Message-Id: <20190822222818.9845-2-sagi@grimberg.me>
+Subject: [PATCH v3 2/4] nvme: enable aen regardles of the presence of I/O
+ queues
+Date: Thu, 22 Aug 2019 15:28:16 -0700
+Message-Id: <20190822222818.9845-3-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190822222818.9845-1-sagi@grimberg.me>
 References: <20190822222818.9845-1-sagi@grimberg.me>
@@ -51,58 +52,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This modifies the behavior of discovery subsystems to accept
-a kato as a preparation to support discovery log change
-events. This also means that now every discovery controller
-will have a default kato value, and for non-persistent connections
-the host needs to pass in a zero kato value (keep_alive_tmo=0).
+AENs in general are not related to the presence of I/O queues,
+so enable them regardless. Note that the only exception is that
+discovery controller will not support any of the requested AENs
+and nvme_enable_aen will respect that and return, so it is still
+safe to enable regardless.
 
-Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
-Reviewed-by: James Smart <james.smart@broadcom.com>
-Reviewed-by: Hannes Reinecke <hare@suse.com>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- drivers/nvme/host/fabrics.c | 12 ++----------
- 1 file changed, 2 insertions(+), 10 deletions(-)
+ drivers/nvme/host/core.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/nvme/host/fabrics.c b/drivers/nvme/host/fabrics.c
-index 1994d5b42f94..d0d066307bb4 100644
---- a/drivers/nvme/host/fabrics.c
-+++ b/drivers/nvme/host/fabrics.c
-@@ -381,8 +381,8 @@ int nvmf_connect_admin_queue(struct nvme_ctrl *ctrl)
- 	 * Set keep-alive timeout in seconds granularity (ms * 1000)
- 	 * and add a grace period for controller kato enforcement
- 	 */
--	cmd.connect.kato = ctrl->opts->discovery_nqn ? 0 :
--		cpu_to_le32((ctrl->kato + NVME_KATO_GRACE) * 1000);
-+	cmd.connect.kato = ctrl->kato ?
-+		cpu_to_le32((ctrl->kato + NVME_KATO_GRACE) * 1000) : 0;
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 2340fcfe8e8a..e25610996464 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -1195,6 +1195,8 @@ static void nvme_enable_aen(struct nvme_ctrl *ctrl)
+ 	if (status)
+ 		dev_warn(ctrl->device, "Failed to configure AEN (cfg %x)\n",
+ 			 supported_aens);
++
++	queue_work(nvme_wq, &ctrl->async_event_work);
+ }
  
- 	if (ctrl->opts->disable_sqflow)
- 		cmd.connect.cattr |= NVME_CONNECT_DISABLE_SQFLOW;
-@@ -738,13 +738,6 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
- 				pr_warn("keep_alive_tmo 0 won't execute keep alives!!!\n");
- 			}
- 			opts->kato = token;
--
--			if (opts->discovery_nqn && opts->kato) {
--				pr_err("Discovery controllers cannot accept KATO != 0\n");
--				ret = -EINVAL;
--				goto out;
--			}
--
- 			break;
- 		case NVMF_OPT_CTRL_LOSS_TMO:
- 			if (match_int(args, &token)) {
-@@ -865,7 +858,6 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
+ static int nvme_submit_io(struct nvme_ns *ns, struct nvme_user_io __user *uio)
+@@ -3770,10 +3772,10 @@ void nvme_start_ctrl(struct nvme_ctrl *ctrl)
+ 	if (ctrl->kato)
+ 		nvme_start_keep_alive(ctrl);
+ 
++	nvme_enable_aen(ctrl);
++
+ 	if (ctrl->queue_count > 1) {
+ 		nvme_queue_scan(ctrl);
+-		nvme_enable_aen(ctrl);
+-		queue_work(nvme_wq, &ctrl->async_event_work);
+ 		nvme_start_queues(ctrl);
  	}
- 
- 	if (opts->discovery_nqn) {
--		opts->kato = 0;
- 		opts->nr_io_queues = 0;
- 		opts->nr_write_queues = 0;
- 		opts->nr_poll_queues = 0;
+ }
 -- 
 2.17.1
 
