@@ -2,64 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8AE2E98FFA
-	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 11:49:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A34B099165
+	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 12:53:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:References:
+	In-Reply-To:Message-ID:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j16DK9TpqXYDpQWmoF2Dv0+GRN+6Wj4ZqT1zJfBh37o=; b=RaFYPxW1S3zz6C
-	BjG46AyCyr4gH9PCr3WnFxxSJxJAfOvWR6q6NyXIteH4L1N/IXvApI9d/tn4glZ6ar3CaYh04X4+J
-	bt2yLwIWy077N8ysAexUcNUSyGD97I6EsxrO0IsZphR/86ezrY8Ws8TYKNMFDAjCiuHWTSWXmDr5r
-	gP6AlucrxaOOj3fVHzOG0SEYTdJOSwHw/kyL3ABCZTW/fM/t5dO+RWok31rx7tOe977g2yuOrgoAz
-	GlylqsRog96YxJzcOnff2o9muHpOMmVLmLnCGrrmDmdg9+D0cY85vh0Gr8HX61Z3pC5IjfUMpSodj
-	fKJO0NwJ/IYug2Oe+nog==;
+	List-Owner; bh=j1ZZrpVsV5XdeJPJn0Cc49H+bN1WpPpRIddIcRvpX3s=; b=XgLO3cjB9kF1tn
+	Gr4Quj0lIUHBovcCS6c8prjoznolcOxi/n9zDbJ9iGNBCqaEn0OjqHz+UwjRAwqZSrZ9OucVbFu+I
+	8R5yd49TpfcRtfXwghT7tiiKYJXy+yemrC6cYr7j0iWe5m1cy6mAucgPc03qexmsIFFuk0Z1BICse
+	d8M649CSgewhDiRH2VgPF9WV7Q6nq/YlGRB2EqxcGuC5vPRy3eGr1Cl/Y8b/LsomnvXp8btVMZN9P
+	k7UY7nY4t0jZ9oOs7TLLKBirDxBsGnhm9nichMl2xxDOwKdpq3YGh0nHsq6kPsTqk66rH6jPKUR9P
+	XHvjHu+JI+viKt3TS/3Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0jiW-0000rC-Qy; Thu, 22 Aug 2019 09:49:17 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1i0kiT-000304-Cj; Thu, 22 Aug 2019 10:53:17 +0000
+Received: from zimbra2.kalray.eu ([92.103.151.219])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0jiA-0000pC-S0
- for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 09:48:56 +0000
-Received: from p5de0b6c5.dip0.t-ipconnect.de ([93.224.182.197] helo=nanos)
- by Galois.linutronix.de with esmtpsa (TLS1.2:DHE_RSA_AES_256_CBC_SHA256:256)
- (Exim 4.80) (envelope-from <tglx@linutronix.de>)
- id 1i0jhn-000790-5b; Thu, 22 Aug 2019 11:48:31 +0200
-Date: Thu, 22 Aug 2019 11:48:29 +0200 (CEST)
-From: Thomas Gleixner <tglx@linutronix.de>
-To: Keith Busch <keith.busch@gmail.com>
-Subject: Re: [PATCH 0/3] fix interrupt swamp in NVMe
-In-Reply-To: <CAOSXXT7LVjBqVW14y-pZyUCat3PBPd_nVd_uDahBdhyW+eHmcg@mail.gmail.com>
-Message-ID: <alpine.DEB.2.21.1908221143060.1983@nanos.tec.linutronix.de>
-References: <1566281669-48212-1-git-send-email-longli@linuxonhyperv.com>
- <CACVXFVPCiTU0mtXKS0fyMccPXN6hAdZNHv6y-f8-tz=FE=BV=g@mail.gmail.com>
- <fd7d6101-37f4-2d34-f2f7-cfeade610278@huawei.com>
- <CY4PR21MB0741D1CD295AD572548E61D1CEAA0@CY4PR21MB0741.namprd21.prod.outlook.com>
- <20190821094406.GA28391@ming.t460p>
- <CY4PR21MB07410E84C8C7C1D64BD7BF41CEAA0@CY4PR21MB0741.namprd21.prod.outlook.com>
- <20190822013356.GC28635@ming.t460p>
- <CAOSXXT7LVjBqVW14y-pZyUCat3PBPd_nVd_uDahBdhyW+eHmcg@mail.gmail.com>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+ id 1i0kiF-0002zj-4F
+ for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 10:53:04 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra2.kalray.eu (Postfix) with ESMTP id 4303027E65B3;
+ Thu, 22 Aug 2019 12:52:57 +0200 (CEST)
+Received: from zimbra2.kalray.eu ([127.0.0.1])
+ by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id gXEFEOPTfLHv; Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra2.kalray.eu (Postfix) with ESMTP id D2AFB27E65BE;
+ Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra2.kalray.eu D2AFB27E65BE
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kalray.eu;
+ s=32AE1B44-9502-11E5-BA35-3734643DEF29; t=1566471176;
+ bh=UonVEMHAoQtGvoWXN6MKA4LIqAMQjb5RHuEqBn/xFYM=;
+ h=Date:From:To:Message-ID:MIME-Version;
+ b=Kkq5RhhuxO/BVos28Pue6Jj0wZtmGdClXShB/fy7ZQdEJ9h7f3pQCOsJr8Ym5eSda
+ QOu25qFhBfcxYwET8g3X4SlXIxxZQGOA572IzxndYI5v5tdzAWgReqDQ2QbfL/iIxa
+ m3axLlbOD7qIkA/GMfPmBE31NoounwzHm013cf+s=
+X-Virus-Scanned: amavisd-new at zimbra2.kalray.eu
+Received: from zimbra2.kalray.eu ([127.0.0.1])
+ by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id rb7fczkU69AI; Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
+Received: from zimbra2.kalray.eu (zimbra2.kalray.eu [192.168.40.202])
+ by zimbra2.kalray.eu (Postfix) with ESMTP id BAB6F27E65B3;
+ Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
+Date: Thu, 22 Aug 2019 12:52:56 +0200 (CEST)
+From: Marta Rybczynska <mrybczyn@kalray.eu>
+To: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <283732915.57667901.1566471176686.JavaMail.zimbra@kalray.eu>
+In-Reply-To: <1492173308.27223699.1561477502288.JavaMail.zimbra@kalray.eu>
+References: <20190403230402.119428-1-bvanassche@acm.org>
+ <1554392625.118779.243.camel@acm.org>
+ <1035014818.27150671.1561441925414.JavaMail.zimbra@kalray.eu>
+ <7d28ee3d-0326-6d31-1cc6-13acc48e0d4d@acm.org>
+ <1492173308.27223699.1561477502288.JavaMail.zimbra@kalray.eu>
+Subject: Re: [PATCH] nvmet-rdma: Suppress a lockdep complaint
 MIME-Version: 1.0
-X-Linutronix-Spam-Score: -1.0
-X-Linutronix-Spam-Level: -
-X-Linutronix-Spam-Status: No , -1.0 points, 5.0 required, ALL_TRUSTED=-1,
- SHORTCIRCUIT=-0.0001
+X-Originating-IP: [192.168.40.202]
+X-Mailer: Zimbra 8.8.12_GA_3794 (ZimbraWebClient - FF57 (Linux)/8.8.12_GA_3794)
+Thread-Topic: nvmet-rdma: Suppress a lockdep complaint
+Thread-Index: P3j1iDAp70PbfYiWz9FntAbarrublNSYn0jQ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_024855_056027_A21DB390 
-X-CRM114-Status: GOOD (  17.77  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190822_035303_562801_70FA79E2 
+X-CRM114-Status: UNSURE (   8.35  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [2a0a:51c0:0:12e:550:0:0:1 listed in]
- [list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [92.103.151.219 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,59 +94,66 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- chenxiang <chenxiang66@hisilicon.com>, Peter Zijlstra <peterz@infradead.org>,
- Ming Lei <tom.leiming@gmail.com>, Long Li <longli@microsoft.com>,
- John Garry <john.garry@huawei.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>, Ming Lei <ming.lei@redhat.com>,
- Jens Axboe <axboe@fb.com>, Ingo Molnar <mingo@redhat.com>,
- Christoph Hellwig <hch@lst.de>,
- "longli@linuxonhyperv.com" <longli@linuxonhyperv.com>
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme <linux-nvme@lists.infradead.org>,
+ Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
+ Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, 21 Aug 2019, Keith Busch wrote:
-> On Wed, Aug 21, 2019 at 7:34 PM Ming Lei <ming.lei@redhat.com> wrote:
-> > On Wed, Aug 21, 2019 at 04:27:00PM +0000, Long Li wrote:
-> > > Here is the command to benchmark it:
-> > >
-> > > fio --bs=4k --ioengine=libaio --iodepth=128 --filename=/dev/nvme0n1:/dev/nvme1n1:/dev/nvme2n1:/dev/nvme3n1:/dev/nvme4n1:/dev/nvme5n1:/dev/nvme6n1:/dev/nvme7n1:/dev/nvme8n1:/dev/nvme9n1 --direct=1 --runtime=120 --numjobs=80 --rw=randread --name=test --group_reporting --gtod_reduce=1
-> > >
-> >
-> > I can reproduce the issue on one machine(96 cores) with 4 NVMes(32 queues), so
-> > each queue is served on 3 CPUs.
-> >
-> > IOPS drops > 20% when 'use_threaded_interrupts' is enabled. From fio log, CPU
-> > context switch is increased a lot.
+
+
+----- On 25 Jun, 2019, at 17:45, Marta Rybczynska mrybczyn@kalray.eu wrote:
+
+> ----- On 25 Jun, 2019, at 17:18, Bart Van Assche bvanassche@acm.org wrote:
 > 
-> Interestingly use_threaded_interrupts shows a marginal improvement on
-> my machine with the same fio profile. It was only 5 NVMes, but they've
-> one queue per-cpu on 112 cores.
+>> On 6/24/19 10:52 PM, Marta Rybczynska wrote:
+>>> ----- On 4 Apr, 2019, at 17:43, Bart Van Assche bvanassche@acm.org wrote:
+>>>> On Wed, 2019-04-03 at 16:04 -0700, Bart Van Assche wrote:
+>>>>> Although the code that waits for controllers that are being teared down
+>>>>> in nvmet_rdma_queue_connect() is fine, lockdep complains about that code.
+>>>>> Lockdep complains because all release_work instances are assigned the
+>>>>> same static lockdep key. Avoid that lockdep complains by using dynamic
+>>>>> lockdep keys instead of static lockdep keys. See also the following
+>>>>> commits:
+>>>>> * 87915adc3f0a ("workqueue: re-add lockdep dependencies for flushing").
+>>>>> * 777dc82395de ("nvmet-rdma: occasionally flush ongoing controller teardown").
+>>>>> * 108c14858b9e ("locking/lockdep: Add support for dynamic keys").
+>>>>>
+>>>>> This patch avoids that lockdep reports the following:
+>>>>>
+>>>>> ======================================================
+>>>>> WARNING: possible circular locking dependency detected
+>>>>> 4.19.0-dbg #1 Not tainted
+>>>>> ------------------------------------------------------
+>>>>> kworker/u12:0/7 is trying to acquire lock:
+>>>>
+>>>> Please drop this patch - it is not sufficient to suppress the lockdep complaint.
+>>>> I will see whether I can come up with a better solution.
+>>>>
+>>> 
+>>> Have you had time to work on this one further? We're seeing the same issue.
+>> 
+>> Hi Marta,
+>> 
+>> I'm running all NVMe tests on my setup with the attached patch applied.
+>> 
+>> Bart.
+> 
+> Thanks Bart! We're going to test it out in our setup and I let you know what
+> the result is.
+> 
 
-Which is not surprising because the thread and the hard interrupt are on
-the same CPU and there is just that little overhead of the context switch.
+Hello Bart,
+We've tested the patch and it makes disappear the lockdep warning. However,
+a new problem appears: there's a NULL pointer dereference in nvmet_rdma_release_queue_work
+in the condition of fast disconnects. The call trace is partially corrupted so not
+all data is available. Have you seen a similar issue?
 
-The thing is that this really depends on how the scheduler decides to place
-the interrupt thread.
-
-If you have a queue for several CPUs, then depending on the load situation
-allowing a multi-cpu affinity for the thread can cause lots of task
-migration.
-
-But restricting the irq thread to the CPU on which the interrupt is affine
-can also starve that CPU. There is no universal rule for that.
-
-Tracing should tell.
-
-Thanks,
-
-	tglx
-
-
-
+Regards,
+Marta
 
 _______________________________________________
 Linux-nvme mailing list
