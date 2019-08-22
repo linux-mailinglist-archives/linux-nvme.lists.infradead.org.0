@@ -2,141 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5250299680
-	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 16:27:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C1DEF998BE
+	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 18:05:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GonuH+QA/QRgTH+oqQy595n/ubEhiCOwb+S0nznQQUc=; b=lF0sFtxxMejRXM
-	oo8NmVzQFNo4AXUae/ghGSxtT+jdLD1D9ZpKI3GGy96hIaxi5L2K36G5CRVNXTYLz4wU1PQeCXj/Q
-	V5mxTaykYM99glgiS1e4ZtolzqEgOcaU1rp0fNGREWbsGeM3qt/ObDE9viZzQuR8miaskjq5vl2S+
-	YaDrHL/y2MIBceGSN2j7ibCI5vV4MI8quU1gTjh0h3dXiMsGa3+lYJgJaPeDqjBb8Yw59L9dxo9dJ
-	smpUQDsj4cciydUz/LHbuiZNqpqo0C80ULbVtoc/ThGLui8H5aC7LKcP6PxZz53p2FEBKVLaY1B5m
-	/WrV8BatNj2JTARQxuYQ==;
+	List-Owner; bh=tlAZPRJ52ekYsUOZD623Oc56x/EgLRRe+1M5ONYJiJ0=; b=r39pXIeFrnKh1d
+	o4V+QlKoU3RzVrAEAf+dBhKI5qQzrdKNHJIR+GHuo+i6z+UcTc8iL+n7yNZIL0fimSs5P+NMICYmp
+	Y3w28X4Vmhd4sjbC093TUoGKptjqEN5963Xi/gJNtizGwLQBivVnKhO58RJW8oEdg657zAz8W16mX
+	EcFSuaDCfibLf82bURGWPCcLDnjIO6uxWgN46OGz8Lqlyxkwj5E15UT4dSOclyzLLToTkuoAugC5u
+	ygFTnFgD0iStkTTgB4q38Lx2oaJWyZqAPaI2oHbyS60gwkZIbbjW5QTxO8j80ZFClBZcuH7RnieMw
+	qltmWUkhQAfECmSepHIA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0o3h-0004b8-Mm; Thu, 22 Aug 2019 14:27:25 +0000
-Received: from mx0a-00154904.pphosted.com ([148.163.133.20])
+	id 1i0paZ-00019O-EG; Thu, 22 Aug 2019 16:05:27 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0o3C-0004BG-Pr
- for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 14:26:56 +0000
-Received: from pps.filterd (m0170392.ppops.net [127.0.0.1])
- by mx0a-00154904.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x7MEPHmd015081; Thu, 22 Aug 2019 10:26:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=smtpout1;
- bh=FmL9CDk9hnTPvlmI6P53KKfaYoPl334imtUe7ptgRpU=;
- b=XLJtvoIyvsYgie2K0lLKeuqc73gDaQ0u9R34QE2tZ71T5leH1MHAEYPuJDQG/hlWK4aZ
- OF9ptpwB1JsGvNiCdMGPoPQ7jd2PBmAtjUBwcgVIcbwga7TWp7wZoq5dtVuaPKp+xvBp
- 18w2TLVjZ2FHKqB5ELHPTi9SjUJlRt8g+ogs4pgxOo+AoajjVsnH7Sjd2h6GmCsj52Wc
- 6Ybs06lUlVWf3Ut8WgrF3uaVxEt6/uneFgRHW7gVDf/hb6kY9NbmmGB9lXLYHy2y+HD9
- XgV5nNr542jHHXlmeuow6hVJwDV9wdQ+ntac5vzRMvVJZ+l4SkwnYJCQwwT7Zy628fH5 WA== 
-Received: from mx0a-00154901.pphosted.com (mx0a-00154901.pphosted.com
- [67.231.149.39])
- by mx0a-00154904.pphosted.com with ESMTP id 2uhuth8b3c-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 22 Aug 2019 10:26:39 -0400
-Received: from pps.filterd (m0134746.ppops.net [127.0.0.1])
- by mx0a-00154901.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x7MEO9m2151912; Thu, 22 Aug 2019 10:26:39 -0400
-Received: from mailuogwdur.emc.com (mailuogwdur.emc.com [128.221.224.79])
- by mx0a-00154901.pphosted.com with ESMTP id 2uhsy4aygd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 22 Aug 2019 10:26:39 -0400
-Received: from maildlpprd56.lss.emc.com (maildlpprd56.lss.emc.com
- [10.106.48.160])
- by mailuogwprd53.lss.emc.com (Sentrion-MTA-4.3.1/Sentrion-MTA-4.3.0) with
- ESMTP id x7MEPDqu028573
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Thu, 22 Aug 2019 10:26:37 -0400
-X-DKIM: OpenDKIM Filter v2.4.3 mailuogwprd53.lss.emc.com x7MEPDqu028573
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=emc.com; s=jan2013;
- t=1566483997; bh=5PJtR+BdkoHbQI3fmb1TsRAo/jM=;
- h=From:To:CC:Subject:Date:Message-ID:References:In-Reply-To:
- Content-Type:Content-Transfer-Encoding:MIME-Version;
- b=SYpDWxbTtjBaG5AVAEuGPhpgSTrCPbGbUt/F8OD8/mshYrn+UAzVAycJUqRtYoLLQ
- dC6RiFk63ykWZl/c8i0Zs6uJEN8cqFDH6l6ZtPgj84/wJu2ReUDHRDU6CidTl2RQCg
- 5abwXCnUr0fKpJHWtrQ/Coa3OsT/G0UDB/YrQwXI=
-Received: from mailusrhubprd51.lss.emc.com (mailusrhubprd51.lss.emc.com
- [10.106.48.24]) by maildlpprd56.lss.emc.com (RSA Interceptor);
- Thu, 22 Aug 2019 10:22:51 -0400
-Received: from MXHUB315.corp.emc.com (MXHUB315.corp.emc.com [10.146.3.93])
- by mailusrhubprd51.lss.emc.com (Sentrion-MTA-4.3.1/Sentrion-MTA-4.3.0) with
- ESMTP id x7MEMorc021087
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=FAIL);
- Thu, 22 Aug 2019 10:22:52 -0400
-Received: from MX302CL04.corp.emc.com ([fe80::18ad:6300:21eb:2b39]) by
- MXHUB315.corp.emc.com ([10.146.3.93]) with mapi id 14.03.0439.000; Thu, 22
- Aug 2019 10:22:50 -0400
-From: "Engel, Amit" <Amit.Engel@Dell.com>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: RE: [PATCH] nvme/target/admin-cmd.c: Fix a bug in
- 'nvmet_execute_get_log_page_error'
-Thread-Topic: [PATCH] nvme/target/admin-cmd.c: Fix a bug in
- 'nvmet_execute_get_log_page_error'
-Thread-Index: AQHVV+rhGH+z1ZJ98kqkpi+ZAD2lWKcGiGKAgAA23nCAAHpT0A==
-Date: Thu, 22 Aug 2019 14:22:49 +0000
-Message-ID: <8739B0CD2FC2DC40AF691A1CCBB9896034606E73@MX302CL04.corp.emc.com>
-References: <20190821063711.1252-1-amit.engel@dell.com>
- <20190821234559.GB27887@infradead.org>
- <8739B0CD2FC2DC40AF691A1CCBB9896034606D14@MX302CL04.corp.emc.com>
-In-Reply-To: <8739B0CD2FC2DC40AF691A1CCBB9896034606D14@MX302CL04.corp.emc.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Enabled=True;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_SiteId=945c199a-83a2-4e80-9f8c-5a91be5752dd;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Owner=Amit.Engel@emc.com;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_SetDate=2019-08-22T07:10:19.4121496Z;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Name=External Public;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Extended_MSFT_Method=Manual;
- aiplabel=External Public
-x-originating-ip: [10.76.81.143]
+ id 1i0paN-00018q-6I
+ for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 16:05:16 +0000
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Aug 2019 09:05:11 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,417,1559545200"; d="scan'208";a="181431201"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga003.jf.intel.com with ESMTP; 22 Aug 2019 09:05:09 -0700
+Date: Thu, 22 Aug 2019 10:03:12 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Ming Lei <ming.lei@redhat.com>
+Subject: Re: [PATCH V6 1/2] genirq/affinity: Improve
+ __irq_build_affinity_masks()
+Message-ID: <20190822160311.GA15264@localhost.localdomain>
+References: <20190819124937.9948-1-ming.lei@redhat.com>
+ <20190819124937.9948-2-ming.lei@redhat.com>
 MIME-Version: 1.0
-X-Sentrion-Hostname: mailusrhubprd51.lss.emc.com
-X-RSA-Classifications: public
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-08-22_09:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1906280000 definitions=main-1908220148
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1908220148
+Content-Disposition: inline
+In-Reply-To: <20190819124937.9948-2-ming.lei@redhat.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_072655_123379_83D3C076 
-X-CRM114-Status: GOOD (  15.49  )
-X-Spam-Score: -0.9 (/)
+X-CRM114-CacheID: sfid-20190822_090515_276004_78F39B31 
+X-CRM114-Status: GOOD (  22.85  )
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.9 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.133.20 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [134.134.136.100 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -148,57 +67,101 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "sagi@grimberg.me" <sagi@grimberg.me>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Cc: Jens Axboe <axboe@kernel.dk>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Christoph Hellwig <hch@lst.de>, "Derrick,
+ Jonathan" <jonathan.derrick@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-For example,
-when using a host with kernel version 4.14.54 and a target with kernel version 5.2.9:
+On Mon, Aug 19, 2019 at 05:49:36AM -0700, Ming Lei wrote:
+> One invariant of __irq_build_affinity_masks() is that all CPUs in the
+> specified masks( cpu_mask AND node_to_cpumask for each node) should be
+> covered during the spread. Even though all requested vectors have been
+> reached, we still need to spread vectors among remained CPUs. The similar
+> policy has been taken in case of 'numvecs <= nodes' already:
+> 
+> So remove the following check inside the loop:
+> 
+> 	if (done >= numvecs)
+> 		break;
+> 
+> Meantime assign at least 1 vector for remained nodes if 'numvecs' vectors
+> have been handled already.
+> 
+> Also, if the specified cpumask for one numa node is empty, simply not
+> spread vectors on this node.
+> 
+> Cc: Christoph Hellwig <hch@lst.de>
+> Cc: Keith Busch <kbusch@kernel.org>
+> Cc: linux-nvme@lists.infradead.org,
+> Cc: Jon Derrick <jonathan.derrick@intel.com>
+> Cc: Jens Axboe <axboe@kernel.dk>
+> Signed-off-by: Ming Lei <ming.lei@redhat.com>
 
-Host:
-[root@r-g0001-b ~]# uname -a
-Linux r-g0001-b.xiolab.lab.emc.com 4.14.54 #1 SMP Wed Jul 11 14:54:23 IDT 2018 x86_64 x86_64 x86_64 GNU/Linux 
-[root@r-g0001-b ~]# nvme error-log /dev/nvme8n1 -e 4
-NVMe Status:Unknown(600f)
+Looks good to me
 
-This is the case where nvmet_copy_to_sgl exceeds the request data_len
-The target driver is not protected from this case 
-
-Thanks,
-Amit
------Original Message-----
-From: Engel, Amit 
-Sent: Thursday, August 22, 2019 10:10 AM
-To: 'Christoph Hellwig'
-Cc: sagi@grimberg.me; linux-nvme@lists.infradead.org
-Subject: RE: [PATCH] nvme/target/admin-cmd.c: Fix a bug in 'nvmet_execute_get_log_page_error'
-
-Hi,
-
-With the current nvmet_execute_get_log_page_error implementation, I could not run successfully lid NVME_LOG_ERROR command without this check.
-
-(Of course this issue does not exist on kernel versions where the implementation is
-nvmet_execute_get_log_page_noop)
-
-Thanks,
-Amit
-
------Original Message-----
-From: Christoph Hellwig <hch@infradead.org>
-Sent: Thursday, August 22, 2019 2:46 AM
-To: Engel, Amit
-Cc: sagi@grimberg.me; linux-nvme@lists.infradead.org
-Subject: Re: [PATCH] nvme/target/admin-cmd.c: Fix a bug in 'nvmet_execute_get_log_page_error'
-
-
-[EXTERNAL EMAIL] 
-
-I don't think we should need this check.  nvmet_copy_to_sgl uses sg_pcopy_from_buffer to copy the buffer, which uses the SGL iterators to copy, and the SGL is build only for the range cover by data_len.
-
-Did you see an issue that prompted you to prepare this patch?  In that case we might have a problem in the data_len validation earlier on.
+Reviewed-by: Keith Busch <kbusch@kernel.org>
+ 
+> ---
+>  kernel/irq/affinity.c | 26 ++++++++++++++++++--------
+>  1 file changed, 18 insertions(+), 8 deletions(-)
+> 
+> diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
+> index 6fef48033f96..c7cca942bd8a 100644
+> --- a/kernel/irq/affinity.c
+> +++ b/kernel/irq/affinity.c
+> @@ -129,14 +129,26 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+>  	for_each_node_mask(n, nodemsk) {
+>  		unsigned int ncpus, v, vecs_to_assign, vecs_per_node;
+>  
+> -		/* Spread the vectors per node */
+> -		vecs_per_node = (numvecs - (curvec - firstvec)) / nodes;
+> -
+>  		/* Get the cpus on this node which are in the mask */
+>  		cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
+> -
+> -		/* Calculate the number of cpus per vector */
+>  		ncpus = cpumask_weight(nmsk);
+> +		if (!ncpus)
+> +			continue;
+> +
+> +		/*
+> +		 * Calculate the number of cpus per vector
+> +		 *
+> +		 * Spread the vectors evenly per node. If the requested
+> +		 * vector number has been reached, simply allocate one
+> +		 * vector for each remaining node so that all nodes can
+> +		 * be covered
+> +		 */
+> +		if (numvecs > done)
+> +			vecs_per_node = max_t(unsigned,
+> +					(numvecs - done) / nodes, 1);
+> +		else
+> +			vecs_per_node = 1;
+> +
+>  		vecs_to_assign = min(vecs_per_node, ncpus);
+>  
+>  		/* Account for rounding errors */
+> @@ -156,13 +168,11 @@ static int __irq_build_affinity_masks(unsigned int startvec,
+>  		}
+>  
+>  		done += v;
+> -		if (done >= numvecs)
+> -			break;
+>  		if (curvec >= last_affv)
+>  			curvec = firstvec;
+>  		--nodes;
+>  	}
+> -	return done;
+> +	return done < numvecs ? done : numvecs;
+>  }
+>  
+>  /*
+> -- 
 
 _______________________________________________
 Linux-nvme mailing list
