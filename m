@@ -2,80 +2,73 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0473D998F3
-	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 18:15:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 18D0899953
+	for <lists+linux-nvme@lfdr.de>; Thu, 22 Aug 2019 18:37:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:
-	In-Reply-To:Subject:To:From:References:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=w636YKrWATNXRZTmp7mySHswevDzO8Yo/sPOzQ5TDqU=; b=ocWsDzx8lcOfS/bFKtrOiNRqGD
-	P6jeVeHkOqmS9qv+JqGWxMj3W9RzLRyQzsaCiX/fZHoX47Cl36xvuqbnvDL9WMkRii2PVEd9qk4A8
-	Qup1TaW6pRLHp1EywRMaj8veGZUZzKDa8qD7K5NGm1VLRTBRsw/Qzu/m63GvYzlzi7BCQ7RicVxOW
-	/FEY2c/dwATviwxEneYTU2cj0sdyezqlY4mTPykWao7HyrMVxK1rQ5DN06vpvz0m8Dp1dQovJR3Ki
-	wreKFnWZdm5x806Wu+2+/M5jrAMCpZLFdrpX4PqlljRPz1SXFayc+bbSOx6ttlLvj0/FjuDYg+emt
-	xit8T08w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:In-Reply-To:References:Message-ID:Date:Subject:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=m1CcYnxUyI2KOce54zGy31PopusOdeq1MphZyZZ8bTI=; b=KapqkdLhGBxU8vLGt3yWgBRIL
+	dH+5uh0zmwFn4bycSXH1QHKCL3fkl6FW0ygx68rzh7BGawdiUcRLKTX4Lo8aEP4mZvj2CysjajdzC
+	vdZ69JonyaAcFJzI/TJ452iSPVxpTQN11BceQURXGDsLHrccBZUTpw96JLVSbEcaJBquVdbvJ5UlQ
+	8rd44uYOWR0NzS9qZ4Z6YFczrFml8Uo1xffohzi5K3XXbxAwoTLQPN6I3zDG7EbUhz/gqW51cEDpH
+	jXFapMakWDOpNYj1dreTJAz7MDJtlkkCdp6PYNu06ZWo31kzZTSDAqffDl4pfTzE9Z+ALwmSdKR3P
+	JWkJlysSQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i0pk0-0005V4-Of; Thu, 22 Aug 2019 16:15:12 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.52])
+	id 1i0q5I-00066V-9Z; Thu, 22 Aug 2019 16:37:12 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i0pjp-0004lr-Ts
- for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 16:15:04 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from webmail.solarflare.com (uk.solarflare.com [193.34.186.16])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mx1-us5.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id CF1A6800064;
- Thu, 22 Aug 2019 16:14:58 +0000 (UTC)
-Received: from linux-m89u (213.152.162.99) by ukex01.SolarFlarecom.com
- (10.17.10.4) with Microsoft SMTP Server (TLS) id 15.0.1395.4; Thu, 22 Aug
- 2019 17:14:53 +0100
-References: <396d507f9a0e312998bd6805b151ab166f53a5be.1566290451.git.mskorzhinskiy@solarflare.com>
- <20190822000939.GG9511@lst.de>
- <acaf9334-3c5c-8f25-d436-0c87e94a6064@grimberg.me>
- <20190822003549.GH10391@lst.de>
- <43b9eeab-9e5b-e5c3-235f-d2d050886d28@grimberg.me>
- <bf77e846-b319-0d6e-ece6-812257f33d57@suse.de>
-User-agent: mu4e 1.3.3; emacs 26.2
-From: Mikhail Skorzhinskii <mskorzhinskiy@solarflare.com>
-To: Hannes Reinecke <hare@suse.de>
-Subject: Re: [PATCH v3] nvme: exclude completion trace from non-multipath
- builds
-In-Reply-To: <bf77e846-b319-0d6e-ece6-812257f33d57@suse.de>
-Date: Thu, 22 Aug 2019 18:14:38 +0200
-Message-ID: <877e75b2j5.fsf@solarflare.com>
+ id 1i0q4v-0005w9-68
+ for linux-nvme@lists.infradead.org; Thu, 22 Aug 2019 16:36:50 +0000
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Aug 2019 09:36:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,417,1559545200"; 
+ d="p7s'?scan'208";a="354341778"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by orsmga005.jf.intel.com with ESMTP; 22 Aug 2019 09:36:43 -0700
+Received: from orsmsx151.amr.corp.intel.com (10.22.226.38) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 22 Aug 2019 09:36:42 -0700
+Received: from orsmsx101.amr.corp.intel.com ([169.254.8.119]) by
+ ORSMSX151.amr.corp.intel.com ([169.254.7.126]) with mapi id 14.03.0439.000;
+ Thu, 22 Aug 2019 09:36:41 -0700
+From: "Derrick, Jonathan" <jonathan.derrick@intel.com>
+To: "tglx@linutronix.de" <tglx@linutronix.de>, "ming.lei@redhat.com"
+ <ming.lei@redhat.com>
+Subject: Re: [PATCH V6 1/2] genirq/affinity: Improve
+ __irq_build_affinity_masks()
+Thread-Topic: [PATCH V6 1/2] genirq/affinity: Improve
+ __irq_build_affinity_masks()
+Thread-Index: AQHVVoyXSSHMG0yuVEiM4kiGoF5Ew6cH18sA
+Date: Thu, 22 Aug 2019 16:36:40 +0000
+Message-ID: <ae67d6d6d5413caa6bfd85a9cf636bba293122da.camel@intel.com>
+References: <20190819124937.9948-1-ming.lei@redhat.com>
+ <20190819124937.9948-2-ming.lei@redhat.com>
+In-Reply-To: <20190819124937.9948-2-ming.lei@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.232.115.165]
 MIME-Version: 1.0
-X-Originating-IP: [213.152.162.99]
-X-ClientProxiedBy: ocex03.SolarFlarecom.com (10.20.40.36) To
- ukex01.SolarFlarecom.com (10.17.10.4)
-X-TM-AS-Product-Ver: SMEX-12.5.0.1300-8.5.1010-24862.003
-X-TM-AS-Result: No-10.151200-8.000000-10
-X-TMASE-MatchedRID: vEvJ7Rh1lGj/CzUA+zbGoX4neC0h7SADui/Hcpfcv4RNEl8XeFvcyARj
- Z4/TzBlySqdra4WWujyPQi9XuOWoOHsC/8Evf2rH3uJKJF9BC8Hbjtx2Oq4XgxEqDoFrIK+yBRJ
- xFlc4Hm6ceOSXXTgbyzFb7uNzVxse56XkomU2m5X805SSvoAPNwRryDXHx6oXbjk25GcDBTydJY
- S4rHLiE33F7VdAUmCxm3v9ylNOkXfmLzc6AOD8DRlJRfzNw8afQZpQRfyCdHwlGJOB7ohzXgTs3
- gCe8NQ12DG51ViG2DMFTm8V5bDmCWG/iPOyVtTisyNb+yeIRAqm8MsuWwAf/bgVXMjBNuBVPJS1
- u+pP82yLsgzFbV1LOjSmO/5/XWpThCRKR4G8ioyrm7DrUlmNkF+24nCsUSFNjaPj0W1qn0TKayT
- /BQTiGrkHm4uaNBC1cnv9dWpRf1YRqcrgsLJFLF0k8ytFFxC8UFAHXQGuWpE=
-X-TM-AS-User-Approved-Sender: Yes
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.151200-8.000000
-X-TMASE-Version: SMEX-12.5.0.1300-8.5.1010-24862.003
-X-MDID: 1566490499-liVUPrIk20Ty
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190822_091502_124209_B4242EBA 
-X-CRM114-Status: GOOD (  17.96  )
-X-Spam-Score: -0.7 (/)
+X-CRM114-CacheID: sfid-20190822_093649_272236_086CD843 
+X-CRM114-Status: GOOD (  25.01  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.7 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [134.134.136.126 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [148.163.129.52 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -88,65 +81,187 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "kbusch@kernel.org" <kbusch@kernel.org>,
+ "axboe@kernel.dk" <axboe@kernel.dk>, "hch@lst.de" <hch@lst.de>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: multipart/mixed; boundary="===============8310088621498832725=="
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T0sgdGhlbiBJIHdpbGwgbm90IGJvdGhlciBteXNlbGYgd2l0aCB0aGlzLiBJIGhhdmUgYSBwYXRj
-aCBidXQgSSBkaWQgbm90CmhhdmUgdGltZSB0byB0ZXN0IGl0IHlldC4KCkF0dGFjaGluZyBpdCB0
-byB0aGUgbGV0dGVyIGluIGNhc2UgaXQgaXMgaGVscGZ1bC4KCmRpZmYgLS1naXQgYS9kcml2ZXJz
-L252bWUvaG9zdC9jb3JlLmMgYi9kcml2ZXJzL252bWUvaG9zdC9jb3JlLmMKaW5kZXggZGFiMzJk
-OTJlOTg4Li45OGNjNDU3ZDE0NjEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbnZtZS9ob3N0L2NvcmUu
-YworKysgYi9kcml2ZXJzL252bWUvaG9zdC9jb3JlLmMKQEAgLTIyLDEyICsyMiwxMiBAQAogI2lu
-Y2x1ZGUgPGxpbnV4L3BtX3Fvcy5oPgogI2luY2x1ZGUgPGFzbS91bmFsaWduZWQuaD4KCi0jZGVm
-aW5lIENSRUFURV9UUkFDRV9QT0lOVFMKLSNpbmNsdWRlICJ0cmFjZS5oIgotCiAjaW5jbHVkZSAi
-bnZtZS5oIgogI2luY2x1ZGUgImZhYnJpY3MuaCIKCisjZGVmaW5lIENSRUFURV9UUkFDRV9QT0lO
-VFMKKyNpbmNsdWRlICJ0cmFjZS5oIgorCiAjZGVmaW5lIE5WTUVfTUlOT1JTCQkoMVUgPDwgTUlO
-T1JCSVRTKQoKIHVuc2lnbmVkIGludCBhZG1pbl90aW1lb3V0ID0gNjA7CkBAIC0yODEsNiArMjgx
-LDggQEAgdm9pZCBudm1lX2NvbXBsZXRlX3JxKHN0cnVjdCByZXF1ZXN0ICpyZXEpCiAJCQlyZXR1
-cm47CiAJCX0KIAl9CisKKwludm1lX3RyYWNlX2Jpb19jb21wbGV0ZShyZXEsIHN0YXR1cyk7CiAJ
-YmxrX21xX2VuZF9yZXF1ZXN0KHJlcSwgc3RhdHVzKTsKIH0KIEVYUE9SVF9TWU1CT0xfR1BMKG52
-bWVfY29tcGxldGVfcnEpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9udm1lL2hvc3QvbnZtZS5oIGIv
-ZHJpdmVycy9udm1lL2hvc3QvbnZtZS5oCmluZGV4IGViNWZiZWU2YjQxMy4uNGZiNDc3ZmNlYzMz
-IDEwMDY0NAotLS0gYS9kcml2ZXJzL252bWUvaG9zdC9udm1lLmgKKysrIGIvZHJpdmVycy9udm1l
-L2hvc3QvbnZtZS5oCkBAIC0xNiw2ICsxNiw4IEBACiAjaW5jbHVkZSA8bGludXgvZmF1bHQtaW5q
-ZWN0Lmg+CiAjaW5jbHVkZSA8bGludXgvcmN1cGRhdGUuaD4KCisjaW5jbHVkZSA8dHJhY2UvZXZl
-bnRzL2Jsb2NrLmg+CisKIGV4dGVybiB1bnNpZ25lZCBpbnQgbnZtZV9pb190aW1lb3V0OwogI2Rl
-ZmluZSBOVk1FX0lPX1RJTUVPVVQJKG52bWVfaW9fdGltZW91dCAqIEhaKQoKQEAgLTUzNSw2ICs1
-MzcsMTYgQEAgc3RhdGljIGlubGluZSB2b2lkIG52bWVfbXBhdGhfY2hlY2tfbGFzdF9wYXRoKHN0
-cnVjdCBudm1lX25zICpucykKIAkJa2Jsb2NrZF9zY2hlZHVsZV93b3JrKCZoZWFkLT5yZXF1ZXVl
-X3dvcmspOwogfQoKK3N0YXRpYyBpbmxpbmUgdm9pZCBudm1lX3RyYWNlX2Jpb19jb21wbGV0ZShz
-dHJ1Y3QgcmVxdWVzdCAqcmVxLAorCQkJCQkgICBibGtfc3RhdHVzX3Qgc3RhdHVzKQoreworCXN0
-cnVjdCBudm1lX25zICpucyA9IHJlcS0+cS0+cXVldWVkYXRhOworCisJaWYgKHJlcS0+YmlvICYm
-IHJlcS0+Y21kX2ZsYWdzICYgUkVRX05WTUVfTVBBVEgpCisJCXRyYWNlX2Jsb2NrX2Jpb19jb21w
-bGV0ZShucy0+aGVhZC0+ZGlzay0+cXVldWUsCisJCQkJCSByZXEtPmJpbywgc3RhdHVzKTsKK30K
-KwogZXh0ZXJuIHN0cnVjdCBkZXZpY2VfYXR0cmlidXRlIGRldl9hdHRyX2FuYV9ncnBpZDsKIGV4
-dGVybiBzdHJ1Y3QgZGV2aWNlX2F0dHJpYnV0ZSBkZXZfYXR0cl9hbmFfc3RhdGU7CiBleHRlcm4g
-c3RydWN0IGRldmljZV9hdHRyaWJ1dGUgc3Vic3lzX2F0dHJfaW9wb2xpY3k7CkBAIC02MDUsNiAr
-NjE3LDEwIEBAIHN0YXRpYyBpbmxpbmUgdm9pZCBudm1lX21wYXRoX3dhaXRfZnJlZXplKHN0cnVj
-dCBudm1lX3N1YnN5c3RlbSAqc3Vic3lzKQogc3RhdGljIGlubGluZSB2b2lkIG52bWVfbXBhdGhf
-c3RhcnRfZnJlZXplKHN0cnVjdCBudm1lX3N1YnN5c3RlbSAqc3Vic3lzKQogewogfQorc3RhdGlj
-IGlubGluZSB2b2lkIG52bWVfdHJhY2VfYmlvX2NvbXBsZXRlKHN0cnVjdCByZXF1ZXN0ICpyZXEs
-CisJCQkJCSAgIGJsa19zdGF0dXNfdCBzdGF0dXMpCit7Cit9CiAjZW5kaWYgLyogQ09ORklHX05W
-TUVfTVVMVElQQVRIICovCgogI2lmZGVmIENPTkZJR19OVk0KCgpIYW5uZXMgUmVpbmVja2UgPGhh
-cmVAc3VzZS5kZT4gd3JpdGVzOgoKID4gT24gOC8yMi8xOSAzOjA1IEFNLCBTYWdpIEdyaW1iZXJn
-IHdyb3RlOgogPiA+CiA+ID4+Pj4gQnR3LCBJIGFsc28gdGhpbmsgd2Ugc2hvdWxkIHByb2JhYmx5
-IHB1bGwgdGhlIG9yaWdpbmFsIHBhdGNoCiA+ID4+Pj4gZnJvbSBIYW5uZXMgYW5kIGp1c3QgYXBw
-bHkgYSBjbGVhbiBvbmUgZ2l2ZW4gdGhhdCB0aGlzIGlzIGp1c3QgcXVldWVkCiA+ID4+Pj4gdXAg
-aW4gbnZtZS01LjQuCiA+ID4+PgogPiA+Pj4gVGhvdWdodCBhYm91dCBpdCB0b28uLi4gSSBjYW4g
-Zm9sZCBpdCBpbnRvIEhhbm5lcyBwYXRjaC4KID4gPj4KID4gPj4gSSdkIHNheSBsZXQgTWlraGFp
-bCBvciBIYW5uZXMgcmVzZW5kIGEgbmV3IG9uZSBhZ2FpbnN0IGEgY2xlYW4gc3RhdGUKID4gPj4g
-d2l0aCBhbGwgdGhlIHJlcXVlc3RlZCBpbXByb3ZlbWVudHMuCiA+ID4KID4gPiBNaWtoYWlsL0hh
-bm5lcywgY2FyZSB0byBzZW5kIG9uZSBwYXRjaCB0byByZXBsYWNlIGJvdGg/CiA+CiA+IFllcywg
-SSdsbCBiZSBzZW5kaW5nIGEgcmVwbGFjZW1lbnQuCiA+CiA+IENoZWVycywKID4KID4gSGFubmVz
-CiA+IC0tCiA+IERyLiBIYW5uZXMgUmVpbmVja2UJCSAgIFRlYW1sZWFkIFN0b3JhZ2UgJiBOZXR3
-b3JraW5nCiA+IGhhcmVAc3VzZS5kZQkJCSAgICAgICAgICAgICAgICs0OSA5MTEgNzQwNTMgNjg4
-CiA+IFNVU0UgTElOVVggR21iSCwgTWF4ZmVsZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnCiA+IEdG
-OiBGZWxpeCBJbWVuZMO2cmZmZXIsIE1hcnkgSGlnZ2lucywgU3JpIFJhc2lhaAogPiBIUkIgMjEy
-ODQgKEFHIE7DvHJuYmVyZykKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LW52bWUgbWFpbGluZyBsaXN0CkxpbnV4LW52bWVAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LW52bWUK
+--===============8310088621498832725==
+Content-Language: en-US
+Content-Type: multipart/signed; micalg=sha-1;
+	protocol="application/x-pkcs7-signature"; boundary="=-X3B5ZXc0QmFpb3+WmCQU"
+
+--=-X3B5ZXc0QmFpb3+WmCQU
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+lgtm
+
+Reviewed-by: Jon Derrick <jonathan.derrick@intel.com>
+
+On Mon, 2019-08-19 at 20:49 +0800, Ming Lei wrote:
+> One invariant of __irq_build_affinity_masks() is that all CPUs in the
+> specified masks( cpu_mask AND node_to_cpumask for each node) should be
+> covered during the spread. Even though all requested vectors have been
+> reached, we still need to spread vectors among remained CPUs. The similar
+> policy has been taken in case of 'numvecs <=3D nodes' already:
+>=20
+> So remove the following check inside the loop:
+>=20
+> 	if (done >=3D numvecs)
+> 		break;
+>=20
+> Meantime assign at least 1 vector for remained nodes if 'numvecs' vectors
+> have been handled already.
+>=20
+> Also, if the specified cpumask for one numa node is empty, simply not
+> spread vectors on this node.
+>=20
+> Cc: Christoph Hellwig <hch@lst.de>
+> Cc: Keith Busch <kbusch@kernel.org>
+> Cc: linux-nvme@lists.infradead.org,
+> Cc: Jon Derrick <jonathan.derrick@intel.com>
+> Cc: Jens Axboe <axboe@kernel.dk>
+> Signed-off-by: Ming Lei <ming.lei@redhat.com>
+> ---
+>  kernel/irq/affinity.c | 26 ++++++++++++++++++--------
+>  1 file changed, 18 insertions(+), 8 deletions(-)
+>=20
+> diff --git a/kernel/irq/affinity.c b/kernel/irq/affinity.c
+> index 6fef48033f96..c7cca942bd8a 100644
+> --- a/kernel/irq/affinity.c
+> +++ b/kernel/irq/affinity.c
+> @@ -129,14 +129,26 @@ static int __irq_build_affinity_masks(unsigned int =
+startvec,
+>  	for_each_node_mask(n, nodemsk) {
+>  		unsigned int ncpus, v, vecs_to_assign, vecs_per_node;
+> =20
+> -		/* Spread the vectors per node */
+> -		vecs_per_node =3D (numvecs - (curvec - firstvec)) / nodes;
+> -
+>  		/* Get the cpus on this node which are in the mask */
+>  		cpumask_and(nmsk, cpu_mask, node_to_cpumask[n]);
+> -
+> -		/* Calculate the number of cpus per vector */
+>  		ncpus =3D cpumask_weight(nmsk);
+> +		if (!ncpus)
+> +			continue;
+> +
+> +		/*
+> +		 * Calculate the number of cpus per vector
+> +		 *
+> +		 * Spread the vectors evenly per node. If the requested
+> +		 * vector number has been reached, simply allocate one
+> +		 * vector for each remaining node so that all nodes can
+> +		 * be covered
+> +		 */
+> +		if (numvecs > done)
+> +			vecs_per_node =3D max_t(unsigned,
+> +					(numvecs - done) / nodes, 1);
+> +		else
+> +			vecs_per_node =3D 1;
+> +
+>  		vecs_to_assign =3D min(vecs_per_node, ncpus);
+> =20
+>  		/* Account for rounding errors */
+> @@ -156,13 +168,11 @@ static int __irq_build_affinity_masks(unsigned int =
+startvec,
+>  		}
+> =20
+>  		done +=3D v;
+> -		if (done >=3D numvecs)
+> -			break;
+>  		if (curvec >=3D last_affv)
+>  			curvec =3D firstvec;
+>  		--nodes;
+>  	}
+> -	return done;
+> +	return done < numvecs ? done : numvecs;
+>  }
+> =20
+>  /*
+
+--=-X3B5ZXc0QmFpb3+WmCQU
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+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
+PNauajAtxgRKfqfSMb+IcL/VXiPtVZOxVq+CTZeDJkaEmn/79vg8OYxpR+YhFF+tGlKf/Zc4id1P
+AgMBAAGjggI3MIICMzAdBgNVHQ4EFgQU4oawcWXM1cPGdwGcIszDfjORVZAwHwYDVR0jBBgwFoAU
+HmkqtNwo/kcYTiELP7ysES/wmPUwZQYDVR0fBF4wXDBaoFigVoZUaHR0cDovL3d3dy5pbnRlbC5j
+b20vcmVwb3NpdG9yeS9DUkwvSW50ZWwlMjBFeHRlcm5hbCUyMEJhc2ljJTIwSXNzdWluZyUyMENB
+JTIwNEEuY3JsMIGfBggrBgEFBQcBAQSBkjCBjzBpBggrBgEFBQcwAoZdaHR0cDovL3d3dy5pbnRl
+bC5jb20vcmVwb3NpdG9yeS9jZXJ0aWZpY2F0ZXMvSW50ZWwlMjBFeHRlcm5hbCUyMEJhc2ljJTIw
+SXNzdWluZyUyMENBJTIwNEEuY3J0MCIGCCsGAQUFBzABhhZodHRwOi8vb2NzcC5pbnRlbC5jb20v
+MAsGA1UdDwQEAwIHgDA8BgkrBgEEAYI3FQcELzAtBiUrBgEEAYI3FQiGw4x1hJnlUYP9gSiFjp9T
+gpHACWeB3r05lfBDAgFkAgEJMB8GA1UdJQQYMBYGCCsGAQUFBwMEBgorBgEEAYI3CgMMMCkGCSsG
+AQQBgjcVCgQcMBowCgYIKwYBBQUHAwQwDAYKKwYBBAGCNwoDDDBRBgNVHREESjBIoCoGCisGAQQB
+gjcUAgOgHAwaam9uYXRoYW4uZGVycmlja0BpbnRlbC5jb22BGmpvbmF0aGFuLmRlcnJpY2tAaW50
+ZWwuY29tMA0GCSqGSIb3DQEBBQUAA4IBAQBxGkHe05DNpYel4b9WbbyQqD1G6y6YA6C93TjKULZi
+p8+gO1LL096ixD44+frVm3jtXMikoadRHQJmBJdzsCywNE1KgtrYF0k4zRWr7a28nyfGgQe4UHHD
+7ARyZFeGd7AKSQ1y4/LU57I2Aw2HKx9/PXavv1JXjjO2/bqTfnZDJTQmOQ0nvlO3/gvbbABxZHqz
+NtfHZsQWS7s+Elk2xGUQ0Po2pMCQoaPo9R96mm+84UP9q3OvSqMoaZwfzoUeAx2wGJYl0h3S+ABr
+CPVfCgq9qnmVCn5DyHWE3V/BRjJCoILLBLxAxnmSdH4pF6wJ6pYRLEw9qoyNhpzGUIJU/Lk1MYIC
+FzCCAhMCAQEwgZAweTELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRQwEgYDVQQHEwtTYW50YSBD
+bGFyYTEaMBgGA1UEChMRSW50ZWwgQ29ycG9yYXRpb24xKzApBgNVBAMTIkludGVsIEV4dGVybmFs
+IEJhc2ljIElzc3VpbmcgQ0EgNEECEzMAAMamAkocC+WQNPgAAAAAxqYwCQYFKw4DAhoFAKBdMBgG
+CSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE5MDgyMjE2MzY0MFowIwYJ
+KoZIhvcNAQkEMRYEFCKtoy3unSPoYcQZuDjVBGWR37rUMA0GCSqGSIb3DQEBAQUABIIBADSSaP2j
+UHaKxIb8hP+y+h9HjyYRFroLVnxvT+7ZZcS5iK13V7OV9zrGKV1HDRIplh5YFabfgIlAw5r2aZNo
+OeaHlJMd0dX3xZQ7riQGDDf0trPtAdLcu9P47jhMo5x0aSEbT0RfNhS6WOQPhXAA+bPqci408FKX
+MDsJpTK3PmIDUPuirsE5Pmkx2vDHOTok+pKuKHDSN+uRQ6gO8YsCgyuKJyU8Hy/KuJaEtft/d8C3
+wjx4e/yxwWObMbs7ZtErMjv7e2HoI39NdjzKzPjv7rHSm9Cn1HmWh0KyMZ028TSd2MvPSxViaBi1
+FW5K7jkzpklr9uclRkA7SZLy6fEzbtYAAAAAAAA=
+
+
+--=-X3B5ZXc0QmFpb3+WmCQU--
+
+
+--===============8310088621498832725==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-nvme mailing list
+Linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
+
+--===============8310088621498832725==--
+
