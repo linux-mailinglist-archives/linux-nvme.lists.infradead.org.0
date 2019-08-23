@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D7F59A74D
-	for <lists+linux-nvme@lfdr.de>; Fri, 23 Aug 2019 07:56:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 05C499A747
+	for <lists+linux-nvme@lfdr.de>; Fri, 23 Aug 2019 07:55:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,25 +11,26 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=u8fEsU3mkXPHZvYufgZ8lrPRbwzV1O9Ut06Dd/fNa50=; b=KjT/ItZNcPRsuIh78LS3/Puy3C
-	U0XOejlrKYYJG50O4Q+wl19AYSTjIg2ld4TXksqn4N/GoRV5yKfMURauW52TO/Hpe0CZjNJoyQ+Ez
-	USAglKBr28/g1DCmvPgjUqSRtKBnbmgRSGf6LMlJGscEhpeDttUtn7FcCmE7VORghWfmFyHx/BWMO
-	cp4xRX9bFhy1FmmVxaQgIYaTHbmoCEFW22ygRWzq4pceoXoQxM1MOUC7daTcdcId3TW57SrPe14qs
-	grm3va9tAUQC/R0LYF8PCXFG0jPTI40prWKF0JPpiBWGlLjSOowfDlGwehsjqb9k83kSwW///Ziva
-	rDturdnw==;
+	bh=OK/EfDsZF86owcOhi3smX3GJUAN6C5dYVo2C4uR5gyM=; b=YE7LWgRY8hocD8Rc9YK8+bK/Ls
+	kAqvFzaI7k9GjJnX49xbb4lAFHbY6ytclvuEq+tOzJMrAvyhG26ft+mLvKm6o2X8+vmR2mZCNU7/r
+	2QJqG3e/X3njV4RogAIGu70RMkv8+YdLDfsUe1UQYcNj93UUkytjTX8hwCN8Fk4eZ15QUFggEfxy/
+	wvIPBK23vGjIrG8v4kme5HXZyh6QFhwrg9WjZ8Rcwx5YyJHy2ise9zJz33XHXVvh5tRVJGAR90RhW
+	FCfdCIJZTXYmzuxoCKWAclBIh2uQh5saRzaPcDWPff8ka7Hx5kNiDdok01Hvwme87A/FW9cSkL9g6
+	mjXoHgJg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i12Yz-0006OB-7D; Fri, 23 Aug 2019 05:56:41 +0000
+	id 1i12Xj-0004eL-AI; Fri, 23 Aug 2019 05:55:23 +0000
 Received: from [2601:647:4800:973f:7c34:e13b:6185:5c2a]
  (helo=bombadil.infradead.org)
  by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1i12X8-0004dE-Vz; Fri, 23 Aug 2019 05:54:47 +0000
+ id 1i12X9-0004dE-4a; Fri, 23 Aug 2019 05:54:47 +0000
 From: Sagi Grimberg <sagi@grimberg.me>
 To: linux-nvme@lists.infradead.org,
 	Christoph Hellwig <hch@lst.de>
-Subject: [PATCH v8 6/7] block_dev: split disk size check out of revalidate_disk
-Date: Thu, 22 Aug 2019 22:54:41 -0700
-Message-Id: <20190823055442.19148-7-sagi@grimberg.me>
+Subject: [PATCH v8 7/7] nvme: fix ns removal hang when failing to revalidate
+ due to a transient error
+Date: Thu, 22 Aug 2019 22:54:42 -0700
+Message-Id: <20190823055442.19148-8-sagi@grimberg.me>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190823055442.19148-1-sagi@grimberg.me>
 References: <20190823055442.19148-1-sagi@grimberg.me>
@@ -52,77 +53,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Allow callers to call separately the ->revalidate_disk()
-callout and the disk size change check separately. This
-will help the caller to take action based on the return
-status of ->revalidate_disk() and run the disk size check
-afterwards.
+If a controller reset is racing with a namespace revalidation, the
+revalidation (admin) I/O will surely fail, but we should not remove the
+namespace as we will execute the I/O when the controller is back up.
+Same for spurious allocation errors (return -ENOMEM).
 
+Fix this by checking the specific error code that revalidate_disk
+returns, and if it is a transient error (for example NVME_SC_HOST_PATH_ERROR
+for temporary transport error or ENOMEM as allocation failure), do not remove
+the namespace as it will either recover when the controller is back up and
+schedule a subsequent scan, or the controller is going away and the namespaces
+will be removed anyways.
+
+This fixes a hang namespace scanning racing with a controller reset and
+also sporious I/O errors in path failover coditions where the
+controller reset is racing with the namespace scan work with multipath
+enabled.
+
+Reported-by: Hannes Reinecke  <hare@suse.de>
+Reviewed-by: Hannes Reinecke <hare@suse.com>
+Reviewed-by: James Smart <james.smart@broadcom.com>
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- fs/block_dev.c     | 29 +++++++++++++++++------------
- include/linux/fs.h |  1 +
- 2 files changed, 18 insertions(+), 12 deletions(-)
+ drivers/nvme/host/core.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
 
-diff --git a/fs/block_dev.c b/fs/block_dev.c
-index 677cb364d33f..c43aee9b3335 100644
---- a/fs/block_dev.c
-+++ b/fs/block_dev.c
-@@ -1439,6 +1439,21 @@ void check_disk_size_change(struct gendisk *disk, struct block_device *bdev,
- 	}
- }
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index a90d05598fc8..305fcd1d8a96 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -3456,8 +3456,19 @@ static void nvme_validate_ns(struct nvme_ctrl *ctrl, unsigned nsid)
  
-+void check_disk_size(struct gendisk *disk, bool verbose)
-+{
-+	struct block_device *bdev = bdget_disk(disk, 0);
+ 	ns = nvme_find_get_ns(ctrl, nsid);
+ 	if (ns) {
+-		if (ns->disk && revalidate_disk(ns->disk))
+-			nvme_ns_remove(ns);
++		if (ns->disk) {
++			int ret = nvme_revalidate_disk(ns->disk);
 +
-+	if (!bdev)
-+		return;
++			/*
++			 * remove the ns only if the return status is
++			 * not a temporal execution error.
++			 */
++			if (ret && ret != -ENOMEM &&
++			    ret != NVME_SC_HOST_PATH_ERROR)
++				nvme_ns_remove(ns);
 +
-+	mutex_lock(&bdev->bd_mutex);
-+	check_disk_size_change(disk, bdev, verbose);
-+	bdev->bd_invalidated = 0;
-+	mutex_unlock(&bdev->bd_mutex);
-+	bdput(bdev);
-+}
-+EXPORT_SYMBOL_GPL(check_disk_size);
-+
- /**
-  * revalidate_disk - wrapper for lower-level driver's revalidate_disk call-back
-  * @disk: struct gendisk to be revalidated
-@@ -1458,18 +1473,8 @@ int revalidate_disk(struct gendisk *disk)
- 	 * Hidden disks don't have associated bdev so there's no point in
- 	 * revalidating it.
- 	 */
--	if (!(disk->flags & GENHD_FL_HIDDEN)) {
--		struct block_device *bdev = bdget_disk(disk, 0);
--
--		if (!bdev)
--			return ret;
--
--		mutex_lock(&bdev->bd_mutex);
--		check_disk_size_change(disk, bdev, ret == 0);
--		bdev->bd_invalidated = 0;
--		mutex_unlock(&bdev->bd_mutex);
--		bdput(bdev);
--	}
-+	if (!(disk->flags & GENHD_FL_HIDDEN))
-+		check_disk_size(disk, ret == 0);
- 	return ret;
- }
- EXPORT_SYMBOL(revalidate_disk);
-diff --git a/include/linux/fs.h b/include/linux/fs.h
-index 997a530ff4e9..6649ad157317 100644
---- a/include/linux/fs.h
-+++ b/include/linux/fs.h
-@@ -2679,6 +2679,7 @@ extern bool is_bad_inode(struct inode *);
- extern void check_disk_size_change(struct gendisk *disk,
- 		struct block_device *bdev, bool verbose);
- extern int revalidate_disk(struct gendisk *);
-+extern void check_disk_size(struct gendisk *disk, bool verbose);
- extern int check_disk_change(struct block_device *);
- extern int __invalidate_device(struct block_device *, bool);
- extern int invalidate_partition(struct gendisk *, int);
++			check_disk_size(ns->disk, true);
++		}
+ 		nvme_put_ns(ns);
+ 	} else
+ 		nvme_alloc_ns(ctrl, nsid);
 -- 
 2.17.1
 
