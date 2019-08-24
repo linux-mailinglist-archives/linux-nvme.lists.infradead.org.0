@@ -2,93 +2,66 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B00A9BAF5
-	for <lists+linux-nvme@lfdr.de>; Sat, 24 Aug 2019 04:45:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 373DC9BDD7
+	for <lists+linux-nvme@lfdr.de>; Sat, 24 Aug 2019 14:56:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SDf00uCwCH35jiBk7vKvWZ2NADCg2w0g+ODtfQxhh2U=; b=guidmsjc7N+51f
-	1aSPfQffZWilyY5Jj/9kWbNf3h5nRJ1bTi9sRIZls+xtF5nZm/58FdfeP7rw3Z7CWrrR9cNowUPkc
-	y1nmlLJzSvdMYRrOtvkgD82mg6vHeLE8eQ+hI+Q81vnrRxlv112TNAIYctLTsCmzl0Zjs6jVOoE5R
-	oHeVAgORWsxXpHU5hqvSP1tswqEwOThUXW0xOZT4MGkzMM3rNL+ENcZpYRQo+fPtpPvw43Yif3ZGM
-	c41jTxKp3oTydK5B1mVaJBImXJFHaeD48QLw7QkRyBYLbXi0eZnSDWZfrUfUXGQryp48d7DXm8Vfz
-	rN6WDCCWkvFprwrv4/uw==;
+	List-Owner; bh=4eQdGeJS13yFVPvC/uAVtH9hHz32yg/f3ccy1Wh23dg=; b=kqKrgEbmhFI/ML
+	lK/mbs1p0EEqNwWE+RZz/wiUi7x2zHBQIVsmlVYIhBJCYq8T5xJnvSllfatmPRmJLrVzcq/yk+Z6y
+	Oc9wU20CoNK+9fH3oTjsiKZMIMJogCOXr8/vuBGsk0qSS6X+eBlDCdI01Fa7e92GKjQ+GvIf77pxM
+	MkjVNYdCdkLoLakwVLnygnHz9qgTrfj7pl92rhCi2WWpeFc5adVVtAp7/k0qEq1YQRYMkEc/kyEeD
+	BX9LhJXRZxZn6brPqi41bhv7lG1+zjWd7dSo31cOWzvujn/fdK+7xEaUSvVwwDCUXqmkAYEPRJF9x
+	JpgcpjpX157olp+DCeog==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i1M3h-0008HI-Ke; Sat, 24 Aug 2019 02:45:41 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1i1Vai-0004gS-IK; Sat, 24 Aug 2019 12:56:24 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i1M3K-0008Gu-I5
- for linux-nvme@lists.infradead.org; Sat, 24 Aug 2019 02:45:19 +0000
-Received: by mail-pg1-x543.google.com with SMTP id m3so6795372pgv.13
- for <linux-nvme@lists.infradead.org>; Fri, 23 Aug 2019 19:45:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=8aMwYzGPUNzzMYCXDcVBbn7SztptBVvUN6wTUGVXovY=;
- b=E06+c6wLMAosJaRUIk2RLnDNHen+SA2VZP8E6LBGnrDFHueLOKnIGa0SjCWwUZJpCO
- taWBUrtu2Fy4fvHMIXs8GgXVc/3VT+1vgYv4ptfbOQYQiv18xvQf/YzKqV2lTMdslxfa
- +678x+V2y263ZF8lf4HNlcI5pzDtubbpC4jMxtOEdkx8xd2jyq46JAEKY35uYsb5V0LA
- twkI+mygdNLrGKzn/fpiEvDULFbkCJ3m0ya2Ybm8IpuIWf3hmueJh8WRUjsJZ+SFnbwk
- cXPwDjnM5qNLI07iEBU1arx0U32N1pYltJMxncUMd6ztE8itzLtS+eErlbNPNTcBbPVK
- tMGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=8aMwYzGPUNzzMYCXDcVBbn7SztptBVvUN6wTUGVXovY=;
- b=rYLV8C5/KU4cKXjgy4N/uMxDyghTgxr9dU4YEApkFquR9qA0cWx10cha1dAWaaJuv/
- OUgm/czuAQo2MAmmQTvFLrh3UJKOyUcdCJt5WCbNbc30mMxp+GW9UVIvyVjSAXfViF5G
- WJPZM23R+b1gu6Qy2UUGeSsONYdpILYC2a5Qb88i6OueYOa8AyD7/8Do+mjLhjy+Xf5U
- +kMb6YIsvCXSvMkwn4N21W/xnQeBt/yWHRNEtBuGkDjSHz/WEyg6lenBSZ1p4ZVrqoLq
- 8R2B3M0wZfubrtCwhR+lyztritqd/fTPQ/vJYqqReCa0bZl3AeSZ93ivb2f0QWiMzvIh
- 08WQ==
-X-Gm-Message-State: APjAAAWNVFJKLOY1LGsY6nDs78qobwXd61r5BsaIXGl61uW+4x850/nQ
- FzcogsYWa6aPpsOBcw3eOJ72R/I0Xo4=
-X-Google-Smtp-Source: APXvYqx1NM4Ve5r4DKNXFDfGyXpZuNjNWDgP2kuFdmuP3UsqMkwQzf43ceRC3859ydRatIUo5X0W9g==
-X-Received: by 2002:a63:1c22:: with SMTP id c34mr6577980pgc.56.1566614717270; 
- Fri, 23 Aug 2019 19:45:17 -0700 (PDT)
-Received: from localhost ([123.213.206.190])
- by smtp.gmail.com with ESMTPSA id g2sm4599202pfm.32.2019.08.23.19.45.15
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 23 Aug 2019 19:45:16 -0700 (PDT)
-Date: Sat, 24 Aug 2019 11:45:13 +0900
-From: Minwoo Im <minwoo.im.dev@gmail.com>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH 0/4] nvme: add support for Get LBA Status tracing
-Message-ID: <20190824024513.GB7717@minwoo-desktop>
-References: <20190804075050.14642-1-minwoo.im.dev@gmail.com>
- <edbf18f8-fe9a-f9ec-2fa1-75e22466b6ff@grimberg.me>
- <20190822003214.GE10391@lst.de>
+ id 1i1VaT-0004fo-Gz
+ for linux-nvme@lists.infradead.org; Sat, 24 Aug 2019 12:56:11 +0000
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 5BB741089042;
+ Sat, 24 Aug 2019 12:56:08 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-18.pek2.redhat.com [10.72.8.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 606615D6D0;
+ Sat, 24 Aug 2019 12:55:58 +0000 (UTC)
+Date: Sat, 24 Aug 2019 20:55:54 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Long Li <longli@microsoft.com>
+Subject: Re: [PATCH 3/3] nvme: complete request in work queue on CPU with
+ flooded interrupts
+Message-ID: <20190824125553.GA8474@ming.t460p>
+References: <1566281669-48212-1-git-send-email-longli@linuxonhyperv.com>
+ <1566281669-48212-4-git-send-email-longli@linuxonhyperv.com>
+ <2a30a07f-982c-c291-e263-0cf72ec61235@grimberg.me>
+ <20190823032129.GA18680@ming.t460p>
+ <CY4PR21MB074173E79C7FC3AC13C69CB3CEA70@CY4PR21MB0741.namprd21.prod.outlook.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190822003214.GE10391@lst.de>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+In-Reply-To: <CY4PR21MB074173E79C7FC3AC13C69CB3CEA70@CY4PR21MB0741.namprd21.prod.outlook.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.64]); Sat, 24 Aug 2019 12:56:08 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190823_194518_625420_226A27FB 
-X-CRM114-Status: GOOD (  16.39  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190824_055609_613035_A379DD45 
+X-CRM114-Status: GOOD (  25.93  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:543 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (minwoo.im.dev[at]gmail.com)
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,39 +73,109 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
- Minwoo Im <minwoo.im.dev@gmail.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org
+Cc: Jens Axboe <axboe@fb.com>, Hannes Reinecke <hare@suse.com>,
+ Sagi Grimberg <sagi@grimberg.me>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ Peter Zijlstra <peterz@infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Keith Busch <keith.busch@intel.com>, Ingo Molnar <mingo@redhat.com>,
+ "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
+ Christoph Hellwig <hch@lst.de>,
+ "longli@linuxonhyperv.com" <longli@linuxonhyperv.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 19-08-22 02:32:14, Christoph Hellwig wrote:
-> On Thu, Aug 08, 2019 at 05:31:40PM -0700, Sagi Grimberg wrote:
-> >
-> >> Hi All,
-> >>
-> >> This series introduces command tracing in both host and target side for
-> >> the Get LBA Statas admin command which has been added from NVMe 1.4.
-> >>
-> >> Please review.
-> >
-> > Series looks fine to me,
+On Sat, Aug 24, 2019 at 12:27:18AM +0000, Long Li wrote:
+> >>>Subject: Re: [PATCH 3/3] nvme: complete request in work queue on CPU
+> >>>with flooded interrupts
+> >>>
+> >>>On Tue, Aug 20, 2019 at 10:33:38AM -0700, Sagi Grimberg wrote:
+> >>>>
+> >>>> > From: Long Li <longli@microsoft.com>
+> >>>> >
+> >>>> > When a NVMe hardware queue is mapped to several CPU queues, it is
+> >>>> > possible that the CPU this hardware queue is bound to is flooded by
+> >>>> > returning I/O for other CPUs.
+> >>>> >
+> >>>> > For example, consider the following scenario:
+> >>>> > 1. CPU 0, 1, 2 and 3 share the same hardware queue 2. the hardware
+> >>>> > queue interrupts CPU 0 for I/O response 3. processes from CPU 1, 2
+> >>>> > and 3 keep sending I/Os
+> >>>> >
+> >>>> > CPU 0 may be flooded with interrupts from NVMe device that are I/O
+> >>>> > responses for CPU 1, 2 and 3. Under heavy I/O load, it is possible
+> >>>> > that CPU 0 spends all the time serving NVMe and other system
+> >>>> > interrupts, but doesn't have a chance to run in process context.
+> >>>> >
+> >>>> > To fix this, CPU 0 can schedule a work to complete the I/O request
+> >>>> > when it detects the scheduler is not making progress. This serves
+> >>>multiple purposes:
+> >>>> >
+> >>>> > 1. This CPU has to be scheduled to complete the request. The other
+> >>>> > CPUs can't issue more I/Os until some previous I/Os are completed.
+> >>>> > This helps this CPU get out of NVMe interrupts.
+> >>>> >
+> >>>> > 2. This acts a throttling mechanisum for NVMe devices, in that it
+> >>>> > can not starve a CPU while servicing I/Os from other CPUs.
+> >>>> >
+> >>>> > 3. This CPU can make progress on RCU and other work items on its
+> >>>queue.
+> >>>>
+> >>>> The problem is indeed real, but this is the wrong approach in my mind.
+> >>>>
+> >>>> We already have irqpoll which takes care proper budgeting polling
+> >>>> cycles and not hogging the cpu.
+> >>>
+> >>>The issue isn't unique to NVMe, and can be any fast devices which
+> >>>interrupts CPU too frequently, meantime the interrupt/softirq handler may
+> >>>take a bit much time, then CPU is easy to be lockup by the interrupt/sofirq
+> >>>handler, especially in case that multiple submission CPUs vs. single
+> >>>completion CPU.
+> >>>
+> >>>Some SCSI devices has the same problem too.
+> >>>
+> >>>Could we consider to add one generic mechanism to cover this kind of
+> >>>problem?
+> >>>
+> >>>One approach I thought of is to allocate one backup thread for handling such
+> >>>interrupt, which can be marked as IRQF_BACKUP_THREAD by drivers.
+> >>>
+> >>>Inside do_IRQ(), irqtime is accounted, before calling action->handler(),
+> >>>check if this CPU has taken too long time for handling IRQ(interrupt or
+> >>>softirq) and see if this CPU could be lock up. If yes, wakeup the backup
 > 
-> The patches look good to me, but I wonder how we decide if we want to
-> add the full blown tracing command for various commands never used by
-> the kernel itself.  If we do that for every command the tracing code
-> could blow up fast.
+> How do you know if this CPU is spending all the time in do_IRQ()?
+> 
+> Is it something like:
+> If (IRQ_time /elapsed_time > a threshold value)
+> 	wake up the backup thread
 
-Agreed that tracing for commands never used by the kernel can be a
-burden in some point-of-view.  But I think the trace is not only just
-for the kernel function or event tracing, but also for the tracing the
-actual NVMe device behaviour which can be controlled by the userspace
-itself.
+Yeah, the above could work in theory.
 
-But, I don't like the tracing not used by the kernel itself to be a
-burden for the performance of kernel itself, though.
+Another approach I thought of is to monitor average irq gap time on each
+CPU.
+
+We could use EWMA(Exponential Weighted Moving Average) to do it simply,
+such as:
+
+	curr_irq_gap(cpu) = current start time of do_IRQ() on 'cpu' -
+			end time of last do_IRQ() on 'cpu'
+	avg_irq_gap(cpu) = weight_prev * avg_irq_gap(cpu) + weight_curr * curr_irq_gap(cpu) 
+
+	note:
+		weight_prev + weight_curr = 1
+
+When avg_irq_gap(cpu) is close to one small enough threshold, we think irq flood is
+detected.
+
+'weight_prev' could be chosen as one big enough value for avoiding short-time flood.
+
+
+Thanks,
+Ming
 
 _______________________________________________
 Linux-nvme mailing list
