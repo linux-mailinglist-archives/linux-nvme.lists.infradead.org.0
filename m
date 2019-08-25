@@ -2,125 +2,135 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 700349C2D1
-	for <lists+linux-nvme@lfdr.de>; Sun, 25 Aug 2019 12:03:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DF699C30D
+	for <lists+linux-nvme@lfdr.de>; Sun, 25 Aug 2019 13:33:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=k9AVPB9RHluBp0+h1R4I6rw38GIuJ+eVHu4yJ08X8Ec=; b=kvLW6iMywyqSjTgx7Hc/+eXvO
-	Ej/WHxWRSHT6ftxQBPDQD2HGkdgjo4ktiCA1rNSuMJi0M2tC8KPIWZj3ItqPByC9XUEy6IfjLKPD5
-	poLwiCH/MAhF9flTGt2f5l7TFpWnqx7xZG2v/sZ9/FdshhxLnaKPoEBPFVmBxmuD27/p6h/GGYxwB
-	fSe6WmN2kS8MqNB5pyMVwx4SJU6cE633uK88cbFnjDiu7cE1J/kQ8k94n1b0onvPJ9mzmTRWNDDWg
-	C9XFvQ2j2n24ruuhbPcJkKO0wiA4gz5UIcg4jiq2BTYI7gt9furHIAV7EN01rGRqGt0yZel+xEsN2
-	JaYx/hPLw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4IwMjQnPp6EMe0kiEDwzTpJAFFhaTJkrlcMPMpdn5Mk=; b=SsY3elAiL3AEwg
+	mNBpdYGKbctIPgv3NpYKyyMpTq9WLsZsa2C2UmxDxhNqhTyVUVnkKLLrEsqoq830PhQZhrtstRhRD
+	30WWvuBjLoLG1T+0MI/eR5IaW80huyRtpeeQCtLegMv2XMT09iTa0Fo7U9IbMm4wLVgc12AveKAsn
+	jAU2lPJ7vz1fv7ujE0YuOpqHXVZbzB4YBwYbSXOjEjgSKmepxIPh6yH6FfsZuJcsEIkYWKQFPwbD3
+	naAiX5cO48UsTSbWqps7M0RLv1brnp8an1BHDKuie6WsXuU6uqBqOXBKAT1yR4UiPg2ZNreais71c
+	JI25mjew4QEmz2iVb2xQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i1pMy-0005lj-88; Sun, 25 Aug 2019 10:03:32 +0000
-Received: from mail-eopbgr10073.outbound.protection.outlook.com ([40.107.1.73]
- helo=EUR02-HE1-obe.outbound.protection.outlook.com)
+	id 1i1qlz-0005Rm-Ua; Sun, 25 Aug 2019 11:33:28 +0000
+Received: from mx0a-00154904.pphosted.com ([148.163.133.20])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i1pMo-0005kt-F8
- for linux-nvme@lists.infradead.org; Sun, 25 Aug 2019 10:03:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=PdwsuICnn9AZS2b2BQ36t4JhFKbBgQGMOLNmsRZIjCZOt0T/7M7wzUDUX5gM1Wb4H8xB70WaPQhUhsKK7JnrwZC4s5d0syMBS8FeM6hTOmv2NMEHZMizSZqcjiRKlUpUlfVAdwbGUQQ86qBzJsoH67x0zHXEIGDDDrFdxUz9jbXowhEzGddfvte0QDawHXcQAVEDG3IQ1EvF1u3xs74DxEheJIcqDzNnIoepxiTt0ShtxpUa87WtSAXrrHKdd+XBu5yOdKTfsZonKhy2RrHUTkgtBzddMyamwJfGoEzeqwzTjlTtOS8GSWOJW5JlTVcCZqG/1PL2bDjwYlU8w2PD/w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uz5DLkpOMMVzmhsyHrVuPZMRA9DkKXXwiNGK0JIJm5E=;
- b=lAhKhql2qmyt5dQtAlt2/AkDzJ0hY1WUdwJtSBtUCyXmEri4Bx4JiA0qgSUd5m5GJZexwMkWo+6uTzVXjc0x6pC5rub1aabJiibgZCSxx9QuiGa1c540CnfYZtl1cG/u3agfz65UbwPNfFbyc3vUZ8zQZSOgIpHe+SSO8jvlCkqO2s2Jf+6OohUDvZKWLFIYfG2jTDpo9zXg9WOMPdJn/+2gwpuxRxCzLIcxe6TtdEU8Z1+DdHzGWPjL7xiT1WnWtrxw7sYoKUdwQH8FSB9m+Ss2Hj5lVmCmVqqyHUQfGf6grNW4CWbexr145YQeaUjhu0/ArDpOZBM/KdHSESBs5Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 193.47.165.251) smtp.rcpttodomain=suse.de smtp.mailfrom=mellanox.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=mellanox.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uz5DLkpOMMVzmhsyHrVuPZMRA9DkKXXwiNGK0JIJm5E=;
- b=HCxOJFfMfJc4JYoL78Z5JI6DqPvqcCdqBbJapbMRVTt9I6ezYqCMmUj1L4VQJ1v/4XEnAucyauEDjMeAyW+MtRy8z5y5tu192kNgS4M+w8CBrxeRG7WVMg9y2JkZ7jFjdG9btnqkO+YctbXsu7/3IbHBEio/0Cf5fP2o2uWqWCc=
-Received: from HE1PR05CA0211.eurprd05.prod.outlook.com (2603:10a6:3:fa::11) by
- VI1PR0502MB3679.eurprd05.prod.outlook.com (2603:10a6:803:10::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2199.19; Sun, 25 Aug
- 2019 10:03:14 +0000
-Received: from DB5EUR03FT008.eop-EUR03.prod.protection.outlook.com
- (2a01:111:f400:7e0a::206) by HE1PR05CA0211.outlook.office365.com
- (2603:10a6:3:fa::11) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2199.14 via Frontend
- Transport; Sun, 25 Aug 2019 10:03:13 +0000
-Authentication-Results: spf=pass (sender IP is 193.47.165.251)
- smtp.mailfrom=mellanox.com; suse.de; dkim=none (message not signed)
- header.d=none;suse.de; dmarc=pass action=none header.from=mellanox.com;
-Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
- 193.47.165.251 as permitted sender)
- receiver=protection.outlook.com; 
- client-ip=193.47.165.251; helo=mtlcas13.mtl.com;
-Received: from mtlcas13.mtl.com (193.47.165.251) by
- DB5EUR03FT008.mail.protection.outlook.com (10.152.20.98) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.2199.13 via Frontend Transport; Sun, 25 Aug 2019 10:03:13 +0000
-Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4; Sun, 25 Aug 2019 13:03:10
- +0300
-Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Sun,
- 25 Aug 2019 13:03:10 +0300
-Received: from [10.223.0.54] (10.223.0.54) by MTLCAS01.mtl.com (10.0.8.71)
- with Microsoft SMTP Server (TLS) id 14.3.301.0; Sun, 25 Aug 2019 13:02:47
- +0300
-Subject: Re: [PATCH v3] nvme: make all fabrics command run on a separate
- request queue
-To: Sagi Grimberg <sagi@grimberg.me>, <linux-nvme@lists.infradead.org>
-References: <20190822233932.29003-1-sagi@grimberg.me>
-From: Max Gurtovoy <maxg@mellanox.com>
-Message-ID: <573e9574-c0c0-9d2d-39f9-be9bdcf87032@mellanox.com>
-Date: Sun, 25 Aug 2019 13:02:47 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190822233932.29003-1-sagi@grimberg.me>
+ id 1i1qlm-0005Qz-Aq
+ for linux-nvme@lists.infradead.org; Sun, 25 Aug 2019 11:33:15 +0000
+Received: from pps.filterd (m0170390.ppops.net [127.0.0.1])
+ by mx0a-00154904.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ x7PBTr8l029602; Sun, 25 Aug 2019 07:32:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
+ h=from : to : cc :
+ subject : date : message-id : references : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=smtpout1;
+ bh=wZB4ujqithNNH1yzz/OW4xt+t8ic8XMzeb96Cg8N0lY=;
+ b=M2fBAO9M+jQxR+wDFW5C+1UkDWVq/2a1QjYdXmcCMRPtgQjTvMdPxyONWmpyreO8deYa
+ R1S6ArZ5/SWoT1lHbs7zhTZ+ovvZmavRgr5DeEx4kjWa42Iw8NGuBArmn4QyCXFsPDbB
+ XGDNEgwaLJCYWi0z6EPy/AhD4rK3wEXI6i8Cg9FSlIamBqC/KIYaKEc6vM7HUGiQHgcz
+ ECMPe4afVqMCdfce3LtjjoKy4FbARmnContb5TiQssOzb5Elnd5oaVSbQuMk9dO7b+k1
+ sb39bbxp/e8h7MBDg1DwKlq+7Ls6ymhOo5iO6AdO+aPcyLJEuA0odEk2kXtzq2sz0Q3h hQ== 
+Received: from mx0a-00154901.pphosted.com (mx0a-00154901.pphosted.com
+ [67.231.149.39])
+ by mx0a-00154904.pphosted.com with ESMTP id 2uk2xc2m06-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sun, 25 Aug 2019 07:32:55 -0400
+Received: from pps.filterd (m0142699.ppops.net [127.0.0.1])
+ by mx0a-00154901.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ x7PBWtHu140081; Sun, 25 Aug 2019 07:32:55 -0400
+Received: from mailuogwdur.emc.com (mailuogwdur.emc.com [128.221.224.79])
+ by mx0a-00154901.pphosted.com with ESMTP id 2ukj623q3t-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Sun, 25 Aug 2019 07:32:54 -0400
+Received: from maildlpprd55.lss.emc.com (maildlpprd55.lss.emc.com
+ [10.106.48.159])
+ by mailuogwprd53.lss.emc.com (Sentrion-MTA-4.3.1/Sentrion-MTA-4.3.0) with
+ ESMTP id x7PBWaAG004572
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Sun, 25 Aug 2019 07:32:45 -0400
+X-DKIM: OpenDKIM Filter v2.4.3 mailuogwprd53.lss.emc.com x7PBWaAG004572
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=emc.com; s=jan2013;
+ t=1566732766; bh=nkI9TkGqAtiuxnPguMKKWvkc2lI=;
+ h=From:To:CC:Subject:Date:Message-ID:References:In-Reply-To:
+ Content-Type:Content-Transfer-Encoding:MIME-Version;
+ b=cyT1mM5tEmtuBPwqGFuFvnmrtk2zA+ZcOqo5HlJqjepFtr/517W4/9HKb3/H9Ev+R
+ +kUui4T5H130Qog47YoXxPswqbJo1y8WXvUygwHymH8ZFaQZ2hlm23LoxLounV8UDH
+ gcxG51kEmRqHHAZ+hC9DIakCBfctzQV7JJlo8ToU=
+Received: from mailusrhubprd01.lss.emc.com (mailusrhubprd01.lss.emc.com
+ [10.253.24.19]) by maildlpprd55.lss.emc.com (RSA Interceptor);
+ Sun, 25 Aug 2019 07:31:59 -0400
+Received: from MXHUB320.corp.emc.com (MXHUB320.corp.emc.com [10.146.3.98])
+ by mailusrhubprd01.lss.emc.com (Sentrion-MTA-4.3.1/Sentrion-MTA-4.3.0) with
+ ESMTP id x7PBVkHq008515
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=FAIL);
+ Sun, 25 Aug 2019 07:31:59 -0400
+Received: from MX302CL04.corp.emc.com ([fe80::18ad:6300:21eb:2b39]) by
+ MXHUB320.corp.emc.com ([10.146.3.98]) with mapi id 14.03.0439.000; Sun, 25
+ Aug 2019 07:31:51 -0400
+From: "Engel, Amit" <Amit.Engel@Dell.com>
+To: Christoph Hellwig <hch@infradead.org>, "sagi@grimberg.me"
+ <sagi@grimberg.me>
+Subject: RE: [PATCH] nvme/target/admin-cmd.c: Fix a bug in
+ 'nvmet_execute_get_log_page_error'
+Thread-Topic: [PATCH] nvme/target/admin-cmd.c: Fix a bug in
+ 'nvmet_execute_get_log_page_error'
+Thread-Index: AQHVV+rhGH+z1ZJ98kqkpi+ZAD2lWKcGiGKAgAA23nCAAHpT0IAEh6nQ
+Date: Sun, 25 Aug 2019 11:31:51 +0000
+Message-ID: <8739B0CD2FC2DC40AF691A1CCBB989603460714F@MX302CL04.corp.emc.com>
+References: <20190821063711.1252-1-amit.engel@dell.com>
+ <20190821234559.GB27887@infradead.org>
+ <8739B0CD2FC2DC40AF691A1CCBB9896034606D14@MX302CL04.corp.emc.com>
+ <8739B0CD2FC2DC40AF691A1CCBB9896034606E73@MX302CL04.corp.emc.com>
+In-Reply-To: <8739B0CD2FC2DC40AF691A1CCBB9896034606E73@MX302CL04.corp.emc.com>
+Accept-Language: en-US
 Content-Language: en-US
-X-Originating-IP: [10.223.0.54]
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:193.47.165.251; IPV:NLI; CTRY:IL; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(4636009)(396003)(346002)(376002)(136003)(39850400004)(2980300002)(199004)(189003)(16526019)(478600001)(47776003)(65956001)(65806001)(4326008)(58126008)(8936002)(14444005)(186003)(446003)(2906002)(86362001)(6246003)(476003)(31686004)(305945005)(31696002)(54906003)(53936002)(3846002)(53546011)(356004)(26005)(16576012)(70586007)(70206006)(8676002)(6116002)(110136005)(316002)(7736002)(23676004)(2486003)(106002)(81166006)(36756003)(81156014)(486006)(230700001)(50466002)(5660300002)(229853002)(126002)(2616005)(11346002)(76176011)(336012)(3940600001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR0502MB3679; H:mtlcas13.mtl.com; FPR:;
- SPF:Pass; LANG:en; PTR:InfoDomainNonexistent; A:1; MX:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: e9ead042-7d75-4a95-d7f7-08d72943714c
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(4709080)(1401327)(2017052603328)(7193020);
- SRVR:VI1PR0502MB3679; 
-X-MS-TrafficTypeDiagnostic: VI1PR0502MB3679:
-X-Microsoft-Antispam-PRVS: <VI1PR0502MB3679F314C8989C9E351749F2B6A60@VI1PR0502MB3679.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6430;
-X-Forefront-PRVS: 01401330D1
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: i73WK8JOD3uUuz/79kjhML7IsRBtOkdKUeOF0BW4E5g9HLaODgP2JgyYPYm2HmWZZKok9CjOei8XDnKURsyLU+/BgHfOpJq2l9xhMTWXu+k1vdMNBly6ZzBLU23kWIyRIgE0cK1qy7QkzBSA8qPDzwqe/bCX+2v9Y9iBsUkj+GB6sJZBYjqjV6E7sQiNDSrLQXueoWgavX16z2RIBV4amJ8gICC+3FsvTvwPS8ApAYzV2M6KT4JifopciKs0HgcqARSEwMf7P2pDmGHqeLnzvqkBlnNHCNZCuUj0dYFD9JZ9zAlcyDrnlISCzj0SkE/7k4ix+I7UDbUPIdyi3HpoluT+tq6QrULZ8D30ikb47fryPsBO/X+0sVs/SbpcQsO6mYwl9uWdTK2hKHC+I8t9Oubemf7/ee7V2deP8GYY13s=
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Aug 2019 10:03:13.3651 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: e9ead042-7d75-4a95-d7f7-08d72943714c
-X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.251];
- Helo=[mtlcas13.mtl.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0502MB3679
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Enabled=True;
+ MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_SiteId=945c199a-83a2-4e80-9f8c-5a91be5752dd;
+ MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Owner=Amit.Engel@emc.com;
+ MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_SetDate=2019-08-22T07:10:19.4121496Z;
+ MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Name=External Public;
+ MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Application=Microsoft Azure
+ Information Protection;
+ MSIP_Label_17cb76b2-10b8-4fe1-93d4-2202842406cd_Extended_MSFT_Method=Manual;
+ aiplabel=External Public
+x-originating-ip: [10.76.81.143]
+MIME-Version: 1.0
+X-Sentrion-Hostname: mailusrhubprd01.lss.emc.com
+X-RSA-Classifications: public
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:5.22.84,1.0.8
+ definitions=2019-08-25_08:2019-08-23,2019-08-25 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 spamscore=0
+ impostorscore=0 mlxscore=0 adultscore=0 clxscore=1015 priorityscore=1501
+ phishscore=0 suspectscore=0 lowpriorityscore=0 malwarescore=0
+ mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-1906280000 definitions=main-1908250134
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ adultscore=0 spamscore=0
+ impostorscore=0 clxscore=1015 mlxscore=0 malwarescore=0 suspectscore=0
+ bulkscore=0 mlxlogscore=999 priorityscore=1501 lowpriorityscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-1906280000
+ definitions=main-1908250134
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190825_030322_576471_61917119 
-X-CRM114-Status: GOOD (  19.91  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190825_043314_378295_64086644 
+X-CRM114-Status: GOOD (  14.57  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.1.73 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.133.20 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -128,6 +138,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -139,60 +150,65 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
- James Smart <james.smart@broadcom.com>, Christoph Hellwig <hch@lst.de>
+Cc: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+Hi, Any update regarding my below fix proposal?
 
-On 8/23/2019 2:39 AM, Sagi Grimberg wrote:
-> We have a fundamental issue that fabric commands use the admin_q.
-> The reason is, that admin-connect, register reads and writes and
-> admin commands cannot be guaranteed ordering while we are running
-> controller resets.
->
-> For example, when we reset a controller we perform:
-> 1. disable the controller
-> 2. teardown the admin queue
-> 3. re-establish the admin queue
-> 4. enable the controller
->
-> In order to perform (3), we need to unquiesce the admin queue, however
-> we may have some admin commands that are already pending on the
-> quiesced admin_q and will immediate execute when we unquiesce it before
-> we execute (4). The host must not send admin commands to the controller
-> before enabling the controller.
->
-> To fix this, we have the fabric commands (admin connect and property
-> get/set) use a separate fabrics_q and make sure to quiesce the admin_q
-> before we disable the controller, and unquiesce it only after we enable
-> the controller. The fabrics_q lifetime is exactly like the admin_q lifetime
-> but it is quiesced after we disable/shutdown the controller and unquiesced
-> before the admin connect.
->
-> This fixes the error prints from nvmet in a controller reset storm test:
-> kernel: nvmet: got cmd 6 while CC.EN == 0 on qid = 0
-> Which indicate that the host is sending an admin command when the
-> controller is not enabled.
->
-> Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
-> ---
-> Changes from v2:
-> - sent the correct patch this time :)
->
-> Changes from v1:
-> - quiesced/unquiesced the fabrics_q when we teardown the controller
->    but do it where the admin_q quiesce/unquiesce used to be.
+Thanks
+Amit
 
-Sagi,
+-----Original Message-----
+From: Engel, Amit 
+Sent: Thursday, August 22, 2019 5:23 PM
+To: 'Christoph Hellwig'
+Cc: 'sagi@grimberg.me'; 'linux-nvme@lists.infradead.org'
+Subject: RE: [PATCH] nvme/target/admin-cmd.c: Fix a bug in 'nvmet_execute_get_log_page_error'
 
-I see that we have lot of common code between the transports here.
+For example,
+when using a host with kernel version 4.14.54 and a target with kernel version 5.2.9:
 
-Can we move it to 1 place instead of duplicating it ?
+Host:
+[root@r-g0001-b ~]# uname -a
+Linux r-g0001-b.xiolab.lab.emc.com 4.14.54 #1 SMP Wed Jul 11 14:54:23 IDT 2018 x86_64 x86_64 x86_64 GNU/Linux [root@r-g0001-b ~]# nvme error-log /dev/nvme8n1 -e 4 NVMe Status:Unknown(600f)
+
+This is the case where nvmet_copy_to_sgl exceeds the request data_len The target driver is not protected from this case 
+
+Thanks,
+Amit
+-----Original Message-----
+From: Engel, Amit
+Sent: Thursday, August 22, 2019 10:10 AM
+To: 'Christoph Hellwig'
+Cc: sagi@grimberg.me; linux-nvme@lists.infradead.org
+Subject: RE: [PATCH] nvme/target/admin-cmd.c: Fix a bug in 'nvmet_execute_get_log_page_error'
+
+Hi,
+
+With the current nvmet_execute_get_log_page_error implementation, I could not run successfully lid NVME_LOG_ERROR command without this check.
+
+(Of course this issue does not exist on kernel versions where the implementation is
+nvmet_execute_get_log_page_noop)
+
+Thanks,
+Amit
+
+-----Original Message-----
+From: Christoph Hellwig <hch@infradead.org>
+Sent: Thursday, August 22, 2019 2:46 AM
+To: Engel, Amit
+Cc: sagi@grimberg.me; linux-nvme@lists.infradead.org
+Subject: Re: [PATCH] nvme/target/admin-cmd.c: Fix a bug in 'nvmet_execute_get_log_page_error'
 
 
+[EXTERNAL EMAIL] 
+
+I don't think we should need this check.  nvmet_copy_to_sgl uses sg_pcopy_from_buffer to copy the buffer, which uses the SGL iterators to copy, and the SGL is build only for the range cover by data_len.
+
+Did you see an issue that prompted you to prepare this patch?  In that case we might have a problem in the data_len validation earlier on.
 
 _______________________________________________
 Linux-nvme mailing list
