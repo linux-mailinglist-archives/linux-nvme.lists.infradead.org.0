@@ -2,44 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C5D99C993
-	for <lists+linux-nvme@lfdr.de>; Mon, 26 Aug 2019 08:43:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38A279C994
+	for <lists+linux-nvme@lfdr.de>; Mon, 26 Aug 2019 08:43:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JD8HG7tbZ7fYHtmm1277uMyJawXXUI+oc0xtzbOlvFQ=; b=tRuI8K0DdF/qPa
-	U2krIib8NQTT6Kmvc+DTUJbUWHpanGEy6v834m+d5KQW3h/ZJ3WDnwzQITCwS/vecUw75DLJinYKl
-	1eM4ILkhdk+ql6d1jGfgUEizkE2lfsCRI9x9RQQV8vUr5fNiy4ip2djMl59cwWXN+L4mD2Pq/UFDt
-	6d4u1ZXoe5QDshnfKhgDoEHgZ3mhgpLZDutGquY+Proo7GHMqK6oy2cV61MTJIKsEu3OOx8eMyei4
-	Ffv8+2cu4I9qeJlAowsQzFFG86DxdVOMNax9t9RlkJLnCax5pQGnW3iQsUXwP4LqG2WhPtLsHS5fp
-	91n//c+ppx/2b/wkRznQ==;
+	List-Owner; bh=8vBQpENQdx6q06lu2Vi1nFdfNQ9WU+ul4kmhDbttD6c=; b=aGaFcQblAKoseZ
+	4ASClmXqnA+LGzbr3jQwwVhkdQulHlVqVxgdqsm7ousfBy3X5O4/fY7Uk2YRtr8Rl9VDVCDFvkQ7Y
+	bITFIn3Iof4620Hb+ThivexqLBW841Qn/kdcc68cN7kLFe3Okaa+q18NucqAcywdLxablphzWdUo0
+	2foEau6rBMUidOSh7FoKWO13Mvw679Fsdh7FVCbfa1KcbRNrNZDJ0v65DGBW6CPke7g42c0bVaooR
+	ctN0nlkoqbroNKAp4cZTlC53lfXepiggMPNZfKP2JS1j89rnPMRzUN8g4i1pn1SQKoX9PIftfhuQj
+	glcBWU+vdLezLy1Xul7g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i28iK-0000tT-SE; Mon, 26 Aug 2019 06:42:53 +0000
+	id 1i28j3-00017E-JC; Mon, 26 Aug 2019 06:43:37 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i28i7-0000su-Nq
- for linux-nvme@lists.infradead.org; Mon, 26 Aug 2019 06:42:41 +0000
+ id 1i28iu-00016r-3x
+ for linux-nvme@lists.infradead.org; Mon, 26 Aug 2019 06:43:29 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id B020A68B20; Mon, 26 Aug 2019 08:42:33 +0200 (CEST)
-Date: Mon, 26 Aug 2019 08:42:33 +0200
+ id 33A4668B20; Mon, 26 Aug 2019 08:43:25 +0200 (CEST)
+Date: Mon, 26 Aug 2019 08:43:25 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH v3 2/4] nvme: enable aen regardles of the presence of
- I/O queues
-Message-ID: <20190826064233.GA10911@lst.de>
+Subject: Re: [PATCH v3 3/4] nvme: enable aen also for discovery controllers
+Message-ID: <20190826064325.GB10911@lst.de>
 References: <20190822222818.9845-1-sagi@grimberg.me>
- <20190822222818.9845-3-sagi@grimberg.me>
+ <20190822222818.9845-4-sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190822222818.9845-3-sagi@grimberg.me>
+In-Reply-To: <20190822222818.9845-4-sagi@grimberg.me>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190825_234239_927995_D13A0E51 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20190825_234328_313905_C009BD41 
+X-CRM114-Status: GOOD (  11.06  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -68,18 +67,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Aug 22, 2019 at 03:28:16PM -0700, Sagi Grimberg wrote:
-> AENs in general are not related to the presence of I/O queues,
-> so enable them regardless. Note that the only exception is that
-> discovery controller will not support any of the requested AENs
-> and nvme_enable_aen will respect that and return, so it is still
-> safe to enable regardless.
+On Thu, Aug 22, 2019 at 03:28:17PM -0700, Sagi Grimberg wrote:
+> If the controller supports discovery log page change events,
+> we want to enable it. This changes the ordering of the
+> scan work and the aen work queueing, but that is harmless.
+> 
+> Reviewed-by: Minwoo Im <minwoo.im.dev@gmail.com>
+> Reviewed-by: James Smart <james.smart@broadcom.com>
+> Reviewed-by: Hannes Reinecke <hare@suse.com>
+> Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 
-Any scanning races if the AENs are enabled before initial namespaces
-scanning?  Not anymore since we have the scan workqueue, but that
-might be worth mentioning in the commit log.
-
-Otherwise looks good:
+Looks good,
 
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 
