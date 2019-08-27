@@ -2,64 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60DB39F68A
-	for <lists+linux-nvme@lfdr.de>; Wed, 28 Aug 2019 01:05:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 93EFC9F69C
+	for <lists+linux-nvme@lfdr.de>; Wed, 28 Aug 2019 01:10:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KxyTk6QA6nSP95Oi89JJG5G5V0Pn7QqC+LSU0vdm+6o=; b=XUz/+g0Col0ocW
-	zTmSF6p479P2yjvHDZmAy3oVP4kXntWryqQMDU4pUoWDyDZt3fH7AVj/d4yaG++zB0+GsNhEFGouT
-	zWIuI0L266r0fUyJgZs/fQmq01qZ59ifZN3GhgRebpUzodS5E/RSf1LaOnH2d9d1mKx07TaIeN5ji
-	i6/lpA8CdSAlPQXBVepuowDAvWlF8wT0FjWA9uRV88z+T4Mp1BhATWzjv5b+CREHMwSUh/D5oFyWU
-	dGhCRF23gfKmvKWG+ODQD1LTYUuj4WoBmJhKl6x8GXnmmNFZqPrzEUA5STlJWTFtxuoKlt84SDRtG
-	V/IXVxBKlEXtJvrF1fww==;
+	List-Owner; bh=dkawfV5L+Y8+bd9Z/Xml/1HAlEJrSThogD+vkYP0Lro=; b=i8jwxL4bv3noHM
+	dIFz+t/T0pCsjigOZRmpQ+Q+pxp0paAYmTjO5rzgwnvLDS6ji4MApiFDIUTiGqotOoBF3MAoH40i4
+	T/a3RKhfQiJPuZtjaAErsxwoByMhr/HbOXL8XKVf8WI5JWJyR7AiFI2KTILvCuTj+MPiquBtmHqO+
+	dA4+vO83b28tUG7Z8X+4fHgthl1gI1NJdr3IWayC3vI45fzhK23M9dpr3bz4opcvm1wMmlZzizQGP
+	Kw3fKEoU99CPTJCAUB1eRvSXN6oEuPv0w7nb3tN4XO1bdBDxRwMy/xuwzCa673fd0zEY3S57e0rkY
+	TQwfcr+GLAEKbd+u40Ng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2kWd-00080b-I5; Tue, 27 Aug 2019 23:05:19 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
+	id 1i2kbj-0001HA-2M; Tue, 27 Aug 2019 23:10:35 +0000
+Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2kWV-00080E-I1
- for linux-nvme@lists.infradead.org; Tue, 27 Aug 2019 23:05:12 +0000
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 29CCF85365;
- Tue, 27 Aug 2019 23:05:11 +0000 (UTC)
-Received: from ming.t460p (ovpn-8-16.pek2.redhat.com [10.72.8.16])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DD67560F82;
- Tue, 27 Aug 2019 23:04:57 +0000 (UTC)
-Date: Wed, 28 Aug 2019 07:04:52 +0800
-From: Ming Lei <ming.lei@redhat.com>
-To: Thomas Gleixner <tglx@linutronix.de>
+ id 1i2kbZ-0001Gg-Mc
+ for linux-nvme@lists.infradead.org; Tue, 27 Aug 2019 23:10:27 +0000
+Received: from p5de0b6c5.dip0.t-ipconnect.de ([93.224.182.197] helo=nanos)
+ by Galois.linutronix.de with esmtpsa (TLS1.2:DHE_RSA_AES_256_CBC_SHA256:256)
+ (Exim 4.80) (envelope-from <tglx@linutronix.de>)
+ id 1i2kav-0005Z5-8r; Wed, 28 Aug 2019 01:09:45 +0200
+Date: Wed, 28 Aug 2019 01:09:44 +0200 (CEST)
+From: Thomas Gleixner <tglx@linutronix.de>
+To: Ming Lei <ming.lei@redhat.com>
 Subject: Re: [PATCH 1/4] softirq: implement IRQ flood detection mechanism
-Message-ID: <20190827230451.GB5263@ming.t460p>
+In-Reply-To: <20190827225827.GA5263@ming.t460p>
+Message-ID: <alpine.DEB.2.21.1908280104330.1939@nanos.tec.linutronix.de>
 References: <20190827085344.30799-1-ming.lei@redhat.com>
  <20190827085344.30799-2-ming.lei@redhat.com>
  <alpine.DEB.2.21.1908271633450.1939@nanos.tec.linutronix.de>
- <alpine.DEB.2.21.1908271817180.1939@nanos.tec.linutronix.de>
+ <20190827225827.GA5263@ming.t460p>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.21.1908271817180.1939@nanos.tec.linutronix.de>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Tue, 27 Aug 2019 23:05:11 +0000 (UTC)
+X-Linutronix-Spam-Score: -1.0
+X-Linutronix-Spam-Level: -
+X-Linutronix-Spam-Status: No , -1.0 points, 5.0 required, ALL_TRUSTED=-1,
+ SHORTCIRCUIT=-0.0001
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190827_160511_616987_FD7CA33D 
-X-CRM114-Status: GOOD (  18.25  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20190827_161025_881434_7D95D0D2 
+X-CRM114-Status: GOOD (  15.79  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [2a0a:51c0:0:12e:550:0:0:1 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,33 +68,19 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Jens Axboe <axboe@fb.com>, Hannes Reinecke <hare@suse.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Sagi Grimberg <sagi@grimberg.me>,
- linux-scsi@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
- Long Li <longli@microsoft.com>, John Garry <john.garry@huawei.com>,
- LKML <linux-kernel@vger.kernel.org>, linux-nvme@lists.infradead.org,
- Keith Busch <keith.busch@intel.com>, Ingo Molnar <mingo@redhat.com>,
- Christoph Hellwig <hch@lst.de>
+ Sagi Grimberg <sagi@grimberg.me>, linux-scsi@vger.kernel.org,
+ Peter Zijlstra <peterz@infradead.org>, Long Li <longli@microsoft.com>,
+ John Garry <john.garry@huawei.com>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
+ Ingo Molnar <mingo@redhat.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Aug 27, 2019 at 06:19:00PM +0200, Thomas Gleixner wrote:
-> On Tue, 27 Aug 2019, Thomas Gleixner wrote:
+On Wed, 28 Aug 2019, Ming Lei wrote:
+> On Tue, Aug 27, 2019 at 04:42:02PM +0200, Thomas Gleixner wrote:
 > > On Tue, 27 Aug 2019, Ming Lei wrote:
-> > > +/*
-> > > + * Update average irq interval with the Exponential Weighted Moving
-> > > + * Average(EWMA)
-> > > + */
-> > > +static void irq_update_interval(void)
-> > > +{
-> > > +#define IRQ_INTERVAL_EWMA_WEIGHT	128
-> > > +#define IRQ_INTERVAL_EWMA_PREV_FACTOR	127
-> > > +#define IRQ_INTERVAL_EWMA_CURR_FACTOR	(IRQ_INTERVAL_EWMA_WEIGHT - \
-> > > +		IRQ_INTERVAL_EWMA_PREV_FACTOR)
-> > 
-> > Please do not stick defines into a function body. That's horrible.
-> > 
 > > > +
 > > > +	int cpu = raw_smp_processor_id();
 > > > +	struct irq_interval *inter = per_cpu_ptr(&avg_irq_interval, cpu);
@@ -106,8 +88,18 @@ On Tue, Aug 27, 2019 at 06:19:00PM +0200, Thomas Gleixner wrote:
 > > 
 > > Why are you doing that raw_smp_processor_id() dance? The call site has
 > > interrupts and preemption disabled.
-> > 
+> 
+> OK, will change to __smp_processor_id().
+
+You do not need smp_processor_id() as all.
+
 > > Also how is that supposed to work when sched_clock is jiffies based?
+> 
+> Good catch, looks ktime_get_ns() is needed.
+
+And what is ktime_get_ns() returning when the only available clocksource is
+jiffies?
+
 > > 
 > > > +	inter->avg = (inter->avg * IRQ_INTERVAL_EWMA_PREV_FACTOR +
 > > > +		delta * IRQ_INTERVAL_EWMA_CURR_FACTOR) /
@@ -116,19 +108,17 @@ On Tue, Aug 27, 2019 at 06:19:00PM +0200, Thomas Gleixner wrote:
 > > We definitely are not going to have a 64bit multiplication and division on
 > > every interrupt. Asided of that this breaks 32bit builds all over the place.
 > 
-> That said, we already have infrastructure for something like this in the
-> core interrupt code which is optimized to be lightweight in the fast path.
-> 
-> kernel/irq/timings.c
+> I will convert the above into add/subtract/shift only.
 
-irq/timings.c is much more complicated, especially it applies EWMA to
-compute each irq's average interval. However, we only need it for
-do_IRQ() to cover all interrupt & softirq handler.
+No. Talk to Daniel. There is not going to be yet another ad hoc thingy just
+to make block happy.
 
-Also CONFIG_IRQ_TIMINGS is usually disabled on distributions.
+And aside of that why does block not have a "NAPI" mode which was
+explicitely designed to avoid all that?
 
-thanks,
-Ming
+Thanks,
+
+	tglx
 
 _______________________________________________
 Linux-nvme mailing list
