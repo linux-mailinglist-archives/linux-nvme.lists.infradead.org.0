@@ -2,86 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BBAD9EC1A
-	for <lists+linux-nvme@lfdr.de>; Tue, 27 Aug 2019 17:11:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E1389EFFE
+	for <lists+linux-nvme@lfdr.de>; Tue, 27 Aug 2019 18:20:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2zblZAqJ7stImSmY8fPeQLKj8xDtIMs9I9/BP2DJONU=; b=EabFIHY1ix1O8CMeTc0D/smVF
-	9fT30EGBYafaYikTb5sVaeEzVwtwInAKqrNXcADuOdux26ygh7sGROSLB6ycYiwnGd7pjKEePDNzp
-	Gjl61VorLW9EfrLRd0iuBnDOvsaN/PZEux+BL0dJFsUiynwkBmRrAKFu0bjluZI/3k4c12ON+BmVv
-	JyDtvjfWKXRMv9i639+7ULKel2KCTxAROev6hubH2qYfELH8Gt0818PvXC2rABh49wKd5gysnm8H6
-	vEAdVV7R96MFCE1uu3hw5P2qu2G8WtH2SWUYW+FtRKn05AG5+HhIEKQdUka890uXGjrvkh6Dpf7xQ
-	obl9bxG2w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KSKLU2ZpqlcHx+ZrDKBQaYm4gKaLWTUwuddAjDQqEvY=; b=Vkl8OaNEW3r7Gp
+	Jael0QJmufDU7dpybnzRykQWTbaszYnrVQVBKQzFW4OQZHjljYXN7i1Z8V6UAJOsAViR5hkssxrQn
+	pwWoSny43Fwr02Rl2w0PQ1Z6BJGiKdHCsEksp2dgG44zCAx+zC46jFw+judgi2626ppgbpmNZkrzA
+	nXInriinZ1+O5xmR08inssbCgV+RmBg57izjkPiFegPqxV48mriwEobcGZIHU3pbsAhERLRpvo97T
+	yi4t2TSOOpwchwV9SWscezPiSHzXt5KHkCigw9I6VySBaWu/chhQRkqHJyXEO+W7d+3yv7ji1KU52
+	Z8+7eqHLPf/eGn8H+57Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2d8F-0003AU-O1; Tue, 27 Aug 2019 15:11:39 +0000
-Received: from mail-pg1-f196.google.com ([209.85.215.196])
+	id 1i2eCK-0006XB-FL; Tue, 27 Aug 2019 16:19:56 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2d7P-0002Iy-2v
- for linux-nvme@lists.infradead.org; Tue, 27 Aug 2019 15:10:48 +0000
-Received: by mail-pg1-f196.google.com with SMTP id u17so12849031pgi.6
- for <linux-nvme@lists.infradead.org>; Tue, 27 Aug 2019 08:10:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=TLt4u7UGczeUqSMgyy+K1XoXpeQZCnRb2YnoO+BMfIo=;
- b=BpcRivsmFQeLFtcxXqK4QgFnhl9oCppuK0sbExHisH8CO7/050fsH2Hei0cTpZf6AL
- 0IktNKxcjJo5lryTYPfsifOwLpSKgtjXLfEsxZpZ1zF0VJwVzWDNRmph34+8Zt2nb1zY
- U37l+NwShamS/5jPTIYojYc5rsiNF7soNlczOgxqmQ6+J0v7BD3+AGpKmHPs2Mxo/8a/
- afv/tD0HOL6pnsXKoSw81mEKtIadIa74Lf9fkaS4q0IonvEReUH7js5A3oQSqT8Mmft9
- iyePv4ZMI4+xg8MpvpbGDJ14elrVFwvJcCRu+5fqXMOKU1NRfZi/HKgSvAioFPTpBCff
- 7/qQ==
-X-Gm-Message-State: APjAAAVH5P+IDKFc3MAMTceFeld3YtM0plUl7CszVc69jBI1E6s5+NaR
- oBPhoxwkcNN8oaOqUcux45U=
-X-Google-Smtp-Source: APXvYqyRLYTthx4jSSdw9WJK4sOVCArZyAET+t7jAdAauE0E/bhuVVphUQWChzR4Qx0djZAgygaw/w==
-X-Received: by 2002:a17:90a:3b4f:: with SMTP id
- t15mr26738525pjf.45.1566918645076; 
- Tue, 27 Aug 2019 08:10:45 -0700 (PDT)
-Received: from desktop-bart.svl.corp.google.com
- ([2620:15c:2cd:202:4308:52a3:24b6:2c60])
- by smtp.gmail.com with ESMTPSA id j11sm3174223pjb.11.2019.08.27.08.10.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Aug 2019 08:10:44 -0700 (PDT)
-Subject: Re: [PATCH 3/4] nvme: pci: pass IRQF_RESCURE_THREAD to
- request_threaded_irq
-To: Ming Lei <ming.lei@redhat.com>, Thomas Gleixner <tglx@linutronix.de>
-References: <20190827085344.30799-1-ming.lei@redhat.com>
- <20190827085344.30799-4-ming.lei@redhat.com>
-From: Bart Van Assche <bvanassche@acm.org>
-Message-ID: <7cdb9dbb-46e5-b66a-ddf1-c7ecceb28d7a@acm.org>
-Date: Tue, 27 Aug 2019 08:10:42 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1i2eCD-0006Tu-TO
+ for linux-nvme@lists.infradead.org; Tue, 27 Aug 2019 16:19:51 +0000
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Aug 2019 09:19:44 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,437,1559545200"; d="scan'208";a="192291031"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga002.jf.intel.com with ESMTP; 27 Aug 2019 09:19:44 -0700
+Date: Tue, 27 Aug 2019 10:17:57 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Edmund Nadolski <edmund.nadolski@intel.com>
+Subject: Re: [PATCH] nvme: avoid race between FLR and command timeout
+Message-ID: <20190827161756.GA23183@localhost.localdomain>
+References: <20190826164736.4707-1-edmund.nadolski@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190827085344.30799-4-ming.lei@redhat.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20190826164736.4707-1-edmund.nadolski@intel.com>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190827_081047_134504_AE0EEE0D 
-X-CRM114-Status: GOOD (  11.47  )
-X-Spam-Score: 0.4 (/)
+X-CRM114-CacheID: sfid-20190827_091949_993621_FE56E50D 
+X-CRM114-Status: GOOD (  21.81  )
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.4 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.215.196 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.215.196 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (bart.vanassche[at]gmail.com)
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [134.134.136.31 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,30 +65,78 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
- Sagi Grimberg <sagi@grimberg.me>, linux-scsi@vger.kernel.org,
- Peter Zijlstra <peterz@infradead.org>, Long Li <longli@microsoft.com>,
- John Garry <john.garry@huawei.com>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
- Ingo Molnar <mingo@redhat.com>, Christoph Hellwig <hch@lst.de>
+Cc: keith.busch@intel.com, linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 8/27/19 1:53 AM, Ming Lei wrote:
-> If one vector is spread on several CPUs, usually the interrupt is only
-> handled on one of these CPUs.
+On Mon, Aug 26, 2019 at 10:47:36AM -0600, Edmund Nadolski wrote:
+> This patch syncs queues from nvme_reset_prepare, in order to prevent
+> a race where nvme_timeout can execute between the reset_prepare and
+> reset_done. The race results in an extra call to nvme_dev_disable
+> before nvme_reset_done can complete, which causes controller
+> de-enumeration (from the timeout thread) with the following dmesg:
+> 
+> [  365.427991] nvme nvme3: I/O 6 QID 0 timeout, reset controller
+> [  368.434070] nvme 0000:1a:00.0: enabling device (0000 -> 0002)
+> [  368.434207] nvme nvme3: Removing after probe failure status: -19
+> 
+> The probe fails because the driver can no longer read NVME_REG_CSTS.
+> The driver has to be re-loaded into order to bring back the controller.
+> 
+> The following triggers the race (timout < normal completion time):
+> 
+> nvme format /dev/${1} --ses=1 --timeout=4000 &
+> sleep 2
+> echo 1 > /sys/class/nvme/${1}/device/reset
+> 
+> Note, shutdown_lock is not sufficient to prevent the race, since it
+> is not held across the reset_prepare/reset_done.
+> 
+> Signed-off-by: Edmund Nadolski <edmund.nadolski@intel.com>
+> ---
+>  drivers/nvme/host/core.c | 3 +++
+>  drivers/nvme/host/pci.c  | 3 +++
+>  2 files changed, 6 insertions(+)
+> 
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index 4660505eded9..43c12f8c030f 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -3974,6 +3974,9 @@ void nvme_sync_queues(struct nvme_ctrl *ctrl)
+>  	list_for_each_entry(ns, &ctrl->namespaces, list)
+>  		blk_sync_queue(ns->queue);
+>  	up_read(&ctrl->namespaces_rwsem);
+> +
+> +	if (ctrl->admin_q)
+> +		blk_sync_queue(ctrl->admin_q);
 
-Is that perhaps a limitation of x86 interrupt handling hardware? See 
-also the description of physical and logical destination mode of the 
-local APIC in the Intel documentation.
+This part can probably go in separately as its own patch.
 
-Does that limitation also apply to other platforms than x86?
+>  }
+>  EXPORT_SYMBOL_GPL(nvme_sync_queues);
+>  
+> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+> index bf54b128c5a4..845f540f1707 100644
+> --- a/drivers/nvme/host/pci.c
+> +++ b/drivers/nvme/host/pci.c
+> @@ -2786,6 +2786,9 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+>  static void nvme_reset_prepare(struct pci_dev *pdev)
+>  {
+>  	struct nvme_dev *dev = pci_get_drvdata(pdev);
+> +
+> +	nvme_sync_queues(&dev->ctrl);
+> +	flush_work(&dev->ctrl.reset_work);
+>  	nvme_dev_disable(dev, false);
+>  }
 
-Thanks,
+Looks like we'd have a similar problem if a reset is occuring at the
+same time as a suspend...
 
-Bart.
+I'm starting to reconsider this approach. I believe it works most
+of the time, but maybe underestimating the chance of a low timeout
+command slipping in after the sync.
 
 _______________________________________________
 Linux-nvme mailing list
