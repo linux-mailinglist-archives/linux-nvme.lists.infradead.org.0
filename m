@@ -2,60 +2,63 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 79F4F9F55F
-	for <lists+linux-nvme@lfdr.de>; Tue, 27 Aug 2019 23:42:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 528709F67C
+	for <lists+linux-nvme@lfdr.de>; Wed, 28 Aug 2019 00:59:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IzhG4C/INbb6Ud2/Z5uagQmG3o/9JGr4tnTRaO0cits=; b=TuOS1x+6ly0T6cpxR2EN5WhLL
-	qoAoV4kP2+IJXhmgwqAMr9SdGKjN1mXDobPkT08UNm6T04bKOlnvpkhG5Xi5vCZviVac0fyj1+NFz
-	IWgtn0KdNOtpw7BwctpJCNA8HY7YK0PJXmAMuFlc/gLkFWpybQ8n8JDPnWK3FPDwKuRhyf4hoIlmA
-	lCZA1/S6b8X03r0sQ2T51cKMM25Tlhs8M1nYFXGZ1BfSA7Mylbyl4ARgeXxD4ZNC+HhwoVTgT+4k/
-	D/rp06pMSrmjjoZAYDbQqVOTdk0NK9nv8rC8+9gf4bpivbcy5xpqxGjKV9t/1e3SGrr+2r0YoABEp
-	H0ESy7rHg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xqW6CWOlgG/4HEtxMkpWW4F8dAOhLkO40KTCUp04D70=; b=uIw41F8dvPBJqj
+	eyPG6n8TrT+dHqvvpB+s0FJMLrOLARFcyazgSu7cZa+QY3WxDKLAEbeGyyH3NqX5pjCEye4tHUlN5
+	lNhvOOCNCNRPN+Pdbab8aCnhyMh59C3ymz8UDMHGdygFezHwVQy41a/At+AOSVpmhF/7FGDwe2jJk
+	e7DfZSWFbpqun8EL+NQOZJIozVoqYkORDpJHW5nHiH6II4bz2Uj4YTczxQXijtGNn4IKGa7xw4Cve
+	GPLQQdw8WN+Q0tYeS71bp6/B4NXqRsT7Ep/P+GxuSciAqA1QxcirNBKoi/bvtwNCoFX5zn4eMpob1
+	3VUWGS4c8niubcH782Bw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2jEZ-00006K-Pk; Tue, 27 Aug 2019 21:42:36 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1i2kQm-0005DO-Q9; Tue, 27 Aug 2019 22:59:17 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2jEQ-000060-AT
- for linux-nvme@lists.infradead.org; Tue, 27 Aug 2019 21:42:27 +0000
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2019 14:42:25 -0700
-X-IronPort-AV: E=Sophos;i="5.64,438,1559545200"; d="scan'208";a="171337340"
-Received: from unknown (HELO [10.232.112.84]) ([10.232.112.84])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/AES256-SHA;
- 27 Aug 2019 14:42:24 -0700
-Subject: Re: [PATCH] nvme: avoid race between FLR and command timeout
-To: Keith Busch <kbusch@kernel.org>
-References: <20190826164736.4707-1-edmund.nadolski@intel.com>
- <20190827161756.GA23183@localhost.localdomain>
-From: "Nadolski, Edmund" <edmund.nadolski@intel.com>
-Message-ID: <f721fbbc-e242-be53-1611-9d07245d07a4@intel.com>
-Date: Tue, 27 Aug 2019 15:42:24 -0600
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ id 1i2kQf-0005Cc-OL
+ for linux-nvme@lists.infradead.org; Tue, 27 Aug 2019 22:59:11 +0000
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 93D233084244;
+ Tue, 27 Aug 2019 22:59:06 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-16.pek2.redhat.com [10.72.8.16])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2C6825D6B0;
+ Tue, 27 Aug 2019 22:58:53 +0000 (UTC)
+Date: Wed, 28 Aug 2019 06:58:30 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Thomas Gleixner <tglx@linutronix.de>
+Subject: Re: [PATCH 1/4] softirq: implement IRQ flood detection mechanism
+Message-ID: <20190827225827.GA5263@ming.t460p>
+References: <20190827085344.30799-1-ming.lei@redhat.com>
+ <20190827085344.30799-2-ming.lei@redhat.com>
+ <alpine.DEB.2.21.1908271633450.1939@nanos.tec.linutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <20190827161756.GA23183@localhost.localdomain>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.21.1908271633450.1939@nanos.tec.linutronix.de>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.40]); Tue, 27 Aug 2019 22:59:07 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190827_144226_379209_163D9A41 
-X-CRM114-Status: GOOD (  18.96  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190827_155909_815926_66BB3BE8 
+X-CRM114-Status: GOOD (  16.44  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [192.55.52.43 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,98 +70,62 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: keith.busch@intel.com, linux-nvme@lists.infradead.org
+Cc: Jens Axboe <axboe@fb.com>, Hannes Reinecke <hare@suse.com>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-scsi@vger.kernel.org,
+ Peter Zijlstra <peterz@infradead.org>, Long Li <longli@microsoft.com>,
+ John Garry <john.garry@huawei.com>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Keith Busch <keith.busch@intel.com>,
+ Ingo Molnar <mingo@redhat.com>, Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 8/27/2019 10:17 AM, Keith Busch wrote:
-> On Mon, Aug 26, 2019 at 10:47:36AM -0600, Edmund Nadolski wrote:
->> This patch syncs queues from nvme_reset_prepare, in order to prevent
->> a race where nvme_timeout can execute between the reset_prepare and
->> reset_done. The race results in an extra call to nvme_dev_disable
->> before nvme_reset_done can complete, which causes controller
->> de-enumeration (from the timeout thread) with the following dmesg:
->> 
->> [  365.427991] nvme nvme3: I/O 6 QID 0 timeout, reset controller
->> [  368.434070] nvme 0000:1a:00.0: enabling device (0000 -> 0002)
->> [  368.434207] nvme nvme3: Removing after probe failure status: -19
->> 
->> The probe fails because the driver can no longer read NVME_REG_CSTS.
->> The driver has to be re-loaded into order to bring back the controller.
->> 
->> The following triggers the race (timout < normal completion time):
->> 
->> nvme format /dev/${1} --ses=1 --timeout=4000 &
->> sleep 2
->> echo 1 > /sys/class/nvme/${1}/device/reset
->> 
->> Note, shutdown_lock is not sufficient to prevent the race, since it
->> is not held across the reset_prepare/reset_done.
->> 
->> Signed-off-by: Edmund Nadolski <edmund.nadolski@intel.com>
->> ---
->>  drivers/nvme/host/core.c | 3 +++
->>  drivers/nvme/host/pci.c  | 3 +++
->>  2 files changed, 6 insertions(+)
->> 
->> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
->> index 4660505eded9..43c12f8c030f 100644
->> --- a/drivers/nvme/host/core.c
->> +++ b/drivers/nvme/host/core.c
->> @@ -3974,6 +3974,9 @@ void nvme_sync_queues(struct nvme_ctrl *ctrl)
->>  	list_for_each_entry(ns, &ctrl->namespaces, list)
->>  		blk_sync_queue(ns->queue);
->>  	up_read(&ctrl->namespaces_rwsem);
->> +
->> +	if (ctrl->admin_q)
->> +		blk_sync_queue(ctrl->admin_q);
+On Tue, Aug 27, 2019 at 04:42:02PM +0200, Thomas Gleixner wrote:
+> On Tue, 27 Aug 2019, Ming Lei wrote:
+> > +/*
+> > + * Update average irq interval with the Exponential Weighted Moving
+> > + * Average(EWMA)
+> > + */
+> > +static void irq_update_interval(void)
+> > +{
+> > +#define IRQ_INTERVAL_EWMA_WEIGHT	128
+> > +#define IRQ_INTERVAL_EWMA_PREV_FACTOR	127
+> > +#define IRQ_INTERVAL_EWMA_CURR_FACTOR	(IRQ_INTERVAL_EWMA_WEIGHT - \
+> > +		IRQ_INTERVAL_EWMA_PREV_FACTOR)
 > 
-> This part can probably go in separately as its own patch.
+> Please do not stick defines into a function body. That's horrible.
 
-Will send separately.
+OK.
 
->>  }
->>  EXPORT_SYMBOL_GPL(nvme_sync_queues);
->>  
->> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
->> index bf54b128c5a4..845f540f1707 100644
->> --- a/drivers/nvme/host/pci.c
->> +++ b/drivers/nvme/host/pci.c
->> @@ -2786,6 +2786,9 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->>  static void nvme_reset_prepare(struct pci_dev *pdev)
->>  {
->>  	struct nvme_dev *dev = pci_get_drvdata(pdev);
->> +
->> +	nvme_sync_queues(&dev->ctrl);
->> +	flush_work(&dev->ctrl.reset_work);
->>  	nvme_dev_disable(dev, false);
->>  }
 > 
-> Looks like we'd have a similar problem if a reset is occuring at the
-> same time as a suspend...
+> > +
+> > +	int cpu = raw_smp_processor_id();
+> > +	struct irq_interval *inter = per_cpu_ptr(&avg_irq_interval, cpu);
+> > +	u64 delta = sched_clock_cpu(cpu) - inter->last_irq_end;
 > 
-> I'm starting to reconsider this approach. I believe it works most
-> of the time, but maybe underestimating the chance of a low timeout
-> command slipping in after the sync.
+> Why are you doing that raw_smp_processor_id() dance? The call site has
+> interrupts and preemption disabled.
 
-Does the system provide any ordering guarantees or constraints
-wrt pm/blk_mq/pci ops?
+OK, will change to __smp_processor_id().
 
-Thanks,
-Ed
+> 
+> Also how is that supposed to work when sched_clock is jiffies based?
 
+Good catch, looks ktime_get_ns() is needed.
 
+> 
+> > +	inter->avg = (inter->avg * IRQ_INTERVAL_EWMA_PREV_FACTOR +
+> > +		delta * IRQ_INTERVAL_EWMA_CURR_FACTOR) /
+> > +		IRQ_INTERVAL_EWMA_WEIGHT;
+> 
+> We definitely are not going to have a 64bit multiplication and division on
+> every interrupt. Asided of that this breaks 32bit builds all over the place.
 
+I will convert the above into add/subtract/shift only.
 
-
-
-
-
-
-
-
+thanks,
+Ming
 
 _______________________________________________
 Linux-nvme mailing list
