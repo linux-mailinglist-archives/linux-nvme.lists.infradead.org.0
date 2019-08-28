@@ -2,55 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD8FC9F7F8
-	for <lists+linux-nvme@lfdr.de>; Wed, 28 Aug 2019 03:46:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A9BB9FE59
+	for <lists+linux-nvme@lfdr.de>; Wed, 28 Aug 2019 11:22:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hlaQSeJSYnorjGJMYsOtJrnr8/F0Ue8rrqb6ikzLX7k=; b=ef87Yfoxo3a51F
-	OraTNhUMlg0dUxN10b3xGooJRrAYyXsKMEBbWfNTB76OHEWQFoMB6lVYZCp+WrCmYhgQgXWUvb8TX
-	yd+4WqJnjdnCF67hpc+UkWehFNss6hq48uu/VNb6xXqI9ZUFZ149cKJuY4AdZOAFae+m99rg7+4b0
-	arH8weMk7PexN5xwv12joUwWoDXsEf/KR9VMFRafIXQolL8JYPlN/kHWDIm9qt5sHmKIenlAt+DJU
-	z4FukfhYfvDpQyEU9kXlGYeho8HX/gC4W0DpYMjGKUAj9kF4+1TTDJwIQXMRo8jHdRpIgZl/woGE2
-	oP9q792bXGPPUjyHNk1A==;
+	List-Owner; bh=2zu908sQzjkA5Fve+6iDLXJc2QJ+RLYenSuNDHnSjs0=; b=PQr1dx52mdCsKF
+	AMXG/HkA0I2hSwBVIGYw+CdSZJLf/KLZvS3CtrMB5ZQHF7dK9UpehzwoX0BYvWWz3ncFXbSS9/pyu
+	e80wR6a468QXcPEhe1VJJEpECzAdu7YqgTTDkQZc72mlDxwwE+0Wj6cedsUtb37pukzILNAo+mQZ5
+	OP0Bkh4DF6gk2uFkPkRSrymZ1OdfgTukb9OdgbPeZjiTETbqJvla2NK320rxoQeVlwOAMONnzh4fl
+	5HyQweQ03d87oIeWyc0pFuG9QlNvYBRA/0LqrNyIBsrPrHiyIo3XbKh0KbI8wRwKHfcqwf5+Iwf+k
+	BPAbR2A05sF7TmwgGSDA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i2n26-0004t2-5q; Wed, 28 Aug 2019 01:45:58 +0000
+	id 1i2u9I-0001tI-8y; Wed, 28 Aug 2019 09:21:52 +0000
 Received: from mx1.redhat.com ([209.132.183.28])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i2n1s-0004ri-Ii
- for linux-nvme@lists.infradead.org; Wed, 28 Aug 2019 01:45:46 +0000
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ id 1i2u8e-0001jH-2I
+ for linux-nvme@lists.infradead.org; Wed, 28 Aug 2019 09:21:13 +0000
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 1D13C281D1;
- Wed, 28 Aug 2019 01:45:40 +0000 (UTC)
-Received: from ming.t460p (ovpn-8-23.pek2.redhat.com [10.72.8.23])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 26924600D1;
- Wed, 28 Aug 2019 01:45:29 +0000 (UTC)
-Date: Wed, 28 Aug 2019 09:45:25 +0800
+ by mx1.redhat.com (Postfix) with ESMTPS id 635EF4E83E;
+ Wed, 28 Aug 2019 09:21:11 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-32.pek2.redhat.com [10.72.8.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 510B71001938;
+ Wed, 28 Aug 2019 09:21:02 +0000 (UTC)
+Date: Wed, 28 Aug 2019 17:20:58 +0800
 From: Ming Lei <ming.lei@redhat.com>
-To: Bart Van Assche <bvanassche@acm.org>
-Subject: Re: [PATCH 3/4] nvme: pci: pass IRQF_RESCURE_THREAD to
- request_threaded_irq
-Message-ID: <20190828014524.GA8090@ming.t460p>
-References: <20190827085344.30799-1-ming.lei@redhat.com>
- <20190827085344.30799-4-ming.lei@redhat.com>
- <7cdb9dbb-46e5-b66a-ddf1-c7ecceb28d7a@acm.org>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: [PATCH 10/15] nvme-pci: do not build a scatterlist to map metadata
+Message-ID: <20190828092057.GA15524@ming.t460p>
+References: <20190321231037.25104-1-hch@lst.de>
+ <20190321231037.25104-11-hch@lst.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <7cdb9dbb-46e5-b66a-ddf1-c7ecceb28d7a@acm.org>
+In-Reply-To: <20190321231037.25104-11-hch@lst.de>
 User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.71]); Wed, 28 Aug 2019 01:45:40 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.38]); Wed, 28 Aug 2019 09:21:11 +0000 (UTC)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190827_184544_637582_373E98C2 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20190828_022112_407810_0D36798B 
+X-CRM114-Status: GOOD (  21.61  )
 X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.0 points)
@@ -71,43 +69,80 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.com>,
- Sagi Grimberg <sagi@grimberg.me>, linux-scsi@vger.kernel.org,
- Peter Zijlstra <peterz@infradead.org>, Long Li <longli@microsoft.com>,
- John Garry <john.garry@huawei.com>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
- Ingo Molnar <mingo@redhat.com>, Thomas Gleixner <tglx@linutronix.de>,
- Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <keith.busch@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Gopal Tiwari <gtiwari@redhat.com>, linux-nvme@lists.infradead.org,
+ Jens Axboe <axboe@fb.com>, dmilburn@redhat.com, linux-block@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Aug 27, 2019 at 08:10:42AM -0700, Bart Van Assche wrote:
-> On 8/27/19 1:53 AM, Ming Lei wrote:
-> > If one vector is spread on several CPUs, usually the interrupt is only
-> > handled on one of these CPUs.
+On Thu, Mar 21, 2019 at 04:10:32PM -0700, Christoph Hellwig wrote:
+> We always have exactly one segment, so we can simply call dma_map_bvec.
 > 
-> Is that perhaps a limitation of x86 interrupt handling hardware? See also
-> the description of physical and logical destination mode of the local APIC
-> in the Intel documentation.
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
+> ---
+>  drivers/nvme/host/pci.c | 23 ++++++++++-------------
+>  1 file changed, 10 insertions(+), 13 deletions(-)
 > 
-> Does that limitation also apply to other platforms than x86?
+> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+> index bc4ee869fe82..a7dad24e0406 100644
+> --- a/drivers/nvme/host/pci.c
+> +++ b/drivers/nvme/host/pci.c
+> @@ -221,7 +221,7 @@ struct nvme_iod {
+>  	int npages;		/* In the PRP list. 0 means small pool in use */
+>  	int nents;		/* Used in scatterlist */
+>  	dma_addr_t first_dma;
+> -	struct scatterlist meta_sg; /* metadata requires single contiguous buffer */
+> +	dma_addr_t meta_dma;
+>  	struct scatterlist *sg;
+>  	struct scatterlist inline_sg[0];
+>  };
+> @@ -592,13 +592,16 @@ static void nvme_unmap_data(struct nvme_dev *dev, struct request *req)
+>  	dma_addr_t dma_addr = iod->first_dma, next_dma_addr;
+>  	int i;
+>  
+> +	if (blk_integrity_rq(req)) {
+> +		dma_unmap_page(dev->dev, iod->meta_dma,
+> +				rq_integrity_vec(req)->bv_len, dma_dir);
+> +	}
+> +
+>  	if (iod->nents) {
+>  		/* P2PDMA requests do not need to be unmapped */
+>  		if (!is_pci_p2pdma_page(sg_page(iod->sg)))
+>  			dma_unmap_sg(dev->dev, iod->sg, iod->nents, dma_dir);
+>  
+> -		if (blk_integrity_rq(req))
+> -			dma_unmap_sg(dev->dev, &iod->meta_sg, 1, dma_dir);
+>  	}
+>  
+>  	if (iod->npages == 0)
+> @@ -861,17 +864,11 @@ static blk_status_t nvme_map_data(struct nvme_dev *dev, struct request *req,
+>  
+>  	ret = BLK_STS_IOERR;
+>  	if (blk_integrity_rq(req)) {
+> -		if (blk_rq_count_integrity_sg(q, req->bio) != 1)
+> -			goto out;
+> -
+> -		sg_init_table(&iod->meta_sg, 1);
+> -		if (blk_rq_map_integrity_sg(q, req->bio, &iod->meta_sg) != 1)
+> -			goto out;
+> -
+> -		if (!dma_map_sg(dev->dev, &iod->meta_sg, 1, dma_dir))
+> +		iod->meta_dma = dma_map_bvec(dev->dev, rq_integrity_vec(req),
+> +				dma_dir, 0);
 
-Please see the following excellent explanation from Thomas.
+Hi Christoph,
 
-	https://lkml.org/lkml/2018/4/4/734
+When one bio is enough big, the generated integrity data could cross
+more than one pages even though the data is still in single segment.
 
-Especially the following words:
+However, we don't convert to multi-page bvec for bio_integrity_prep(),
+and each page may consume one bvec, so is it possible for this patch to
+cause issues in case of NVMe's protection? Since this patch supposes
+that there is only one bvec for integrity data.
 
-	So at some point we ripped out the multi target support on X86 and moved
-	everything to single target delivery mode.
-	
-	Other architectures never supported multi target delivery either due to
-	hardware restrictions or for similar reasons why X86 dropped it. There
-	might be a few architectures which support it, but I have no overview at
-	the moment.
-
+BTW, not see such kind of report, just a concern in theory.
 
 thanks,
 Ming
