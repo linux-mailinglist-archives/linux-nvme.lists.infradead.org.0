@@ -2,39 +2,39 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9689BA0D08
-	for <lists+linux-nvme@lfdr.de>; Wed, 28 Aug 2019 23:56:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09296A0D12
+	for <lists+linux-nvme@lfdr.de>; Wed, 28 Aug 2019 23:57:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
 	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fXnL427SEIZnY3nGnuKIYemjinQIfKjLbrsIcIL8pME=; b=DeeJ/i97cfDwMy
-	zxd0idAcEWIzQQGdjGTwXuhW0srpk3pOj4xS/8qIunzmg91cTwPNPXOwZRDbFzukI9r2fzz/mpDlK
-	WgqPSlMGmREYbASgl6Do6RPCbmKYjSKCmDYtu9b+O6McotFyab9mBqEawwuAO82V1eqpDBZ11BB/R
-	NjUnx4NdyUtQoqJ16B6XhavcfxYHVJk8mXevAACmdgPQbPi5o2rSSt6hc+0EAbO2fpXMoRivF67A0
-	clMXyA+XKaZX+nA4A4XAYSpcMHn2zKf5I1zTwo20k5+uH2HG8dFYtfRGqZFDn2UZ/rtjmdQ2srECf
-	GASBCtZThlB7fbM7+d5g==;
+	List-Owner; bh=AWdrsRL2waCk8qg9RFib3fPie8f7pBdjj8ENXZIxUQs=; b=OeSIgOuCaM75OH
+	upOqrRHa53TC8tJWcXmuUN8nQBryqrm9Q4I1TRr6P8Rq7zLU1kf0fktrQeEHViOZJ2xmgA7pbHfwV
+	I/DvTw7o9gLWUfm9TRF9B8OLiz8k+81GXKtT3ynvTG0lHvEDFDqHnAktgP26EPbvQsXwAkbhAFIU+
+	J0epE3jQUSK8j/Qh3BN2NX2bDdpOcSoqq5Ax7tb5jXfH+lP6xPjlnDPldW3jMP+GjzVLAaX9KyBSd
+	L+gLEUtgeaWpZiJCvkldhRvJjKRrx1T6THDY30deOhuctaBfbC0iXSo9smfRW59EH/8TCFTYurjXx
+	7YoAReMxUq51xrnYkTRg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i35vb-0006oy-5x; Wed, 28 Aug 2019 21:56:31 +0000
+	id 1i35wd-0007rA-4l; Wed, 28 Aug 2019 21:57:35 +0000
 Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i35tq-00034B-0K
- for linux-nvme@lists.infradead.org; Wed, 28 Aug 2019 21:54:43 +0000
+ id 1i35tt-000387-EO
+ for linux-nvme@lists.infradead.org; Wed, 28 Aug 2019 21:54:47 +0000
 Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
  by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1i35to-00071l-Bo; Wed, 28 Aug 2019 15:54:41 -0600
+ id 1i35to-00071m-Bo; Wed, 28 Aug 2019 15:54:44 -0600
 Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
  (envelope-from <gunthorp@deltatee.com>)
- id 1i35tj-0001DA-1g; Wed, 28 Aug 2019 15:54:35 -0600
+ id 1i35tj-0001DD-5C; Wed, 28 Aug 2019 15:54:35 -0600
 From: Logan Gunthorpe <logang@deltatee.com>
 To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
  linux-block@vger.kernel.org, linux-fsdevel@vger.kernel.org
-Date: Wed, 28 Aug 2019 15:54:26 -0600
-Message-Id: <20190828215429.4572-11-logang@deltatee.com>
+Date: Wed, 28 Aug 2019 15:54:27 -0600
+Message-Id: <20190828215429.4572-12-logang@deltatee.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190828215429.4572-1-logang@deltatee.com>
 References: <20190828215429.4572-1-logang@deltatee.com>
@@ -47,15 +47,16 @@ X-SA-Exim-Rcpt-To: linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
 X-SA-Exim-Mail-From: gunthorp@deltatee.com
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE,MYRULES_FREE,MYRULES_NO_TEXT autolearn=ham
- autolearn_force=no version=3.4.2
-Subject: [PATCH v8 10/13] nvmet-configfs: introduce passthru configfs interface
+X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
+ version=3.4.2
+Subject: [PATCH v8 11/13] block: don't check blk_rq_is_passthrough() in
+ blk_do_io_stat()
 X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190828_145442_238190_17598F9C 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20190828_145446_161656_3689501D 
+X-CRM114-Status: GOOD (  10.88  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -86,151 +87,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-When CONFIG_NVME_TARGET_PASSTHRU as 'passthru' directory will
-be added to each subsystem. The directory is similar to a namespace
-and has two attributes: device_path and enable. The user must set the
-path to the nvme controller's char device and write '1' to enable the
-subsystem to use passthru.
-
-Any given subsystem is prevented from enabling both a regular namespace
-and the passthru device. If one is enabled, enabling the other will
-produce an error.
+Instead of checking blk_rq_is_passthruough() for every call to
+blk_do_io_stat(), don't set RQF_IO_STAT for passthrough requests.
+This should be equivalent, and opens the possibility of passthrough
+requests specifically requesting statistics tracking.
 
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 ---
- drivers/nvme/target/configfs.c | 99 ++++++++++++++++++++++++++++++++++
- drivers/nvme/target/nvmet.h    |  1 +
- 2 files changed, 100 insertions(+)
+ block/blk-mq.c | 2 +-
+ block/blk.h    | 5 ++---
+ 2 files changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
-index 98613a45bd3b..302689081cd7 100644
---- a/drivers/nvme/target/configfs.c
-+++ b/drivers/nvme/target/configfs.c
-@@ -615,6 +615,103 @@ static const struct config_item_type nvmet_namespaces_type = {
- 	.ct_owner		= THIS_MODULE,
- };
- 
-+#ifdef CONFIG_NVME_TARGET_PASSTHRU
-+
-+static ssize_t nvmet_passthru_device_path_show(struct config_item *item,
-+		char *page)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+
-+	return snprintf(page, PAGE_SIZE, "%s\n", subsys->passthru_ctrl_path);
-+}
-+
-+static ssize_t nvmet_passthru_device_path_store(struct config_item *item,
-+		const char *page, size_t count)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+	size_t len;
-+	int ret;
-+
-+	mutex_lock(&subsys->lock);
-+
-+	ret = -EBUSY;
-+	if (subsys->passthru_ctrl)
-+		goto out_unlock;
-+
-+	ret = -EINVAL;
-+	len = strcspn(page, "\n");
-+	if (!len)
-+		goto out_unlock;
-+
-+	kfree(subsys->passthru_ctrl_path);
-+	ret = -ENOMEM;
-+	subsys->passthru_ctrl_path = kstrndup(page, len, GFP_KERNEL);
-+	if (!subsys->passthru_ctrl_path)
-+		goto out_unlock;
-+
-+	mutex_unlock(&subsys->lock);
-+
-+	return count;
-+out_unlock:
-+	mutex_unlock(&subsys->lock);
-+	return ret;
-+}
-+CONFIGFS_ATTR(nvmet_passthru_, device_path);
-+
-+static ssize_t nvmet_passthru_enable_show(struct config_item *item,
-+		char *page)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+
-+	return sprintf(page, "%d\n", subsys->passthru_ctrl ? 1 : 0);
-+}
-+
-+static ssize_t nvmet_passthru_enable_store(struct config_item *item,
-+		const char *page, size_t count)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+	bool enable;
-+	int ret = 0;
-+
-+	if (strtobool(page, &enable))
-+		return -EINVAL;
-+
-+	if (enable)
-+		ret = nvmet_passthru_ctrl_enable(subsys);
-+	else
-+		nvmet_passthru_ctrl_disable(subsys);
-+
-+	return ret ? ret : count;
-+}
-+CONFIGFS_ATTR(nvmet_passthru_, enable);
-+
-+static struct configfs_attribute *nvmet_passthru_attrs[] = {
-+	&nvmet_passthru_attr_device_path,
-+	&nvmet_passthru_attr_enable,
-+	NULL,
-+};
-+
-+static const struct config_item_type nvmet_passthru_type = {
-+	.ct_attrs		= nvmet_passthru_attrs,
-+	.ct_owner		= THIS_MODULE,
-+};
-+
-+static void nvmet_add_passthru_group(struct nvmet_subsys *subsys)
-+{
-+	config_group_init_type_name(&subsys->passthru_group,
-+				    "passthru", &nvmet_passthru_type);
-+	configfs_add_default_group(&subsys->passthru_group,
-+				   &subsys->group);
-+}
-+
-+#else /* CONFIG_NVME_TARGET_PASSTHRU */
-+
-+static void nvmet_add_passthru_group(struct nvmet_subsys *subsys)
-+{
-+}
-+
-+#endif /* CONFIG_NVME_TARGET_PASSTHRU */
-+
- static int nvmet_port_subsys_allow_link(struct config_item *parent,
- 		struct config_item *target)
+diff --git a/block/blk-mq.c b/block/blk-mq.c
+index 0835f4d8d42e..8e38491dfbf8 100644
+--- a/block/blk-mq.c
++++ b/block/blk-mq.c
+@@ -318,7 +318,7 @@ static struct request *blk_mq_rq_ctx_init(struct blk_mq_alloc_data *data,
+ 	rq->cmd_flags = op;
+ 	if (data->flags & BLK_MQ_REQ_PREEMPT)
+ 		rq->rq_flags |= RQF_PREEMPT;
+-	if (blk_queue_io_stat(data->q))
++	if (blk_queue_io_stat(data->q) && !blk_rq_is_passthrough(rq))
+ 		rq->rq_flags |= RQF_IO_STAT;
+ 	INIT_LIST_HEAD(&rq->queuelist);
+ 	INIT_HLIST_NODE(&rq->hash);
+diff --git a/block/blk.h b/block/blk.h
+index de6b2e146d6e..554efa769bfe 100644
+--- a/block/blk.h
++++ b/block/blk.h
+@@ -234,13 +234,12 @@ int blk_dev_init(void);
+  *
+  *	a) it's attached to a gendisk, and
+  *	b) the queue had IO stats enabled when this request was started, and
+- *	c) it's a file system request
++ *	c) it's a file system request (RQF_IO_STAT will not be set otherwise)
+  */
+ static inline bool blk_do_io_stat(struct request *rq)
  {
-@@ -915,6 +1012,8 @@ static struct config_group *nvmet_subsys_make(struct config_group *group,
- 	configfs_add_default_group(&subsys->allowed_hosts_group,
- 			&subsys->group);
- 
-+	nvmet_add_passthru_group(subsys);
-+
- 	return &subsys->group;
+ 	return rq->rq_disk &&
+-	       (rq->rq_flags & RQF_IO_STAT) &&
+-		!blk_rq_is_passthrough(rq);
++	       (rq->rq_flags & RQF_IO_STAT);
  }
  
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index 2c287d13ed83..ba7690979661 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -231,6 +231,7 @@ struct nvmet_subsys {
- #ifdef CONFIG_NVME_TARGET_PASSTHRU
- 	struct nvme_ctrl	*passthru_ctrl;
- 	char			*passthru_ctrl_path;
-+	struct config_group	passthru_group;
- #endif /* CONFIG_NVME_TARGET_PASSTHRU */
- };
- 
+ static inline void req_set_nomerge(struct request_queue *q, struct request *req)
 -- 
 2.20.1
 
