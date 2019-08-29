@@ -2,42 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3612A124C
-	for <lists+linux-nvme@lfdr.de>; Thu, 29 Aug 2019 09:08:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 75407A1253
+	for <lists+linux-nvme@lfdr.de>; Thu, 29 Aug 2019 09:08:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5JQCVad/GxAJ2B4gu+a5GAnztBZualKXXcBnd1osZrc=; b=ib0v26/Cjo6qFO
-	GczqRq+PCQsPoHct/Yw316L2hIXedyVTKlyhJoggMoJ0zFtNXAJccdbUAjrNbbJLbNHEpXYs7FBLc
-	3nR5s7kstiJh/+cuB/xehz18PwUHna7RQ4lJaijIm9IhCgY0xI3NbNdvGU66xvhRsUeqenpmUSvkR
-	FfH3PM5GEWDPYoNogoGa7ZUPTV/0c9c/MzFFrhMTan0Ok4wyBuA0uds6qwzXqtMusrdC7sA/MTDGy
-	HOZ2xoelcQdoua2v1i4mdR/OAk32Ej+apYl0y6jzJEmiYN/1anakeuChRC/iG/EuDK2h2g4pm5ARI
-	/pe7iXuIkGR3pF+Cnu2w==;
+	List-Owner; bh=SgVXsRM8nyq8ICljSRkYNbIhlxVgL9zei0pShmBmFlY=; b=Hoxp/ywEfh/5oF
+	DR52jBoUFBz+3OJv4RyoiaGBDIuBSZPqxbQPKAS6vTaEq6qS9SdNySchG8AvF/db1BQTELKPMCfxx
+	PNqzdubvsWSjFAe77ZZgw7GovcXgBLlS9i+rTXSwvhmHT6QsHdWJz7bqW2uR9b2BUafK1Mp+YpDN1
+	umG/AEZRYYMTOQlUHMd/EHWcQqalVF986fy28z6G26FEO8fi/VoCX5BPZJFl1ojEt9m2JSTtxtWhj
+	PFXaCR2NYEimY00JtGBKRzH6I+bi+uVATpB6C+aEt30YvkY4413tI0SQeCjjz6qJsRmoJ/Tk5N3/l
+	PR1UJBUY4ieApXOGWiUQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i3EXV-0000X6-7V; Thu, 29 Aug 2019 07:08:13 +0000
+	id 1i3EXw-0000sh-8O; Thu, 29 Aug 2019 07:08:40 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i3EW7-0000GO-7W
- for linux-nvme@lists.infradead.org; Thu, 29 Aug 2019 07:06:49 +0000
+ id 1i3EWN-0000M4-SG
+ for linux-nvme@lists.infradead.org; Thu, 29 Aug 2019 07:07:05 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 89F5168B20; Thu, 29 Aug 2019 09:06:41 +0200 (CEST)
-Date: Thu, 29 Aug 2019 09:06:41 +0200
+ id 5104E68B20; Thu, 29 Aug 2019 09:07:00 +0200 (CEST)
+Date: Thu, 29 Aug 2019 09:07:00 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Israel Rukshin <israelr@mellanox.com>
-Subject: Re: [PATCH 1/3] nvme-pci: Tidy up nvme_unmap_data
-Message-ID: <20190829070641.GB11909@lst.de>
+Subject: Re: [PATCH 2/3] nvme-fc: Use rq_dma_dir macro
+Message-ID: <20190829070700.GC11909@lst.de>
 References: <1566990710-16713-1-git-send-email-israelr@mellanox.com>
+ <1566990710-16713-2-git-send-email-israelr@mellanox.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1566990710-16713-1-git-send-email-israelr@mellanox.com>
+In-Reply-To: <1566990710-16713-2-git-send-email-israelr@mellanox.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190829_000647_666763_E20BCCB2 
-X-CRM114-Status: UNSURE (   6.50  )
+X-CRM114-CacheID: sfid-20190829_000704_212774_80839574 
+X-CRM114-Status: UNSURE (   5.43  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -65,12 +66,6 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
-
-On Wed, Aug 28, 2019 at 02:11:48PM +0300, Israel Rukshin wrote:
-> Remove pointless local variable and use rq_dma_dir macro.
-> 
-> Signed-off-by: Israel Rukshin <israelr@mellanox.com>
-> Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 
 Looks good,
 
