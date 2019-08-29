@@ -2,47 +2,47 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 040C6A235C
-	for <lists+linux-nvme@lfdr.de>; Thu, 29 Aug 2019 20:15:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 947DEA2367
+	for <lists+linux-nvme@lfdr.de>; Thu, 29 Aug 2019 20:15:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Avt+QTZ60S9mp26HpGddvaypwQHgkSu3y9eb90A7Ye0=; b=EF78drNr2GpOYO
-	ERhCxFKYjTJ6LDIII8xGlIwxupp3UpM1efroYEZLnK48JSIj4Y2v/qZ4F5sdv0SIHotDjGUI0FMqD
-	lUCTrLeuYvHoI4FhDR7Z3odhl9uJI+/7qpekxf5FmPDAwK6+cCy/qbB4EmEJtkY//EE/2mJjXBAYi
-	UJZrCM7APYsEkhfenDQGuYCQF8i1/zpDRRxYb269vm3RSFA2QLvhwBK8bLP2iukA8H8/YLExLh4x2
-	z4Ko3FM32uHtZ+1/vAO+m3yzisKhr8e1HqbANLmLjUr00l/12lEjuoxmLNlKiB7FMAqHLm7kOzhLe
-	5JKqREIHdT13vXsSOG2g==;
+	List-Owner; bh=s6veNuDORJj6RV4hQ/DF0zKGc0wJYf5ACslxs4/58K0=; b=lCyL27Knkbb87t
+	Roi/AS7Hn3aW6YfL3fhEbUMLyEG+mB7XY1S8xTJACSRm9D5f/v6SI/p43XX/j+CFObQ6M2i09P3Zr
+	S82dqEBHo2R20wWqY+L8B1LH7P31CWc9+RtqvHEBHnzrW3brjLXVXhGXjgLIkhQZ5dYAFqUTPC++g
+	AmC5B14AQDYWqeAPACetsZRyATE07cjyGbVwptUYVnGu7IuGMksDfgM50Qey3x4xskG3oY0YyGich
+	uaUZkBght5VVG8AvDQh/6uOHtSKV0WDRd27eGS+XM5EbWuG9XkL+8VatnvRJgO5AanmYz6y/pbVsm
+	VTqVUaCSFKSoXGyj2bhw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i3Ox4-0006e0-Ly; Thu, 29 Aug 2019 18:15:18 +0000
+	id 1i3OxI-0006l5-Tt; Thu, 29 Aug 2019 18:15:33 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i3Ows-0006Jo-A1
- for linux-nvme@lists.infradead.org; Thu, 29 Aug 2019 18:15:07 +0000
+ id 1i3Owt-0006VP-CR
+ for linux-nvme@lists.infradead.org; Thu, 29 Aug 2019 18:15:08 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 27D2E23404;
- Thu, 29 Aug 2019 18:15:05 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 58FFD23407;
+ Thu, 29 Aug 2019 18:15:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567102506;
- bh=kCo6rtnN3uj+HRkVKB54selVGg42JXeQR2KTGbXdhjw=;
+ s=default; t=1567102507;
+ bh=ZuIUC6IsQVsuToBGxQ468oPKs3JC4O7eQPHO/n+rARg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=am750hGKWqVrVOhuAO9brEHIGWEjdqh2tg+xQMeAoMKjGjSdRHU/uBYB6eOcKFtg5
- pPmYC85rNYYwM1pdym3jHrAmeceM7rFHwG7d1+7g1gaFUns9hlTKOuaQG2Rj9nqEco
- 5YKq6uxFzX+oM6hg/mSECmIY8uxaog/XysxmAyco=
+ b=IjK1dCNizTWs/64teXanEf5d3U66QOeWyHKanaMuTYMH/eAYI9r71o9W2QxD8bn54
+ kTuzA7oUkb9rTE+wK8S7d/o6YRupLiUeL1HC/7d30hwoXPHvoGeW+n8mymy9RIjfzL
+ 9px4wZtTlfxMq7QS8Imxr95aGJf4YIo3icTjiizU=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.2 56/76] nvme-multipath: fix possible I/O hang when
- paths are updated
-Date: Thu, 29 Aug 2019 14:12:51 -0400
-Message-Id: <20190829181311.7562-56-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.2 57/76] nvme: Fix cntlid validation when not using
+ NVMEoF
+Date: Thu, 29 Aug 2019 14:12:52 -0400
+Message-Id: <20190829181311.7562-57-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190829181311.7562-1-sashal@kernel.org>
 References: <20190829181311.7562-1-sashal@kernel.org>
@@ -50,8 +50,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190829_111506_383332_EBD447D6 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20190829_111507_444467_CD09D959 
+X-CRM114-Status: GOOD (  12.19  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -81,57 +81,67 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Jens Axboe <axboe@kernel.dk>, Sasha Levin <sashal@kernel.org>,
- Anton Eidelman <anton@lightbitslabs.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>
+ "Guilherme G. Piccoli" <gpiccoli@canonical.com>,
+ Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Anton Eidelman <anton@lightbitslabs.com>
+From: "Guilherme G. Piccoli" <gpiccoli@canonical.com>
 
-[ Upstream commit 504db087aaccdb32af61539916409f7dca31ceb5 ]
+[ Upstream commit a89fcca8185633993018dc081d6b021d005e6d0b ]
 
-nvme_state_set_live() making a path available triggers requeue_work
-in order to resubmit requests that ended up on requeue_list when no
-paths were available.
+Commit 1b1031ca63b2 ("nvme: validate cntlid during controller initialisation")
+introduced a validation for controllers with duplicate cntlid that runs
+on nvme_init_subsystem(). The problem is that the validation relies on
+ctrl->cntlid, and this value is assigned (from id_ctrl value) after the
+call for nvme_init_subsystem() in nvme_init_identify() for non-fabrics
+scenario. That leads to ctrl->cntlid always being 0 in case we have a
+physical set of controllers in the same subsystem.
 
-This requeue_work may race with concurrent nvme_ns_head_make_request()
-that do not observe the live path yet.
-Such concurrent requests may by made by either:
-- New IO submission.
-- Requeue_work triggered by nvme_failover_req() or another ana_work.
+This patch fixes that by loading the discovered cntlid id_ctrl value into
+ctrl->cntlid before the subsystem initialization, only for the non-fabrics
+case. The patch was tested with emulated nvme devices (qemu) having two
+controllers in a single subsystem. Without the patch, we couldn't make
+it work failing in the duplicate check; when running with the patch, we
+could see the subsystem holding both controllers.
 
-A race may cause requeue_work capture the state of requeue_list before
-more requests get onto the list. These requests will stay on the list
-forever unless requeue_work is triggered again.
+For the fabrics case we see ctrl->cntlid has a more intricate relation
+with the admin connect, so we didn't change that.
 
-In order to prevent such race, nvme_state_set_live() should
-synchronize_srcu(&head->srcu) before triggering the requeue_work and
-prevent nvme_ns_head_make_request referencing an old snapshot of the
-path list.
-
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-Signed-off-by: Anton Eidelman <anton@lightbitslabs.com>
+Fixes: 1b1031ca63b2 ("nvme: validate cntlid during controller initialisation")
+Signed-off-by: Guilherme G. Piccoli <gpiccoli@canonical.com>
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Jens Axboe <axboe@kernel.dk>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/multipath.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/nvme/host/core.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/host/multipath.c b/drivers/nvme/host/multipath.c
-index e942b3e840687..4f599366bc5ae 100644
---- a/drivers/nvme/host/multipath.c
-+++ b/drivers/nvme/host/multipath.c
-@@ -356,6 +356,7 @@ static void nvme_mpath_set_live(struct nvme_ns *ns)
- 		srcu_read_unlock(&head->srcu, srcu_idx);
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 5deb4deb38209..c40b807c667ed 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -2543,6 +2543,9 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+ 			goto out_free;
  	}
  
-+	synchronize_srcu(&ns->head->srcu);
- 	kblockd_schedule_work(&ns->head->requeue_work);
- }
++	if (!(ctrl->ops->flags & NVME_F_FABRICS))
++		ctrl->cntlid = le16_to_cpu(id->cntlid);
++
+ 	if (!ctrl->identified) {
+ 		int i;
  
+@@ -2643,7 +2646,6 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
+ 			goto out_free;
+ 		}
+ 	} else {
+-		ctrl->cntlid = le16_to_cpu(id->cntlid);
+ 		ctrl->hmpre = le32_to_cpu(id->hmpre);
+ 		ctrl->hmmin = le32_to_cpu(id->hmmin);
+ 		ctrl->hmminds = le32_to_cpu(id->hmminds);
 -- 
 2.20.1
 
