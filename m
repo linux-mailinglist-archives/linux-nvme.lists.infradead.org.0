@@ -2,56 +2,56 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2218A16C0
-	for <lists+linux-nvme@lfdr.de>; Thu, 29 Aug 2019 12:50:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 040C6A235C
+	for <lists+linux-nvme@lfdr.de>; Thu, 29 Aug 2019 20:15:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=50VCRHiU+GEoRhwhJ0Rdyzb88hB0u2WbAEVGuDNgbrA=; b=kFPXUyfQpBJnGt
-	nV1Na9ZUHih212pGuZoLc0dWMVE4XfEv5wWqmQbYyXSI3gHjZBncfyrw+dtdPAFTl+ljBg9vBSJCW
-	WzYKNhb+w0I8zAE6P9SWaH14+IXt6WDkpo5ifdzNM0d368jaYZcEEJxqplcPDMOiQY9ugGgPzMsVh
-	J7pt1Qn5E8vBayDeuRu/KIO//FRGVyu7jasKwpsfjpba96yErJoqmwzvFjJDpMFj8OhHqohaxpaVf
-	MgwAtq2YPoB/rzpukD3q0PSAQDMyBEbD+5VCx4fn48fybUaORFgO717Bem2w4AcxXi/8wpQZHu9Gk
-	k+mkBpqUZaxTlglOrnjg==;
+	List-Owner; bh=Avt+QTZ60S9mp26HpGddvaypwQHgkSu3y9eb90A7Ye0=; b=EF78drNr2GpOYO
+	ERhCxFKYjTJ6LDIII8xGlIwxupp3UpM1efroYEZLnK48JSIj4Y2v/qZ4F5sdv0SIHotDjGUI0FMqD
+	lUCTrLeuYvHoI4FhDR7Z3odhl9uJI+/7qpekxf5FmPDAwK6+cCy/qbB4EmEJtkY//EE/2mJjXBAYi
+	UJZrCM7APYsEkhfenDQGuYCQF8i1/zpDRRxYb269vm3RSFA2QLvhwBK8bLP2iukA8H8/YLExLh4x2
+	z4Ko3FM32uHtZ+1/vAO+m3yzisKhr8e1HqbANLmLjUr00l/12lEjuoxmLNlKiB7FMAqHLm7kOzhLe
+	5JKqREIHdT13vXsSOG2g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i3I0x-0000II-R3; Thu, 29 Aug 2019 10:50:51 +0000
+	id 1i3Ox4-0006e0-Ly; Thu, 29 Aug 2019 18:15:18 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i3I0l-0000H1-1V
- for linux-nvme@lists.infradead.org; Thu, 29 Aug 2019 10:50:40 +0000
+ id 1i3Ows-0006Jo-A1
+ for linux-nvme@lists.infradead.org; Thu, 29 Aug 2019 18:15:07 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E3BB8233FF;
- Thu, 29 Aug 2019 10:50:37 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 27D2E23404;
+ Thu, 29 Aug 2019 18:15:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1567075838;
- bh=YqMqhnwmFGwqeoBJvsqjLVHMarwz2//zk8On24MIYAQ=;
+ s=default; t=1567102506;
+ bh=kCo6rtnN3uj+HRkVKB54selVGg42JXeQR2KTGbXdhjw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=KZCwK/vU4C5cBxFRB7AJY6KbDAT2jP+f+gS5N1kcmtRpGmB2l/WW133JyXTTOvnGy
- BRdd6jBVVFvft5zzzNUu3SQsMLZ+O8qRlKQmBdqY+MMPGPBz72+HG8+hKq7XQEUxB5
- 6xKWggXd12UJAI79VIFW0C6db5aqBdkgL/vMQ5DE=
+ b=am750hGKWqVrVOhuAO9brEHIGWEjdqh2tg+xQMeAoMKjGjSdRHU/uBYB6eOcKFtg5
+ pPmYC85rNYYwM1pdym3jHrAmeceM7rFHwG7d1+7g1gaFUns9hlTKOuaQG2Rj9nqEco
+ 5YKq6uxFzX+oM6hg/mSECmIY8uxaog/XysxmAyco=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 25/29] nvme-fc: use separate work queue to avoid
- warning
-Date: Thu, 29 Aug 2019 06:50:05 -0400
-Message-Id: <20190829105009.2265-25-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.2 56/76] nvme-multipath: fix possible I/O hang when
+ paths are updated
+Date: Thu, 29 Aug 2019 14:12:51 -0400
+Message-Id: <20190829181311.7562-56-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190829105009.2265-1-sashal@kernel.org>
-References: <20190829105009.2265-1-sashal@kernel.org>
+In-Reply-To: <20190829181311.7562-1-sashal@kernel.org>
+References: <20190829181311.7562-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190829_035039_104671_2FBA39AE 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20190829_111506_383332_EBD447D6 
+X-CRM114-Status: GOOD (  11.71  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -80,97 +80,58 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Hannes Reinecke <hare@suse.com>,
- James Smart <james.smart@broadcom.com>, linux-nvme@lists.infradead.org,
- Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
+Cc: Jens Axboe <axboe@kernel.dk>, Sasha Levin <sashal@kernel.org>,
+ Anton Eidelman <anton@lightbitslabs.com>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Hannes Reinecke <hare@suse.de>
+From: Anton Eidelman <anton@lightbitslabs.com>
 
-[ Upstream commit 8730c1ddb69bdeeb10c1f613a4e15e95862b1981 ]
+[ Upstream commit 504db087aaccdb32af61539916409f7dca31ceb5 ]
 
-When tearing down a controller the following warning is issued:
+nvme_state_set_live() making a path available triggers requeue_work
+in order to resubmit requests that ended up on requeue_list when no
+paths were available.
 
-WARNING: CPU: 0 PID: 30681 at ../kernel/workqueue.c:2418 check_flush_dependency
+This requeue_work may race with concurrent nvme_ns_head_make_request()
+that do not observe the live path yet.
+Such concurrent requests may by made by either:
+- New IO submission.
+- Requeue_work triggered by nvme_failover_req() or another ana_work.
 
-This happens as the err_work workqueue item is scheduled on the
-system workqueue (which has WQ_MEM_RECLAIM not set), but is flushed
-from a workqueue which has WQ_MEM_RECLAIM set.
+A race may cause requeue_work capture the state of requeue_list before
+more requests get onto the list. These requests will stay on the list
+forever unless requeue_work is triggered again.
 
-Fix this by providing an FC-NVMe specific workqueue.
+In order to prevent such race, nvme_state_set_live() should
+synchronize_srcu(&head->srcu) before triggering the requeue_work and
+prevent nvme_ns_head_make_request referencing an old snapshot of the
+path list.
 
-Fixes: 4cff280a5fcc ("nvme-fc: resolve io failures during connect")
-Signed-off-by: Hannes Reinecke <hare@suse.com>
-Reviewed-by: James Smart <james.smart@broadcom.com>
-Signed-off-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Anton Eidelman <anton@lightbitslabs.com>
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/fc.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+ drivers/nvme/host/multipath.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
-index 67dec8860bf3c..1f5aa8d4712b3 100644
---- a/drivers/nvme/host/fc.c
-+++ b/drivers/nvme/host/fc.c
-@@ -206,7 +206,7 @@ static LIST_HEAD(nvme_fc_lport_list);
- static DEFINE_IDA(nvme_fc_local_port_cnt);
- static DEFINE_IDA(nvme_fc_ctrl_cnt);
- 
--
-+static struct workqueue_struct *nvme_fc_wq;
- 
- /*
-  * These items are short-term. They will eventually be moved into
-@@ -2053,7 +2053,7 @@ nvme_fc_error_recovery(struct nvme_fc_ctrl *ctrl, char *errmsg)
- 	 */
- 	if (ctrl->ctrl.state == NVME_CTRL_CONNECTING) {
- 		active = atomic_xchg(&ctrl->err_work_active, 1);
--		if (!active && !schedule_work(&ctrl->err_work)) {
-+		if (!active && !queue_work(nvme_fc_wq, &ctrl->err_work)) {
- 			atomic_set(&ctrl->err_work_active, 0);
- 			WARN_ON(1);
- 		}
-@@ -3321,6 +3321,10 @@ static int __init nvme_fc_init_module(void)
- {
- 	int ret;
- 
-+	nvme_fc_wq = alloc_workqueue("nvme_fc_wq", WQ_MEM_RECLAIM, 0);
-+	if (!nvme_fc_wq)
-+		return -ENOMEM;
-+
- 	/*
- 	 * NOTE:
- 	 * It is expected that in the future the kernel will combine
-@@ -3338,7 +3342,7 @@ static int __init nvme_fc_init_module(void)
- 	fc_class = class_create(THIS_MODULE, "fc");
- 	if (IS_ERR(fc_class)) {
- 		pr_err("couldn't register class fc\n");
--		return PTR_ERR(fc_class);
-+		goto out_destroy_wq;
+diff --git a/drivers/nvme/host/multipath.c b/drivers/nvme/host/multipath.c
+index e942b3e840687..4f599366bc5ae 100644
+--- a/drivers/nvme/host/multipath.c
++++ b/drivers/nvme/host/multipath.c
+@@ -356,6 +356,7 @@ static void nvme_mpath_set_live(struct nvme_ns *ns)
+ 		srcu_read_unlock(&head->srcu, srcu_idx);
  	}
  
- 	/*
-@@ -3362,6 +3366,9 @@ out_destroy_device:
- 	device_destroy(fc_class, MKDEV(0, 0));
- out_destroy_class:
- 	class_destroy(fc_class);
-+out_destroy_wq:
-+	destroy_workqueue(nvme_fc_wq);
-+
- 	return ret;
++	synchronize_srcu(&ns->head->srcu);
+ 	kblockd_schedule_work(&ns->head->requeue_work);
  }
  
-@@ -3378,6 +3385,7 @@ static void __exit nvme_fc_exit_module(void)
- 
- 	device_destroy(fc_class, MKDEV(0, 0));
- 	class_destroy(fc_class);
-+	destroy_workqueue(nvme_fc_wq);
- }
- 
- module_init(nvme_fc_init_module);
 -- 
 2.20.1
 
