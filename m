@@ -2,54 +2,54 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68C97A5199
-	for <lists+linux-nvme@lfdr.de>; Mon,  2 Sep 2019 10:29:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 36065A5A01
+	for <lists+linux-nvme@lfdr.de>; Mon,  2 Sep 2019 17:01:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y3xCU1a2Aq1PByJjPtZyL72/vGKKMlhJQ7UYSRYTNto=; b=huTb+2Z/RDk5n3
-	m5hpQz3pDeyolSh25MK7GDebYlkfGRBt8gY48iHxfpHrzEaEcY4HFQq8mfu8lQnMtjUkXnk9e9sxA
-	tCUqX7yfetIhPCROfXlJJRphcMgiQp/DQAneuQP+kXFJah65LX7bqMta7yAqpbqM/9b0Pq2zJ5QYl
-	wAPlb7UMw5l8XC/f/M7DD6gXRAOHmy8HaB/i50lkCDSoOrIplADYjWk4so1oDSKP9A9pJnqoxCkuY
-	V/AYnnWIBpronokiHkNUVvKrfp+oRs6HIpuJXEe8LuAxS3mHkZx4s+DyLIz8gorBF7fLHfUjCbYoU
-	aMUjgUYfbNdMK53s9k+g==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=UCJxWJo1b0CvMT4Rk4tEflSj2RgbGIww0yA1l7JEYIo=; b=Ur6
+	IwKpAd5nbc9OCnczgD0GCOGvE8q0hm8l+jRRsF/dafO9BTfNhovkT5P0VjIkRnml69CJFACpCcc9Q
+	Rn7oNvHY3aly8Hq3vPqaG455Dhu+84kj3aZPWhWAr6B3k/74bp74sDAtmHtJkxidpKGilwIKJiYQY
+	u0P8qvihxCc/CDVjcQNJ2PM93En4H1ar1fbmyY8hV4UWQ63+aXHfOcnA43VLxOmmR/fxgwmcCa2IY
+	xJmAo2qEZIJwLtildq68dV0qYrGEWKtxvJmE9e/N0YyAhlBrv/FEOdlBHzCg7zebw60yL4ojqbgNW
+	wmN4dljMl6Asvo6iuqBQoXu3DP9rBUA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i4hif-000069-0z; Mon, 02 Sep 2019 08:29:49 +0000
-Received: from verein.lst.de ([213.95.11.211])
- by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i4hiT-00005I-8r
- for linux-nvme@lists.infradead.org; Mon, 02 Sep 2019 08:29:38 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 7D5E0227A8A; Mon,  2 Sep 2019 10:29:33 +0200 (CEST)
-Date: Mon, 2 Sep 2019 10:29:33 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Marta Rybczynska <mrybczyn@kalray.eu>
-Subject: Re: [PATCH v2] nvme: allow 64-bit results in passthru commands
-Message-ID: <20190902082933.GA29909@lst.de>
-References: <89520652.56920183.1565948841909.JavaMail.zimbra@kalray.eu>
- <20190822000652.GF9511@lst.de>
- <1678802062.58145473.1566818428010.JavaMail.zimbra@kalray.eu>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1678802062.58145473.1566818428010.JavaMail.zimbra@kalray.eu>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+	id 1i4npz-0005HR-T7; Mon, 02 Sep 2019 15:01:48 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
+ id 1i4npO-00050V-Sy
+ for linux-nvme@lists.infradead.org; Mon, 02 Sep 2019 15:01:14 +0000
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ maxg@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 2 Sep 2019 18:01:03 +0300
+Received: from r-vnc12.mtr.labs.mlnx (r-vnc12.mtr.labs.mlnx [10.208.0.12])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x82F13nx012407;
+ Mon, 2 Sep 2019 18:01:03 +0300
+From: Max Gurtovoy <maxg@mellanox.com>
+To: linux-nvme@lists.infradead.org, keith.busch@intel.com, hch@lst.de,
+ james.smart@broadcom.com, sagi@grimberg.me
+Subject: [PATCH 1/3] nvme: introduce nvme_finish_cmd function
+Date: Mon,  2 Sep 2019 18:01:00 +0300
+Message-Id: <1567436462-23218-1-git-send-email-maxg@mellanox.com>
+X-Mailer: git-send-email 1.7.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190902_012937_465736_6A3C3072 
-X-CRM114-Status: UNSURE (   6.11  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190902_080111_335299_34098E49 
+X-CRM114-Status: GOOD (  11.82  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ no trust [193.47.165.129 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,20 +61,219 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, Samuel Jones <sjones@kalray.eu>,
- Guillaume Missonnier <gmissonnier@kalray.eu>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-nvme <linux-nvme@lists.infradead.org>, axboe <axboe@fb.com>,
- kbusch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
+Cc: israelr@mellanox.com, Max Gurtovoy <maxg@mellanox.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Aug 26, 2019 at 01:20:28PM +0200, Marta Rybczynska wrote:
-> Do you mean something like this?
+This function should be called by every transport during complete callback
+upon successful submission of the request. Thus, in case of a failure in
+command submission and in case nvme_setup_cmd was called, the transport
+should call nvme_cleanup_cmd in the error flow to avoid resource leakage.
+Add this logic to all the underlaying transports.
 
-Yes.
+Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+---
+ drivers/nvme/host/core.c | 20 +++++++++++++-------
+ drivers/nvme/host/fc.c   |  4 ++--
+ drivers/nvme/host/nvme.h |  1 +
+ drivers/nvme/host/pci.c  |  2 +-
+ drivers/nvme/host/rdma.c | 12 ++++++------
+ drivers/nvme/host/tcp.c  | 11 +++++++++--
+ 6 files changed, 32 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index d3d6b7b..9409427 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -683,13 +683,6 @@ static inline blk_status_t nvme_setup_rw(struct nvme_ns *ns,
+ 
+ void nvme_cleanup_cmd(struct request *req)
+ {
+-	if (blk_integrity_rq(req) && req_op(req) == REQ_OP_READ &&
+-	    nvme_req(req)->status == 0) {
+-		struct nvme_ns *ns = req->rq_disk->private_data;
+-
+-		t10_pi_complete(req, ns->pi_type,
+-				blk_rq_bytes(req) >> ns->lba_shift);
+-	}
+ 	if (req->rq_flags & RQF_SPECIAL_PAYLOAD) {
+ 		struct nvme_ns *ns = req->rq_disk->private_data;
+ 		struct page *page = req->special_vec.bv_page;
+@@ -702,6 +695,19 @@ void nvme_cleanup_cmd(struct request *req)
+ }
+ EXPORT_SYMBOL_GPL(nvme_cleanup_cmd);
+ 
++void nvme_finish_cmd(struct request *req)
++{
++	if (blk_integrity_rq(req) && req_op(req) == REQ_OP_READ &&
++	    nvme_req(req)->status == 0) {
++		struct nvme_ns *ns = req->rq_disk->private_data;
++
++		t10_pi_complete(req, ns->pi_type,
++				blk_rq_bytes(req) >> ns->lba_shift);
++	}
++	nvme_cleanup_cmd(req);
++}
++EXPORT_SYMBOL_GPL(nvme_finish_cmd);
++
+ blk_status_t nvme_setup_cmd(struct nvme_ns *ns, struct request *req,
+ 		struct nvme_command *cmd)
+ {
+diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
+index 232d8094..dd7fbe2 100644
+--- a/drivers/nvme/host/fc.c
++++ b/drivers/nvme/host/fc.c
+@@ -2152,8 +2152,6 @@ enum {
+ 				((rq_data_dir(rq) == WRITE) ?
+ 					DMA_TO_DEVICE : DMA_FROM_DEVICE));
+ 
+-	nvme_cleanup_cmd(rq);
+-
+ 	sg_free_table_chained(&freq->sg_table, SG_CHUNK_SIZE);
+ 
+ 	freq->sg_cnt = 0;
+@@ -2284,6 +2282,7 @@ enum {
+ 		if (!(op->flags & FCOP_FLAGS_AEN))
+ 			nvme_fc_unmap_data(ctrl, op->rq, op);
+ 
++		nvme_cleanup_cmd(op->rq);
+ 		nvme_fc_ctrl_put(ctrl);
+ 
+ 		if (ctrl->rport->remoteport.port_state == FC_OBJSTATE_ONLINE &&
+@@ -2376,6 +2375,7 @@ enum {
+ 	atomic_set(&op->state, FCPOP_STATE_IDLE);
+ 
+ 	nvme_fc_unmap_data(ctrl, rq, op);
++	nvme_finish_cmd(rq);
+ 	nvme_complete_rq(rq);
+ 	nvme_fc_ctrl_put(ctrl);
+ }
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 2d678fb..11b2f52 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -463,6 +463,7 @@ void nvme_complete_async_event(struct nvme_ctrl *ctrl, __le16 status,
+ struct request *nvme_alloc_request(struct request_queue *q,
+ 		struct nvme_command *cmd, blk_mq_req_flags_t flags, int qid);
+ void nvme_cleanup_cmd(struct request *req);
++void nvme_finish_cmd(struct request *req);
+ blk_status_t nvme_setup_cmd(struct nvme_ns *ns, struct request *req,
+ 		struct nvme_command *cmd);
+ int nvme_submit_sync_cmd(struct request_queue *q, struct nvme_command *cmd,
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 732d5b6..ab3b1c9 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -920,7 +920,7 @@ static void nvme_pci_complete_rq(struct request *req)
+ 	struct nvme_iod *iod = blk_mq_rq_to_pdu(req);
+ 	struct nvme_dev *dev = iod->nvmeq->dev;
+ 
+-	nvme_cleanup_cmd(req);
++	nvme_finish_cmd(req);
+ 	if (blk_integrity_rq(req))
+ 		dma_unmap_page(dev->dev, iod->meta_dma,
+ 			       rq_integrity_vec(req)->bv_len, rq_data_dir(req));
+diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+index 1a6449b..cd94f8a 100644
+--- a/drivers/nvme/host/rdma.c
++++ b/drivers/nvme/host/rdma.c
+@@ -1149,7 +1149,6 @@ static void nvme_rdma_unmap_data(struct nvme_rdma_queue *queue,
+ 			req->nents, rq_data_dir(rq) ==
+ 				    WRITE ? DMA_TO_DEVICE : DMA_FROM_DEVICE);
+ 
+-	nvme_cleanup_cmd(rq);
+ 	sg_free_table_chained(&req->sg_table, SG_CHUNK_SIZE);
+ }
+ 
+@@ -1748,7 +1747,6 @@ static blk_status_t nvme_rdma_queue_rq(struct blk_mq_hw_ctx *hctx,
+ 	if (unlikely(err < 0)) {
+ 		dev_err(queue->ctrl->ctrl.device,
+ 			     "Failed to map data (%d)\n", err);
+-		nvme_cleanup_cmd(rq);
+ 		goto err;
+ 	}
+ 
+@@ -1759,18 +1757,19 @@ static blk_status_t nvme_rdma_queue_rq(struct blk_mq_hw_ctx *hctx,
+ 
+ 	err = nvme_rdma_post_send(queue, sqe, req->sge, req->num_sge,
+ 			req->mr ? &req->reg_wr.wr : NULL);
+-	if (unlikely(err)) {
+-		nvme_rdma_unmap_data(queue, rq);
+-		goto err;
+-	}
++	if (unlikely(err))
++		goto err_unmap;
+ 
+ 	return BLK_STS_OK;
+ 
++err_unmap:
++	nvme_rdma_unmap_data(queue, rq);
+ err:
+ 	if (err == -ENOMEM || err == -EAGAIN)
+ 		ret = BLK_STS_RESOURCE;
+ 	else
+ 		ret = BLK_STS_IOERR;
++	nvme_cleanup_cmd(rq);
+ unmap_qe:
+ 	ib_dma_unmap_single(dev, req->sqe.dma, sizeof(struct nvme_command),
+ 			    DMA_TO_DEVICE);
+@@ -1791,6 +1790,7 @@ static void nvme_rdma_complete_rq(struct request *rq)
+ 	struct ib_device *ibdev = queue->device->dev;
+ 
+ 	nvme_rdma_unmap_data(queue, rq);
++	nvme_finish_cmd(rq);
+ 	ib_dma_unmap_single(ibdev, req->sqe.dma, sizeof(struct nvme_command),
+ 			    DMA_TO_DEVICE);
+ 	nvme_complete_rq(rq);
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 606b13d..bd00128 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -2093,6 +2093,7 @@ static blk_status_t nvme_tcp_setup_cmd_pdu(struct nvme_ns *ns,
+ 
+ 	ret = nvme_tcp_map_data(queue, rq);
+ 	if (unlikely(ret)) {
++		nvme_cleanup_cmd(rq);
+ 		dev_err(queue->ctrl->ctrl.device,
+ 			"Failed to map data (%d)\n", ret);
+ 		return ret;
+@@ -2101,6 +2102,12 @@ static blk_status_t nvme_tcp_setup_cmd_pdu(struct nvme_ns *ns,
+ 	return 0;
+ }
+ 
++static void nvme_tcp_complete_rq(struct request *rq)
++{
++	nvme_finish_cmd(rq);
++	nvme_complete_rq(rq);
++}
++
+ static blk_status_t nvme_tcp_queue_rq(struct blk_mq_hw_ctx *hctx,
+ 		const struct blk_mq_queue_data *bd)
+ {
+@@ -2161,7 +2168,7 @@ static int nvme_tcp_map_queues(struct blk_mq_tag_set *set)
+ 
+ static struct blk_mq_ops nvme_tcp_mq_ops = {
+ 	.queue_rq	= nvme_tcp_queue_rq,
+-	.complete	= nvme_complete_rq,
++	.complete	= nvme_tcp_complete_rq,
+ 	.init_request	= nvme_tcp_init_request,
+ 	.exit_request	= nvme_tcp_exit_request,
+ 	.init_hctx	= nvme_tcp_init_hctx,
+@@ -2171,7 +2178,7 @@ static int nvme_tcp_map_queues(struct blk_mq_tag_set *set)
+ 
+ static struct blk_mq_ops nvme_tcp_admin_mq_ops = {
+ 	.queue_rq	= nvme_tcp_queue_rq,
+-	.complete	= nvme_complete_rq,
++	.complete	= nvme_tcp_complete_rq,
+ 	.init_request	= nvme_tcp_init_request,
+ 	.exit_request	= nvme_tcp_exit_request,
+ 	.init_hctx	= nvme_tcp_init_admin_hctx,
+-- 
+1.8.3.1
+
 
 _______________________________________________
 Linux-nvme mailing list
