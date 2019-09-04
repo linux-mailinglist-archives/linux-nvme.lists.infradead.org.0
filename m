@@ -2,41 +2,33 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74C77A86A7
-	for <lists+linux-nvme@lfdr.de>; Wed,  4 Sep 2019 18:37:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA13EA86C7
+	for <lists+linux-nvme@lfdr.de>; Wed,  4 Sep 2019 19:01:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sHZC1odUHBpbvMe/H/5yX3Q04P1c2WqwSexxIE4DlL0=; b=Blq28wtcDKQAI8
-	2rIu8y2vMWUQ2awaErN9BNbE6MrJY3OUqXbZo0Mk9V1MZWdzqkbAod7MKYaOTfzfsQHIJTl3hGNy+
-	dFLFuh4VW5tw/Dgx8X6solgPrGP6DqiM3jg/Q2q8GrJGIpN6mOwKEWUz7WZdU4Apara/P2fWeppBD
-	BjCKkKN65P49DsTFV86gp62BErg1surNyIKgp60unT6eOhHYLTfDBzT7xNk+2TQHb9pO0CHibZ8pG
-	wfctQ5lksde+hFdMEUs9J5FKGjUqwVRG9/IhfIdsitQj15e+pNnr4v8przyL/xhFs+2ktuhNhdpDB
-	kFk79JmCuWxzCm7oki9g==;
+	List-Owner; bh=Hb4+qzPjEhi10P+NNbS9NeRTPVdP7jIKGrlDt0W+aSY=; b=LV9uIHiG9tQjCY
+	XNaYSHCw5M29yuRcsmFC9XMfAYpZ1qK9PGM6wNOT3jEvHoDs8FOd3OgZuE6+TMv7JPU4fBdDHWEJH
+	yKUo36T1yzp5+WMNy9RxR4UruIBlqC3mJLaQP4ged84JluaqWXBZuuEcH17X/wisS7dAW9JvV5YlK
+	Ux9mjQKAYNzgJQpTA4An18+YFb4bh1mnnCScpIPwYqlCusa8xZtCJrt/TejxDlBAXqZ8tQpvRQHBG
+	vbKE4u6uU+4/5QNsljlXbUnN4e36MfKpC6nOS1otweHVaSrAAf517wACgIb9ICpG4uJk+X9f4peLh
+	Jw2SSmfUQe2UuEvX9n4w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5YHr-0004Ua-VG; Wed, 04 Sep 2019 16:37:40 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1i5YfA-00059u-AX; Wed, 04 Sep 2019 17:01:44 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5YHi-0004Tk-9a
- for linux-nvme@lists.infradead.org; Wed, 04 Sep 2019 16:37:31 +0000
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Sep 2019 09:37:29 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,467,1559545200"; d="scan'208";a="199068030"
-Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
- by fmsmga001.fm.intel.com with ESMTP; 04 Sep 2019 09:37:28 -0700
-Date: Wed, 4 Sep 2019 10:35:57 -0600
-From: Keith Busch <kbusch@kernel.org>
-To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH] nvme-core: Fix subsystem instance mismatches
-Message-ID: <20190904163557.GF21302@localhost.localdomain>
+ id 1i5Yey-00052G-BM
+ for linux-nvme@lists.infradead.org; Wed, 04 Sep 2019 17:01:34 +0000
+Received: from s0106ac1f6bb1ecac.cg.shawcable.net ([70.73.163.230]
+ helo=[192.168.11.155])
+ by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <logang@deltatee.com>)
+ id 1i5Yes-0007q5-5s; Wed, 04 Sep 2019 11:01:27 -0600
+To: Keith Busch <kbusch@kernel.org>
 References: <20190831000139.7662-1-logang@deltatee.com>
  <20190831152910.GA29439@localhost.localdomain>
  <33af4d94-9f6d-9baa-01fa-0f75ccee263e@deltatee.com>
@@ -46,22 +38,40 @@ References: <20190831000139.7662-1-logang@deltatee.com>
  <20190904154215.GA20422@lst.de>
  <20190904155445.GD21302@localhost.localdomain>
  <ef3bf93b-cb47-95c5-7d96-f81d9acfdb55@deltatee.com>
+ <20190904163557.GF21302@localhost.localdomain>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <f07e03f1-48f0-591e-fdf6-9499fa4dd9ab@deltatee.com>
+Date: Wed, 4 Sep 2019 11:01:22 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ef3bf93b-cb47-95c5-7d96-f81d9acfdb55@deltatee.com>
-User-Agent: Mutt/1.9.1 (2017-09-22)
+In-Reply-To: <20190904163557.GF21302@localhost.localdomain>
+Content-Language: en-US
+X-SA-Exim-Connect-IP: 70.73.163.230
+X-SA-Exim-Rcpt-To: keith.busch@intel.com, linux-nvme@lists.infradead.org,
+ linux-kernel@vger.kernel.org, martin.petersen@oracle.com, sagi@grimberg.me,
+ hare@suse.com, axboe@fb.com, hch@lst.de, kbusch@kernel.org
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE,MYRULES_FREE autolearn=ham autolearn_force=no
+ version=3.4.2
+Subject: Re: [PATCH] nvme-core: Fix subsystem instance mismatches
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190904_093730_382723_D0B35796 
-X-CRM114-Status: GOOD (  24.82  )
-X-Spam-Score: -1.3 (-)
+X-CRM114-CacheID: sfid-20190904_100132_456508_36F28DA0 
+X-CRM114-Status: GOOD (  26.14  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-1.3 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [134.134.136.126 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [207.54.116.67 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,110 +93,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Sep 04, 2019 at 10:07:12AM -0600, Logan Gunthorpe wrote:
-> Yes, I agree, we can't solve the mismatch problem in the general case:
-> with sequences of hot plug events there will always be a case that
-> mismatches. I just think we can do better in the simple common default case.
 
-This may be something where udev can help us. I might be able to find
-some time to look at that, but not today.
- 
-> > Can we just ensure there is never a matching controller then? This
-> > patch will accomplish that and simpler than wrapping the instance in a
-> > refcount'ed object:
-> > 
-> > http://lists.infradead.org/pipermail/linux-nvme/2019-May/024142.html
-> 
-> I don't really like that idea. It reduces the confusion caused by
-> mismatching numbers, but causes the controller to never match the
-> namespace, which is also confusing but in a different way.
-> 
-> I like the nvme_instance idea. It's not going to be perfect but it has
-> some nice properties: the subsystem will try to match the controller's
-> instance whenever possible, but in cases where it doesn't, the instance
-> number of the subsystem will never be the same as an existing controller.
-> 
-> I'll see if I can work up a quick patch set and see what people think.
 
-How about this: we have the subsys copy the controller's instance,
-and the nvme_free_ctrl() doesn't release it if its subsys matches?
+On 2019-09-04 10:35 a.m., Keith Busch wrote:
+> On Wed, Sep 04, 2019 at 10:07:12AM -0600, Logan Gunthorpe wrote:
+>> Yes, I agree, we can't solve the mismatch problem in the general case:
+>> with sequences of hot plug events there will always be a case that
+>> mismatches. I just think we can do better in the simple common default case.
+> 
+> This may be something where udev can help us. I might be able to find
+> some time to look at that, but not today.
+>  
+>>> Can we just ensure there is never a matching controller then? This
+>>> patch will accomplish that and simpler than wrapping the instance in a
+>>> refcount'ed object:
+>>>
+>>> http://lists.infradead.org/pipermail/linux-nvme/2019-May/024142.html
+>>
+>> I don't really like that idea. It reduces the confusion caused by
+>> mismatching numbers, but causes the controller to never match the
+>> namespace, which is also confusing but in a different way.
+>>
+>> I like the nvme_instance idea. It's not going to be perfect but it has
+>> some nice properties: the subsystem will try to match the controller's
+>> instance whenever possible, but in cases where it doesn't, the instance
+>> number of the subsystem will never be the same as an existing controller.
+>>
+>> I'll see if I can work up a quick patch set and see what people think.
+> 
+> How about this: we have the subsys copy the controller's instance,
+> and the nvme_free_ctrl() doesn't release it if its subsys matches?
 
----
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 14c0bfb55615..8a8279ece5ee 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -81,7 +81,6 @@ EXPORT_SYMBOL_GPL(nvme_reset_wq);
- struct workqueue_struct *nvme_delete_wq;
- EXPORT_SYMBOL_GPL(nvme_delete_wq);
- 
--static DEFINE_IDA(nvme_subsystems_ida);
- static LIST_HEAD(nvme_subsystems);
- static DEFINE_MUTEX(nvme_subsystems_lock);
- 
-@@ -2344,7 +2343,8 @@ static void nvme_release_subsystem(struct device *dev)
- 	struct nvme_subsystem *subsys =
- 		container_of(dev, struct nvme_subsystem, dev);
- 
--	ida_simple_remove(&nvme_subsystems_ida, subsys->instance);
-+	if (subsys->instance >= 0)
-+		ida_simple_remove(&nvme_instance_ida, subsys->instance);
- 	kfree(subsys);
- }
- 
-@@ -2473,12 +2473,8 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 	subsys = kzalloc(sizeof(*subsys), GFP_KERNEL);
- 	if (!subsys)
- 		return -ENOMEM;
--	ret = ida_simple_get(&nvme_subsystems_ida, 0, 0, GFP_KERNEL);
--	if (ret < 0) {
--		kfree(subsys);
--		return ret;
--	}
--	subsys->instance = ret;
-+
-+	subsys->instance = -1;
- 	mutex_init(&subsys->lock);
- 	kref_init(&subsys->ref);
- 	INIT_LIST_HEAD(&subsys->ctrls);
-@@ -2497,7 +2493,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 	subsys->dev.class = nvme_subsys_class;
- 	subsys->dev.release = nvme_release_subsystem;
- 	subsys->dev.groups = nvme_subsys_attrs_groups;
--	dev_set_name(&subsys->dev, "nvme-subsys%d", subsys->instance);
-+	dev_set_name(&subsys->dev, "nvme-subsys%d", ctrl->instance);
- 	device_initialize(&subsys->dev);
- 
- 	mutex_lock(&nvme_subsystems_lock);
-@@ -2528,6 +2524,8 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 		goto out_put_subsystem;
- 	}
- 
-+	if (!found)
-+		subsys->instance = ctrl->instance;
- 	ctrl->subsys = subsys;
- 	list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
- 	mutex_unlock(&nvme_subsystems_lock);
-@@ -3803,7 +3801,9 @@ static void nvme_free_ctrl(struct device *dev)
- 		container_of(dev, struct nvme_ctrl, ctrl_device);
- 	struct nvme_subsystem *subsys = ctrl->subsys;
- 
--	ida_simple_remove(&nvme_instance_ida, ctrl->instance);
-+	if (subsys && ctrl->instance != subsys->instance)
-+		ida_simple_remove(&nvme_instance_ida, ctrl->instance);
-+
- 	kfree(ctrl->effects);
- 	nvme_mpath_uninit(ctrl);
- 	__free_page(ctrl->discard_page);
-@@ -4085,7 +4085,6 @@ static int __init nvme_core_init(void)
- 
- static void __exit nvme_core_exit(void)
- {
--	ida_destroy(&nvme_subsystems_ida);
- 	class_destroy(nvme_subsys_class);
- 	class_destroy(nvme_class);
- 	unregister_chrdev_region(nvme_chr_devt, NVME_MINORS);
---
+Oh, yes that's simpler than the struct/kref method and looks like it
+will accomplish the same thing. I did some brief testing with it and it
+seems to work for me (though I don't have any subsystems with multiple
+controllers). If you want to make a patch out of it you can add my
+
+Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
+
+Thanks!
+
+Logan
+
+> ---
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index 14c0bfb55615..8a8279ece5ee 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -81,7 +81,6 @@ EXPORT_SYMBOL_GPL(nvme_reset_wq);
+>  struct workqueue_struct *nvme_delete_wq;
+>  EXPORT_SYMBOL_GPL(nvme_delete_wq);
+>  
+> -static DEFINE_IDA(nvme_subsystems_ida);
+>  static LIST_HEAD(nvme_subsystems);
+>  static DEFINE_MUTEX(nvme_subsystems_lock);
+>  
+> @@ -2344,7 +2343,8 @@ static void nvme_release_subsystem(struct device *dev)
+>  	struct nvme_subsystem *subsys =
+>  		container_of(dev, struct nvme_subsystem, dev);
+>  
+> -	ida_simple_remove(&nvme_subsystems_ida, subsys->instance);
+> +	if (subsys->instance >= 0)
+> +		ida_simple_remove(&nvme_instance_ida, subsys->instance);
+>  	kfree(subsys);
+>  }
+>  
+> @@ -2473,12 +2473,8 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+>  	subsys = kzalloc(sizeof(*subsys), GFP_KERNEL);
+>  	if (!subsys)
+>  		return -ENOMEM;
+> -	ret = ida_simple_get(&nvme_subsystems_ida, 0, 0, GFP_KERNEL);
+> -	if (ret < 0) {
+> -		kfree(subsys);
+> -		return ret;
+> -	}
+> -	subsys->instance = ret;
+> +
+> +	subsys->instance = -1;
+>  	mutex_init(&subsys->lock);
+>  	kref_init(&subsys->ref);
+>  	INIT_LIST_HEAD(&subsys->ctrls);
+> @@ -2497,7 +2493,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+>  	subsys->dev.class = nvme_subsys_class;
+>  	subsys->dev.release = nvme_release_subsystem;
+>  	subsys->dev.groups = nvme_subsys_attrs_groups;
+> -	dev_set_name(&subsys->dev, "nvme-subsys%d", subsys->instance);
+> +	dev_set_name(&subsys->dev, "nvme-subsys%d", ctrl->instance);
+>  	device_initialize(&subsys->dev);
+>  
+>  	mutex_lock(&nvme_subsystems_lock);
+> @@ -2528,6 +2524,8 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
+>  		goto out_put_subsystem;
+>  	}
+>  
+> +	if (!found)
+> +		subsys->instance = ctrl->instance;
+>  	ctrl->subsys = subsys;
+>  	list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
+>  	mutex_unlock(&nvme_subsystems_lock);
+> @@ -3803,7 +3801,9 @@ static void nvme_free_ctrl(struct device *dev)
+>  		container_of(dev, struct nvme_ctrl, ctrl_device);
+>  	struct nvme_subsystem *subsys = ctrl->subsys;
+>  
+> -	ida_simple_remove(&nvme_instance_ida, ctrl->instance);
+> +	if (subsys && ctrl->instance != subsys->instance)
+> +		ida_simple_remove(&nvme_instance_ida, ctrl->instance);
+> +
+>  	kfree(ctrl->effects);
+>  	nvme_mpath_uninit(ctrl);
+>  	__free_page(ctrl->discard_page);
+> @@ -4085,7 +4085,6 @@ static int __init nvme_core_init(void)
+>  
+>  static void __exit nvme_core_exit(void)
+>  {
+> -	ida_destroy(&nvme_subsystems_ida);
+>  	class_destroy(nvme_subsys_class);
+>  	class_destroy(nvme_class);
+>  	unregister_chrdev_region(nvme_chr_devt, NVME_MINORS);
+> --
+> 
 
 _______________________________________________
 Linux-nvme mailing list
