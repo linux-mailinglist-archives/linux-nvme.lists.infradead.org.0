@@ -2,55 +2,52 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20F81AA91B
-	for <lists+linux-nvme@lfdr.de>; Thu,  5 Sep 2019 18:35:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E53DAA937
+	for <lists+linux-nvme@lfdr.de>; Thu,  5 Sep 2019 18:39:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=2uv3G4/MWK7eMaeaMylphiDZlTUgv5w+SXTAjj6oG4c=; b=l2A
-	KR3I2Ey98bgEcL4wRYueuFcVfSIFpcMp5LKN9qnx+1othJBQMxUK4u9WE3sqWhsDwwE5F67CL8sND
-	HbXQI0Qe7w9R9GxC6itKxCQC9Yckb+g27Gj4TeALGRkaf3tZOUCEoRh51W7lnPB8+3f3g0Qit99Cw
-	J42WieeuJUIT92PdjO4wNERfD0NpQ5291qWAjAUoRLnPFnArXXc0vAf6Yit4m088k9/OvOZmYq6kO
-	A87YQQGF7BRlxgS6hH29Qi2Txy2Bdnuj+iSSY77uFk/CtiPaDjfMFxfIQNSV6SeZ63vLo/1xyscnM
-	QAp4c4Kpa7gpnp+cAa8fTg9gQqNR+eA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cz+s11/BKQeaoFDI36AIHKUKmCDCuXcV7lV8Wo+Am3I=; b=Up6yiOyDNTukWi
+	LNO6Hfah7BxP1EwfYDlmXdMzj7A6UwkS8NCkMNUFGt8IGQdPXE/FMOne1MVM20y64NZspKWP2luro
+	E6s6p3VJasJlF0NfjB3PAUSor7M3mSFhW5ibZ0C00gjtZln2qHhfiqLJm9lsGSpQyQvdTSSBB7GdP
+	Ox3fAULOQxRroLYyQGkkl4QMGGVmmRPfJZZG805nshn9laWj5L+QPMpi+or9Kt7V84cAJQd+WvcUR
+	jcjBcVtb/c61a8vf+VJdxc4NWBlndQaC8hjYqNcF5wxAfbA7Kj7VY0c4TeBbKfCdG20JslUlBT7HY
+	bpGmGjsKrC4UE8StlHWw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5ujW-0003Ot-Sr; Thu, 05 Sep 2019 16:35:42 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1i5un7-00041d-D2; Thu, 05 Sep 2019 16:39:25 +0000
+Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5ujQ-0003O8-Ni
- for linux-nvme@lists.infradead.org; Thu, 05 Sep 2019 16:35:38 +0000
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Sep 2019 09:35:33 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,470,1559545200"; d="scan'208";a="182875587"
-Received: from unknown (HELO localhost.lm.intel.com) ([10.232.112.69])
- by fmsmga008.fm.intel.com with ESMTP; 05 Sep 2019 09:35:33 -0700
-From: Keith Busch <kbusch@kernel.org>
-To: Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
- Sagi Grimberg <sagi@grimberg.me>
-Subject: [PATCHv2] nvme: Assign subsy instance from first ctrl
-Date: Thu,  5 Sep 2019 10:33:54 -0600
-Message-Id: <20190905163354.25139-1-kbusch@kernel.org>
-X-Mailer: git-send-email 2.13.6
+ id 1i5un0-00040t-CL
+ for linux-nvme@lists.infradead.org; Thu, 05 Sep 2019 16:39:19 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 1786768B20; Thu,  5 Sep 2019 18:39:15 +0200 (CEST)
+Date: Thu, 5 Sep 2019 18:39:14 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCHv2] nvme: Assign subsy instance from first ctrl
+Message-ID: <20190905163914.GA22958@lst.de>
+References: <20190905163354.25139-1-kbusch@kernel.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20190905163354.25139-1-kbusch@kernel.org>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190905_093536_789442_335E457D 
-X-CRM114-Status: GOOD (  11.73  )
-X-Spam-Score: -4.0 (----)
+X-CRM114-CacheID: sfid-20190905_093918_571960_67840309 
+X-CRM114-Status: UNSURE (   4.91  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-4.0 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [192.55.52.115 listed in list.dnswl.org]
- 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,115 +59,19 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Hannes Reinecke <hare@suse.com>,
+Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
  "Martin K . Petersen" <martin.petersen@oracle.com>,
- linux-kernel@vger.kernel.org, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>, Logan Gunthorpe <logang@deltatee.com>
-MIME-Version: 1.0
+ linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
+ Jens Axboe <axboe@fb.com>, Logan Gunthorpe <logang@deltatee.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The namespace disk names must be unique for the lifetime of the
-subsystem. This was accomplished by using their parent subsystems'
-instances which were allocated independently from the controllers
-connected to that subsystem. This allowed name prefixes assigned to
-namespaces to match a controller from an unrelated subsystem, and has
-created confusion among users examining device nodes.
+Looks good:
 
-Ensure a namespace's subsystem instance never clashes with a controller
-instance of another subsystem by transferring the instance ownership
-to the parent subsystem from the first controller discovered in that
-subsystem.
-
-Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
-Signed-off-by: Keith Busch <kbusch@kernel.org>
----
-v1 -> v2:
-
-  Changelog: reduce sensationalism, fix spelling 
-
- drivers/nvme/host/core.c | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 14c0bfb55615..8a8279ece5ee 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -81,7 +81,6 @@ EXPORT_SYMBOL_GPL(nvme_reset_wq);
- struct workqueue_struct *nvme_delete_wq;
- EXPORT_SYMBOL_GPL(nvme_delete_wq);
- 
--static DEFINE_IDA(nvme_subsystems_ida);
- static LIST_HEAD(nvme_subsystems);
- static DEFINE_MUTEX(nvme_subsystems_lock);
- 
-@@ -2344,7 +2343,8 @@ static void nvme_release_subsystem(struct device *dev)
- 	struct nvme_subsystem *subsys =
- 		container_of(dev, struct nvme_subsystem, dev);
- 
--	ida_simple_remove(&nvme_subsystems_ida, subsys->instance);
-+	if (subsys->instance >= 0)
-+		ida_simple_remove(&nvme_instance_ida, subsys->instance);
- 	kfree(subsys);
- }
- 
-@@ -2473,12 +2473,8 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 	subsys = kzalloc(sizeof(*subsys), GFP_KERNEL);
- 	if (!subsys)
- 		return -ENOMEM;
--	ret = ida_simple_get(&nvme_subsystems_ida, 0, 0, GFP_KERNEL);
--	if (ret < 0) {
--		kfree(subsys);
--		return ret;
--	}
--	subsys->instance = ret;
-+
-+	subsys->instance = -1;
- 	mutex_init(&subsys->lock);
- 	kref_init(&subsys->ref);
- 	INIT_LIST_HEAD(&subsys->ctrls);
-@@ -2497,7 +2493,7 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 	subsys->dev.class = nvme_subsys_class;
- 	subsys->dev.release = nvme_release_subsystem;
- 	subsys->dev.groups = nvme_subsys_attrs_groups;
--	dev_set_name(&subsys->dev, "nvme-subsys%d", subsys->instance);
-+	dev_set_name(&subsys->dev, "nvme-subsys%d", ctrl->instance);
- 	device_initialize(&subsys->dev);
- 
- 	mutex_lock(&nvme_subsystems_lock);
-@@ -2528,6 +2524,8 @@ static int nvme_init_subsystem(struct nvme_ctrl *ctrl, struct nvme_id_ctrl *id)
- 		goto out_put_subsystem;
- 	}
- 
-+	if (!found)
-+		subsys->instance = ctrl->instance;
- 	ctrl->subsys = subsys;
- 	list_add_tail(&ctrl->subsys_entry, &subsys->ctrls);
- 	mutex_unlock(&nvme_subsystems_lock);
-@@ -3803,7 +3801,9 @@ static void nvme_free_ctrl(struct device *dev)
- 		container_of(dev, struct nvme_ctrl, ctrl_device);
- 	struct nvme_subsystem *subsys = ctrl->subsys;
- 
--	ida_simple_remove(&nvme_instance_ida, ctrl->instance);
-+	if (subsys && ctrl->instance != subsys->instance)
-+		ida_simple_remove(&nvme_instance_ida, ctrl->instance);
-+
- 	kfree(ctrl->effects);
- 	nvme_mpath_uninit(ctrl);
- 	__free_page(ctrl->discard_page);
-@@ -4085,7 +4085,6 @@ static int __init nvme_core_init(void)
- 
- static void __exit nvme_core_exit(void)
- {
--	ida_destroy(&nvme_subsystems_ida);
- 	class_destroy(nvme_subsys_class);
- 	class_destroy(nvme_class);
- 	unregister_chrdev_region(nvme_chr_devt, NVME_MINORS);
--- 
-2.14.5
-
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
 _______________________________________________
 Linux-nvme mailing list
