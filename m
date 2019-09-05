@@ -2,43 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7F23AAA82
-	for <lists+linux-nvme@lfdr.de>; Thu,  5 Sep 2019 20:04:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 93284AAA86
+	for <lists+linux-nvme@lfdr.de>; Thu,  5 Sep 2019 20:04:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZF06c3LhPi5aAK5lj6rFuw8cYZ3ScLNTqg5hMShejuc=; b=V0OYCL3wwXgqkL
-	/lchkXXAsfzK/b6qlM/dc4kGpY35Lcyb85IxsY43gJ4X5rzFexG+X+aRWLCo1DUaF+WAbe8Scto6l
-	zXGTNlm803LA0KLMPbzWuKElSjh8ks07/CjoMtgtrUnTPPCiOxp7DE5u4MAz0RRvVDfoh72EjKqbA
-	YlvyDkPg+b7aMQhUE9wS/v7MRXInNIc3zFdkmn8M+m2tAQ5WzRLjOhoTanQZkKfGFJNUUoyHLIQ0b
-	dFpBEKIua6u75wSyAjJFElwf+Tu8OH4dgi6MyKLN4sapCkr3zF3NXxu3vOsqe8j4QycpMToOfcPKM
-	g7+OioyqMbBCrksf0hEA==;
+	List-Owner; bh=j+s9/SO/cjjoiAxxSK8xVaq/osNY7eQ+WiFS0EXYOXU=; b=XNsLW3fsVPvAze
+	Qb36ky1osvrlnVT+aNbeO5uJDRSufDtulo2gXoJhJ6ZvKoHIISv793jr+e1yM3xGfLmqKpEwduSIY
+	4seDHbfj4K4Q9BOVOi61U3gGCS7nHSxi2PrOuBZZwp4KMv4OtcrzdJpiozyHtzYNGSDHGAjkf/BjF
+	TvTphAsJ2K2dTRk+mWKQzHeevmkPdSBmx225AOBORnptElM732yYWMh4E6dDltLg3R5Y5Yvdaqpzv
+	3HY4HC63e+oza6XzdasWUb9+940ttbohTeDyI+CsrjInRht7QdPP4uu21+YWBO5vnqFQaIFctN74k
+	9EkQ0lN1eNKaH8gc0VDQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i5w7L-0002e0-50; Thu, 05 Sep 2019 18:04:23 +0000
+	id 1i5w7a-0002pB-Th; Thu, 05 Sep 2019 18:04:39 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i5w7D-0002de-Ih
- for linux-nvme@lists.infradead.org; Thu, 05 Sep 2019 18:04:16 +0000
+ id 1i5w7T-0002ny-At
+ for linux-nvme@lists.infradead.org; Thu, 05 Sep 2019 18:04:33 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 907B568B05; Thu,  5 Sep 2019 20:04:12 +0200 (CEST)
-Date: Thu, 5 Sep 2019 20:04:12 +0200
+ id 9434F68B20; Thu,  5 Sep 2019 20:04:28 +0200 (CEST)
+Date: Thu, 5 Sep 2019 20:04:28 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Max Gurtovoy <maxg@mellanox.com>
-Subject: Re: [PATCH 2/3] block: don't remap ref tag for T10 PI type 0
-Message-ID: <20190905180412.GC24146@lst.de>
+Subject: Re: [PATCH 3/3] nvme: remove PI values definition from NVMe subsystem
+Message-ID: <20190905180428.GD24146@lst.de>
 References: <1567701836-29725-1-git-send-email-maxg@mellanox.com>
- <1567701836-29725-2-git-send-email-maxg@mellanox.com>
+ <1567701836-29725-3-git-send-email-maxg@mellanox.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1567701836-29725-2-git-send-email-maxg@mellanox.com>
+In-Reply-To: <1567701836-29725-3-git-send-email-maxg@mellanox.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190905_110415_770140_40685F22 
-X-CRM114-Status: UNSURE (   6.35  )
+X-CRM114-CacheID: sfid-20190905_110431_520744_5AD35C8E 
+X-CRM114-Status: UNSURE (   7.12  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -69,23 +69,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+On Thu, Sep 05, 2019 at 07:43:56PM +0300, Max Gurtovoy wrote:
+> Use block layer definition instead of re-defining it with the same
+> values.
+> 
+> Suggested-by: Christoph Hellwig <hch@lst.de>
+> Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
 
-> @@ -186,7 +186,8 @@ void t10_pi_prepare(struct request *rq)
->  	u32 ref_tag = t10_pi_ref_tag(rq);
->  	struct bio *bio;
->  
-> -	if (rq->rq_disk->protection_type == T10_PI_TYPE3_PROTECTION)
-> +	if (rq->rq_disk->protection_type == T10_PI_TYPE0_PROTECTION ||
-> +	    rq->rq_disk->protection_type == T10_PI_TYPE3_PROTECTION)
+Looks good,
 
-Maybe just check for the ones we want to remap instead.  And add
-a little helper
-
-stastic inline bool blk_integrity_need_remap(struct gendisk *disk)
-{
-	return disk->protection_type == T10_PI_TYPE1_PROTECTION ||
-		disk->protection_type == T10_PI_TYPE2_PROTECTION;
-}
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
 _______________________________________________
 Linux-nvme mailing list
