@@ -2,55 +2,68 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8526AB8BB
-	for <lists+linux-nvme@lfdr.de>; Fri,  6 Sep 2019 15:00:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 48116ABAD3
+	for <lists+linux-nvme@lfdr.de>; Fri,  6 Sep 2019 16:28:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=96XiIaD+OU1PSAnSYmzGHKz665Wp8gcJ+6DfEu72U1A=; b=tDcjk9z/SdHc7v
-	KlgfBnHdBFi2PuQsdsLJfdvZY5W8Zp6+qvBnWjh5OKqerT68PYNwIZdgSny+/bdAhi2hYBojnQo+m
-	vD4AAF0pt3K3M08lDSRrh96uN2aQkZEOrdWQ0FYW0IzzzcrOZaa0l3YSThrHr1OWB+Z77YNUBAePh
-	nGvfycbdo4fRlkFZBr00dW38dcl6zYag214Ys1c44OgI6A/H2squfTp7qg/1yIl3LprJS6lo9n6mJ
-	LYVRFrReN7Lce7xE9gi7kU02929s4dUPMJpopqGpOlxKyl1jNQ2kYTdJIaMPob9/zoDZ5oLPsaFmv
-	4zRtZl/kZ/exw4zE6F4Q==;
+	List-Owner; bh=IwMiBhpR9Ke//L1berSG0q0pXApgPM+Ta0b3RH0xlA0=; b=QP+aBiEOTD732g
+	TtrHu2J1psolsDRT4miegMucdVy0J9v85sHG5963Qexjg4rzshnMFheIIawihV8c3bbCbGPshGCOf
+	j9mqpreOAN4s+ojha9tgGHch+v8IIE2kPpxoG8EzhbITgJ1Egk3g47CS5h6+Ebi7t1af11WXpY3CY
+	tQsqHJhm5woU/2BCQGCNQgPM5BHGEvI40mEeoks5NmnYHZJtt8BN8J+Vljbtyw5KivNY3FRpylbLw
+	qqvtEFyvD1NFDl5EmC1r1BPL1euumiPkw8WtfpQiZJZFQiNh7b8LTDt1g44cRaLP6D0UmLNSjewnL
+	0ViK5/qK78Rz2CG2CGYA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i6Dqp-0004RD-T3; Fri, 06 Sep 2019 13:00:31 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1i6FDn-0004VB-65; Fri, 06 Sep 2019 14:28:19 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i6Dql-0004Qn-Gb
- for linux-nvme@lists.infradead.org; Fri, 06 Sep 2019 13:00:28 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id C575268B05; Fri,  6 Sep 2019 15:00:24 +0200 (CEST)
-Date: Fri, 6 Sep 2019 15:00:24 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH v4 4/4] nvme: send discovery log page change events to
- userspace
-Message-ID: <20190906130024.GB8873@lst.de>
-References: <20190904215954.15423-1-sagi@grimberg.me>
- <20190904215954.15423-5-sagi@grimberg.me>
+ id 1i6FDW-0004UO-UM
+ for linux-nvme@lists.infradead.org; Fri, 06 Sep 2019 14:28:04 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Sep 2019 07:28:01 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,473,1559545200"; d="scan'208";a="188327645"
+Received: from unknown (HELO localhost.localdomain) ([10.232.112.69])
+ by orsmga006.jf.intel.com with ESMTP; 06 Sep 2019 07:27:59 -0700
+Date: Fri, 6 Sep 2019 08:18:58 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Ming Lei <ming.lei@redhat.com>
+Subject: Re: [PATCH 1/4] softirq: implement IRQ flood detection mechanism
+Message-ID: <20190906141858.GA3953@localhost.localdomain>
+References: <299fb6b5-d414-2e71-1dd2-9d6e34ee1c79@linaro.org>
+ <20190903063125.GA21022@ming.t460p>
+ <6b88719c-782a-4a63-db9f-bf62734a7874@linaro.org>
+ <20190903072848.GA22170@ming.t460p>
+ <dd96def4-1121-afbe-2431-9e516a06850c@linaro.org>
+ <6f3b6557-1767-8c80-f786-1ea667179b39@acm.org>
+ <2a8bd278-5384-d82f-c09b-4fce236d2d95@linaro.org>
+ <20190905090617.GB4432@ming.t460p>
+ <6a36ccc7-24cd-1d92-fef1-2c5e0f798c36@linaro.org>
+ <20190906014819.GB27116@ming.t460p>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190904215954.15423-5-sagi@grimberg.me>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+In-Reply-To: <20190906014819.GB27116@ming.t460p>
+User-Agent: Mutt/1.9.1 (2017-09-22)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190906_060027_697423_A42286A1 
-X-CRM114-Status: UNSURE (   7.74  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.8 (/)
+X-CRM114-CacheID: sfid-20190906_072802_992338_1B90F697 
+X-CRM114-Status: GOOD (  12.19  )
+X-Spam-Score: -1.3 (-)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.8 points)
+ Content analysis details:   (-1.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [192.55.52.120 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.8 UPPERCASE_50_75        message body is 50-75% uppercase
+ 1.0 SPF_SOFTFAIL           SPF: sender does not match SPF record (softfail)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,19 +75,42 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>, Hannes Reinecke <hare@suse.de>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
- James Smart <james.smart@broadcom.com>
+Cc: Jens Axboe <axboe@fb.com>, Hannes Reinecke <hare@suse.com>,
+ John Garry <john.garry@huawei.com>, Bart Van Assche <bvanassche@acm.org>,
+ linux-scsi@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
+ Long Li <longli@microsoft.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ LKML <linux-kernel@vger.kernel.org>, linux-nvme@lists.infradead.org,
+ Keith Busch <keith.busch@intel.com>, Ingo Molnar <mingo@redhat.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Christoph Hellwig <hch@lst.de>,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> -	(NVME_AEN_CFG_NS_ATTR | NVME_AEN_CFG_FW_ACT | NVME_AEN_CFG_ANA_CHANGE)
-> +	(NVME_AEN_CFG_NS_ATTR | NVME_AEN_CFG_FW_ACT | NVME_AEN_CFG_ANA_CHANGE | \
-> +	 NVME_AEN_CFG_DISC_CHANGE)
+On Fri, Sep 06, 2019 at 09:48:21AM +0800, Ming Lei wrote:
+> When one IRQ flood happens on one CPU:
+> 
+> 1) softirq handling on this CPU can't make progress
+> 
+> 2) kernel thread bound to this CPU can't make progress
+> 
+> For example, network may require softirq to xmit packets, or another irq
+> thread for handling keyboards/mice or whatever, or rcu_sched may depend
+> on that CPU for making progress, then the irq flood stalls the whole
+> system.
+> 
+> > 
+> > AFAIU, there are fast medium where the responses to requests are faster
+> > than the time to process them, right?
+> 
+> Usually medium may not be faster than CPU, now we are talking about
+> interrupts, which can be originated from lots of devices concurrently,
+> for example, in Long Li'test, there are 8 NVMe drives involved.
 
-Please fix the > 80 char line here.
+Why are all 8 nvmes sharing the same CPU for interrupt handling?
+Shouldn't matrix_find_best_cpu_managed() handle selecting the least used
+CPU from the cpumask for the effective interrupt handling?
 
 _______________________________________________
 Linux-nvme mailing list
