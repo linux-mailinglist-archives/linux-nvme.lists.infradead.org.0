@@ -2,85 +2,81 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A581ADF6E
-	for <lists+linux-nvme@lfdr.de>; Mon,  9 Sep 2019 21:26:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DCA46ADF74
+	for <lists+linux-nvme@lfdr.de>; Mon,  9 Sep 2019 21:31:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PDRz269a4Yx9kVMWaV3PHYkdzJfMiPFscE88K1nkmGw=; b=h0XGE8dPD73hx5kJOmOsIEYqW
-	lr3yZyF9w+AH8PlzlS5bWoQKBtNkokECat+67W55Z/ojATAFN2a6m77HScvw6yRSi78JZyPHY/hH8
-	EgzK/kMCJ1NtwPdqUhjy/RlktUZBICVfaEWpyGQcSS4+ygvG+SFpNUgJhsKv6ruLE/AbHWihxBHT9
-	p914Rlrroag3ujHJM+ZqFZYdmBebWkO3Xjtj07TTXt5ONDHm19/37djSRPs1LnAfEKjeb6dWIY3cy
-	5BDLn2Xei4k/4YSr2xxYOAOKusKEYfB0ZKt1+OX32H1IERURxR/8UuXzIKIJt8Sqt1qSZvtXSunjq
-	R6mqf6pAA==;
+	 bh=1ajIvUoqSR/A4vfeBNwnCkgB7TrfoAPieQXyVrh/uMk=; b=ZrkCJxJCDv6UKD+0B9UsdAbmz
+	gfhsEQZducTbFVgP2fo7nf5TEtyPqhvqSbWDRHRqXKDiPU3BUxkUWtJ2ftmetMA49YRxJjn1LH0FF
+	/LlCqQiYr6cFXYHlA+7fkSRx80e9wj2hkfGAQlBySlYb/vm0BmbWaV3Jwmpw2K3CZ2xZnM1/uL9MJ
+	BXIhTiLoDwykCXg9XeVWKp8pjq75oik88uOmd0jl7vo7u9pXmRF7ac7ptAqNtatRfqmxgulb1LxXn
+	p2ywxk+5un5BwWspGO/8+Pc27VbIMsXyJYb4r8dDpL1Ohlww/OqrykEZER3ggXPC2ieGqyS/2s/4V
+	R1/GAZZFQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i7PJH-0006Ia-CJ; Mon, 09 Sep 2019 19:26:47 +0000
-Received: from mail-ot1-f66.google.com ([209.85.210.66])
+	id 1i7POD-0007qx-L4; Mon, 09 Sep 2019 19:31:53 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i7PJC-0006Hb-1X
- for linux-nvme@lists.infradead.org; Mon, 09 Sep 2019 19:26:43 +0000
-Received: by mail-ot1-f66.google.com with SMTP id 67so14077171oto.3
- for <linux-nvme@lists.infradead.org>; Mon, 09 Sep 2019 12:26:39 -0700 (PDT)
+ id 1i7PO7-0007qb-5W
+ for linux-nvme@lists.infradead.org; Mon, 09 Sep 2019 19:31:48 +0000
+Received: by mail-ot1-f68.google.com with SMTP id y39so14126787ota.7
+ for <linux-nvme@lists.infradead.org>; Mon, 09 Sep 2019 12:31:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=gLM1CCeC9p531hDNHLzC8mfBfqp2fYYPYblncN2/1Rc=;
- b=Hrk1Ezxi7du8Ru4EMojcj7sDsIvU7y/QEkA3pxH2gXjjgG2DGDCKwHgWTZ7CAgeL5Y
- fZvgnoQpk+iF13t0MiCOjCYqOwNiM7mEOx9M20XRpM0UprOxwETIqJKccIx9+R95AjSo
- CpAlFcll8GUHx1gIp7rWi+phq1bYAN+g91e9frYYqc9LR/wT94Z0IXuyIHsKWSOfPh1d
- tuYniS3GgoyvIsIlxpHEp9R+FDGZHAo1BK7AkWkLf5IRHv9GuXCWATq9V2vgrnnseWzo
- TCsDazYaKCHdj9m1MHZyffg/0v5/Eu1nsyyhQwahA/tPDE1xNHeIA4rnvbp2G+a1HP7S
- rq8w==
-X-Gm-Message-State: APjAAAVIqegOmNw5Hpkd/MxCg01p0IRspFxC4ySZfjP36YWeFB98aGYJ
- wQLpf8r5umpPrID1sF5anr5YGL1G
-X-Google-Smtp-Source: APXvYqxvv9Dl8xhPxigif8op9MALNHTzy1+8Tpt1rHFifjQ8+bhuULtTy/MLAuruuc/2+om5BkVnKA==
-X-Received: by 2002:a9d:77c1:: with SMTP id w1mr5081503otl.9.1568057198903;
- Mon, 09 Sep 2019 12:26:38 -0700 (PDT)
+ bh=ZpInMTwXyfWIpqMmgFBC1Sz0u5uuqezxxk99crBjy08=;
+ b=W9Pyhd7qy46ozdusWQDHOR4pVJRrdebnZ2g3GDyDu1MI7lg3PszqAwc6CzBf3W49Zz
+ gGojN0fCF2/SFEi9MhHiwp05gs7tyxcEYz/4heAxKXJXKxNPvUXo2IVD7sxW1jZiYW5c
+ jcqflc/GTW9EDr4Kt7TYrEkC0wo3SssCcHerPGgwH0yi8NjJ2/hT6GGVBD659zD3UluP
+ 2T+RdnMhlqCOxCltY6KYkOfzWo+OEH2Qcf0HqTqO3Oe6xugRsoK1kTY72W5Dh/B8i5dC
+ xQUWBYAoeByPtR5XV3+xHVDgNFoheIxTYHMsT2L8oyeFoQ2p6ozQhc/eEvm35r4U8UNO
+ 0e8A==
+X-Gm-Message-State: APjAAAWVKUPmjCGiX5R/yrEf/hTE4cV8zZbnhRwvg/++4n3yiwCIA/mq
+ rsNoYXgnOaXsj945oAw9IPnbDb3l
+X-Google-Smtp-Source: APXvYqxVknpVuCXsf0e3wmxb2MyjYnoHfvGjZS0u8qZVQkDC2O4d8bZLu8NVOo5hFr/3mZpMCfZ17g==
+X-Received: by 2002:a9d:a0d:: with SMTP id 13mr18833798otg.282.1568057505706; 
+ Mon, 09 Sep 2019 12:31:45 -0700 (PDT)
 Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
  ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id k10sm2043237oij.16.2019.09.09.12.26.36
+ by smtp.gmail.com with ESMTPSA id o4sm5723689otp.43.2019.09.09.12.31.44
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 09 Sep 2019 12:26:37 -0700 (PDT)
-Subject: Re: [PATCH v8 13/13] nvmet-passthru: support block accounting
-To: Logan Gunthorpe <logang@deltatee.com>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
- linux-fsdevel@vger.kernel.org
-References: <20190828215429.4572-1-logang@deltatee.com>
- <20190828215429.4572-14-logang@deltatee.com>
- <92d61426-65a2-827c-936b-55f12f3d6afb@grimberg.me>
- <ca4ebcd9-fa5d-5ddf-c2a7-70318410dd97@deltatee.com>
+ Mon, 09 Sep 2019 12:31:45 -0700 (PDT)
+Subject: Re: "nvme disconnect" for mounted volumes - stuck thread
+To: Szymon Scharmach <szymon.scharmach@gmail.com>,
+ linux-nvme@lists.infradead.org
+References: <CAKFbMv8u9w7jKB9tux1+4+8xQWdRpA4Y1kArrt6rCX1L0H76sA@mail.gmail.com>
 From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <7954e8a4-6026-2210-7192-94a4e483facf@grimberg.me>
-Date: Mon, 9 Sep 2019 12:26:35 -0700
+Message-ID: <a85e2dc8-f76d-15ab-f86b-7d79af5bd99f@grimberg.me>
+Date: Mon, 9 Sep 2019 12:31:43 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <ca4ebcd9-fa5d-5ddf-c2a7-70318410dd97@deltatee.com>
+In-Reply-To: <CAKFbMv8u9w7jKB9tux1+4+8xQWdRpA4Y1kArrt6rCX1L0H76sA@mail.gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190909_122642_089334_49FF5073 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20190909_123147_212144_7D72C1FE 
+X-CRM114-Status: GOOD (  15.44  )
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.66 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.66 listed in wl.mailspike.net]
+ no trust [209.85.210.68 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (sagigrim[at]gmail.com)
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.68 listed in wl.mailspike.net]
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
@@ -95,48 +91,37 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
- Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
->>> Support block disk accounting by setting the RQF_IO_STAT flag
->>> and gendisk in the request.
->>>
->>> After this change, IO counts will be reflected correctly in
->>> /proc/diskstats for drives being used by passthru.
->>>
->>> Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
->>> ---
->>>    drivers/nvme/target/io-cmd-passthru.c | 5 ++++-
->>>    1 file changed, 4 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/nvme/target/io-cmd-passthru.c b/drivers/nvme/target/io-cmd-passthru.c
->>> index 7557927a3451..63f12750a80d 100644
->>> --- a/drivers/nvme/target/io-cmd-passthru.c
->>> +++ b/drivers/nvme/target/io-cmd-passthru.c
->>> @@ -410,6 +410,9 @@ static struct request *nvmet_passthru_blk_make_request(struct nvmet_req *req,
->>>    	if (unlikely(IS_ERR(rq)))
->>>    		return rq;
->>>    
->>> +	if (blk_queue_io_stat(q) && cmd->common.opcode != nvme_cmd_flush)
->>> +		rq->rq_flags |= RQF_IO_STAT;
+> Hi,
 > 
-> Thanks for the review!
+> In the deployment scenario i am using we use around 200 NvmeOF volumes
+> that are being connected to different initiators and after data have
+> been saved - reconnected to different ones.
+> nvme cli allows to disconnect volumes that are either mounted or
+> umount is in progress which leads threads to end up in uninterruptible
+> sleep. (D state)
 > 
->> Does flush has data bytes in the request? Why the special casing?
-> 
-> Well it was special cased in the vanilla blk account flow... But I think
-> it's required to be special cased so the IO and in_flight counts don't
-> count flushes (as they do not for regular block device traffic).
+> root      69368  0.0  0.0   6704   640 ?        D    09:29   0:00 nvme
+> disconnect --nqn=pvc-4f6b7502-cb08-11e9-a2bf-3cfdfeb878d0
+> root      69375  0.0  0.0   5920   900 ?        D    09:29   0:00
+> umount /var/lib/origin/openshift.local.volumes/pods/4f6caee2-cb08-11e9-a2bf-3cfdfe-b878d0/
+> volumes/kubernetes.io~csi/pvc-4f6b7502-cb08-11e9-a2bf-3c
 
-I think that the accounting exclude I/O that is yielded from the flush
-sequence. Don't think its relevant here...
+Do you have the watchdog hand detector trace to share?
+
+> 
+> Those threads are stuck in D forever and whole block stack on the node
+> becomes unusable.
+> Is it the responsibility of nvme-cli or kernel module (nvme_fabrics
+> AFAIK) to block 'disconnect' in that case - or is it expected behavior
+> (nvme disconnect with force flag maybe) ?
+
+None, I guess it should be something like _netdev fstab entry...
 
 _______________________________________________
 Linux-nvme mailing list
