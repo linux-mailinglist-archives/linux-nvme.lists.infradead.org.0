@@ -2,92 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DE15B0559
-	for <lists+linux-nvme@lfdr.de>; Thu, 12 Sep 2019 00:01:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A517B0573
+	for <lists+linux-nvme@lfdr.de>; Thu, 12 Sep 2019 00:18:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M+zMDmRkFHmR0OI8V8O8vd76pmdGrExaG6cQFxB0e9Q=; b=FlcjrKHsMeMCHi
-	BuEwmH34FMDWWJaenhtaiyoXZ0Ozz/apNC1b8KY3XNQm7IdwmGDa+QSPQU0gnE7aWy6PBJb1Z8X7K
-	K4e9vjOvGSkcotImbYbPX9nuUiT1bEZozXIW9rEbySKjKynw3DKeQU3gmGLGEJnm8WcjJ93IQxggY
-	quGRrQ53unn/M8szFuBGhWQmndvs3ig5Dyd2jrjJ7NsohZY97fDAhfC6OKr4rKsdszxW0RyEZ/gYn
-	zRso6JfdNa3J4A6blMp5Ym0YJNuiV2xus/DJSK0iPF0h6OE0EG3dxUh8ZEWvHwXv1hawRLTfFRUJl
-	DI6bIDvsvH4KZzCvlZlA==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=I7b5TrmztJ9uuaxMAEilA/wdpzfeEJuZWaooUZjeANY=; b=DVfwIVnk7nDqPD
+	XpR5dp5qDEP3oujadBJRi5dqCapy7lPXn9S6M2eAo0F1rz8SWnhUBg/PQbPeK4t5OfBaAhQh/h4pQ
+	tuNsRUqZ3JCaQMcJ/e8uwnaQTycjBfOE9HVwUsNwg3aMCpCwfftrzI/pjPQBKwU3+LZKJuQLfcBd6
+	Ohjh/sfUFslsbjLLBXQhQjbZ/iOE4eKNhSAG6FUl3XrghL96NY6kvXsyIgoUivR0HgeDSDDeYQgsH
+	XsBoNAEgUFpXcfx63KphZ/+PbKkCouPqQX6ZRRMBkbbtfLi6NfJ/SZ7Oj24sY/0x9pFuQX/dllfBe
+	e5u9a4bOxPxeXcVak3pA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i8Ag0-0003BD-Ii; Wed, 11 Sep 2019 22:01:24 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1i8Aww-0007rQ-D2; Wed, 11 Sep 2019 22:18:54 +0000
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i8Aft-0003Ar-Py
- for linux-nvme@lists.infradead.org; Wed, 11 Sep 2019 22:01:19 +0000
-Received: by mail-pf1-x441.google.com with SMTP id x127so14548550pfb.7
- for <linux-nvme@lists.infradead.org>; Wed, 11 Sep 2019 15:01:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel-dk.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=8POwdSLkTxkHw3P45coj3u0+LKAWGfZxNTr61kDQCFU=;
- b=jsY9OKgLofPa+bRlH+ErgYotFJB1blj+NIM7OZXX2aZqu1hyXVoL+OHHx7QvmhEOvL
- Ra18DkUGWxebDYSyB8UNXd0vO2tySyDfQjR3s2yz1xbHB3MNWVqEXXGZeis2FYh9QnWI
- 1Qomk1x9BjsPqJ9gHASGRPzvBDb/cgZNGJUK27BFNuQPI4aqUgkSCBLAqWXZ3ObdVzM/
- HPQS81Qj7MsoRCgtTLhV89KsdCj0dQ2crTOAiEeGJRo6aI07ieJJJyWc3CZ74grIm8sH
- Zq5kcwCilN6y5cmwMR5wx6404RfuNgqLml7Xpc/+SyIrXRh0BSqDNK58VII5DIuZx4ut
- vX3g==
+ id 1i8Awl-0007qv-Nk
+ for linux-nvme@lists.infradead.org; Wed, 11 Sep 2019 22:18:46 +0000
+Received: by mail-lj1-x244.google.com with SMTP id y23so21315180ljn.5
+ for <linux-nvme@lists.infradead.org>; Wed, 11 Sep 2019 15:18:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YYPZjqVFeTKtC5fFBJy5p2xhCEzihUmpj3JugWAlHQc=;
+ b=DKf+Bx2Mm7PKVq3sa6xruXc32c1xCVB9cgUxbSD/cezevVPHYtu67U93s3lL2jdvPM
+ LoN8IUOa4JhmpsA+Uu+ZQPZ2qQgX4+TBrHpnMxN4t3Bs8o62m9uhwQMVdgHEpDpzywv0
+ 1tGCczjkYO4NhTJnWLP51NBeir3eAwCRcjQZUqvUmngkM8y0PtvoT4xNccwI33N2ZKQA
+ HEVmu3ldRwqhBdGjPeykuBArqowntCgD7SqMWOYwyG2y6YtzXMdDAl41zcaCFHSzIjRL
+ VSglC0PrgQ2xUsP2iL8MoEIjkSxyy47HvnKExeh0GZ0R2LyX+9iZYqXm7PHFEYt5sC2q
+ MlGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=8POwdSLkTxkHw3P45coj3u0+LKAWGfZxNTr61kDQCFU=;
- b=ixerVguRSPxyjUMU/noHq762nVlN2xVEXzkePrchgJNSvfDqkEMrLUXgtOloyUVIer
- R6J/3XoYhVvRWw2ZbeAKc85SbAv7VQcH6+t5UWTE3mfbakA+i9Sdc21THCI342aagVOi
- PBt6eSQecrAsQMnmlX750RbNMzDiBnkYC4csO6/WxJh5jRCb1G7H1ZETAo1b2biJCDcZ
- zed22sHqI4kGDPyGRc09tWFjwYRUBWeyG6hAYBcu7xc0TS3TJQrFq9BuSUnCpPavFql8
- OFtr9/X8LpuPB+PjZDiZveTFdfhRWqsHk6zmZo1ECootDHIicgGxRLM4Racl5AUbXhjO
- TYVg==
-X-Gm-Message-State: APjAAAXdKgok8XKN3CD3m/CbW9A4DujRXFP8zSEw0fLtDwo4cXIsi9+f
- rOcGP+jUTKN3cEl+gbrwfDnq/dikYhO0oQ==
-X-Google-Smtp-Source: APXvYqxsgVjjxWVy5YHoqS5cMvuPNwIad8I8+9Fc9CcEozQWPycpOcSoC7AiiS/jG1w8A0Tg+YMdtQ==
-X-Received: by 2002:a63:5626:: with SMTP id k38mr3709697pgb.134.1568239275630; 
- Wed, 11 Sep 2019 15:01:15 -0700 (PDT)
-Received: from [192.168.1.188] ([23.158.160.160])
- by smtp.gmail.com with ESMTPSA id z13sm34469328pfq.121.2019.09.11.15.01.12
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 11 Sep 2019 15:01:14 -0700 (PDT)
-Subject: Re: [PATCH v5 2/2] block: centralize PI remapping logic to the block
- layer
-To: Max Gurtovoy <maxg@mellanox.com>, linux-block@vger.kernel.org,
- martin.petersen@oracle.com, linux-nvme@lists.infradead.org,
- keith.busch@intel.com, hch@lst.de, sagi@grimberg.me
-References: <1568215397-15496-1-git-send-email-maxg@mellanox.com>
- <1568215397-15496-2-git-send-email-maxg@mellanox.com>
-From: Jens Axboe <axboe@kernel.dk>
-Message-ID: <380932df-2119-ad86-8bb2-3eccb005c949@kernel.dk>
-Date: Wed, 11 Sep 2019 16:01:11 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YYPZjqVFeTKtC5fFBJy5p2xhCEzihUmpj3JugWAlHQc=;
+ b=OewBEIe1EwbjlwimMxuP6duEgmx+rAOZP4TsOLCdcaKnF98d50ep/Az+Cc8v4/Wbsz
+ f/xrg8gj4WRt3ZcvwmX5BUmZhLKDo70LoAuhVVYMQfdJOVZlv+R1oGEzwp/p3lZuPS/6
+ lq1r3iNXiy3YNhUTaTldQeMO5TiiIl130lfT49aDyHkzJpNY+oHauCf6IB4CG9/MfY18
+ 20CIKdO2oljrhJKwLgbLqE9R3MCcnoUsM3nVkeeuHBWaz2zHVHOl8wi+uR/KTgDeOByv
+ 14JNEyEyEnXeTgGStxBJ4f0PhCu53QltwrrjOgDI/1rUhv1xTUPYYeTmlgoVHzjSgYN5
+ zsQw==
+X-Gm-Message-State: APjAAAWnXdUxfrGQhV9avkSIm3DBQTnr9NDjuKHmsDZjZvyk5zi88jXO
+ HJX7eD6ZsILpPQow1UV/dr2F9pNO5O921xK2aw==
+X-Google-Smtp-Source: APXvYqy41t37T+leAmtkmNzYYvqmCCXlVPxMlzOZ/lNcbnh/UNjp/OXUUlj1Kl89C6uklAVHDh9iZl/ODTY4arlQqbc=
+X-Received: by 2002:a2e:9cd7:: with SMTP id g23mr24585040ljj.25.1568240321866; 
+ Wed, 11 Sep 2019 15:18:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1568215397-15496-2-git-send-email-maxg@mellanox.com>
-Content-Language: en-US
+References: <CAEJqkgjJEHmTT3N42BXkeb+2mDbteE1YwW25cgUpMk7A_sOWzg@mail.gmail.com>
+ <6a47a06d-f8f1-1865-1919-5ede359d0b10@kernel.dk>
+In-Reply-To: <6a47a06d-f8f1-1865-1919-5ede359d0b10@kernel.dk>
+From: Gabriel C <nix.or.die@gmail.com>
+Date: Thu, 12 Sep 2019 00:18:15 +0200
+Message-ID: <CAEJqkgguW183DsU+JUPcV193HtDXzVsyUa4JEgVKrhumYTzpAg@mail.gmail.com>
+Subject: Re: [PATCH v2] Added QUIRKs for ADATA XPG SX8200 Pro 512GB
+To: Jens Axboe <axboe@kernel.dk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190911_150117_901111_A04C873B 
-X-CRM114-Status: GOOD (  13.70  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20190911_151843_799203_FF80682A 
+X-CRM114-Status: GOOD (  13.79  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:441 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:244 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (nix.or.die[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,49 +92,45 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: shlomin@mellanox.com, israelr@mellanox.com
+Cc: LKML <linux-kernel@vger.kernel.org>, linux-nvme@lists.infradead.org,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 9/11/19 9:23 AM, Max Gurtovoy wrote:
-> @@ -1405,6 +1406,11 @@ bool blk_update_request(struct request *req, blk_status_t error,
->   	if (!req->bio)
->   		return false;
->   
-> +	if (blk_integrity_rq(req) && req_op(req) == REQ_OP_READ &&
-> +	    error == BLK_STS_OK)
-> +		req->q->integrity.profile->complete_fn(req, nr_bytes);
-> +
-> +
->   	if (unlikely(error && !blk_rq_is_passthrough(req) &&
->   		     !(req->rq_flags & RQF_QUIET)))
->   		print_req_error(req, error, __func__);
-> @@ -693,6 +694,10 @@ void blk_mq_start_request(struct request *rq)
->   		 */
->   		rq->nr_phys_segments++;
->   	}
-> +
-> +	if (blk_integrity_rq(rq) && req_op(rq) == REQ_OP_WRITE)
-> +		rq->q->integrity.profile->prepare_fn(rq);
-> +
->   }
->   EXPORT_SYMBOL(blk_mq_start_request);
+Am Mi., 11. Sept. 2019 um 23:33 Uhr schrieb Jens Axboe <axboe@kernel.dk>:
+>
+> On 9/11/19 3:21 PM, Gabriel C wrote:
+> >   Booting with default_ps_max_latency_us >6000 makes the device fail.
+> >   Also SUBNQN is NULL and gives a warning on each boot/resume.
+> >    $ nvme id-ctrl /dev/nvme0 | grep ^subnqn
+> >      subnqn    : (null)
+> >
+> >   I use this device with an Acer Nitro 5 (AN515-43-R8BF) Laptop.
+> >   To be sure is not a Laptop issue only, I tested the device on
+> >   my server board too with the same results.
+> >   ( with 2x,4x link on the board and 4x on a PCI-E card ).
+> >
+> >   Signed-off-by: Gabriel Craciunescu <nix.or.die@gmail.com>
+> >   Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+>
+> For some reason your commit message is indented. Additionally, your
+> patch is whitespace damaged. So this won't apply anywhere.
 
-While I like the idea of centralizing stuff like this, I'm also not
-happy with adding checks like this to the fast path. But I guess it's
-still better than stuff it in drivers.
+Gmail hates me it seems. Sry but I don't have an proper setup on that
+box right now.
+My Laptop died and I try to fix the usual issue for new Laptops on
+this one right now.
+I uploaded the git patch, if you accept it like this. If not I will
+re-send as soon I fix
+this laptop and have git* and other things proper set up.
 
-You have an extra line after both of these above hunks for some reason.
-Can you clean that up?
+http://crazy.dev.frugalware.org/0001-Added-QUIRKs-for-ADATA-XPG-SX8200-Pro-512GB.patch
 
-And the blk-mq.c hunk, we have 'q' in that function, use that instead of
-rq->q.
+Best Regards,
 
--- 
-Jens Axboe
-
+Gabriel C
 
 _______________________________________________
 Linux-nvme mailing list
