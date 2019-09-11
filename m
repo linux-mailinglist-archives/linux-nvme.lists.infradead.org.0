@@ -2,130 +2,73 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47F7FB04F2
-	for <lists+linux-nvme@lfdr.de>; Wed, 11 Sep 2019 22:39:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 068E6B052E
+	for <lists+linux-nvme@lfdr.de>; Wed, 11 Sep 2019 23:22:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=Xd4mMUnju3gdwcn8hYOUgIqTCIAOm7c5MhReesLmXuc=; b=UwsTOkIbBXv7j6
-	G51gkzDvMoCfgQ7J8lzk6m2xb7wnGdtgkfNMjt+CpHsUMvkUaOObalsVeFfNC0N6VqOWrLZr3bRz/
-	+7EhfU5/5keE/dE/ZXxR7SdwGNf1H+5DRX/y4DFPzBl66lgdq575bXXcxFnGQlynewIbc6hwZQ6OU
-	sQOTBJkzQu2+f33noXdJtZwGiTDDPDI33FR+DndIG5cjnmegaWWkiYD5I9c3m2HVFwseTFbpuBoj3
-	a8pgOlIyEZa4Gpz2IlGtjFRPZduSUBgjGqiVIXLFaNQ3k9kSW2rC7GnEnXkXJxRlq+chknyQPTOYQ
-	uQBfNNPP9La6IhWFdVnA==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=K9zStzSAH2XLNHzy98IYzv9rdvVDhZsCwT0FoECgygM=; b=kdZ0JgK3rtsDQ8
+	08QvGY2zSU7BkRIPCgThgTTs0uvvZal8eYjLWMcUCe7h8kSBWzUNq2nG23j7t7okbp1FIefGHsL22
+	x7try9HfZa5ym1fdITl4mwb/PeuNCK6kCxdUHjtAMsZsWL7WNUAQoACfEn/TvvCDhgujMZZMpbwoG
+	1K1HogIItCwP8bo2lx/vLkv5/SplYGJh4JtQ7pkjLbs/adBHdzcw16CFIaOHTD9VY03L9l0LU9U6+
+	tK6x7F1YFLkGYYENY/nEKGTRQJGYDQC1HotFBz3LEBP1ChbsxR3hxtJJfjHviQ7T5ML4Aa2Fon5qz
+	cJfrUa2ZEcZsrI3sPWgQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i89OM-0003Ai-Uc; Wed, 11 Sep 2019 20:39:07 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1i8A3s-0007uz-Ea; Wed, 11 Sep 2019 21:22:00 +0000
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i89OD-00039T-GW
- for linux-nvme@lists.infradead.org; Wed, 11 Sep 2019 20:38:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1568234338; x=1599770338;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=fA0Yrji4qfI+gV3pm1GcvSvbB2oGuuXbNCzK6MdEoMg=;
- b=bfctKdMCjXXIoP5ltldkShFaWYTuVNcYhph1vUxiL5Oa0koIQxUF6k8E
- uvm7IF8R/E6DCvn7ovYBZWh32I9Z8nSRlsziXvXkMSBzJh03BfkIzJcAw
- jRa1PwHSzpiaNzsBxlES36jmDOjenuI67aljtnrxQLYDMPLqvlOW/NpdT
- oGDrFWnW7HP16M0TQa90+M3JmR6i8MTqJj2k7VVnAaWw8OrLM4XUeJ1J4
- iGbOYbV2DrT7aAQkbkFMwgFArxhsVmOs2OLiSsrnDmpFuQHHIlMXBzEQ/
- oxRSMhergvZr5MvMyV675+qdy8XAE4+fKQYgUT+sSD8ROAzW+F9VnnjxY w==;
-IronPort-SDR: Ddtv9nCCR6W6MqylayqSWqtZwTkizsP57xyh5/ZY1ZMRgaOXmxH3RdeVL+gPJoheJc198BEICL
- AFZxFnCf69XtckMcBBcePFra54TfTdtPbzhL44oNIbwm1QV6ej0dNhgzkiFHTBo3y1jBPGiY9m
- TuNIu2d4PeVo9unxZ2SjKTigW+5XKrOBOmfaPtrVrti5G2dQ4zM1NMEQp2DWmRcb9KQ+nvh1jf
- E5S2djUC4ujyOKbFg5/7vyiaPp5CMjfaUJD32IZE6bXDzePFBAy46fjDfhMjFLUU2Kh0WP2iCV
- jsk=
-X-IronPort-AV: E=Sophos;i="5.64,494,1559491200"; d="scan'208";a="122574028"
-Received: from mail-co1nam05lp2052.outbound.protection.outlook.com (HELO
- NAM05-CO1-obe.outbound.protection.outlook.com) ([104.47.48.52])
- by ob1.hgst.iphmx.com with ESMTP; 12 Sep 2019 04:38:55 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UeXtZn/dDyloX96qW03nTMSlx4GqakdckpQey8JRnZVk5+MKk74T2n5EoZ5zzXPwryEf27DWGb1yJGTRKuRyIka8yCyyYh6rosrBOFZpzjqOPFDhVkUhwcaILhOpei25EmTCqmGPT9x9P9an26xpQ+NX+XsFzRagMcwq41WD/jNopWVOeuaUJBM+8aWP0jArTU4YaLgmJbJvpROqMN/67NL8Yo80GuVD2ZmMrJmxIKJrWpvvdXDomxa2e6lcrZOwvsUqwWkljrZ9M1tAxbYxQ/VUT8TtNlNcuxbeko57Epdv0FqS3Av4fvOKvEST+7o1uXTqedG45IDObWAdy9fk9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fA0Yrji4qfI+gV3pm1GcvSvbB2oGuuXbNCzK6MdEoMg=;
- b=jmCDUNKtU4qxeBZ5UtcdRQRdf6drtKu3gc/qfD8piVCXcS/TH0ScjdOO7oFEgDUVsRLjhyQOLEEyxiaP5vFvRUVaU6avBrubQhl8Y+VKwWPA4UMCBb4dZjW9j4MvPjKpT/Tf+kaQjrL6dhGCvDjE08ltXvnKyAtAIk14fKdxA+mbfAiVtqQldqJMsFrbSzOvcBzR1SBuC9ukdQtmNh1gPN43oWRgiP9bvtbf6Biopx1UxPAkIymZ9JQOomATqwfzJidbyj/6ID7nbnt8wQcgaDViZumO1qtXhI6cn38GmZ3UXqFfoJ25ZnOZwv2zCZj/mKN/egK27ebM2n7bpYoN0w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fA0Yrji4qfI+gV3pm1GcvSvbB2oGuuXbNCzK6MdEoMg=;
- b=eHx58X63+KJoqXBBvBOPcJ1ZXykbeRHvYgkZrpLLarBQBDHy0S85cxqKYL9bZVvainJcASjlc/eEmy5K9LCCaUoSbEg+lVxY2IB2lzVWe6/fkVKB0ChkIVHf9j3ZHjC2FiRf/T3xCWkh47zLqO3pV9Pzz69+fejKDRtiDqSaqaU=
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.58.26) by
- BYAPR04MB4870.namprd04.prod.outlook.com (52.135.233.143) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2241.13; Wed, 11 Sep 2019 20:38:54 +0000
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::6169:680:44fc:965d]) by BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::6169:680:44fc:965d%6]) with mapi id 15.20.2263.016; Wed, 11 Sep 2019
- 20:38:54 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Logan Gunthorpe <logang@deltatee.com>, "linux-block@vger.kernel.org"
- <linux-block@vger.kernel.org>, "linux-nvme@lists.infradead.org"
- <linux-nvme@lists.infradead.org>, Omar Sandoval <osandov@fb.com>
-Subject: Re: [PATCH blktests v3] nvme/031: Add test to check controller
- deletion after setup
-Thread-Topic: [PATCH blktests v3] nvme/031: Add test to check controller
- deletion after setup
-Thread-Index: AQHVaMU8QUU7CWdh+U6FXoE9awxRVQ==
-Date: Wed, 11 Sep 2019 20:38:54 +0000
-Message-ID: <BYAPR04MB57497809CA89CFC73487A19486B10@BYAPR04MB5749.namprd04.prod.outlook.com>
-References: <20190911172021.5760-1-logang@deltatee.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.45.62]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0bde0c98-2741-4fbe-4ce9-08d736f80ff3
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:BYAPR04MB4870; 
-x-ms-traffictypediagnostic: BYAPR04MB4870:
-x-microsoft-antispam-prvs: <BYAPR04MB487027229DE95A077825248086B10@BYAPR04MB4870.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:1751;
-x-forefront-prvs: 0157DEB61B
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(396003)(366004)(136003)(376002)(39860400002)(346002)(199004)(189003)(55016002)(71190400001)(2906002)(229853002)(76176011)(8936002)(6436002)(81156014)(2501003)(6506007)(81166006)(8676002)(102836004)(53546011)(478600001)(52536014)(66446008)(66066001)(66946007)(6116002)(9686003)(3846002)(64756008)(25786009)(66476007)(66556008)(76116006)(6246003)(5660300002)(74316002)(110136005)(476003)(305945005)(7696005)(316002)(4326008)(86362001)(14454004)(99286004)(71200400001)(4744005)(53936002)(26005)(2201001)(7736002)(446003)(33656002)(256004)(486006)(186003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4870;
- H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: DV33dCE28dSQhGWuPJQanIBVJK8z2+7shJHPK0YzZhmU4XS3aes1436fGhfv2Ae/4krrwRG067HUgdd1wtcCQ1fLOYoHs8Lfnp7DQs7UNu1NKdKSKc72UozZFYtI43KESyS+3trRUEkoihwMtlmHWCWMu0TAVktNbZ+VUPuVHs3q93FA8PkJxsDATSAMP0geore09eGFcjYm7fwwgmoqSG6dOEnY+0jO3qJEq05rMS7FrVlT68Xj57uoJKhFv2LIoXgMTgb6FZ6PXcf9vkDxM3TiGg/EDIMfYFtNhGitqhRdSkKb6bBjpkZndNQQYsvvgpxYG9pdaeq/pISvooMgUnpFDxoLltKnUA/PC1vE9vr1rnJbpIOhb1WtoXz6G2Y0/MzPO5UIIPqbvg9h8ugsu5oEfdKMPjYsj2nrVd8W/X8=
-x-ms-exchange-transport-forked: True
+ id 1i8A3j-0007uB-HX
+ for linux-nvme@lists.infradead.org; Wed, 11 Sep 2019 21:21:52 +0000
+Received: by mail-lj1-x241.google.com with SMTP id y23so21532036lje.9
+ for <linux-nvme@lists.infradead.org>; Wed, 11 Sep 2019 14:21:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=6SoPHoZF8O/ZyTUvhLvM3bS5p+hTFKgEJPCR1inNr24=;
+ b=nXZG9PCaIGcaUCi+K97or2ee6PvMcUhYMWXnsTwVQnIj+eLYOJ6Ux5QNQgtZjyGb/v
+ VO/a/LPHUkjOAS9kbkuhzh+0Vw8AXlBaHP9t0ys2P1anJiuWCXsrpFla5FrVjIc67Mps
+ Aoi8hwrO6bCFGkVWfqP4GvYhVVz3+/AAglW7BAUaq+XHPYhxxp4UbZx9RgjVSSyebDUI
+ EVFH+ghpWaArXwELHif19GRWSAyMzK8yak6WsEVEZ2ETvDv4hfAYaCUH6avyYVXl7uhb
+ NpAa9dr46gEqMbDBLsDKnL8JipU4kC+R389gAfe9HkNjIltoGrHYCqtbDZFEMQvHlg5V
+ lM+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=6SoPHoZF8O/ZyTUvhLvM3bS5p+hTFKgEJPCR1inNr24=;
+ b=SQzpTEM7cn+tXNcW+4tUKBxv7Y9MO9zAMQIbINS5W2w7DOCDFDodY3gf6u/7GnVhGz
+ v4Rh00kxzOA5PvOCggcAoa1HRcghPWpWMDFekF86xTkbyD6pCo3Ec4PQi3NAV3AY3DW3
+ P9MI6EHzoYFhlWKdrMyV7wRjld7SFib/7C0z7owC/wWJLeDwy43OEhvC6c3oz0ZFmcqt
+ Eu1ZuK1cjeCO1Nq6iJ1CRIYDcjSoalsKgkSU/gS7TsJCjxrq5QIA9N3AqTu3X04KfMYY
+ PysrH4GeASs9fLICU+zl+hne6HEyRCjxBLTZOmIDur2upWLdvfhlOiTFcozXUMixEW1z
+ kRFw==
+X-Gm-Message-State: APjAAAU0UtEsTweC+adECTz0FvVRVhJvWE5tuUf3aW4g3v6+JqsqJAQr
+ dyqRat7fUfmhFHKar4VthjRrZ/N2eeMkjpduUDdnDxA=
+X-Google-Smtp-Source: APXvYqw5gtIvkS2IDXojmcpznuHsletgXdaKcOehEFKttIYDF9R6NXCvBjoFTjMs6SDt7YFYvSkKYwWpmYrieL0erF0=
+X-Received: by 2002:a2e:8814:: with SMTP id x20mr25078932ljh.221.1568236907441; 
+ Wed, 11 Sep 2019 14:21:47 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0bde0c98-2741-4fbe-4ce9-08d736f80ff3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Sep 2019 20:38:54.2527 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: DB6r6WsNpUvXUjIMdPwEln0oo8xDClToJdALJiYJNIaLfLjIIn79Yi/DlICIRuSyLMqX8QYO1wXLMbc84RaapqrkvZHMj1+xTX8poH947Wg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4870
+From: Gabriel C <nix.or.die@gmail.com>
+Date: Wed, 11 Sep 2019 23:21:21 +0200
+Message-ID: <CAEJqkgjJEHmTT3N42BXkeb+2mDbteE1YwW25cgUpMk7A_sOWzg@mail.gmail.com>
+Subject: [PATCH v2] Added QUIRKs for ADATA XPG SX8200 Pro 512GB
+To: LKML <linux-kernel@vger.kernel.org>, linux-nvme@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190911_133857_631662_87E736F5 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190911_142151_607426_ACA669CA 
+X-CRM114-Status: GOOD (  10.15  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:241 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (nix.or.die[at]gmail.com)
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -151,21 +94,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Looks good.
+ Booting with default_ps_max_latency_us >6000 makes the device fail.
+ Also SUBNQN is NULL and gives a warning on each boot/resume.
+  $ nvme id-ctrl /dev/nvme0 | grep ^subnqn
+    subnqn    : (null)
 
-Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+ I use this device with an Acer Nitro 5 (AN515-43-R8BF) Laptop.
+ To be sure is not a Laptop issue only, I tested the device on
+ my server board too with the same results.
+ ( with 2x,4x link on the board and 4x on a PCI-E card ).
 
-On 09/11/2019 10:20 AM, Logan Gunthorpe wrote:
-> A number of bug fixes have been submitted to the kernel to
-> fix bugs when a controller is removed immediately after it is
-> set up. This new test ensures this doesn't regress.
->
-> Signed-off-by: Logan Gunthorpe<logang@deltatee.com>
-> Reviewed-by: Sagi Grimberg<sagi@grimberg.me>
-> ---
->
-> Changes for v3:
+ Signed-off-by: Gabriel Craciunescu <nix.or.die@gmail.com>
+ Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+---
+ drivers/nvme/host/pci.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 52205f8d90b4..3093f224c7ac 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -3079,6 +3079,9 @@ static const struct pci_device_id nvme_id_table[] = {
+                .driver_data = NVME_QUIRK_LIGHTNVM, },
+        { PCI_DEVICE(0x10ec, 0x5762),   /* ADATA SX6000LNP */
+                .driver_data = NVME_QUIRK_IGNORE_DEV_SUBNQN, },
++        { PCI_DEVICE(0x1cc1, 0x8201),   /* ADATA SX8200PNP 512GB */
++                .driver_data = NVME_QUIRK_NO_DEEPEST_PS |
++                                NVME_QUIRK_IGNORE_DEV_SUBNQN, },
+        { PCI_DEVICE_CLASS(PCI_CLASS_STORAGE_EXPRESS, 0xffffff) },
+        { PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2001) },
+        { PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2003) },
+-- 
+2.21.0
 
 _______________________________________________
 Linux-nvme mailing list
