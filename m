@@ -2,110 +2,137 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 579FDAF3DF
-	for <lists+linux-nvme@lfdr.de>; Wed, 11 Sep 2019 03:17:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F2591AF89A
+	for <lists+linux-nvme@lfdr.de>; Wed, 11 Sep 2019 11:12:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dG1JdIW2OfO39lD7o1R2/qzxGK7sCwDyKFXY9+YV2Vo=; b=Aqe7wQrP8Rr889
-	/mMWqkUYk31BiREHmyUksWA/IMXF0oULEo9ibFfrGIIPfD7IV4GPFuS+k1khKzfLZcGMoSsPzBRhn
-	IUTm3y0CFKghOtzOrU64S1exMKC4Y2aGBnE9yodNnnii9NeDC9cCIIBN42nJLp8A7Z/xk1yn6WFsb
-	ZQ1Oeam4P5fMCm1x7Uq3f7sVnFYrDSZT8WYYlT8QXzO9EIV4XJHmvfyt5chW40tF+w7OInCU86kqH
-	tu9BC9jXHOA6SzFAGPIGabszSxasCzaXYXuOVc52nmL1O3gC2fSvHiYRdLaQ7fSs+yBzhmN4uQcD5
-	r/XQAGX98jwSQNIg3+XA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=O/mJeJpWkvBNM6SlZTghd9z2W1gbTKXUwZUos9Ys2y8=; b=RFyjBNDe07QgTHiIKVci0va17
+	SJ0CVqpMX5V7hQtT0gPzuNBIqIjwzP4HfNLGw64Gj5w1zVwh3vgjtmmcmuZbxEqePdwnJ6QueIBXQ
+	lHio5L9juJWXCCzEDisOHJfPcfbySoc8qKMok6yIsciPDnYtTlWJAoxcsQdFqp7RS0MqnBwLc0mb4
+	0TFtze/EEDnlf6RSgfjpV6twhDASRZ5GJZvPAH7hXslrPimDYrnFrFlE4OAQVj/eDC1kr1iBNC40t
+	cFDluGJbKimRBeGXiXfKR1qQPXMa1RM1zf+oajs5yTlyn0iE82R+RvqDHCdCN36otZ64N5+nlaSXN
+	kQNVGxubA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92 #3 (Red Hat Linux))
-	id 1i7rFq-00024A-I8; Wed, 11 Sep 2019 01:17:06 +0000
-Received: from aserp2120.oracle.com ([141.146.126.78])
+	id 1i7yfw-0006gv-A2; Wed, 11 Sep 2019 09:12:33 +0000
+Received: from mail-eopbgr140043.outbound.protection.outlook.com
+ ([40.107.14.43] helo=EUR01-VE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92 #3 (Red Hat Linux))
- id 1i7rFk-00023p-0U
- for linux-nvme@lists.infradead.org; Wed, 11 Sep 2019 01:17:01 +0000
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8B1E3gx081074;
- Wed, 11 Sep 2019 01:16:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : references : date : in-reply-to : message-id : mime-version :
- content-type; s=corp-2019-08-05;
- bh=VW6NQiLrb7n2pHcWqpWBPIO16ZVy6fIAW1nnemdhT+g=;
- b=W2d4RXQI704f78e3bazF325gUq5nSExcM8L/MYUTAKI74XCFvNKEYCx5wCWvHzHvYofz
- u3A81ju3LxDcJyx6dAkeAP781PciE2tYDlOx2FODMuFpaARbY+vta6wqL1s7ZOsQBWTu
- wTEyVOMhWKZ98s4CeS8ELQuPTBbjwGuYWAcr7uWVvTAPOjzD+eJHHXFa9QkwvkaMSZIB
- R8eP1Gf+Zp4GX9GKR7f4PXysnvGTGG1EiANP2u3WxKVdV9+G2mBrFkJEIlKB7SjPVDtb
- n4JfHlIHN8yOwKa5PnuVCr60TtAvNgt8WQYsJYitGtAVMmuztUH4GbYRpM5kxdDi2ngR DA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by aserp2120.oracle.com with ESMTP id 2uw1jy6rpq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 11 Sep 2019 01:16:44 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8B1E5kV060189;
- Wed, 11 Sep 2019 01:16:43 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3020.oracle.com with ESMTP id 2uxk0snpkx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 11 Sep 2019 01:16:43 +0000
-Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x8B1GZeF028961;
- Wed, 11 Sep 2019 01:16:37 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 10 Sep 2019 18:16:34 -0700
-To: Max Gurtovoy <maxg@mellanox.com>
+ id 1i7yff-0006gM-DB
+ for linux-nvme@lists.infradead.org; Wed, 11 Sep 2019 09:12:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FCWbemChoGSVWwA4p2nHqYJrB6JCW4QVYfLAPasttONEeLW/dKCYywKGgaWKwyZejOzYDbGv3FA2JOjaHV3Npeem1elOeiJse/xAKX7X8f4zGhmYbAdjOeveRtXhpIVTpREQ5OyOOeQnd4/ilZG3+9vkpA7PvZoAJErvn1Z5H2X5Bp0/PdnL7UmL4o1cdKwt9nv6GFOQXs+n3VAEoCncU/KpBeAJvCxRGzlrp8G1mqTbOoHzRshNgrXltsJYaDen6TySozwRnRupIIDGMHCSsaV83SUm/GyWIVnFvKidIc5d9bE9kT1HTjtYEeZino/D7xu2XQKBRgF9SnBjEVgu+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ubbXKUd1bdbtHqW2UB1mLwwKZ7ch1HiuZJdOsQU+tco=;
+ b=V7K/9y1Hv3JvjEu4Zu0fS/IWCCZEUIuUyLzdS1s4KlJWdfxtq1x0LZ0cDyWXdkmonISuLI023dwCalRWvzftKvUctvxybxErIjmk+HZRxD5VyK3PgOLX4fYAxByAtIdn/bkDyASboSOuEdXg7RmioORuEtOwic5Ulgi7kpuO6Qwh2nvkTDuL3a93CrYX+8oLQsbceha1ZQV8/HVrPhUQG33BFQsG5zEBvfKFEsTyUmo2vat5qJYEaWwqmL+bSkZkEg++Ag/cWCebrWyFmYjxLLBU33v6w8WYGq+IxVPBGbMw4T529rZMaQSdW2p9c+hjL1iAi82Ull47g/bN9cHEDA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 193.47.165.251) smtp.rcpttodomain=lst.de smtp.mailfrom=mellanox.com;
+ dmarc=pass (p=none sp=none pct=100) action=none header.from=mellanox.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ubbXKUd1bdbtHqW2UB1mLwwKZ7ch1HiuZJdOsQU+tco=;
+ b=RFLi5C4fob6+X27WH2EpiBTgEXXezkKm2jrmMiA2A0F5MwXJaVgGmYmxHaWovq2gFjn0F9sRokODFhCWmeoet6ZKj4emQIwkh/M/w4Fr6clNHb1CepumntQ1A8eV1YOZseLFgVTM/qBVm/j/vKIw3FjRJcnqwGL2t4MEX1z3ecs=
+Received: from AM3PR05CA0116.eurprd05.prod.outlook.com (2603:10a6:207:2::18)
+ by VI1PR05MB4382.eurprd05.prod.outlook.com (2603:10a6:803:42::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2241.13; Wed, 11 Sep
+ 2019 09:12:11 +0000
+Received: from AM5EUR03FT043.eop-EUR03.prod.protection.outlook.com
+ (2a01:111:f400:7e08::203) by AM3PR05CA0116.outlook.office365.com
+ (2603:10a6:207:2::18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2263.15 via Frontend
+ Transport; Wed, 11 Sep 2019 09:12:11 +0000
+Authentication-Results: spf=pass (sender IP is 193.47.165.251)
+ smtp.mailfrom=mellanox.com; lst.de; dkim=none (message not signed)
+ header.d=none;lst.de; dmarc=pass action=none header.from=mellanox.com;
+Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
+ 193.47.165.251 as permitted sender)
+ receiver=protection.outlook.com; 
+ client-ip=193.47.165.251; helo=mtlcas13.mtl.com;
+Received: from mtlcas13.mtl.com (193.47.165.251) by
+ AM5EUR03FT043.mail.protection.outlook.com (10.152.17.43) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.2263.14 via Frontend Transport; Wed, 11 Sep 2019 09:12:10 +0000
+Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4; Wed, 11 Sep 2019 12:12:10
+ +0300
+Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
+ with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Wed,
+ 11 Sep 2019 12:12:10 +0300
+Received: from [10.223.0.54] (10.223.0.54) by MTLCAS01.mtl.com (10.0.8.71)
+ with Microsoft SMTP Server (TLS) id 14.3.468.0; Wed, 11 Sep 2019 12:12:08
+ +0300
 Subject: Re: [PATCH v4 1/3] block: centralize PI remapping logic to the block
  layer
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
+To: "Martin K. Petersen" <martin.petersen@oracle.com>
 References: <1567956405-5585-1-git-send-email-maxg@mellanox.com>
  <yq1mufei4zk.fsf@oracle.com>
  <d6cfe6e5-508a-f01c-267d-c8009fafc571@mellanox.com>
  <yq1d0g8hoj5.fsf@oracle.com>
  <61ab22ba-6f2d-3dbd-3991-693426db1133@mellanox.com>
-Date: Tue, 10 Sep 2019 21:16:32 -0400
-In-Reply-To: <61ab22ba-6f2d-3dbd-3991-693426db1133@mellanox.com> (Max
- Gurtovoy's message of "Wed, 11 Sep 2019 01:27:29 +0300")
-Message-ID: <yq1k1affx8v.fsf@oracle.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
+ <yq1k1affx8v.fsf@oracle.com>
+From: Max Gurtovoy <maxg@mellanox.com>
+Message-ID: <e59b2d78-4cf6-971a-1926-7969140d2a01@mellanox.com>
+Date: Wed, 11 Sep 2019 12:12:08 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9376
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=658
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1906280000 definitions=main-1909110004
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9376
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=724 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1909110004
+In-Reply-To: <yq1k1affx8v.fsf@oracle.com>
+Content-Language: en-US
+X-Originating-IP: [10.223.0.54]
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:193.47.165.251; IPV:NLI; CTRY:IL; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(4636009)(346002)(396003)(136003)(39860400002)(376002)(199004)(189003)(53936002)(106002)(36906005)(11346002)(229853002)(230700001)(81166006)(305945005)(26005)(76176011)(58126008)(16576012)(7736002)(2906002)(316002)(6916009)(53546011)(31696002)(54906003)(31686004)(86362001)(14444005)(65956001)(8676002)(47776003)(50466002)(23676004)(16526019)(356004)(65806001)(3846002)(6116002)(8936002)(4326008)(5660300002)(476003)(126002)(446003)(70206006)(2486003)(70586007)(478600001)(81156014)(336012)(486006)(186003)(6246003)(2616005)(36756003)(3940600001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR05MB4382; H:mtlcas13.mtl.com; FPR:;
+ SPF:Pass; LANG:en; PTR:InfoDomainNonexistent; A:1; MX:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 3969b29d-2644-4af2-4bd8-08d7369820e9
+X-Microsoft-Antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600166)(711020)(4605104)(4709080)(1401327)(4618075)(2017052603328)(7193020);
+ SRVR:VI1PR05MB4382; 
+X-MS-TrafficTypeDiagnostic: VI1PR05MB4382:
+X-Microsoft-Antispam-PRVS: <VI1PR05MB4382751AEBA632DA8A0BF869B6B10@VI1PR05MB4382.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-Forefront-PRVS: 0157DEB61B
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam-Message-Info: lmaJxtS6W/E8XBXZFRwl049tgq8gpxgWqNY37WhB1367g5gYSUpFPMnRbFQflPMUxl1ipumXFwZw4hSPz2pdU8vG/xPo436lhyjbtjbFWAbuQJKkCsZYVC4e1cGmxeYs43ajYPHeT6cIdMUZ6i2jEDkpoq330RkrhlwKKyDETfakV/la01Y+B0GEyWzbdH4R7zCDQ3EyVbHVifq7DYvlibYsvQTleienygqk68GVGhDSKYRzB5/djbpbRLMX0SFNKA5XsY0yCpyqFwCUF8sLRmR4bDSgeY3ygf9+29bsd8/dsPdAFcdQKptVRQPQ70xITyiKGxJHtEwPck6sQGF5qNCioI4qUM6P3MWNXYD2dkRc7pDex/c+gCKuC/W+B4ghO/AqUGqenY4fLJKjZPKfINVuF5T+7gUyC3KmLtDkiO4=
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Sep 2019 09:12:10.8591 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3969b29d-2644-4af2-4bd8-08d7369820e9
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.251];
+ Helo=[mtlcas13.mtl.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR05MB4382
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190910_181700_145182_604A3B94 
-X-CRM114-Status: GOOD (  13.82  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20190911_021215_703459_C14AA17C 
+X-CRM114-Status: GOOD (  12.01  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [141.146.126.78 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.14.43 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,40 +144,41 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@kernel.dk, keith.busch@intel.com, sagi@grimberg.me,
- "Martin K. Petersen" <martin.petersen@oracle.com>, israelr@mellanox.com,
- linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
+Cc: axboe@kernel.dk, linux-block@vger.kernel.org, sagi@grimberg.me,
+ israelr@mellanox.com, linux-nvme@lists.infradead.org, keith.busch@intel.com,
  shlomin@mellanox.com, hch@lst.de
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
-Max,
-
-> I guess Type 1 and Type 3 mirrors can work because Type 3 doesn't have
-> a ref tag, right ?
-
-It will work but you'll lose ref tag checking on the Type 3 side of the
-mirror. So not exactly desirable. And in our experience, the ref tag is
-hugely important.
-
-Also, there are probably some headaches lurking in the slightly
-different app/ref tag escape handling if you mix the two
-formats. Whereas Type 1 and 2 are 100% identical in behavior if you use
-the LBA as the ref tag.
-
->> Anyway. So my take on all this is that the T10-DIF-TYPE1-CRC profile is
->> "it" and everything else is legacy.
+On 9/11/2019 4:16 AM, Martin K. Petersen wrote:
+> Max,
 >
-> do you see any reason to support the broken type 3 ?
+>> I guess Type 1 and Type 3 mirrors can work because Type 3 doesn't have
+>> a ref tag, right ?
+> It will work but you'll lose ref tag checking on the Type 3 side of the
+> mirror. So not exactly desirable. And in our experience, the ref tag is
+> hugely important.
+>
+> Also, there are probably some headaches lurking in the slightly
+> different app/ref tag escape handling if you mix the two
+> formats. Whereas Type 1 and 2 are 100% identical in behavior if you use
+> the LBA as the ref tag.
+>
+>>> Anyway. So my take on all this is that the T10-DIF-TYPE1-CRC profile is
+>>> "it" and everything else is legacy.
+>> do you see any reason to support the broken type 3 ?
+> Only to support existing installations. We can't really remove it
+> without the risk of breaking something for somebody out there.
 
-Only to support existing installations. We can't really remove it
-without the risk of breaking something for somebody out there.
+what about broken type 3 in the NVMe spec ?
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
+I don't really know what is broken there but maybe we can avoid 
+supporting it for NVMe until it's fixed.
+
+
 
 _______________________________________________
 Linux-nvme mailing list
