@@ -2,90 +2,101 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57FE9B27A6
-	for <lists+linux-nvme@lfdr.de>; Sat, 14 Sep 2019 00:01:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D5B4AB2844
+	for <lists+linux-nvme@lfdr.de>; Sat, 14 Sep 2019 00:21:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5Yl0Xu5zpFGyNAnlxRypmAyO5DYyihujTV9+9oatdVg=; b=iW0y3ov9Khtu/D
-	MxSAhr8R9RLN7UzpZjeTbQmQmfQwasQfT4CFnwtbAzH4O1OFEgViru0ckrQM9ZA45/b04ulXF3Kb5
-	w34fds7Qs6vZ/rQFVfXXqyaVcfauFwzIAXt2VxAfGkOBxrknh5r9GaDsKmSJMDI6vCzJlZ/SNU43I
-	/p3RUPQVO87UYzd7/oMdFn7uIuZgKX9xpa4oc02S41y34SbkL0IpqLro7oJ/ZhMbRAxeyXByY86WI
-	PAUtZv2tQL9SprkXsqfZW0ZY6Kk/v31glQM+hFFOPhNYe183wkvI2cBuX9JC5dhVIQry2nAxpry4J
-	d+ThVCF4UTyyN7O+PcdA==;
+	List-Owner; bh=5ob/owPvexAB6SE56oCRkvzziVdpK3d2rVJYYffTPyg=; b=LzDlWNP8CyBl9A
+	ypp/ngnf2O+gFEBJBxjgyKWzrEId4DKvx/bdz59E41exGxYfzOn+G1bNetSfRW+NfkRmSq8TiBQ/a
+	Co/MR3uxh8DOVRyeIuuu3M1496Qki6QJVlxx2OB3H7gIKUfHL5KwghsSKYIV7brBlQmrSVuJQHODh
+	VCP8tVcWkyxgujqd6XzP4x8Uhxb1pfeplATEHc/6Fts54jFAZzIHxO2UufJ3YU9ibCAgKnWWJtNzv
+	UVr1gHZUjx+N7bqyaf/L6TSgy77ybhMeOzSlcLxjkwlftydWD2Fvrzwj+yqCb1oFhV355AHCHQXJQ
+	VlO98dliGEv1Dg0PYwdg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i8tdA-0000Qr-16; Fri, 13 Sep 2019 22:01:28 +0000
-Received: from smtp-fw-33001.amazon.com ([207.171.190.10])
+	id 1i8tvy-0006lL-FT; Fri, 13 Sep 2019 22:20:54 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i8td2-0000QR-MH
- for linux-nvme@lists.infradead.org; Fri, 13 Sep 2019 22:01:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1568412080; x=1599948080;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=VIJbkLDasyuo3oyhLpet7SHnzxc0w51audKlfg2+xYE=;
- b=T+iGB3kfoD7uQjE8KnDAbNkArg2dsuKmpqsnTn8eq2RZQmkzx935r2oe
- 5BuFyVAf27BBe6/71+FxKTSppOfiEOZupvkm+oMpXfUNV/dM57n/BTbVj
- gmKbIMMx8bXAelTBBpFWrMD2sjH9Kcyym/a+Ke+TWtHyUyjXrpKO2w/Ce s=;
-X-IronPort-AV: E=Sophos;i="5.64,501,1559520000"; d="scan'208";a="831809672"
-Received: from sea3-co-svc-lb6-vlan2.sea.amazon.com (HELO
- email-inbound-relay-2b-c300ac87.us-west-2.amazon.com) ([10.47.22.34])
- by smtp-border-fw-out-33001.sea14.amazon.com with ESMTP;
- 13 Sep 2019 22:01:15 +0000
-Received: from EX13MTAUWB001.ant.amazon.com
- (pdx4-ws-svc-p6-lb7-vlan2.pdx.amazon.com [10.170.41.162])
- by email-inbound-relay-2b-c300ac87.us-west-2.amazon.com (Postfix) with ESMTPS
- id 36EC9A2819; Fri, 13 Sep 2019 22:01:15 +0000 (UTC)
-Received: from EX13D01UWB001.ant.amazon.com (10.43.161.75) by
- EX13MTAUWB001.ant.amazon.com (10.43.161.207) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Fri, 13 Sep 2019 22:01:14 +0000
-Received: from EX13D01UWB002.ant.amazon.com (10.43.161.136) by
- EX13d01UWB001.ant.amazon.com (10.43.161.75) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Fri, 13 Sep 2019 22:01:14 +0000
-Received: from EX13D01UWB002.ant.amazon.com ([10.43.161.136]) by
- EX13d01UWB002.ant.amazon.com ([10.43.161.136]) with mapi id 15.00.1367.000;
- Fri, 13 Sep 2019 22:01:14 +0000
-From: "Singh, Balbir" <sblbir@amazon.com>
-To: "kbusch@kernel.org" <kbusch@kernel.org>, "bvanassche@acm.org"
- <bvanassche@acm.org>, "sblbir@amzn.com" <sblbir@amzn.com>
-Subject: Re: [PATCH 1/2] nvme/host/pci: Fix a race in controller removal
-Thread-Topic: [PATCH 1/2] nvme/host/pci: Fix a race in controller removal
-Thread-Index: AQHVad0weaqtoCO2e0WbgGM6z7w9W6cptIiAgABjv4CAAAuugIAABdUA
-Date: Fri, 13 Sep 2019 22:01:14 +0000
-Message-ID: <9feca2b1c52a960451b24c2f1d2239e7875101e3.camel@amazon.com>
-References: <20190913024432.7705-1-sblbir@amzn.com>
- <20190913150132.GB17139@keith-busch>
- <3cf02675ea58f3e3b91f23f63e53f1d2010fadf9.camel@amazon.com>
- <ad85a4ac-7b88-a855-abe2-6fab85c703a8@acm.org>
-In-Reply-To: <ad85a4ac-7b88-a855-abe2-6fab85c703a8@acm.org>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.43.160.27]
-Content-ID: <33675E8827D5F943AE9FF24DD004291B@amazon.com>
+ id 1i8tvs-0006kK-Cp
+ for linux-nvme@lists.infradead.org; Fri, 13 Sep 2019 22:20:49 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8DM3pqS146692;
+ Fri, 13 Sep 2019 22:20:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=to : cc : subject :
+ from : references : date : in-reply-to : message-id : mime-version :
+ content-type; s=corp-2019-08-05;
+ bh=I7MG1IhMgHYPqdXB/W6w8aJgPGeRPrEsbTf678ZbsSs=;
+ b=bbete2snAIuAEXVRzrpa5LJ4U25cuYg4PsS+prUAPraZy2nAdsALqmxwPIMrkrVqHULD
+ XhRSUThM/kl6RefPJs9IMifdNFriGx4zvOnrktAgTrtojtMUU4EF+Inu3xqTDopiHU0K
+ wb1zqVv3Q+NfPBqJtkeMtQRh3DWAKjyQ3mkSJ0QuzN/ucv+sYqDL7/DZRU+UUh7kBb+s
+ T9xAm2Dh1AzyqrrHtXoF43mrkYPMW08uczU/YbEGyO0jPzOaPkVeJc3QvOTpBmr7pSpb
+ 8fakpzvLLKzad7La6vU5XNAhe2scGaE20u+Zu+df/MtSdxUxlJS+/r23glOeJDlvj0wz eA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2uytd379yb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 13 Sep 2019 22:20:31 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x8DM3egZ052747;
+ Fri, 13 Sep 2019 22:20:31 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 2v0cwk4jet-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 13 Sep 2019 22:20:30 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x8DMKQHV031508;
+ Fri, 13 Sep 2019 22:20:26 GMT
+Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 13 Sep 2019 15:20:26 -0700
+To: Max Gurtovoy <maxg@mellanox.com>
+Subject: Re: [PATCH v4 1/3] block: centralize PI remapping logic to the block
+ layer
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+References: <1567956405-5585-1-git-send-email-maxg@mellanox.com>
+ <yq1mufei4zk.fsf@oracle.com>
+ <d6cfe6e5-508a-f01c-267d-c8009fafc571@mellanox.com>
+ <yq1d0g8hoj5.fsf@oracle.com>
+ <61ab22ba-6f2d-3dbd-3991-693426db1133@mellanox.com>
+ <yq1k1affx8v.fsf@oracle.com>
+ <e59b2d78-4cf6-971a-1926-7969140d2a01@mellanox.com>
+Date: Fri, 13 Sep 2019 18:20:23 -0400
+In-Reply-To: <e59b2d78-4cf6-971a-1926-7969140d2a01@mellanox.com> (Max
+ Gurtovoy's message of "Wed, 11 Sep 2019 12:12:08 +0300")
+Message-ID: <yq1lfurdejc.fsf@oracle.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
 MIME-Version: 1.0
-Precedence: Bulk
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9379
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=915
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1908290000 definitions=main-1909130218
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9379
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=981 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1908290000
+ definitions=main-1909130218
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190913_150120_776721_6CFBBC06 
-X-CRM114-Status: GOOD (  11.87  )
-X-Spam-Score: -10.0 (----------)
+X-CRM114-CacheID: sfid-20190913_152048_523490_A07C9353 
+X-CRM114-Status: GOOD (  13.01  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-10.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [207.171.190.10 listed in list.dnswl.org]
- -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
- white-list
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ medium trust [141.146.126.78 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
@@ -94,9 +105,12 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: <linux-nvme.lists.infradead.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=unsubscribe>
@@ -105,28 +119,31 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "axboe@fb.com" <axboe@fb.com>, "hch@lst.de" <hch@lst.de>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- "sagi@grimberg.me" <sagi@grimberg.me>
+Cc: axboe@kernel.dk, linux-block@vger.kernel.org, sagi@grimberg.me,
+ "Martin K. Petersen" <martin.petersen@oracle.com>, israelr@mellanox.com,
+ linux-nvme@lists.infradead.org, keith.busch@intel.com, shlomin@mellanox.com,
+ hch@lst.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, 2019-09-13 at 14:40 -0700, Bart Van Assche wrote:
-> On 9/13/19 1:58 PM, Singh, Balbir wrote:
-> > The real issue is that by then udevd has already called into blk_queue_enter()
-> > and is waiting on wait_event(q->mq_freeze_wq,...), so we do need to unfreeze
-> > and wake_all waiting on the event.
-> 
-> I don't think that's correct. blk_set_queue_dying() wakes up 
-> blk_queue_enter() and causes it to return -ENODEV.
-> 
 
-Fair enough.. I presume looking at the name, it was twiddling
-bits. I am going to test with just the re-ordering and check.
+Max,
 
-> Bart.
+> what about broken type 3 in the NVMe spec ?
+>
+> I don't really know what is broken there but maybe we can avoid
+> supporting it for NVMe until it's fixed.
+
+The intent in NVMe was for Type 3 to work exactly like it does in
+SCSI. But the way the spec is worded it does not. So it is unclear
+whether implementors (if any) went with the SCSI compatible route or
+with what the NVMe spec actually says.
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
+
 _______________________________________________
 Linux-nvme mailing list
 Linux-nvme@lists.infradead.org
