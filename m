@@ -2,58 +2,54 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30CFFB3DDE
-	for <lists+linux-nvme@lfdr.de>; Mon, 16 Sep 2019 17:44:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B436B3E52
+	for <lists+linux-nvme@lfdr.de>; Mon, 16 Sep 2019 18:01:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=WZCpS45VZTDgL/ycRCKOnMCA3pF3uYw5ttrhzWw0WRM=; b=HjbKwjX1C1Pxk3AFl0p+3PKl30
-	d1n+k3rBdyz6ScEdULN1TNkjTaowdcmeLU5ZDHCslj40hyNjhdZ3FO83waXKhwefpL2DaV8BpFvFU
-	wwtQbw9b5CnWLl5IK2ygU6BXITz0H8hwTavQPFguTECPqxhek3akJrMSarJiIxx3BcdmuJQNRO/GG
-	DPHwGMOsJYPzPX+cz6xDngcreMCMRJoWQGP638WfiSIzjZJNDx0lD+YCkEDCsQETJnnme72i/GGf5
-	f5TE+UgKQPHE8ixFxTMtcM8vMaPOGpDonjt2CNj68WTkPQw6kBfK2sPzwtl26fEUO7CLTcoMg9QAt
-	CzxHnnRg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HOOWBQn4yiWS0jnlQoSIzqB/9JGRl1dQZBThOgB8aDk=; b=KBs54cbH69Wzn3
+	vQr/jcqvmeu2S3Fvm3YAAUPUoHfyfv8DqqbbqR+gFQrbdxca2gOm/tYH3epFzjPFeFz9qynTuZoVp
+	vPAE+Du8jhwHcmTx8sRFERCOzB+Nnzqs7xN9j3iRWJz4B50Tlj6kNo/EfU0KoyB6K+srhMFRalqO+
+	sbf7TgRWlQSnBeUyxH8SLPM0YFUP9Wlj83J+flGtwZ3dJzWD9GL1MNKo8qsxvp4Ha0Pi0Ne685aHF
+	TggMUJy8rFSUbMhy3iaZLMFyJUreHyncw36lyML51s0/6rsqvukOalZjql9fZMkQ4+1eOJafJfJQd
+	EVorDbmspkoqwlC5x7WA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1i9tBK-0004u3-TH; Mon, 16 Sep 2019 15:44:51 +0000
-Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i9tB8-0004sX-Il
- for linux-nvme@lists.infradead.org; Mon, 16 Sep 2019 15:44:41 +0000
-Received: from Internal Mail-Server by MTLPINE1 (envelope-from
- maxg@mellanox.com)
- with ESMTPS (AES256-SHA encrypted); 16 Sep 2019 18:44:31 +0300
-Received: from r-vnc12.mtr.labs.mlnx (r-vnc12.mtr.labs.mlnx [10.208.0.12])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x8GFiVxX010145;
- Mon, 16 Sep 2019 18:44:31 +0300
-From: Max Gurtovoy <maxg@mellanox.com>
-To: linux-block@vger.kernel.org, axboe@kernel.dk, martin.petersen@oracle.com, 
- linux-nvme@lists.infradead.org, keith.busch@intel.com, hch@lst.de,
- sagi@grimberg.me
-Subject: [PATCH v7 2/2] block: centralize PI remapping logic to the block layer
-Date: Mon, 16 Sep 2019 18:44:29 +0300
-Message-Id: <1568648669-5855-2-git-send-email-maxg@mellanox.com>
-X-Mailer: git-send-email 1.7.1
-In-Reply-To: <1568648669-5855-1-git-send-email-maxg@mellanox.com>
-References: <1568648669-5855-1-git-send-email-maxg@mellanox.com>
+	id 1i9tRT-0006oM-4N; Mon, 16 Sep 2019 16:01:31 +0000
+Received: from verein.lst.de ([213.95.11.211])
+ by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
+ id 1i9tRL-0006nv-Qn
+ for linux-nvme@lists.infradead.org; Mon, 16 Sep 2019 16:01:25 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 6232968B05; Mon, 16 Sep 2019 18:01:18 +0200 (CEST)
+Date: Mon, 16 Sep 2019 18:01:17 +0200
+From: "hch@lst.de" <hch@lst.de>
+To: "Singh, Balbir" <sblbir@amazon.com>
+Subject: Re: [PATCH v2 2/2] nvme/host/core: Allow overriding of wait_ready
+ timeout
+Message-ID: <20190916160117.GB1455@lst.de>
+References: <20190913233631.15352-1-sblbir@amzn.com>
+ <20190913233631.15352-2-sblbir@amzn.com> <20190916074153.GA25606@lst.de>
+ <c51a4ac0b974e6efbd4f9d67adc8a70ae94ac325.camel@amazon.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <c51a4ac0b974e6efbd4f9d67adc8a70ae94ac325.camel@amazon.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190916_084439_012926_364CE1E8 
-X-CRM114-Status: GOOD (  15.53  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20190916_090124_013186_A0FEF3EE 
+X-CRM114-Status: GOOD (  11.00  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [193.47.165.129 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,461 +61,33 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Max Gurtovoy <maxg@mellanox.com>, shlomin@mellanox.com,
- israelr@mellanox.com
-MIME-Version: 1.0
+Cc: "sblbir@amzn.com" <sblbir@amzn.com>, "sagi@grimberg.me" <sagi@grimberg.me>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ "axboe@fb.com" <axboe@fb.com>, "kbusch@kernel.org" <kbusch@kernel.org>,
+ "hch@lst.de" <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Currently t10_pi_prepare/t10_pi_complete functions are called during the
-NVMe and SCSi layers command preparetion/completion, but their actual
-place should be the block layer since T10-PI is a general data integrity
-feature that is used by block storage protocols. Introduce .prepare_fn
-and .complete_fn callbacks within the integrity profile that each type
-can implement according to its needs.
+On Mon, Sep 16, 2019 at 12:33:31PM +0000, Singh, Balbir wrote:
+> > Then again I'm not even sure we really want this.  The debugging use
+> > case is somethign where you can easily hack a line in the driver, and
+> > we really don't want normal users to mess with a random parameter
+> > like
+> > this one.
+> 
+> The reason I sent this out is that I've seen some controllers setting
+> this to max value. I suspect there is no good way for the controller
+> to set wait ready values either. In any case 128 seconds for a failure
+> seems a bit too much, specially if the controller does not respond on
+> boot and hence the debug option. I don't expect it to be used by normal
+> users on most of their systems
 
-Suggested-by: Christoph Hellwig <hch@lst.de>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-Suggested-by: Martin K. Petersen <martin.petersen@oracle.com>
-Reviewed-by: Martin K. Petersen <martin.petersen@oracle.com>
-Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
----
-
-changes from v6:
- - added Reviewed-by signature
-
-changes from v5:
- - removed extra new lines
- - use q pointer directly instead of rq->q
- - added Reviewed-by signature
-
-changes from v4:
- - added .prepare_fn and .complete_fn callbacks
- - removed patches 2/3 and 3/3 from v4
-
-changes from v3:
- - fix > 80 liner
- - move the protection_type assignment into nvme_update_disk_info
- - added a comment regarding dps and DIF type values
- - drop redundant externs from t10-pi.h
-
-changes from v2:
- - remove local variable for protection_type
- - remove remapping between NVMe T10 definition to blk definition
- - added patches 2/3 and 3/3
- - remove pi_type from ns structure
-
-changes from v1:
- - seperate from nvme_cleanup command patches
- - introduce blk_integrity_interval_shift to avoid div in fast path
-
----
- block/blk-core.c          |   5 ++
- block/blk-integrity.c     |  11 ++++
- block/blk-mq.c            |   4 ++
- block/t10-pi.c            | 144 ++++++++++++++++++++++++----------------------
- drivers/md/dm-integrity.c |  10 ++++
- drivers/nvme/host/core.c  |   9 ---
- drivers/scsi/sd.c         |   8 ---
- include/linux/blkdev.h    |   4 ++
- include/linux/t10-pi.h    |  14 -----
- 9 files changed, 110 insertions(+), 99 deletions(-)
-
-diff --git a/block/blk-core.c b/block/blk-core.c
-index d0cc6e1..e01e1a3 100644
---- a/block/blk-core.c
-+++ b/block/blk-core.c
-@@ -34,6 +34,7 @@
- #include <linux/ratelimit.h>
- #include <linux/pm_runtime.h>
- #include <linux/blk-cgroup.h>
-+#include <linux/t10-pi.h>
- #include <linux/debugfs.h>
- #include <linux/bpf.h>
- 
-@@ -1405,6 +1406,10 @@ bool blk_update_request(struct request *req, blk_status_t error,
- 	if (!req->bio)
- 		return false;
- 
-+	if (blk_integrity_rq(req) && req_op(req) == REQ_OP_READ &&
-+	    error == BLK_STS_OK)
-+		req->q->integrity.profile->complete_fn(req, nr_bytes);
-+
- 	if (unlikely(error && !blk_rq_is_passthrough(req) &&
- 		     !(req->rq_flags & RQF_QUIET)))
- 		print_req_error(req, error, __func__);
-diff --git a/block/blk-integrity.c b/block/blk-integrity.c
-index ca39b46..ff1070e 100644
---- a/block/blk-integrity.c
-+++ b/block/blk-integrity.c
-@@ -368,10 +368,21 @@ static blk_status_t blk_integrity_nop_fn(struct blk_integrity_iter *iter)
- 	return BLK_STS_OK;
- }
- 
-+static void blk_integrity_nop_prepare(struct request *rq)
-+{
-+}
-+
-+static void blk_integrity_nop_complete(struct request *rq,
-+		unsigned int nr_bytes)
-+{
-+}
-+
- static const struct blk_integrity_profile nop_profile = {
- 	.name = "nop",
- 	.generate_fn = blk_integrity_nop_fn,
- 	.verify_fn = blk_integrity_nop_fn,
-+	.prepare_fn = blk_integrity_nop_prepare,
-+	.complete_fn = blk_integrity_nop_complete,
- };
- 
- /**
-diff --git a/block/blk-mq.c b/block/blk-mq.c
-index 0835f4d..23783b5 100644
---- a/block/blk-mq.c
-+++ b/block/blk-mq.c
-@@ -30,6 +30,7 @@
- #include <trace/events/block.h>
- 
- #include <linux/blk-mq.h>
-+#include <linux/t10-pi.h>
- #include "blk.h"
- #include "blk-mq.h"
- #include "blk-mq-debugfs.h"
-@@ -693,6 +694,9 @@ void blk_mq_start_request(struct request *rq)
- 		 */
- 		rq->nr_phys_segments++;
- 	}
-+
-+	if (blk_integrity_rq(rq) && req_op(rq) == REQ_OP_WRITE)
-+		q->integrity.profile->prepare_fn(rq);
- }
- EXPORT_SYMBOL(blk_mq_start_request);
- 
-diff --git a/block/t10-pi.c b/block/t10-pi.c
-index 7fed587..0c0120a 100644
---- a/block/t10-pi.c
-+++ b/block/t10-pi.c
-@@ -120,76 +120,22 @@ static blk_status_t t10_pi_type1_verify_ip(struct blk_integrity_iter *iter)
- 	return t10_pi_verify(iter, t10_pi_ip_fn, T10_PI_TYPE1_PROTECTION);
- }
- 
--static blk_status_t t10_pi_type3_generate_crc(struct blk_integrity_iter *iter)
--{
--	return t10_pi_generate(iter, t10_pi_crc_fn, T10_PI_TYPE3_PROTECTION);
--}
--
--static blk_status_t t10_pi_type3_generate_ip(struct blk_integrity_iter *iter)
--{
--	return t10_pi_generate(iter, t10_pi_ip_fn, T10_PI_TYPE3_PROTECTION);
--}
--
--static blk_status_t t10_pi_type3_verify_crc(struct blk_integrity_iter *iter)
--{
--	return t10_pi_verify(iter, t10_pi_crc_fn, T10_PI_TYPE3_PROTECTION);
--}
--
--static blk_status_t t10_pi_type3_verify_ip(struct blk_integrity_iter *iter)
--{
--	return t10_pi_verify(iter, t10_pi_ip_fn, T10_PI_TYPE3_PROTECTION);
--}
--
--const struct blk_integrity_profile t10_pi_type1_crc = {
--	.name			= "T10-DIF-TYPE1-CRC",
--	.generate_fn		= t10_pi_type1_generate_crc,
--	.verify_fn		= t10_pi_type1_verify_crc,
--};
--EXPORT_SYMBOL(t10_pi_type1_crc);
--
--const struct blk_integrity_profile t10_pi_type1_ip = {
--	.name			= "T10-DIF-TYPE1-IP",
--	.generate_fn		= t10_pi_type1_generate_ip,
--	.verify_fn		= t10_pi_type1_verify_ip,
--};
--EXPORT_SYMBOL(t10_pi_type1_ip);
--
--const struct blk_integrity_profile t10_pi_type3_crc = {
--	.name			= "T10-DIF-TYPE3-CRC",
--	.generate_fn		= t10_pi_type3_generate_crc,
--	.verify_fn		= t10_pi_type3_verify_crc,
--};
--EXPORT_SYMBOL(t10_pi_type3_crc);
--
--const struct blk_integrity_profile t10_pi_type3_ip = {
--	.name			= "T10-DIF-TYPE3-IP",
--	.generate_fn		= t10_pi_type3_generate_ip,
--	.verify_fn		= t10_pi_type3_verify_ip,
--};
--EXPORT_SYMBOL(t10_pi_type3_ip);
--
- /**
-- * t10_pi_prepare - prepare PI prior submitting request to device
-+ * t10_pi_type1_prepare - prepare PI prior submitting request to device
-  * @rq:              request with PI that should be prepared
-- * @protection_type: PI type (Type 1/Type 2/Type 3)
-  *
-  * For Type 1/Type 2, the virtual start sector is the one that was
-  * originally submitted by the block layer for the ref_tag usage. Due to
-  * partitioning, MD/DM cloning, etc. the actual physical start sector is
-  * likely to be different. Remap protection information to match the
-  * physical LBA.
-- *
-- * Type 3 does not have a reference tag so no remapping is required.
-  */
--void t10_pi_prepare(struct request *rq, u8 protection_type)
-+static void t10_pi_type1_prepare(struct request *rq)
- {
- 	const int tuple_sz = rq->q->integrity.tuple_size;
- 	u32 ref_tag = t10_pi_ref_tag(rq);
- 	struct bio *bio;
- 
--	if (protection_type == T10_PI_TYPE3_PROTECTION)
--		return;
--
- 	__rq_for_each_bio(bio, rq) {
- 		struct bio_integrity_payload *bip = bio_integrity(bio);
- 		u32 virt = bip_get_seed(bip) & 0xffffffff;
-@@ -222,13 +168,11 @@ void t10_pi_prepare(struct request *rq, u8 protection_type)
- 		bip->bip_flags |= BIP_MAPPED_INTEGRITY;
- 	}
- }
--EXPORT_SYMBOL(t10_pi_prepare);
- 
- /**
-- * t10_pi_complete - prepare PI prior returning request to the block layer
-+ * t10_pi_type1_complete - prepare PI prior returning request to the blk layer
-  * @rq:              request with PI that should be prepared
-- * @protection_type: PI type (Type 1/Type 2/Type 3)
-- * @intervals:       total elements to prepare
-+ * @nr_bytes:        total bytes to prepare
-  *
-  * For Type 1/Type 2, the virtual start sector is the one that was
-  * originally submitted by the block layer for the ref_tag usage. Due to
-@@ -236,19 +180,14 @@ void t10_pi_prepare(struct request *rq, u8 protection_type)
-  * likely to be different. Since the physical start sector was submitted
-  * to the device, we should remap it back to virtual values expected by the
-  * block layer.
-- *
-- * Type 3 does not have a reference tag so no remapping is required.
-  */
--void t10_pi_complete(struct request *rq, u8 protection_type,
--		     unsigned int intervals)
-+static void t10_pi_type1_complete(struct request *rq, unsigned int nr_bytes)
- {
-+	unsigned intervals = nr_bytes >> rq->q->integrity.interval_exp;
- 	const int tuple_sz = rq->q->integrity.tuple_size;
- 	u32 ref_tag = t10_pi_ref_tag(rq);
- 	struct bio *bio;
- 
--	if (protection_type == T10_PI_TYPE3_PROTECTION)
--		return;
--
- 	__rq_for_each_bio(bio, rq) {
- 		struct bio_integrity_payload *bip = bio_integrity(bio);
- 		u32 virt = bip_get_seed(bip) & 0xffffffff;
-@@ -276,4 +215,73 @@ void t10_pi_complete(struct request *rq, u8 protection_type,
- 		}
- 	}
- }
--EXPORT_SYMBOL(t10_pi_complete);
-+
-+static blk_status_t t10_pi_type3_generate_crc(struct blk_integrity_iter *iter)
-+{
-+	return t10_pi_generate(iter, t10_pi_crc_fn, T10_PI_TYPE3_PROTECTION);
-+}
-+
-+static blk_status_t t10_pi_type3_generate_ip(struct blk_integrity_iter *iter)
-+{
-+	return t10_pi_generate(iter, t10_pi_ip_fn, T10_PI_TYPE3_PROTECTION);
-+}
-+
-+static blk_status_t t10_pi_type3_verify_crc(struct blk_integrity_iter *iter)
-+{
-+	return t10_pi_verify(iter, t10_pi_crc_fn, T10_PI_TYPE3_PROTECTION);
-+}
-+
-+static blk_status_t t10_pi_type3_verify_ip(struct blk_integrity_iter *iter)
-+{
-+	return t10_pi_verify(iter, t10_pi_ip_fn, T10_PI_TYPE3_PROTECTION);
-+}
-+
-+/**
-+ * Type 3 does not have a reference tag so no remapping is required.
-+ */
-+static void t10_pi_type3_prepare(struct request *rq)
-+{
-+}
-+
-+/**
-+ * Type 3 does not have a reference tag so no remapping is required.
-+ */
-+static void t10_pi_type3_complete(struct request *rq, unsigned int nr_bytes)
-+{
-+}
-+
-+const struct blk_integrity_profile t10_pi_type1_crc = {
-+	.name			= "T10-DIF-TYPE1-CRC",
-+	.generate_fn		= t10_pi_type1_generate_crc,
-+	.verify_fn		= t10_pi_type1_verify_crc,
-+	.prepare_fn		= t10_pi_type1_prepare,
-+	.complete_fn		= t10_pi_type1_complete,
-+};
-+EXPORT_SYMBOL(t10_pi_type1_crc);
-+
-+const struct blk_integrity_profile t10_pi_type1_ip = {
-+	.name			= "T10-DIF-TYPE1-IP",
-+	.generate_fn		= t10_pi_type1_generate_ip,
-+	.verify_fn		= t10_pi_type1_verify_ip,
-+	.prepare_fn		= t10_pi_type1_prepare,
-+	.complete_fn		= t10_pi_type1_complete,
-+};
-+EXPORT_SYMBOL(t10_pi_type1_ip);
-+
-+const struct blk_integrity_profile t10_pi_type3_crc = {
-+	.name			= "T10-DIF-TYPE3-CRC",
-+	.generate_fn		= t10_pi_type3_generate_crc,
-+	.verify_fn		= t10_pi_type3_verify_crc,
-+	.prepare_fn		= t10_pi_type3_prepare,
-+	.complete_fn		= t10_pi_type3_complete,
-+};
-+EXPORT_SYMBOL(t10_pi_type3_crc);
-+
-+const struct blk_integrity_profile t10_pi_type3_ip = {
-+	.name			= "T10-DIF-TYPE3-IP",
-+	.generate_fn		= t10_pi_type3_generate_ip,
-+	.verify_fn		= t10_pi_type3_verify_ip,
-+	.prepare_fn		= t10_pi_type3_prepare,
-+	.complete_fn		= t10_pi_type3_complete,
-+};
-+EXPORT_SYMBOL(t10_pi_type3_ip);
-diff --git a/drivers/md/dm-integrity.c b/drivers/md/dm-integrity.c
-index 9118ab8..dab4446 100644
---- a/drivers/md/dm-integrity.c
-+++ b/drivers/md/dm-integrity.c
-@@ -345,6 +345,14 @@ static void __DEBUG_bytes(__u8 *bytes, size_t len, const char *msg, ...)
- #define DEBUG_bytes(bytes, len, msg, ...)	do { } while (0)
- #endif
- 
-+static void dm_integrity_prepare(struct request *rq)
-+{
-+}
-+
-+static void dm_integrity_complete(struct request *rq, unsigned int nr_bytes)
-+{
-+}
-+
- /*
-  * DM Integrity profile, protection is performed layer above (dm-crypt)
-  */
-@@ -352,6 +360,8 @@ static void __DEBUG_bytes(__u8 *bytes, size_t len, const char *msg, ...)
- 	.name			= "DM-DIF-EXT-TAG",
- 	.generate_fn		= NULL,
- 	.verify_fn		= NULL,
-+	.prepare_fn		= dm_integrity_prepare,
-+	.complete_fn		= dm_integrity_complete,
- };
- 
- static void dm_integrity_map_continue(struct dm_integrity_io *dio, bool from_map);
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index d3d6b7b..5f39408 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -659,8 +659,6 @@ static inline blk_status_t nvme_setup_rw(struct nvme_ns *ns,
- 			if (WARN_ON_ONCE(!nvme_ns_has_pi(ns)))
- 				return BLK_STS_NOTSUPP;
- 			control |= NVME_RW_PRINFO_PRACT;
--		} else if (req_op(req) == REQ_OP_WRITE) {
--			t10_pi_prepare(req, ns->pi_type);
- 		}
- 
- 		switch (ns->pi_type) {
-@@ -683,13 +681,6 @@ static inline blk_status_t nvme_setup_rw(struct nvme_ns *ns,
- 
- void nvme_cleanup_cmd(struct request *req)
- {
--	if (blk_integrity_rq(req) && req_op(req) == REQ_OP_READ &&
--	    nvme_req(req)->status == 0) {
--		struct nvme_ns *ns = req->rq_disk->private_data;
--
--		t10_pi_complete(req, ns->pi_type,
--				blk_rq_bytes(req) >> ns->lba_shift);
--	}
- 	if (req->rq_flags & RQF_SPECIAL_PAYLOAD) {
- 		struct nvme_ns *ns = req->rq_disk->private_data;
- 		struct page *page = req->special_vec.bv_page;
-diff --git a/drivers/scsi/sd.c b/drivers/scsi/sd.c
-index 149d406..2932d49 100644
---- a/drivers/scsi/sd.c
-+++ b/drivers/scsi/sd.c
-@@ -1211,9 +1211,6 @@ static blk_status_t sd_setup_read_write_cmnd(struct scsi_cmnd *cmd)
- 	dix = scsi_prot_sg_count(cmd);
- 	dif = scsi_host_dif_capable(cmd->device->host, sdkp->protection_type);
- 
--	if (write && dix)
--		t10_pi_prepare(cmd->request, sdkp->protection_type);
--
- 	if (dif || dix)
- 		protect = sd_setup_protect_cmnd(cmd, dix, dif);
- 	else
-@@ -2051,11 +2048,6 @@ static int sd_done(struct scsi_cmnd *SCpnt)
- 					   "sd_done: completed %d of %d bytes\n",
- 					   good_bytes, scsi_bufflen(SCpnt)));
- 
--	if (rq_data_dir(SCpnt->request) == READ && scsi_prot_sg_count(SCpnt) &&
--	    good_bytes)
--		t10_pi_complete(SCpnt->request, sdkp->protection_type,
--				good_bytes / scsi_prot_interval(SCpnt));
--
- 	return good_bytes;
- }
- 
-diff --git a/include/linux/blkdev.h b/include/linux/blkdev.h
-index 1ef375d..d73dc68 100644
---- a/include/linux/blkdev.h
-+++ b/include/linux/blkdev.h
-@@ -1497,10 +1497,14 @@ struct blk_integrity_iter {
- };
- 
- typedef blk_status_t (integrity_processing_fn) (struct blk_integrity_iter *);
-+typedef void (integrity_prepare_fn) (struct request *);
-+typedef void (integrity_complete_fn) (struct request *, unsigned int);
- 
- struct blk_integrity_profile {
- 	integrity_processing_fn		*generate_fn;
- 	integrity_processing_fn		*verify_fn;
-+	integrity_prepare_fn		*prepare_fn;
-+	integrity_complete_fn		*complete_fn;
- 	const char			*name;
- };
- 
-diff --git a/include/linux/t10-pi.h b/include/linux/t10-pi.h
-index 3e2a80c..96305a6 100644
---- a/include/linux/t10-pi.h
-+++ b/include/linux/t10-pi.h
-@@ -53,18 +53,4 @@ static inline u32 t10_pi_ref_tag(struct request *rq)
- extern const struct blk_integrity_profile t10_pi_type3_crc;
- extern const struct blk_integrity_profile t10_pi_type3_ip;
- 
--#ifdef CONFIG_BLK_DEV_INTEGRITY
--extern void t10_pi_prepare(struct request *rq, u8 protection_type);
--extern void t10_pi_complete(struct request *rq, u8 protection_type,
--			    unsigned int intervals);
--#else
--static inline void t10_pi_complete(struct request *rq, u8 protection_type,
--				   unsigned int intervals)
--{
--}
--static inline void t10_pi_prepare(struct request *rq, u8 protection_type)
--{
--}
--#endif
--
- #endif
--- 
-1.8.3.1
-
+The problem with these tweaks is that people will touch them for
+weird reasons.  Another one is that a module parameter is global,
+while many settings should be per-controller (although that would
+add even more boilerplate code).
 
 _______________________________________________
 Linux-nvme mailing list
