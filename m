@@ -2,67 +2,75 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 257D6B5900
-	for <lists+linux-nvme@lfdr.de>; Wed, 18 Sep 2019 02:27:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED2D9B591A
+	for <lists+linux-nvme@lfdr.de>; Wed, 18 Sep 2019 02:53:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ISa47YBbQXw6HwLXvQRAbtzXxZOWfGQiAc8HIhHhJvU=; b=TF+sDs0KJXbeYp
-	/iXP2aoieIeivU086jhxmZwMv2UgCZIXT9+VPY8TTINnz8gLDfEPH38pkcakC4AikehERomhpJLaZ
-	RTI3WD5A1CiXzFpielLBV7saVwVE/K98AjuB6pphMTAn8u04Ztmzs3mvCwb4H+jqdGxGFVXG2Std0
-	PUqm9QPec0WhOrzOV6WR+U939P/+k4JtW26IGLRlNZbKVijiKOcGrlZdhGrJSLbUrrfykE9cCXklG
-	aIL7JBKcl4Q7H0dkDbUk80JMND2ISNA6RFq3BUWzYZNlEc85Z+P4zyz1GxAxI56G+OOWh932M6q49
-	NQ48nEO8JGAyKS2+t4CQ==;
+	List-Owner; bh=ZvHFQhvJD6/0E5NYOhvLruaykD9FPDAvHwgFW6C4CiI=; b=dJI9HUF8CXXXUv
+	a5ZJHgCl5G/bHHg8GIMuSM2jkF/77syrb/1hsdw6yArlofvThiaEKJeHB4ZNQHjMXDKIeBXU8+rL8
+	+j1NuIKG/37C/eI+GvoNkxoN8I9a1JSDWCPyFuHXx2FU6lkrj+zLOEVDPN3KdQiITPvdl4L9++Kzi
+	GgVtBvY3ROA/HqUSNxx5y8eSV+Kwv0AOA0092OklGVo62D5C1dVtuFC5KHg5aYSX4TNIJKw4mtwGs
+	ReyZbAanaU0nIMtfuZKwuSy+hdspNhHCUGwnac2+cOTsNvLVRlOep0xfVnns4r87n4HxAcv72cmAo
+	QVllJmi+649FcBXQ+ZXg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iANou-0007c8-LN; Wed, 18 Sep 2019 00:27:44 +0000
-Received: from smtp-fw-33001.amazon.com ([207.171.190.10])
+	id 1iAODt-0006yc-No; Wed, 18 Sep 2019 00:53:33 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iANom-0007bb-40
- for linux-nvme@lists.infradead.org; Wed, 18 Sep 2019 00:27:37 +0000
-X-IronPort-AV: E=Sophos;i="5.64,518,1559520000"; d="scan'208";a="833569971"
-Received: from sea3-co-svc-lb6-vlan2.sea.amazon.com (HELO
- email-inbound-relay-2c-397e131e.us-west-2.amazon.com) ([10.47.22.34])
- by smtp-border-fw-out-33001.sea14.amazon.com with ESMTP;
- 18 Sep 2019 00:27:23 +0000
-Received: from EX13MTAUWC001.ant.amazon.com
- (pdx4-ws-svc-p6-lb7-vlan3.pdx.amazon.com [10.170.41.166])
- by email-inbound-relay-2c-397e131e.us-west-2.amazon.com (Postfix) with ESMTPS
- id 9E9AEA2226; Wed, 18 Sep 2019 00:27:23 +0000 (UTC)
-Received: from EX13D23UWC001.ant.amazon.com (10.43.162.196) by
- EX13MTAUWC001.ant.amazon.com (10.43.162.135) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Wed, 18 Sep 2019 00:27:23 +0000
-Received: from EX13MTAUWC001.ant.amazon.com (10.43.162.135) by
- EX13D23UWC001.ant.amazon.com (10.43.162.196) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Wed, 18 Sep 2019 00:27:22 +0000
-Received: from localhost (172.23.204.141) by mail-relay.amazon.com
- (10.43.162.232) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
- Transport; Wed, 18 Sep 2019 00:27:22 +0000
-From: Balbir Singh <sblbir@amzn.com>
-To: <linux-nvme@lists.infradead.org>
-Subject: [PATCH v4] nvme/host/pci: Fix a race in controller removal
-Date: Wed, 18 Sep 2019 00:27:20 +0000
-Message-ID: <20190918002720.18330-1-sblbir@amzn.com>
-X-Mailer: git-send-email 2.16.5
+ id 1iAODk-0006xW-Mp
+ for linux-nvme@lists.infradead.org; Wed, 18 Sep 2019 00:53:26 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Sep 2019 17:53:22 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,518,1559545200"; d="scan'208";a="177555776"
+Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
+ by orsmga007.jf.intel.com with ESMTP; 17 Sep 2019 17:53:21 -0700
+Received: from orsmsx152.amr.corp.intel.com (10.22.226.39) by
+ ORSMSX109.amr.corp.intel.com (10.22.240.7) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 17 Sep 2019 17:53:21 -0700
+Received: from orsmsx104.amr.corp.intel.com ([169.254.4.204]) by
+ ORSMSX152.amr.corp.intel.com ([169.254.8.93]) with mapi id 14.03.0439.000;
+ Tue, 17 Sep 2019 17:53:21 -0700
+From: "Wunderlich, Mark" <mark.wunderlich@intel.com>
+To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Subject: [PATCH] nvme/host/tcp.c: fix use of time_after()
+Thread-Topic: [PATCH] nvme/host/tcp.c: fix use of time_after()
+Thread-Index: AdVtuy0phZrVw6c5R66UFeK7PswOXw==
+Date: Wed, 18 Sep 2019 00:53:20 +0000
+Message-ID: <B33B37937B7F3D4CB878107E305D4916D339CC@ORSMSX104.amr.corp.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOThjZjM0YjItMDg3OC00YjRkLWFkOGEtMzJiNDUwNmMwNzBkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiMUFGYVl0RDhDQngyYm03RWJqUEx6S2NOTVNyaFBQMDBRMGYySEI4WWtKSWIwYVdGOWJnbW1FdmZLQlRwck1yayJ9
+x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Precedence: Bulk
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190917_172736_204035_464A8D16 
-X-CRM114-Status: GOOD (  10.13  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20190917_175324_766217_616BC848 
+X-CRM114-Status: GOOD (  12.12  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [207.171.190.10 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [192.55.52.88 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: <linux-nvme.lists.infradead.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=unsubscribe>
@@ -71,53 +79,39 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: kbusch@kernel.org, axboe@fb.com, Balbir Singh <sblbir@amzn.com>, hch@lst.de,
- sagi@grimberg.me
+Cc: Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-User space programs like udevd may try to read to partitions at the
-same time the driver detects a namespace is unusable, and may deadlock
-if revalidate_disk() is called while such a process is waiting to
-enter the frozen queue. On detecting a dead namespace, move the disk
-revalidate after unblocking dispatchers that may be holding bd_butex.
+nvme/host/tcp.c: fix use of time_after()
 
-changelog Suggested-by: Keith Busch <kbusch@kernel.org>
-Signed-off-by: Balbir Singh <sblbir@amzn.com>
+From: Mark Wunderlich <mark.wunderlich@intel.com>
+
+The values provided to time_after() call used to terminate
+do/while loop were reversed, causing loop to always exit
+after single pass.  Believe intent was to give the worker
+a 1 msec time quota.
+
+Signed-off-by: Mark Wunderlich <mark.wunderlich@intel.com>
 ---
-Changelov v4
- - Simplify the changelog
-Changelog v3
- - Simplify the comment about moving revalidate_disk
-Changelog v2
- - Rely on blk_set_queue_dying to do the wake_all()
+ drivers/nvme/host/tcp.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/nvme/host/core.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index b45f82d58be8..6ad1f1df9e44 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -103,10 +103,13 @@ static void nvme_set_queue_dying(struct nvme_ns *ns)
- 	 */
- 	if (!ns->disk || test_and_set_bit(NVME_NS_DEAD, &ns->flags))
- 		return;
--	revalidate_disk(ns->disk);
- 	blk_set_queue_dying(ns->queue);
- 	/* Forcibly unquiesce queues to avoid blocking dispatch */
- 	blk_mq_unquiesce_queue(ns->queue);
-+	/*
-+	 * Revalidate after unblocking dispatchers that may be holding bd_butex
-+	 */
-+	revalidate_disk(ns->disk);
- }
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 08a2501..8f4a3f84 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -1057,7 +1057,7 @@ static void nvme_tcp_io_work(struct work_struct *w)
+ 		if (!pending)
+ 			return;
  
- static void nvme_queue_scan(struct nvme_ctrl *ctrl)
--- 
-2.16.5
+-	} while (time_after(jiffies, start)); /* quota is exhausted */
++	} while (time_after(start, jiffies)); /* quota is exhausted */
+ 
+ 	queue_work_on(queue->io_cpu, nvme_tcp_wq, &queue->io_work);
+ }
 
 
 _______________________________________________
