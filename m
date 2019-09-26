@@ -2,84 +2,80 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BD7FBE938
-	for <lists+linux-nvme@lfdr.de>; Thu, 26 Sep 2019 01:50:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DA0FBE971
+	for <lists+linux-nvme@lfdr.de>; Thu, 26 Sep 2019 02:20:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cFspgx3hGxjCgJkLUc/TcZuPfaUckFM7rzMki6wtWIw=; b=rTZC6+AfUmlA/EzYDJdd8ohhY
-	S1yPIBTKLqdEuQcmDXqwQZx3nQsmM3zxbEnu4SfDd9XDsVO0RAAw7M15K7A/k93cTqqKJbMcSZm4y
-	6eFvuzj1eDCiqCdw1qkTcwPkhoVbUtr1LGKlj5r0nWYyUg6FU+83EOgtg/GobWOV1gdr1v1yNH7cJ
-	vRSch57AndVn1ulw07gfD0cllcGQLleZm6W2RF1B5HM4vbzf1K8bVxx2qlfwXFBvh40erT+uXHMSf
-	cjWFj+MJRVlfnRQ+lESsWR9ZvsrZAzeeLDUmQk2EdDXSKWfzCPld/IIjdBcLiX/NKsczOb3u+HVZI
-	CU8dboM9w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=b6m86Xi+AqWXGJhszQcuB+yyZ2G2F9SwwUFJktTwMe0=; b=anl
+	ovJuvFuhJCchvjmYn3EszUk7R8YpiRqrIzUKF+FX6mpsWFV3Aly8IsDR5ylCUVkUErjEwruqpRvqZ
+	n9LZPBLLh3lmqRzeOijI/PKGksBr+QbpvhNq1QXbiiM2Y1a+7lGbJv3JaP5eFxGCoQBuFU9JITjEL
+	HP67KVey251ZkdSH5nUpGWMuZPQyAqjgHir3w0TG4Rde7HkoEmouCWc3qgedwK6u9UCPbMloktTh8
+	AX5dbRzvHzWzP1B0O4JK35il6N12H45eRMRSGajb4tfA5gIARurAy8tEPDqkhfxxjRIO9Ja08z6qA
+	XAzfNa1qcm1VT+dASgxG+Z4TQo5OPKw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iDH3G-0004ED-Gb; Wed, 25 Sep 2019 23:50:30 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1iDHWY-0005Et-Rq; Thu, 26 Sep 2019 00:20:46 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iDH34-0004Dq-HU
- for linux-nvme@lists.infradead.org; Wed, 25 Sep 2019 23:50:19 +0000
-Received: by mail-pf1-x443.google.com with SMTP id y5so548980pfo.4
- for <linux-nvme@lists.infradead.org>; Wed, 25 Sep 2019 16:50:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=3MtFbf6O4/OfO0mTGs6bgYOVdqryII4YgHiHgCTwtB8=;
- b=UkT/9kxStTMUyKg8Ygd663zU8R8oy6d9v8WlxSLKRBXcOi/woZ+ByVrq2LSe5HjaK0
- deb+qOxLLJnQir7jkSaYFlwJjaoHvf2IOpsRD5jVfl60yVudruG29VNqwOS0p1bZnCyO
- 4XTr/7VOkzrJccjkAkywmHhjuzqFh/BIe7HmU=
+ id 1iDHWQ-0005EU-7g
+ for linux-nvme@lists.infradead.org; Thu, 26 Sep 2019 00:20:39 +0000
+Received: by mail-pf1-x442.google.com with SMTP id q5so557500pfg.13
+ for <linux-nvme@lists.infradead.org>; Wed, 25 Sep 2019 17:20:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=Di8Y3XGb6m/bilxvYyIwXE6JG/tp6MijdClXTqEx83Y=;
+ b=KdYSut39j1zaZZV89ZUd55WE1lNp1PAPs+x9ERtxDbZDyfEMOedNtL4P4upqXfFNbz
+ OgEOgoxjJPrvBqPdh3a99toy/ESCYt6UG83jtXdrFHl5CNK5qZwVs93yJpxNOArH3o8a
+ mBYOLd03P/Y7FVaSthnimu0jX2YFvZqa1sWnZS6au4zyZ8Z6w5gpSJc57EYoMJt+6LLY
+ r/jIlk5JDI6UTgBMunSirOqyQ0PYDp/sKGQz0DJSOurJLfYfW26p6D3IN8CzSPHeWXTd
+ ZsOq46qLi7jZJH1JIa6S5TcMSvp1+7IQssHwjP7FKPLaLcF3LoNYs4YXxBd08N+BY5Ae
+ 8opQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=3MtFbf6O4/OfO0mTGs6bgYOVdqryII4YgHiHgCTwtB8=;
- b=Fj90yrtl5caqC3ChjqjpF0FIoLsKEurNWlgnTOsc9VSSlJIoKUDSqWUB39uDL5g9k/
- caq1U11ffRF2KZfk2UrHhjLhU2MIvKHNWzl75PbIk6CRMZNBW3fS+6XhKUQtCOB6M3qK
- +gV9VAX8P84LnsiCbiqm99sjmandzdkmaHHv7q9u0MsAgb/H8aHfVEtMg5d7jULHcWqU
- rZ8n+OZw0CY73yommSAlHqjFo/EcY4nzXnaE1jQ8xiUGWoZYRO7sHZo1CXM7BwjHLAZr
- iyvxCYNJVyg15rpK3bgFRHBhokW7Ud0+S00Xydrp2bs19ACzlTpzMGz00EkXUvpIPn0b
- 5zbQ==
-X-Gm-Message-State: APjAAAV2CmnhdHfBUx3y3M4j/M6ophhpgYdy/XXzmkV1GunA9CDUlK1U
- ad2S01O4s8JcB5yxtUdtdAe8nk9dSeY4RwmWPol5c7NqZScu7+q1Tss5Oy/pDr7caLB8+coKSaG
- uiFuLSpnAWMNmS7fkLhCYnnFJF14eJ2xD+1TTN95t8+PP1Py1PSUzCpBb/oAuKxNUNK380OhM0x
- oK1+1CiQ==
-X-Google-Smtp-Source: APXvYqznmi9yxeldgNFqaJVGKbdVJPtbjFRbpvrvjvjDAAUn3NmLI3CBb/mFfWWtPGf2qW47yNFT5g==
-X-Received: by 2002:aa7:85d3:: with SMTP id z19mr351263pfn.1.1569455416945;
- Wed, 25 Sep 2019 16:50:16 -0700 (PDT)
-Received: from [10.69.45.46] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id u10sm135830pfh.61.2019.09.25.16.50.15
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 25 Sep 2019 16:50:16 -0700 (PDT)
-Subject: Re: [PATCH] nvme: Add ctrl attributes for queue_count and sqsize
-To: Keith Busch <kbusch@kernel.org>, James Smart <jsmart2021@gmail.com>
-References: <20190924212208.3637-1-jsmart2021@gmail.com>
- <20190925213624.GA11469@C02WT3WMHTD6>
-From: James Smart <james.smart@broadcom.com>
-Message-ID: <aaee9df2-62ee-d460-ee01-8db3ecb407ed@broadcom.com>
-Date: Wed, 25 Sep 2019 16:50:13 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <20190925213624.GA11469@C02WT3WMHTD6>
-Content-Language: en-US
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=Di8Y3XGb6m/bilxvYyIwXE6JG/tp6MijdClXTqEx83Y=;
+ b=j3ruT4EWZF4wL95l5Rv1GL0InMRfmpYkMfqXXXpDmFT2HFGbVmvGPLqW4uMCv5pySa
+ n5w0/CUYmyFymEs6gb8CQKsJcLS9uor2k2eBVrqyUOnHz9xt7zjnxNdrc7hgI4ejau9+
+ fZvM6Bfv25PNPee9qvzNHL+DeWF1XaMlmUJsv4Orub8ZadAvV3bLDFA8ZPZgms4Y7Zlb
+ RtycxuYOazbzxWtr9qqkHKYCgY1L+vqZNvFYRv5PtqYbY8My2VNyVDmamyNF+aZ02gm6
+ 7HYrHWV6pSFn06Ngv0GaI3UYhOwvXsD+2uL7+fHG2IQ8e8t6/WxZxm84Oz+0cfqHi2WY
+ 8qHw==
+X-Gm-Message-State: APjAAAVK1vuEmOG7ta44/9wERfYO+uWkvTdwqOdsgj0E3Zv5oedGyN+Z
+ yzot7IxzyF2W5TzQIvztQVaGxNvE
+X-Google-Smtp-Source: APXvYqxpCCDzMfjb8SyZIr3trtHVis8VnucsxdWW/bQj0Fkp0/lB+CYz2mjc1vJyzs7ulOQTu542Qg==
+X-Received: by 2002:a65:5bc3:: with SMTP id o3mr635682pgr.30.1569457237169;
+ Wed, 25 Sep 2019 17:20:37 -0700 (PDT)
+Received: from pallmd1.broadcom.com ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id h1sm168075pfk.124.2019.09.25.17.20.35
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Wed, 25 Sep 2019 17:20:36 -0700 (PDT)
+From: James Smart <jsmart2021@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH v2] nvme: Add ctrl attributes for queue_count and sqsize
+Date: Wed, 25 Sep 2019 17:20:23 -0700
+Message-Id: <20190926002023.14033-1-jsmart2021@gmail.com>
+X-Mailer: git-send-email 2.13.7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190925_165018_582426_7B885A35 
-X-CRM114-Status: GOOD (  16.21  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190925_172038_282069_87C8ECB1 
+X-CRM114-Status: GOOD (  10.96  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (jsmart2021[at]gmail.com)
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit (jsmart2021[at]gmail.com)
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -87,7 +83,6 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,53 +94,62 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-nvme@lists.infradead.org
+Cc: James Smart <jsmart2021@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 9/25/2019 2:36 PM, Keith Busch wrote:
-> On Tue, Sep 24, 2019 at 02:22:08PM -0700, James Smart wrote:
->> Current controller interrogation requires a lot of guesswork
->> on how many io queues were created and what the io sq size is.
->> The numbers are dependent upon core/fabric defaults, connect
->> arguments, and target responses.
->>
->> Add sysfs attributes for queue_count and sqsize.
->>
->> Signed-off-by: James Smart <jsmart2021@gmail.com>
->> ---
->>   drivers/nvme/host/core.c | 4 ++++
->>   1 file changed, 4 insertions(+)
->>
->> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
->> index e0e2dcbfd05e..b1c24af284ca 100644
->> --- a/drivers/nvme/host/core.c
->> +++ b/drivers/nvme/host/core.c
->> @@ -3040,6 +3040,8 @@ static DEVICE_ATTR(field, S_IRUGO, field##_show, NULL);
->>   
->>   nvme_show_int_function(cntlid);
->>   nvme_show_int_function(numa_node);
->> +nvme_show_int_function(queue_count);
->> +nvme_show_int_function(sqsize);
-> The sqsize is only valid for fabrics, so I think you need to update the
-> 'is_visible' to suppress this attribute for pcie.
+Current controller interrogation requires a lot of guesswork
+on how many io queues were created and what the io sq size is.
+The numbers are dependent upon core/fabric defaults, connect
+arguments, and target responses.
 
-I would think knowing the SQ size or an I/O queue is still interesting 
-although perhaps not as useful.
+Add sysfs attributes for queue_count and sqsize.
 
-Looking in pci.c:
-- dev->q_depth is the baseline, getting stamped into each of the queue 
-structures
-- nvme_pci_enable() is setting dev->ctrl.sqsize to dev->q_depth - 1;
+Signed-off-by: James Smart <jsmart2021@gmail.com>
 
-Or are you asking not to display it as the implied model for how many 
-outstanding ios is different ?
-note: I wasn't trying to go there - only to say what the SQ size is for 
-an I/O queue
+---
+v2:
+  Updated is_visible to not show sqsize attribute on pcie controllers
+---
+ drivers/nvme/host/core.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
--- james
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index e0e2dcbfd05e..d3c85c6d9230 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -3040,6 +3040,8 @@ static DEVICE_ATTR(field, S_IRUGO, field##_show, NULL);
+ 
+ nvme_show_int_function(cntlid);
+ nvme_show_int_function(numa_node);
++nvme_show_int_function(queue_count);
++nvme_show_int_function(sqsize);
+ 
+ static ssize_t nvme_sysfs_delete(struct device *dev,
+ 				struct device_attribute *attr, const char *buf,
+@@ -3120,6 +3122,8 @@ static struct attribute *nvme_dev_attrs[] = {
+ 	&dev_attr_address.attr,
+ 	&dev_attr_state.attr,
+ 	&dev_attr_numa_node.attr,
++	&dev_attr_queue_count.attr,
++	&dev_attr_sqsize.attr,
+ 	NULL
+ };
+ 
+@@ -3133,6 +3137,8 @@ static umode_t nvme_dev_attrs_are_visible(struct kobject *kobj,
+ 		return 0;
+ 	if (a == &dev_attr_address.attr && !ctrl->ops->get_address)
+ 		return 0;
++	if (!strncmp(ctrl->ops->name, "pcie", 4) && a == &dev_attr_sqsize.attr)
++		return 0;
+ 
+ 	return a->mode;
+ }
+-- 
+2.13.7
 
 
 _______________________________________________
