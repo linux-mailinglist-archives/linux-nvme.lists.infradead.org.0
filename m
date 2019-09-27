@@ -2,45 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA9ACC0D4B
-	for <lists+linux-nvme@lfdr.de>; Fri, 27 Sep 2019 23:32:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FD6BC0D4D
+	for <lists+linux-nvme@lfdr.de>; Fri, 27 Sep 2019 23:34:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cRYQUeiRMR2ZSo6cH3EbMxob2YTRHdXx6tfoEj5nVKU=; b=qSrp1GPvZQbm0F
-	wizID/+Vlk1A7oVVpCiz5N2x0enVSvXAXYAjzbWSzHo24XXReSHME/7VLxozU0qqFgCiRQMxGyDiA
-	0rcolzxhatqBzO0EOhH7vfVTMi/xz3QVoBJ3193uhuUe6+idKue9ZKXMBPWIDM8bL7jZhlzI51zHy
-	V+vM0of064K6WzwzlJZWJoBEYsZjGTBWXmVCnhW849Exnyu1F0/rqj8Vwifc2XV30pCeSpqWgEIDl
-	Nd21HMUMAIlV9y5yCrbkrK7BhvMkIEInvkMolo3rV5tq5P49CgrFN6X5ftHG9T67BI6+uB6eZMV5C
-	aRIETZQz9KqpmJU0Y1HQ==;
+	List-Owner; bh=sroT4khnohrfN34TaavAzkYVPrF53zw36GXhmDLjTw0=; b=NTykzoZtw7HYGH
+	qsdBxk7ttN6rhZBGr7j1zEC6tNEjlGKLsG2XvMl1N1Xpxvb0Rd+3aYuFH6tp4d3GjWmnaYvZumAyt
+	Vt3MJIvUseHZycJ1dkNF8El7qiDPdEzjm/VmMO6cbXeKHmpwW55525aLuFinf8AJqV/gga+T2nSWj
+	ZtOBMrPZSX+hP7x4EJz3vitGUs/kMlf2O0FGvrdjtZPfhHcAAjdOZYPHSLdVj+sRZJiZWW/Hpxrt6
+	qppZE5YeuI+2GqGcaufZ8YmGyyLi0SkQ8PB7dhukJxdybKQ1/RnGUx2NAfhET3moruqoIQ+ACMyaa
+	OSYMfYOm1Z6QUm2S8JkQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iDxqw-0000GK-6L; Fri, 27 Sep 2019 21:32:38 +0000
+	id 1iDxsP-0000ve-Eq; Fri, 27 Sep 2019 21:34:09 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iDxqr-0000Fv-S5
- for linux-nvme@lists.infradead.org; Fri, 27 Sep 2019 21:32:35 +0000
+ id 1iDxsJ-0000vL-CZ
+ for linux-nvme@lists.infradead.org; Fri, 27 Sep 2019 21:34:04 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 59E0668B05; Fri, 27 Sep 2019 23:32:30 +0200 (CEST)
-Date: Fri, 27 Sep 2019 23:32:30 +0200
+ id F2BEF68B05; Fri, 27 Sep 2019 23:33:59 +0200 (CEST)
+Date: Fri, 27 Sep 2019 23:33:59 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH] nvme: set NVME_REQ_CANCELLED flag when cancelling a
- request
-Message-ID: <20190927213230.GF16819@lst.de>
-References: <20190920181913.14723-1-sagi@grimberg.me>
- <BYAPR04MB5749B6AC6EE50BEC6C63D213868A0@BYAPR04MB5749.namprd04.prod.outlook.com>
- <140c41d6-5e9e-609f-0592-a5014ab67ee8@grimberg.me>
+To: kbusch@kernel.org
+Subject: Re: [PATCHv2 1/6] nvme-pci: Free tagset if no IO queues
+Message-ID: <20190927213359.GG16819@lst.de>
+References: <20190919213431.7864-1-kbusch@kernel.org>
+ <20190919213431.7864-2-kbusch@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <140c41d6-5e9e-609f-0592-a5014ab67ee8@grimberg.me>
+In-Reply-To: <20190919213431.7864-2-kbusch@kernel.org>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190927_143234_056111_A4FD5AD0 
-X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-CacheID: sfid-20190927_143403_573601_FF212074 
+X-CRM114-Status: UNSURE (   7.97  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -62,22 +60,28 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <keith.busch@intel.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: James Smart <james.smart@broadcom.com>,
+ Edmund Nadolski <edmund.nadolski@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Sep 23, 2019 at 10:04:19AM -0700, Sagi Grimberg wrote:
->> If you are okay I can send a separate patch on the top yours.
->
-> That is fine with me.
+On Fri, Sep 20, 2019 at 06:34:26AM +0900, kbusch@kernel.org wrote:
+> From: Keith Busch <kbusch@kernel.org>
+> 
+> If a controller becomes degraded after a reset, we will not be able to
+> perform any IO. We currently teardown previously created request
+> queues and namespaces, but we had kept the unusable tagset. Free
+> it after all queues using it have been released.
+> 
+> Reviewed-by: James Smart <james.smart@broadcom.com>
+> Signed-off-by: Keith Busch <kbusch@kernel.org>
 
-I think we really should have the whole thing in one patch one way or
-another.
+Looks good,
+
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
 _______________________________________________
 Linux-nvme mailing list
