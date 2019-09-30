@@ -2,94 +2,90 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EAE74C264D
-	for <lists+linux-nvme@lfdr.de>; Mon, 30 Sep 2019 21:44:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4135C265A
+	for <lists+linux-nvme@lfdr.de>; Mon, 30 Sep 2019 21:53:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=skEa3dVrEWIhC5rTqkVehfMRQA7gFsGNpSNWgcl8awg=; b=G7xVngIJsCyYYU
-	QiQufOvig4bPqO4ewolpzUkgD6eIugATn4IZGZb6Eqpb/dDdEZYJgFELGdWTXzkf6i4Jp3Fr4tIjD
-	eH9GKZC4R0CU5iDR5AxlljOMr5OdodInAAdgvqi5SvgJTJxeViZuRmF2O9aWJdNeFrhIUj3KUw4FN
-	hWTpisYKruBYq1szXHgx05U5/g2V4QbEb2rutSCGhppYjpuU6rzdAlQxM9W5gf/RqHcr8ruk2B5wV
-	ZRT0ATXboeehWdJOvRHfS/oHmiQNIL3odpLh2mZSpU5BQXyO3d9bW52Hgkeck57V/7LZYNhomVgJw
-	dy1d30yFH0E+fSDk7VKw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=0z1NMmddF4p6qLc4mjHriwgsOpuvD7jaaXHTDf7X1uo=; b=Jr2dSYizOp7GJRsRTmBWWCGcnK
+	QPhuM4W82XYzAKgtKtWdq2gjX38vnPTKA8dCXbBGyS/YeJEhs4A/YewaOnFshNGlS4CZ+To65tW4w
+	lWy4z40H/l0cy9QAdKQE8+XVUkdKLoxeAfAinmDpaeaDH9bZpvzOYto1+g5FIRAXG3G3SKhfMYxqJ
+	MX4UUf432nSExoh1fxnzVBh9NqFsgsReUHwSfIlaYYbP+x3jd5zrVYmOYKi0OvhDMKtiHl71sD3Eq
+	4otY8TnNSjzB/NKkg6T8fCCHLtnoz/Vt7Ox73kS82QvW/7KeS4PuuIKdIRRvZVg5cmEEdERoTW4Z0
+	PesAlcvQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iF1am-0003Mj-Ek; Mon, 30 Sep 2019 19:44:20 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1iF1jv-0007wi-CJ; Mon, 30 Sep 2019 19:53:47 +0000
+Received: from mail-pl1-f195.google.com ([209.85.214.195])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iF1af-0003M5-Tr
- for linux-nvme@lists.infradead.org; Mon, 30 Sep 2019 19:44:15 +0000
-Received: by mail-wr1-x444.google.com with SMTP id n14so12676910wrw.9
- for <linux-nvme@lists.infradead.org>; Mon, 30 Sep 2019 12:44:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=+VdRyKsID9b2v30YDDuKBXdqqdZfrmc+wnK0aA6ys2s=;
- b=Nt0WJfeOzXeW00wOzqbE+37Jg4Z4xucKbjfUVUAhXWZFy88hrG2dOwq2+XU2p3IyS8
- 3behcucPb6/fK42LtBhVmTuR7AZp0i1gp2Zn+Oy4+neURUlhUNekDf76G/gT1YFZi2Wd
- pNfdKEXQajhy4sjIeXYczs6gYUIfSAdU7rzRfFRy72cYfbWG7fdtSBKhC/37yaSq5PGA
- EfWzSHJCc6K1bgugKoRYNruqb1Zm5IERRdWRUJ487i7P66eNnQ/KVLkpy1Er5NKWXZ2J
- bDCBCDb7t+FOqMTcyLbIn4Klb8vhTynVKyfJ9JkVyJPD0cyysnZDbmEIpWhRjaVsLl0S
- bqCQ==
+ id 1iF1je-0007qA-39
+ for linux-nvme@lists.infradead.org; Mon, 30 Sep 2019 19:53:31 +0000
+Received: by mail-pl1-f195.google.com with SMTP id q24so4294758plr.13
+ for <linux-nvme@lists.infradead.org>; Mon, 30 Sep 2019 12:53:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+VdRyKsID9b2v30YDDuKBXdqqdZfrmc+wnK0aA6ys2s=;
- b=D0VUoWkdAtUhpYLMt9IAUfYXfNq1FLNvLA2UjvHwot97X2s6BWE/gwIK7/lLTBAJuS
- o8ujtE/g3JCCv6cSvMMSJR0TKLSO1TsyEyf8NPPeBWUekEWn0XZERGvx7AVTUalp8GJe
- NjFiLgynwwnwrc0WsVPBLIhKAeQzKW8Unf+ACjaM+gi72PCVVGQd0A5gR4FhzKcYP6s1
- iAaZ6DtoFICH+TkOTNBDJemn3E8Opl1KpGvJ6T60sZEgDkTcgRuDBw7yyjrmGsDhvkUE
- v6M7EPxeZB7X9xRfOIUU85v+7VJLR0e/+YG9i0bFuOA+mMdCM81ikjaxD3UnmANbt6uP
- 77eg==
-X-Gm-Message-State: APjAAAWUeakZ5wvWtXG0D8qmNtXaTiZZOQQnR4woDAQaRCuXbX82gobm
- HODyL3BMgyLJiSD6HlPxQx8=
-X-Google-Smtp-Source: APXvYqxnSW+xX+bFR+TsEjN44345akbJBvfZC247YdZWjvCSTXUV3EN6thNmA7xDhTC9EABPNaS0Cw==
-X-Received: by 2002:adf:f5cc:: with SMTP id k12mr14142976wrp.278.1569872650658; 
- Mon, 30 Sep 2019 12:44:10 -0700 (PDT)
-Received: from localhost.localdomain ([109.126.142.9])
- by smtp.gmail.com with ESMTPSA id r28sm14022113wrr.94.2019.09.30.12.44.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Sep 2019 12:44:09 -0700 (PDT)
-From: "Pavel Begunkov (Silence)" <asml.silence@gmail.com>
-To: Jens Axboe <axboe@kernel.dk>, Josef Bacik <josef@toxicpanda.com>,
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=UmfTonvoYn/sz7KFi8ddR6otlUnEOyJ4JIchPng5apk=;
+ b=HOuprQE8aQFelGYNmMivBLAw0NxpyXZdYOvG1v2Tikoe2OG1HcEDGHxoMxIJ2oVzbW
+ 7I+ZFtdiPjYft5tCbM5u/X0JstvGFojVD5eGufeLrMCBYpMvyBZsMv8b6J6LKWa9OPI6
+ vCTt124RVS3M7SzoOhniwWtc5rAoHB/8JlRZ2WDov75i43viM+BlDIpokzYuBX3XQFks
+ BbA0d2bdiLMyfgNquOtw0TWHT3nZC5DEXzoWldPcJJKm8V+d4lyZQoetSOviPOZVCyd4
+ 2JiAUsi0FRsdUHcxOK1xpxkm+ixyBQtonISTz3FayAi9qd86vhgZXrzccjDpIi5R8pU2
+ ASpA==
+X-Gm-Message-State: APjAAAX3eZ8RDdjJwadJvJbvUuVpIUZHk2jgEOvZ6u8P8STa3BpCcIZf
+ RkCjq0BD/0F2h4qBW5zTlqB5WM8h
+X-Google-Smtp-Source: APXvYqzbrSXpsKliVwn/NaAkhG1dBCmQeIWrM1t1mWJH2RQEgJUdDCSsZ6p1pPQ+4rLLp3sAiSHCnw==
+X-Received: by 2002:a17:902:bd88:: with SMTP id
+ q8mr22421320pls.288.1569873208094; 
+ Mon, 30 Sep 2019 12:53:28 -0700 (PDT)
+Received: from ?IPv6:2620:15c:2c1:200:fb9c:664d:d2ad:c9b5?
+ ([2620:15c:2c1:200:fb9c:664d:d2ad:c9b5])
+ by smtp.gmail.com with ESMTPSA id w27sm9598997pfq.32.2019.09.30.12.53.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 Sep 2019 12:53:27 -0700 (PDT)
+Subject: Re: [PATCH v2 1/1] blk-mq: Inline request status checkers
+To: "Pavel Begunkov (Silence)" <asml.silence@gmail.com>,
+ Jens Axboe <axboe@kernel.dk>, Josef Bacik <josef@toxicpanda.com>,
  Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>,
  Sagi Grimberg <sagi@grimberg.me>, linux-block@vger.kernel.org,
  linux-kernel@vger.kernel.org, nbd@other.debian.org,
  linux-nvme@lists.infradead.org
-Subject: [PATCH v2 1/1] blk-mq: Inline request status checkers
-Date: Mon, 30 Sep 2019 22:43:57 +0300
-Message-Id: <e6fc239412811140c83de906b75689530661f65d.1569872122.git.asml.silence@gmail.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <1cd320dad54bd78cb6721f7fe8dd2e197b9fbfa2.1569830796.git.asml.silence@gmail.com>
 References: <1cd320dad54bd78cb6721f7fe8dd2e197b9fbfa2.1569830796.git.asml.silence@gmail.com>
+ <e6fc239412811140c83de906b75689530661f65d.1569872122.git.asml.silence@gmail.com>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <e4d452ad-da24-a1a9-7e2d-f9cd5d0733da@acm.org>
+Date: Mon, 30 Sep 2019 12:53:25 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
+In-Reply-To: <e6fc239412811140c83de906b75689530661f65d.1569872122.git.asml.silence@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190930_124413_992090_4DEE2A8C 
-X-CRM114-Status: GOOD (  14.48  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20190930_125330_252360_A281E938 
+X-CRM114-Status: GOOD (  13.63  )
+X-Spam-Score: 0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ no trust [209.85.214.195 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.214.195 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (asml.silence[at]gmail.com)
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ provider (bart.vanassche[at]gmail.com)
+ 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,153 +97,36 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Pavel Begunkov <asml.silence@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Pavel Begunkov <asml.silence@gmail.com>
+On 9/30/19 12:43 PM, Pavel Begunkov (Silence) wrote:
+> @@ -282,7 +282,7 @@ static bool bt_tags_iter(struct sbitmap *bitmap, unsigned int bitnr, void *data)
+>  	 * test and set the bit before assining ->rqs[].
+>  	 */
+>  	rq = tags->rqs[bitnr];
+> -	if (rq && blk_mq_request_started(rq))
+> +	if (rq && blk_mq_rq_state(rq) != MQ_RQ_IDLE)
+>  		return iter_data->fn(rq, iter_data->data, reserved);
+>  
+>  	return true>
+> @@ -360,7 +360,7 @@ static bool blk_mq_tagset_count_completed_rqs(struct request *rq,
+>  {
+>  	unsigned *count = data;
+>  
+> -	if (blk_mq_request_completed(rq))
+> +	if (blk_mq_rq_state(rq) == MQ_RQ_COMPLETE)
+>  		(*count)++;
+>  	return true;
+>  }
 
-blk_mq_request_completed() and blk_mq_request_started() are
-short, inline it.
+Changes like the above significantly reduce readability of the code in
+the block layer core. I don't like this. I think this patch is a step
+backwards instead of a step forwards.
 
-v2: by Christoph suggestion inline them by hand
-
-Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
----
- block/blk-mq-tag.c       |  4 ++--
- block/blk-mq.c           | 14 +-------------
- block/blk-mq.h           |  9 ---------
- drivers/block/nbd.c      |  2 +-
- drivers/nvme/host/core.c |  2 +-
- include/linux/blk-mq.h   | 10 ++++++++--
- 6 files changed, 13 insertions(+), 28 deletions(-)
-
-diff --git a/block/blk-mq-tag.c b/block/blk-mq-tag.c
-index 008388e82b5c..32d63b607391 100644
---- a/block/blk-mq-tag.c
-+++ b/block/blk-mq-tag.c
-@@ -282,7 +282,7 @@ static bool bt_tags_iter(struct sbitmap *bitmap, unsigned int bitnr, void *data)
- 	 * test and set the bit before assining ->rqs[].
- 	 */
- 	rq = tags->rqs[bitnr];
--	if (rq && blk_mq_request_started(rq))
-+	if (rq && blk_mq_rq_state(rq) != MQ_RQ_IDLE)
- 		return iter_data->fn(rq, iter_data->data, reserved);
- 
- 	return true;
-@@ -360,7 +360,7 @@ static bool blk_mq_tagset_count_completed_rqs(struct request *rq,
- {
- 	unsigned *count = data;
- 
--	if (blk_mq_request_completed(rq))
-+	if (blk_mq_rq_state(rq) == MQ_RQ_COMPLETE)
- 		(*count)++;
- 	return true;
- }
-diff --git a/block/blk-mq.c b/block/blk-mq.c
-index 29275f5a996f..a30f108d96be 100644
---- a/block/blk-mq.c
-+++ b/block/blk-mq.c
-@@ -663,18 +663,6 @@ bool blk_mq_complete_request(struct request *rq)
- }
- EXPORT_SYMBOL(blk_mq_complete_request);
- 
--int blk_mq_request_started(struct request *rq)
--{
--	return blk_mq_rq_state(rq) != MQ_RQ_IDLE;
--}
--EXPORT_SYMBOL_GPL(blk_mq_request_started);
--
--int blk_mq_request_completed(struct request *rq)
--{
--	return blk_mq_rq_state(rq) == MQ_RQ_COMPLETE;
--}
--EXPORT_SYMBOL_GPL(blk_mq_request_completed);
--
- void blk_mq_start_request(struct request *rq)
- {
- 	struct request_queue *q = rq->q;
-@@ -718,7 +706,7 @@ static void __blk_mq_requeue_request(struct request *rq)
- 	trace_block_rq_requeue(q, rq);
- 	rq_qos_requeue(q, rq);
- 
--	if (blk_mq_request_started(rq)) {
-+	if (blk_mq_rq_state(rq) != MQ_RQ_IDLE) {
- 		WRITE_ONCE(rq->state, MQ_RQ_IDLE);
- 		rq->rq_flags &= ~RQF_TIMED_OUT;
- 		if (q->dma_drain_size && blk_rq_bytes(rq))
-diff --git a/block/blk-mq.h b/block/blk-mq.h
-index 32c62c64e6c2..eaaca8fc1c28 100644
---- a/block/blk-mq.h
-+++ b/block/blk-mq.h
-@@ -128,15 +128,6 @@ extern void blk_mq_hctx_kobj_init(struct blk_mq_hw_ctx *hctx);
- 
- void blk_mq_release(struct request_queue *q);
- 
--/**
-- * blk_mq_rq_state() - read the current MQ_RQ_* state of a request
-- * @rq: target request.
-- */
--static inline enum mq_rq_state blk_mq_rq_state(struct request *rq)
--{
--	return READ_ONCE(rq->state);
--}
--
- static inline struct blk_mq_ctx *__blk_mq_get_ctx(struct request_queue *q,
- 					   unsigned int cpu)
- {
-diff --git a/drivers/block/nbd.c b/drivers/block/nbd.c
-index ac07e8c94c79..71a13a65c9d1 100644
---- a/drivers/block/nbd.c
-+++ b/drivers/block/nbd.c
-@@ -696,7 +696,7 @@ static struct nbd_cmd *nbd_read_stat(struct nbd_device *nbd, int index)
- 	if (hwq < nbd->tag_set.nr_hw_queues)
- 		req = blk_mq_tag_to_rq(nbd->tag_set.tags[hwq],
- 				       blk_mq_unique_tag_to_tag(tag));
--	if (!req || !blk_mq_request_started(req)) {
-+	if (!req || !blk_mq_rq_state(req) != MQ_RQ_IDLE) {
- 		dev_err(disk_to_dev(nbd->disk), "Unexpected reply (%d) %p\n",
- 			tag, req);
- 		return ERR_PTR(-ENOENT);
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 108f60b46804..3a54677dc5ad 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -292,7 +292,7 @@ bool nvme_cancel_request(struct request *req, void *data, bool reserved)
- 				"Cancelling I/O %d", req->tag);
- 
- 	/* don't abort one completed request */
--	if (blk_mq_request_completed(req))
-+	if (blk_mq_rq_state(req) == MQ_RQ_COMPLETE)
- 		return true;
- 
- 	nvme_req(req)->status = NVME_SC_HOST_PATH_ERROR;
-diff --git a/include/linux/blk-mq.h b/include/linux/blk-mq.h
-index 0bf056de5cc3..e993ce19a8ec 100644
---- a/include/linux/blk-mq.h
-+++ b/include/linux/blk-mq.h
-@@ -301,9 +301,15 @@ static inline u16 blk_mq_unique_tag_to_tag(u32 unique_tag)
- 	return unique_tag & BLK_MQ_UNIQUE_TAG_MASK;
- }
- 
-+/**
-+ * blk_mq_rq_state() - read the current MQ_RQ_* state of a request
-+ * @rq: target request.
-+ */
-+static inline enum mq_rq_state blk_mq_rq_state(struct request *rq)
-+{
-+	return READ_ONCE(rq->state);
-+}
- 
--int blk_mq_request_started(struct request *rq);
--int blk_mq_request_completed(struct request *rq);
- void blk_mq_start_request(struct request *rq);
- void blk_mq_end_request(struct request *rq, blk_status_t error);
- void __blk_mq_end_request(struct request *rq, blk_status_t error);
--- 
-2.23.0
+Bart.
 
 
 _______________________________________________
