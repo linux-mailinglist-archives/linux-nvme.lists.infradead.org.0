@@ -2,69 +2,70 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 569F7D18F1
-	for <lists+linux-nvme@lfdr.de>; Wed,  9 Oct 2019 21:28:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 96EB9D1B40
+	for <lists+linux-nvme@lfdr.de>; Wed,  9 Oct 2019 23:55:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qYJBg8uXXc6gsW4AngDapSPacLL5TYPNdQzBWZLToZY=; b=k+D50+haFg4ofo
-	2poyB6LvjSy1Nx556tgy3yzMThvXxVwJfpGfxs/g8hD89ZrOHxN+1qh60Qisjy7qIxKFgvc2aNSJP
-	oveLwUdar86dyQiWZxhpZEPPgETyEJ0J+ySmpkV+HLVJfKQyXw5iP8fnCEu4buXoGlmrQloz8TbXs
-	Ti7o2dVA2sGcZ+2YldL+Pb6rktFFf5NdLwcGWNhHTl379OK/p4ZFYKBWj8t+mJZlRCQKR9yH21llF
-	Xp215xa0T3oii/MUMcYuEce3hnBJSI/UC8hkCWB4AFNzFR3hczBLRLJf3shyxx+86X2FEETJ0CPrg
-	UrBXRBD760R2S1GrBE8Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=PZ2ezsP1/fsRtW5DpSRzxO6MXq9xv+DlhpX+tW9QriM=; b=fg0tp9Tvo+0EksJih1ymakyBd
+	wcP1fhcf0ExrAztoWFCSZfaIgTAYhtMPGz3vc5TsihNoHxGmdTdkECQYc6hOu4/qz3Ue0xhK7HuEn
+	UHWQrFL1PHQSyNbR4Xisz5FLSOg6g+4F1x1YrPDssnQ547Ug/ReEBxpNRawTWQqEELYZ8SWxbZEnY
+	KmSuJpZgnSkkCsS+IZ5QI7Nrf71C4+ckCQeWFHTIu0CEpa+yd86JAUlZHHVqoyu/9BdfyNJjjC7bn
+	9jtZnAl+yC0Qy9+/wrF68G+Kj3fhwaSyUU69SlPtsz35wq/dsQ3rIfScRF273cEisyGCeRcIO2NVp
+	o2Arvi86g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iIHcz-0001gZ-Vt; Wed, 09 Oct 2019 19:28:05 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1iIJvL-00072u-Js; Wed, 09 Oct 2019 21:55:11 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iIHah-00087T-BA
- for linux-nvme@lists.infradead.org; Wed, 09 Oct 2019 19:25:48 +0000
-Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
- by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1iIHaa-0002gD-6f; Wed, 09 Oct 2019 13:25:42 -0600
-Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
- (envelope-from <gunthorp@deltatee.com>)
- id 1iIHaZ-0003QV-B6; Wed, 09 Oct 2019 13:25:35 -0600
-From: Logan Gunthorpe <logang@deltatee.com>
-To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- linux-block@vger.kernel.org, linux-fsdevel@vger.kernel.org
-Date: Wed,  9 Oct 2019 13:25:30 -0600
-Message-Id: <20191009192530.13079-14-logang@deltatee.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191009192530.13079-1-logang@deltatee.com>
-References: <20191009192530.13079-1-logang@deltatee.com>
+ id 1iIJvF-0006Tc-DX
+ for linux-nvme@lists.infradead.org; Wed, 09 Oct 2019 21:55:06 +0000
+Received: from localhost (unknown [167.220.2.234])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id AB069206B6;
+ Wed,  9 Oct 2019 21:55:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1570658104;
+ bh=oAoT7tDis+MgcqEHt2aEIBpYj48lAWF2BJLncuZbCME=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=t+kYOiHIY1/XXGJ+YqbwsSVQJ4OGnXid5HkIT2iUNKD9ctwrzYs4E2iKQy7R5KWXu
+ tcdKHV+br7WPjf+1hcaDrczQ2tJcAprxluUJvU7R0LAoi/wm74Uj2XTrW9zqi9N0A8
+ aetHYm68XjNHJ2bBxRxP/IpdP0qPXDh86dnem/aI=
+Date: Wed, 9 Oct 2019 17:55:04 -0400
+From: Sasha Levin <sashal@kernel.org>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCH 4.19] nvme: Assign subsys instance from first ctrl
+Message-ID: <20191009215504.GW1396@sasha-vm>
+References: <20191009162910.1801-1-kbusch@kernel.org>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 172.16.1.31
-X-SA-Exim-Rcpt-To: linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-block@vger.kernel.org, linux-fsdevel@vger.kernel.org, hch@lst.de,
- sagi@grimberg.me, kbusch@kernel.org, axboe@fb.com, Chaitanya.Kulkarni@wdc.com,
- maxg@mellanox.com, sbates@raithlin.com, logang@deltatee.com
-X-SA-Exim-Mail-From: gunthorp@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
- version=3.4.2
-Subject: [PATCH v9 12/12] nvmet-passthru: support block accounting
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+Content-Disposition: inline
+In-Reply-To: <20191009162910.1801-1-kbusch@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191009_122543_418303_68DDEBE0 
-X-CRM114-Status: GOOD (  10.23  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20191009_145505_495870_28773B7E 
+X-CRM114-Status: UNSURE (   7.40  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,53 +77,49 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
- Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Hannes Reinecke <hare@suse.com>, Sagi Grimberg <sagi@grimberg.me>,
+ stable@vger.kernel.org, linux-nvme@lists.infradead.org,
+ Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>,
+ Minwoo Im <minwoo.im@samsung.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Support block disk accounting by setting the RQF_IO_STAT flag
-and gendisk in the request.
+On Thu, Oct 10, 2019 at 01:29:10AM +0900, Keith Busch wrote:
+>commit 733e4b69d508d03c20adfdcf4bd27abc60fae9cc upstream
+>
+>The namespace disk names must be unique for the lifetime of the
+>subsystem. This was accomplished by using their parent subsystems'
+>instances which were allocated independently from the controllers
+>connected to that subsystem. This allowed name prefixes assigned to
+>namespaces to match a controller from an unrelated subsystem, and has
+>created confusion among users examining device nodes.
+>
+>Ensure a namespace's subsystem instance never clashes with a controller
+>instance of another subsystem by transferring the instance ownership
+>to the parent subsystem from the first controller discovered in that
+>subsystem.
+>
+>Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
+>Reviewed-by: Christoph Hellwig <hch@lst.de>
+>Reviewed-by: Minwoo Im <minwoo.im@samsung.com>
+>Reviewed-by: Hannes Reinecke <hare@suse.com>
+>Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+>Signed-off-by: Keith Busch <kbusch@kernel.org>
+>Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 
-After this change, IO counts will be reflected correctly in
-/proc/diskstats for drives being used by passthru.
+What are your thoughts about taking the following for 4.19 instead?
 
-Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
----
- drivers/nvme/target/io-cmd-passthru.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+733e4b69d508d nvme: Assign subsys instance from first ctrl
+e654dfd38c1ec nvme: fix memory leak caused by incorrect subsystem free
+32fd90c407680 nvme: change locking for the per-subsystem controller list
+092ff0520070f nvme: fix kernel paging oops
+cb5b7262b011c nvme: provide fallback for discard alloc failure
 
-diff --git a/drivers/nvme/target/io-cmd-passthru.c b/drivers/nvme/target/io-cmd-passthru.c
-index c482e55f0fb8..37d06ebcbd0f 100644
---- a/drivers/nvme/target/io-cmd-passthru.c
-+++ b/drivers/nvme/target/io-cmd-passthru.c
-@@ -413,6 +413,9 @@ static struct request *nvmet_passthru_blk_make_request(struct nvmet_req *req,
- 	if (unlikely(IS_ERR(rq)))
- 		return rq;
- 
-+	if (blk_queue_io_stat(q))
-+		rq->rq_flags |= RQF_IO_STAT;
-+
- 	if (req->sg_cnt) {
- 		ret = nvmet_passthru_map_sg(req, rq);
- 		if (unlikely(ret)) {
-@@ -477,7 +480,7 @@ static void nvmet_passthru_execute_cmd(struct nvmet_req *req)
- 
- 	rq->end_io_data = req;
- 	if (req->sq->qid != 0) {
--		blk_execute_rq_nowait(rq->q, NULL, rq, 0,
-+		blk_execute_rq_nowait(rq->q, ns->disk, rq, 0,
- 				      nvmet_passthru_req_done);
- 	} else {
- 		req->p.rq = rq;
--- 
-2.20.1
-
+--
+Thanks,
+Sasha
 
 _______________________________________________
 Linux-nvme mailing list
