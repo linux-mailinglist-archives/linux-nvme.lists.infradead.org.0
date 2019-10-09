@@ -2,45 +2,46 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57158D1581
-	for <lists+linux-nvme@lfdr.de>; Wed,  9 Oct 2019 19:24:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E6218D1593
+	for <lists+linux-nvme@lfdr.de>; Wed,  9 Oct 2019 19:24:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TlzZzoZ+hXFST9pHSvaFcr10creDlztf+M/VjxIqNzY=; b=ctdj1/MK2fDNTa
-	j6SnVON0mI170TxQJel2wfDH06k8SKrHIqUWfOe+Z/xISbbEbZMTcwVWh61eJrTr4Xv64InftxvEE
-	/r2lpr4JIliAwn7oXBvbgh4vGBc4Hg8aorEac4xJEu33LMutA3TxVM9B1ZCN40REtrWHwRwZBh2xY
-	LimvliEvLBY45oZalcC4GzeboPdBwLX7hCmls2abPRuCqwwquamni86EJTpUwAwlAZYhCnCn3ALnh
-	SH356hsOYLTfDAvDnEuMhuZ4oEiGS5NupSno9JFEnD2aZX8sEIPkgnotq4REyg/lmZEYWGNJgDvkh
-	ZNWaAt/DHgpDPM2P+YdA==;
+	List-Owner; bh=VSBkuCoabKKkCHgbXlXTmGWDyE/MWV4RVtMJM8jzR8w=; b=L0Jk+Xl5Hpq+sQ
+	IeBoxKgaC4qTNEATM34gmQ3tdQ0puBrGQbL9OAwb1mGvzl5xtIb4NEuU1Ub4KuCkzCYAqOe08KeyX
+	IYCUSVy7WfRF55uBHPdf2OnlPfuwcmSH8ZNUUGydI2UmDvYDymx9NLkOZQjTME/qJBwPVlWL6Fn5j
+	AyDNo3E9F4KN1eWdl/Nte4ay+XEswy2bjULqYkbHqcNLMAs7l3wwVFYeUv85TsilmTvxHtheQZMXt
+	cXWh+14JteyEzNp4GE0ocvRRcMX+VAHe7YZPrxDNKzYnFN5BXKmsTNpiS8Ar/sSfSk2jy1KSvLrNL
+	AtyIMgupxqAGSbTT/q5A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iIFgy-0003yf-3j; Wed, 09 Oct 2019 17:24:04 +0000
+	id 1iIFh9-00045l-KI; Wed, 09 Oct 2019 17:24:15 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iIFgp-0003wY-H3
- for linux-nvme@lists.infradead.org; Wed, 09 Oct 2019 17:23:57 +0000
+ id 1iIFgs-0003xU-M3
+ for linux-nvme@lists.infradead.org; Wed, 09 Oct 2019 17:23:59 +0000
 Received: from sasha-vm.mshome.net (unknown [167.220.2.234])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0D76E2190F;
- Wed,  9 Oct 2019 17:23:55 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5A4B721929;
+ Wed,  9 Oct 2019 17:23:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1570641835;
- bh=u1QY37GQqiMRz3nMqJTL9xuwt1CVrLfwwm/6Qk4iZPM=;
+ s=default; t=1570641838;
+ bh=p1HFA6X3IDlFuyTeWwZLG00ihvwnsActcDW+mlTwb1U=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=GJbjEGac3/M1WXVOHXDrlX/BsDB6t+4wt6/wJf+eDuaS+Gqtwj+YpZZDJOAt2+EM6
- 1YGKCjYP+vQksjEGWb8XQjafxTenA26VCg1pSDyqhDLlYEITayxtFoJ4rF8Qe4Yoiq
- uqbXS4iZWJYDgY/J4bBMkQGCkZiDDZeCerntZbDU=
+ b=TT9M21ot8y8eR7hbW5QJgZ8bhOXHsHwSTxh8j+33eQCegSj32a7GgW6SBsQdVfn7F
+ 5Z2dVrdY4CdnqQHx1putX0fcvkmWi8fqyCITu9blC8WHbTRd6N5wIHPklHIglci5Pn
+ zjd7usVVXCw+ZlAwxjnMWsnRfARqHzr3f6gCTtYY=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.3 06/68] nvme-pci: Fix a race in controller removal
-Date: Wed,  9 Oct 2019 13:04:45 -0400
-Message-Id: <20191009170547.32204-6-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.3 18/68] nvme-tcp: fix wrong stop condition in
+ io_work
+Date: Wed,  9 Oct 2019 13:04:57 -0400
+Message-Id: <20191009170547.32204-18-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191009170547.32204-1-sashal@kernel.org>
 References: <20191009170547.32204-1-sashal@kernel.org>
@@ -48,8 +49,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191009_102355_592909_DAFFF1DA 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20191009_102358_741533_90F08514 
+X-CRM114-Status: GOOD (  11.73  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -78,52 +79,53 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, Sasha Levin <sashal@kernel.org>,
- Balbir Singh <sblbir@amzn.com>, Sagi Grimberg <sagi@grimberg.me>,
+Cc: Sasha Levin <sashal@kernel.org>, "Wunderlich,
+ Mark" <mark.wunderlich@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
  linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Balbir Singh <sblbir@amzn.com>
+From: "Wunderlich, Mark" <mark.wunderlich@intel.com>
 
-[ Upstream commit b224726de5e496dbf78147a66755c3d81e28bdd2 ]
+[ Upstream commit ddef29578a81a1d4d8f2b26a7adbfe21407ee3ea ]
 
-User space programs like udevd may try to read to partitions at the
-same time the driver detects a namespace is unusable, and may deadlock
-if revalidate_disk() is called while such a process is waiting to
-enter the frozen queue. On detecting a dead namespace, move the disk
-revalidate after unblocking dispatchers that may be holding bd_butex.
+Allow the do/while statement to continue if current time
+is not after the proposed time 'deadline'. Intent is to
+allow loop to proceed for a specific time period. Currently
+the loop, as coded, will exit after first pass.
 
-changelog Suggested-by: Keith Busch <kbusch@kernel.org>
-Signed-off-by: Balbir Singh <sblbir@amzn.com>
-Reviewed-by: Keith Busch <kbusch@kernel.org>
+Signed-off-by: Mark Wunderlich <mark.wunderlich@intel.com>
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/nvme/host/core.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/nvme/host/tcp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index d3d6b7bd69033..28217cee5e762 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -103,10 +103,13 @@ static void nvme_set_queue_dying(struct nvme_ns *ns)
- 	 */
- 	if (!ns->disk || test_and_set_bit(NVME_NS_DEAD, &ns->flags))
- 		return;
--	revalidate_disk(ns->disk);
- 	blk_set_queue_dying(ns->queue);
- 	/* Forcibly unquiesce queues to avoid blocking dispatch */
- 	blk_mq_unquiesce_queue(ns->queue);
-+	/*
-+	 * Revalidate after unblocking dispatchers that may be holding bd_butex
-+	 */
-+	revalidate_disk(ns->disk);
- }
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 606b13d35d16f..bdadb27b28bbb 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -1039,7 +1039,7 @@ static void nvme_tcp_io_work(struct work_struct *w)
+ {
+ 	struct nvme_tcp_queue *queue =
+ 		container_of(w, struct nvme_tcp_queue, io_work);
+-	unsigned long start = jiffies + msecs_to_jiffies(1);
++	unsigned long deadline = jiffies + msecs_to_jiffies(1);
  
- static void nvme_queue_scan(struct nvme_ctrl *ctrl)
+ 	do {
+ 		bool pending = false;
+@@ -1064,7 +1064,7 @@ static void nvme_tcp_io_work(struct work_struct *w)
+ 		if (!pending)
+ 			return;
+ 
+-	} while (time_after(jiffies, start)); /* quota is exhausted */
++	} while (!time_after(jiffies, deadline)); /* quota is exhausted */
+ 
+ 	queue_work_on(queue->io_cpu, nvme_tcp_wq, &queue->io_work);
+ }
 -- 
 2.20.1
 
