@@ -2,39 +2,39 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB2DFD18F3
-	for <lists+linux-nvme@lfdr.de>; Wed,  9 Oct 2019 21:28:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 596D4D18F7
+	for <lists+linux-nvme@lfdr.de>; Wed,  9 Oct 2019 21:29:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
 	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=66Jd3+u+76CXznKhPNmYV4guabiTVPNDBPWRgtFf6Nw=; b=JyeLPnUY97HB9B
-	evgbtyCEKjNA3pxx8ZBwLiXpCGvPAa/wU6tDF4PlyHpsq21Y1aVMxmHx30i461QBICSeUMK1dAUM2
-	wx6s7LdUy324LYAJpJhcIPmefFsPt717ohPPbbRFWfYWKBK4IEgubWku0HLGwXg+kRTDOBnTqE8LW
-	gAS8vBwrSlf9lRUhambexENIQM+Ct2V1gbkXuxqYYyRl5iXsqezjqWjl/Fw9zHwyYmq7dE2VF7U78
-	9TiNUu1kWAuhBeGIVG7Sgax0Ni+09QmMNgoUfnG67oX7lauKWLW8gZdaKgAdGpvceCm66qNAqcBLJ
-	54XKpZZQAkVidPkJvqTw==;
+	List-Owner; bh=LsJmD1UzYUx8sOR9s5mGVLtkdNceAZKLW6+e8evW7Hk=; b=pkvnxJW4fDkZA4
+	11DOkJo16FX70FP3EXb+8qpQkZgMtzuA1NgBUj1Tk4JiBP1EPt9GMQdUR3U1TZJBQXPif8ZpVmf25
+	RI3ogyxHnzsa8xDcKsL/i8cwHGXFNOcpq8QNMKkYahHNdZm4KdlHbxk69PjyG44bfk3kzgAnSN7DZ
+	j7u6bbyem0otzB2byVOpBKXQiXkh3LFb7KQ0O/v60D7fONnVMX7f0Fx645ebt8/tgWagF3Rhdxkcm
+	MjL3JeugNn6Mc/+mnYN1ZXqV4R6NWyYts+UZhbfq3O1sGKLcQ392Xz7H8OeXC79Pg4bmIXIKn8cUZ
+	dlcnAhbYm7hUkb8SPCiA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iIHdb-000252-Lr; Wed, 09 Oct 2019 19:28:43 +0000
+	id 1iIHeK-0002v4-LY; Wed, 09 Oct 2019 19:29:28 +0000
 Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iIHai-00088f-IP
- for linux-nvme@lists.infradead.org; Wed, 09 Oct 2019 19:25:51 +0000
+ id 1iIHan-0008CI-FZ
+ for linux-nvme@lists.infradead.org; Wed, 09 Oct 2019 19:25:53 +0000
 Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
  by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1iIHaa-0002g5-6m; Wed, 09 Oct 2019 13:25:44 -0600
+ id 1iIHaa-0002g6-6k; Wed, 09 Oct 2019 13:25:47 -0600
 Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
  (envelope-from <gunthorp@deltatee.com>)
- id 1iIHaY-0003Q7-Gc; Wed, 09 Oct 2019 13:25:34 -0600
+ id 1iIHaY-0003QA-Kg; Wed, 09 Oct 2019 13:25:34 -0600
 From: Logan Gunthorpe <logang@deltatee.com>
 To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
  linux-block@vger.kernel.org, linux-fsdevel@vger.kernel.org
-Date: Wed,  9 Oct 2019 13:25:22 -0600
-Message-Id: <20191009192530.13079-6-logang@deltatee.com>
+Date: Wed,  9 Oct 2019 13:25:23 -0600
+Message-Id: <20191009192530.13079-7-logang@deltatee.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191009192530.13079-1-logang@deltatee.com>
 References: <20191009192530.13079-1-logang@deltatee.com>
@@ -51,15 +51,12 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.5 required=5.0 tests=ALL_TRUSTED,BAYES_00,
  GREYLIST_ISWHITE,MYRULES_FREE,MYRULES_NO_TEXT autolearn=ham
  autolearn_force=no version=3.4.2
-Subject: [PATCH v9 05/12] Signed-off-by: Chaitanya Kulkarni
- <chaitanya.kulkarni@wdc.com> [logang@deltatee.com: fixed some of the wording
- in the help message] Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
- Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+Subject: [PATCH v9 05/12] nvmet-passthru: add passthru code to process commands
 X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191009_122545_044054_EC0E3C6D 
-X-CRM114-Status: GOOD (  30.36  )
+X-CRM114-CacheID: sfid-20191009_122549_977543_C7C8CB2D 
+X-CRM114-Status: GOOD (  30.82  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -91,8 +88,6 @@ Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-
-nvmet-passthru: add passthru code to process commands
 
 Add passthru command handling capability for the NVMeOF target and
 export passthru APIs which are used to integrate passthru
