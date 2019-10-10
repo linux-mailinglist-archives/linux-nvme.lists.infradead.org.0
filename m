@@ -2,43 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC68CD280C
-	for <lists+linux-nvme@lfdr.de>; Thu, 10 Oct 2019 13:38:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D6928D2867
+	for <lists+linux-nvme@lfdr.de>; Thu, 10 Oct 2019 13:51:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FDbRaVGMua94Cde7JOrJd/aHRf7aXYN4Gv2wauP/fOo=; b=OdJbl0K6tdU4d9
-	uPm8S2FHL0zJdtZrr6rdU2FFyOG3eHR8llLMkiQOxeHylIjvRgH4BdJZYZS/uk0ixEzOvPfIZYiW8
-	L6dFKUo5l/wTWTg+A8eZo5PCMxC7xMnISZvxB+CUkYMQkaIg+M2ooAW8N/AbgFCsYoESNZaak60Tf
-	Mr/1qsUhHXLr9RSmcWFVW/p+uZHnL8i/Wa9c1YLoP/Wp9Kc1FH68r6Us0AUM4vSnGlODSO34ii/xb
-	Czvf3Bj0YxhtqmmSynfYI3wBWBQCZu/RFCbKcdgD9Kg6CLEbHnmDa9s6gG5Zuh95mA4A7xwsMldaf
-	Akv4XQ2Fh40DLHJBGFNg==;
+	List-Owner; bh=VGnVCli8ljhJwOItcrrEstyFozwFzVreGN7Bbfbetk0=; b=DrKUBcA2BNBpY8
+	jyijk9i9bo1pKG61B317V+O92Hc+vLI/7mf/wVpJK33ScraqZ3HsJRTETxoPz3OngoVuNUEWZFwot
+	iccbTxCPwjiiWn/T1TRzcJPJHOaLpUAn7EnJuKP/NaeSjUIeO8hj2bO/Mcn/HwK+UGjdJDKYP/qXl
+	c4s6xtlLuoZvk5JvBy0gIx2dNfP5qsUHcit1zfvuSATALMWNwVs/WCupU9gZ3Wg0PkmgZI+oRz2MV
+	sHu3MVaNrTsPE6VYz6rd08tpZyuGFesvb84QP34cljimVpqlfZiUPkDer4T06LlDV1UccDcfX7GyM
+	Ikjz8wfURWvW7pZi6eSg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iIWlh-00013Y-BP; Thu, 10 Oct 2019 11:38:05 +0000
+	id 1iIWyN-0002Cf-Py; Thu, 10 Oct 2019 11:51:11 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iIWla-00011K-Tc
- for linux-nvme@lists.infradead.org; Thu, 10 Oct 2019 11:38:00 +0000
+ id 1iIWyC-000262-LI
+ for linux-nvme@lists.infradead.org; Thu, 10 Oct 2019 11:51:02 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 22A1F68C65; Thu, 10 Oct 2019 13:37:54 +0200 (CEST)
-Date: Thu, 10 Oct 2019 13:37:54 +0200
+ id 15CB568C65; Thu, 10 Oct 2019 13:50:55 +0200 (CEST)
+Date: Thu, 10 Oct 2019 13:50:53 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH v9 01/12] nvme-core: introduce nvme_ctrl_get_by_path()
-Message-ID: <20191010113754.GA28921@lst.de>
+Subject: Re: [PATCH v9 04/12] nvmet: make nvmet_copy_ns_identifier() non-static
+Message-ID: <20191010115053.GB28921@lst.de>
 References: <20191009192530.13079-1-logang@deltatee.com>
- <20191009192530.13079-2-logang@deltatee.com>
+ <20191009192530.13079-5-logang@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191009192530.13079-2-logang@deltatee.com>
+In-Reply-To: <20191009192530.13079-5-logang@deltatee.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191010_043759_098100_7BB75F95 
-X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-CacheID: sfid-20191010_045100_869177_CE236C2E 
+X-CRM114-Status: UNSURE (   9.25  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -71,33 +71,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> +struct nvme_ctrl *nvme_ctrl_get_by_path(const char *path)
-> +{
-> +	struct nvme_ctrl *ctrl;
-> +	struct file *f;
-> +
-> +	f = filp_open(path, O_RDWR, 0);
-> +	if (IS_ERR(f))
-> +		return ERR_CAST(f);
-> +
-> +	if (f->f_op != &nvme_dev_fops) {
-> +		ctrl = ERR_PTR(-EINVAL);
-> +		goto out_close;
-> +	}
-> +
-> +	ctrl = f->private_data;
-> +	nvme_get_ctrl(ctrl);
-> +
-> +out_close:
-> +	filp_close(f, NULL);
-> +
-> +	return ctrl;
+On Wed, Oct 09, 2019 at 01:25:21PM -0600, Logan Gunthorpe wrote:
+> This function will be needed by the upcoming passthru code.
+> 
+> Passthru will need an emulated version of identify_desclist which
+> copies the eui64, uuid and nguid from the passed-thru controller into
+> the request SGL.
 
-No need for the empty line here.  Also can you make sure this new
-code (and all the new exports) are only enabled if
-CONFIG_NVME_TARGET_PASSTHRU is set.  Preferably by having a little
-block at the end of this file with this function and the extra
-exports with a big fat comment that they are only for nvmet-passthrough.
+I don't like the way this is handled.  We should avoid faking up
+behavior not supported if this really is a passthrough interface.
+
+For this particular case this means:
+
+ 1) report the vs field that the actual controller reports
+ 2) if that is below 1.2.1 bump it to that, but no further
+    (and maybe print a warning)
+ 3) don't emulate the namespace descriptor CNS ever
 
 _______________________________________________
 Linux-nvme mailing list
