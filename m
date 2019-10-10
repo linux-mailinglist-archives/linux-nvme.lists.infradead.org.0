@@ -2,71 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1941BD1B89
-	for <lists+linux-nvme@lfdr.de>; Thu, 10 Oct 2019 00:18:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B682ED26E7
+	for <lists+linux-nvme@lfdr.de>; Thu, 10 Oct 2019 12:06:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XiOzshmjw1HkIrngbIVB5Ljys6ps1Jf0tz3lBjpc4f8=; b=Yo1EqK/lcFcjNP
-	tpF+AYOVNEDgzRHopnfqXYulkSOobeZrk34oM1LerLngg3i04X8Tzbno6l6nT5Ie28KfH/J0HFiKb
-	SpZzU2JYBayyIzRmcgq0xJBsSFW8n0yHCKI645+/0GSvBgUfTAWyh0Qt8JDPLtQs93mRjJI4CEYEp
-	CIFFhBl0I/NwTdG0Re5//cXsqZrdWTGj0d41v+ZcyzZynAr/0S263J1Stv6TwFn0fxLCHU8iyNbSK
-	BVS8yNjUEwMxN0aGgfvEdfNjVdQVrMV00afSil90kAnI/VXX5KOLV5YNy6trkpLsMWDZoP7Z5yHvI
-	DPROCneBal0KRVq1OJQw==;
+	List-Owner; bh=Ta+beqva1B967O1KJzi5cw44beVUehf200/5XlPaogw=; b=sMeBTNpgvmY7ao
+	YQNYUDcG+PYw3be0PJk3PSj57txPd2mNR2f1wLodzA5GqwnHc9f2DYzs98Q+IN36ssCLgz3/jXZX/
+	8QjVTMIlFKGE+s/ODo+isG8A6/R/oxVDtRuuIlaRo1Eej1H0RFCUEnwJHgx8GG6KCFGmr76P6SgXe
+	LQoMbIfqmydu1KtxIX/6ve468LozunEdfBNVL7icIzmwPYjUYEMNuz+iVtnYG5UFBYemS5fU+v8ob
+	oOrM9KEG7DJ8lLMOfPgoETYvkDVsXlN3PavVFqnBaOq1u3X9m6hMRVS4w5DwSyjX1rkopzgThe06U
+	PwefsyBjRlgdaBiDERkg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
-	id 1iIKI1-0008V1-Px; Wed, 09 Oct 2019 22:18:37 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iIVKJ-0006CQ-RG; Thu, 10 Oct 2019 10:05:43 +0000
+Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iIKHv-0008UN-Eo
- for linux-nvme@lists.infradead.org; Wed, 09 Oct 2019 22:18:32 +0000
-Received: from washi1.fujisawa.hgst.com (unknown [199.255.47.10])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A9EAB206BB;
- Wed,  9 Oct 2019 22:18:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1570659511;
- bh=Z8opOSsiiw6yi2V6o/VkdYx7/ZpiJj4Zuueg28GFZeg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YRNllptcmVIvwmzccQrTA6O74wQUuBcbg5Ai42vUf1gYunJt7APnYaj2z/LEx+S/Y
- rGmYKw1yv0uzptGkgxQnFk44EfFaOX3ILHTY/TOiz0UZmeTifFAgptYzGRLKwRgQgJ
- ZwtMmo9coQUWEz5OsQ51E85otiNnf1pQJUOXt9oY=
-Date: Thu, 10 Oct 2019 07:18:27 +0900
-From: Keith Busch <kbusch@kernel.org>
+ id 1iIVKF-0006AI-2c
+ for linux-nvme@lists.infradead.org; Thu, 10 Oct 2019 10:05:40 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id DE1A268C65; Thu, 10 Oct 2019 12:05:26 +0200 (CEST)
+Date: Thu, 10 Oct 2019 12:05:26 +0200
+From: Christoph Hellwig <hch@lst.de>
 To: Logan Gunthorpe <logang@deltatee.com>
-Subject: Re: [PATCH v9 04/12] nvmet: make nvmet_copy_ns_identifier() non-static
-Message-ID: <20191009221827.GE3009@washi1.fujisawa.hgst.com>
+Subject: Re: [PATCH v9 10/12] block: don't check blk_rq_is_passthrough() in
+ blk_do_io_stat()
+Message-ID: <20191010100526.GA27209@lst.de>
 References: <20191009192530.13079-1-logang@deltatee.com>
- <20191009192530.13079-5-logang@deltatee.com>
+ <20191009192530.13079-12-logang@deltatee.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191009192530.13079-5-logang@deltatee.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20191009192530.13079-12-logang@deltatee.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191009_151831_519327_CF6F1A2B 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20191010_030539_265935_1BE127B3 
+X-CRM114-Status: GOOD (  10.08  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,30 +63,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
 Cc: Jens Axboe <axboe@fb.com>, Sagi Grimberg <sagi@grimberg.me>,
  Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, linux-kernel@vger.kernel.org,
  linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
- linux-block@vger.kernel.org, linux-fsdevel@vger.kernel.org,
- Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
+ linux-block@vger.kernel.org, Keith Busch <kbusch@kernel.org>,
+ linux-fsdevel@vger.kernel.org, Max Gurtovoy <maxg@mellanox.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Oct 09, 2019 at 01:25:21PM -0600, Logan Gunthorpe wrote:
-> This function will be needed by the upcoming passthru code.
-> 
-> Passthru will need an emulated version of identify_desclist which
-> copies the eui64, uuid and nguid from the passed-thru controller into
-> the request SGL.
-> 
-> [chaitanya.kulkarni@wdc.com: this was factored out of a patch
->  originally authored by Chaitanya]
-> Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-> Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
-> Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
-> ---
+> @@ -319,7 +319,7 @@ static struct request *blk_mq_rq_ctx_init(struct blk_mq_alloc_data *data,
+>  	rq->cmd_flags = op;
+>  	if (data->flags & BLK_MQ_REQ_PREEMPT)
+>  		rq->rq_flags |= RQF_PREEMPT;
+> -	if (blk_queue_io_stat(data->q))
+> +	if (blk_queue_io_stat(data->q) && !blk_rq_is_passthrough(rq))
+>  		rq->rq_flags |= RQF_IO_STAT;
 
-Looks fine
+This needs a comment why we don't account passthrough requests by
+default.  And I'm really curious about the answer, because I don't
+know it myself.
 
-Reviewed-by: Keith Busch <kbusch@kernel.org>
+>   *	a) it's attached to a gendisk, and
+>   *	b) the queue had IO stats enabled when this request was started, and
+> - *	c) it's a file system request
+> + *	c) it's a file system request (RQF_IO_STAT will not be set otherwise)
+
+c) should just go away now based on your changes.
+
+>  static inline bool blk_do_io_stat(struct request *rq)
+>  {
+>  	return rq->rq_disk &&
+> -	       (rq->rq_flags & RQF_IO_STAT) &&
+> -		!blk_rq_is_passthrough(rq);
+> +	       (rq->rq_flags & RQF_IO_STAT);
+
+The check can be collapsed onto a single line now.
 
 _______________________________________________
 Linux-nvme mailing list
