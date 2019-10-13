@@ -2,43 +2,46 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E612D56ED
-	for <lists+linux-nvme@lfdr.de>; Sun, 13 Oct 2019 18:59:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A50E7D56E6
+	for <lists+linux-nvme@lfdr.de>; Sun, 13 Oct 2019 18:58:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=5C//UYocLV0bnmcv7kXtrv5DLrl/NaG5d0mT1RKq1Ic=; b=Cus
-	NSq9Gn5WQ5c//Hns+d4xPNPyAoRIs0rzUi8nJ+JN2L06Ciz3zXddQCzbRpiDystwP4j7scssQWRSC
-	Kx+XBIolWjChMOUv5bgH9rqNgwYZB5GszwBF28NsJqqkNrmRTcU2cVzcXYQXz2BGgg/Hnkr61OPB/
-	6A66tB7/zIdy3e8u8Iq9PcCfZsPRqVl3diMzfM4RbGtC4/Ey7RU1gV8PH12B/rixzrRQDnpzBYImv
-	qU7ioCRpy8ZonjWUMc06yr98+W7Pg22IEaynhtHcW/zCpyDsU2QaTX/SM2/wMt/vdffgIfAXJ4jfC
-	N4lBUlod/ifL1zuM0LzxrO1hZmu6A5g==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=p7R3pfv3ZxUc1mhzmcUpLM9D0dbX3RQcbCxqP4q2Qgk=; b=aoObLelX/Z7ZDRzP5quYmcbSc5
+	YoQq8p6tuu7QyWeFhz9ipttWp6RYV2y2igP6GpkaPWhSLiJkxzeNtymlutwmPA780rzaOTO3ofNCM
+	CIZU3YMzRMuJ7dK3OQ7uv4BTGM/IOhfLpgX0AuG3Lem/r6Kns0fY0CYXFlljoPl7HamOUZduUhyGK
+	MHXQ25C99NLEZX+ETnRgaaVJxUxEaane/1rUbgYWuE3LkEMvksba1PgxpaV9OqzUcyQ9Bh19Li31l
+	Ti2QufvpyhihfiwHgjANojk/yclKPn5CssJwNoPxP1n+xmyVtXxPzQb1vvWoO4F3dIiKqAv8jPy5k
+	zqLDOUQA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iJhDJ-00065y-5A; Sun, 13 Oct 2019 16:59:25 +0000
+	id 1iJhBu-0004wG-WC; Sun, 13 Oct 2019 16:57:59 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iJhBq-0004u1-AE
- for linux-nvme@lists.infradead.org; Sun, 13 Oct 2019 16:57:58 +0000
+ id 1iJhBo-0004u5-Qg
+ for linux-nvme@lists.infradead.org; Sun, 13 Oct 2019 16:57:54 +0000
 Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 13 Oct 2019 18:57:39 +0200
 Received: from r-vnc12.mtr.labs.mlnx (r-vnc12.mtr.labs.mlnx [10.208.0.12])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x9DGvdoL005965;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x9DGvdoM005965;
  Sun, 13 Oct 2019 19:57:39 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, hch@lst.de, kbusch@kernel.org,
  sagi@grimberg.me
-Subject: [PATCH v2 0/8] small NVMe cleanups/fixes
-Date: Sun, 13 Oct 2019 19:57:30 +0300
-Message-Id: <1570985858-26805-1-git-send-email-maxg@mellanox.com>
+Subject: [PATCH 1/8] nvme: introduce nvme_is_aen_req function
+Date: Sun, 13 Oct 2019 19:57:31 +0300
+Message-Id: <1570985858-26805-2-git-send-email-maxg@mellanox.com>
 X-Mailer: git-send-email 1.7.1
+In-Reply-To: <1570985858-26805-1-git-send-email-maxg@mellanox.com>
+References: <1570985858-26805-1-git-send-email-maxg@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191013_095754_749755_5C892CFD 
-X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-CacheID: sfid-20191013_095753_263788_49996EDB 
+X-CRM114-Status: UNSURE (   8.51  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -70,45 +73,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi Sagi/Christoph/Keith,
-This series include few fast-path and code readability improvements from
-IsraelR and also few memleak fixes and new status code introduction from
-myself.
+From: Israel Rukshin <israelr@mellanox.com>
 
-This series applies cleanly on top of nvme-5.4 branch, commit 3a8ecc935efab
-("nvme: retain split access workaround for capability reads")
+This function improves code readability and reduces code duplication.
 
-changes from v1:
-- removed braces from patch 1/8
-- added "Reviewed-by" signature to patches 1, 2, 5, 8
-- remove no-op check from patch 6/8
+Signed-off-by: Israel Rukshin <israelr@mellanox.com>
+Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+---
+ drivers/nvme/host/nvme.h   | 5 +++++
+ drivers/nvme/host/pci.c    | 3 +--
+ drivers/nvme/host/rdma.c   | 4 ++--
+ drivers/nvme/host/tcp.c    | 4 ++--
+ drivers/nvme/target/loop.c | 4 ++--
+ 5 files changed, 12 insertions(+), 8 deletions(-)
 
-Israel Rukshin (4):
-  nvme: introduce nvme_is_aen_req function
-  nvmet: use bio_io_error instead of duplicating it
-  nvmet: add unlikely check at nvmet_req_alloc_sgl
-  nvmet-rdma: add unlikely check at nvmet_rdma_map_sgl_keyed
-
-Max Gurtovoy (4):
-  nvme: introduce "Command Aborted By host" status code
-  nvme: move common call to nvme_cleanup_cmd to core layer
-  nvmet-loop: fix possible leakage during error flow
-  nvme-tcp: fix possible leakage during error flow
-
- drivers/nvme/host/core.c          |  4 +++-
- drivers/nvme/host/fc.c            |  3 +--
- drivers/nvme/host/multipath.c     |  1 +
- drivers/nvme/host/nvme.h          |  5 +++++
- drivers/nvme/host/pci.c           |  4 +---
- drivers/nvme/host/rdma.c          | 16 +++++++---------
- drivers/nvme/host/tcp.c           |  5 +++--
- drivers/nvme/target/core.c        |  2 +-
- drivers/nvme/target/io-cmd-bdev.c |  8 +++-----
- drivers/nvme/target/loop.c        |  9 +++++----
- drivers/nvme/target/rdma.c        |  4 ++--
- include/linux/nvme.h              |  1 +
- 12 files changed, 33 insertions(+), 29 deletions(-)
-
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 38a83ef5..912f950 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -445,6 +445,11 @@ static inline void nvme_put_ctrl(struct nvme_ctrl *ctrl)
+ 	put_device(ctrl->device);
+ }
+ 
++static inline bool nvme_is_aen_req(u16 qid, __u16 command_id)
++{
++	return !qid && command_id >= NVME_AQ_BLK_MQ_DEPTH;
++}
++
+ void nvme_complete_rq(struct request *req);
+ bool nvme_cancel_request(struct request *req, void *data, bool reserved);
+ bool nvme_change_ctrl_state(struct nvme_ctrl *ctrl,
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 78e4038..f8f76a9 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -967,8 +967,7 @@ static inline void nvme_handle_cqe(struct nvme_queue *nvmeq, u16 idx)
+ 	 * aborts.  We don't even bother to allocate a struct request
+ 	 * for them but rather special case them here.
+ 	 */
+-	if (unlikely(nvmeq->qid == 0 &&
+-			cqe->command_id >= NVME_AQ_BLK_MQ_DEPTH)) {
++	if (unlikely(nvme_is_aen_req(nvmeq->qid, cqe->command_id))) {
+ 		nvme_complete_async_event(&nvmeq->dev->ctrl,
+ 				cqe->status, &cqe->result);
+ 		return;
+diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+index 4d28016..154fa4e 100644
+--- a/drivers/nvme/host/rdma.c
++++ b/drivers/nvme/host/rdma.c
+@@ -1501,8 +1501,8 @@ static void nvme_rdma_recv_done(struct ib_cq *cq, struct ib_wc *wc)
+ 	 * aborts.  We don't even bother to allocate a struct request
+ 	 * for them but rather special case them here.
+ 	 */
+-	if (unlikely(nvme_rdma_queue_idx(queue) == 0 &&
+-			cqe->command_id >= NVME_AQ_BLK_MQ_DEPTH))
++	if (unlikely(nvme_is_aen_req(nvme_rdma_queue_idx(queue),
++				     cqe->command_id)))
+ 		nvme_complete_async_event(&queue->ctrl->ctrl, cqe->status,
+ 				&cqe->result);
+ 	else
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 385a521..124fda6 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -491,8 +491,8 @@ static int nvme_tcp_handle_comp(struct nvme_tcp_queue *queue,
+ 	 * aborts.  We don't even bother to allocate a struct request
+ 	 * for them but rather special case them here.
+ 	 */
+-	if (unlikely(nvme_tcp_queue_id(queue) == 0 &&
+-	    cqe->command_id >= NVME_AQ_BLK_MQ_DEPTH))
++	if (unlikely(nvme_is_aen_req(nvme_tcp_queue_id(queue),
++				     cqe->command_id)))
+ 		nvme_complete_async_event(&queue->ctrl->ctrl, cqe->status,
+ 				&cqe->result);
+ 	else
+diff --git a/drivers/nvme/target/loop.c b/drivers/nvme/target/loop.c
+index 748a39f..bd1f81f 100644
+--- a/drivers/nvme/target/loop.c
++++ b/drivers/nvme/target/loop.c
+@@ -102,8 +102,8 @@ static void nvme_loop_queue_response(struct nvmet_req *req)
+ 	 * aborts.  We don't even bother to allocate a struct request
+ 	 * for them but rather special case them here.
+ 	 */
+-	if (unlikely(nvme_loop_queue_idx(queue) == 0 &&
+-			cqe->command_id >= NVME_AQ_BLK_MQ_DEPTH)) {
++	if (unlikely(nvme_is_aen_req(nvme_loop_queue_idx(queue),
++				     cqe->command_id))) {
+ 		nvme_complete_async_event(&queue->ctrl->ctrl, cqe->status,
+ 				&cqe->result);
+ 	} else {
 -- 
 1.8.3.1
 
