@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B73C6D56E7
-	for <lists+linux-nvme@lfdr.de>; Sun, 13 Oct 2019 18:58:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14A4ED56EA
+	for <lists+linux-nvme@lfdr.de>; Sun, 13 Oct 2019 18:58:58 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,37 +11,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=GMVD8W5eXPU7sZqLotTwUrmpsyXw2jVM1mg0ZOZy7Zk=; b=DKrTqzY1UmW0CMuqnVkLvOAbjT
-	0W0Asl91SNRBNfPmUNc0UllWTwDeaB5zS/UdF+HW+N7ff+t0FBr6q8GwlniActguKTL5O9gkcnGVB
-	8eLO1hgs9A5ateRalFG/xCNrWgLIm7bWrFT274L+yciDER1XIaLxDdlsvEjzR3Bavr/ZyHErGeFUs
-	b2Y8K4OOya1+ltPesYN/4i8BHr9T+w2hG5JlFx+06kqKV982LUnxfVtBBw6D9wPdIZrgoOP84HbYC
-	UF1LbVJlRBrjg4N5pslshv5LO/4yK6Kkte+V8cJFKmgeKEtymbiDn+A5V7Ta8wllkO3n2AYiu9wW3
-	AfPYUyCA==;
+	bh=kI6jJWbwxjLnye9LfVSgymAmDAswWN4ObBaLrcxuVM8=; b=s/9Og2k2M4YvUEAohm6AzXgsVL
+	jCDg5nezG6prGyaUmSvt7XieQsAw0S3vDEXxEVJLs1xHh6Iyzf5+wK/qFaC9UtR7n2Q07hDA+w5+N
+	S8MHLEwAJXpAO8ge6/ZIe9vh7qoBS8YQxRzb0kPaJHrguGNXalGcjpGpgRl8rttpRfdLCj4ioO5JQ
+	3jAOjgv5GAyrxD29kxbBWGqpbZcCQT1/9W8O8ODmFMCWv4uuYsUn1hh3lgCaFskuQAfStarc6Mxc0
+	GkvfB6HkZLl5YUNjBld3/8HfSvPF5/Vf9gB5rYsZzskVrf+RDVDGu0UjKaIppfSnRqpOL32+EpYqS
+	y0WaN6tA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iJhBw-0004yU-Hi; Sun, 13 Oct 2019 16:58:00 +0000
+	id 1iJhCh-0005Yt-ET; Sun, 13 Oct 2019 16:58:47 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iJhBo-0004u0-Qm
- for linux-nvme@lists.infradead.org; Sun, 13 Oct 2019 16:57:54 +0000
+ id 1iJhBq-0004u3-6d
+ for linux-nvme@lists.infradead.org; Sun, 13 Oct 2019 16:57:56 +0000
 Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  maxg@mellanox.com)
- with ESMTPS (AES256-SHA encrypted); 13 Oct 2019 18:57:39 +0200
+ with ESMTPS (AES256-SHA encrypted); 13 Oct 2019 18:57:40 +0200
 Received: from r-vnc12.mtr.labs.mlnx (r-vnc12.mtr.labs.mlnx [10.208.0.12])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x9DGvdoN005965;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id x9DGvdoO005965;
  Sun, 13 Oct 2019 19:57:39 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, hch@lst.de, kbusch@kernel.org,
  sagi@grimberg.me
-Subject: [PATCH 2/8] nvmet: use bio_io_error instead of duplicating it
-Date: Sun, 13 Oct 2019 19:57:32 +0300
-Message-Id: <1570985858-26805-3-git-send-email-maxg@mellanox.com>
+Subject: [PATCH 3/8] nvmet: add unlikely check at nvmet_req_alloc_sgl
+Date: Sun, 13 Oct 2019 19:57:33 +0300
+Message-Id: <1570985858-26805-4-git-send-email-maxg@mellanox.com>
 X-Mailer: git-send-email 1.7.1
 In-Reply-To: <1570985858-26805-1-git-send-email-maxg@mellanox.com>
 References: <1570985858-26805-1-git-send-email-maxg@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191013_095753_262861_BF3E0B7C 
-X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-CacheID: sfid-20191013_095754_634466_F78875CD 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -74,35 +74,28 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Israel Rukshin <israelr@mellanox.com>
 
-This commit doesn't change any logic.
+The call to sgl_alloc shouldn't fail so add this simple optimization to
+the fast path.
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
 Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/nvme/target/io-cmd-bdev.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ drivers/nvme/target/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/target/io-cmd-bdev.c b/drivers/nvme/target/io-cmd-bdev.c
-index 32008d8..f2618dc 100644
---- a/drivers/nvme/target/io-cmd-bdev.c
-+++ b/drivers/nvme/target/io-cmd-bdev.c
-@@ -261,12 +261,10 @@ static void nvmet_bdev_execute_discard(struct nvmet_req *req)
- 	if (bio) {
- 		bio->bi_private = req;
- 		bio->bi_end_io = nvmet_bio_done;
--		if (status) {
--			bio->bi_status = BLK_STS_IOERR;
--			bio_endio(bio);
--		} else {
-+		if (status)
-+			bio_io_error(bio);
-+		else
- 			submit_bio(bio);
--		}
- 	} else {
- 		nvmet_req_complete(req, status);
+diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
+index 3a67e24..6b39cfc 100644
+--- a/drivers/nvme/target/core.c
++++ b/drivers/nvme/target/core.c
+@@ -966,7 +966,7 @@ int nvmet_req_alloc_sgl(struct nvmet_req *req)
  	}
+ 
+ 	req->sg = sgl_alloc(req->transfer_len, GFP_KERNEL, &req->sg_cnt);
+-	if (!req->sg)
++	if (unlikely(!req->sg))
+ 		return -ENOMEM;
+ 
+ 	return 0;
 -- 
 1.8.3.1
 
