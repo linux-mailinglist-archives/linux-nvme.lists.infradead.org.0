@@ -2,55 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61D36D65DD
-	for <lists+linux-nvme@lfdr.de>; Mon, 14 Oct 2019 17:06:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 05A79D6627
+	for <lists+linux-nvme@lfdr.de>; Mon, 14 Oct 2019 17:33:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PidjA+W5IlfJNaRQcEVBmI0DEt8Zz+iNiiA90TBIJrI=; b=mCSB1xHHd4VVoK
-	/sEquZPj+00EoAzlFp0/SjroYiTt20BDvsKwjsKW3R0PtD+Oy4S3gRQHAxDzzvshXlDM86V6YcOIh
-	NmN0YiovIhn4EjovIfx7DsiH5wBRTjx4ZqADZlRNS8DeBI8MiPmQoI384CeitJsttyWNbeV3DyLTr
-	lt1UWAqDhVjGg/xj419Gg3Fy5Uu6w1AsuJkPETT0HBrGfOVbc9du20PDOFcbABpc1tuTEQQfgbA87
-	ajJwdkfM2bPXMpRqVo2ggR2dXnZ/AAZAxHqfwg7a2HA2x4MCqTFqY8vGJD9CV08ibFrA/mjw9MT1y
-	wfRcd/CgJrVIDHgBFcCg==;
+	List-Owner; bh=6O2zxjrC65+kF9mc2OVRglOCTC+l5KKeJ6fVrr3euX4=; b=aL04ub1LpIrS7E
+	hrVNjWyEdaLn81fRyg2/TtmVtVNeThLfF1STXgk5dENbo++hiNmhZViUpzSVtfYvFrMXqMFfPwJ6m
+	oeFZQyWFq8jRcLqjgz3QKPQl8aWwSvJgEcMLqeUVWXZ3JiVER663Dii7OZb++xL1zEYXEptVJL6IN
+	NN1l07Ra3UeW/dUBWGK2n1nStGq8fDOXKJY5rgKApNdKPk4ZlgrTkOsvg7FpV6/noTxLLGBwClS8W
+	jBmVkHW0rRZ2R0F2Ck7gCIj3nz2AwUwBHjteAUizvX1KSSGiqVlyvACSpqMPf7ZCstQE+rBYTkCCA
+	MzBCCeqOy3gy8TMBPT/Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iK1vt-0000CM-HI; Mon, 14 Oct 2019 15:06:49 +0000
+	id 1iK2LN-0001xB-9k; Mon, 14 Oct 2019 15:33:09 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iK1vn-0000C1-V2
- for linux-nvme@lists.infradead.org; Mon, 14 Oct 2019 15:06:45 +0000
+ id 1iK2LA-0001qQ-NH
+ for linux-nvme@lists.infradead.org; Mon, 14 Oct 2019 15:32:58 +0000
 Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id CFF512133F;
- Mon, 14 Oct 2019 15:06:42 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3590F20873;
+ Mon, 14 Oct 2019 15:32:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1571065603;
- bh=SLns/uIZmmOh3WeUfNq4XOOJaSMymeaggmHNRCacIWo=;
+ s=default; t=1571067176;
+ bh=ER27JrVVJoSFfPMLj9zlaq16kU1T7cePD8ACwQk37Ko=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CWxXgSWDfd3GQumMj7bx60zMY7sp31e+VLeN6t/bjehL2OzEQ4XrMPoik9knrgs3R
- EnaavWu95iwwAMWS08umEWEtwsRB1BJOGWrf+kOin2/EZcB3t8M+5TKEsle8qwDjC5
- ALWems0TJIho229bqLWKKZQCUexqvY37PbZGErWg=
-Date: Tue, 15 Oct 2019 00:06:40 +0900
+ b=ihQfAahaWTFzOe7A0CC5X5Y06N87TF/u8YW+n2jzqIf7EUTKytCdoEZVn2uIGAYyz
+ wkpZX8g9jzT4G1BeaDfV25jeb0jtejJxSubXxbcSujkTsOCJahazWM21f1LUzAAgtu
+ iZJNR9Htsm2MmycmSNjEKmh7u68EjIZShxxCZTVI=
+Date: Tue, 15 Oct 2019 00:32:50 +0900
 From: Keith Busch <kbusch@kernel.org>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCHv4 0/5] nvme: double reset prevention
-Message-ID: <20191014150640.GC6142@redsun51.ssa.fujisawa.hgst.com>
-References: <20191010165736.12081-1-kbusch@kernel.org>
- <12fd3758-ff71-c02d-1545-5ce8189c2c59@intel.com>
- <20191011162714.GB75437@C02WT3WMHTD6.wdl.wdc.com>
- <20191014071536.GB10081@lst.de>
+To: Max Gurtovoy <maxg@mellanox.com>
+Subject: Re: [PATCH 7/8] nvmet-loop: fix possible leakage during error flow
+Message-ID: <20191014153250.GD6142@redsun51.ssa.fujisawa.hgst.com>
+References: <1570985858-26805-1-git-send-email-maxg@mellanox.com>
+ <1570985858-26805-8-git-send-email-maxg@mellanox.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191014071536.GB10081@lst.de>
+In-Reply-To: <1570985858-26805-8-git-send-email-maxg@mellanox.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191014_080644_017029_811D545F 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20191014_083256_791763_529C0889 
+X-CRM114-Status: GOOD (  14.21  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -79,24 +77,46 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Judy Brock <judy.brock@samsung.com>, "Nadolski,
- Edmund" <edmund.nadolski@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
- linux-nvme@lists.infradead.org, James Smart <james.smart@broadcom.com>
+Cc: sagi@grimberg.me, israelr@mellanox.com, james.smart@broadcom.com,
+ linux-nvme@lists.infradead.org, shlomin@mellanox.com, hch@lst.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Oct 14, 2019 at 09:15:36AM +0200, Christoph Hellwig wrote:
-> On Fri, Oct 11, 2019 at 10:27:14AM -0600, Keith Busch wrote:
-> > Christoph, any remaining concerns on this? If no, do you prefer I push
-> > this to 5.5 or 5.4? This fixings reported bugs, but it ended up a bit
-> > larger and later than I originally hoped, so I'm okay either way.
+On Sun, Oct 13, 2019 at 07:57:37PM +0300, Max Gurtovoy wrote:
+> During nvme_loop_queue_rq error flow, one must call nvme_cleanup_cmd since
+> it's symmetric to nvme_setup_cmd.
 > 
-> We're still relatively in the 5.4 cycle, so I think we should aim
-> for that.
+> Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+> Reviewed-by: Christoph Hellwig <hch@lst.de>
 
-Thanks, applied to nvme-5.4. Will send the PR mid-week.
+Actualy this and patch 8 look like they should go in nvme-5.4 rather
+than wait for 5.5. I'll push tomorrow if no one objects.
+
+> ---
+>  drivers/nvme/target/loop.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/nvme/target/loop.c b/drivers/nvme/target/loop.c
+> index 5b7b197..74a61262 100644
+> --- a/drivers/nvme/target/loop.c
+> +++ b/drivers/nvme/target/loop.c
+> @@ -156,8 +156,10 @@ static blk_status_t nvme_loop_queue_rq(struct blk_mq_hw_ctx *hctx,
+>  		iod->sg_table.sgl = iod->first_sgl;
+>  		if (sg_alloc_table_chained(&iod->sg_table,
+>  				blk_rq_nr_phys_segments(req),
+> -				iod->sg_table.sgl, SG_CHUNK_SIZE))
+> +				iod->sg_table.sgl, SG_CHUNK_SIZE)) {
+> +			nvme_cleanup_cmd(req);
+>  			return BLK_STS_RESOURCE;
+> +		}
+>  
+>  		iod->req.sg = iod->sg_table.sgl;
+>  		iod->req.sg_cnt = blk_rq_map_sg(req->q, req, iod->sg_table.sgl);
+> -- 
+> 1.8.3.1
+> 
 
 _______________________________________________
 Linux-nvme mailing list
