@@ -2,53 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 022AAD6823
-	for <lists+linux-nvme@lfdr.de>; Mon, 14 Oct 2019 19:15:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 907DED7A8C
+	for <lists+linux-nvme@lfdr.de>; Tue, 15 Oct 2019 17:53:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=2xxUFZASaopt2Wo1tr8G3Qf9+YmkMEe4NDXWBKeWiKM=; b=NVz
-	yJJjXYS3w2fruy3IOouKI/MXHpANCMO2H7arhbC1tRH4pYhYfHg0AmLT8Lr5UMMgVkPWoaXqx1RAE
-	t39mKKrZ9XtPzeL0BKenVEmuiq0OjonLfaofAUodZs7f3RP5GO2LO+SQebiSy6YTuA2Ptm11xZlVY
-	hUYUZcZxMaHx/mgTSgQAtroEsnhttxAMAKmCA0XNc9GQK3IS6t2PAy5vOrYTonEdJpWiz0aSP3H/5
-	7qn0SqbTFgpI0geGapmsrxYxXcIs7G4X+L1o8tztUmPWe52yJ7qrWh544YlcNg3pWHYmgxtgKSrKY
-	YgylyCkL+vj9GXZWiR9bIZcF7EpMo0w==;
+	References:List-Owner; bh=2xxUFZASaopt2Wo1tr8G3Qf9+YmkMEe4NDXWBKeWiKM=; b=Y4x
+	RzsAv0YGOH4xdol3ogRlWzpVG5AL5DspXeOXLcQiST/IDG8RtK4Yyw3B5+7M0I7IU9tnNCa/t+pfs
+	vOVz3ShEBN3cgplscPfL+Ik58cAgFW5fK/+UV8tRUgqExQxsKxQkaBpjxvWe2R9kw7PjvNNIGlNaG
+	ydHai1kgJfNxThFdHngnV2KRnQZCuM4FCwTGDHl6Lkh43KOS4/EddVCy6TZZd6BNh6VDPzmaGUCbv
+	M+0HJW4Q822brd3/ZAsOs385MdbAre2kwxvaoimDTUeMkA1OUb88laT+qqzCkVGpkpulnG+8sZBtZ
+	Bl9Fpfids1fR1swQYyXp6G5laTWaQkQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iK3wh-00019a-TG; Mon, 14 Oct 2019 17:15:47 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1iKP83-0004zL-Tg; Tue, 15 Oct 2019 15:52:55 +0000
+Received: from mga17.intel.com ([192.55.52.151])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iK3wb-000197-AL
- for linux-nvme@lists.infradead.org; Mon, 14 Oct 2019 17:15:43 +0000
+ id 1iKP6g-0003mO-Om
+ for linux-nvme@lists.infradead.org; Tue, 15 Oct 2019 15:51:32 +0000
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 Oct 2019 10:15:39 -0700
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 15 Oct 2019 08:51:29 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,296,1566889200"; d="scan'208";a="225138841"
+X-IronPort-AV: E=Sophos;i="5.67,300,1566889200"; d="scan'208";a="370499318"
 Received: from unknown (HELO revanth-X299-AORUS-Gaming-3-Pro.lm.intel.com)
  ([10.232.116.91])
- by fmsmga002.fm.intel.com with ESMTP; 14 Oct 2019 10:15:39 -0700
+ by orsmga005.jf.intel.com with ESMTP; 15 Oct 2019 08:51:28 -0700
 From: Revanth Rajashekar <revanth.rajashekar@intel.com>
 To: linux-nvme@lists.infradead.org
 Subject: [PATCH] nvme: resync include/linux/nvme.h with nvmecli
-Date: Mon, 14 Oct 2019 11:18:13 -0600
-Message-Id: <20191014171813.29214-1-revanth.rajashekar@intel.com>
+Date: Tue, 15 Oct 2019 09:54:02 -0600
+Message-Id: <20191015155402.10462-1-revanth.rajashekar@intel.com>
 X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191014_101541_400009_AA8CA3DB 
-X-CRM114-Status: GOOD (  10.96  )
-X-Spam-Score: -5.0 (-----)
+X-CRM114-CacheID: sfid-20191015_085130_827711_D0C2E115 
+X-CRM114-Status: GOOD (  11.47  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [134.134.136.65 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [192.55.52.151 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
 X-BeenThere: linux-nvme@lists.infradead.org
