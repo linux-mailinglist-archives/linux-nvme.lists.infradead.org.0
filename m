@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DF7EDE1F8
-	for <lists+linux-nvme@lfdr.de>; Mon, 21 Oct 2019 04:14:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 94CE2DE1FD
+	for <lists+linux-nvme@lfdr.de>; Mon, 21 Oct 2019 04:15:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -11,50 +11,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=WOT6A8YqrK+x1577Ti50bUWbeGIsAwnW77QsIMkL6xU=; b=FiuJ6ALKBRvliK9YeC2pr6UF5I
-	tE1dbxUNChQWEW85NkTs0SMv1OtuPZPrW4kkxePXLr5IuoSwkfI8bghVU4rnFt64+RgnMwKGjL9Vg
-	1s4lABwrXT7AjA8SSTgYt51OjaKdNuzFOrU8WXapwHflGRp2uRzH4ZDuP1SKykpbF5OFwVCD5qAbw
-	qUjzCNoXvovxGaIFrg6uhwA2CONvyIkUNZagbXlQ1guR/LHF6Zqt74cHbYQVSQt5eMwb/ADb3DlY2
-	4DiLqnW/WGu1hiCf/FobOn2qbyjyKuNJz6CIG/kSsSW2FCMXpwric7V19CnoprwuNbx6fm0TZLwK5
-	MQq1pwCw==;
+	bh=CNb1VBHoKOLHzCqgyQTpRreS4CreWo5a3V1E3UWQHPs=; b=Ne02j/C5qSCiEk1hpnIJEjCwjs
+	/1C8vu/GjRGIcufBIzceuwLzDTlGxfDI/6sVrXpB8VOTxs96RYAE8AqKXz/qBVwS49tCYOGcwtPWG
+	k9xDecAYLn+fLPN+SewCNZfkDCPIo2I2P8i5Gc3ncI9K8lVYuIr/Up2K/KmfRcyG8vhxQGzN0lL2L
+	RIWyiTQdue91Bf/r5JM+QuV4wKYvJtNqCrwkH9UZOpQz+mCfupIoJ3UBbSRVw4fYdexqg1qtmB/E9
+	/j4jY+Yl9PKADolT1aTHZe940zDvQ8N9uX41idd5ATCwgYWEmrbY25pKGH/hoyyI7UhItYfjn9vHu
+	WYHBuD5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMNCv-0000QJ-4r; Mon, 21 Oct 2019 02:14:05 +0000
-Received: from mail-pf1-f196.google.com ([209.85.210.196])
+	id 1iMNE1-0000uG-7p; Mon, 21 Oct 2019 02:15:13 +0000
+Received: from mail-pf1-f195.google.com ([209.85.210.195])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMNCq-0000Ot-2w
- for linux-nvme@lists.infradead.org; Mon, 21 Oct 2019 02:14:02 +0000
-Received: by mail-pf1-f196.google.com with SMTP id 205so7399255pfw.2
- for <linux-nvme@lists.infradead.org>; Sun, 20 Oct 2019 19:13:57 -0700 (PDT)
+ id 1iMNDp-0000dj-AF
+ for linux-nvme@lists.infradead.org; Mon, 21 Oct 2019 02:15:02 +0000
+Received: by mail-pf1-f195.google.com with SMTP id q12so7391080pff.9
+ for <linux-nvme@lists.infradead.org>; Sun, 20 Oct 2019 19:15:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=OxsEvWtsrV0kpZL/JGbC5sHeGTodO968ByDmkrAGEHQ=;
- b=id0u4b1Vg92wT81b46QmdFDxvONUdrXXUAVOtdeW4gBbziilyAvVZvCG79s/jHIp/B
- DaO9aypf6Ai0WQNIDFSH0lInhVjeEoPgezdHAA379r49HvfR3JzOMnwj8OCmPmsZ3yQ2
- Rl062f0OQdqhFvTPlAbHXWraRh2GyBbTZao83VQSBeFBGVNuSH7iSKTTK7CywaaLjIwZ
- ZbT/G/YJMue4ASiHQ6x0HMrZ5VSm8SwYStibSg2ud/LjA2vlBdf6rFJvMZ2NzYAjLdHd
- I8Xwu5q+lPscAjTnszpim57zTope+i3as8tzUxWWfo5VUGJDMhYFOvTj9fEQXn54oXEh
- DJFw==
-X-Gm-Message-State: APjAAAWU/IcEuY0tHLXSaR0dLaZpN1dVGl/ZioYLJNdh9NzGRl6TRN49
- c5E/LKbuGUMxHGHshf3ghUM=
-X-Google-Smtp-Source: APXvYqytUpEHj+nrSKjVXvgC5oIg6M8crN5THXkx2pkXdldckeQTUZoimsY/ABPrxLDVm4b/7J9eVg==
-X-Received: by 2002:aa7:9a0c:: with SMTP id w12mr19862556pfj.81.1571624037167; 
- Sun, 20 Oct 2019 19:13:57 -0700 (PDT)
+ bh=rQGR8mfXhmatZdrMVXi7RNTYwvN9Zv0kQDfyar7Sl2w=;
+ b=XjemGNLRtOFHE0ElFpe8hQSnk4NQ6NhDBxRuM3lpxzaBuW3a2yhEIJw73CwpFnk236
+ xEX+u/Ulexw5vf4C+Kk3mvGEQRlUOPcyNbe1DXRFrotG0UWDE2VQkt85nyQfoAgeBYuM
+ oHTMLXWPGZvVhpO9rsjqSokYlSTMCiHSG9qfJGwOb6gqqgCY4iIWdj7ufKWmc9CKNaiW
+ NLPsuIzZljJHoDtCMkbNNguKGRqWlSF/1RrUl4HaGNbWKzN6VosyS/fxHxwl4eaGNw4r
+ ev2Gaxpfe/uX24sArn6bmbPkTg2aWwmXx7flgYZf8Yv5Llq5TeU8/bhbcpFvnBqobLKF
+ qerQ==
+X-Gm-Message-State: APjAAAUeIO1G2TLOQHbZpZHTs6ONMG20Ncmq3L7UtZewyFFaT7u4n96n
+ jSxbuHO6h0b5Rdvjd0NZBmk=
+X-Google-Smtp-Source: APXvYqwcmXT1SlqO8OhYtxtCbtWgrEba/we7E84gnBpH/qcbPwcsKJ+gVmFs+wp3uhFSSshweicH5A==
+X-Received: by 2002:a17:90a:19c1:: with SMTP id
+ 1mr25528780pjj.52.1571624100347; 
+ Sun, 20 Oct 2019 19:15:00 -0700 (PDT)
 Received: from localhost.localdomain ([2601:647:4000:ce:256c:d417:b24b:327f])
  by smtp.gmail.com with ESMTPSA id
- 2sm15883770pfa.43.2019.10.20.19.13.55
+ g12sm13861608pfb.97.2019.10.20.19.14.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 20 Oct 2019 19:13:56 -0700 (PDT)
-Subject: Re: [PATCH 1/2] nvme: Cleanup nvme_block_nr()
+ Sun, 20 Oct 2019 19:14:59 -0700 (PDT)
+Subject: Re: [PATCH 2/2] nvme: Introduce nvme_block_sect()
 To: Damien Le Moal <damien.lemoal@wdc.com>, linux-nvme@lists.infradead.org,
  Christoph Hellwig <hch@lst.de>, Keith Busch <kbusch@kernel.org>,
  Sagi Grimberg <sagi@grimberg.me>, linux-block@vger.kernel.org,
  Jens Axboe <axboe@kernel.dk>
 References: <20191020234220.14888-1-damien.lemoal@wdc.com>
- <20191020234220.14888-2-damien.lemoal@wdc.com>
+ <20191020234220.14888-3-damien.lemoal@wdc.com>
 From: Bart Van Assche <bvanassche@acm.org>
 Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
  mQENBFSOu4oBCADcRWxVUvkkvRmmwTwIjIJvZOu6wNm+dz5AF4z0FHW2KNZL3oheO3P8UZWr
@@ -79,23 +80,21 @@ Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
  //x8dLe2Fv1By4SKGhmzwH87uXxbTJAUxiWIi1np0z3/RDnoVyfmfbbL1DY7zf2hYXLLzsJR
  mSsED/1nlJ9Oq5fALdNEPgDyPUerqHxcmIub+pF0AzJoYHK5punqpqfGmqPbjxrJLPJfHVKy
  goMj5DlBMoYqEgpbwdUYkH6QdizJJCur4icy8GUNbisFYABeoJ91pnD4IGei3MTdvINSZI5e
-Message-ID: <0be8a36e-ee0b-0378-799b-a9ec2f1bad0c@acm.org>
-Date: Sun, 20 Oct 2019 19:13:55 -0700
+Message-ID: <092dd421-c439-f020-f2de-a7d17e56bd09@acm.org>
+Date: Sun, 20 Oct 2019 19:14:58 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191020234220.14888-2-damien.lemoal@wdc.com>
+In-Reply-To: <20191020234220.14888-3-damien.lemoal@wdc.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191020_191400_132762_C370644D 
-X-CRM114-Status: GOOD (  18.23  )
+X-CRM114-CacheID: sfid-20191020_191501_374380_AFB5C1CD 
+X-CRM114-Status: GOOD (  11.57  )
 X-Spam-Score: 0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.196 listed in list.dnswl.org]
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
@@ -103,7 +102,9 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (bart.vanassche[at]gmail.com)
  -0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.196 listed in wl.mailspike.net]
+ [209.85.210.195 listed in wl.mailspike.net]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.195 listed in list.dnswl.org]
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
  -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
@@ -124,38 +125,19 @@ Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 On 2019-10-20 16:42, Damien Le Moal wrote:
-> Use SECTOR_SHIFT instead of its hard coded value 9. Also add a comment
-> to decribe this helper.
-> 
-> Signed-off-by: Damien Le Moal <damien.lemoal@wdc.com>
-> ---
->  drivers/nvme/host/nvme.h | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-> index 22e8401352c2..a979b62ea4b2 100644
-> --- a/drivers/nvme/host/nvme.h
-> +++ b/drivers/nvme/host/nvme.h
-> @@ -419,9 +419,12 @@ static inline int nvme_reset_subsystem(struct nvme_ctrl *ctrl)
->  	return ctrl->ops->reg_write32(ctrl, NVME_REG_NSSR, 0x4E564D65);
->  }
->  
 > +/*
-> + * Convert a 512B sector number to a block number.
+> + * Convert a logical block number to a 512B sector number.
 > + */
->  static inline u64 nvme_block_nr(struct nvme_ns *ns, sector_t sector)
->  {
-> -	return (sector >> (ns->lba_shift - 9));
-> +	return sector >> (ns->lba_shift - SECTOR_SHIFT);
->  }
+> +static inline sector_t nvme_block_sect(struct nvme_ns *ns, u64 lba)
+> +{
+> +	return lba << (ns->lba_shift - SECTOR_SHIFT);
+> +}
 
-Has it been considered to rename nvme_block_nr() into
-nvme_sect_to_lba()? I think the latter name is more clear.
+How about renaming this function into nvme_lba_to_sect()?
 
 Thanks,
 
 Bart.
-
 
 _______________________________________________
 Linux-nvme mailing list
