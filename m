@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69D6ADE522
-	for <lists+linux-nvme@lfdr.de>; Mon, 21 Oct 2019 09:14:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 79E36DE523
+	for <lists+linux-nvme@lfdr.de>; Mon, 21 Oct 2019 09:15:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -11,30 +11,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=uMFfmNXUsmfvCFHUJHQxW4u74zphSXxkIJ0UGyokcwE=; b=W8/yreZwF3FIgRqoS6LrVSw+Fs
-	qjrMK7rd3xnSHrp1J0Ycah5NU2n6/LfQZACtOCRSUp8dr9aqS3hZ87iQG4oDwZpuatBC2KGAsB62Y
-	NFnFRwj74SyPfPrlaXGUxWM7pkpw8kypuSfuUtnN9XH3hCrGTMLDjQgXCHKhL/f3NZTdUao3zGXcG
-	6vg/mYfEjXpliaT1AyBlCq7wy4kA7tfOavwp7dViPpRGSOBJ42pMmRJqULgnMQUkaeKo7tgIJYSMU
-	vPXLIRPSMCRGGWXsTcNHMGMK79lT5o02hfZuWRH6iTWqaf303WX1uOUmdw2D6PPEyxi41Vwr9rver
-	5Ouq73Ng==;
+	bh=Ztc5+0oKAxO+chWxNKd4Ep2m2mewwVMERlfkrj02rSY=; b=R88dWuoZw5Uz4PiHWHO4ENG9hV
+	GraXh69ibFgwuY3SR3lWgk2kg/4t/6hlccrkoZoohsiVPYQwAg2hBCxf/RV7TgUBHEr2svVO+pEfB
+	JAvRY8k+KNuRenJ97L4Eo/7+z2isA+pSDxfZx/+EAeZdNgSOylFJlZmn0ek4IoRkdD4kVwQ2tZG3W
+	YInTnbEUetS12LEJr2ckpi2TctZwpJ2tRl64T2H/PPgsZHuLsGk2J3pTGnzbWcq+VpSKrIK1896e5
+	rav7aRFgjdUzii55uRwuvDFRvpDoT6LlHfeQVpc4iQrRK8m+ij4I3lm5f9hhNvUWUwNZ1wmKfFH9E
+	ibywUrug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMRtj-0006cp-Bm; Mon, 21 Oct 2019 07:14:35 +0000
+	id 1iMRu3-0006pn-Re; Mon, 21 Oct 2019 07:14:55 +0000
 Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMRtf-0006bb-6W
- for linux-nvme@lists.infradead.org; Mon, 21 Oct 2019 07:14:32 +0000
+ id 1iMRtm-0006g2-39
+ for linux-nvme@lists.infradead.org; Mon, 21 Oct 2019 07:14:39 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id D3884ABD3;
- Mon, 21 Oct 2019 07:14:22 +0000 (UTC)
-Subject: Re: [PATCH 1/2 v2] nvme: Cleanup and rename nvme_block_nr()
+ by mx1.suse.de (Postfix) with ESMTP id BD50CABD3;
+ Mon, 21 Oct 2019 07:14:36 +0000 (UTC)
+Subject: Re: [PATCH 2/2 v2] nvme: Introduce nvme_lba_to_sect()
 To: Damien Le Moal <damien.lemoal@wdc.com>, linux-nvme@lists.infradead.org,
  Christoph Hellwig <hch@lst.de>, Keith Busch <kbusch@kernel.org>,
  Sagi Grimberg <sagi@grimberg.me>, linux-block@vger.kernel.org,
  Jens Axboe <axboe@kernel.dk>
 References: <20191021034004.11063-1-damien.lemoal@wdc.com>
- <20191021034004.11063-2-damien.lemoal@wdc.com>
+ <20191021034004.11063-3-damien.lemoal@wdc.com>
 From: Johannes Thumshirn <jthumshirn@suse.de>
 Openpgp: preference=signencrypt
 Autocrypt: addr=jthumshirn@suse.de; prefer-encrypt=mutual; keydata=
@@ -92,16 +92,16 @@ Autocrypt: addr=jthumshirn@suse.de; prefer-encrypt=mutual; keydata=
  l2t2TyTuHm7wVUY2J3gJYgG723/PUGW4LaoqNrYQUr/rqo6NXw6c+EglRpm1BdpkwPwAng63
  W5VOQMdnozD2RsDM5GfA4aEFi5m00tE+8XPICCtkduyWw+Z+zIqYk2v+zraPLs9Gs0X2C7X0
  yvqY9voUoJjG6skkOToGZbqtMX9K4GOv9JAxVs075QRXL3brHtHONDt6udYobzz+
-Message-ID: <6228088c-86ec-a4cd-bef2-6a852cdbfa54@suse.de>
-Date: Mon, 21 Oct 2019 09:14:22 +0200
+Message-ID: <990a3207-bd64-ec3c-586d-971989e8dc51@suse.de>
+Date: Mon, 21 Oct 2019 09:14:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20191021034004.11063-2-damien.lemoal@wdc.com>
+In-Reply-To: <20191021034004.11063-3-damien.lemoal@wdc.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_001431_532878_20CECE10 
-X-CRM114-Status: GOOD (  16.47  )
+X-CRM114-CacheID: sfid-20191021_001438_437831_4D14458F 
+X-CRM114-Status: GOOD (  16.36  )
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
@@ -128,13 +128,13 @@ Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 TG9va3MgZ29vZCwKUmV2aWV3ZWQtYnk6IEpvaGFubmVzIFRodW1zaGlybiA8anRodW1zaGlybkBz
-dXNlLmRlPgotLSAKSm9oYW5uZXMgVGh1bXNoaXJuICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IFNVU0UgTGFicyBGaWxlc3lzdGVtcwpqdGh1bXNoaXJuQHN1c2UuZGUgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICs0OSA5MTEgNzQwNTMgNjg5ClNVU0UgU29mdHdhcmUgU29sdXRpb25z
-IEdlcm1hbnkgR21iSApNYXhmZWxkc3RyLiA1CjkwNDA5IE7DvHJuYmVyZwpHZXJtYW55CihIUkIg
-MzY4MDksIEFHIE7DvHJuYmVyZykKR2VzY2jDpGZ0c2bDvGhyZXI6IEZlbGl4IEltZW5kw7ZyZmZl
-cgpLZXkgZmluZ2VycHJpbnQgPSBFQzM4IDlDQUIgQzJDNCBGMjVEIDg2MDAgRDBEMCAwMzkzIDk2
-OUQgMkQ3NiAwODUwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1udm1lIG1haWxpbmcgbGlzdApMaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1l
-Cg==
+dXNlLmRlPgoKLS0gCkpvaGFubmVzIFRodW1zaGlybiAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBTVVNFIExhYnMgRmlsZXN5c3RlbXMKanRodW1zaGlybkBzdXNlLmRlICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICArNDkgOTExIDc0MDUzIDY4OQpTVVNFIFNvZnR3YXJlIFNvbHV0aW9u
+cyBHZXJtYW55IEdtYkgKTWF4ZmVsZHN0ci4gNQo5MDQwOSBOw7xybmJlcmcKR2VybWFueQooSFJC
+IDM2ODA5LCBBRyBOw7xybmJlcmcpCkdlc2Now6RmdHNmw7xocmVyOiBGZWxpeCBJbWVuZMO2cmZm
+ZXIKS2V5IGZpbmdlcnByaW50ID0gRUMzOCA5Q0FCIEMyQzQgRjI1RCA4NjAwIEQwRDAgMDM5MyA5
+NjlEIDJENzYgMDg1MAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbnZtZSBtYWlsaW5nIGxpc3QKTGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZt
+ZQo=
