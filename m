@@ -2,70 +2,86 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EDF2DEE7D
-	for <lists+linux-nvme@lfdr.de>; Mon, 21 Oct 2019 15:55:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40216E0CC3
+	for <lists+linux-nvme@lfdr.de>; Tue, 22 Oct 2019 21:49:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p9ir03NMccF3n9nfHEsxopc5e5jgQFJiiXrxRWgIa44=; b=NCZ4TBwRav9f/g
-	0E5BixSmedNy4RqjQMoWq5V7O+kfk+x0yajXzUhe+21/vIZraEN+wKIUP1C/2UnRZGAqc2cMbQRgD
-	Y7rEPWKUnlwkLxW7kT1Pg2wSwOz7cl7B3JuzuRHi5R4s30Cm65J6ttUGVf1T8K3QhF49vsNxYW/Rf
-	RxoWGgTCt6HlT5beGJWW/qxnriWGOwYn7rtc7zsqV3sGBWYIHXwWmwL6XV9D46cAjp2AsXQDkksHc
-	AwA6j+x00fWxiIgVTJrHW1VlCNRA5tRv6JBbfbj2FMUAQdbecMKWx7zI63vxM13VN/M934lNPgvHg
-	xyDEQC/iax3BMLcifgRw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=mzwhEM1WPGlPx04i5gnftJZzuMicnZyqbesD0koUSjg=; b=KILUTsah8+4iP9eOBinnaUG6H
+	Q+scjNwwR8wN/OTUg53C+eUoFDmgH1hv6XA4/c9b4C28J5Qq0Afss1FgNyjjHE1cj9o1A3DEiDEQ3
+	OTZbTrYITlSEeKz/9nH0yYzBrWakwLXb0Yue1cRuRYZhfb2nvKre3fPODGjGzI6Y2+L1xlbmwNWXu
+	y2ju9a1kyLPr+5YATYZYnFtWC3p0A6NTUYy9OFziaAXKbOnd2NT0YAIcjLQtt2v06qoc5P4XfqMae
+	x3cYtFLaT46CLc3qcKQmnFh4zG/nv5hNlS2f94W+4Ulo/GVkjv6iCjELlLfpA+SxQRfcUa0cXYEK9
+	7ZxUaYBOg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMY9y-0008NQ-26; Mon, 21 Oct 2019 13:55:46 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iN09V-0000Yr-4c; Tue, 22 Oct 2019 19:49:09 +0000
+Received: from mail-wr1-f68.google.com ([209.85.221.68])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMY9t-0008Mi-Ir
- for linux-nvme@lists.infradead.org; Mon, 21 Oct 2019 13:55:42 +0000
-Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 886132089C;
- Mon, 21 Oct 2019 13:55:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1571666140;
- bh=9xG00Cs4w+lEsaZ67H86HMtwcgJo+NjnOqwm8alRtnA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=vw9Q+Y9sI89YJagP3TtStQt+niz5HRkUke6B8aDzhDrYSyK0Fm0c5xxTm0nUE5GYY
- hFPrt6jBEZOxFramLOjNamYkrz2W9F+QB2yJk4P9/d8kds0PzNKdj+CEYrOXDKsLqM
- t/ze353WIiJPDmf5rXEGPlg8RDGYpAKXgShyUK+4=
-Date: Mon, 21 Oct 2019 22:55:35 +0900
-From: Keith Busch <kbusch@kernel.org>
-To: Damien Le Moal <damien.lemoal@wdc.com>
-Subject: Re: [PATCH 0/2 v2] Small cleanups
-Message-ID: <20191021135535.GA12633@redsun51.ssa.fujisawa.hgst.com>
-References: <20191021034004.11063-1-damien.lemoal@wdc.com>
+ id 1iN098-0000VV-Va
+ for linux-nvme@lists.infradead.org; Tue, 22 Oct 2019 19:48:51 +0000
+Received: by mail-wr1-f68.google.com with SMTP id a11so3326663wra.6
+ for <linux-nvme@lists.infradead.org>; Tue, 22 Oct 2019 12:48:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=/7Zh1aPWF33tthSbvZvz9bFPO4C1wjLVBXfNd4P57ho=;
+ b=TBeMopkoAx9o5/PkfPOXK78Zyy2iPm/Ug9B1n0wJPrDILPrGeYpt0Xhxnz4DqifIcH
+ RYksVDs1FneOruXZOlo2r9RSqckIEwNiSU6lhdrAx9ds22iaESo20QZ/L+osR6DwNy6a
+ zYc+dhVyu/4+2V3yY8brPovXYuobRTD8TbUE9b4JJxwN5KD+g3A/oHWNR49KpZlprB9L
+ WvxtpK3Z1uJsuhAas1P4TzreXEnMh0Hvzy3nhEp7pIwYxen74mUcnBy9n6tozyUwgjwT
+ cGOFTsbTLeERHeB8MsQ2Cd9nWscU4SlIVdLbDdv+Bzwtq6FB45FEnu4/QpCVW0sRqRez
+ ghAA==
+X-Gm-Message-State: APjAAAUIu14t/1kQBXbKla0ur9vecXVlkrQNrefi+qBXi+jnJo3M3Q0H
+ +u7YCPMkk48wwJNWltcywt0=
+X-Google-Smtp-Source: APXvYqwyiHhSWngRPSmQ1i3svOkD/lGll71A+QUUWDbmv64mvm80etmGSulginfFocLBcopkRyG71w==
+X-Received: by 2002:a5d:50c2:: with SMTP id f2mr4972053wrt.147.1571773720919; 
+ Tue, 22 Oct 2019 12:48:40 -0700 (PDT)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id p15sm19162737wrs.94.2019.10.22.12.48.38
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 22 Oct 2019 12:48:40 -0700 (PDT)
+Subject: Re: [PATCH v2 1/2] nvme-multipath: fix possible io hang after ctrl
+ reconnect
+To: Anton Eidelman <anton@lightbitslabs.com>, linux-nvme@lists.infradead.org, 
+ hch@lst.de, keith.busch@intel.com, hare@suse.de
+References: <20191018091016.GA25478@lst.de>
+ <20191018183251.501-1-anton@lightbitslabs.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <7180cfee-d1d0-6dda-1bae-53235dc49a05@grimberg.me>
+Date: Tue, 22 Oct 2019 12:48:35 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191021034004.11063-1-damien.lemoal@wdc.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20191018183251.501-1-anton@lightbitslabs.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_065541_636991_C4694D5C 
-X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-CacheID: sfid-20191022_124850_291644_6F4AF114 
+X-CRM114-Status: UNSURE (   9.05  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.221.68 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.221.68 listed in wl.mailspike.net]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,23 +93,14 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-block@vger.kernel.org, Jens Axboe <axboe@kernel.dk>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
- Sagi Grimberg <sagi@grimberg.me>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Oct 21, 2019 at 12:40:02PM +0900, Damien Le Moal wrote:
-> This is series is a couple of cleanup patches. The first one cleans up
-> the helper function nvme_block_nr() using SECTOR_SHIFT instead of the
-> hard coded value 9 and clarifies the helper role by renaming it to
-> nvme_sect_to_lba(). The second patch introduces the nvme_lba_to_sect()
-> helper to convert a device logical block number into a 512B sector
-> value.
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 
-Thank you, patches applied to nvme-5.5 with the reviews.
+Keith can you apply these to nvme-5.4-rc?
 
 _______________________________________________
 Linux-nvme mailing list
