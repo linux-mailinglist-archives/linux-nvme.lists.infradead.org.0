@@ -2,68 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 759B6E551A
-	for <lists+linux-nvme@lfdr.de>; Fri, 25 Oct 2019 22:26:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0988E5546
+	for <lists+linux-nvme@lfdr.de>; Fri, 25 Oct 2019 22:41:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JEpwK2MB9UcemkeP3kg73butc6e0fl6PUzdSLhFneEE=; b=Ks1eIc/FyIrdLh
-	4zU7LCTlW7jspwwk2gUg7ddrMoMW3TqmAxIkzqQd7ruX6hrSkTRDEf/P0bsmuQFjT4mDJo2LINOUX
-	+6q2QkGkURChwsLbcjRVjrtinZY35/BVLKLRWZK0EaDZqeAQ+NIyl79sjocda/6iupRFB8YhE1V1e
-	cgGXocVqgG0qa9oewsvtoPnsjn7uZ022JQyJ1TUmDJ1THmbxZeRzPeMdbZcrFZFmjNYNeWtwULxsb
-	akf/OPZYWrXAQdhtP+Yj6xr8Z4CSTgM1uhGpiFg9uP2WgWzeB+E5oEAyucPj1GY29kBybbuZ5Y4PD
-	3MIfTVbo/zbZyMcpJU3g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=2ft+Bd/I0HwOMHJbssu8QK+alF5oNMrElSXXXiVG1QI=; b=XL4nms7jRfg20VmV6PFBJhr+2
+	wY/s8gno2wTmyB1E7yxpDbag7cNUoo1IBXl1XldbkkharTypIE8T8nJeSMXEEQ8Q9KXRrOmFy/xio
+	GJBdRh37JnNFqhobTNYxroXyvnOcs5WwZl0n4qfC/T6TMu3Gg4nH+qcTLB0OGZ0kzHbpCf4dIWXI2
+	E5Vqy9C9QAp1ntHRpYMXbVCeC/reYqNQOQxjLo8J7/1+Vz3Z0AvkXJLthwqDHOO80LzL+B0ESZyk3
+	hc9mEHLbq7lxevAGItAeIinKHaE5P7Q9KpnEqW0HwhaFvJ5F0C30RIrRq+I7utI30KEwKWU3PnAj1
+	2puTzDytQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iO69m-0007di-Hb; Fri, 25 Oct 2019 20:25:58 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1iO6OY-0005eh-Ge; Fri, 25 Oct 2019 20:41:14 +0000
+Received: from mail-wr1-f66.google.com ([209.85.221.66])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iO69U-0007Xi-0O
- for linux-nvme@lists.infradead.org; Fri, 25 Oct 2019 20:25:41 +0000
-Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
- by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.89) (envelope-from <gunthorp@deltatee.com>)
- id 1iO69R-00078e-Ir; Fri, 25 Oct 2019 14:25:39 -0600
-Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
- (envelope-from <gunthorp@deltatee.com>)
- id 1iO69Q-000392-RZ; Fri, 25 Oct 2019 14:25:36 -0600
-From: Logan Gunthorpe <logang@deltatee.com>
-To: linux-kernel@vger.kernel.org,
-	linux-nvme@lists.infradead.org
-Date: Fri, 25 Oct 2019 14:25:35 -0600
-Message-Id: <20191025202535.12036-4-logang@deltatee.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191025202535.12036-1-logang@deltatee.com>
+ id 1iO6OT-0005e6-Gh
+ for linux-nvme@lists.infradead.org; Fri, 25 Oct 2019 20:41:10 +0000
+Received: by mail-wr1-f66.google.com with SMTP id e11so3797202wrv.4
+ for <linux-nvme@lists.infradead.org>; Fri, 25 Oct 2019 13:41:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=WxaN07sSqtpOjQ8EKnsRqm+aBhSXVnsjsX8SbYw017g=;
+ b=bYsO9m48fgFOewVzDkEeIYH+xuOiodMFmsRUekgyIW+x+0mzj4hG6uo02ZDPVOGGSb
+ h/K24A4yHh6ndBZIj+ohZuRXsLCN8WQQhuraIVTi4VPdWj2//zimvLuNgVPcTbFEcebB
+ atS5on84hAmi/F5VkdcUJDvgV6a58ALwzGzrh2OqwR+nh+sZQ52k3xQq6BOFORJ9NrpK
+ f14QcN6BI89JJ3ZggRdu0a5RCCtAoafph3rjaQeMh6BXU9kFzhg1/OMfGwmi/NtiFRc2
+ OqY+Px7qE0/2CvLFkALLx7K5LYiaBsQ7J3K0TbvJlux8799YDMzpoOKLaucW8QhpiggK
+ s6Gg==
+X-Gm-Message-State: APjAAAWiaCNezrgGiClLZwXIaJwXRw48ibo8F5nJaESBR+noRgbvHbuj
+ qhKQD18ktXtvD2L6Ui2tPVA=
+X-Google-Smtp-Source: APXvYqwv23KqkZ9Ld6EaW+bnb9urb/8b9uYNk1FAv2FBIqFRCly/KVqtj4SN6aURgHksLgo6LzXPMQ==
+X-Received: by 2002:a5d:4f8b:: with SMTP id d11mr4844042wru.25.1572036067285; 
+ Fri, 25 Oct 2019 13:41:07 -0700 (PDT)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id u1sm2725219wmc.38.2019.10.25.13.41.05
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 25 Oct 2019 13:41:06 -0700 (PDT)
+Subject: Re: [RFC PATCH 3/3] nvme: Introduce nvme_execute_passthru_rq_nowait()
+To: Logan Gunthorpe <logang@deltatee.com>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org
 References: <20191025202535.12036-1-logang@deltatee.com>
+ <20191025202535.12036-4-logang@deltatee.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <28b40ab8-c695-784e-3f52-03a18b891d25@grimberg.me>
+Date: Fri, 25 Oct 2019 13:41:03 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 172.16.1.31
-X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- hch@lst.de, sagi@grimberg.me, kbusch@kernel.org, Chaitanya.Kulkarni@wdc.com,
- maxg@mellanox.com, sbates@raithlin.com, logang@deltatee.com
-X-SA-Exim-Mail-From: gunthorp@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
- version=3.4.2
-Subject: [RFC PATCH 3/3] nvme: Introduce nvme_execute_passthru_rq_nowait()
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+In-Reply-To: <20191025202535.12036-4-logang@deltatee.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191025_132540_384505_DEC72D8A 
-X-CRM114-Status: GOOD (  13.85  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20191025_134109_556698_FC4B89B2 
+X-CRM114-Status: GOOD (  15.86  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
+ no trust [209.85.221.66 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.221.66 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,108 +91,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
+Cc: Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
+ Christoph Hellwig <hch@lst.de>,
  Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Stephen Bates <sbates@raithlin.com>, Keith Busch <kbusch@kernel.org>,
- Max Gurtovoy <maxg@mellanox.com>, Logan Gunthorpe <logang@deltatee.com>,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="us-ascii"
+ Stephen Bates <sbates@raithlin.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This function is similar to nvme_execute_passthru_rq() but does
-not wait and will call a callback when the request is complete.
+> +#ifdef CONFIG_NVME_TARGET_PASSTHRU
+> +static void nvme_execute_passthru_rq_work(struct work_struct *w)
+> +{
+> +	struct nvme_request *req = container_of(w, struct nvme_request, work);
+> +	struct request *rq = blk_mq_rq_from_pdu(req);
+> +	rq_end_io_fn *done = rq->end_io;
+> +	void *end_io_data = rq->end_io_data;
 
-The new function can also be called in interrupt context, so if there
-are side effects, the request will be executed in a work queue to
-avoid sleeping.
+Why is end_io_data stored to a local variable here? where is it set?
 
-Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
----
- drivers/nvme/host/core.c | 42 ++++++++++++++++++++++++++++++++++++++++
- drivers/nvme/host/nvme.h |  7 +++++++
- 2 files changed, 49 insertions(+)
+> +
+> +	nvme_execute_passthru_rq(rq);
+> +
+> +	if (done) {
+> +		rq->end_io_data = end_io_data;
+> +		done(rq, 0);
+> +	}
+> +}
+> +
+> +void nvme_execute_passthru_rq_nowait(struct request *rq, rq_end_io_fn *done)
+> +{
+> +	struct nvme_command *cmd = nvme_req(rq)->cmd;
+> +	struct nvme_ctrl *ctrl = nvme_req(rq)->ctrl;
+> +	struct nvme_ns *ns = rq->q->queuedata;
+> +	struct gendisk *disk = ns ? ns->disk : NULL;
+> +	u32 effects;
+> +
+> +	/*
+> +	 * This function may be called in interrupt context, so we cannot sleep
+> +	 * but nvme_passthru_[start|end]() may sleep so we need to execute
+> +	 * the command in a work queue.
+> +	 */
+> +	effects = nvme_command_effects(ctrl, ns, cmd->common.opcode);
+> +	if (effects) {
+> +		rq->end_io = done;
+> +		INIT_WORK(&nvme_req(rq)->work, nvme_execute_passthru_rq_work);
+> +		queue_work(nvme_wq, &nvme_req(rq)->work);
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 2b4f0ea55f8d..6d3cade0e63d 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -4211,6 +4211,48 @@ void nvme_sync_queues(struct nvme_ctrl *ctrl)
- }
- EXPORT_SYMBOL_GPL(nvme_sync_queues);
- 
-+#ifdef CONFIG_NVME_TARGET_PASSTHRU
-+static void nvme_execute_passthru_rq_work(struct work_struct *w)
-+{
-+	struct nvme_request *req = container_of(w, struct nvme_request, work);
-+	struct request *rq = blk_mq_rq_from_pdu(req);
-+	rq_end_io_fn *done = rq->end_io;
-+	void *end_io_data = rq->end_io_data;
-+
-+	nvme_execute_passthru_rq(rq);
-+
-+	if (done) {
-+		rq->end_io_data = end_io_data;
-+		done(rq, 0);
-+	}
-+}
-+
-+void nvme_execute_passthru_rq_nowait(struct request *rq, rq_end_io_fn *done)
-+{
-+	struct nvme_command *cmd = nvme_req(rq)->cmd;
-+	struct nvme_ctrl *ctrl = nvme_req(rq)->ctrl;
-+	struct nvme_ns *ns = rq->q->queuedata;
-+	struct gendisk *disk = ns ? ns->disk : NULL;
-+	u32 effects;
-+
-+	/*
-+	 * This function may be called in interrupt context, so we cannot sleep
-+	 * but nvme_passthru_[start|end]() may sleep so we need to execute
-+	 * the command in a work queue.
-+	 */
-+	effects = nvme_command_effects(ctrl, ns, cmd->common.opcode);
-+	if (effects) {
-+		rq->end_io = done;
-+		INIT_WORK(&nvme_req(rq)->work, nvme_execute_passthru_rq_work);
-+		queue_work(nvme_wq, &nvme_req(rq)->work);
-+		return;
-+	}
-+
-+	blk_execute_rq_nowait(rq->q, disk, rq, 0, done);
-+}
-+EXPORT_SYMBOL_GPL(nvme_execute_passthru_rq_nowait);
-+#endif /* CONFIG_NVME_TARGET_PASSTHRU */
-+
- /*
-  * Check we didn't inadvertently grow the command structure sizes:
-  */
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 22e8401352c2..9523779de662 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -128,6 +128,9 @@ struct nvme_request {
- 	u8			flags;
- 	u16			status;
- 	struct nvme_ctrl	*ctrl;
-+#ifdef CONFIG_NVME_TARGET_PASSTHRU
-+	struct work_struct	work;
-+#endif
- };
- 
- /*
-@@ -652,4 +655,8 @@ static inline struct nvme_ns *nvme_get_ns_from_dev(struct device *dev)
- 	return dev_to_disk(dev)->private_data;
- }
- 
-+#ifdef CONFIG_NVME_TARGET_PASSTHRU
-+void nvme_execute_passthru_rq_nowait(struct request *rq, rq_end_io_fn *done);
-+#endif /* CONFIG_NVME_TARGET_PASSTHRU */
-+
- #endif /* _NVME_H */
--- 
-2.20.1
-
+This work will need to be flushed when in nvme_stop_ctrl. That is
+assuming that it will fail-fast and not hang (which it should given
+that its a passthru command that is allocated via nvme_alloc_request).
 
 _______________________________________________
 Linux-nvme mailing list
