@@ -2,52 +2,52 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB053E4085
-	for <lists+linux-nvme@lfdr.de>; Fri, 25 Oct 2019 02:19:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D9299E4087
+	for <lists+linux-nvme@lfdr.de>; Fri, 25 Oct 2019 02:20:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z4k0b8ZSkO19ApXMSoZw1Ycqs24WkeHIdn//HZ5O4Lc=; b=ayfuluNgPHmp01
-	zqOcDDwDur+SNDUpc3sq2oXhf1QdzIEZbkcumwyjl3ZXaYcbkNwjT5SVYAgAqtltTm0CvOTOVqx7w
-	b8kbIQj0uUfk0GSjwMvj2pDairzEqmaREJqNL8oF02VKVlPyM4xHwRFngURfjKaUrgl6EaVQGhFgP
-	bHtT5mwrEcLCX4SvGtdOHQtvLfODUAY68reLlGpjC8ec0ykZfyx4+R4OgvReKl9MdaKP8kwBORwZ8
-	/piXk4wz3n6f6+fsVqMqPKCeOF4LZRleH9G1dXDDx3agEeAv3Fpj0pvQ3iSQ6AP5kxXs/PNdNgOQ/
-	Qpl5E6f1vrYBfM8O2SZg==;
+	List-Owner; bh=PFrdanssNUki0xWmw6LobMYEwH2hiQdHj/U4RVwHSUs=; b=hIFvyhGgbaM7bq
+	9fCCmGhyw1ITSnKGJoO6/nX1wxgGCzwqksjlX6KWxVGhS1hi+/Xz1SJU3dUqqvItrOJBIgJcnHeLp
+	NVD1KvggoAgw38d8g132I/iOwExiJ3PVVPdZsVcsXkMyYuJJYrJ5ckJnces8SWdwkaNTAttBtTEwF
+	KfSbxGl4uxecJ4+C/M635iSFDW3arifqDLEtUCwAtDl+gZno0jyGZbztqXwdqQYz5IvCq9sc/r8wP
+	xgZ4ORNqTGVWo4tc3HQgQ/tZNib9KMpw5u0hgp125Qr4dyQ3XEWoyJPZYcTuf0M0I6k1BMO/wV2il
+	5fQRM4ixacMIBCbp2ncg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNnKX-0006Zb-0T; Fri, 25 Oct 2019 00:19:49 +0000
+	id 1iNnL0-000710-EK; Fri, 25 Oct 2019 00:20:18 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iNnKT-0006YO-CB
- for linux-nvme@lists.infradead.org; Fri, 25 Oct 2019 00:19:46 +0000
+ id 1iNnKi-0006o3-Ox
+ for linux-nvme@lists.infradead.org; Fri, 25 Oct 2019 00:20:02 +0000
 Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 06BB421929;
- Fri, 25 Oct 2019 00:19:41 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id CD63321929;
+ Fri, 25 Oct 2019 00:19:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1571962783;
- bh=qeb+RACViZjfla1NOoCoKbMc/synwBpBMGikLRyGhe8=;
+ s=default; t=1571962800;
+ bh=kU/ViuSuZqTFjDVM7ycCIhIS9CF04caKOB2FC85DW9w=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=O+qdYz4m2eXzDmke+fcya7AMtL+kYEqJ67POsjO166w1gMwnumAs2fyFdnPBe2Hnv
- 1bIOC2Y37sGz5g9YqX+JmfHmBInXQu9sBFduC1jjwyQV1GtJ+sQBHv9IZxVY+iM1fq
- XK5/e8PDMtn4kD4d5vNK75HAi7R5Xj0AZPORRres=
-Date: Fri, 25 Oct 2019 09:19:38 +0900
+ b=SbY70g+CqKPkR+o7LwNK+vfvD1RNsIOf5PQ1Xw+CIWDvhUEk/8qS3a/1Vrn7sT9yw
+ 0fbNkRyMfdkP+A/RCqm5FQznEgZ+SvgjnTA2bZwCSoU3/mBa5TkCk1zvVG2NURC5ut
+ 5OrgiT6PG5qCc5J48A6Vjyz9w0JJ4Tb04utB8HJw=
+Date: Fri, 25 Oct 2019 09:19:57 +0900
 From: Keith Busch <kbusch@kernel.org>
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: Re: [PATCH trivial] nvme-pci: Spelling s/resdicovered/rediscovered/
-Message-ID: <20191025001938.GA28602@redsun51.ssa.fujisawa.hgst.com>
-References: <20191024152400.30082-1-geert+renesas@glider.be>
+To: Sagi Grimberg <sagi@grimberg.me>
+Subject: Re: [PATCH] nvmet: fill discovery controller sn, fr and mn correctly
+Message-ID: <20191025001957.GB28602@redsun51.ssa.fujisawa.hgst.com>
+References: <20191024165558.28056-1-sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191024152400.30082-1-geert+renesas@glider.be>
+In-Reply-To: <20191024165558.28056-1-sagi@grimberg.me>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191024_171945_438741_8AB69E5F 
-X-CRM114-Status: UNSURE (   6.74  )
+X-CRM114-CacheID: sfid-20191024_172000_831851_AE0FA55B 
+X-CRM114-Status: UNSURE (   7.24  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -77,15 +77,13 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jiri Kosina <trivial@kernel.org>, Sagi Grimberg <sagi@grimberg.me>,
- linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- Jens Axboe <axboe@fb.com>, Christoph Hellwig <hch@lst.de>
+Cc: Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Thanks, applied to nvme-5.5
+Thanks, applied to nvme-5.5.
 
 _______________________________________________
 Linux-nvme mailing list
