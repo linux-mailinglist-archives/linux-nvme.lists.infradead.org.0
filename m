@@ -2,55 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BE64E4CE7
-	for <lists+linux-nvme@lfdr.de>; Fri, 25 Oct 2019 15:56:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E8631E4D12
+	for <lists+linux-nvme@lfdr.de>; Fri, 25 Oct 2019 15:57:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iPm+aj41D8JblPw+3o2mUhtex8VlkFbeXVrtpKQGj60=; b=Z/E5DGQByeshpg
-	JFRsR7Go3N/hXz7Lm2FtYca95p7ajy/5Vp0oCoq8rHpT9IeSZbVuE/gFNdafzgXHwbs1IFE7nKmwt
-	IXZm1Cl+OAMqKL5iDNhm3xxZHE+fqRnDoB9k+M8s39UL8YmIIXwnzxA+0+pfhda0WGYFFdqSriFnS
-	hqBhhp4nBRnrSm7MZTB0ecSi2no75fI1SuHwa0BOBye8w3Z+NQYRgDf3GFed3ZKne/PmAicRwvpzU
-	Wo/FuGvY1MpQtEvTMVQc/FzDuLohje+xcdfbblXUHw+Uh4naoQKdcz5y5GZve1sdNQkbuB+IEmOIB
-	cmFjn/OC7SqjodEWYb7Q==;
+	List-Owner; bh=B72FrA0FPD9/38/jUE8ki09CjVuNjz9NQaolFGo5Rxc=; b=bxj204zkTryIuD
+	gYbkiUlqX84pSUuqjIkgcGmkJTxH8+xORoFtPM8k4rpIZ4yoRubbfzG8K9AxWPwF0BawMw6WYMikq
+	1Zk0aSjGmyrBLJZi+HEsgmS9gsbbJSNfYsxN9mjUQyFdjzYR9i3kW4iSbJGAaRlNnFunZyI79P0Mb
+	oKQ9um0qIPSm/QkIYTBpI4zG2gifyhtxq9lmzxDcmYTkmEZWaE7NtPsY6H2Tk9WS2QfS96C2JTnzB
+	kLK/lkThExgFutxuev7wTl0bmyVyCdwd4sp1cgahIzGroTd4XfiF5LAfgsAzrEPiVtiIBhAov81na
+	5b1AsiT8DHWq8P1JtUqw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iO04q-0002n5-MH; Fri, 25 Oct 2019 13:56:28 +0000
+	id 1iO05u-0003T1-Ki; Fri, 25 Oct 2019 13:57:34 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iO04g-0002lF-Tp
- for linux-nvme@lists.infradead.org; Fri, 25 Oct 2019 13:56:22 +0000
+ id 1iO05j-0003RC-40
+ for linux-nvme@lists.infradead.org; Fri, 25 Oct 2019 13:57:24 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B9106222CE;
- Fri, 25 Oct 2019 13:56:17 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id F1949222C2;
+ Fri, 25 Oct 2019 13:57:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1572011778;
- bh=QSmGXgoZuqNrvkoLmP9wfJAp3Sy8AYkjslCE+zJhmH0=;
+ s=default; t=1572011842;
+ bh=iSQuWSmQqaWR/fDuDtLQOvdfWS2yJE5pw+hTI+ELux8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=l8Ly167mwqFeZudg9e5HqcqqmFR+lzMmwI+5uDMjmT/L8L3HgRgJmc5KFXPkO8qnN
- LgJLfYNn1sTvUBPHBM2vlYeK2ffHqdBX6iFLFSS70N4GRmyNrPFCP38pdrBnnKNUrZ
- 6I26BOIikwcFmp79c6WsowDrO9rdU+fRCUB+4IHE=
+ b=BTaixi9yAb9pB6SGGVnBhMcANzaU7EU13YtWBGR5Rfs6gdnnVePH9BMh3nKGCDmw6
+ pFCELcTDVA4swDRIuGTVZvqxftptueYqQqYn5AH58SPxkz2l2I1VjxsKXbvS752xGA
+ Htz6Pqn/O32bj84hqn/AxXzzObZJGb2gWsvL1ivk=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 08/37] nvme-pci: fix conflicting p2p resource adds
-Date: Fri, 25 Oct 2019 09:55:32 -0400
-Message-Id: <20191025135603.25093-8-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.14 05/25] nvme-pci: fix conflicting p2p resource adds
+Date: Fri, 25 Oct 2019 09:56:53 -0400
+Message-Id: <20191025135715.25468-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191025135603.25093-1-sashal@kernel.org>
-References: <20191025135603.25093-1-sashal@kernel.org>
+In-Reply-To: <20191025135715.25468-1-sashal@kernel.org>
+References: <20191025135715.25468-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191025_065619_016003_1252AC66 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20191025_065723_185743_95F53116 
+X-CRM114-Status: GOOD (  12.77  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -128,20 +128,20 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index a64a8bca0d5b9..33c40333a5280 100644
+index cd11cced36781..5f820c784a7e8 100644
 --- a/drivers/nvme/host/pci.c
 +++ b/drivers/nvme/host/pci.c
-@@ -1652,6 +1652,9 @@ static void nvme_map_cmb(struct nvme_dev *dev)
- 	struct pci_dev *pdev = to_pci_dev(dev->dev);
+@@ -1546,6 +1546,9 @@ static void __iomem *nvme_map_cmb(struct nvme_dev *dev)
+ 	void __iomem *cmb;
  	int bar;
  
 +	if (dev->cmb_size)
 +		return;
 +
  	dev->cmbsz = readl(dev->bar + NVME_REG_CMBSZ);
- 	if (!dev->cmbsz)
- 		return;
-@@ -2136,7 +2139,6 @@ static void nvme_pci_disable(struct nvme_dev *dev)
+ 	if (!(NVME_CMB_SZ(dev->cmbsz)))
+ 		return NULL;
+@@ -2034,7 +2037,6 @@ static void nvme_pci_disable(struct nvme_dev *dev)
  {
  	struct pci_dev *pdev = to_pci_dev(dev->dev);
  
@@ -149,7 +149,7 @@ index a64a8bca0d5b9..33c40333a5280 100644
  	pci_free_irq_vectors(pdev);
  
  	if (pci_is_enabled(pdev)) {
-@@ -2596,6 +2598,7 @@ static void nvme_remove(struct pci_dev *pdev)
+@@ -2437,6 +2439,7 @@ static void nvme_remove(struct pci_dev *pdev)
  	nvme_stop_ctrl(&dev->ctrl);
  	nvme_remove_namespaces(&dev->ctrl);
  	nvme_dev_disable(dev, true);
