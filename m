@@ -2,53 +2,54 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BADDFE942D
-	for <lists+linux-nvme@lfdr.de>; Wed, 30 Oct 2019 01:46:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D41DE942E
+	for <lists+linux-nvme@lfdr.de>; Wed, 30 Oct 2019 01:46:59 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wTnUGFj44B/Fqeouxje/XDL/dZws4NTOa6iGVAq1fVA=; b=IF/40OxvWGvj8T
-	rltRnWptFWlGTrsPuIsOUfNR02On/HwGE3rqct6BlmQ9PpY11e0ghXVwj7dNuL1NlpKV44hCIsnzu
-	oseaQj+nGK8qG+T3MUz7sBW0TLq97JBAfxjU1uzg2zKBGyYeVfsWPQnVx/8/8tFS3FyHymxbwwx0e
-	al5C4Yre5u0aiMlA2/Nqpl62WVpj5WnngIt38Tg8qNKaSPZ3FmozwLE9h0bbDidEVRwbZDvGZtVvD
-	worR3TKirS5rJjFPVcGk/U2Chw6HWrkNwJvTXJ6ib/Yg+Kwu08AWbvILA37+1RXp0Nzsd6/BF/GrM
-	4rQiFYaKiC9Hc6ZX1XZw==;
+	List-Owner; bh=PFrdanssNUki0xWmw6LobMYEwH2hiQdHj/U4RVwHSUs=; b=GOkRxkKPjnf5g+
+	K79CAtBRLnhAnHCU/f3r7ihSlAdT6YFlnn/ktDkHuASDFg12wXfiy8ZSlOWbeoMs1Mlm1vbyD3LNd
+	QLFFHFsQFtACuq8x2c9PjgoDARQMqUTWCwYhWhFiJuz015ZQlTQJ3twAxQlVqjgWDtEcXH47GR7AE
+	zldbcJGJgfL5wZitClfjqB+D5T4k8JiCubRt8qrwe5Ys/wh5gPk4SdZKp7SvoqTCVg/1EIjonXJSL
+	U/lkqTUvl3X8hfMI2im+5HNSnEkM7a2WQzlMgOVGYiuPnBuo9ZoN+KC6Pa+HT14ZfhNvc3Dv1mov7
+	HD3xgflHcYUKDyq7c9TQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iPc7u-0005MZ-Ge; Wed, 30 Oct 2019 00:46:18 +0000
+	id 1iPc8S-0005Z7-RA; Wed, 30 Oct 2019 00:46:52 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iPc7p-0005ME-6u
- for linux-nvme@lists.infradead.org; Wed, 30 Oct 2019 00:46:14 +0000
+ id 1iPc8N-0005Yo-K9
+ for linux-nvme@lists.infradead.org; Wed, 30 Oct 2019 00:46:48 +0000
 Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1512820862;
- Wed, 30 Oct 2019 00:46:11 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 49B7920659;
+ Wed, 30 Oct 2019 00:46:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1572396372;
- bh=7XnGcMly4H4r86iV4yPtrefx2MJBReOWzxLcZQb+qLs=;
+ s=default; t=1572396407;
+ bh=kU/ViuSuZqTFjDVM7ycCIhIS9CF04caKOB2FC85DW9w=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=0mkvNHFudXsjSsDwXa5mKzL9ykB0R8fNNI3epi9uSvkNA3lnnZX+31G+83eQarzBd
- tdjtareRyeHFY7odTDx9xf7hv1OUmo8hM7EsRqcLEu3hvM0UE+rVv5vwU1DH71hLF+
- a0xH/ElyMhj4Ys9mJhkdSQYcvGoviHuWVtw949As=
-Date: Wed, 30 Oct 2019 09:46:09 +0900
+ b=zLAkol/6GiGQNUfYNXy9eHExVTgVQWNpUj7yhjWYN0x1miMcE+WjPVw5lwd17I3dV
+ 8oPzdXO4mqEn4A8UQi+DCQCI6W5Zu5KAOOlfqQ8ocYsMCqvsFPEZr6sVxlVnNiyWSu
+ vynJN38Jrb2rcPBGAWz5e/gTTxuqt+HTi8tOmzcg=
+Date: Wed, 30 Oct 2019 09:46:43 +0900
 From: Keith Busch <kbusch@kernel.org>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH] nvme: Fix parsing of ANA log page
-Message-ID: <20191030004609.GA15332@redsun51.ssa.fujisawa.hgst.com>
-References: <1572303408-37913-1-git-send-email-psajeepa@purestorage.com>
- <8972928e-9382-3a25-5c53-918eb0a9fe14@grimberg.me>
+Subject: Re: [PATCH 1/1] nvme-rdma: fix a segmentation fault during module
+ unload
+Message-ID: <20191030004643.GB15332@redsun51.ssa.fujisawa.hgst.com>
+References: <20191029144227.108450-1-maxg@mellanox.com>
+ <badcd22c-54ef-a4ab-2080-55f697b184e8@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <8972928e-9382-3a25-5c53-918eb0a9fe14@grimberg.me>
+In-Reply-To: <badcd22c-54ef-a4ab-2080-55f697b184e8@grimberg.me>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191029_174613_274651_07AADD46 
-X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-CacheID: sfid-20191029_174647_677899_3812DC9C 
+X-CRM114-Status: UNSURE (   7.09  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -78,15 +79,14 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@fb.com, Prabhath Sajeepa <psajeepa@purestorage.com>, hch@lst.de,
- linux-nvme@lists.infradead.org
+Cc: Max Gurtovoy <maxg@mellanox.com>, israelr@mellanox.com, hch@lst.de,
+ linux-nvme@lists.infradead.org, shlomin@mellanox.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Thanks, applied to nvme-5.4. This is a new branch that was force pushed
-to replace the previously defunct one with the same name.
+Thanks, applied to nvme-5.5.
 
 _______________________________________________
 Linux-nvme mailing list
