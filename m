@@ -2,134 +2,72 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 24357EA5A6
-	for <lists+linux-nvme@lfdr.de>; Wed, 30 Oct 2019 22:43:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F36EEA626
+	for <lists+linux-nvme@lfdr.de>; Wed, 30 Oct 2019 23:27:53 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=rNJx5XZfJkwJcTgYgWml65omfpQY6faHFDkMfyNyZOA=; b=n54/OPxp3dvW/G
-	2UArkXqnUzrAoBtiWz2gqx4P9y8j+2dDzlyw96NtLFMo3Sp+R/UUnZUrIccEHT9rNAUOLzVoMNrG0
-	x8eTYCOz/ZshfXHQfs6imvxphsRHbm+fPc9ObbUXQM+uOD91aR4ZJGQ9/6ldafUnZdcNJYwaHcQSx
-	y0b0gQ7NCk5W57TSBSDuCl96UP3AOv6dhQhZJHZpx78rIiVMgM1RyoZdDCTxva3+9t/1qH5zOhiks
-	qJolLz6r1W7YlnxB42mbyAG1gBAvy3eX+FKbAyueSkhv7H42E2j5BludwgIFLetgnsFIMtgdzP3/d
-	s6R8DKhJCv1GF555C5Lg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qmjjAFkF1Sqm+m3F4K5IhErMzH3CzYcE+4pOi4vZ8T0=; b=Vu85M2Q1dzPr2T
+	XWRYKkxmdmg30YLITW1DV8RD+jfC4BP/gMRLAyCLzT3qL5CywtdEz2XwnyXQEaLeSiKWUToTX3jGw
+	3ckYLpiw5c1UP2meeg0Z3fkc+DGfNb9a933OTSHIFE8v2GHskkzbBeN/6ePhPazgaQB4rnTh+AKxJ
+	BiUKcuka/m0cPkC11rywxVzZL9BfPx5umBo+2nAvvvI4+bFTX3oiF5XPIRC4PPRLktrIrfZzkvK2F
+	ZJoRTRGtK7eqP8qAUiVuw5tO/4/oWc3YDQUXNMPfK2yObbSJzWM5gFsXdwp3dXNyeEUgCPxmrvk9M
+	MmAoQmFni5kBTpQ3vKxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iPvkc-00028N-VY; Wed, 30 Oct 2019 21:43:34 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1iPwRM-0002sP-Lh; Wed, 30 Oct 2019 22:27:44 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iPvkX-00027r-VQ
- for linux-nvme@lists.infradead.org; Wed, 30 Oct 2019 21:43:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1572471810; x=1604007810;
- h=from:to:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=5BMo3y89mX3MZHY/7zin327GJjmtAQrYlXjKsVAF5i8=;
- b=UxOYnFjLXSwld0o9XyjbdArWzYRbpjqk5/hcSJivhcs4qwL/ixiSim7f
- qjoPom2D+lit7+7HMVIWgCD/ZGRHM6vBQSXpUJ9DjSc1ZFPB/uB8o7Tcm
- 8IfZxe+UCW4qvZGJEjP/4QRc9E42YmMUuXp+f1HO44b/CJbnIH19P5wZ9
- YkJI2DxgdeOyBtLEdghfOXcRiVcTI4arMYdY+3MsishYi4+Y6fzaab2Jz
- uEsNBgCcLYvHbnE7H2xkRhhy/22qWhymAk10EyUFoa+wLa2U7DbzNYLnz
- xsXC0K70BDB2NiHzvNzyxCL8btBXl3/TBDwV+dUcyZE31jIzZEkUpgz46 Q==;
-IronPort-SDR: 88vZXzdHj14mybnRu27VYGL4HGwG7Wo9gp5vZXpN8gGnzeMMHYhNijohFCk1t/Qr33U4pvONJ7
- K+tqi6f8hqRKHA9sy7W1uqG2XqGCc+RMGML9Lk9i9xoJGV5SXbNNjRoILyCo8WZETmHkisgIJP
- Bi5Ecy45mWTXRrwPZy8FU4AFOckthbRyRLmPeoCjlZYCex2FviES/Vy15ZD0SbQzY8sWA9wh6w
- 9nxjcLU+S0qrmGsLUP5cZx6yvP7OvTXWuy4fWuPX7OWWQzFdaN1v8OFHTsQFd2NbDjoPSgBRwV
- UOc=
-X-IronPort-AV: E=Sophos;i="5.68,248,1569254400"; d="scan'208";a="126152060"
-Received: from mail-sn1nam04lp2052.outbound.protection.outlook.com (HELO
- NAM04-SN1-obe.outbound.protection.outlook.com) ([104.47.44.52])
- by ob1.hgst.iphmx.com with ESMTP; 31 Oct 2019 05:43:26 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WnEsT/kLy90VWhq1egz5cMUH4c2SxoYHV09a4Ih0JIiic52jo2eTVyjgExxtXf1n/D6hwZtKSRzX89t+pOnwGRbD6q3+mUgbnxT0PPdVtkRWX8zJJjvhC6NYv50RqCBZr5KGGfvHxAiI6EjmEgG6SSCicKNq5RhWNlsKSvqD+0zM5vQFaEN3+Q1p3ooBKS8dpSr68wk1YNG+BMHHzSNtrT5quo7YNE9W/X38/9cd9eZkat5vY1Xz83xI7wpk3J2m8bTh4BW6CX3Q6cbuc2vW6x+Seyi1az7QD+niOYrJgYd/lkf/g5erG8pNTD/TL8+4nVHW1Sef/6gT+hWSvIWH5w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5BMo3y89mX3MZHY/7zin327GJjmtAQrYlXjKsVAF5i8=;
- b=i+yy3XWsqOto5xEiXYyo9GEQMe6lf4RIOLYXAmYfD7/NM7Y2uy7apoZ2MDECx4aPka5vH4D1bnv8SXv1ux/hZju0V6F/DOiS7tiU6Me6gUZ5vxuBRg0/GvLWk7Mdmlr114mEGa2vcKA7Pt2EqQXwv/gBZC/bx16SwcPC9ZxtlHDFyYbygGRz79X0mLw75NKd0srbTRc2ssWWfpwDbkI0agwmPFnN4kxooB8snlGR/TBA2AS7tnfrZbeX/vEUMaI7yp3yDF0CjHQHkuE+4jdFmV8rlljiPwOtJtMs7v5LcaeafR62cLK1+g6wLUUrJBTyyL3zK6dNKi16HGld5gpE7w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5BMo3y89mX3MZHY/7zin327GJjmtAQrYlXjKsVAF5i8=;
- b=HAZQRDHjrrtSKg2ew3XwwmQMeAr1HYkdmAZbL38pRe+7FaOXd+ZCgqhDJyXsjRrbVVEbTUUgtq3xPXcSPrdbekeJCbE2GyrtFRM0oLJEUlJgWhIuupjW+Wfde9TOpctSuF2Ryx93Qjbznthm6M7JPpZAdQJoF//jY3Gps2ND0/8=
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.57.21) by
- BYAPR04MB4023.namprd04.prod.outlook.com (52.135.215.142) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2408.17; Wed, 30 Oct 2019 21:43:24 +0000
-Received: from BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::34a1:afd2:e5c1:77c7]) by BYAPR04MB5749.namprd04.prod.outlook.com
- ([fe80::34a1:afd2:e5c1:77c7%6]) with mapi id 15.20.2387.028; Wed, 30 Oct 2019
- 21:43:24 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Mark Ruijter <MRuijter@onestopsystems.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH] nvmet: make ctrl model configurable
-Thread-Topic: [PATCH] nvmet: make ctrl model configurable
-Thread-Index: AQHVj1sXWigCUD3+A0uHtVCbsaOdWQ==
-Date: Wed, 30 Oct 2019 21:43:23 +0000
-Message-ID: <BYAPR04MB57490404FB7E6377E107122386600@BYAPR04MB5749.namprd04.prod.outlook.com>
-References: <20191030194858.30788-1-chaitanya.kulkarni@wdc.com>
- <8B7B7A7F-2519-4BF3-A3BB-4CA758B598DC@onestopsystems.com>
+ id 1iPwQr-0002YH-Kw
+ for linux-nvme@lists.infradead.org; Wed, 30 Oct 2019 22:27:15 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2019 15:27:03 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.68,248,1569308400"; d="scan'208";a="190427157"
+Received: from orsmsx108.amr.corp.intel.com ([10.22.240.6])
+ by orsmga007.jf.intel.com with ESMTP; 30 Oct 2019 15:27:03 -0700
+Received: from orsmsx160.amr.corp.intel.com (10.22.226.43) by
+ ORSMSX108.amr.corp.intel.com (10.22.240.6) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 30 Oct 2019 15:27:03 -0700
+Received: from orsmsx104.amr.corp.intel.com ([169.254.4.167]) by
+ ORSMSX160.amr.corp.intel.com ([169.254.13.29]) with mapi id 14.03.0439.000;
+ Wed, 30 Oct 2019 15:27:03 -0700
+From: "Wunderlich, Mark" <mark.wunderlich@intel.com>
+To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Subject: [PATCH 0/2] allow for busy poll improvements
+Thread-Topic: [PATCH 0/2] allow for busy poll improvements
+Thread-Index: AdWPZPmJDNMuypQPSDiBzjHO6knvSg==
+Date: Wed, 30 Oct 2019 22:27:02 +0000
+Message-ID: <B33B37937B7F3D4CB878107E305D4916D4AFB9@ORSMSX104.amr.corp.intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.45.62]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: d5643ec0-3e87-49b5-b643-08d75d8230ae
-x-ms-traffictypediagnostic: BYAPR04MB4023:
-x-microsoft-antispam-prvs: <BYAPR04MB4023756136045F31105E0E9886600@BYAPR04MB4023.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:1051;
-x-forefront-prvs: 02065A9E77
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(136003)(366004)(346002)(376002)(396003)(39860400002)(189003)(199004)(64756008)(76116006)(66446008)(7736002)(256004)(6116002)(3846002)(52536014)(6436002)(19618925003)(74316002)(486006)(186003)(5660300002)(476003)(6246003)(558084003)(229853002)(305945005)(9686003)(55016002)(446003)(66476007)(66946007)(66556008)(25786009)(7696005)(76176011)(81166006)(81156014)(102836004)(6506007)(110136005)(8936002)(478600001)(14454004)(26005)(4270600006)(316002)(33656002)(2501003)(2906002)(86362001)(71200400001)(71190400001)(66066001)(8676002)(99286004);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB4023;
- H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 0Se/y1LQFB78pZ0i6ZBBzhkswq/Q/2E1QCu5dRKV139IftSl/ZaaNTKxCf/88S2enTxMZR/hYqMQBFW0fqI1Mee80AEMYxAxGZWgsgeFX7lnFT8L5BLt7DDQXh4C2lykb/O8reh/Gry/xsAnRcNJsfETCOKa4nqhETLXmM5Sjv+ePrxsY2V6gSHRZEDjcSjXKGgY7x8wF7fOTdg/aQ755m4VSAdCwDYsah7CMS3ZpM15Vae7G2O2sNAxcd99bbYeGb5X9fb0YprlxBW2/K65Ror4W9JPVyn/IHZteeeChyrjrjp+X+2jEOlodTbZ0MktOp2H40W2f9F1+URvS29OmxL4aXxDu13MMZ2bWVG6pGyBFI1QBAdiQ50S+Jb2uCUfcMx315GCN8VpuVFc9ScQm1Oa55dHQWe9eT20zQiaVMuWyA2UGsFwW9HSUNYzUo9m
-x-ms-exchange-transport-forked: True
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZmE4MDZmYjItZjA2NC00YWQyLWE3ODUtMzAwYzJjOWM4ZWQyIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiQkdaclZcLzdJYmZqaW1hbzNjOUhWRVdxQlE5eDRkRFVqamQxa2NKUXI4Yjg0VlZBZDZhZnY3NkxPczlaZEt0WUwifQ==
+x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d5643ec0-3e87-49b5-b643-08d75d8230ae
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Oct 2019 21:43:23.8293 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: baqvXfHzqpiu2SzYZyAh1c1JjyccnPcqOmm0iiuaD35KoZFcSzV/j5coW9ZexzNUd69438LC2cB2nKOA6iXq+uqG4fQAxYGV+5QzCWXPbE4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4023
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191030_144330_071727_DF005D6F 
-X-CRM114-Status: UNSURE (   6.66  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20191030_152713_743461_1B612C3C 
+X-CRM114-Status: GOOD (  14.66  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
+ medium trust [134.134.136.100 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,7 +84,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-I'll merge these two patches and send a new one.
+Proposing a small series of two patches that provide for improved packet processing for a fabric network interface that is operating with poll mode enabled
+
+Patch 1:  Modifies the do/while terminate condition in nvmet_tcp_io_work() to be time based  vs. the existing code that is operations count based, which will match more to how it is performed for the host version of io_work().   If poll mode is not active then original function behavior is preserved.
+
+Being time based allows setting the loop period to a value indicated by the network socket if CONFIG_NET_RX_BUSY_POLL is enabled [poll_mode].  Operating in poll_mode provides for increased opportunity to reap send or recv completions without premature exit when a single iteration of loop is idle (pending being false).
+
+After exiting the do/while loop, the work item will be re-queued if there was previous 'pending' activity.  In the case of poll mode, this is determined by any accumulated ops completions over the complete do/while period, vs if the last iteration through the loop showed successful activity.
+
+Patch 2:  This patch builds upon previous kernel network patches listed below that enabled enhanced symmetric queuing, which is leveraged while in poll_mode:
+
+- a4fd1f4 Documentation: Add explanation for XPS using Rx-queue(s) map
+- 8af2c06 net-sysfs: Add interface for Rx queue(s) map per Tx queue
+- fc9bab2 net: Enable Tx queue selection based on Rx queues
+- c6345ce net: Record receive queue number for a connection
+
+Setting the socket priority to a non-zero value, via the proposed module parameter, will trigger indication to the network NIC that optimized network processing and queue selection can or should be considered.  The default value for priority remains zero to support default NIC behavior related to priority.
+
+When applied, and running with an optimized busy polling NIC, there is a measurable improvement in I/O performance and reduction in latency.  The sample data below shows FIO results For 4K random read operations to a single remote nvme device.  The queue depth Is 32 and the batch size is 8.  One set of data represents a baseline for the standard Linux kernel running on the host and target (5.2.1 stable).  In the second, the two patches were applied on the target but the NIC poll mode was not enabled.  This to show default target performance is not impacted by adding the changes.  And finally, the two Proposed patches were applied to the target, and poll mode was enabled.
+
+For comparison, The number of threads for the fio job are scaled from 1 to 8 until we reach nvme device I/O saturation.  The data shows no performance impact by adding the patches and run in default non-polled mode.  While in polled mode device saturation is reached faster with lower average and 99.99 latency.
+
+Sample FIO invocation line:
+fio --filename=/dev/nvme0n1 --time_based --thread --runtime=60 --ramp_time=10 --rw=randrw --rwmixread=100 --refill_buffers --direct=1 --ioengine=libaio --bs=4k --iodepth=32 --iodepth_batch_complete_min=1 --iodepth_batch_complete_max=32 --iodepth_batch=8 --numjobs=1 --group_reporting --gtod_reduce=0 --disable_lat=0 --name=cpu3 --cpus_allowed=3
+
+Baseline 5.2.1 stable kernel:
+Threads  |  IOPS (K)  |  Avg Lat (usec)  | 99.99 (usec)
+*****************************
+1  |  195  |  157.69  |  553
+2  |  215  |  284.31  |  758
+3  |  404  |  229.04  |  742
+4  |  515  |  239.98  |  742
+5  |  549  |  282.22  |  750
+6  |  581  |  321.64  |  750
+7  |  587  |  376.68  |  750
+8  |  587  |  432.58  |  971
+
+With patches applied on Target kernel,
+But poll mode off, so_priority set to 0.
+******************************
+1  |  197  |  156.40  |  545
+2  |  286  |  215.14  |  758
+3  |  422  |  218.75  |  734
+4  |  491  |  251.34  |  742
+5  |  504  |  306.68  |  750
+6  |  583  |  319.91  |  766
+7  |  587  |  378.32  |  742
+8  |  587  |  434.57  |  660
+
+With patches applied on Target kernel,
+Poll mode enabled:
+******************************
+1  |  227  |  129.43  |  537
+2  |  404  |  144.33  |  537
+3  |  523  |  170.25  |  529
+4  |  563  |  215.94  |  537
+5  |  587  |  263.78  |  510
+6  |  587  |  321.41  |  506
+7  |  587  |  378.67  |  502
+8  |  587  |  435.27  |  502
+
+Note:  Data was gathered using kernel 5.2.1 stable.  The patches posted to this mailing list were merged to the infradead tree pull 10/30/19.
+
+Mark Wunderlich (2):
+- nvmet-tcp: enable polling option in io_work
+- nvmet-tcp: set SO_PRIORITY for accepted sockets
+
 
 _______________________________________________
 Linux-nvme mailing list
