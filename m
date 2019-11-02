@@ -2,70 +2,82 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F7FBECBA3
-	for <lists+linux-nvme@lfdr.de>; Fri,  1 Nov 2019 23:44:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 94160ECC68
+	for <lists+linux-nvme@lfdr.de>; Sat,  2 Nov 2019 01:28:45 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=uEVgRJgpy6kNp+jB4q9JMt4ds8izCjnS2DZ4qYdmcII=; b=Nc2qa/4RTsRK06
-	ROgAccwOVlQRIYzid3ipUOiEoxp+T+tn3GBcls80rReqtBaoEH1gwHpnc6Z4CTVGI5BjlAmxkWqyx
-	87vGpu3Pbgm1ikDW7KQ4bNFb1Qui/nWHHzBtCN0gRvY5UIfh47qFujyvbXCPDbA0hg0YemG1Pvnxj
-	3U61lU13Kh9QldtKk5Tbm1E2ZhZ6rXm+GpZ6PwA5Hieul57fq/coQk3tALFaaWtWVdUqV00IdKLSm
-	vctuLzXWhhgJFVGlTiU7nCAQi7a9gwBRpv4+Acg+koDW5ZuGq+AaVgd5mQoGsGwQd2D+P3qlwrVZR
-	YX+7GPCyk3ceRcWUTv4A==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=BoraEmVucACG3823njDOEq3tx0MhQe326DZ5ziATIPQ=; b=Rux
+	ZVH1cUX9yV32zjfTkd4t9kwi87lV4RyeHXcM8/V3adD6PBSVTNCcxyOwhxqGDcKySXiPOosVrb3ip
+	ktaJFvI4lQyZc9A/M5hIobYPlolwHsko1dK0pG2a63ihKDwwSaC+DQBgZ312zyaZSjeqQbF9vpSk/
+	t0kW6NCJrbPW/K2LnbO04rZZXt9YPPXtkZk1IMs11QWcCdKTJUcEHVNaTa2EcAczIzig+rorC0Rbe
+	J7FSsrf+6sm03lqyBu2sDYhejwYD4gVk3SzBO49CooC0jzgrLR7y5AUVwdonsBuAA53ePmhVKnNF/
+	I47DVzSxzNxHYKQHfjzsCVOeT4xZVsA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iQfea-0008R0-Ev; Fri, 01 Nov 2019 22:44:24 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iQhHQ-0000Nx-2f; Sat, 02 Nov 2019 00:28:36 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iQfeU-0008Pw-Ae
- for linux-nvme@lists.infradead.org; Fri, 01 Nov 2019 22:44:19 +0000
-Received: from localhost (unknown [69.71.4.100])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 49B6B20679;
- Fri,  1 Nov 2019 22:44:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1572648257;
- bh=jKdvO6K6agf1X5ZMKWmP5BbUA3Dp+9K9j78HOVQdQB0=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=mLfWOnV1eB6Wls7fOmu5HwS2ta7iYqfF+lU4Naj8OH/ubYXaEr3/kLNgW57+ZJltH
- MHG42tXl03V3NabxM/fdpPL5bXs+Mb6BOmrlrLLyTlIHTeh05LbkbyHtDToOjdV8Gv
- a+K5JEZAErTjNeGslhGLkVraqB0Ds2UAoyE5QOhg=
-Date: Fri, 1 Nov 2019 17:44:16 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH v2] Revert "nvme: Add quirk for Kingston NVME SSD running
- FW E8FK11.T"
-Message-ID: <20191101224416.GA225762@google.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191031133028.GA4617@lst.de>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1iQhHL-0000NW-8t
+ for linux-nvme@lists.infradead.org; Sat, 02 Nov 2019 00:28:32 +0000
+Received: by mail-wr1-x443.google.com with SMTP id a15so11161621wrf.9
+ for <linux-nvme@lists.infradead.org>; Fri, 01 Nov 2019 17:28:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=lightbitslabs-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id;
+ bh=9xsZmbbNVTBcpLmU7GD7COD7Xy7j5BGpYtq2JOJQov8=;
+ b=QYgD4fHgz6jvPaCuWKh5g+hVzKdBQ1TMKowVRH7Oc2JymHpgB6w5MnqCSC10eDkPR4
+ bhEEzCTUeE7pPaGzxW/r4d3UxiWpIudL7FqIVPeRbckEfZiW6FSXn25qNbON5RUIxsmp
+ kqDq67bBz9L3X4Kj7mwDF97JDQh4CAlwPO1p9Q3/8gIXdSMRF+gGqLK/VL0s7aOll39q
+ LBAjWKCI9tPudfbRuRxqzWS5VlXK3PCgeCeVXd01krtURU0me81oASbGzs6wLA+xNQU+
+ RRH2PJ5tHTIzAbZ4b0ayZunepregQtpMQ/ysTIpVJKYTFMnON2OZV90BSOO+8VRD8QKy
+ oqTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=9xsZmbbNVTBcpLmU7GD7COD7Xy7j5BGpYtq2JOJQov8=;
+ b=TqmBwQSwRABMRHpTk/ziCdOJsrU7MjMghXqVYTTTQibdY6h44VevUWNfQ/tkERkPmh
+ wM/R7FZqnAEH0fYZvMwvs8DrZ5rkgqMqNStjOW8FUJPKLIovOZbYtzFbRPv9Xn5miCMQ
+ La3x8wyMDvYeZM+CV1OTe+hJt4nwNmFTcylAZTf2+orzd3BQk1xKaUMePsAib2as/F5K
+ 5bxPoWlBMEJeouchvzhQjqzjxFdQP2AUU54mPbRV9i0K7spPYhD6bh5EYlFNA9Onum6c
+ UcwNbTKOQ4vz8VF/c2MeyX4e48Y1yyHHSQtxi9ZSSPuRe9ls3yiml82CKh7Jf5uEE9i0
+ tJ4w==
+X-Gm-Message-State: APjAAAV2Hom/QlX5uRO+rnXULjTixJDkevx3FJjLrUQlIfxiJJwB3D+u
+ 4n1JTP7oneK1F1777o7P8QUAZF4wFjQ=
+X-Google-Smtp-Source: APXvYqxOccRJK8qnZHdZI7eZIMrrj0dg6LAzdyaynkn59bd7kbPeAJ37N4u17CEd5RTnAx/89nRb0w==
+X-Received: by 2002:a5d:5050:: with SMTP id h16mr14051806wrt.380.1572654509038; 
+ Fri, 01 Nov 2019 17:28:29 -0700 (PDT)
+Received: from anton-latitude..lbits (c-73-92-252-224.hsd1.ca.comcast.net.
+ [73.92.252.224])
+ by smtp.googlemail.com with ESMTPSA id q2sm7794424wmq.30.2019.11.01.17.28.26
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 01 Nov 2019 17:28:28 -0700 (PDT)
+From: Anton Eidelman <anton@lightbitslabs.com>
+To: linux-nvme@lists.infradead.org, hch@lst.de, keith.busch@intel.com,
+ sagi@grimberg.me, hare@suse.de
+Subject: [PATCH] nvme-multipath: fix crash in nvme_mpath_clear_ctrl_paths
+Date: Fri,  1 Nov 2019 17:27:55 -0700
+Message-Id: <20191102002755.25165-1-anton@lightbitslabs.com>
+X-Mailer: git-send-email 2.14.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191101_154418_392811_55AD9111 
-X-CRM114-Status: GOOD (  13.86  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20191101_172831_456203_C2CBDBFE 
+X-CRM114-Status: GOOD (  10.06  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.0 FAKE_REPLY_C           No description available.
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,39 +89,81 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- Jens Axboe <axboe@fb.com>, stable@vger.kernel.org,
- Keith Busch <kbusch@kernel.org>, Jian-Hong Pan <jian-hong@endlessm.com>,
- linux@endlessm.com
+Cc: Anton Eidelman <anton@lightbitslabs.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Oct 31, 2019 at 02:30:28PM +0100, Christoph Hellwig wrote:
-> On Thu, Oct 31, 2019 at 08:28:53AM -0500, Bjorn Helgaas wrote:
-> > On Thu, Oct 31, 2019 at 05:34:09PM +0800, Jian-Hong Pan wrote:
-> > > Since commit 253eaf4faaaa ("PCI/MSI: Fix incorrect MSI-X masking on
-> > > resume") is merged, we can revert the previous quirk now.
-> > 
-> > 253eaf4faaaa is pending on my pci/msi branch, planned to be merged
-> > during the v5.5 merge window.
-> > 
-> > This revert patch must not be merged before 253eaf4faaaa.  The easiest
-> > way to do that would be for me to merge this one as well; otherwise
-> > we have to try to make things happen in the right order during the
-> > merge window.
-> > 
-> > If the NVMe folks ack this idea and the patch, I'd be happy to merge
-> > it.
-> 
-> Fine with me.
-> 
-> Acked-by: Christoph Hellwig <hch@lst.de>
+nvme_mpath_clear_ctrl_paths() iterates through
+the ctrl->namespaces list while holding ctrl->scan_lock.
+This does not seem to be the correct way of protecting
+from concurrent list modification.
 
-OK, I'll ask Linus to merge this revert after my main PCI pull request
-for v5.5-rc1.
+Specifically, nvme_scan_work() sorts ctrl->namespaces
+AFTER unlocking scan_lock.
+
+This may result in the following (rare) crash in ctrl disconnect
+during scan_work:
+
+    BUG: kernel NULL pointer dereference, address: 0000000000000050
+    Oops: 0000 [#1] SMP PTI
+    CPU: 0 PID: 3995 Comm: nvme 5.3.5-050305-generic
+    RIP: 0010:nvme_mpath_clear_current_path+0xe/0x90 [nvme_core]
+    ...
+    Call Trace:
+     nvme_mpath_clear_ctrl_paths+0x3c/0x70 [nvme_core]
+     nvme_remove_namespaces+0x35/0xe0 [nvme_core]
+     nvme_do_delete_ctrl+0x47/0x90 [nvme_core]
+     nvme_sysfs_delete+0x49/0x60 [nvme_core]
+     dev_attr_store+0x17/0x30
+     sysfs_kf_write+0x3e/0x50
+     kernfs_fop_write+0x11e/0x1a0
+     __vfs_write+0x1b/0x40
+     vfs_write+0xb9/0x1a0
+     ksys_write+0x67/0xe0
+     __x64_sys_write+0x1a/0x20
+     do_syscall_64+0x5a/0x130
+     entry_SYSCALL_64_after_hwframe+0x44/0xa9
+    RIP: 0033:0x7f8d02bfb154
+
+Fix:
+After taking scan_lock in nvme_mpath_clear_ctrl_paths()
+down_read(&ctrl->namespaces_rwsem) as well to make list traversal safe.
+This will not cause deadlocks because taking scan_lock never happens
+while holding the namespaces_rwsem.
+Moreover, scan work downs namespaces_rwsem in the same order.
+
+Alternative: sort ctrl->namespaces in nvme_scan_work()
+while still holding the scan_lock.
+This would leave nvme_mpath_clear_ctrl_paths() without correct protection
+against ctrl->namespaces modification by anyone other than scan_work.
+
+Signed-off-by: Anton Eidelman <anton@lightbitslabs.com>
+---
+ drivers/nvme/host/multipath.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/nvme/host/multipath.c b/drivers/nvme/host/multipath.c
+index 682be6195a95..cb00afac516d 100644
+--- a/drivers/nvme/host/multipath.c
++++ b/drivers/nvme/host/multipath.c
+@@ -159,9 +159,11 @@ void nvme_mpath_clear_ctrl_paths(struct nvme_ctrl *ctrl)
+ 	struct nvme_ns *ns;
+ 
+ 	mutex_lock(&ctrl->scan_lock);
++	down_read(&ctrl->namespaces_rwsem);
+ 	list_for_each_entry(ns, &ctrl->namespaces, list)
+ 		if (nvme_mpath_clear_current_path(ns))
+ 			kblockd_schedule_work(&ns->head->requeue_work);
++	up_read(&ctrl->namespaces_rwsem);
+ 	mutex_unlock(&ctrl->scan_lock);
+ }
+ 
+-- 
+2.14.1
+
 
 _______________________________________________
 Linux-nvme mailing list
