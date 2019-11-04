@@ -2,88 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2121EE57F
-	for <lists+linux-nvme@lfdr.de>; Mon,  4 Nov 2019 18:04:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 44DABEEA12
+	for <lists+linux-nvme@lfdr.de>; Mon,  4 Nov 2019 21:47:59 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Kuf8y7OxyupTNEDkJQY76W29B9oxGX1gjWMir8C29Ac=; b=DAdHueRUD1tEq8
-	w8fdl1F26f8+RXaLKOnluFsQC864SlaxeoO83Tts5RCxenq0cDU+GHzB0ff3+GLWQeGbOGYDKHH59
-	bVrHfaXFygpjcQEY7FrYkFRJqdOdDZgmEs/iS/H8AHXmomln5aAPaZjA7cp0cVnbVCg3dGr6gH8cO
-	E1BUatL3PwSZIIpDTmvoV65ukUoJbImUOjvmwW0+DAdFvzdFejAByzAIvmDoMCtMzoheS3lCpfV82
-	0Ne432CHe5OmsvzREEceH21l+t+NG9fiejilG/zl3MqWySSxiF7/yrh3jOOvL1ZbNoaESWiCcSIpe
-	Re/nIbrc/O6wY7/WacaQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=2MlOPiwCC1gm0J+LCiSQrMe1n7vd0CuOtBVIisabeTU=; b=hqG
+	2+XKLS7ftnSEdMnSlh50tDGqV+cN9vkrHFrrZTNnfdx8HrcQEFOL8GFvlsnprZmfJi0bekk+S5EJb
+	WxM914aF45kcb+2GOoA4JyHC79r5nId7/ynqBB2FZMtHkGoFjGDORYym88iye8xq2d5NGseO1ttI9
+	vyEvcwN8xIyOJaXvCXdUlR/R9U3428jwmZfRqdXLf7qnuDu8ubw/GBIbxJhKPDNRYfygkffHWZNnR
+	6aRD9LsM4OP6/+erP277jHYt7KT9H5nhdhkqJaFVkU7+rV0dBvj+OhbstOFAUP41VbDjBFKeOHKLI
+	iRFYsaUTAqOvCt4awoMM4qCnJvVsYDQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iRfm4-0003vK-Ff; Mon, 04 Nov 2019 17:04:16 +0000
-Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
+	id 1iRjGY-0008EQ-0W; Mon, 04 Nov 2019 20:47:58 +0000
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iRflx-0003rz-58
- for linux-nvme@lists.infradead.org; Mon, 04 Nov 2019 17:04:11 +0000
-Received: by mail-io1-xd2a.google.com with SMTP id s17so19254552iol.12
- for <linux-nvme@lists.infradead.org>; Mon, 04 Nov 2019 09:04:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel-dk.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=1YF1y9aIEgl9O0xTvxxUEcxXiQBuiCkE34muq77fPbE=;
- b=wayWu9mOq9ePouyA/mJsG35ASeYqd5L6+0QOdktUm4tMxaPtBlx/VMA7EvUefDmeMq
- tDWXNbxDbsMiFMSzat39ovwJlQ4sOUlN6NRLb/qPW9fZzOy85G7iss8x0xCYjdezVYe7
- /tO1qPASLAXjgLeuLZIwnRwW+Yax56X7mjJHtRkN6V2hM8n2YcrxpH+knTbKlS8bEUUp
- LomrfNdRdrL1lrR6TFxQhGKEMJ/0AgMmo1czZM8tXoasPwqUSJxLgFvmfDppn4Amg67Y
- tsCmcXPFBQftiv6b4EDA6JKr3s4I/zimUdc99feQL45nitC33XiOWoSm1P/jM8A7ginE
- kF3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=1YF1y9aIEgl9O0xTvxxUEcxXiQBuiCkE34muq77fPbE=;
- b=k+uHxNQ8Gy4jJAijFjC2BuGdfV4maVEneUy3340+jgKVNSFMCAPLZFImq/kNJXPtk4
- GqNg2E458RRb3dYlfVfRkNOpG2f3Y8ibynKLbmL3j2JJbOWXBvNZA6ng/Cbut3/M/Z4M
- 2zWaQeJ0grnGu/GnXiaRE0aIILhDPFy2WWnz3oX5EDICgOuxUyfwghjO6li2/NWaBH2t
- 1oJq39EzzHMLVpt+wBBKPekfn+TRscUAS30Avm+6KFqvrKoyBwy8kFPy1eFg35pQo/YG
- Mdr0STxHr67HB7wJlWkM/xi/T09WtLIGCtPweHKDnbtej+PNHBK1W4HB7bvS9cwQLl0L
- 7Tyw==
-X-Gm-Message-State: APjAAAU4Ciz8HMFZLQP0so/2zxQvfzvFktPgub6QKxl+pdkhnUWcu/YX
- SR7AheyxoFITP9oqcAE2hmDLR2Eg3XrmHA==
-X-Google-Smtp-Source: APXvYqwllve90Rb76Kfc4QP15rteuvlQOQnG2XIAI3YMPZJGC1WqSFKKa99OIJSJ2uvVMK3psVTgUA==
-X-Received: by 2002:a5d:9a10:: with SMTP id s16mr14517814iol.121.1572887046315; 
- Mon, 04 Nov 2019 09:04:06 -0800 (PST)
-Received: from [192.168.1.159] ([65.144.74.34])
- by smtp.gmail.com with ESMTPSA id s90sm2535212ill.40.2019.11.04.09.04.04
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 04 Nov 2019 09:04:05 -0800 (PST)
-Subject: Re: [GIT PULL] nvme-5.5
-To: Keith Busch <kbusch@kernel.org>
-References: <20191104170040.GE26808@redsun51.ssa.fujisawa.hgst.com>
-From: Jens Axboe <axboe@kernel.dk>
-Message-ID: <36883c4d-9896-fa98-78e5-5ee36f78dc07@kernel.dk>
-Date: Mon, 4 Nov 2019 10:04:03 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <20191104170040.GE26808@redsun51.ssa.fujisawa.hgst.com>
-Content-Language: en-US
+ id 1iRjGS-0008Cu-U4
+ for linux-nvme@lists.infradead.org; Mon, 04 Nov 2019 20:47:54 +0000
+Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ xA4KlbxC098002; Mon, 4 Nov 2019 15:47:45 -0500
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2w14m3mfy5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 04 Nov 2019 15:47:45 -0500
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id xA4KiXEp029449;
+ Mon, 4 Nov 2019 20:47:44 GMT
+Received: from b03cxnp08026.gho.boulder.ibm.com
+ (b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
+ by ppma04wdc.us.ibm.com with ESMTP id 2w11e6ycwa-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 04 Nov 2019 20:47:44 +0000
+Received: from b03ledav005.gho.boulder.ibm.com
+ (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
+ by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ xA4Klhnh48234886
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 4 Nov 2019 20:47:43 GMT
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 94946BE056;
+ Mon,  4 Nov 2019 20:47:43 +0000 (GMT)
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 35ED7BE053;
+ Mon,  4 Nov 2019 20:47:43 +0000 (GMT)
+Received: from localhost.localdomain (unknown [9.40.195.89])
+ by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Mon,  4 Nov 2019 20:47:43 +0000 (GMT)
+From: wenxiong@linux.vnet.ibm.com
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvme-cli: improvment critical warning format
+Date: Mon,  4 Nov 2019 13:28:19 -0600
+Message-Id: <1572895699-3096-1-git-send-email-wenxiong@linux.vnet.ibm.com>
+X-Mailer: git-send-email 1.6.0.2
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-11-04_11:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=3 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1908290000 definitions=main-1911040201
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191104_090409_228170_70109334 
-X-CRM114-Status: GOOD (  12.52  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20191104_124753_094673_217071D5 
+X-CRM114-Status: GOOD (  16.31  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:d2a listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [148.163.158.5 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,30 +92,160 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
- Sagi Grimberg <sagi@grimberg.me>
+Cc: keith.busch@intel.com, Wen Xiong <wenxiong@linux.vnet.ibm.com>,
+ wenxiong@us.ibm.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 11/4/19 10:00 AM, Keith Busch wrote:
-> Hi Jens,
-> 
-> This is our first pull request for the upcoming 5.5 merge window.
-> Nothing major on new features here: mainly syncing with spec
-> updates, various code clean ups, and a few minor fixes.
-> 
-> This tree was based on linux-block/for-5.5/block. Please let me know if
-> you prefer these to be based on the for-5.x/drivers in the future and
-> I'll be sure to use that as a starting point.
+From: Wen Xiong <wenxiong@linux.vnet.ibm.com>
 
-Yeah, I'd prefer if it was against for-5.x/drivers going forward to keep
-a cleaner separation between core and driver changes. I can just pull
-these and apply them to for-5.5/drivers, not a big deal.
+This patch improves the critical warning format with smart-log.
 
+Signed-off-by: Wendy Xiong<wenxiong@linux.vnet.ibm.com>
+---
+ nvme-print.c |   28 +++++++++++++++++++++++++---
+ nvme-print.h |    4 ++--
+ nvme.c       |   11 +++++++++--
+ 3 files changed, 36 insertions(+), 7 deletions(-)
+
+diff --git a/nvme-print.c b/nvme-print.c
+index d3e3307..d64ae07 100644
+--- a/nvme-print.c
++++ b/nvme-print.c
+@@ -1722,15 +1722,26 @@ void show_endurance_log(struct nvme_endurance_group_log *endurance_group,
+ 		int128_to_double(endurance_group->num_err_info_log_entries));
+ }
+ 
+-void show_smart_log(struct nvme_smart_log *smart, unsigned int nsid, const char *devname)
++void show_smart_log(struct nvme_smart_log *smart, unsigned int nsid, const char *devname, unsigned int flag)
+ {
+ 	/* convert temperature from Kelvin to Celsius */
+ 	int temperature = ((smart->temperature[1] << 8) |
+ 		smart->temperature[0]) - 273;
+ 	int i;
++	int human = flag & HUMAN;
+ 
+ 	printf("Smart Log for NVME device:%s namespace-id:%x\n", devname, nsid);
+-	printf("critical_warning			: %#x\n", smart->critical_warning);
++	printf("critical_warning                        : %#x\n", smart->critical_warning);
++
++	if (human) {
++		printf("      [0:0]:Available Spare             : %d\n", smart->critical_warning & 0x01);
++		printf("      [1:1]:Temp. Threshold             : %d\n", (smart->critical_warning & 0x02) >> 1);
++		printf("      [2:2]:NVM subsystem Reliability   : %d\n", (smart->critical_warning & 0x04) >> 2);
++		printf("      [3:3]:Read-only                   : %d\n", (smart->critical_warning & 0x08) >> 3);
++		printf("      [4:4]:Volatile mem. backup failed : %d\n", (smart->critical_warning & 0x10) >> 4);
++		printf("      [5:5]:Persistent Mem. RO          : %d\n", (smart->critical_warning & 0x20) >> 5);
++	}
++
+ 	printf("temperature				: %d C\n", temperature);
+ 	printf("available_spare				: %u%%\n", smart->avail_spare);
+ 	printf("available_spare_threshold		: %u%%\n", smart->spare_thresh);
+@@ -3221,11 +3232,12 @@ void json_endurance_log(struct nvme_endurance_group_log *endurance_group,
+ 	json_free_object(root);
+ }
+ 
+-void json_smart_log(struct nvme_smart_log *smart, unsigned int nsid, const char *devname)
++void json_smart_log(struct nvme_smart_log *smart, unsigned int nsid, const char *devname, unsigned int flag)
+ {
+ 	struct json_object *root;
+ 	int c;
+ 	char key[21];
++	int human = flag & HUMAN;
+ 
+ 	unsigned int temperature = ((smart->temperature[1] << 8) |
+ 		smart->temperature[0]);
+@@ -3244,6 +3256,16 @@ void json_smart_log(struct nvme_smart_log *smart, unsigned int nsid, const char
+ 	root = json_create_object();
+ 
+ 	json_object_add_value_int(root, "critical_warning", smart->critical_warning);
++
++	if (human) {
++		json_object_add_value_int(root,"   [0:0]:Available Spare", smart->critical_warning & 0x01);
++		json_object_add_value_int(root,"   [1:1]:Temp. Threshold", (smart->critical_warning & 0x02) >> 1);
++		json_object_add_value_int(root,"   [2:2]:NVM subsystem Reliability", (smart->critical_warning & 0x04) >> 2);
++		json_object_add_value_int(root,"   [3:3]:Read-only", (smart->critical_warning & 0x08) >> 3);
++		json_object_add_value_int(root,"   [4:4]:Volatile mem. backup failed", (smart->critical_warning & 0x10) >> 4);
++		json_object_add_value_int(root,"   [5:5]:Persistent Mem. RO", (smart->critical_warning & 0x20) >> 5);
++	}
++
+ 	json_object_add_value_int(root, "temperature", temperature);
+ 	json_object_add_value_int(root, "avail_spare", smart->avail_spare);
+ 	json_object_add_value_int(root, "spare_thresh", smart->spare_thresh);
+diff --git a/nvme-print.h b/nvme-print.h
+index dea8915..44d7ff6 100644
+--- a/nvme-print.h
++++ b/nvme-print.h
+@@ -24,7 +24,7 @@ void show_nvme_id_ns(struct nvme_id_ns *ns, unsigned int flags);
+ void show_nvme_resv_report(struct nvme_reservation_status *status, int bytes, __u32 cdw11);
+ void show_lba_range(struct nvme_lba_range_type *lbrt, int nr_ranges);
+ void show_error_log(struct nvme_error_log_page *err_log, int entries, const char *devname);
+-void show_smart_log(struct nvme_smart_log *smart, unsigned int nsid, const char *devname);
++void show_smart_log(struct nvme_smart_log *smart, unsigned int nsid, const char *devname, unsigned int flag);
+ void show_ana_log(struct nvme_ana_rsp_hdr *ana_log, const char *devname);
+ void show_self_test_log(struct nvme_self_test_log *self_test, const char *devname);
+ void show_fw_log(struct nvme_firmware_log_page *fw_log, const char *devname);
+@@ -57,7 +57,7 @@ void json_nvme_id_ctrl(struct nvme_id_ctrl *ctrl, unsigned int mode, void (*vend
+ void json_nvme_id_ns(struct nvme_id_ns *ns, unsigned int flags);
+ void json_nvme_resv_report(struct nvme_reservation_status *status, int bytes, __u32 cdw11);
+ void json_error_log(struct nvme_error_log_page *err_log, int entries, const char *devname);
+-void json_smart_log(struct nvme_smart_log *smart, unsigned int nsid, const char *devname);
++void json_smart_log(struct nvme_smart_log *smart, unsigned int nsid, const char *devname, unsigned int flag);
+ void json_ana_log(struct nvme_ana_rsp_hdr *ana_log, const char *devname);
+ void json_effects_log(struct nvme_effects_log_page *effects_log, const char *devname);
+ void json_sanitize_log(struct nvme_sanitize_log_page *sanitize_log, const char *devname);
+diff --git a/nvme.c b/nvme.c
+index 0823267..c511f9d 100644
+--- a/nvme.c
++++ b/nvme.c
+@@ -174,11 +174,14 @@ static int get_smart_log(int argc, char **argv, struct command *cmd, struct plug
+ 			"(default) or binary.";
+ 	const char *namespace = "(optional) desired namespace";
+ 	const char *raw = "output in binary format";
++	const char *human_readable = "show info in readable format";
+ 	int err, fmt, fd;
++	unsigned int flags = 0;
+ 
+ 	struct config {
+ 		__u32 namespace_id;
+ 		int   raw_binary;
++		int   human_readable;
+ 		char *output_format;
+ 	};
+ 
+@@ -192,6 +195,7 @@ static int get_smart_log(int argc, char **argv, struct command *cmd, struct plug
+ 		OPT_UINT("namespace-id", 'n', &cfg.namespace_id,  namespace),
+ 		OPT_FMT("output-format", 'o', &cfg.output_format, output_format),
+ 		OPT_FLAG("raw-binary",   'b', &cfg.raw_binary,    raw),
++		OPT_FLAG("human-readable", 'H', &cfg.human_readable,    human_readable),
+ 		OPT_END()
+ 	};
+ 
+@@ -209,14 +213,17 @@ static int get_smart_log(int argc, char **argv, struct command *cmd, struct plug
+ 	if (cfg.raw_binary)
+ 		fmt = BINARY;
+ 
++	if (cfg.human_readable)
++		flags |= HUMAN;
++
+ 	err = nvme_smart_log(fd, cfg.namespace_id, &smart_log);
+ 	if (!err) {
+ 		if (fmt == BINARY)
+ 			d_raw((unsigned char *)&smart_log, sizeof(smart_log));
+ 		else if (fmt == JSON)
+-			json_smart_log(&smart_log, cfg.namespace_id, devicename);
++			json_smart_log(&smart_log, cfg.namespace_id, devicename, flag);
+ 		else
+-			show_smart_log(&smart_log, cfg.namespace_id, devicename);
++			show_smart_log(&smart_log, cfg.namespace_id, devicename, flag);
+ 	} else if (err > 0)
+ 		show_nvme_status(err);
+ 	else
 -- 
-Jens Axboe
+1.6.0.2
 
 
 _______________________________________________
