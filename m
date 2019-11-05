@@ -2,47 +2,48 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B966F027D
-	for <lists+linux-nvme@lfdr.de>; Tue,  5 Nov 2019 17:20:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DED3AF0283
+	for <lists+linux-nvme@lfdr.de>; Tue,  5 Nov 2019 17:21:59 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zq04GNxp+caVGMtbrqzrjSGTqh8JXqYlOdYZQGGLDy8=; b=iTnEHemZW1/LLi
-	xogvEfVjFPq+LIDOFyNmJF73v5BOjzpLafIFzeX6bNEUHE+3GnXFGXhDGnx9BaXKkWffS4icmcFVN
-	K246yintrn0uPrjz2g/KjKt0M5HXmTjmFQckCzxesowWm+L1MAJ7Uy6fqykVvbKir6mMwlXhj91fT
-	3nI3G1cHCXFpzOloaA8hTE365/8FteVzXKQXn3UFWpVlOtrWJEFDrNh+kzkR9SU97hyJGGqJ/GfVj
-	fbRx9EpULyVlzqbMFYfhbinHlupsPCUa6t99bPBAdIfRaW25U63F5tfuUk9Go6wZv1ErrYys25ZbS
-	1U203kN1tL2lFZ/rJOjg==;
+	List-Owner; bh=wCJGaGtajLiox434TddUm7yMf4FKGsyjPhW2UpzQlRQ=; b=T2toed73yHEJVJ
+	zQOXwSloGfkpbTjeFTCYG5Olv+NYmo4nxqk5K5v0PbGL0VNtPZSHzFYZoptkJvbAfqy5sFx9dTucq
+	rWBnaZ96+92du75WXQf+VkIELETvnk11TA8MBN4QfrixmhWuzLoI5lvS1uxPG91oieHhdaTDkagMq
+	fkTDQiHhat8wvslsLn6PLp9U2ezSPlSDOuFjKFQcM07Z64yJQsmYkEPz0IVLLEFQUGcBFLoihpK+/
+	IKNZEoiHzqWYvB04D14XfMLBOiPgWT35qSrgWEi63ZQH6P7q+7kEDkIwfwNpp3VLffRp5Sb80nyf3
+	/COQYNgpDxB02t2EkL2Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iS1Ze-0003gi-Sv; Tue, 05 Nov 2019 16:20:54 +0000
+	id 1iS1af-0004Yv-HE; Tue, 05 Nov 2019 16:21:57 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iS1ZO-0003SA-Rv
- for linux-nvme@lists.infradead.org; Tue, 05 Nov 2019 16:20:41 +0000
+ id 1iS1ZO-0003SL-TS
+ for linux-nvme@lists.infradead.org; Tue, 05 Nov 2019 16:20:43 +0000
 Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 5 Nov 2019 18:20:27 +0200
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id xA5GKQlv013132;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id xA5GKQlw013132;
  Tue, 5 Nov 2019 18:20:27 +0200
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, hch@lst.de,
  sagi@grimberg.me
-Subject: [PATCH] nvme-cli/fabrics: Add pi_enable param to connect cmd
-Date: Tue,  5 Nov 2019 18:20:11 +0200
-Message-Id: <20191105162026.183901-2-maxg@mellanox.com>
+Subject: [PATCH 01/15] nvme-fabrics: allow user enabling metadata/T10-PI
+ support
+Date: Tue,  5 Nov 2019 18:20:12 +0200
+Message-Id: <20191105162026.183901-3-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191105162026.183901-1-maxg@mellanox.com>
 References: <20191105162026.183901-1-maxg@mellanox.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191105_082039_330632_B77E25F3 
-X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-CacheID: sfid-20191105_082039_407823_DCDA22A8 
+X-CRM114-Status: UNSURE (   8.28  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -75,71 +76,75 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Israel Rukshin <israelr@mellanox.com>
 
-Added 'pi_enable' to 'connect' command so users can enable metadata support.
-
-usage examples:
-nvme connect --pi_enable --transport=rdma --traddr=10.0.1.1 --nqn=test-nvme
-nvme connect -p -t rdma -a 10.0.1.1 -n test_nvme
+Preparation for adding metadata (T10-PI) over fabric support. This will
+allow end-to-end protection information passthrough and validation for
+NVMe over Fabric.
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
 Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- fabrics.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+ drivers/nvme/host/fabrics.c | 5 +++++
+ drivers/nvme/host/fabrics.h | 3 +++
+ 2 files changed, 8 insertions(+)
 
-diff --git a/fabrics.c b/fabrics.c
-index 8982ae4..b22ea14 100644
---- a/fabrics.c
-+++ b/fabrics.c
-@@ -72,6 +72,7 @@ static struct config {
- 	int  disable_sqflow;
- 	int  hdr_digest;
- 	int  data_digest;
-+	int  pi_enable;
- 	bool persistent;
- 	bool quiet;
- } cfg = { NULL };
-@@ -756,7 +757,9 @@ static int build_options(char *argstr, int max_len, bool discover)
- 	    add_bool_argument(&argstr, &max_len, "disable_sqflow",
- 				cfg.disable_sqflow) ||
- 	    add_bool_argument(&argstr, &max_len, "hdr_digest", cfg.hdr_digest) ||
--	    add_bool_argument(&argstr, &max_len, "data_digest", cfg.data_digest))
-+	    add_bool_argument(&argstr, &max_len, "data_digest",
-+				cfg.data_digest) ||
-+	    add_bool_argument(&argstr, &max_len, "pi_enable", cfg.pi_enable))
- 		return -EINVAL;
+diff --git a/drivers/nvme/host/fabrics.c b/drivers/nvme/host/fabrics.c
+index 74b8818..0a05eff 100644
+--- a/drivers/nvme/host/fabrics.c
++++ b/drivers/nvme/host/fabrics.c
+@@ -612,6 +612,7 @@ bool __nvmf_check_ready(struct nvme_ctrl *ctrl, struct request *rq,
+ 	{ NVMF_OPT_NR_WRITE_QUEUES,	"nr_write_queues=%d"	},
+ 	{ NVMF_OPT_NR_POLL_QUEUES,	"nr_poll_queues=%d"	},
+ 	{ NVMF_OPT_TOS,			"tos=%d"		},
++	{ NVMF_OPT_PI_ENABLE,		"pi_enable"		},
+ 	{ NVMF_OPT_ERR,			NULL			}
+ };
  
- 	return 0;
-@@ -885,6 +888,13 @@ retry:
- 		p += len;
- 	}
+@@ -634,6 +635,7 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
+ 	opts->hdr_digest = false;
+ 	opts->data_digest = false;
+ 	opts->tos = -1; /* < 0 == use transport default */
++	opts->pi_enable = false;
  
-+	if (cfg.pi_enable) {
-+		len = sprintf(p, ",pi_enable");
-+		if (len < 0)
-+			return -EINVAL;
-+		p += len;
-+	}
-+
- 	switch (e->trtype) {
- 	case NVMF_TRTYPE_RDMA:
- 	case NVMF_TRTYPE_TCP:
-@@ -1171,6 +1181,7 @@ int discover(const char *desc, int argc, char **argv, bool connect)
- 		OPT_INT("tos",             'T', &cfg.tos,             "type of service"),
- 		OPT_FLAG("hdr_digest",     'g', &cfg.hdr_digest,      "enable transport protocol header digest (TCP transport)"),
- 		OPT_FLAG("data_digest",    'G', &cfg.data_digest,     "enable transport protocol data digest (TCP transport)"),
-+		OPT_FLAG("pi_enable",      'p', &cfg.pi_enable,       "enable metadata (T10-PI) support (default false)"),
- 		OPT_INT("nr-io-queues",    'i', &cfg.nr_io_queues,    "number of io queues to use (default is core count)"),
- 		OPT_INT("nr-write-queues", 'W', &cfg.nr_write_queues, "number of write queues to use (default 0)"),
- 		OPT_INT("nr-poll-queues",  'P', &cfg.nr_poll_queues,  "number of poll queues to use (default 0)"),
-@@ -1231,6 +1242,7 @@ int connect(const char *desc, int argc, char **argv)
- 		OPT_FLAG("disable-sqflow",    'd', &cfg.disable_sqflow,    "disable controller sq flow control (default false)"),
- 		OPT_FLAG("hdr-digest",        'g', &cfg.hdr_digest,        "enable transport protocol header digest (TCP transport)"),
- 		OPT_FLAG("data-digest",       'G', &cfg.data_digest,       "enable transport protocol data digest (TCP transport)"),
-+		OPT_FLAG("pi_enable",         'p', &cfg.pi_enable,         "enable metadata (T10-PI) support (default false)"),
- 		OPT_END()
- 	};
+ 	options = o = kstrdup(buf, GFP_KERNEL);
+ 	if (!options)
+@@ -867,6 +869,9 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
+ 			}
+ 			opts->tos = token;
+ 			break;
++		case NVMF_OPT_PI_ENABLE:
++			opts->pi_enable = true;
++			break;
+ 		default:
+ 			pr_warn("unknown parameter or missing value '%s' in ctrl creation request\n",
+ 				p);
+diff --git a/drivers/nvme/host/fabrics.h b/drivers/nvme/host/fabrics.h
+index 93f08d7..fbb7a31 100644
+--- a/drivers/nvme/host/fabrics.h
++++ b/drivers/nvme/host/fabrics.h
+@@ -56,6 +56,7 @@ enum {
+ 	NVMF_OPT_NR_WRITE_QUEUES = 1 << 17,
+ 	NVMF_OPT_NR_POLL_QUEUES = 1 << 18,
+ 	NVMF_OPT_TOS		= 1 << 19,
++	NVMF_OPT_PI_ENABLE	= 1 << 20,
+ };
  
+ /**
+@@ -89,6 +90,7 @@ enum {
+  * @nr_write_queues: number of queues for write I/O
+  * @nr_poll_queues: number of queues for polling I/O
+  * @tos: type of service
++ * @pi_enable: Enable metadata (T10-PI) support
+  */
+ struct nvmf_ctrl_options {
+ 	unsigned		mask;
+@@ -111,6 +113,7 @@ struct nvmf_ctrl_options {
+ 	unsigned int		nr_write_queues;
+ 	unsigned int		nr_poll_queues;
+ 	int			tos;
++	bool			pi_enable;
+ };
+ 
+ /*
 -- 
 1.8.3.1
 
