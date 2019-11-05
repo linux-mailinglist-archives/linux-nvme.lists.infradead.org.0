@@ -2,48 +2,47 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB070F029D
-	for <lists+linux-nvme@lfdr.de>; Tue,  5 Nov 2019 17:24:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 754CEF0284
+	for <lists+linux-nvme@lfdr.de>; Tue,  5 Nov 2019 17:22:11 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uQDzsKUGDqfV2Ec6HeRwjrJStPaD1vSq+cU+er9olns=; b=ORf8TAz+TMP5H6
-	vUgIC+sDGWl4FAEOzu93xa7j3GkA4YofDzS+L4FLmNnk0XMrbTE2+vFVFvw/UDFIYnl9fsVmLr3OY
-	cX+KhIt2kAGKbr1h3iHGs/Hgqx0yzmmR/YhCnlPsFzw7v2n8bDEGmxTXfnFi9dLTjeK6RE/wUtV3k
-	Fc0PeQy2J7Kd3QnLefT8JR6OWXp/eXDQTnqzfK/YIBdvR2DR8eLQHv5069NBo8PcPGas4NXs4HQci
-	hq0QAP2aNtQmiE9g8OqwNV3duJrYsDdOQ120eu6MBurRgo4oNB3r9WyzrhBhqo6/bbQPrvlnxiEbn
-	VrRCog5NUKwfeeuSwL+A==;
+	List-Owner; bh=2B3PTJN29AwotrvAoHllQyI84vhAxPkEUBEEj6tKxz8=; b=LXHK5/9qoam0oD
+	q6ySKqrLawbNb6pPCUMYBIpIOMrnm/LwLGUb3WiyScVyxfPqwgbM+F1e+2+XMNq5UELOKb9PJMyZX
+	8h+KkNRQ0yNo5GGpQMTxHq6ZuoXQCKbWeIc/9pXHknaL8NGEBz6A7WSVWe5xDRKonyUy+h/s9FA8P
+	cmkVx5hOU758qHhh00M1dbSOd/XazPcBWqlBeoThNZzz2MA+x2xymeU6u+ubst+xmHlXi5Vwt2gck
+	56BVL/Cbf+O9/hjWnmMgrnvFWm8cX/KMy3N4rnRY0LMYpcivYaAwwcsZzClBYxWy7vH3jT2864fSt
+	H9MzwzOMSD79Iu+WhDGw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iS1d8-0006Z6-Qu; Tue, 05 Nov 2019 16:24:30 +0000
+	id 1iS1ar-0004iU-Cq; Tue, 05 Nov 2019 16:22:09 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iS1ZR-0003SE-N6
- for linux-nvme@lists.infradead.org; Tue, 05 Nov 2019 16:20:50 +0000
+ id 1iS1ZO-0003S0-Ss
+ for linux-nvme@lists.infradead.org; Tue, 05 Nov 2019 16:20:43 +0000
 Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 5 Nov 2019 18:20:27 +0200
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id xA5GKQlx013132;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id xA5GKQm0013132;
  Tue, 5 Nov 2019 18:20:27 +0200
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, hch@lst.de,
  sagi@grimberg.me
-Subject: [PATCH 02/15] nvme: Fail __nvme_revalidate_disk in case of a spec
- violation
-Date: Tue,  5 Nov 2019 18:20:13 +0200
-Message-Id: <20191105162026.183901-4-maxg@mellanox.com>
+Subject: [PATCH 03/15] nvme: Introduce max_integrity_segments ctrl attribute
+Date: Tue,  5 Nov 2019 18:20:14 +0200
+Message-Id: <20191105162026.183901-5-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191105162026.183901-1-maxg@mellanox.com>
 References: <20191105162026.183901-1-maxg@mellanox.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191105_082042_295518_D1A2DCAF 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20191105_082039_347821_8F7F7C92 
+X-CRM114-Status: GOOD (  10.36  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -73,121 +72,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-An extended LBA is a larger LBA that is created when metadata associated
-with the LBA is transferred contiguously with the LBA data (AKA
-interleaved). The metadata may be either transferred as part of the LBA
-(creating an extended LBA) or it may be transferred as a separate
-contiguous buffer of data. According to the NVMeoF spec, a fabrics ctrl
-supports only an Extended LBA format. Fail revalidation in case we have a
-spec violation. Also init the integrity profile for the block device for
-fabrics ctrl.
+This patch doesn't change any logic, and is needed as a preparataion
+for adding PI support for fabrics drivers that will use an extended
+LBA format for metadata.
 
 Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- drivers/nvme/host/core.c | 40 +++++++++++++++++++++++++++++-----------
- 1 file changed, 29 insertions(+), 11 deletions(-)
+ drivers/nvme/host/core.c | 11 +++++++----
+ drivers/nvme/host/nvme.h |  1 +
+ drivers/nvme/host/pci.c  |  7 +++++++
+ 3 files changed, 15 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 44b247f..832b0fd 100644
+index 832b0fd..9ec8322 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -1754,9 +1754,10 @@ static void nvme_update_disk_info(struct gendisk *disk,
- 	blk_queue_io_min(disk->queue, phys_bs);
- 	blk_queue_io_opt(disk->queue, io_opt);
+@@ -1577,7 +1577,8 @@ static int nvme_getgeo(struct block_device *bdev, struct hd_geometry *geo)
+ }
  
--	if (ns->ms && !ns->ext &&
--	    (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED))
--		nvme_init_integrity(disk, ns->ms, ns->pi_type);
-+	if (ns->ms && (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED)) {
-+		if ((ns->ctrl->opts && ns->ctrl->opts->pi_enable) || !ns->ext)
-+			nvme_init_integrity(disk, ns->ms, ns->pi_type);
-+	}
+ #ifdef CONFIG_BLK_DEV_INTEGRITY
+-static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type)
++static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type,
++				u32 max_integrity_segments)
+ {
+ 	struct blk_integrity integrity;
+ 
+@@ -1600,10 +1601,11 @@ static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type)
+ 	}
+ 	integrity.tuple_size = ms;
+ 	blk_integrity_register(disk, &integrity);
+-	blk_queue_max_integrity_segments(disk->queue, 1);
++	blk_queue_max_integrity_segments(disk->queue, max_integrity_segments);
+ }
+ #else
+-static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type)
++static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type,
++				u32 max_integrity_segments)
+ {
+ }
+ #endif /* CONFIG_BLK_DEV_INTEGRITY */
+@@ -1756,7 +1758,8 @@ static void nvme_update_disk_info(struct gendisk *disk,
+ 
+ 	if (ns->ms && (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED)) {
+ 		if ((ns->ctrl->opts && ns->ctrl->opts->pi_enable) || !ns->ext)
+-			nvme_init_integrity(disk, ns->ms, ns->pi_type);
++			nvme_init_integrity(disk, ns->ms, ns->pi_type,
++					    ns->ctrl->max_integrity_segments);
+ 	}
  	if ((ns->ms && !nvme_ns_has_pi(ns) && !blk_get_integrity(disk)) ||
  	    ns->lba_shift > PAGE_SHIFT)
- 		capacity = 0;
-@@ -1774,7 +1775,7 @@ static void nvme_update_disk_info(struct gendisk *disk,
- 	blk_mq_unfreeze_queue(disk->queue);
- }
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 2637d9d..1a8b9bb 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -216,6 +216,7 @@ struct nvme_ctrl {
+ 	u32 page_size;
+ 	u32 max_hw_sectors;
+ 	u32 max_segments;
++	u32 max_integrity_segments;
+ 	u16 crdt[3];
+ 	u16 oncs;
+ 	u16 oacs;
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 86bd379..5397774 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -2573,6 +2573,13 @@ static void nvme_reset_work(struct work_struct *work)
+ 		goto out;
+ 	}
  
--static void __nvme_revalidate_disk(struct gendisk *disk, struct nvme_id_ns *id)
-+static int __nvme_revalidate_disk(struct gendisk *disk, struct nvme_id_ns *id)
- {
- 	struct nvme_ns *ns = disk->private_data;
- 
-@@ -1788,6 +1789,16 @@ static void __nvme_revalidate_disk(struct gendisk *disk, struct nvme_id_ns *id)
- 	ns->noiob = le16_to_cpu(id->noiob);
- 	ns->ms = le16_to_cpu(id->lbaf[id->flbas & NVME_NS_FLBAS_LBA_MASK].ms);
- 	ns->ext = ns->ms && (id->flbas & NVME_NS_FLBAS_META_EXT);
-+
 +	/*
-+	 * For Fabrics, only metadata as part of extended data LBA is supported.
-+	 * fail in case of a spec violation.
++	 * NVMe PCI driver doesn't support Extended LBA format so using 1
++	 * integrity segment should be enough for a separate contiguous
++	 * buffer of metadata.
 +	 */
-+	if (ns->ms && (ns->ctrl->ops->flags & NVME_F_FABRICS)) {
-+		if (WARN_ON_ONCE(!ns->ext))
-+			return -EINVAL;
-+	}
++	dev->ctrl.max_integrity_segments = 1;
 +
- 	/* the PI implementation requires metadata equal t10 pi tuple size */
- 	if (ns->ms == sizeof(struct t10_pi_tuple))
- 		ns->pi_type = id->dps & NVME_NS_DPS_PI_MASK;
-@@ -1804,6 +1815,7 @@ static void __nvme_revalidate_disk(struct gendisk *disk, struct nvme_id_ns *id)
- 		revalidate_disk(ns->head->disk);
- 	}
- #endif
-+	return 0;
- }
- 
- static int nvme_revalidate_disk(struct gendisk *disk)
-@@ -1828,7 +1840,10 @@ static int nvme_revalidate_disk(struct gendisk *disk)
- 		goto free_id;
- 	}
- 
--	__nvme_revalidate_disk(disk, id);
-+	ret = __nvme_revalidate_disk(disk, id);
-+	if (ret)
-+		goto free_id;
-+
- 	ret = nvme_report_ns_ids(ctrl, ns->head->ns_id, id, &ids);
- 	if (ret)
- 		goto free_id;
-@@ -3496,7 +3511,8 @@ static int nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
- 	memcpy(disk->disk_name, disk_name, DISK_NAME_LEN);
- 	ns->disk = disk;
- 
--	__nvme_revalidate_disk(disk, id);
-+	if (__nvme_revalidate_disk(disk, id))
-+		goto out_free_disk;
- 
- 	if ((ctrl->quirks & NVME_QUIRK_LIGHTNVM) && id->vs[0] == 0x1) {
- 		ret = nvme_nvm_register(ns, disk_name, node);
-@@ -3519,18 +3535,20 @@ static int nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
- 	kfree(id);
- 
- 	return 0;
-- out_put_disk:
-+out_put_disk:
- 	put_disk(ns->disk);
-- out_unlink_ns:
-+out_free_disk:
-+	del_gendisk(ns->disk);
-+out_unlink_ns:
- 	mutex_lock(&ctrl->subsys->lock);
- 	list_del_rcu(&ns->siblings);
- 	mutex_unlock(&ctrl->subsys->lock);
- 	nvme_put_ns_head(ns->head);
-- out_free_id:
-+out_free_id:
- 	kfree(id);
-- out_free_queue:
-+out_free_queue:
- 	blk_cleanup_queue(ns->queue);
-- out_free_ns:
-+out_free_ns:
- 	kfree(ns);
- 	if (ret > 0)
- 		ret = blk_status_to_errno(nvme_error_status(ret));
+ 	result = nvme_init_identify(&dev->ctrl);
+ 	if (result)
+ 		goto out;
 -- 
 1.8.3.1
 
