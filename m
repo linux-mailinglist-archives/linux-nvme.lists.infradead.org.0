@@ -2,65 +2,65 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F5EBEF6DA
-	for <lists+linux-nvme@lfdr.de>; Tue,  5 Nov 2019 09:07:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 570CFEF6E0
+	for <lists+linux-nvme@lfdr.de>; Tue,  5 Nov 2019 09:08:34 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:Message-ID:To:From
 	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8JY5nhwyb+2XJBVLBbD2zQte6Xo2ByPZayj3lVcdwNQ=; b=Ez2dy8T66IIYzi
-	niKXsBK73DpOuPMBkOjYUoe3KAVxkqlWF+RsyG8M+betgX+gezV4/7xX28F1mF6LAX+Q7oxu9XPB+
-	RHW9+ARVilg/Wquzk+g5HYv5eLRrrx1mOUc94OkH33RgaZglXZXrpDmKleIogVIBnZ5sC+Pw9wULI
-	iKdmqUzd75TH4BnuJdhJoL8izD5xTms7v+Gb0GNEZEmz5i7JlKfXxl5H34TmNK9RMbhHoRw3Eum6O
-	Oh9kMKsSA01pv8LjYZbby1MYCb57otvNAPzD5sR84vrE0ZZW0BF2Ajro5gQILkrmCBmq30YDN9IqU
-	NUuytlG8ZvaaGngGQ3Ug==;
+	List-Owner; bh=3QqhufcVF+ZRxmBjSPjPC5Xrb5HQbSppxsYEllDSi9g=; b=m3BEV1gmQL66y7
+	1Bh0EAses9QQK62XP6V6YMcbkAUl74OEqw46rgHqzwQ/d+mdw2GYnHSUVdRcxPw+T7+Zau8hefyqa
+	gJ3122v2dvq2r6V4rYqwxuAKKKgFvyaF3SmxTiu+zrNy8KW1i8X+BFQ2zQwOxEWTVBnh90/yOxlzb
+	+UFMCvOfOzX4dvehSuSqkljdMt64zNoUpkPXVJFSK+vhL+EWriFOlsF6a/Zafl1H2HQph7ckN2w+F
+	sL6pTj8wYf9y5aEToWXMdQJDLTZ+P+cFc1+sdGa5Xiil3w/fsOzH8zr3jV0z6UNKpWm1zB/FNdQ1R
+	xOx5Nat/smgCl+HdqJFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iRtsE-0005Ge-Uw; Tue, 05 Nov 2019 08:07:34 +0000
+	id 1iRttA-0005pF-Ns; Tue, 05 Nov 2019 08:08:32 +0000
 Received: from zimbra2.kalray.eu ([92.103.151.219])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iRtsA-0005GE-Te
- for linux-nvme@lists.infradead.org; Tue, 05 Nov 2019 08:07:32 +0000
+ id 1iRtt3-0005oh-HH
+ for linux-nvme@lists.infradead.org; Tue, 05 Nov 2019 08:08:26 +0000
 Received: from localhost (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id 594B527E0F36;
- Tue,  5 Nov 2019 09:07:29 +0100 (CET)
+ by zimbra2.kalray.eu (Postfix) with ESMTP id 424BF27E0F36;
+ Tue,  5 Nov 2019 09:08:24 +0100 (CET)
 Received: from zimbra2.kalray.eu ([127.0.0.1])
  by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id y_G0-tzmub36; Tue,  5 Nov 2019 09:07:29 +0100 (CET)
+ with ESMTP id rr06tk6yPbBh; Tue,  5 Nov 2019 09:08:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id 1780727E0FF8;
- Tue,  5 Nov 2019 09:07:29 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra2.kalray.eu 1780727E0FF8
+ by zimbra2.kalray.eu (Postfix) with ESMTP id CFF9F27E0FF8;
+ Tue,  5 Nov 2019 09:08:23 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra2.kalray.eu CFF9F27E0FF8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kalray.eu;
- s=32AE1B44-9502-11E5-BA35-3734643DEF29; t=1572941249;
- bh=OvGJ9IUMXo3vU6a5XyMpW5RLl6nyUwERxP+jlplbWyM=;
+ s=32AE1B44-9502-11E5-BA35-3734643DEF29; t=1572941303;
+ bh=SAg4heqdqeT5xi37A6xHKeChclP8NGCnBOgDTfVIHc8=;
  h=Date:From:To:Message-ID:MIME-Version;
- b=cAsa6kfrpFMlKlnfOs0ppDtqkUaRHC5InYFQbmFyCSgGhcioTIMS1YZOs3dDofetn
- PFAB6j0YR7AlI1yGiH8qOyw08OwL70jIdq9TohBFYp3OSBz+7svPj/C2NbAmRcBhcH
- rko/1k0Gq34zckKW9k89sLE4bzzbVbXATJPxDgGA=
+ b=pi1cgBAbAezj2bN9VIsluYWFlBXfgqq7g6m369XcOFgQunHSOzmTMbhzxUXeG1Bcv
+ 7SRilsSWabNY4vZSUXhu/RUPNCWbhTEezjChpgi+um2WkzYTzZP2htyY4mnS+ldiSE
+ yjQXnHGxCcbqQGb/ij34NwwOJvZna1QbxbvhcCPE=
 X-Virus-Scanned: amavisd-new at zimbra2.kalray.eu
 Received: from zimbra2.kalray.eu ([127.0.0.1])
  by localhost (zimbra2.kalray.eu [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id FTxCP7404xCA; Tue,  5 Nov 2019 09:07:29 +0100 (CET)
+ with ESMTP id wowJLp9RLESp; Tue,  5 Nov 2019 09:08:23 +0100 (CET)
 Received: from zimbra2.kalray.eu (localhost [127.0.0.1])
- by zimbra2.kalray.eu (Postfix) with ESMTP id 0373827E0F36;
- Tue,  5 Nov 2019 09:07:29 +0100 (CET)
-Date: Tue, 5 Nov 2019 09:07:28 +0100 (CET)
+ by zimbra2.kalray.eu (Postfix) with ESMTP id B866727E0F36;
+ Tue,  5 Nov 2019 09:08:23 +0100 (CET)
+Date: Tue, 5 Nov 2019 09:08:23 +0100 (CET)
 From: Marta Rybczynska <mrybczyn@kalray.eu>
 To: Keith Busch <keith.busch@intel.com>, 
  linux-nvme <linux-nvme@lists.infradead.org>
-Message-ID: <53644331.90381202.1572941248980.JavaMail.zimbra@kalray.eu>
-Subject: [PATCH 1/4] nvme-cli: plugins: intel-nvme: add include
+Message-ID: <164890633.90381385.1572941303726.JavaMail.zimbra@kalray.eu>
+Subject: [PATCH 2/4] nvme-cli: plugins: toshiba-nvme: add include
 MIME-Version: 1.0
 X-Originating-IP: [192.168.40.202]
 X-Mailer: Zimbra 8.8.12_GA_3794 (ZimbraWebClient - FF57 (Linux)/8.8.12_GA_3794)
-Thread-Index: FoS2eyvm5gSs+PVhX3eZWetHRXQbJQ==
-Thread-Topic: nvme-cli: plugins: intel-nvme: add include
+Thread-Index: 0pxWsX4Lk3DcAdgAKXi6sqEyXUrHwA==
+Thread-Topic: nvme-cli: plugins: toshiba-nvme: add include
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191105_000731_139130_11A761B3 
-X-CRM114-Status: UNSURE (   4.75  )
+X-CRM114-CacheID: sfid-20191105_000825_737791_D9C9F53B 
+X-CRM114-Status: UNSURE (   4.83  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -94,18 +94,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Add sys/ioctl.h that will be needed after the update of
-the kernel ioctl header.
+Add missing sys/ioctl.h include that will be needed after the
+kernel header update.
 
 Signed-off-by: Marta Rybczynska <marta.rybczynska@kalray.eu>
 ---
- plugins/intel/intel-nvme.c | 1 +
+ plugins/toshiba/toshiba-nvme.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/plugins/intel/intel-nvme.c b/plugins/intel/intel-nvme.c
-index 44e4d5d..0977581 100644
---- a/plugins/intel/intel-nvme.c
-+++ b/plugins/intel/intel-nvme.c
+diff --git a/plugins/toshiba/toshiba-nvme.c b/plugins/toshiba/toshiba-nvme.c
+index 1ef7558..f578152 100644
+--- a/plugins/toshiba/toshiba-nvme.c
++++ b/plugins/toshiba/toshiba-nvme.c
 @@ -1,5 +1,6 @@
  #include <fcntl.h>
  #include <errno.h>
