@@ -2,35 +2,34 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 235D0F71F0
-	for <lists+linux-nvme@lfdr.de>; Mon, 11 Nov 2019 11:29:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D576F7241
+	for <lists+linux-nvme@lfdr.de>; Mon, 11 Nov 2019 11:35:43 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ro89m8JlzP5tSFzvf0HpWnCvbsoOHdbxeAET9otW2YY=; b=hRV1NJAlkOCo/n
-	RPhYsaLiangIeFwGN0F/h/FU0f7bp949/TTFdOAVJPptyEGxL3Sjy86XNWQbiFFW+aN1/0FiDRjjS
-	YgZIPSciTq/rHxHXD18NIoaQ+hLo9yYsDeSmawBHT39pFrdhSEzx+J1jd11UntYrim6nCmk0ib5oQ
-	Mul/X/SAwK+GkjpGKeC5PAYFUtluh85JW+IzH6zkT8xnI5iQocDLLIHYey2GlgmhwmrA6LgTgyV0Y
-	pGqohbOmwd400mbAbV0kCPafgN892zmkdkAz2nDFmxvmil4XC+uf/9dnYEvSOU3uvyVHNpiDEKUNW
-	BUaSYJItg6M7nNttiZ7Q==;
+	List-Owner; bh=/FSRcZL0GRodm28j3p0Txw94nLMlK05MFOkoXfICC5g=; b=YCmaHUkN5jg9o8
+	z49EhA7793QO5BxT9PevX5NJ9wEqHgEnsxRmKKybuilYBzON0yQAHRBOphzrhwTTr0uTnKbqAuFzY
+	udV2RPqQ0J5/gGQF00ca+IeqFD6GdMHRvtYk86C2zVXSM+AJIdsr/Hx50fl8gr9zfoBCGI1GpBeDn
+	wZoYIiikzoX98zxDQtYFtjbn6cV2s3n2MqvJUGwh8uH3gcPWJvabP9lsFvZ0eHpgUsxkS/ptl77Xy
+	SVmIJdUGyVG5SpWeT1mZXGPCfe/sW5AtHkrCzDENz/98BDQXNoYjqw1+litgE98Y7fjH51CuX3SMZ
+	f2wcOZRmAW3PoiT1uu6g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iU6wW-0002uj-J0; Mon, 11 Nov 2019 10:29:08 +0000
+	id 1iU72s-0006sp-7c; Mon, 11 Nov 2019 10:35:42 +0000
 Received: from hch by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1iU6vd-0002Rw-Nb; Mon, 11 Nov 2019 10:28:13 +0000
-Date: Mon, 11 Nov 2019 02:28:13 -0800
+ Hat Linux)) id 1iU71a-0005tE-2F; Mon, 11 Nov 2019 10:34:22 +0000
+Date: Mon, 11 Nov 2019 02:34:21 -0800
 From: Christoph Hellwig <hch@infradead.org>
-To: Eduard Hasenleithner <eduard@hasenleithner.at>
-Subject: Re: [RFC PATCH v2] Workaround for discard on non-conformant nvme
- devices
-Message-ID: <20191111102813.GA6127@infradead.org>
-References: <216cfad5-b724-f69d-9a8c-c5ee2ec13212@hasenleithner.at>
+To: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+Subject: Re: [PATCH] nvmet: make ctrl model configurable
+Message-ID: <20191111103421.GB6127@infradead.org>
+References: <20191101080855.17970-1-chaitanya.kulkarni@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <216cfad5-b724-f69d-9a8c-c5ee2ec13212@hasenleithner.at>
+In-Reply-To: <20191101080855.17970-1-chaitanya.kulkarni@wdc.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -43,26 +42,28 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, linux-nvme@lists.infradead.org
+Cc: hch@lst.de, linux-nvme@lists.infradead.org, sagi@grimberg.me
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> +	if (!(ns->ctrl->quirks & NVME_QUIRK_DSM_PAGEALIGN)) {
-> +		range = kmalloc_array(segments, sizeof(*range),
-> +					GFP_ATOMIC | __GFP_NOWARN);
-> +	} else {
-> +		/* Device with quirk: use (page aligned) discard_page */
-> +		range = NULL;
-> +	}
+> +	const char *model = ctrl->subsys->model;
 
-Nitpick: Try to avoid pointless negations in conditionals.  Also I think
-that comment needs to be expanded a bit to explain why we use the range.
-That fact that we use it is fairly obvious from the code.
+Can we have a little nvme_controller_mode() helper that uses
+subsystem->model if it is set, and otherwise the default?  That saves
+memory by not duplicating the default name for every subsystem.
 
-Also please add the quirk to the pci id table so that it actually gets
-used.
+> +	kfree(subsys->model);
+> +	subsys->model = kstrndup(page, len, GFP_KERNEL);
+> +	if (!subsys->model)
+> +		ret = -ENOMEM;
+
+I don't think we should free the old model until the new one
+is allocated.
+
+Otherwise this looks good to me, but can someone also prepare a
+nvmetcli patch as well?
 
 _______________________________________________
 Linux-nvme mailing list
