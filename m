@@ -2,103 +2,69 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFE87F95BC
-	for <lists+linux-nvme@lfdr.de>; Tue, 12 Nov 2019 17:35:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EADEF95C4
+	for <lists+linux-nvme@lfdr.de>; Tue, 12 Nov 2019 17:37:48 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fUjJ6Tq1+KfBRE2Y+hhxrE9TPtiotVwspCZEvwVJkgU=; b=tMnxG7iFxoH1Nw
-	TrklC+bbSRGEmeRFwdyrTg7J3bXPC2bX27ffuYleBH7xf29AqF1t7xA7jDSqH9se8HYExIHXFhdBw
-	vqv9y18WCMi3TVNIsgTnwUygYki/NQ0LwWyl8S1ho3yHHXgZ89FW20GGLrUOETtJnUoBj2GDa5NMu
-	x91Fz9oKfxxl0ob8zZ4hccinKAKONrxyb1tP72BYDHD4udpt1QviSXQHRLyb+OWsIxaabgluoxmYZ
-	pQtjbQXQr4axtdo+VOlx8fuz/lJMbJFH+r8lyKOjXBfuXD9UHY2oRkpVFS7gG16DIW2zrlaZCyBhr
-	It+GI6nEAZabXkxd62uA==;
+	List-Owner; bh=zg8rvzJNOQgzPefkIAoMjqtGcq+ohq9maHg/gE2EWSE=; b=d7bXl/NZMLWD4y
+	CzrXEQPWZqd9YBOeujpVsyIr8BIQOxfDmsgk7j36ng56VtIpY0UQDfKIPO7Sn7Kuuj7dIHpTdCuQT
+	Tx633HBlisS+skOAVK9rixzpyXoZhTmEgU5kTGxgZGky8EGD3csr7klEFFK6bs3NOyomswydeN/tR
+	FOdwVkX7fE5zCXIrAO1563acH1vu2/rMN66b1brVHrhsEWLalB0SkqxS7Dwg35/4yy2FRj8Hs0Law
+	JX37K9Rs7qVLNlUjb01jf0tmhOCeyfSePs2TYx+BMmQSPqHRBYdfPEz0YRe8Js3xcFSWFc/MNe4b4
+	m1Xvlj7D5KcDe18NPrew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUZ8d-0006tZ-Uq; Tue, 12 Nov 2019 16:35:31 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1iUZAo-0007DE-Jt; Tue, 12 Nov 2019 16:37:46 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUZ8Z-0006t1-27
- for linux-nvme@lists.infradead.org; Tue, 12 Nov 2019 16:35:28 +0000
-Received: by mail-pg1-x541.google.com with SMTP id q22so12225952pgk.2
- for <linux-nvme@lists.infradead.org>; Tue, 12 Nov 2019 08:35:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=EaPXOh6xM3m0jUHzGL0Mf6qRxhaBbvP46g40Pz2Afjw=;
- b=ezHsXq648C4og9q+X76LLX659EAlWoyf2d4/8Mb4lHoJKaTPJEUA0EuSExYd5caP8J
- cJr+UMLQgUIBxmvPIL1qpFunU8/TSaLL7l3SucDdPk/fvXKroacJ577GlkweiNW+k3Ek
- p2P/PNsWh9ncbzRTfDFG6VheJGhl6XLUpTItXIAV4XSrsDRlisYU76ubnLYTadzDTOm7
- 9DjvqYriqrqrv9400/o0DX7gxa3Grv8WKJzsDjHOwnacJUyR1TMmxkg6oFVhtNFpxEu/
- 2Fm4xiA5Q6DArosCSNDBXEhPXHRB1+op8bKrq4i9jklxn12+6BD208ArjMVM7jqu8O/m
- R5xQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=EaPXOh6xM3m0jUHzGL0Mf6qRxhaBbvP46g40Pz2Afjw=;
- b=dk2sE4m2Se9Ol6TizpthCZGbAP8SmRfEJlr3JcS5bHOQP30JSQSP6d+tPxfwbi8f3a
- rKvdJE0IMzk2vwcdTIvsEOfAuy2OIzYdqj8jVHBO96xclhKHhnqkkGlu8waoiFy/jzpI
- nvoKCrBGTeOpswsM/MvPJJUIsHL9X36KUPXxjaGsmQ8FYBae2zut5w7UGn/gd222kyA3
- Q/W8WQOkyzceyXqmAm3vhjGSlEPBwSIwWBrY17xV1etiMYR2Z1zTmDYqeswntiKSn8o0
- Mt7Oj5jidDU42ynZ+cHvREYFEBWqohMKmN8aGXMCTxUGMGSzbVSDzMEyGBOWzNv4CS82
- Of/g==
-X-Gm-Message-State: APjAAAUxKwCPc6YrxpyR4ImNujd2Nx4iVJuVsLq6kAP+cTGbiDU8pv4t
- xoiC1mfZfVLU1KtWpu09SZOywWUT
-X-Google-Smtp-Source: APXvYqwwb1tr95cSpt3fTYC17da1UbfBzFXxAniNMO3nHvjy4LJwdwC5wavglB+Zl/8u4ZpWDR0Wpw==
-X-Received: by 2002:a17:90a:ec07:: with SMTP id
- l7mr7588481pjy.68.1573576526503; 
- Tue, 12 Nov 2019 08:35:26 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id y1sm20185576pfq.138.2019.11.12.08.35.25
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 12 Nov 2019 08:35:25 -0800 (PST)
-Date: Tue, 12 Nov 2019 08:35:24 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCH] nvme: hwmon: provide temperature min and max values for
- each sensor
-Message-ID: <20191112163524.GA26911@roeck-us.net>
-References: <1573395466-19526-1-git-send-email-akinobu.mita@gmail.com>
- <d3c0c9a7-00b9-0465-16e1-6fd7ba97dfd0@roeck-us.net>
- <CAC5umyiju2Q2fdfVaFyX+Q=sMKr5Gsc_GDVYmSa0vB+w8acvAw@mail.gmail.com>
- <20191111173505.GB5826@roeck-us.net>
- <CAC5umyjviR1J5HojE6WBhYQCzu=CFPPoNxXY=T9KRw2yTpO=VQ@mail.gmail.com>
- <e2699eee-8ca2-fcf4-d6b2-624cbddd4c6d@roeck-us.net>
- <20191112150659.GA12493@lst.de>
+ id 1iUZAi-0007Cf-Rx
+ for linux-nvme@lists.infradead.org; Tue, 12 Nov 2019 16:37:42 +0000
+Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id ABE842067B;
+ Tue, 12 Nov 2019 16:37:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1573576660;
+ bh=kvXrvgQp2J9jrwEyG4RS+sRVfHFZ22UD2CEegrD8/Oc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=MQvxCU9kqvWo8CgyrPSFd+QdStgLwfIf3sAsEKO7fU4Q3oJm4qWjTfcSZNoaeiaKn
+ v81G19ZIvrDIDvg+stxnfmYB3h8R/xaTqu5VUpSruSx5J6/zWukSeVfXUnOGRmjr5E
+ 1fplUfMxzEbWli6Gloit4XAcC1r4JHWPN8Xpz62o=
+Date: Wed, 13 Nov 2019 01:37:34 +0900
+From: Keith Busch <kbusch@kernel.org>
+To: Eduard Hasenleithner <eduard@hasenleithner.at>
+Subject: Re: [PATCH v3] Workaround for discard on non-conformant nvme devices
+Message-ID: <20191112163734.GA29135@redsun51.ssa.fujisawa.hgst.com>
+References: <aa716b06-6e9a-f668-49b4-4007bd3bffae@hasenleithner.at>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191112150659.GA12493@lst.de>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <aa716b06-6e9a-f668-49b4-4007bd3bffae@hasenleithner.at>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191112_083527_103774_681AA1DF 
-X-CRM114-Status: GOOD (  11.58  )
-X-Spam-Score: 0.6 (/)
+X-CRM114-CacheID: sfid-20191112_083740_947066_27BCBFF5 
+X-CRM114-Status: GOOD (  12.97  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.6 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:541 listed in]
- [list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit (groeck7[at]gmail.com)
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (groeck7[at]gmail.com)
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,27 +76,83 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-hwmon@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
- Sagi Grimberg <sagi@grimberg.me>, Akinobu Mita <akinobu.mita@gmail.com>,
- linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>
+Cc: linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Nov 12, 2019 at 04:06:59PM +0100, Christoph Hellwig wrote:
-> On Tue, Nov 12, 2019 at 07:04:38AM -0800, Guenter Roeck wrote:
-> > The Intel NVMe has the latest firmware version installed, so this isn't
-> > a problem that was ever fixed.
-> 
-> What Intel device is that?  If it is one of the XXXp models, those just
-> seem some of the most buggy NVMe SSDs around unfortuntely (excluding
-> the Apple ones that don't actually claim to be NVMe at least).
+On Mon, Nov 11, 2019 at 11:07:43PM +0100, Eduard Hasenleithner wrote:
+> @@ -3012,12 +3012,28 @@ static const struct pci_device_id nvme_i
+>  				NVME_QUIRK_DEALLOCATE_ZEROES, },
+>  	{ PCI_VDEVICE(INTEL, 0xf1a5),	/* Intel 600P/P3100 */
+>  		.driver_data = NVME_QUIRK_NO_DEEPEST_PS |
+> -				NVME_QUIRK_MEDIUM_PRIO_SQ },
+> +				NVME_QUIRK_MEDIUM_PRIO_SQ |
+> +				NVME_QUIRK_DSM_PAGEALIGN, },
+>  	{ PCI_VDEVICE(INTEL, 0xf1a6),	/* Intel 760p/Pro 7600p */
+> -		.driver_data = NVME_QUIRK_IGNORE_DEV_SUBNQN, },
+> +		.driver_data = NVME_QUIRK_IGNORE_DEV_SUBNQN |
+> +				NVME_QUIRK_DSM_PAGEALIGN, },
+> +	{ PCI_VDEVICE(INTEL, 0xf1a8),	/* Intel 660p */
+> +		.driver_data = NVME_QUIRK_DSM_PAGEALIGN, },
+>  	{ PCI_VDEVICE(INTEL, 0x5845),	/* Qemu emulated controller */
+>  		.driver_data = NVME_QUIRK_IDENTIFY_CNS |
+>  				NVME_QUIRK_DISABLE_WRITE_ZEROES, },
+> +	{ PCI_DEVICE(0x126f, 0x2260),   /* Silicon Motion SM2260 */
+> +		.driver_data = NVME_QUIRK_DSM_PAGEALIGN, },
+> +	{ PCI_DEVICE(0x126f, 0x2262),   /* Silicon Motion SM2262 */
+> +		.driver_data = NVME_QUIRK_DSM_PAGEALIGN, },
+> +	{ PCI_DEVICE(0x126f, 0x2263),   /* Silicon Motion SM2263 */
+> +		.driver_data = NVME_QUIRK_DSM_PAGEALIGN, },
+> +	{ PCI_DEVICE(0x126f, 0x2265),   /* Silicon Motion SM2265 */
+> +		.driver_data = NVME_QUIRK_DSM_PAGEALIGN, },
+> +	{ PCI_DEVICE(0x1987, 0x5012),   /* Phison E12 */
+> +		.driver_data = NVME_QUIRK_DSM_PAGEALIGN, },
+> +	{ PCI_DEVICE(0x1987, 0x5016),   /* Phison E16 */
+> +		.driver_data = NVME_QUIRK_DSM_PAGEALIGN, },
+>  	{ PCI_DEVICE(0x1bb1, 0x0100),   /* Seagate Nytro Flash Storage */
+>  		.driver_data = NVME_QUIRK_DELAY_BEFORE_CHK_RDY, },
+>  	{ PCI_DEVICE(0x1c58, 0x0003),	/* HGST adapter */
+> @@ -3038,6 +3054,8 @@ static const struct pci_device_id nvme_i
+>  		.driver_data = NVME_QUIRK_LIGHTNVM, },
+>  	{ PCI_DEVICE(0x10ec, 0x5762),   /* ADATA SX6000LNP */
+>  		.driver_data = NVME_QUIRK_IGNORE_DEV_SUBNQN, },
+> +	{ PCI_DEVICE(0xc0a9, 0x2263),   /* Crucial P1 (SM2263) */
+> +		.driver_data = NVME_QUIRK_DSM_PAGEALIGN, },
+>  	{ PCI_DEVICE_CLASS(PCI_CLASS_STORAGE_EXPRESS, 0xffffff) },
+>  	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2001) },
+>  	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2003) },
 
-SSDPEKKW512G7; this is a 600p model.
+I've done a little more digging on who uses these SM22XX, and this list
+is incomplete, and would unlikely ever be complete. So on second thought,
+you had the right idea initially to just default to a known safe size,
+otherwise we'll be chasing this issue for a while.
 
-Guenter
+Let's revisit your original proposal:
+
+> +++ drivers/nvme/host/core.c	2019-11-04 22:05:54.409415849 +0100
+> @@ -561,9 +561,9 @@ static blk_status_t nvme_setup_discard(s
+>  	unsigned short segments = blk_rq_nr_discard_segments(req), n = 0;
+>  	struct nvme_dsm_range *range;
+>  	struct bio *bio;
+>+	size_t aligned_size = round_up(sizeof *range * segments, 4096);
+
+The max range defined by spec is 256 ranges by virtue of being an 8-byte
+value, we can just hard-code 256 * sizeof(struct nvme_dsm_range) being
+4k as the allocation size, or just use ctrl->page_size.
+
+>
+>-	range = kmalloc_array(segments, sizeof(*range),
+>-				GFP_ATOMIC | __GFP_NOWARN);
+>+	range = kmalloc(aligned_size, GFP_ATOMIC | __GFP_NOWARN);
+
+Use kzalloc() since we're only going to fill in a partial of the
+allocated memory.
+
+Finally, be sure to update req->special_vec.bv_len to ctrl->page_size as
+well. This will ensure the driver maps PRP2 in case the allocation has an
+offset. The address is usually aligned, but that's not always true.
 
 _______________________________________________
 Linux-nvme mailing list
