@@ -2,118 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50127F8549
-	for <lists+linux-nvme@lfdr.de>; Tue, 12 Nov 2019 01:34:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FD44F8661
+	for <lists+linux-nvme@lfdr.de>; Tue, 12 Nov 2019 02:31:48 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EcteE7PuJnoCjwZtVSMxKW+DgqKGuu4sV0W00w/M4ko=; b=REXJjdMbdiFMOh
-	e8F2uKEWtD9Z3JgdJ9n45HSCLY+QMN2/soKXHAHfDd+RIksIVGOclW8sD/079BhBI5GoMitfr/DlR
-	lePT55OchXW3q4smvAPH9EKxQEjc3QJyqxcmA8TeHGfsCe5MI8Zm5mlKiUByt0g5WNavb5e2icIsD
-	3dSD1MFr6DIrNIcs6qmxxlHBDI7PQUy6MisXFQ/xI3TQM2IhPNONh/bOtEEfE7cgnjGbGJvSyhSAT
-	kqacTimcBa3vGaYyl3x5GUiG10eaOUzdbpHyfukWSK/7XOHTZ90oM9d0ec9dWg2i32D0zK3ZdQzX1
-	Gtv4KggwDFIuBMVjrLXg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=EnlpFBr4ldsEYdTWBNvHAUFVmiRjTr9fPn7cEHVgDLQ=; b=P26q6uBvTyaGTs+905Ng01j5x
+	lZFMRHJOfezOQz7MlCjMPZjnUHqqUALasc8dZKdkVZfRcAsQhKPP4pPnZhYPPP9U6LBnscqzafWHJ
+	1DwipHaNyJe2znJAh1xFaUWL65UQGs4bjdXVMR6tGic/inrD4jQUnHdx72IilToAuknkZ1PmX8qK6
+	3iC9mcK+bFR3ejTvuk8A5HT3KXvfhbecgVYKlHYk/xxa+cULEJixvDC9r12JVOD8XayoCTFFi+PJZ
+	fvAk+bS6+bP3z9lxmdXQWHtfxo4XahzjbyyWaG+0g9t02UXeJQA3cYrVQ0I1rgzZ0d0teSB3PgWPc
+	GbDGzF1RQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUK86-0002oL-Fu; Tue, 12 Nov 2019 00:33:58 +0000
-Received: from mail-eopbgr730116.outbound.protection.outlook.com
- ([40.107.73.116] helo=NAM05-DM3-obe.outbound.protection.outlook.com)
+	id 1iUL23-0007Cs-45; Tue, 12 Nov 2019 01:31:47 +0000
+Received: from mail-wm1-f47.google.com ([209.85.128.47])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUK82-0002o3-En
- for linux-nvme@lists.infradead.org; Tue, 12 Nov 2019 00:33:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=M6qkXwif4mWxUWMvLtpNJlE1ijRBYAAtLsxD/u7cR8ZCAiC+4GB33iu8ue52SqH9Osq5eNg7sYA94WIM/I/ohTZYd3QrO6+4Hu2K9qHoGn+bvDYx4nQMXfdy4sGuX3s1uIl+PXiPmsRI6qaMjeZKigArPRBcunwCeaYQtgVMc96nPJLq3nYecMkmOxzv3YT0nzUwmm5lpKctaRnALXTISjHyt1o4+uW8CEGWicReU0iWCZro7hmuK+zYCswBSLYbvn7tkavfRtwj0Fvh3CnPJ76Pd6U/h2Uxcr9HfdO+sYDKEo7FiNN+fVyfn0xiu8XQo0WyLrLpWn20Viyf8I7NaQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YQIyYziXH/BGV2tNrxXmSnKSAmsLb2jopdIo3iCL7Qc=;
- b=WNBdDQmALyz6diOHAPG+fnFsMN7fzbAeE0+qgBwMpuKKz4gRsJcAfJogjye63V/lUAm2rIzS9uiIflh4QcZtlmXldp3JGXlD7y42iFvBLudsyfM2E2+O/CFkHE+G31ww6pQ8qx5vCW5Y8+bh6Q9sBzlqKXjmYOVXD2aKksqKLoD2my2ub8dzesodQY0w8b0RaXudLW3J+iNGF3hue3gms9Akq2or7IuO0lRQlre2O9RMbTq0f4bOOOEvK41juCSxUlIQz/Vp77e/JXK/fpqQyvI70eJvagHyMRsWFArxrmB8ReUFDCkHns6d/yVNio7jurfJCdZ56zEhweEHEyhgCA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microsoft.com; dmarc=pass action=none
- header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YQIyYziXH/BGV2tNrxXmSnKSAmsLb2jopdIo3iCL7Qc=;
- b=B4irDw+XkfjHadjXHWYt75iKkuVEz5KmRnrYrmND6rhp32BEsVJR7IZZxeiRe8vv0Jos4XTxAPx6tjVo/jMfaO3AnJnWbGeec63+Ls5xsyfpAi4IN5g7ZPUp5KNUnaoeUQfBAr2gndOAiI27Qyo2vS44f8s9SBBsSj4FT05gQDM=
-Received: from CY4PR21MB0741.namprd21.prod.outlook.com (10.173.189.7) by
- CY4PR21MB0837.namprd21.prod.outlook.com (10.173.192.14) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2474.5; Tue, 12 Nov 2019 00:33:50 +0000
-Received: from CY4PR21MB0741.namprd21.prod.outlook.com
- ([fe80::8c0d:e8a3:4fb7:e083]) by CY4PR21MB0741.namprd21.prod.outlook.com
- ([fe80::8c0d:e8a3:4fb7:e083%9]) with mapi id 15.20.2451.018; Tue, 12 Nov 2019
- 00:33:50 +0000
-From: Long Li <longli@microsoft.com>
-To: Christoph Hellwig <hch@lst.de>, Ming Lei <ming.lei@redhat.com>
-Subject: RE: [PATCH 2/2] nvme-pci: poll IO after batch submission for
- multi-mapping queue
-Thread-Topic: [PATCH 2/2] nvme-pci: poll IO after batch submission for
- multi-mapping queue
-Thread-Index: AQHVlehiYcB/lSKxl0SzyAz+DwfVW6eGdeMAgAAtylA=
-Date: Tue, 12 Nov 2019 00:33:50 +0000
-Message-ID: <CY4PR21MB0741004E62F9C50B8EF7DA9ECE770@CY4PR21MB0741.namprd21.prod.outlook.com>
-References: <20191108035508.26395-1-ming.lei@redhat.com>
- <20191108035508.26395-3-ming.lei@redhat.com> <20191111204446.GA26028@lst.de>
-In-Reply-To: <20191111204446.GA26028@lst.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=longli@microsoft.com; 
-x-originating-ip: [2001:4898:80e8:8:ede6:db5c:c6fe:798]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 08cca30c-e06a-474f-41d7-08d76707fd1c
-x-ms-traffictypediagnostic: CY4PR21MB0837:
-x-microsoft-antispam-prvs: <CY4PR21MB08378125637B629F1B5FB666CE770@CY4PR21MB0837.namprd21.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 021975AE46
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(346002)(396003)(39860400002)(366004)(376002)(136003)(199004)(189003)(76176011)(52536014)(71190400001)(7696005)(256004)(33656002)(2906002)(71200400001)(6116002)(66446008)(64756008)(66556008)(66476007)(10090500001)(5660300002)(14444005)(186003)(6506007)(102836004)(476003)(6436002)(4326008)(86362001)(6246003)(316002)(229853002)(8990500004)(446003)(66946007)(14454004)(74316002)(46003)(486006)(25786009)(76116006)(81156014)(55016002)(81166006)(305945005)(54906003)(11346002)(478600001)(110136005)(10290500003)(7736002)(9686003)(99286004)(8936002)(22452003)(8676002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:CY4PR21MB0837;
- H:CY4PR21MB0741.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: fNOEIvNiLwUi5NYQncIFezgSUVYKu9+CUHA9AaV3JwXHolmFkCHoWMgv9zH2ZM5qw5gh2BudhOqIb4KiiYIXXH8aDJ5KYL1m9BZAdp4ms5zEXQkaCPRCUWgqKtONX1kH8g2FaSvdpVlcB/A/q1TATPU3YZqlzVlt/Xjb19tnUR+XrgkX8C9/70d++C3cCbER1Mfemmqi+VQC0hTSmDbolbiSXGH/WMMJeEaoYmRM8ArZ8llD8D+mypDqjzQUS7tNVpEY57+VZbQs5d4wOt0IVSgVSfq/RzoYQpVYB0HRvrJbOiSQdsW41Tx09zeg11YLz6x4T6sGqW/uToLNRaH1LFnyJwzdxdsNgujfS7W5BR12GkatHo0ewCsq4+0hCx6xfHVc8aUFxT+SkLrVjIFnY4haWzxIcFrmrGd7SSin1NKHCZECpP8CSU1w+qXZVyX4
-x-ms-exchange-transport-forked: True
+ id 1iUL1z-0007Ca-Ja
+ for linux-nvme@lists.infradead.org; Tue, 12 Nov 2019 01:31:45 +0000
+Received: by mail-wm1-f47.google.com with SMTP id c22so1222875wmd.1
+ for <linux-nvme@lists.infradead.org>; Mon, 11 Nov 2019 17:31:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=nWpDQmZNg8zKVk12QskQ7NNS05C4fI/JmZBKLdKyu8Q=;
+ b=ipwooy++SIdfwxP/0eNDqA5Qplh0MT/KMF18uqmEf/VsqEFlhlFpTC6X4+SI7UZpyk
+ EzbLJNRzEG4ChiIPmG3H22mbqxfxevqvXV5CbDlfA82DYr9fBQokQVP4MQ91KyJML44Z
+ F/5+qN+Wv6GGbszsyuZ5f2fDzCbJ1MCx029L3w6gGXQ7S4kGjLQ+Nrl4v3DE9CU35Pwo
+ LajXz7eiQiOUBJmxIAz9WB2n4+m7512vturUtaKhTTuaILh0fhpiZ9E0Gez+HFAz/NP3
+ YjjEbvRcXKLUeVptfOamGgXOUtkHxKzXF0y7h4rZfT6j9sNfsTt8dHfA2drRIk6sK1GU
+ Wqdw==
+X-Gm-Message-State: APjAAAVjzBxotDaYNTpUh2VwnOMrYEMlP21yCD93CvJQr6OjzX4VbHLW
+ g7+E/oJZvzIf1OXOGDcIxmtJcRh2
+X-Google-Smtp-Source: APXvYqwNc+UIpmlg3cP+lOyzFrUAHjf5gdvcaSrp8cLiThYuQV1Pyf6gAY4BiwGw8hINnuUCQw7rYQ==
+X-Received: by 2002:a1c:6144:: with SMTP id v65mr1564703wmb.53.1573522301041; 
+ Mon, 11 Nov 2019 17:31:41 -0800 (PST)
+Received: from [192.168.1.114]
+ (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
+ by smtp.gmail.com with ESMTPSA id h124sm1841649wmf.30.2019.11.11.17.31.39
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 11 Nov 2019 17:31:40 -0800 (PST)
+Subject: Re: [PATCH v3] Workaround for discard on non-conformant nvme devices
+To: Eduard Hasenleithner <eduard@hasenleithner.at>,
+ linux-nvme@lists.infradead.org
+References: <aa716b06-6e9a-f668-49b4-4007bd3bffae@hasenleithner.at>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <57a031d1-a2db-3b20-4a90-a3605b7f5ff1@grimberg.me>
+Date: Mon, 11 Nov 2019 17:31:34 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 08cca30c-e06a-474f-41d7-08d76707fd1c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Nov 2019 00:33:50.3944 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: EPkiuWCsTOZrz1T6SmTN8A2p9/Xhzy/FY9a/0EDp8nbU70wjqN3O8xQzHxccrMVkVH9G0Vc5MXz2qoLsFF+puA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR21MB0837
+In-Reply-To: <aa716b06-6e9a-f668-49b4-4007bd3bffae@hasenleithner.at>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191111_163354_603024_0F92AD4A 
-X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-CacheID: sfid-20191111_173143_645271_E0327BAC 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-Spam-Score: 0.4 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.4 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.73.116 listed in list.dnswl.org]
+ no trust [209.85.128.47 listed in list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.128.47 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,42 +91,12 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
- Sagi Grimberg <sagi@grimberg.me>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
->From: Christoph Hellwig <hch@lst.de>
->Sent: Monday, November 11, 2019 12:45 PM
->To: Ming Lei <ming.lei@redhat.com>
->Cc: linux-nvme@lists.infradead.org; Keith Busch <kbusch@kernel.org>; Jens
->Axboe <axboe@fb.com>; Christoph Hellwig <hch@lst.de>; Sagi Grimberg
-><sagi@grimberg.me>; Long Li <longli@microsoft.com>
->Subject: Re: [PATCH 2/2] nvme-pci: poll IO after batch submission for multi-
->mapping queue
->
->On Fri, Nov 08, 2019 at 11:55:08AM +0800, Ming Lei wrote:
->> f9dde187fa92("nvme-pci: remove cq check after submission") removes cq
->> check after submission, this change actually causes performance
->> regression on some NVMe drive in which single nvmeq handles requests
->> originated from more than one blk-mq sw queues(call it multi-mapping
->> queue).
->
->> Follows test result done on Azure L80sv2 guest with NVMe drive(
->> Microsoft Corporation Device b111). This guest has 80 CPUs and 10 numa
->> nodes, and each NVMe drive supports 8 hw queues.
->
->Have you actually seen this on a real nvme drive as well?
->
->Note that it is kinda silly to limit queues like that in VMs, so I really don't think
->we should optimize the driver for this particular case.
-
-I tested on an Azure L80s_v2 VM with newer Samsung P983 NVMe SSD (with 32 hardware queues). Tests also showed soft lockup when 32 queues are shared by 80 CPUs. 
-
-The issue will likely show up if the number of NVMe hardware queues is less than the number of CPUs. I think this may be a likely configuration on a very large system. (e.g. the largest VM on Azure has 416 cores)
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 
 _______________________________________________
 Linux-nvme mailing list
