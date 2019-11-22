@@ -2,85 +2,77 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D9833106731
-	for <lists+linux-nvme@lfdr.de>; Fri, 22 Nov 2019 08:43:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EB0671068FE
+	for <lists+linux-nvme@lfdr.de>; Fri, 22 Nov 2019 10:45:25 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=spSG0nGCb5i79JJSI5BIU8keQlLVDoRa8pmfudT/Zu8=; b=T9sPfL0p0O2Fzj
-	lxqv/pX1TWlTyy98qzIMjNyzLvvNFb1LG6cXqoCl99X0PTchwrIDBUpIAxsALlmmCYgpd2Hh6BDAp
-	fJwicTekuSoS8b0qyAJL+A1zPzq7bReZ8X1gybu2gCdGBWMwY0cbpGMopfAHyrHd+Kt4JkxykQGzJ
-	e0Y647xpGc8/59CdY3Ayi3w4aJzUi6pYVSYh49ABUdarTV1CsDuKCxJIGA4nDv53QmY91Hsbp0mvO
-	Cxizybt8uZvqRGfTvUxGHH9i80+SC5Cak4fSDfaNP5Q2uAXKRh1w/SimGn1+eu7M8IGZt+0MFGaKt
-	mvq+Cih/j1+kvl8d+uDQ==;
+	List-Owner; bh=1D00HypG/KpYX4DLiN97K6JNLFuLgkq+LKZAOd6501U=; b=CtVSOOgd+IkO0T
+	8kUxI/F6R/cYua1T8Gs5XlIQfeKe8sejPgW0/0Gw3GzarpCRGOh9g0wxxwYN/86Y7Fmz20AAovouQ
+	bID46J0XiVTQohQi+i3bGcJlvHPe4agCmo4xrUO2t3o1wZ2iw2wnfjsjWqOpGW4oDNd99Mhjr3Su1
+	qtz4TJCS4bQhNcssRg7VhW5x0bswbql2Jtd/ok6MgC9fb1T+FQEY93sh0oUkvGvw94Yaf6P18ADQT
+	uhu/FrTFUGjaNLj8qsLVDYnZMnIUFJ9vNJ2SmXlGlsFtYkhQ1f41BTU5izhZb/COqRisBmwaTf+p0
+	7kBIhFUd+UoVIedh0Axg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iY3b9-0004Kn-Os; Fri, 22 Nov 2019 07:43:23 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1iY5VE-0000gQ-Cd; Fri, 22 Nov 2019 09:45:24 +0000
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
+ helo=us-smtp-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iY3a7-0003bH-8L
- for linux-nvme@lists.infradead.org; Fri, 22 Nov 2019 07:42:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1574408539; x=1605944539;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=HTSLqX0/CNO70621Moysch9qPo8EcbPQUmEUYWI4yJ0=;
- b=lpkzrccAyL71nX1MCr567uqc84vO6YpVEZKhiiM3XXgYcqdFB95ibkhI
- rM5HdglSU/GCmiHYWoBzmVfILsSwWi9gEvTQFTZKZbgztg178anf727k0
- OWNvJ9KVEo91pA5OjCho9dSvzBE0ZbjfGQ1OMe9EXDWBLtvCW9a5lLPHb
- vsAw+3xbXBdJZXC+jQnImsPlkQ9Ga+uy+IMRg+tppfzEv5Br8+JlOQE0t
- kcF1j7gF2WUd/vrJ37qm2vDEwCvWvUBrHtd9rvPjDZa9VMwdH0/nNzICK
- asu+uVu2oD7lsEDOl0RcNbDJMKoQ+pJjdTpgFGczC2GDYQKFfS1SE9gfo A==;
-IronPort-SDR: SyfJjs2Go7X4bB5axXYP9RvVmeBdUp5JvgFJhpOxHOHxWyxFUCxAJatO/xjFko1/Q7lAQ9Ra/3
- wpwBE6ZXRVG7FkAahx7RaYEeIPjWRZZ/HVll+RjIPWBn8ba7WljaCb2Zq/z3i2bDnBVzXFUvNw
- a+T3OHx20UieQO2h5QvPEDFsCDaHLn5o+gZHAgAcxkBwJebD5QMlvPLCVqokVBjA2Q21Ad0Gbo
- 9nxIWMkAOZqJohlgivWvLQPljEolBLEu3DGpYffS00k9KhY3pscS0OfMLU7hO6fuk7fTO4NoQ9
- QMY=
-X-IronPort-AV: E=Sophos;i="5.69,229,1571673600"; d="scan'208";a="128163470"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 22 Nov 2019 15:42:17 +0800
-IronPort-SDR: rPeYoEe6g8TNbkAbGeeeO6Vmyr2rIqNKiY9dUknG7YyDaUiRk4nMroZoSb3PLa0EIL3MVGK62D
- 5qdTK5ipHah0HV5KsoICrMMaU/dHOYznXbKPQNiYOUv9X9bw0cIbevfTe5bjmnD1P5n5/tZM/k
- 1RG5K2qQL2ttG51tZEMXUylH0jaJcc/qmUDCIviAwiBdEgTS7D8HUEWT9/5fjvrgWuj6NqVf0m
- MrxcsctXui+bROEkWzhjlj3XKOSMHt2yD7Rr+yiG/yR38DJ5i4tAfqPAGnEH33vHomyYxE1832
- OsVqhfAG625pgYRvRIX02Rb/
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Nov 2019 23:37:02 -0800
-IronPort-SDR: QH9BN7fVbK9gFF2yZcgniakyL+OPuKsPoMQNETpolp3eKdPbnyUUan2j8yeiYm7xcNfMoUXylv
- yKnCRGIFgSS3n8eDR+nwhAHFHyWqzS4t/4V8paJWpk4wuTclxEEZEQrlwXbroespWZRYkpO7Ss
- gs883qiaSKsvOUxebDFbLbld5o6EiDXzAyRmRFzzKEPX/a2whRif35LdbdZeI0N66T91FgomwS
- NaluBswENaRXFqT7s0QmRLqn/M43K/rEsThh/a3zCmIZ5GQq2lDxV6XAgMKKeWXwGRSaCx1jjK
- BP4=
-WDCIronportException: Internal
-Received: from iouring.labspan.wdc.com (HELO iouring.sc.wdc.com)
- ([10.6.138.107])
- by uls-op-cesaip01.wdc.com with ESMTP; 21 Nov 2019 23:42:16 -0800
-From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH 2/2] nvmetcli: allow setting of the subsystem model
-Date: Thu, 21 Nov 2019 23:42:13 -0800
-Message-Id: <20191122074213.12232-3-chaitanya.kulkarni@wdc.com>
-X-Mailer: git-send-email 2.22.1
-In-Reply-To: <20191122074213.12232-1-chaitanya.kulkarni@wdc.com>
-References: <20191122074213.12232-1-chaitanya.kulkarni@wdc.com>
+ id 1iY5V9-0000fx-4P
+ for linux-nvme@lists.infradead.org; Fri, 22 Nov 2019 09:45:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1574415916;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2EZdhFp2nyPuvY0dt4SK2+76zRnKIR/9jOBh5em9Ya8=;
+ b=iN3DADJrtkFqirpfdKo6u6DR9FbeZsOhSEwZB0eALBpq5997fqUm/m61Jk5VUGdN3ELSbu
+ SSEjMT+2bHibDSFagPvaDCGlCj3i4Rv10Y6tuwNeDBA6vwPpZ5qA9XrxQ7HfD9yPoAqN/f
+ Z5phVgOLglPlfNG4pVByYyKcwC+w1Fw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-148-ST52AdsFOmK-6U2L8yMj2g-1; Fri, 22 Nov 2019 04:45:12 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E3436100551C;
+ Fri, 22 Nov 2019 09:45:10 +0000 (UTC)
+Received: from ming.t460p (ovpn-8-23.pek2.redhat.com [10.72.8.23])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B5AF75EE1A;
+ Fri, 22 Nov 2019 09:45:02 +0000 (UTC)
+Date: Fri, 22 Nov 2019 17:44:57 +0800
+From: Ming Lei <ming.lei@redhat.com>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCH V3 0/2] nvme-pci: check CQ after batch submission for
+ Microsoft device
+Message-ID: <20191122094457.GA23632@ming.t460p>
+References: <20191114025917.24634-1-ming.lei@redhat.com>
+ <20191121031154.GJ24548@ming.t460p> <20191121061431.GA22886@lst.de>
+ <20191121074643.GB4755@ming.t460p>
+ <20191121154531.GB17852@redsun51.ssa.fujisawa.hgst.com>
 MIME-Version: 1.0
+In-Reply-To: <20191121154531.GB17852@redsun51.ssa.fujisawa.hgst.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: ST52AdsFOmK-6U2L8yMj2g-1
+X-Mimecast-Spam-Score: 0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191121_234219_332574_59D314E3 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191122_014519_245264_EF09C881 
+X-CRM114-Status: GOOD (  13.35  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
+ medium trust [205.139.110.120 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -101,50 +93,42 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: hch@lst.de, Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+Cc: Sagi Grimberg <sagi@grimberg.me>, Long Li <longli@microsoft.com>,
+ linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
+ Nadolski Edmund <edmund.nadolski@intel.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Mark Ruijter <MRuijter@onestopsystems.com>
+On Fri, Nov 22, 2019 at 12:45:31AM +0900, Keith Busch wrote:
+> On Thu, Nov 21, 2019 at 03:46:43PM +0800, Ming Lei wrote:
+> > On Thu, Nov 21, 2019 at 07:14:31AM +0100, Christoph Hellwig wrote:
+> > > On Thu, Nov 21, 2019 at 11:11:54AM +0800, Ming Lei wrote:
+> > > > Hi Guys,
+> > > > 
+> > > > Ping...
+> > > 
+> > > I think everyone has told you that it is an invasive horrible hack
+> > > that papers of the underlying problem(s).  I'm not sure what more
+> > > we can do here.
+> > 
+> > The problem is that the NVMe driver applies aggressive interrupt
+> > coalescing clearly, that can be addressed exactly by this approach.
+> 
+> Can this default coalescing setting be turned off with a "set feature"
+> command?
+> 
 
-This patch allows users to set the subsystem's model.
+At default, 'get feature -f 0x8' shows zero, and nothing changes after
+running 'set feature -f 0x8 -v 0'.
 
-Signed-off-by: Mark Ruijter <MRuijter@onestopsystems.com>
-Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
----
- nvmetcli | 8 ++++++++
- 1 file changed, 8 insertions(+)
+BTW, soft lockup from another Samsung NVMe can be fixed by this patch
+too. I am confirming if the Samsung NVMe applies aggressive interrupt
+coalescing too.
 
-diff --git a/nvmetcli b/nvmetcli
-index 4fdac53..ea17f95 100755
---- a/nvmetcli
-+++ b/nvmetcli
-@@ -157,6 +157,7 @@ class UISubsystemNode(UINode):
-         'serial': ('string', 'Export serial number to hosts'),
-         'cntlid_min': ('number', 'Set min ctrl id'),
-         'cntlid_max': ('number', 'Set max ctrl id'),
-+        'model': ('string', 'Set a model description'),
-         'version': ('string', 'Export version number to hosts'),
-     }
- 
-@@ -189,6 +190,13 @@ class UISubsystemNode(UINode):
-         if cntlid_max != "n/a":
-             info.append("cntlid_max=" + cntlid_max)
- 
-+        try:
-+            model = str(self.cfnode.get_attr("attr", "model"))
-+        except Exception as e:
-+            model = "n/a"
-+        if model != "n/a":
-+            info.append("model=" + model)
-+
-         return (", ".join(info), True)
- 
- 
--- 
-2.22.1
+Thanks,
+Ming
 
 
 _______________________________________________
