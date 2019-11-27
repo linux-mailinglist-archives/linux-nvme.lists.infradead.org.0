@@ -2,53 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5875B10B4EB
-	for <lists+linux-nvme@lfdr.de>; Wed, 27 Nov 2019 18:58:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 46DE510B4EF
+	for <lists+linux-nvme@lfdr.de>; Wed, 27 Nov 2019 18:59:26 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZDNz9k74CqwLrLR8AUF6DqpJfFQLi4OO1nCmxECQrUM=; b=O8Edj1IdFy6RxE
-	WlprkdL163fliZhp91sb115dggAQyZdTt80RDiTPETSVXH3aS4QkP31XtIpxSov01AXD/WIh0fQhY
-	XGsirSDkxw4hotj6XnYxfyFSLTDCQFQfCfz2+PF95QiHvCxkCHUZcJzsCU8/xQLow1QAj71BCdBww
-	zW7TNigkEcNt9bEd/dOXPRCp9KK5TSQieG8MSg9HamoE1Z9nUAttvK5fbtQ8EYDkAAl0gtB5ihcqz
-	N9aDMWOim3ri5eOPK07jGZI/UYSZ2Ks0TukUfa5I6CAj7WAo1JoNKsf8pZDNCbJ8Sc0Vvu4rfC4b+
-	QlSTjHG+DzsNtNrVpUKw==;
+	List-Owner; bh=PPXl/+v60mGaBpXC0knXQnI/a+MuE0EnaRBtXJEzTMM=; b=KAxrpOmeSmmgVN
+	jt3cz4SGui3/ZZVeNV1BuI2Hb6tqv2Si7sMsOvyx/gjH6YWl/3e913Xi6wTiOlhnsPh4BPsXqswta
+	0nSiVkgrZdpEsdRX295qDzGfrAxTRRI+3MvvEwUgQWZwq2Wtbz2eIx9O3Yv9kRAt5E/hgvJng7BwQ
+	kWY9FwhVfUL6YGeMv3uu4P9o+FeTersr+h1ifQuVbscBFAUy9GGYWPHjWSv6v02j/VsKytpl7BjqT
+	Lv3o9sIU52xtp8Ywo7urvnjwgO7bmNnmULqYozxoXp0RVSY5IoxEUVlohr3E42vgcHiVB9MMyzoJW
+	ElGu5GK++PnMmBQCe88Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ia1aY-0006pf-Lq; Wed, 27 Nov 2019 17:58:54 +0000
+	id 1ia1b1-000783-TX; Wed, 27 Nov 2019 17:59:23 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ia1aS-0006oS-Sx
- for linux-nvme@lists.infradead.org; Wed, 27 Nov 2019 17:58:50 +0000
+ id 1ia1aT-0006os-7u
+ for linux-nvme@lists.infradead.org; Wed, 27 Nov 2019 17:58:51 +0000
 Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7EC6520862;
- Wed, 27 Nov 2019 17:58:46 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id E3D2120866;
+ Wed, 27 Nov 2019 17:58:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1574877527;
- bh=t6krqhTDOQbA3ccYV42rHwI8py0lNr+pInJfmGl6yLY=;
+ s=default; t=1574877529;
+ bh=8KlTY+tdPeHRajIwps6mM2n79d4HKLNAYBf0jdm5+0s=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=qQnMMN0/X1NzxPHgboVGfR/19OokLsHFgkBg7co3L9l2FBZfZm3tCKTYS87K+1/2+
- Z6ZQ7tAPpbCwv9XFCGFS1gCaWPiRi9gnco/zuKk8VvXNE8R53gAbDu3Bps7edP8x3J
- CLGph2ZEfbiEIMDDXWk2iP8A/ipOWI/mFRYdX71Q=
+ b=pCmQmBouWGdGquYi8oyfwbvzYyUYgRYxiaUoNyOyLqew7+VPbtm/f4kTFdDSj6X9J
+ C4M89yQPw1dteMeDgK9LphAIlZRdmfGRXoCQuQnjiysot2exv5ejSmaKFNjBAljxsU
+ Z/e2ZRyeGma1oJB3dGFkKyMaQndsVGwwiE0k/H00=
 From: Keith Busch <kbusch@kernel.org>
 To: linux-nvme@lists.infradead.org,
 	hch@lst.de,
 	sagi@grimberg.me
-Subject: [PATCH 1/4] PCI/MSI: Export __pci_msix_desc_mask_irq
-Date: Thu, 28 Nov 2019 02:58:21 +0900
-Message-Id: <20191127175824.1929-2-kbusch@kernel.org>
+Subject: [PATCH 2/4] nvme/pci: Mask legacy and MSI in threaded handler
+Date: Thu, 28 Nov 2019 02:58:22 +0900
+Message-Id: <20191127175824.1929-3-kbusch@kernel.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191127175824.1929-1-kbusch@kernel.org>
 References: <20191127175824.1929-1-kbusch@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191127_095848_957258_CF13A15E 
-X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-CacheID: sfid-20191127_095849_298649_C4825FBA 
+X-CRM114-Status: UNSURE (   9.78  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -85,26 +85,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Export the fast msix mask so that drivers may use these in timing
-sensitive contexts.
+Local interrupts are re-enabled when the nvme irq thread is
+woken. Subsequent MSI or a level triggered legacy interrupts may restart
+the nvme irq check while the thread handler is running. This unnecessarily
+spends CPU cycles and potentially triggers spurious interrupt detection,
+disabling our NVMe irq.
+
+Use the NVMe interrupt mask/clear registers to disable controller
+interrupts while the nvme bottom half processes completions.
 
 Signed-off-by: Keith Busch <kbusch@kernel.org>
 ---
- drivers/pci/msi.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/nvme/host/pci.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
-diff --git a/drivers/pci/msi.c b/drivers/pci/msi.c
-index 0884bedcfc7a..9e866929f4b0 100644
---- a/drivers/pci/msi.c
-+++ b/drivers/pci/msi.c
-@@ -225,6 +225,7 @@ u32 __pci_msix_desc_mask_irq(struct msi_desc *desc, u32 flag)
- 
- 	return mask_bits;
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 9d307593b94f..c5b837cba730 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -1048,6 +1048,28 @@ static irqreturn_t nvme_irq_check(int irq, void *data)
+ 	return IRQ_NONE;
  }
-+EXPORT_SYMBOL_GPL(__pci_msix_desc_mask_irq);
  
- static void msix_mask_irq(struct msi_desc *desc, u32 flag)
- {
++static irqreturn_t nvme_irq_thread_msi(int irq, void *data)
++{
++	struct nvme_queue *nvmeq = data;
++	struct nvme_dev *dev = nvmeq->dev;
++
++	nvme_irq(irq, data);
++	writel(1 << nvmeq->cq_vector, dev->bar + NVME_REG_INTMC);
++	return IRQ_HANDLED;
++}
++
++static irqreturn_t nvme_irq_check_msi(int irq, void *data)
++{
++	struct nvme_queue *nvmeq = data;
++	struct nvme_dev *dev = nvmeq->dev;
++
++	if (nvme_cqe_pending(nvmeq)) {
++		writel(1 << nvmeq->cq_vector, dev->bar + NVME_REG_INTMS);
++		return IRQ_WAKE_THREAD;
++	}
++	return IRQ_NONE;
++}
++
+ /*
+  * Poll for completions any queue, including those not dedicated to polling.
+  * Can be called from any context.
+@@ -1502,6 +1524,11 @@ static int queue_request_irq(struct nvme_queue *nvmeq)
+ 	int nr = nvmeq->dev->ctrl.instance;
+ 
+ 	if (use_threaded_interrupts) {
++		/* MSI and Legacy use the same NVMe IRQ masking */
++		if (!pdev->msix_enabled)
++			return pci_request_irq(pdev, nvmeq->cq_vector,
++				nvme_irq_check_msi, nvme_irq_thread_msi,
++				nvmeq, "nvme%dq%d", nr, nvmeq->qid);
+ 		return pci_request_irq(pdev, nvmeq->cq_vector, nvme_irq_check,
+ 				nvme_irq, nvmeq, "nvme%dq%d", nr, nvmeq->qid);
+ 	} else {
 -- 
 2.21.0
 
