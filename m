@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18FAB10CAD7
-	for <lists+linux-nvme@lfdr.de>; Thu, 28 Nov 2019 15:56:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 308EC10CAD8
+	for <lists+linux-nvme@lfdr.de>; Thu, 28 Nov 2019 15:56:46 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,71 +11,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=CaWK6bYwekSI50oSHb/DmUoJBuDnmJpjAeBLf3uUOGM=; b=NuMbNal6M+oMyBSB+cLESLhEdV
-	Sj9xsUX4vB6lO2QyyVTq0G0Y4H/aJzUJvMxNApNEi77uh59mfiwyYLy5qKOPxR78O765ONXf7gADF
-	UZoJzzhzBQKjPzn9KBxET3e0xX5i137LA29t7jOtPPht4+WxP5wlyyVUtXpc60yLg+qV62S0zsEHi
-	5mG7dewVOpbkQSso710RFZGplM3rj5h+Bk/7CrOhMic1FWzA+c6LuIe4t8/3PqDWZPo9BRWD5STxA
-	o6Kl0EghsqrqIW2FRdkLyHe5fSX4jmHSWXRQZnDqQ8Ah4AD/px894qNHTh/o0+wRrTykw02eK7yTn
-	kchGrpkg==;
+	bh=i79hiQL72fkADhqhyDV/RQgDP1nV6EsPe+LLZBJmSS8=; b=URVSDTK9lHPWT31qvJictWVZVo
+	tcJec4pa3b+3RVHPhA3ydpEMlu71wFhSQ2lvZjUaqwu44IWWsBGJ3xmGP6iYqaVO/jFBTVo8ZWH0m
+	RfDrDw6vqRaA+rpmIgGxm5Gyon4UubBvcv/XjAi+Q2G/uAXdcIB5ITpNol5Z6coArL6LFNph52CqW
+	BO/E5Huc2mHKhg37TqRlttuUip6IvbUkNtzD5U2DiTmNZoTmj+AiXF4ihnzJgREXIHSHg8T+Z7Tdf
+	kJPA6ma8FP/Ed/KplCvjyczUTtHhZHlqdwZaiAamDX7Li9IUvVAz937LQQVhtXwNAy/L/RNeG5j17
+	NZ8nIv9g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iaLDZ-0008KZ-Sq; Thu, 28 Nov 2019 14:56:29 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1iaLDn-00009C-U4; Thu, 28 Nov 2019 14:56:43 +0000
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iaLCN-0006Ta-NG
- for linux-nvme@lists.infradead.org; Thu, 28 Nov 2019 14:55:17 +0000
-Received: by mail-pf1-x442.google.com with SMTP id n13so13282582pff.1
- for <linux-nvme@lists.infradead.org>; Thu, 28 Nov 2019 06:55:15 -0800 (PST)
+ id 1iaLCR-0006Xb-UK
+ for linux-nvme@lists.infradead.org; Thu, 28 Nov 2019 14:55:25 +0000
+Received: by mail-pj1-x1044.google.com with SMTP id r67so4243203pjb.0
+ for <linux-nvme@lists.infradead.org>; Thu, 28 Nov 2019 06:55:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=XLU+RhnbOLO++kk3A2l2hX8YNotokH7UjGIfreihyFk=;
- b=OZfJdX6whHMuR6GPApqn8rRuOEAnRf3w5c08IbXIUPnDI1gkAXOeEWealwKTYg1aLG
- 11ye6u77N8A2CX+effHDLr1fku3ylPiH3hhhZqlmY3KN0gbLXXS6Z5Q0bAE2f/jcTSwn
- nMLvypyNuRxsTBdEVODvH8U/Xz+FQe4c88fqRuKFL9/BzSY2weg1rA8zg+63sqyQXNvb
- skqYPRd7XR+mT1G/dHIBao98RWWhcDBBTI9lehVrwK79KZyGhK4oyWwj9nGRV3b2spmU
- 7cS5vO2Dk3x4plo5u9YFJLUgfjBJ8lKXFcEo7khVKhPa+AlMyTxPh4yq7QCck4JXmJlV
- dlNg==
+ bh=Rl/Muaad0JKZvHEYUN/4/vVrZyhpWqkrNfXezrDAyeU=;
+ b=VNGiuixpHdhZlKCdI1lUbF3zqtjKhA8JjC+y8CfCWFSPFQ0BQz3Lmb0QLJTeQzeeOp
+ I3MeGV7hUuAKdiWZjr9nz5YeeVEaBxxsWo7QfzwE5sJCF8N4jcodOUIv88gm2xsi9+R7
+ +BQRtKJq5MV1L8ufJnXe56xOngFxMRJyrlT/Nc8R94EMwK7GJn8AooBCxywnqUUpcvPZ
+ yksVDGyhleVo0RnEBJS31FGBfySon8G+y0S1+6NAYU4EZpHqlqBPdZ3qbFskqmJ4z874
+ pzMm7HaYHErXanglixeEhcaG4g6dNNTXqgAj/Pc2fw8A1uCma13Pr826ept1srbPcqFL
+ 74TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=XLU+RhnbOLO++kk3A2l2hX8YNotokH7UjGIfreihyFk=;
- b=Zk8WjrVGygdRsSi8iw9yZDYmd22+0M6n2XGQq7/vE6LOvnxjWXCk88Cmz1uGUqRMRx
- J35zdIQQ9KIKpUaKhKSU8DODA92vm1LRx3RNqagrYCmzIm2jqCvm414OVdx/Vpos+Ahe
- 4Jifl2wrZkneh/KLa3xauuyiOaxNF3WyMwxxMcI3ddGqa0V2iIyCZsJbHuJewfaHu3th
- VlwE4inUtirnmUUVj8mPy44tqY3Sa2d9qH+Wt1Phg3oEXQRe+Qh5Eg6ixAWbh4YSZKg/
- CaqWxj1r1jBNTN/qCk+jVr1OYb+BbmIE3WwX8e0lYIcYMTkkEpDdanvnOVzVTu9/2hW6
- Jh9A==
-X-Gm-Message-State: APjAAAXFPDLG2scmELKJ+G9eMKv1cptEsesvZ+jC7R0P5egPUqrFDeSB
- GCg06RonIItIODmJXyH+j3Od5W3VVnU=
-X-Google-Smtp-Source: APXvYqwzpYgJ9dVAN3Isp6uQaRiApCWUSpADNNzkXMrApBhMnK2khllI7c2bFpkogeF4MiSUBjiHaw==
-X-Received: by 2002:aa7:8aca:: with SMTP id b10mr13507218pfd.213.1574952914062; 
- Thu, 28 Nov 2019 06:55:14 -0800 (PST)
+ bh=Rl/Muaad0JKZvHEYUN/4/vVrZyhpWqkrNfXezrDAyeU=;
+ b=doiOTwC/m3jYat6sdyJM28SaAWKFhutcDrWDCJmerXToJW9WXn2T7MThI3F30bRWEl
+ t7SrZGZhT08I6Jt4ZBowACzHIAhomyUHdeRCqLZBBd3Pz4RIEhgW6Avvt+nua8POC54R
+ CfTr+GuUHBbvAV6w6Ym1yndTayLHaCRw18h3IB7zlxfA+FHeexgHHz3QaafbvJO2S4vY
+ IHeBSDs2KwrXH86NcphwqfrYIfojKeQu9I6wBRtlD9y9POddPDwjgExv4CjehKBCceag
+ 0n12NbYlzlSVBW8A3um6E6qnTtJ2AdkSaBMOv4Eti/smHFsdpfpDMy9Aj5T5Rtpd49ka
+ SXvQ==
+X-Gm-Message-State: APjAAAXqEsTFv6YNA1338ZC9U1y5soV7KgF4yeozM0Z93ragDTcfWeJd
+ 7wPFoHJ76sJlffGJd4w2OQTQX5RVYZA=
+X-Google-Smtp-Source: APXvYqwR27zrU/EiAbDRNlN1A8TmOl4w2Fmgs7jCyn1WoiQAAB82sxWB2twhBCfOfzKVYrGHmqrS8Q==
+X-Received: by 2002:a17:90a:48:: with SMTP id 8mr12600637pjb.82.1574952918403; 
+ Thu, 28 Nov 2019 06:55:18 -0800 (PST)
 Received: from localhost.localdomain ([240f:34:212d:1:8015:e854:5ef0:f52e])
- by smtp.gmail.com with ESMTPSA id z11sm22282563pfg.117.2019.11.28.06.55.09
+ by smtp.gmail.com with ESMTPSA id z11sm22282563pfg.117.2019.11.28.06.55.14
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 28 Nov 2019 06:55:13 -0800 (PST)
+ Thu, 28 Nov 2019 06:55:17 -0800 (PST)
 From: Akinobu Mita <akinobu.mita@gmail.com>
 To: linux-nvme@lists.infradead.org, linux-hwmon@vger.kernel.org,
  linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 4/8] platform/x86: intel_menlow: switch to use
- <linux/temperature.h> helpers
-Date: Thu, 28 Nov 2019 23:54:35 +0900
-Message-Id: <1574952879-7200-5-git-send-email-akinobu.mita@gmail.com>
+Subject: [PATCH v2 5/8] thermal: int340x: switch to use <linux/temperature.h>
+ helpers
+Date: Thu, 28 Nov 2019 23:54:36 +0900
+Message-Id: <1574952879-7200-6-git-send-email-akinobu.mita@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1574952879-7200-1-git-send-email-akinobu.mita@gmail.com>
 References: <1574952879-7200-1-git-send-email-akinobu.mita@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191128_065515_883112_E9BEB455 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20191128_065520_091786_F1DDC859 
+X-CRM114-Status: GOOD (  14.62  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:442 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -112,14 +109,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This switches the intel_menlow driver to use deci_kelvin_to_celsius() and
-celsius_to_deci_kelvin() in <linux/temperature.h> instead of helpers in
-<linux/thermal.h>.
+This switches the int340x thermal zone driver to use
+deci_kelvin_to_millicelsius() and millicelsius_to_deci_kelvin() in
+<linux/temperature.h> instead of helpers in <linux/thermal.h>.
 
 This is preparation for centralizing the kelvin to/from Celsius conversion
 helpers in <linux/temperature.h>.
-
-This also removes a trailing space, while we're at it.
 
 Cc: Sujith Thomas <sujith.thomas@intel.com>
 Cc: Darren Hart <dvhart@infradead.org>
@@ -138,46 +133,49 @@ Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
 * v2
 - include <linux/temperature.h> explicitly from thermal drivers
 - fix s/temprature/temperature/ typo in commit log
-- don't mix up another fix (format string for cellsius value)
 
- drivers/platform/x86/intel_menlow.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ drivers/thermal/intel/int340x_thermal/int340x_thermal_zone.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/platform/x86/intel_menlow.c b/drivers/platform/x86/intel_menlow.c
-index b102f6d..12c1094 100644
---- a/drivers/platform/x86/intel_menlow.c
-+++ b/drivers/platform/x86/intel_menlow.c
-@@ -20,6 +20,7 @@
- #include <linux/pci.h>
- #include <linux/pm.h>
- #include <linux/slab.h>
+diff --git a/drivers/thermal/intel/int340x_thermal/int340x_thermal_zone.c b/drivers/thermal/intel/int340x_thermal/int340x_thermal_zone.c
+index 75484d6..6658cc7 100644
+--- a/drivers/thermal/intel/int340x_thermal/int340x_thermal_zone.c
++++ b/drivers/thermal/intel/int340x_thermal/int340x_thermal_zone.c
+@@ -7,6 +7,7 @@
+ #include <linux/module.h>
+ #include <linux/init.h>
+ #include <linux/acpi.h>
 +#include <linux/temperature.h>
  #include <linux/thermal.h>
- #include <linux/types.h>
+ #include "int340x_thermal_zone.h"
  
-@@ -302,8 +303,10 @@ static ssize_t aux_show(struct device *dev, struct device_attribute *dev_attr,
- 	int result;
+@@ -34,7 +35,7 @@ static int int340x_thermal_get_zone_temp(struct thermal_zone_device *zone,
+ 		*temp = (unsigned long)conv_temp * 10;
+ 	} else
+ 		/* _TMP returns the temperature in tenths of degrees Kelvin */
+-		*temp = DECI_KELVIN_TO_MILLICELSIUS(tmp);
++		*temp = deci_kelvin_to_millicelsius(tmp);
  
- 	result = sensor_get_auxtrip(attr->handle, idx, &value);
-+	if (result)
-+		return result;
- 
--	return result ? result : sprintf(buf, "%lu", DECI_KELVIN_TO_CELSIUS(value));
-+	return sprintf(buf, "%lu", deci_kelvin_to_celsius(value));
+ 	return 0;
  }
+@@ -116,7 +117,7 @@ static int int340x_thermal_set_trip_temp(struct thermal_zone_device *zone,
  
- static ssize_t aux0_show(struct device *dev,
-@@ -332,8 +335,8 @@ static ssize_t aux_store(struct device *dev, struct device_attribute *dev_attr,
- 	if (value < 0)
- 		return -EINVAL;
+ 	snprintf(name, sizeof(name), "PAT%d", trip);
+ 	status = acpi_execute_simple_method(d->adev->handle, name,
+-			MILLICELSIUS_TO_DECI_KELVIN(temp));
++			millicelsius_to_deci_kelvin(temp));
+ 	if (ACPI_FAILURE(status))
+ 		return -EIO;
  
--	result = sensor_set_auxtrip(attr->handle, idx, 
--				    CELSIUS_TO_DECI_KELVIN(value));
-+	result = sensor_set_auxtrip(attr->handle, idx,
-+				    celsius_to_deci_kelvin(value));
- 	return result ? result : count;
+@@ -163,7 +164,7 @@ static int int340x_thermal_get_trip_config(acpi_handle handle, char *name,
+ 	if (ACPI_FAILURE(status))
+ 		return -EIO;
+ 
+-	*temp = DECI_KELVIN_TO_MILLICELSIUS(r);
++	*temp = deci_kelvin_to_millicelsius(r);
+ 
+ 	return 0;
  }
- 
 -- 
 2.7.4
 
