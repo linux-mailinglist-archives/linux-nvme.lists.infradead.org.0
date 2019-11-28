@@ -2,43 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04F1C10C449
-	for <lists+linux-nvme@lfdr.de>; Thu, 28 Nov 2019 08:20:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B29110C44A
+	for <lists+linux-nvme@lfdr.de>; Thu, 28 Nov 2019 08:22:54 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mlc/PstARzAfSbX1q4oWzW+kxWAwN0cdR72zwcHyUhw=; b=PD8524kp8qCwGS
-	791cJIY25vVtcFagKJzmNhfBVkB3NSZIaCgT5yWx5RnRvZsvcCCiPN3gtCl4fPDlw8chPVls9WBKL
-	ydpv1esr4+WhrcbOw4XRH1qPu6ly2il2mHQ1jzmlQtIXHj1aiGpNxigkVIDActKHz3tnmxEk39s5T
-	kcBpdMyaVhv3ydfHBUgcceIy4kfjlcLgPjwsmoWCcJ60c3BXSkawrF8CALhxx2xaVbHTYlzET21zU
-	7aa81NTaH2jPoEGKTmLHJCnzhKKQEdaw6AhP8FKYczrVqKG2+iq/a8bSH8SGCzVv/93SsOX6YnJwc
-	nu8u3g7LrFQl7DrCuJWw==;
+	List-Owner; bh=jMiNduyt9AYazxQLDr4XhJ87e6k6SxlATl6lgLybkWw=; b=lY4ZqW0OW8GExI
+	TODmebyx9qiqsm7B2oFsUWZ97c5ZbLJ03BhQEX/9+GBZU4smH1F1Vn5a6sYE+KXcDi+hPJNRoXNNi
+	BmoOsLz+xAy2HTMwyeUIdGdEbLj6FhD8FV7VMGoz7NYfaWOnlhQck9crPe4p3mMouodb54UYbgRH0
+	TD3KPVfPqko50PFsY42UHFgyKrWh9TIgYk2mBQ+sPzd04q0Yg20pTr0mHWAeo3oZr7aOMIqzHG67G
+	l0KTFi7X1nUNyEcflveSMz1CqjXpEG2t9tTmTTNH+ciS2CsQB/FbrdOAWB9pvpcNdkdICCWmqjElW
+	ZjTlBPAUHrcLR2HquPkA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iaE5y-0004Cl-Fr; Thu, 28 Nov 2019 07:20:10 +0000
+	id 1iaE8a-0005TY-GK; Thu, 28 Nov 2019 07:22:52 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iaE5q-0003ut-5S
- for linux-nvme@lists.infradead.org; Thu, 28 Nov 2019 07:20:03 +0000
+ id 1iaE8U-0005TE-L2
+ for linux-nvme@lists.infradead.org; Thu, 28 Nov 2019 07:22:47 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 600B768B05; Thu, 28 Nov 2019 08:19:59 +0100 (CET)
-Date: Thu, 28 Nov 2019 08:19:59 +0100
+ id 783DC68B05; Thu, 28 Nov 2019 08:22:43 +0100 (CET)
+Date: Thu, 28 Nov 2019 08:22:43 +0100
 From: Christoph Hellwig <hch@lst.de>
 To: Keith Busch <kbusch@kernel.org>
-Subject: Re: [PATCH 3/4] nvme/pci: Mask MSIx interrupts for threaded handling
-Message-ID: <20191128071959.GB20330@lst.de>
+Subject: Re: [PATCH 4/4] nvme/pci: Spin threaded interrupt completions
+Message-ID: <20191128072242.GC20330@lst.de>
 References: <20191127175824.1929-1-kbusch@kernel.org>
- <20191127175824.1929-4-kbusch@kernel.org>
+ <20191127175824.1929-5-kbusch@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191127175824.1929-4-kbusch@kernel.org>
+In-Reply-To: <20191127175824.1929-5-kbusch@kernel.org>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191127_232002_366399_380E1B2C 
-X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-CacheID: sfid-20191127_232246_839168_C0EB82D9 
+X-CRM114-Status: UNSURE (   4.72  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -67,18 +67,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Nov 28, 2019 at 02:58:23AM +0900, Keith Busch wrote:
-> The nvme irq thread, when enabled, may run for a while as new completions
-> are submitted. These completions may also send MSI messages, which could
-> be detected as spurious and disables the nvme irq.
-> 
-> Use the fast MSIx mask to disable the controller from sending MSIx
-> interrupts while the nvme bottom half thread is running.
-
-I thin kwe should keep this together with patch 2, not just in the
-patch series but also in the code - I'd rather have two little helper
-to enable/disable an irq with if for the two cases and a good comment
-right next to that than splitting the higher level functions.
+I'd rather open code the loop as that simplifies a few things.
 
 _______________________________________________
 linux-nvme mailing list
