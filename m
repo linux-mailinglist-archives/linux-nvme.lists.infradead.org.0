@@ -2,47 +2,47 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11A9210EBCD
-	for <lists+linux-nvme@lfdr.de>; Mon,  2 Dec 2019 15:50:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A1D910EBD5
+	for <lists+linux-nvme@lfdr.de>; Mon,  2 Dec 2019 15:51:16 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b66bUeXZUEpZi5+xpJ2SlDHWxq9XIK/TCv1R16nKqwE=; b=YllE/bqiYta6Il
-	Z37lFje1VaD2NrlVT74GWiN9J3j0nVt+4Wr9PXzS1oYytn/20E2/Xa/Izs5BDhI6AcN3Bmaka4Rms
-	/RWOP25g94a83QsotVyF2wA65XdMLicAJ4kYhtfbJU+lhx7PixZQFurif7CWx1Q/vCPFWycWo9aGN
-	rrKkXAVnWn8tU5Mx/NJwOVEQ2HcKCYFbRoF1rrRMEy4wba9RhvPmykiHkMLpuQVxjn71NKDSy7BZn
-	xsygXIidjbPfENtMlhuqmFaHtruAsq9OnajOipyNVbbS8iQC1jEdcdheEW8guvAHQ578OHLj8EEdQ
-	pjfbAgGwSP0VA9LTzhew==;
+	List-Owner; bh=fRJxL4eptXizjaRLcITWhW4RpxOXGcAqXYTU9XQUGF0=; b=gjDBmOcXYmd/aw
+	JA698WjZqKA9+1MRkA7l+Kz2UGjuHsce2srdOPVDHr1Q0acxqzSRkbU+EbG0l6Elupz84jD/oEiKM
+	eFy9Pse1zEhUN9K5k7VJcQ2E5KAft98lhvJmWKfasBQjUhTsAD4ScJ5D52m87JGF07czZ4bA8p9mU
+	GKuGXyGhyfg8vr9XPN4A6B+l5pqIwFnqRUEklm9D6rwy1YfOOsBDxsEP+F03Nnyfvu3wTarfeaHok
+	BLiILORrNeu4V1s6/fZY4JYLdw4uw2Cbk7SU/caGIaIWByryu01saUxpi5eIVX3W12x+Y4psV3NAR
+	LCM4dBySpAFd5+0DSgXw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ibn1S-0006Vf-NY; Mon, 02 Dec 2019 14:49:58 +0000
+	id 1ibn2g-0000BU-Mk; Mon, 02 Dec 2019 14:51:14 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ibmzx-0005SC-Bu
- for linux-nvme@lists.infradead.org; Mon, 02 Dec 2019 14:48:30 +0000
+ id 1ibmzx-0005S1-Hd
+ for linux-nvme@lists.infradead.org; Mon, 02 Dec 2019 14:48:33 +0000
 Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 2 Dec 2019 16:48:13 +0200
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id xB2EmC20004689;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id xB2EmC21004689;
  Mon, 2 Dec 2019 16:48:13 +0200
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, hch@lst.de,
  sagi@grimberg.me, martin.petersen@oracle.com
-Subject: [PATCH 10/16] nvmet: Add metadata characteristics for a namespace
-Date: Mon,  2 Dec 2019 16:48:06 +0200
-Message-Id: <20191202144812.147686-12-maxg@mellanox.com>
+Subject: [PATCH 11/16] nvmet: Rename nvmet_rw_len to nvmet_rw_data_len
+Date: Mon,  2 Dec 2019 16:48:07 +0200
+Message-Id: <20191202144812.147686-13-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191202144812.147686-1-maxg@mellanox.com>
 References: <20191202144812.147686-1-maxg@mellanox.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191202_064825_861093_131E85C3 
-X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-CacheID: sfid-20191202_064826_020104_DF8E368F 
+X-CRM114-Status: UNSURE (   8.89  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -75,76 +75,58 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Israel Rukshin <israelr@mellanox.com>
 
-This is a preparation for adding metadata (T10-PI) over fabric support.
+The function doesn't add the metadata length (only data length is
+calculated). This is preparation for adding metadata (T10-PI) support.
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
 Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+Reviewed-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- drivers/nvme/target/io-cmd-bdev.c | 22 ++++++++++++++++++++++
- drivers/nvme/target/nvmet.h       |  3 +++
- 2 files changed, 25 insertions(+)
+ drivers/nvme/target/io-cmd-bdev.c | 2 +-
+ drivers/nvme/target/io-cmd-file.c | 2 +-
+ drivers/nvme/target/nvmet.h       | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/nvme/target/io-cmd-bdev.c b/drivers/nvme/target/io-cmd-bdev.c
-index b6fca0e421ef..fb400221146e 100644
+index fb400221146e..190cdc89b560 100644
 --- a/drivers/nvme/target/io-cmd-bdev.c
 +++ b/drivers/nvme/target/io-cmd-bdev.c
-@@ -50,6 +50,9 @@ void nvmet_bdev_set_limits(struct block_device *bdev, struct nvme_id_ns *id)
- int nvmet_bdev_ns_enable(struct nvmet_ns *ns)
+@@ -173,7 +173,7 @@ static void nvmet_bdev_execute_rw(struct nvmet_req *req)
+ 	sector_t sector;
+ 	int op, i;
+ 
+-	if (!nvmet_check_data_len(req, nvmet_rw_len(req)))
++	if (!nvmet_check_data_len(req, nvmet_rw_data_len(req)))
+ 		return;
+ 
+ 	if (!req->sg_cnt) {
+diff --git a/drivers/nvme/target/io-cmd-file.c b/drivers/nvme/target/io-cmd-file.c
+index caebfce06605..e0a4859e9735 100644
+--- a/drivers/nvme/target/io-cmd-file.c
++++ b/drivers/nvme/target/io-cmd-file.c
+@@ -232,7 +232,7 @@ static void nvmet_file_execute_rw(struct nvmet_req *req)
  {
- 	int ret;
-+#ifdef CONFIG_BLK_DEV_INTEGRITY
-+	struct blk_integrity *bi;
-+#endif
+ 	ssize_t nr_bvec = req->sg_cnt;
  
- 	ns->bdev = blkdev_get_by_path(ns->device_path,
- 			FMODE_READ | FMODE_WRITE, NULL);
-@@ -64,6 +67,25 @@ int nvmet_bdev_ns_enable(struct nvmet_ns *ns)
- 	}
- 	ns->size = i_size_read(ns->bdev->bd_inode);
- 	ns->blksize_shift = blksize_bits(bdev_logical_block_size(ns->bdev));
-+
-+	ns->prot_type = 0;
-+	ns->ms = 0;
-+#ifdef CONFIG_BLK_DEV_INTEGRITY
-+	bi = bdev_get_integrity(ns->bdev);
-+	if (bi) {
-+		ns->ms = bi->tuple_size;
-+		if (bi->profile == &t10_pi_type1_crc)
-+			ns->prot_type = NVME_NS_DPS_PI_TYPE1;
-+		else if (bi->profile == &t10_pi_type3_crc)
-+			ns->prot_type = NVME_NS_DPS_PI_TYPE3;
-+		else
-+			/* Unsupported metadata type */
-+			ns->ms = 0;
-+	}
-+
-+	pr_debug("ms %d pi_type %d\n", ns->ms, ns->prot_type);
-+#endif
-+
- 	return 0;
- }
+-	if (!nvmet_check_data_len(req, nvmet_rw_len(req)))
++	if (!nvmet_check_data_len(req, nvmet_rw_data_len(req)))
+ 		return;
  
+ 	if (!req->sg_cnt || !nr_bvec) {
 diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index 60011f3a50a7..89e0174ec98f 100644
+index 89e0174ec98f..8e6f11f54e76 100644
 --- a/drivers/nvme/target/nvmet.h
 +++ b/drivers/nvme/target/nvmet.h
-@@ -19,6 +19,7 @@
- #include <linux/rcupdate.h>
- #include <linux/blkdev.h>
- #include <linux/radix-tree.h>
-+#include <linux/t10-pi.h>
+@@ -495,7 +495,7 @@ u16 nvmet_bdev_flush(struct nvmet_req *req);
+ u16 nvmet_file_flush(struct nvmet_req *req);
+ void nvmet_ns_changed(struct nvmet_subsys *subsys, u32 nsid);
  
- #define NVMET_ASYNC_EVENTS		4
- #define NVMET_ERROR_LOG_SLOTS		128
-@@ -76,6 +77,8 @@ struct nvmet_ns {
- 
- 	int			use_p2pmem;
- 	struct pci_dev		*p2p_dev;
-+	int			prot_type;
-+	int			ms;
- };
- 
- static inline struct nvmet_ns *to_nvmet_ns(struct config_item *item)
+-static inline u32 nvmet_rw_len(struct nvmet_req *req)
++static inline u32 nvmet_rw_data_len(struct nvmet_req *req)
+ {
+ 	return ((u32)le16_to_cpu(req->cmd->rw.length) + 1) <<
+ 			req->ns->blksize_shift;
 -- 
 2.16.3
 
