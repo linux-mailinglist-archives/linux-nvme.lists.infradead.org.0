@@ -2,90 +2,90 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4171C114169
-	for <lists+linux-nvme@lfdr.de>; Thu,  5 Dec 2019 14:23:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB092114191
+	for <lists+linux-nvme@lfdr.de>; Thu,  5 Dec 2019 14:37:01 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=9rJHD5QTrRlCXxaQ8BP7OrS+JJItXbb9+12evJlw5EM=; b=Bvk
-	vtCeb7LezoF5nVnskzqGnsC/9UPs5HgChNG9LDU6SoTssvSx7lUZ0gO1sCmYH6QFv0WlMCIxY6VYa
-	Y+FOSPXPt4EvKon4/zsQm3WagSN3uNdK8Gr3VBbQ4s+ankTKttvOP287Fp30xAGIew4Kaz8/QsdcG
-	Eku+EtK1mnFL5NN4+lH5C5EAN/8brIv/u1dU9lZJ/VPISR5FAKAHaHIjGLodyjiInlMfgMbVk0pOH
-	vnDeoXKCmyc8zVvNRLLhNzPNF73JYPoSkwIlwXjgjddYrM4B3Mamgfmk3ZHQZiWMLcSQp30oN+b+O
-	z2CoO0pB1byPrh1I7UkTlzT2dAwsxUA==;
+	References:List-Owner; bh=UGgfxx+US2fTfeufrfYHWtWOBFgSFNWSH2b929E99n8=; b=IHo
+	SseZxZqtnbmR7kwxTUuyFgSz1u8d7fbAjBtbQP8NXEzS2mOe+7xQPXlIXfkKOZhB5FrXPPG0+tHdl
+	snWNPstis+unfizBtpuIk7vD3MI36qafZh5naE1J3fjTSP7meu/IwVEnCCgXQ9GLmz8TbOX4882hM
+	hA+zzPY3ZyxdtWsgSb+abHPb2SEaazviY5YltFOAFNV5U5DjaKmqD4o9LoKtlYaUgGCd8Ab/3IR9O
+	PVMfrfO8XfSpqt+AFLDrqEvHcedr5XlKLyueCRRe1r7nMjCzXqpGOvmbXyiIEf0C0AplCBPZQzBO/
+	m9/quJy5UB6HuOTO80Gq16fV+M8JAFQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1icr63-00032t-AK; Thu, 05 Dec 2019 13:23:07 +0000
+	id 1icrJT-0000PN-KA; Thu, 05 Dec 2019 13:36:59 +0000
 Received: from mx0b-00154904.pphosted.com ([148.163.137.20])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1icr5z-00032S-1U
- for linux-nvme@lists.infradead.org; Thu, 05 Dec 2019 13:23:04 +0000
-Received: from pps.filterd (m0170395.ppops.net [127.0.0.1])
+ id 1icrJN-0000NX-Ss
+ for linux-nvme@lists.infradead.org; Thu, 05 Dec 2019 13:36:55 +0000
+Received: from pps.filterd (m0170394.ppops.net [127.0.0.1])
  by mx0b-00154904.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- xB5DFYtS026181; Thu, 5 Dec 2019 08:22:53 -0500
+ xB5DZ4nT017351; Thu, 5 Dec 2019 08:36:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
  h=from : to : cc : subject : date : message-id; s=smtpout1;
- bh=RpPqRlVfbA/xfnifPZxwnC7K28mxksZf9Tz4KyMqN9I=;
- b=kUMTZBJLR3nG8Q+DramkwCuO0VwO+H4CizdbdD/zuK6j62JlkmMLKQStegX41VZO6suW
- yreo4baglB00DcHko7LCExtypFI/pql5PFM7irb/bdCJKC/kgyXlPxPho2Do0KzsBhrH
- ONN3CnSM+nbkEWstCfvJ8omDCnSnctGWSI37Q8hCU3k6kYVaaY5LMbNQYapK1KQ9kOfa
- vohHzdJkWt2dtqUEC2lhLjyHZFwdGJ+mjYTUtESfqauucmDrdC+z7mz5xyNQT7KYlIlI
- RBsfgeGNomO1VQI9ME57NXPxLcxFvVX2IkZgwkVFog2oBYa7Sks8/CmWC6mwt7Ikz+yi QQ== 
+ bh=vcfOx779cLba4EpMG2X5hHqtR8ydua5lBnUmdEFmLao=;
+ b=a2MwqTcLoA5Gf9D2Mn2gwYc2R6Mn8hUp5hk/YtKkK0jmpNQXSw8tpVHMfO8vvJezqKk3
+ 2SWxu4GqKdLhV2zzUKKVHszPKXMcop+NP4VnGks1v/FrZ1h/vg/gzsUO44NZkGBpfoDF
+ LG8RLrxRsJC/wnWzCy4ZRSO5rfMFpJH2y0dUzFh0XnUaKGMndALcoGoWZ4CzCG0CIffE
+ fDUwQmjs09X2tzrerNfwYh3ZPHRwWQueLPmgQmGYfjyYDSriPWoNS+xrMroRnT0l2zET
+ V0uq2zheToJPbM10JtifNXaAnr0AHi0wt59ROZ2ZWqpCcnfc/5/Fquiubia7p6gRPYLJ Rw== 
 Received: from mx0a-00154901.pphosted.com (mx0a-00154901.pphosted.com
  [67.231.149.39])
- by mx0b-00154904.pphosted.com with ESMTP id 2wpbecnnp8-1
+ by mx0b-00154904.pphosted.com with ESMTP id 2wpqsca9vj-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 05 Dec 2019 08:22:52 -0500
-Received: from pps.filterd (m0142693.ppops.net [127.0.0.1])
+ Thu, 05 Dec 2019 08:36:51 -0500
+Received: from pps.filterd (m0142699.ppops.net [127.0.0.1])
  by mx0a-00154901.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- xB5DJ5RH074874; Thu, 5 Dec 2019 08:22:52 -0500
+ xB5DS0Jl029176; Thu, 5 Dec 2019 08:36:50 -0500
 Received: from mailuogwdur.emc.com (mailuogwdur-nat.lss.emc.com
  [128.221.224.79] (may be forged))
- by mx0a-00154901.pphosted.com with ESMTP id 2wpmv9a19v-1
+ by mx0a-00154901.pphosted.com with ESMTP id 2wpyckatkb-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 05 Dec 2019 08:22:51 -0500
+ Thu, 05 Dec 2019 08:36:50 -0500
 Received: from emc.com (localhost [127.0.0.1])
- by mailuogwprd52.lss.emc.com (Sentrion-MTA-4.3.1/Sentrion-MTA-4.3.0) with
- ESMTP id xB5DModC011021; Thu, 5 Dec 2019 08:22:50 -0500
-Received: from maildlpprd56.lss.emc.com ([maildlpprd56.lss.emc.com
- [10.106.48.160]]) by mailuogwprd52.lss.emc.com with ESMTP id xB5DMCwL010004 ; 
- Thu, 5 Dec 2019 08:22:36 -0500
-Received: from mailsyshubprd07.lss.emc.com (mailhub.lss.emc.com
- [10.253.24.63]) by maildlpprd56.lss.emc.com (RSA Interceptor);
- Thu, 5 Dec 2019 08:14:46 -0500
+ by mailuogwprd54.lss.emc.com (Sentrion-MTA-4.3.1/Sentrion-MTA-4.3.0) with
+ ESMTP id xB5DanFs013399; Thu, 5 Dec 2019 08:36:49 -0500
+Received: from maildlpprd51.lss.emc.com ([maildlpprd51.lss.emc.com
+ [10.106.48.155]]) by mailuogwprd54.lss.emc.com with ESMTP id xB5Da8NN013050 ; 
+ Thu, 5 Dec 2019 08:36:47 -0500
+Received: from mailapphubprd04.lss.emc.com (emcmail.lss.emc.com
+ [10.253.24.71]) by maildlpprd51.lss.emc.com (RSA Interceptor);
+ Thu, 5 Dec 2019 08:34:06 -0500
 Received: from vd-amite.xiolab.lab.emc.com (vd-amite.xiolab.lab.emc.com
  [10.64.137.6])
- by mailsyshubprd07.lss.emc.com (Sentrion-MTA-4.3.1/Sentrion-MTA-4.3.0) with
- ESMTP id xB5DEeim027634; Thu, 5 Dec 2019 08:14:41 -0500
+ by mailapphubprd04.lss.emc.com (Sentrion-MTA-4.3.1/Sentrion-MTA-4.3.0) with
+ ESMTP id xB5DY7RO003507; Thu, 5 Dec 2019 08:34:08 -0500
 From: Amit <Amit.Engel@Dell.com>
 To: sagi@grimberg.me, linux-nvme@lists.infradead.org
-Subject: [PATCH] nvmet: Fix req->data_len size in case of
- nvme_admin_get_features cmd, fid 0x81
-Date: Thu,  5 Dec 2019 15:14:38 +0200
-Message-Id: <20191205131438.63321-1-amit.engel@emc.com>
+Subject: [PATCH] nvmet: Add helper function 'nvmet_feature_data_len' to
+ calculate the required data_len
+Date: Thu,  5 Dec 2019 15:34:06 +0200
+Message-Id: <20191205133406.63791-1-amit.engel@emc.com>
 X-Mailer: git-send-email 2.16.5
 X-RSA-Classifications: public
-X-Sentrion-Hostname: mailuogwprd52.lss.emc.com
+X-Sentrion-Hostname: mailuogwprd54.lss.emc.com
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,18.0.572
  definitions=2019-12-05_03:2019-12-04,2019-12-05 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 mlxscore=0
- bulkscore=0 mlxlogscore=857 spamscore=0 clxscore=1015 phishscore=0
- impostorscore=0 priorityscore=1501 suspectscore=0 adultscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-1910280000 definitions=main-1912050112
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- bulkscore=0
- impostorscore=0 adultscore=0 malwarescore=0 mlxscore=0 clxscore=1015
- priorityscore=1501 lowpriorityscore=0 mlxlogscore=924 spamscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-1910280000 definitions=main-1912050112
+ impostorscore=0
+ priorityscore=1501 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ mlxlogscore=878 malwarescore=0 mlxscore=0 lowpriorityscore=0 adultscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-1910280000 definitions=main-1912050114
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ priorityscore=1501
+ impostorscore=0 mlxscore=0 clxscore=1015 adultscore=0 malwarescore=0
+ suspectscore=0 spamscore=0 lowpriorityscore=0 mlxlogscore=945 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-1910280000
+ definitions=main-1912050115
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191205_052303_202126_E877B784 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20191205_053654_069125_7A1626B2 
+X-CRM114-Status: GOOD (  13.76  )
 X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.9 points)
@@ -124,9 +124,8 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Amit Engel <amit.engel@dell.com>
 
-In feature id 0x81 NVME_FEAT_HOST_ID, nvmet_copy_to_sgl is called
-req->data_len shall hold a non-zero value which is
-'sizeof(req->sq->ctrl->hostid)'
+This fixes a bug in nvmet_execute_get_features, fid 0x81, NVME_FEAT_HOST_ID
+nvmet_check_data_len shall be called with a valid data_len value
 
 Signed-off-by: Amit Engel <amit.engel@dell.com>
 ---
