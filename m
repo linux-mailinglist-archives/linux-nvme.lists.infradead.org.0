@@ -2,53 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92BE911563C
-	for <lists+linux-nvme@lfdr.de>; Fri,  6 Dec 2019 18:13:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E8B9311563E
+	for <lists+linux-nvme@lfdr.de>; Fri,  6 Dec 2019 18:14:00 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L07CXei9Ik6QUdmy+MyvrfNx8zAEg6kX+ZsZVx6e0BA=; b=iqrFm8s0wngLPZ
-	6ubGhVBIcKkPzhr6qtoFXJVOFWkVHy0nBnMHWtCrMEIyC0oc9s8JAPjZXEpqgtBO+USdCM1o5/ZN5
-	WnE2xbbSbmlZh5g+D/FFZMghQ4cSr6lsrj75wiawZBLrQRE9MM8Ax279edCW6ob/4FLpnYNWUS8Ny
-	8dXfhTvNwKS4Z/fRudZx+LIz3AtCjnqJfiGkF3gaEU5U2lgQX9mz9dpcOSI89vm+yD9c6u6q+wFpA
-	tq3bnp0f9mLYaAhR1omFL/EJ5EiPB7v+9ZGUtV3lFun77AbeU1dqWHVjPd9MBN2sHr6dyPZsJ/KKf
-	kEv/xRDojAf9zSnhQelw==;
+	List-Owner; bh=XDoe6f28XtxAm9PF77VJecntII5TFcVaAXcS13V7D94=; b=exhCmyGUx6qz3Q
+	wmsH3rur5sUzsdfGpJ6PPJmek7sM3qRlkuhZ+jQs1Z2Rgcy+VyRHHmuJhk2re/QuuY7gNVKkGoWGV
+	41vRBwW08dngIo8BlpyVmSdMhJ6A55QTmbVe16cRKYlv8NXulhXzB/DB3Af+Cc3/7vE+A7WDRAN9h
+	KvP87agdH31yiC+N+ZEeKZwM34nTAdW0XqD7fx8NRPkKkar7DEkdNDfLqiXYQrbLSQ3cIoPYgx70+
+	+iaYLMgk5DWXrvS17lWh/cNpC5NtqQs0Acp/eOlKzXLSg1Xr7RELUZRIYtjTohvIP88rqOzBZCpwn
+	YqqaaWKTFcs+ulHBakNA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1idHAi-00006B-SH; Fri, 06 Dec 2019 17:13:40 +0000
+	id 1idHAz-0000Gq-7E; Fri, 06 Dec 2019 17:13:57 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1idHAV-0008SO-6g
- for linux-nvme@lists.infradead.org; Fri, 06 Dec 2019 17:13:28 +0000
+ id 1idHAW-0008So-AM
+ for linux-nvme@lists.infradead.org; Fri, 06 Dec 2019 17:13:29 +0000
 Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 289F924659;
- Fri,  6 Dec 2019 17:13:26 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 44D542466E;
+ Fri,  6 Dec 2019 17:13:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1575652406;
- bh=ytViLkF3LsBCy2tQc5we7hDN6fJ3TO0V4KktU9SdtT8=;
+ s=default; t=1575652408;
+ bh=2fM7Enkefh4JvOstfiZCpxzKEfXuTv7Rqzbp8hXHTLM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FD0hkLsHBAUtlSAN329NwMEQ995lkRrKQladfchpNE2Mjwkl1o3rKhQUWD7DzOVpM
- qQVs0T6iZVr5pz3MpMsLDnOfmGQJyHql2viX+ONbd2RIWOlKgMbPEi9bVHJgyhtmKk
- xZrNm+uq1hySccXfzOKTVK0zMPFrFKo+XwO+ZD0c=
+ b=im++QGAUj3CDqO2Ti2FtyfDtDdre4Ye0VyhWBJ5RePvSpvNcuidYqufoczEsPG73h
+ 3F/+YEnjjFZPKH8JoG5Q1ZUno7HK8LboJkp6W9qpsyVrbbM82HRx0ZPxJS6nvQj/6K
+ nlalpL6Og7DOLZl8NNiIK+wF1jKWFdEiHus4L5ig=
 From: Keith Busch <kbusch@kernel.org>
 To: linux-nvme@lists.infradead.org,
 	hch@lst.de,
 	sagi@grimberg.me
-Subject: [PATCH 1/3] nvme/pci: Fix write and poll queue types
-Date: Sat,  7 Dec 2019 02:13:14 +0900
-Message-Id: <20191206171316.2421-2-kbusch@kernel.org>
+Subject: [PATCH 2/3] nvme/pci Limit write queue sizes to possible cpus
+Date: Sat,  7 Dec 2019 02:13:15 +0900
+Message-Id: <20191206171316.2421-3-kbusch@kernel.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191206171316.2421-1-kbusch@kernel.org>
 References: <20191206171316.2421-1-kbusch@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191206_091327_260196_15970BB5 
-X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-CacheID: sfid-20191206_091328_375285_E976151E 
+X-CRM114-Status: UNSURE (   9.65  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
@@ -84,37 +84,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The number of poll or write queues should never be negative. Use unsigned
-types so that it's not possible to have the driver allocate no queues.
+The driver can never use more queues of any type than the number of
+possible CPUs. A larger parameter value causes the driver to allocate
+more memory for IO queues than it could ever use. Limit the parameter
+at module load time to the number of possible cpus.
 
 Signed-off-by: Keith Busch <kbusch@kernel.org>
 ---
- drivers/nvme/host/pci.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/nvme/host/pci.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 68701921dc23..7186f21ad899 100644
+index 7186f21ad899..6b6452486155 100644
 --- a/drivers/nvme/host/pci.c
 +++ b/drivers/nvme/host/pci.c
-@@ -66,14 +66,14 @@ static int io_queue_depth = 1024;
- module_param_cb(io_queue_depth, &io_queue_depth_ops, &io_queue_depth, 0644);
- MODULE_PARM_DESC(io_queue_depth, "set io queue depth, should >= 2");
+@@ -3146,6 +3146,9 @@ static int __init nvme_init(void)
+ 	BUILD_BUG_ON(sizeof(struct nvme_create_sq) != 64);
+ 	BUILD_BUG_ON(sizeof(struct nvme_delete_queue) != 64);
+ 	BUILD_BUG_ON(IRQ_AFFINITY_MAX_SETS < 2);
++
++	write_queues = min(write_queues, num_possible_cpus());
++	poll_queues = min(poll_queues, num_possible_cpus());
+ 	return pci_register_driver(&nvme_driver);
+ }
  
--static int write_queues;
--module_param(write_queues, int, 0644);
-+static unsigned int write_queues;
-+module_param(write_queues, uint, 0644);
- MODULE_PARM_DESC(write_queues,
- 	"Number of queues to use for writes. If not set, reads and writes "
- 	"will share a queue set.");
- 
--static int poll_queues;
--module_param(poll_queues, int, 0644);
-+static unsigned int poll_queues;
-+module_param(poll_queues, uint, 0644);
- MODULE_PARM_DESC(poll_queues, "Number of queues to use for polled IO.");
- 
- struct nvme_dev;
 -- 
 2.21.0
 
