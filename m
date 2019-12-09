@@ -2,49 +2,51 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D066711733D
-	for <lists+linux-nvme@lfdr.de>; Mon,  9 Dec 2019 18:57:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 86CCB11733E
+	for <lists+linux-nvme@lfdr.de>; Mon,  9 Dec 2019 18:57:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rqrosUdtJOLY6wtOiGGcnDvFkaLMjHsI9idNfXd4Jko=; b=SCJCmm0iNuWxS+
-	ge5kDkQon1Ii+l8o2JS3P8cthgYSTmq7786NOjWyfosSIo1TatfjG45YJ4OIa0tfNC6AHo5ZVZyTU
-	x9uTFW6a5DNapBB0VITWHq+k4+GTgTbQf5s7hBjifO2FeVVg1beLwWBmhCUdOIS9aly2HvWFHJpj9
-	0GDF8VzXWGSsSVr+3StzXY8EOemGVnaYjBRIRm00xx3ZSHvid+fhbxvZYVrY6E/C/eMMlkIk6N/9o
-	DiGCfZ70kzvn24+be9FlyHoe9gfH8ZNT55j3I5isebVm8sA1XxSaGM4rB8jd0IERtH1JbLSmX6GRt
-	riMap+6mOS+76WfZHb9w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=t2hz9qDk/4PW0uxfxi0eT/fObSkOFmsCLEGknP7AMi0=; b=E4BHyipoLI5/Wx
+	xh5dCiY2KQ4Xa8q+qqj26/e23+2/1sPbaRJIbuLA3xrP+pOMnj3rnnE5/R4FXFZRhjlqcTf60FrSM
+	vtyiptRPh4UV++o4a19rhVd4jYu974SyYZiFU4BaAl9IdJeX70qiB4QVzhyozSYKdpZRBHtcFKje5
+	XPRVmW+U+VLZwQ5Dpln7p3TVqF2kwC+XMEEGlAnp7za9nSJ+zRF1ilCTWt9K485A0OXeGuvJ4rfwe
+	hrPoFK9mj8Irqak3NKPH/NPNLgBKYWgVw1ZTpymDEM8AxpZiDaEKTBtb1H/ugfheEvZpxEEfEcGVB
+	VW41dqwwMaQnsP4JRxfQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieNHI-0005oD-Fq; Mon, 09 Dec 2019 17:57:00 +0000
+	id 1ieNHZ-00062X-6k; Mon, 09 Dec 2019 17:57:17 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieNGw-0005jk-VZ
+ id 1ieNGx-0005kE-F9
  for linux-nvme@lists.infradead.org; Mon, 09 Dec 2019 17:56:42 +0000
 Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1A44D2080D;
- Mon,  9 Dec 2019 17:56:37 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 48F06214AF;
+ Mon,  9 Dec 2019 17:56:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1575914198;
- bh=5/4wTXvId2+mpf8jkt9WCNniBC99Y5Yi10xTbeald5I=;
- h=From:To:Cc:Subject:Date:From;
- b=Yk2bS9MyZqW+dwju+q64sOoi/f5A0A5F0uEJ5BRFDBi3U2kFM9RsmWhUFYgcw0uoL
- Z40nraUs6BNvQrnsP6x6xSqOtTTFDTy60K+S1buP/+GoGaWuYBA9BTsMXeeR49Wozq
- 2hKrNOV7pM5rhaJy+rEoF1nT0F6myqbz7TOD0NWs=
+ s=default; t=1575914199;
+ bh=mYFGImdO8UnGqTAmESkiigZpAgvVQnaSxtic7qPpBVw=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=GUF3ZplvYBhrowaompJ8aPUfWiccLokUICYO3K7cE/ZQgildZo4vmoCXxtO1nrkv0
+ dI8KgDsFjqyP0R83mLXuFBGG8ze/bj6qb9tV0/MW3vuoV4DT2qm+pNErQGYHQXfQ+M
+ 7L3jB62rbh29jFZ9pyWV4dMR+x9owWBKUUJ3rXBk=
 From: Keith Busch <kbusch@kernel.org>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCHv3 0/4] nvme pci interrupt handling improvements
-Date: Tue, 10 Dec 2019 02:56:18 +0900
-Message-Id: <20191209175622.1964-1-kbusch@kernel.org>
+Subject: [PATCHv3 1/4] nvme/pci: Disable interrupts for threaded handler
+Date: Tue, 10 Dec 2019 02:56:19 +0900
+Message-Id: <20191209175622.1964-2-kbusch@kernel.org>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20191209175622.1964-1-kbusch@kernel.org>
+References: <20191209175622.1964-1-kbusch@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_095639_037462_4617774E 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20191209_095639_522047_E10E48E6 
+X-CRM114-Status: GOOD (  11.26  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -80,47 +82,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Here's the next revision to nvme pci interrupt handling. The series is
-attempting to address two issues that have been recently raised:
+The nvme driver had always left the device in a state capable of sending
+more interrupts while completions were being handled in the thread.
+Re-entering the primary handler disrupts the threaded handler since
+they run on the same CPU. The primary handler may also be detected as
+spurious when it returns IRQ_WAKE_THREAD if the threaded handler does
+not finish frequently enough due to completing many requests.
 
-  1. The nvme driver makes it possible to soft lockup a CPU due to high
-     utilization in irq context. This is most prevalent when multiple
-     CPUs are driving a single hardware queue on one or more controllers.
+Disable the irq to ensure the primary handler will not be re-entered while
+the threaded handler is running. Use the nvme specific interrupt mask
+set/clear registers for MSI and legacy, and rely on the irq_flow_handler
+to mask the interrupt for MSIx.
 
-  2. The threaded handler left interrupts unmasked, which breaks when
-     used with level triggered interrupts, or unnecessarily runs
-     in interrupt context when edge interrupts occur frequently.
+Signed-off-by: Keith Busch <kbusch@kernel.org>
+---
+ drivers/nvme/host/pci.c | 26 ++++++++++++++++++++++----
+ 1 file changed, 22 insertions(+), 4 deletions(-)
 
-Both issues are addressed by always configuring nvme interrupts to
-run the threaded handler with interrupts disabled. A hybrid approch
-to handling nvme completions in hard irq context and thread context is
-introduced so that there should not be a performance impact from removing
-the nvme.use_threaded_interrupts option.
-
-The series appears to be a win or no impact on performance from what I
-can test. I would be greatful to hear if others can confirm this with
-other hardware.
-
-I've dropped the fast MSIx masking. While I believe it's safe to skip
-flushing the memory write, I think this series mitigates the impact of
-the read back by ensuring the ratio of memory reads to IO is low enough
-to be negligable (AFAICT on hardware available to me).
-
-I've changed the exit condition for the polling nvme irq thread to
-break out of the loop if we've wrapped the completion queue. Other irq
-threads may be affinitized to the same CPU, so we need to schedule out
-at some point, but I've been told multiple times that need_resched()
-or cond_resched() won't work as desired from the thread's fifo priority.
-
-Keith Busch (4):
-  nvme/pci: Disable interrupts for threaded handler
-  nvme/pci: Complete commands from primary handler
-  nvme/pci: Remove use_threaded_interrupts
-  nvme/pci: Poll threaded completions
-
- drivers/nvme/host/pci.c | 56 ++++++++++++++++++++++++++---------------
- 1 file changed, 36 insertions(+), 20 deletions(-)
-
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 365a2ddbeaa7..a0138e3ca0b9 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -1036,12 +1036,30 @@ static irqreturn_t nvme_irq(int irq, void *data)
+ 	return ret;
+ }
+ 
++static irqreturn_t nvme_irq_thread(int irq, void *data)
++{
++	struct nvme_queue *nvmeq = data;
++	irqreturn_t ret = nvme_irq(irq, data);
++
++	if (!to_pci_dev(nvmeq->dev->dev)->msix_enabled)
++		writel(1 << nvmeq->cq_vector, nvmeq->dev->bar + NVME_REG_INTMC);
++
++	enable_irq(irq);
++	return ret;
++}
++
+ static irqreturn_t nvme_irq_check(int irq, void *data)
+ {
+ 	struct nvme_queue *nvmeq = data;
+-	if (nvme_cqe_pending(nvmeq))
+-		return IRQ_WAKE_THREAD;
+-	return IRQ_NONE;
++
++	if (!nvme_cqe_pending(nvmeq))
++		return IRQ_NONE;
++
++	if (!to_pci_dev(nvmeq->dev->dev)->msix_enabled)
++		writel(1 << nvmeq->cq_vector, nvmeq->dev->bar + NVME_REG_INTMS);
++
++	disable_irq_nosync(irq);
++	return IRQ_WAKE_THREAD;
+ }
+ 
+ /*
+@@ -1499,7 +1517,7 @@ static int queue_request_irq(struct nvme_queue *nvmeq)
+ 
+ 	if (use_threaded_interrupts) {
+ 		return pci_request_irq(pdev, nvmeq->cq_vector, nvme_irq_check,
+-				nvme_irq, nvmeq, "nvme%dq%d", nr, nvmeq->qid);
++			nvme_irq_thread, nvmeq, "nvme%dq%d", nr, nvmeq->qid);
+ 	} else {
+ 		return pci_request_irq(pdev, nvmeq->cq_vector, nvme_irq,
+ 				NULL, nvmeq, "nvme%dq%d", nr, nvmeq->qid);
 -- 
 2.21.0
 
