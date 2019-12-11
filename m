@@ -2,77 +2,60 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 564C111B235
-	for <lists+linux-nvme@lfdr.de>; Wed, 11 Dec 2019 16:35:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 89BBD11B869
+	for <lists+linux-nvme@lfdr.de>; Wed, 11 Dec 2019 17:18:40 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JmWRzmLPzjk3C1oU+xaPcFe3CEt7e83kPDC0SnW799E=; b=WEAUYGqWQXY6PV
-	sZx/XliVR52fTCWuzUCPmr71BVmNTt5guSHyVCr4reJvYDcLVZs3kYK9f+eCLDf5tI+3Nmt9jSwy6
-	3QFSdTYFboPK+ns71uTegXLh1tzeNOVfkz685ZUNtviU2L7P64uD+L+3fFIBgp8Qf0AFZEEmqFVx8
-	5wzCS7LVx8O5TAgsIBjILck+WLlaEZbKN1O7vB8osmYAXzOQDsMr18e8AylJTVS1S8FcfDoc5ex1M
-	q2Z1eZFFumCLx2izmEE2lss9ZtT0lunSHWONi6Z2uJVa/ovGzbvTUkYx5pJDJo8OGWWj6IfludPRg
-	F5KiSFF09a5rJS2C5Tag==;
+	List-Owner; bh=mYT7mMLkVAHW63jIb9dZG/lCEG4ZvPHAD8JawBqlogA=; b=hCy6K5lAfFcHLt
+	3cD4yvFaBGeNkpqqepSlssWAeNvDKCf9VwYlhxrLI20+EQ5rZF36ZLbzbphtQZoCNUs2MTuJ6tASO
+	/7zhn2RRyLSwaWCAv3XrQeq9FW/R2EV60VypO/7j3q9+nFGVJoRjAJhUFd+Wsaq0DP67JcTJIWqFh
+	MUZTW0B7XolldHZ8uFPHbLazZR9keQMSVzQRBVfj+yZMgFn8Kj2yEgK4YXj7b9L4Vvq0m0kyGgrrn
+	5LNrLayeZSRQjXId+y9QZuFHVVPRbu8xTq+znzqEvu4gzjA66U8nzuKqfZ5yZ+z+F6aDhKM1rhfhY
+	leq6SwaBUQq+4lNy5D1Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if40u-0000Yr-BC; Wed, 11 Dec 2019 15:34:56 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1if4hA-0004o8-2C; Wed, 11 Dec 2019 16:18:36 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if40l-0000Xs-GB
- for linux-nvme@lists.infradead.org; Wed, 11 Dec 2019 15:34:49 +0000
-Received: by mail-pf1-x444.google.com with SMTP id s18so1974345pfd.8
- for <linux-nvme@lists.infradead.org>; Wed, 11 Dec 2019 07:34:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HVbcFREEaAqSDDWDOprFJiM+U7AawLPMDqSvqgEPZVM=;
- b=saTYAymWtQJVo2xDI5CVVPD7OFscZvr3OmDkn9R98p/K2QPfrErbyRBfLSWuDw82Je
- o5ei0YTQ5fgmkh7BZCrXIsR8OBZyO/sfNZyPb/2FHmifAkGNyAGukafSKofRjuTXMFXl
- WMQxGPuD9wxK4yLU1VhNzWYYmxihNPVzCRYgjRidEsjCXlEHWzI7tLoB4bV+Tg3p4Myq
- VXt9uBaV6jd+hJ6IiKy+pcyDX7aXRViVdLgvrrtrP2D7MFxBpcCNbOct/mx5x6fZqNzY
- wB9Y8YH11zoDDTXPnrVGiEROE/KKqb2trAGgVZw0dOKu3YAS5kWfyPCL9O/gC/FZ67Mj
- Od8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=HVbcFREEaAqSDDWDOprFJiM+U7AawLPMDqSvqgEPZVM=;
- b=Nq2QRijB2v2GRzE+MDa8y9cNM5RusWb9RpENtFqtQgnefenRxX/fNg9SybOw9t9WQW
- ECYaokBUzHRlfGrNimtheGJsldPElpTUMyL8HGIA9gnRgReG6Uvrz9znzp/XfkrLP3HD
- T03So8SuNYxm2w9MybQ0Rpdlhw7MV7TftH09/y2cs7IJgkIwB+Xtv1MyD83irvPOpgh2
- I5GVCCvWXML/zxNB0G8wyYPMkwGzc/GUYTfqFh6L7TGelE5WLH9fSYDhQQc+AIvffFFY
- 8OJEIbyPTyOLRfkBqGSkwMm2EiSyFVTZQ7UmPorSl8e4YKATXhR3+Mbfc+oPWuL565vY
- PaEA==
-X-Gm-Message-State: APjAAAU/zbmQsEXnvfMvSJsp7GC70lMkzcAApeIqJXa1/ebN14uW0SEZ
- V8R5XtvKAkuZ/GT2C0PgqDEQU1ks2nwRw/tnmKs=
-X-Google-Smtp-Source: APXvYqzJ499NHPqVSLLyDUscDbmBddDHmzhr28AkkyOZGKxqfxHIirybt8amARCuiU4PKcyZgP8Qc63k0WPAFrMp7QU=
-X-Received: by 2002:a62:1944:: with SMTP id 65mr4526218pfz.151.1576078486945; 
- Wed, 11 Dec 2019 07:34:46 -0800 (PST)
+ id 1if4h4-0004nl-MA
+ for linux-nvme@lists.infradead.org; Wed, 11 Dec 2019 16:18:31 +0000
+Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id F2DD2205C9;
+ Wed, 11 Dec 2019 16:18:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1576081109;
+ bh=wK2PSuxQD024ene7zXvOKPSUJnmOFoWdG8mDjLlZkT0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=f4Z8cw2PcUbpKXRztsX8C2fxEXl3FwJ8W00zL7ZJqomEzeyd9DNIcxIW4iPn+TBVy
+ IWNmIhq8nHQ13UgTW/nOMF7+rB0mH/NjJ9SAM72uJBzWz9DepgCHDp2ZVYLRVNlvGr
+ xXd/JdSaCeHcNJc9JhanhPQE1PFKgo930ijjGtiM=
+Date: Thu, 12 Dec 2019 01:18:23 +0900
+From: Keith Busch <kbusch@kernel.org>
+To: tsutomu.owa@kioxia.com
+Subject: Re: [RFC PATCH 0/5] to add more nvme reset functions
+Message-ID: <20191211161823.GA493@redsun51.ssa.fujisawa.hgst.com>
+References: <346d379a5f9940dcba60242d2d9e119a@tgxml778.toshiba.local>
 MIME-Version: 1.0
-References: <1576075099-3441-1-git-send-email-akinobu.mita@gmail.com>
-In-Reply-To: <1576075099-3441-1-git-send-email-akinobu.mita@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Wed, 11 Dec 2019 17:34:37 +0200
-Message-ID: <CAHp75VcsfbkG7n6FHkpnPN0sG_PdKg_iKS7VGfATxuPVYU5jcQ@mail.gmail.com>
-Subject: Re: [PATCH v3 00/12] add header file for kelvin to/from Celsius
- conversion helpers
-To: Akinobu Mita <akinobu.mita@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <346d379a5f9940dcba60242d2d9e119a@tgxml778.toshiba.local>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_073447_540627_ED77323C 
-X-CRM114-Status: GOOD (  18.64  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20191211_081830_750568_C4EFE6BB 
+X-CRM114-Status: GOOD (  13.07  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (andy.shevchenko[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -81,6 +64,7 @@ X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,134 +76,46 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Emmanuel Grumbach <emmanuel.grumbach@intel.com>,
- Stanislaw Gruszka <sgruszka@redhat.com>, linux-iio <linux-iio@vger.kernel.org>,
- Linux NVMe Mailinglist <linux-nvme@lists.infradead.org>,
- Luca Coelho <luciano.coelho@intel.com>,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Christoph Hellwig <hch@lst.de>,
- Amit Kucheria <amit.kucheria@verdurent.com>,
- Lars-Peter Clausen <lars@metafoo.de>, Sagi Grimberg <sagi@grimberg.me>,
- Sujith Thomas <sujith.thomas@intel.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Darren Hart <dvhart@infradead.org>,
- Zhang Rui <rui.zhang@intel.com>, Guenter Roeck <linux@roeck-us.net>,
- Jean Delvare <jdelvare@suse.com>, Johannes Berg <johannes.berg@intel.com>,
- Linux PM <linux-pm@vger.kernel.org>,
- Intel Linux Wireless <linuxwifi@intel.com>, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>, Kalle Valo <kvalo@codeaurora.org>,
- linux-hwmon@vger.kernel.org,
- "open list:TI WILINK WIRELES..." <linux-wireless@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Jonathan Cameron <jic23@kernel.org>, Hartmut Knaack <knaack.h@gmx.de>,
- Andy Shevchenko <andy@infradead.org>
+Cc: hch@infradead.org, sagi@grimberg.me, linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Dec 11, 2019 at 4:38 PM Akinobu Mita <akinobu.mita@gmail.com> wrote:
->
-> There are several helper macros to convert kelvin to/from Celsius in
-> <linux/thermal.h> for thermal drivers.  These are useful for any other
-> drivers or subsystems, but it's odd to include <linux/thermal.h> just for
-> the helpers.
->
-> This adds a new <linux/units.h> that provides the equivalent inline
-> functions for any drivers or subsystems, and switches all the users of
-> conversion helpers in <linux/thermal.h> to use <linux/units.h>
-> helpers.
->
+On Wed, Dec 11, 2019 at 02:34:15AM +0000, tsutomu.owa@kioxia.com wrote:
+> This series of patch is to add support for nvme reset functions
+> described in NVM-Express specification 1.4 "7.3.2 Controller Level Reset" 
+> (conventional hot reset, link down reset and function level reset)
+> and "7.3.3 Queue Level" (queue level reset).
 
-Thank you for an update.
+You're not providing any justification for why you want these implemented
+in the nvme driver. What issue is this addressing?
+ 
+> I'm still wondoring
+> 	- if it's ok to export functions from drivers/pci.
 
-For non-commented patches
-Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+Probably not. They are private for a reason.
 
-> * v3
-> - rename new header name from <linux/temperature.h> to <linux/units.h>
-> - add milli_kelvin_to_millicelsius() and millicelsius_to_milli_kelvin() and
->   use them for implementing other helpers
-> - add MILLIDEGREE_PER_DEGREE and MILLIDEGREE_PER_DECIDEGREE and replace
->   the hardcoded constants
-> - add kelvin_to_celsius() and celsius_to_kelvin() in <linux/units.h>
-> - add Reviewed-by tags
-> - switch iwlegacy driver to use <linux/units.h> helpers
-> - switch iwlwifi driver to use <linux/units.h> helpers
-> - remove unused TO_MCELSIUS macro in armada thermal driver
-> - switch qcom-vadc-common module to use <linux/units.h> helpers
->
-> * v2
-> - add deci_kelvin_to_millicelsius_with_offset() in linux/temperature.h
-> - stop including linux/temperature.h from linux/thermal.h
-> - include <linux/temperature.h> explicitly from thermal drivers
-> - fix s/temprature/temperature/ typo in commit log
-> - use deci_kelvin_to_millicelsius_with_offset() in ACPI thermal zone driver
-> - don't mix up another fix (format string for cellsius value)
-> - add Acked-by and Reviewed-by tags
->
-> Akinobu Mita (12):
->   add helpers for kelvin to/from Celsius conversion
->   ACPI: thermal: switch to use <linux/units.h> helpers
->   platform/x86: asus-wmi: switch to use <linux/units.h> helpers
->   platform/x86: intel_menlow: switch to use <linux/units.h> helpers
->   thermal: int340x: switch to use <linux/units.h> helpers
->   thermal: intel_pch: switch to use <linux/units.h> helpers
->   nvme: hwmon: switch to use <linux/units.h> helpers
->   thermal: remove kelvin to/from Celsius conversion helpers from
->     <linux/thermal.h>
->   wireless: iwlegacy: use <linux/units.h> helpers
->   wireless: iwlwifi: use <linux/units.h> helpers
->   thermal: armada: remove unused TO_MCELSIUS macro
->   iio: adc: qcom-vadc-common: use <linux/units.h> helpers
->
->  drivers/acpi/thermal.c                             | 36 +++++-----
->  drivers/iio/adc/qcom-vadc-common.c                 |  6 +-
->  drivers/iio/adc/qcom-vadc-common.h                 |  1 -
->  drivers/net/wireless/intel/iwlegacy/4965-mac.c     |  3 +-
->  drivers/net/wireless/intel/iwlegacy/4965.c         | 11 +--
->  drivers/net/wireless/intel/iwlegacy/common.h       |  3 -
->  drivers/net/wireless/intel/iwlwifi/dvm/dev.h       |  5 --
->  drivers/net/wireless/intel/iwlwifi/dvm/devices.c   |  6 +-
->  drivers/nvme/host/hwmon.c                          | 13 ++--
->  drivers/platform/x86/asus-wmi.c                    |  7 +-
->  drivers/platform/x86/intel_menlow.c                |  9 ++-
->  drivers/thermal/armada_thermal.c                   |  2 -
->  .../intel/int340x_thermal/int340x_thermal_zone.c   |  7 +-
->  drivers/thermal/intel/intel_pch_thermal.c          |  3 +-
->  include/linux/thermal.h                            | 11 ---
->  include/linux/units.h                              | 84 ++++++++++++++++++++++
->  16 files changed, 139 insertions(+), 68 deletions(-)
->  create mode 100644 include/linux/units.h
->
-> Cc: Sujith Thomas <sujith.thomas@intel.com>
-> Cc: Darren Hart <dvhart@infradead.org>
-> Cc: Andy Shevchenko <andy@infradead.org>
-> Cc: Zhang Rui <rui.zhang@intel.com>
-> Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
-> Cc: Amit Kucheria <amit.kucheria@verdurent.com>
-> Cc: Jean Delvare <jdelvare@suse.com>
-> Cc: Guenter Roeck <linux@roeck-us.net>
-> Cc: Keith Busch <kbusch@kernel.org>
-> Cc: Jens Axboe <axboe@fb.com>
-> Cc: Christoph Hellwig <hch@lst.de>
-> Cc: Sagi Grimberg <sagi@grimberg.me>
-> Cc: Kalle Valo <kvalo@codeaurora.org>
-> Cc: Stanislaw Gruszka <sgruszka@redhat.com>
-> Cc: Johannes Berg <johannes.berg@intel.com>
-> Cc: Emmanuel Grumbach <emmanuel.grumbach@intel.com>
-> Cc: Luca Coelho <luciano.coelho@intel.com>
-> Cc: Intel Linux Wireless <linuxwifi@intel.com>
-> Cc: Jonathan Cameron <jic23@kernel.org>
-> Cc: Hartmut Knaack <knaack.h@gmx.de>
-> Cc: Lars-Peter Clausen <lars@metafoo.de>
-> Cc: Peter Meerwald-Stadler <pmeerw@pmeerw.net>
-> --
-> 2.7.4
->
+> 	- if it would be better not to use CONFIG_NVME_PCI_RESET
+> 	  and/or CONFIG_NVME_QUELE_LEVEL_RESET as these are noisy
+> 	  and these features are based on specification anyway...
 
+First, if you're going to introduce a Kconfig option, don't split the
+patch that actually uses it. Second, don't introduce new kernel config
+options for such features in the first place.
 
--- 
-With Best Regards,
-Andy Shevchenko
+> 	- what is the best way to export nvme_pci_* functions in
+> 	  drivers/nvme/host/pci.c to drivers/nvme/host/core.c.
+
+Don't export functions that direction. Use ctrl->ops if core needs to
+call a transport specific routine.
+
+> Any comments would be highly appreciated.
+
+The majority of this series is at the pci protocol level, and the pci
+driver already provides the requested capabilities (but with a more
+safe implementation). Let's not reinvent it just because one nvme
+transport happens to use the pci bus.
 
 _______________________________________________
 linux-nvme mailing list
