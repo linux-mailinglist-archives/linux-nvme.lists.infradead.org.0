@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 385CD11ADF9
-	for <lists+linux-nvme@lfdr.de>; Wed, 11 Dec 2019 15:41:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E864711AE7B
+	for <lists+linux-nvme@lfdr.de>; Wed, 11 Dec 2019 15:55:40 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,78 +11,97 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=aLU666sUZV+jOfpXq4v2ZdovugDNwGLfgNfgI2BiAtw=; b=TyJclvnAiaXvkfh6uFy2JjQD2Y
-	UiJuF0seiXaYl00fEfTg+VWcWG1xDZoQ9bTn+/10VidkK82bbhEgm1X2BsuwK1LrLLVnvCRsJq9Y1
-	3xt0aLVqGquWoMxMAA+v92ENQuzqjXNmnr+5bM+gEI3dVAM3OtClbHpwNvTQxbsLDmMdge3Hc4k/A
-	I1UMkScJNBx7lnAkDhYxY7T7MBM7ce3BGmo6M7ZK+YiLAGG2yhFKdhdB7uEVNSP1ozNROJ92ocTL9
-	mZdAkcevYHqXaYuD/LrhljQ0Mp4JAlGUR8hFUO3IOOtvZ54EFFxw0VfLZWcMo+h5GNYdGyH0Kfjsz
-	kSmcyJtA==;
+	bh=CoxCN4hPMYJEwVkpbf6XM63PS5WG3qNsIiI+ty7A2Tg=; b=LD2/6lRuPs9KUK0ymjgW/0ViOD
+	9u9jJMtYe74EgAx+G8WflRgX5VgtNthVt6suq6sWD+ysCPw2xj/eSi+YzRLl4drcS8lIerjHsKDE7
+	qtYSCmgLV4f06UgeyLt0OdhCWdON07XQ1nAi6pvjorFCJvW6eaPQVrL+C/HqoNGtawbywEf84toO6
+	BxDGZjqVT+heTJHL4qWhXDhr0G2mw2ByzLcDR+aS+FJZ4M54ES7I0nuRmCTver50ZIOACiTCvSPqB
+	M08mCAwHw6CON+mCAGmzUOo0aIgfOd+0jjQeRzSJ2HsCiNWbZb/0aA47hRIpVK4xkjGOIaePCHKQN
+	OsMKo0lQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if3B0-0000e1-25; Wed, 11 Dec 2019 14:41:18 +0000
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
+	id 1if3Oo-0002M1-DO; Wed, 11 Dec 2019 14:55:34 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if39U-0006ve-CM
- for linux-nvme@lists.infradead.org; Wed, 11 Dec 2019 14:39:59 +0000
-Received: by mail-pj1-x1042.google.com with SMTP id v93so9017934pjb.6
- for <linux-nvme@lists.infradead.org>; Wed, 11 Dec 2019 06:39:39 -0800 (PST)
+ id 1if3OG-0000OV-7N
+ for linux-nvme@bombadil.infradead.org; Wed, 11 Dec 2019 14:55:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Message-Id:Date:
+ Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=IcdhyyyraLVUQAQ3HHOSQ6YNvDlkdwwrUN22Ki1UdWw=; b=Ug+t+gOyKcq5g8LevPMhCivOC
+ kvT0JBSKAzBaz+gju2Z//bKP8BngPOir/sbVDwmGsTShIJgTTgCoNk4VKQAXarKS5A6huReZAl0jm
+ KcjmKZXGP/XfkZA7mExefK1B8fbCzodMiYCzG51nWuBXx62zlNTSAK4ZBAldYyg9AXs1ETlLLLvc0
+ XSK5fwl+YgkDcHaZqcWiaKitro2BgRLWmIXrqGTNuafUvMmnqn5Ao0PjlNHwKGqJcgtIgZlxmSQws
+ ObnvvM8HfiTxOSDG2cgKtRdu38kPFAld02AvovkeyOfThGqknvlHcwCvNDWFyRlPX3oayHZFLXWlJ
+ irQ283YPg==;
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1if39x-0005iq-Ir
+ for linux-nvme@lists.infradead.org; Wed, 11 Dec 2019 14:40:15 +0000
+Received: by mail-pl1-x641.google.com with SMTP id bd4so1496189plb.8
+ for <linux-nvme@lists.infradead.org>; Wed, 11 Dec 2019 06:39:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=K3UxPRzFZME10fkLXtCYqjJd0IRSW438IJ8inomPhFc=;
- b=TtEhDw9mXoygh60t0P8tM7vAJ0ws8yOzln/xfqEuvUZQ+gxs9TGtjoWk4ijx+7Lhgj
- m/RjMwumNojsGy04ahZTfQNCqOSGq61vGvkvIu6125xhrZqtF4UylwsJXCgFrAe2H8df
- FxtqiaZyqXH6Pfs4MpJadnetPyQHFsOXN2WR9XEJnxurlElV4LEZ/QiIMDuEjbKxq8bG
- Flftq8QdH5Afm2rmNfaA0N9ZNxJCmfCMXEmJ0kzufwBpTx8PtSQrTRzrVLUIqZszZh5e
- fuhvH5Y8abqa1VpwIVVuvvijRYmXugdPHrEsG6aKfZ8rC5OWbcD4s8FVIZ3GyErGjt9B
- a7YA==
+ bh=IcdhyyyraLVUQAQ3HHOSQ6YNvDlkdwwrUN22Ki1UdWw=;
+ b=RyG5UBz1cZHPGUqtMFB5YXFkkEdKKMiMwMxa8vnkNtXJSn70Zzja6yk3iTI/el/Ji7
+ 7mdXDBMNf7s4VWETE4BQOzat3pRp4cFbQRhjZmJDg1kzg1dpKHj7axOgJOv1it0xkTtv
+ 64qDc3ri9DQ3B9rGjNLH/xQ8bXwKOeK2yQtzcOL6fP1uiZBFCyaE/HbYfL64wN2sj/FP
+ PXfUm8e3jVXPvOw7YquFCs42UtzcocoIDPdohQ/cW8UE9pEGu+OHFwa8hg2C+DL9l5p0
+ qGq7WkaPaYNYdqhKGd+Ea8oh+Bst+ULZgi+wmIadHtyeeZnEDTEaNlXWHo4VcdmjIp+3
+ ZtzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=K3UxPRzFZME10fkLXtCYqjJd0IRSW438IJ8inomPhFc=;
- b=UBVZi7t1zs4xNBNN1aiF9yqaBsAUmNoxBCCc0OjtB9FF5HsU4fYSC7yJ6asId4VzVM
- 3rhPvCV2LIdR518MJlAVeR0Em+wobpWIStXDDCE9Fl1vsthn//z6H31dPapBxYXghUi2
- CxJkWLhQK6Q3TszoWEdLBlBtwOk+CR/hGqDPfQwRl/UrR/SChjXCfbYCghtc5fv1eGK/
- pidN0blvYE8xQxDYAy7lGfTUEikEBp6ZGywivyOnJVDiV6gIRVKSdtgU0vxY8GiK2k70
- kJU2InEK5St3iE5Qg2PhSQjwWVNeNFvenNpD9eHPRMCJhmNW7gJs5rGR/zULlu4SR2NZ
- B/GA==
-X-Gm-Message-State: APjAAAWBhUK7ega3P25ZcRImbNikW7DFxXqThvTDnnwbNcDPu5w9cMBN
- vaoAaaDG7B2MXR50kDsPBkrYrF6m7rk=
-X-Google-Smtp-Source: APXvYqwzmKMUAxLD4W5Ax2MVMn7w223/0E+Cw8F33tmd3OWRq8B/HavfEb1OCpln/HaQH8iOvd8Onw==
-X-Received: by 2002:a17:90a:cf07:: with SMTP id
- h7mr3878015pju.66.1576075178437; 
- Wed, 11 Dec 2019 06:39:38 -0800 (PST)
+ bh=IcdhyyyraLVUQAQ3HHOSQ6YNvDlkdwwrUN22Ki1UdWw=;
+ b=bmgpE1M7zeWm8CgTBSIGz50GmYQxsdFNJXVyaiyvPUOrXwofLUvDOzuLbJAmdI2GXi
+ /YxRpynw0rhwMLYuYTcww6WOT8XDRdlHWWkRUu2nciQEo9v/xUJmNhcMC3oKXzBpBj1X
+ RL6Tf0GdvkZLDocMyTvl4Cgw3KcKNjSsWHiZ0402CEOOFYhyxuTnD03WPFx6W1NWcST7
+ QUuotcA05KfuGspGCWU7L1mOJp1airhsyOzy5ZDNlu9Dc9+6CxSwBm35kgyNCtLeU0Sr
+ bDwU9VNLRTyFW79QX2XXhDvpXUhXmIEWJb5z+pYXWWeotIKjDj6OryUUzm++T8QcP4Vd
+ BByw==
+X-Gm-Message-State: APjAAAVNq8Xhmeh7rSobizbZVRJvaWz+sQF0/WQso0a8F4z8YSh2N9Lq
+ fVlfRqhbQ7ts3ND2PpkYxMCwB7d93+8=
+X-Google-Smtp-Source: APXvYqxp6M46sXtPZT2HvGlWuv1Os2BTC76wIST3HLZF+6k8rsAvHXrRSJFlwIPCfdqDACr2l48xrw==
+X-Received: by 2002:a17:902:968b:: with SMTP id
+ n11mr3347664plp.120.1576075182587; 
+ Wed, 11 Dec 2019 06:39:42 -0800 (PST)
 Received: from localhost.localdomain ([240f:34:212d:1:368e:e048:68f1:84e7])
- by smtp.gmail.com with ESMTPSA id q11sm3444239pff.111.2019.12.11.06.39.34
+ by smtp.gmail.com with ESMTPSA id q11sm3444239pff.111.2019.12.11.06.39.38
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 11 Dec 2019 06:39:37 -0800 (PST)
+ Wed, 11 Dec 2019 06:39:41 -0800 (PST)
 From: Akinobu Mita <akinobu.mita@gmail.com>
 To: linux-nvme@lists.infradead.org, linux-hwmon@vger.kernel.org,
  linux-pm@vger.kernel.org, linux-wireless@vger.kernel.org,
  linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3 09/12] wireless: iwlegacy: use <linux/units.h> helpers
-Date: Wed, 11 Dec 2019 23:38:16 +0900
-Message-Id: <1576075099-3441-10-git-send-email-akinobu.mita@gmail.com>
+Subject: [PATCH v3 10/12] wireless: iwlwifi: use <linux/units.h> helpers
+Date: Wed, 11 Dec 2019 23:38:17 +0900
+Message-Id: <1576075099-3441-11-git-send-email-akinobu.mita@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1576075099-3441-1-git-send-email-akinobu.mita@gmail.com>
 References: <1576075099-3441-1-git-send-email-akinobu.mita@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_063944_440196_CA707D5B 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20191211_144013_647291_133CCD7E 
+X-CRM114-Status: GOOD (  13.99  )
 X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
+ Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2607:f8b0:4864:20:0:0:0:641 listed in]
+ [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (akinobu.mita[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -96,108 +115,80 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Stanislaw Gruszka <sgruszka@redhat.com>,
- Akinobu Mita <akinobu.mita@gmail.com>, Kalle Valo <kvalo@codeaurora.org>
+Cc: Emmanuel Grumbach <emmanuel.grumbach@intel.com>,
+ Johannes Berg <johannes.berg@intel.com>,
+ Intel Linux Wireless <linuxwifi@intel.com>,
+ Akinobu Mita <akinobu.mita@gmail.com>, Luca Coelho <luciano.coelho@intel.com>,
+ Kalle Valo <kvalo@codeaurora.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This switches the iwlegacy driver to use celsius_to_kelvin() and
+This switches the iwlwifi driver to use celsius_to_kelvin() and
 kelvin_to_celsius() in <linux/units.h>.
 
 Cc: Kalle Valo <kvalo@codeaurora.org>
-Cc: Stanislaw Gruszka <sgruszka@redhat.com>
+Cc: Johannes Berg <johannes.berg@intel.com>
+Cc: Emmanuel Grumbach <emmanuel.grumbach@intel.com>
+Cc: Luca Coelho <luciano.coelho@intel.com>
+Cc: Intel Linux Wireless <linuxwifi@intel.com>
 Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
 ---
 * New patch from v3
 
- drivers/net/wireless/intel/iwlegacy/4965-mac.c |  3 ++-
- drivers/net/wireless/intel/iwlegacy/4965.c     | 11 ++++++-----
- drivers/net/wireless/intel/iwlegacy/common.h   |  3 ---
- 3 files changed, 8 insertions(+), 9 deletions(-)
+ drivers/net/wireless/intel/iwlwifi/dvm/dev.h     | 5 -----
+ drivers/net/wireless/intel/iwlwifi/dvm/devices.c | 6 ++++--
+ 2 files changed, 4 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/wireless/intel/iwlegacy/4965-mac.c b/drivers/net/wireless/intel/iwlegacy/4965-mac.c
-index 3664f56..d6766eb 100644
---- a/drivers/net/wireless/intel/iwlegacy/4965-mac.c
-+++ b/drivers/net/wireless/intel/iwlegacy/4965-mac.c
-@@ -27,6 +27,7 @@
- #include <linux/firmware.h>
- #include <linux/etherdevice.h>
- #include <linux/if_arp.h>
-+#include <linux/units.h>
- 
- #include <net/mac80211.h>
- 
-@@ -6467,7 +6468,7 @@ il4965_set_hw_params(struct il_priv *il)
- 	il->hw_params.valid_rx_ant = il->cfg->valid_rx_ant;
- 
- 	il->hw_params.ct_kill_threshold =
--	   CELSIUS_TO_KELVIN(CT_KILL_THRESHOLD_LEGACY);
-+	   celsius_to_kelvin(CT_KILL_THRESHOLD_LEGACY);
- 
- 	il->hw_params.sens = &il4965_sensitivity;
- 	il->hw_params.beacon_time_tsf_bits = IL4965_EXT_BEACON_TIME_POS;
-diff --git a/drivers/net/wireless/intel/iwlegacy/4965.c b/drivers/net/wireless/intel/iwlegacy/4965.c
-index 32699b6..31b346c 100644
---- a/drivers/net/wireless/intel/iwlegacy/4965.c
-+++ b/drivers/net/wireless/intel/iwlegacy/4965.c
-@@ -17,6 +17,7 @@
- #include <linux/sched.h>
- #include <linux/skbuff.h>
- #include <linux/netdevice.h>
-+#include <linux/units.h>
- #include <net/mac80211.h>
- #include <linux/etherdevice.h>
- #include <asm/unaligned.h>
-@@ -1104,7 +1105,7 @@ il4965_fill_txpower_tbl(struct il_priv *il, u8 band, u16 channel, u8 is_ht40,
- 	/* get current temperature (Celsius) */
- 	current_temp = max(il->temperature, IL_TX_POWER_TEMPERATURE_MIN);
- 	current_temp = min(il->temperature, IL_TX_POWER_TEMPERATURE_MAX);
--	current_temp = KELVIN_TO_CELSIUS(current_temp);
-+	current_temp = kelvin_to_celsius(current_temp);
- 
- 	/* select thermal txpower adjustment params, based on channel group
- 	 *   (same frequency group used for mimo txatten adjustment) */
-@@ -1611,7 +1612,7 @@ il4965_hw_get_temperature(struct il_priv *il)
- 	    (temperature * 97) / 100 + TEMPERATURE_CALIB_KELVIN_OFFSET;
- 
- 	D_TEMP("Calibrated temperature: %dK, %dC\n", temperature,
--	       KELVIN_TO_CELSIUS(temperature));
-+	       kelvin_to_celsius(temperature));
- 
- 	return temperature;
- }
-@@ -1671,11 +1672,11 @@ il4965_temperature_calib(struct il_priv *il)
- 	if (il->temperature != temp) {
- 		if (il->temperature)
- 			D_TEMP("Temperature changed " "from %dC to %dC\n",
--			       KELVIN_TO_CELSIUS(il->temperature),
--			       KELVIN_TO_CELSIUS(temp));
-+			       kelvin_to_celsius(il->temperature),
-+			       kelvin_to_celsius(temp));
- 		else
- 			D_TEMP("Temperature " "initialized to %dC\n",
--			       KELVIN_TO_CELSIUS(temp));
-+			       kelvin_to_celsius(temp));
- 	}
- 
- 	il->temperature = temp;
-diff --git a/drivers/net/wireless/intel/iwlegacy/common.h b/drivers/net/wireless/intel/iwlegacy/common.h
-index e7fb8e6..bc9cd7e 100644
---- a/drivers/net/wireless/intel/iwlegacy/common.h
-+++ b/drivers/net/wireless/intel/iwlegacy/common.h
-@@ -779,9 +779,6 @@ struct il_sensitivity_ranges {
+diff --git a/drivers/net/wireless/intel/iwlwifi/dvm/dev.h b/drivers/net/wireless/intel/iwlwifi/dvm/dev.h
+index be5ef4c..8d83800 100644
+--- a/drivers/net/wireless/intel/iwlwifi/dvm/dev.h
++++ b/drivers/net/wireless/intel/iwlwifi/dvm/dev.h
+@@ -237,11 +237,6 @@ struct iwl_sensitivity_ranges {
  	u16 nrg_th_cca;
  };
  
+-
 -#define KELVIN_TO_CELSIUS(x) ((x)-273)
 -#define CELSIUS_TO_KELVIN(x) ((x)+273)
 -
- /**
-  * struct il_hw_params
-  * @bcast_id: f/w broadcast station ID
+-
+ /******************************************************************************
+  *
+  * Functions implemented in core module which are forward declared here
+diff --git a/drivers/net/wireless/intel/iwlwifi/dvm/devices.c b/drivers/net/wireless/intel/iwlwifi/dvm/devices.c
+index dc3f197..d42bc46 100644
+--- a/drivers/net/wireless/intel/iwlwifi/dvm/devices.c
++++ b/drivers/net/wireless/intel/iwlwifi/dvm/devices.c
+@@ -10,6 +10,8 @@
+  *
+  *****************************************************************************/
+ 
++#include <linux/units.h>
++
+ /*
+  * DVM device-specific data & functions
+  */
+@@ -345,7 +347,7 @@ static s32 iwl_temp_calib_to_offset(struct iwl_priv *priv)
+ static void iwl5150_set_ct_threshold(struct iwl_priv *priv)
+ {
+ 	const s32 volt2temp_coef = IWL_5150_VOLTAGE_TO_TEMPERATURE_COEFF;
+-	s32 threshold = (s32)CELSIUS_TO_KELVIN(CT_KILL_THRESHOLD_LEGACY) -
++	s32 threshold = (s32)celsius_to_kelvin(CT_KILL_THRESHOLD_LEGACY) -
+ 			iwl_temp_calib_to_offset(priv);
+ 
+ 	priv->hw_params.ct_kill_threshold = threshold * volt2temp_coef;
+@@ -381,7 +383,7 @@ static void iwl5150_temperature(struct iwl_priv *priv)
+ 	vt = le32_to_cpu(priv->statistics.common.temperature);
+ 	vt = vt / IWL_5150_VOLTAGE_TO_TEMPERATURE_COEFF + offset;
+ 	/* now vt hold the temperature in Kelvin */
+-	priv->temperature = KELVIN_TO_CELSIUS(vt);
++	priv->temperature = kelvin_to_celsius(vt);
+ 	iwl_tt_handler(priv);
+ }
+ 
 -- 
 2.7.4
 
