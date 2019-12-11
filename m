@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B089111ADF8
-	for <lists+linux-nvme@lfdr.de>; Wed, 11 Dec 2019 15:41:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8573E11AE7C
+	for <lists+linux-nvme@lfdr.de>; Wed, 11 Dec 2019 15:55:55 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,80 +11,95 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=OL7iakta3CCTrbxSYnaFqXJZ+quQhLL3sY+dWzDK75c=; b=fTO7m3JTt5KxX3BlTazlP4SxFU
-	OOY3nwV9pa4fO6cgFS1R0lBCHE+QuIWiXs4JT6dsdGnJEcH4CEw6CcdDur02BQZnqun/vy1Lm9ORL
-	0tG5VjAuBLaJXDQR5A1w+6Vqn/Fn6VZqHEBmYYXjx4ZoFhKyj5lrEQ8ddY7ODrujFfiGMMU1GQgCw
-	2q4HP/aZFJmo2igRs4sc8C3lX8Oicc+CxG+GJS8gnnrz00L0pz47wVuELKxbtjBZMUr69pLNU14Ss
-	fb2qQDUDZM/kFvPy7oNXyKIYKeiwCsBlo9Si4BahopIMe6AjPkb5O63A/HlV6IF7Qe9q2Hv9z9ljt
-	KBK6yx9g==;
+	bh=3olNDpPkbz7Y/N0ghSiVvlltkbLX6WHzBJIV4Eglcj0=; b=SHG1f1m9+CsJ8TeVyl6hGIg9VU
+	Nqvl+lhxIqh/4+qVw11LZx6Fl+UwuJmAYjMIk9mLrqIagC/6EJvYqdFPJv/BV5cv9NIAe9T1yWFAx
+	wHUnu/wqs+nKwYaCgjM72fe+Nn1F/CzVI+qoQlmzkPEE17uK6JCmWZ1V7TNDvEVgFgRG7vwutHCyK
+	8ccq6d+v66NA++oGKMJt7/nkTlDTf+vp8h1IYKLMHpSpvjptx4ZB2mrl4Bn/LzaQM/kbf0FhLllFb
+	RGd4Geo+ZgO/Wgk0Jr9iZB8er8MFdJ1+3+2LW1AcXJGF4/jJgwvuE7awUkkBwNJcNgN7ISBW7JGdf
+	xfROg8Aw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if3Ae-0000Oe-LU; Wed, 11 Dec 2019 14:40:56 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1if3P6-0002SL-Fq; Wed, 11 Dec 2019 14:55:52 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if39G-0006nQ-JT
- for linux-nvme@lists.infradead.org; Wed, 11 Dec 2019 14:39:45 +0000
-Received: by mail-pg1-x542.google.com with SMTP id x8so10867927pgk.8
- for <linux-nvme@lists.infradead.org>; Wed, 11 Dec 2019 06:39:30 -0800 (PST)
+ id 1if3OH-0000cj-HT
+ for linux-nvme@bombadil.infradead.org; Wed, 11 Dec 2019 14:55:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Message-Id:Date:
+ Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=XbYbcASd2+KhdijffyhFolrYSToXlnSKrqANevTKCr0=; b=PJLv+l1dQ6glhKhzB8Qvurdbk
+ JHugLA4leLB3AsA1R/JeruOdDQvmgo5+6Wl4hM27TPr6cz81I/CNyEb/kEsgKqaK9yjNfKUI3tdlE
+ CYzniwmHVxY3rA8K+TyaReV8P0k0shbNqZux9WanmDg1kx2coPC+3ClMdavDgbo8aHNIrLqWhGHuv
+ kJ5xjr6d4nPaaicqhW4uc6FHIkz5UmCC/lr37oaRGL4I8gRGUXGbEGWiErNfUw4hW16D3kzclALef
+ HGhvUv5YRh0LABzJBVh9nR7Kc4rIiB6o3P00EejJuRfaVqJHUs8sxozWQck/2qS1jg/IlKqq1JPM5
+ Ao/CM8v9g==;
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1if39p-0005hq-QK
+ for linux-nvme@lists.infradead.org; Wed, 11 Dec 2019 14:40:07 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id j11so7894435pjs.1
+ for <linux-nvme@lists.infradead.org>; Wed, 11 Dec 2019 06:39:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=G8HIqSOZSM7ZlLEzj0GZfcJL15LCKkAAkMEEiYP0HJ8=;
- b=EoL2MEKylC7MRqf5P3y3JFnFsr/PlSKtVjomV2dX1/7ZSkV2+sxGzrxZgEuNx091fk
- BKawpY7SEcgPihrYuDNS8X4ilRtwzzhvRNz/AIAys5SXt6tk57NEE4iu7lnfD69q1MaW
- lM+ROlYqmBV7vWcGEdg+EBFfrBzoG9BnscbToBGTv0UUqVM6tRuIYW9y0G9yUItH0IDI
- 78hDdjc9KWP8qvsmAJWrfJQaJT2vvOr/fukTIe3fuetky7ZWaSF0Tm9w6MNghRv5gt0H
- CFFT98TRV57WRqjS6Teyv1JeMDWtMguVNnparclOk16OHVcOW1sbOMoEhNquGUAmPP7k
- A6+Q==
+ bh=XbYbcASd2+KhdijffyhFolrYSToXlnSKrqANevTKCr0=;
+ b=cTFNRC0SDsTy6TOB5GAhoEjp+6Nx4jpqI/v0BumN/4YTcJP+nvYX069JP+MbzEagHr
+ H0ef6hXStk3Qg5lCvjuLedPwtDGDXfRoB85H+g1U06dX5OfXuUM2jxLvl6Cjs9tJ1WL+
+ S0yPKhGp9Gb3thch8kkmllLkaCqodmqe2Sx4pEr+RL5dqATYLc3rAUoO5MLajiv7DCO3
+ JNeUQRpuduNY8cUkoj6eofMk5/c454aa+Ha1eoWmL458SQ2qJ+ii3tkN3pBKHkkAAY6b
+ u0wOCJNda/YXvxTj1qSg10BkhZrqKRHmv4Z2Tw0e/Zvq2XZkBq2HeYHcgVAzWVb+uVUw
+ R2hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=G8HIqSOZSM7ZlLEzj0GZfcJL15LCKkAAkMEEiYP0HJ8=;
- b=MiZUo8e94DJbKc0rPC7caJzqO22xu5LG/BuRxpbQa57dNzaY5h9EgyCQwAD5Pz6Bzp
- hkSebscmlumFuUBnMSQy4KexrT08ZeRQlun31zSdTHPR7lqybNmhiysw3oTIP0r1ZBB9
- YvVBv25yqBp7jgPEEsJ9XqWiSSqBaWjsGAzOsBMLzOuoTVcZD71L5cjoaVIgZAmM0qA1
- 6G0X8Qyg4dLNs/DVi/NTnGScB4jvF3ojQbfkDSXrAJUhAgK5ezeSnV5yYkykeXQqk+w1
- sAS7uoBI85DYYd7gF20mCJyPnsm6HEZoEMPBIIsYPQx8ArbMKHamIhViLV6ejQWnGJPL
- Eoxw==
-X-Gm-Message-State: APjAAAWxq4FEpzdh9Tl3ypvXVUfgPPDIygz9iGeK1yHhJm/iK+pNa4fw
- MvvCmNM9djBkxGYAcfI9+8A4EjFo+zk=
-X-Google-Smtp-Source: APXvYqzLIbq4qGAJSSgC9xZ/3+iluFA3br6Tz1ZQ92AYrpH9YCceKsABt6khTNhi4u+9CunGqaDYTg==
-X-Received: by 2002:a63:6507:: with SMTP id z7mr4631816pgb.322.1576075169052; 
- Wed, 11 Dec 2019 06:39:29 -0800 (PST)
+ bh=XbYbcASd2+KhdijffyhFolrYSToXlnSKrqANevTKCr0=;
+ b=XVgk0TVRi286y3sBBzheP1WqOIV7gi3yBgoXoDi0we+b4nsS89LlY1Lu+HXvPPlvJw
+ wnmugOSPL79CiJlyRh3rC+EJwwNNGQ88vpexyDmvfVbsQCv1Pvbmk0xGh/5LD05GNm2E
+ s8o2S452OE8O0WrfWJ0MVJYovG4clIc1NQe0K5VZA2D2tXDXezKKJOtRjejTwmaePzsz
+ SHQE1eiL+yr9XUvh9mQ1pyniQvJctdOvUPS3E5cBaePO+Km+bDXzqTaIMAev6WZXkQI/
+ IBca0EcSDxbIKWRS89BZSqGnvBDC0O19Eq6+h/4y2df3mwglJbVsPZ40W8EAaCAycZEd
+ p4Ow==
+X-Gm-Message-State: APjAAAUKPPfCdOINnhJx8OTbUXX67LBQ4jyJCRaL0lBaEcR2qgStZBUp
+ XqWOiH2X3OWrQVfn0plYvyCGMzb7wpo=
+X-Google-Smtp-Source: APXvYqw0ZMYCDczwvXAKv4QaKyfYTxS7oOjP0rRHfMNhKXXkmJLTUVSslEFXuouLo4HrbdvcoGIzRQ==
+X-Received: by 2002:a17:90a:970b:: with SMTP id
+ x11mr3797597pjo.35.1576075174618; 
+ Wed, 11 Dec 2019 06:39:34 -0800 (PST)
 Received: from localhost.localdomain ([240f:34:212d:1:368e:e048:68f1:84e7])
- by smtp.gmail.com with ESMTPSA id q11sm3444239pff.111.2019.12.11.06.39.23
+ by smtp.gmail.com with ESMTPSA id q11sm3444239pff.111.2019.12.11.06.39.29
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Wed, 11 Dec 2019 06:39:28 -0800 (PST)
+ Wed, 11 Dec 2019 06:39:33 -0800 (PST)
 From: Akinobu Mita <akinobu.mita@gmail.com>
 To: linux-nvme@lists.infradead.org, linux-hwmon@vger.kernel.org,
  linux-pm@vger.kernel.org, linux-wireless@vger.kernel.org,
  linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3 07/12] nvme: hwmon: switch to use <linux/units.h> helpers
-Date: Wed, 11 Dec 2019 23:38:14 +0900
-Message-Id: <1576075099-3441-8-git-send-email-akinobu.mita@gmail.com>
+Subject: [PATCH v3 08/12] thermal: remove kelvin to/from Celsius conversion
+ helpers from <linux/thermal.h>
+Date: Wed, 11 Dec 2019 23:38:15 +0900
+Message-Id: <1576075099-3441-9-git-send-email-akinobu.mita@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1576075099-3441-1-git-send-email-akinobu.mita@gmail.com>
 References: <1576075099-3441-1-git-send-email-akinobu.mita@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_063930_695936_BDA43C0E 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20191211_144005_853841_DD88CD92 
+X-CRM114-Status: GOOD (  13.19  )
 X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+X-Spam-Report: SpamAssassin version 3.4.2 on casper.infradead.org summary:
+ Content analysis details:   (-0.2 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
- [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider (akinobu.mita[at]gmail.com)
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -112,8 +127,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This switches the nvme driver to use kelvin_to_millicelsius() and
-millicelsius_to_kelvin() in <linux/units.h>.
+This removes the kelvin to/from Celsius conversion helper macros in
+<linux/thermal.h> which were switched to the inline helper functions
+in <linux/units.h>.
 
 Cc: Sujith Thomas <sujith.thomas@intel.com>
 Cc: Darren Hart <dvhart@infradead.org>
@@ -127,72 +143,35 @@ Cc: Keith Busch <kbusch@kernel.org>
 Cc: Jens Axboe <axboe@fb.com>
 Cc: Christoph Hellwig <hch@lst.de>
 Cc: Sagi Grimberg <sagi@grimberg.me>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 Signed-off-by: Akinobu Mita <akinobu.mita@gmail.com>
 ---
-* v3
-- rename new header name from <linux/temperature.h> to <linux/units.h>
+* No changes from v2
 
- drivers/nvme/host/hwmon.c | 13 +++++--------
- 1 file changed, 5 insertions(+), 8 deletions(-)
+ include/linux/thermal.h | 11 -----------
+ 1 file changed, 11 deletions(-)
 
-diff --git a/drivers/nvme/host/hwmon.c b/drivers/nvme/host/hwmon.c
-index a5af21f..2e6477e 100644
---- a/drivers/nvme/host/hwmon.c
-+++ b/drivers/nvme/host/hwmon.c
-@@ -5,14 +5,11 @@
-  */
+diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+index d9111ae..126913c6 100644
+--- a/include/linux/thermal.h
++++ b/include/linux/thermal.h
+@@ -32,17 +32,6 @@
+ /* use value, which < 0K, to indicate an invalid/uninitialized temperature */
+ #define THERMAL_TEMP_INVALID	-274000
  
- #include <linux/hwmon.h>
-+#include <linux/units.h>
- #include <asm/unaligned.h>
- 
- #include "nvme.h"
- 
--/* These macros should be moved to linux/temperature.h */
--#define MILLICELSIUS_TO_KELVIN(t) DIV_ROUND_CLOSEST((t) + 273150, 1000)
--#define KELVIN_TO_MILLICELSIUS(t) ((t) * 1000L - 273150)
+-/* Unit conversion macros */
+-#define DECI_KELVIN_TO_CELSIUS(t)	({			\
+-	long _t = (t);						\
+-	((_t-2732 >= 0) ? (_t-2732+5)/10 : (_t-2732-5)/10);	\
+-})
+-#define CELSIUS_TO_DECI_KELVIN(t)	((t)*10+2732)
+-#define DECI_KELVIN_TO_MILLICELSIUS_WITH_OFFSET(t, off) (((t) - (off)) * 100)
+-#define DECI_KELVIN_TO_MILLICELSIUS(t) DECI_KELVIN_TO_MILLICELSIUS_WITH_OFFSET(t, 2732)
+-#define MILLICELSIUS_TO_DECI_KELVIN_WITH_OFFSET(t, off) (((t) / 100) + (off))
+-#define MILLICELSIUS_TO_DECI_KELVIN(t) MILLICELSIUS_TO_DECI_KELVIN_WITH_OFFSET(t, 2732)
 -
- struct nvme_hwmon_data {
- 	struct nvme_ctrl *ctrl;
- 	struct nvme_smart_log log;
-@@ -35,7 +32,7 @@ static int nvme_get_temp_thresh(struct nvme_ctrl *ctrl, int sensor, bool under,
- 		return -EIO;
- 	if (ret < 0)
- 		return ret;
--	*temp = KELVIN_TO_MILLICELSIUS(status & NVME_TEMP_THRESH_MASK);
-+	*temp = kelvin_to_millicelsius(status & NVME_TEMP_THRESH_MASK);
- 
- 	return 0;
- }
-@@ -46,7 +43,7 @@ static int nvme_set_temp_thresh(struct nvme_ctrl *ctrl, int sensor, bool under,
- 	unsigned int threshold = sensor << NVME_TEMP_THRESH_SELECT_SHIFT;
- 	int ret;
- 
--	temp = MILLICELSIUS_TO_KELVIN(temp);
-+	temp = millicelsius_to_kelvin(temp);
- 	threshold |= clamp_val(temp, 0, NVME_TEMP_THRESH_MASK);
- 
- 	if (under)
-@@ -88,7 +85,7 @@ static int nvme_hwmon_read(struct device *dev, enum hwmon_sensor_types type,
- 	case hwmon_temp_min:
- 		return nvme_get_temp_thresh(data->ctrl, channel, true, val);
- 	case hwmon_temp_crit:
--		*val = KELVIN_TO_MILLICELSIUS(data->ctrl->cctemp);
-+		*val = kelvin_to_millicelsius(data->ctrl->cctemp);
- 		return 0;
- 	default:
- 		break;
-@@ -105,7 +102,7 @@ static int nvme_hwmon_read(struct device *dev, enum hwmon_sensor_types type,
- 			temp = get_unaligned_le16(log->temperature);
- 		else
- 			temp = le16_to_cpu(log->temp_sensor[channel - 1]);
--		*val = KELVIN_TO_MILLICELSIUS(temp);
-+		*val = kelvin_to_millicelsius(temp);
- 		break;
- 	case hwmon_temp_alarm:
- 		*val = !!(log->critical_warning & NVME_SMART_CRIT_TEMPERATURE);
+ /* Default Thermal Governor */
+ #if defined(CONFIG_THERMAL_DEFAULT_GOV_STEP_WISE)
+ #define DEFAULT_THERMAL_GOVERNOR       "step_wise"
 -- 
 2.7.4
 
