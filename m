@@ -2,39 +2,39 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 991F411DA54
-	for <lists+linux-nvme@lfdr.de>; Fri, 13 Dec 2019 00:57:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2521211DA4C
+	for <lists+linux-nvme@lfdr.de>; Fri, 13 Dec 2019 00:56:07 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
 	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pyv/VBG/Lrue14pRWdQj0iA3SCG0PkyFrZNhWJgF+94=; b=pQTjZEUqcLl9lw
-	Xu3kvZGKChiJA1yc8ZmvM2wuCsHsgzVuv1Bp9N24mJ+dIed+funG7x2OyW/Rmin+vclhs160JBD9y
-	1T9IeINZOGRzGp1+lxVPZHYpqAlP2ahMYmo0WdKFVzyHrrwDPtY0ydhRPtTumvcUnl6Grgo0yEdnV
-	9KaHcr7y1cXDzhPT/wuqXb9OdfEYLTqOzIOrsgC46Sy0YmiY/1ypupsjMeIPnB7DGJ7CwC0+KviFZ
-	PaxPNL9hIrhbJBBnuPcOk+bVWCKhOAukCzFCe+6m4yb9reCz21XzdmgN3AhLejDDQopIU2GqsJ93W
-	6W9As3hMTsIC+ufBGMDQ==;
+	List-Owner; bh=MfAs49nq8keMHLAc30Ibbu63zEnivuEhqZiKue4nvg8=; b=aGGeWiCckYSPZJ
+	Qqiv5e/PeBwGFdSDK4xKTBYIMgdZRLf1J1dLFwZUz0luCpiWJzodt1hdyORKah7VvpYNVwQjQEjGY
+	I+06q7lkEJedKFk3GIafmLgIU52TPgCx2DHvEvMFSeQmU5vhMo4upStFoKVH2zk4oyeXYpppvC7Fr
+	66bmP+WP61OqKaJnpb5RnkKbkziNbzdRuuzL+SxDGAiVOX+nvZhS8VXxfAH4NAugW5gDJNCofdwj8
+	MQCmeB6hz8A57yJNN959FKvAw4lAhgPlZpFVCpmZZKQuSalJkds4TyY84BUnmrgCG+qJhDz/Bx2bv
+	SAuLowqWuIdKWsi7LpnQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ifYKj-0008CQ-Lv; Thu, 12 Dec 2019 23:57:25 +0000
+	id 1ifYJO-00063D-LN; Thu, 12 Dec 2019 23:56:02 +0000
 Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ifYI7-0003kE-3f
- for linux-nvme@lists.infradead.org; Thu, 12 Dec 2019 23:54:45 +0000
+ id 1ifYI4-0003gk-54
+ for linux-nvme@lists.infradead.org; Thu, 12 Dec 2019 23:54:41 +0000
 Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
  by ale.deltatee.com with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <gunthorp@deltatee.com>)
- id 1ifYHt-0004ZL-IS; Thu, 12 Dec 2019 16:54:42 -0700
+ id 1ifYHt-0004ZM-IN; Thu, 12 Dec 2019 16:54:39 -0700
 Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
  (envelope-from <gunthorp@deltatee.com>)
- id 1ifYHo-0005qT-4g; Thu, 12 Dec 2019 16:54:24 -0700
+ id 1ifYHo-0005qW-8R; Thu, 12 Dec 2019 16:54:24 -0700
 From: Logan Gunthorpe <logang@deltatee.com>
 To: linux-kernel@vger.kernel.org,
 	linux-nvme@lists.infradead.org
-Date: Thu, 12 Dec 2019 16:54:17 -0700
-Message-Id: <20191212235418.22396-9-logang@deltatee.com>
+Date: Thu, 12 Dec 2019 16:54:18 -0700
+Message-Id: <20191212235418.22396-10-logang@deltatee.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191212235418.22396-1-logang@deltatee.com>
 References: <20191212235418.22396-1-logang@deltatee.com>
@@ -42,20 +42,20 @@ MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 172.16.1.31
 X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
  hch@lst.de, sagi@grimberg.me, kbusch@kernel.org, axboe@fb.com,
- maxg@mellanox.com, sbates@raithlin.com, logang@deltatee.com,
- Chaitanya.Kulkarni@wdc.com, chaitanya.kulkarni@wdc.com
+ Chaitanya.Kulkarni@wdc.com, maxg@mellanox.com, sbates@raithlin.com,
+ logang@deltatee.com
 X-SA-Exim-Mail-From: gunthorp@deltatee.com
 X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.5 required=5.0 tests=ALL_TRUSTED,BAYES_00,
  GREYLIST_ISWHITE,MYRULES_FREE,MYRULES_NO_TEXT autolearn=ham
  autolearn_force=no version=3.4.2
-Subject: [PATCH v10 8/9] nvmet-passthru: Add enable/disable helpers
+Subject: [PATCH v10 9/9] nvmet-configfs: Introduce passthru configfs interface
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191212_155443_562947_68AD5D00 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20191212_155440_214242_B07C7247 
+X-CRM114-Status: GOOD (  13.07  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -77,7 +77,7 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
  Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>,
  Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
  Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
@@ -86,220 +86,152 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This patch adds helper functions which are used in the NVMeOF configfs
-when the user is configuring the passthru subsystem. Here we ensure
-that only one subsys is assigned to each nvme_ctrl by using an xarray
-on the cntlid.
+When CONFIG_NVME_TARGET_PASSTHRU as 'passthru' directory will
+be added to each subsystem. The directory is similar to a namespace
+and has two attributes: device_path and enable. The user must set the
+path to the nvme controller's char device and write '1' to enable the
+subsystem to use passthru.
 
-The subsystem's version number is overridden by the passed through
-controller's version. However, if that version is less than 1.2.1,
-then we bump the advertised version to that and print a warning
-in dmesg.
+Any given subsystem is prevented from enabling both a regular namespace
+and the passthru device. If one is enabled, enabling the other will
+produce an error.
 
-Based-on-a-patch-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- drivers/nvme/target/configfs.c |  3 ++
- drivers/nvme/target/core.c     | 10 +++-
- drivers/nvme/target/nvmet.h    | 12 +++++
- drivers/nvme/target/passthru.c | 87 ++++++++++++++++++++++++++++++++++
- 4 files changed, 111 insertions(+), 1 deletion(-)
+ drivers/nvme/target/configfs.c | 99 ++++++++++++++++++++++++++++++++++
+ drivers/nvme/target/nvmet.h    |  1 +
+ 2 files changed, 100 insertions(+)
 
 diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
-index 98613a45bd3b..354d43fab8db 100644
+index 354d43fab8db..1ae3f87f611d 100644
 --- a/drivers/nvme/target/configfs.c
 +++ b/drivers/nvme/target/configfs.c
-@@ -828,6 +828,9 @@ static ssize_t nvmet_subsys_attr_version_store(struct config_item *item,
- 	int major, minor, tertiary = 0;
- 	int ret;
- 
-+	/* passthru subsystems use the underlying controller's version */
-+	if (nvmet_passthru_ctrl(subsys))
-+		return -EINVAL;
- 
- 	ret = sscanf(page, "%d.%d.%d\n", &major, &minor, &tertiary);
- 	if (ret != 2 && ret != 3)
-diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
-index 248818f378e3..1d4fc8779c67 100644
---- a/drivers/nvme/target/core.c
-+++ b/drivers/nvme/target/core.c
-@@ -518,6 +518,12 @@ int nvmet_ns_enable(struct nvmet_ns *ns)
- 
- 	mutex_lock(&subsys->lock);
- 	ret = 0;
-+
-+	if (nvmet_passthru_ctrl(subsys)) {
-+		pr_info("cannot enable both passthru and regular namespaces for a single subsystem");
-+		goto out_unlock;
-+	}
-+
- 	if (ns->enabled)
- 		goto out_unlock;
- 
-@@ -1396,7 +1402,7 @@ struct nvmet_subsys *nvmet_subsys_alloc(const char *subsysnqn,
- 	if (!subsys)
- 		return ERR_PTR(-ENOMEM);
- 
--	subsys->ver = NVME_VS(1, 3, 0); /* NVMe 1.3.0 */
-+	subsys->ver = NVMET_DEFAULT_VS;
- 	/* generate a random serial number as our controllers are ephemeral: */
- 	get_random_bytes(&subsys->serial, sizeof(subsys->serial));
- 
-@@ -1437,6 +1443,8 @@ static void nvmet_subsys_free(struct kref *ref)
- 
- 	WARN_ON_ONCE(!list_empty(&subsys->namespaces));
- 
-+	nvmet_passthru_subsys_free(subsys);
-+
- 	kfree(subsys->subsysnqn);
- 	kfree(subsys);
- }
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index 37fc30d2a2c4..9e7d492aedbd 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -20,6 +20,8 @@
- #include <linux/blkdev.h>
- #include <linux/radix-tree.h>
- 
-+#define NVMET_DEFAULT_VS		NVME_VS(1, 3, 0)
-+
- #define NVMET_ASYNC_EVENTS		4
- #define NVMET_ERROR_LOG_SLOTS		128
- #define NVMET_NO_ERROR_LOC		((u16)-1)
-@@ -230,6 +232,7 @@ struct nvmet_subsys {
- 
- #ifdef CONFIG_NVME_TARGET_PASSTHRU
- 	struct nvme_ctrl	*passthru_ctrl;
-+	char			*passthru_ctrl_path;
- #endif /* CONFIG_NVME_TARGET_PASSTHRU */
+@@ -615,6 +615,103 @@ static const struct config_item_type nvmet_namespaces_type = {
+ 	.ct_owner		= THIS_MODULE,
  };
  
-@@ -511,6 +514,9 @@ static inline u32 nvmet_dsm_len(struct nvmet_req *req)
- }
- 
- #ifdef CONFIG_NVME_TARGET_PASSTHRU
-+void nvmet_passthru_subsys_free(struct nvmet_subsys *subsys);
-+int nvmet_passthru_ctrl_enable(struct nvmet_subsys *subsys);
-+void nvmet_passthru_ctrl_disable(struct nvmet_subsys *subsys);
- u16 nvmet_parse_passthru_admin_cmd(struct nvmet_req *req);
- u16 nvmet_setup_passthru_command(struct nvmet_req *req);
- static inline struct nvme_ctrl *nvmet_passthru_ctrl(struct nvmet_subsys *subsys)
-@@ -518,6 +524,12 @@ static inline struct nvme_ctrl *nvmet_passthru_ctrl(struct nvmet_subsys *subsys)
- 	return subsys->passthru_ctrl;
- }
- #else /* CONFIG_NVME_TARGET_PASSTHRU */
-+static inline void nvmet_passthru_subsys_free(struct nvmet_subsys *subsys)
-+{
-+}
-+static inline void nvmet_passthru_ctrl_disable(struct nvmet_subsys *subsys)
-+{
-+}
- static inline u16 nvmet_parse_passthru_admin_cmd(struct nvmet_req *req)
- {
- 	return 0;
-diff --git a/drivers/nvme/target/passthru.c b/drivers/nvme/target/passthru.c
-index 01127bfa6c8a..0705f4ff8b16 100644
---- a/drivers/nvme/target/passthru.c
-+++ b/drivers/nvme/target/passthru.c
-@@ -11,6 +11,11 @@
- #include "../host/nvme.h"
- #include "nvmet.h"
- 
-+/*
-+ * xarray to maintain one passthru subsystem per nvme controller.
-+ */
-+static DEFINE_XARRAY(passthru_subsystems);
++#ifdef CONFIG_NVME_TARGET_PASSTHRU
 +
- static void nvmet_passthru_execute_cmd_work(struct work_struct *w)
- {
- 	struct nvmet_req *req = container_of(w, struct nvmet_req, p.work);
-@@ -346,3 +351,85 @@ u16 nvmet_parse_passthru_admin_cmd(struct nvmet_req *req)
- 		return NVME_SC_INVALID_OPCODE | NVME_SC_DNR;
- 	}
- }
-+
-+int nvmet_passthru_ctrl_enable(struct nvmet_subsys *subsys)
++static ssize_t nvmet_passthru_device_path_show(struct config_item *item,
++		char *page)
 +{
-+	struct nvme_ctrl *ctrl;
-+	int ret = -EINVAL;
-+	void *old;
++	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
++
++	return snprintf(page, PAGE_SIZE, "%s\n", subsys->passthru_ctrl_path);
++}
++
++static ssize_t nvmet_passthru_device_path_store(struct config_item *item,
++		const char *page, size_t count)
++{
++	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
++	size_t len;
++	int ret;
 +
 +	mutex_lock(&subsys->lock);
-+	if (!subsys->passthru_ctrl_path)
-+		goto out_unlock;
++
++	ret = -EBUSY;
 +	if (subsys->passthru_ctrl)
 +		goto out_unlock;
 +
-+	if (subsys->nr_namespaces) {
-+		pr_info("cannot enable both passthru and regular namespaces for a single subsystem");
++	ret = -EINVAL;
++	len = strcspn(page, "\n");
++	if (!len)
 +		goto out_unlock;
-+	}
 +
-+	ctrl = nvme_ctrl_get_by_path(subsys->passthru_ctrl_path);
-+	if (IS_ERR(ctrl)) {
-+		ret = PTR_ERR(ctrl);
-+		pr_err("failed to open nvme controller %s\n",
-+		       subsys->passthru_ctrl_path);
-+
++	kfree(subsys->passthru_ctrl_path);
++	ret = -ENOMEM;
++	subsys->passthru_ctrl_path = kstrndup(page, len, GFP_KERNEL);
++	if (!subsys->passthru_ctrl_path)
 +		goto out_unlock;
-+	}
-+
-+	old = xa_cmpxchg(&passthru_subsystems, ctrl->cntlid, NULL,
-+			 subsys, GFP_KERNEL);
-+	if (xa_is_err(old)) {
-+		ret = xa_err(old);
-+		goto out_put_ctrl;
-+	}
-+
-+	if (old)
-+		goto out_put_ctrl;
-+
-+	subsys->passthru_ctrl = ctrl;
-+	subsys->ver = ctrl->vs;
-+
-+	if (subsys->ver < NVME_VS(1, 2, 1)) {
-+		pr_warn("nvme controller version is too old: %d.%d.%d, advertising 1.2.1\n",
-+			(int)NVME_MAJOR(subsys->ver),
-+			(int)NVME_MINOR(subsys->ver),
-+			(int)NVME_TERTIARY(subsys->ver));
-+		subsys->ver = NVME_VS(1, 2, 1);
-+	}
 +
 +	mutex_unlock(&subsys->lock);
-+	return 0;
 +
-+out_put_ctrl:
-+	nvme_put_ctrl(ctrl);
++	return count;
 +out_unlock:
 +	mutex_unlock(&subsys->lock);
 +	return ret;
 +}
++CONFIGFS_ATTR(nvmet_passthru_, device_path);
 +
-+static void __nvmet_passthru_ctrl_disable(struct nvmet_subsys *subsys)
++static ssize_t nvmet_passthru_enable_show(struct config_item *item,
++		char *page)
 +{
-+	if (subsys->passthru_ctrl) {
-+		xa_erase(&passthru_subsystems, subsys->passthru_ctrl->cntlid);
-+		nvme_put_ctrl(subsys->passthru_ctrl);
-+	}
-+	subsys->passthru_ctrl = NULL;
-+	subsys->ver = NVMET_DEFAULT_VS;
++	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
++
++	return sprintf(page, "%d\n", subsys->passthru_ctrl ? 1 : 0);
 +}
 +
-+void nvmet_passthru_ctrl_disable(struct nvmet_subsys *subsys)
++static ssize_t nvmet_passthru_enable_store(struct config_item *item,
++		const char *page, size_t count)
 +{
-+	mutex_lock(&subsys->lock);
-+	__nvmet_passthru_ctrl_disable(subsys);
-+	mutex_unlock(&subsys->lock);
++	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
++	bool enable;
++	int ret = 0;
++
++	if (strtobool(page, &enable))
++		return -EINVAL;
++
++	if (enable)
++		ret = nvmet_passthru_ctrl_enable(subsys);
++	else
++		nvmet_passthru_ctrl_disable(subsys);
++
++	return ret ? ret : count;
++}
++CONFIGFS_ATTR(nvmet_passthru_, enable);
++
++static struct configfs_attribute *nvmet_passthru_attrs[] = {
++	&nvmet_passthru_attr_device_path,
++	&nvmet_passthru_attr_enable,
++	NULL,
++};
++
++static const struct config_item_type nvmet_passthru_type = {
++	.ct_attrs		= nvmet_passthru_attrs,
++	.ct_owner		= THIS_MODULE,
++};
++
++static void nvmet_add_passthru_group(struct nvmet_subsys *subsys)
++{
++	config_group_init_type_name(&subsys->passthru_group,
++				    "passthru", &nvmet_passthru_type);
++	configfs_add_default_group(&subsys->passthru_group,
++				   &subsys->group);
 +}
 +
-+void nvmet_passthru_subsys_free(struct nvmet_subsys *subsys)
++#else /* CONFIG_NVME_TARGET_PASSTHRU */
++
++static void nvmet_add_passthru_group(struct nvmet_subsys *subsys)
 +{
-+	mutex_lock(&subsys->lock);
-+	__nvmet_passthru_ctrl_disable(subsys);
-+	kfree(subsys->passthru_ctrl_path);
-+	mutex_unlock(&subsys->lock);
 +}
++
++#endif /* CONFIG_NVME_TARGET_PASSTHRU */
++
+ static int nvmet_port_subsys_allow_link(struct config_item *parent,
+ 		struct config_item *target)
+ {
+@@ -918,6 +1015,8 @@ static struct config_group *nvmet_subsys_make(struct config_group *group,
+ 	configfs_add_default_group(&subsys->allowed_hosts_group,
+ 			&subsys->group);
+ 
++	nvmet_add_passthru_group(subsys);
++
+ 	return &subsys->group;
+ }
+ 
+diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
+index 9e7d492aedbd..a6b29102a925 100644
+--- a/drivers/nvme/target/nvmet.h
++++ b/drivers/nvme/target/nvmet.h
+@@ -233,6 +233,7 @@ struct nvmet_subsys {
+ #ifdef CONFIG_NVME_TARGET_PASSTHRU
+ 	struct nvme_ctrl	*passthru_ctrl;
+ 	char			*passthru_ctrl_path;
++	struct config_group	passthru_group;
+ #endif /* CONFIG_NVME_TARGET_PASSTHRU */
+ };
+ 
 -- 
 2.20.1
 
