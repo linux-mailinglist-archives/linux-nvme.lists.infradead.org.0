@@ -2,83 +2,91 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D27E1290BE
-	for <lists+linux-nvme@lfdr.de>; Mon, 23 Dec 2019 02:43:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C7B91290BB
+	for <lists+linux-nvme@lfdr.de>; Mon, 23 Dec 2019 02:42:18 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=syPAGvptIk7IOPBgAnCW/no4KF3wRHzW7vuaT4Gqlj4=; b=LyogoBbkC6Z27g
-	Hf/6D+XTm9Yb53As66ZPR8ZykW4l5lbw8bfIlAw8bIsb7xJ9aZ30KvRif8ALyCLFSAkfFMhMEg1eR
-	NsnD6gH6pX+J/gaZXag0zpAIEwxDp0D2mpdBPWYqtH7EeeIsB5Ei6Rd30fx4mV2+a3KaZ2erG4240
-	0bvdJf4QwVcir1FY5ZWlcvppL9PIHjxQiB1j/3IS1Hj00DY/USzvbrXldfojvzHDR1H57U3DlSDod
-	8/w2+NQ9GGO3e4wKwbWSV8fii5AOTPVL90blnYKR/XBUb0KytmZQgBpH0YO6IfWeX+ZKQcVkyv128
-	5iSgHcksds+94L1P9FFQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=z8LQXCBoe8Ax10VnU0+7/roFv0ccemMzKkQqiPnGsaQ=; b=CVDBWNqOb0Rtz7
+	BCw3sP3K27dk4jxvaNgP3lJzFM0wgoTPnWzdvHGwBrFkGnrJdExxEbrzmN0DBCjzjBHEFYaZX43bT
+	jSpvmUBdic00H09/p14XEN73ssf5V4GMkK2MBFxOBwPqjwA1ksL3PnBsmiPAuG0ZdvTaGO+pPxW+A
+	6NYbDsslXTQmY30p+uDvPR8LllMiq0tMWEcLAWN+vq3acoqx7LCWQnfDeVAdsHEuS1AINwPFUQiaB
+	MCehuWRPHffLZH87/xNtkbMSCb6lLy0Q/qIyyLVu7oYhCKJPrh2fK6K2588qbVhD736kEiaWe4wdl
+	nklkKVttAx4N7FBoeLSQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ijCkK-0008BL-Ie; Mon, 23 Dec 2019 01:42:56 +0000
-Received: from smtp-fw-9101.amazon.com ([207.171.184.25])
+	id 1ijCje-0007eL-GJ; Mon, 23 Dec 2019 01:42:14 +0000
+Received: from smtp-fw-4101.amazon.com ([72.21.198.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ijCix-0007CN-Ga
- for linux-nvme@lists.infradead.org; Mon, 23 Dec 2019 01:41:33 +0000
+ id 1ijCiv-00072u-Ag
+ for linux-nvme@lists.infradead.org; Mon, 23 Dec 2019 01:41:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1577065292; x=1608601292;
- h=from:to:cc:subject:date:message-id:mime-version;
- bh=wKr/9yXKpnMZ0LLL0aLH8/g6Iv24/1LIBi7EblWcw/k=;
- b=lEJpUSQdjPBbRlz/FAQu9tk5AmV9fxkDBE+XcUXDngu6ZlaaLHqcVsuW
- xXRWbim58QWHxHEHK/RgGVRIBg7NwJ6dKfM4rDoy96NIt10nEFegJh3xo
- ezIvtMwk+ZLY6u0zHcrZ8WJakqpv4YYIqDkYs84V4PVMLASBqDhJnvtg1 M=;
-IronPort-SDR: n71q9NroV3bOEIgKDK8Blv+rWlMYMqLTjJCg5LMBf37eccoympL9f8TkpiAQXjKZ4t9oAtsm7/
- k5ehTZknrP8w==
+ t=1577065290; x=1608601290;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version;
+ bh=bFqvuHtUJ2uTuBGE5u3MI0p2QpGGNs+AUqkx0RpdLvY=;
+ b=lIkF6AJJrdbJIH0J66oFgXtihQwHeN9LAWgJWUfRhvJ4SUjXohc2eOtJ
+ 8ejRdta6xO9oiBD/IsU70+Eg4vSMB9Vm4biWmsVVinfpZqJWyBgAp3Lg7
+ Ov2a8jwEKcW7y2eu08+lKc65nt5YGlQBWGzPCNUISys+B8T0V/rThcOWI 8=;
+IronPort-SDR: BmUYN/KT4CukTWURlMR5RKt7lUs2YeLprQarmys0dgraudtB9gaGwwvDTxZdiHF5m0Wva254iV
+ QviiXeeUmMGg==
 X-IronPort-AV: E=Sophos;i="5.69,345,1571702400"; 
-   d="scan'208";a="6656913"
-Received: from sea32-co-svc-lb4-vlan3.sea.corp.amazon.com (HELO
- email-inbound-relay-1a-67b371d8.us-east-1.amazon.com) ([10.47.23.38])
- by smtp-border-fw-out-9101.sea19.amazon.com with ESMTP;
- 23 Dec 2019 01:41:18 +0000
+   d="scan'208";a="9641953"
+Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO
+ email-inbound-relay-1d-98acfc19.us-east-1.amazon.com) ([10.43.8.6])
+ by smtp-border-fw-out-4101.iad4.amazon.com with ESMTP;
+ 23 Dec 2019 01:41:20 +0000
 Received: from EX13MTAUWC001.ant.amazon.com
  (iad55-ws-svc-p15-lb9-vlan3.iad.amazon.com [10.40.159.166])
- by email-inbound-relay-1a-67b371d8.us-east-1.amazon.com (Postfix) with ESMTPS
- id 74829A1DF2; Mon, 23 Dec 2019 01:41:15 +0000 (UTC)
-Received: from EX13D11UWC002.ant.amazon.com (10.43.162.174) by
+ by email-inbound-relay-1d-98acfc19.us-east-1.amazon.com (Postfix) with ESMTPS
+ id EB2B8A22BC; Mon, 23 Dec 2019 01:41:16 +0000 (UTC)
+Received: from EX13D11UWC001.ant.amazon.com (10.43.162.151) by
  EX13MTAUWC001.ant.amazon.com (10.43.162.135) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Mon, 23 Dec 2019 01:41:14 +0000
+ id 15.0.1367.3; Mon, 23 Dec 2019 01:41:16 +0000
 Received: from EX13MTAUEA001.ant.amazon.com (10.43.61.82) by
- EX13D11UWC002.ant.amazon.com (10.43.162.174) with Microsoft SMTP Server (TLS)
- id 15.0.1367.3; Mon, 23 Dec 2019 01:41:14 +0000
+ EX13D11UWC001.ant.amazon.com (10.43.162.151) with Microsoft SMTP Server (TLS)
+ id 15.0.1367.3; Mon, 23 Dec 2019 01:41:15 +0000
 Received: from localhost (172.23.204.141) by mail-relay.amazon.com
  (10.43.61.243) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
- Transport; Mon, 23 Dec 2019 01:41:13 +0000
+ Transport; Mon, 23 Dec 2019 01:41:14 +0000
 From: Balbir Singh <sblbir@amazon.com>
 To: <=linux-block@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-nvme@lists.infradead.org>
-Subject: [RFC PATCH 1/5] block/genhd: Notify udev about capacity change
-Date: Mon, 23 Dec 2019 01:40:52 +0000
-Message-ID: <20191223014056.17318-1-sblbir@amazon.com>
+Subject: [RFC PATCH 2/5] drivers/block/virtio_blk.c: Convert to use
+ disk_set_capacity
+Date: Mon, 23 Dec 2019 01:40:53 +0000
+Message-ID: <20191223014056.17318-2-sblbir@amazon.com>
 X-Mailer: git-send-email 2.16.5
+In-Reply-To: <20191223014056.17318-1-sblbir@amazon.com>
+References: <20191223014056.17318-1-sblbir@amazon.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191222_174131_638433_A47EFA3B 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20191222_174129_535307_73E5C845 
+X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -4.9 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-4.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [207.171.184.25 listed in list.dnswl.org]
+ high trust [72.21.198.25 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [72.21.198.25 listed in wl.mailspike.net]
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -98,73 +106,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Allow block/genhd to notify user space (via udev) about disk size changes
-using a new helper disk_set_capacity(), which is a wrapper on top
-of set_capacity(). disk_set_capacity() will only notify via udev if
-the current capacity or the target capacity is not zero.
+block/genhd provides disk_set_capacity() for sending
+RESIZE notifications via uevents.
 
-Background:
-
-As a part of a patch to allow sending the RESIZE event on disk capacity
-change, Christoph (hch@lst.de) requested that the patch be made generic
-and the hacks for virtio block and xen block devices be removed and
-merged via a generic helper.
-
-Testing:
-1. I did some basic testing with an NVME device, by resizing it in
-the backend and ensured that udevd received the event.
-
-Suggested-by: Christoph Hellwig <hch@lst.de>
-Signed-off-by: Balbir Singh <sblbir@amazon.com>
-Signed-off-by: Someswarudu Sangaraju <ssomesh@amazon.com>
 Signed-off-by: Balbir Singh <sblbir@amazon.com>
 ---
- block/genhd.c         | 19 +++++++++++++++++++
- include/linux/genhd.h |  1 +
- 2 files changed, 20 insertions(+)
+ drivers/block/virtio_blk.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/block/genhd.c b/block/genhd.c
-index ff6268970ddc..94faec98607b 100644
---- a/block/genhd.c
-+++ b/block/genhd.c
-@@ -46,6 +46,25 @@ static void disk_add_events(struct gendisk *disk);
- static void disk_del_events(struct gendisk *disk);
- static void disk_release_events(struct gendisk *disk);
+diff --git a/drivers/block/virtio_blk.c b/drivers/block/virtio_blk.c
+index fbbf18ac1d5d..9848c94a7eb4 100644
+--- a/drivers/block/virtio_blk.c
++++ b/drivers/block/virtio_blk.c
+@@ -479,18 +479,16 @@ static void virtblk_update_capacity(struct virtio_blk *vblk, bool resize)
+ 		   cap_str_10,
+ 		   cap_str_2);
  
-+/*
-+ * Set disk capacity and notify if the size is not currently
-+ * zero and will not be set to zero
-+ */
-+void disk_set_capacity(struct gendisk *disk, sector_t size)
-+{
-+	sector_t capacity = get_capacity(disk);
-+
-+	set_capacity(disk, size);
-+	if (capacity != 0 && size != 0) {
-+		char *envp[] = { "RESIZE=1", NULL };
-+
-+		kobject_uevent_env(&disk_to_dev(disk)->kobj, KOBJ_CHANGE, envp);
-+	}
-+}
-+
-+EXPORT_SYMBOL_GPL(disk_set_capacity);
-+
-+
- void part_inc_in_flight(struct request_queue *q, struct hd_struct *part, int rw)
+-	set_capacity(vblk->disk, capacity);
++	disk_set_capacity(vblk->disk, capacity);
+ }
+ 
+ static void virtblk_config_changed_work(struct work_struct *work)
  {
- 	if (queue_is_mq(q))
-diff --git a/include/linux/genhd.h b/include/linux/genhd.h
-index a927829bb73a..f1a5ddcc781d 100644
---- a/include/linux/genhd.h
-+++ b/include/linux/genhd.h
-@@ -449,6 +449,7 @@ static inline int get_disk_ro(struct gendisk *disk)
- extern void disk_block_events(struct gendisk *disk);
- extern void disk_unblock_events(struct gendisk *disk);
- extern void disk_flush_events(struct gendisk *disk, unsigned int mask);
-+extern void disk_set_capacity(struct gendisk *disk, sector_t size);
- extern unsigned int disk_clear_events(struct gendisk *disk, unsigned int mask);
+ 	struct virtio_blk *vblk =
+ 		container_of(work, struct virtio_blk, config_work);
+-	char *envp[] = { "RESIZE=1", NULL };
  
- /* drivers/char/random.c */
+ 	virtblk_update_capacity(vblk, true);
+ 	revalidate_disk(vblk->disk);
+-	kobject_uevent_env(&disk_to_dev(vblk->disk)->kobj, KOBJ_CHANGE, envp);
+ }
+ 
+ static void virtblk_config_changed(struct virtio_device *vdev)
 -- 
 2.16.5
 
