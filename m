@@ -2,84 +2,84 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17DCB1285A0
-	for <lists+linux-nvme@lfdr.de>; Sat, 21 Dec 2019 00:42:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D27E1290BE
+	for <lists+linux-nvme@lfdr.de>; Mon, 23 Dec 2019 02:43:00 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=48FCZCykqJby1Nizn2K4R7KB3iopQWilWOAX5w7+4YQ=; b=XW3r6NfvRCfoDlldO0GxVEQbf
-	4Cc0JQsVqR+62Wk6TXQ/N/bR0kdoWs34zUuUW05KOCcPogYM5Pwjki9vJnKpNMIx3xq+UILCveWkh
-	Fj+Rz9lY9hhdhnLjs8vbGs0OG+uFxCzHBLcIa+WTbVC3vTv72ztZ15LIdM2/aiTfyd6C/L0xOt0hF
-	4ISrxUIeK+1TIv9+r1SXbXFuM/JmEJ2yXePb409v9RwZMR5A2OKVvTxeO7xu2jHoKjLKKTfC8jaOH
-	JGUQPn6NyhJaIJyDmq2ZDsR71Eqd2jTPn7YkAvC4DE3l4KroWtTSNTLdq0YLu9ar3wZ8SA6psQFNa
-	igLyff+uQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=syPAGvptIk7IOPBgAnCW/no4KF3wRHzW7vuaT4Gqlj4=; b=LyogoBbkC6Z27g
+	Hf/6D+XTm9Yb53As66ZPR8ZykW4l5lbw8bfIlAw8bIsb7xJ9aZ30KvRif8ALyCLFSAkfFMhMEg1eR
+	NsnD6gH6pX+J/gaZXag0zpAIEwxDp0D2mpdBPWYqtH7EeeIsB5Ei6Rd30fx4mV2+a3KaZ2erG4240
+	0bvdJf4QwVcir1FY5ZWlcvppL9PIHjxQiB1j/3IS1Hj00DY/USzvbrXldfojvzHDR1H57U3DlSDod
+	8/w2+NQ9GGO3e4wKwbWSV8fii5AOTPVL90blnYKR/XBUb0KytmZQgBpH0YO6IfWeX+ZKQcVkyv128
+	5iSgHcksds+94L1P9FFQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iiRut-00038D-2n; Fri, 20 Dec 2019 23:42:43 +0000
-Received: from mail-ot1-f52.google.com ([209.85.210.52])
+	id 1ijCkK-0008BL-Ie; Mon, 23 Dec 2019 01:42:56 +0000
+Received: from smtp-fw-9101.amazon.com ([207.171.184.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iiRuo-00037s-9u
- for linux-nvme@lists.infradead.org; Fri, 20 Dec 2019 23:42:39 +0000
-Received: by mail-ot1-f52.google.com with SMTP id 66so13884612otd.9
- for <linux-nvme@lists.infradead.org>; Fri, 20 Dec 2019 15:42:37 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=rywd45lCr9zri+e0U2CsveMiRIlgE1HFTwz2hnpVboQ=;
- b=YBlHzxP+GlipAZ6UWrL5t9F7Re1+SKyLyvz9d0KGeEKUmjllfsKywPogsHOnSgSZwh
- K0ehjfebg6p5DZv8J+lkagdn0RZsZ2in7ekcJfNWV04wk5jcJq0reQ/6bDE+qNowbbCC
- MF9Vlxng3ydSiUZ4uo2EY6BwXfTn50YiXurpiOfe/3d/Tb5Hlb/vJPA6M6vj4IaavrR3
- VyF/QdSn2QRIpOkGc7ii9xfEX9Dr6ohX+jwGgSlymJzbWujn6hhTyqmVejpQPCybAfjk
- UbQsLO+EIWXRVyQUuoE/kBVjlCw8bD6lpgb2Ez5IBO3ZcdXL29idIhHTXTj+a+tsSeEd
- NFFA==
-X-Gm-Message-State: APjAAAXwWkTECeuqgmlpqoUFAik9F8YjuyNFC+qy3173jeR43Z9x3dMi
- nv+DDgmtv78FEMWQtmSGrmU=
-X-Google-Smtp-Source: APXvYqxovZd5WMaM/8ZPIU/+au3oDjO1EXl1115zDILfit+fIi/RORaMcj6WTZTLECluqjjh3bNeWw==
-X-Received: by 2002:a9d:6f8f:: with SMTP id h15mr17027210otq.1.1576885356900; 
- Fri, 20 Dec 2019 15:42:36 -0800 (PST)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id e21sm3716862oib.16.2019.12.20.15.42.34
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 20 Dec 2019 15:42:34 -0800 (PST)
-Subject: Re: Question about nvmetcli (tcp)
-To: Sudheendra Sampath <sudheendra.sampath@gmail.com>,
- linux-nvme@lists.infradead.org
-References: <CABnqofwdPfb=RfCDUh6kU2CUV4v0xxVaT--rfQOZMJy6DG3MTQ@mail.gmail.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <89df70cf-0635-7b38-2504-3c594ff0fe75@grimberg.me>
-Date: Fri, 20 Dec 2019 15:42:32 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ id 1ijCix-0007CN-Ga
+ for linux-nvme@lists.infradead.org; Mon, 23 Dec 2019 01:41:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1577065292; x=1608601292;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=wKr/9yXKpnMZ0LLL0aLH8/g6Iv24/1LIBi7EblWcw/k=;
+ b=lEJpUSQdjPBbRlz/FAQu9tk5AmV9fxkDBE+XcUXDngu6ZlaaLHqcVsuW
+ xXRWbim58QWHxHEHK/RgGVRIBg7NwJ6dKfM4rDoy96NIt10nEFegJh3xo
+ ezIvtMwk+ZLY6u0zHcrZ8WJakqpv4YYIqDkYs84V4PVMLASBqDhJnvtg1 M=;
+IronPort-SDR: n71q9NroV3bOEIgKDK8Blv+rWlMYMqLTjJCg5LMBf37eccoympL9f8TkpiAQXjKZ4t9oAtsm7/
+ k5ehTZknrP8w==
+X-IronPort-AV: E=Sophos;i="5.69,345,1571702400"; 
+   d="scan'208";a="6656913"
+Received: from sea32-co-svc-lb4-vlan3.sea.corp.amazon.com (HELO
+ email-inbound-relay-1a-67b371d8.us-east-1.amazon.com) ([10.47.23.38])
+ by smtp-border-fw-out-9101.sea19.amazon.com with ESMTP;
+ 23 Dec 2019 01:41:18 +0000
+Received: from EX13MTAUWC001.ant.amazon.com
+ (iad55-ws-svc-p15-lb9-vlan3.iad.amazon.com [10.40.159.166])
+ by email-inbound-relay-1a-67b371d8.us-east-1.amazon.com (Postfix) with ESMTPS
+ id 74829A1DF2; Mon, 23 Dec 2019 01:41:15 +0000 (UTC)
+Received: from EX13D11UWC002.ant.amazon.com (10.43.162.174) by
+ EX13MTAUWC001.ant.amazon.com (10.43.162.135) with Microsoft SMTP Server (TLS)
+ id 15.0.1367.3; Mon, 23 Dec 2019 01:41:14 +0000
+Received: from EX13MTAUEA001.ant.amazon.com (10.43.61.82) by
+ EX13D11UWC002.ant.amazon.com (10.43.162.174) with Microsoft SMTP Server (TLS)
+ id 15.0.1367.3; Mon, 23 Dec 2019 01:41:14 +0000
+Received: from localhost (172.23.204.141) by mail-relay.amazon.com
+ (10.43.61.243) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
+ Transport; Mon, 23 Dec 2019 01:41:13 +0000
+From: Balbir Singh <sblbir@amazon.com>
+To: <=linux-block@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-nvme@lists.infradead.org>
+Subject: [RFC PATCH 1/5] block/genhd: Notify udev about capacity change
+Date: Mon, 23 Dec 2019 01:40:52 +0000
+Message-ID: <20191223014056.17318-1-sblbir@amazon.com>
+X-Mailer: git-send-email 2.16.5
 MIME-Version: 1.0
-In-Reply-To: <CABnqofwdPfb=RfCDUh6kU2CUV4v0xxVaT--rfQOZMJy6DG3MTQ@mail.gmail.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191220_154238_344206_BADD7E82 
-X-CRM114-Status: GOOD (  11.27  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20191222_174131_638433_A47EFA3B 
+X-CRM114-Status: GOOD (  10.69  )
+X-Spam-Score: -4.9 (----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-4.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.52 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.52 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider (sagigrim[at]gmail.com)
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [207.171.184.25 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,24 +91,85 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: james.p.freyensee@intel.com, chaitanya.kulkarni@wdc.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: axboe@kernel.dk, mst@redhat.com, jejb@linux.ibm.com, ssomesh@amazon.com,
+ Balbir Singh <sblbir@amazon.com>, hch@lst.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-CgpPbiAxMi8yMC8xOSAxMTozOCBBTSwgU3VkaGVlbmRyYSBTYW1wYXRoIHdyb3RlOgo+IEhpLAo+
-IAo+IEFwb2xvZ2llcyBmb3IgZmxvb2RpbmcgeW91ciBpbmJveC7CoCBJIGdvdCB5b3VyIGNvbnRh
-Y3QgaW5mb3JtYXRpb24gZnJvbSAKPiB0aGUgbGludXgtbnZtZSBtYWlsaW5nIGxpc3QuCj4gCj4g
-SSBhbSB0cnlpbmcgdG8gc2V0dXAgYSB0YXJnZXQgLT4gaW5pdGlhdG9yIHVzaW5nIG52bWV0Y2xp
-LsKgIEJlbG93IGlzIG15IAo+IGpzb24gZmlsZSA6Cj4gCj4gewo+ICDCoCAiaG9zdHMiOiBbXSwK
-PiAgwqAgInBvcnRzIjogWwo+ICDCoCDCoCB7Cj4gIMKgIMKgIMKgICJhZGRyIjogewo+ICDCoCDC
-oCDCoCDCoCAiYWRyZmFtIjogImlwdjQiLAo+ICDCoCDCoCDCoCDCoCAidHJhZGRyIjogIjE5Mi4x
-NjguMTIzLjMyIiwKPiAgwqAgwqAgwqAgwqAgInRyZXEiOiAibm90IHNwZWNpZmllZCIsCj4gIMKg
-IMKgIMKgIMKgICJ0cnN2Y2lkIjogIjQ0MjAiLAo+ICDCoCDCoCDCoCDCoCAidHJ0eXBlIjogInRj
-cCIKPiAgwqAgwqAgwqAgfSwKPiAgwqAgwqAgwqAgInBvcnRpZCI6IDEsCj4gIMKgIMKgIMKgICJy
-ZWZlcnJhbHMiOiBbXSwKPiAgwqAgwqAgwqAgInN1YnN5c3RlbXMiOiBbXQoKWW91IGFyZSBtaXNz
-aW5nIHRoZSBzb2Z0IGxpbmsgdGhhdCBiaW5kcyB0aGUgc3Vic3lzdGVtIHRvIHRoZSBwb3J0LgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtbnZt
-ZSBtYWlsaW5nIGxpc3QKbGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+Allow block/genhd to notify user space (via udev) about disk size changes
+using a new helper disk_set_capacity(), which is a wrapper on top
+of set_capacity(). disk_set_capacity() will only notify via udev if
+the current capacity or the target capacity is not zero.
+
+Background:
+
+As a part of a patch to allow sending the RESIZE event on disk capacity
+change, Christoph (hch@lst.de) requested that the patch be made generic
+and the hacks for virtio block and xen block devices be removed and
+merged via a generic helper.
+
+Testing:
+1. I did some basic testing with an NVME device, by resizing it in
+the backend and ensured that udevd received the event.
+
+Suggested-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Balbir Singh <sblbir@amazon.com>
+Signed-off-by: Someswarudu Sangaraju <ssomesh@amazon.com>
+Signed-off-by: Balbir Singh <sblbir@amazon.com>
+---
+ block/genhd.c         | 19 +++++++++++++++++++
+ include/linux/genhd.h |  1 +
+ 2 files changed, 20 insertions(+)
+
+diff --git a/block/genhd.c b/block/genhd.c
+index ff6268970ddc..94faec98607b 100644
+--- a/block/genhd.c
++++ b/block/genhd.c
+@@ -46,6 +46,25 @@ static void disk_add_events(struct gendisk *disk);
+ static void disk_del_events(struct gendisk *disk);
+ static void disk_release_events(struct gendisk *disk);
+ 
++/*
++ * Set disk capacity and notify if the size is not currently
++ * zero and will not be set to zero
++ */
++void disk_set_capacity(struct gendisk *disk, sector_t size)
++{
++	sector_t capacity = get_capacity(disk);
++
++	set_capacity(disk, size);
++	if (capacity != 0 && size != 0) {
++		char *envp[] = { "RESIZE=1", NULL };
++
++		kobject_uevent_env(&disk_to_dev(disk)->kobj, KOBJ_CHANGE, envp);
++	}
++}
++
++EXPORT_SYMBOL_GPL(disk_set_capacity);
++
++
+ void part_inc_in_flight(struct request_queue *q, struct hd_struct *part, int rw)
+ {
+ 	if (queue_is_mq(q))
+diff --git a/include/linux/genhd.h b/include/linux/genhd.h
+index a927829bb73a..f1a5ddcc781d 100644
+--- a/include/linux/genhd.h
++++ b/include/linux/genhd.h
+@@ -449,6 +449,7 @@ static inline int get_disk_ro(struct gendisk *disk)
+ extern void disk_block_events(struct gendisk *disk);
+ extern void disk_unblock_events(struct gendisk *disk);
+ extern void disk_flush_events(struct gendisk *disk, unsigned int mask);
++extern void disk_set_capacity(struct gendisk *disk, sector_t size);
+ extern unsigned int disk_clear_events(struct gendisk *disk, unsigned int mask);
+ 
+ /* drivers/char/random.c */
+-- 
+2.16.5
+
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
