@@ -2,47 +2,47 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 004F713131B
-	for <lists+linux-nvme@lfdr.de>; Mon,  6 Jan 2020 14:41:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 04438131317
+	for <lists+linux-nvme@lfdr.de>; Mon,  6 Jan 2020 14:40:32 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PxfBidvwEWpBr9uy1uKY9+frLYcSS9ZaH0Y5I0z9Q9s=; b=r0QlA5z/MfY/hQ
-	RGPMVZ4vCCT1nOpuDKKqh0jcU77a6QTA/7cZLXjzNsNLn4Bkt62IbioST+4dbuBiG/ZzOVNcYT7qI
-	RVPpeoHlLXVkOJMafRio3YLEFl4RN+JYguHI7/S1IMRN+wSl4vaOUhD1h/wJ0r9HJq3RhUrn0ij+a
-	UloVJstUVjr26lAWHWxbBp8IIBdnZpn4++/g079CDiEkpmYizNm9CBvVs9nT8v4wgOEhSIoJCXd1h
-	Dw8Xcg38D00x/0iKb473P717OJdELsOUb0Q4oZD5zeMYGDjZW0uOqhVaVihknGI65L0J/ABr0TU1G
-	XcznKVhL0OkgSNN+Cm7w==;
+	List-Owner; bh=V0LNnSiD7cXuFEVZSAV9GKbAH7lkK4iUSg9HIlrra90=; b=KHDF+kZbmgP/de
+	co0I5X/ZTzk3qEoYE98rHB7KyZgBzKJh6PVDlyxy3rQwaPu5sSwnYZ5p/muTVy/MUBNo2QEOKY5O6
+	TSkOyhK6XxuIz9QJcyfk46MjLmmMgIr08SVVZeyE/AsdxeSiU2pwvtj2imMQw3QetNtpJrY5AksQ7
+	H9dU3WZgOCmxQ8chAi/mD87E+6w5LnIXVkUPKlTlzE4yazKkg3wEcGTGPXrDrkRLdh/XN/TbXn444
+	nPFhJMRbT7EQkqPTyxGFHtANKkt4eZSlehJntB3fyP6u96oHb5eBZAl+ATklyG/tT1HW8dNKVfxIP
+	TwzmkEZTvh+uV+284d+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ioSdC-00010C-Ne; Mon, 06 Jan 2020 13:41:18 +0000
+	id 1ioScO-0007hE-Ag; Mon, 06 Jan 2020 13:40:28 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ioSZq-0005cp-KY
- for linux-nvme@lists.infradead.org; Mon, 06 Jan 2020 13:38:00 +0000
+ id 1ioSZp-0005cc-Pr
+ for linux-nvme@lists.infradead.org; Mon, 06 Jan 2020 13:37:59 +0000
 Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 6 Jan 2020 15:37:38 +0200
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 006DbaFO029740;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 006DbaFP029740;
  Mon, 6 Jan 2020 15:37:38 +0200
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, hch@lst.de,
  sagi@grimberg.me, martin.petersen@oracle.com
-Subject: [PATCH 13/15] nvmet: Add metadata/T10-PI support
-Date: Mon,  6 Jan 2020 15:37:34 +0200
-Message-Id: <20200106133736.123038-15-maxg@mellanox.com>
+Subject: [PATCH 14/15] nvmet: Add metadata support for block devices
+Date: Mon,  6 Jan 2020 15:37:35 +0200
+Message-Id: <20200106133736.123038-16-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200106133736.123038-1-maxg@mellanox.com>
 References: <20200106133736.123038-1-maxg@mellanox.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200106_053751_073385_C5923AA5 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20200106_053750_263612_8C899F92 
+X-CRM114-Status: GOOD (  11.82  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -74,251 +74,146 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Israel Rukshin <israelr@mellanox.com>
 
-Expose the namespace metadata format when PI is enabled. The user needs
-to enable the capability per subsystem and per port. The other metadata
-properties are taken from the namespace/bdev.
-
-Usage example:
-echo 1 > /config/nvmet/subsystems/${NAME}/attr_pi_enable
-echo 1 > /config/nvmet/ports/${PORT_NUM}/param_pi_enable
+Create a block IO request for the metadata from the protection SG list.
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
 Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- drivers/nvme/target/admin-cmd.c   | 23 ++++++++++++---
- drivers/nvme/target/configfs.c    | 61 +++++++++++++++++++++++++++++++++++++++
- drivers/nvme/target/fabrics-cmd.c | 11 +++++++
- drivers/nvme/target/nvmet.h       | 28 ++++++++++++++++++
- 4 files changed, 119 insertions(+), 4 deletions(-)
+ drivers/nvme/target/io-cmd-bdev.c | 87 ++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 85 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/nvme/target/admin-cmd.c b/drivers/nvme/target/admin-cmd.c
-index 19ae155..20e7f08 100644
---- a/drivers/nvme/target/admin-cmd.c
-+++ b/drivers/nvme/target/admin-cmd.c
-@@ -346,8 +346,8 @@ static void nvmet_execute_identify_ctrl(struct nvmet_req *req)
- 	/* we support multiple ports, multiples hosts and ANA: */
- 	id->cmic = (1 << 0) | (1 << 1) | (1 << 3);
- 
--	/* no limit on data transfer sizes for now */
--	id->mdts = 0;
-+	/* Limit MDTS for metadata capable controllers (assume mpsmin is 4k) */
-+	id->mdts = ctrl->pi_support ? ilog2(NVMET_T10_PI_MAX_KB_SZ >> 2) : 0;
- 	id->cntlid = cpu_to_le16(ctrl->cntlid);
- 	id->ver = cpu_to_le32(ctrl->subsys->ver);
- 
-@@ -405,9 +405,13 @@ static void nvmet_execute_identify_ctrl(struct nvmet_req *req)
- 
- 	strlcpy(id->subnqn, ctrl->subsys->subsysnqn, sizeof(id->subnqn));
- 
--	/* Max command capsule size is sqe + single page of in-capsule data */
-+	/*
-+	 * Max command capsule size is sqe + single page of in-capsule data.
-+	 * Disable inline data for Metadata capable controllers.
-+	 */
- 	id->ioccsz = cpu_to_le32((sizeof(struct nvme_command) +
--				  req->port->inline_data_size) / 16);
-+				  req->port->inline_data_size *
-+				  !ctrl->pi_support) / 16);
- 	/* Max response capsule size is cqe */
- 	id->iorcsz = cpu_to_le32(sizeof(struct nvme_completion) / 16);
- 
-@@ -437,6 +441,7 @@ static void nvmet_execute_identify_ctrl(struct nvmet_req *req)
- 
- static void nvmet_execute_identify_ns(struct nvmet_req *req)
- {
-+	struct nvmet_ctrl *ctrl = req->sq->ctrl;
- 	struct nvmet_ns *ns;
- 	struct nvme_id_ns *id;
- 	u16 status = 0;
-@@ -493,6 +498,16 @@ static void nvmet_execute_identify_ns(struct nvmet_req *req)
- 
- 	id->lbaf[0].ds = ns->blksize_shift;
- 
-+	if (ctrl->pi_support && nvmet_ns_has_pi(ns)) {
-+		id->dpc = NVME_NS_DPC_PI_FIRST | NVME_NS_DPC_PI_LAST |
-+			  NVME_NS_DPC_PI_TYPE1 | NVME_NS_DPC_PI_TYPE2 |
-+			  NVME_NS_DPC_PI_TYPE3;
-+		id->mc = NVME_NS_MC_META_EXT;
-+		id->dps = ns->prot_type;
-+		id->flbas = NVME_NS_FLBAS_META_EXT;
-+		id->lbaf[0].ms = ns->ms;
-+	}
-+
- 	if (ns->readonly)
- 		id->nsattr |= (1 << 0);
- 	nvmet_put_namespace(ns);
-diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
-index 98613a4..7543025 100644
---- a/drivers/nvme/target/configfs.c
-+++ b/drivers/nvme/target/configfs.c
-@@ -248,6 +248,36 @@ static ssize_t nvmet_param_inline_data_size_store(struct config_item *item,
- 
- CONFIGFS_ATTR(nvmet_, param_inline_data_size);
- 
-+#ifdef CONFIG_BLK_DEV_INTEGRITY
-+static ssize_t nvmet_param_pi_enable_show(struct config_item *item,
-+		char *page)
-+{
-+	struct nvmet_port *port = to_nvmet_port(item);
-+
-+	return snprintf(page, PAGE_SIZE, "%d\n", port->pi_enable);
-+}
-+
-+static ssize_t nvmet_param_pi_enable_store(struct config_item *item,
-+		const char *page, size_t count)
-+{
-+	struct nvmet_port *port = to_nvmet_port(item);
-+	bool val;
-+
-+	if (strtobool(page, &val))
-+		return -EINVAL;
-+
-+	if (port->enabled) {
-+		pr_err("Disable port before setting pi_enable value.\n");
-+		return -EACCES;
-+	}
-+
-+	port->pi_enable = val;
-+	return count;
-+}
-+
-+CONFIGFS_ATTR(nvmet_, param_pi_enable);
-+#endif
-+
- static ssize_t nvmet_addr_trtype_show(struct config_item *item,
- 		char *page)
- {
-@@ -862,10 +892,38 @@ static ssize_t nvmet_subsys_attr_serial_store(struct config_item *item,
+diff --git a/drivers/nvme/target/io-cmd-bdev.c b/drivers/nvme/target/io-cmd-bdev.c
+index 9f99b9d..1d84e71 100644
+--- a/drivers/nvme/target/io-cmd-bdev.c
++++ b/drivers/nvme/target/io-cmd-bdev.c
+@@ -164,6 +164,61 @@ static void nvmet_bio_done(struct bio *bio)
+ 		bio_put(bio);
  }
- CONFIGFS_ATTR(nvmet_subsys_, attr_serial);
  
 +#ifdef CONFIG_BLK_DEV_INTEGRITY
-+static ssize_t nvmet_subsys_attr_pi_enable_show(struct config_item *item,
-+						char *page)
++static int nvmet_bdev_alloc_bip(struct nvmet_req *req, struct bio *bio,
++				struct sg_mapping_iter *miter)
 +{
-+	return snprintf(page, PAGE_SIZE, "%d\n", to_subsys(item)->pi_support);
-+}
++	struct blk_integrity *bi;
++	struct bio_integrity_payload *bip;
++	struct block_device *bdev = req->ns->bdev;
++	int rc;
++	size_t resid, len;
 +
-+static ssize_t nvmet_subsys_attr_pi_enable_store(struct config_item *item,
-+						 const char *page, size_t count)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item);
-+	bool pi_enable;
++	bi = bdev_get_integrity(bdev);
++	if (unlikely(!bi)) {
++		pr_err("Unable to locate bio_integrity\n");
++		return -ENODEV;
++	}
 +
-+	if (strtobool(page, &pi_enable))
-+		return -EINVAL;
++	bip = bio_integrity_alloc(bio, GFP_NOIO,
++			min_t(unsigned int, req->prot_sg_cnt, BIO_MAX_PAGES));
++	if (IS_ERR(bip)) {
++		pr_err("Unable to allocate bio_integrity_payload\n");
++		return PTR_ERR(bip);
++	}
 +
-+	down_write(&nvmet_config_sem);
-+	subsys->pi_support = pi_enable;
-+	up_write(&nvmet_config_sem);
++	bip->bip_iter.bi_size = bio_integrity_bytes(bi, bio_sectors(bio));
++	/* virtual start sector must be in integrity interval units */
++	bip_set_seed(bip, bio->bi_iter.bi_sector >>
++				  (bi->interval_exp - SECTOR_SHIFT));
 +
-+	return count;
-+}
-+CONFIGFS_ATTR(nvmet_subsys_, attr_pi_enable);
-+#endif
-+
- static struct configfs_attribute *nvmet_subsys_attrs[] = {
- 	&nvmet_subsys_attr_attr_allow_any_host,
- 	&nvmet_subsys_attr_attr_version,
- 	&nvmet_subsys_attr_attr_serial,
-+#ifdef CONFIG_BLK_DEV_INTEGRITY
-+	&nvmet_subsys_attr_attr_pi_enable,
-+#endif
- 	NULL,
- };
- 
-@@ -1161,6 +1219,9 @@ static void nvmet_port_release(struct config_item *item)
- 	&nvmet_attr_addr_trsvcid,
- 	&nvmet_attr_addr_trtype,
- 	&nvmet_attr_param_inline_data_size,
-+#ifdef CONFIG_BLK_DEV_INTEGRITY
-+	&nvmet_attr_param_pi_enable,
-+#endif
- 	NULL,
- };
- 
-diff --git a/drivers/nvme/target/fabrics-cmd.c b/drivers/nvme/target/fabrics-cmd.c
-index ee41b2b..7211996 100644
---- a/drivers/nvme/target/fabrics-cmd.c
-+++ b/drivers/nvme/target/fabrics-cmd.c
-@@ -192,6 +192,17 @@ static void nvmet_execute_admin_connect(struct nvmet_req *req)
- 		goto out;
- 	}
- 
-+	if (ctrl->subsys->pi_support && ctrl->port->pi_enable) {
-+		if (ctrl->port->pi_capable) {
-+			ctrl->pi_support = true;
-+			pr_info("controller %d T10-PI enabled\n", ctrl->cntlid);
-+		} else {
-+			ctrl->pi_support = false;
-+			pr_warn("T10-PI is not supported on controller %d\n",
-+				ctrl->cntlid);
++	resid = bip->bip_iter.bi_size;
++	while (resid > 0 && sg_miter_next(miter)) {
++		len = min_t(size_t, miter->length, resid);
++		rc = bio_integrity_add_page(bio, miter->page, len,
++					    offset_in_page(miter->addr));
++		if (unlikely(rc != len)) {
++			pr_err("bio_integrity_add_page() failed; %d\n", rc);
++			sg_miter_stop(miter);
++			return -ENOMEM;
 +		}
++
++		resid -= len;
++		if (len < miter->length)
++			miter->consumed -= miter->length - len;
 +	}
++	sg_miter_stop(miter);
 +
- 	uuid_copy(&ctrl->hostid, &d->hostid);
- 
- 	status = nvmet_install_queue(ctrl, req);
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index c8b7095..5ee01e0 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -144,6 +144,8 @@ struct nvmet_port {
- 	bool				enabled;
- 	int				inline_data_size;
- 	const struct nvmet_fabrics_ops	*tr_ops;
-+	bool				pi_capable;
-+	bool				pi_enable;
- };
- 
- static inline struct nvmet_port *to_nvmet_port(struct config_item *item)
-@@ -203,6 +205,7 @@ struct nvmet_ctrl {
- 	spinlock_t		error_lock;
- 	u64			err_counter;
- 	struct nvme_error_slot	slots[NVMET_ERROR_LOG_SLOTS];
-+	bool			pi_support;
- };
- 
- struct nvmet_subsys {
-@@ -225,6 +228,7 @@ struct nvmet_subsys {
- 	u64			ver;
- 	u64			serial;
- 	char			*subsysnqn;
-+	bool			pi_support;
- 
- 	struct config_group	group;
- 
-@@ -501,6 +505,30 @@ static inline u32 nvmet_rw_data_len(struct nvmet_req *req)
- 			req->ns->blksize_shift;
- }
- 
-+#ifdef CONFIG_BLK_DEV_INTEGRITY
-+static inline u32 nvmet_rw_prot_len(struct nvmet_req *req)
-+{
-+	return ((u32)le16_to_cpu(req->cmd->rw.length) + 1) * req->ns->ms;
-+}
-+
-+static inline bool nvmet_ns_has_pi(struct nvmet_ns *ns)
-+{
-+	return ns->prot_type && ns->ms == sizeof(struct t10_pi_tuple);
++	return 0;
 +}
 +#else
-+static inline u32 nvmet_rw_prot_len(struct nvmet_req *req)
++static int nvmet_bdev_alloc_bip(struct nvmet_req *req, struct bio *bio,
++				struct sg_mapping_iter *miter)
 +{
 +	return 0;
 +}
-+
-+static inline bool nvmet_ns_has_pi(struct nvmet_ns *ns)
-+{
-+	return false;
-+}
 +#endif /* CONFIG_BLK_DEV_INTEGRITY */
 +
-+#define NVMET_T10_PI_MAX_KB_SZ 128
-+
- static inline u32 nvmet_dsm_len(struct nvmet_req *req)
+ static void nvmet_bdev_execute_rw(struct nvmet_req *req)
  {
- 	return (le32_to_cpu(req->cmd->dsm.nr) + 1) *
+ 	int sg_cnt = req->sg_cnt;
+@@ -171,9 +226,11 @@ static void nvmet_bdev_execute_rw(struct nvmet_req *req)
+ 	struct scatterlist *sg;
+ 	struct blk_plug plug;
+ 	sector_t sector;
+-	int op, i;
++	int op, i, rc;
++	struct sg_mapping_iter prot_miter;
+ 
+-	if (!nvmet_check_transfer_len(req, nvmet_rw_data_len(req)))
++	if (!nvmet_check_transfer_len(req,
++				      nvmet_rw_data_len(req) + req->prot_len))
+ 		return;
+ 
+ 	if (!req->sg_cnt) {
+@@ -208,11 +265,25 @@ static void nvmet_bdev_execute_rw(struct nvmet_req *req)
+ 	bio->bi_opf = op;
+ 
+ 	blk_start_plug(&plug);
++	if (req->use_pi)
++		sg_miter_start(&prot_miter, req->prot_sg, req->prot_sg_cnt,
++			       op == REQ_OP_READ ? SG_MITER_FROM_SG :
++						   SG_MITER_TO_SG);
++
+ 	for_each_sg(req->sg, sg, req->sg_cnt, i) {
+ 		while (bio_add_page(bio, sg_page(sg), sg->length, sg->offset)
+ 				!= sg->length) {
+ 			struct bio *prev = bio;
+ 
++			if (req->use_pi) {
++				rc = nvmet_bdev_alloc_bip(req, bio,
++							  &prot_miter);
++				if (unlikely(rc)) {
++					bio_io_error(bio);
++					return;
++				}
++			}
++
+ 			bio = bio_alloc(GFP_KERNEL, min(sg_cnt, BIO_MAX_PAGES));
+ 			bio_set_dev(bio, req->ns->bdev);
+ 			bio->bi_iter.bi_sector = sector;
+@@ -226,6 +297,14 @@ static void nvmet_bdev_execute_rw(struct nvmet_req *req)
+ 		sg_cnt--;
+ 	}
+ 
++	if (req->use_pi) {
++		rc = nvmet_bdev_alloc_bip(req, bio, &prot_miter);
++		if (unlikely(rc)) {
++			bio_io_error(bio);
++			return;
++		}
++	}
++
+ 	submit_bio(bio);
+ 	blk_finish_plug(&plug);
+ }
+@@ -353,6 +432,10 @@ u16 nvmet_bdev_parse_io_cmd(struct nvmet_req *req)
+ 	case nvme_cmd_read:
+ 	case nvme_cmd_write:
+ 		req->execute = nvmet_bdev_execute_rw;
++		if (req->sq->ctrl->pi_support && nvmet_ns_has_pi(req->ns)) {
++			req->use_pi = true;
++			req->prot_len = nvmet_rw_prot_len(req);
++		}
+ 		return 0;
+ 	case nvme_cmd_flush:
+ 		req->execute = nvmet_bdev_execute_flush;
 -- 
 1.8.3.1
 
