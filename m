@@ -2,89 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0AC511351AC
-	for <lists+linux-nvme@lfdr.de>; Thu,  9 Jan 2020 03:56:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 11DDA1351C5
+	for <lists+linux-nvme@lfdr.de>; Thu,  9 Jan 2020 04:14:11 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
 	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XE5e4O8JpV7bfM/nDOceyHtDWTMrKMlXL66QC/teiSk=; b=KOXtGBG5APVCk6
-	gPVyzog4DGH+BQmHrRRGcuyIadZz6OBWEDKjYyt6cLx0qWMVQd/k+djSpoWmLG+cljMnZiWxOMWWu
-	J//6gn1TezACLTUGfRYN0P6en2Vuz+3VNQw33yNk6KuYurjQYSAJ1sUPyivi5fJUDHKgVVan7i92f
-	GXdujxwfOyDR5XK2wOj7WdCK1pdAJyYI/BZNJZbsBHskuc32tViwgENpQGZIxOoZ35kcTXM/xGAxJ
-	ms9U14/Sv8HTbadsGXpwrp8HRGn6nRYvlgQAcjBJ4WCX6q3IIY/VRo4Gqcp+35OfSUUMPgML1CKS5
-	tuNW+m9z0iwy7QSb5ZsQ==;
+	List-Owner; bh=hdDa0XdMCfy+gedlDcQphGQrcFe660OHY9FbRBOuYWE=; b=FdXAn4Io0jctlb
+	Z8cn2ZIPKHQJVR1NeGeIz0Y7tmg9wT6b7rlw3KcTx9aQFEFEoPzk80bVzWNxOFLmQmp6tSaIr7aWk
+	aI4U6mnEmXizyODSze4kMjEEqmYbY2L60bdbNl/FDzDPe3sus6Lfo0H07GFO4qV34d8ZddfPsbScS
+	F6afH58MI3rUI/VFYMX1rJww7WIJT+Rq/rU28xG+hOIMrE4kcdT8+UFU6HOa93lEQ1tYcWjV0hByZ
+	gF9sGcv5hgzWKB+w4cayXxz96+UatOzGNEh86LIoSoUyWug66i1OrviCISs0yILqDbc0ZqjPoc2Wh
+	JSL1fxrNiYC7hIjKqN4Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ipO07-0006FD-FO; Thu, 09 Jan 2020 02:56:47 +0000
+	id 1ipOGt-0000zU-MS; Thu, 09 Jan 2020 03:14:07 +0000
 Received: from aserp2120.oracle.com ([141.146.126.78])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ipO03-0006Es-Kj
- for linux-nvme@lists.infradead.org; Thu, 09 Jan 2020 02:56:44 +0000
+ id 1ipOGn-0000z4-IG
+ for linux-nvme@lists.infradead.org; Thu, 09 Jan 2020 03:14:02 +0000
 Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 0092rQiN135926;
- Thu, 9 Jan 2020 02:56:34 GMT
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 0093Dw9c151071;
+ Thu, 9 Jan 2020 03:13:58 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=to : cc : subject :
  from : references : date : in-reply-to : message-id : mime-version :
  content-type; s=corp-2019-08-05;
- bh=UkfHdTmJJlai2EOzhsw+ZznpGVVKFCSeoOTXtC0IOPY=;
- b=dXa2DBnsNjk7TL8YUymzrg0GLgz4XOHOBEsHqVaYnFj0G8xJSUGrlV6Pnh1YtZYzsagr
- 5TQPp9v4GaTyQQjqyCVG+7eAuMAkHsle1w0cXDAyjEDvWeakRY+n7biP/EFkWPvfxcan
- 5O8OkfB8ZttPwKvYtTLkGooVAZaJj7waJX9ZJw0WS+BjRrhcRkdScykeiCxzPbfhbF24
- 0erD6clfGKovzBZb7ialjqoBakh7iLq8nSmFd/yiPKS7518Y/XLtBvMUMSQu+9dehZ9w
- 0cPAyZ+7FhgaXoAyg5xx3P8++QdwJrrrx/OKmVSkzS/YgRdnK/NW2DpOWCGN3ewmDazv hg== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 2xajnq7xjh-1
+ bh=/t9VcqnaU7ULYh5QUvDsMhPmLYu02AhW59USkM0yFqM=;
+ b=EUtLUt0usJzWWpeJohcKVLLn3qha7WUzP7dcv0hYSnAu6VvPTul0vEji2BTzVhGYnzt4
+ GksRRhXge426KrcVKhLvcnydIKQxNyQ3nZJQd/ud8+MGvRaqq8v1b6D2XVxmR7QMZF39
+ RKVDewPwOKADj00bpFjNX7JBMyewHPoh8zcnGowpZT40d8JZVooPv2FCoU4DDx4v0lS8
+ ZOcjKBJskBKG7mb9bzcF6cmBplzgCgI8QRyDSucVqR1oUllIzWP7lduLmrzV1TWguSg3
+ 5W11dk+Ds8pHCAcjGGC7FIAh/PZH/viBKGUnzm9u00e6fcgzC4wdnK9vBF671aoqNGNQ eQ== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 2xajnq80y7-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 Jan 2020 02:56:34 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 0092sTtD024251;
- Thu, 9 Jan 2020 02:54:34 GMT
+ Thu, 09 Jan 2020 03:13:58 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00934Mwa182059;
+ Thu, 9 Jan 2020 03:11:58 GMT
 Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3030.oracle.com with ESMTP id 2xdmrx6uyk-1
+ by aserp3030.oracle.com with ESMTP id 2xdj4prjn1-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 Jan 2020 02:54:32 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0092rf3S005091;
- Thu, 9 Jan 2020 02:53:42 GMT
+ Thu, 09 Jan 2020 03:11:57 +0000
+Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0093Bsju014569;
+ Thu, 9 Jan 2020 03:11:55 GMT
 Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 08 Jan 2020 18:53:41 -0800
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [resend v1 5/5] drivers/scsi/sd.c: Convert to use
- disk_set_capacity
+ with ESMTP ; Wed, 08 Jan 2020 19:11:54 -0800
+To: Max Gurtovoy <maxg@mellanox.com>
+Subject: Re: [PATCH 01/15] nvme: Introduce namespace features flag
 From: "Martin K. Petersen" <martin.petersen@oracle.com>
 Organization: Oracle Corporation
-References: <20200102075315.22652-1-sblbir@amazon.com>
- <20200102075315.22652-6-sblbir@amazon.com>
- <yq1blrg2agh.fsf@oracle.com> <20200108150612.GD10975@lst.de>
-Date: Wed, 08 Jan 2020 21:53:38 -0500
-In-Reply-To: <20200108150612.GD10975@lst.de> (Christoph Hellwig's message of
- "Wed, 8 Jan 2020 16:06:12 +0100")
-Message-ID: <yq1muaxz6fh.fsf@oracle.com>
+References: <20200106133736.123038-1-maxg@mellanox.com>
+ <20200106133736.123038-3-maxg@mellanox.com>
+Date: Wed, 08 Jan 2020 22:11:51 -0500
+In-Reply-To: <20200106133736.123038-3-maxg@mellanox.com> (Max Gurtovoy's
+ message of "Mon, 6 Jan 2020 15:37:22 +0200")
+Message-ID: <yq1imllz5l4.fsf@oracle.com>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
 MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9494
  signatures=668685
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
  malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=975
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=761
  adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-2001090026
+ engine=8.0.1-1911140001 definitions=main-2001090028
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9494
  signatures=668685
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
  priorityscore=1501 malwarescore=0
  suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=823 adultscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-2001090026
+ definitions=main-2001090029
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200108_185643_770625_9D8BCD17 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20200108_191401_691329_CB61C5E8 
+X-CRM114-Status: GOOD (  11.65  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
@@ -115,32 +113,36 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@kernel.dk, Chaitanya.Kulkarni@wdc.com,
- "Martin K. Petersen" <martin.petersen@oracle.com>, mst@redhat.com,
- jejb@linux.ibm.com, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
- ssomesh@amazon.com, Balbir Singh <sblbir@amazon.com>
+Cc: axboe@kernel.dk, sagi@grimberg.me, martin.petersen@oracle.com,
+ shlomin@mellanox.com, israelr@mellanox.com, vladimirk@mellanox.com,
+ linux-nvme@lists.infradead.org, idanb@mellanox.com, oren@mellanox.com,
+ kbusch@kernel.org, hch@lst.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
-Christoph,
+Max,
 
->> We already emit an SDEV_EVT_CAPACITY_CHANGE_REPORTED event if device
->> capacity changes. However, this event does not automatically cause
->> revalidation.
->
-> Who is looking at these sdev specific events?  (And who is looking
-> at the virtio/xenblk ones?)  It  makes a lot of sense to have one event
-> supported by all devices.  But don't ask me which one would be the best..
+> +#define NVME_NS_DIX_SUPPORTED	(1 << 1)
+> +#define NVME_NS_DIF_SUPPORTED	(1 << 2)
 
-Users typically have site-specific udev rules or similar. There is no
-standard entity handling these events. Sadly.
+Not so keen on the DIF/DIX terminology in this context.
 
-I'm all for standardizing on RESIZE=1. However, we can't really get rid
-of the emitting existing SDEV* event without breaking existing setups.
+DIF as a term was obsoleted long ago in T10. The proper term is
+Protection Information which you also use throughout these changes. We
+have lots of DIF references in the kernel for hysterical raisins. But
+let's not create new ones.
+
+DIX is a spec I wrote to describe how controllers could exchange T10
+Protection Information with a host. It's specific to SCSI and although
+DIX is referenced in the NVMe spec, it would not be accurate to describe
+the NVMe features using the term DIX.
+
+So I'm in agreement with Keith that this should be named using more
+descriptive terms such as NVME_NS_PI, NVME_NS_CONTIGUOUS_PI,
+NVME_NS_SEPARATE_PI, or similar.
 
 -- 
 Martin K. Petersen	Oracle Linux Engineering
