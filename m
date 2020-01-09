@@ -2,76 +2,62 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F4A51359CC
-	for <lists+linux-nvme@lfdr.de>; Thu,  9 Jan 2020 14:12:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F228D135E31
+	for <lists+linux-nvme@lfdr.de>; Thu,  9 Jan 2020 17:26:39 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DNMpvV0xObjOQrhoRHwHf9HZSkMmptlFL+X2xOt5+0g=; b=i6Lz7qDVa1e9Ds
-	ZnJfRD4ajelvdC97rtqjx0hCyJYMJoKyI4TxLGFAx0iE30i0j1YXm+66DHXo+i8drSIesseU3mtjs
-	Afz3bzp92z1W/3t4WvAvPG4tO9fR8TImaaYtbJ9FYIGoiz6vp2S2IMS88AEgoCHeSmAyBNyRnOBcD
-	mW5oKFZnEjJA1le6qX71JoW/8POFz8gZWmNV/Ah1U/8VZ3z+C7qu8G/zcDJSTVAHhkA39vBRI7hvZ
-	oQ30TBq32ei4rPFX8N6Fw1BZhKHv7u990VRAjG6RJ7lF8P9rGZyWiN7uvQAiAH79u9h+iZna9EDsg
-	exhCgIxE5Fa5Aqm4f10g==;
+	List-Owner; bh=Y+vPDJ1Dro2GwLkplOrS0nXI53t1errf/k46Ylm1TY0=; b=JblW/8g4ilzmi1
+	ShlSj4PeRYPrSK8+BWp55wEAwwLmbzMMrMJ6B0bz8hkohL4VcfDfyItE5xpN54/9KYeTpe/WaNDnC
+	/IMv5MVWMzLrgKxkxbN5KEaCg0mZGgxz+jKJIlexbf4pa5wOyj1+fstHCR60twPX/Hiwb11kCFXbb
+	c3U3mDoT/y3Yw4k9lAajgxUK6i1cpkAk5cBD6hbd2djvqiW6cCTKL28oWA+GDTTZ5gj20/SqUToJU
+	7a08oiiPooIOGwZOMY32Bork4fDREjmJsEq23Y0WBexvuUuViPsKQ6spK7WwJKc72PvKeIDBfQxFI
+	GkSI1YU7K2Mria2GPsbw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ipXcE-0001p1-Mr; Thu, 09 Jan 2020 13:12:46 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
- helo=us-smtp-1.mimecast.com)
+	id 1ipadm-0004dV-Cc; Thu, 09 Jan 2020 16:26:34 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ipXc9-0001O2-54
- for linux-nvme@lists.infradead.org; Thu, 09 Jan 2020 13:12:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578575556;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=to2tC83cIN6vDKqhn+LssLPUECktszP/zdsC8v7PRMA=;
- b=Z2mECv0SnpxSKesECoVEIAXiW8xxHE/xu2WlxqAFTemsFxUsEy2vGkQIBDY9pEfuAFP2AI
- wNbl+KFVnPlsA1MzX3KuwKzwA8/WrgYrRtLrWKhazCfcnKGAANRwho0Wp/mFbyoO8wOJFL
- /8GSoluzlP3f8GuOt1LNJPaVi7q8enY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-222-XZIIqOGfNbKz-WjSOQcfLQ-1; Thu, 09 Jan 2020 08:12:33 -0500
-X-MC-Unique: XZIIqOGfNbKz-WjSOQcfLQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ id 1ipadg-0004dE-Ip
+ for linux-nvme@lists.infradead.org; Thu, 09 Jan 2020 16:26:29 +0000
+Received: from chuupie.wdl.wdc.com (unknown [199.255.45.60])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9DECC801E72;
- Thu,  9 Jan 2020 13:12:31 +0000 (UTC)
-Received: from emilne (unknown [10.18.25.205])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C10365C541;
- Thu,  9 Jan 2020 13:12:27 +0000 (UTC)
-Message-ID: <cc8dddbcad70453efad665dc19787803ec48fdd6.camel@redhat.com>
-Subject: Re: [resend v1 4/5] drivers/nvme/host/core.c: Convert to use
- disk_set_capacity
-From: "Ewan D. Milne" <emilne@redhat.com>
-To: "Martin K. Petersen" <martin.petersen@oracle.com>, "hch@lst.de"
- <hch@lst.de>
-Date: Thu, 09 Jan 2020 08:12:27 -0500
-In-Reply-To: <yq1k161xq1f.fsf@oracle.com>
-References: <20200102075315.22652-1-sblbir@amazon.com>
- <20200102075315.22652-5-sblbir@amazon.com>
- <BYAPR04MB57490FFCC025A88F4D97D40A86220@BYAPR04MB5749.namprd04.prod.outlook.com>
- <1b88bedc6d5435fa7154f3356fa3f1a3e6888ded.camel@amazon.com>
- <20200108150447.GC10975@lst.de> <yq1k161xq1f.fsf@oracle.com>
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+ by mail.kernel.org (Postfix) with ESMTPSA id 3F8482067D;
+ Thu,  9 Jan 2020 16:26:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1578587188;
+ bh=IoewwOcnDzGRcg5rkqeCnflgabess73xUELfgsfVYbk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=y3qh+EI9XdNocgUXtrzvN5p04ANnVusoPkqM9CuNMXlGOiGXo9M1Hp84VlByC/pGi
+ rp3jUlYT1Cn99zRHABFIZy3mK653AitX3cMM/WCWcf3MtedOrSZFoXGx3Kpm0teOv4
+ VJ0eG58RTTSztBZTHVA19UopVznewwTMrI1jzpWo=
+Date: Thu, 9 Jan 2020 08:26:25 -0800
+From: Keith Busch <kbusch@kernel.org>
+To: Max Gurtovoy <maxg@mellanox.com>
+Subject: Re: [PATCH 01/15] nvme: Introduce namespace features flag
+Message-ID: <20200109162625.GB1032473@chuupie.wdl.wdc.com>
+References: <20200106133736.123038-1-maxg@mellanox.com>
+ <20200106133736.123038-3-maxg@mellanox.com>
+ <yq1imllz5l4.fsf@oracle.com>
+ <87553ee2-74f4-8eb9-dd07-552f2637dab8@mellanox.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <87553ee2-74f4-8eb9-dd07-552f2637dab8@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200109_051241_275060_4790A6CF 
-X-CRM114-Status: GOOD (  11.75  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200109_082628_640655_53D96F67 
+X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [205.139.110.120 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -93,33 +79,39 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "axboe@kernel.dk" <axboe@kernel.dk>,
- "Chaitanya.Kulkarni@wdc.com" <Chaitanya.Kulkarni@wdc.com>,
- "mst@redhat.com" <mst@redhat.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>, "Sangaraju,
- Someswarudu" <ssomesh@amazon.com>, "Singh, Balbir" <sblbir@amazon.com>
+Cc: axboe@kernel.dk, sagi@grimberg.me,
+ "Martin K. Petersen" <martin.petersen@oracle.com>, shlomin@mellanox.com,
+ israelr@mellanox.com, vladimirk@mellanox.com, linux-nvme@lists.infradead.org,
+ idanb@mellanox.com, oren@mellanox.com, hch@lst.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, 2020-01-08 at 22:33 -0500, Martin K. Petersen wrote:
-> Christoph,
+On Thu, Jan 09, 2020 at 12:38:05PM +0200, Max Gurtovoy wrote:
 > 
-> > > The expected behaviour is not clear, but the functionality is not
-> > > broken, user space should be able to deal with a resize event where
-> > > the previous capacity == new capacity IMHO.
+> On 1/9/2020 5:11 AM, Martin K. Petersen wrote:
+> > Max,
 > > 
-> > I think it makes sense to not bother with a notification unless there
-> > is an actual change.
+> > > +#define NVME_NS_DIX_SUPPORTED	(1 << 1)
+> > > +#define NVME_NS_DIF_SUPPORTED	(1 << 2)
+> > Not so keen on the DIF/DIX terminology in this context.
 > 
-> I agree.
+> Martin,
 > 
+> how about:
+> 
+> +#define NVME_NS_PI_HOST_SUPPORTED (1 << 1)
+> +#define NVME_NS_PI_CTRL_SUPPORTED (1 << 2)
 
-Yes, absolutely.
+Well, I was trying to say earlier that nvme supports formats with metadata
+that's not used for protection information. The metadata, whether separate
+or interleaved, can be used for some proprietary non-pi related feature.
 
+The nvme driver only leverages "blk-integrity" to facilitate allocating
+and managing the metdata payloads even when not used for integrity. It
+might make sense to give that block component a more generic name than
+"integrity".
 
 _______________________________________________
 linux-nvme mailing list
