@@ -2,80 +2,76 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F56A13D142
-	for <lists+linux-nvme@lfdr.de>; Thu, 16 Jan 2020 01:46:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 400A213D13F
+	for <lists+linux-nvme@lfdr.de>; Thu, 16 Jan 2020 01:46:23 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=F0JSyW5aUVVIBqF9418X+taSRRhszkSRxLCzAD58qnY=; b=jaF7VDMOzqgDXi
-	wmVCm4vPvRk87fNO5x6cV4sbxCaAr3DDdQeTJRJjNljgXvaNRlAaK6Jrjba5ykF4zzFu5SSOuDvpT
-	7C6InWI/LJ5l3kXEf861Qtci70sfMNVoUffA/OPZvpNHMp5TKRHXj8+S7pPEGyx61OkOq6dU+CxOQ
-	emFpxKIib/poVtwxL/mrjBwqLo0W0W7dL3wcQl2u6GgXL8b8lZa40DP7E0nMbEJoBo5X72CBqAXYs
-	9jd2LXEhKBnprINnIXUaOb+yUAgdHi5LjtW4EHdMznxml9HPb7NqFRVbMexz/LJKWJxTMzozykiv9
-	64idNCIL/fKjBB0o8RNA==;
+	List-Owner; bh=81LI2S8FDHKOYqOtUbu1vFLzlCLgscPN5ACEwuyCJ6c=; b=kOJEsAfQc8fLnn
+	87HBRRicousnaFScjFvvAD0UUlG47QZPnvxhB/Brrt1PkYSrvxPqlgoWzlsyDSJZ4laLA/v+f8YJp
+	zdj0IjcbT85gj8pBj6VRmMpL69UKbl5N7JK7KBvdVjwQX/hkrTNST5b+d7/421/HjYs8EFPpOTIe0
+	G6sD/BT1ve0iWPHu8c1BPY7ynVvMYsWvvpFSIp+JGC4f2w7RHDwWWHtLIg/p7xjjd8EyY84SX4fVl
+	AkrGGDMrqXWC5t+Q9XjrlrLML1p4aFTMscMUoqA61dtY0W3q6gQBYALq2EkeP16c2Qgb9IW6BRufa
+	vb3kwbcQbZu9hKLxU8GQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irtJG-0006Zj-GW; Thu, 16 Jan 2020 00:46:54 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1irtIh-0006Ch-LX; Thu, 16 Jan 2020 00:46:19 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irtIv-0006SG-Cl
- for linux-nvme@lists.infradead.org; Thu, 16 Jan 2020 00:46:40 +0000
+ id 1irtId-0006CN-Ry
+ for linux-nvme@lists.infradead.org; Thu, 16 Jan 2020 00:46:17 +0000
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Jan 2020 16:46:31 -0800
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 15 Jan 2020 16:46:14 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,323,1574150400"; d="scan'208";a="255542245"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by fmsmga001.fm.intel.com with ESMTP; 15 Jan 2020 16:46:29 -0800
-Received: from fmsmsx112.amr.corp.intel.com (10.18.116.6) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 15 Jan 2020 16:46:11 -0800
-Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
- FMSMSX112.amr.corp.intel.com (10.18.116.6) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 15 Jan 2020 16:46:10 -0800
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.174)
- by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Wed, 15 Jan 2020 16:46:10 -0800
+X-IronPort-AV: E=Sophos;i="5.70,323,1574150400"; d="scan'208";a="398090353"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by orsmga005.jf.intel.com with ESMTP; 15 Jan 2020 16:46:14 -0800
+Received: from ORSEDG001.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 15 Jan 2020 16:46:14 -0800
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.105)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 15 Jan 2020 16:46:14 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BDlTCcnclV7M248GLnOi6dz2JxyfqE55Wl5Ag2ZOiN62bkiXnsx3l2MGHf8Z7JBlD2qw/F1ibthfbZBUsvUvy4w0x9R6noMFPLFGlDyxwDH3KrbNDz92QISi8K3+gOc/1a3sAl/sDLvSbrBs5FLLo8H/dCvJgNp9y+2vrw+qhUqyzG8FhfnJMDzvddTM8xZxUVtdBkrz0HrBF8JoPiruGQ2AarLGTWwSmlAPx5bkclKQ1qZiyR4Kim1pmSdYup4WW4q1f1o5MZB+4VMCQ/zqqr3dPa17LX80RqsOQfGJWMfXO+dhnuXlqtQNLETipMDIWh5TwpldUt/cFPQ26VZLuQ==
+ b=D7FzVeonJ/rw+M4uRgOnRXeG/KUfU/pN62+KdYpujZ2JAF1HlD0wBmqVHMc6scoX1cCoh8mIrhIRauievd+FvvIbXT8ed6lHovnDabZ3PFCph1sONZNNPkKSEB5iXy99t5gEipgQNJ+/HC7piBFrHM5mSN+6WLdKwOxi1Vnm1cluQCOdLhDkyDlHKK8/uNa2rhg8VyJLH4OL7n2JbDoECV0qX39Y49x/IrEqow2gEve7DvVj7rAXtEz8nJliGe8SuQ3ZJDy8CRNaKptIL75MwYNarZUtyZ3Kzyc3o93sPIhpBo9vdne2t+Q0AbfDWUIlhLvjaQr0+IjIzJPqiIlcJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gBLbW4wvzFhFuobAP29qv7zbzWQPoY+AdHQzsIgTEks=;
- b=SXnP2T4caTOrq/9QOVawBSUyBc7FcGVj1UizLJPoJsB0jZRXlLdoL065cJYrqc5gfpn+HQWpUzu0oeZs0oynOYl0EHJIgJk2DQnc4ouHV8xV3undaS7uBcDkdGbPKkHEBUHnklW0MzUcNkF6fZARcNU6LTmHGaGLP4BSJUxbrWuFmJ4dvt3UE1aecy3/Tqygu+vLTWXoCH6JaHrE86HxofmmvS+VVRKJ62o/fLhSTWcdh/hi4fZQmobddqDu1kCQgd7zds5ji3u+IIZGh6PzeH0XMuns+k+NTajnyWRRscCslOXhOtNNW5At7hv/UhsJy1lnDy6b9J5AjCJManYYZw==
+ bh=hIw6iN/3HUxJAAGPcr9kZADrUEJMQcifst0N91NtaM8=;
+ b=SW73+PUQ83SAK/BnfhQmoomxqevkLDc5xv6t8J6+/tCvjqBI6XCgK6j+O/DfHaXqadSwj3TBHwDTuoVwMhrR2YhAxMdTukn7NC6VUWRe6nmr8JESxt/9d9lkkcTCOols6lfgi5za9RrPxBHwWeSKVSXlefue+wAE5egE5ZsURzX7azN5btIOR1UbEmyiISEllTaXRBds6aH3rQ9BLRUNL7wJENs6SlrKqSmR4ZeWR9QMZ2bRstJ1qBOzrp/dERRPzuHgqmlYmfj7gLgrusUJDpiwtU2adg6m7Zsmb9OvRMjVs4s/xW1wwEOf1tqH85tOOQ0wZKoggj9YJazpakwEBw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gBLbW4wvzFhFuobAP29qv7zbzWQPoY+AdHQzsIgTEks=;
- b=SxA7C6h9F9V2Z68MqXwpV/dQjToT1J/EUvdd65ZqecYHJ8AzYWKw6bU2UZtoI3RfYtB1mulKB53Jo+wi0l7CtncjuYrfhLGfb1LRTV2B8zKTvL1Jx7RXYO2/YqiUbSsBrWt+R1CkxFHR/xbftDoTk6KVax/qHhsToz2jv5TndCs=
+ bh=hIw6iN/3HUxJAAGPcr9kZADrUEJMQcifst0N91NtaM8=;
+ b=YCAELWX0lNowPuBVRkaLqYm/vIJw8mYNHqqlEZh+3UpzURDKZ69UAJ1mgDhN8ugkDqgaosUbh+ZdKIwfcFXfp67AvZqAyrmvDRGrlgBZSGwfj30i0VI9UI1eUPsjv6Itz4ThBSEtnq5VA0/2ZT4WAG99+tDY6y3fAnBhc7TSbfQ=
 Received: from BYAPR11MB2712.namprd11.prod.outlook.com (52.135.223.141) by
- BYAPR11MB3526.namprd11.prod.outlook.com (20.177.225.141) with Microsoft SMTP
+ BYASPR01MB0042.namprd11.prod.outlook.com (52.135.239.23) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2623.13; Thu, 16 Jan 2020 00:46:05 +0000
+ 15.20.2644.19; Thu, 16 Jan 2020 00:46:12 +0000
 Received: from BYAPR11MB2712.namprd11.prod.outlook.com
  ([fe80::13e:c076:124d:1db9]) by BYAPR11MB2712.namprd11.prod.outlook.com
  ([fe80::13e:c076:124d:1db9%2]) with mapi id 15.20.2644.015; Thu, 16 Jan 2020
- 00:46:05 +0000
+ 00:46:12 +0000
 From: "Wunderlich, Mark" <mark.wunderlich@intel.com>
 To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Subject: [PATCH 0/2] nvme-tcp: Set SO_PRIORITY for all sockets
-Thread-Topic: [PATCH 0/2] nvme-tcp: Set SO_PRIORITY for all sockets
-Thread-Index: AdXLyQAntA98GnBbQ8G4GAgjr8ICjg==
-Date: Thu, 16 Jan 2020 00:46:05 +0000
-Message-ID: <BYAPR11MB2712E7D933721CA54EB18365E5360@BYAPR11MB2712.namprd11.prod.outlook.com>
+Subject: [PATCH 1/2] nvme-tcp: Set SO_PRIORITY for all host sockets
+Thread-Topic: [PATCH 1/2] nvme-tcp: Set SO_PRIORITY for all host sockets
+Thread-Index: AdXMBDkCDni9KZdMS6O2d5CVE1ly6A==
+Date: Thu, 16 Jan 2020 00:46:12 +0000
+Message-ID: <BYAPR11MB2712EF82675196E33E29A422E5360@BYAPR11MB2712.namprd11.prod.outlook.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZjQyMjMwYTktZmIxNy00YjI1LTlmYjItMTQ1M2RlOTAyZGNmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZXJmZDE0RXkyNVNDejVveFwvMjVMK0VpdmQ5R1wvZmFJNFFNMmlcL0EzY3R3T3NrSEc4UHZEZUpDNHRDT3Z2Y01NTiJ9
 dlp-reaction: no-action
 dlp-version: 11.2.0.6
 dlp-product: dlpe-windows
@@ -83,44 +79,47 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=mark.wunderlich@intel.com; 
 x-originating-ip: [192.55.52.209]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 239d18e3-021c-4fbc-69e7-08d79a1d7836
-x-ms-traffictypediagnostic: BYAPR11MB3526:
-x-microsoft-antispam-prvs: <BYAPR11MB3526B21F4CC191C4D87FCDFCE5360@BYAPR11MB3526.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-office365-filtering-correlation-id: be708ac5-7ff6-439a-75c0-08d79a1d7c5f
+x-ms-traffictypediagnostic: BYASPR01MB0042:
+x-microsoft-antispam-prvs: <BYASPR01MB0042F0EA173A194158408434E5360@BYASPR01MB0042.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:7219;
 x-forefront-prvs: 02843AA9E0
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(136003)(396003)(39860400002)(366004)(376002)(346002)(199004)(189003)(7696005)(33656002)(66946007)(26005)(86362001)(6506007)(316002)(66556008)(478600001)(71200400001)(6916009)(8676002)(186003)(81166006)(81156014)(9686003)(64756008)(8936002)(2906002)(5660300002)(52536014)(66446008)(76116006)(66476007)(4326008)(55016002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR11MB3526;
+ SFS:(10019020)(396003)(136003)(376002)(346002)(366004)(39860400002)(199004)(189003)(66556008)(8676002)(81166006)(71200400001)(81156014)(66446008)(8936002)(66476007)(76116006)(5660300002)(86362001)(2906002)(186003)(66946007)(64756008)(33656002)(9686003)(55016002)(6506007)(52536014)(478600001)(6916009)(26005)(316002)(7696005)(4326008);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYASPR01MB0042;
  H:BYAPR11MB2712.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; A:1; MX:1; 
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: lvfcMjlRpUy5HJyRPgHGjsFjIz+BJqoyFl/NWt916TpnqOU/bFtHlX3IC7JvwBLatxhR5xZC7XnhSVtQHXqEfM1M/QfLgYMcrKbBYIfhJ3bD6rnE40YEF5C+u2H8Fxe7zNiYC82eCLed1jflb/jqwbI4FJwKXfqJ65ke6KWyS6Lt3VErss3lIc/ceBToDlCxp/y4d8maaiCe1FOuYhVcAh/J44oUeFnhccxQEIuTidgm1dqrYAM6PEvJCARzEUi+q87LdXZabi+AE2GZLWaViJG8dxsSCKIMQA6gPpw/IsP1X4t7YNjCn0U/Dj0s4YOuPEm+h89iNIDXV6zOPA2ygYlKpaWejMQegXLjc04g3owHhbhPOJUmWuVea+tiygn3R9n46p6ZOxOr2w78ISZJW0JXVBPtICszxnR1zJ7gPHGBW5XGbhTkc/xZlasLLQmB
+x-microsoft-antispam-message-info: 2G+SE9Oh/U7B+btla1bl2V8tG3L3boa6wfAaZfR1VhYVQO5pi2ltg7dC4PuKwAKdOeYgy/p0Vx7gDQJrg3DjbDSKUDME+0Ax473iL6qSq+qJl6z446LI3phOrKX4BphTybtRx683cVgSfCeFwnQMRqoyeFchPwbCKstcu38ove1DbXuupv4kbomypuINhWe7crC+TfBNeKKxqPyPYV5QFP4jqzV8pq9vQpQJokXbivz7IGeiaKNNxauVq/VwRGpIYIXbr/q46VHxuLhuuGVopOuMx24rMpHpcyYBy9Em2i8Cu0Q1zAgEOFGRvht0og0WBlrdsr9l1niQ/d5xmrFYDtZVacnpJXSAepJ1cnMR0ZyXa5HhhXZW9l+J20yAv3ITXctPsIcqjdmcgoGpnwMCBVF3blAGtW2TJM+O5D4vFcTqF/gcCSmKTHe7sdWcOCH+
 x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 239d18e3-021c-4fbc-69e7-08d79a1d7836
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jan 2020 00:46:05.6016 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: be708ac5-7ff6-439a-75c0-08d79a1d7c5f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jan 2020 00:46:12.6145 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cxwVzJacMLLwTOptTi0+6vRahD/42VlKvBs5nVgjmO4tO4WL1At2ExcyJhpBhSECGLznolrfAZd4dYpVCzM3TFlCejGFKOP9oFAZbUZ5OMs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB3526
+X-MS-Exchange-CrossTenant-userprincipalname: K83oSk5zc31JTIpnHfuLyvJF1V5qsDdxNcLgZVH2YasVaUD964oZ+Ef++xVzPxYn2ksdHijD+n/4pcZpYvAFMBYI059Qya5AnXfxuxoLzSA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYASPR01MB0042
 X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200115_164633_514156_2962E9BE 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20200115_164615_924061_663C0597 
+X-CRM114-Status: GOOD (  14.09  )
 X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
  Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [134.134.136.65 listed in list.dnswl.org]
+ high trust [192.55.52.88 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [192.55.52.88 listed in wl.mailspike.net]
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -138,78 +137,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Host and target patch series to allow setting socket priority.
-Enables ability to associate all sockets related to NVMf TCP
+nvme-tcp: Set SO_PRIORITY for all host sockets.
+
+Enable ability to associate all sockets related to NVMf TCP
 traffic to a priority group that will perform optimized
 network processing for this traffic class. Maintain initial
-default priority of zero, only setting socket priority when
-module option set to non-zero value, when optimized
-network processing conditions exist.
+default behavior of using priority of zero.
 
-Basic performance measurements for io_uring, pvsync2, and libaio
-show benefit of improved lower latency performance when enhanced
-processing support is triggered via socket priority.
+Signed-off-by: Kiran Patil <kiran.patil@intel.com>
+Signed-off-by: Mark Wunderlich <mark.wunderlich@intel.com>
+---
+ drivers/nvme/host/tcp.c |   21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-The data gathered using infradead branch nvme-5.5-rc.  Data shows
-Existing OS baseline performance without patch applied to both host
-and target,  performance when patch applied and priority value set but
-no support for enhanced traffic processing exists,  and finally when
-patch applied and some form of advanced traffic processing exists
-such as symmetric queueing.
-
-The patches were defined to allow for any priority value to be used
-to support future flexibility to specify any unique value for optional
-advanced network processing.  If having this flexibility is reviewed as
-not beneficial to the community at this time, then the desired option
-would be to set the default module priority to non-zero, to always
-allow for advanced network traffic processing if possible.  But data
-does show a slight performance dip when the priority is set when
-there is no advanced network support available.
-
-All data gathered using 48 I/O queues and 48 poll queues established
-Between host and target.  Host busy_poll value set at 5000.  Target
-busy_read value set at 60000.  Single Optane device used.
-
-IO_URING:
-Baseline:  No patches applied
-QueueDepth/Batch    IOPS(K)    Avg. Latency(usec)    99.99(usec)
-1/1    24.2    40.90    70.14
-32/8  194    156.88   441
-
-Patch added, priority=1, But enhanced processing not available:
-1/1    22     43.16    77.31
-32/8  222     137.89    277
-
-Patch added, priority=1, enhanced NIC processing added
-1/1    30.9    32.01    59.64
-32/8   259     119.26    174
-
-PVSYNC2:
-Baseline:  No patches applied
-1/1    24.3    40.85    80.38
-32/8   24.3    40.84   73.21
-
-Patch added, priority=1:
-1/1    23.1    42.87    79.36
-32/8   23.1    43     79.36
-
-Patch added, priority=1, enhanced NIC processing added
-1/1    31.3     31.69    62.20
-32/8   31.3    31.63   62.20
-
-LIBAIO:
-Baseline:  No patches applied
-1/1    26.2    37.67    77.31
-32/8   139    220.10   807
-
-Patch added, priority=1:
-1/1    24.6    40    78.33
-32/8   138    220.91   791
-
-Patch added, priority=1, enhanced NIC processing added
-1/1    28     34.03    69.12
-32/8   278    90.77    139
-
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 6d43b23a..2af7e8c 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -20,6 +20,16 @@
+ 
+ struct nvme_tcp_queue;
+ 
++/* Define the socket priority to use for connections were it is desirable
++ * that the NIC consider performing optimized packet processing or filtering.
++ * A non-zero value being sufficient to indicate general consideration of any
++ * possible optimization.  Making it a module param allows for alternative
++ * values that may be unique for some NIC implementations.
++ */
++static int so_priority;
++module_param(so_priority, int, 0644);
++MODULE_PARM_DESC(so_priority, "nvme tcp socket optimize priority");
++
+ enum nvme_tcp_send_state {
+ 	NVME_TCP_SEND_CMD_PDU = 0,
+ 	NVME_TCP_SEND_H2C_PDU,
+@@ -1304,6 +1314,17 @@ static int nvme_tcp_alloc_queue(struct nvme_ctrl *nctrl,
+ 		goto err_sock;
+ 	}
+ 
++	if (so_priority > 0) {
++		ret = kernel_setsockopt(queue->sock, SOL_SOCKET, SO_PRIORITY,
++				(char *)&so_priority, sizeof(so_priority));
++		if (ret) {
++			dev_err(ctrl->ctrl.device,
++				"failed to set SO_PRIORITY sock opt, ret %d\n",
++				ret);
++			goto err_sock;
++		}
++	}
++
+ 	/* Set socket type of service */
+ 	if (nctrl->opts->tos >= 0) {
+ 		opt = nctrl->opts->tos;
 
 _______________________________________________
 linux-nvme mailing list
