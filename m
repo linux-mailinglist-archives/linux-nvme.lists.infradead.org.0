@@ -2,93 +2,83 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F13C14003D
-	for <lists+linux-nvme@lfdr.de>; Fri, 17 Jan 2020 00:53:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0ED66140157
+	for <lists+linux-nvme@lfdr.de>; Fri, 17 Jan 2020 02:13:30 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AR1Sbz9nmAIz/gDoq9JG1+MOxk8dZUBDLyDlbaVQwos=; b=HA5J3G9y2eQ/rNxrxm1J9L6GB
-	66UPLZFBwXMh8gJI0OEmw0ZC4H4DnEgVBVxrMRfHjH0MaWgNNeyAJtNVqSz0aBpGWKeA/Yhg9TP9N
-	AiJpiA3wRuHXmMLqIrblPWgZtMTLscemkf9Z6ZocVLV1ajE9Gb5btz+5FCMJAGuQlpdQSMknucRAN
-	adHrJCbw0NxY3ASXiEJDnPFQxhdIaNy1vCoQ1H4J/1spCP/VIpYalcCaFToXbUMHWFnLfiE8+2iD6
-	PL0g52iqu5RXNzO77BAQREkcDMG/HnQIjfezjhXIOzKwYfllinN43+lNci6yxg3juZ9+E82i9fvr3
-	GV1gFBkPw==;
+	 bh=0dddFkq652X8hczY3XQnO2lwvW2K8/UFwNuBsMoc3OI=; b=YDfgZo9RB2kW5BHyu1dwVOjtx
+	xTRMd1HZZuEn/14CklmKcoAUG8feoAcVVCh7Ub40bPs17bxAYz8RFZST5QF7Rg9pZ37AStmeZlP+R
+	wGorSAtl7wfg85UlRNzbk+524qzXB8d86AIR/r5zXmskod14XWOryAkLQUbbxMlBpAgJ6PylkN+es
+	vSKZ83LBeAc5eTbLeXOHMgYMZaitpFRJnssMRXlfPBYk5QqCawUpg+FbcHFjHYdIWXUcX0TFTUNVl
+	npO92Uu58h9RJlDl8RDbiXE38R8f1ehLy8dzHCsY72L37TBkzDTuQxxnbehuvhebdedIT0LPGn9So
+	ijfwywk3w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1isExI-0006Bs-41; Thu, 16 Jan 2020 23:53:40 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1isGCT-0000AE-09; Fri, 17 Jan 2020 01:13:25 +0000
+Received: from mail-wm1-f46.google.com ([209.85.128.46])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1isExD-0006BH-1F
- for linux-nvme@lists.infradead.org; Thu, 16 Jan 2020 23:53:36 +0000
-Received: by mail-wm1-x343.google.com with SMTP id d139so8274830wmd.0
- for <linux-nvme@lists.infradead.org>; Thu, 16 Jan 2020 15:53:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=GOd3uuYYAGHE4hOiwlGZHh8UMMT83OjAKVyNBhbdVJk=;
- b=HNTw8mml/V+wOPyRV2pY+tVIGlHnyoQO3pGt9EjbaeWxk7U8dZhCX9kzIwpnBKSNtZ
- xD3mScQayzW0KtxLxzC2eyainIIdT+ujW614wJq3TkXSjsxjGcxrkqirU9Od+ZhW0RYH
- zf1xeAQKXCUddDMAG5sFbaa0+8fjPS7wknCow=
+ id 1isGCN-00009i-3z
+ for linux-nvme@lists.infradead.org; Fri, 17 Jan 2020 01:13:22 +0000
+Received: by mail-wm1-f46.google.com with SMTP id u2so5855159wmc.3
+ for <linux-nvme@lists.infradead.org>; Thu, 16 Jan 2020 17:13:18 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=GOd3uuYYAGHE4hOiwlGZHh8UMMT83OjAKVyNBhbdVJk=;
- b=SkRP1UHaJg56z5JHWSeBeHLdRgtXZ6XFP+CF4Q+JLK2Xbm1VekiTPd3wX4dSu76cF6
- hr7qSKK812k5CiegPEhdrnEbJojrmYRfyqIXm86r5MFXoWdjz42AUVpHj1yUFw8koNLS
- dnyLn0m42yyn1R+neG25YGOK5dREtxAXgp2ycEDE+3SL9UeEwgLTbnurHSyL8f0NrtNV
- Z3YubHssU+huvX3hY3oneXeAlIh59nTzWqLkvaz4fuQuO43q+6C0dtxY68MYc2VoTuMM
- tq+5KQ8qF/ihA8DGMX3ZNX3nZBNHV6uAxdua/TRU17kSQ1atHNp1NP4iXUwYdulPHxE2
- jRwA==
-X-Gm-Message-State: APjAAAUKrlZZKIQ/2ngVWQGYStCOWwkU3+guTkPGpIB24TNqFG+NcXSK
- HKuTqQKJraaiydD0GivHzhluRw==
-X-Google-Smtp-Source: APXvYqwrFBO3NkZZYtWtVL7pk2wLakpVxZra9nR1j4XVPImB1NAD4EG4OtWPE81gKxmpu7DvtD4QUA==
-X-Received: by 2002:a05:600c:2318:: with SMTP id
- 24mr1581435wmo.48.1579218813253; 
- Thu, 16 Jan 2020 15:53:33 -0800 (PST)
-Received: from [10.69.45.46] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id n14sm6838250wmi.26.2020.01.16.15.53.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Jan 2020 15:53:32 -0800 (PST)
-Subject: Re: [PATCH 02/15] nvme: Enforce extended LBA format for fabrics
- metadata
-To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org,
- kbusch@kernel.org, hch@lst.de, sagi@grimberg.me, martin.petersen@oracle.com
-References: <20200106133736.123038-1-maxg@mellanox.com>
- <20200106133736.123038-4-maxg@mellanox.com>
-From: James Smart <james.smart@broadcom.com>
-Message-ID: <57aa8b5c-b8c9-7617-bc11-b6797587fdc8@broadcom.com>
-Date: Thu, 16 Jan 2020 15:53:28 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=7Uj7SwLQPVsveQQNfvPv8y0OGq9xTb7IWwg9YoF/ReM=;
+ b=nHri1Tle6wEjt2YVPuY+OeqNHmKvhZUxE+ZM4vn2vxxGa+gGXS3QUEIbO4mtlgaKNu
+ orS3wzlHKXUwXHZcKcrAvnfzIJc54xOiP2n6O/EBTO3gLy05iL3IGi/jonQ2oqKLD68O
+ mK1p/QK9OGbw81GcEWF3vFBXNHeb+Gil5+Y7h3bruYmJvkBrnvKSgbMlCTndGA4XXw/N
+ 87ybomDVKBkK01GClf0TS1u0tfEuQvCjaUxkchh8i6Vj6fAOJCtmcr0D3vc9d+Ir9PRg
+ ob1IVxeFUfN5o9/c2t1kf9Kh8jh33QvaU/ICT+SCuCm62KPon5U43wX5AcXZMjdbz+dG
+ MNEw==
+X-Gm-Message-State: APjAAAUm3U41BNn0IUtfG2hERpKBqEDZsAv/E1igl/QqTf5qjvuyIr0x
+ dyKyfoyxFGZgBZGknE3NaW6NukRZ
+X-Google-Smtp-Source: APXvYqy+3wy652RixrOGq1s5UNrztUPqUR4kFMB909opZXte0R5UnVjeiyhtBMQVyCRbQEQoWPP3SQ==
+X-Received: by 2002:a1c:740b:: with SMTP id p11mr1893587wmc.78.1579223596660; 
+ Thu, 16 Jan 2020 17:13:16 -0800 (PST)
+Received: from [192.168.1.114]
+ (162-195-240-247.lightspeed.sntcca.sbcglobal.net. [162.195.240.247])
+ by smtp.gmail.com with ESMTPSA id o129sm7203722wmb.1.2020.01.16.17.13.14
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 16 Jan 2020 17:13:15 -0800 (PST)
+Subject: Re: [PATCH 0/2] nvme-tcp: Set SO_PRIORITY for all sockets
+To: "Wunderlich, Mark" <mark.wunderlich@intel.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+References: <BYAPR11MB2712E7D933721CA54EB18365E5360@BYAPR11MB2712.namprd11.prod.outlook.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <675e24bb-8a91-6612-887a-2a0a38a57cda@grimberg.me>
+Date: Thu, 16 Jan 2020 17:13:05 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200106133736.123038-4-maxg@mellanox.com>
+In-Reply-To: <BYAPR11MB2712E7D933721CA54EB18365E5360@BYAPR11MB2712.namprd11.prod.outlook.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200116_155335_076986_FA05A1A5 
-X-CRM114-Status: GOOD (  19.25  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200116_171319_161338_433DAC6E 
+X-CRM114-Status: GOOD (  18.54  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:343 listed in]
- [list.dnswl.org]
+ no trust [209.85.128.46 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider (sagigrim[at]gmail.com)
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.128.46 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,62 +90,111 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@kernel.dk, vladimirk@mellanox.com, idanb@mellanox.com,
- israelr@mellanox.com, shlomin@mellanox.com, oren@mellanox.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-CgpPbiAxLzYvMjAyMCA1OjM3IEFNLCBNYXggR3VydG92b3kgd3JvdGU6Cj4gQW4gZXh0ZW5kZWQg
-TEJBIGlzIGEgbGFyZ2VyIExCQSB0aGF0IGlzIGNyZWF0ZWQgd2hlbiBtZXRhZGF0YSBhc3NvY2lh
-dGVkCj4gd2l0aCB0aGUgTEJBIGlzIHRyYW5zZmVycmVkIGNvbnRpZ3VvdXNseSB3aXRoIHRoZSBM
-QkEgZGF0YSAoQUtBCj4gaW50ZXJsZWF2ZWQpLiBUaGUgbWV0YWRhdGEgbWF5IGJlIGVpdGhlciB0
-cmFuc2ZlcnJlZCBhcyBwYXJ0IG9mIHRoZSBMQkEKPiAoY3JlYXRpbmcgYW4gZXh0ZW5kZWQgTEJB
-KSBvciBpdCBtYXkgYmUgdHJhbnNmZXJyZWQgYXMgYSBzZXBhcmF0ZQo+IGNvbnRpZ3VvdXMgYnVm
-ZmVyIG9mIGRhdGEuIEFjY29yZGluZyB0byB0aGUgTlZNZW9GIHNwZWMsIGEgZmFicmljcyBjdHJs
-Cj4gc3VwcG9ydHMgb25seSBhbiBFeHRlbmRlZCBMQkEgZm9ybWF0LiBGYWlsIHJldmFsaWRhdGlv
-biBpbiBjYXNlIHdlIGhhdmUgYQo+IHNwZWMgdmlvbGF0aW9uLiBBbHNvIGluaXRpYWxpemUgdGhl
-IGludGVncml0eSBwcm9maWxlIGZvciB0aGUgYmxvY2sgZGV2aWNlCj4gZm9yIGZhYnJpY3MgY3Ry
-bC4KPgo+IFNpZ25lZC1vZmYtYnk6IE1heCBHdXJ0b3ZveSA8bWF4Z0BtZWxsYW5veC5jb20+Cj4g
-U2lnbmVkLW9mZi1ieTogSXNyYWVsIFJ1a3NoaW4gPGlzcmFlbHJAbWVsbGFub3guY29tPgo+IC0t
-LQo+ICAgZHJpdmVycy9udm1lL2hvc3QvY29yZS5jIHwgMjUgKysrKysrKysrKysrKysrKysrKysr
-LS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDIxIGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0p
-Cj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9udm1lL2hvc3QvY29yZS5jIGIvZHJpdmVycy9udm1l
-L2hvc3QvY29yZS5jCj4gaW5kZXggZDk4ZWI0OC4uMDg5Y2RjM2MgMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9udm1lL2hvc3QvY29yZS5jCj4gKysrIGIvZHJpdmVycy9udm1lL2hvc3QvY29yZS5jCj4g
-QEAgLTE4MTgsNyArMTgxOCw3IEBAIHN0YXRpYyB2b2lkIG52bWVfdXBkYXRlX2Rpc2tfaW5mbyhz
-dHJ1Y3QgZ2VuZGlzayAqZGlzaywKPiAgIAlibGtfbXFfdW5mcmVlemVfcXVldWUoZGlzay0+cXVl
-dWUpOwo+ICAgfQo+ICAgCj4gLXN0YXRpYyB2b2lkIF9fbnZtZV9yZXZhbGlkYXRlX2Rpc2soc3Ry
-dWN0IGdlbmRpc2sgKmRpc2ssIHN0cnVjdCBudm1lX2lkX25zICppZCkKPiArc3RhdGljIGludCBf
-X252bWVfcmV2YWxpZGF0ZV9kaXNrKHN0cnVjdCBnZW5kaXNrICpkaXNrLCBzdHJ1Y3QgbnZtZV9p
-ZF9ucyAqaWQpCj4gICB7Cj4gICAJc3RydWN0IG52bWVfbnMgKm5zID0gZGlzay0+cHJpdmF0ZV9k
-YXRhOwo+ICAgCj4gQEAgLTE4NDYsMTEgKzE4NDYsMjEgQEAgc3RhdGljIHZvaWQgX19udm1lX3Jl
-dmFsaWRhdGVfZGlzayhzdHJ1Y3QgZ2VuZGlzayAqZGlzaywgc3RydWN0IG52bWVfaWRfbnMgKmlk
-KQo+ICAgCQkJbnMtPmZlYXR1cmVzIHw9IE5WTUVfTlNfRVhUX0xCQVM7Cj4gICAKPiAgIAkJLyoK
-PiArCQkgKiBGb3IgRmFicmljcywgb25seSBtZXRhZGF0YSBhcyBwYXJ0IG9mIGV4dGVuZGVkIGRh
-dGEgTEJBIGlzCj4gKwkJICogc3VwcG9ydGVkLiBGYWlsIGluIGNhc2Ugb2YgYSBzcGVjIHZpb2xh
-dGlvbi4KPiArCQkgKi8KPiArCQlpZiAobnMtPmN0cmwtPm9wcy0+ZmxhZ3MgJiBOVk1FX0ZfRkFC
-UklDUykgewo+ICsJCQlpZiAoV0FSTl9PTl9PTkNFKCEobnMtPmZlYXR1cmVzICYgTlZNRV9OU19F
-WFRfTEJBUykpKQo+ICsJCQkJcmV0dXJuIC1FSU5WQUw7Cj4gKwkJfQo+ICsKPiArCQkvKgo+ICAg
-CQkgKiBGb3IgUENJLCBFeHRlbmRlZCBsb2dpY2FsIGJsb2NrIHdpbGwgYmUgZ2VuZXJhdGVkIGJ5
-IHRoZQo+ICAgCQkgKiBjb250cm9sbGVyLgo+ICAgCQkgKi8KPiAgIAkJaWYgKG5zLT5jdHJsLT5v
-cHMtPmZsYWdzICYgTlZNRV9GX01FVEFEQVRBX1NVUFBPUlRFRCkgewo+IC0JCQlpZiAoIShucy0+
-ZmVhdHVyZXMgJiBOVk1FX05TX0VYVF9MQkFTKSkKPiArCQkJaWYgKG5zLT5jdHJsLT5vcHMtPmZs
-YWdzICYgTlZNRV9GX0ZBQlJJQ1MgfHwKPiArCQkJICAgICEobnMtPmZlYXR1cmVzICYgTlZNRV9O
-U19FWFRfTEJBUykpCj4gICAJCQkJbnMtPmZlYXR1cmVzIHw9IE5WTUVfTlNfRElYX1NVUFBPUlRF
-RDsKClRoaXMgbGFzdCBjaGFuZ2Ugc2VlbXMgb2RkIC0gd2h5IGlzIERJWCBzZXQgaWYgTlZNRV9G
-X0ZBQlJJQ1MgPwoKUGVyIHBhdGNoIGRlc2NyaXB0aW9uIGFib3ZlLCBGYWJyaWNzIHNwZWMgcmVx
-dWlyZXMgbWV0YWRhdGEgYXMgYW4gCmV4dGVuZGVkIExCQSwgdGh1cyBpdCBkb2Vzbid0IHN1cHBv
-cnQgRElYLgoKV2hpY2ggaXMgdG91Y2hlcyBvbiBhIGxvdCBvZiBvZGQgdGhpbmdzIHdpdGggdGhl
-IG52bWUgc3BlYyBhcyBpdCdzIApjZXJ0YWlubHkgcG9zc2libGUgZm9yLCB3aXRoaW4gdGhlIG9z
-IGhvc3QgaW1wbGVtZW50YXRpb24sIHRvIGhhdmUgdGhlIApob3N0IHRyYW5zbWl0dGluZyBlbmdp
-bmUgdG8gY29udmVydCBhbiBPUyBzZXBhcmF0ZSBESUYgYnVmIHRvIGFuIApleHRlbmRlZCBsYmEg
-dHJhbnNtaXNzaW9uIG9uIHRoZSB3aXJlIGFuZCBhcyBwcmVzZW50ZWQgdG8gdGhlIApjb250cm9s
-bGVyLsKgIFRyYW5zcG9ydHMgY2FuIGNlcnRhaW5seSBoZWxwIG1ha2UgdGhpcyBoYXBwZW4gLSBh
-bmQgYWRkIAplZ3Jlc3MgY2hlY2tpbmcgYXMgdGhlIGRhdGEgbGVhdmVzIHRoZSBob3N0LsKgwqDC
-oCBXaGljaCBtZWFucyAtIEknbSBub3QgCnN1cmUgdGhpcyBoYXJkIERJWCBkZWZpbml0aW9uIGJl
-aW5nIGltcGxlbWVudGVkIHRoaXMgd2F5IGlzIHRoZSB3YXkgdG8gZ28uCgotLSBqYW1lcwoKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1udm1l
-IG1haWxpbmcgbGlzdApsaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
+Mark,
+
+> Host and target patch series to allow setting socket priority.
+> Enables ability to associate all sockets related to NVMf TCP
+> traffic to a priority group that will perform optimized
+> network processing for this traffic class. Maintain initial
+> default priority of zero, only setting socket priority when
+> module option set to non-zero value, when optimized
+> network processing conditions exist.
+> 
+> Basic performance measurements for io_uring, pvsync2, and libaio
+> show benefit of improved lower latency performance when enhanced
+> processing support is triggered via socket priority.
+> 
+> The data gathered using infradead branch nvme-5.5-rc.  Data shows
+> Existing OS baseline performance without patch applied to both host
+> and target,  performance when patch applied and priority value set but
+> no support for enhanced traffic processing exists,  and finally when
+> patch applied and some form of advanced traffic processing exists
+> such as symmetric queueing.
+> 
+> The patches were defined to allow for any priority value to be used
+> to support future flexibility to specify any unique value for optional
+> advanced network processing.  If having this flexibility is reviewed as
+> not beneficial to the community at this time, then the desired option
+> would be to set the default module priority to non-zero, to always
+> allow for advanced network traffic processing if possible.  But data
+> does show a slight performance dip when the priority is set when
+> there is no advanced network support available.
+
+I think we can keep the special mode in a modparam for the time being,
+especially given that other configuration is needed as well. The fact
+that there is a small delta if adq is not enabled but so_priority is
+set is acceptable, and if this option is used we can assume the user
+relies on adq anyhow.
+
+> All data gathered using 48 I/O queues and 48 poll queues established
+> Between host and target.
+
+I'm assuming that overall IOPs/throughput on a multithreaded workload
+also improved (when not capped by the single Optane device).
+
+>  Host busy_poll value set at 5000.  Target
+> busy_read value set at 60000.
+
+This shouldn't make a difference for nvme-tcp which overrides busy
+polling for its own blk_poll hook.
+
+>  Single Optane device used.
+> 
+> IO_URING:
+> Baseline:  No patches applied
+> QueueDepth/Batch    IOPS(K)    Avg. Latency(usec)    99.99(usec)
+> 1/1    24.2    40.90    70.14
+> 32/8  194    156.88   441
+> 
+> Patch added, priority=1, But enhanced processing not available:
+> 1/1    22     43.16    77.31
+> 32/8  222     137.89    277
+> 
+> Patch added, priority=1, enhanced NIC processing added
+> 1/1    30.9    32.01    59.64
+> 32/8   259     119.26    174
+> 
+> PVSYNC2:
+> Baseline:  No patches applied
+> 1/1    24.3    40.85    80.38
+> 32/8   24.3    40.84   73.21
+> 
+> Patch added, priority=1:
+> 1/1    23.1    42.87    79.36
+> 32/8   23.1    43     79.36
+> 
+> Patch added, priority=1, enhanced NIC processing added
+> 1/1    31.3     31.69    62.20
+> 32/8   31.3    31.63   62.20
+
+No need to report 32/8 for pvsync2
+
+> 
+> LIBAIO:
+> Baseline:  No patches applied
+> 1/1    26.2    37.67    77.31
+> 32/8   139    220.10   807
+> 
+> Patch added, priority=1:
+> 1/1    24.6    40    78.33
+> 32/8   138    220.91   791
+> 
+> Patch added, priority=1, enhanced NIC processing added
+> 1/1    28     34.03    69.12
+> 32/8   278    90.77    139
+
+Given how trivial the patch set is with the obvious improvement,
+I say we should take it as is.
+
+For the series:
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
