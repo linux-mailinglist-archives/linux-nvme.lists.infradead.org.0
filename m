@@ -2,84 +2,124 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 445E6142021
-	for <lists+linux-nvme@lfdr.de>; Sun, 19 Jan 2020 22:24:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0835014226B
+	for <lists+linux-nvme@lfdr.de>; Mon, 20 Jan 2020 05:48:53 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vTtl/Mx7fsiV23AcEzmv0im73kBuoITqYdu/dOUAcBE=; b=MxF3rIpIT9bRhP
-	VGxG+WzLUlB7bK6duJ+MuoD/SQYzJTmpIjAPJtMcnYI5IMwYkPFNQMafJ4K0Jqb86BHWkt2ijXX5Q
-	qyIydwjpanZvzvTAadOqdIPAOxZnwK6qWIHo/fpN+lZFutCtwr/j5WNfUm5Mqol28Ll5lnd1e3eop
-	WHC1Kb66HV+IqqE4E/XWmEygtKB7AXrcS+hqVu525q67Tk6nW1qHkHnk18PZlhQmttEYQvpW7EBbP
-	+sz5e8Cpy2xvPk2INpU9lPBsnPBj5MUDDNQw5uNjNF23RSlAg3moL0/3QaXJ+HMIIbB0LhboeFjoD
-	m+vM00VppWAjPACAFmZA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=BUZ8KLnZDGsFmXnK67u9FtuSNAsykeoWCOhw2VWgMSE=; b=AqKDVrE6j/nMkR
+	bjQKhgJYs7UuwG06qlPGKfA1GLr5CrCd13RuMyyThMmWelzri8KkLiy98hfRpEXc4qB+XKxpV+4Nh
+	kP1J4IBh8DKJMqAPygU3qeJL8JDIziJimpF0BI4zbskZovcIYGbhhwOAFtG2OFUYmHgdMc6ffoqBa
+	i3yKSkNeW6MGG1AFnMmAxL39WGj+9k7zWOHQbCpD0P7OTkC1QIXCPRoYtMZhRmnv9BvXsT44DvVza
+	qYZegs3q/1qj9/c/euOwo/pQvf2/zDJiiQgdLIO7L1YLMzeRWVqibvzHbbAnW+63fwomRCxxWQqyC
+	6mRGsQDL5bax+EiiwZLw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1itI3L-0005AT-9k; Sun, 19 Jan 2020 21:24:15 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1itOzX-0001UP-Iv; Mon, 20 Jan 2020 04:48:47 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1itI2e-0004hn-So
- for linux-nvme@lists.infradead.org; Sun, 19 Jan 2020 21:23:34 +0000
+ id 1itOzT-0001Th-0V
+ for linux-nvme@lists.infradead.org; Mon, 20 Jan 2020 04:48:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1579469012; x=1611005012;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=Ax33sAIdCUfV9r8DC9tcvwUPh9ZFGKtC1p35EKdqTfk=;
- b=FSm6yNXv0gS9hkbs5Nv4VBKtTn2wpobqMxf3PSoW+27rf2rLOYMNkSWm
- Uuorjmg2S4KPvkBhhcOQbY3cDklwZ6eC/nT/BKPLTMpMMv5T1NRq1c6vQ
- uYXB77WlnA0g59cBYFLvnZEoMz1rPIl5pM/CPbtNSy+D2oj+627ghRsuE
- 3wKkRqYd0z9iPhLnLsP0WgcU430YfujIOV2/nBiJWfp6GLXFAHczK1X9R
- S5OeFpMqY0amtKbccGWCBz3o6N2OqDIHMPvmZIh9rE14qn5kq/5HWLgdd
- QXV+PifxZCfMgGdYQwOZQzIdGRVgr8Vvb07UWOyBB9kLnRJChT611UU6C g==;
-IronPort-SDR: 1KXTRF/bgNf2g3ros/83fwGmh3taUF6d8ss7p8XgEmFRsqJmOt0xcy2c7SI6+qTFyJ+FgAHfDw
- u2CP8kr0mwJkMlXFVl05ChpZ1KvJs1YfjOa0RV68t/j4Lh/f5disEd8ffaPRgx8P25v+QFgFFC
- 7lFuaoAlrL1qYH42hJOmQdO9x9nqUlVeAp9QRmCCyrxWDy9Sla2YuzvyXfdlHpGc0kxmVrz7eF
- YML/0uvaOFAxeUw2A88JEA2JjrVk24nLfKzISRy47uGGiULgycvI54d6oKcvanRL+82Ysvlp1p
- e8E=
-X-IronPort-AV: E=Sophos;i="5.70,339,1574092800"; d="scan'208";a="235845826"
-Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com)
- ([199.255.45.14])
- by ob1.hgst.iphmx.com with ESMTP; 20 Jan 2020 05:23:31 +0800
-IronPort-SDR: KML91xTs8pLxqNwnTizoRqU657JjoSQ1MWpLrmf7zuxSSY0PJ7JmNTF+zShCfLsr7QsETcWLqS
- sIKf86JEz66V4+I3CclcbkwWCSgdOQvx0Ul4KLq+SXqol4tjfNWXC1+Av4/Vbjx2svtX1Zt8Qc
- /DfZnUlsZGExUrlQvLdrGzcuNr10XzQLGTDnT9Rn1BA60jqq5EgvzW/vIXdrfQAq2BFmsuIHSF
- w+iDCnx1b6qPr2nd//WtCWkShkWAhCeqt6PkvrHCo2PkZZ15M89+N0Oq58FXdu6N564+Oc6eJG
- 6WNyCg6CBlk/+K+1CE+QpzfI
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Jan 2020 13:17:00 -0800
-IronPort-SDR: O7fsFw/6nPqP+rRudaCe2+xoLUHrcOHXdcyj60EJaymPQKUgEDmFsK/jPM3FLi5o6Kq7G3S/6W
- RdJs4hdfZ9Q07PkPAsJ8Ve01ciKts6v+5y8RZf9oRGc5uR70CCD57Co8/6gslxrpTerunpepMN
- TOW6Y2yK4F5H3XI3TgF7g1MLq3gVIiRtWIFjCh3+kUdfXv889saE2SNrPGc5EUSLKzBNDLZd2S
- Txr3a3BXglPG4Oomrou5X0pM1NqId/ba54BTjEGv6dOFYXV533dN20ZngPSeOIIEJnzlcJGbYt
- qVM=
-WDCIronportException: Internal
-Received: from iouring.labspan.wdc.com (HELO iouring.sc.wdc.com)
- ([10.6.138.107])
- by uls-op-cesaip01.wdc.com with ESMTP; 19 Jan 2020 13:23:32 -0800
-From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH V3 4/4] nvmet: update AEN list and array at one place
-Date: Sun, 19 Jan 2020 13:23:26 -0800
-Message-Id: <20200119212326.19701-5-chaitanya.kulkarni@wdc.com>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <20200119212326.19701-1-chaitanya.kulkarni@wdc.com>
-References: <20200119212326.19701-1-chaitanya.kulkarni@wdc.com>
+ t=1579495723; x=1611031723;
+ h=from:to:cc:subject:date:message-id:references:
+ content-transfer-encoding:mime-version;
+ bh=74rknCfjYghK48K6wnbrJr1q4zbMA9cPWh3zBiihsis=;
+ b=atGk/PNigc9v1EfaTXpUgqDsBK/VC0pRv8mjrgU+U1Eken/2aMVSPF/a
+ TjRH0vvUMIXA55n/1pa6ngPqbh5tzQ/rvtuBwEQXni+yf4XsnMrpEOjOF
+ Am8KEi5UwpS1W6/p8JP7/mi51vIn8RJQPFEVTL2jIYYlVrlvyxjz77EYo
+ w/XOUfiAhowNLDaqBcUx9xROqc2cJtqWy1bjTcc2BAyZHXiuIy32LWVzg
+ 9YPbGXKiNbuDxBLGf1do+PPVAuK/SjEcGj9wE8GhLuomfGb9ofnAWOA9C
+ RETIld57GD+eZg2Bfjh96gGpvdGNK+POHK3OwGw6+Zxv0LGf37SAjQWCr g==;
+IronPort-SDR: r7z5ZcC7zOd4TV2C/UTaMwELnmCbeBBbK2p3EDG3JDQ7Vq4Gh+6fJ+9rOTbdvAYzzQ1n1SA/MP
+ sJ0t7+PqIyx3BKyVD4I414L3BelEl+9arsLpxNbfrveNls1MNI+qw+Uaajx055sc2GE3ialRr5
+ ZNEnJw9sWjdjtv7VreBCuydUggMMeycmrrndidEwsC5X63iZ2l7s3YWJKI+mfxnLGQWNiFX0ei
+ oiLzkBG9t0kGdtMirVeJs5yFxwEhDSZjuip4yHR5QvEgE/kkvgM+eTIjov8Cm/uzsTQWrsukcB
+ gMo=
+X-IronPort-AV: E=Sophos;i="5.70,340,1574092800"; d="scan'208";a="129460097"
+Received: from mail-mw2nam10lp2105.outbound.protection.outlook.com (HELO
+ NAM10-MW2-obe.outbound.protection.outlook.com) ([104.47.55.105])
+ by ob1.hgst.iphmx.com with ESMTP; 20 Jan 2020 12:48:39 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=nPlF78IUivrGdoj8r1kmCD6nF+PnPCLkPkEKwmgeKAboGTMLhcAzJtfd5eSWts5OJBJjU8+OQFh5xgANxVVsanA1oRiDqK1n2BEfDVQmRTyGjnvJ8MTRUiYnfeor6j4ggSj56yCl3sOItsQhaM1Bedt/hqSRcoahJ402G3LrmMLeZ4H42j1x4ozZ9afujglpwZRsjTxj9wtFgtcNK1zdBXpsHQW37mRyiBaCFJnLm6vzlWcr/GwhuExWdxIGcwVGvItRfl/qdaGswhxvI2E8QDpJ17Pw+Tf3DBtug4FSl0a6GPi4n+xyiCG9JWdoPF4D4iYVVkCfpmTFihp6pmyyaA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=74rknCfjYghK48K6wnbrJr1q4zbMA9cPWh3zBiihsis=;
+ b=XEOpb7umQyvFUMiyxFT609HFgGIdn8qDWAU0+TihjsGixtEj5KmXLn0DW0Ya6pndHZ6Q6WEbrblZBRqL3LQwbUKrCRoEYiELt16EV0+PBJ34+K8PSnubXET/NCDdY3c9B2xvYUgJezf1GHLPvGrDwi/wYGF+fEDAk3gitUVEH71bpqV2qiQpCFM+oVRcLNUb2ZCIPpn++5ejaMYDlpnIgYHdNHhLDoWI+eUkTX48WB9en7c20OjzdL2XhSwSqQc4rp4o/5BxeES/qxUOAfzq5ug7igG5we3rjW/rAQI6+sWs0QQVKu2mI+va9yGbRc8IgRoTWpI+ekr3CqdlpgnSCQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=74rknCfjYghK48K6wnbrJr1q4zbMA9cPWh3zBiihsis=;
+ b=ie7z5AD3taljM2+mGy75Co7CFRztOrc18h1nrsACyK+C0Sgj721+mxZ4Vo7BXETRc8piLHKzfwSiR6ZLPDn/S0c1EYdtOplRhynJ2wx2EWaZZ53MlkQe96DqGh1s9ExVJsAJhTsXRQ/mL4B/yFRqpuhRbtkJ/sriHLx4FboDRHo=
+Received: from BYAPR04MB5749.namprd04.prod.outlook.com (20.179.57.21) by
+ BYAPR04MB5976.namprd04.prod.outlook.com (20.178.236.32) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2644.18; Mon, 20 Jan 2020 04:48:37 +0000
+Received: from BYAPR04MB5749.namprd04.prod.outlook.com
+ ([fe80::a8ea:4ba9:cb57:e90f]) by BYAPR04MB5749.namprd04.prod.outlook.com
+ ([fe80::a8ea:4ba9:cb57:e90f%5]) with mapi id 15.20.2644.026; Mon, 20 Jan 2020
+ 04:48:36 +0000
+From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
+To: Sagi Grimberg <sagi@grimberg.me>, "hch@lst.de" <hch@lst.de>
+Subject: Re: [RFC PATCH 0/2] nvmet: add polling support
+Thread-Topic: [RFC PATCH 0/2] nvmet: add polling support
+Thread-Index: AQHVryK85gJ3GKafwE2Wl4D0J6eouQ==
+Date: Mon, 20 Jan 2020 04:48:36 +0000
+Message-ID: <BYAPR04MB5749DBBD567F3BFCAFAB348686320@BYAPR04MB5749.namprd04.prod.outlook.com>
+References: <20191210062557.5171-1-chaitanya.kulkarni@wdc.com>
+ <fe370161-13d7-a005-2666-968107be13bd@grimberg.me>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
+x-originating-ip: [199.255.45.62]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 2f0b5b65-dab2-48a5-674c-08d79d6402fd
+x-ms-traffictypediagnostic: BYAPR04MB5976:
+x-microsoft-antispam-prvs: <BYAPR04MB5976588F77777675911AF16086320@BYAPR04MB5976.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:5516;
+x-forefront-prvs: 0288CD37D9
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(346002)(376002)(39860400002)(396003)(136003)(366004)(199004)(189003)(8936002)(71200400001)(81166006)(110136005)(478600001)(81156014)(2906002)(76116006)(66556008)(66946007)(66476007)(66446008)(316002)(64756008)(8676002)(9686003)(52536014)(53546011)(5660300002)(7696005)(186003)(55016002)(6506007)(86362001)(26005)(4326008)(33656002)(4744005);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5976;
+ H:BYAPR04MB5749.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: JpkmxhOW7tTVrm26qSuJ0X1QP/5+TGzCrsbaCrGcJx22WuHnOB8w1/8qfQ31xY9JKapzqSr42uUs0lGHoDPB0Ye8mM7icy7I5QDjKx4Ts0BZE7LCAFbnC2f5bU8T7hTHjdE1lDYMvuBvLYLqZEJTNb344UqaqwWMhrEUJMEZikJ41UoGA1Tw6Bff1114nnEc2KEnHmJh0+BFoi+B6YFEIn2bo4KH4U4Ly9Y01fhGO1AYgCZ158Uc7+4y9TbE+weHkJz6I8Z+wCTPE7JJuzOMIM2FjP1RyFVcGtn5roTtPc+/QEE794k/lIwWbI1Se2yszWkp+w00agVBRjMJq135oJNZ0K4U5N8e0/9LVKSha58FvAdmrwh5XDr6p8AL4GgrAuigQTc4wXrql6LArromsXVsuMcY6ylJH7c6AerKUnys53/4kprn1VNWyKLDNF8D
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2f0b5b65-dab2-48a5-674c-08d79d6402fd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Jan 2020 04:48:36.6697 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 2B7wzwoabvmRSU2s2sEereyefHEQGT5DfgO/rX5cyzQSMo2ODj3l6iuTEQ2D3GXNbTzQo4j86Jtk486f3qwXK0HRm56CCcw7Qv+PPKi93rA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5976
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200119_132332_948982_704C4159 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20200119_204843_093155_2FDDD9CF 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.141.245 listed in list.dnswl.org]
+ medium trust [216.71.154.45 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -100,174 +140,20 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Wagner <dwagner@suse.de>, sagi@grimberg.me,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>, hch@lst.de
+Cc: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Daniel Wagner <dwagner@suse.de>
+On 12/11/2019 05:01 PM, Sagi Grimberg wrote:
+> percpu threads per namespace? Sounds like the wrong approach. These
+> threads will compete for cpu time with the main nvmet contexts.
 
-From: Daniel Wagner <dwagner@suse.de>
+Isn't having need_resched() placed in the polling thread should
+help with the one thread hogging the CPU ?
 
-All async events are enqueued via nvmet_add_async_event() which
-updates the ctrl->async_event_cmds[] array and additionally an struct
-nvmet_async_event is added to the ctrl->async_events list.
-
-Under normal operations the nvmet_async_event_work() updates again the 
-ctrl->async_event_cmds and removes the corresponding struct
-nvmet_async_event from the list again. Though nvmet_sq_destroy() could
-be called which calls nvmet_async_events_free() which only updates 
-the ctrl->async_event_cmds[] array.
-
-Add new functions nvmet_async_events_process() and 
-nvmet_async_events_free() to process async events, update an
-array and the list.
-
-When we destroy submission queue after clearing the aen present on the 
-ctrl->async list we also loop over ctrl->async_event_cmds[] for any 
-requests posted by the host for which we don't have the AEN in the 
-ctrl->async_events list by calling nvmet_async_event_process() and 
-nvmet_async_events_free().
-
-Signed-off-by: Daniel Wagner <dwagner@suse.de>
-[chaitanya.kulkarni@wdc.com
- * Added the code to loop over and clear out outstanding requests
-   present in the ctrl->async_event_cmds[] for which aen is not
-   generated.
- * Update patch description and title to fit kernel log style.
-]
-Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
----
-Changes from V2:-
-
-1. Add helper to clean up the array ctrl->nr_async_event_cmds[]
-   nvmet_async_events_free().
-2. Use local variable into nvmet_sq_destroy().
-3. Call newly added helper nvmet_async_events_free() from
-   nvmet_sq_destroy().
-4. Update commit log.
-
-Changes from V1:-
-
-1. Generate patch on nvme-5.6 branch.
----
- drivers/nvme/target/core.c | 63 ++++++++++++++++++++++----------------
- 1 file changed, 36 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
-index 72938c8e9fcb..b775fce820a2 100644
---- a/drivers/nvme/target/core.c
-+++ b/drivers/nvme/target/core.c
-@@ -129,27 +129,8 @@ static u32 nvmet_async_event_result(struct nvmet_async_event *aen)
- 	return aen->event_type | (aen->event_info << 8) | (aen->log_page << 16);
- }
- 
--static void nvmet_async_events_free(struct nvmet_ctrl *ctrl)
--{
--	struct nvmet_req *req;
--
--	while (1) {
--		mutex_lock(&ctrl->lock);
--		if (!ctrl->nr_async_event_cmds) {
--			mutex_unlock(&ctrl->lock);
--			return;
--		}
--
--		req = ctrl->async_event_cmds[--ctrl->nr_async_event_cmds];
--		mutex_unlock(&ctrl->lock);
--		nvmet_req_complete(req, NVME_SC_INTERNAL | NVME_SC_DNR);
--	}
--}
--
--static void nvmet_async_event_work(struct work_struct *work)
-+static void nvmet_async_events_process(struct nvmet_ctrl *ctrl, u16 status)
- {
--	struct nvmet_ctrl *ctrl =
--		container_of(work, struct nvmet_ctrl, async_event_work);
- 	struct nvmet_async_event *aen;
- 	struct nvmet_req *req;
- 
-@@ -159,20 +140,43 @@ static void nvmet_async_event_work(struct work_struct *work)
- 				struct nvmet_async_event, entry);
- 		if (!aen || !ctrl->nr_async_event_cmds) {
- 			mutex_unlock(&ctrl->lock);
--			return;
-+			break;
- 		}
- 
- 		req = ctrl->async_event_cmds[--ctrl->nr_async_event_cmds];
--		nvmet_set_result(req, nvmet_async_event_result(aen));
-+		if (status == 0)
-+			nvmet_set_result(req, nvmet_async_event_result(aen));
- 
- 		list_del(&aen->entry);
- 		kfree(aen);
- 
- 		mutex_unlock(&ctrl->lock);
--		nvmet_req_complete(req, 0);
-+		nvmet_req_complete(req, status);
- 	}
- }
- 
-+static void nvmet_async_events_free(struct nvmet_ctrl *ctrl)
-+{
-+	struct nvmet_req *req;
-+
-+	mutex_lock(&ctrl->lock);
-+	while (ctrl->nr_async_event_cmds) {
-+		req = ctrl->async_event_cmds[--ctrl->nr_async_event_cmds];
-+		mutex_unlock(&ctrl->lock);
-+		nvmet_req_complete(req, NVME_SC_INTERNAL | NVME_SC_DNR);
-+		mutex_lock(&ctrl->lock);
-+	}
-+	mutex_unlock(&ctrl->lock);
-+}
-+
-+static void nvmet_async_event_work(struct work_struct *work)
-+{
-+	struct nvmet_ctrl *ctrl =
-+		container_of(work, struct nvmet_ctrl, async_event_work);
-+
-+	nvmet_async_events_process(ctrl, 0);
-+}
-+
- void nvmet_add_async_event(struct nvmet_ctrl *ctrl, u8 event_type,
- 		u8 event_info, u8 log_page)
- {
-@@ -752,20 +756,25 @@ static void nvmet_confirm_sq(struct percpu_ref *ref)
- 
- void nvmet_sq_destroy(struct nvmet_sq *sq)
- {
-+	u16 status = NVME_SC_INTERNAL | NVME_SC_DNR;
-+	struct nvmet_ctrl *ctrl = sq->ctrl;
-+
- 	/*
- 	 * If this is the admin queue, complete all AERs so that our
- 	 * queue doesn't have outstanding requests on it.
- 	 */
--	if (sq->ctrl && sq->ctrl->sqs && sq->ctrl->sqs[0] == sq)
--		nvmet_async_events_free(sq->ctrl);
-+	if (ctrl && ctrl->sqs && ctrl->sqs[0] == sq) {
-+		nvmet_async_events_process(ctrl, status);
-+		nvmet_async_events_free(ctrl);
-+	}
- 	percpu_ref_kill_and_confirm(&sq->ref, nvmet_confirm_sq);
- 	wait_for_completion(&sq->confirm_done);
- 	wait_for_completion(&sq->free_done);
- 	percpu_ref_exit(&sq->ref);
- 
- 	if (sq->ctrl) {
--		nvmet_ctrl_put(sq->ctrl);
--		sq->ctrl = NULL; /* allows reusing the queue later */
-+		nvmet_ctrl_put(ctrl);
-+		ctrl = NULL; /* allows reusing the queue later */
- 	}
- }
- EXPORT_SYMBOL_GPL(nvmet_sq_destroy);
--- 
-2.22.1
+Please have a look my reply and performance numbers for new patch.
 
 
 _______________________________________________
