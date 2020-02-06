@@ -2,91 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE878154BB7
-	for <lists+linux-nvme@lfdr.de>; Thu,  6 Feb 2020 20:14:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CE71154CD5
+	for <lists+linux-nvme@lfdr.de>; Thu,  6 Feb 2020 21:17:41 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=vQ2ZeSquH9ELwqk0c7uZJS47rkIOWDyl07CdXGvHFlU=; b=A/M6lXEVn7zChcz7LnHMSZUE8K
-	3odSCwVjNeWTqqXnb0d5LGoL84GQ8z6NbAzAP3fvjyyxmROeGOYY/pwoNfoXrR/bzM05NBB72yaVw
-	FMzHAzJjx2MKclYLgIMXDhnolGZiS5qiT9UmMHME0qjIzhPmHbpbvJnpUIieMc2+1w7ha3XhmZng0
-	OEduXuitO2yfnZvOtCPTAyqETZSVZ2YJZYVD05Ksv4th2MxGC6ABDjd/KzkHajDg+atHrI0qkTMBF
-	ArgufxxVZ79DLck5AFTpII7j/0H58g/gq/pms1btyq1oCut7Lie+gBN6b77lnnUFkACjP73MhNMMp
-	Vy5nTZhQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8hIfczzpo9DQ5beUVHOY7fsLzlvBYO7Y9iM9viiFDB4=; b=UviEMokYTcJ8gK
+	tg4n68Fmx5+5moVdVgt+dfnyUEozq89pBADoUtURBl+zOr/joLfKlXDe5zmHi5JBjGPG9mGPpwl4v
+	jvpKC23yswppWobmzX7fNXU/kTSqPkLQRjqZf6ltEZR9amswZarEQ8ykf4oZdxv69vh8BgKAR1gry
+	Sx8NzPfzudXZPUTE7S/TKhIrKNGWGF023I8Sht/AKkaFchrTDqjUNIGdLOSusvxSu4jnId+jFIwqD
+	djQ7N5iW+L7cZwZbgr78ZdZ0UmZqIfsKULg6PjWvmxQVEQpZNK6Dd22LuINjuKytKl0rpdgqCy0nt
+	nZ3A1wmGRPKpEm6f0GQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izmbI-0005yd-Pk; Thu, 06 Feb 2020 19:14:08 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1iznam-0004o3-2U; Thu, 06 Feb 2020 20:17:40 +0000
+Received: from mga02.intel.com ([134.134.136.20])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izmb8-0005um-2l
- for linux-nvme@lists.infradead.org; Thu, 06 Feb 2020 19:13:59 +0000
-Received: by mail-pg1-x542.google.com with SMTP id z124so3200175pgb.13
- for <linux-nvme@lists.infradead.org>; Thu, 06 Feb 2020 11:13:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=N7AAMTSp/MWp4hgOr+tstKj35eRbZ/xZXTcKyTYB/70=;
- b=Gvi6JM0AK+EbSijngXvYTlyp8YF9QLzx/HOk0+6EuHDLscGKmAHyEzqq83O2crxMnZ
- poyfM3BxmGrY1eAJQ3xyB3UtVcmyHizt6UXO6TqQ6XNEaO/Uob0TkHpEtct+YLHPwIfS
- QnWpkrpDjKHOVw/4BsvbJPvd8mSEcUjmSGHy/hhEbG4xer0IJlNcz4eMeKN4NcIw6/gJ
- X7yHy+TQVvG7IHu7Uc7lw3FLDVTLATfEEQrrroXnEWSpYVHO8dyI9fV4ZzTwNKjQel8j
- ZuN/b7mdV92MJSaZUj0Ksb86ETK3aCI5Niu1+TnqTxSR/ui2lRDNTk0Trglh1JanBy3Z
- uoVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=N7AAMTSp/MWp4hgOr+tstKj35eRbZ/xZXTcKyTYB/70=;
- b=J1wrz/J5W9u8qG/UHq8y3PkDywwxVfu9+ojcvthAZrTLUS2Ex1sUvxoJ7tS9hWbvuy
- V4EEwQPx5c7smqmddsJmMCGTgJUnzKqOAD1T57oZFszinDGQxzUVeMrEzeAcruPaWNrb
- Kxo0I2zj5wqZ7qUIWAA4OFAoVtQgP6BQyWbOMEI9LPtFrR9jxEXFY7fACzAERqNbRhO9
- f8nChrPvIUcLcONsY30r14pcad/X05MaOsB39cUXlLTCRkN1h774KvXwYpFZreUXFIOO
- Eiqy20l6y/UZDopF2wK7wJzEdZ8P6Gs6O9EttG35HRJ+bgomN1K3r5DCIIEUm+f2XsHp
- PuAA==
-X-Gm-Message-State: APjAAAXiEXXJclUmTAvJXRRCRzjRCzaY5wZuEvl4Z7KjnPxJaSn7BI1d
- y9D81wvXB/xfVP6PmAou9Y43hkrq
-X-Google-Smtp-Source: APXvYqzvxAUjmkfPiRMiISEKOVQO/ZC9m+YqTaoiaKd5gPr4Uc+G/+dD+Vrp6vwd6TDvwGq2Jj0d0A==
-X-Received: by 2002:a63:fa0b:: with SMTP id y11mr5190293pgh.137.1581016431545; 
- Thu, 06 Feb 2020 11:13:51 -0800 (PST)
-Received: from os42.localdomain ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id n15sm147297pfq.168.2020.02.06.11.13.50
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Thu, 06 Feb 2020 11:13:51 -0800 (PST)
-From: James Smart <jsmart2021@gmail.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH 2/2] nvme-rdma/nvme-tcp: Move err_work to nvme_reset_wq
-Date: Thu,  6 Feb 2020 11:13:42 -0800
-Message-Id: <20200206191342.10190-3-jsmart2021@gmail.com>
-X-Mailer: git-send-email 2.13.7
-In-Reply-To: <20200206191342.10190-1-jsmart2021@gmail.com>
-References: <20200206191342.10190-1-jsmart2021@gmail.com>
+ id 1iznai-0004nU-1P
+ for linux-nvme@lists.infradead.org; Thu, 06 Feb 2020 20:17:37 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Feb 2020 12:17:31 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,410,1574150400"; d="scan'208";a="220558663"
+Received: from jderrick-mobl.amr.corp.intel.com ([10.232.115.22])
+ by orsmga007.jf.intel.com with ESMTP; 06 Feb 2020 12:17:31 -0800
+From: Jon Derrick <jonathan.derrick@intel.com>
+To: <linux-nvme@lists.infradead.org>
+Subject: [PATCH v2] nvme/pci: Add sleep quirk for Samsung and Toshiba drives
+Date: Thu,  6 Feb 2020 13:17:25 -0700
+Message-Id: <20200206201725.313163-1-jonathan.derrick@intel.com>
+X-Mailer: git-send-email 2.24.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200206_111358_118719_34C193D4 
-X-CRM114-Status: GOOD (  12.67  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20200206_121736_133086_DCD209A2 
+X-CRM114-Status: GOOD (  11.84  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:542 listed in]
- [list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [jsmart2021[at]gmail.com]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [134.134.136.20 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [jsmart2021[at]gmail.com]
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [134.134.136.20 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,61 +65,58 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: James Smart <jsmart2021@gmail.com>, sagi@grimberg.me,
- Nigel Kirkland <nigel.kirkland@broadcom.com>, maxg@mellanox.com,
- mark.wunderlich@intel.com, hch@lst.de
-MIME-Version: 1.0
+Cc: Shyjumon N <shyjumon.n@intel.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Jens Axboe <axboe@fb.com>, Edmund Nadolski <edmund.nadolski@intel.com>,
+ Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ Jon Derrick <jonathan.derrick@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-With keep alive processing being moved to nvme_wq, it potentially creates
-a conflicting position with err_work also processing on nvme_wq and needing
-to flush/stop keep alives.
+From: Shyjumon N <shyjumon.n@intel.com>
 
-To avoid issues, schedule err_work on nvme_reset_wq. It looks like this is
-not only a good thing for keep alives, but also brings the transports in
-line with the RESETTING state and processing work relative to RESETTING
-on nvme_reset_wq.
+The Samsung SSD SM981/PM981 and Toshiba SSD KBG40ZNT256G on the Lenovo
+C640 platform experience runtime resume issues when the SSDs are kept in
+sleep/suspend mode for long time.
 
-This change is made to both nvme-rdma and nvme-tcp which have like code.
+This patch applies the 'Simple Suspend' quirk to these configurations.
+With this patch, the issue had not been observed in a 1+ day test.
 
-Signed-off-by: Nigel Kirkland <nigel.kirkland@broadcom.com>
-Signed-off-by: James Smart <jsmart2021@gmail.com>
+Reviewed-by: Jon Derrick <jonathan.derrick@intel.com>
+Signed-off-by: Shyjumon N <shyjumon.n@intel.com>
 ---
- drivers/nvme/host/rdma.c | 2 +-
- drivers/nvme/host/tcp.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+V2: Rebased
+Added my reviewed-by
 
-diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
-index 2a47c6c5007e..3e85c5cacefd 100644
---- a/drivers/nvme/host/rdma.c
-+++ b/drivers/nvme/host/rdma.c
-@@ -1088,7 +1088,7 @@ static void nvme_rdma_error_recovery(struct nvme_rdma_ctrl *ctrl)
- 	if (!nvme_change_ctrl_state(&ctrl->ctrl, NVME_CTRL_RESETTING))
- 		return;
+ drivers/nvme/host/pci.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 610f380352de..46fa1acf3aee 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -2726,6 +2726,18 @@ static unsigned long check_vendor_combination_bug(struct pci_dev *pdev)
+ 		    (dmi_match(DMI_BOARD_NAME, "PRIME B350M-A") ||
+ 		     dmi_match(DMI_BOARD_NAME, "PRIME Z370-A")))
+ 			return NVME_QUIRK_NO_APST;
++	} else if ((pdev->vendor == 0x144d && (pdev->device == 0xa801 ||
++		    pdev->device == 0xa808 || pdev->device == 0xa809)) ||
++		   (pdev->vendor == 0x1e0f && pdev->device == 0x0001)) {
++		/*
++		 * Forcing to use host managed nvme power settings for
++		 * lowest idle power with quick resume latency on
++		 * Samsung and Toshiba SSDs based on suspend behavior
++		 * on Coffee Lake board for LENOVO C640
++		 */
++		if ((dmi_match(DMI_BOARD_VENDOR, "LENOVO")) &&
++		     dmi_match(DMI_BOARD_NAME, "LNVNB161216"))
++			return NVME_QUIRK_SIMPLE_SUSPEND;
+ 	}
  
--	queue_work(nvme_wq, &ctrl->err_work);
-+	queue_work(nvme_reset_wq, &ctrl->err_work);
- }
- 
- static void nvme_rdma_wr_error(struct ib_cq *cq, struct ib_wc *wc,
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 6d43b23a0fc8..a28f9144954c 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -422,7 +422,7 @@ static void nvme_tcp_error_recovery(struct nvme_ctrl *ctrl)
- 	if (!nvme_change_ctrl_state(ctrl, NVME_CTRL_RESETTING))
- 		return;
- 
--	queue_work(nvme_wq, &to_tcp_ctrl(ctrl)->err_work);
-+	queue_work(nvme_reset_wq, &to_tcp_ctrl(ctrl)->err_work);
- }
- 
- static int nvme_tcp_process_nvme_cqe(struct nvme_tcp_queue *queue,
+ 	return 0;
 -- 
-2.13.7
+2.24.1
 
 
 _______________________________________________
