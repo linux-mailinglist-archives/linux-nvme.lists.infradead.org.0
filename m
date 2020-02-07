@@ -2,77 +2,87 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECAE31557ED
-	for <lists+linux-nvme@lfdr.de>; Fri,  7 Feb 2020 13:43:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 61484155F02
+	for <lists+linux-nvme@lfdr.de>; Fri,  7 Feb 2020 21:03:30 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:MIME-Version:Subject:To
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4Hm3tSfoM2tevi9QPSCShvJAY87LXtPcuMrZvYjPLnc=; b=ks9cqKKAI9Do0o
-	MqU58erO1UHYK3JC7bA7W9dGX+V2QCD/nyhfhyxeKFBFKU9uFMBFZX95AFYPix5+yAJI323ylyoHl
-	x9lbqErJruyj3CTUsc+gz/dx9cC002YoeU7cUWpQVoI0xm8YWfoFsQnNTiB99oB0DWt2tnquNbk+X
-	hufVNJDa/dqtZ8XGZoaQ8U1+OTnA4haCiolfnZmSaY3/mAlfDq304z2XHChHdR/AXAqjrAxHXOXs4
-	E63vjbJYd9Zzfes99kPAOb3rQpj7CAgAotdKlelS26+QfzzrhSYYjXjOBq/WajxGBdc7Ds8KBRejp
-	7MdVM2XMGuGeG61F/zIw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=z1fMvao11i+d0UZrbIxXcd2/3fEWA/mH8uzwOCutGXo=; b=S01/pSHRM6/XAQCCUzHtQccN/
+	y86PxCVmFhAt8oQ+XZ1U5G1HlTjJlKtZdMNSGWQrvnvRkR6pxrTRLYfCs142JZDTAhlR+bS6xfBcv
+	uzwxUWRg7fT9VVf6/ueuEjjRtXTF51KFmuLIAt6JokFrM7Od9ttchHGb8Lbi9EkLre+JITbaO+1ar
+	qwgIKcu3NJbCw8zzPnImgFLBCHOj/+9Btu8nV5eXV0UJLS+kQEG33IWMxDItHgeLHX7ubzyQX7IbH
+	U7pVFZeiFJXUgmC3LwagsEp7OqK8M9k6cvkLJOMS3cs4UjzWhiispROi6NRzlAsjczjBxGEy7Ei26
+	S61bc89tw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j02yv-0002zA-2B; Fri, 07 Feb 2020 12:43:37 +0000
-Received: from forward104j.mail.yandex.net ([5.45.198.247])
+	id 1j09qa-0004Bn-Fy; Fri, 07 Feb 2020 20:03:28 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j02yp-0002yd-AY
- for linux-nvme@lists.infradead.org; Fri, 07 Feb 2020 12:43:34 +0000
-Received: from forward102q.mail.yandex.net (forward102q.mail.yandex.net
- [IPv6:2a02:6b8:c0e:1ba:0:640:516:4e7d])
- by forward104j.mail.yandex.net (Yandex) with ESMTP id C1BD44A0295
- for <linux-nvme@lists.infradead.org>; Fri,  7 Feb 2020 15:43:22 +0300 (MSK)
-Received: from mxback5q.mail.yandex.net (mxback5q.mail.yandex.net
- [IPv6:2a02:6b8:c0e:1ba:0:640:b716:ad89])
- by forward102q.mail.yandex.net (Yandex) with ESMTP id BB32D7F20015
- for <linux-nvme@lists.infradead.org>; Fri,  7 Feb 2020 15:43:22 +0300 (MSK)
-Received: from localhost (localhost [::1])
- by mxback5q.mail.yandex.net (mxback/Yandex) with ESMTP id 2W5cjNcdkq-hMtO2EDo; 
- Fri, 07 Feb 2020 15:43:22 +0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
- t=1581079402; bh=Gc0IQXvVVktZ0OANqtpwv+BZpgzp1rGayfa1jGe6u5E=;
- h=Message-Id:Date:Subject:To:From;
- b=Qe1Vi1x+zJ/rxB0hdjQTa6iHBsmlIB19HcORWAk0crSDOtmoxYfTKDdd5bHAwKqUk
- QgPnDz3+31kZwMZCpeWK3W0N9RNpCAMT4yXPiztnjpOj8RWNM9q0teeAl8CSNiNxDt
- 8H+dluQLuGyH1MUAJ9Il2zmBeJbZIn2qevlO9zHA=
-Authentication-Results: mxback5q.mail.yandex.net; dkim=pass header.i=@yandex.ru
-Received: by vla4-9d01d86ae0b7.qloud-c.yandex.net with HTTP;
- Fri, 07 Feb 2020 15:43:22 +0300
-From: Talker Alex <alextalker@yandex.ru>
-Envelope-From: alextalker@yandex.ru
-To: linux-nvme@lists.infradead.org
-Subject: NVMe/IB support
+ id 1j09qV-0004BA-6M
+ for linux-nvme@lists.infradead.org; Fri, 07 Feb 2020 20:03:24 +0000
+Received: by mail-ot1-f68.google.com with SMTP id a15so515926otf.1
+ for <linux-nvme@lists.infradead.org>; Fri, 07 Feb 2020 12:03:22 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=nWpDQmZNg8zKVk12QskQ7NNS05C4fI/JmZBKLdKyu8Q=;
+ b=I8fRnpb9ES6Hy0eVuObeJYcLnwCll2K/Xm5B0rxC2NNHgG0MWf8tT4Pi5/vi5bbkTY
+ 0bb9JTIPIZMwFI6f34FG1I2SL2zs5qQ+2KYi/YQKSaIQMt42xRs5Hp43nTqBM48lbyAJ
+ 2QAjrIWIcOJ/0+2MMhtF8Ld6yXFa8WH0tV4ycWs9QuFrr3cfTHBpjl5JN39NMF2JAuFd
+ i1Q+8Xp2AQh+Q1UQtQ/Ok2aQjbGoe41RbhYBpjymfBXCGNFdBFf3VwHmIq5vroijKAHV
+ YF5NMkN9ouboxBY9AwRGfM+Kl4B267vWPUDqUa0LSheJ6Y+kB/LHNnQiicyWKeZ+FFwQ
+ hpFg==
+X-Gm-Message-State: APjAAAXLJnhN/Rt0XRDJ1JpgexmzglP0qePTKwKl1zGUbTjv8FMYLRip
+ gXWgNncN9Jc0U+FOX/YPu5A=
+X-Google-Smtp-Source: APXvYqzQy6bcmeyjbY9yqVxViacV6nmMJjTcpH1XcDCLGv0G3Y7Y3IJ9VhMMCTDuzMf/TKe6ysMOsw==
+X-Received: by 2002:a05:6830:1691:: with SMTP id
+ k17mr861867otr.282.1581105802121; 
+ Fri, 07 Feb 2020 12:03:22 -0800 (PST)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id t131sm1366490oih.35.2020.02.07.12.03.20
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 07 Feb 2020 12:03:21 -0800 (PST)
+Subject: Re: [PATCH 2/2] nvmet: Fix controller use after free
+To: Israel Rukshin <israelr@mellanox.com>,
+ Linux-nvme <linux-nvme@lists.infradead.org>, Christoph Hellwig <hch@lst.de>
+References: <1580819890-11455-1-git-send-email-israelr@mellanox.com>
+ <1580819890-11455-2-git-send-email-israelr@mellanox.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <75c7fc50-b2fd-31a4-b16b-e06d20ba1380@grimberg.me>
+Date: Fri, 7 Feb 2020 12:03:19 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Fri, 07 Feb 2020 15:43:22 +0300
-Message-Id: <12132471581079402@vla4-9d01d86ae0b7.qloud-c.yandex.net>
+In-Reply-To: <1580819890-11455-2-git-send-email-israelr@mellanox.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200207_044331_725362_9218B100 
-X-CRM114-Status: UNSURE (   3.07  )
+X-CRM114-CacheID: sfid-20200207_120323_234122_343351A4 
+X-CRM114-Status: UNSURE (   9.60  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.9 (/)
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.9 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
- low trust [5.45.198.247 listed in list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [alextalker[at]yandex.ru]
+ provider [sagigrim[at]gmail.com]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.68 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.68 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,23 +94,13 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Max Gurtovoy <maxg@mellanox.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi,
-
-is there really exist NVMe/IB solutions?
-I noticed that ConfigFS in target driver permit InfiniBand address type
-but it's no use for any driver, except maybe as a referral.
-
-Does anyone has an use-case for it or this one can be safely ignored for now?
-And if you have a production referral example, please be so kind as to share it(the ConfigFS values).
-
-------------------
-Best regards,
-Alex
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 
 _______________________________________________
 linux-nvme mailing list
