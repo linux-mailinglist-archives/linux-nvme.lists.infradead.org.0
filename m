@@ -2,44 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47F0515AEE0
-	for <lists+linux-nvme@lfdr.de>; Wed, 12 Feb 2020 18:39:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B29D15AEE4
+	for <lists+linux-nvme@lfdr.de>; Wed, 12 Feb 2020 18:41:06 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TyOlh05UmBF0IY6x/eiu7NEPFVKvpcjtI7w+d9GvbJw=; b=tOn3G6v5+xRnY/
-	5GtefuvbgwS2JTY7g0spgMWbJhvResTTl4miU51qllBZCVxFpixhiANyED1TJ5UYTNmeSAuZCoFWA
-	p+5fh8qkjIBiiRjNCqjUpqgPcLDcrJjnCLrhE1Tq6EykEy++z21/vWAuBpIBKJFJ2yMp3IGpIWLZe
-	dbJ6bNdWl1bYgOWWAhJuXTXzTEMa+TNMF9eQ6DfiX/U9WDfesjkhup/YgGq/TFelG+87Ex6Ul59Zu
-	IGWU4EtydU2+YSuvtzkndPUWm0VzKn+cmXg8pUn0e1z62XElyR5lUYTAQ0XVlqoXK1/jle5jjkWdn
-	Vn/ElIWzjR54V30G2BLw==;
+	List-Owner; bh=qaqEBPQytTeLhYNcfLTdGEBXiVV38onpGsYdeI3sawk=; b=OqqblCF8IOEIGi
+	gfg7i93qgvQ1gjO7Ujxbxo1CNSVAxxHF8fRu+GCDeD9OBJuUTmD+v2Epyl21t8B47s3XjtTojjPlz
+	NCOYADzHJz07z1M9ORmSVRHuKFZH2pLQEPq0RP2ML/faf0hFfgdj76H1e5g1WTOZHVMZOyFjkz6HW
+	whXwSZQZuyRqbjxa7vnU+WGykwk9wT8mRgXSrJ5VjspS/Z7laG4PgyNZvrlST48vaaavD7xaWEpC2
+	IQqXVivtENsaiI4Se3BRZxVvcxa33VK2TA84rNPgFVfeg3HKrZnD4En1KJxqc3uq/3QKyZPS+678w
+	9Q3lI2UTS8IFi2q8M/Iw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1vye-0006AR-UF; Wed, 12 Feb 2020 17:39:08 +0000
+	id 1j1w0W-0007f4-EJ; Wed, 12 Feb 2020 17:41:04 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1vya-00069x-KE
- for linux-nvme@lists.infradead.org; Wed, 12 Feb 2020 17:39:05 +0000
+ id 1j1w0R-0007eS-4X
+ for linux-nvme@lists.infradead.org; Wed, 12 Feb 2020 17:41:00 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id B75C568BFE; Wed, 12 Feb 2020 18:39:01 +0100 (CET)
-Date: Wed, 12 Feb 2020 18:39:01 +0100
+ id B3EF168BFE; Wed, 12 Feb 2020 18:40:56 +0100 (CET)
+Date: Wed, 12 Feb 2020 18:40:56 +0100
 From: Christoph Hellwig <hch@lst.de>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Subject: Re: [PATCH v1 2/2] nvme-pci: Convert to PCI_VDEVICE() macro for
- Apple devices
-Message-ID: <20200212173901.GB5708@lst.de>
-References: <20200212103220.80680-1-andriy.shevchenko@linux.intel.com>
- <20200212103220.80680-2-andriy.shevchenko@linux.intel.com>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCH] nvme/pci: move cqe check after device shutdown
+Message-ID: <20200212174056.GC5708@lst.de>
+References: <20200212165232.23015-1-kbusch@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200212103220.80680-2-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20200212165232.23015-1-kbusch@kernel.org>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200212_093904_814566_9F1C5BB1 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20200212_094059_335584_3DAA0097 
+X-CRM114-Status: UNSURE (   5.09  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -60,32 +59,18 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Leif Liddy <leif.liddy@gmail.com>, linux-nvme@lists.infradead.org,
- Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
- Christoph Hellwig <hch@lst.de>
+Cc: chaitanya.kulkarni@wdc.com, hch@lst.de, linux-nvme@lists.infradead.org,
+ sagi@grimberg.me
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Feb 12, 2020 at 12:32:19PM +0200, Andy Shevchenko wrote:
-> Like for Intel devices use PCI_VDEVICE() macro to describe
-> Apple devices.
+s#nvme/pci#nvme-pci# in the subject.
 
-This actually makes the code longer and adds the antipattern of macros
-that use string pasting on their argument, and this breaking grep-ability
-badly, so NAK.
+Otherwise looks good:
 
-> Besides that it's a luck that we got devices enumerated when
-> they are listed after class matching entry. So, move them above
-> and leave class matching entry the last in the ID table.
-
-It isn't by luck.  If the Apple devices were using the proper NVMe
-class ID we'd never hit the apple specific entries, but the actually
-use a different class code (the nvme one in big endian IIRC).  That
-being said I'm all for having the class match last.
+Reviewed-by: Christoph Hellwig <hch@lst.de>
 
 _______________________________________________
 linux-nvme mailing list
