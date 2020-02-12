@@ -2,52 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B29D15AEE4
-	for <lists+linux-nvme@lfdr.de>; Wed, 12 Feb 2020 18:41:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 86C8115AF14
+	for <lists+linux-nvme@lfdr.de>; Wed, 12 Feb 2020 18:52:03 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qaqEBPQytTeLhYNcfLTdGEBXiVV38onpGsYdeI3sawk=; b=OqqblCF8IOEIGi
-	gfg7i93qgvQ1gjO7Ujxbxo1CNSVAxxHF8fRu+GCDeD9OBJuUTmD+v2Epyl21t8B47s3XjtTojjPlz
-	NCOYADzHJz07z1M9ORmSVRHuKFZH2pLQEPq0RP2ML/faf0hFfgdj76H1e5g1WTOZHVMZOyFjkz6HW
-	whXwSZQZuyRqbjxa7vnU+WGykwk9wT8mRgXSrJ5VjspS/Z7laG4PgyNZvrlST48vaaavD7xaWEpC2
-	IQqXVivtENsaiI4Se3BRZxVvcxa33VK2TA84rNPgFVfeg3HKrZnD4En1KJxqc3uq/3QKyZPS+678w
-	9Q3lI2UTS8IFi2q8M/Iw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=JRkpnPALS3T1MSnjG4GkkuOa9DLAyIf2jlRKBXQG/uY=; b=UnRK25wFOndZKlg7BZfIoEG5Z
+	VAxruvW0gDHTbU9wZEXwHzUIuzTpVSDxS7/0WxN3xflQmoGHWSkNX7GkDOCusCAmKYqMeeWASmBPR
+	zSlLbthxOyJR/a5oCvBe/+mfstMAtwl0+fNnJT11vS3cHI8aoaMHiz4pJFSjgP/0u4WLFFxcwIxsx
+	/oWCCXsqiJ2cAIZTiT/srA4B7dpvpckxWk2TTYACLc5yG7vlvxYxzoVhyzC/N/ZaC8H8j92fumZeR
+	Vp7NfH6Pn+McO/UOIhYgHoEfdVQktolG5N6J/YzFpw76q4zqR4ddK+fJeHSBFFkbHLry+JD4BVlXA
+	fr1UzccWg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1w0W-0007f4-EJ; Wed, 12 Feb 2020 17:41:04 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1j1wB8-0003Fc-8S; Wed, 12 Feb 2020 17:52:02 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1w0R-0007eS-4X
- for linux-nvme@lists.infradead.org; Wed, 12 Feb 2020 17:41:00 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id B3EF168BFE; Wed, 12 Feb 2020 18:40:56 +0100 (CET)
-Date: Wed, 12 Feb 2020 18:40:56 +0100
-From: Christoph Hellwig <hch@lst.de>
-To: Keith Busch <kbusch@kernel.org>
-Subject: Re: [PATCH] nvme/pci: move cqe check after device shutdown
-Message-ID: <20200212174056.GC5708@lst.de>
-References: <20200212165232.23015-1-kbusch@kernel.org>
+ id 1j1wB4-0003F8-Km
+ for linux-nvme@lists.infradead.org; Wed, 12 Feb 2020 17:52:00 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id C0CA6ADBB;
+ Wed, 12 Feb 2020 17:51:56 +0000 (UTC)
+Subject: Re: Case-sensitive host NQN
+To: Christoph Hellwig <hch@lst.de>
+References: <4973fdd4-8a6c-1218-8f82-5413d3fec37f@suse.de>
+ <20200212173529.GA5648@lst.de>
+From: Hannes Reinecke <hare@suse.de>
+Message-ID: <055b0c4e-905a-7f3f-d5eb-595e127d423b@suse.de>
+Date: Wed, 12 Feb 2020 18:51:54 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200212165232.23015-1-kbusch@kernel.org>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+In-Reply-To: <20200212173529.GA5648@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200212_094059_335584_3DAA0097 
-X-CRM114-Status: UNSURE (   5.09  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200212_095158_824674_BD5EE957 
+X-CRM114-Status: GOOD (  20.63  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [195.135.220.15 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,20 +65,49 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: chaitanya.kulkarni@wdc.com, hch@lst.de, linux-nvme@lists.infradead.org,
- sagi@grimberg.me
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Keith Busch <keith.busch@wdc.com>, Sagi Grimberg <sagi@grimberg.me>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-s#nvme/pci#nvme-pci# in the subject.
-
-Otherwise looks good:
-
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-
-_______________________________________________
-linux-nvme mailing list
-linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gMi8xMi8yMCA2OjM1IFBNLCBDaHJpc3RvcGggSGVsbHdpZyB3cm90ZToKPiBPbiBXZWQsIEZl
+YiAxMiwgMjAyMCBhdCAwMTo1ODoyNlBNICswMTAwLCBIYW5uZXMgUmVpbmVja2Ugd3JvdGU6Cj4+
+IEhpIGFsbCwKPj4KPj4gSSd2ZSBzdHVtYmxlZCBhY3Jvc3MgYSBzbGlnaHQgd2VpcmRuZXNzIGZv
+ciBvdXIgaGFuZGxpbmcgb2YgaG9zdCBOUU5zLgo+PiBXZSBkbyBmb3JtYXQgdGhlbSBsaWtlCj4+
+Cj4+ICMgY2F0IC9ldGMvbnZtZS9ob3N0bnFuCj4+IG5xbi4yMDE0LTA4Lm9yZy5udm1leHByZXNz
+OnV1aWQ6MzYzNDMwNTAtMzgzNC01ODRELTUxMzgtMzMzMTMwMzAzNDRFCj4+Cj4+IGFzIHRoaXMg
+aXMgYSBVVUlELCBvbmUgd291bGQgZXhwZWN0IHRoYXQgaXQncyBpZGVudGljYWwgdG8KPj4KPj4g
+IyBjYXQgL2V0Yy9udm1lL2hvc3RucW4KPj4gbnFuLjIwMTQtMDgub3JnLm52bWV4cHJlc3M6dXVp
+ZDozNjM0MzA1MC0zODM0LTU4NGQtNTEzOC0zMzMxMzAzMDM0NGUKPj4KPj4gKE5vdGUgdGhlIGxv
+d2VyY2FzZSBsZXR0ZXJzKS4KPj4gQXMgaXQgdHVybnMgb3V0LCB0aGlzIGlzIF9ub3RfIHRoZSBj
+YXNlLCBjYXVzaW5nIHRoZSBjb25uZWN0aW9uIG5vdCB0bwo+PiBiZSBlc3RhYmxpc2hlZC4KPj4K
+Pj4gV2hpY2ggaXMgc2xpZ2h0bHkgd2VpcmQsIGFuZCBub3Qgd2hhdCBvbmUgd291bGQgZXhwZWN0
+Lgo+PiBUaGUgTlZNZSBzcGVjIG9ubHkgaGFzIHRoaXMgdmFndWUgc3RhdGVtZW50Cj4+ICJVcG9u
+IGVudHJ5IE5WTSBob3N0IHNvZnR3YXJlIG1heSBwcm9jZXNzIGFuIE5WTWUgcXVhbGlmaWVkIG5h
+bWUuLi4iCj4+IHNvIHdlIHdvdWxkIGJlIHNwZWMtY29tcGF0aWJsZSB3aGVuIHNldHRpbmcgdGhl
+IGZpZWxkcyB0byBsb3dlcmNhc2UKPj4gd2hlbiByZWFkaW5nIHRoZSBucW4uCj4gCj4gQ2hlY2sg
+c2VjdGlvbiA3Ljkgb2YgTlZNZSAxLjQ6Cj4gCj4gIk5WTWUgaG9zdHMsIGNvbnRyb2xsZXJzIGFu
+ZCBOVk0gc3Vic3lzdGVtcyBjb21wYXJlIChlLmcuLCBmb3IgZXF1YWxpdHkpCj4gTlZNZSBRdWFs
+aWZpZWQgTmFtZXMgdXNlZCBieSBOVk1lIGFzIGJpbmFyeSBzdHJpbmdzIHdpdGhvdXQgYW55IHRl
+eHQKPiBwcm9jZXNzaW5nIG9yIHRleHQgY29tcGFyaXNvbiBsb2dpYyB0aGF0IGlzIHNwZWNpZmlj
+IHRvIHRoZSBVbmljb2RlCj4gY2hhcmFjdGVyIHNldCBvciBsb2NhbGUgKGUuZy4sIGNhc2UgZm9s
+ZGluZyBvciBjb252ZXJzaW9uIHRvIGxvd2VyIGNhc2UsCj4gVW5pY29kZSBub3JtYWxpemF0aW9u
+KS4iCj4gCj4gc28gbm8sIHRoZXkgYXJlIGNhc2Ugc2Vuc2l0aXZlIGFuZCB0aGUgYWJvdmUgaXMg
+YnkgZGVzaWduLgo+IAooSSBrbmV3IEkgd291bGQgYmUgZ2V0dGluZyB0aGlzIGFuc3dlciA6LSkK
+QnV0IGlmIHlvdSByZWFkIHRoZSB2ZXJ5IG5leHQgc2VudGVuY2UgaXQgc2F5czoKCkFueSBzdWNo
+IHRleHQgcHJvY2Vzc2luZzoKYSkgbWF5IG9jY3VyIGFzIHBhcnQgb2YgZW50cnkgb2YgTlZNZSBR
+dWFsaWZpZWQgTmFtZXMgaW50byBOVk1lIGhvc3RzIAphbmQgTlZNIHN1YnN5c3RlbXM7IGFuZApi
+KSBzaG91bGQgbm90IG9jY3VyIGFzIHBhcnQgb2YgcmVjZWl2aW5nIE5WTWUgUXVhbGlmaWVkIE5h
+bWVzIHZpYSBhbiAKTlZNZSBjb25uZWN0aW9uLCBhcyBzaG93biBpbiBGaWd1cmUgNDM2LgoKSUUg
+d2Ugd291bGQgYmUgcGVyZmVjdGx5IHdpdGhpbiB0aGUgc3BlYyB0byBjb252ZXJ0IHRoZSBucW4g
+dG8gZWcgCmxvd2VyY2FzZSB3aGVuIHJlYWRpbmcgaXQgZnJvbSAvZXRjL252bWUvaG9zdG5xbi4K
+CkNoZWVycywKCkhhbm5lcwotLSAKRHIuIEhhbm5lcyBSZWluZWNrZSAgICAgICAgICAgIFRlYW1s
+ZWFkIFN0b3JhZ2UgJiBOZXR3b3JraW5nCmhhcmVAc3VzZS5kZSAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICArNDkgOTExIDc0MDUzIDY4OApTVVNFIFNvZnR3YXJlIFNvbHV0aW9ucyBHbWJI
+LCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJlcmcKSFJCIDM2ODA5IChBRyBOw7xybmJlcmcp
+LCBHZXNjaMOkZnRzZsO8aHJlcjogRmVsaXggSW1lbmTDtnJmZmVyCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1udm1lIG1haWxpbmcgbGlzdAps
+aW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
