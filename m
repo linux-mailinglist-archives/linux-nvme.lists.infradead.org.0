@@ -2,72 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5B7E15CB64
-	for <lists+linux-nvme@lfdr.de>; Thu, 13 Feb 2020 20:51:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F64015CEAE
+	for <lists+linux-nvme@lfdr.de>; Fri, 14 Feb 2020 00:34:13 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SRpc8ZQlwOZgv9/YAI1SIaXJgC2FylSxOA7+kQHQGBE=; b=WTKNSWha4mrDUK
-	+KDMT5/X5c8M+LVoskqLiC7V5i4zTGiIr5iFX8X6q5gbL3iDCD4D5PJzV+3B6vgDfLSxAFSsx4vA1
-	hKnoVa7cSqivmskFzs/6H2EChUrC/ekHLqsK/EF24wJxeKDpMMrMlPkbwDipNO1F4LP1NZAEwM9Bs
-	Z5XSN42WzLEqi0UpYPvRIWEYqlRBB98qU/GYkJDyxvoFG7dz8PsLxECmxfd22jXkq5MalRO31R385
-	lzVrWlw4AABuSgq4B00EGPcgH4PBenEC5BDFYrCX6hCHY6wiyAaWOGoBtM8yk1+DzmCYxa250JPHH
-	K8ZSWYJsbDiKfG34WXlA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=KX4L+apWQMJRss8lScz2yuvz55+euvO7c6jCXoZulPs=; b=bN31HsBO0+pw5MvhEiiXNz4jJ
+	dB+Ds9xf85H4i3CUdaBQ0VS3jTRPUMngzyTVViz+23WfsN4qriwMkipiPtI0ge01tJ/u91HIR4zLs
+	fJUrjY94Is13ZJKLHPNESav5WZUBz6/SfDRNr7ORWOvLr5NFc/VaM8BKRRmggVujo9b2jmJsFfjUu
+	ROy66vGkCgD+OyoKZhTEnguhog5PTzv5+UHidYTnOrjLDmznhC+bqbHo5eUXGGYPuc8W+3KWJSv0J
+	nq2dyMwRHi6G2HbvbcRWJMXrHG8c49E2GqOyBIcbzSiEGr0o0E0xRVbyGJObkNcNuhzOtuJIP7hy4
+	bRWHNOOUA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2KW7-00063Q-A5; Thu, 13 Feb 2020 19:51:19 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1j2Nzn-0003sT-97; Thu, 13 Feb 2020 23:34:11 +0000
+Received: from mail-ot1-f41.google.com ([209.85.210.41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2KW3-00062s-5z
- for linux-nvme@lists.infradead.org; Thu, 13 Feb 2020 19:51:16 +0000
-Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A1489206DB;
- Thu, 13 Feb 2020 19:51:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581623474;
- bh=Xqbq2haBuZFkDYjZmsV4yATrit/Qz2AEyZkfCyM1khw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=iCiUv1cEhk9VwBol7PtJap7ex5wIeg5ldTR+g0vDrDf4ZXUVibPHJxmw8z0OsPtP4
- 3sDi51kklI4zP5HGQ5GjBfBHOb/TbuhsXDlniCFor44vp8ZUureEQ/Ir07YM2O7TyV
- sSG00Eyn9qbz3BCSD2kSR7827Jm6gkeT/WqVN19E=
-Date: Fri, 14 Feb 2020 04:51:06 +0900
-From: Keith Busch <kbusch@kernel.org>
-To: Christoph Hellwig <hch@infradead.org>
-Subject: Re: [PATCH] nvme: fix uninitialized-variable warning
-Message-ID: <20200213195106.GA8256@redsun51.ssa.fujisawa.hgst.com>
-References: <20200107214215.935781-1-arnd@arndb.de>
- <20200130150451.GA25427@infradead.org>
- <CAK8P3a0EgfQkrSr77jE12Wm_NKemEZ1rFZLMcVhkAuu1cwOOWQ@mail.gmail.com>
- <20200130154815.GA2463@infradead.org>
+ id 1j2Nzi-0003sA-Sk
+ for linux-nvme@lists.infradead.org; Thu, 13 Feb 2020 23:34:08 +0000
+Received: by mail-ot1-f41.google.com with SMTP id h9so7364966otj.11
+ for <linux-nvme@lists.infradead.org>; Thu, 13 Feb 2020 15:34:01 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=VCpijuuuQSiYFEz5+E2Dr5G8MuXsLNSKC818kTrQoKM=;
+ b=EHDH9dRzBkubqEdmLr6aWZewcGiJc3bfuYnvdfhjD9RVHQxBwF+D5mL1Omrh883PoS
+ E5MZXFPfxIA5k+Lu8ebQ1rcIortSCayvBFPNv7ACOiDmmD98/62D2k7z02YVSuvUyDex
+ +roEnCWMWfTIyRzhs72Cayt0PoEym+MaUmb4m2vmSe/YulUbw5OHG0CyuuWazNwzBoFp
+ WqCZx+BWdhoX1A8XcGYtiyz9NE2SMlNg4jA8ukPaaGs4f99e5oPZkKNaathEVeUwl3DA
+ pYv2av4PLUtzvfiqj+gGS7KBv/5hjAT51uYvhRJ9XoBhGDA7lzAxrfaPgmHE1Tp5htPI
+ JABA==
+X-Gm-Message-State: APjAAAWWP+LgfunBWxtnoaPAgvWs2+8M/bnFmnEUinev9Og3AXBSKei4
+ +JEoyUjsyurkGzfJh4gktejrCke5
+X-Google-Smtp-Source: APXvYqx67VL3sG+SrMRelLuJeCahbNWpm1pGUT6U06Z50Hxzztv44APkW5fz21EDhuQig6nZkVvnSw==
+X-Received: by 2002:a9d:f45:: with SMTP id 63mr26366ott.0.1581636840545;
+ Thu, 13 Feb 2020 15:34:00 -0800 (PST)
+Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
+ ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
+ by smtp.gmail.com with ESMTPSA id b15sm1304318otl.60.2020.02.13.15.33.59
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 13 Feb 2020 15:33:59 -0800 (PST)
+Subject: Re: Case-sensitive host NQN
+To: Hannes Reinecke <hare@suse.de>, Christoph Hellwig <hch@lst.de>
+References: <4973fdd4-8a6c-1218-8f82-5413d3fec37f@suse.de>
+ <20200212173529.GA5648@lst.de> <055b0c4e-905a-7f3f-d5eb-595e127d423b@suse.de>
+ <20200212175556.GA6014@lst.de> <918ac705-7390-900e-7e79-8df71541f266@suse.de>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <c3353f34-db8a-8479-97a4-660c2c16b96a@grimberg.me>
+Date: Thu, 13 Feb 2020 15:33:58 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200130154815.GA2463@infradead.org>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <918ac705-7390-900e-7e79-8df71541f266@suse.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200213_115115_244774_7F76D146 
-X-CRM114-Status: GOOD (  16.34  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200213_153406_928868_B9BD9F3E 
+X-CRM114-Status: GOOD (  14.51  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.210.41 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.210.41 listed in wl.mailspike.net]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [sagigrim[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,49 +92,32 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Oleksandr Natalenko <oleksandr@redhat.com>,
- Bart Van Assche <bvanassche@acm.org>, Arnd Bergmann <arnd@arndb.de>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- linux-nvme@lists.infradead.org, Jens Axboe <axboe@fb.com>,
- Marta Rybczynska <mrybczyn@kalray.eu>, Hannes Reinecke <hare@suse.de>,
- Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>
-Content-Type: text/plain; charset="us-ascii"
+Cc: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Keith Busch <keith.busch@wdc.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Jan 30, 2020 at 07:48:15AM -0800, Christoph Hellwig wrote:
-> On Thu, Jan 30, 2020 at 04:36:48PM +0100, Arnd Bergmann wrote:
-> > > This one is just gross.  I think we'll need to find some other fix
-> > > that doesn't obsfucate the code as much.
-> > 
-> > Initializing the nvme_result in nvme_features() would do it, as would
-> > setting it in the error path in __nvme_submit_sync_cmd() -- either
-> > way the compiler cannot be confused about whether it is initialized
-> > later on.
+
+>> On Wed, Feb 12, 2020 at 06:51:54PM +0100, Hannes Reinecke wrote:
+>>> IE we would be perfectly within the spec to convert the nqn to eg lowercase
+>>> when reading it from /etc/nvme/hostnqn.
+>>
+>> We could, but why would we?  Case sensitivity is a complete pain and
+>> avoiding it wherever we can is a good thing.
+>>
+> Because the UUID really is a number, and hence one would assume that it
+> wouldn't be affected from case sensitivty.
 > 
-> Given that this is outside the hot path we can just zero the whole
-> structure before submitting the I/O.
+> But if the consensus is that we do not twiddle with it we should be
+> documenting it somewhere (maybe in a comment in the auto-generated
+> /etc/nvme/hostnqn) so as to avoid surprises or support calls later on.
 
-I think this should be okay:
-
----
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 7f05deada7f4..4aeed750dab2 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -1165,8 +1165,8 @@ static int nvme_identify_ns(struct nvme_ctrl *ctrl,
- static int nvme_features(struct nvme_ctrl *dev, u8 op, unsigned int fid,
- 		unsigned int dword11, void *buffer, size_t buflen, u32 *result)
- {
-+	union nvme_result res = { 0 };
- 	struct nvme_command c;
--	union nvme_result res;
- 	int ret;
- 
- 	memset(&c, 0, sizeof(c));
---
+We can comment. But given that I do see people leverage non-standard
+hostnqns for their own comfortable use, I don't think it would be
+a good idea to take any permutations of it (that may also generate
+support calls).
 
 _______________________________________________
 linux-nvme mailing list
