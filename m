@@ -2,69 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B30FE16AC01
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 17:46:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB8E116AC12
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 17:48:10 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i4PGgD3fyR90Kp0jAH0uXalBS1A64deZCDihJP8h61A=; b=sj/O6/KCj9JDF/
-	KotLJglBirStUJgZvSiskSG/9djBbySasMHfyCUy/xasrX5hq905K/DHKMnxqyCbAI+k/DDfQH7tQ
-	0Z6izJONIoNOqOUbanTdKlKpWpB+4ScphBQ++9hhBl8HMAN09JUmHGjp6naprJTlmWBAQeSmEl/1j
-	yRO2C6lehwZ2EtEV7Nbq4yd0tOeczQihG4cg6eRHxjo5QeBn55WbCsvlGnachE30rLbHKizx2/vdo
-	GY3jR81yC8o2cYCe2UNFIltLggkVeprDXTcz9X/88hWkjup0T1KA7inoMyffXLOxFS9TqtbSwV5rc
-	9Na17bSRZhe/eG8S60DA==;
+	List-Owner; bh=VXvO+w2OaCcMBFNGeCTmD3k3i/xnM5qrkTSQrWhsilQ=; b=bYTpdsqPafAnWs
+	Q9zawVuQA8ts+lU8wXKo4Ri4kgZp4yKTdbKJr8tAa/mOpo0xxewhxd/N/hKbPiAQjTDszj6QVxPhV
+	pXRXhvpIFwEiDPbmazfseffqD59VmQaAZSZP4NamHseMSvu2ZO082I6D/sn4SAs0b9ISeOwH+1/Y9
+	pc9qtiSwqXB7yEveD0I0LuYAzbVmq09yBKbvfIY/kYoLPgaLwssprysqDoaY3vlX6I1A7J8AftbJd
+	IQtaGKxJtjd6meMztdEmwEezsCLwcaYXBl9GE8OJscyCx4Ky3xzQM3x3zFESE7iswUOvPTHcVjVKB
+	afzL6vVrIr6egj7qQAZw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6GsY-0001s3-7y; Mon, 24 Feb 2020 16:46:46 +0000
-Received: from merlin.infradead.org ([205.233.59.134])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6Grn-0001Kh-0E
- for linux-nvme@bombadil.infradead.org; Mon, 24 Feb 2020 16:45:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=/0BwuQ1Ay9IttLRsdhBHfrMhxDgTNj74wxx6suo7WDg=; b=vhg8X5ZtLrW3+J2c9EOiBsNJfz
- nAQZnY48X/KBFRZJ9G+0usiI3LfCVYgbv8nETSoT5vu0a6lOr44eA4hCULaoldn/UW7jWw8sLFnbZ
- ul5ekkBPeXxUDIM2TZDhhVjllhhz3Py2uTInmc6sNVAYrsJ4hVBQ9Ni3cif0ZfuBt++7o5Ctdha+1
- YrjHodDng1jw/GA3Fy9smb86k7tG4J0Z7HAQuQt+JpJmDSOOgmt96Yr9we2Z6SchStFoOg2NeDCLr
- JwLXwPPV9Ns74Cp5h12xyDRaFCYxWGZX49F2GyN1zOJzkGrUoI3BYNFhu/U6aKsSbzNU34MZ/9Cie
- e11kBhxA==;
+	id 1j6Gtl-0002uX-H2; Mon, 24 Feb 2020 16:48:01 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6Grk-0002Dk-EE
- for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 16:45:58 +0000
-Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j6Grj-0001EG-4U
+ for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 16:46:01 +0000
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 24 Feb 2020 18:45:47 +0200
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 01OGji9d013647;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 01OGji9e013647;
  Mon, 24 Feb 2020 18:45:47 +0200
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, sagi@grimberg.me,
  linux-rdma@vger.kernel.org, kbusch@kernel.org, hch@lst.de,
  martin.petersen@oracle.com
-Subject: [PATCH 17/19] RDMA/rw: Expose maximal page list for a device per 1 MR
-Date: Mon, 24 Feb 2020 18:45:42 +0200
-Message-Id: <20200224164544.219438-19-maxg@mellanox.com>
+Subject: [PATCH 18/19] nvmet-rdma: Implement set_mdts controller op
+Date: Mon, 24 Feb 2020 18:45:43 +0200
+Message-Id: <20200224164544.219438-20-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200224164544.219438-1-maxg@mellanox.com>
 References: <20200224164544.219438-1-maxg@mellanox.com>
 MIME-Version: 1.0
-X-Spam-Note: CRM114 invocation failed
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200224_084555_597852_E37830D2 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.2 on merlin.infradead.org summary:
+X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
  no trust [193.47.165.129 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
  lines
 X-BeenThere: linux-nvme@lists.infradead.org
@@ -85,58 +74,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-ULP's will use this information to determine the maximal data transfer
-size per IO operation.
+Set the maximal data transfer size according to device capabilities.
+For example, for T10-DIF offload by supporting RDMA HCA, one uses
+RDMA/rw API that limits the IO operation to use a single MR with 256
+pages at the most. Limit the mdts according to RDMA/rw API and even
+decrease it in order to avoid multiple splits by the local block layer
+for large IOs to ease on the CPU on the target side.
 
 Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- drivers/infiniband/core/rw.c | 14 ++++++++++++--
- include/rdma/rw.h            |  1 +
- 2 files changed, 13 insertions(+), 2 deletions(-)
+ drivers/nvme/target/rdma.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/drivers/infiniband/core/rw.c b/drivers/infiniband/core/rw.c
-index 4fad732..edc9bee 100644
---- a/drivers/infiniband/core/rw.c
-+++ b/drivers/infiniband/core/rw.c
-@@ -56,8 +56,17 @@ static inline bool rdma_rw_io_needs_mr(struct ib_device *dev, u8 port_num,
- 	return false;
+diff --git a/drivers/nvme/target/rdma.c b/drivers/nvme/target/rdma.c
+index 37d262a..2227adf 100644
+--- a/drivers/nvme/target/rdma.c
++++ b/drivers/nvme/target/rdma.c
+@@ -30,6 +30,7 @@
+ #define NVMET_RDMA_DEFAULT_INLINE_DATA_SIZE	PAGE_SIZE
+ #define NVMET_RDMA_MAX_INLINE_SGE		4
+ #define NVMET_RDMA_MAX_INLINE_DATA_SIZE		max_t(int, SZ_16K, PAGE_SIZE)
++#define NVMET_RDMA_T10_PI_MDTS			5
+ 
+ struct nvmet_rdma_cmd {
+ 	struct ib_sge		sge[NVMET_RDMA_MAX_INLINE_SGE + 1];
+@@ -1602,6 +1603,21 @@ static void nvmet_rdma_disc_port_addr(struct nvmet_req *req,
+ 	}
  }
  
--static inline u32 rdma_rw_fr_page_list_len(struct ib_device *dev,
--					   bool pi_support)
-+/**
-+ * rdma_rw_fr_page_list_len - return the max number of pages mapped by 1 MR
-+ * @dev:	RDMA device that will eventually create a PD for needed MRs
-+ * @pi_support:	Whether MRs will be created for protection information offload
-+ *
-+ * Returns the number of pages that one MR can map for RDMA operation by the
-+ * given device. One can determine the maximal data size according to the
-+ * result of this function, or chose using multiple MRs for the RDMA operation
-+ * as well.
-+ */
-+u32 rdma_rw_fr_page_list_len(struct ib_device *dev, bool pi_support)
- {
- 	u32 max_pages;
++static u8 nvmet_rdma_set_mdts(struct nvmet_ctrl *ctrl)
++{
++	struct nvmet_port *port = ctrl->port;
++	struct rdma_cm_id *cm_id = port->priv;
++	u32 max_pages;
++
++	if (ctrl->pi_support) {
++		max_pages = rdma_rw_fr_page_list_len(cm_id->device, true);
++		/* Assume mpsmin == device_page_size == 4KB */
++		return min(ilog2(max_pages), NVMET_RDMA_T10_PI_MDTS);
++	}
++
++	return 0;
++}
++
+ static const struct nvmet_fabrics_ops nvmet_rdma_ops = {
+ 	.owner			= THIS_MODULE,
+ 	.type			= NVMF_TRTYPE_RDMA,
+@@ -1612,6 +1628,7 @@ static void nvmet_rdma_disc_port_addr(struct nvmet_req *req,
+ 	.queue_response		= nvmet_rdma_queue_response,
+ 	.delete_ctrl		= nvmet_rdma_delete_ctrl,
+ 	.disc_traddr		= nvmet_rdma_disc_port_addr,
++	.set_mdts		= nvmet_rdma_set_mdts,
+ };
  
-@@ -69,6 +78,7 @@ static inline u32 rdma_rw_fr_page_list_len(struct ib_device *dev,
- 	/* arbitrary limit to avoid allocating gigantic resources */
- 	return min_t(u32, max_pages, 256);
- }
-+EXPORT_SYMBOL(rdma_rw_fr_page_list_len);
- 
- static inline int rdma_rw_inv_key(struct rdma_rw_reg_ctx *reg)
- {
-diff --git a/include/rdma/rw.h b/include/rdma/rw.h
-index 6ad9dc8..a9bbda7 100644
---- a/include/rdma/rw.h
-+++ b/include/rdma/rw.h
-@@ -69,5 +69,6 @@ unsigned int rdma_rw_mr_factor(struct ib_device *device, u8 port_num,
- void rdma_rw_init_qp(struct ib_device *dev, struct ib_qp_init_attr *attr);
- int rdma_rw_init_mrs(struct ib_qp *qp, struct ib_qp_init_attr *attr);
- void rdma_rw_cleanup_mrs(struct ib_qp *qp);
-+u32 rdma_rw_fr_page_list_len(struct ib_device *dev, bool pi_support);
- 
- #endif /* _RDMA_RW_H */
+ static void nvmet_rdma_remove_one(struct ib_device *ib_device, void *client_data)
 -- 
 1.8.3.1
 
