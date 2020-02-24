@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E981016AFAA
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 19:50:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 187F016AFB0
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 19:50:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,68 +11,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=443u9wswZSwI2MSPGpM/ye0OwEzSFQmSl1N58+EA3PA=; b=PXfoEi57OOmMgUg+b1peIZINO2
-	z0TPlV4L06CO6Te/lL8N8O036USUmOxLQVpWrOhNL0kp1tQONtQuYbLpuhmqT2tRHyJJ9KX9RvcDA
-	mkfFoZTG7k97/160cwU9GVeIpDmvT05kKwzNNpuvyf+Q1h7Nk3+2WMEbd26gdbjHUqxSVDz7UUxJf
-	B31Mu9uOS5B9euoD+5agtFSgj033HieZr8JKN0GdzPh7/PO8wk4+lnvAK74Mz9I0fTGSA/3EjEkU/
-	M/2u1nXH9D/sXjiiYdHEkXjOEzvPAXff5HvV1rJXpSaXKjGPdrKQuVTGlHFM0qzqILx+R0rjuHG+N
-	GfjAz0WQ==;
+	bh=dL+VKyHpRRaokfJUOXfOkCVLGp8gpLZekd427CyHfWo=; b=IaygSlmj41hnIh/NYUGJKGSAVa
+	fb8fdnyXwS8yKoTf2gd2U4rOxszg9eYPRo5ROsIp+T7exb0O4TdNCNGYRTlfzsGlwGjq8/tBxkOyt
+	VcNM2A1IlnJebG0+8kw+HKtCereWjFv+6eY2kIGhEhiGCDm9tUcIyGEi1dyKhHQBpw+CjTVgw8uyb
+	O/XaDsvPBbX+rZtMhOfiKBKq+3QajEar7ryeuxm689I6mdvaw11duiUS+QYuWJqz82Ty6s0nlhvuv
+	VNJPhmAGNa+//ujp1xDP86KtLbPnkZv2ld5WCn4wLD4dwd4k0iuosGap/FZhN83ShaJho3yOuKLdR
+	i8LJSzTQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6Ink-0007oQ-PH; Mon, 24 Feb 2020 18:49:56 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1j6IoQ-00012L-6i; Mon, 24 Feb 2020 18:50:38 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6In6-0007K7-Qr
- for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 18:49:18 +0000
-Received: by mail-wr1-x442.google.com with SMTP id y17so2847709wrn.6
- for <linux-nvme@lists.infradead.org>; Mon, 24 Feb 2020 10:49:16 -0800 (PST)
+ id 1j6InC-0007MJ-Qq
+ for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 18:49:25 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id q9so361437wmj.5
+ for <linux-nvme@lists.infradead.org>; Mon, 24 Feb 2020 10:49:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=W11iLnPbdBm1gLHAvqDARl/jbqVvN2VJyZIooLfyqEQ=;
- b=SJt2omhVhigWqb6cc9B7wwGNmHQxs+Bi4jbcC6UNElEvkQeva8xQ0LoeGc+MltQSyL
- rxffKv7wVOO9EPD8jLENB/RXohAUw++PByccyqL6/xKS2Bd1g6EJBWydA3MWnjv2Oknc
- 40jBkBNAnHKsA+YmGD3BgQSnZ0yo8A+0yweNBIcP9FmQFkGXX6YpyFj1jj0u1+vMuxyf
- KF0j5Vg5E/m3pRRJ3cHdEkuLkalU0OXAMgaefxM8IFldL7+4TxHy3RyerEx87Rjg/KYb
- x7AtjMpX05EXHJzm2DjZSe1PHzr4LfgUCqB5mS3wrLHVYjKdSLd5whTKL7IVx7bbNdvW
- 4kCA==
+ bh=m6TkHC6swSJDnkvGhDdj4nTZ5RHMsdI+fJ1Ci1vrJ+0=;
+ b=o4OFz+a70kPSiv55WyFHyTC2Jgf82ql6ddp4S34xBTgt9m6eGk0tM1FJJEmk4zrm+r
+ Uubx+GtEJ964AhIibR5rdNYK9EulMqQd7wxfQbbFCDTD2FExp3cKxYTsVw7gKCqlCvr+
+ k4xpjuHv3yo0H1LQKFGPuk9PaiE851Qmx0IPWh/jWSg7plv/epIvaRh8hF33C/FXa21M
+ +szd2sO3v/ydIv/c34Wp1zzD4turOaJs215K4eTluMN6cELJFVMMr7GbZiV7SbnPpepB
+ 4haWLcujlS4LH93xTHywrxJ1qckTEQs3SLneBnDX+YFs4c+KdhjSFuDxBM8Mp5BUYP6O
+ LelA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=W11iLnPbdBm1gLHAvqDARl/jbqVvN2VJyZIooLfyqEQ=;
- b=YPG2sRulYd64z/ovHFrO2vrduhOVRHAzti/6e6Qq0fk1QSTh9NbWDRKRln0Y+HsuyM
- Zxlg4l3YNhDi/xcQx1XOx1x11Q/cHk/YcMeyJLefjH8WiMMGvf/PTY4b2rBScOd8PABB
- ene95q/EtxARZ3WYdKAgzOOC6+56DJLlURe/BP+Du1YBDDa2zsjx8pDGXTmMW7fEFKpf
- 84m2gxbQGlLHYBT3wM/FLTbZPzQj/5OOwEIz2/VLsI95YWEfstBcj1fTK8QjpcL7OYOp
- ysPWuUPcLRb1F7ZnLNqJDWqyEk5IumYNQnbebdHsLVppybNlE4bPRnq5f1yS0XbNt2zD
- J3Cw==
-X-Gm-Message-State: APjAAAXlTUG1YP6YphD89F7hNmK/51kVXxUvCraq6ISkRdJ90Duw3d1O
- ff/j/Z8bboqG49v33OabbasnISrD
-X-Google-Smtp-Source: APXvYqy4lBf/XBPwqiIrGtmc5oNbhXXfZDa2Rui8VbHEMWxDIzrh+Qd3fMD/SMu8YK+2KR+4WqL3FQ==
-X-Received: by 2002:adf:fe4d:: with SMTP id m13mr71582157wrs.179.1582570154771; 
- Mon, 24 Feb 2020 10:49:14 -0800 (PST)
+ bh=m6TkHC6swSJDnkvGhDdj4nTZ5RHMsdI+fJ1Ci1vrJ+0=;
+ b=gWk+3oNEvF5p7v1vaZYkU3wEc84QRGUeqvNBFrs2ImtHbr0evENuYTBGmePYQcZKCU
+ CeaMAev4QwpHwMag9I//y3jtI10fSBFZ1iN4dT/uXjvmk6XGu+H8qGKpFJkBhadxI6ul
+ V6o3LuT2L4Q8PRTaYl6f+bl5REVPSgrCr3Hfw1zjgA9B4b4LpjfOkpX7HsdmDN7sSycL
+ S9Euf6+UQfiWchEJRg4plLocfk96QRYoVxNuyY10OJAxyjhlxBHzWqUwXuhiOlQg5uM6
+ u7SdB5vOal7CdhePeFD+PNsd0x4TzqKQhWdrbAsseUwaXlE4PEuM+b/ASHJKaxirYCkj
+ J1gw==
+X-Gm-Message-State: APjAAAUOw4VDpqqTEPFLhOk1b6spMT3ucZgFUwj/qaQdOuKMJkGAKVXX
+ Zq9E3X0o4tXSDY/pnR4d6KjOJ2p/
+X-Google-Smtp-Source: APXvYqxi/GcJShaE0UeaIb0+f4N3Wpe2+oD6cAPcK7LBQEvk37ZkIwGF9ikAlHlXenvB7CRdMC41Rw==
+X-Received: by 2002:a7b:c416:: with SMTP id k22mr451144wmi.10.1582570156304;
+ Mon, 24 Feb 2020 10:49:16 -0800 (PST)
 Received: from localhost.localdomain.localdomain ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id l8sm460047wmj.2.2020.02.24.10.49.13
+ by smtp.gmail.com with ESMTPSA id l8sm460047wmj.2.2020.02.24.10.49.14
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 24 Feb 2020 10:49:14 -0800 (PST)
+ Mon, 24 Feb 2020 10:49:15 -0800 (PST)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [RFC 4/6] nvme: Add t_flags and pi_blkszs ctrl and ops attributes
-Date: Mon, 24 Feb 2020 10:48:57 -0800
-Message-Id: <20200224184859.20995-5-jsmart2021@gmail.com>
+Subject: [RFC 5/6] nvme: Add pi_flags to nvme_request for transport pi support
+Date: Mon, 24 Feb 2020 10:48:58 -0800
+Message-Id: <20200224184859.20995-6-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.16.4
 In-Reply-To: <20200224184859.20995-1-jsmart2021@gmail.com>
 References: <20200224184859.20995-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200224_104916_958279_D9F13CD5 
-X-CRM114-Status: GOOD (  25.46  )
+X-CRM114-CacheID: sfid-20200224_104922_878213_5CE11C04 
+X-CRM114-Status: GOOD (  20.40  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:32f listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
@@ -105,230 +105,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-To prepare for fabric PI support, the ops->flags handling needed to be
-reworked and the addition of a new field, pi_blkszs is needed.
-
-The nvme_ctrl_ops flags defines were moved to an enum, and values were
-added to cover PI types that the host transport supports, as well as a
-flag on whether the transport can insert/strip PI data for payload
-received without pi data. A new field, pi_blkszs, was added. The field
-parallels ns->lba_shift - each bit is a power of 2 block size, and if set,
-is a block size the transport knows how to do pi operations on.
-
-The new fields were also added to nvme_ctrl. This allows the default
-values to be loaded from the ops via nvme_init_ctrl, but the transport
-is allowed to tune the value on a per-controller basis if needed (directly
-writes the field after nvme_init_ctrl). For example, the same transport
-may have two host ports that have hw with different capabilities.
-
-The PCI driver's ops struct was updated for the new pi flags and the
-new pi_blkszs field. As all pci devices will behave the same, the ops
-structure is all that needed to change.
-
-The core code was updated to take the transport flags from the controller
-rather than the ops structure.  nvme_update_disk_info() was revised to
-better check the support of the transport when there is metadata.
+Create a new field called pi_flags in the nvme request.   This field
+uses the enum nvme_transport_flags definition. However, they are set in
+a different manner:
+ NVME_F_FABRICS and NVME_F_PCI_P2PDMA will not be set.
+ NVME_F_METADATA_SUPPORTED will not be set. The transport must look
+   for blk_request_rq() to determine that there is metadata.
+   Note: There may or may not be PI when set.
+ If there is PI and metadata, only the NVME_F_PI_TYPE_xxx flag for the
+   ns's pi type will be set.
+ If there is PI and no metadata, the NVME_F_PI_TXINSERT_RXSTRIP flag
+   may be set.
 
 Signed-off-by: James Smart <jsmart2021@gmail.com>
-
 ---
- I don't believe the following check, added by this patch, is necessary
- with the code in this new form. Meaning: in all cases now, if we reach this
- point, nvme_init_integrity() is called. So I don't think we need to check
- blk_get_integrity() any more.
- Please review:
-  @@ -1805,12 +1806,32 @@ static void nvme_update_disk_info(struct gendisk *disk,
-  ...
-  +               if (!nvme_ns_has_pi(ns) && !blk_get_integrity(disk))
-  +                       capacity = 0;
----
- drivers/nvme/host/core.c | 41 ++++++++++++++++++++++++++++++++---------
- drivers/nvme/host/nvme.h | 33 +++++++++++++++++++++++++++++----
- drivers/nvme/host/pci.c  |  6 +++++-
- 3 files changed, 66 insertions(+), 14 deletions(-)
+ drivers/nvme/host/core.c | 56 +++++++++++++++++++++++++++++++++++++++++++-----
+ drivers/nvme/host/nvme.h |  1 +
+ 2 files changed, 52 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 8421eafa81c6..ab03311105c3 100644
+index ab03311105c3..ec808e7d395d 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -1762,6 +1762,7 @@ static bool nvme_ns_ids_equal(struct nvme_ns_ids *a, struct nvme_ns_ids *b)
- static void nvme_update_disk_info(struct gendisk *disk,
- 		struct nvme_ns *ns, struct nvme_id_ns *id)
- {
-+	struct nvme_ctrl *ctrl = ns->ctrl;
- 	sector_t capacity = nvme_lba_to_sect(ns, le64_to_cpu(id->nsze));
- 	unsigned short bs = 1 << ns->lba_shift;
- 	u32 atomic_bs, phys_bs, io_opt;
-@@ -1782,7 +1783,7 @@ static void nvme_update_disk_info(struct gendisk *disk,
- 		if (id->nsfeat & (1 << 1) && id->nawupf)
- 			atomic_bs = (1 + le16_to_cpu(id->nawupf)) * bs;
- 		else
--			atomic_bs = (1 + ns->ctrl->subsys->awupf) * bs;
-+			atomic_bs = (1 + ctrl->subsys->awupf) * bs;
- 	} else {
- 		atomic_bs = bs;
+@@ -470,6 +470,7 @@ static inline void nvme_clear_nvme_request(struct request *req)
+ 		nvme_req(req)->retries = 0;
+ 		nvme_req(req)->flags = 0;
+ 		nvme_req(req)->ns = NULL;
++		nvme_req(req)->pi_flags = 0;
+ 		req->rq_flags |= RQF_DONTPREP;
  	}
-@@ -1805,12 +1806,32 @@ static void nvme_update_disk_info(struct gendisk *disk,
- 	blk_queue_io_min(disk->queue, phys_bs);
- 	blk_queue_io_opt(disk->queue, io_opt);
+ }
+@@ -704,28 +705,73 @@ static inline blk_status_t nvme_setup_rw(struct nvme_ns *ns,
  
--	if (ns->ms && !ns->ext &&
--	    (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED))
-+	if (ns->ms) {
-+		/*
-+		 * Ensure transport supports separate metadata. If not,
-+		 * only allowable configuration is with pi enabled and
-+		 * using PRACT=1 or the host transport to insert/strip.
+ 	if (ns->ms) {
+ 		/*
+-		 * If formated with metadata, the block layer always provides a
+-		 * metadata buffer if CONFIG_BLK_DEV_INTEGRITY is enabled.  Else
+-		 * we enable the PRACT bit for protection information or set the
+-		 * namespace capacity to zero to prevent any I/O.
++		 * When formatted for metadata, a separate metadata buffer
++		 * is required (via blk_integrity_rq()) with one exception:
++		 * if the ns is formatted for PI, then either the host
++		 * transport can insert/strip the pi metadata or the io
++		 * can be issued with PRACT=1 to have the controller
++		 * insert/strip. It's preferred the host transport does
++		 * the insert/strip if possible as it protects fabric
++		 * traversal.
+ 		 */
+ 		if (!blk_integrity_rq(req)) {
+ 			if (WARN_ON_ONCE(!nvme_ns_has_pi(ns)))
+ 				return BLK_STS_NOTSUPP;
++			/* set both flags for now. Code below will resolve
++			 * to one setting after host support of pi type is
++			 * checked.
++			 */
++			nvme_req(req)->pi_flags |=
++				ctrl->t_flags & NVME_F_PI_TXINSERT_RXSTRIP;
+ 			control |= NVME_RW_PRINFO_PRACT;
+-		}
++
++		} else if (!(ctrl->t_flags & NVME_F_METADATA_SUPPORTED) ||
++			   (!ns->ext && ctrl->t_flags & NVME_F_FABRICS) ||
++			   (ns->ext && !(ctrl->t_flags & NVME_F_FABRICS)))
++			return BLK_STS_NOTSUPP;
+ 
+ 		switch (ns->pi_type) {
+ 		case NVME_NS_DPS_PI_TYPE3:
++			nvme_req(req)->pi_flags |=
++				ctrl->t_flags & NVME_F_PI_TYPE3_PROTECTION;
+ 			control |= NVME_RW_PRINFO_PRCHK_GUARD;
+ 			break;
+ 		case NVME_NS_DPS_PI_TYPE1:
++			nvme_req(req)->pi_flags |=
++				ctrl->t_flags & NVME_F_PI_TYPE1_PROTECTION;
++			goto set_guard_check;
+ 		case NVME_NS_DPS_PI_TYPE2:
++			nvme_req(req)->pi_flags |=
++				ctrl->t_flags & NVME_F_PI_TYPE2_PROTECTION;
++set_guard_check:
+ 			control |= NVME_RW_PRINFO_PRCHK_GUARD |
+ 					NVME_RW_PRINFO_PRCHK_REF;
+ 			cmnd->rw.reftag = cpu_to_le32(t10_pi_ref_tag(req));
+ 			break;
+ 		}
++
++		/* resolve insert/strip:
++		 * if no host pi support, leave PRACT. Otherwise, clear PRACT.
 +		 */
-+		if (!(ctrl->t_flags & NVME_F_METADATA_SUPPORTED) &&
-+		    !nvme_ns_has_pi(ns))
-+			goto set_0_capacity;
++		if (nvme_req(req)->pi_flags & NVME_F_PI_TXINSERT_RXSTRIP) {
++			if (!(nvme_req(req)->pi_flags & NVME_F_PI_TYPE_MASK))
++				nvme_req(req)->pi_flags &=
++						~NVME_F_PI_TXINSERT_RXSTRIP;
++			else
++				control &= ~NVME_RW_PRINFO_PRACT;
++		}
 +
-+		/* Check controller requirements:
-+		 *  PCI requires separate metadata support.
-+		 *  Fabrics do not support separate metadata.
++		/* If no metadata:
++		 *  Either the transport or controller will insert/strip
++		 *  metadata.
++		 * If separate metadata:
++		 *  Pci transport will pass metadata as separate buffer to
++		 *    controller and controller will perform PI actions.
++		 *  Fabric transports will minimally multiplex the separate
++		 *    buffer into interleaved data for the controller.
++		 *    If PI flags are set, the transport may perform
++		 *    PI checking as payload egresses/ingresses.
 +		 */
-+		if ((!ns->ext && ctrl->t_flags & NVME_F_FABRICS) ||
-+		    (ns->ext && !(ctrl->t_flags & NVME_F_FABRICS)))
-+			goto set_0_capacity;
-+
- 		nvme_init_integrity(disk, ns->ms, ns->pi_type,
--				    ns->ctrl->max_meta_segments);
--	if ((ns->ms && !nvme_ns_has_pi(ns) && !blk_get_integrity(disk)) ||
--	    ns->lba_shift > PAGE_SHIFT)
-+				    ctrl->max_meta_segments);
-+
-+		if (!nvme_ns_has_pi(ns) && !blk_get_integrity(disk))
-+			capacity = 0;
-+	}
-+	if (ns->lba_shift > PAGE_SHIFT)
-+set_0_capacity:
- 		capacity = 0;
- 
- 	set_capacity(disk, capacity);
-@@ -2764,7 +2785,7 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
- 			goto out_free;
  	}
  
--	if (!(ctrl->ops->flags & NVME_F_FABRICS))
-+	if (!(ctrl->t_flags & NVME_F_FABRICS))
- 		ctrl->cntlid = le16_to_cpu(id->cntlid);
- 
- 	if (!ctrl->identified) {
-@@ -2848,7 +2869,7 @@ int nvme_init_identify(struct nvme_ctrl *ctrl)
- 	}
- 	memcpy(ctrl->psd, id->psd, sizeof(ctrl->psd));
- 
--	if (ctrl->ops->flags & NVME_F_FABRICS) {
-+	if (ctrl->t_flags & NVME_F_FABRICS) {
- 		ctrl->icdoff = le16_to_cpu(id->icdoff);
- 		ctrl->ioccsz = le32_to_cpu(id->ioccsz);
- 		ctrl->iorcsz = le32_to_cpu(id->iorcsz);
-@@ -3530,7 +3551,7 @@ static void nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
- 			|= BDI_CAP_STABLE_WRITES;
- 
- 	blk_queue_flag_set(QUEUE_FLAG_NONROT, ns->queue);
--	if (ctrl->ops->flags & NVME_F_PCI_P2PDMA)
-+	if (ctrl->t_flags & NVME_F_PCI_P2PDMA)
- 		blk_queue_flag_set(QUEUE_FLAG_PCI_P2PDMA, ns->queue);
- 
- 	ns->queue->queuedata = ns;
-@@ -4061,7 +4082,9 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct device *dev,
- 	init_rwsem(&ctrl->namespaces_rwsem);
- 	ctrl->dev = dev;
- 	ctrl->ops = ops;
-+	ctrl->t_flags = ops->flags;
- 	ctrl->max_meta_segments = ops->max_meta_segments;
-+	ctrl->pi_blkszs = ops->pi_blkszs;
- 	ctrl->quirks = quirks;
- 	INIT_WORK(&ctrl->scan_work, nvme_scan_work);
- 	INIT_WORK(&ctrl->async_event_work, nvme_async_event_work);
+ 	cmnd->rw.control = cpu_to_le16(control);
 diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 4c6b6fc18560..88e82250bb3d 100644
+index 88e82250bb3d..bedee3fa9d41 100644
 --- a/drivers/nvme/host/nvme.h
 +++ b/drivers/nvme/host/nvme.h
-@@ -262,7 +262,10 @@ struct nvme_ctrl {
- 	struct work_struct fw_act_work;
- 	unsigned long events;
- 
-+	/* host transport attributes */
-+	u32 t_flags;	/* transport flags: see enum nvme_transport_flags */
- 	u32 max_meta_segments;
-+	u32 pi_blkszs;	/* each bit is a power of 2. See ns->lba_shift */
- 
- #ifdef CONFIG_NVME_MULTIPATH
- 	/* asymmetric namespace access: */
-@@ -402,13 +405,34 @@ static inline bool nvme_ns_has_pi(struct nvme_ns *ns)
- 	return ns->pi_type && ns->ms == sizeof(struct t10_pi_tuple);
- }
- 
-+enum nvme_transport_flags {
-+	NVME_F_FABRICS			= 1 << 0,
-+	NVME_F_PCI_P2PDMA		= 1 << 1,
-+
-+	/* Metadata requires use of a separate blk_integrity_rq buffer */
-+	NVME_F_METADATA_SUPPORTED	= 1 << 8,
-+
-+	/*
-+	 * The PI types supported by the host transport, if it participates
-+	 * in PI checking or can insert/strip PI on behalf of the OS.
-+	 */
-+	NVME_F_PI_TYPE_MASK		= 0x7 << 9,
-+	NVME_F_PI_TYPE1_PROTECTION	= 1 << 9,
-+	NVME_F_PI_TYPE2_PROTECTION	= 1 << 10,
-+	NVME_F_PI_TYPE3_PROTECTION	= 1 << 11,
-+
-+	/* Indicates that the host transport can insert/strip PI for
-+	 * presentation to the controller. I.E. OS does not have metadata/PI.
-+	 * Transport will insert PI/meta on TX and strip PI/meta on RX.
-+	 * Similar to PRACT=1.
-+	 */
-+	NVME_F_PI_TXINSERT_RXSTRIP	= 1 << 12,
-+};
-+
- struct nvme_ctrl_ops {
- 	const char *name;
- 	struct module *module;
--	unsigned int flags;
--#define NVME_F_FABRICS			(1 << 0)
--#define NVME_F_METADATA_SUPPORTED	(1 << 1)
--#define NVME_F_PCI_P2PDMA		(1 << 2)
-+	unsigned int flags;		/* see enum nvme_transport_flags */
- 	int (*reg_read32)(struct nvme_ctrl *ctrl, u32 off, u32 *val);
- 	int (*reg_write32)(struct nvme_ctrl *ctrl, u32 off, u32 val);
- 	int (*reg_read64)(struct nvme_ctrl *ctrl, u32 off, u64 *val);
-@@ -417,6 +441,7 @@ struct nvme_ctrl_ops {
- 	void (*delete_ctrl)(struct nvme_ctrl *ctrl);
- 	int (*get_address)(struct nvme_ctrl *ctrl, char *buf, int size);
- 	u32 max_meta_segments;
-+	u32 pi_blkszs;	/* each bit is a power of 2. See ns->lba_shift */
+@@ -141,6 +141,7 @@ struct nvme_request {
+ 	u16			status;
+ 	struct nvme_ctrl	*ctrl;
+ 	struct nvme_ns		*ns;
++	u32			pi_flags; /* see enum nvme_transport_flags */
  };
  
- #ifdef CONFIG_FAULT_INJECTION_DEBUG_FS
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 7cbd2fbda743..f56038294c23 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -2683,6 +2683,9 @@ static const struct nvme_ctrl_ops nvme_pci_ctrl_ops = {
- 	.name			= "pcie",
- 	.module			= THIS_MODULE,
- 	.flags			= NVME_F_METADATA_SUPPORTED |
-+				  NVME_F_PI_TYPE_MASK | /* all types presented
-+							 * by the controller
-+							 */
- 				  NVME_F_PCI_P2PDMA,
- 	.reg_read32		= nvme_pci_reg_read32,
- 	.reg_write32		= nvme_pci_reg_write32,
-@@ -2692,7 +2695,8 @@ static const struct nvme_ctrl_ops nvme_pci_ctrl_ops = {
- 	.get_address		= nvme_pci_get_address,
- 	/* PCI supports metadata via single segment separate buffer only */
- 	.max_meta_segments	= 1,
--
-+	/* Support is whatever the controller presents */
-+	.pi_blkszs		= 0xFFFFFFFF,
- };
- 
- static int nvme_dev_map(struct nvme_dev *dev)
+ /*
 -- 
 2.16.4
 
