@@ -2,78 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6D3116ABAD
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 17:34:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9624616AC1C
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 17:49:37 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=5AaUQQKeT14A4+flv8E/Gs8WNwDCCVmfYHXmo4hh1zU=; b=Mq5
-	QN8En72PL87lyN9kXCaK5vjzbxYWdZYZBy29I+UhCBTO6nmDU+zbGJTLCvba0BaPrqr+gQrXzv2++
-	jToWoE6ACwykM/gJznlCdKm7vZ8kZwEOx2O37by6tdiTUs0PU8IbNKPVh8R0MVX9qQVg4G7fR7omT
-	I+wUQZoWORXWk87JBcMLJlV8n2S7XzKYmZBvQS4BQCyfM2afDoFVK20p/joZnItpIAjDTZPpqCRXk
-	6lRN7nhw6pfPEMtVeDF8bGGFEgQmENeSqTawIX4jKX35JEHBiry1BDNOpDuGk6loNwGgjh1XwfTWY
-	Q+fNGN/F+qH9//o18t9CFgMdmER1hzg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HRy4tok/wPBVh22Op1GD37BdxCVgshTrwyzA+UPE0dE=; b=cNyGIiQp0HgVnd
+	McRhKXW9j3UceT/YhOU1R6hU4l2LWZLOmwsvIkfMYAW+2KZHxYXKJqUjnmuIvADRGIqfW/IBWVnRt
+	t8S2wC4KF38sJtWd2vM9xU0olbSaiOebksAXmt6d23pKHFRt6C9ZWAwXKIqi8rs6eTYYr0F5F30+c
+	R5F/0cTSbwo0ApROacb9y2P8bGsO9UPksEVbgvKxT2qF0/Dqi3Y3oNqrTI8jAuB5upFe84Sdv2Wk3
+	IwMDM1jW+btHxE7xTQQowVW2vOCypkgZXSpUt44V69lr7UQuhkjTJeYG+PWHrKiziWiqFD1G6c9Td
+	GpYTDm0Xbyt/hi84z4gw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6GgP-0003na-QU; Mon, 24 Feb 2020 16:34:13 +0000
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]
- helo=us-smtp-delivery-1.mimecast.com)
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6GgL-0003mg-8O
- for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 16:34:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582562047;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=4TiliuXG7Xh5hkWHCmE6hVqn38gt2FN04yxxs/D+Q3A=;
- b=YCrXOLMYodlWP//U2QwTBfTm8kBsyTGBCmoHXNJI7KtYdpZaVEqS2uGMM22W/LjT/1UD+a
- X5jVhDdxH8spxIEWr+07pAwbs98C6O6R2pC3LV8tN1m2nruqHntT4J4q/8ibo/vZAIf3y/
- XKc4dm2SZus0siSg8/K18IFeGdc7qFY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-295-3DeUejzFMK2VqmioMGxoTg-1; Mon, 24 Feb 2020 11:32:12 -0500
-X-MC-Unique: 3DeUejzFMK2VqmioMGxoTg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0D0938018AF;
- Mon, 24 Feb 2020 16:32:11 +0000 (UTC)
-Received: from rgirase.pnq.csb (unknown [10.76.0.83])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0FD0A8B755;
- Mon, 24 Feb 2020 16:32:08 +0000 (UTC)
-From: Rupesh Girase <rgirase@redhat.com>
-To: kbusch@kernel.org
-Subject: [PATCH] nvme: log additional message for controller status
-Date: Mon, 24 Feb 2020 22:02:04 +0530
-Message-Id: <1582561924-8017-1-git-send-email-rgirase@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+	id 1j6GvB-00042u-VX; Mon, 24 Feb 2020 16:49:30 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j6Grj-0001EA-4M
+ for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 16:46:01 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ maxg@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 24 Feb 2020 18:45:44 +0200
+Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
+ [10.209.102.136])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 01OGji9L013647;
+ Mon, 24 Feb 2020 18:45:44 +0200
+From: Max Gurtovoy <maxg@mellanox.com>
+To: linux-nvme@lists.infradead.org, sagi@grimberg.me,
+ linux-rdma@vger.kernel.org, kbusch@kernel.org, hch@lst.de,
+ martin.petersen@oracle.com
+Subject: [PATCH 00/19 V4] nvme-rdma/nvmet-rdma: Add metadata/T10-PI support
+Date: Mon, 24 Feb 2020 18:45:24 +0200
+Message-Id: <20200224164544.219438-1-maxg@mellanox.com>
+X-Mailer: git-send-email 2.21.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200224_083409_378588_E8DDA224 
-X-CRM114-Status: GOOD (  10.28  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200224_084555_584850_ECC75CDF 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.211.31.81 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ no trust [193.47.165.129 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,39 +65,112 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@fb.com, Rupesh Girase <rgirase@redhat.com>, hch@lst.de,
- linux-nvme@lists.infradead.org
-MIME-Version: 1.0
+Cc: axboe@kernel.dk, vladimirk@mellanox.com, shlomin@mellanox.com,
+ israelr@mellanox.com, idanb@mellanox.com, maxg@mellanox.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-	Logging the controller fatal and ready status would help to
-	identfy if issue lies within kernel nvme subsytem or
-	controller is unhealthy.
+Hello Sagi, Christoph, Keith, Martin and Co
 
-Signed-off-by: Rupesh Girase <rgirase@redhat.com>
----
- drivers/nvme/host/core.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+This patchset adds metadata (T10-PI) support for NVMeoF/RDMA host side and
+target side, using signature verbs API. This set starts with a few preparation
+commits to the NVMe host core layer. It continues with NVMeoF/RDMA host
+implementation + few preparation commits to the RDMA/rw API and to NVMe target
+core layer. The patchset ends with NVMeoF/RDMA target implementation.
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index ada59df..2dfca9d 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -2079,8 +2079,9 @@ static int nvme_wait_ready(struct nvme_ctrl *ctrl, u64 cap, bool enabled)
- 			return -EINTR;
- 		if (time_after(jiffies, timeout)) {
- 			dev_err(ctrl->device,
--				"Device not ready; aborting %s\n", enabled ?
--						"initialisation" : "reset");
-+				"Device not ready; aborting %s, RDY=0x%x, CFS=0x%x\n",
-+				enabled ? "initialisation" : "reset",
-+				csts & NVME_CSTS_RDY, csts & NVME_CSTS_CFS);
- 			return -ENODEV;
- 		}
- 	}
+Configuration:
+Host:
+ - nvme connect --pi_enable --transport=rdma --traddr=10.0.1.1 --nqn=test-nvme
+
+Target:
+ - echo 1 > /config/nvmet/subsystems/${NAME}/attr_pi_enable
+ - echo 1 > /config/nvmet/ports/${PORT_NUM}/param_pi_enable
+
+The code was tested using Mellanox's ConnectX-4/ConnectX-5 HCAs.
+This series applies on top of nvme_5.7 branch cleanly.
+
+Changes from v3:
+ - Added Reviewed-by signatures
+ - New RDMA/rw patch (Patch 17/19)
+ - Add mdts setting op for controllers (Patches 14/19, 18/19)
+ - Rename NVME_NS_DIX_SUPPORTED to NVME_NS_MD_HOST_SUPPORTED and
+   NVME_NS_DIF_SUPPORTED to NVME_NS_MD_CTRL_SUPPORTED (Patch 01/19)
+ - Split "nvme: Introduce namespace features flag" patch (patch 02/19)
+ - Rename nvmet_rdma_set_diff_domain to nvmet_rdma_set_sig_domain
+   and nvme_rdma_set_diff_domain to nvme_rdma_set_sig_domain
+   (Patches 08/19, 19/19)
+ - Remove ns parameter from nvme_rdma_set_sig_domain/nvmet_rdma_set_sig_domain
+   functions (patch 08/19, 19/19)
+ - Rebase over nvme-5.7 branch
+
+Changes from v2:
+ - Convert the virtual start sector (which passed to bip_set_seed function)
+   to be in integrity interval units (Patch 14/15)
+ - Clarify some commit messages
+
+Changes from v1:
+ - Added Reviewed-by signatures
+ - Added namespace features flag (Patch 01/15)
+ - Remove nvme_ns_has_pi function (Patch 01/15)
+ - Added has_pi field to struct nvme_request (Patch 01/15)
+ - Subject change for patch 02/15
+ - Fix comment for PCI metadata (Patch 03/15)
+ - Rebase over "nvme: Avoid preallocating big SGL for data" patchset
+ - Introduce NVME_INLINE_PROT_SG_CNT flag (Patch 05/15)
+ - Introduce nvme_rdma_sgl structure (Patch 06/15)
+ - Remove first_sgl pointer from struct nvme_rdma_request (Patch 06/15)
+ - Split nvme-rdma patches (Patches 06/15, 07/15)
+ - Rename is_protected to use_pi (Patch 07/15)
+ - Refactor nvme_rdma_get_max_fr_pages function (Patch 07/15)
+ - Added ifdef CONFIG_BLK_DEV_INTEGRITY (Patches 07/15, 09/15, 13/15,
+   14/15, 15/15)
+ - Added port configfs pi_enable (Patch 14/15)
+
+Israel Rukshin (13):
+  nvme: Introduce namespace features flag
+  nvme: Add has_pi field to the nvme_req structure
+  nvme-fabrics: Allow user enabling metadata/T10-PI support
+  nvme: Introduce NVME_INLINE_PROT_SG_CNT
+  nvme-rdma: Introduce nvme_rdma_sgl structure
+  nvmet: Prepare metadata request
+  nvmet: Add metadata characteristics for a namespace
+  nvmet: Rename nvmet_rw_len to nvmet_rw_data_len
+  nvmet: Rename nvmet_check_data_len to nvmet_check_transfer_len
+  nvme: Add Metadata Capabilities enumerations
+  nvmet: Add metadata/T10-PI support
+  nvmet: Add metadata support for block devices
+  nvmet-rdma: Add metadata/T10-PI support
+
+Max Gurtovoy (6):
+  nvme: Enforce extended LBA format for fabrics metadata
+  nvme: Introduce max_integrity_segments ctrl attribute
+  nvme-rdma: Add metadata/T10-PI support
+  nvmet: Add mdts setting op for controllers
+  RDMA/rw: Expose maximal page list for a device per 1 MR
+  nvmet-rdma: Implement set_mdts controller op
+
+ drivers/infiniband/core/rw.c      |  14 +-
+ drivers/nvme/host/core.c          |  76 +++++---
+ drivers/nvme/host/fabrics.c       |  11 ++
+ drivers/nvme/host/fabrics.h       |   3 +
+ drivers/nvme/host/nvme.h          |   9 +-
+ drivers/nvme/host/pci.c           |   7 +
+ drivers/nvme/host/rdma.c          | 367 +++++++++++++++++++++++++++++++++-----
+ drivers/nvme/target/admin-cmd.c   |  41 +++--
+ drivers/nvme/target/configfs.c    |  61 +++++++
+ drivers/nvme/target/core.c        |  54 ++++--
+ drivers/nvme/target/discovery.c   |   8 +-
+ drivers/nvme/target/fabrics-cmd.c |  19 +-
+ drivers/nvme/target/io-cmd-bdev.c | 113 +++++++++++-
+ drivers/nvme/target/io-cmd-file.c |   6 +-
+ drivers/nvme/target/nvmet.h       |  39 +++-
+ drivers/nvme/target/rdma.c        | 252 ++++++++++++++++++++++++--
+ include/linux/nvme.h              |   2 +
+ include/rdma/rw.h                 |   1 +
+ 18 files changed, 955 insertions(+), 128 deletions(-)
+
 -- 
 1.8.3.1
 
