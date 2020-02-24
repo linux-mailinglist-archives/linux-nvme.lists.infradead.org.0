@@ -2,74 +2,77 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2521D16AFA7
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 19:49:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B1E8F16AFA8
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 19:49:36 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=M6e+DSrL4xs/f52kWnGwDY9LURpbMsPS4bTGvDAMbQs=; b=l8Y
-	xbw/BG+V9PRVHe7ivo9P0YEqRR9rLNTnBQHJ2Uj1+pAzzccaQAcxkiiM0PAT8a693mc0Ti3tfQJgu
-	xNYktm8ygzVtwLQ54+PpSDsa6S3ZjWWjI3Zc1F8ZttOIPqj+fmlyHEv2pLYd7MedwMyzquqBVd0i8
-	oAaY1I8yPW82EicJU54mE2C56qbuGKgl0s+ah+bkEUzFeNshzuv/BWx1Uii9P7ndJEThADqEJKqxD
-	6alGIMF6jvMxeKsloTUo7dugOV/o6COEJcYeHf3v5Ei+b6hA0wYXSIKTVUowXZ39xDZuwRNtLer5O
-	605rHuvTIKqHuuTWdT2hluGF2/RIN8g==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=GYgrCTqQnsYIl9AlkC/ePBaFL9lpBY07PB9uOy10uB8=; b=nV/tWkAMQL/03QhCCCswpKCfYM
+	6k/1scbT8eEsTLeQlrCaoZvDr2lt/M+aKOuQvXywh9EAKRaOSMyAWl52/nDudITwlUfNcPrC9zMXl
+	3JX8YK2tT/kZNysyoGOBe5B0k32P4QZsdyVvJO26ktZB1rxYFpeOmilyF14SykNeOXOA6ThbprZjQ
+	BCWiXauuL0b84F87d422jQ5EgPRsWrBUVjvqHoFjGurbpt1B3q+LCrkYhMuBeY08cY3yMehandx0r
+	Loga1vieqBcB5xPcdqaNyyIp3avP5BB6HAn9MSi4BZjeahdYqurwDX0aUwY5ZqW5slG3DHk95jFEN
+	VzG7ENDA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6In5-0007Fl-Si; Mon, 24 Feb 2020 18:49:15 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1j6InH-0007Kb-UC; Mon, 24 Feb 2020 18:49:27 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6In0-0007Ee-Cs
- for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 18:49:11 +0000
-Received: by mail-wr1-x443.google.com with SMTP id r11so11647467wrq.10
- for <linux-nvme@lists.infradead.org>; Mon, 24 Feb 2020 10:49:09 -0800 (PST)
+ id 1j6In1-0007Eu-IQ
+ for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 18:49:13 +0000
+Received: by mail-wr1-x442.google.com with SMTP id u6so11684810wrt.0
+ for <linux-nvme@lists.infradead.org>; Mon, 24 Feb 2020 10:49:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=LTQLNWO+Vp2gVjxzXtjnfqbCDtXUZV3BKQy9xDrdCQs=;
- b=rK+ubFIyEe/L2+sNMJgkG4pFpDqUIWtypo7soivl6MbZf2MyvKhQ2MELc5/smTQ9Ix
- sMCjPzbot9GfljAgQza+Bit49g4FBAYXWx+0Zx8RoSQPMTDJtgcfnxz7OUV3sM/PUeIB
- /Jd0dm0MNNQQKC+R5VVWEnW2IAFx24s/n2ngd3HZwE7otI558DTJ7vZGYV9VC+wptXaT
- 2A0qAhAK7bJNPkrak6F1KJ2gEazOMB7LzW1l+bxa/kYUXbKGxRgkHFUIjWVQbr+3Fzy/
- e4b+40hrmXm/H2c6k9z+sgMn1KxYWsHWyOB6PLdgugXtJcUlTCMm5MBzkACCSWrjyH0Q
- Smxw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=w/Pj1GIxyEFeOuGofpXNX67FrG4852WRobzW9KxAvjA=;
+ b=NMKfdyymwE5DQ2ioCAoTp7bnkXk5v0maYAS/c/T1Lufg6YIEKPJX2WjJ5Dv1tk4sR3
+ wAb760yFaNBJIh+YiPuYIcDn06zMj4bJBs8tnSjYoHNLH2c32pTa2bPqk7uwJYlHboXu
+ iNCj/RE58P1AWDo+9grQrqk2g6R7Cr9twLMJcI6nA14491skdLqrvG1ai3xR5Csdq1kA
+ h0XylDv0BZqBaoib4y0+SqIIIxWJkkH+bKqAis+DEMXJRBrun0sJ0k+QIP8zbDiTZrAb
+ TnhS7THQLU2BxYMK/MXernAIv/AMSWVEcfMSWB0c3+Xx3Gt0ds1G5VhYc1aWcTVzwTpB
+ w95Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=LTQLNWO+Vp2gVjxzXtjnfqbCDtXUZV3BKQy9xDrdCQs=;
- b=O36NbSeLZvftSRCMlqdM/t4ch2xtBLNStnd4rQ+FXW0zs3wyGPrzAAEPQt1+HjvKOO
- NPeegc/UBDqmqdbJZX88VLJBMUL+bxOcypZi7YoiaUiACqNDJIv+0KFjEGJFy0gYACSo
- Ncje3uqussZKkz7lsG+5adwk5J0a1lFVg3guO2b80cLA05PMCA5GZZ/wZgZqyPM+s+lT
- YynsA6TEaOmDuZjCBeL9osz/k7IqFfUK2OqX2pmwPRv2vinPGKDZuAXaWb5QhOWBaPDd
- nOlQHeVxyB5VM0vGO2uiybYncABEDpu7pEcEPrBjvwAF7baFYNWJxfKMu527YUdMlHyh
- eEOQ==
-X-Gm-Message-State: APjAAAUS9MgOxHtOHKYuM2PaPHgiSQ2rZOTlPnvRZ7hgpsZj+Ko0Uxsf
- A65VPghJis3wjUEzE9N+Df92EP3t
-X-Google-Smtp-Source: APXvYqwNW1NkAtS7Mo9rpQfuiL3ARXQaWKEud5d0r1mSvpy8L5EBYk05a9GQNq7RE61GWmjUqIo/4Q==
-X-Received: by 2002:a5d:6690:: with SMTP id l16mr3717573wru.251.1582570148578; 
- Mon, 24 Feb 2020 10:49:08 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=w/Pj1GIxyEFeOuGofpXNX67FrG4852WRobzW9KxAvjA=;
+ b=BtLtNdLg6JZc34MzGJRbCj2j+BRrEACGb84VgbRVIQ/DomUMydZ9uLLdwBPyJBJTuO
+ rFAiroYiblrWz0WzDRE2Rwhh4rFzSafs945d5qctP3UyVrI2ufeF5DM0aSvA+6CRpFJ1
+ N9WOhUaBB4WxmxBF0yGxGXZQxswZarvuq3q2SVw1O5FIoKJGUcdO8JDOd6DuaScVLqKS
+ AmbTm/c3IENS+ZxHnIOAsOravg2eXt8yJe64unuN2vTQFJk4ekjugXU5o9pA91YNVfhp
+ aSE7zmG9yXKx9Shj5s72u2sQM/1dwn3Or/GyNEAS3e1lfUmYEDnlztw/bZMwq9BJEIPa
+ jKZA==
+X-Gm-Message-State: APjAAAUKxTXJPh5kBnwLB8+KDb+ABzp2hJSE17nDDbPVt0GzQpt/TrN3
+ FwvCcsVwufFoKcrkeN+RS0bNT+zx
+X-Google-Smtp-Source: APXvYqwGi/jT4fP6Al3cXHqSmyvR06xtKzPOvK3lex6FWPOCX8Ws7hkZ+f0xlkhFJg4IpbX1ICLM/g==
+X-Received: by 2002:adf:a285:: with SMTP id s5mr71728351wra.118.1582570150011; 
+ Mon, 24 Feb 2020 10:49:10 -0800 (PST)
 Received: from localhost.localdomain.localdomain ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id l8sm460047wmj.2.2020.02.24.10.49.07
+ by smtp.gmail.com with ESMTPSA id l8sm460047wmj.2.2020.02.24.10.49.08
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 24 Feb 2020 10:49:08 -0800 (PST)
+ Mon, 24 Feb 2020 10:49:09 -0800 (PST)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [RFC 0/6] nvme: core layer metadata/pi support
-Date: Mon, 24 Feb 2020 10:48:53 -0800
-Message-Id: <20200224184859.20995-1-jsmart2021@gmail.com>
+Subject: [RFC 1/6] nvme: Add ns to nvme_request struct
+Date: Mon, 24 Feb 2020 10:48:54 -0800
+Message-Id: <20200224184859.20995-2-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.16.4
+In-Reply-To: <20200224184859.20995-1-jsmart2021@gmail.com>
+References: <20200224184859.20995-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200224_104910_432240_E2819E4E 
-X-CRM114-Status: UNSURE (   9.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200224_104911_604505_EA1FCB47 
+X-CRM114-Status: GOOD (  12.83  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:443 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:442 listed in]
  [list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
@@ -102,43 +105,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-This patch set is alternative to the core layer mods proposed by Max
-Gurtovoy.
+To facilitate obtaining status about the namespace issuing the request,
+add a ns pointer to the nvme_request structure.
 
-This set adds much the same functionality, but does so via transport ops
-flags that indicate capabilities that are then stamped into the controller.
-Transports can fine-tune the capabilities on a per-controller basis by
-tuning the controller flag values.  The patches also use different
-language. Rather than introducing extended lba data terms and naming all
-metadata as "integrity" data, it keeps things generic as "metadata", that
-then may or may not contain pi data. It also revises some of the checks
-in the core layer to better show fabric deltas and options for metadata.
+Signed-off-by: James Smart <jsmart2021@gmail.com>
+---
+ drivers/nvme/host/core.c | 2 ++
+ drivers/nvme/host/nvme.h | 1 +
+ 2 files changed, 3 insertions(+)
 
-This patch set does not cover the patch adding a fabrics "pi_enable"
-option. That patch may still be used, but would be implemented differently
-in that the rdma transport would look for the option, and when set, revise
-the ctrl->t_flags after calling nvme_init_integrity. The rdma transport
-patches would also largely not change in function, but would change in the
-flags and how they would look for items.
-
-This patch set does not address (yet) the nvmet side.
-
-
--- james
-
-James Smart (6):
-  nvme: Add ns to nvme_request struct
-  nvme: make nvme_ns_has_pi accessible to transports
-  nvme: Introduce max_meta_segments ctrl and ops attribute
-  nvme: Add t_flags and pi_blkszs ctrl and ops attributes
-  nvme: Add pi_flags to nvme_request for transport pi support
-  nvme: Introduce NVME_INLINE_PROT_SG_CNT
-
- drivers/nvme/host/core.c | 115 +++++++++++++++++++++++++++++++++++++----------
- drivers/nvme/host/nvme.h |  46 +++++++++++++++++--
- drivers/nvme/host/pci.c  |   7 +++
- 3 files changed, 141 insertions(+), 27 deletions(-)
-
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 84914223c537..a42c0ab37ef4 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -475,6 +475,7 @@ static inline void nvme_clear_nvme_request(struct request *req)
+ 	if (!(req->rq_flags & RQF_DONTPREP)) {
+ 		nvme_req(req)->retries = 0;
+ 		nvme_req(req)->flags = 0;
++		nvme_req(req)->ns = NULL;
+ 		req->rq_flags |= RQF_DONTPREP;
+ 	}
+ }
+@@ -758,6 +759,7 @@ blk_status_t nvme_setup_cmd(struct nvme_ns *ns, struct request *req,
+ 	blk_status_t ret = BLK_STS_OK;
+ 
+ 	nvme_clear_nvme_request(req);
++	nvme_req(req)->ns = ns;
+ 
+ 	memset(cmd, 0, sizeof(*cmd));
+ 	switch (req_op(req)) {
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 1024fec7914c..11336ec6d27b 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -139,6 +139,7 @@ struct nvme_request {
+ 	u8			flags;
+ 	u16			status;
+ 	struct nvme_ctrl	*ctrl;
++	struct nvme_ns		*ns;
+ };
+ 
+ /*
 -- 
 2.16.4
 
