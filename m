@@ -2,49 +2,49 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0190316AC04
-	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 17:47:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A86F516AC27
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 17:50:43 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/89XQDB3xGPaq4EwQm6+0QqESihYqe+wLMvU/iHNq7Y=; b=PAPBW1Ttc0QK8d
-	e639hDa5TsuTt9eC1yfm41N6nKpXbWUiPWHGsl854/GZhnQJ+p3SLIsqmFREcR58wlnj7ahPtd260
-	J+DrNXzlXhS9q4gWXDPEaWYsoaasIBA4drqgFpwM86ZrtR6ucaVcKjrczjYg9mlOiDBKJfmwUSVBV
-	QVofBnxyd+T92vTEaiclkKAZeteQJrpHrvqavzTJMMgoGNdjAEEc5xa4QIfilwB+XcuQPk45ixh3c
-	GYmt1ogX8Vo/Wn/gYqt1vqfQj8pXmHXQ9s+XB0wySTJeM9/54qWOEa2AlkH9o7zSUEn4BSBd001B+
-	uZQo/wslgQuqTxiu+hDQ==;
+	List-Owner; bh=+WOx+/d9MfplM57/NxCO+5ilCYhiJnBTMJGTPfWCklY=; b=aYVCV5pSfFpbhS
+	HdIIc5tgyR1r9hbU97+n+W7HaRMLgqX6NeFCYQC0bBVlbb1X9Pu0pWuCezECqbr7tiF58iqk8h8eR
+	9+M9WyoTzP6JkQUCrKd85xUiJOjjMePsPByCBVgTGt+naQWCamXuG0CV0NlykbdyZXo+kh+V/iKV8
+	hp0iazHtfG+HnMNj3lKeIkYmvaKSgD2Nj4nBkYRnHwPa7Qf9OGKoVL64DN1Yqpnxg8LBEi9BmmG90
+	ES1fAicI/DdFIEZdoXlZNfTvJdLXxNa43vkwixGT5a8fKXvwlZD+ujZU7sbUNM+54rsG4HD9WhYnC
+	EMtMI8kQvgxfvBwekOgA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6Gt4-0002Lp-T8; Mon, 24 Feb 2020 16:47:18 +0000
+	id 1j6GwF-00063j-PU; Mon, 24 Feb 2020 16:50:35 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6Gri-0001EB-Ua
- for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 16:45:59 +0000
-Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ id 1j6Grj-0001E7-H6
+ for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 16:46:02 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 24 Feb 2020 18:45:45 +0200
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 01OGji9R013647;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 01OGji9S013647;
  Mon, 24 Feb 2020 18:45:45 +0200
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, sagi@grimberg.me,
  linux-rdma@vger.kernel.org, kbusch@kernel.org, hch@lst.de,
  martin.petersen@oracle.com
-Subject: [PATCH 05/19] nvme-fabrics: Allow user enabling metadata/T10-PI
- support
-Date: Mon, 24 Feb 2020 18:45:30 +0200
-Message-Id: <20200224164544.219438-7-maxg@mellanox.com>
+Subject: [PATCH 06/19] nvme: Introduce NVME_INLINE_PROT_SG_CNT
+Date: Mon, 24 Feb 2020 18:45:31 +0200
+Message-Id: <20200224164544.219438-8-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200224164544.219438-1-maxg@mellanox.com>
 References: <20200224164544.219438-1-maxg@mellanox.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200224_084555_390009_EF7F40C3 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20200224_084555_958434_71C98077 
+X-CRM114-Status: UNSURE (   7.43  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -76,96 +76,35 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Israel Rukshin <israelr@mellanox.com>
 
-Preparation for adding metadata (T10-PI) over fabric support. This will
-allow end-to-end protection information passthrough and validation for
-NVMe over Fabric.
+SGL size of PI metadata is usually small. Thus, 1 inline sg should
+cover most cases. The macro will be used for pre-allocate a single SGL
+entry for protection information. The preallocation of small inline SGLs
+depends on SG_CHAIN capability so if the ARCH doesn't support SG_CHAIN,
+use the runtime allocation for the SGL. This patch is a preparation for
+adding metadata (T10-PI) over fabric support.
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
 Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+Reviewed-by: Martin K. Petersen <martin.petersen@oracle.com>
 ---
- drivers/nvme/host/core.c    |  3 ++-
- drivers/nvme/host/fabrics.c | 11 +++++++++++
- drivers/nvme/host/fabrics.h |  3 +++
- 3 files changed, 16 insertions(+), 1 deletion(-)
+ drivers/nvme/host/nvme.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index ab25128..c7933a8 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -1869,7 +1869,8 @@ static int __nvme_revalidate_disk(struct gendisk *disk, struct nvme_id_ns *id)
- 		 * controller.
- 		 */
- 		if (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED) {
--			if (ns->ctrl->ops->flags & NVME_F_FABRICS ||
-+			if ((ns->ctrl->ops->flags & NVME_F_FABRICS &&
-+			     ns->ctrl->opts->pi_enable) ||
- 			    !(ns->features & NVME_NS_EXT_LBAS))
- 				ns->features |= NVME_NS_MD_HOST_SUPPORTED;
- 		}
-diff --git a/drivers/nvme/host/fabrics.c b/drivers/nvme/host/fabrics.c
-index 74b8818..c09230e 100644
---- a/drivers/nvme/host/fabrics.c
-+++ b/drivers/nvme/host/fabrics.c
-@@ -612,6 +612,7 @@ bool __nvmf_check_ready(struct nvme_ctrl *ctrl, struct request *rq,
- 	{ NVMF_OPT_NR_WRITE_QUEUES,	"nr_write_queues=%d"	},
- 	{ NVMF_OPT_NR_POLL_QUEUES,	"nr_poll_queues=%d"	},
- 	{ NVMF_OPT_TOS,			"tos=%d"		},
-+	{ NVMF_OPT_PI_ENABLE,		"pi_enable"		},
- 	{ NVMF_OPT_ERR,			NULL			}
- };
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index af8e10a..d0bfa2b 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -30,8 +30,10 @@
  
-@@ -634,6 +635,7 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
- 	opts->hdr_digest = false;
- 	opts->data_digest = false;
- 	opts->tos = -1; /* < 0 == use transport default */
-+	opts->pi_enable = false;
+ #ifdef CONFIG_ARCH_NO_SG_CHAIN
+ #define  NVME_INLINE_SG_CNT  0
++#define  NVME_INLINE_PROT_SG_CNT  0
+ #else
+ #define  NVME_INLINE_SG_CNT  2
++#define  NVME_INLINE_PROT_SG_CNT  1
+ #endif
  
- 	options = o = kstrdup(buf, GFP_KERNEL);
- 	if (!options)
-@@ -867,6 +869,15 @@ static int nvmf_parse_options(struct nvmf_ctrl_options *opts,
- 			}
- 			opts->tos = token;
- 			break;
-+#ifdef CONFIG_BLK_DEV_INTEGRITY
-+		case NVMF_OPT_PI_ENABLE:
-+			if (opts->discovery_nqn) {
-+				pr_debug("Ignoring pi_enable value for discovery controller\n");
-+				break;
-+			}
-+			opts->pi_enable = true;
-+			break;
-+#endif
- 		default:
- 			pr_warn("unknown parameter or missing value '%s' in ctrl creation request\n",
- 				p);
-diff --git a/drivers/nvme/host/fabrics.h b/drivers/nvme/host/fabrics.h
-index a0ec40a..773f748 100644
---- a/drivers/nvme/host/fabrics.h
-+++ b/drivers/nvme/host/fabrics.h
-@@ -56,6 +56,7 @@ enum {
- 	NVMF_OPT_NR_WRITE_QUEUES = 1 << 17,
- 	NVMF_OPT_NR_POLL_QUEUES = 1 << 18,
- 	NVMF_OPT_TOS		= 1 << 19,
-+	NVMF_OPT_PI_ENABLE	= 1 << 20,
- };
- 
- /**
-@@ -89,6 +90,7 @@ enum {
-  * @nr_write_queues: number of queues for write I/O
-  * @nr_poll_queues: number of queues for polling I/O
-  * @tos: type of service
-+ * @pi_enable: Enable metadata (T10-PI) support
-  */
- struct nvmf_ctrl_options {
- 	unsigned		mask;
-@@ -111,6 +113,7 @@ struct nvmf_ctrl_options {
- 	unsigned int		nr_write_queues;
- 	unsigned int		nr_poll_queues;
- 	int			tos;
-+	bool			pi_enable;
- };
- 
- /*
+ extern struct workqueue_struct *nvme_wq;
 -- 
 1.8.3.1
 
