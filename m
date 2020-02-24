@@ -2,73 +2,67 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B010D1693A3
-	for <lists+linux-nvme@lfdr.de>; Sun, 23 Feb 2020 03:24:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E733316A339
+	for <lists+linux-nvme@lfdr.de>; Mon, 24 Feb 2020 10:55:37 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QMi1B3ZFutR4IH/081Yz63LL7BaQF+VW5ALJr+FSS0E=; b=imRd0jDtVLSmm8
-	e3VMU7PTqiQgYGrhMFzCCVyGx27bKnIlKsH8hjqpOjwPk9caC4Z5MRG6syH5uAERKczi2nFjiJArZ
-	k3Xrac+1v5A84lH0iVFNudyVbwmtQo/iGU+uNnAlrN4FWp6x6ZIUQNiK7hfKUiSxLBpiJoTNjw9s5
-	J5aPPqqxjrp+cn7dkvhYk2iQrUkqlJuroUlIb1f/eiY1sqrb8MIAVcE9gk4eIKeKgQGu8CJm0qbNF
-	Z5mORAsSr7ORk2AcQBQ7h1AzTaEkEinuv36+irlct7YO7g4KxEHXcexDzS41NWDXw2smfKA7K/CGE
-	vBUBsiD26KwMTYcsVfpw==;
+	List-Owner; bh=kwU+BG6r0FosvCt0rqkHOxR7XdW5yJ8/2pxSmMJOTWw=; b=P/6e6qJtQHJ0q1
+	T3R06LoQq97R10hezCfFkDQGcXkKKcyXY6vhw+PyomxIshi3PrP+Rccehkv6xUtMnCcaP+w+Ox2n4
+	mwK/xO+x8OFX1WsKq1LVSllCO1TlgWTYgoMlZcNHSUZ8zO8qCMBlP/E5ijueuRcAIZ/V2O72MSjc1
+	D4Fs9Fa1Pv2clE8pAlvxfXryNYMAsItntF28MRVU3usUOjx4z0JUy5pRojd3HAYp98JwHBRz4OQoA
+	ycu8nxxT5KVLLawqFUYVTfzMcXA/Pm0ovNrpc8Lgz2HHvhC4nIEAtCkR1LQMkqH6Lf6YDhb3QVM43
+	++2dkEIOt58utGZvZVPA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j5gwm-0003bD-VL; Sun, 23 Feb 2020 02:24:44 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1j6ASR-0002i8-T0; Mon, 24 Feb 2020 09:55:23 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j5gvh-0002tH-IA
- for linux-nvme@lists.infradead.org; Sun, 23 Feb 2020 02:23:39 +0000
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2D818227BF;
- Sun, 23 Feb 2020 02:23:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1582424617;
- bh=z6zUjYv03o/ZBQbMjsGF1EYgUSVBYR0phVp6qM4MZ/o=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FmVtGLUYOSd3nrpn2uBsGbCRQPrloEn1rbO9f2E1ZhpkxDgSL/2W9GLb5dF+4NPTV
- L/9JWpOD+vkalWxzjk5/2AZHI5hPEDcYlgB3Bl5oCIbP2XGifq3ewyXDmIqY56z8x3
- FRs+dy8KigGP/cerQkJrWYJ/Jj78UeMfdP3HRLSk=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 50/50] nvme/pci: move cqe check after device
- shutdown
-Date: Sat, 22 Feb 2020 21:22:35 -0500
-Message-Id: <20200223022235.1404-50-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200223022235.1404-1-sashal@kernel.org>
-References: <20200223022235.1404-1-sashal@kernel.org>
+ id 1j6A8m-0003PC-6R
+ for linux-nvme@lists.infradead.org; Mon, 24 Feb 2020 09:35:06 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 24 Feb 2020 01:35:00 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,479,1574150400"; d="scan'208";a="231079120"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by fmsmga008.fm.intel.com with ESMTP; 24 Feb 2020 01:34:58 -0800
+Received: from andy by smile with local (Exim 4.93)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1j6A8h-004LzG-SO; Mon, 24 Feb 2020 11:34:59 +0200
+Date: Mon, 24 Feb 2020 11:34:59 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Christoph Hellwig <hch@lst.de>
+Subject: Re: [PATCH v1 2/2] nvme-pci: Convert to PCI_VDEVICE() macro for
+ Apple devices
+Message-ID: <20200224093459.GV10400@smile.fi.intel.com>
+References: <20200212103220.80680-1-andriy.shevchenko@linux.intel.com>
+ <20200212103220.80680-2-andriy.shevchenko@linux.intel.com>
+ <20200212173901.GB5708@lst.de>
+ <20200212203418.GW10400@smile.fi.intel.com>
+ <20200219150625.GE17748@lst.de>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+Content-Disposition: inline
+In-Reply-To: <20200219150625.GE17748@lst.de>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200222_182337_642770_AE9ECE06 
-X-CRM114-Status: GOOD (  13.73  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200224_013504_494586_C3A24E3D 
+X-CRM114-Status: GOOD (  25.05  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [134.134.136.31 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,87 +74,73 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Sasha Levin <sashal@kernel.org>,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
- Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Leif Liddy <leif.liddy@gmail.com>, linux-nvme@lists.infradead.org,
+ Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: Keith Busch <kbusch@kernel.org>
+On Wed, Feb 19, 2020 at 04:06:25PM +0100, Christoph Hellwig wrote:
+> On Wed, Feb 12, 2020 at 10:34:18PM +0200, Andy Shevchenko wrote:
+> > > This actually makes the code longer
+> > 
+> > I didn't get this. How? The code is for sure shorter.
+> 
+> Looks at the diffstat.
 
-[ Upstream commit fa46c6fb5d61b1f17b06d7c6ef75478b576304c7 ]
+Yes, but let's calculate a real code (not all lines).
+In terms of characters it's shorter, in terms of LOCs it's the same.
+On top few comment / blank lines were added.
 
-Many users have reported nvme triggered irq_startup() warnings during
-shutdown. The driver uses the nvme queue's irq to synchronize scanning
-for completions, and enabling an interrupt affined to only offline CPUs
-triggers the alarming warning.
+> > > and adds the antipattern of macros
+> > > that use string pasting on their argument,
+> > 
+> > Anti-pattern to what? Can you elaborate a bit more? Sounds like I missed some
+> > very basic thing.
+> 
+> > > 	and this breaking grep-ability > badly, so NAK.
+> > 
+> > This like a mantra people are telling, but looks like simple they didn't try.
+> > What grep issue do you see in this case (I would agree if we talk about device
+> > ID, though)?
+> 
+> If I want to grep for PCI_VENDOR_ID_APPLE I find the ids in the old code.
+> I won't find them in your new code.
 
-Move the final CQE check to after disabling the device and all
-registered interrupts have been torn down so that we do not have any
-IRQ to synchronize.
+But it's matter of writing good enough RE, right?
+What about, as rough approximation, `git grep -n 'PCI_[^,]\+APPLE'`?
 
-Link: https://bugzilla.kernel.org/show_bug.cgi?id=206509
-Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
-Signed-off-by: Keith Busch <kbusch@kernel.org>
-Signed-off-by: Jens Axboe <axboe@kernel.dk>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/nvme/host/pci.c | 23 ++++++++++++++++++-----
- 1 file changed, 18 insertions(+), 5 deletions(-)
+> > Are you going to remove PCI_VDEVICE() completely? Are you going to be
+> > consistent with the rest in this driver?
+> 
+> If you care strongly about using the same macro please send a patch to
+> remove it in nvme.  I certainly don't want the sane version switched
+> over to it.
 
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 14d513087a14b..858805929b2cd 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -1413,6 +1413,23 @@ static void nvme_disable_admin_queue(struct nvme_dev *dev, bool shutdown)
- 	nvme_poll_irqdisable(nvmeq, -1);
- }
- 
-+/*
-+ * Called only on a device that has been disabled and after all other threads
-+ * that can check this device's completion queues have synced. This is the
-+ * last chance for the driver to see a natural completion before
-+ * nvme_cancel_request() terminates all incomplete requests.
-+ */
-+static void nvme_reap_pending_cqes(struct nvme_dev *dev)
-+{
-+	u16 start, end;
-+	int i;
-+
-+	for (i = dev->ctrl.queue_count - 1; i > 0; i--) {
-+		nvme_process_cq(&dev->queues[i], &start, &end, -1);
-+		nvme_complete_cqes(&dev->queues[i], start, end);
-+	}
-+}
-+
- static int nvme_cmb_qdepth(struct nvme_dev *dev, int nr_io_queues,
- 				int entry_size)
- {
-@@ -2248,11 +2265,6 @@ static bool __nvme_disable_io_queues(struct nvme_dev *dev, u8 opcode)
- 		if (timeout == 0)
- 			return false;
- 
--		/* handle any remaining CQEs */
--		if (opcode == nvme_admin_delete_cq &&
--		    !test_bit(NVMEQ_DELETE_ERROR, &nvmeq->flags))
--			nvme_poll_irqdisable(nvmeq, -1);
--
- 		sent--;
- 		if (nr_queues)
- 			goto retry;
-@@ -2441,6 +2453,7 @@ static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown)
- 	nvme_suspend_io_queues(dev);
- 	nvme_suspend_queue(&dev->queues[0]);
- 	nvme_pci_disable(dev);
-+	nvme_reap_pending_cqes(dev);
- 
- 	blk_mq_tagset_busy_iter(&dev->tagset, nvme_cancel_request, &dev->ctrl);
- 	blk_mq_tagset_busy_iter(&dev->admin_tagset, nvme_cancel_request, &dev->ctrl);
+Perhaps in the future, but no guarantees I find a time for that soon.
+
+> > > It isn't by luck.  If the Apple devices were using the proper NVMe
+> > > class ID we'd never hit the apple specific entries, but the actually
+> > > use a different class code (the nvme one in big endian IIRC).  That
+> > > being said I'm all for having the class match last.
+> > 
+> > Nobody prevents Apple to fix this and re-use old ID. So, under luck we may
+> > consider Apple's negligence to the standards.
+> 
+> I'm just saying the current atch is not by luck.  As said in the previous
+> mail I'm fine with moving the class match to the end as it generally
+> is a good idea.  I just disagree with the "works by luck" statement for
+> the current entries.
+
+Thanks, I will send a new patch just for that.
+
 -- 
-2.20.1
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
