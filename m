@@ -2,85 +2,51 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E687117414B
-	for <lists+linux-nvme@lfdr.de>; Fri, 28 Feb 2020 22:08:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D5799174493
+	for <lists+linux-nvme@lfdr.de>; Sat, 29 Feb 2020 03:53:02 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=z1fMvao11i+d0UZrbIxXcd2/3fEWA/mH8uzwOCutGXo=; b=Sg1SLLVwBMNaHw87+L6NHTiX/
-	wA8d6+uW/xw+e36uBTtoH1U50CSUWwsZ8WmvJfUDwoDw2R3/rm0agC4pTaAZe+AXiKSNG7sSRq/C+
-	Di3xj/NOzTzlVzSg/062fV5SYLpTzmxbPcudmAs5fNnzXNWO3I5M2uUOUshCwjOoHx6ivN/iy7rI4
-	I+WiA118ntYX0TGfS7NpXLRn/TWBMm2qTLIuAIClH8raYKwf+ybp57deNZbvqe6m3NAA0vsU2R1ZU
-	1YlI6j7Q/5p+Kx/W1eC9uRMcSUYarvA1RuMH34G7mehFXkIzufsPzqasgSWmWvhZ4eY+Myxf7YOxX
-	UhFmEhwMg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SSu8xfavcRBuSB6vHJh+hyR7a1WvKW1s7ngTbRIYv7U=; b=qwd7rvwTP1VW4m
+	Yekke4Q2FOtugtR0JMaU1s9Dincm1GkV5MB+P6HuVwoMLTuxWj/NXplNsFmHp9lOjRfIqXYJWjBbt
+	LF/kMxqLagpPNzgRn8XEYlTLiyFF8w+u02In+Byxk+LJD1DNVBJHNRF7jswHzhuQ+fZITGjXqfDj2
+	tsqGYum2CfWwtPfMLks54ycKT8uMNDB+nD1uYo8ntYzdTzzGm2E6GcUewGwmo7leQq/XJhM/PArXN
+	ehfVsGfE+o/Q9N5xSoipf5nnvLiqLcM7Z8+gUM1jVisKKi+9nG9axAtY9EuBPvrQ4Hl2mA362CRTV
+	lrRkWXfoqO6mo0oPTLQQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j7mrw-0006BG-Lz; Fri, 28 Feb 2020 21:08:24 +0000
-Received: from mail-pg1-f196.google.com ([209.85.215.196])
+	id 1j7sFE-0004tn-S2; Sat, 29 Feb 2020 02:52:48 +0000
+Received: from relay12.mail.gandi.net ([217.70.178.232])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j7mrs-0006Ap-OG
- for linux-nvme@lists.infradead.org; Fri, 28 Feb 2020 21:08:21 +0000
-Received: by mail-pg1-f196.google.com with SMTP id h8so2118726pgs.9
- for <linux-nvme@lists.infradead.org>; Fri, 28 Feb 2020 13:08:20 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=nWpDQmZNg8zKVk12QskQ7NNS05C4fI/JmZBKLdKyu8Q=;
- b=Us1GGU6bAwidMR+waVOCwaIh0UaIPMKYLAkJQuYeoE4XkvQGcVlUjiUf7K2XnXLwvy
- h3n83pkBZ4sRUbElle6P8sc1A9mVw4wQVyBCgrdyW7Wz+Xg/FmwaCJYWpMUwKMk+nbUm
- DcTOYHyKjc1woT7g2mvbuykbtkK13N5732T/vmYE3GhqcczX1GRNSTx/F3iEtrsB4KFS
- LLQri6fMyJ7WXBscq8WJx8zvxiqZ3uUzRotBUh7L+hG0NnLgg4qR4mOoUTf67jqyT1qS
- ZNsTHCVQdjMMPUfVvH/+Xp1A1nMflfCiXFTWJNba2vx0Z86ZoXB1T/Bl2E/9Ygq3XXdP
- IijA==
-X-Gm-Message-State: APjAAAXcrxlv50NgH+L/So+O3MQMshI9CPEFXChwLBa0dmK3xfl49GHQ
- hA7G93kixQ6RfZau5MLQXbcnOUQq
-X-Google-Smtp-Source: APXvYqyf2/+xTHCYSFhW4J95sd6Pwt0G0udhry1jSzJT1DMX606rzS0bR1zysqZ5m0K0wflnahmZOg==
-X-Received: by 2002:aa7:9ab6:: with SMTP id x22mr6160590pfi.260.1582924099912; 
- Fri, 28 Feb 2020 13:08:19 -0800 (PST)
-Received: from ?IPv6:2601:647:4802:9070:d1b8:1f12:d98f:3f23?
- ([2601:647:4802:9070:d1b8:1f12:d98f:3f23])
- by smtp.gmail.com with ESMTPSA id e189sm6972108pfa.139.2020.02.28.13.08.18
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 28 Feb 2020 13:08:18 -0800 (PST)
-Subject: Re: [PATCH 11/29] nvme-fc: convert assoc_active flag to atomic
-To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
-References: <20200205183753.25959-1-jsmart2021@gmail.com>
- <20200205183753.25959-12-jsmart2021@gmail.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <45e29b9c-d573-308f-769a-4631c8d63ffc@grimberg.me>
-Date: Fri, 28 Feb 2020 13:08:17 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ id 1j7sFA-0004tJ-SR
+ for linux-nvme@lists.infradead.org; Sat, 29 Feb 2020 02:52:46 +0000
+Received: from localhost (c-71-238-64-75.hsd1.or.comcast.net [71.238.64.75])
+ (Authenticated sender: josh@joshtriplett.org)
+ by relay12.mail.gandi.net (Postfix) with ESMTPSA id 3EC1F200007;
+ Sat, 29 Feb 2020 02:52:30 +0000 (UTC)
+Date: Fri, 28 Feb 2020 18:52:28 -0800
+From: Josh Triplett <josh@joshtriplett.org>
+To: Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
+ Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>
+Subject: [PATCH] nvme: Check for readiness more quickly, to speed up boot time
+Message-ID: <20200229025228.GA203607@localhost>
 MIME-Version: 1.0
-In-Reply-To: <20200205183753.25959-12-jsmart2021@gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200228_130820_783505_02C56B80 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.3 (/)
+X-CRM114-CacheID: sfid-20200228_185245_054607_BDEDD0AC 
+X-CRM114-Status: GOOD (  11.72  )
+X-Spam-Score: -0.7 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.3 points)
+ Content analysis details:   (-0.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.215.196 listed in list.dnswl.org]
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [217.70.178.232 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [sagigrim[at]gmail.com]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.215.196 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,13 +58,60 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: martin.petersen@oracle.com
+Cc: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+After initialization, nvme_wait_ready checks for readiness every 100ms,
+even though the drive may be ready far sooner than that. This delays
+system boot by hundreds of milliseconds. Reduce the delay, checking for
+readiness every millisecond instead.
+
+Boot-time tests on an AWS c5.12xlarge:
+
+Before:
+[    0.546936] initcall nvme_init+0x0/0x5b returned 0 after 37 usecs
+...
+[    0.764178] nvme nvme0: 2/0/0 default/read/poll queues
+[    0.768424]  nvme0n1: p1
+[    0.774132] EXT4-fs (nvme0n1p1): mounted filesystem with ordered data mode. Opts: (null)
+[    0.774146] VFS: Mounted root (ext4 filesystem) on device 259:1.
+...
+[    0.788141] Run /sbin/init as init process
+
+After:
+[    0.537088] initcall nvme_init+0x0/0x5b returned 0 after 37 usecs
+...
+[    0.543457] nvme nvme0: 2/0/0 default/read/poll queues
+[    0.548473]  nvme0n1: p1
+[    0.554339] EXT4-fs (nvme0n1p1): mounted filesystem with ordered data mode. Opts: (null)
+[    0.554344] VFS: Mounted root (ext4 filesystem) on device 259:1.
+...
+[    0.567931] Run /sbin/init as init process
+
+Signed-off-by: Josh Triplett <josh@joshtriplett.org>
+---
+ drivers/nvme/host/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index a4d8c90ee7cc..04174a40b9b0 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -2074,7 +2074,7 @@ static int nvme_wait_ready(struct nvme_ctrl *ctrl, u64 cap, bool enabled)
+ 		if ((csts & NVME_CSTS_RDY) == bit)
+ 			break;
+ 
+-		msleep(100);
++		usleep_range(1000, 2000);
+ 		if (fatal_signal_pending(current))
+ 			return -EINTR;
+ 		if (time_after(jiffies, timeout)) {
+-- 
+2.25.1
+
 
 _______________________________________________
 linux-nvme mailing list
