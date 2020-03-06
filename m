@@ -2,56 +2,64 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35CA117BD96
-	for <lists+linux-nvme@lfdr.de>; Fri,  6 Mar 2020 14:05:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 36A0717C129
+	for <lists+linux-nvme@lfdr.de>; Fri,  6 Mar 2020 16:04:03 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=pkJ/dwQeuSMU7HfZQ+f/VPg+XESCbZGwTuekxCKenKs=; b=WAOzyYyZFR+DX5eqxhPzZ9OaHZ
-	KhD2eqYizr458iGVIZfGo43k6FdFlo6UH7qi18tdOYuQap/QQbcUhxCB9CCOnPCOV8mMod3bmr8GU
-	mhD/oB+ugOZ2zp0hIjIu6ECzolH2QbXhMoKoE+vQiulOSzTnqe698MKCvtkjaVr0P9Xk4Jm7SL9Kq
-	l5fsp1QaswzrVY8YvslGVr0gzHLb9DVT2mJ9APg4RigJ+Kdw8zYovuOaC8lxnbcjmNkuF9nmZC7Kk
-	n4KI2swEhKDGu/MH3L4ba2Acvh9I2zPjuSo2YecfzSC8gBSkXt0fzRQHKcJFIYzpWyyyfNfX8oQ68
-	stnhwAdQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=aNUqanZ+zQWFp9cXtIwnSb1AQWeUw/aqO2MzNZSh8dM=; b=d7T2HiSdexQ6fHz76jrVPbu1l
+	GGfZnlKbumK55C0G+vGBwgP+PLywE4AqmEqL+ynsezh7QZCkuI+lXtGWDlTnD0B6KenilCC1AmzH8
+	3mnuZXjX7rSRtd1BEkZkLs7unw3O4ED9qHR0I/ZYyrAHmZARyJI5u/tXiO8++0jwqt/dQvMeylCX7
+	MeaNwtVG0rdJgN1i/MLB+chdIs75JaljecFbYNv6KxXP5iG0jWVjTwnlKkWoj/ijuj2zQ2LvXf2ZF
+	8Bj7q5pv89YHLZPUdnCtaaqg9cQ3NdfBdg/lQJCO1ska+7aus1laNeFmHAU/Di+0/VwYiMwtTYFrF
+	fY5TdH7iQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jACev-0008Fz-5S; Fri, 06 Mar 2020 13:04:57 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1jAEW0-0003eb-Ve; Fri, 06 Mar 2020 15:03:52 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jACeq-0008EX-Lu
- for linux-nvme@lists.infradead.org; Fri, 06 Mar 2020 13:04:54 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 2FFE3B217;
- Fri,  6 Mar 2020 13:04:49 +0000 (UTC)
-From: Hannes Reinecke <hare@suse.de>
-To: Christoph Hellwig <hch@lst.de>
-Subject: [PATCH 3/3] nvme/fcloop: flush workqueue before calling
- nvme_fc_unregister_remoteport()
-Date: Fri,  6 Mar 2020 14:04:40 +0100
-Message-Id: <20200306130440.16864-4-hare@suse.de>
-X-Mailer: git-send-email 2.16.4
-In-Reply-To: <20200306130440.16864-1-hare@suse.de>
-References: <20200306130440.16864-1-hare@suse.de>
+ id 1jAEVx-0003dZ-DZ
+ for linux-nvme@lists.infradead.org; Fri, 06 Mar 2020 15:03:50 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Mar 2020 07:03:47 -0800
+X-IronPort-AV: E=Sophos;i="5.70,522,1574150400"; d="scan'208";a="287991101"
+Received: from ddalessa-mobl.amr.corp.intel.com (HELO [10.254.203.47])
+ ([10.254.203.47])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-SHA;
+ 06 Mar 2020 07:03:46 -0800
+Subject: Re: [bug report] NVMe RDMA OPA: kmemleak observed with
+ connect/reset_controller/disconnect
+To: Sagi Grimberg <sagi@grimberg.me>, Yi Zhang <yi.zhang@redhat.com>,
+ linux-nvme@lists.infradead.org
+References: <215235485.15264050.1583334487658.JavaMail.zimbra@redhat.com>
+ <ef49292b-c39d-2f0b-99ca-2835b6afff97@grimberg.me>
+From: Dennis Dalessandro <dennis.dalessandro@intel.com>
+Message-ID: <708eb993-2f8b-06b5-2084-23048c24ef4b@intel.com>
+Date: Fri, 6 Mar 2020 10:03:44 -0500
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <ef49292b-c39d-2f0b-99ca-2835b6afff97@grimberg.me>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200306_050452_867435_6BE99FA0 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20200306_070349_469373_178C711D 
+X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
+ medium trust [192.55.52.120 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [195.135.220.15 listed in wl.mailspike.net]
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,47 +71,21 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Keith Busch <keith.busch@wdc.com>, James Smart <james.smart@broadcom.com>,
- linux-nvme@lists.infradead.org, Hannes Reinecke <hare@suse.de>,
- Sagi Grimberg <sagi@grimberg.me>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: kbusch@kernel.org,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-nvme_fc_unregister_remoteport() will be sending LS requests, which then
-would end up on a workqueue for processing. This will deadlock with
-fcloop_remoteport_delete() which would try to flush the very same queue.
+On 3/5/2020 3:57 PM, Sagi Grimberg wrote:
+> CCing Linux-rdma as I don't think anyone in nvme will
+> have a clue to whats going on here...
+> 
 
-Signed-off-by: Hannes Reinecke <hare@suse.de>
----
- drivers/nvme/target/fcloop.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+We will take a look at it. Thanks for forwarding!
 
-diff --git a/drivers/nvme/target/fcloop.c b/drivers/nvme/target/fcloop.c
-index 4f9435d9fa61..0209da9bcb67 100644
---- a/drivers/nvme/target/fcloop.c
-+++ b/drivers/nvme/target/fcloop.c
-@@ -943,7 +943,6 @@ fcloop_remoteport_delete(struct nvme_fc_remote_port *remoteport)
- {
- 	struct fcloop_rport *rport = remoteport->private;
- 
--	flush_work(&rport->ls_work);
- 	fcloop_nport_put(rport->nport);
- }
- 
-@@ -1278,6 +1277,7 @@ __remoteport_unreg(struct fcloop_nport *nport, struct fcloop_rport *rport)
- 	if (!rport)
- 		return -EALREADY;
- 
-+	flush_work(&rport->ls_work);
- 	return nvme_fc_unregister_remoteport(rport->remoteport);
- }
- 
--- 
-2.16.4
+-Denny
 
 
 _______________________________________________
