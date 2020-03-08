@@ -2,58 +2,56 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 773CF17CE15
-	for <lists+linux-nvme@lfdr.de>; Sat,  7 Mar 2020 13:15:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BB03817D37E
+	for <lists+linux-nvme@lfdr.de>; Sun,  8 Mar 2020 11:57:17 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cKX0NaSchdxEIuoihGHjzJOYFfiyS179FPDvO6aNPak=; b=tQCVyxzD0fTMIgM3gj3V+1Ucg
-	r+zfUnEE39Lmo5sfeNhWYVzMv9eemRMPY3Lhld4NF2BmfKg50lyWZgJOqKs797lu2f/6c5UclqokL
-	yxd+oghJiilrYD2mnZ1aZsTSt6Uu0wRDiF3KRnARtNIOOOH7QPKg1EthjuXtdqPGSUd+1VFSRQuje
-	P/mnk2bUkIKUvrVRLPx2rt26eU1efM+vvstBfHG+abXUDVBJxSyl1l4EPqb/229K1U1nmds2oHUL/
-	3nhs4VPdfVK+7XULN2o/etxhgP9D4ffOII7rqjYyW7r5rWZEUNnBir3uxjl5va7vXWaREWlRoN7DK
-	M5XoOnD2A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=83IEt9J3k8kRK8yFwOfZ2bM6dTBtm3ogTyup+g9TgRM=; b=nVkFdeBdZGCXSg
+	YpWx7Q8MSrO/EBajQeh60nFhgsM/8TBDI2AVTCZKoi1V3bPyr4JQPw0fF5Yn5e/L0ryhQk0WdpDwW
+	GeWFdlmtGKQd709rLZp4MuxHGpmvKUkA818fmaf2xCcUWsYXW8hMYZQwQudXhZPQ7pgLzO364sTdP
+	sSzXgfL3hkUxBQbuvRRmehvM+fQD0OvLAocyNw2Kq7bJKMX0Ahacq2k0HN4ZNIi5+jQzA+3DyPBLD
+	1eV8LyI9WMBbyWjxM03iCyCzN/KJPUEV8hixKGnTaY+jjlzhhJ1yFqYhJ5M1dvRaFtL11Z2aUQW+C
+	MA/rUzap9qRP7oS70FNQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAYMU-0005Z8-M9; Sat, 07 Mar 2020 12:15:22 +0000
-Received: from mx2.suse.de ([195.135.220.15])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAYMP-0005YN-Si
- for linux-nvme@lists.infradead.org; Sat, 07 Mar 2020 12:15:19 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 10989AEAC;
- Sat,  7 Mar 2020 12:15:12 +0000 (UTC)
-Subject: Re: [PATCH V4] nvme-fabrics: reject I/O to offline device
-To: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
- linux-nvme@lists.infradead.org
-References: <20200302033004.19474-1-chaitanya.kulkarni@wdc.com>
-From: Hannes Reinecke <hare@suse.de>
-Message-ID: <64155ff6-f4b9-27d1-9dcb-97afddb5840f@suse.de>
-Date: Sat, 7 Mar 2020 13:15:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+	id 1jAtcL-0002YY-8d; Sun, 08 Mar 2020 10:57:09 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jAtaU-0000Oi-HR
+ for linux-nvme@lists.infradead.org; Sun, 08 Mar 2020 10:55:20 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ maxg@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 8 Mar 2020 12:55:05 +0200
+Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
+ [10.209.102.136])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 028At5GN004210;
+ Sun, 8 Mar 2020 12:55:05 +0200
+From: Max Gurtovoy <maxg@mellanox.com>
+To: jgg@mellanox.com, linux-nvme@lists.infradead.org, sagi@grimberg.me,
+ hch@lst.de, kbusch@kernel.org
+Subject: [PATCH V3 1/3] nvmet: Add get_mdts op for controllers
+Date: Sun,  8 Mar 2020 12:55:03 +0200
+Message-Id: <20200308105505.14305-1-maxg@mellanox.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-In-Reply-To: <20200302033004.19474-1-chaitanya.kulkarni@wdc.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200307_041518_218528_B467B3EA 
-X-CRM114-Status: GOOD (  33.43  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200308_035515_004297_FAFC5AE9 
+X-CRM114-Status: GOOD (  11.13  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [193.47.165.129 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [195.135.220.15 listed in wl.mailspike.net]
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,129 +63,76 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: hch@lst.de, Victor.Gladkov@kioxia.com, sagi@grimberg.me, snitzer@redhat.com,
- james.smart@broadcom.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: bvanassche@acm.org, vladimirk@mellanox.com, bharat@chelsio.com,
+ nirranjan@chelsio.com, shlomin@mellanox.com, krishna2@chelsio.com,
+ Max Gurtovoy <maxg@mellanox.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gMy8yLzIwIDQ6MzAgQU0sIENoYWl0YW55YSBLdWxrYXJuaSB3cm90ZToKPiBGcm9tOiBWaWN0
-b3IgR2xhZGtvdiA8dmljdG9yLmdsYWRrb3ZAa2lveGlhLmNvbT4KPiAKPiBDb21tYW5kcyBnZXQg
-c3R1Y2sgd2hpbGUgSG9zdCBOVk1lIGNvbnRyb2xsZXIgKFRDUCBvciBSRE1BKSBpcyBpbgo+IHJl
-Y29ubmVjdCBzdGF0ZS4gTlZNZSBjb250cm9sbGVyIGVudGVycyBpbnRvIHJlY29ubmVjdCBzdGF0
-ZSB3aGVuIGl0Cj4gbG9zZXMgY29ubmVjdGlvbiB3aXRoIHRoZSB0YXJnZXQuIEl0IHRyaWVzIHRv
-IHJlY29ubmVjdCBldmVyeSAxMAo+IHNlY29uZHMgKGRlZmF1bHQpIHVudGlsIHN1Y2Nlc3NmdWwg
-cmVjb25uZWN0aW9uIG9yIHVudGlsIHJlY29ubmVjdAo+IHRpbWUtb3V0IGlzIHJlYWNoZWQuIFRo
-ZSBkZWZhdWx0IHJlY29ubmVjdCB0aW1lIG91dCBpcyAxMCBtaW51dGVzLgo+IAo+IFRvIGZpeCB0
-aGlzIGxvbmcgZGVsYXkgZHVlIHRvIHRoZSBkZWZhdWx0IHRpbWVvdXQgd2UgaW50cm9kdWNlIG5l
-dwo+IHNlc3Npb24gcGFyYW1ldGVyICJmYXN0X2lvX2ZhaWxfdG1vIi4gVGhlIHRpbWVvdXQgaXMg
-bWVhc3VyZWQgaW4KPiBzZWNvbmRzIGZyb20gdGhlIGNvbnRyb2xsZXIgcmVjb25uZWN0LCBhbnkg
-Y29tbWFuZCBiZXlvbmQgdGhhdCB0aW1lb3V0Cj4gaXMgcmVqZWN0ZWQuIFRoZSBuZXcgcGFyYW1l
-dGVyIHZhbHVlIG1heSBiZSBwYXNzZWQgZHVyaW5nICdjb25uZWN0Jy4KPiBUaGUgZGVmYXVsdCB2
-YWx1ZSBvZiAwIG1lYW5zIG5vIHRpbWVvdXQgKHNpbWlsYXIgdG8gY3VycmVudCBiZWhhdmlvciku
-Cj4gCj4gV2UgYWRkIGEgbmV3IGNvbnRyb2xsZXIgTlZNRV9DVFJMX0ZBSUxGQVNUX0VYUElSRUQg
-YW5kIHJlc3BlY3RpdmUKPiBkZWxheWVkIHdvcmsgdGhhdCB1cGRhdGVzIHRoZSBOVk1FX0NUUkxf
-RkFJTEZBU1RfRVhQSVJFRCBmbGFnLgo+IAo+IFdoZW4gdGhlIGNvbnRyb2xsZXIgaXMgZW50ZXJp
-bmcgdGhlIENPTk5FQ1RJTkcgc3RhdGUsIHdlIHNjaGVkdWxlIHRoZQo+IGRlbGF5ZWRfd29yayBi
-YXNlZCBvbiBmYWlsZmFzdCB0aW1lb3V0IHZhbHVlLiBJZiB0aGUgdHJhbnNpdGlvbiBpcyBvdXQK
-PiBvZiBDT05ORUNUSU5HLCB0ZXJtaW5hdGUgZGVsYXllZCB3b3JrIGl0ZW0gYW5kIGVuc3VyZSBm
-YWlsZmFzdF9leHBpcmVkCj4gaXMgZmFsc2UuIElmIGRlbGF5ZWQgd29yayBpdGVtIGV4cGlyZXMg
-dGhlbiBzZXQKPiAiTlZNRV9DVFJMX0ZBSUxGQVNUX0VYUElSRUQiIGZsYWcgdG8gdHJ1ZS4KPiAK
-PiBXZSBhbHNvIHVwZGF0ZSBudm1mX2ZhaWxfbm9ucmVhZHlfY29tbWFuZCgpIGFuZCBudm1lX2F2
-YWlsYWJsZV9wYXRoKCkKPiBmdW5jdGlvbnMgd2l0aCBjaGVjayB0aGUgIk5WTUVfQ1RSTF9GQUlM
-RkFTVF9FWFBJUkVEIiBjb250cm9sbGVyIGZsYWcuCj4gCj4gU2lnbmVkLW9mZi1ieTogVmljdG9y
-IEdsYWRrb3YgPHZpY3Rvci5nbGFka292QGtpb3hpYS5jb20+Cj4gU2lnbmVkLW9mZi1ieTogQ2hh
-aXRhbnlhIEt1bGthcm5pIDxjaGFpdGFueWEua3Vsa2FybmlAd2RjLmNvbT4KPiAtLS0KPiBDaGFu
-Z2VzIEZyb20gVjM6Cj4gCj4gMS4gQlVHX0ZJWDogRml4IGEgYnVnIGluIG52bWVfc3RhcnRfZmFp
-bGZhc3Rfd29yaygpIGFtZAo+ICAgICBudm1lX3N0b3BfZmFpbGZhc3Rfd29yaygpIHdoZW4gYWNj
-ZXNzaW5nIGN0cmwtPm9wdHMgYXMgaXQgd2lsbCBmYWlsCj4gICAgIGZvciBQQ0llIHRyYW5zcG9y
-dCB3aGVuIGlzIGNhbGxlZCBudm1lX2NoYW5nZV9jdHJsX3N0YXRlKCkKPiAgICAgZnJvbSBudm1l
-X3Jlc2V0X3dvcmsoKSwgc2luY2Ugd2UgZG9uJ3Qgc2V0IHRoZSBjdHJsLT5vcHRzIGZvcgo+ICAg
-ICBQQ0llIHRyYW5zcG9ydC4KPiAyLiBMaW5lIHdyYXAgaW4gbnZtZV9zdGFydF9mYWlsZmFzdF93
-b3JrKCksIG52bWVfcGFyc2Vfb3B0aW9uKCkgYW5kCj4gICAgIGZvciBtYWNybyBOVk1GX0FMTE9X
-RURfT1BUUyBkZWZpbml0aW9uLgo+IDMuIEp1c3QgbGlrZSBhbGwgdGhlIHN0YXRlIGNoYW5nZSBj
-b2RlIGFkZCBhIHN3aXRjaCBmb3IgbmV3bHkKPiAgICAgYWRkZWQgc3RhdGUgaGFuZGxpbmcgb3V0
-c2lkZSBvZiB0aGUgc3RhdGUgbWFjaGluZSBpbgo+ICAgICBudm1lX3N0YXRlX2NoYW5nZSgpLgo+
-IDQuIG52bWVfYXZhaWxhYmxlX3BhdGgoKSBhZGQgLyogZmFsbHRocnUgKi8gYWZ0ZXIgaWYuLmJy
-ZWFrIGluc2lkZQo+ICAgICBzd2l0Y2ggd2hpY2ggaXMgdW5kZXIgbGlzdF9mb3JfZWFjaF9lbnRy
-eV9yY3UoKS4KPiA1LiBBbGlnbiBuZXdseSBhZGRlZCBtZW1iZXIgbnZtZl9jdHJsX29wdGlvbnMg
-ZmFzdF9pb19mYWlsX3RtcC4KPiA2LiBGaXggdGhlIHRhYnMgYmVmb3JlIGlmIGluIG52bWVfYXZh
-aWxhYmxlX3BhdGgoKSBhbmQgbGluZSB3cmFwCj4gICAgIGZvciB0aGUgc2FtZS4KPiA3LiBJbiBu
-dm1lX2ZhaWxmYXN0X3dvcmsoKSB1c2Ugc3RhdGUgIT0gTlZNRV9DVFJMX0NPTk5FQ1RJTkcKPiAg
-ICAgaW5zdGVhZCBvZiA9PSB0byBnZXQgcmlkIG9mIHRoZSBwYXJlbnRoZXNlcyBhbmQgYXZvaWQg
-Y2hhciA+IDgwLgo+IDguIEdldCByaWQgb2YgdGhlICI7IiBhdCB0aGUgZW5kIG9mIHRoZSBjb21t
-ZW50IGZvciBAZmFzdF9pb19mYWlsX3RtcC4KPiA5LiBDaGFuZ2UgdGhlIGNvbW1pdCBsb2cgc3R5
-bGUgdG8gbWF0Y2ggdGhlIG9uZSB3ZSBoYXZlIGluIHRoZSBOVk1lCj4gICAgIHJlcG8uCj4gCj4g
-Q2hhbmdlcyBmcm9tIFYyOgo+IAo+IDEuIFNldmVyYWwgY29kaW5nIHN0eWxlIGFuZCBzbWFsbCBm
-aXhlcy4KPiAyLiBGaXggdGhlIGNvbW1lbnQgZm9yIE5WTUZfREVGX0ZBSUxfRkFTVF9UTU8uCj4g
-My4gRG9uJ3QgY2FsbCBmdW5jdGlvbmFsaXR5IGZyb20gdGhlIHN0YXRlIG1hY2hpbmUuCj4gNC4g
-UmVuYW1lIGZhc3RfZmFpbF90bW8gLT4gZmFzdF9pb19mYWlsX3RtbyB0byBtYXRjaCBTQ1NJCj4g
-ICAgIHNlbWFudGljcy4KPiAKPiBDaGFuZ2VzIGZyb20gVjE6Cj4gCj4gMS4gQWRkIGEgbmV3IHNl
-c3Npb24gcGFyYW1ldGVyIGNhbGxlZCAiZmFzdF9mYWlsX3RtbyIuIFRoZSB0aW1lb3V0Cj4gICAg
-IGlzIG1lYXN1cmVkIGluIHNlY29uZHMgZnJvbSB0aGUgY29udHJvbGxlciByZWNvbm5lY3QsIGFu
-eSBjb21tYW5kCj4gICAgIGJleW9uZCB0aGF0IHRpbWVvdXQgaXMgcmVqZWN0ZWQuIFRoZSBuZXcg
-cGFyYW1ldGVyIHZhbHVlIG1heSBiZQo+ICAgICBwYXNzZWQgZHVyaW5nICdjb25uZWN0JywgYW5k
-IGl0cyBkZWZhdWx0IHZhbHVlIGlzIDMwIHNlY29uZHMuCj4gICAgIEEgdmFsdWUgb2YgMCBtZWFu
-cyBubyB0aW1lb3V0IChzaW1pbGFyIHRvIGN1cnJlbnQgYmVoYXZpb3IpLgo+IDIuIEFkZCBhIGNv
-bnRyb2xsZXIgZmxhZyBvZiAiZmFpbGZhc3RfZXhwaXJlZCIuCj4gMy4gQWRkIGRlZGljYXRlZCBk
-ZWxheWVkX3dvcmsgdGhhdCB1cGRhdGUgdGhlICJmYWlsZmFzdF9leHBpcmVkIgo+ICAgICBjb250
-cm9sbGVyIGZsYWcuCj4gNC4gV2hlbiBlbnRlcmluZyBDT05ORUNUSU5HLCBzY2hlZHVsZSB0aGUg
-ZGVsYXllZF93b3JrIGJhc2VkIG9uCj4gICAgIGZhaWxmYXN0IHRpbWVvdXQgdmFsdWUuIElmIHRy
-YW5zaXRpb24gb3V0IG9mIENPTk5FQ1RJTkcsIHRlcm1pbmF0ZQo+ICAgICBkZWxheWVkIHdvcmsg
-aXRlbSBhbmQgZW5zdXJlIGZhaWxmYXN0X2V4cGlyZWQgaXMgZmFsc2UuCj4gICAgIElmIGRlbGF5
-ZWQgd29yayBpdGVtIGV4cGlyZXM6IHNldCAiZmFpbGZhc3RfZXhwaXJlZCIgZmxhZyB0byB0cnVl
-Lgo+IDUuIFVwZGF0ZSBudm1mX2ZhaWxfbm9ucmVhZHlfY29tbWFuZCgpIHdpdGggY2hlY2sgdGhl
-Cj4gICAgICJmYWlsZmFzdF9leHBpcmVkIiBjb250cm9sbGVyIGZsYWcuCj4gLS0tCj4gICBkcml2
-ZXJzL252bWUvaG9zdC9jb3JlLmMgICAgICB8IDUzICsrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKy0tCj4gICBkcml2ZXJzL252bWUvaG9zdC9mYWJyaWNzLmMgICB8IDMyICsrKysrKysr
-KysrKysrKysrLS0tLQo+ICAgZHJpdmVycy9udm1lL2hvc3QvZmFicmljcy5oICAgfCAgNSArKysr
-Cj4gICBkcml2ZXJzL252bWUvaG9zdC9tdWx0aXBhdGguYyB8ICA2ICsrKy0KPiAgIGRyaXZlcnMv
-bnZtZS9ob3N0L252bWUuaCAgICAgIHwgIDMgKysKPiAgIDUgZmlsZXMgY2hhbmdlZCwgOTAgaW5z
-ZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9udm1l
-L2hvc3QvY29yZS5jIGIvZHJpdmVycy9udm1lL2hvc3QvY29yZS5jCj4gaW5kZXggODQ5MTQyMjNj
-NTM3Li5mYjdiM2NlMmEyNzEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9udm1lL2hvc3QvY29yZS5j
-Cj4gKysrIGIvZHJpdmVycy9udm1lL2hvc3QvY29yZS5jCj4gQEAgLTEzNiw2ICsxMzYsMzkgQEAg
-aW50IG52bWVfdHJ5X3NjaGVkX3Jlc2V0KHN0cnVjdCBudm1lX2N0cmwgKmN0cmwpCj4gICB9Cj4g
-ICBFWFBPUlRfU1lNQk9MX0dQTChudm1lX3RyeV9zY2hlZF9yZXNldCk7Cj4gICAKPiArc3RhdGlj
-IHZvaWQgbnZtZV9mYWlsZmFzdF93b3JrKHN0cnVjdCB3b3JrX3N0cnVjdCAqd29yaykKPiArewo+
-ICsJc3RydWN0IG52bWVfY3RybCAqY3RybCA9IGNvbnRhaW5lcl9vZih0b19kZWxheWVkX3dvcmso
-d29yayksCj4gKwkJCXN0cnVjdCBudm1lX2N0cmwsIGZhaWxmYXN0X3dvcmspOwo+ICsKPiArCXNw
-aW5fbG9ja19pcnEoJmN0cmwtPmxvY2spOwo+ICsJaWYgKGN0cmwtPnN0YXRlICE9IE5WTUVfQ1RS
-TF9DT05ORUNUSU5HKQo+ICsJCWdvdG8gb3V0Owo+ICsKPiArCXNldF9iaXQoTlZNRV9DVFJMX0ZB
-SUxGQVNUX0VYUElSRUQsICZjdHJsLT5mbGFncyk7Cj4gKwlkZXZfaW5mbyhjdHJsLT5kZXZpY2Us
-ICJmYWlsZmFzdCBleHBpcmVkIHNldCBmb3IgY29udHJvbGxlciAlc1xuIiwKPiArCQljdHJsLT5v
-cHRzLT5zdWJzeXNucW4pOwo+ICsJbnZtZV9raWNrX3JlcXVldWVfbGlzdHMoY3RybCk7Cj4gK291
-dDoKPiArCXNwaW5fdW5sb2NrX2lycSgmY3RybC0+bG9jayk7Cj4gK30KPiArCj4gK3N0YXRpYyBp
-bmxpbmUgdm9pZCBudm1lX3N0YXJ0X2ZhaWxmYXN0X3dvcmsoc3RydWN0IG52bWVfY3RybCAqY3Ry
-bCkKPiArewo+ICsJaWYgKCFjdHJsLT5vcHRzIHx8IGN0cmwtPm9wdHMtPmZhc3RfaW9fZmFpbF90
-bW8gPT0gMCkKPiArCQlyZXR1cm47Cj4gKwlzY2hlZHVsZV9kZWxheWVkX3dvcmsoJmN0cmwtPmZh
-aWxmYXN0X3dvcmssCj4gKwkJCSAgICAgIGN0cmwtPm9wdHMtPmZhc3RfaW9fZmFpbF90bW8gKiBI
-Wik7Cj4gK30KPiArCj4gK3N0YXRpYyBpbmxpbmUgdm9pZCBudm1lX3N0b3BfZmFpbGZhc3Rfd29y
-ayhzdHJ1Y3QgbnZtZV9jdHJsICpjdHJsKQo+ICt7Cj4gKwlpZiAoIWN0cmwtPm9wdHMgfHwgY3Ry
-bC0+b3B0cy0+ZmFzdF9pb19mYWlsX3RtbyA9PSAwKQo+ICsJCXJldHVybjsKPiArCWNhbmNlbF9k
-ZWxheWVkX3dvcmtfc3luYygmY3RybC0+ZmFpbGZhc3Rfd29yayk7Cj4gKwljbGVhcl9iaXQoTlZN
-RV9DVFJMX0ZBSUxGQVNUX0VYUElSRUQsICZjdHJsLT5mbGFncyk7Cj4gK30KPiArCj4gICBpbnQg
-bnZtZV9yZXNldF9jdHJsKHN0cnVjdCBudm1lX2N0cmwgKmN0cmwpCj4gICB7Cj4gICAJaWYgKCFu
-dm1lX2NoYW5nZV9jdHJsX3N0YXRlKGN0cmwsIE5WTUVfQ1RSTF9SRVNFVFRJTkcpKQo+IEBAIC0z
-OTUsOCArNDI4LDIxIEBAIGJvb2wgbnZtZV9jaGFuZ2VfY3RybF9zdGF0ZShzdHJ1Y3QgbnZtZV9j
-dHJsICpjdHJsLAo+ICAgCX0KPiAgIAo+ICAgCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJmN0cmwt
-PmxvY2ssIGZsYWdzKTsKPiAtCWlmIChjaGFuZ2VkICYmIGN0cmwtPnN0YXRlID09IE5WTUVfQ1RS
-TF9MSVZFKQo+IC0JCW52bWVfa2lja19yZXF1ZXVlX2xpc3RzKGN0cmwpOwo+ICsJaWYgKGNoYW5n
-ZWQpIHsKPiArCQlzd2l0Y2ggKGN0cmwtPnN0YXRlKSB7Cj4gKwkJY2FzZSBOVk1FX0NUUkxfTElW
-RToKPiArCQkJbnZtZV9raWNrX3JlcXVldWVfbGlzdHMoY3RybCk7Cj4gKwkJCWlmIChvbGRfc3Rh
-dGUgPT0gTlZNRV9DVFJMX0NPTk5FQ1RJTkcpCj4gKwkJCQludm1lX3N0b3BfZmFpbGZhc3Rfd29y
-ayhjdHJsKTsKPiArCQkJYnJlYWs7ClRoaXMgaXMgYSBiaXQgYXdrd2FyZDsgbnZtZV9zdG9wX2Zh
-aWxmYXN0X3dvcmsoKSB3aWxsIGNhbGwKY2FuY2VsX2RlbGF5ZWRfd29ya19zeW5jKCksIHdoaWNo
-IGluIHR1cm4gbWlnaHQgbmVlZCB0byB3YWl0IGZvciBhbiAKYWxyZWFkeSBydW5uaW5nIHdvcmtx
-dWV1ZSBmdW5jdGlvbiwgd2hpY2ggYWxyZWFkeSBoYXMgdGhlIGN0cmwgbG9jay4KRGVhZGxvY2su
-ClNvIHlvdSBuZWVkIHRvIGNhbGwgJ252bWVfc3RvcF9mYWlsZmFzdF93b3JrKCknIHdpdGhvdXQg
-dGhlIGN0cmwgbG9jayBoZWxkLgoKT3RoZXIgdGhhbiB0aGF0IEknbSB2ZXJ5IG11Y2ggaW4gZmF2
-b3VyIG9mIHRoaXMgYXBwcm9hY2guCgpDaGVlcnMsCgpIYW5uZXMKLS0gCkRyLiBIYW5uZXMgUmVp
-bmVja2UgICAgICAgICAgICBUZWFtbGVhZCBTdG9yYWdlICYgTmV0d29ya2luZwpoYXJlQHN1c2Uu
-ZGUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKzQ5IDkxMSA3NDA1MyA2ODgKU1VTRSBT
-b2Z0d2FyZSBTb2x1dGlvbnMgR21iSCwgTWF4ZmVsZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnCkhS
-QiAzNjgwOSAoQUcgTsO8cm5iZXJnKSwgR2VzY2jDpGZ0c2bDvGhyZXI6IEZlbGl4IEltZW5kw7Zy
-ZmZlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGlu
-dXgtbnZtZSBtYWlsaW5nIGxpc3QKbGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+Some transports, such as RDMA, would like to set the Maximum Data
+Transfer Size (MDTS) according to device/port/ctrl characteristics.
+This will enable the transport to set the optimal MDTS according to
+controller needs and device capabilities. Add a new nvmet transport
+op that is called during ctrl identification. This will not effect
+transports that don't implement this option. The return value of the new
+op is according to the NVMe spec definition for MDTS.
+
+Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+Signed-off-by: Israel Rukshin <israelr@mellanox.com>
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+---
+
+changes from V2:
+ - added Reviewed-by signature (Sagi)
+
+changes from V1:
+ - renamed set_mdts to get_mdts (Bart)
+ - added const for ctrl argument (Bart)
+ - updated commit message to explain return value of the new op (Bart)
+
+---
+ drivers/nvme/target/admin-cmd.c | 8 ++++++--
+ drivers/nvme/target/nvmet.h     | 1 +
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/nvme/target/admin-cmd.c b/drivers/nvme/target/admin-cmd.c
+index c0aa9c3..b9ec489 100644
+--- a/drivers/nvme/target/admin-cmd.c
++++ b/drivers/nvme/target/admin-cmd.c
+@@ -369,8 +369,12 @@ static void nvmet_execute_identify_ctrl(struct nvmet_req *req)
+ 	/* we support multiple ports, multiples hosts and ANA: */
+ 	id->cmic = (1 << 0) | (1 << 1) | (1 << 3);
+ 
+-	/* no limit on data transfer sizes for now */
+-	id->mdts = 0;
++	/* Limit MDTS according to transport capability */
++	if (ctrl->ops->get_mdts)
++		id->mdts = ctrl->ops->get_mdts(ctrl);
++	else
++		id->mdts = 0;
++
+ 	id->cntlid = cpu_to_le16(ctrl->cntlid);
+ 	id->ver = cpu_to_le32(ctrl->subsys->ver);
+ 
+diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
+index 42ba2dd..421dff3 100644
+--- a/drivers/nvme/target/nvmet.h
++++ b/drivers/nvme/target/nvmet.h
+@@ -289,6 +289,7 @@ struct nvmet_fabrics_ops {
+ 			struct nvmet_port *port, char *traddr);
+ 	u16 (*install_queue)(struct nvmet_sq *nvme_sq);
+ 	void (*discovery_chg)(struct nvmet_port *port);
++	u8 (*get_mdts)(const struct nvmet_ctrl *ctrl);
+ };
+ 
+ #define NVMET_MAX_INLINE_BIOVEC	8
+-- 
+1.8.3.1
+
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
