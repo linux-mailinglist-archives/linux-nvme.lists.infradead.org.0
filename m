@@ -2,72 +2,57 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BCDB17E264
-	for <lists+linux-nvme@lfdr.de>; Mon,  9 Mar 2020 15:16:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C981917E30D
+	for <lists+linux-nvme@lfdr.de>; Mon,  9 Mar 2020 16:04:38 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GdtabSAplS50EEHN5S3AnWIgWpYu206h2U43Zlpy/Ac=; b=R1Ysw6peLvjwJX
-	4LbRvq3ZkSdw26ZZdPCkwvHbzPVF5fFKDzOxAKkWafAvVV+z8TbIbLzaL94E5mS2wjBND1EpgNo9/
-	NA1/eqnVyXtKJE13dZcJfKe/mT7w+GEg6dGcwZ748o7fgcHaBuJvTTa8GYi5ETtaxvhZTOwsgizJZ
-	HoYeTHi3PwBbTCgk3XDSTxp5ThJufnKRQG2WC1nBz2fB1rXvU6kGFgCLD2EDRbyjutWE6oE8pG3JJ
-	XM6X/9FcF+RBE5oLM4dINC9AD9m0eNcpxaN+Eq+HEML2fLGEfxvCaVCXNNg/LyxCPHrJim+klVKSL
-	g+QmLfSKth9TX0vC5HeQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DVwZ53lWzZdOMzl/3K4tnUXBo3Lar5JX0x4CtUYY0Yo=; b=KUf32xQmB1IlU9
+	YTesBJXcnZMyDGZwGhwDv/WrfpCSQ+Fa1psIrW7ftDUy77eySOMTNie3cgKPI6nLgzAIv/pa+DFn5
+	35feJkz0LSkH78T0JGt/nDqYwivUXVeqvlOKwD9TnNeEvBuhIyKF3m0pGJ7vH09RsZ7ux7P36Zris
+	K4ubs+yrOJcdMbo1L6JJxpGtoJPr6L5bNF0gstbxZEJkG1eA4yizYnp/lqat4w4+2aE8lHo5UmZot
+	DuNT9maQVxPu15Rv1AtdUqVKe1uWKYbkYMnqFv/MwKL+HCLkkz4lAbdt02ltmqGDbufIIvKXxp+FU
+	VemlVgyGAppKnmjUvt5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBJD0-0003Ag-C4; Mon, 09 Mar 2020 14:16:42 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBJCv-0003AI-7B
- for linux-nvme@lists.infradead.org; Mon, 09 Mar 2020 14:16:38 +0000
-Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 989D420727;
- Mon,  9 Mar 2020 14:16:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583763396;
- bh=xfCViSencda7tEqaGBoY1MZ07dANUMtfBJNdVbUCpww=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=uCNzw875cyY1IvGAxm/VQw4VFVPNETYfvpG73S7BNQ8OjvL1W3r0fNhFEM+bvvegD
- A2/8mtGHvV2X+xIldCLXadA+GH0UcqUeqEeGwIkk3T5BOIn+dpvq8+Nhe05xKtqalh
- WLRaeDsemAWh4mHGoVzVv+MKM8HVui7ej7oUnXuw=
-Date: Mon, 9 Mar 2020 23:16:29 +0900
-From: Keith Busch <kbusch@kernel.org>
-To: Yaroslav Isakov <yaroslav.isakov@gmail.com>
-Subject: Re: NVME is not using CPU0
-Message-ID: <20200309141629.GA5446@redsun51.ssa.fujisawa.hgst.com>
-References: <CADS+iDV5S+QyfhE4M+fSwXuczx4WCveU+UyhKpx7HY6pfHfc6A@mail.gmail.com>
- <20200309015524.GA4567@redsun51.ssa.fujisawa.hgst.com>
- <CADS+iDXQ4HtyXSTETPqQdJS=1tKdd93vCBtAbqwXEfWt3w7GBA@mail.gmail.com>
+	id 1jBJxG-0004Kb-Ll; Mon, 09 Mar 2020 15:04:30 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jBJxC-0004Jm-F9
+ for linux-nvme@lists.infradead.org; Mon, 09 Mar 2020 15:04:28 +0000
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ maxg@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 9 Mar 2020 17:04:12 +0200
+Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
+ [10.209.102.136])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 029F4CLK019163;
+ Mon, 9 Mar 2020 17:04:12 +0200
+From: Max Gurtovoy <maxg@mellanox.com>
+To: linux-nvme@lists.infradead.org, sagi@grimberg.me, hch@lst.de,
+ kbusch@kernel.org
+Subject: [PATCH 1/1] nvme/pci: properly print controller address
+Date: Mon,  9 Mar 2020 17:04:12 +0200
+Message-Id: <20200309150412.63297-1-maxg@mellanox.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CADS+iDXQ4HtyXSTETPqQdJS=1tKdd93vCBtAbqwXEfWt3w7GBA@mail.gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200309_071637_288531_B06E102E 
-X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-CacheID: sfid-20200309_080426_903020_F5662163 
+X-CRM114-Status: UNSURE (   8.44  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [193.47.165.129 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,29 +64,45 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-nvme@lists.infradead.org
+Cc: Max Gurtovoy <maxg@mellanox.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Mar 09, 2020 at 10:49:43AM +0100, Yaroslav Isakov wrote:
-> Hello, Keith! I've tried to pin fio process's threads, but with no
-> luck. On my system, your command gave this:
-> 0, 1
-> 2
-> 3
-> 4
-> 5
-> 6
-> 7
-> So, it looks like first queue should use two CPUs, but using only
-> CPU1. Oh, and if I'm run fio with 2 threads, without pinning, I can
-> see increasing numbers in /proc/interrupts for all CPUs besides CPU0
+Align PCI address print with fabrics address that is printed with
+newline character.
 
-/proc/interrupts shows which cpu handled a completion. It doesn't show
-which CPU handled the submission. You don't have enough interrupt vectors
-to assign to each CPU so some CPUs won't get interrupts.
+Before:
+[root@server40 linux]# cat /sys/class/nvme/nvme2/address
+0000:0b:00.0[root@server40 linux]#
+
+After:
+[root@server40 linux]# cat /sys/class/nvme/nvme2/address
+0000:0b:00.0
+[root@server40 linux]#
+
+Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+---
+ drivers/nvme/host/pci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index d3f23d6..ef06b24 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -2689,7 +2689,7 @@ static int nvme_pci_get_address(struct nvme_ctrl *ctrl, char *buf, int size)
+ {
+ 	struct pci_dev *pdev = to_pci_dev(to_nvme_dev(ctrl)->dev);
+ 
+-	return snprintf(buf, size, "%s", dev_name(&pdev->dev));
++	return snprintf(buf, size, "%s\n", dev_name(&pdev->dev));
+ }
+ 
+ static const struct nvme_ctrl_ops nvme_pci_ctrl_ops = {
+-- 
+1.8.3.1
+
 
 _______________________________________________
 linux-nvme mailing list
