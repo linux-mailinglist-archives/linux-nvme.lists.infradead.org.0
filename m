@@ -2,84 +2,83 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C25CF17E880
-	for <lists+linux-nvme@lfdr.de>; Mon,  9 Mar 2020 20:32:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C00CC17EAC7
+	for <lists+linux-nvme@lfdr.de>; Mon,  9 Mar 2020 22:08:11 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XgL8LPrPMuVnBw8jLYaJL/yUKvC5XTzOmXEGomx7Fn4=; b=FmdPTw76ClGERAvvtEo78rcWO
-	+10A/ICzMW2R1cjV7MaKwUpJpbd/FKoCCMPdS3tPpOKoRkS9GaqzZn8vwXwErQnhc268L6uj6/2r/
-	VlZiDder7cNwccmhGkW2dFBUKHTJfLBWlmv/jIiFnkoe42AAmU4/ATYyxGT3CLR/FslrwFVgB64Ay
-	JCexUDKsEfOYktunsP7KOXm3bXXwxNqsgo/+Kn0L/XxIdDAKRtWbOnH56zGOiGlCWYPfmjNY7OiiU
-	BXrEcJQpxovUoxZj2iP+CUCcDvud9Rm/sefVGkZLmvuOeXUOjjwRZBbzh5QDl6/iVstvGqdxGKgl6
-	DUwtH4cOA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=of75m232+4kwOwNYsPej1ag6hfA8u7U8akifbDcweRw=; b=gXa
+	vGP8Uzl54ii5Egdoz6EvI3HC2gPWRLKUQxh6BjkbrXJIM7ALfeXfJvp9BS2N1CeyhDnRGZc/JAbcl
+	tbcaUiq4W1qL03QSoW0NrTuXB7QPPsDxeyqbmQjBjzk3LfI45nsPVjd0J0WbgPl7bv59lef5jO+C1
+	lhO1UarKH3IczUJn5AWM2log+shds//idYvQW2uWZ9fdhxSUnJ1TpMk4nRwaF1ew+rb3OqFw6brxX
+	VzVPloGcJ6Z3YKU14jt3DkT6Sdp6ZhOTSA47tRLOvV3EvTxH/O3KRV9YkJEKkmUAFQunwf6HKrA5Y
+	ugq+ktKpsIMTlVO+foAMwMjnYcQ7gVw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBO8L-0000wc-Im; Mon, 09 Mar 2020 19:32:13 +0000
-Received: from mail-oi1-f194.google.com ([209.85.167.194])
+	id 1jBPd3-0004k2-Lx; Mon, 09 Mar 2020 21:08:01 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBO8G-0000vx-TX
- for linux-nvme@lists.infradead.org; Mon, 09 Mar 2020 19:32:10 +0000
-Received: by mail-oi1-f194.google.com with SMTP id y71so5991845oia.7
- for <linux-nvme@lists.infradead.org>; Mon, 09 Mar 2020 12:32:06 -0700 (PDT)
+ id 1jBPcy-0004jP-RG
+ for linux-nvme@lists.infradead.org; Mon, 09 Mar 2020 21:07:58 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id mq3so459567pjb.0
+ for <linux-nvme@lists.infradead.org>; Mon, 09 Mar 2020 14:07:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=purestorage.com; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=Wg7ehxrunSfoR3umIXJG6GeJRSgWVF/eVhTjd0DeUpo=;
+ b=czH3TJwKaynTxAvppZyJ015RDYBkBPs2pb5+XLo29ytW+Ib2kKleMNca9WHbclK+ut
+ s40C6dyix2Rh5Dng2HUhh6pbw3+n4CtUwPtKc/By8YuLfx/lG4emfrekiHNNKd8R3DFa
+ lgt3hjPrRhh7RCQYwjI0Ie4IXv6jEvCuzh0Lo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hwH9tspQSNCYVH8lBO3hglwoi36fOtJJXepCDBSLFac=;
- b=qWVSGU9Pjv5NYTY+wglWymanrVeLW3GXVjT9D2UbsTLUzU0ITTt1mDGuk6Rn2ifJJ/
- fscUTz55u40SEIZLccAd7AnlgwnzhIH7tpLEdMqqyUGiA2JcXan3TBRA+fUMJsxhSuSi
- SpdUlbIb8C903n9XWNgNV0DbilXjA1Ww+7JLKRy7Hmtu8PGMlSGchhIErVUUJ+uk8f9A
- j84poNnlfsT1ZUvd9I/b1jdaRoarnNaZf6xjwFP3HNaCjCaE5bjManwuuOY27mbG8/U8
- 6XsvPWCPA3kNWczciZnFShDT/JBgtP+hIN9To0fzvBQcZd6hrFcX/r4bCsn/Q0xuszZd
- V9lQ==
-X-Gm-Message-State: ANhLgQ1ZGfj7+4c69WUxtwDqNUu8lWMZjIzUwbIOxsWDq8asA50Zhc+m
- apsgXSgVprrlBEQ2irzYgJE=
-X-Google-Smtp-Source: ADFU+vs83HB0eZntpM44/5FdeD6Dsw5KIGf7B+jn80/O/yhX2ChjuKb6yGMktDMEp6AeQE0mHoGHtw==
-X-Received: by 2002:aca:4ecc:: with SMTP id c195mr547243oib.123.1583782325574; 
- Mon, 09 Mar 2020 12:32:05 -0700 (PDT)
-Received: from ?IPv6:2600:1700:65a0:78e0:514:7862:1503:8e4d?
- ([2600:1700:65a0:78e0:514:7862:1503:8e4d])
- by smtp.gmail.com with ESMTPSA id t3sm4903240otr.61.2020.03.09.12.32.04
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 09 Mar 2020 12:32:04 -0700 (PDT)
-Subject: Re: Sighting: Use of 'disable_sqflow' option shows drastic reduced
- I/O rate for small Queue Depths
-To: "Wunderlich, Mark" <mark.wunderlich@intel.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-References: <CY4PR11MB1351F4B992E207DCFD610FE6E5FE0@CY4PR11MB1351.namprd11.prod.outlook.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <79eb6f31-1c65-7920-5e66-8ee9a6e81aae@grimberg.me>
-Date: Mon, 9 Mar 2020 12:32:03 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Firefox/60.0 Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <CY4PR11MB1351F4B992E207DCFD610FE6E5FE0@CY4PR11MB1351.namprd11.prod.outlook.com>
-Content-Language: en-US
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=Wg7ehxrunSfoR3umIXJG6GeJRSgWVF/eVhTjd0DeUpo=;
+ b=ep+LknGYRA9TPN/j50l1v2UB6whuWqfHytXrpt7pHwdlbndEl7s2WnBci3pH+anbAT
+ dmhssVrlDWnyZEAZP9kCq3Th11FVs9XmWvyiHl9ju0pK3I4G4typGsyUHMMTH3opzBPv
+ 8wwP/UPgZINaUi5RhIu3UaEQH4CeasNhD+fgxk79OGqM4bvtfybmo+kCLD5xbEkrFynE
+ PRYJUTDVcz5ilxBKkO8mxFasLz54YxRXDR3VI0UPlPTx3pUE9X1eqAs3aupdQc2hyg7b
+ SWikzwO1SQC9Ci4Edn3ylwuMNhpN3mpCv/jbKTtjEWkWMFRYiPSqMJdVUJgkP+qV6Ko/
+ gpuA==
+X-Gm-Message-State: ANhLgQ0vFhca3C3tFLr5EkSN8H6AJQDPRjHCnY5ov4Eserid23fVTrkd
+ V5U+w/7cO6U3Z95dF9TRmTHvVQ==
+X-Google-Smtp-Source: ADFU+vtxrF3SIlgRDL8tah3k0WYVLq8W7zIdoqLKtPNGtefE87yW3fuwxIJr+qp9R7BfS0ylIEkFOw==
+X-Received: by 2002:a17:90a:21ce:: with SMTP id
+ q72mr926921pjc.160.1583788075123; 
+ Mon, 09 Mar 2020 14:07:55 -0700 (PDT)
+Received: from dev-psajeepa.dev.purestorage.com ([192.30.188.252])
+ by smtp.googlemail.com with ESMTPSA id w206sm2876936pfc.54.2020.03.09.14.07.53
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Mon, 09 Mar 2020 14:07:54 -0700 (PDT)
+From: Prabhath Sajeepa <psajeepa@purestorage.com>
+To: kbusch@kernel.org, axboe@fb.com, hch@lst.de, sagi@grimberg.me,
+ linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] nvme-rdma: Avoid double freeing of async event data
+Date: Mon,  9 Mar 2020 15:07:53 -0600
+Message-Id: <1583788073-39681-1-git-send-email-psajeepa@purestorage.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200309_123208_953786_AA3B28AA 
-X-CRM114-Status: GOOD (  17.92  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20200309_140757_504322_838BE2C9 
+X-CRM114-Status: GOOD (  11.64  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.167.194 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [sagigrim[at]gmail.com]
+ no trust [2607:f8b0:4864:20:0:0:0:1042 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.167.194 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,58 +90,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>
+Cc: roland@purestorage.com, psajeepa@purestorage.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hey Mark, thanks for reporting!
+The timeout of identify cmd, which is invoked as part of admin queue
+creation, can result in freeing of async event data both in
+nvme_rdma_timeout handler and error handling path of
+nvme_rdma_configure_admin queue thus causing NULL pointer reference.
+Call Trace:
+ ? nvme_rdma_setup_ctrl+0x223/0x800 [nvme_rdma]
+ nvme_rdma_create_ctrl+0x2ba/0x3f7 [nvme_rdma]
+ nvmf_dev_write+0xa54/0xcc6 [nvme_fabrics]
+ __vfs_write+0x1b/0x40
+ vfs_write+0xb2/0x1b0
+ ksys_write+0x61/0xd0
+ __x64_sys_write+0x1a/0x20
+ do_syscall_64+0x60/0x1e0
+ entry_SYSCALL_64_after_hwframe+0x44/0xa9
 
-> Recent attempt to use the 'disable_sqflow' connection option displayed greatly reduced I/O rate when queue depth of 1 or 2 used.
-> Verified this behavior with nvme branch 5.5-rc baseline with no other patches applied.
-> 
-> Test was using FIO, engine io_uring as follows:
-> 
-> fio --filename=/dev/nvme0n1 --time_based --runtime=20 --thread --rw=randrw --rwmixread=100 --refill_buffers --direct=1 --ioengine=io_uring --hipri --fixedbufs --bs=4k --iodepth=1 --numjobs=1 --group_reporting --gtod_reduce=0 --disable_lat=0 --name=cpu3 --cpus_allowed=3
-> 
-> Specifying a queue depth of 1, result is 4 IOPS.  A queue depth of 2, result is 9 IOPS.  Queue depth of 3 yields 54K IOPS.  Without using this option a queue depth of 1 will yield around 32K IOPS with all busy polling disabled.
-> 
-> Interestingly, noticed that with the following patches applied to the baseline branch, done to correct a different stability issue, I see the performance for queue depth of 2 change from 9 to ~27K IOPS.  Perf at queue depth of 1 remained at 4 IOPS.
-> 
-> - io-wq-re-add-io_wq_current_is_worker
-> - io_uring-ensure-workqueue-offload-grabs-ring-mutex
-> - io_uring-clear-req-result-always-before-issuing
+Signed-off-by: Prabhath Sajeepa <psajeepa@purestorage.com>
+Reviewed-by: Roland Dreier <roland@purestorage.com>
+---
+ drivers/nvme/host/rdma.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-This is highly unlikely to be related...
+diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+index 3e85c5c..0fe08c4 100644
+--- a/drivers/nvme/host/rdma.c
++++ b/drivers/nvme/host/rdma.c
+@@ -850,9 +850,11 @@ static int nvme_rdma_configure_admin_queue(struct nvme_rdma_ctrl *ctrl,
+ 	if (new)
+ 		blk_mq_free_tag_set(ctrl->ctrl.admin_tagset);
+ out_free_async_qe:
+-	nvme_rdma_free_qe(ctrl->device->dev, &ctrl->async_event_sqe,
+-		sizeof(struct nvme_command), DMA_TO_DEVICE);
+-	ctrl->async_event_sqe.data = NULL;
++	if (ctrl->async_event_sqe.data) {
++		nvme_rdma_free_qe(ctrl->device->dev, &ctrl->async_event_sqe,
++			sizeof(struct nvme_command), DMA_TO_DEVICE);
++		ctrl->async_event_sqe.data = NULL;
++	}
+ out_free_queue:
+ 	nvme_rdma_free_queue(&ctrl->queues[0]);
+ 	return error;
+-- 
+2.7.4
 
-> The 'disable_sqflow' option was enabled via script echo operation (see below) to /dev/nvme-fabrics along with other connection options.  Verified via tcpdump trace that target received flag indication of this option and it's expected appropriate setting of SUCCESS flag in initiator received read data frames.
-
-There is a problem that I see with nvmet-tcp target usage of msg flags
-with the SUCCESS flag optimization.
-
-Does this patch solve the issue?
---
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index 1f4322ee7dbe..af1889641d45 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -533,9 +533,13 @@ static int nvmet_try_send_data(struct nvmet_tcp_cmd 
-*cmd)
-         while (cmd->cur_sg) {
-                 struct page *page = sg_page(cmd->cur_sg);
-                 u32 left = cmd->cur_sg->length - cmd->offset;
-+               int flags = MSG_DONTWAIT;
-+
-+               if (cmd->wbytes_done + left < cmd->req.transfer_len)
-+                       flags |= MSG_MORE;
-
-                 ret = kernel_sendpage(cmd->queue->sock, page, cmd->offset,
--                                       left, MSG_DONTWAIT | MSG_MORE);
-+                                       left, flags);
-                 if (ret <= 0)
-                         return ret;
---
 
 _______________________________________________
 linux-nvme mailing list
