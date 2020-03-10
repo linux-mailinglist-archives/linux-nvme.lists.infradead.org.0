@@ -2,54 +2,54 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 231121807C7
-	for <lists+linux-nvme@lfdr.de>; Tue, 10 Mar 2020 20:16:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2101318085B
+	for <lists+linux-nvme@lfdr.de>; Tue, 10 Mar 2020 20:44:48 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WkazASeLTr8QVCEh7mhSAXGuGKC24yFm0w6aKHSxGJA=; b=ohuFK+Lh/JoZft
-	Ig7SLeTZHnsEXgGOIoLPbTSK+66SOtp8hNqhG+L4oqQaNK8IMLh+O+M9IdNvCuo5E+lvolkQ+9yBn
-	pX6uCo7vFFoMS7PFQfVRJkz4qySi53u6zlE19JuH3UN80MZL0VLAyZx9zNmxL3FBQQb6WvpQH3bvn
-	fqwTs6oAhcIwX4gZpRciHZCs5kZ910ZpH6FT6jn530YX3Pi0s+3SakWgY2LGh42M7sXDckXSpvrjB
-	93C4iuh6qva2TwR5LDAMHea8alGm7s7ox7ksH7p0JYkrxeuzIbg/BKJgNLlVVoCvSbzTtCVypXWiG
-	M/4oSrPDE9AGpirkbICA==;
+	List-Owner; bh=w4xtx5Cl1+wGIfisAWskQgl1QUl3zku4XwpyJg4dHYs=; b=FUnkz8EVOhi2MK
+	qiTWJ+g45xgzuhwkdlwa/HTal2RWoeujCY9irCeZK8Vab8TPsp0XokZ21+bqaRp3tSZgXHJLnNzGc
+	RBrLhdINBne0CzC7RmB2Q2SEiBsYLrfuymqP70JXX+JA6GPTz1xTn/9bkpeRy4v/qiqqUQ3pGCEIA
+	IWFDLEefWM42gZYk9Nb+bR0TqJqiOjlg4nEooBzktBf+B4OF5QEhtz6SSRmTOjZbTne4FLvJvRFrs
+	7r54d1ZM+FdmgrnfI2VVLpnKJCHx+i0xdESpA+NTOZ/HjxkjHRVZbtZS8huG+8X2iRwKoBUSOCb30
+	bk3dBQUm+aigIUN3ZpJw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBkMg-0003oj-UU; Tue, 10 Mar 2020 19:16:30 +0000
+	id 1jBkno-0007wV-4R; Tue, 10 Mar 2020 19:44:32 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBkMc-0003oI-Di
- for linux-nvme@lists.infradead.org; Tue, 10 Mar 2020 19:16:27 +0000
+ id 1jBknk-0007w4-QO
+ for linux-nvme@lists.infradead.org; Tue, 10 Mar 2020 19:44:30 +0000
 Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 667D020727;
- Tue, 10 Mar 2020 19:16:25 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8A61321655;
+ Tue, 10 Mar 2020 19:44:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583867786;
- bh=peLo4m7flZWNXU5TgxRc5LxwDIeNsGT4w1UWbpq3EhE=;
+ s=default; t=1583869468;
+ bh=6XW7aCtfxCKGsIcAHgmcRuzwNvsuhRRYx5C8Wp0al6E=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=lbtAlh71CZbSFDkaP93ODwkol/THLYsFFq58OqsJZklUO/31QqundDgwbIYMPWfHi
- sGdCK7Kz0V8GVtVkorK9vgbwhLJLgnfA+FTksmRsg3daIIgMgHdcqyslUpmwspTAD4
- UEiV5sVoHIWAmw4ZlNBWEag7ZjK8zWWGgwtFpUwU=
-Date: Wed, 11 Mar 2020 04:16:19 +0900
+ b=Yq8+dpHZpghRMZKMiXDkocVSmT04u1hP0K7HVezI5uuwIzf25lAXYAFVLJTq9wv7E
+ wbAOPAZMB+ESVwrnbVGZDVhSr6EEqmBM3NJRYdmljjfuQ+opXwbaL9PIaxRMv0LbKT
+ uB2in5lJWfgyEsOm6zIpEmP4c15hZ6ttptRz2b6s=
+Date: Wed, 11 Mar 2020 04:44:21 +0900
 From: Keith Busch <kbusch@kernel.org>
-To: Christoph Hellwig <hch@lst.de>
-Subject: Re: [PATCHv2 3/3] nvme-pci: Simplify nvme_poll_irqdisable
-Message-ID: <20200310191619.GA17237@redsun51.ssa.fujisawa.hgst.com>
-References: <20200304181246.481835-1-kbusch@kernel.org>
- <20200304181246.481835-4-kbusch@kernel.org>
- <20200310170226.GC7114@lst.de>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: Re: I/O performance with block sizes > 128k
+Message-ID: <20200310194421.GB17237@redsun51.ssa.fujisawa.hgst.com>
+References: <321f0a4b-8a75-8cae-2d77-34ad712225d3@oracle.com>
+ <20200310170818.GA28008@infradead.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200310170226.GC7114@lst.de>
+In-Reply-To: <20200310170818.GA28008@infradead.org>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_121626_479563_97CF977B 
-X-CRM114-Status: GOOD (  14.76  )
+X-CRM114-CacheID: sfid-20200310_124428_884506_D998C04D 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -78,64 +78,29 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: sagi@grimberg.me, linux-nvme@lists.infradead.org,
- bijan.mottahedeh@oracle.com
+Cc: Bijan Mottahedeh <bijan.mottahedeh@oracle.com>,
+ linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, Mar 10, 2020 at 06:02:26PM +0100, Christoph Hellwig wrote:
-> On Wed, Mar 04, 2020 at 10:12:46AM -0800, Keith Busch wrote:
-> >  /*
-> > - * Poll for completions any queue, including those not dedicated to polling.
-> > + * Poll for completions for any interrupt driven queue
-> >   * Can be called from any context.
-> >   */
-> > -static int nvme_poll_irqdisable(struct nvme_queue *nvmeq)
-> > +static void nvme_poll_irqdisable(struct nvme_queue *nvmeq)
-> >  {
-> >  	struct pci_dev *pdev = to_pci_dev(nvmeq->dev->dev);
-> >  
-> > +	disable_irq(pci_irq_vector(pdev, nvmeq->cq_vector));
-> > +	nvme_process_cq(nvmeq);
-> > +	enable_irq(pci_irq_vector(pdev, nvmeq->cq_vector));
+On Tue, Mar 10, 2020 at 10:08:18AM -0700, Christoph Hellwig wrote:
+> On Mon, Mar 09, 2020 at 02:49:10PM -0700, Bijan Mottahedeh wrote:
+> > I'm seeing a sizeable drop in perf with polled fio tests for block sizes >
+> > 128k:
 > 
-> This could use a:
-> 
-> 	WARN_ON_ONCE(test_bit(NVMEQ_POLLED, &nvmeq->flags));
+> Try using a controller with SGL support.  NVMe PRP unfortunately are
+> a completely brain dead scheme once you use non-tiny I/O sizes (
+> and actually really painful even for those for other reasons).
 
-No problem.
- 
-> >  }
-> >  
-> > -static int nvme_poll(struct blk_mq_hw_ctx *hctx)
-> > +static int __nvme_poll(struct nvme_queue *nvmeq)
-> 
-> Do we really need the magic __nvme_poll?  struct request has a
-> pointer to the blk_mq_hw_ctx, so we could just pass that.
+SGL would really help if you have phyiscal continuity, and never needs
+to allocate from the dma pools. If most pages in the transfer are not
+physically contiguous, though, PRP is still more memory efficient. But
+yes, the PRP format is ... unique. :)
 
-Sure, I just felt like req->mq_hctx should be private to blk-mq. It
-isn't, so we can use it from the timeout path.
-
-> > +	if (!test_bit(NVMEQ_POLLED, &nvmeq->flags))
-> > +		nvme_poll_irqdisable(nvmeq);
-> > +	else
-> > +		__nvme_poll(nvmeq);
-> > +
-> 
-> Any reason for the odd inversion and not simply:
-> 
-> 	if (test_bit(NVMEQ_POLLED, &nvmeq->flags))
-> 		nvme_poll(req->mq_hctx);
-> 	else
-> 		nvme_poll_irqdisable(nvmeq);
-> 
-> ?
-> 
-> Otherwise looks good.
-
-Thanks, I'll rework the suggestions in.
+FWIW, I couldn't measure a performance drop on real hardware comparing
+the large pool vs the small one.
 
 _______________________________________________
 linux-nvme mailing list
