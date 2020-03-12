@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D728E183455
-	for <lists+linux-nvme@lfdr.de>; Thu, 12 Mar 2020 16:18:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB1851834D2
+	for <lists+linux-nvme@lfdr.de>; Thu, 12 Mar 2020 16:21:25 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -11,43 +11,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=gpJJ0uG/++h+YTiLGbTI0rFHVkew9epODudzZSUbkdk=; b=OVIwuMiYuIYzjxrJ7Sas4KlYMK
-	F4V3CstunpYEw+CP6XujuseP+KriGYKI4edHc9QbXlbWcRsxtcw4yK5RvObOQgKyaEx+bT6tWnyua
-	Gy7H+NRzAgQ1R36i/iA5cpSTN+S4MsChH7ZOpWN6T5+NeHeT6KedV/asNGJHcLyBsUjoEaomV+oJB
-	yFiDjUBBHWpbsRcmLPjWU2jjfgbHqYOcY22W1t0YiingxmHWEJcZbC3T6uYVc72FNSkgcHEnn+kiF
-	YLqIEhDyvfsh0aTpXmKAQngGFKFGKLUFJYhCLKr8khSTOarphrm5rQOXbf4xUZ44LW9e99/Erhkvp
-	mmvYwTyg==;
+	bh=VYp3EsHBRx8pPFXqVx+Y3RGUhtGKZesiSshbkLjmo+c=; b=mUZujzj4WN+MBOuwBv7VGuQ4Ts
+	ewF3u7x5Y8BaAr/zVHtWrGV7n4vLpav2kqIfyZlEftXX5ir97kAoEUL//tyNjTmdzBaRgW8jaSSBz
+	ED0sDndPQEJe43lRhcXJ2BlRigIDFHcr74wowNDsa5oZelixQoivJi27c2ZWX5QGc1XVx44Gshzrx
+	QHwF3lSkhj731kYAmUUHbT1GMUU0L63IEuHGrWvdv4ogObp9ue3aJtoenJ95pcAKbmbTFDo/D+d02
+	v/XUO1cuUGr/ozFmF45yP6UEkqXqJaz9Jz7Z2liWfS3flqqctOKYay9yt9gV5CaND0R0Lh++Gy6eA
+	UhYRFcXA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCPbD-0006CP-QP; Thu, 12 Mar 2020 15:18:15 +0000
-Received: from mail-pf1-f196.google.com ([209.85.210.196])
+	id 1jCPeB-0008Dn-9s; Thu, 12 Mar 2020 15:21:19 +0000
+Received: from mail-pj1-f67.google.com ([209.85.216.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCPb8-0006By-Uh
- for linux-nvme@lists.infradead.org; Thu, 12 Mar 2020 15:18:12 +0000
-Received: by mail-pf1-f196.google.com with SMTP id x2so3051395pfn.9
- for <linux-nvme@lists.infradead.org>; Thu, 12 Mar 2020 08:18:10 -0700 (PDT)
+ id 1jCPe5-0008D7-Rn
+ for linux-nvme@lists.infradead.org; Thu, 12 Mar 2020 15:21:15 +0000
+Received: by mail-pj1-f67.google.com with SMTP id m15so2098588pje.3
+ for <linux-nvme@lists.infradead.org>; Thu, 12 Mar 2020 08:21:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=1CJLQv7EUBvLDpNqdiip/La4rVqwZUT22NWN2DJWxig=;
- b=TDpIjDgb1FF+2KwNqKmlqbHO9E6J6evjKS69ja7oCbhG/Gmp4Lhojc1VPta8XenttR
- Wa4+v26mAi8VUGPNWQYQzvnZ7Rjb/DZICFJfAjV1FicihjUq48GX/aImSOnbvEWvOYad
- eIYzZFRlzXbV3RUtgew6G2s/G204spisB2bMGDD/+0bJ41xHuf63Feu5sfRXhDIIPc9f
- 6FH+kZIya+Z9XiOyqXUL8KlgeiuyANgHzG250DbnoY5x8Xel0es4ej3ktEo414SwJ7Ui
- cMcSIiOHKnkaCdfBhubCAxKFD2TOAJQax5AMaCtEMDTA2n2qxl/pyVaplvcvXtmDxG4T
- 6ToQ==
-X-Gm-Message-State: ANhLgQ1GKQqmBkdZZRLdllgUEG2hwyUgp/sdW9DZWVtUZQIfMT2VTKfr
- ASn4t7nGLXwS+9yisTG7Pto=
-X-Google-Smtp-Source: ADFU+vtXkC9TgoF+kLOlXZJM+axddwoUFlf8o1EufH+hDufm7IAVvDLWHb4qyLPKX/vooVdWpX27RQ==
-X-Received: by 2002:a62:8706:: with SMTP id i6mr8707027pfe.115.1584026289417; 
- Thu, 12 Mar 2020 08:18:09 -0700 (PDT)
+ bh=KTSXYITnm1/WH2ZYXdKY58PQDpfbcjgvILt8IUd6Gv8=;
+ b=QUKnJh/3k53O3F2RLe/jp/MkpwpVq6tSrzqQuRTH6gMtoiFRKBXCHCAFoQt93A4TkA
+ 06NotWY6Hfd8AIPAQRLTzrW1sOgVLL3ZX0tmThE/S+HsKDXsMN29aDizFtfe3MQm1jWM
+ ZBIzzMpcDvEAzBu9ZafQ1weh+EoHL+apYM6m8MmD4AKiHum2vpBJe4zpkgMcio6INJs2
+ gPQWzeW3V2sfMxraRHXckJ/aIF1tmhnn+PupwTfjGN4KufR4uApU80pFWWj6HSwKvrjJ
+ p05othgbS7lm6WQSlQCQP1EaEEdMHU20iddLDQPxPcst7EXT1xTLRUuiLsippFAq58Zf
+ f5YA==
+X-Gm-Message-State: ANhLgQ0AsdATJk1tv1ycuueDoBD6RNxSKVZzMhWBGHEBdhzjJltUEzOu
+ 8PBb+Dfeo2IBnwliLMBwbp0grVppCdM=
+X-Google-Smtp-Source: ADFU+vt8U8p/BnVf1oBclHSd/EQvbH2de32xIyr1ct/abNcEZlkhcdyMK106Jk58dEvrKu4oTeyjQQ==
+X-Received: by 2002:a17:90a:dac6:: with SMTP id
+ g6mr4774863pjx.30.1584026472679; 
+ Thu, 12 Mar 2020 08:21:12 -0700 (PDT)
 Received: from ?IPv6:2601:647:4000:d7:7dc2:675a:7f2a:2f89?
  ([2601:647:4000:d7:7dc2:675a:7f2a:2f89])
- by smtp.gmail.com with ESMTPSA id a2sm3140901pfn.0.2020.03.12.08.18.07
+ by smtp.gmail.com with ESMTPSA id b133sm54297412pga.43.2020.03.12.08.21.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Mar 2020 08:18:08 -0700 (PDT)
+ Thu, 12 Mar 2020 08:21:11 -0700 (PDT)
 Subject: Re: [PATCH v1] asm-generic: Provide generic {get, put}_unaligned_{l, 
  b}e24()
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -84,23 +85,23 @@ Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
  //x8dLe2Fv1By4SKGhmzwH87uXxbTJAUxiWIi1np0z3/RDnoVyfmfbbL1DY7zf2hYXLLzsJR
  mSsED/1nlJ9Oq5fALdNEPgDyPUerqHxcmIub+pF0AzJoYHK5punqpqfGmqPbjxrJLPJfHVKy
  goMj5DlBMoYqEgpbwdUYkH6QdizJJCur4icy8GUNbisFYABeoJ91pnD4IGei3MTdvINSZI5e
-Message-ID: <efe5daa3-8e37-101a-9203-676be33eb934@acm.org>
-Date: Thu, 12 Mar 2020 08:18:07 -0700
+Message-ID: <4c81594e-6b30-d1ff-31f6-0d8cfbf5ba3c@acm.org>
+Date: Thu, 12 Mar 2020 08:21:10 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
 In-Reply-To: <20200312113941.81162-1-andriy.shevchenko@linux.intel.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_081810_989532_EC11A7A7 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20200312_082113_901632_CA1F2772 
+X-CRM114-Status: GOOD (  10.76  )
 X-Spam-Score: 0.3 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (0.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.196 listed in list.dnswl.org]
+ no trust [209.85.216.67 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -108,7 +109,7 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.196 listed in wl.mailspike.net]
+ [209.85.216.67 listed in wl.mailspike.net]
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
@@ -129,17 +130,13 @@ Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 On 2020-03-12 04:39, Andy Shevchenko wrote:
-> There are users in kernel that duplicate {get,put}_unaligned_{l,b}e24()
-> implementation. Provide generic helpers once for all.
+> +static inline u32 get_unaligned_be24(const u8 *buf)
+> +{
+> +	return (u32)p[0] << 16 | (u32)p[1] << 8 | (u32)p[2];
+> +}
 
-Hi Andy,
-
-Thanks for having done this work. In case you would not yet have noticed
-the patch series that I posted some time ago but for which I did not
-have the time to continue working on it, please take a look at
-https://lore.kernel.org/lkml/20191028200700.213753-1-bvanassche@acm.org/.
-
-Thanks,
+The argument is called 'buf' and the function body dereferences a
+pointer called 'p'. Does this even compile?
 
 Bart.
 
