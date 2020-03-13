@@ -2,109 +2,86 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B85E183DE7
-	for <lists+linux-nvme@lfdr.de>; Fri, 13 Mar 2020 01:38:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 18095184091
+	for <lists+linux-nvme@lfdr.de>; Fri, 13 Mar 2020 06:31:12 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QxFDVJc941IBcscRzPP+YlshN0DvkdiEhSFfHd6em/I=; b=aymnhJ1IlDi/He
-	rERO/blgKC0BTRfwOlPDO8gU7Z/ZBh5UxMMobLRt7WWjxCUbohnE6s6s2Yig3Db+ftcVn9e2Nvxh9
-	pJjQ1+FquvMpGSIn1dXLzwGqLAInxaD6Ldvs1WwD0C3SbwWWUSsOvBt5E4NYQUE96CAtaSnP4Xg4f
-	VWfDXqmy0MmOqUKOsr37uwMcIaAcsdmO73SUs3ZLROIAv0QOEDU5AdAZjAoKHo69OK9s4RtvoF696
-	8oN+KxfWoBaBkLhj4kQCzKsktYatCWhS5wkoyIistfevZkp8lOhsf2UHKsfxvHWmgRypxTmx+0bFX
-	wmEv2hTU2X8M76NI6GWw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ofU8ZHhcG6tE21XQZKGrlFiuXbxGrA2PIPPdTMo8zVw=; b=Y/4Ivoq5qyYgty
+	/JBIuY7b3z9BT35lFwAsso7So8lpZqKzhMiiWnD11qj0Y9hvDR8JQYRM97YJ2QFNB0zI3nlY55Hwu
+	XdRvREIglWG3ibhjW5xxa4mJNJVzZedh39wSQ2xf4PQjVTLxAZqx1n+vdGIjmEmYZ4ikeNCM2doaG
+	GKUhqUSwzbnoEJJ1nv2LW8oQLDyoCBXu5c5cGmcVRpmklta2e+35LztapRqsxQ4vDGuweTqbpax1s
+	J/4W01yocIZYetSeYr4Nf21VCuzFTsQSvjkpJGqmTCZEQUItAlxGoEmDY8nS8XLQEOPa7Po6E3P7i
+	3ot8wNap3VWo4kCNmBFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCYLg-0005t7-49; Fri, 13 Mar 2020 00:38:48 +0000
-Received: from userp2130.oracle.com ([156.151.31.86])
+	id 1jCcuV-0005Mh-O7; Fri, 13 Mar 2020 05:31:03 +0000
+Received: from smtp-fw-2101.amazon.com ([72.21.196.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCYLc-0005sg-Br
- for linux-nvme@lists.infradead.org; Fri, 13 Mar 2020 00:38:45 +0000
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02D0Mwck168386;
- Fri, 13 Mar 2020 00:38:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : references : date : in-reply-to : message-id : mime-version :
- content-type; s=corp-2020-01-29;
- bh=hP9mFZ8Sxu3J/EE4JbNN5uOrXQmbEtdEQRl+6NEGKTQ=;
- b=TECcM3pWqwkOo2PhaIJkxOT9Nt32xhMZdc5+LNPDjbjTlaemjskiGlzOz+C/UTPGiP59
- 9AQtBEeRJS5DT+yvsSXahiWMhQxQvlRJs8TO3yOeTE2GGVCDFnT/wWVW8NroteMU8oyc
- pvWxCoXhHwBX0TRkUKB7w3o1PZyPqZYnHgUl0Fmlhyw7NsijzDcgQLTmU5mVEF7MPeLv
- n6FhxVG1Egatr43obuziFyMZ3rzc8kvZf1izZAtRCu1/V1ze5Lo6xrFvAGvcxy+Ir8H8
- no4vMo9nYigHYAtS8qCmDtSC6tg7vPHfQftLMzuNVFpDTkjgg0XGWKulCPFXgCLRNY+W Lg== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by userp2130.oracle.com with ESMTP id 2yqtag98fj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 13 Mar 2020 00:38:22 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02D0OJUY144781;
- Fri, 13 Mar 2020 00:38:21 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 2yqta9uuut-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 13 Mar 2020 00:38:21 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 02D0cET2003083;
- Fri, 13 Mar 2020 00:38:14 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 12 Mar 2020 17:38:13 -0700
-To: Bart Van Assche <bvanassche@acm.org>
-Subject: Re: [PATCH v1] asm-generic: Provide generic {get, put}_unaligned_{l,
- b}e24()
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-References: <20200312113941.81162-1-andriy.shevchenko@linux.intel.com>
- <efe5daa3-8e37-101a-9203-676be33eb934@acm.org>
- <20200312162507.GF1922688@smile.fi.intel.com>
- <6d932620-3255-fbd8-7fc8-22e4b3068043@acm.org>
- <CAO+b5-rXUU9r-SrCWq2cYbBr5xFqyx4CUMb8xHZv2xYzEP6CyA@mail.gmail.com>
-Date: Thu, 12 Mar 2020 20:38:10 -0400
-In-Reply-To: <CAO+b5-rXUU9r-SrCWq2cYbBr5xFqyx4CUMb8xHZv2xYzEP6CyA@mail.gmail.com>
- (Bart Van Assche's message of "Thu, 12 Mar 2020 17:29:37 -0700")
-Message-ID: <yq1v9n9nl71.fsf@oracle.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
+ id 1jCcuB-0005EC-HL
+ for linux-nvme@lists.infradead.org; Fri, 13 Mar 2020 05:30:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1584077444; x=1615613444;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=REy7LBkdQ5MCy84KosSuZWNgbDSwbuHXvkOMZFApZ0g=;
+ b=KqcFJnKYZSCh7pb699WB0+JSS2fnTn1NNz0CHYFZoWEiBlKK/8PtE0Dw
+ K/rc1r8g0vENcFh+3TEQogPSJyTCrYrDFfRa2KAUUWPks2uBD6E2a1x7u
+ iQAgBV4ofwjZOrBSHkKdl6EURidUAPHAkskv2E5AXqJ/ZH6bHLYFeW9lH Y=;
+IronPort-SDR: BBxpNHEOWW1ENqqjyI1ueSy8wEtQCRVJhTMUDArhWjlmVcbDR3lUllZ4prigMjSQ6ncpcVpQDH
+ I5KYk9VOYoPg==
+X-IronPort-AV: E=Sophos;i="5.70,547,1574121600"; d="scan'208";a="21324131"
+Received: from iad12-co-svc-p1-lb1-vlan2.amazon.com (HELO
+ email-inbound-relay-1a-16acd5e0.us-east-1.amazon.com) ([10.43.8.2])
+ by smtp-border-fw-out-2101.iad2.amazon.com with ESMTP;
+ 13 Mar 2020 05:30:20 +0000
+Received: from EX13MTAUWA001.ant.amazon.com
+ (iad55-ws-svc-p15-lb9-vlan2.iad.amazon.com [10.40.159.162])
+ by email-inbound-relay-1a-16acd5e0.us-east-1.amazon.com (Postfix) with ESMTPS
+ id 8CE8CA2E2C; Fri, 13 Mar 2020 05:30:18 +0000 (UTC)
+Received: from EX13D01UWA002.ant.amazon.com (10.43.160.74) by
+ EX13MTAUWA001.ant.amazon.com (10.43.160.118) with Microsoft SMTP Server (TLS)
+ id 15.0.1367.3; Fri, 13 Mar 2020 05:30:18 +0000
+Received: from EX13MTAUWA001.ant.amazon.com (10.43.160.58) by
+ EX13d01UWA002.ant.amazon.com (10.43.160.74) with Microsoft SMTP Server (TLS)
+ id 15.0.1497.2; Fri, 13 Mar 2020 05:30:17 +0000
+Received: from localhost (10.2.75.237) by mail-relay.amazon.com
+ (10.43.160.118) with Microsoft SMTP Server id 15.0.1367.3 via Frontend
+ Transport; Fri, 13 Mar 2020 05:30:18 +0000
+From: Balbir Singh <sblbir@amazon.com>
+To: <linux-kernel@vger.kernel.org>, <linux-block@vger.kernel.org>,
+ <linux-nvme@lists.infradead.org>
+Subject: [PATCH v3 0/5] Add support for block disk resize notification
+Date: Fri, 13 Mar 2020 05:30:04 +0000
+Message-ID: <20200313053009.19866-1-sblbir@amazon.com>
+X-Mailer: git-send-email 2.16.6
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9558
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- suspectscore=0 adultscore=0
- mlxlogscore=623 bulkscore=0 phishscore=0 spamscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2003130000
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9558
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxscore=0
- lowpriorityscore=0 priorityscore=1501 mlxlogscore=687 phishscore=0
- suspectscore=0 bulkscore=0 impostorscore=0 spamscore=0 adultscore=0
- clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2003130000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_173844_489870_60CF3895 
-X-CRM114-Status: GOOD (  12.80  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200312_223043_717910_8BE83532 
+X-CRM114-Status: GOOD (  12.07  )
+X-Spam-Score: -12.7 (------------)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-12.7 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [72.21.196.25 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
+ white-list
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [72.21.196.25 listed in wl.mailspike.net]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [156.151.31.86 listed in list.dnswl.org]
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
+ valid 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -117,33 +94,64 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arch@vger.kernel.org, Felipe Balbi <balbi@kernel.org>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- USB list <linux-usb@vger.kernel.org>,
- "linux-nvme @ lists . infradead . org" <linux-nvme@lists.infradead.org>,
- Jens Axboe <axboe@fb.com>, Arnd Bergmann <arnd@arndb.de>,
- Linux SCSI Mailinglist <linux-scsi@vger.kernel.org>,
- Keith Busch <kbusch@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>
+Cc: axboe@kernel.dk, Balbir
+ Singh <sblbir@amazon.com>, hch@lst.de, Chaitanya.Kulkarni@wdc.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+Allow block/genhd to notify user space about disk size changes using a
+new helper set_capacity_revalidate_and_notify(), which is a wrapper
+on top of set_capacity(). set_capacity_revalidate_and_notify() will only notify
+iff the current capacity or the target capacity is not zero and the
+capacity really changes.
 
-Bart,
+Background:
 
-> Martin, can I send the second version of my patch series to you or do
-> you perhaps prefer that I send it to another kernel maintainer? I'm
-> considering to include the following patches:
+As a part of a patch to allow sending the RESIZE event on disk capacity
+change, Christoph (hch@lst.de) requested that the patch be made generic
+and the hacks for virtio block and xen block devices be removed and
+merged via a generic helper.
 
-Happy to take it.
+This series consists of 5 changes. The first one adds the basic
+support for changing the size and notifying. The follow up patches
+are per block subsystem changes. Other block drivers can add their
+changes as necessary on top of this series. Since not all devices
+are resizable, the default was to add a new API and let users
+slowly convert over as needed.
+
+Testing:
+1. I did some basic testing with an NVME device, by resizing it in
+the backend and ensured that udevd received the event.
+
+
+Changelog v3:
+- Repost after rebasing
+- Trim details of the subsystem/files in the subject
+Changelog v2:
+- Rename disk_set_capacity to set_capacity_revalidate_and_notify
+- set_capacity_revalidate_and_notify can call revalidate disk
+  if needed, a new bool parameter is passed (suggested by Bob Liu)
+
+Balbir Singh (5):
+  block/genhd: Notify udev about capacity change
+  virtio_blk.c: Convert to use set_capacity_revalidate_and_notify
+  xen-blkfront.c: Convert to use set_capacity_revalidate_and_notify
+  nvme: Convert to use set_capacity_revalidate_and_notify
+  scsi: Convert to use set_capacity_revalidate_and_notify
+
+ block/genhd.c                | 24 ++++++++++++++++++++++++
+ drivers/block/virtio_blk.c   |  5 +----
+ drivers/block/xen-blkfront.c |  6 +-----
+ drivers/nvme/host/core.c     |  2 +-
+ drivers/scsi/sd.c            |  3 ++-
+ include/linux/genhd.h        |  2 ++
+ 6 files changed, 31 insertions(+), 11 deletions(-)
 
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.16.6
+
 
 _______________________________________________
 linux-nvme mailing list
