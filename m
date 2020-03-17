@@ -2,92 +2,58 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BAC41888FF
-	for <lists+linux-nvme@lfdr.de>; Tue, 17 Mar 2020 16:19:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1092618894B
+	for <lists+linux-nvme@lfdr.de>; Tue, 17 Mar 2020 16:39:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fagIpjfFVrBblIibvyhgl0gMNKJd6OvIXD9yIGjjwvA=; b=ryJxy5O+PKWrJC
-	OrKFrq+i5GNnfjiTU4k1YcOsho6q3PRRBcqELXGQuUM5NZEbAo2cfJhyFVTnNe8RJ+dCsvPalomZF
-	gepiwxqrc4NDx/iWYMgV1o1fbc4FuEF4lDKi5WZl85EMc9cqJPNLGpmgsn1GAaWv7qTEWz5cQl3AF
-	fnHrD9DNAUZWvWAOe1SJvLQkvyrmceVlRQH09/ZsVZmNJA5kUbxIIkRWAQ+/okXPlYD/T1SzXscRj
-	Oa6DydGaYml+W/2PP1uVhM5ZobDV3csaUoNYVb1GgxbmF5VieWkZjkOS7tJf5HIzUK9eKO5ac3v74
-	1nLaJP6w749bD9MCrpcQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=fFgt4ZXCYpp4PUYSi5zeQ/Xbn7xbudok61XVwP5EwZ0=; b=YyxG820/dErrtH2z3pO3+Kl8i
+	Nc+0AWwrF5KStLo+i91lBJo4ytkKqV9oIJKysynfwTnzxZfsm2uIY3GfD/nCIsKjlH0b+k045BIW0
+	/aJDrdTsMAQqdRCWC6zaqczv2FXmLvUdZSCNUA2U/auX3VoOu/d82EfnBkATyi54KSWh9fKkypEUA
+	T+r7CftN/8R+gnIw0NJoP/4wVIBGJoLmL/IL4HO7KdrgGv59L+d+Y+FRAByMpi6fHnGAKhrbhr/Qx
+	6lfnN+GhbMsGtSv4xAFN50eoV5WeVDR5JTC5g7Ik7Jt88Ci38jA4UQKBzsPwWzZ8y9SQxHdjKoIZH
+	ru1X2K+qw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEDzt-0004l3-E2; Tue, 17 Mar 2020 15:19:13 +0000
-Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843])
+	id 1jEEJD-0003ts-S8; Tue, 17 Mar 2020 15:39:11 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEDzo-0004ja-9h
- for linux-nvme@lists.infradead.org; Tue, 17 Mar 2020 15:19:09 +0000
-Received: by mail-qt1-x843.google.com with SMTP id d22so17754914qtn.0
- for <linux-nvme@lists.infradead.org>; Tue, 17 Mar 2020 08:19:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=BfzrF8b/EZdcIf7G+sSC1rUzeCq62k9NwB0quV5cf20=;
- b=Ia5J0N6jv9suXu2ShNnZ1etHlWkhm2x1YzrzD770kh/pZPf3iyQOefOENVRilPQUSo
- OlyIIuMi5zt18YcHqQgo48szEciCsL0wRyhigq72Gfv9v0c+zjPdkOHlNbhaa+aFqZry
- 02XmtZVk9k5WrwSmom+f5INjfeUjLZZ14NiBa3GnVjMFji57GRSrg/hmx9bSFUysg8DK
- c6Bdl/0ZrigFrE0iuSAjIZ0oYjPVYudaMWjXjIv913cEuhxGk/FeNQ6GgoQBS2d550hW
- cl7VxM9XDFFzA6eQdDdP0C4MqWtFmdJRdQLdSnQAXUTag9V1Lcc1FpBKdikCSzlmav1I
- Bt0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=BfzrF8b/EZdcIf7G+sSC1rUzeCq62k9NwB0quV5cf20=;
- b=Jk+Cl0JFfdrMccZ50X1ivhYgNu453UeglAF6TbRweG0k45hsy9NaHyRtA/j0xaCWzo
- xXk/ozL3OGHuyCQnATJR0TavHN+ehUqYXeqpgKftQGV4d47wIs5ob+RQiCZ1V2B3Gp3L
- gPIbALZoizVKa8h5Y3DFHhv95Z4tlI1xNRBMXcJv6mxa/x2LezA6jPEQnjm3X2BJc8Tw
- gYtKunX9+Ao6D3GB2jMROeOhy/sANXOVSBcAxd0bG1HUx/ZkYr/vsOIuVetE/niPUL+n
- ivSe0j6LG+DazSvO4lwOdGo2dZlHA6BxmlZ0V7iXHbb+MZ43Tw5ntofYwYMXh8quT7m+
- kGiA==
-X-Gm-Message-State: ANhLgQ3BjLSO8R5cR3HFQ4eCX2LpmZDA/8Krbh+j5KKCUPOTdG5EglAz
- 6GD+4AzfmgeK/wqaYdO7hBk=
-X-Google-Smtp-Source: ADFU+vtL/mvFInxC3k5sdjwKUeJqbhTW+2Vb5R6HTklqOejkfyHSGWpjkx7EIZ/vIn1EkWfIy/qzwg==
-X-Received: by 2002:aed:34e6:: with SMTP id x93mr5892427qtd.194.1584458346844; 
- Tue, 17 Mar 2020 08:19:06 -0700 (PDT)
-Received: from anon-dhcp-153.1015granger.net
- (c-68-61-232-219.hsd1.mi.comcast.net. [68.61.232.219])
- by smtp.gmail.com with ESMTPSA id 128sm2080034qki.103.2020.03.17.08.19.04
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 17 Mar 2020 08:19:05 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
-Subject: Re: [PATCH 4/5] IB/core: cache the CQ completion vector
-From: Chuck Lever <chucklever@gmail.com>
-In-Reply-To: <20200317134030.152833-5-maxg@mellanox.com>
-Date: Tue, 17 Mar 2020 11:19:03 -0400
-Message-Id: <448195E1-CE26-4658-8106-91BAFF115853@gmail.com>
-References: <20200317134030.152833-1-maxg@mellanox.com>
- <20200317134030.152833-5-maxg@mellanox.com>
-To: Max Gurtovoy <maxg@mellanox.com>
-X-Mailer: Apple Mail (2.3445.104.11)
+ id 1jEEJ9-0003so-3d
+ for linux-nvme@lists.infradead.org; Tue, 17 Mar 2020 15:39:08 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id BAE2EACB5;
+ Tue, 17 Mar 2020 15:39:03 +0000 (UTC)
+Subject: Re: [PATCH] nvme: stop mad sqsize increasing and decreasing
+To: Christoph Hellwig <hch@lst.de>
+References: <20200313124410.39193-1-hare@suse.de>
+ <20200317124919.GD12316@lst.de>
+From: Hannes Reinecke <hare@suse.de>
+Message-ID: <d4a5862e-ca27-a07e-75f0-1a9c470daea4@suse.de>
+Date: Tue, 17 Mar 2020 16:38:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <20200317124919.GD12316@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200317_081908_340670_84669DC7 
-X-CRM114-Status: GOOD (  17.20  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200317_083907_295012_C2A145F4 
+X-CRM114-Status: GOOD (  18.84  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:843 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [chucklever[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [195.135.220.15 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,80 +65,34 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: loberman@redhat.com, bvanassche@acm.org, vladimirk@mellanox.com,
- idanb@mellanox.com, linux-rdma@vger.kernel.org, shlomin@mellanox.com,
- linux-nvme@lists.infradead.org, leonro@mellanox.com, dledford@redhat.com,
- jgg@mellanox.com, Oren Duer <oren@mellanox.com>, kbusch@kernel.org, hch@lst.de,
- sagi@grimberg.me
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-nvme@lists.infradead.org, Sagi Grimberg <sagi@grimberg.me>,
+ Keith Busch <keith.busch@wdc.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hi Max-
-
-> On Mar 17, 2020, at 9:40 AM, Max Gurtovoy <maxg@mellanox.com> wrote:
-> 
-> In some cases, e.g. when using ib_alloc_cq_any, one would like to know
-> the completion vector that eventually assigned to the CQ. Cache this
-> value during CQ creation.
-
-I'm confused by the mention of the ib_alloc_cq_any() API here.
-
-Is your design somehow dependent on the way the current ib_alloc_cq_any()
-selects comp_vectors? The contract for _any() is that it is an API for
-callers that simply do not care about what comp_vector is chosen. There's
-no guarantee that the _any() comp_vector allocator will continue to use
-round-robin in the future, for instance.
-
-If you want to guarantee that there is an SRQ for each comp_vector and a
-comp_vector for each SRQ, stick with a CQ allocation API that enables
-explicit selection of the comp_vector value, and cache that value in the
-caller, not in the core data structures.
-
-
-> Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
-> ---
-> drivers/infiniband/core/cq.c | 1 +
-> include/rdma/ib_verbs.h      | 1 +
-> 2 files changed, 2 insertions(+)
-> 
-> diff --git a/drivers/infiniband/core/cq.c b/drivers/infiniband/core/cq.c
-> index 4f25b24..a7cbf52 100644
-> --- a/drivers/infiniband/core/cq.c
-> +++ b/drivers/infiniband/core/cq.c
-> @@ -217,6 +217,7 @@ struct ib_cq *__ib_alloc_cq_user(struct ib_device *dev, void *private,
-> 	cq->device = dev;
-> 	cq->cq_context = private;
-> 	cq->poll_ctx = poll_ctx;
-> +	cq->comp_vector = comp_vector;
-> 	atomic_set(&cq->usecnt, 0);
-> 
-> 	cq->wc = kmalloc_array(IB_POLL_BATCH, sizeof(*cq->wc), GFP_KERNEL);
-> diff --git a/include/rdma/ib_verbs.h b/include/rdma/ib_verbs.h
-> index fc8207d..0d61772 100644
-> --- a/include/rdma/ib_verbs.h
-> +++ b/include/rdma/ib_verbs.h
-> @@ -1558,6 +1558,7 @@ struct ib_cq {
-> 	struct ib_device       *device;
-> 	struct ib_ucq_object   *uobject;
-> 	ib_comp_handler   	comp_handler;
-> +	u32			comp_vector;
-> 	void                  (*event_handler)(struct ib_event *, void *);
-> 	void                   *cq_context;
-> 	int               	cqe;
-> -- 
-> 1.8.3.1
-> 
-
---
-Chuck Lever
-chucklever@gmail.com
-
-
-
-
-_______________________________________________
-linux-nvme mailing list
-linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gMy8xNy8yMCAxOjQ5IFBNLCBDaHJpc3RvcGggSGVsbHdpZyB3cm90ZToKPiBPbiBGcmksIE1h
+ciAxMywgMjAyMCBhdCAwMTo0NDoxMFBNICswMTAwLCBIYW5uZXMgUmVpbmVja2Ugd3JvdGU6Cj4+
+IFRoZSBOVk1lIHNwZWMgb25seSBzdGF0ZXM6Cj4+Cj4+ICJPbmUgc2xvdCBpbiBlYWNoIHF1ZXVl
+IGlzIG5vdCBhdmFpbGFibGUgZm9yIHVzZSBkdWUgdG8gSGVhZCBhbmQKPj4gVGFpbCBlbnRyeSBw
+b2ludGVyIGRlZmluaXRpb24uIgo+Pgo+PiBJdCBkb2VzIG5vdCBzYXkgdGhhdCB0aGUgYWN0dWFs
+IHF1ZXVlIHNpemUgbmVlZHMgdG8gZGVjcmVtZW50ZWQKPj4gYnkgb25lLCBpdCBqdXN0IG1lYW5z
+IHRoYXQgd2UnbGwgaGF2ZSB0byBsZWF2ZSBvbmUgc2xvdCBmcmVlLgo+PiBTbyBraWxsIHRoZSBt
+YWQgZGVjcmVhc2luZyBhbmQgaW5jcmVhc2luZyBvZiBzcXNpemUsIGxlYXZlIGl0Cj4+IGF0IHRo
+ZSBzcGVjaWZpZWQgc2l6ZSwgYW5kIG9ubHkgZGVjcmVtZW50IHRoZSB0YWdzZXQgYnkgb25lIHRv
+Cj4+IGVuc3VyZSB3ZSBsZWF2ZSBvbmUgc2xvdCBmcmVlLgo+IAo+IE5vdCBzdXJlIHdoYXQgaXMg
+bWFkIGhlcmUuICBBbGwgdGhlICpxc2l6ZSB2YWx1ZXMgYXJlIDBzIGJhc2VkCj4gdmFsdWVzIG9u
+IHRoZSB3aXJlLCBzbyB0aGUgb24gdGhlIHdpcmUgdmFsdWUgbmVlZCB0byBiZSBvbmUKPiBsb3dl
+ciB0aGFuIHRoZSBwcm9wZXIgdmFsdWUuCj4gCj4gTWF5YmUgd2UgbmVlZCB0bzBzYiAvIGZyb20w
+c2IgaGVscGVycyB0byBkb2N1bWVudCB0aGVzZSBhbm5veWluZwo+IHRoaW5ncyBhIGxpdHRsZSBi
+ZXR0ZXI/ICAoJSNeI1lAJCBOVk1lIGRlc2lnbmVycyBmb3IgYnVyZGVuaW5nCj4gdXMgd2l0aCB0
+aGlzIGJ1bGxzaGl0Li4pCj4gClllcywgdGhhdCBpcyBhIGdvb2QgcG9pbnQuCldpbGwgYmUgZG9p
+bmcgc28gZm9yIHRoZSBuZXh0IHVwZGF0ZS4KCkNoZWVycywKCkhhbm5lcwotLSAKRHIuIEhhbm5l
+cyBSZWluZWNrZSAgICAgICAgICAgIFRlYW1sZWFkIFN0b3JhZ2UgJiBOZXR3b3JraW5nCmhhcmVA
+c3VzZS5kZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICArNDkgOTExIDc0MDUzIDY4OApT
+VVNFIFNvZnR3YXJlIFNvbHV0aW9ucyBHbWJILCBNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJl
+cmcKSFJCIDM2ODA5IChBRyBOw7xybmJlcmcpLCBHZXNjaMOkZnRzZsO8aHJlcjogRmVsaXggSW1l
+bmTDtnJmZmVyCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpsaW51eC1udm1lIG1haWxpbmcgbGlzdApsaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
