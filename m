@@ -2,126 +2,56 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CCDC1899D3
-	for <lists+linux-nvme@lfdr.de>; Wed, 18 Mar 2020 11:46:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6434D189EA7
+	for <lists+linux-nvme@lfdr.de>; Wed, 18 Mar 2020 16:03:50 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ieHHKJqygXOKNNZR26F0+XHPDA0IzIkC305c2BNXV5Q=; b=ljz4DFFTjkc5dk
-	vFe0ky5PsOZI8Z1NmBRzeYfNT5fY8Jq4nreFaWK7bG9z+vePfrjETVhsYG3CA2h6jxXoGKOpLpVT3
-	7BqG/LVfWhlBpTeECoLy7733y/8OW7nHXTkBZsHJl9iV+J5FBWqQE9ji+YoYELOtKWqiHyZjTtwNn
-	TxkqEkzRU3C1cr3gMo+MwB8TD0aANN2v0lZaT+mIWKSLobXndkckDUId9SZWX9FZMWNDN7WlnrdPV
-	cVvXWK9F73eIP7nnpFvgM4ZMVTVeqXH9+aQc0lpHMu6D+IBOm4+68zU+GYcs4tb3jrmvBdUWpBuGn
-	0YQgH21VzTjA0B0fWYEg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8TNaws75xVvFHP8Wa23T1O4U0lBrNYYmnNhfZHV4IDg=; b=qkzXq64zC0gDwn
+	tAyMIthR9VQ/61HQ+N7zZL7QErLBHSotxa+O5QQSSR1KuXxFf4Y2z1wRaePlXa4wfCprEg9XrCYpg
+	ohn0/fAintbnB1/kCn9LYihr4B+7Ns1qCM3YWKP8+3SU0gw8XtgUVPtfgZDlfY+zYlAlQ1erIfAju
+	wBWRn8AmKyP/RtThf05yMDKKsG/SnI5sUHA4lSf8bMo2ZTxwVj6PRvjAzKLEuxOrQ/5EUgduxEbIN
+	lHJKmLLl13LaadM8H05sR7wtHWWDACC6CtaJCvkt2/YnCOdvxariPmQpgD/GJ8gqsMRDqJilllfP7
+	LYH1MCQWYNZMUknWWCjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEWDV-0003br-2S; Wed, 18 Mar 2020 10:46:29 +0000
-Received: from mail-am6eur05on2066.outbound.protection.outlook.com
- ([40.107.22.66] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEWDQ-0003bP-Fq
- for linux-nvme@lists.infradead.org; Wed, 18 Mar 2020 10:46:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IYtilIU/R2Uht+JZQD4DU9lbiuZG5+2iUEMY3OSu2ozvn6wwchqYiwJLWCe9Gg5VDlIT49gxl3j4Jza5ZFsBDPZcvYTe5dg6QP89zKzukPB/inALdfgTCGnU1EI/eLEbUOvzOQtXjJN3YCVnr0CXBt15vHB5NfgxKOmFA1JSWEGYELDubvi5Y9VozpW8dHgStS74EGx2JmrXiqlgSSM3R6G1dWyLeuCDn46gwGzj/K36sM2wflqdTZYdMXmQoi1xqpYgEYedgLvGf1/zw8lSC2OzITJlrSja15pzEbjsUQdi2iPsDMi+p0Iuh00iJp0PwQ5EjWy/ovLaPjuySYkGdQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=19kzu/EqAeelovX57DiszVqKVIRy+1cD/q7YR3KFKGM=;
- b=SrRLBg28acFGf8kRCdjbsZVmEg1F9+vlAN/5fgI/4imq7aieb+Zs5B6/wlULUiiuJ46eECu4fYTgzIcuFNKhBx0orgnWYNBdIHHWV7Ie36+81jRbVqLwAzPS7dcew5/9UHD3Yfw3kNHLtLDAPAjsVsKuAf4twLkDGCAjI8GfOi+Dgioy0WZF+5n5raXSgUbDwIGKIx4Jwrk1LD+xQ4bcvtg1VqVIk44gbpc4HqqgpFMrMJjqs9vfvQjl3AwHGCJUJgXm+u09NMfU0LNP4QHTuVfxnk/ZsuGiXq3R2v4m7XRmAKNV00cKB8q7GajueaTDc7kZEN7sWOZuNdJNaNIa5Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
- dkim=pass header.d=mellanox.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=19kzu/EqAeelovX57DiszVqKVIRy+1cD/q7YR3KFKGM=;
- b=JHnsynTqdjEFD0VEqJdktT6+6mX4AKcAjZ8rzIl6xLQ/9+TqLKIJeV1n7WW5AZr4oL4DTU4opRt3ojxbzfKrBVGAUQIXgN6/iprK1NV8Y0OZOPZEib6tAcTP8/D6RMkTytatZfdzJsigQ2959PV8eG6wD2EEaOsQv4aunEXzkFs=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=leonro@mellanox.com; 
-Received: from AM6PR05MB6408.eurprd05.prod.outlook.com (20.179.5.215) by
- AM6PR05MB4423.eurprd05.prod.outlook.com (52.135.168.20) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2814.18; Wed, 18 Mar 2020 10:46:21 +0000
-Received: from AM6PR05MB6408.eurprd05.prod.outlook.com
- ([fe80::c99f:9130:561f:dea0]) by AM6PR05MB6408.eurprd05.prod.outlook.com
- ([fe80::c99f:9130:561f:dea0%3]) with mapi id 15.20.2814.021; Wed, 18 Mar 2020
- 10:46:21 +0000
-Date: Wed, 18 Mar 2020 12:46:18 +0200
-From: Leon Romanovsky <leonro@mellanox.com>
-To: Max Gurtovoy <maxg@mellanox.com>
-Subject: Re: [PATCH 1/5] IB/core: add a simple SRQ set per PD
-Message-ID: <20200318104618.GU3351@unreal>
-References: <20200317134030.152833-1-maxg@mellanox.com>
- <20200317134030.152833-2-maxg@mellanox.com>
- <20200317135518.GG3351@unreal>
- <46bb23ed-2941-2eaa-511a-3d0f3b09a9ed@mellanox.com>
- <20200318064724.GP3351@unreal>
- <ec3ff6af-dd68-d049-5ff3-0c01320117e7@mellanox.com>
- <20200318102942.GT3351@unreal>
- <32f23851-6f89-18ef-236f-1416c49b079c@mellanox.com>
-Content-Disposition: inline
-In-Reply-To: <32f23851-6f89-18ef-236f-1416c49b079c@mellanox.com>
-X-ClientProxiedBy: AM0PR01CA0144.eurprd01.prod.exchangelabs.com
- (2603:10a6:208:168::49) To AM6PR05MB6408.eurprd05.prod.outlook.com
- (2603:10a6:20b:b8::23)
+	id 1jEaEQ-0002NZ-18; Wed, 18 Mar 2020 15:03:42 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jEaDp-0001wH-P2
+ for linux-nvme@lists.infradead.org; Wed, 18 Mar 2020 15:03:09 +0000
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ maxg@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 18 Mar 2020 17:02:57 +0200
+Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
+ [10.209.102.136])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02IF2vEK008733;
+ Wed, 18 Mar 2020 17:02:57 +0200
+From: Max Gurtovoy <maxg@mellanox.com>
+To: linux-nvme@lists.infradead.org, sagi@grimberg.me, hch@lst.de,
+ loberman@redhat.com, bvanassche@acm.org, linux-rdma@vger.kernel.org
+Subject: [PATCH v2 0/5] nvmet-rdma/srpt: SRQ per completion vector
+Date: Wed, 18 Mar 2020 17:02:52 +0200
+Message-Id: <20200318150257.198402-1-maxg@mellanox.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from localhost (2a00:a040:183:2d::393) by
- AM0PR01CA0144.eurprd01.prod.exchangelabs.com (2603:10a6:208:168::49) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2835.18 via Frontend
- Transport; Wed, 18 Mar 2020 10:46:20 +0000
-X-Originating-IP: [2a00:a040:183:2d::393]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: 98777e17-98f1-478b-5789-08d7cb2998aa
-X-MS-TrafficTypeDiagnostic: AM6PR05MB4423:|AM6PR05MB4423:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <AM6PR05MB4423189332579FC44E9A9397B0F70@AM6PR05MB4423.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:483;
-X-Forefront-PRVS: 03468CBA43
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10009020)(7916004)(4636009)(39860400002)(346002)(396003)(376002)(136003)(366004)(199004)(4326008)(107886003)(5660300002)(6862004)(66946007)(66476007)(66556008)(33716001)(2906002)(6486002)(9686003)(52116002)(6496006)(8936002)(53546011)(81166006)(8676002)(81156014)(1076003)(316002)(6636002)(478600001)(186003)(33656002)(86362001)(16526019);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM6PR05MB4423;
- H:AM6PR05MB6408.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; 
-Received-SPF: None (protection.outlook.com: mellanox.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: b+btQs67XENK4UcALEA8NSZIKGTtVW8VT7B3gTlyT8dutYGtVI40emQa9VddIah8up9krZMsWDWM2x6uuoFTMQ8WZqqTfAHryjlhdBtj3plQFFxcHhgQJUjr6kbMz9gsoucTnsi+nmlzQgsX4rn1FiPB/jz4Hc3ZUVcVoL6FLIw4xY3ZzZvmuIuRs/YaHV2qHpZuZ42s7EN2vp5DzkI53RKr+LYWxB7sWDpVfrfybq7pE5jopQM/SuteO+W3wGKKMUv3UAm3mGvCDoLL7Cr9wfOF2BjkUqQz+FY8naLWopEhJd75YZOCGnOe7xLjCXvJKHiCJMumclthOK5SURTm1PvGjevDE699nmLZiQgs6Zl5Om80cDjvlK03HaaHs7wD5VbixqdxHwqPCeN2V9gtEoTlhaApHqCnzqHkh9wm2zMYhiHjQQ8ukVhMJgM83xJR
-X-MS-Exchange-AntiSpam-MessageData: p6l7ibl3ayfUhyDxqvdhK7scgOCN9evFX1yDkUvCG477ffVjnqcTRUy0VJf0T6HE9yagI+2SgScxsiXzV/VGfWZMiCoki8e2yph0oHUuEX1vFKBZUFjPjRwnVb4NXfglo9dhHyWjqi5oTkTyDtGeBs1TB0/Q+tp3cBaPv9J/Nu4=
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 98777e17-98f1-478b-5789-08d7cb2998aa
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Mar 2020 10:46:21.3161 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: nFvupzfi3G/WUPD5/98pjt4tEe0qrkkQMKOzLK9EtPQaYngYMgWaNxjyK9bQ2uWgHkhXfBrts2WVQ5vM5T0QCw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR05MB4423
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200318_034624_537589_A54F3892 
-X-CRM114-Status: GOOD (  21.55  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200318_080306_237547_216E8F37 
+X-CRM114-Status: GOOD (  11.12  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.22.66 listed in list.dnswl.org]
+ no trust [193.47.165.129 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -133,69 +63,114 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: loberman@redhat.com, bvanassche@acm.org, vladimirk@mellanox.com,
- shlomin@mellanox.com, linux-rdma@vger.kernel.org,
- linux-nvme@lists.infradead.org, idanb@mellanox.com, dledford@redhat.com,
- jgg@mellanox.com, oren@mellanox.com, kbusch@kernel.org, hch@lst.de,
- sagi@grimberg.me
+Cc: rgirase@redhat.com, vladimirk@mellanox.com, shlomin@mellanox.com,
+ leonro@mellanox.com, dledford@redhat.com, jgg@mellanox.com, oren@mellanox.com,
+ kbusch@kernel.org, Max Gurtovoy <maxg@mellanox.com>, idanb@mellanox.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Mar 18, 2020 at 12:39:44PM +0200, Max Gurtovoy wrote:
->
-> On 3/18/2020 12:29 PM, Leon Romanovsky wrote:
-> > On Wed, Mar 18, 2020 at 11:46:19AM +0200, Max Gurtovoy wrote:
-> > > On 3/18/2020 8:47 AM, Leon Romanovsky wrote:
-> > > > On Tue, Mar 17, 2020 at 06:37:57PM +0200, Max Gurtovoy wrote:
-> > > > > On 3/17/2020 3:55 PM, Leon Romanovsky wrote:
-> > > > > > On Tue, Mar 17, 2020 at 03:40:26PM +0200, Max Gurtovoy wrote:
-> > > > > > > ULP's can use this API to create/destroy SRQ's with the same
-> > > > > > > characteristics for implementing a logic that aimed to save resources
-> > > > > > > without significant performance penalty (e.g. create SRQ per completion
-> > > > > > > vector and use shared receive buffers for multiple controllers of the
-> > > > > > > ULP).
-> > > > > > >
-> > > > > > > Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
-> > > > > > > ---
-> > > > > > >     drivers/infiniband/core/Makefile  |  2 +-
-> > > > > > >     drivers/infiniband/core/srq_set.c | 78 +++++++++++++++++++++++++++++++++++++++
-> > > > > > >     drivers/infiniband/core/verbs.c   |  4 ++
-> > > > > > >     include/rdma/ib_verbs.h           |  5 +++
-> > > > > > >     include/rdma/srq_set.h            | 18 +++++++++
-> > > > > > >     5 files changed, 106 insertions(+), 1 deletion(-)
-> > > > > > >     create mode 100644 drivers/infiniband/core/srq_set.c
-> > > > > > >     create mode 100644 include/rdma/srq_set.h
-> > > > > > >
-> > > > > > > diff --git a/drivers/infiniband/core/Makefile b/drivers/infiniband/core/Makefile
-> > > > > > > index d1b14887..1d3eaec 100644
-> > > > > > > --- a/drivers/infiniband/core/Makefile
-> > > > > > > +++ b/drivers/infiniband/core/Makefile
-> > > > > > > @@ -12,7 +12,7 @@ ib_core-y :=			packer.o ud_header.o verbs.o cq.o rw.o sysfs.o \
-> > > > > > >     				roce_gid_mgmt.o mr_pool.o addr.o sa_query.o \
-> > > > > > >     				multicast.o mad.o smi.o agent.o mad_rmpp.o \
-> > > > > > >     				nldev.o restrack.o counters.o ib_core_uverbs.o \
-> > > > > > > -				trace.o
-> > > > > > > +				trace.o srq_set.o
-> > > > > > Why did you call it "srq_set.c" and not "srq.c"?
-> > > > > because it's not a SRQ API but SRQ-set API.
-> > > > I would say that it is SRQ-pool and not SRQ-set API.
-> > > If you have some other idea for an API, please share with us.
-> > >
-> > > I've created this API in core layer to make the life of the ULPs easier and
-> > > we can see that it's very easy to add this feature to ULPs and get a big
-> > > benefit of it.
-> > No one here said against the feature, but tried to understand the
-> > rationale behind name *_set and why you decided to use "set" term
-> > and not "pool", like was done for MR pool.
->
-> Ok. But srq_pool was the name I used 2 years ago and you didn't like this
-> back then.
+This set is a renewed version of the feature for NVMEoF/RDMA target. In
+this series I've decided to implement it also for SRP target that had
+similar implementatiom (SRQ per HCA) after previous requests from the
+community. The logic is intended to save resource allocation (by sharing
+them) and utilize the locality of completions to get the best performance
+with Shared Receive Queues (SRQs). We'll create a SRQ per completion
+vector (and not per device) using a new API (basic SRQ pool, added to this
+patchset too) and associate each created QP/CQ/channel with an
+appropriate SRQ. This will also reduce the lock contention on the single
+SRQ per device (today's solution).
 
-I don't like it today too, but don't have better name to suggest.
+For NVMEoF, my testing environment included 4 initiators (CX5, CX5, CX4,
+CX3) that were connected to 4 subsystems (1 ns per sub) throw 2 ports
+(each initiator connected to unique subsystem backed in a different
+bull_blk device) using a switch to the NVMEoF target (CX5).
+I used RoCE link layer. For SRP, I used 1 server with RoCE loopback connection
+(results are not mentioned below) for testing. Hopefully I'll get a tested-by
+signature and feedback from Laurence and Rupesh on the SRP part during the review
+process.
 
-Thanks
+The below results were made a while ago using NVMEoF.
+
+Configuration:
+ - Irqbalancer stopped on each server
+ - set_irq_affinity.sh on each interface
+ - 2 initiators run traffic throw port 1
+ - 2 initiators run traffic throw port 2
+ - On initiator set register_always=N
+ - Fio with 12 jobs, iodepth 128
+
+Memory consumption calculation for recv buffers (target):
+ - Multiple SRQ: SRQ_size * comp_num * ib_devs_num * inline_buffer_size
+ - Single SRQ: SRQ_size * 1 * ib_devs_num * inline_buffer_size
+ - MQ: RQ_size * CPU_num * ctrl_num * inline_buffer_size
+
+Cases:
+ 1. Multiple SRQ with 1024 entries:
+    - Mem = 1024 * 24 * 2 * 4k = 192MiB (Constant number - not depend on initiators number)
+ 2. Multiple SRQ with 256 entries:
+    - Mem = 256 * 24 * 2 * 4k = 48MiB (Constant number - not depend on initiators number)
+ 3. MQ:
+    - Mem = 256 * 24 * 8 * 4k = 192MiB (Mem grows for every new created ctrl)
+ 4. Single SRQ (current SRQ implementation):
+    - Mem = 4096 * 1 * 2 * 4k = 32MiB (Constant number - not depend on initiators number)
+
+results:
+
+BS    1.read (target CPU)   2.read (target CPU)    3.read (target CPU)   4.read (target CPU)
+---  --------------------- --------------------- --------------------- ----------------------
+1k     5.88M (80%)            5.45M (72%)            6.77M (91%)          2.2M (72%)
+
+2k     3.56M (65%)            3.45M (59%)            3.72M (64%)          2.12M (59%)
+
+4k     1.8M (33%)             1.87M (32%)            1.88M (32%)          1.59M (34%)
+
+BS    1.write (target CPU)   2.write (target CPU) 3.write (target CPU)   4.write (target CPU)
+---  --------------------- --------------------- --------------------- ----------------------
+1k     5.42M (63%)            5.14M (55%)            7.75M (82%)          2.14M (74%)
+
+2k     4.15M (56%)            4.14M (51%)            4.16M (52%)          2.08M (73%)
+
+4k     2.17M (28%)            2.17M (27%)            2.16M (28%)          1.62M (24%)
+
+
+We can see the perf improvement between Case 2 and Case 4 (same order of resource).
+We can see the benefit in resource consumption (mem and CPU) with a small perf loss
+between cases 2 and 3.
+There is still an open question between the perf differance for 1k between Case 1 and
+Case 3, but I guess we can investigate and improve it incrementaly.
+
+Thanks to Idan Burstein and Oren Duer for suggesting this nice feature.
+
+Changes from v1:
+ - rename srq_set to srq_pool (Leon)
+ - changed srpt to use ib_alloc_cq (patch 4/5)
+ - removed caching of comp_vector in ib_cq
+ - minor fixes got from Leon's review
+
+Max Gurtovoy (5):
+  IB/core: add a simple SRQ pool per PD
+  nvmet-rdma: add srq pointer to rdma_cmd
+  nvmet-rdma: use SRQ per completion vector
+  RDMA/srpt: use ib_alloc_cq instead of ib_alloc_cq_any
+  RDMA/srpt: use SRQ per completion vector
+
+ drivers/infiniband/core/Makefile      |   2 +-
+ drivers/infiniband/core/srq_pool.c    |  75 +++++++++++++
+ drivers/infiniband/core/verbs.c       |   3 +
+ drivers/infiniband/ulp/srpt/ib_srpt.c | 187 +++++++++++++++++++++++--------
+ drivers/infiniband/ulp/srpt/ib_srpt.h |  28 ++++-
+ drivers/nvme/target/rdma.c            | 203 ++++++++++++++++++++++++++--------
+ include/rdma/ib_verbs.h               |   4 +
+ include/rdma/srq_pool.h               |  18 +++
+ 8 files changed, 419 insertions(+), 101 deletions(-)
+ create mode 100644 drivers/infiniband/core/srq_pool.c
+ create mode 100644 include/rdma/srq_pool.h
+
+-- 
+1.8.3.1
+
 
 _______________________________________________
 linux-nvme mailing list
