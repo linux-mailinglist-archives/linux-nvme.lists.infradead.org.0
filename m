@@ -2,57 +2,56 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9A8A18ABAB
-	for <lists+linux-nvme@lfdr.de>; Thu, 19 Mar 2020 05:15:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4030E18ABB3
+	for <lists+linux-nvme@lfdr.de>; Thu, 19 Mar 2020 05:20:50 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OI5MXYOKpfu7b+yFSz4FjnlBgNUcbrKAaDtWCdq6oCY=; b=V/1dtoDWcijg5N
-	X020kcfmMeafXHLd/ZwNNURwGGM0rPNDtKjVZxFGPTJGwGQ4Q3nCe1PaYNC5YynGk1at/Imwdzygm
-	LBhOWqxo0d4WTI2Rj+urcT9fWHDZGcEXoeoco4p91erLgosJBGu48Bk7E30eXG9y7fo5YNkmKP+rv
-	ICPHQQVtMPQhemWFavjN0LrMeDdQc3naSgUL/PLb6AOyEFwDL3pq5jCwSFRfKJm3i5uEvHMkWxDNm
-	C/3W1KexEf5RWF956XJuVuwtCdl6/5irZfdWXqcXuDp3uCyvh+Yue344QQw/KJAiA0JijWw/2C/2l
-	9UU8ctnT1vRTdpeWCNZQ==;
+	List-Owner; bh=jMvIQjOZt0vGu6YPjxl2mrutx3+9jl2t8kQ/snFLyf0=; b=W0Z2SJa3Eyyk7Y
+	ZjDvRMbo4OZzw6FA1KPQxsqLAaFSNA5xfb/N5sExTrwkmwasJDLPVqzH8PPZCPE0ek3I21EBRNEwb
+	NdENlE7MpD/HZ+K3Sgycn9ElU+7YKBxP9x/uUiHaJNEqKU++cD6H/7BwSkVMBuKnFhG/3CgfyXTEX
+	H/rPvDO3e5V6sbKeKhOeoN9irXhyJyjQ3WQ1QaAAjiQD2+cEj2qKneWHrm9gwr9C4dHqJMF+9AONf
+	OgDRcHIt/XPsHyNxQTJmLsrepcHnY2RPTvn8CvQnWYMlCET4jvMsoRzi+bFwXofFWBLq/jDfr45Ev
+	RXnVmNuCYkrUQXrGmDlg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEmaj-0000XX-Ii; Thu, 19 Mar 2020 04:15:33 +0000
-Received: from mail-pg1-f194.google.com ([209.85.215.194])
+	id 1jEmfh-0002A3-CO; Thu, 19 Mar 2020 04:20:41 +0000
+Received: from mail-pg1-f193.google.com ([209.85.215.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEmae-0000XB-F8
- for linux-nvme@lists.infradead.org; Thu, 19 Mar 2020 04:15:29 +0000
-Received: by mail-pg1-f194.google.com with SMTP id x7so518277pgh.5
- for <linux-nvme@lists.infradead.org>; Wed, 18 Mar 2020 21:15:27 -0700 (PDT)
+ id 1jEmfc-00029a-Cd
+ for linux-nvme@lists.infradead.org; Thu, 19 Mar 2020 04:20:37 +0000
+Received: by mail-pg1-f193.google.com with SMTP id t3so536741pgn.1
+ for <linux-nvme@lists.infradead.org>; Wed, 18 Mar 2020 21:20:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=8kkJruqha5cfOcqdL2dBZSpbnGPcrevIKMbH+BYaoog=;
- b=bPfhaAnLrvg7+Voq3+prjsMyM5nkMjWbgdGDc4y9pk0yKzlDboBGdeUUl9HYaLj17V
- TQjruQHsZTmuphJYTYXTQkCEFpRoIkPuansUo334+PFU94OQxuda4zcZEuBqxaz3uSG4
- elAc+eH3Uge8fkAfJHP/TB6Z0iw0VwHFGh6BKHWWKBGbQNMImumTiAajojsXLLWl10mO
- F7Kyk30bLyIKgTmaGD6AKENoVtu49lkYMc9YWdqH9D9otQR+6WAT+oJLP/Z2N9smrRrY
- a3x9KMiqisYgGy+5fcvyyqNu2E0N1TR2IyrY0gCQBTIVa0RlGS/FXCGzq5TCkkp0x7IJ
- IRfA==
-X-Gm-Message-State: ANhLgQ0+proGFA1L1BMTz4SnxRB9CyYDTlcAVkIoNNMiR1QAJGNdSkNe
- sN/PEPpZbiOvUgMYcDZ/Vk4=
-X-Google-Smtp-Source: ADFU+vu9hTq+vovNK3nH59FW/BDgaY26b3Q8S/Z5QE3/J7G7QtC0rlIGC3JHo1IAl2lJTGqiG4pIPA==
-X-Received: by 2002:a62:3854:: with SMTP id f81mr1875949pfa.81.1584591327319; 
- Wed, 18 Mar 2020 21:15:27 -0700 (PDT)
+ bh=l5XhcxCMQg8oTVpOAkuu6Pgu0Fm+gg1zDu8gyd3uVj0=;
+ b=r6heScQ6W/RwrWHKxllQ01B7uJBuqRkfMqw4vz3PMieY8QOVxZCheyk3KtVQ2SvpwZ
+ fRqI1KDOpmTZYIttF8wskWf1sfCAlKKW3hVCVXcZ7exIX5OBv+gQiABAt8KK6y8S99iw
+ xT0t7m3ZMdIMUvsQk5d4xSXq7unjnzS7/5zs1fMurU7tTekuj5gRx+SMGw3v9L8CPQns
+ JZNuA70VxuBSo8cKwF03jUFTHemFVvJFaIx7JkFr9jKQvUlUZciXgQLm8kWnzf9EPXFb
+ dTMpM/NP7UbFaGNZIPAqS2+rHw3PDKrj5GdUBm+QHbnM6rSW9tl0ctjl6T95HgaAZyut
+ vO5w==
+X-Gm-Message-State: ANhLgQ11y9mGMoRIxe3xiNLqI/bjbaCbVZ1ykeDXw6SZeBUw0shvw4HC
+ U0KuzleNLCpQFbR8d+/m3ls=
+X-Google-Smtp-Source: ADFU+vs9BT5h8/ILGqDxzYrVa0LtIW7S1biNtmQvN6npeW3BDjdAKtZSHe7W+kovGHY49Ll2P5tiNw==
+X-Received: by 2002:a63:5c18:: with SMTP id q24mr1346808pgb.322.1584591635271; 
+ Wed, 18 Mar 2020 21:20:35 -0700 (PDT)
 Received: from ?IPv6:2601:647:4000:d7:84b7:c685:175f:6f9b?
  ([2601:647:4000:d7:84b7:c685:175f:6f9b])
- by smtp.gmail.com with ESMTPSA id k3sm536056pgr.40.2020.03.18.21.15.25
+ by smtp.gmail.com with ESMTPSA id g81sm511355pfb.188.2020.03.18.21.20.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Mar 2020 21:15:26 -0700 (PDT)
-Subject: Re: [PATCH v2 4/5] RDMA/srpt: use ib_alloc_cq instead of
- ib_alloc_cq_any
+ Wed, 18 Mar 2020 21:20:34 -0700 (PDT)
+Subject: Re: [PATCH v2 5/5] RDMA/srpt: use SRQ per completion vector
 To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org,
  sagi@grimberg.me, hch@lst.de, loberman@redhat.com, linux-rdma@vger.kernel.org
 References: <20200318150257.198402-1-maxg@mellanox.com>
- <20200318150257.198402-5-maxg@mellanox.com>
+ <20200318150257.198402-6-maxg@mellanox.com>
 From: Bart Van Assche <bvanassche@acm.org>
 Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
  mQENBFSOu4oBCADcRWxVUvkkvRmmwTwIjIJvZOu6wNm+dz5AF4z0FHW2KNZL3oheO3P8UZWr
@@ -77,31 +76,31 @@ Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
  //x8dLe2Fv1By4SKGhmzwH87uXxbTJAUxiWIi1np0z3/RDnoVyfmfbbL1DY7zf2hYXLLzsJR
  mSsED/1nlJ9Oq5fALdNEPgDyPUerqHxcmIub+pF0AzJoYHK5punqpqfGmqPbjxrJLPJfHVKy
  goMj5DlBMoYqEgpbwdUYkH6QdizJJCur4icy8GUNbisFYABeoJ91pnD4IGei3MTdvINSZI5e
-Message-ID: <9bb2758f-19b2-34ff-dd78-78ff00ae234f@acm.org>
-Date: Wed, 18 Mar 2020 21:15:24 -0700
+Message-ID: <27e2267c-6793-c7dd-1e06-3f12acf08078@acm.org>
+Date: Wed, 18 Mar 2020 21:20:33 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200318150257.198402-5-maxg@mellanox.com>
+In-Reply-To: <20200318150257.198402-6-maxg@mellanox.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200318_211528_510072_371E9903 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20200318_212036_430655_DAE91AC6 
+X-CRM114-Status: GOOD (  10.30  )
 X-Spam-Score: 0.3 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (0.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.215.194 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.215.193 listed in list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider [bart.vanassche[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.215.194 listed in wl.mailspike.net]
+ [209.85.215.193 listed in wl.mailspike.net]
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
@@ -125,22 +124,12 @@ Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 On 2020-03-18 08:02, Max Gurtovoy wrote:
-> For spreading the completion vectors fairly, add global ida for RDMA
-> channeles and use ida_simple_{get,remove} API. This is a preparation
-  ^^^^^^^^^
-  channels?
+> +	for (i = 0; i < sdev->srq_size; ++i) {
+> +		INIT_LIST_HEAD(&srq->ioctx_ring[i]->wait_list);
+> +		srpt_srq_post_recv(srq, srq->ioctx_ring[i]);
+> +	}
 
-> +/* Will be used to allocate an index for srpt_rdma_ch. */
-> +static DEFINE_IDA(srpt_channel_ida);
-
-I don't think that we need a global data structure for spreading work
-across completion vectors. How about assigning 0 to ch->idx if
-SRP_MTCH_ACTION is not set during login and assigning 1 .. n to ch->idx
-for all other channels for which SRP_MTCH_ACTION is set during login?
-
-> +	 /* Spread the io channeles across completion vectors */
-                       ^^^^^^^^^^^^
-                       RDMA channels?
+Please check the srpt_srq_post_recv() return value.
 
 Thanks,
 
