@@ -2,55 +2,57 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 058F918AB86
-	for <lists+linux-nvme@lfdr.de>; Thu, 19 Mar 2020 05:02:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1977718AB90
+	for <lists+linux-nvme@lfdr.de>; Thu, 19 Mar 2020 05:05:48 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S9Hqf7Mda3C0tY1JNnu075Jh1hjeRK/kA3HepwpicS4=; b=pc0kQYH4emMF7M
-	TspeBVhtrfF587P2eb1NnI437yIpD4DMMcqsboM4pRLmm7hXcVM1TiwD7Pq8a6H6VL1Ouz/RL8SID
-	ULmjhpvhcSrK9ZbJzOxEDC3/3WmJQqN96Y0bSi1uykUlhhv0qfI4LaaOq0WCFPDhG+FEHmVt8mphI
-	gNp/FWsQr5LzZd0/JUl9ySbGQ8jvCZ8EJ2jP68UHZ0IGvEf7gjTprBM1qy4Nas69z+Q4rCIgvTlYE
-	kmoDvOUrFQpikXpLKWSVwHeOfbkTPd9+ADkMmnP7q4z9v50oLJAtIXdAEplrWzDqO/VXRrMkA8TgW
-	4q0jFLCT53xxlI83jLjA==;
+	List-Owner; bh=EFHQOoKgpJjnLe9JlKNXhhrRdJSixL43oAe7cFTGlck=; b=ho0mk1vY7h1txu
+	ctpsZ1wvaMSbu1h8DdwhxEu6GTKee8Jo+3gcdAtfTUSlqTabktOYFPMm07a7Ce5AjY1StOfSL3rAv
+	YQ0wnkrb9DzrWUS9tFTx4yc8sq8X8zd27w/tMYtClxjdbDLGbvzdrvUPVdi6pg8t2NUl0m83xczV7
+	FKL5cidWwueSg6CIGHiNnavC1hz8aptz/Icl5agFp04WcPhuIsDi1DHl7wSn+r4vRjwFckpPUNrvB
+	PGRvw+amEpA+xfwcspQaO1EnRdIKYh66T+lLoy6t0Ejyex9Aga9507ihk3S6pKls8i+JtDFDBtMAs
+	Z/J9wj64Y+z/im5hfe2g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEmNz-0003bJ-82; Thu, 19 Mar 2020 04:02:23 +0000
-Received: from mail-pf1-f195.google.com ([209.85.210.195])
+	id 1jEmRB-00057T-Le; Thu, 19 Mar 2020 04:05:41 +0000
+Received: from mail-pj1-f66.google.com ([209.85.216.66])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEmNv-0003aR-Gl
- for linux-nvme@lists.infradead.org; Thu, 19 Mar 2020 04:02:20 +0000
-Received: by mail-pf1-f195.google.com with SMTP id b72so658885pfb.11
- for <linux-nvme@lists.infradead.org>; Wed, 18 Mar 2020 21:02:17 -0700 (PDT)
+ id 1jEmR7-000573-8i
+ for linux-nvme@lists.infradead.org; Thu, 19 Mar 2020 04:05:38 +0000
+Received: by mail-pj1-f66.google.com with SMTP id hg10so420804pjb.1
+ for <linux-nvme@lists.infradead.org>; Wed, 18 Mar 2020 21:05:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=CS6j/dj+b0UdPfXca74cRX59NxtxC7h0wAYHH2FNfHA=;
- b=PWPc8t5KISq1zHvlIJyuFXYoyhNKFuYrkWXCwcdx6pDL6PxBbtkkawUyFkYXLn5iEy
- 21mVtK/WuVNPe/qXecPC/VKus/8ix+vh18i1spme9TZq0ukaLrz0yYjXMENnFzpFDsgj
- YzAnpnaZk0pvEDkex4h8yFOuZLS9/JsjLVQJMByi7qmiI6llmlhxTKMRB2HY5XTjTGHB
- tBzZzLex1K9eiWAfP/qDCZ4Rm3HRRgWXTTKO0craO/XnCRS5jKrNHNOfEvo8Ah1nR5H0
- ERxWoLev870UVTEyYaEdBtmMbV/EEbW2BF/KfqpX7cPPdefESbFUSh1aMvZmzD1N8UkC
- x2lA==
-X-Gm-Message-State: ANhLgQ0CnPcal9Rf4c9+KHcP61L3DcaVY2GhNgGcq8oK0eb4UWOYjOB0
- D4YYLdQM9wPt8ieVhe+kkFhn6LoaxyM=
-X-Google-Smtp-Source: ADFU+vusO1JaNVfvuDAODDqmien8P0AqPsSWq6bSkBcLJkLuDhxFX8vcFUALvEyvUbWHGJg/U/6FSw==
-X-Received: by 2002:a63:9dc2:: with SMTP id i185mr1208717pgd.240.1584590536968; 
- Wed, 18 Mar 2020 21:02:16 -0700 (PDT)
+ bh=wr6kC4JScFrW2hgAcl7y9c5/eIVPDlJgXz+wP6QicTw=;
+ b=AWYJPT0nQgRXIL0Atbuc3FwPccwvEw5Eapar+G/KtQoAeGjqw8F65mgkqKo3wnG7Jc
+ sNHUAz9/r8AHhVElSR2pJlc3DKj2Ty7vt21mX8hTK7WKARAMRduNDiiJh6n8IIju7Slb
+ IULnzhmiF2pHCsbrErvMe4cWG6zdjmffB25rM+QSHMqlb+w021uXr8ldumuN6e0mIp5A
+ ss91fGhR9LFAHSVVp+hTwScnJT0SkbGYfOAF02TEr+TNG+vltCddabobPfzsoRoF5sco
+ 9/ZGyqxY4/UuoH4ebiNu7/KqQyhgcDFkO5D72A+MLOzOYzpMFVgLac91rgSvjPQsEiPJ
+ Mqeg==
+X-Gm-Message-State: ANhLgQ3aML42L9al6IFolvy0lVEHiQPVtfmIx5+R0UlAdPfP9o0iG3Fn
+ 0fpl7kbsrisWwWiHho2YfX4=
+X-Google-Smtp-Source: ADFU+vsVGW/k6e5yMCEGH5+krNUDm2bXxjXi2jwCUkuv2I42Bt5pF7ZuCSWbZdqVkbnQ3MDEhqRp0Q==
+X-Received: by 2002:a17:90a:8c0f:: with SMTP id
+ a15mr1660754pjo.156.1584590736459; 
+ Wed, 18 Mar 2020 21:05:36 -0700 (PDT)
 Received: from ?IPv6:2601:647:4000:d7:84b7:c685:175f:6f9b?
  ([2601:647:4000:d7:84b7:c685:175f:6f9b])
- by smtp.gmail.com with ESMTPSA id fz3sm403037pjb.41.2020.03.18.21.02.15
+ by smtp.gmail.com with ESMTPSA id y131sm498309pfb.78.2020.03.18.21.05.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Mar 2020 21:02:15 -0700 (PDT)
-Subject: Re: [PATCH v2 0/5] nvmet-rdma/srpt: SRQ per completion vector
+ Wed, 18 Mar 2020 21:05:35 -0700 (PDT)
+Subject: Re: [PATCH v2 2/5] nvmet-rdma: add srq pointer to rdma_cmd
 To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org,
  sagi@grimberg.me, hch@lst.de, loberman@redhat.com, linux-rdma@vger.kernel.org
 References: <20200318150257.198402-1-maxg@mellanox.com>
+ <20200318150257.198402-3-maxg@mellanox.com>
 From: Bart Van Assche <bvanassche@acm.org>
 Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
  mQENBFSOu4oBCADcRWxVUvkkvRmmwTwIjIJvZOu6wNm+dz5AF4z0FHW2KNZL3oheO3P8UZWr
@@ -75,31 +77,32 @@ Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
  //x8dLe2Fv1By4SKGhmzwH87uXxbTJAUxiWIi1np0z3/RDnoVyfmfbbL1DY7zf2hYXLLzsJR
  mSsED/1nlJ9Oq5fALdNEPgDyPUerqHxcmIub+pF0AzJoYHK5punqpqfGmqPbjxrJLPJfHVKy
  goMj5DlBMoYqEgpbwdUYkH6QdizJJCur4icy8GUNbisFYABeoJ91pnD4IGei3MTdvINSZI5e
-Message-ID: <64006872-53be-d7fa-831f-a1e79302038e@acm.org>
-Date: Wed, 18 Mar 2020 21:02:13 -0700
+Message-ID: <46185d3b-6b17-753d-b3c3-be223ee281a9@acm.org>
+Date: Wed, 18 Mar 2020 21:05:34 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200318150257.198402-1-maxg@mellanox.com>
+In-Reply-To: <20200318150257.198402-3-maxg@mellanox.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200318_210219_552909_4D9F87EE 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20200318_210537_309572_90EF95F0 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.3 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (0.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.216.66 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider [bart.vanassche[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.210.195 listed in list.dnswl.org]
  0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.210.195 listed in wl.mailspike.net]
+ [209.85.216.66 listed in wl.mailspike.net]
  0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
  EnvelopeFrom freemail headers are different
  0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
@@ -114,8 +117,8 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: rgirase@redhat.com, vladimirk@mellanox.com, shlomin@mellanox.com,
- leonro@mellanox.com, dledford@redhat.com, jgg@mellanox.com, oren@mellanox.com,
+Cc: rgirase@redhat.com, vladimirk@mellanox.com, leonro@mellanox.com,
+ shlomin@mellanox.com, dledford@redhat.com, jgg@mellanox.com, oren@mellanox.com,
  kbusch@kernel.org, idanb@mellanox.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -123,17 +126,9 @@ Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 On 2020-03-18 08:02, Max Gurtovoy wrote:
-> I used RoCE link layer. For SRP, I used 1 server with RoCE loopback connection
-> (results are not mentioned below) for testing. Hopefully I'll get a tested-by
-> signature and feedback from Laurence and Rupesh on the SRP part during the review
-> process.
-
-Hi Max,
-
-The MAD code in ib_srpt is not triggered when using RoCE. Please also
-test SRP over IB.
-
-Additionally, how does this patch series affect SRP performance?
+> This is a preparetion patch for the SRQ per completion vector feature.
+            ^^^^^^^^^^^
+            preparation?
 
 Thanks,
 
