@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7BE918EB48
-	for <lists+linux-nvme@lfdr.de>; Sun, 22 Mar 2020 19:00:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C78E818EB4A
+	for <lists+linux-nvme@lfdr.de>; Sun, 22 Mar 2020 19:01:20 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,37 +11,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=LUMIvSfGMIBMuu7/sZFBAVxICWmO4L4umo85JjoPYgw=; b=fxcb9OnePssHE3S7JTgnfz/so4
-	lcZ+vqPurNIG6kFKtS/D1RogWJmweYr7nByVw2fr75dFKY/hoqblR6ZnOYybOot218ogF16iefLJY
-	DE+/1kW5Fu8DmyAQLlFqiJvVSMGoz4j+vNP7PteKoQAkgSjnRyjsoZeAi+4kbehwAmq9803WvzBGe
-	TTLanFfY0dQ1CjQi/3ZAJh9ydnXyo2HzwK1Q218tqhcHeL29AC+JkoVXMHvFrNlfq7bSSt9jRsBS0
-	KG12rCfLkD9Mv22LsQS4xCWjr/R3XmpwH7mj3sZnUynhHFkmWVPmvNAacgJcDVsV+FS8OyLKJSKYB
-	b/I60egA==;
+	bh=7rQdrsvzHy3kGWT7vH5PUSt1zqLYxtiMk9Rse2+/sRs=; b=BBaHbBzHpnJ4ssxicdo3MZNYCp
+	cMwdUoS4FJk1fk7dFgPBjtlRvbeQkBG2uJK80RqF3kBIJ83yX6u5qsP/kKWCss4OiljIURo3qbLyO
+	NjK75jXi6DbBUe09dmoNnEcX5plyDCp1umgRA5DQ+SWQGvLQ6/fploL6WSzNXsGvWZqw0qTOaQPyu
+	bxBU/l400As67h1lfRiiu71dYGUoyNMWEotJLDzDjVXXQ4ontelRjJ+CYaRS8i7u0TX//7hkFqAyq
+	y6mHTgcb81Wy30ni9NZ09N44AtZVAHd8difgXLAyk/SdCCVFcxdvs68vaV3f4Ct27syDOvZRtIzHa
+	LCdCJPAg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jG4u1-00083D-AF; Sun, 22 Mar 2020 18:00:49 +0000
+	id 1jG4uP-0008MB-NH; Sun, 22 Mar 2020 18:01:13 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jG4tK-0006Z3-6I
- for linux-nvme@lists.infradead.org; Sun, 22 Mar 2020 18:00:10 +0000
-Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ id 1jG4tK-0006Z5-45
+ for linux-nvme@lists.infradead.org; Sun, 22 Mar 2020 18:00:11 +0000
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  israelr@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 22 Mar 2020 19:59:58 +0200
 Received: from rsws50.mtr.labs.mlnx (rsws50.mtr.labs.mlnx [10.209.40.61])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02MHxvSD004810;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02MHxvSE004810;
  Sun, 22 Mar 2020 19:59:57 +0200
 From: Israel Rukshin <israelr@mellanox.com>
 To: Linux-nvme <linux-nvme@lists.infradead.org>,
  Sagi Grimberg <sagi@grimberg.me>, Christoph Hellwig <hch@lst.de>
-Subject: [PATCH 4/6] nvme: Fix controller creation races with teardown flow
-Date: Sun, 22 Mar 2020 19:59:47 +0200
-Message-Id: <1584899989-14623-5-git-send-email-israelr@mellanox.com>
+Subject: [PATCH 5/6] nvme-rdma: Add warning on state change failure at
+ nvme_rdma_setup_ctrl
+Date: Sun, 22 Mar 2020 19:59:48 +0200
+Message-Id: <1584899989-14623-6-git-send-email-israelr@mellanox.com>
 X-Mailer: git-send-email 1.8.4.3
 In-Reply-To: <1584899989-14623-1-git-send-email-israelr@mellanox.com>
 References: <1584899989-14623-1-git-send-email-israelr@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200322_110006_651470_30D8D8F7 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20200322_110006_597996_128E9925 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -72,60 +74,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Calling nvme_sysfs_delete() when the controller is in the middle of
-creation may cause several bugs. If the controller is in NEW state we
-remove delete_controller file and don't delete the controller. The user
-will not be able to use nvme disconnect command on that controller again,
-although the controller may be active. Other bugs may happen if the
-controller is in the middle of create_ctrl callback and
-nvme_do_delete_ctrl() starts. For example, freeing I/O tagset at
-nvme_do_delete_ctrl() before it was allocated at create_ctrl callback.
-
-To fix all those races don't allow the user to delete the controller
-before it was fully created.
+The transition to LIVE state should not fail in case of a new controller.
+Moving to DELETING state before nvme_tcp_create_ctrl() allocates all the
+resources may leads to NULL dereference at teardown flow (e.g., IO tagset,
+admin_q, connect_q).
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
 Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- drivers/nvme/host/core.c | 5 +++++
- drivers/nvme/host/nvme.h | 1 +
- 2 files changed, 6 insertions(+)
+ drivers/nvme/host/rdma.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index ba064fd..9961d0e 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -3228,6 +3228,10 @@ static ssize_t nvme_sysfs_delete(struct device *dev,
- {
- 	struct nvme_ctrl *ctrl = dev_get_drvdata(dev);
+diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+index c99a882..3ae3011 100644
+--- a/drivers/nvme/host/rdma.c
++++ b/drivers/nvme/host/rdma.c
+@@ -1022,8 +1022,13 @@ static int nvme_rdma_setup_ctrl(struct nvme_rdma_ctrl *ctrl, bool new)
  
-+	/* Can't delete non-created controllers */
-+	if (!ctrl->created)
-+		return -EBUSY;
-+
- 	if (device_remove_file_self(dev, attr))
- 		nvme_delete_ctrl_sync(ctrl);
- 	return count;
-@@ -4039,6 +4043,7 @@ void nvme_start_ctrl(struct nvme_ctrl *ctrl)
- 		nvme_queue_scan(ctrl);
- 		nvme_start_queues(ctrl);
+ 	changed = nvme_change_ctrl_state(&ctrl->ctrl, NVME_CTRL_LIVE);
+ 	if (!changed) {
+-		/* state change failure is ok if we're in DELETING state */
++		/*
++		 * state change failure is ok if we're in DELETING state,
++		 * unless we're during creation of a new controller to
++		 * avoid races with teardown flow.
++		 */
+ 		WARN_ON_ONCE(ctrl->ctrl.state != NVME_CTRL_DELETING);
++		WARN_ON_ONCE(new);
+ 		ret = -EINVAL;
+ 		goto destroy_io;
  	}
-+	ctrl->created = true;
- }
- EXPORT_SYMBOL_GPL(nvme_start_ctrl);
- 
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index d800b9a..2e04a36 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -259,6 +259,7 @@ struct nvme_ctrl {
- 	struct nvme_command ka_cmd;
- 	struct work_struct fw_act_work;
- 	unsigned long events;
-+	bool created;
- 
- #ifdef CONFIG_NVME_MULTIPATH
- 	/* asymmetric namespace access: */
 -- 
 1.8.3.1
 
