@@ -2,82 +2,117 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 638B918F90D
-	for <lists+linux-nvme@lfdr.de>; Mon, 23 Mar 2020 16:57:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D31B918F95E
+	for <lists+linux-nvme@lfdr.de>; Mon, 23 Mar 2020 17:11:06 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date
-	:Message-ID:From:References:To:Subject:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cpsjwN2vr+NzFGFfbnD5NrxK2f4E8c3JTClwYJNchhw=; b=bCJqh/SGsoEfb6
-	nrc84R2Ht1aJpUqyfXULQNKdHADjGYpWhN4pE4AgBHh6VORDiO6JT8Cm/4Jvc+G9TsrT3FbUTYD1m
-	8948e8sU2Rn+FPAAVMH417XLCWPyyAy6tKG8uEEYEn75BXZ2V0+i45nuiQwenJ2TjyxQiXvo6oasI
-	CeFJFXXcrfwI7k4iYj9rDuNKK45tgU40H1HbFmwqhE+3HW4Tfqcj+9BKMNOFyNoMA08bFRw83QAUu
-	7NmdcNnGDBUhJdovmv9gsG1t+O5OR4P9PSGVdw+A7E52mpYwxellZJOXkIShT+mUJ+WMcj+zK16Cr
-	9mhGhqqphn33U/ybStEA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=SyxKOpgUzMr1HVjDPLQgHfkPnkpmMuZVOsy0SunsTqo=; b=n4SJmzrAhzK6yWY/+dn5upkII
+	iZdUbUTwpmqUpQiAxEDWHU99W21yzC+330wRLdVe3tKFsZmqZJXZCDVDefaEpcDhi/4C3mygYA0/I
+	Oa+h3UcDnTeTfbMP2Wmtfbnol+A9gHaUcpIXWEI95vYJ7bcv7QUu4e6Vfkxdor/CATL1oQfDYIFWc
+	HKVAYx8pRkMIrRWGTLAPiq0McEH1vqtgKNDSv491N+V9fpHAXUC0o5Fm53tn348nvBnoQpXkl/Q+n
+	dVEKraB+heP8U6hnKCgwD87kjIZyb0cQLghboHdh66pfdA1NppOkDrRZKs9mUD6f/L6u5TF5I8vcg
+	6Y5/AO9UA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGPS5-0002jv-GG; Mon, 23 Mar 2020 15:57:21 +0000
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74])
+	id 1jGPfF-0001dD-Uq; Mon, 23 Mar 2020 16:10:57 +0000
+Received: from mail-db8eur05on2045.outbound.protection.outlook.com
+ ([40.107.20.45] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGPRs-0002ZQ-9C
- for linux-nvme@lists.infradead.org; Mon, 23 Mar 2020 15:57:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1584979025;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DO9z3Cg+kTdRZAzH5WcK0mr4/4dfJ+7mj+P+LDuSHw4=;
- b=FBgGE7ZT+0b1hdrI5nZpD7hhR2lN0hpUELG05+3YYI52P9fSHjGJDVe75uFfrqir2r8kvj
- ijpmY1Q0ukRF2I9Kk85u4w9GzMvmIHyW20Nf0SnZ1s4ek8QCCpUCV1udqERiqALW7AP8Ty
- vsfo9b3fzsA2Tfc03/dhpMdSS7WGU7M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-457-TxWQw37rN3m_wqA0H23AlA-1; Mon, 23 Mar 2020 11:57:03 -0400
-X-MC-Unique: TxWQw37rN3m_wqA0H23AlA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A02231005513;
- Mon, 23 Mar 2020 15:57:02 +0000 (UTC)
-Received: from [10.3.128.7] (unknown [10.3.128.7])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 20A7619C4F;
- Mon, 23 Mar 2020 15:57:01 +0000 (UTC)
-Subject: Re: nvmet: Kernel oops when doing mkfs on nvme-tcp device
-To: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org
-References: <17c25d8d-0dc2-9dc8-2b65-954034c23646@redhat.com>
- <507887d2-96dd-b0ee-bb05-519039d98359@grimberg.me>
- <e16baf6a-c9e0-2249-6d7a-4e8d58f8e9b6@redhat.com>
- <f390f5a1-a80f-44d7-5d69-642119eef9b8@grimberg.me>
-From: Tony Asleson <tasleson@redhat.com>
-Organization: Red Hat
-Message-ID: <c8fce5f3-a01b-da38-820f-cf6caaa377ab@redhat.com>
-Date: Mon, 23 Mar 2020 10:57:00 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ id 1jGPfA-0001cW-MQ
+ for linux-nvme@lists.infradead.org; Mon, 23 Mar 2020 16:10:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=boWiJTSp3VTVmPJEuS/MICiy02VIMbvJJc5FEJUNB9OWadLVc/wqv5S2Pi+Xt55k2v6VSuBZgvdf+QVdK3JZpPvEuKTTUHDZBOpQvBEKa88FyYqQOUR0pBhMkNAtrS5DWKstR06pbtsIvcH2/IxU65BNRN9DTANogpq3/XkS9otCmj7hpZcPbfDOJcGlw76MrTJN18LjxhkYfc1k2Wz1bh4YEOuVh3MC2IRyISaOsGYkF9vEDfoxEyP8a0QDE9bkAiJSktDm3dkGWvuZjiQW/pjbS29SjPZExg58xGtxIRnCUNGiGqjBPCkW/nQbP7TC2PLtKT1uAaBHyzFFLcKG2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Es6xylU8JMrqrr40KURvjos+dhShLiPlZNrJeMrV6Og=;
+ b=Bp3vE40vuLSFMWx/ZDTD/7qsMt13cvWbwrpzFKwF2ST9HIEBjVkGiFX6UOfsMO3sY/swE3rCOSGYXMo3rWGCXnO7OOvDhhLOwzo4uSQxFEcEm+rTrpz+jWVWElLx9lWfw/vlhSx8QVhxfdQCPhPLYofBvWGPul588Yrub1hHpQ9OBtwhW+rktDr4T3YzcButVdKcn26dd5MmMcj5+mRqH5hnnnH5leBUi5Dqty8BgZRj2DpcERGhHPOA9FdQz0xv6gq6iJFviAUbvhlV/ROmPNmbVE0/ziA0YOvHzlbvyyPA80pA8dkEPUmSHqa0e86TJyEp/OnMT98Z2oGIj03e3A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
+ dkim=pass header.d=mellanox.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Es6xylU8JMrqrr40KURvjos+dhShLiPlZNrJeMrV6Og=;
+ b=h8xEIN48jVJB6524L5L+gSttPZIE94FJN9WuB/g+GZp8tjhNoGgLRolUcbNU+CSSuIEYC6lGlBey968G+aXkLi/ucPDDsx/jY7P30jUqeO2o5/sK7t8e9PjYbcgxd5f45q0CfgBVGILXCvRdp2VbCi1aiNsTLPsJDy+5ovxboxQ=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=israelr@mellanox.com; 
+Received: from AM0PR0502MB3905.eurprd05.prod.outlook.com (52.133.45.151) by
+ AM0PR0502MB3874.eurprd05.prod.outlook.com (52.133.45.29) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2835.19; Mon, 23 Mar 2020 16:10:48 +0000
+Received: from AM0PR0502MB3905.eurprd05.prod.outlook.com
+ ([fe80::d0df:a78a:c082:95fe]) by AM0PR0502MB3905.eurprd05.prod.outlook.com
+ ([fe80::d0df:a78a:c082:95fe%7]) with mapi id 15.20.2835.021; Mon, 23 Mar 2020
+ 16:10:47 +0000
+Subject: Re: [PATCH 3/6] nvme: Fix ctrl use-after-free during sysfs deletion
+To: Christoph Hellwig <hch@lst.de>
+References: <1584899989-14623-1-git-send-email-israelr@mellanox.com>
+ <1584899989-14623-4-git-send-email-israelr@mellanox.com>
+ <20200323073200.GB30302@lst.de>
+From: Israel Rukshin <israelr@mellanox.com>
+Message-ID: <61aa8efb-67ab-e5a5-8802-61bf30ffa994@mellanox.com>
+Date: Mon, 23 Mar 2020 18:10:23 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
-MIME-Version: 1.0
-In-Reply-To: <f390f5a1-a80f-44d7-5d69-642119eef9b8@grimberg.me>
+In-Reply-To: <20200323073200.GB30302@lst.de>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+X-ClientProxiedBy: AM4PR0202CA0024.eurprd02.prod.outlook.com
+ (2603:10a6:200:89::34) To AM0PR0502MB3905.eurprd05.prod.outlook.com
+ (2603:10a6:208:1b::23)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [192.168.14.112] (79.182.214.72) by
+ AM4PR0202CA0024.eurprd02.prod.outlook.com (2603:10a6:200:89::34) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2835.15 via Frontend
+ Transport; Mon, 23 Mar 2020 16:10:25 +0000
+X-Originating-IP: [79.182.214.72]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: 8eed43d1-6f80-48d1-4925-08d7cf44b31f
+X-MS-TrafficTypeDiagnostic: AM0PR0502MB3874:|AM0PR0502MB3874:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <AM0PR0502MB387415EB96C3EF8DFE5D8576D7F00@AM0PR0502MB3874.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4714;
+X-Forefront-PRVS: 0351D213B3
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10009020)(4636009)(396003)(346002)(376002)(136003)(366004)(39860400002)(199004)(81166006)(81156014)(8676002)(478600001)(8936002)(54906003)(316002)(4744005)(16576012)(31686004)(53546011)(186003)(26005)(16526019)(107886003)(52116002)(2616005)(66946007)(66476007)(956004)(66556008)(6486002)(5660300002)(6916009)(2906002)(31696002)(86362001)(4326008)(36756003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:AM0PR0502MB3874;
+ H:AM0PR0502MB3905.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; 
+Received-SPF: None (protection.outlook.com: mellanox.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: +xMdLY9aY4G6iDhhOnw0D0nNKAYcYR8ADJHvroC17Yd5p9iRzXkj7QlpbjGaaeEEvpC/rKI4uRiW7CicNWAzZ3+TN3Y+Gbt7I4IJqJuUlo1jsE/mA7lEV4L1Qi6yIKZDCb+Ju0zCC6Wo3w5nvRrWcwArtVjeR4dnFrlQAcLPPKbqA1H1mysL8Jac2+LCarTC6+6G5eDpbsNuLnaLyer4xbAWv6qW9a0bCeO/oxnQFWl88jY0N8wwtAElW0OqrTO2OOaRaT7rQEmGK+/WoaCFSkPFoeWqFyESoZcvql+EU4GpZhcafeP7mpDwgAsYp53YiBCU0P+X3EK3j1rBmv+P0mWlFswOj7V6i2M3uTCwZwCwKsL2kYYcj0muC7EbbqTftTzV4H8hoO1ioavEJZc8JzfrlFs/+rFZRzvOGfX3IrVPLlDZca3es3MOxD01kQxt
+X-MS-Exchange-AntiSpam-MessageData: kwA8Br6c0F+AKzjTI5/W1lB6wTY9XzeR2hnfvLHp0TT4oUsBcEmie6VO+IZyK6Bzraosam5KnT1XyCATVBDp8mlbRSS0FjOk3cBUrgrAfIVvAaSN/2p4xsiAc0W7HpzX3F6haB1ifYSarmemv51WpQ==
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8eed43d1-6f80-48d1-4925-08d7cf44b31f
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Mar 2020 16:10:26.8570 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uGhX6ts4TRRrsGb4fUl/UpSH5008DI1nUOPx8RApjKnMrkM/qp7mhvtDUOyCe+YocJURGZQgRM/Y9wnkh/6qxw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR0502MB3874
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200323_085708_442490_BB36AECF 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200323_091052_791985_211B72E0 
+X-CRM114-Status: GOOD (  10.70  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [216.205.24.74 listed in list.dnswl.org]
+ no trust [40.107.20.45 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [40.107.20.45 listed in wl.mailspike.net]
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -85,7 +120,7 @@ X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,32 +132,33 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Reply-To: tasleson@redhat.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Max Gurtovoy <maxg@mellanox.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Linux-nvme <linux-nvme@lists.infradead.org>,
+ Shlomi Nimrodi <shlomin@mellanox.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 3/23/20 3:33 AM, Sagi Grimberg wrote:
-> 
->>> Can you share which line *(nvme_tcp_io_work+0x303) map to?
->>
->> I'm not running a debug kernel so I don't think I have that available?
->> Please advise if otherwise.
-> 
-> Maybe you will still have frame pointers though?
-> 
-> If you run:
-> gdb <path_to_mod>
-> ...
->> l *(nvme_tcp_io_work+0x303)
-> 
-> Do you get anything useful?
-
-Nope, sorry.
-
-
-_______________________________________________
-linux-nvme mailing list
-linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gMy8yMy8yMDIwIDk6MzIgQU0sIENocmlzdG9waCBIZWxsd2lnIHdyb3RlOgo+PiAtLS0gYS9k
+cml2ZXJzL252bWUvaG9zdC9jb3JlLmMKPj4gKysrIGIvZHJpdmVycy9udm1lL2hvc3QvY29yZS5j
+Cj4+IEBAIC0xNzEsNyArMTcxLDYgQEAgc3RhdGljIHZvaWQgbnZtZV9kb19kZWxldGVfY3RybChz
+dHJ1Y3QgbnZtZV9jdHJsICpjdHJsKQo+PiAgIAludm1lX3JlbW92ZV9uYW1lc3BhY2VzKGN0cmwp
+Owo+PiAgIAljdHJsLT5vcHMtPmRlbGV0ZV9jdHJsKGN0cmwpOwo+PiAgIAludm1lX3VuaW5pdF9j
+dHJsKGN0cmwpOwo+PiAtCW52bWVfcHV0X2N0cmwoY3RybCk7Cj4gQ2FuIHlvdSBwbGVhc2Ugc3Bs
+aXQgdGhlIGNoYW5nZSB0byBjYWxsIG52bWVfcHV0X2N0cmwgZnJvbQo+IG52bWVfdW5pbml0X2N0
+cmwgaW50byBhIHNlcGFyYXRlIGNsZWFudXAgcGF0Y2ggYWZ0ZXIgdGhpcyBvbmU/CgpTdXJlLCBJ
+IGNhbiBzcGxpdCBpdC4KClRvIGRvIHRoYXQgSSBuZWVkIHRvIGFkZMKgIG52bWVfcHV0X2N0cmwo
+KSBhdCBtb3N0IG9mIHRoZSBlcnJvciBmbG93cyAKbGlrZSB0aGlzOgoKQEAgLTIwNTQsNiArMjA1
+Miw3IEBAIHN0YXRpYyBzdHJ1Y3QgbnZtZV9jdHJsIAoqbnZtZV9yZG1hX2NyZWF0ZV9jdHJsKHN0
+cnVjdCBkZXZpY2UgKmRldiwKIMKgb3V0X3VuaW5pdF9jdHJsOgogwqDCoMKgwqDCoMKgwqAgbnZt
+ZV91bmluaXRfY3RybCgmY3RybC0+Y3RybCk7CiDCoMKgwqDCoMKgwqDCoCBudm1lX3B1dF9jdHJs
+KCZjdHJsLT5jdHJsKTsKK8KgwqDCoMKgwqDCoCBudm1lX3B1dF9jdHJsKCZjdHJsLT5jdHJsKTsK
+IMKgwqDCoMKgwqDCoMKgIGlmIChyZXQgPiAwKQogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIHJldCA9IC1FSU87CiDCoMKgwqDCoMKgwqDCoCByZXR1cm4gRVJSX1BUUihyZXQpOwoKClRo
+ZXJlIGFyZSBkb3VibGUgY2FsbHMgdG8gbnZtZV9wdXRfY3RybCgpIGF0IHRoZSBlcnJvciBmbG93
+cyBhdCByZG1hLCAKdGNwLCBmYyBhbmQgbG9vcC4KCkkgd2lsbCByZW1vdmUgdGhvc2UgYXQgdGhl
+IG5leHQgcGF0Y2guCgpJcyB0aGF0IE9LPwoKPgo+IFRoZSByZXN0IGxvb2tzIGdvb2QgdG8gbWUu
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1u
+dm1lIG1haWxpbmcgbGlzdApsaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
