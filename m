@@ -2,87 +2,92 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B05618FDDF
-	for <lists+linux-nvme@lfdr.de>; Mon, 23 Mar 2020 20:42:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6BAE718FE75
+	for <lists+linux-nvme@lfdr.de>; Mon, 23 Mar 2020 21:10:35 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AHrwqZumyy1FoYC6PXI8OBYlOLWnt/AOEHwoSbjICwU=; b=RzbA71UoM+vZg3Ljyz4/vMduW
-	RO7WE9c+pcCJvSt7AqeWztJyFCmBRpVMsKestMrGhjybMomFkbliOpV8BxEMeMyxBg95b+ILZDbdS
-	S7s8FbZDt1OSdcNkHs+HtVsqwpu4MrZrXh1jHvEfTVBXv/kCaAw3QIc4560MVqmZIg+khrl4vcdIF
-	3MXyblKK01GkK2YLclzVn8CQbDeAsHa/ieWhlSN2IzDabPtwglrVOWHVTHBC8oMeOfkvbiHfsdyaY
-	lW44qnLrElKNeLM0UWrQxPjsXRBzLmepjSXm8j9b8Lj9rD5Mo5YUfo02mXgF2H4Ii6mJ9xVSIEPhh
-	n8Rl5TLgA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date
+	:Message-ID:From:References:To:Subject:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9FZuq57pJjgAkkmUt5qmLkpB+3a48FfSXTgLuY0Tsao=; b=o6/Idqa9J8qtcV
+	ajDCRqlQhdB4rKAFi4KDy59B9blA/JXPzB/2AqurryHqgcIpRvnS9mjmVY18cYj2Uhi1KO4nA0tD8
+	EgN2gW9uGkDrMEtf9fDgc154LOQI+bWU4KUMH/FaoNvhPkhokPsS8BXb505Yrb6GvTRoxnPjXxGl/
+	WSx5l/ZSxsNuKXISXK+Zk8OZStOW/YdzeOl6tt8yuJqCtCW3FbsCnHQohJyhn/A9x6B2/fYSuepv4
+	eNRCUR+2XwAfw7V4DTd8qx2gs0ZKdFZy8RpPW41lIIPF2urWf6XKRATU+GDhBLrCDqP40zAvVTAtF
+	EYUwAQt3SWl3ADfsCr/A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGSy6-0005Ec-Eg; Mon, 23 Mar 2020 19:42:38 +0000
-Received: from mail-wr1-f65.google.com ([209.85.221.65])
+	id 1jGTP0-0008QS-Qb; Mon, 23 Mar 2020 20:10:26 +0000
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGSxz-0005EI-Cc
- for linux-nvme@lists.infradead.org; Mon, 23 Mar 2020 19:42:32 +0000
-Received: by mail-wr1-f65.google.com with SMTP id h15so6427357wrx.9
- for <linux-nvme@lists.infradead.org>; Mon, 23 Mar 2020 12:42:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=NnzEzCELF9CFBoAsqD11P71YH0fbfHRcDu4mVureYd8=;
- b=Rk+kVKXUSSlOgrk97Q8wc3xPDC+G8YafSPOD3MaHCGUa9/KnJ8qbjyJkElQd/GOxn4
- pEvZi+LHxNRPCQeO7NlCrBI78YChKRov9iVbNd4mXsI2rvc0fxpFbnFW7mfiTH9MmaDE
- xwTIJxZ7S0sgCp+XLJMKDWvV+EDynGVLszz0bNQB2+a9+/evVS5SxjbnOf1XdhUvqcE8
- HZHONcbMHWp2ptnmOXttYoK8d8YKnn677x++Zuykig/8ogsIsA8/eRl2rJh0kHz0NT/3
- waA24u8nLWFUNAKtXDXDgyiLn91NeB/iNti5Nw3gbCSs5ugschRs55pwnC6Jq4khhLNQ
- wUuw==
-X-Gm-Message-State: ANhLgQ3HWIYpSmOnR9F9i3RLp4HIptbyLmMPHylPGLAMhHdknht6HYYJ
- rtqqol+iuzkcDMsGXnX15r5C1yRj
-X-Google-Smtp-Source: ADFU+vsPaHN0KHbZkMKOfdvO0IPy4BSVxKZCMsG7aJWXYiWuFDG9q4AD5YjOgAGh9s/dJz4ezNBH5w==
-X-Received: by 2002:a5d:6a4b:: with SMTP id t11mr31903376wrw.52.1584992549602; 
- Mon, 23 Mar 2020 12:42:29 -0700 (PDT)
-Received: from ?IPv6:2601:647:4802:9070:4c50:a06:3358:69f8?
- ([2601:647:4802:9070:4c50:a06:3358:69f8])
- by smtp.gmail.com with ESMTPSA id t16sm22117934wra.17.2020.03.23.12.42.28
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 23 Mar 2020 12:42:29 -0700 (PDT)
+ id 1jGTOx-0008Q6-1n
+ for linux-nvme@lists.infradead.org; Mon, 23 Mar 2020 20:10:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584994221;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0EUvvFdrllLo7j4Q3owIHMILGlxEkw8ApzW4I+P8ESc=;
+ b=Bppck7cylZVMxaLFs6bqC5ZDQ/x+Lf4ycIS4VW2uVofqtWPMiMezMSyrBz3iLuKnz8rJuv
+ 9DrDswm4olYxUm8VSfGfWfr9EA//Kmh+NL8MQZqdBtg8i5aadOGetkiWUenhfOO6NU65Xw
+ Dbbov+AZ7dUJdRnTh2GwZx+xHBioKb4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-64-n2eQOXnAPJSSoG1WhytQLQ-1; Mon, 23 Mar 2020 16:10:19 -0400
+X-MC-Unique: n2eQOXnAPJSSoG1WhytQLQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 15B2E801E67
+ for <linux-nvme@lists.infradead.org>; Mon, 23 Mar 2020 20:10:19 +0000 (UTC)
+Received: from [10.3.128.7] (unknown [10.3.128.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8F2B05DA7C
+ for <linux-nvme@lists.infradead.org>; Mon, 23 Mar 2020 20:10:18 +0000 (UTC)
 Subject: Re: nvmet: Kernel oops when doing mkfs on nvme-tcp device
-To: tasleson@redhat.com, linux-nvme@lists.infradead.org
+To: linux-nvme@lists.infradead.org
 References: <17c25d8d-0dc2-9dc8-2b65-954034c23646@redhat.com>
  <507887d2-96dd-b0ee-bb05-519039d98359@grimberg.me>
  <f18d9173-b94e-69d6-022a-20603e8cb42b@grimberg.me>
  <7b56c65b-40a3-0172-6e42-7158fd88361c@redhat.com>
  <BYAPR04MB4965E360B649BF0EB0D1BAA586F20@BYAPR04MB4965.namprd04.prod.outlook.com>
  <52a296da-839d-a8a8-fe77-720faeb37aab@redhat.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <d09a86be-01eb-1665-d596-886beedf53b4@grimberg.me>
-Date: Mon, 23 Mar 2020 12:42:26 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Firefox/60.0 Thunderbird/60.9.0
+ <d09a86be-01eb-1665-d596-886beedf53b4@grimberg.me>
+From: Tony Asleson <tasleson@redhat.com>
+Organization: Red Hat
+Message-ID: <1c882509-0a76-81c3-76ca-eba67de2fe34@redhat.com>
+Date: Mon, 23 Mar 2020 15:10:17 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <52a296da-839d-a8a8-fe77-720faeb37aab@redhat.com>
+In-Reply-To: <d09a86be-01eb-1665-d596-886beedf53b4@grimberg.me>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200323_124231_428516_D4F811CA 
-X-CRM114-Status: GOOD (  13.80  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20200323_131023_170470_F8F6E141 
+X-CRM114-Status: GOOD (  11.84  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
- Content analysis details:   (0.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.221.65 listed in list.dnswl.org]
+ no trust [63.128.21.74 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [sagigrim[at]gmail.com]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.221.65 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,25 +99,23 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Reply-To: tasleson@redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
->> nvmet does support file backend, please have a look at blktests [1]
->> under the test 025 in {BLKTEST_HOME}/tests/nvme about how to setup
->> target with file backend.
-> 
-> I created a sparse file and used nvmetcli to change device to the
-> specified file.  I connected the client, ran dd and that worked fine.  I
-> tried using mkfs.ext4 and I got the same kernel oops.  Apparently it
-> doesn't matter if I use a file or device as the backing store for this
-> issue.
-
-Interesting, did you see the write_zeroes error though?
-
-_______________________________________________
-linux-nvme mailing list
-linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gMy8yMy8yMCAyOjQyIFBNLCBTYWdpIEdyaW1iZXJnIHdyb3RlOgo+IAo+Pj4gbnZtZXQgZG9l
+cyBzdXBwb3J0IGZpbGUgYmFja2VuZCwgcGxlYXNlIGhhdmUgYSBsb29rIGF0IGJsa3Rlc3RzIFsx
+XQo+Pj4gdW5kZXIgdGhlIHRlc3QgMDI1IGluIHtCTEtURVNUX0hPTUV9L3Rlc3RzL252bWUgYWJv
+dXQgaG93IHRvIHNldHVwCj4+PiB0YXJnZXQgd2l0aCBmaWxlIGJhY2tlbmQuCj4+Cj4+IEkgY3Jl
+YXRlZCBhIHNwYXJzZSBmaWxlIGFuZCB1c2VkIG52bWV0Y2xpIHRvIGNoYW5nZSBkZXZpY2UgdG8g
+dGhlCj4+IHNwZWNpZmllZCBmaWxlLsKgIEkgY29ubmVjdGVkIHRoZSBjbGllbnQsIHJhbiBkZCBh
+bmQgdGhhdCB3b3JrZWQgZmluZS7CoCBJCj4+IHRyaWVkIHVzaW5nIG1rZnMuZXh0NCBhbmQgSSBn
+b3QgdGhlIHNhbWUga2VybmVsIG9vcHMuwqAgQXBwYXJlbnRseSBpdAo+PiBkb2Vzbid0IG1hdHRl
+ciBpZiBJIHVzZSBhIGZpbGUgb3IgZGV2aWNlIGFzIHRoZSBiYWNraW5nIHN0b3JlIGZvciB0aGlz
+Cj4+IGlzc3VlLgo+IAo+IEludGVyZXN0aW5nLCBkaWQgeW91IHNlZSB0aGUgd3JpdGVfemVyb2Vz
+IGVycm9yIHRob3VnaD8KClllcywgd3JpdGUgemVyb3MgZXJyb3IgaXMgc3RpbGwgcHJlc2VudC4K
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1u
+dm1lIG1haWxpbmcgbGlzdApsaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
