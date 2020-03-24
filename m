@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4548191473
-	for <lists+linux-nvme@lfdr.de>; Tue, 24 Mar 2020 16:31:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 66F2A19146C
+	for <lists+linux-nvme@lfdr.de>; Tue, 24 Mar 2020 16:31:04 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,37 +11,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=nMeQlwN7AqkFnNf0TqmbvKi//lsbniCXixYRxcofTfA=; b=A1ppstZYCBkqpE3DtvvUAik97u
-	TMnic4Q4E7oEL/nM6s2UN72IzbIJs5YSWXJuGAu5J7rMTHVXuEvIMcPv6vaABD4iWbL+aug1ECee1
-	80xfNPznJZ+aghh90abu2kaXyRayKqn5bhEbwM7n2cb9WbLWDW0a8fK87eHyg9lt3EB7Ll4rIdjk7
-	DmrE6CfAr+0TrQPXylvk8NCPbbNi5BUdLR1WppiWRPUXTk/qH+coOwLy3a0QrGS/YOFKh+lLf9ZvT
-	QuVCc+0P+t3eu+NeQx8wuqqMjQThoN5/0kan2drJHR9vlNLzZJc257hkzdoq78W9Opr7vWUg9Xwyc
-	HK8Pea6w==;
+	bh=Ebu4qZr4zOToj6OMkxdXr4y5988+LAtJnz6bYVokvKw=; b=lnrt1iuHR3ywTk4Qa/ry2F58yC
+	OkU54fzlumjTmcpIxM/0UYF0iwGENOkIOpH7Ofmn9vtuu5T0hA9CZrmkJOtIcorYiqKOHYYdnAVsf
+	eMl/wYT53kJ+nBglZsfpzFZm3UoB0ATBGPkl4Zp96+2ufkwcm09mtAZKUJs9RAIiTKw32ZkZnt9Cc
+	5zqjT97g3z/qr14VB1pGJTw+PSqfmWkxMJM6BpKNG1+B/+kspRwTHdCJo/3GV+3DZYBgPiw3XrnXU
+	7qRHOnZNVJ/5NpXQD5AyQJD10xZkHSzgxtHAJotzOJRpUt7BfKBZE4DxoQghs+NS0l/akBQjmlTSY
+	Rp2VTrdw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGlWP-0005oS-2o; Tue, 24 Mar 2020 15:31:17 +0000
+	id 1jGlW0-0005WO-GX; Tue, 24 Mar 2020 15:30:52 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGlV6-0003iu-Cc
+ id 1jGlV6-0003ip-Bu
  for linux-nvme@lists.infradead.org; Tue, 24 Mar 2020 15:29:59 +0000
-Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  israelr@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 24 Mar 2020 17:29:47 +0200
 Received: from rsws50.mtr.labs.mlnx (rsws50.mtr.labs.mlnx [10.209.40.61])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02OFTkEN013985;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02OFTkEO013985;
  Tue, 24 Mar 2020 17:29:47 +0200
 From: Israel Rukshin <israelr@mellanox.com>
 To: Linux-nvme <linux-nvme@lists.infradead.org>,
  Sagi Grimberg <sagi@grimberg.me>, Christoph Hellwig <hch@lst.de>
-Subject: [PATCH 3/7] nvme: Fix ctrl use-after-free during sysfs deletion
-Date: Tue, 24 Mar 2020 17:29:41 +0200
-Message-Id: <1585063785-14268-4-git-send-email-israelr@mellanox.com>
+Subject: [PATCH 4/7] nvme: Make nvme_uninit_ctrl symmetric to nvme_init_ctrl
+Date: Tue, 24 Mar 2020 17:29:42 +0200
+Message-Id: <1585063785-14268-5-git-send-email-israelr@mellanox.com>
 X-Mailer: git-send-email 1.8.4.3
 In-Reply-To: <1585063785-14268-1-git-send-email-israelr@mellanox.com>
 References: <1585063785-14268-1-git-send-email-israelr@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200324_082956_840169_B4895AE0 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20200324_082956_808952_F781B842 
+X-CRM114-Status: GOOD (  11.95  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -72,139 +72,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-In case nvme_sysfs_delete() is called by the user before taking the ctrl
-reference count, the ctrl may be freed during the creation and cause the
-bug. Take the reference as soon as the controller is externally visible,
-which is done by cdev_device_add() in nvme_init_ctrl(). Also take the
-reference count at the core layer instead of taking it on each transport
-separately.
+Put the ctrl reference count at nvme_uninit_ctrl as opposed to
+nvme_init_ctrl which takes it. This decrease the reference count at the
+core layer instead of decreasing it on each transport separately.
+Also move the call of nvme_uninit_ctrl at PCI driver after calling to
+nvme_release_prp_pools and nvme_dev_unmap, in order to put the reference
+count after using the dev. This is safe because those functions use
+nvme_dev which is freed only later at nvme_pci_free_ctrl.
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
-Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- drivers/nvme/host/core.c   | 2 ++
- drivers/nvme/host/fc.c     | 4 +---
- drivers/nvme/host/pci.c    | 1 -
- drivers/nvme/host/rdma.c   | 3 +--
- drivers/nvme/host/tcp.c    | 3 +--
- drivers/nvme/target/loop.c | 3 +--
- 6 files changed, 6 insertions(+), 10 deletions(-)
+ drivers/nvme/host/core.c   | 2 +-
+ drivers/nvme/host/fc.c     | 1 -
+ drivers/nvme/host/pci.c    | 3 +--
+ drivers/nvme/host/rdma.c   | 1 -
+ drivers/nvme/host/tcp.c    | 1 -
+ drivers/nvme/target/loop.c | 2 --
+ 6 files changed, 2 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index a461220..5ccbcac 100644
+index 5ccbcac..ba064fd 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -4130,6 +4130,7 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct device *dev,
- 	if (ret)
- 		goto out_release_instance;
+@@ -171,7 +171,6 @@ static void nvme_do_delete_ctrl(struct nvme_ctrl *ctrl)
+ 	nvme_remove_namespaces(ctrl);
+ 	ctrl->ops->delete_ctrl(ctrl);
+ 	nvme_uninit_ctrl(ctrl);
+-	nvme_put_ctrl(ctrl);
+ }
  
-+	nvme_get_ctrl(ctrl);
- 	cdev_init(&ctrl->cdev, &nvme_dev_fops);
- 	ctrl->cdev.owner = ops->module;
- 	ret = cdev_device_add(&ctrl->cdev, ctrl->device);
-@@ -4148,6 +4149,7 @@ int nvme_init_ctrl(struct nvme_ctrl *ctrl, struct device *dev,
- 
- 	return 0;
- out_free_name:
+ static void nvme_delete_ctrl_work(struct work_struct *work)
+@@ -4048,6 +4047,7 @@ void nvme_uninit_ctrl(struct nvme_ctrl *ctrl)
+ 	nvme_fault_inject_fini(&ctrl->fault_inject);
+ 	dev_pm_qos_hide_latency_tolerance(ctrl->device);
+ 	cdev_device_del(&ctrl->cdev, ctrl->device);
 +	nvme_put_ctrl(ctrl);
- 	kfree_const(ctrl->device->kobj.name);
- out_release_instance:
- 	ida_simple_remove(&nvme_instance_ida, ctrl->instance);
+ }
+ EXPORT_SYMBOL_GPL(nvme_uninit_ctrl);
+ 
 diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
-index 5a70ac3..59d2e2b 100644
+index 59d2e2b..a8bf2fb 100644
 --- a/drivers/nvme/host/fc.c
 +++ b/drivers/nvme/host/fc.c
-@@ -3181,10 +3181,7 @@ enum {
- 		goto fail_ctrl;
- 	}
- 
--	nvme_get_ctrl(&ctrl->ctrl);
--
- 	if (!queue_delayed_work(nvme_wq, &ctrl->connect_work, 0)) {
--		nvme_put_ctrl(&ctrl->ctrl);
- 		dev_err(ctrl->ctrl.device,
- 			"NVME-FC{%d}: failed to schedule initial connect\n",
- 			ctrl->cnum);
-@@ -3209,6 +3206,7 @@ enum {
+@@ -3206,7 +3206,6 @@ enum {
  
  	/* initiate nvme ctrl ref counting teardown */
  	nvme_uninit_ctrl(&ctrl->ctrl);
-+	nvme_put_ctrl(&ctrl->ctrl);
+-	nvme_put_ctrl(&ctrl->ctrl);
  
  	/* Remove core ctrl ref. */
  	nvme_put_ctrl(&ctrl->ctrl);
 diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index ff0bd2d..4e062c3 100644
+index 4e062c3..4e79e41 100644
 --- a/drivers/nvme/host/pci.c
 +++ b/drivers/nvme/host/pci.c
-@@ -2802,7 +2802,6 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	dev_info(dev->ctrl.device, "pci function %s\n", dev_name(&pdev->dev));
+@@ -2873,10 +2873,9 @@ static void nvme_remove(struct pci_dev *pdev)
+ 	nvme_free_host_mem(dev);
+ 	nvme_dev_remove_admin(dev);
+ 	nvme_free_queues(dev, 0);
+-	nvme_uninit_ctrl(&dev->ctrl);
+ 	nvme_release_prp_pools(dev);
+ 	nvme_dev_unmap(dev);
+-	nvme_put_ctrl(&dev->ctrl);
++	nvme_uninit_ctrl(&dev->ctrl);
+ }
  
- 	nvme_reset_ctrl(&dev->ctrl);
--	nvme_get_ctrl(&dev->ctrl);
- 	async_schedule(nvme_async_probe, dev);
- 
- 	return 0;
+ #ifdef CONFIG_PM_SLEEP
 diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
-index 3e85c5c..ca782de 100644
+index ca782de..c99a882 100644
 --- a/drivers/nvme/host/rdma.c
 +++ b/drivers/nvme/host/rdma.c
-@@ -2043,8 +2043,6 @@ static struct nvme_ctrl *nvme_rdma_create_ctrl(struct device *dev,
- 	dev_info(ctrl->ctrl.device, "new ctrl: NQN \"%s\", addr %pISpcs\n",
- 		ctrl->ctrl.opts->subsysnqn, &ctrl->addr);
- 
--	nvme_get_ctrl(&ctrl->ctrl);
--
- 	mutex_lock(&nvme_rdma_ctrl_mutex);
- 	list_add_tail(&ctrl->list, &nvme_rdma_ctrl_list);
- 	mutex_unlock(&nvme_rdma_ctrl_mutex);
-@@ -2054,6 +2052,7 @@ static struct nvme_ctrl *nvme_rdma_create_ctrl(struct device *dev,
+@@ -2052,7 +2052,6 @@ static struct nvme_ctrl *nvme_rdma_create_ctrl(struct device *dev,
  out_uninit_ctrl:
  	nvme_uninit_ctrl(&ctrl->ctrl);
  	nvme_put_ctrl(&ctrl->ctrl);
-+	nvme_put_ctrl(&ctrl->ctrl);
+-	nvme_put_ctrl(&ctrl->ctrl);
  	if (ret > 0)
  		ret = -EIO;
  	return ERR_PTR(ret);
 diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 814ea23..202f08e2 100644
+index 202f08e2..2fc2687 100644
 --- a/drivers/nvme/host/tcp.c
 +++ b/drivers/nvme/host/tcp.c
-@@ -2429,8 +2429,6 @@ static struct nvme_ctrl *nvme_tcp_create_ctrl(struct device *dev,
- 	dev_info(ctrl->ctrl.device, "new ctrl: NQN \"%s\", addr %pISp\n",
- 		ctrl->ctrl.opts->subsysnqn, &ctrl->addr);
- 
--	nvme_get_ctrl(&ctrl->ctrl);
--
- 	mutex_lock(&nvme_tcp_ctrl_mutex);
- 	list_add_tail(&ctrl->list, &nvme_tcp_ctrl_list);
- 	mutex_unlock(&nvme_tcp_ctrl_mutex);
-@@ -2440,6 +2438,7 @@ static struct nvme_ctrl *nvme_tcp_create_ctrl(struct device *dev,
+@@ -2438,7 +2438,6 @@ static struct nvme_ctrl *nvme_tcp_create_ctrl(struct device *dev,
  out_uninit_ctrl:
  	nvme_uninit_ctrl(&ctrl->ctrl);
  	nvme_put_ctrl(&ctrl->ctrl);
-+	nvme_put_ctrl(&ctrl->ctrl);
+-	nvme_put_ctrl(&ctrl->ctrl);
  	if (ret > 0)
  		ret = -EIO;
  	return ERR_PTR(ret);
 diff --git a/drivers/nvme/target/loop.c b/drivers/nvme/target/loop.c
-index 4df4ebd..a425e28 100644
+index a425e28..0d54e73 100644
 --- a/drivers/nvme/target/loop.c
 +++ b/drivers/nvme/target/loop.c
-@@ -618,8 +618,6 @@ static struct nvme_ctrl *nvme_loop_create_ctrl(struct device *dev,
- 	dev_info(ctrl->ctrl.device,
- 		 "new ctrl: \"%s\"\n", ctrl->ctrl.opts->subsysnqn);
+@@ -485,7 +485,6 @@ static void nvme_loop_reset_ctrl_work(struct work_struct *work)
+ out_disable:
+ 	dev_warn(ctrl->ctrl.device, "Removing after reset failure\n");
+ 	nvme_uninit_ctrl(&ctrl->ctrl);
+-	nvme_put_ctrl(&ctrl->ctrl);
+ }
  
--	nvme_get_ctrl(&ctrl->ctrl);
--
- 	changed = nvme_change_ctrl_state(&ctrl->ctrl, NVME_CTRL_LIVE);
- 	WARN_ON_ONCE(!changed);
- 
-@@ -637,6 +635,7 @@ static struct nvme_ctrl *nvme_loop_create_ctrl(struct device *dev,
+ static const struct nvme_ctrl_ops nvme_loop_ctrl_ops = {
+@@ -635,7 +634,6 @@ static struct nvme_ctrl *nvme_loop_create_ctrl(struct device *dev,
  	kfree(ctrl->queues);
  out_uninit_ctrl:
  	nvme_uninit_ctrl(&ctrl->ctrl);
-+	nvme_put_ctrl(&ctrl->ctrl);
+-	nvme_put_ctrl(&ctrl->ctrl);
  out_put_ctrl:
  	nvme_put_ctrl(&ctrl->ctrl);
  	if (ret > 0)
