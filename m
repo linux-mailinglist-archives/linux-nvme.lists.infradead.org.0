@@ -2,48 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEABA191467
-	for <lists+linux-nvme@lfdr.de>; Tue, 24 Mar 2020 16:30:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 59976191475
+	for <lists+linux-nvme@lfdr.de>; Tue, 24 Mar 2020 16:31:34 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=1KuLMR4Kf+ERliKUd/sXl2l3Bsx1glrswyCrbi2+Jt4=; b=hPd+aT1t3cK2QgCtGl5uyiwDp2
-	zqGO3YxLyeBBsF3UCv/cAqrebFDY2rAc8Z37rH5TCIzmhKMZYaKOk+zFaXKcADVlpqtEG+yDsz0+5
-	EBM1RUZuLgdsebqQe5N0rziwPYsgAKUVc5pjqWhUF/YeEDwUZYV7gRTwFoaPzf4Ew0WRjeRUVMA1w
-	PfIAWhcZxv3LlZY3CP6s7tVgR5K7iFgwJKic72e6tvjdF7WWdVmbVYHk/l6VzF1UN+Hfd4g9Vjdig
-	3HHthUa+fFX0zBbRaAAVKtOMozFCWka9ulub8llch4czoukqkZgO5X4s1uiPrx8+4tJQPfmFi1Cpb
-	dVTCEhSg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=L1wf5OSuvBpWqThWWqzeMU4xbZF8us1aWnGwPrFoa6k=; b=SMb
+	b2wAy6N1PhnLw6XO/JHrWkby6OmN5Pcsg2KtXKSi1XHS0UclE6L4jcpgIwKT5o7Y0M9Rz+u6kIyOE
+	tRK1WCiuNxCxCGTwePA6TZTpCbtdIK29mfE7AOa44qXQCHfJ8c2vHNJHQ3TvX+C2u2g+XK8N9SrZs
+	ehZ7eT8htsemBG4vy8+tQX4Nl0QiEDM3murqfaQxiLvMxBmsjJ2jQlwHAy2ShVq4R/VZD/HPI1sjd
+	SuPHIoUbvFwpn/6pLLRB6c/sHwk9E1MsJXHoWzoquY+eusBzI5tywRcsCJYqoOWMbWOb9BWkRh2pH
+	mvoZDw8avbnw04bHodjaSYAGp9odV0w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGlVB-0003lD-Hn; Tue, 24 Mar 2020 15:30:01 +0000
+	id 1jGlWY-0005yd-DM; Tue, 24 Mar 2020 15:31:26 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGlV6-0003it-CE
- for linux-nvme@lists.infradead.org; Tue, 24 Mar 2020 15:29:58 +0000
-Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ id 1jGlV6-0003io-PZ
+ for linux-nvme@lists.infradead.org; Tue, 24 Mar 2020 15:30:00 +0000
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  israelr@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 24 Mar 2020 17:29:47 +0200
 Received: from rsws50.mtr.labs.mlnx (rsws50.mtr.labs.mlnx [10.209.40.61])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02OFTkER013985;
- Tue, 24 Mar 2020 17:29:47 +0200
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02OFTkEK013985;
+ Tue, 24 Mar 2020 17:29:46 +0200
 From: Israel Rukshin <israelr@mellanox.com>
 To: Linux-nvme <linux-nvme@lists.infradead.org>,
  Sagi Grimberg <sagi@grimberg.me>, Christoph Hellwig <hch@lst.de>
-Subject: [PATCH 7/7] nvme-tcp: Add warning on state change failure at
- nvme_tcp_setup_ctrl
-Date: Tue, 24 Mar 2020 17:29:45 +0200
-Message-Id: <1585063785-14268-8-git-send-email-israelr@mellanox.com>
+Subject: [PATCH 0/7 V3] nvme: Fixes for deleting a ctrl before it was created
+Date: Tue, 24 Mar 2020 17:29:38 +0200
+Message-Id: <1585063785-14268-1-git-send-email-israelr@mellanox.com>
 X-Mailer: git-send-email 1.8.4.3
-In-Reply-To: <1585063785-14268-1-git-send-email-israelr@mellanox.com>
-References: <1585063785-14268-1-git-send-email-israelr@mellanox.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200324_082956_820682_A2847E01 
-X-CRM114-Status: UNSURE (   9.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200324_082957_223290_8AF56146 
+X-CRM114-Status: GOOD (  10.06  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.3 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -74,37 +69,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The transition to LIVE state should not fail in case of a new controller.
-Moving to DELETING state before nvme_tcp_create_ctrl() allocates all the
-resources may leads to NULL dereference at teardown flow (e.g., IO tagset,
-admin_q, connect_q).
+The patchset starts with small cleanups, continue with the fixs and ends
+with adding new warnings.
+Calling nvme_sysfs_delete() when the controller is in the middle of
+creation may cause several bugs. If the controller is in NEW state we
+remove delete_controller file and don't delete the controller. The user
+will not be able to use nvme disconnect command on that controller again,
+although the controller may be active. Other bugs may happen if the
+controller is in the middle of create_ctrl callback and
+nvme_do_delete_ctrl() starts. For example, freeing I/O tagset at
+nvme_do_delete_ctrl() before it was created or controller use after free
+at create_ctrl callback.
 
-Signed-off-by: Israel Rukshin <israelr@mellanox.com>
-Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
-Reviewed-by: Christoph Hellwig <hch@lst.de>
----
- drivers/nvme/host/tcp.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+Changes from v2:
+ - Added Reviewed-by signatures
+ - Patches reordering
+ - Don't move the calls from the ->remove PCI driver method to the
+   nvme_ctrl_ops ->free_ctrl method ((Patch 2/7))
+ - Add more details to commit message (Patch 3/7)
+ - Split patch "Fix ctrl use-after-free during sysfs deletion"
+   (Patches 3/7 and 4/7)
 
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index 2fc2687..7aa2adc 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -1931,8 +1931,13 @@ static int nvme_tcp_setup_ctrl(struct nvme_ctrl *ctrl, bool new)
- 	}
- 
- 	if (!nvme_change_ctrl_state(ctrl, NVME_CTRL_LIVE)) {
--		/* state change failure is ok if we're in DELETING state */
-+		/*
-+		 * state change failure is ok if we're in DELETING state,
-+		 * unless we're during creation of a new controller to
-+		 * avoid races with teardown flow.
-+		 */
- 		WARN_ON_ONCE(ctrl->state != NVME_CTRL_DELETING);
-+		WARN_ON_ONCE(new);
- 		ret = -EINVAL;
- 		goto destroy_io;
- 	}
+Changes from v1:
+ - Added Reviewed-by signatures
+ - Patches reordering
+ - New patches (2/6 and 3/6)
+ - Split to 2 WARN_ON_ONCE (Patches 5/6 and 6/6)
+
+Israel Rukshin (7):
+  nvme: Remove unused return code from nvme_delete_ctrl_sync
+  nvme-pci: Re-order nvme_pci_free_ctrl
+  nvme: Fix ctrl use-after-free during sysfs deletion
+  nvme: Make nvme_uninit_ctrl symmetric to nvme_init_ctrl
+  nvme: Fix controller creation races with teardown flow
+  nvme-rdma: Add warning on state change failure at nvme_rdma_setup_ctrl
+  nvme-tcp: Add warning on state change failure at nvme_tcp_setup_ctrl
+
+ drivers/nvme/host/core.c   | 18 ++++++++++--------
+ drivers/nvme/host/fc.c     |  3 ---
+ drivers/nvme/host/nvme.h   |  1 +
+ drivers/nvme/host/pci.c    |  8 +++-----
+ drivers/nvme/host/rdma.c   |  9 ++++++---
+ drivers/nvme/host/tcp.c    |  9 ++++++---
+ drivers/nvme/target/loop.c |  3 ---
+ 7 files changed, 26 insertions(+), 25 deletions(-)
+
 -- 
 1.8.3.1
 
