@@ -2,55 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 225C719460E
-	for <lists+linux-nvme@lfdr.de>; Thu, 26 Mar 2020 19:08:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9745194615
+	for <lists+linux-nvme@lfdr.de>; Thu, 26 Mar 2020 19:09:14 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lu/QLJ+VNUU4HIJ3/n35T1vAKlJ7ogIC8mmoL954Gq4=; b=OskNknsBbU+mVr
-	JGWaAEAQQtBnt2fNrlzp59AC0JP9Uacs0XNtLl7MfkBEVo9GxFtwYhfSWIH2iRs94RU+In4aok3Ts
-	SNTaT6nZ2nCl3ZG87tFa9hyzSy5+LpVqgBw6cO3IxW5QW1F4J/PPHlWLOU5dM3a0w2lDE1O+eASch
-	erg2mM/pQuGTu2Ft3kLfP5noX648uiVZ/K2DrDM/sAjgwV4eZ3gcqC16DEKVG+yscs/MUd56XVVQ9
-	AodT3knSmzScFLXXGbocPleF8MsiN0gbLARAECpM2p/X8phoKEU1fLQk54XvyUBA6I9C3ns7t1gWn
-	IgWiyMIN/HkAt97OOxWg==;
+	List-Owner; bh=xRn4mW9qHS2O/Mor1KY9167IW1jI3IIfwhOtZ3VycHw=; b=R60i7fjzrGSIXv
+	8QFvHy1meQcNSAhm0TuVoNgzqt4Nqd8tDLnvk0Ka2yA2nBklQ/43PmZPO+lnbX6gyTpPDyy9DaJFK
+	nn0I9FgycEfmevzlr5Y2lME3/xUfwg+eSUzy1wSh5IULvx0TG2p5ejFcJ1Zbra943bZ29sCQb1O1Z
+	HMImgVKpA5tCk1IVdqIlJc7Y7Iq0P6UbM1deaZjT/lkN39i5qI/nOKEhY4CFukPmF7IGTlkAFW46C
+	MSSyXrS9kFAIW1R5dwunZ4xFavIbQyLfgftHUqnkQQvSNzBLCkCxZxnRHPDWkdgPd/KLDsyApDrq5
+	clmThlknrtPCrywlLEiw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHWvS-0006k1-Ry; Thu, 26 Mar 2020 18:08:18 +0000
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74])
+	id 1jHWwF-0007Ny-CT; Thu, 26 Mar 2020 18:09:07 +0000
+Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHWvC-0006ev-Mb
- for linux-nvme@lists.infradead.org; Thu, 26 Mar 2020 18:08:04 +0000
+ id 1jHWvD-0006es-GY
+ for linux-nvme@lists.infradead.org; Thu, 26 Mar 2020 18:08:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585246080;
+ s=mimecast20190719; t=1585246079;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uK+Bi0rLGkqGmx7yn6Q0n8W2vaLN9LcnyaifdD/2VHY=;
- b=J1nbszgUpGUz+qP8FK4Bq5k9tyTuhsRopOwjyvBQnSJWeJMjkywW0iKVCy9Rqs6TN0x7TA
- /A8/EDBGqRX4s/usaAp32IoPK9LYfQ+XheGBPpE4UPZOfn6clFfWP1t+P4+tmM1wuunl7g
- wo9afuizMw0wtY5i7qB1Im3uuVx7zIg=
+ bh=Akfy6N4okkPQ+XxX8kNqtjBXdemJ/hx5rX78f7duhfo=;
+ b=drgLf4wH56+t2lKKc1+9MU6hSAgVN0pje2VrqthCal+eR8DZEwxUfMMyfGp7wZpyWHJLML
+ ipTbno4KeOzMcpKLafhR8RKpv/RV5Uq6NYSOK/2PuhfwmheRrRsKD6cY5TIcGzXwEru/zY
+ 2aASyw0GSX21KEiGkINpPuxGy0xz5OA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-391-j-pJMTC3PWWZtRI3BEtEDg-1; Thu, 26 Mar 2020 14:07:58 -0400
-X-MC-Unique: j-pJMTC3PWWZtRI3BEtEDg-1
+ us-mta-328-y46lURIfOkGUP036ID4jgw-1; Thu, 26 Mar 2020 14:07:58 -0400
+X-MC-Unique: y46lURIfOkGUP036ID4jgw-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8364C18AB2C5
- for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 18:07:56 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6F945107ACC7
+ for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 18:07:57 +0000 (UTC)
 Received: from sulaco.redhat.com (unknown [10.3.128.7])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 13BF119C69
- for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 18:07:55 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D8CFC19C69
+ for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 18:07:56 +0000 (UTC)
 From: Tony Asleson <tasleson@redhat.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2 5/7] nvme.py: Make modprobe work for kmod lib too
-Date: Thu, 26 Mar 2020 13:07:48 -0500
-Message-Id: <20200326180750.469346-6-tasleson@redhat.com>
+Subject: [PATCH v2 6/7] test_nvmet.py: test_invalid_input fails for py3
+Date: Thu, 26 Mar 2020 13:07:49 -0500
+Message-Id: <20200326180750.469346-7-tasleson@redhat.com>
 In-Reply-To: <20200326180750.469346-1-tasleson@redhat.com>
 References: <20200326180750.469346-1-tasleson@redhat.com>
 MIME-Version: 1.0
@@ -58,16 +58,15 @@ X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_110802_820359_8C509E60 
-X-CRM114-Status: UNSURE (   9.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200326_110803_622840_4EB94B2B 
+X-CRM114-Status: GOOD (  11.17  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [216.205.24.74 listed in list.dnswl.org]
+ no trust [63.128.21.74 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -94,32 +93,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The python library 'kmod' is included with libkmod, lets try to use that
-if the user isn't utilizing kmodpy.
+When you run 'make test' using python 3 the unit test
+test_invalid_input fails with:
+
+Traceback (most recent call last):
+  File "/someuser/projects/nvmetcli/nvmet/test_nvmet.py", line 395, in
+test_invalid_input
+    for i in range(l))
+  File "/someuser/projects/nvmetcli/nvmet/test_nvmet.py", line 395, in
+<genexpr>
+    for i in range(l))
+AttributeError: module 'string' has no attribute 'lowercase'
+
+Python 3 does not have 'string.lowercase' ref.
+https://docs.python.org/3/library/string.html
+
+Python 2 does ref.
+https://docs.python.org/2/library/string.html
+
+Both have "string.ascii_lowercase" so lets leverage that to
+support both.
 
 Signed-off-by: Tony Asleson <tasleson@redhat.com>
 ---
- nvmet/nvme.py | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ nvmet/test_nvmet.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/nvmet/nvme.py b/nvmet/nvme.py
-index 4817124..089bafb 100644
---- a/nvmet/nvme.py
-+++ b/nvmet/nvme.py
-@@ -253,7 +253,12 @@ class Root(CFSNode):
-             except kmod.KmodError:
-                 pass
-         except ImportError:
--            pass
-+            # Try the ctypes library included with the libkmod itself.
-+            try:
-+                import kmod
-+                kmod.Kmod().modprobe(modname)
-+            except Exception as e:
-+                pass
+diff --git a/nvmet/test_nvmet.py b/nvmet/test_nvmet.py
+index 5caa546..aae4a86 100644
+--- a/nvmet/test_nvmet.py
++++ b/nvmet/test_nvmet.py
+@@ -391,7 +391,7 @@ class TestNvmet(unittest.TestCase):
+                           nqn='/', mode='create')
  
-     def _list_subsystems(self):
-         self._check_self()
+         for l in [ 257, 512, 1024, 2048 ]:
+-            toolong = ''.join(random.choice(string.lowercase)
++            toolong = ''.join(random.choice(string.ascii_lowercase)
+                               for i in range(l))
+             self.assertRaises(nvme.CFSError, nvme.Subsystem,
+                               nqn=toolong, mode='create')
 -- 
 2.25.1
 
