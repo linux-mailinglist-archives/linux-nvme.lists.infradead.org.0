@@ -2,83 +2,106 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17DB5193B67
-	for <lists+linux-nvme@lfdr.de>; Thu, 26 Mar 2020 10:01:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54D6A194101
+	for <lists+linux-nvme@lfdr.de>; Thu, 26 Mar 2020 15:09:29 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FQfNdUcrdmXfVnOJn8KrdWKA9FVwDQB32Ao6aZ8X200=; b=IQLBZGj2DYx6m22pguA0+CrXv
-	Ni4Lqn2ARAmtRseMLnsrk8Y/uTovrMwm+YXYS7c2AcIEqMec2lo6ypa9eYqjDyMQhsX1ws5oCwtrG
-	me82xl6BZevetT+q7uS2CcF0rahxmOmCsqeglDdSSTonDJOcK1CbmFYdnUoa/3OdlBwhpS/gmHmjC
-	lpCQ7c83TKuCBUtBeevWsdpwqpZs1XQMBT1s9pBf6Si8oNJ94x8CncpoJEJMYLcHA030LQ6SOPURk
-	2rok6k5vVKs9YhAx2fbhF0H4vt2u3fSaq+mQ4YxR5hrxcnuwNdV2oPgInu4RcKzT3uDXILhDb2yYL
-	2U1b5Rjzg==;
+	 bh=g2vMPnPXRg1IF2hvcevwc8z3RP9qqRELxhfVKuL2MBk=; b=T07HYB9wgq6wNqfYxgwj3olLf
+	XteehnHgjdOFA1TRBLQVxPVaKQ8zugCjQxY6yRU17H7x8XzDnbmB8nHQgafuTFB137YuFigYcQm0f
+	kV9Xuq196RxXZQLjuOjj84orkqfJ9Lfv2OViP49rPhhP358NIikZIx0B2GM8tqmrB57Q1kwonBuyI
+	UC26r+fEdaGzla05qaNtKsW/aHIcm/XvOABwoMaG9tR+QDSJKB93aAH4UB5aIaXov0GfFbMcsDGkK
+	KnGOIiZzRkVsB8bO83QyU1Z1UFHMIH3vnQphSKzMr3MdpThxcjBypCg3mTF9+PIkZ7hUGACwfIAB/
+	TWTfSu3GQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHONf-0001Xu-1t; Thu, 26 Mar 2020 09:00:51 +0000
-Received: from mail-wm1-f47.google.com ([209.85.128.47])
+	id 1jHTC9-0003IO-8p; Thu, 26 Mar 2020 14:09:17 +0000
+Received: from userp2130.oracle.com ([156.151.31.86])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHONa-0001XO-Ui
- for linux-nvme@lists.infradead.org; Thu, 26 Mar 2020 09:00:48 +0000
-Received: by mail-wm1-f47.google.com with SMTP id c81so5565228wmd.4
- for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 02:00:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=58k2WhvscX9wKntlixVpOpCsaCk4DUub20yFRnnGLz8=;
- b=lvGHEBthUhYVmOPOgS5obajKWn/JDOTerapuMKlUsRUI4CQz2IiSDd8labzpRhTrjG
- 3nQXi6J/MO+nt2kShdgMc/muamRLyNRQ4i414/2GuzjB4i7iCNJ2mZA5IhE9Hv3tTV/s
- KQEJlJap0ZFzpfOvgtyrndn3/KgeEmLMqFnv4Vn45UDRN+vRELBtLlZjezOmRBc9cT8z
- AmNzNed4adhSsqlTx0zbtLvHi6Dm10/Cs4tRBar1/OQyPi2bKEZpP6eJMWJgQxVZ+qPR
- de3582/EU1Dxlqjm4hS6AA86POg3ZgFHRS9EOM1c3HniLjbpR5ifXCR0O8gAuilH/qjv
- 6r4Q==
-X-Gm-Message-State: ANhLgQ1vgC5MEy9gzd1Ptl2HkSmP7pP9rVeszLFb02qEMLx8KUWXDkw6
- wfrHklK1Tbbaa4iKCnc96ogjAZNf
-X-Google-Smtp-Source: ADFU+vt5nO+/bQSvgDHBXDA2S7ExXGyKl6gZckQp0hfdUR7aq3l2x8Dx7NV6kUOPbjK/IOfYVBYsfg==
-X-Received: by 2002:a1c:7d88:: with SMTP id y130mr2122302wmc.5.1585213245195; 
- Thu, 26 Mar 2020 02:00:45 -0700 (PDT)
-Received: from ?IPv6:2601:647:4802:9070:2c87:e6f8:1c11:1d73?
- ([2601:647:4802:9070:2c87:e6f8:1c11:1d73])
- by smtp.gmail.com with ESMTPSA id l83sm2542281wmf.43.2020.03.26.02.00.43
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 26 Mar 2020 02:00:44 -0700 (PDT)
-Subject: Re: misc nvme cleanups
-To: Christoph Hellwig <hch@lst.de>, Keith Busch <kbusch@kernel.org>
-References: <20200325131937.1198787-1-hch@lst.de>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <e08d88c6-ef5a-dfa8-6746-ae09295c4a4a@grimberg.me>
-Date: Thu, 26 Mar 2020 02:00:41 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Firefox/60.0 Thunderbird/60.9.0
+ id 1jHTC5-0003Hv-9D
+ for linux-nvme@lists.infradead.org; Thu, 26 Mar 2020 14:09:15 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02QE3FFc136961;
+ Thu, 26 Mar 2020 14:08:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=o1XZHcB7pSZL7/vmkWnbLLK2uOf0YT25UGbFFXjerEg=;
+ b=HWL1A4Ik7cv5uEFYCmvepDQY3GFDucqRSw/FxxV6rtyVKuUrurxX3IkjYmnSEfq4j5tY
+ rE+AdY2mKuSzdlNAKt398x3Pl3VKih7HeSn3hFaPJ12D+iiG+qm2Z9943sI0esToZAHH
+ c/roWi8buTRCmGGmnFSyzGzOact/NC7abcJbg5nQ2E1SqZWoZE9HAUiIGa3nD4FPn+QX
+ st2N8ggmfDLXhxYZe4hkTv8vNS11p5SIIBgicvY11iFURNGQVWt5bi+/BqjxYccjy2lm
+ fwjkx8E+4b070qwC4pRCjlg5qKA+NgFwFV7gx3cmsatZwEmXvqsXRWmOqzXfl4dGWlyj ug== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 2ywabrg10u-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 26 Mar 2020 14:08:57 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02QE6W9u164877;
+ Thu, 26 Mar 2020 14:08:57 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by userp3030.oracle.com with ESMTP id 2yxw4tqqqm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 26 Mar 2020 14:08:56 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 02QE8sev027968;
+ Thu, 26 Mar 2020 14:08:54 GMT
+Received: from [10.154.135.52] (/10.154.135.52)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 26 Mar 2020 07:08:54 -0700
+Subject: Re: [PATCH] nvme/fc: use real sqsize as argument when connecting
+ queues
+To: Keith Busch <kbusch@kernel.org>, Hannes Reinecke <hare@suse.de>
+References: <20200313124808.39320-1-hare@suse.de>
+ <20200316174819.GB1069991@dhcp-10-100-145-180.wdl.wdc.com>
+From: Himanshu Madhani <himanshu.madhani@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <8a7d1fcf-7e72-d41d-141d-f05d330b76f8@oracle.com>
+Date: Thu, 26 Mar 2020 09:08:51 -0500
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200325131937.1198787-1-hch@lst.de>
+In-Reply-To: <20200316174819.GB1069991@dhcp-10-100-145-180.wdl.wdc.com>
 Content-Language: en-US
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9571
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ suspectscore=0
+ spamscore=0 mlxlogscore=999 adultscore=0 phishscore=0 mlxscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2003260109
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9571
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ suspectscore=0
+ lowpriorityscore=0 malwarescore=0 phishscore=0 priorityscore=1501
+ clxscore=1011 adultscore=0 mlxscore=0 mlxlogscore=999 bulkscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2003260108
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_020046_987743_5EF0FBC9 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.3 (/)
+X-CRM114-CacheID: sfid-20200326_070913_408687_A0DF5B23 
+X-CRM114-Status: GOOD (  22.25  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.3 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.128.47 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.128.47 listed in wl.mailspike.net]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [sagigrim[at]gmail.com]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [156.151.31.86 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,15 +113,94 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-nvme@lists.infradead.org
+Cc: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
+ James Smart <james.smart@broadcom.com>, Keith Busch <keith.busch@wdc.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Series looks good to me,
+On 3/16/2020 12:48 PM, Keith Busch wrote:
+> On Fri, Mar 13, 2020 at 01:48:08PM +0100, Hannes Reinecke wrote:
+>> When creating queues we should be passing in the real sqsize number,
+>> and not increasing it by one just so that the function has to
+>> substract it again.
+> 
+> Kind of makes me wonder: why are we even passing the sq size as a
+> parameter at all? The 'ctrl' parameter provides the same thing.
+> 
+> Anyway, this looks correct to me.
+> 
+> Reviewed-by: Keith Busch <kbusch@kernel.org>
+> 
+>> Signed-off-by: Hannes Reinecke <hare@suse.de>
+>> ---
+>>   drivers/nvme/host/fc.c | 12 ++++++------
+>>   1 file changed, 6 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
+>> index 0cbc4a703359..f76325a47578 100644
+>> --- a/drivers/nvme/host/fc.c
+>> +++ b/drivers/nvme/host/fc.c
+>> @@ -1211,7 +1211,7 @@ nvme_fc_connect_admin_queue(struct nvme_fc_ctrl *ctrl,
+>>   				sizeof(struct fcnvme_lsdesc_cr_assoc_cmd));
+>>   
+>>   	assoc_rqst->assoc_cmd.ersp_ratio = cpu_to_be16(ersp_ratio);
+>> -	assoc_rqst->assoc_cmd.sqsize = cpu_to_be16(qsize - 1);
+>> +	assoc_rqst->assoc_cmd.sqsize = cpu_to_be16(qsize);
+>>   	/* Linux supports only Dynamic controllers */
+>>   	assoc_rqst->assoc_cmd.cntlid = cpu_to_be16(0xffff);
+>>   	uuid_copy(&assoc_rqst->assoc_cmd.hostid, &ctrl->ctrl.opts->host->id);
+>> @@ -1326,7 +1326,7 @@ nvme_fc_connect_queue(struct nvme_fc_ctrl *ctrl, struct nvme_fc_queue *queue,
+>>   				sizeof(struct fcnvme_lsdesc_cr_conn_cmd));
+>>   	conn_rqst->connect_cmd.ersp_ratio = cpu_to_be16(ersp_ratio);
+>>   	conn_rqst->connect_cmd.qid  = cpu_to_be16(queue->qnum);
+>> -	conn_rqst->connect_cmd.sqsize = cpu_to_be16(qsize - 1);
+>> +	conn_rqst->connect_cmd.sqsize = cpu_to_be16(qsize);
+>>   
+>>   	lsop->queue = queue;
+>>   	lsreq->rqstaddr = conn_rqst;
+>> @@ -2484,11 +2484,11 @@ nvme_fc_create_io_queues(struct nvme_fc_ctrl *ctrl)
+>>   		goto out_free_tag_set;
+>>   	}
+>>   
+>> -	ret = nvme_fc_create_hw_io_queues(ctrl, ctrl->ctrl.sqsize + 1);
+>> +	ret = nvme_fc_create_hw_io_queues(ctrl, ctrl->ctrl.sqsize);
+>>   	if (ret)
+>>   		goto out_cleanup_blk_queue;
+>>   
+>> -	ret = nvme_fc_connect_io_queues(ctrl, ctrl->ctrl.sqsize + 1);
+>> +	ret = nvme_fc_connect_io_queues(ctrl, ctrl->ctrl.sqsize);
+>>   	if (ret)
+>>   		goto out_delete_hw_queues;
+>>   
+>> @@ -2539,11 +2539,11 @@ nvme_fc_recreate_io_queues(struct nvme_fc_ctrl *ctrl)
+>>   	if (ctrl->ctrl.queue_count == 1)
+>>   		return 0;
+>>   
+>> -	ret = nvme_fc_create_hw_io_queues(ctrl, ctrl->ctrl.sqsize + 1);
+>> +	ret = nvme_fc_create_hw_io_queues(ctrl, ctrl->ctrl.sqsize);
+>>   	if (ret)
+>>   		goto out_free_io_queues;
+>>   
+>> -	ret = nvme_fc_connect_io_queues(ctrl, ctrl->ctrl.sqsize + 1);
+>> +	ret = nvme_fc_connect_io_queues(ctrl, ctrl->ctrl.sqsize);
+>>   	if (ret)
+>>   		goto out_delete_hw_queues;
+>>   
+>> -- 
+>> 2.16.4
+> 
+> _______________________________________________
+> linux-nvme mailing list
+> linux-nvme@lists.infradead.org
+> https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-nvme__;!!GqivPVa7Brio!Nq4LNDhkMZWjyk8xoSpCsvNM0d4IkwCW8FvAYtlC0EdnTSGaTFWKMr5Bo6B9vK2VAUxX$
+> 
 
-Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+I lost track of original patch email. if its not too late.
+
+Reviewed-by: Himanshu Madhani <himanshu.madhani@oracle.com>
 
 _______________________________________________
 linux-nvme mailing list
