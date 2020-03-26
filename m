@@ -2,78 +2,96 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AB03194685
-	for <lists+linux-nvme@lfdr.de>; Thu, 26 Mar 2020 19:30:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 187FB1946F3
+	for <lists+linux-nvme@lfdr.de>; Thu, 26 Mar 2020 20:03:12 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date
-	:Message-ID:From:References:To:Subject:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JE3tXYsba+4l1s0O6MdL1nlB+bbPEio72BP2jAy95eg=; b=oP05wcSsRwORkA
-	/UBgT9sDbHPOhwhzQCjiOgu6hO7dV5rAtzDmkH59lYd4N+YhvgtgnAIJHvGs+XAQAVoqHA5Jt2uZf
-	SOACg6H7VEWcyN3r2J2sO7L5Ipq4Mt+i/NiAJirYMxbeZswXQ66mfENEVUJK1naJdMXxgzRXXC9g1
-	t4zQBWpZmC8aJ+ZNwZT1TzXME4le1JGY1uricOF+gXK0Iu9ffIFAg32/UYtj9DpwADukK0yaTcQF5
-	nXLU+OtE1aMFCM8n26iRsLbmejxlukEkvMi0oES1C8TXeR8Av31BsM7Lj8Ly9SgjVz1sdaMqFxXnC
-	S3aW1OTan82fxMZMa5Hw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=I9D3OPu3fTaAHPa5BoxIn3y1BRfj0vmLifJsQsTLRxk=; b=lgsfJJywSP7qM0Mo6u92zoPwx
+	TIG6BB7eSljlgGjPiuaixJHjs+q4wPppkd2yHpzefPg1BihRCs7DXHcav7h8egQFt509ZF86s5cZ1
+	3UERhYbKeTheyUMe5Wt/jGxkG+mPME6qQZhWwHnXhCpemHYiTXCec7jrRfy8K5kxW5lpVCfOiTUfg
+	Ba3lFUM5qtVSx1MrLgixi8k/wx69cM+MvIr+dN3U3GLPJT5YBNJPwCillI4BowXf19M4Ovqx+hl9e
+	s+kdip17XnJRXmiUE/S57wzRkAiif7DPPuV8Ddv/zXaBh2RhVstKvD5kCWLcGgJkGUH8Fh/jtm1Wk
+	RanfbIv+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHXHD-0000W3-49; Thu, 26 Mar 2020 18:30:47 +0000
-Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74])
+	id 1jHXmS-0003nW-Ar; Thu, 26 Mar 2020 19:03:04 +0000
+Received: from userp2130.oracle.com ([156.151.31.86])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHXH8-0000VL-LV
- for linux-nvme@lists.infradead.org; Thu, 26 Mar 2020 18:30:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585247441;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qJQIm7kuwWz3O6s7sbORQr0I6PvqeKLlxetgGC3HAxA=;
- b=ejI/ZFNpXFWmj3vSgZSo0aLp2a393fXRXo5ums7kZ2LG9iZFVWnSIX/6FpVpEaXi00hkp2
- r5oDovEV40uSmecXXX+5hEWCdhVLV319Rns+CAMk5fEgFValGy/4gWaBhm8IXQiZx8yBl2
- lGexrMDprX772//2+fnVPkfn2XOK0KE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-159-czqNmJ_8Nsu2IY99tSy5QA-1; Thu, 26 Mar 2020 14:30:40 -0400
-X-MC-Unique: czqNmJ_8Nsu2IY99tSy5QA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D58B107ACCA
- for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 18:30:39 +0000 (UTC)
-Received: from [10.3.128.7] (unknown [10.3.128.7])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B0D5D5C1BA
- for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 18:30:38 +0000 (UTC)
-Subject: Re: nvmetcli: Unable to run clear/restore
-To: linux-nvme@lists.infradead.org
-References: <7fdaeb65-0cad-8f9a-10e7-ae0c50494bf3@redhat.com>
-From: Tony Asleson <tasleson@redhat.com>
-Organization: Red Hat
-Message-ID: <9972a646-2618-5fcc-b18c-6765516f65a4@redhat.com>
-Date: Thu, 26 Mar 2020 13:30:37 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ id 1jHXmK-0003n9-TD
+ for linux-nvme@lists.infradead.org; Thu, 26 Mar 2020 19:02:58 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02QIxGGQ107135;
+ Thu, 26 Mar 2020 19:02:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=subject : to :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=HnhgyfyTEYP+g67N7SKOyVgdInqQpj+G4OIIfUW8N9I=;
+ b=cs8SvRtU8qsGLhnx/aYIxDJoFhNq5NjYJhgLV8bu9QBHiwcAvS6OrKK1GQKfVQNJmoQp
+ t4TNYqiTDY9MwZnCedP43wFcxO6pZY+odJuAUwttgLfH2xlxo8raegeez67HrZ1MMidz
+ laNJTgKbwvR4Eg9Vv5czgrGq3KlkdsoXY2iYFM8xNPl0DQmg1YmovhkK/PCYngdD0uQW
+ KimzMV4P3+Jtmw+RCaTnzSTMbetSrXG7vQXcpms8CLcnY3OkWSgZgAMDDfX3kasqGhXV
+ RGq4mzWPg1iG/lq8evGlOvErK7jNzqiNrKAUTHGYVjpFScBj5CKvOfIqypdralEyaiDc Lg== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2130.oracle.com with ESMTP id 2ywabrhqgn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 26 Mar 2020 19:02:52 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02QIucx2082982;
+ Thu, 26 Mar 2020 19:00:51 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3020.oracle.com with ESMTP id 30073e7mwm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 26 Mar 2020 19:00:51 +0000
+Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 02QJ0oFl006748;
+ Thu, 26 Mar 2020 19:00:50 GMT
+Received: from [10.154.135.52] (/10.154.135.52)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 26 Mar 2020 12:00:50 -0700
+Subject: Re: [PATCH] nvme-fcloop: Fix deallocation of working context
+To: James Smart <jsmart2021@gmail.com>, linux-nvme@lists.infradead.org
+References: <20200318214112.18317-1-jsmart2021@gmail.com>
+From: Himanshu Madhani <himanshu.madhani@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <be54696d-bda7-097a-a69d-119d86309529@oracle.com>
+Date: Thu, 26 Mar 2020 14:00:47 -0500
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <7fdaeb65-0cad-8f9a-10e7-ae0c50494bf3@redhat.com>
+In-Reply-To: <20200318214112.18317-1-jsmart2021@gmail.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9572
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ adultscore=0
+ suspectscore=2 mlxscore=0 phishscore=0 bulkscore=0 spamscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2003260141
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9572
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ suspectscore=2
+ lowpriorityscore=0 malwarescore=0 phishscore=0 priorityscore=1501
+ clxscore=1015 adultscore=0 mlxscore=0 mlxlogscore=999 bulkscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2003260141
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_113042_786592_05BFBD54 
-X-CRM114-Status: GOOD (  11.95  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200326_120257_079657_7D6FB819 
+X-CRM114-Status: GOOD (  24.97  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [216.205.24.74 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [156.151.31.86 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -93,63 +111,182 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Reply-To: tasleson@redhat.com
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 3/20/20 3:50 PM, Tony Asleson wrote:
-> While experimenting with nvmetcli I'm unable to run clear or restore.
+On 3/18/2020 4:41 PM, James Smart wrote:
+> There's been a longstanding bug of LS completions which freed ls
+> op's, particularly the disconnect LS, while executing on a work
+> context that is in the memory being free. Not a good thing to do.
 > 
-> Using master branch against Fedora 31, 5.5.9-200.fc31.x86_64
+> Rework LS handling to make callbacks in the rport context
+> rather than the ls_request context.
 > 
-> # ./nvmetcli clear
-> Traceback (most recent call last):
->   File "./nvmetcli", line 740, in <module>
->     main()
->   File "./nvmetcli", line 722, in main
->     funcs[sys.argv[1]](savefile)
->   File "./nvmetcli", line 689, in clear
->     nvme.Root().clear_existing()
->   File "/root/projects/nvmetcli/nvmet/nvme.py", line 315, in clear_existing
->     p.delete()
->   File "/root/projects/nvmetcli/nvmet/nvme.py", line 677, in delete
->     a.delete()
->   File "/root/projects/nvmetcli/nvmet/nvme.py", line 200, in delete
->     os.rmdir(self.path)
-> PermissionError: [Errno 1] Operation not permitted:
-> '/sys/kernel/config/nvmet/ports/0/ana_groups/1'
+> Signed-off-by: James Smart <jsmart2021@gmail.com>
+> Reviewed-by: Hannes Reinecke <hare@suse.de>
+> ---
+>   drivers/nvme/target/fcloop.c | 76 ++++++++++++++++++++++++++++++--------------
+>   1 file changed, 52 insertions(+), 24 deletions(-)
+> 
+> diff --git a/drivers/nvme/target/fcloop.c b/drivers/nvme/target/fcloop.c
+> index 1c50af6219f3..9861fcea39f6 100644
+> --- a/drivers/nvme/target/fcloop.c
+> +++ b/drivers/nvme/target/fcloop.c
+> @@ -198,10 +198,13 @@ struct fcloop_lport_priv {
+>   };
+>   
+>   struct fcloop_rport {
+> -	struct nvme_fc_remote_port *remoteport;
+> -	struct nvmet_fc_target_port *targetport;
+> -	struct fcloop_nport *nport;
+> -	struct fcloop_lport *lport;
+> +	struct nvme_fc_remote_port	*remoteport;
+> +	struct nvmet_fc_target_port	*targetport;
+> +	struct fcloop_nport		*nport;
+> +	struct fcloop_lport		*lport;
+> +	spinlock_t			lock;
+> +	struct list_head		ls_list;
+> +	struct work_struct		ls_work;
+>   };
+>   
+>   struct fcloop_tport {
+> @@ -224,11 +227,10 @@ struct fcloop_nport {
+>   };
+>   
+>   struct fcloop_lsreq {
+> -	struct fcloop_tport		*tport;
+>   	struct nvmefc_ls_req		*lsreq;
+> -	struct work_struct		work;
+>   	struct nvmefc_tgt_ls_req	tgt_ls_req;
+>   	int				status;
+> +	struct list_head		ls_list; /* fcloop_rport->ls_list */
+>   };
+>   
+>   struct fcloop_rscn {
+> @@ -292,21 +294,32 @@ fcloop_delete_queue(struct nvme_fc_local_port *localport,
+>   {
+>   }
+>   
+> -
+> -/*
+> - * Transmit of LS RSP done (e.g. buffers all set). call back up
+> - * initiator "done" flows.
+> - */
+>   static void
+> -fcloop_tgt_lsrqst_done_work(struct work_struct *work)
+> +fcloop_rport_lsrqst_work(struct work_struct *work)
+>   {
+> -	struct fcloop_lsreq *tls_req =
+> -		container_of(work, struct fcloop_lsreq, work);
+> -	struct fcloop_tport *tport = tls_req->tport;
+> -	struct nvmefc_ls_req *lsreq = tls_req->lsreq;
+> +	struct fcloop_rport *rport =
+> +		container_of(work, struct fcloop_rport, ls_work);
+> +	struct fcloop_lsreq *tls_req;
+>   
+> -	if (!tport || tport->remoteport)
+> -		lsreq->done(lsreq, tls_req->status);
+> +	spin_lock(&rport->lock);
+> +	for (;;) {
+> +		tls_req = list_first_entry_or_null(&rport->ls_list,
+> +				struct fcloop_lsreq, ls_list);
+> +		if (!tls_req)
+> +			break;
+> +
+> +		list_del(&tls_req->ls_list);
+> +		spin_unlock(&rport->lock);
+> +
+> +		tls_req->lsreq->done(tls_req->lsreq, tls_req->status);
+> +		/*
+> +		 * callee may free memory containing tls_req.
+> +		 * do not reference lsreq after this.
+> +		 */
+> +
+> +		spin_lock(&rport->lock);
+> +	}
+> +	spin_unlock(&rport->lock);
+>   }
+>   
+>   static int
+> @@ -319,17 +332,18 @@ fcloop_ls_req(struct nvme_fc_local_port *localport,
+>   	int ret = 0;
+>   
+>   	tls_req->lsreq = lsreq;
+> -	INIT_WORK(&tls_req->work, fcloop_tgt_lsrqst_done_work);
+> +	INIT_LIST_HEAD(&tls_req->ls_list);
+>   
+>   	if (!rport->targetport) {
+>   		tls_req->status = -ECONNREFUSED;
+> -		tls_req->tport = NULL;
+> -		schedule_work(&tls_req->work);
+> +		spin_lock(&rport->lock);
+> +		list_add_tail(&rport->ls_list, &tls_req->ls_list);
+> +		spin_unlock(&rport->lock);
+> +		schedule_work(&rport->ls_work);
+>   		return ret;
+>   	}
+>   
+>   	tls_req->status = 0;
+> -	tls_req->tport = rport->targetport->private;
+>   	ret = nvmet_fc_rcv_ls_req(rport->targetport, &tls_req->tgt_ls_req,
+>   				 lsreq->rqstaddr, lsreq->rqstlen);
+>   
+> @@ -337,18 +351,28 @@ fcloop_ls_req(struct nvme_fc_local_port *localport,
+>   }
+>   
+>   static int
+> -fcloop_xmt_ls_rsp(struct nvmet_fc_target_port *tport,
+> +fcloop_xmt_ls_rsp(struct nvmet_fc_target_port *targetport,
+>   			struct nvmefc_tgt_ls_req *tgt_lsreq)
+>   {
+>   	struct fcloop_lsreq *tls_req = tgt_ls_req_to_lsreq(tgt_lsreq);
+>   	struct nvmefc_ls_req *lsreq = tls_req->lsreq;
+> +	struct fcloop_tport *tport = targetport->private;
+> +	struct nvme_fc_remote_port *remoteport = tport->remoteport;
+> +	struct fcloop_rport *rport;
+>   
+>   	memcpy(lsreq->rspaddr, tgt_lsreq->rspbuf,
+>   		((lsreq->rsplen < tgt_lsreq->rsplen) ?
+>   				lsreq->rsplen : tgt_lsreq->rsplen));
+> +
+>   	tgt_lsreq->done(tgt_lsreq);
+>   
+> -	schedule_work(&tls_req->work);
+> +	if (remoteport) {
+> +		rport = remoteport->private;
+> +		spin_lock(&rport->lock);
+> +		list_add_tail(&rport->ls_list, &tls_req->ls_list);
+> +		spin_unlock(&rport->lock);
+> +		schedule_work(&rport->ls_work);
+> +	}
+>   
+>   	return 0;
+>   }
+> @@ -834,6 +858,7 @@ fcloop_remoteport_delete(struct nvme_fc_remote_port *remoteport)
+>   {
+>   	struct fcloop_rport *rport = remoteport->private;
+>   
+> +	flush_work(&rport->ls_work);
+>   	fcloop_nport_put(rport->nport);
+>   }
+>   
+> @@ -1136,6 +1161,9 @@ fcloop_create_remote_port(struct device *dev, struct device_attribute *attr,
+>   	rport->nport = nport;
+>   	rport->lport = nport->lport;
+>   	nport->rport = rport;
+> +	spin_lock_init(&rport->lock);
+> +	INIT_WORK(&rport->ls_work, fcloop_rport_lsrqst_work);
+> +	INIT_LIST_HEAD(&rport->ls_list);
+>   
+>   	return count;
+>   }
+> 
 
-Apparently if I simply do
+Looks Good.
 
-# rmdir /sys/kernel/config/nvmet/ports/1
-
-The port and associated ana group gets removed and the usage count for
-the kernel module nvmet goes to zero.
-
-Is the bug that we are trying to remove
-/sys/kernel/config/nvmet/ports/0/ana_groups/1 in userspace from nvmetcli
-which can simply be corrected with
-
-diff --git a/nvmet/nvme.py b/nvmet/nvme.py
-index 089bafb..a2565e4 100644
---- a/nvmet/nvme.py
-+++ b/nvmet/nvme.py
-@@ -686,8 +686,6 @@ class Port(CFSNode):
-         self._check_self()
-         for s in self.subsystems:
-             self.remove_subsystem(s)
--        for a in self.ana_groups:
--            a.delete()
-
-
-or that we should be able to remove it and can't, thus the issue is in
-the kernel?
-
-Thanks,
-Tony
-
+Reviewed-by: Himanshu Madhani <himanshu.madhani@oracle.com>
 
 _______________________________________________
 linux-nvme mailing list
