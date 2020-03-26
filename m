@@ -2,55 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6C97194616
-	for <lists+linux-nvme@lfdr.de>; Thu, 26 Mar 2020 19:09:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 225C719460E
+	for <lists+linux-nvme@lfdr.de>; Thu, 26 Mar 2020 19:08:28 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J0mDmjQim8cTEIMsgSuMTc8DUzH8tuWSWuw5wxp5oj4=; b=joL3GRmdBhmYeX
-	dtHhCCxxX0H4sV+TSd7H4HisDgRZMJIrLO9G3bfmS1+Ktp/KPHSe7PG0TgZ0y0E4V48F/EYF8S1+W
-	2R48u+N+STo009bsgz0y+b6dI/ApkyFpFI+izmaYv8B8RWeh0agkLaeJ6PLLtERTp5i8qRJ/KfoCp
-	/kf1achSq+s3RkCPtCWGrPvQoyCWoPvoZzvBTfqhH/b0lPX1oTuSAyR80sXx+bVGRkqJNlXQNYQWE
-	POnCL/H+bBalgKl1DSoM8dljld+OAe0by9HPt5YPeMQXxFz/+A7t8hKHWaSR9hiSdUgYakAme541T
-	zEpX+OTL+3II0R/FHgPw==;
+	List-Owner; bh=lu/QLJ+VNUU4HIJ3/n35T1vAKlJ7ogIC8mmoL954Gq4=; b=OskNknsBbU+mVr
+	JGWaAEAQQtBnt2fNrlzp59AC0JP9Uacs0XNtLl7MfkBEVo9GxFtwYhfSWIH2iRs94RU+In4aok3Ts
+	SNTaT6nZ2nCl3ZG87tFa9hyzSy5+LpVqgBw6cO3IxW5QW1F4J/PPHlWLOU5dM3a0w2lDE1O+eASch
+	erg2mM/pQuGTu2Ft3kLfP5noX648uiVZ/K2DrDM/sAjgwV4eZ3gcqC16DEKVG+yscs/MUd56XVVQ9
+	AodT3knSmzScFLXXGbocPleF8MsiN0gbLARAECpM2p/X8phoKEU1fLQk54XvyUBA6I9C3ns7t1gWn
+	IgWiyMIN/HkAt97OOxWg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHWwT-0007Xq-80; Thu, 26 Mar 2020 18:09:21 +0000
-Received: from us-smtp-delivery-74.mimecast.com ([63.128.21.74])
+	id 1jHWvS-0006k1-Ry; Thu, 26 Mar 2020 18:08:18 +0000
+Received: from us-smtp-delivery-74.mimecast.com ([216.205.24.74])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHWvD-0006eq-GX
- for linux-nvme@lists.infradead.org; Thu, 26 Mar 2020 18:08:05 +0000
+ id 1jHWvC-0006ev-Mb
+ for linux-nvme@lists.infradead.org; Thu, 26 Mar 2020 18:08:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1585246079;
+ s=mimecast20190719; t=1585246080;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=k5bql8lMyjw9pjbwdbBTG4mhXhPqtT/SAh41/mP8d0A=;
- b=i+s2UFnABxH2npss4n4PtQvk8YoVDLO0PBW/oXMdruZdKJAC7xn6IqtwpXkGuQrXZC3gLU
- 6AvAVr0WmIGGCcjbPMi6uFEnibfeZEDqX965LXoKnDgin6A9YKeOiwoJ/pBwpbj5qxYwc7
- Vim5+u9jEAdfSJqOnnmHDGyrvCdAr9Q=
+ bh=uK+Bi0rLGkqGmx7yn6Q0n8W2vaLN9LcnyaifdD/2VHY=;
+ b=J1nbszgUpGUz+qP8FK4Bq5k9tyTuhsRopOwjyvBQnSJWeJMjkywW0iKVCy9Rqs6TN0x7TA
+ /A8/EDBGqRX4s/usaAp32IoPK9LYfQ+XheGBPpE4UPZOfn6clFfWP1t+P4+tmM1wuunl7g
+ wo9afuizMw0wtY5i7qB1Im3uuVx7zIg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-168-RSyxz57INMKV25M-kIXUzw-1; Thu, 26 Mar 2020 14:07:57 -0400
-X-MC-Unique: RSyxz57INMKV25M-kIXUzw-1
+ us-mta-391-j-pJMTC3PWWZtRI3BEtEDg-1; Thu, 26 Mar 2020 14:07:58 -0400
+X-MC-Unique: j-pJMTC3PWWZtRI3BEtEDg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BE05ADB61
- for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 18:07:55 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8364C18AB2C5
+ for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 18:07:56 +0000 (UTC)
 Received: from sulaco.redhat.com (unknown [10.3.128.7])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4C2B819C69
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 13BF119C69
  for <linux-nvme@lists.infradead.org>; Thu, 26 Mar 2020 18:07:55 +0000 (UTC)
 From: Tony Asleson <tasleson@redhat.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2 4/7] nvme.py: Sync the containing directory
-Date: Thu, 26 Mar 2020 13:07:47 -0500
-Message-Id: <20200326180750.469346-5-tasleson@redhat.com>
+Subject: [PATCH v2 5/7] nvme.py: Make modprobe work for kmod lib too
+Date: Thu, 26 Mar 2020 13:07:48 -0500
+Message-Id: <20200326180750.469346-6-tasleson@redhat.com>
 In-Reply-To: <20200326180750.469346-1-tasleson@redhat.com>
 References: <20200326180750.469346-1-tasleson@redhat.com>
 MIME-Version: 1.0
@@ -58,15 +58,16 @@ X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_110803_629553_DF8F7E17 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20200326_110802_820359_8C509E60 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [63.128.21.74 listed in list.dnswl.org]
+ no trust [216.205.24.74 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -93,37 +94,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-It's apparent that some thought went into making sure the config
-file makes it atomically to the fs.  However, one thing is missing
-which is doing a fsync on the containing directory of the config file.
-
-See: https://lwn.net/Articles/457667/
+The python library 'kmod' is included with libkmod, lets try to use that
+if the user isn't utilizing kmodpy.
 
 Signed-off-by: Tony Asleson <tasleson@redhat.com>
 ---
- nvmet/nvme.py | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ nvmet/nvme.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/nvmet/nvme.py b/nvmet/nvme.py
-index 55c3930..4817124 100644
+index 4817124..089bafb 100644
 --- a/nvmet/nvme.py
 +++ b/nvmet/nvme.py
-@@ -305,6 +305,15 @@ class Root(CFSNode):
+@@ -253,7 +253,12 @@ class Root(CFSNode):
+             except kmod.KmodError:
+                 pass
+         except ImportError:
+-            pass
++            # Try the ctypes library included with the libkmod itself.
++            try:
++                import kmod
++                kmod.Kmod().modprobe(modname)
++            except Exception as e:
++                pass
  
-         os.rename(savefile + ".temp", savefile)
- 
-+        # Sync the containing directory too
-+        dir_fd = None
-+        try:
-+            dir_fd = os.open(savefile_dir, os.O_RDONLY)
-+            os.fsync(dir_fd)
-+        finally:
-+            if dir_fd:
-+                os.close(dir_fd)
-+
-     def clear_existing(self):
-         '''
-         Remove entire current configuration.
+     def _list_subsystems(self):
+         self._check_self()
 -- 
 2.25.1
 
