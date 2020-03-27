@@ -2,53 +2,71 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3646B195C55
-	for <lists+linux-nvme@lfdr.de>; Fri, 27 Mar 2020 18:17:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E736195C6B
+	for <lists+linux-nvme@lfdr.de>; Fri, 27 Mar 2020 18:20:04 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CL1lWIfh9LvvadiyYHRg13zrtasnNUtS8O9QLiMBI2c=; b=WltVEt/woP6CZe
-	xfDYME7TXvtfbuRgx9KdBanFzpe9yfudrhiEnKy+IZFIhfObSU2DY+Z0L84CIfTqhMDJtPFYmsaDC
-	0Q0yjqBl1SQq9PKbXr4L9tk/7/eYvGl37SC3OEmeiI8UbGLZ4c6JnGMF+c9ySo6IiqK7pTNp5s9/r
-	OWTyspiG1JPGYUkLleX6MZLgk8xkZjdLHHpSyVqrJFkvE4CgDvVtXbqK9PTeNXXylQuuIKdphGBCm
-	RI0glkXg/FBX74oyQgqbYHOqIhhH4daeviQikKl4kD6NYEhZlwEpu0jy+ACi1ubOAJYr0zGYHJPVn
-	CDR/EjNyAMFTm7x9vFlA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=M3gGSydTL1RI1JDRIM9N/9MEMsaGpyTHw2503cxIOeA=; b=ieARGiD+T4OVCG
+	Z7PRID0usUvrNXPIdh25DMRY8T+yoMiceQ+XeWTBySShDgW47PTmVW+oDmQAhtVhgvfEJdrrMQTE4
+	Jq/8w2p/bIglW5GNfhMN8zrFvv4I1pRgB9Ba21/3c8wpWcyF+Q7PKq2GyBg3UbfErRQlVgz6a3/X6
+	frvLQCXaR6hmBAj9OQiIzMt0ItE+hMh/hZ/Ne7PjX0xb5OMoImTNoHSNhcaqQrYVrINKaDVPrkZ69
+	CsASzQ4C/gdYYojQRxFQltxI0D5MCTcD33SuLbzjX6wQ+jIxRL6ko+lyISBWC3wQUKst8yX/hTDJ1
+	Lx1WtGx5Hq0vjNIov1jw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHsbI-0008VZ-F8; Fri, 27 Mar 2020 17:16:56 +0000
+	id 1jHseA-0002o5-Tg; Fri, 27 Mar 2020 17:19:54 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jHsaV-00086I-CF
+ for linux-nvme@bombadil.infradead.org; Fri, 27 Mar 2020 17:16:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=ABEOv9NOfEzp+nizJZV8tR2XojLLhtJAcOmi7BUi+vk=; b=jNeNRAJw5B8rm26rg/PEfZ7jy1
+ Bp+f6ZF8dDLfewbEQrZqIOcnSqkifZ8dyMlnX7DWS58O0uqU71hevoSrRc/pcqPsjOWpB8MJlqrXQ
+ GEpcOU4m9ejyJLQKT7TIqOFaV5c4ZC7sfEbmU471cEzDxgfO39/T0ki1TCCOgPe0THL8tQSEH89W4
+ TONpWbSHcZGpxqjMtl8NhNt0vbc0hG1/+A1bNHLQ7Pn1IBeI49DXc2yOW0a0YkbN5BcnnWWNCkjZQ
+ zuS5DEaWDYJJfRGDoyhPz0hmXh5HS3A7+NoVx19yehyX05GfCE8XA6zVOkaKPEzLSxLj5QFwVfTW8
+ ua3T71PQ==;
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHsaI-0007rY-Uv
- for linux-nvme@lists.infradead.org; Fri, 27 Mar 2020 17:16:00 +0000
-Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ by casper.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jHsaN-0005Do-9Z
+ for linux-nvme@lists.infradead.org; Fri, 27 Mar 2020 17:16:06 +0000
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 27 Mar 2020 20:15:46 +0300
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02RHFjj2004869;
- Fri, 27 Mar 2020 20:15:45 +0300
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02RHFjj3004869;
+ Fri, 27 Mar 2020 20:15:46 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, hch@lst.de,
  sagi@grimberg.me, martin.petersen@oracle.com, jsmart2021@gmail.com,
  linux-rdma@vger.kernel.org
-Subject: [PATCH 00/17 V5] nvme-rdma/nvmet-rdma: Add metadata/T10-PI support
-Date: Fri, 27 Mar 2020 20:15:27 +0300
-Message-Id: <20200327171545.98970-1-maxg@mellanox.com>
+Subject: [PATCH 1/1] nvme-cli/fabrics: Add pi_enable param to connect cmd
+Date: Fri, 27 Mar 2020 20:15:28 +0300
+Message-Id: <20200327171545.98970-2-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20200327171545.98970-1-maxg@mellanox.com>
+References: <20200327171545.98970-1-maxg@mellanox.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200327_101555_491778_2DA5AF85 
-X-CRM114-Status: GOOD (  11.82  )
-X-Spam-Score: -0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+X-CRM114-CacheID: sfid-20200327_171600_103046_0C828F93 
+X-CRM114-Status: GOOD (  11.50  )
+X-Spam-Score: -1.9 (-)
+X-Spam-Report: SpamAssassin version 3.4.4 on casper.infradead.org summary:
+ Content analysis details:   (-1.9 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
  no trust [193.47.165.129 listed in list.dnswl.org]
+ -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
+ [score: 0.0000]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
@@ -72,118 +90,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Hello Sagi, Christoph, Keith, Martin, James and Co
+From: Israel Rukshin <israelr@mellanox.com>
 
-This patchset adds metadata (T10-PI) support for NVMeoF/RDMA host side
-and target side, using signature verbs API. This set starts with a few
-preparation commits to the NVMe host core layer. It continues with
-NVMeoF/RDMA host implementation + few preparation commits to the RDMA/rw
-API and to NVMe target core layer. The patchset ends with NVMeoF/RDMA
-target implementation. Also patch for NVMe-cli added to this series.
+Added 'pi_enable' to 'connect' command so users can enable metadata support.
 
-In V5 I mainly did some renamings and removed 2 patches to get_mdts that
-were already merged to main branch. I tried get some inspiration from
-James suggestion of the settings in NVMe core, but unfortunately couldn't
-take much from there and I stayed with Christoph suggestion for features
-flag per namespace. I found the code more readable in this form and
-hopefully we can continue with the review and the merge soon.
+usage examples:
+nvme connect --pi_enable --transport=rdma --traddr=10.0.1.1 --nqn=test-nvme
+nvme connect -p -t rdma -a 10.0.1.1 -n test_nvme
 
-Configuration:
-Host:
- - nvme connect --pi_enable --transport=rdma --traddr=10.0.1.1 --nqn=test-nvme
+Signed-off-by: Israel Rukshin <israelr@mellanox.com>
+Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+---
+ fabrics.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
-Target:
- - echo 1 > /config/nvmet/subsystems/${NAME}/attr_pi_enable
- - echo 1 > /config/nvmet/ports/${PORT_NUM}/param_pi_enable
-
-The code was tested using Mellanox's ConnectX-4/ConnectX-5 HCAs.
-This series applies on top of nvme_5.7 branch cleanly.
-
-Changes from v4:
- - removed get_mdts patches (merged)
- - added enum nvme_ns_features instead of defines (patch 1/17)
- - rename pi/prot to md (patches 2/17 + 6/17 + 8/17 + 9/17 + 10/17)
- - another rebase
-
-Changes from v3:
- - Added Reviewed-by signatures
- - New RDMA/rw patch (Patch 17/19)
- - Add mdts setting op for controllers (Patches 14/19, 18/19)
- - Rename NVME_NS_DIX_SUPPORTED to NVME_NS_MD_HOST_SUPPORTED and
-   NVME_NS_DIF_SUPPORTED to NVME_NS_MD_CTRL_SUPPORTED (Patch 01/19)
- - Split "nvme: Introduce namespace features flag" patch (patch 02/19)
- - Rename nvmet_rdma_set_diff_domain to nvmet_rdma_set_sig_domain
-   and nvme_rdma_set_diff_domain to nvme_rdma_set_sig_domain
-   (Patches 08/19, 19/19)
- - Remove ns parameter from nvme_rdma_set_sig_domain/nvmet_rdma_set_sig_domain
-   functions (patch 08/19, 19/19)
- - Rebase over nvme-5.7 branch
-
-Changes from v2:
- - Convert the virtual start sector (which passed to bip_set_seed function)
-   to be in integrity interval units (Patch 14/15)
- - Clarify some commit messages
-
-Changes from v1:
- - Added Reviewed-by signatures
- - Added namespace features flag (Patch 01/15)
- - Remove nvme_ns_has_pi function (Patch 01/15)
- - Added has_pi field to struct nvme_request (Patch 01/15)
- - Subject change for patch 02/15
- - Fix comment for PCI metadata (Patch 03/15)
- - Rebase over "nvme: Avoid preallocating big SGL for data" patchset
- - Introduce NVME_INLINE_PROT_SG_CNT flag (Patch 05/15)
- - Introduce nvme_rdma_sgl structure (Patch 06/15)
- - Remove first_sgl pointer from struct nvme_rdma_request (Patch 06/15)
- - Split nvme-rdma patches (Patches 06/15, 07/15)
- - Rename is_protected to use_pi (Patch 07/15)
- - Refactor nvme_rdma_get_max_fr_pages function (Patch 07/15)
- - Added ifdef CONFIG_BLK_DEV_INTEGRITY (Patches 07/15, 09/15, 13/15,
-   14/15, 15/15)
- - Added port configfs pi_enable (Patch 14/15)
-
-
-Israel Rukshin (12):
-  nvme: introduce namespace features flag
-  nvme: Add has_md field to the nvme_req structure
-  nvme-fabrics: Allow user enabling metadata/T10-PI support
-  nvme: introduce NVME_INLINE_MD_SG_CNT
-  nvme-rdma: Introduce nvme_rdma_sgl structure
-  nvmet: prepare metadata request
-  nvmet: add metadata characteristics for a namespace
-  nvmet: Rename nvmet_rw_len to nvmet_rw_data_len
-  nvmet: Rename nvmet_check_data_len to nvmet_check_transfer_len
-  nvme: Add Metadata Capabilities enumerations
-  nvmet: Add metadata/T10-PI support
-  nvmet: Add metadata support for block devices
-
-Max Gurtovoy (5):
-  nvme: Enforce extended LBA format for fabrics metadata
-  nvme: introduce max_integrity_segments ctrl attribute
-  nvme-rdma: add metadata/T10-PI support
-  RDMA/rw: Expose maximal page list for a device per 1 MR
-  nvmet-rdma: Add metadata/T10-PI support
-
- drivers/infiniband/core/rw.c      |  14 +-
- drivers/nvme/host/core.c          |  79 +++++---
- drivers/nvme/host/fabrics.c       |  11 ++
- drivers/nvme/host/fabrics.h       |   3 +
- drivers/nvme/host/nvme.h          |  12 +-
- drivers/nvme/host/pci.c           |   7 +
- drivers/nvme/host/rdma.c          | 367 +++++++++++++++++++++++++++++++++-----
- drivers/nvme/target/admin-cmd.c   |  33 +++-
- drivers/nvme/target/configfs.c    |  61 +++++++
- drivers/nvme/target/core.c        |  54 ++++--
- drivers/nvme/target/discovery.c   |   8 +-
- drivers/nvme/target/fabrics-cmd.c |  19 +-
- drivers/nvme/target/io-cmd-bdev.c | 113 +++++++++++-
- drivers/nvme/target/io-cmd-file.c |   6 +-
- drivers/nvme/target/nvmet.h       |  38 +++-
- drivers/nvme/target/rdma.c        | 245 +++++++++++++++++++++++--
- include/linux/nvme.h              |   2 +
- include/rdma/rw.h                 |   1 +
- 18 files changed, 946 insertions(+), 127 deletions(-)
-
+diff --git a/fabrics.c b/fabrics.c
+index a112f76..1b5b3f7 100644
+--- a/fabrics.c
++++ b/fabrics.c
+@@ -78,6 +78,7 @@ static struct config {
+ 	int  disable_sqflow;
+ 	int  hdr_digest;
+ 	int  data_digest;
++	int  pi_enable;
+ 	bool persistent;
+ 	bool quiet;
+ } cfg = { NULL };
+@@ -851,7 +852,9 @@ static int build_options(char *argstr, int max_len, bool discover)
+ 	    add_bool_argument(&argstr, &max_len, "disable_sqflow",
+ 				cfg.disable_sqflow) ||
+ 	    add_bool_argument(&argstr, &max_len, "hdr_digest", cfg.hdr_digest) ||
+-	    add_bool_argument(&argstr, &max_len, "data_digest", cfg.data_digest))
++	    add_bool_argument(&argstr, &max_len, "data_digest",
++				cfg.data_digest) ||
++	    add_bool_argument(&argstr, &max_len, "pi_enable", cfg.pi_enable))
+ 		return -EINVAL;
+ 
+ 	return 0;
+@@ -980,6 +983,13 @@ retry:
+ 		p += len;
+ 	}
+ 
++	if (cfg.pi_enable) {
++		len = sprintf(p, ",pi_enable");
++		if (len < 0)
++			return -EINVAL;
++		p += len;
++	}
++
+ 	switch (e->trtype) {
+ 	case NVMF_TRTYPE_RDMA:
+ 	case NVMF_TRTYPE_TCP:
+@@ -1259,6 +1269,7 @@ int discover(const char *desc, int argc, char **argv, bool connect)
+ 		OPT_INT("tos",             'T', &cfg.tos,             "type of service"),
+ 		OPT_FLAG("hdr_digest",     'g', &cfg.hdr_digest,      "enable transport protocol header digest (TCP transport)"),
+ 		OPT_FLAG("data_digest",    'G', &cfg.data_digest,     "enable transport protocol data digest (TCP transport)"),
++		OPT_FLAG("pi_enable",      'p', &cfg.pi_enable,       "enable metadata (T10-PI) support (default false)"),
+ 		OPT_INT("nr-io-queues",    'i', &cfg.nr_io_queues,    "number of io queues to use (default is core count)"),
+ 		OPT_INT("nr-write-queues", 'W', &cfg.nr_write_queues, "number of write queues to use (default 0)"),
+ 		OPT_INT("nr-poll-queues",  'P', &cfg.nr_poll_queues,  "number of poll queues to use (default 0)"),
+@@ -1319,6 +1330,7 @@ int connect(const char *desc, int argc, char **argv)
+ 		OPT_FLAG("disable-sqflow",    'd', &cfg.disable_sqflow,    "disable controller sq flow control (default false)"),
+ 		OPT_FLAG("hdr-digest",        'g', &cfg.hdr_digest,        "enable transport protocol header digest (TCP transport)"),
+ 		OPT_FLAG("data-digest",       'G', &cfg.data_digest,       "enable transport protocol data digest (TCP transport)"),
++		OPT_FLAG("pi_enable",         'p', &cfg.pi_enable,         "enable metadata (T10-PI) support (default false)"),
+ 		OPT_END()
+ 	};
+ 
 -- 
 1.8.3.1
 
