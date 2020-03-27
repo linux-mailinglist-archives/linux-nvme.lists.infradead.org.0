@@ -2,71 +2,67 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E736195C6B
-	for <lists+linux-nvme@lfdr.de>; Fri, 27 Mar 2020 18:20:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 553EF195C56
+	for <lists+linux-nvme@lfdr.de>; Fri, 27 Mar 2020 18:17:12 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M3gGSydTL1RI1JDRIM9N/9MEMsaGpyTHw2503cxIOeA=; b=ieARGiD+T4OVCG
-	Z7PRID0usUvrNXPIdh25DMRY8T+yoMiceQ+XeWTBySShDgW47PTmVW+oDmQAhtVhgvfEJdrrMQTE4
-	Jq/8w2p/bIglW5GNfhMN8zrFvv4I1pRgB9Ba21/3c8wpWcyF+Q7PKq2GyBg3UbfErRQlVgz6a3/X6
-	frvLQCXaR6hmBAj9OQiIzMt0ItE+hMh/hZ/Ne7PjX0xb5OMoImTNoHSNhcaqQrYVrINKaDVPrkZ69
-	CsASzQ4C/gdYYojQRxFQltxI0D5MCTcD33SuLbzjX6wQ+jIxRL6ko+lyISBWC3wQUKst8yX/hTDJ1
-	Lx1WtGx5Hq0vjNIov1jw==;
+	List-Owner; bh=KXup71tyISNwR5ZnYk7v78V8/EHHgc/EWJI9ZyJC6Nk=; b=F+Ybs57U0TCMK8
+	qU+3ErunWCx98psNZT0P5Zpn5o0kpzUWLGS2L3RTeyleYzgQv+pTfSEg549fC9zztYNGIuvGizF3c
+	2ds1Ibc7W2/8wfX6XN1lIkMkjt1TZGAjxEH92L1byyR4ZMHMgU9jcvj30vl+My0LfcsL5230+E5bT
+	yFNbkiDrcWgoeMThNHicmID1y1stFeisPVXxrJZxId7U6yokbFvn3IxiFCjO6zTcId7McHhoaxWzd
+	ZnNer7BQKdFYJqsUywpWhCZDGfCadpy0gtzkgOu62pMQ0yOuQdzkClwePo7AFHPQf0RfaFL1z6T7V
+	6F742zrSHdrJ1iFbgJfg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHseA-0002o5-Tg; Fri, 27 Mar 2020 17:19:54 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1jHsbO-0000H1-9D; Fri, 27 Mar 2020 17:17:02 +0000
+Received: from merlin.infradead.org ([205.233.59.134])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHsaV-00086I-CF
- for linux-nvme@bombadil.infradead.org; Fri, 27 Mar 2020 17:16:07 +0000
+ id 1jHsaO-0007wu-Br
+ for linux-nvme@bombadil.infradead.org; Fri, 27 Mar 2020 17:16:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=ABEOv9NOfEzp+nizJZV8tR2XojLLhtJAcOmi7BUi+vk=; b=jNeNRAJw5B8rm26rg/PEfZ7jy1
- Bp+f6ZF8dDLfewbEQrZqIOcnSqkifZ8dyMlnX7DWS58O0uqU71hevoSrRc/pcqPsjOWpB8MJlqrXQ
- GEpcOU4m9ejyJLQKT7TIqOFaV5c4ZC7sfEbmU471cEzDxgfO39/T0ki1TCCOgPe0THL8tQSEH89W4
- TONpWbSHcZGpxqjMtl8NhNt0vbc0hG1/+A1bNHLQ7Pn1IBeI49DXc2yOW0a0YkbN5BcnnWWNCkjZQ
- zuS5DEaWDYJJfRGDoyhPz0hmXh5HS3A7+NoVx19yehyX05GfCE8XA6zVOkaKPEzLSxLj5QFwVfTW8
- ua3T71PQ==;
+ bh=HbBKk59avul6dmaToLsj3KwV5GNsMoniMPHOkhyWetA=; b=NBwQj3IaKdluhxTfMnuKQfpcZJ
+ 9JCG7ccvpANGjPKev+1oPtf4YAAZm76f/bH5cyLuidFJYJq3zkUWxTMle58ix5kC/9zJ11S5bDrOQ
+ DwWFvZt1EohGf0goojD2Gw2r1+lfzrClgEEt20ZlGKwx2yMjNV59xO3+6lA5rpsqXmqgPJltrY5yq
+ jGe5/jvAdhBZ9AmjzKlBa3p5Ddob9pMGXUmOfbwIv//VHrfZtV5lHFe7e4Xg0gHiyUQ4VT0OeeCFt
+ NF1YvtvqdMVX7YMTfSAhXpHnesF42vx7rDD5eC4+H/JvkBDZsHzJ3D8F59VjKFGyfsccbVlUzDzE0
+ OV+1aAaQ==;
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by casper.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHsaN-0005Do-9Z
- for linux-nvme@lists.infradead.org; Fri, 27 Mar 2020 17:16:06 +0000
-Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jHsaL-00081y-7y
+ for linux-nvme@lists.infradead.org; Fri, 27 Mar 2020 17:15:59 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 27 Mar 2020 20:15:46 +0300
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02RHFjj3004869;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02RHFjj4004869;
  Fri, 27 Mar 2020 20:15:46 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, hch@lst.de,
  sagi@grimberg.me, martin.petersen@oracle.com, jsmart2021@gmail.com,
  linux-rdma@vger.kernel.org
-Subject: [PATCH 1/1] nvme-cli/fabrics: Add pi_enable param to connect cmd
-Date: Fri, 27 Mar 2020 20:15:28 +0300
-Message-Id: <20200327171545.98970-2-maxg@mellanox.com>
+Subject: [PATCH 01/17] nvme: introduce namespace features flag
+Date: Fri, 27 Mar 2020 20:15:29 +0300
+Message-Id: <20200327171545.98970-3-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200327171545.98970-1-maxg@mellanox.com>
 References: <20200327171545.98970-1-maxg@mellanox.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200327_171600_103046_0C828F93 
-X-CRM114-Status: GOOD (  11.50  )
-X-Spam-Score: -1.9 (-)
-X-Spam-Report: SpamAssassin version 3.4.4 on casper.infradead.org summary:
- Content analysis details:   (-1.9 points, 5.0 required)
+X-Spam-Note: CRM114 invocation failed
+X-Spam-Score: -0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.4 on merlin.infradead.org summary:
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
  no trust [193.47.165.129 listed in list.dnswl.org]
- -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
- [score: 0.0000]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
@@ -92,71 +88,135 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Israel Rukshin <israelr@mellanox.com>
 
-Added 'pi_enable' to 'connect' command so users can enable metadata support.
+Centralize all the metadata checks to one place and make the code more
+readable. Introduce a new enum nvme_ns_features for that matter.
+The features flag description:
+ - NVME_NS_EXT_LBAS - NVMe namespace supports extended LBA format.
+ - NVME_NS_MD_HOST_SUPPORTED - NVMe namespace supports getting metadata
+   from host's block layer.
+ - NVME_NS_MD_CTRL_SUPPORTED - NVMe namespace supports metadata actions
+   by the controller (generate/strip).
 
-usage examples:
-nvme connect --pi_enable --transport=rdma --traddr=10.0.1.1 --nqn=test-nvme
-nvme connect -p -t rdma -a 10.0.1.1 -n test_nvme
-
+Suggested-by: Christoph Hellwig <hch@lst.de>
+Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
-Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 ---
- fabrics.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+ drivers/nvme/host/core.c | 42 ++++++++++++++++++++++++++++--------------
+ drivers/nvme/host/nvme.h |  8 +++++++-
+ 2 files changed, 35 insertions(+), 15 deletions(-)
 
-diff --git a/fabrics.c b/fabrics.c
-index a112f76..1b5b3f7 100644
---- a/fabrics.c
-+++ b/fabrics.c
-@@ -78,6 +78,7 @@ static struct config {
- 	int  disable_sqflow;
- 	int  hdr_digest;
- 	int  data_digest;
-+	int  pi_enable;
- 	bool persistent;
- 	bool quiet;
- } cfg = { NULL };
-@@ -851,7 +852,9 @@ static int build_options(char *argstr, int max_len, bool discover)
- 	    add_bool_argument(&argstr, &max_len, "disable_sqflow",
- 				cfg.disable_sqflow) ||
- 	    add_bool_argument(&argstr, &max_len, "hdr_digest", cfg.hdr_digest) ||
--	    add_bool_argument(&argstr, &max_len, "data_digest", cfg.data_digest))
-+	    add_bool_argument(&argstr, &max_len, "data_digest",
-+				cfg.data_digest) ||
-+	    add_bool_argument(&argstr, &max_len, "pi_enable", cfg.pi_enable))
- 		return -EINVAL;
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 1cab3c6..f3a184f 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -203,11 +203,6 @@ static void nvme_delete_ctrl_sync(struct nvme_ctrl *ctrl)
+ 	nvme_put_ctrl(ctrl);
+ }
  
- 	return 0;
-@@ -980,6 +983,13 @@ retry:
- 		p += len;
- 	}
+-static inline bool nvme_ns_has_pi(struct nvme_ns *ns)
+-{
+-	return ns->pi_type && ns->ms == sizeof(struct t10_pi_tuple);
+-}
+-
+ static blk_status_t nvme_error_status(u16 status)
+ {
+ 	switch (status & 0x7ff) {
+@@ -706,7 +701,8 @@ static inline blk_status_t nvme_setup_rw(struct nvme_ns *ns,
+ 		 * namespace capacity to zero to prevent any I/O.
+ 		 */
+ 		if (!blk_integrity_rq(req)) {
+-			if (WARN_ON_ONCE(!nvme_ns_has_pi(ns)))
++			if (WARN_ON_ONCE(!(ns->features &
++					   NVME_NS_MD_CTRL_SUPPORTED)))
+ 				return BLK_STS_NOTSUPP;
+ 			control |= NVME_RW_PRINFO_PRACT;
+ 		}
+@@ -1277,7 +1273,7 @@ static int nvme_submit_io(struct nvme_ns *ns, struct nvme_user_io __user *uio)
+ 	meta_len = (io.nblocks + 1) * ns->ms;
+ 	metadata = (void __user *)(uintptr_t)io.metadata;
  
-+	if (cfg.pi_enable) {
-+		len = sprintf(p, ",pi_enable");
-+		if (len < 0)
-+			return -EINVAL;
-+		p += len;
+-	if (ns->ext) {
++	if (ns->features & NVME_NS_EXT_LBAS) {
+ 		length += meta_len;
+ 		meta_len = 0;
+ 	} else if (meta_len) {
+@@ -1837,11 +1833,12 @@ static void nvme_update_disk_info(struct gendisk *disk,
+ 	blk_queue_io_min(disk->queue, phys_bs);
+ 	blk_queue_io_opt(disk->queue, io_opt);
+ 
+-	if (ns->ms && !ns->ext &&
+-	    (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED))
++	if (ns->features & NVME_NS_MD_HOST_SUPPORTED)
+ 		nvme_init_integrity(disk, ns->ms, ns->pi_type);
+-	if ((ns->ms && !nvme_ns_has_pi(ns) && !blk_get_integrity(disk)) ||
+-	    ns->lba_shift > PAGE_SHIFT)
++
++	if ((ns->ms && !(ns->features & NVME_NS_MD_CTRL_SUPPORTED) &&
++	     !(ns->features & NVME_NS_MD_HOST_SUPPORTED) &&
++	     !blk_get_integrity(disk)) || ns->lba_shift > PAGE_SHIFT)
+ 		capacity = 0;
+ 
+ 	set_capacity(disk, capacity);
+@@ -1870,12 +1867,29 @@ static void __nvme_revalidate_disk(struct gendisk *disk, struct nvme_id_ns *id)
+ 		ns->lba_shift = 9;
+ 	ns->noiob = le16_to_cpu(id->noiob);
+ 	ns->ms = le16_to_cpu(id->lbaf[id->flbas & NVME_NS_FLBAS_LBA_MASK].ms);
+-	ns->ext = ns->ms && (id->flbas & NVME_NS_FLBAS_META_EXT);
++	ns->features = 0;
+ 	/* the PI implementation requires metadata equal t10 pi tuple size */
+-	if (ns->ms == sizeof(struct t10_pi_tuple))
++	if (ns->ms == sizeof(struct t10_pi_tuple)) {
+ 		ns->pi_type = id->dps & NVME_NS_DPS_PI_MASK;
+-	else
++		if (ns->pi_type)
++			ns->features |= NVME_NS_MD_CTRL_SUPPORTED;
++	} else {
+ 		ns->pi_type = 0;
 +	}
 +
- 	switch (e->trtype) {
- 	case NVMF_TRTYPE_RDMA:
- 	case NVMF_TRTYPE_TCP:
-@@ -1259,6 +1269,7 @@ int discover(const char *desc, int argc, char **argv, bool connect)
- 		OPT_INT("tos",             'T', &cfg.tos,             "type of service"),
- 		OPT_FLAG("hdr_digest",     'g', &cfg.hdr_digest,      "enable transport protocol header digest (TCP transport)"),
- 		OPT_FLAG("data_digest",    'G', &cfg.data_digest,     "enable transport protocol data digest (TCP transport)"),
-+		OPT_FLAG("pi_enable",      'p', &cfg.pi_enable,       "enable metadata (T10-PI) support (default false)"),
- 		OPT_INT("nr-io-queues",    'i', &cfg.nr_io_queues,    "number of io queues to use (default is core count)"),
- 		OPT_INT("nr-write-queues", 'W', &cfg.nr_write_queues, "number of write queues to use (default 0)"),
- 		OPT_INT("nr-poll-queues",  'P', &cfg.nr_poll_queues,  "number of poll queues to use (default 0)"),
-@@ -1319,6 +1330,7 @@ int connect(const char *desc, int argc, char **argv)
- 		OPT_FLAG("disable-sqflow",    'd', &cfg.disable_sqflow,    "disable controller sq flow control (default false)"),
- 		OPT_FLAG("hdr-digest",        'g', &cfg.hdr_digest,        "enable transport protocol header digest (TCP transport)"),
- 		OPT_FLAG("data-digest",       'G', &cfg.data_digest,       "enable transport protocol data digest (TCP transport)"),
-+		OPT_FLAG("pi_enable",         'p', &cfg.pi_enable,         "enable metadata (T10-PI) support (default false)"),
- 		OPT_END()
- 	};
++	if (ns->ms) {
++		if (id->flbas & NVME_NS_FLBAS_META_EXT)
++			ns->features |= NVME_NS_EXT_LBAS;
++
++		/*
++		 * For PCI, Extended logical block will be generated by the
++		 * controller.
++		 */
++		if (ns->ctrl->ops->flags & NVME_F_METADATA_SUPPORTED) {
++			if (!(ns->features & NVME_NS_EXT_LBAS))
++				ns->features |= NVME_NS_MD_HOST_SUPPORTED;
++		}
++	}
  
+ 	if (ns->noiob)
+ 		nvme_set_chunk_size(ns);
+diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
+index 2e04a36..83296d0 100644
+--- a/drivers/nvme/host/nvme.h
++++ b/drivers/nvme/host/nvme.h
+@@ -363,6 +363,12 @@ struct nvme_ns_head {
+ #endif
+ };
+ 
++enum nvme_ns_features {
++	NVME_NS_EXT_LBAS = 1 << 0,
++	NVME_NS_MD_HOST_SUPPORTED = 1 << 1,
++	NVME_NS_MD_CTRL_SUPPORTED = 1 << 2,
++};
++
+ struct nvme_ns {
+ 	struct list_head list;
+ 
+@@ -382,8 +388,8 @@ struct nvme_ns {
+ 	u16 ms;
+ 	u16 sgs;
+ 	u32 sws;
+-	bool ext;
+ 	u8 pi_type;
++	unsigned long features;
+ 	unsigned long flags;
+ #define NVME_NS_REMOVING	0
+ #define NVME_NS_DEAD     	1
 -- 
 1.8.3.1
 
