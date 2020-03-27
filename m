@@ -2,69 +2,65 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C2E8195C5E
-	for <lists+linux-nvme@lfdr.de>; Fri, 27 Mar 2020 18:18:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 50FE6195C58
+	for <lists+linux-nvme@lfdr.de>; Fri, 27 Mar 2020 18:17:38 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UD81t3SbgDk/fYSMmDloBqo66ZLmRaTcIWchYBmz+So=; b=n+Tn6zorbK8kMf
-	EHGIc076BQpfPOhnZ3NIKfuy+kbe9Qr1VxOfc1mNhujXY5TkNAdFFQjbL/TXWxKaPUhJPRs+mYAFE
-	5+PKXpAX7A80lssPFgtSwxVKuHp0ofk+4b4cdR+wbPeLO3/Yj5KRdg0b+rQoiDlEa6rNcsDzlMBJS
-	upKz+DFFIcrWRtc6f1bwh+7cmgpzFIdB27psjtiu3U2z13Z2tAmIJwPxpA9kotWiKTZ8O5I9hr948
-	zLbCH8iMUjwhVJHhvrfsDrIn0HyVYn0bMacM23PW6zCQMdfmdA7ytLW/0rXYn6i+n3ngh08ljr6bq
-	6//YwShzr6b7zBottP5A==;
+	List-Owner; bh=y6PmBJnQpcewHsbmSXOQ6L3tkMtsCdpI1YWStmhqm5c=; b=SdvPqdZR6SZX4o
+	Iwj76GdIwI8trVOZDSE0dQHxggQueUocg/N5zbMqhK1kaLv9DyhTwvI+xc9dGi9reo6m8VVmvhuy6
+	gHsGoeFUTGuaEngpBWtrVe5zvOGLvMOo+lr83e6a6G10oPdmrJJEIS0ntVnTeVaef8YyOIWt1PvQl
+	NYWyrMphh9q8wr76gk3YfnfP5kK36OZEXv0ppWebxj3/kC7R/AvPnhnqwAA4YH/IHR8vDuqiVvaiI
+	+dTTLk5Ui7nEnVd10Z7VMtPdHnb53fYLra3+sdbfUN+wu9Bj/+xQ3k1PinoUACrOfdv36BxQ936fc
+	ZAPB9lTpCilTwLehw9ag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHsd0-0001c5-83; Fri, 27 Mar 2020 17:18:42 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1jHsbq-0000iL-Fd; Fri, 27 Mar 2020 17:17:30 +0000
+Received: from merlin.infradead.org ([205.233.59.134])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHsaS-00083j-Eb
- for linux-nvme@bombadil.infradead.org; Fri, 27 Mar 2020 17:16:04 +0000
+ id 1jHsaP-00080j-Q5
+ for linux-nvme@bombadil.infradead.org; Fri, 27 Mar 2020 17:16:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=fuim0NxCGSZh7r2oQNx6bcfSxgMj4FmJ2qK/qOI3RPM=; b=rIBDXudaHEq0NIUzhJaDRJr/iD
- 7PHOj8rWKXAY4ZRbMnM/r9qaLwD+dsFi4wi5nE9TiL2m3BlThQpgGgD/dQKGmmi1j+YF5TthTpjhq
- JwUo447gajRQRaV8Iba5RJ6P1QRW05HNdOBRgYb5GCYKbAov+w4TxY0TKhwI91NeFfZd2B8k4uQWT
- Kz6+AjYJb7DICXtf5GJmKbSC68wqLSTEOSeKqJcg07aYqx4CNUiJS4SA2oIzCQiVhLh3OQpR1nHqB
- ahCYVuXGDhbWAmHl26mj1BlZ/QixbEK/RYIN+w6fyM16+/cS+vUuCo4Xw2CGktiKXneKhj4mo77ek
- E1Hxo5/g==;
+ bh=+lUcFq22VJG5kbp2M+OTqhV6DuUOi7C+vVCRZCxiXHE=; b=qB8LRsWcLYs5AUKxLihNETiaUC
+ z+YLNV1N00t1aH6gpbdQwyVcNmcbc0w1aaMl5PYJbkSTh++CBPBgBlDmC1XTOSW50ASrWRUWUJbQY
+ 6t9RFb6CqeAeVKYFWUO3FJytluDN0Q10PDmAuNPXNsgKzB+gdO9qXI/5L/91X7XcvjIQFZo273/VA
+ VE0mJD3FZrPe9VCSB+6B0CDbErG7nuvPw99BbDdas3qjzoiZXlJDFNmEI6P7EJkwBkSnj6v3N0Joe
+ EaL3r4B/NWCi/mQsW1npVJZEsEtUV8LSrJ9yFSlmBPQo6T0fzSgH88h4FPJN7y+jsfsBfLKQQGw4C
+ V2QOUXpw==;
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by casper.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHsaN-0005Dt-4h
- for linux-nvme@lists.infradead.org; Fri, 27 Mar 2020 17:16:03 +0000
-Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jHsaL-000820-J1
+ for linux-nvme@lists.infradead.org; Fri, 27 Mar 2020 17:16:00 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 27 Mar 2020 20:15:47 +0300
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02RHFjjC004869;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02RHFjjD004869;
  Fri, 27 Mar 2020 20:15:47 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: linux-nvme@lists.infradead.org, kbusch@kernel.org, hch@lst.de,
  sagi@grimberg.me, martin.petersen@oracle.com, jsmart2021@gmail.com,
  linux-rdma@vger.kernel.org
-Subject: [PATCH 09/17] nvmet: prepare metadata request
-Date: Fri, 27 Mar 2020 20:15:37 +0300
-Message-Id: <20200327171545.98970-11-maxg@mellanox.com>
+Subject: [PATCH 10/17] nvmet: add metadata characteristics for a namespace
+Date: Fri, 27 Mar 2020 20:15:38 +0300
+Message-Id: <20200327171545.98970-12-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200327171545.98970-1-maxg@mellanox.com>
 References: <20200327171545.98970-1-maxg@mellanox.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200327_171559_832917_699ADEBD 
-X-CRM114-Status: GOOD (  14.68  )
-X-Spam-Score: -1.9 (-)
-X-Spam-Report: SpamAssassin version 3.4.4 on casper.infradead.org summary:
- Content analysis details:   (-1.9 points, 5.0 required)
+X-Spam-Note: CRM114 invocation failed
+X-Spam-Score: -0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.4 on merlin.infradead.org summary:
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
- [score: 0.0000]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
  no trust [193.47.165.129 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
@@ -92,151 +88,78 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Israel Rukshin <israelr@mellanox.com>
 
-Allocate the metadata SGL buffers and set metadata fields for the
-request. This is a preparation for adding metadata support over the
-fabrics.
+Fill those namespace fields from the block device format for adding
+metadata (T10-PI) over fabric support with block devices.
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
-Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
+Reviewed-by: Martin K. Petersen <martin.petersen@oracle.com>
 ---
- drivers/nvme/target/core.c  | 48 ++++++++++++++++++++++++++++++++++++++-------
- drivers/nvme/target/nvmet.h |  5 +++++
- 2 files changed, 46 insertions(+), 7 deletions(-)
+ drivers/nvme/target/io-cmd-bdev.c | 22 ++++++++++++++++++++++
+ drivers/nvme/target/nvmet.h       |  3 +++
+ 2 files changed, 25 insertions(+)
 
-diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
-index b685f99d..3899b2b4 100644
---- a/drivers/nvme/target/core.c
-+++ b/drivers/nvme/target/core.c
-@@ -873,13 +873,17 @@ bool nvmet_req_init(struct nvmet_req *req, struct nvmet_cq *cq,
- 	req->sq = sq;
- 	req->ops = ops;
- 	req->sg = NULL;
-+	req->md_sg = NULL;
- 	req->sg_cnt = 0;
-+	req->md_sg_cnt = 0;
- 	req->transfer_len = 0;
-+	req->md_len = 0;
- 	req->cqe->status = 0;
- 	req->cqe->sq_head = 0;
- 	req->ns = NULL;
- 	req->error_loc = NVMET_NO_ERROR_LOC;
- 	req->error_slba = 0;
-+	req->use_md = false;
- 
- 	trace_nvmet_req_init(req, req->cmd);
- 
-@@ -962,6 +966,7 @@ bool nvmet_check_data_len_lte(struct nvmet_req *req, size_t data_len)
- int nvmet_req_alloc_sgl(struct nvmet_req *req)
+diff --git a/drivers/nvme/target/io-cmd-bdev.c b/drivers/nvme/target/io-cmd-bdev.c
+index ea0e596..bdf611f 100644
+--- a/drivers/nvme/target/io-cmd-bdev.c
++++ b/drivers/nvme/target/io-cmd-bdev.c
+@@ -50,6 +50,9 @@ void nvmet_bdev_set_limits(struct block_device *bdev, struct nvme_id_ns *id)
+ int nvmet_bdev_ns_enable(struct nvmet_ns *ns)
  {
- 	struct pci_dev *p2p_dev = NULL;
-+	int data_len = req->transfer_len - req->md_len;
+ 	int ret;
++#ifdef CONFIG_BLK_DEV_INTEGRITY
++	struct blk_integrity *bi;
++#endif
  
- 	if (IS_ENABLED(CONFIG_PCI_P2PDMA)) {
- 		if (req->sq->ctrl && req->ns)
-@@ -971,11 +976,23 @@ int nvmet_req_alloc_sgl(struct nvmet_req *req)
- 		req->p2p_dev = NULL;
- 		if (req->sq->qid && p2p_dev) {
- 			req->sg = pci_p2pmem_alloc_sgl(p2p_dev, &req->sg_cnt,
--						       req->transfer_len);
--			if (req->sg) {
--				req->p2p_dev = p2p_dev;
--				return 0;
-+						       data_len);
-+			if (!req->sg)
-+				goto fallback;
-+
-+			if (req->md_len) {
-+				req->md_sg =
-+					pci_p2pmem_alloc_sgl(p2p_dev,
-+							     &req->md_sg_cnt,
-+							     req->md_len);
-+				if (!req->md_sg) {
-+					pci_p2pmem_free_sgl(req->p2p_dev,
-+							    req->sg);
-+					goto fallback;
-+				}
- 			}
-+			req->p2p_dev = p2p_dev;
-+			return 0;
- 		}
- 
- 		/*
-@@ -984,23 +1001,40 @@ int nvmet_req_alloc_sgl(struct nvmet_req *req)
- 		 */
+ 	ns->bdev = blkdev_get_by_path(ns->device_path,
+ 			FMODE_READ | FMODE_WRITE, NULL);
+@@ -64,6 +67,25 @@ int nvmet_bdev_ns_enable(struct nvmet_ns *ns)
  	}
- 
--	req->sg = sgl_alloc(req->transfer_len, GFP_KERNEL, &req->sg_cnt);
-+fallback:
-+	req->sg = sgl_alloc(data_len, GFP_KERNEL, &req->sg_cnt);
- 	if (unlikely(!req->sg))
- 		return -ENOMEM;
- 
-+	if (req->md_len) {
-+		req->md_sg = sgl_alloc(req->md_len, GFP_KERNEL,
-+					 &req->md_sg_cnt);
-+		if (unlikely(!req->md_sg)) {
-+			sgl_free(req->sg);
-+			return -ENOMEM;
-+		}
+ 	ns->size = i_size_read(ns->bdev->bd_inode);
+ 	ns->blksize_shift = blksize_bits(bdev_logical_block_size(ns->bdev));
++
++	ns->md_type = 0;
++	ns->ms = 0;
++#ifdef CONFIG_BLK_DEV_INTEGRITY
++	bi = bdev_get_integrity(ns->bdev);
++	if (bi) {
++		ns->ms = bi->tuple_size;
++		if (bi->profile == &t10_pi_type1_crc)
++			ns->md_type = NVME_NS_DPS_PI_TYPE1;
++		else if (bi->profile == &t10_pi_type3_crc)
++			ns->md_type = NVME_NS_DPS_PI_TYPE3;
++		else
++			/* Unsupported metadata type */
++			ns->ms = 0;
 +	}
++
++	pr_debug("ms %d md_type %d\n", ns->ms, ns->md_type);
++#endif
 +
  	return 0;
  }
- EXPORT_SYMBOL_GPL(nvmet_req_alloc_sgl);
- 
- void nvmet_req_free_sgl(struct nvmet_req *req)
- {
--	if (req->p2p_dev)
-+	if (req->p2p_dev) {
- 		pci_p2pmem_free_sgl(req->p2p_dev, req->sg);
--	else
-+		if (req->md_sg)
-+			pci_p2pmem_free_sgl(req->p2p_dev, req->md_sg);
-+	} else {
- 		sgl_free(req->sg);
-+		if (req->md_sg)
-+			sgl_free(req->md_sg);
-+	}
- 
- 	req->sg = NULL;
-+	req->md_sg = NULL;
- 	req->sg_cnt = 0;
-+	req->md_sg_cnt = 0;
- }
- EXPORT_SYMBOL_GPL(nvmet_req_free_sgl);
  
 diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index 421dff3..8c75667 100644
+index 8c75667..f5f93d4 100644
 --- a/drivers/nvme/target/nvmet.h
 +++ b/drivers/nvme/target/nvmet.h
-@@ -302,6 +302,7 @@ struct nvmet_req {
- 	struct nvmet_cq		*cq;
- 	struct nvmet_ns		*ns;
- 	struct scatterlist	*sg;
-+	struct scatterlist	*md_sg;
- 	struct bio_vec		inline_bvec[NVMET_MAX_INLINE_BIOVEC];
- 	union {
- 		struct {
-@@ -315,8 +316,10 @@ struct nvmet_req {
- 		} f;
- 	};
- 	int			sg_cnt;
-+	int			md_sg_cnt;
- 	/* data length as parsed from the SGL descriptor: */
- 	size_t			transfer_len;
-+	size_t			md_len;
+@@ -19,6 +19,7 @@
+ #include <linux/rcupdate.h>
+ #include <linux/blkdev.h>
+ #include <linux/radix-tree.h>
++#include <linux/t10-pi.h>
  
- 	struct nvmet_port	*port;
+ #define NVMET_ASYNC_EVENTS		4
+ #define NVMET_ERROR_LOG_SLOTS		128
+@@ -77,6 +78,8 @@ struct nvmet_ns {
  
-@@ -327,6 +330,8 @@ struct nvmet_req {
- 	struct device		*p2p_client;
- 	u16			error_loc;
- 	u64			error_slba;
-+	/* Metadata support */
-+	bool			use_md;
+ 	int			use_p2pmem;
+ 	struct pci_dev		*p2p_dev;
++	int			md_type;
++	int			ms;
  };
  
- extern struct workqueue_struct *buffered_io_wq;
+ static inline struct nvmet_ns *to_nvmet_ns(struct config_item *item)
 -- 
 1.8.3.1
 
