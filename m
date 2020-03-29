@@ -2,134 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2B98196BF1
-	for <lists+linux-nvme@lfdr.de>; Sun, 29 Mar 2020 10:51:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CB02196C65
+	for <lists+linux-nvme@lfdr.de>; Sun, 29 Mar 2020 12:22:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VqiXYvxTT3AXijmdeP3pqT5YcRhr4hGIB5/S08nkGCo=; b=uJkbAJ8OAMyd7CCmETPaXRryx
-	HjhbM/K7SfYOz6cuD8iZ9pTjZUdPFywqoPSEntCJ2gJEOfleBkRGMWFSZsZxZyhg0UnotRi2q0P4g
-	MLjLTli0KHJmvbPKjheYcezY8lvqn45h1CRVb0m1Wa26eJHL9J+p5I2d5/CbEKZ6eb2TWL7XeH4KT
-	WrnO3xBHV4LIzvdtOyOFnQSpnTBs19LOBaJBtU8eiQBJ1bs/OpE6gIE6USSMyE+7X0ca650xZwxNV
-	vPgMbWYgJSh6Yx+tb2H4dv4pZCyFrOY1e+GwaTh9p18D9aL/9K8drMiwai9t7ZSsGObe7hplMhNcC
-	weiRXlyug==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=vG1k7vDHwW+5q9YrtbZAdqiVlYxjXLDgiVmk5oYi9Wc=; b=uLf
+	gphBOpv4mdt7T4Ni7h0EaZiWWywatrGaq591KlCEISkGgo831926c0Ng68/1+aZzo5W87P1Spq4OC
+	krqZtHM7HZZxLJJ0i4MLSj2PtA3HLc0ukGoPExrDqthxTt3E/cYvbbggWhHi8mt8GytewyiR8OJ3d
+	Ha5i0mpN3eT4p03N39UpP3huYyCiJhs4vYUtRiPiYGfhEQnIm27w9H3hHLgPnohcw84nehj52JUju
+	K54guHgaZKjoZoNcgFGkMAatbXfPM1iRLWovJsHzLSvJfw9kWjHbhlFRevDv0SaPIv7AD5cbeL233
+	MftAwiit2UiIkFwwTy31JI1HojBVPRQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jITet-0000F3-Op; Sun, 29 Mar 2020 08:51:07 +0000
-Received: from mail-eopbgr60072.outbound.protection.outlook.com ([40.107.6.72]
- helo=EUR04-DB3-obe.outbound.protection.outlook.com)
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jITep-0000DJ-BV
- for linux-nvme@lists.infradead.org; Sun, 29 Mar 2020 08:51:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=W9hfQd7gIlPA+M38LuNmFE5KbYqfUSpxwyne7dhbB9ZX4en8AQhj1Ehxrp2IFDUXqtSx74+Mr0NTTodprU+6VJp2SEBJaeX4CFsFuL4LM6HsS2f1JyccNE6CuKpJlO7OVwps5o+XPi/SY3ueAwSVgGOGKZexQWABd2D7YSK9guG5W2+7KWse61hztzxvBoYM6LpVBolskI4bTBBP3Ci055q1YKdbXOccsWY1iwHdBQVk4Ef/qLuG0irddMjWH5FqiRguaCHh1xc0aDTCR6Xm0dAElYGvzp0y/2kNZBdSXM/uDHPGZ9jhhrhkCAYxi7VRTgmgRrj7bbsSllh9LGd/jw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=74NdpkEta24PYA2UmNHz5o34ZC+b7UXOMW9CfITiP/4=;
- b=Bc+dVUSrmvyIQEUi2ZxcajZBRqEJfoqRZqZmZCTu3wWFwmLwstKscv0P4S1FRoynuCw1WBKB2vgCCILFXTDybm/Uz0bCojBZ1Z3um4AahLpAQUnZXVFyzwZXVziJzDvHiia1C+L0EgXQl4JbLhNJJpoZeMHPYLaYIKevb9Rnb5F3hQkUc8koPwyzyFjcbXnaZCEoYkZuZL9eRktpZ6mOrJaaelier0/p8KMm5jkjUTz8jEfTNPCz3zRWPkwMk0gvhnfTovk8HK4daAhr5S3+yrX+vlwrzrZG6fJFVmsAxjX5O2c1VZMuDPqK9V+4/Gv57VWzq2PGb38TDl4xtl75Lw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 193.47.165.251) smtp.rcpttodomain=lists.infradead.org
- smtp.mailfrom=mellanox.com; dmarc=pass (p=none sp=none pct=100) action=none
- header.from=mellanox.com; dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=74NdpkEta24PYA2UmNHz5o34ZC+b7UXOMW9CfITiP/4=;
- b=U74NSn/uWpxfmV54SYocem0/gnMMZx1jMESooYA1Ioe4muRjXNhYD6D+DR3ZI6/R6yq0f9QtLsnOkBpsfmN5qH/1WZi7zJqx3JlG+lBVyw8EC25GglSs7v2U5CiTglJ2wND5Qpo01YIAI+50auB+LxiGPXa93tMxjoIhcMgb3Ko=
-Received: from DB6PR1001CA0002.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:4:b7::12)
- by HE1PR05MB3177.eurprd05.prod.outlook.com (2603:10a6:7:36::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2835.20; Sun, 29 Mar
- 2020 08:50:55 +0000
-Received: from DB5EUR03FT049.eop-EUR03.prod.protection.outlook.com
- (2603:10a6:4:b7:cafe::6b) by DB6PR1001CA0002.outlook.office365.com
- (2603:10a6:4:b7::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2856.20 via Frontend
- Transport; Sun, 29 Mar 2020 08:50:55 +0000
-Authentication-Results: spf=pass (sender IP is 193.47.165.251)
- smtp.mailfrom=mellanox.com; lists.infradead.org; dkim=none (message not
- signed) header.d=none;lists.infradead.org; dmarc=pass action=none
- header.from=mellanox.com;
-Received-SPF: Pass (protection.outlook.com: domain of mellanox.com designates
- 193.47.165.251 as permitted sender)
- receiver=protection.outlook.com; 
- client-ip=193.47.165.251; helo=mtlcas13.mtl.com;
-Received: from mtlcas13.mtl.com (193.47.165.251) by
- DB5EUR03FT049.mail.protection.outlook.com (10.152.20.191) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.2856.17 via Frontend Transport; Sun, 29 Mar 2020 08:50:54 +0000
-Received: from MTLCAS13.mtl.com (10.0.8.78) by mtlcas13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4; Sun, 29 Mar 2020 11:50:54
- +0300
-Received: from MTLCAS01.mtl.com (10.0.8.71) by MTLCAS13.mtl.com (10.0.8.78)
- with Microsoft SMTP Server (TLS) id 15.0.1178.4 via Frontend Transport; Sun,
- 29 Mar 2020 11:50:54 +0300
-Received: from [172.27.15.226] (172.27.15.226) by MTLCAS01.mtl.com (10.0.8.71)
- with Microsoft SMTP Server (TLS) id 14.3.468.0;
- Sun, 29 Mar 2020 11:50:53 +0300
-Subject: Re: NVMe Over Fabrics Disconnect Kernel error
-To: Sagi Grimberg <sagi@grimberg.me>, Anton Brekhov
- <anton.brekhov@rsc-tech.ru>, <linux-nvme@lists.infradead.org>
-References: <CABY-YC7eHFjb-TpKf2ioPJNhZ8RccYsrR-oU=wmt26z9AUNebg@mail.gmail.com>
- <a7da72d0-ed3f-ab5c-a72b-1b0518436a2e@grimberg.me>
-From: Max Gurtovoy <maxg@mellanox.com>
-Message-ID: <e4f3f68d-a4a7-e799-c3b8-1d600e3888b5@mellanox.com>
-Date: Sun, 29 Mar 2020 11:50:46 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
-MIME-Version: 1.0
-In-Reply-To: <a7da72d0-ed3f-ab5c-a72b-1b0518436a2e@grimberg.me>
-Content-Language: en-US
-X-Originating-IP: [172.27.15.226]
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:193.47.165.251; CTRY:IL; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mtlcas13.mtl.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFTY:;
- SFS:(10009020)(4636009)(376002)(39860400002)(136003)(396003)(346002)(46966005)(31686004)(70206006)(26005)(70586007)(356004)(8936002)(186003)(82740400003)(478600001)(45080400002)(8676002)(316002)(2906002)(16576012)(81166006)(110136005)(47076004)(6666004)(36756003)(2616005)(86362001)(16526019)(81156014)(5660300002)(966005)(53546011)(336012)(31696002)(3940600001);
- DIR:OUT; SFP:1101; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ad2eaee8-0aa8-4fa9-6078-08d7d3be4af8
-X-MS-TrafficTypeDiagnostic: HE1PR05MB3177:
-X-Microsoft-Antispam-PRVS: <HE1PR05MB3177A682427F5AA027345285B6CA0@HE1PR05MB3177.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-Forefront-PRVS: 035748864E
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: XIDuMSwZbUeSnnZmhngqGt6F1uHpQ1L+zjJnv6c5umxHpO3QeK6VkcG4ivwWZkoetHBMc2Rpv+7QYuFilobWq+yGgmSXfKRLioTklFgemjSPOFqCfnr90b4tes2a04hh5KhYtozSPqC1S/AuQ5y3l84x0pIltashq2fjC62e+e+4Zkmkp7u73thJnQ/z1yZsYaoE4Av5GyTMzN/tWsD1jTpICrw3YQp9YGeBon+C8Hb6yewodEAvQvs4i2kAcLwiQkHYORtTuMoyKe8VLhQVER6DqgcLdxmvdL+C1YjvGJbPQaINXM5Fwtby+2FzHrt21P4hZ2QKML7nnMKpajFRexHPy5hqjhQxqYjGxqiqBIAbySN0Td5rALImG52hL4oBDueiQeJW22S7PXD8/g1bKLrkTtX9GbzYvpHihVZtML8szFDWV0IPVsh0r6TyUWxvF0Bb5fweX7mQZxN3yCnBMB+L0RfkN9PliFHsij0R4ZgfPUehAyAwwiTAnNqk/1KWndcZIPsl3ipINaU8rJyeYb3EnJBkAjfqq8blD5DKJJQwM537Xg/NJwDZkjIiTgiTkct4FaAul1mkR/2MUBRlc04mkUnRk88S6GCtTB99ftHQgUhkTfhzXzDs3zj4sn59
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Mar 2020 08:50:54.9331 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ad2eaee8-0aa8-4fa9-6078-08d7d3be4af8
-X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=a652971c-7d2e-4d9b-a6a4-d149256f461b; Ip=[193.47.165.251];
- Helo=[mtlcas13.mtl.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: HE1PR05MB3177
+	id 1jIV4v-0004V3-A0; Sun, 29 Mar 2020 10:22:05 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jIV4p-0004UX-RG
+ for linux-nvme@lists.infradead.org; Sun, 29 Mar 2020 10:22:02 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ israelr@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 29 Mar 2020 13:21:47 +0300
+Received: from rsws48.mtr.labs.mlnx (rsws48.mtr.labs.mlnx [10.209.40.48])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02TALlI8014511;
+ Sun, 29 Mar 2020 13:21:47 +0300
+From: Israel Rukshin <israelr@mellanox.com>
+To: Linux-nvme <linux-nvme@lists.infradead.org>,
+ Sagi Grimberg <sagi@grimberg.me>, Christoph Hellwig <hch@lst.de>
+Subject: [PATCH] nvmet-rdma: Fix double free of rdma queue
+Date: Sun, 29 Mar 2020 10:21:42 +0000
+Message-Id: <1585477302-4307-1-git-send-email-israelr@mellanox.com>
+X-Mailer: git-send-email 1.8.4.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200329_015103_740956_F5D60C5A 
-X-CRM114-Status: GOOD (  10.73  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200329_032200_283087_C37BF33D 
+X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.6.72 listed in list.dnswl.org]
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [40.107.6.72 listed in wl.mailspike.net]
+ no trust [193.47.165.129 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,60 +62,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Shlomi Nimrodi <shlomin@mellanox.com>,
+ Israel Rukshin <israelr@mellanox.com>, Max Gurtovoy <maxg@mellanox.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Ck9uIDMvMjkvMjAyMCA3OjE0IEFNLCBTYWdpIEdyaW1iZXJnIHdyb3RlOgo+Cj4+IEdyZWV0aW5n
-cyEKPj4KPj4gV2UncmUgdXNpbmcgbnZtZS1jbGkgdGVjaG5vbG9neSB3aXRoIFpGUyBhbmQgTHVz
-dHJlIEZpbGVzeXN0ZW0gb24gdG9wIAo+PiBvZiBpdC4KPj4gQnV0IHdlIGNvbnN0YW50bHkgY29t
-ZSBhY3Jvc3MgYSBrZXJuZWwgZXJyb3Igd2hpbGUgZGlzY29ubmVjdGluZwo+PiByZW1vdGUgZGlz
-a3MgZnJvbSBzd2l0Y2hlZCBvZmYgbm9kZXM6Cj4+IGBgYAo+PiBbwqAgKzAsMDAwMDg5XSBJTkZP
-OiB0YXNrIGt3b3JrZXIvdTU5MzowOjgyMjkzIGJsb2NrZWQgZm9yIG1vcmUgdGhhbiAKPj4gMTIw
-IHNlY29uZHMuCj4+IFvCoCArMCwwMDE5NTldICJlY2hvIDAgPiAvcHJvYy9zeXMva2VybmVsL2h1
-bmdfdGFza190aW1lb3V0X3NlY3MiCj4+IGRpc2FibGVzIHRoaXMgbWVzc2FnZS4KPj4gW8KgICsw
-LDAwMTk0MV0ga3dvcmtlci91NTkzOjDCoCBEIGZmZmY5MGU4NDkzZmUyYTDCoMKgwqDCoCAwIDgy
-MjkzwqDCoMKgwqDCoCAyIAo+PiAweDAwMDAwMDgwCj4+IFvCoCArMCwwMDAwMzFdIFdvcmtxdWV1
-ZTogbnZtZS1kZWxldGUtd3EgbnZtZV9kZWxldGVfY3RybF93b3JrIAo+PiBbbnZtZV9jb3JlXQo+
-PiBbwqAgKzAsMDAwMDAzXSBDYWxsIFRyYWNlOgo+PiBbwqAgKzAsMDAwMDA4XcKgIFs8ZmZmZmZm
-ZmY4MTc3ZjIyOT5dIHNjaGVkdWxlKzB4MjkvMHg3MAo+PiBbwqAgKzAsMDAwMDEwXcKgIFs8ZmZm
-ZmZmZmY4MTM1OGU4NT5dIGJsa19tcV9mcmVlemVfcXVldWVfd2FpdCsweDc1LzB4ZTAKPj4gW8Kg
-ICswLDAwMDAwN13CoCBbPGZmZmZmZmZmODEwYzYxYzA+XSA/IHdha2VfdXBfYXRvbWljX3QrMHgz
-MC8weDMwCj4+IFvCoCArMCwwMDAwMDZdwqAgWzxmZmZmZmZmZjgxMzU5Y2I0Pl0gYmxrX2ZyZWV6
-ZV9xdWV1ZSsweDI0LzB4NTAKPj4gW8KgICswLDAwMDAwOV3CoCBbPGZmZmZmZmZmODEzNGUwZWY+
-XSBibGtfY2xlYW51cF9xdWV1ZSsweDdmLzB4MWIwCj4+IFvCoCArMCwwMDAwMTJdwqAgWzxmZmZm
-ZmZmZmMwMzExNThlPl0gbnZtZV9uc19yZW1vdmUrMHg4ZS8weGIwIFtudm1lX2NvcmVdCj4+IFvC
-oCArMCwwMDAwMTFdwqAgWzxmZmZmZmZmZmMwMzExNzRiPl0gbnZtZV9yZW1vdmVfbmFtZXNwYWNl
-cysweGFiLzB4ZjAgCj4+IFtudm1lX2NvcmVdCj4+IFvCoCArMCwwMDAwMTJdwqAgWzxmZmZmZmZm
-ZmMwMzExN2UyPl0gbnZtZV9kZWxldGVfY3RybF93b3JrKzB4NTIvMHg4MCAKPj4gW252bWVfY29y
-ZV0KPj4gW8KgICswLDAwMDAwOF3CoCBbPGZmZmZmZmZmODEwYmQwZmY+XSBwcm9jZXNzX29uZV93
-b3JrKzB4MTdmLzB4NDQwCj4+IFvCoCArMCwwMDAwMDZdwqAgWzxmZmZmZmZmZjgxMGJlMzY4Pl0g
-d29ya2VyX3RocmVhZCsweDI3OC8weDNjMAo+PiBbwqAgKzAsMDAwMDA2XcKgIFs8ZmZmZmZmZmY4
-MTBiZTBmMD5dID8gbWFuYWdlX3dvcmtlcnMuaXNyYS4yNisweDJhMC8weDJhMAo+PiBbwqAgKzAs
-MDAwMDA1XcKgIFs8ZmZmZmZmZmY4MTBjNTBkMT5dIGt0aHJlYWQrMHhkMS8weGUwCj4+IFvCoCAr
-MCwwMDAwMDZdwqAgWzxmZmZmZmZmZjgxMGM1MDAwPl0gPyBpbnNlcnRfa3RocmVhZF93b3JrKzB4
-NDAvMHg0MAo+PiBbwqAgKzAsMDAwMDA2XcKgIFs8ZmZmZmZmZmY4MTc4Y2QxZD5dIHJldF9mcm9t
-X2Zvcmtfbm9zcGVjX2JlZ2luKzB4Ny8weDIxCj4+IFvCoCArMCwwMDAwMDZdwqAgWzxmZmZmZmZm
-ZjgxMGM1MDAwPl0gPyBpbnNlcnRfa3RocmVhZF93b3JrKzB4NDAvMHg0MAo+PiBgYGAKPj4gTm9k
-ZXMgY2hhcmFjdGVyaXN0aWNzOgo+PiBbcm9vdEBzMDJwMDA1IH5dIyB1bmFtZSAtc3JtCj4+IExp
-bnV4IDMuMTAuMC0xMDYyLjEuMS5lbDcueDg2XzY0IHg4Nl82NAo+PiBbcm9vdEBzMDJwMDA1IH5d
-IyBjYXQgL2V0Yy9yZWRoYXQtcmVsZWFzZQo+PiBDZW50T1MgTGludXggcmVsZWFzZSA3LjcuMTkw
-OCAoQ29yZSkKPj4KPj4gV2hlcmUncmUgdXNpbmcgbnZtZXRfcmRtYS4KPj4gSXMgdGhlcmUgYW55
-IHdvcmthcm91bmQgZm9yIHN1Y2ggZXJyb3I/Cj4KPiBJdCBzZWVtcyBsaWtlIHF1ZXVlIGZyZWV6
-ZSBpcyBzdHVjay4gQ2FuIHlvdSBzaGFyZSBtb3JlIG9mIHRoZQo+IHRyYWNlIHNvIHdlIGNhbiBz
-ZWUgd2hhdCBlbHNlIGlzIGJsb2NraW5nPyBJZiBub3QsIHdoZW4KPiBpdCByZXByb2R1Y2VzIHJ1
-biBlY2hvIHQgPiAvcHJvYy9zeXNycS10cmlnZ2VyIGFuZCBzaGFyZSB0aGUKPiBsb2cuCgpBbnRv
-biwKCkNhbiB5b3UgcmVwcm8gdGhpcyB3aXRoIGxhdGVzdCBudm1lIGJyYW5jaCA/IG9yIG9ubHkg
-aW5ib3ggQ2VudG9zNy43ID8KCgo+Cj4gVGhhbmtzLgo+Cj4gX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBsaW51eC1udm1lIG1haWxpbmcgbGlzdAo+IGxp
-bnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHBzOi8vZXVyMDMuc2FmZWxpbmtzLnBy
-b3RlY3Rpb24ub3V0bG9vay5jb20vP3VybD1odHRwJTNBJTJGJTJGbGlzdHMuaW5mcmFkZWFkLm9y
-ZyUyRm1haWxtYW4lMkZsaXN0aW5mbyUyRmxpbnV4LW52bWUmYW1wO2RhdGE9MDIlN0MwMSU3Q21h
-eGclNDBtZWxsYW5veC5jb20lN0NiOGEyY2NmNjA5YmU0ZTc3YzA5YTA4ZDdkMzk3YmUwZiU3Q2E2
-NTI5NzFjN2QyZTRkOWJhNmE0ZDE0OTI1NmY0NjFiJTdDMCU3QzAlN0M2MzcyMTA1MjA5ODU2ODY2
-ODgmYW1wO3NkYXRhPTlpWVJXUnAyTHRJVmVmZGZlJTJCTjR2cWoyV01MVEpDQnlQdmJ6cnlhaUE3
-NCUzRCZhbXA7cmVzZXJ2ZWQ9MCAKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KbGludXgtbnZtZSBtYWlsaW5nIGxpc3QKbGludXgtbnZtZUBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtbnZtZQo=
+In case rdma accept fails at nvmet_rdma_queue_connect() release work is
+scheduled. Later on, a new RDMA CM event may arrive since we didn't
+destroy the cm-id and call nvmet_rdma_queue_connect_fail(), which schedule
+another release work. This will cause calling nvmet_rdma_free_queue twice.
+To fix this don't schedule the work from nvmet_rdma_queue_connect_fail()
+when queue_list is empty (the queue is inserted to a list only after
+successful rdma accept).
+
+Signed-off-by: Israel Rukshin <israelr@mellanox.com>
+Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+---
+ drivers/nvme/target/rdma.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/nvme/target/rdma.c b/drivers/nvme/target/rdma.c
+index 37d262a..59209e3 100644
+--- a/drivers/nvme/target/rdma.c
++++ b/drivers/nvme/target/rdma.c
+@@ -1380,13 +1380,14 @@ static void nvmet_rdma_queue_connect_fail(struct rdma_cm_id *cm_id,
+ {
+ 	WARN_ON_ONCE(queue->state != NVMET_RDMA_Q_CONNECTING);
+ 
++	pr_err("failed to connect queue %d\n", queue->idx);
++
+ 	mutex_lock(&nvmet_rdma_queue_mutex);
+-	if (!list_empty(&queue->queue_list))
++	if (!list_empty(&queue->queue_list)) {
+ 		list_del_init(&queue->queue_list);
++		schedule_work(&queue->release_work);
++	}
+ 	mutex_unlock(&nvmet_rdma_queue_mutex);
+-
+-	pr_err("failed to connect queue %d\n", queue->idx);
+-	schedule_work(&queue->release_work);
+ }
+ 
+ /**
+-- 
+1.8.3.1
+
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
