@@ -2,84 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27ACA196DF4
-	for <lists+linux-nvme@lfdr.de>; Sun, 29 Mar 2020 16:41:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ADF8F197379
+	for <lists+linux-nvme@lfdr.de>; Mon, 30 Mar 2020 06:36:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iQtN9VEa1Px3T/xlgmGe40uKTDj1Kxbg7XUux9TmjfM=; b=mDQT8FQWxvu7UY
-	cNVqK5XAkyyCj95mzJOUadP7USkRJ68EMWq23Z4t/Ulpc5l255P6cNCVKMdqm/86xWrHTZEE8MWJg
-	/t1xBh1WOcIqZWXbWGkzhvXEmeOJlakf0gzwSWubaFTYlmIu03yyUrTC/7fLVptZc6FaDXfjYEE3G
-	mLwP7Lc0WyFLk1mMhyM8QcXPEcK5zgInTdaXrFbdEwu6QGjPZb94FKPabmE714g1XlUkX/KIsHfNF
-	x3BRrzW1v8DMv3+V63GIbdGsDK85Bpc43aVgpPWvxwDX/++GDQjuIRxk5I02tG46joclXuX8oofex
-	V6+8rbv0XlveNkML6VgQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=zoYa8oBsDAb6TjzgwmmoRVpZ8zDOM5Ax7pJV+gJJF+0=; b=Cm8i/s5h7oNYdJo6Jqre1LJ/4
+	cKyGCn4fp0tVLiKjpO1dZK3xuMmCvOA9Buiefg2iq8o8O6Bqs5VKWA2wxAc+O/gjEFst4/ZKyTj/7
+	OjPlt7jZpSXev5CWFrGzU2lzmY4svDJL/dtZ12m1GybgKBCqHJRUQywQ5EYMh8WERA9VsfCsoEz7f
+	pw/1zDscvg+65X4qJtDYcby3Dnd9ht68IocJMUJqedxQBeCAHwV6f24YgGe8yQaeJQObar1H+x3Um
+	az2hRLoUh5Hm+tSnVU4H7suXT1BGFw+PQ1rOu+nM6uQtclm1wr6S7BiTtdmwqujxfml4Af2XRNzwr
+	4XOXYAaFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jIZ7k-0005hd-EH; Sun, 29 Mar 2020 14:41:16 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1jImAA-0005ur-QA; Mon, 30 Mar 2020 04:36:38 +0000
+Received: from mail-pl1-f195.google.com ([209.85.214.195])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jIZ7f-0005Wj-Tv
- for linux-nvme@lists.infradead.org; Sun, 29 Mar 2020 14:41:14 +0000
-Received: by mail-lj1-x234.google.com with SMTP id p10so14874948ljn.1
- for <linux-nvme@lists.infradead.org>; Sun, 29 Mar 2020 07:41:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=rsc-tech-ru.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=J8CSEA2PIrFPVAYwmx025ybZnYDwOg6gBsSlne2MzU4=;
- b=kaL7U5nxcRmhFpnttnatEeeKy6Ksw8JIMDlQBNBFJ+m/IQHH4KSt/fQ8mK3PcXrnjo
- luZ1gnCFnidfd9bjUhtZ8T7qt3QoeOxFN/PMw5O6YnayB7ztEqRhlMOECaxTowal9FZj
- e8z3kaB9lIGeqjoeeYnA64fkL7VeQFFkSHoqHthcL94zmr3tGEHAW5jwjWYnnMW5drch
- Ws0SfGhSs0YtkjSArdvtLtBjRRqWs/dH5dTqaUMCdQg9nwEX3jkVAoOK3yWySZI2XIuq
- 2o1fvVHXOLMLnZo3mYoxOxj1jFm0QOasI76vfxMqG2wzsoWG2PJQPcsubfBB0qFBfUV2
- qI0A==
+ id 1jImA4-0005uM-85
+ for linux-nvme@lists.infradead.org; Mon, 30 Mar 2020 04:36:33 +0000
+Received: by mail-pl1-f195.google.com with SMTP id g18so6260795plq.0
+ for <linux-nvme@lists.infradead.org>; Sun, 29 Mar 2020 21:36:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=J8CSEA2PIrFPVAYwmx025ybZnYDwOg6gBsSlne2MzU4=;
- b=SLHCbmHvFibcUHzx/dYhs+ZOxN4KvMg52tUfRPWzjB/y2jqB4+ItN7A9QtqTIjvb7P
- rWLusKWfdyREwwdCKnn29E7f9L22qy6HkHDVWYPmGc1lAFMk7lRyesiWPC9ki88bucGt
- TdlQlEKP1qAe6YRmySn63kvmBNUAfl4JEm+97SbK8aznrclnySMUZSjbqikelh8clCPo
- ztIqXw7G8wkIhfjXyBxyb0FBkonPARD2i6+GBSkckB0VGFyjN7crindILIdI/2IZs8d2
- XxAEODtG5vXTaZbVxZZ1LmJmPzCOqdztWBQH8u3hY9zLW8oKFZ273L7ioLY26yKLxfxo
- UVBA==
-X-Gm-Message-State: AGi0PuZrq4may99ThGfLOZbGkdEK74iIiXjNPwtcdkL8WjIZ62LCE31Q
- Zef7tmDia4B4UFV6Pc2GkQThIP5fZcie4sEmbuiSL2jx4MU=
-X-Google-Smtp-Source: APiQypLBhVhRZvAqr+tzcV11vAhhxIzctOHcluutRuTuawY5nUtmw9HBgM2ogY8uN6/bZzX5mzyq6mTQBh4NqQ/u/X0=
-X-Received: by 2002:a2e:3c0a:: with SMTP id j10mr4727801lja.205.1585492869603; 
- Sun, 29 Mar 2020 07:41:09 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Yvn1Tr+wyUqP8DeA4uHXX9UZseDeHAzHX5gHTZsDAmk=;
+ b=Et+1UlDdSk7FmGrc7VqzBYNadOUgA/bghzl9vmTb7G28HKkFdF92BGxhhcGDHHu9TX
+ TFL1vui1bMmFN8U8TPxnnA03/ECGfTqMwbzI9+8q+/OGLMAT+nwuL1x28jILK/BM4MXf
+ h93RG8N2tQO9mI+RlZRThtk16oo7SH7FhzPIvgaVMySX7WAmbmjB0Pd3WE0HBhw2qV2Q
+ 6k7/GZCfYr3ikhzoj3iOh9T5RNdWAwD6JOPeqOf5N6WOFDIltsa8yP7omatwisrp+6X+
+ cUA7kYV4Y+I9/fWVBthdLfK2kj6sryRWwdoqHouuGKtA9WtbX/iLZ8ZLXXDwlEvsXVxV
+ waOA==
+X-Gm-Message-State: ANhLgQ1R7TuOSQ7wp3O2MPYWbV0rJVk0ffEJjUOvLOMzFnsOsg/P3gZ4
+ Cx7+c5Lwn5wlVpuaXDm03+U=
+X-Google-Smtp-Source: ADFU+vuShEVPqgYMcJoqV5lY5RPm2VbPLaqJgJOmOxHpakOM69j5scv+yNR0kL+X/e7ECXrUODXOjg==
+X-Received: by 2002:a17:902:864c:: with SMTP id
+ y12mr10789080plt.8.1585542990876; 
+ Sun, 29 Mar 2020 21:36:30 -0700 (PDT)
+Received: from ?IPv6:2601:647:4802:9070:8cd5:23c1:2c2b:d926?
+ ([2601:647:4802:9070:8cd5:23c1:2c2b:d926])
+ by smtp.gmail.com with ESMTPSA id y131sm9096448pfg.25.2020.03.29.21.36.29
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 29 Mar 2020 21:36:29 -0700 (PDT)
+Subject: Re: [PATCH] nvmet-rdma: Fix double free of rdma queue
+To: Israel Rukshin <israelr@mellanox.com>,
+ Linux-nvme <linux-nvme@lists.infradead.org>, Christoph Hellwig <hch@lst.de>
+References: <1585477302-4307-1-git-send-email-israelr@mellanox.com>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <39a9e27b-51fa-6c87-8e5f-17f4f7318bd0@grimberg.me>
+Date: Sun, 29 Mar 2020 21:36:28 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Firefox/60.0 Thunderbird/60.9.0
 MIME-Version: 1.0
-References: <CABY-YC7eHFjb-TpKf2ioPJNhZ8RccYsrR-oU=wmt26z9AUNebg@mail.gmail.com>
- <a7da72d0-ed3f-ab5c-a72b-1b0518436a2e@grimberg.me>
- <e4f3f68d-a4a7-e799-c3b8-1d600e3888b5@mellanox.com>
- <CABY-YC4jSOZJW2zEx5dS9BRj8+ipNF5aF_0cgkuDo9oaLbhvew@mail.gmail.com>
- <9024d7bc-d55d-06c1-65b3-61027f81fda6@mellanox.com>
-In-Reply-To: <9024d7bc-d55d-06c1-65b3-61027f81fda6@mellanox.com>
-From: Anton Brekhov <anton.brekhov@rsc-tech.ru>
-Date: Sun, 29 Mar 2020 17:40:58 +0300
-Message-ID: <CABY-YC7yGBk5xLpxYHUW_sRO6LspRWG6sMc4To1uggkXPjBvWQ@mail.gmail.com>
-Subject: Re: NVMe Over Fabrics Disconnect Kernel error
-To: Max Gurtovoy <maxg@mellanox.com>
+In-Reply-To: <1585477302-4307-1-git-send-email-israelr@mellanox.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200329_074112_036985_9C5C0868 
-X-CRM114-Status: GOOD (  17.29  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200329_213632_289761_2631A139 
+X-CRM114-Status: GOOD (  19.72  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:234 listed in]
- [list.dnswl.org]
+ no trust [209.85.214.195 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [sagigrim[at]gmail.com]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ -0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.214.195 listed in wl.mailspike.net]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ -0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,83 +92,52 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org,
- Konstantin Ponomarev <k.ponomarev@rsc-tech.ru>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Shlomi Nimrodi <shlomin@mellanox.com>, Max Gurtovoy <maxg@mellanox.com>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-VGhlbiBJJ20gYWZyYWlkIHRoYXQgd2UgY2FuJ3QgcmVwcm9kdWNlIHRoaXMsIGNhdXNlIHdlIHVz
-ZSBJbnRlbCBvbW5pCnBhdGggZHJpdmVycyB0aGF0IGlzIG5vdCBjb21wYXRpYmxlIHdpdGggdGhl
-IGxhdGVzdCB2ZXJzaW9uIG9mIHRoZQprZXJuZWwuClRvZGF5IHdlJ3ZlIHRyaWVkIHRvIGluc3Rh
-bGwgbmV3IHZlcnNpb24gb2Yga2VybmVsLCB1cGdyYWRlIHRvIENlbnRvcwo4IGFuZCA4LjEuIEhv
-d2V2ZXIgbm90aGluZyBpcyBjb21wYXRpYmxlIHdpdGggb3VyIHRlY2hub2xvZ2llcyBpbiBvdXIK
-SFBDIGNsdXN0ZXIuCklmIHRoZXJlIGlzIGFueSBvdGhlciB3b3JrYXJvdW5kcyBvciBpZGVhcyB3
-ZSB3b3VsZCBiZSBoYXBweSB0byBoZWFyCml0IGZyb20geW91LgpJZiBubywgd2UnbGwgc3RheSBp
-biB0b3VjaCB3aGVuIHdpbGwgYmUgdXBncmFkaW5nIHdob2xlIGNsdXN0ZXIuCgpBbnRvbgoK0LLR
-gSwgMjkg0LzQsNGALiAyMDIwINCzLiDQsiAxNDo1NiwgTWF4IEd1cnRvdm95IDxtYXhnQG1lbGxh
-bm94LmNvbT46Cgo+Cj4KPiBPbiAzLzI5LzIwMjAgMjozOCBQTSwgQW50b24gQnJla2hvdiB3cm90
-ZToKPiA+IE1heCwKPiA+IFRoaXMgZXJyb3Igd2UndmUgb2J0YWluZWQgd2hpbGUgdXNpbmcgdGhl
-IGxhdGVzdCByZWxlYXNlIG9mIG52bWUtY2xpOgo+ID4gW3Jvb3RAczAycDAwNSB+XSMgbnZtZSB2
-ZXJzaW9uCj4gPiBudm1lIHZlcnNpb24gMS4xMC4xCj4gPgo+ID4gT3IgdGhlcmUgd2VyZSBzb21l
-IG1ham9yIGNoYW5nZXMgYWZ0ZXIgbGF0ZXN0IHJlbGVhc2U/Cj4KPiBJIHJlZmVycmVkIHRvIHRo
-ZSBrZXJuZWwgdmVyc2lvbi4KPgo+IENhbiB5b3UgY2hlY2sgeW91ciBzY2VuYXJpbyB3aXRoIGdp
-dDovL2dpdC5pbmZyYWRlYWQub3JnL252bWUuZ2l0Cj4gKGJyYW5jaCBudm1lLTUuNyBvciBudm1l
-LTUuNy1yYzEpLgo+Cj4gLU1heC4KPgo+Cj4gPiBUaGFua3MuCj4gPgo+ID4g0LLRgSwgMjkg0LzQ
-sNGALiAyMDIwINCzLiDQsiAxMTo1MSwgTWF4IEd1cnRvdm95IDxtYXhnQG1lbGxhbm94LmNvbT46
-Cj4gPj4KPiA+PiBPbiAzLzI5LzIwMjAgNzoxNCBBTSwgU2FnaSBHcmltYmVyZyB3cm90ZToKPiA+
-Pj4+IEdyZWV0aW5ncyEKPiA+Pj4+Cj4gPj4+PiBXZSdyZSB1c2luZyBudm1lLWNsaSB0ZWNobm9s
-b2d5IHdpdGggWkZTIGFuZCBMdXN0cmUgRmlsZXN5c3RlbSBvbiB0b3AKPiA+Pj4+IG9mIGl0Lgo+
-ID4+Pj4gQnV0IHdlIGNvbnN0YW50bHkgY29tZSBhY3Jvc3MgYSBrZXJuZWwgZXJyb3Igd2hpbGUg
-ZGlzY29ubmVjdGluZwo+ID4+Pj4gcmVtb3RlIGRpc2tzIGZyb20gc3dpdGNoZWQgb2ZmIG5vZGVz
-Ogo+ID4+Pj4gYGBgCj4gPj4+PiBbICArMCwwMDAwODldIElORk86IHRhc2sga3dvcmtlci91NTkz
-OjA6ODIyOTMgYmxvY2tlZCBmb3IgbW9yZSB0aGFuCj4gPj4+PiAxMjAgc2Vjb25kcy4KPiA+Pj4+
-IFsgICswLDAwMTk1OV0gImVjaG8gMCA+IC9wcm9jL3N5cy9rZXJuZWwvaHVuZ190YXNrX3RpbWVv
-dXRfc2VjcyIKPiA+Pj4+IGRpc2FibGVzIHRoaXMgbWVzc2FnZS4KPiA+Pj4+IFsgICswLDAwMTk0
-MV0ga3dvcmtlci91NTkzOjAgIEQgZmZmZjkwZTg0OTNmZTJhMCAgICAgMCA4MjI5MyAgICAgIDIK
-PiA+Pj4+IDB4MDAwMDAwODAKPiA+Pj4+IFsgICswLDAwMDAzMV0gV29ya3F1ZXVlOiBudm1lLWRl
-bGV0ZS13cSBudm1lX2RlbGV0ZV9jdHJsX3dvcmsKPiA+Pj4+IFtudm1lX2NvcmVdCj4gPj4+PiBb
-ICArMCwwMDAwMDNdIENhbGwgVHJhY2U6Cj4gPj4+PiBbICArMCwwMDAwMDhdICBbPGZmZmZmZmZm
-ODE3N2YyMjk+XSBzY2hlZHVsZSsweDI5LzB4NzAKPiA+Pj4+IFsgICswLDAwMDAxMF0gIFs8ZmZm
-ZmZmZmY4MTM1OGU4NT5dIGJsa19tcV9mcmVlemVfcXVldWVfd2FpdCsweDc1LzB4ZTAKPiA+Pj4+
-IFsgICswLDAwMDAwN10gIFs8ZmZmZmZmZmY4MTBjNjFjMD5dID8gd2FrZV91cF9hdG9taWNfdCsw
-eDMwLzB4MzAKPiA+Pj4+IFsgICswLDAwMDAwNl0gIFs8ZmZmZmZmZmY4MTM1OWNiND5dIGJsa19m
-cmVlemVfcXVldWUrMHgyNC8weDUwCj4gPj4+PiBbICArMCwwMDAwMDldICBbPGZmZmZmZmZmODEz
-NGUwZWY+XSBibGtfY2xlYW51cF9xdWV1ZSsweDdmLzB4MWIwCj4gPj4+PiBbICArMCwwMDAwMTJd
-ICBbPGZmZmZmZmZmYzAzMTE1OGU+XSBudm1lX25zX3JlbW92ZSsweDhlLzB4YjAgW252bWVfY29y
-ZV0KPiA+Pj4+IFsgICswLDAwMDAxMV0gIFs8ZmZmZmZmZmZjMDMxMTc0Yj5dIG52bWVfcmVtb3Zl
-X25hbWVzcGFjZXMrMHhhYi8weGYwCj4gPj4+PiBbbnZtZV9jb3JlXQo+ID4+Pj4gWyAgKzAsMDAw
-MDEyXSAgWzxmZmZmZmZmZmMwMzExN2UyPl0gbnZtZV9kZWxldGVfY3RybF93b3JrKzB4NTIvMHg4
-MAo+ID4+Pj4gW252bWVfY29yZV0KPiA+Pj4+IFsgICswLDAwMDAwOF0gIFs8ZmZmZmZmZmY4MTBi
-ZDBmZj5dIHByb2Nlc3Nfb25lX3dvcmsrMHgxN2YvMHg0NDAKPiA+Pj4+IFsgICswLDAwMDAwNl0g
-IFs8ZmZmZmZmZmY4MTBiZTM2OD5dIHdvcmtlcl90aHJlYWQrMHgyNzgvMHgzYzAKPiA+Pj4+IFsg
-ICswLDAwMDAwNl0gIFs8ZmZmZmZmZmY4MTBiZTBmMD5dID8gbWFuYWdlX3dvcmtlcnMuaXNyYS4y
-NisweDJhMC8weDJhMAo+ID4+Pj4gWyAgKzAsMDAwMDA1XSAgWzxmZmZmZmZmZjgxMGM1MGQxPl0g
-a3RocmVhZCsweGQxLzB4ZTAKPiA+Pj4+IFsgICswLDAwMDAwNl0gIFs8ZmZmZmZmZmY4MTBjNTAw
-MD5dID8gaW5zZXJ0X2t0aHJlYWRfd29yaysweDQwLzB4NDAKPiA+Pj4+IFsgICswLDAwMDAwNl0g
-IFs8ZmZmZmZmZmY4MTc4Y2QxZD5dIHJldF9mcm9tX2Zvcmtfbm9zcGVjX2JlZ2luKzB4Ny8weDIx
-Cj4gPj4+PiBbICArMCwwMDAwMDZdICBbPGZmZmZmZmZmODEwYzUwMDA+XSA/IGluc2VydF9rdGhy
-ZWFkX3dvcmsrMHg0MC8weDQwCj4gPj4+PiBgYGAKPiA+Pj4+IE5vZGVzIGNoYXJhY3RlcmlzdGlj
-czoKPiA+Pj4+IFtyb290QHMwMnAwMDUgfl0jIHVuYW1lIC1zcm0KPiA+Pj4+IExpbnV4IDMuMTAu
-MC0xMDYyLjEuMS5lbDcueDg2XzY0IHg4Nl82NAo+ID4+Pj4gW3Jvb3RAczAycDAwNSB+XSMgY2F0
-IC9ldGMvcmVkaGF0LXJlbGVhc2UKPiA+Pj4+IENlbnRPUyBMaW51eCByZWxlYXNlIDcuNy4xOTA4
-IChDb3JlKQo+ID4+Pj4KPiA+Pj4+IFdoZXJlJ3JlIHVzaW5nIG52bWV0X3JkbWEuCj4gPj4+PiBJ
-cyB0aGVyZSBhbnkgd29ya2Fyb3VuZCBmb3Igc3VjaCBlcnJvcj8KPiA+Pj4gSXQgc2VlbXMgbGlr
-ZSBxdWV1ZSBmcmVlemUgaXMgc3R1Y2suIENhbiB5b3Ugc2hhcmUgbW9yZSBvZiB0aGUKPiA+Pj4g
-dHJhY2Ugc28gd2UgY2FuIHNlZSB3aGF0IGVsc2UgaXMgYmxvY2tpbmc/IElmIG5vdCwgd2hlbgo+
-ID4+PiBpdCByZXByb2R1Y2VzIHJ1biBlY2hvIHQgPiAvcHJvYy9zeXNycS10cmlnZ2VyIGFuZCBz
-aGFyZSB0aGUKPiA+Pj4gbG9nLgo+ID4+IEFudG9uLAo+ID4+Cj4gPj4gQ2FuIHlvdSByZXBybyB0
-aGlzIHdpdGggbGF0ZXN0IG52bWUgYnJhbmNoID8gb3Igb25seSBpbmJveCBDZW50b3M3LjcgPwo+
-ID4+Cj4gPj4KPiA+Pj4gVGhhbmtzLgo+ID4+Pgo+ID4+PiBfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4+PiBsaW51eC1udm1lIG1haWxpbmcgbGlzdAo+
-ID4+PiBsaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+Pj4gaHR0cHM6Ly9ldXIwMy5z
-YWZlbGlua3MucHJvdGVjdGlvbi5vdXRsb29rLmNvbS8/dXJsPWh0dHAlM0ElMkYlMkZsaXN0cy5p
-bmZyYWRlYWQub3JnJTJGbWFpbG1hbiUyRmxpc3RpbmZvJTJGbGludXgtbnZtZSZhbXA7ZGF0YT0w
-MiU3QzAxJTdDbWF4ZyU0MG1lbGxhbm94LmNvbSU3QzE0NDcxYjBmMWJhYjRiZTJhNjgxMDhkN2Qz
-ZDVjODliJTdDYTY1Mjk3MWM3ZDJlNGQ5YmE2YTRkMTQ5MjU2ZjQ2MWIlN0MwJTdDMCU3QzYzNzIx
-MDc4NzQ2NDc3NTcwNyZhbXA7c2RhdGE9eG13Z2s1bGpGdCUyRjclMkJzWlJRbVA2bWZ3dVIwaGhq
-b1lzdk5yckxVQmF5cUklM0QmYW1wO3Jlc2VydmVkPTAKPiA+Pj4KCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LW52bWUgbWFpbGluZyBsaXN0Cmxp
-bnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+
+> In case rdma accept fails at nvmet_rdma_queue_connect() release work is
+> scheduled. Later on, a new RDMA CM event may arrive since we didn't
+> destroy the cm-id and call nvmet_rdma_queue_connect_fail(), which schedule
+> another release work. This will cause calling nvmet_rdma_free_queue twice.
+> To fix this don't schedule the work from nvmet_rdma_queue_connect_fail()
+> when queue_list is empty (the queue is inserted to a list only after
+> successful rdma accept).
+> 
+> Signed-off-by: Israel Rukshin <israelr@mellanox.com>
+> Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
+> ---
+>   drivers/nvme/target/rdma.c | 9 +++++----
+>   1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/nvme/target/rdma.c b/drivers/nvme/target/rdma.c
+> index 37d262a..59209e3 100644
+> --- a/drivers/nvme/target/rdma.c
+> +++ b/drivers/nvme/target/rdma.c
+> @@ -1380,13 +1380,14 @@ static void nvmet_rdma_queue_connect_fail(struct rdma_cm_id *cm_id,
+>   {
+>   	WARN_ON_ONCE(queue->state != NVMET_RDMA_Q_CONNECTING);
+>   
+> +	pr_err("failed to connect queue %d\n", queue->idx);
+> +
+>   	mutex_lock(&nvmet_rdma_queue_mutex);
+> -	if (!list_empty(&queue->queue_list))
+> +	if (!list_empty(&queue->queue_list)) {
+>   		list_del_init(&queue->queue_list);
+> +		schedule_work(&queue->release_work);
+
+This has a hidden assumption that the connect handler already
+scheduled the release.
+
+Why don't we simply not queue the release_work in the accept
+failure and return a negative status code to implicitly remove the
+cm_id? this way we will never see any cm events and we don't
+need to handle it.
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
