@@ -2,55 +2,36 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6C3E1999DB
-	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 17:37:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DEA09199A18
+	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 17:45:59 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=QACNCsF1wYmAI+krFJH31ZN6CkQezKl4TYX3OAfxrLE=; b=CGl
-	sPqGCQYNUNjYrCynce0nlBEvXIykjz7nHsTvyXY84KwDlr2i1MqffYHWZIFvrfPUhl9BLIYo+OTCe
-	3lrySiMHV7UBR3oZXTw2xvSK2YJNg+VUmCgOAIPseZXZhdpE/S95Iv5RwRY4+O+xYdaG5B9aMNRXV
-	asxvPzmgBnRQht0sjarKtRSeOw5l93Zj5VKqnupQL4ErZ/HT3w5bzV4RIqjF9JEiplR9NImp+I+PP
-	msvkyDXWu0kVdOnsKJr1BfvBW96098ayIk0RgOoJNOYdSpxcAoJsou68RY8W4TxkrcUK/0QZYjw8p
-	TblGzmb5cn99GT2MkRa+WOJ2RrqnHfg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m1eQPC7VXs5HZ9kGipFsEBkCHXCfzLYhrAl4dPj1AQY=; b=AQoZtAAYGkP/ON
+	ImTkoCg7GhhW79HHpl3noMDWXQemTxoHRNWCSbKyH5WKgL8ust/C6nyax1d1QFxGwBOrEGjNl7rIq
+	2sub5vRNbYPWsXUMhNT8uC3lOR0dihdzSU3tUQY7ZQvOBX/os5FHjbqaMx9a6VoCK1TDpbtQT1eiH
+	Bf4qDFsyCfYu597pya08ArthcsztA+UHBZk34CbpbolxUTYEbNDeLMujsp1QMJ8EbOEZRyFMNOUvC
+	hCNPjh1Skko2jBjooaxuQeIU+FZGWsWEhotH86ZsdVY07tQ71+43KZ8wKkI4/PjnfVC1hUet7dpIy
+	FgSu0nLnkkiQLaxtEq1w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJIwh-0002nv-Ee; Tue, 31 Mar 2020 15:36:55 +0000
-Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJIwb-0002lV-3n
- for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 15:36:51 +0000
-Received: from Internal Mail-Server by MTLPINE2 (envelope-from
- israelr@mellanox.com)
- with ESMTPS (AES256-SHA encrypted); 31 Mar 2020 15:46:34 +0300
-Received: from rsws50.mtr.labs.mlnx (rsws50.mtr.labs.mlnx [10.209.40.61])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 02VCkY21010957;
- Tue, 31 Mar 2020 15:46:34 +0300
-From: Israel Rukshin <israelr@mellanox.com>
-To: Linux-nvme <linux-nvme@lists.infradead.org>,
- Sagi Grimberg <sagi@grimberg.me>, Christoph Hellwig <hch@lst.de>
-Subject: [PATCH] nvme-rdma: Replace comma with a semicolon
-Date: Tue, 31 Mar 2020 15:46:33 +0300
-Message-Id: <1585658793-12070-1-git-send-email-israelr@mellanox.com>
-X-Mailer: git-send-email 1.8.4.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_083649_572782_111878D0 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [193.47.165.129 listed in list.dnswl.org]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
+	id 1jJJ5J-0004UB-U5; Tue, 31 Mar 2020 15:45:49 +0000
+Received: from hch by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
+ Hat Linux)) id 1jJGsP-0008Dz-G2; Tue, 31 Mar 2020 13:24:21 +0000
+Date: Tue, 31 Mar 2020 06:24:21 -0700
+From: Christoph Hellwig <hch@infradead.org>
+To: Alex Talker <alextalker@yandex.ru>
+Subject: Re: nvme: Duplicate cntlid error
+Message-ID: <20200331132421.GA27280@infradead.org>
+References: <3cfc539a-07ba-3757-073e-dc81f9c0c824@yandex.ru>
+ <2d02e844-5700-64e9-26dc-50b3958d2ab5@grimberg.me>
+ <00875be1-c0bd-9b25-efa3-4236421678b7@yandex.ru>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <00875be1-c0bd-9b25-efa3-4236421678b7@yandex.ru>
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,38 +43,20 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Shlomi Nimrodi <shlomin@mellanox.com>,
- Israel Rukshin <israelr@mellanox.com>, Max Gurtovoy <maxg@mellanox.com>
-MIME-Version: 1.0
+Cc: maxg@mellanox.com, Sagi Grimberg <sagi@grimberg.me>,
+ linux-nvme <linux-nvme@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Use a semicolon at the end of an assignment expression.
+On Tue, Mar 31, 2020 at 01:37:18PM +0300, Alex Talker wrote:
+> but not in any MLNX OFED driver back-port. Does Mellanox has plans to
+> include this feature in next release?
 
-Signed-off-by: Israel Rukshin <israelr@mellanox.com>
-Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
----
- drivers/nvme/host/rdma.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
-index 23cc77e..6b4c9dc 100644
---- a/drivers/nvme/host/rdma.c
-+++ b/drivers/nvme/host/rdma.c
-@@ -1577,7 +1577,7 @@ static int nvme_rdma_post_send(struct nvme_rdma_queue *queue,
- 	int ret;
- 
- 	sge->addr   = qe->dma;
--	sge->length = sizeof(struct nvme_command),
-+	sge->length = sizeof(struct nvme_command);
- 	sge->lkey   = queue->device->pd->local_dma_lkey;
- 
- 	wr.next       = NULL;
--- 
-1.8.3.1
-
+That is completely offtopic for this list.  Also please don't use vendor
+forks full of broken code, your life will be painful and of no
+interest for others.
 
 _______________________________________________
 linux-nvme mailing list
