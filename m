@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5086199C88
-	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 19:07:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BBE6199CA0
+	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 19:12:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,96 +11,99 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=hvcgx47l267zOAPdazTthhWenjUW6Tk2PNcEVGaUn34=; b=BGvz8mEen1mxx/bUx/jz0nrFoK
-	V6whd8pqPq9uPZ1saBiM4PwU9H8kYCFk4sLzqvlEoqpHH8p0aJjehF70lE9EQK4cNnxoMM4SeU2Cx
-	tj/7eEhIedz9Lob4qUG0cCCDhRpqhS8GlaBqloTTQxNq+PJmdCwER+iNAj8zjJMFvP0dIVF1Sqt2N
-	xqdeBlwbLi7UW5txELVsAOYDnErJ1ktB6fxZM6XHkE9FJlus0HdmxvOomIxhVOWvRdSjnVG+1fr2a
-	djGWxwGSIabOPz+Z9gLIPddX8MKTBf1+NW7t4XMwphjozbz+wJpi9bCicKPbp7eoZ+WoNZdwSnY6W
-	qawzs0gw==;
+	bh=8pqNyTzpWRKs0CnYPCwUcSu89HH3lUNnJHVPJ+wXsPc=; b=pH1N2UvW1GlnBiwhWJ7CbjLkip
+	xPdD2Rz0vtne/uz6/trXGhLDPwcQc2ACF9c5DgytrUM0bseDXdjlW8rd0Te1lioiaWnRt/ztI1d8e
+	36nu5FcJAIASB2WbOhPjpRHijxIui08RE25wYXwsu+nhG8GSOCEJEf8Y9eUNCXroXC/awJbPYbL61
+	tKl/yC7CS5Z8R1pMxmfCYsx88daAyW9IBNs5GkOFP+u1LLXGPpMqigDXlFdl8Erb6H2YfDMknNu2D
+	Vy5iIo7G2NJjW7pDJCaRJ+OtotbiM/JfmK+BZWIc04/ryfrhyATw516NPM3yFtYANvqcycY/A3hVM
+	EvjZrkLQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJKMQ-0001i0-NQ; Tue, 31 Mar 2020 17:07:34 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1jJKQi-0005B1-Iu; Tue, 31 Mar 2020 17:12:00 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJKMH-0001Xq-U2
- for linux-nvme@bombadil.infradead.org; Tue, 31 Mar 2020 17:07:26 +0000
+ id 1jJKQX-00054g-4Y
+ for linux-nvme@bombadil.infradead.org; Tue, 31 Mar 2020 17:11:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=References:In-Reply-To:Message-Id:Date:
+ d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Message-Id:Date:
  Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=H96/698/4Z+l5bCPIZDMuyuQaHWZ2CIho6yGGcdCuMA=; b=X13t2hJSM3JM16HDm9k4yElbKB
- KLY670aykDAvcPDc7vdsOe8hA2dIKDNJrg57lVaV4cB18KTOteZKU0mfS5966Wvxj5jYqqFTaE4fY
- hRfINGW1X36kNZ4Kk9C+FCSFHrt0YDb+pYgR+XQAUJezoIRu0wSK24Q+BB5Eh3MfrH1yj6S0Xt+/q
- Gkn3O0Q0jOWqRwLlXb8QdzGiaTjAeFEiHZgOyD4ojWnZg3pCfPs+cl4zXTJce++P/MVZKPlUbsIUB
- GJObeTHLnT8npauWwkwbfqWNKs6PkxnSwkhBsP9vRjl6lC0NARQZDR5ku3ftghr+eikVYPEs+RZKP
- 2yNfuf3w==;
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJK6S-0008JM-70
- for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 16:51:05 +0000
-Received: by mail-wm1-x342.google.com with SMTP id i19so3628324wmb.0
- for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 09:51:04 -0700 (PDT)
+ bh=lRZPiWHa6VvXJ3Mlf57/sZBwnojQKzmZE/doY2MyXsQ=; b=YrDVC/vpy2sM7dLM27HdyhIbu8
+ A+LHbVw/UhcuLPL1HReJ2u9AHr7l3rPmx0tprITjnhh8E7mbC8diUhSxc/mucL3ozwWkQaoM60x3i
+ iiBX37sTzkDL2fVx8rDuW+XhmOEhSoDwIxI1jTv2ExifJXMwuzdJRMWjXThhrtO28jQA9Tngg8rkN
+ JD5rqmqFwp+q2ADU5MkJacwovp/4k+qBXxqcHjkgySAlMwYUwKC/tTBdub/Eju5r6pXHyAU0C3212
+ jqgtr1hCdlFTxE4nQCW/ARNMVoXurW8WEfbN807KJ5yLvWpI4tldAJf/+N8W2uetzIhbRnD/s57E1
+ Cq3xMZmA==;
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+ by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jJK6U-0007bT-EC
+ for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 16:51:10 +0000
+Received: by mail-wm1-x341.google.com with SMTP id t128so3332420wma.0
+ for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 09:51:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=H96/698/4Z+l5bCPIZDMuyuQaHWZ2CIho6yGGcdCuMA=;
- b=X1xtWfkRiZaEnuJonEsfrBxgIbAfb5L1IBnIneJ6vkD4SdFK8uD28O7bgcXfvxHH26
- hipS8/20J4Qp0VjPEOlc08+fM2fiU8gjLyJICQSRXesqwgXagbHZRI+l1PPkXyFdv3s0
- JbK0gq3cH0kKWqESCi7BS5h8u1g2rxEZ8vweDEd7Y8nhHjYVuLfOuL89izt70iYA6Ifi
- uEp+2NFAIajQ3JwvtYzSZkqMeb/aTsgo2wzFe+EW95w35s/NtTvkpp0jkVuytDGp4lHj
- lRyOcmZeQf0r2hAJxYKCJRmj+E9o1XQf5UqVrLIA/+XhDyyO4uoehy+BFgIUCGIlyHKs
- 8v/w==
+ bh=lRZPiWHa6VvXJ3Mlf57/sZBwnojQKzmZE/doY2MyXsQ=;
+ b=jWQITsMzeLV1GN2G+QQsbS/TEPnBXt8AUv5p2U5NCzwDaG6ZNqFUxkJ/+9Xdrlt+ee
+ YuYueo+GKokywHTumiz/5P2SdGuRmGpF9DlXcC9GifSSlMs6yImby3EQYid6W8j2uKso
+ X4JLVRDgBe3WOWaHGyDxf1hrBHwaVMPyXtbffoWYV8uH8D6bVL96Ussz93d5dqwk/zU1
+ CUGnXrJoZqB9fs0mvm4Wejl1qxHij/2pRyihJQ25neZoQCXWRyxmpYrtU7m2VJbU1eGs
+ 52zCFPcm/gWLGwijy+e9hjZe6Vyh9VnTX1tWqCRwL14A2n4DBgksOaZzsoZbjPSqyJXI
+ CFjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=H96/698/4Z+l5bCPIZDMuyuQaHWZ2CIho6yGGcdCuMA=;
- b=eMhs/H2YlmI/kPoaXCNx7cLvt50FEZI9FTiY6UvLex6hXkLJg51/kshzLkwT1Q4Wky
- iymZ54d9sbcU1WydyY/yVQcsquaUsz5ZYS6wG1APHfLEp1JCECv/z2Q0d/UD4BKdzG/T
- lqNIawK2+S0IU0vDv/9BMco1KtNTtso79jm3/QkRumwS/jgMFRuUmOHZLegAmkxwCRB5
- 5i/le372Ld8ihPL78xCJtCBnKmVM9M+z/Q2OhjWkcVNp/OTPUFaFkMYCL86BezjXk4/P
- TFjgNbPV8qvMaZyQ8iofGuc/gke6ziVv+L5qM1AMKJ7AYRc/cMqonMRFIOoi5cpJTEUc
- JtAA==
-X-Gm-Message-State: ANhLgQ1ZLBvHvXiqvNBEWZWHUO6c1VHUyXSr9VdEJMcwq1iCqmDGgf7H
- EMYUvN2bi7r/0/0uznAt/6t5IYeP
-X-Google-Smtp-Source: ADFU+vsbQIk3oA+p3FDqpQ0+3eSlVMmMu9kTMq6dby4KGXsaLQqlkgVE1chjnZfGHmyvXHCDSvlgAQ==
-X-Received: by 2002:a05:600c:10ce:: with SMTP id
- l14mr4602417wmd.161.1585673462469; 
- Tue, 31 Mar 2020 09:51:02 -0700 (PDT)
+ bh=lRZPiWHa6VvXJ3Mlf57/sZBwnojQKzmZE/doY2MyXsQ=;
+ b=CeqrTbh3Ykjvj28rmu3oqhtGXkL3SPI4wUWIc8X9LNbF95NrOJ8SHIXRBn40RLqs4n
+ M1ilLEfHyedoaQunk4E3et2bNhw3ESVwlYX/pOmZMUMIB4UkaiN+w+OlYb4lr1SVUu7H
+ eaNAN9cx6tEATLrgUVvG4m3U4xgicwsffjZSdst15GjAoIzvRbchxHh+KMlRS+ui3lsc
+ zxqNpUb73AV/f0cBqDDQGGjxK6XJjAnGQ2ubkET4SrGTuMMUCAOgJcr6pnBYhtJ4rh7O
+ c1FB5knsguVG8eRdGs2lsw/X2K1D5M1S5nN7jFAFjLzEVK09Y7mMQZ0Ka906sgGAZJ78
+ CA3A==
+X-Gm-Message-State: ANhLgQ2xG6NGh4yNi7Q0KTHCHVmM28ht3EujX7+cao60TXth+8hisgKb
+ 3NhvOtMFwwXniji856/3bkpAvaR+
+X-Google-Smtp-Source: ADFU+vtZKDsK5iTP/uqVBD8KJ2K0hioC0yt0M8BaWoob1EhS6jlM77IH82Ody7GZpYZiODMYxb7nCA==
+X-Received: by 2002:a7b:c359:: with SMTP id l25mr4415498wmj.149.1585673464130; 
+ Tue, 31 Mar 2020 09:51:04 -0700 (PDT)
 Received: from localhost.localdomain.localdomain ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id r14sm2711582wmg.0.2020.03.31.09.51.00
+ by smtp.gmail.com with ESMTPSA id r14sm2711582wmg.0.2020.03.31.09.51.02
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 31 Mar 2020 09:51:01 -0700 (PDT)
+ Tue, 31 Mar 2020 09:51:03 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2 24/26] lpfc: nvme: Add Receive LS Request and Send LS
- Response support to nvme
-Date: Tue, 31 Mar 2020 09:50:09 -0700
-Message-Id: <20200331165011.15819-25-jsmart2021@gmail.com>
+Subject: [PATCH v2 25/26] lpfc: nvmet: Add support for NVME LS request
+ hosthandle
+Date: Tue, 31 Mar 2020 09:50:10 -0700
+Message-Id: <20200331165011.15819-26-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.16.4
 In-Reply-To: <20200331165011.15819-1-jsmart2021@gmail.com>
 References: <20200331165011.15819-1-jsmart2021@gmail.com>
-X-Spam-Note: CRM114 invocation failed
-X-Spam-Score: 0.1 (/)
-X-Spam-Report: SpamAssassin version 3.4.4 on merlin.infradead.org summary:
- Content analysis details:   (0.1 points)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200331_175106_679271_6A851985 
+X-CRM114-Status: GOOD (  29.11  )
+X-Spam-Score: -1.8 (-)
+X-Spam-Report: SpamAssassin version 3.4.4 on casper.infradead.org summary:
+ Content analysis details:   (-1.8 points, 5.0 required)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
+ [score: 0.0000]
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:341 listed in]
  [list.dnswl.org]
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [jsmart2021[at]gmail.com]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider [jsmart2021[at]gmail.com]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [jsmart2021[at]gmail.com]
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,134 +122,192 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Now that common helpers exist, add the ability to receive NVME LS requests
-to the driver. New requests will be delivered to the transport by
-nvme_fc_rcv_ls_req().
+As the nvmet layer does not have the concept of a remoteport object, which
+can be used to identify the entity on the other end of the fabric that is
+to receive an LS, the hosthandle was introduced.  The driver passes the
+hosthandle, a value representative of the remote port, with a ls request
+receive. The LS request will create the association.  The transport will
+remember the hosthandle for the association, and if there is a need to
+initiate a LS request to the remote port for the association, the
+hosthandle will be used. When the driver loses connectivity with the
+remote port, it needs to notify the transport that the hosthandle is no
+longer valid, allowing the transport to terminate associations related to
+the hosthandle.
 
-In order to complete the LS, add support for Send LS Response and send
-LS response completion handling to the driver.
+This patch adds support to the driver for the hosthandle. The driver will
+use the ndlp pointer of the remote port for the hosthandle in calls to
+nvmet_fc_rcv_ls_req().  The discovery engine is updated to invalidate the
+hosthandle whenever connectivity with the remote port is lost.
 
 Signed-off-by: Paul Ely <paul.ely@broadcom.com>
 Signed-off-by: James Smart <jsmart2021@gmail.com>
-
+Reviewed-by: Hannes Reinecke <hare@suse.de>
 ---
-v2:
-  Removed the xmt_ls_xxx and rcv_ls_req_xxx atomic stats that aren't
-  meaningful to be tracked.
----
- drivers/scsi/lpfc/lpfc_nvme.c | 71 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 71 insertions(+)
+ drivers/scsi/lpfc/lpfc_crtn.h      |  2 ++
+ drivers/scsi/lpfc/lpfc_hbadisc.c   |  6 +++++
+ drivers/scsi/lpfc/lpfc_nportdisc.c | 11 ++++++++
+ drivers/scsi/lpfc/lpfc_nvme.h      |  3 +++
+ drivers/scsi/lpfc/lpfc_nvmet.c     | 53 +++++++++++++++++++++++++++++++++++++-
+ 5 files changed, 74 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/scsi/lpfc/lpfc_nvme.c b/drivers/scsi/lpfc/lpfc_nvme.c
-index c6082c65d902..a868743ec3e3 100644
---- a/drivers/scsi/lpfc/lpfc_nvme.c
-+++ b/drivers/scsi/lpfc/lpfc_nvme.c
-@@ -400,6 +400,10 @@ lpfc_nvme_remoteport_delete(struct nvme_fc_remote_port *remoteport)
-  * request. Any remaining validation is done and the LS is then forwarded
-  * to the nvme-fc transport via nvme_fc_rcv_ls_req().
-  *
-+ * The calling sequence should be: nvme_fc_rcv_ls_req() -> (processing)
-+ * -> lpfc_nvme_xmt_ls_rsp/cmp -> req->done.
-+ * __lpfc_nvme_xmt_ls_rsp_cmp should free the allocated axchg.
-+ *
-  * Returns 0 if LS was handled and delivered to the transport
-  * Returns 1 if LS failed to be handled and should be dropped
-  */
-@@ -407,6 +411,40 @@ int
- lpfc_nvme_handle_lsreq(struct lpfc_hba *phba,
- 			struct lpfc_async_xchg_ctx *axchg)
- {
-+#if (IS_ENABLED(CONFIG_NVME_FC))
-+	struct lpfc_vport *vport;
-+	struct lpfc_nvme_rport *lpfc_rport;
-+	struct nvme_fc_remote_port *remoteport;
-+	struct lpfc_nvme_lport *lport;
-+	uint32_t *payload = axchg->payload;
-+	int rc;
+diff --git a/drivers/scsi/lpfc/lpfc_crtn.h b/drivers/scsi/lpfc/lpfc_crtn.h
+index 51b0f01c6206..6bccad7106ee 100644
+--- a/drivers/scsi/lpfc/lpfc_crtn.h
++++ b/drivers/scsi/lpfc/lpfc_crtn.h
+@@ -572,6 +572,8 @@ void lpfc_nvmet_unsol_fcp_event(struct lpfc_hba *phba, uint32_t idx,
+ 				struct rqb_dmabuf *nvmebuf, uint64_t isr_ts,
+ 				uint8_t cqflag);
+ void lpfc_nvme_mod_param_dep(struct lpfc_hba *phba);
++void lpfc_nvmet_invalidate_host(struct lpfc_hba *phba,
++			struct lpfc_nodelist *ndlp);
+ void lpfc_nvme_abort_fcreq_cmpl(struct lpfc_hba *phba,
+ 				struct lpfc_iocbq *cmdiocb,
+ 				struct lpfc_wcqe_complete *abts_cmpl);
+diff --git a/drivers/scsi/lpfc/lpfc_hbadisc.c b/drivers/scsi/lpfc/lpfc_hbadisc.c
+index 000a26d46f54..b2278df447d3 100644
+--- a/drivers/scsi/lpfc/lpfc_hbadisc.c
++++ b/drivers/scsi/lpfc/lpfc_hbadisc.c
+@@ -823,6 +823,12 @@ lpfc_cleanup_rpis(struct lpfc_vport *vport, int remove)
+ 		if ((phba->sli_rev < LPFC_SLI_REV4) &&
+ 		    (!remove && ndlp->nlp_type & NLP_FABRIC))
+ 			continue;
 +
-+	vport = axchg->ndlp->vport;
-+	lpfc_rport = axchg->ndlp->nrport;
-+	if (!lpfc_rport)
-+		return -EINVAL;
++		/* Notify transport of connectivity loss to trigger cleanup. */
++		if (phba->nvmet_support &&
++		    ndlp->nlp_state == NLP_STE_UNMAPPED_NODE)
++			lpfc_nvmet_invalidate_host(phba, ndlp);
 +
-+	remoteport = lpfc_rport->remoteport;
-+	if (!vport->localport)
-+		return -EINVAL;
+ 		lpfc_disc_state_machine(vport, ndlp, NULL,
+ 					remove
+ 					? NLP_EVT_DEVICE_RM
+diff --git a/drivers/scsi/lpfc/lpfc_nportdisc.c b/drivers/scsi/lpfc/lpfc_nportdisc.c
+index 81f4ba1c24b4..d8501bd959e7 100644
+--- a/drivers/scsi/lpfc/lpfc_nportdisc.c
++++ b/drivers/scsi/lpfc/lpfc_nportdisc.c
+@@ -489,6 +489,11 @@ lpfc_rcv_plogi(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
+ 					 (unsigned long long)
+ 					 wwn_to_u64(sp->portName.u.wwn));
+ 
++		/* Notify transport of connectivity loss to trigger cleanup. */
++		if (phba->nvmet_support &&
++		    ndlp->nlp_state == NLP_STE_UNMAPPED_NODE)
++			lpfc_nvmet_invalidate_host(phba, ndlp);
 +
-+	lport = vport->localport->private;
-+	if (!lport)
-+		return -EINVAL;
+ 		ndlp->nlp_prev_state = ndlp->nlp_state;
+ 		/* rport needs to be unregistered first */
+ 		lpfc_nlp_set_state(vport, ndlp, NLP_STE_NPR_NODE);
+@@ -839,6 +844,12 @@ lpfc_rcv_logo(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
+ 		lpfc_els_rsp_acc(vport, ELS_CMD_PRLO, cmdiocb, ndlp, NULL);
+ 	else
+ 		lpfc_els_rsp_acc(vport, ELS_CMD_ACC, cmdiocb, ndlp, NULL);
 +
-+	rc = nvme_fc_rcv_ls_req(remoteport, &axchg->ls_rsp, axchg->payload,
-+				axchg->size);
++	/* Notify transport of connectivity loss to trigger cleanup. */
++	if (phba->nvmet_support &&
++	    ndlp->nlp_state == NLP_STE_UNMAPPED_NODE)
++		lpfc_nvmet_invalidate_host(phba, ndlp);
 +
-+	lpfc_printf_log(phba, KERN_INFO, LOG_NVME_DISC,
-+			"6205 NVME Unsol rcv: sz %d rc %d: %08x %08x %08x "
-+			"%08x %08x %08x\n",
-+			axchg->size, rc,
-+			*payload, *(payload+1), *(payload+2),
-+			*(payload+3), *(payload+4), *(payload+5));
+ 	if (ndlp->nlp_DID == Fabric_DID) {
+ 		if (vport->port_state <= LPFC_FDISC)
+ 			goto out;
+diff --git a/drivers/scsi/lpfc/lpfc_nvme.h b/drivers/scsi/lpfc/lpfc_nvme.h
+index 2ce29dfeedda..4dab4d9705a6 100644
+--- a/drivers/scsi/lpfc/lpfc_nvme.h
++++ b/drivers/scsi/lpfc/lpfc_nvme.h
+@@ -99,9 +99,12 @@ struct lpfc_nvme_fcpreq_priv {
+ #define LPFC_NVMET_WAIT_TMO		(5 * MSEC_PER_SEC)
+ 
+ /* Used for NVME Target */
++#define LPFC_NVMET_INV_HOST_ACTIVE      1
 +
-+	if (!rc)
-+		return 0;
-+#endif
- 	return 1;
+ struct lpfc_nvmet_tgtport {
+ 	struct lpfc_hba *phba;
+ 	struct completion *tport_unreg_cmp;
++	atomic_t state;		/* tracks nvmet hosthandle invalidation */
+ 
+ 	/* Stats counters - lpfc_nvmet_unsol_ls_buffer */
+ 	atomic_t rcv_ls_req_in;
+diff --git a/drivers/scsi/lpfc/lpfc_nvmet.c b/drivers/scsi/lpfc/lpfc_nvmet.c
+index edec7c3ffab1..df0378fd4b59 100644
+--- a/drivers/scsi/lpfc/lpfc_nvmet.c
++++ b/drivers/scsi/lpfc/lpfc_nvmet.c
+@@ -1283,6 +1283,24 @@ lpfc_nvmet_defer_rcv(struct nvmet_fc_target_port *tgtport,
+ 	spin_unlock_irqrestore(&ctxp->ctxlock, iflag);
  }
  
-@@ -858,6 +896,37 @@ __lpfc_nvme_ls_abort(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
- 	return 1;
- }
- 
-+static int
-+lpfc_nvme_xmt_ls_rsp(struct nvme_fc_local_port *localport,
-+		     struct nvme_fc_remote_port *remoteport,
-+		     struct nvmefc_ls_rsp *ls_rsp)
++static void
++lpfc_nvmet_host_release(void *hosthandle)
 +{
-+	struct lpfc_async_xchg_ctx *axchg =
-+		container_of(ls_rsp, struct lpfc_async_xchg_ctx, ls_rsp);
-+	struct lpfc_nvme_lport *lport;
-+	int rc;
++	struct lpfc_nodelist *ndlp = hosthandle;
++	struct lpfc_hba *phba = NULL;
++	struct lpfc_nvmet_tgtport *tgtp;
 +
-+	if (axchg->phba->pport->load_flag & FC_UNLOADING)
-+		return -ENODEV;
++	phba = ndlp->phba;
++	if (!phba->targetport || !phba->targetport->private)
++		return;
 +
-+	lport = (struct lpfc_nvme_lport *)localport->private;
-+
-+	rc = __lpfc_nvme_xmt_ls_rsp(axchg, ls_rsp, __lpfc_nvme_xmt_ls_rsp_cmp);
-+
-+	if (rc) {
-+		/*
-+		 * unless the failure is due to having already sent
-+		 * the response, an abort will be generated for the
-+		 * exchange if the rsp can't be sent.
-+		 */
-+		if (rc != -EALREADY)
-+			atomic_inc(&lport->xmt_ls_abort);
-+		return rc;
-+	}
-+
-+	return 0;
++	lpfc_printf_log(phba, KERN_ERR, LOG_NVME,
++			"6202 NVMET XPT releasing hosthandle x%px\n",
++			hosthandle);
++	tgtp = (struct lpfc_nvmet_tgtport *)phba->targetport->private;
++	atomic_set(&tgtp->state, 0);
 +}
 +
- /**
-  * lpfc_nvme_ls_abort - Abort a prior NVME LS request
-  * @lpfc_nvme_lport: Transport localport that LS is to be issued from.
-@@ -2090,6 +2159,7 @@ static struct nvme_fc_port_template lpfc_nvme_template = {
- 	.fcp_io       = lpfc_nvme_fcp_io_submit,
- 	.ls_abort     = lpfc_nvme_ls_abort,
- 	.fcp_abort    = lpfc_nvme_fcp_abort,
-+	.xmt_ls_rsp   = lpfc_nvme_xmt_ls_rsp,
+ static void
+ lpfc_nvmet_discovery_event(struct nvmet_fc_target_port *tgtport)
+ {
+@@ -1307,6 +1325,7 @@ static struct nvmet_fc_target_template lpfc_tgttemplate = {
+ 	.fcp_req_release = lpfc_nvmet_xmt_fcp_release,
+ 	.defer_rcv	= lpfc_nvmet_defer_rcv,
+ 	.discovery_event = lpfc_nvmet_discovery_event,
++	.host_release   = lpfc_nvmet_host_release,
  
- 	.max_hw_queues = 1,
- 	.max_sgl_segments = LPFC_NVME_DEFAULT_SEGS,
-@@ -2285,6 +2355,7 @@ lpfc_nvme_create_localport(struct lpfc_vport *vport)
- 		atomic_set(&lport->cmpl_fcp_err, 0);
- 		atomic_set(&lport->cmpl_ls_xb, 0);
- 		atomic_set(&lport->cmpl_ls_err, 0);
+ 	.max_hw_queues  = 1,
+ 	.max_sgl_segments = LPFC_NVMET_DEFAULT_SEGS,
+@@ -2045,7 +2064,12 @@ lpfc_nvmet_handle_lsreq(struct lpfc_hba *phba,
+ 
+ 	atomic_inc(&tgtp->rcv_ls_req_in);
+ 
+-	rc = nvmet_fc_rcv_ls_req(phba->targetport, NULL, &axchg->ls_rsp,
++	/*
++	 * Driver passes the ndlp as the hosthandle argument allowing
++	 * the transport to generate LS requests for any associateions
++	 * that are created.
++	 */
++	rc = nvmet_fc_rcv_ls_req(phba->targetport, axchg->ndlp, &axchg->ls_rsp,
+ 				 axchg->payload, axchg->size);
+ 
+ 	lpfc_printf_log(phba, KERN_INFO, LOG_NVME_DISC,
+@@ -3478,3 +3502,30 @@ lpfc_nvme_unsol_ls_issue_abort(struct lpfc_hba *phba,
+ 			"6056 Failed to Issue ABTS. Status x%x\n", rc);
+ 	return 0;
+ }
 +
- 		atomic_set(&lport->fc4NvmeLsRequests, 0);
- 		atomic_set(&lport->fc4NvmeLsCmpls, 0);
- 	}
++/**
++ * lpfc_nvmet_invalidate_host
++ *
++ * @phba - pointer to the driver instance bound to an adapter port.
++ * @ndlp - pointer to an lpfc_nodelist type
++ *
++ * This routine upcalls the nvmet transport to invalidate an NVME
++ * host to which this target instance had active connections.
++ */
++void
++lpfc_nvmet_invalidate_host(struct lpfc_hba *phba, struct lpfc_nodelist *ndlp)
++{
++	struct lpfc_nvmet_tgtport *tgtp;
++
++	lpfc_printf_log(phba, KERN_INFO, LOG_NVME | LOG_NVME_ABTS,
++			"6203 Invalidating hosthandle x%px\n",
++			ndlp);
++
++	tgtp = (struct lpfc_nvmet_tgtport *)phba->targetport->private;
++	atomic_set(&tgtp->state, LPFC_NVMET_INV_HOST_ACTIVE);
++
++#if (IS_ENABLED(CONFIG_NVME_TARGET_FC))
++	/* Need to get the nvmet_fc_target_port pointer here.*/
++	nvmet_fc_invalidate_host(phba->targetport, ndlp);
++#endif
++}
 -- 
 2.16.4
 
