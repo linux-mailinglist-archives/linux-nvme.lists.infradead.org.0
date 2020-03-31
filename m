@@ -2,59 +2,88 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03404199BBF
-	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 18:37:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09B93199C17
+	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 18:50:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Cil43MCec5ijV02sG0vMWiAH/Lg+C2svgl4xM0+1848=; b=Qz7RrxHxRLVeJ8
-	2HDq2sDj7/eBGF4z+HZay+kIYF6WtFZpO6+qdXWsPRLKX4gCPndiZjWxsF5eBklmORN32NTLwPM8i
-	ArNTIPP23t0IVnHqhb+qT/WMrDFswZ18UFkCJUt6TvkxC2NyuNFTX+dBg5lcpvmmBOS1Asn2RjNDy
-	z26Cf6qGwQ5IJt9OK4NCra9DU/DxSeNQPwax6C1H/soddOaST/8G/pdL28oxW5MA8cYIDj3OhY4gI
-	JDXJCP9NG+5pVq0pI3G8peGCNH+iC/W8ri+yJcGfMfhnzri2MKwnSaTXXvIafTvFJIV8/vv6ISCGP
-	viXOG0OE6C7q/tjyGltw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=IL6wR9r+h5SoFTO2ksa0lDY6My2tIV4FLLMK7MrjJlk=; b=Inr
+	fQl7ekN5W1XSBISFRyF8LCR2iDhSIzVMhr4nTcbwT+Dm93agalRCUpJgjnb5Y9NEYvKm7+6yZykfT
+	VHUJrpFnYW7vnWpQYdBIEUXEf2IZOUQRu3MQcgC8cDy0xUaxJU5kPG8zf7Yecusq5oMPBME4+SW6j
+	sphRWMqd/pPdfsdJ/kGWrsuS77UczW4J0kTs9Fnz5ZG3Bcdo/4KWGFJ5tN+AXvYve4YLKIjJj+kmT
+	jDcJLn3YFY+ytgYXNxpIG1KCTIytISBHdIYy1NbRCTa7kEnnIVPhMz6yfWH7lZs4WRDmnvUNqDXOY
+	PA2V/XdInDQBb5YqbKwb8lWlQaPICNg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJJsh-00035S-7P; Tue, 31 Mar 2020 16:36:51 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1jJK68-0004Zc-9T; Tue, 31 Mar 2020 16:50:44 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJJpd-0006Ow-Dq
- for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 16:33:44 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id E1C3168BFE; Tue, 31 Mar 2020 18:33:37 +0200 (CEST)
-Date: Tue, 31 Mar 2020 18:33:37 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Weiping Zhang <zwp10758@gmail.com>
-Subject: Re: [PATCH v5 0/4] Add support Weighted Round Robin for blkcg and nvme
-Message-ID: <20200331163337.GA25020@lst.de>
-References: <cover.1580786525.git.zhangweiping@didiglobal.com>
- <20200204154200.GA5831@redsun51.ssa.fujisawa.hgst.com>
- <CAA70yB5qAj8YnNiPVD5zmPrrTr0A0F3v2cC6t2S1Fb0kiECLfw@mail.gmail.com>
- <CAA70yB62_6JD_8dJTGPjnjJfyJSa1xqiCVwwNYtsTCUXQR5uCA@mail.gmail.com>
- <20200331143635.GS162390@mtj.duckdns.org>
- <CAA70yB51=VQrL+2wC+DL8cYmGVACb2_w5UHc4XFn7MgZjUJaeg@mail.gmail.com>
- <20200331155139.GT162390@mtj.duckdns.org> <20200331155257.GA22994@lst.de>
- <CAA70yB6PYH-W8-RRd7nxXOvpg6n+_-h_BLm6JA3EbLmsYG-ZSw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAA70yB6PYH-W8-RRd7nxXOvpg6n+_-h_BLm6JA3EbLmsYG-ZSw@mail.gmail.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+ id 1jJK5l-0004Jr-VP
+ for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 16:50:24 +0000
+Received: by mail-wr1-x435.google.com with SMTP id j17so26823112wru.13
+ for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 09:50:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=pyEAqLGcepa0s8YTcYIcEx3eGJpk9LOjItbdolq5d7I=;
+ b=dAwVpuy3bBsEWrwTCPNItGZekIihKKfODZneeyE6NobvBjKU7N/K+TQHnRkfPszlDt
+ q1Btrb0bl3kYvR3qXFiC8Rh8vPerWiCP3jPTkq46hD4B2UtCVBn6g/7O2n9JTRC53Dtc
+ nbECu7fyw/rSK6T8NgTXUpIf9NXp39cXHaR58MGa+WGtBQp3EUNOgWh5olRMNpTjqkYd
+ drX5xTqll5JdGD7MnAJcsJ1jRlU3LoImeTR4awKYXOUDgMuszhxTz53np2ZoYvbvZQcB
+ aTJe+Z0kv6yV0X/0raVqZpQpq+oZu/2lD4W3DJCCEdp9A87TpkyksiJLT3GmihDDF0pA
+ YoxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=pyEAqLGcepa0s8YTcYIcEx3eGJpk9LOjItbdolq5d7I=;
+ b=cbdntfrMXDQ2ROcQx/ROyEHCeWyZnOluZ6TrHwBXA41Ny6tUHL4DtlqJqRYQxYQ7md
+ FGcER5iaZmwyDILzBUGHdvvFwPpQDjHawNRq+edrk4GnCDhkZWa//DefU+GZtMq0OQET
+ spcP0PUZ9zCYfXC191N2LVl530q61YkVquguSz902jl/qAKLa1X1I8v12jJSbRkar0Wq
+ 2+RkNLBU0fxFG7/wzYAuQd/gKjJSCqNAzAh6AIc06xrRiB+V5o2bNZ7tOuGTNcaQSk6/
+ Y/9v/R96LqgswdW0GBd9rBS01DlVt/7RKRJ/Nq3ihjEGaemmsW3vTf90cvjR9GhbLhW3
+ uC0Q==
+X-Gm-Message-State: ANhLgQ2E/kEFj/6O48tHkc1RueSR1ACezvGezWRiR8pQDiL+OuJV2//D
+ YDalfkBFpBw6CNkJNpJiGRQva4d6
+X-Google-Smtp-Source: ADFU+vtbWg364JXSbftT2KC+gIY0wO0Qq00B0hpNtH+VYoj3ygqGgmB2gO/8fhiGgRMv4CVqxey7nQ==
+X-Received: by 2002:a5d:4602:: with SMTP id t2mr23251057wrq.347.1585673417729; 
+ Tue, 31 Mar 2020 09:50:17 -0700 (PDT)
+Received: from localhost.localdomain.localdomain ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id r14sm2711582wmg.0.2020.03.31.09.50.16
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 31 Mar 2020 09:50:17 -0700 (PDT)
+From: James Smart <jsmart2021@gmail.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH v2 00/26] nvme-fc/nvmet-fc: Add FC-NVME-2 disconnect
+ association support
+Date: Tue, 31 Mar 2020 09:49:45 -0700
+Message-Id: <20200331165011.15819-1-jsmart2021@gmail.com>
+X-Mailer: git-send-email 2.16.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_093341_625713_11BD9DD3 
-X-CRM114-Status: UNSURE (   7.12  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200331_095022_037744_098A6CB8 
+X-CRM114-Status: GOOD (  22.86  )
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ no trust [2a00:1450:4864:20:0:0:0:435 listed in]
+ [list.dnswl.org]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [jsmart2021[at]gmail.com]
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [jsmart2021[at]gmail.com]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,22 +95,155 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Bart Van Assche <bvanassche@acm.org>,
- linux-nvme@lists.infradead.org, Ming Lei <ming.lei@redhat.com>,
- linux-block@vger.kernel.org, Keith Busch <kbusch@kernel.org>,
- Minwoo Im <minwoo.im.dev@gmail.com>, cgroups@vger.kernel.org,
- Tejun Heo <tj@kernel.org>, "Nadolski, Edmund" <edmund.nadolski@intel.com>,
- Thomas Gleixner <tglx@linutronix.de>, Christoph Hellwig <hch@lst.de>
+Cc: James Smart <jsmart2021@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Apr 01, 2020 at 12:31:17AM +0800, Weiping Zhang wrote:
-> Would you like to share more detail about why NVMe WRR is broken?
+At the tail end of FC-NVME (1) standardization, the process for
+terminating an association was changed requiring interlock using FC-NVME
+Disconnect Assocation LS's between both the host port and target port.
+This was immediately relaxed with an ammendment to FC-NVME (1) and with
+wording put into FC-NVME-2. The interlock was removed, but it still
+required both the host port and target port to initiate Disconnect
+Association LS's and respond to LS's.
 
-Because it only weights command fetching.  It says absolutely nothing
-about command execution.
+The linux nvme-fc and nvmet-fc implementations were interoperable with
+standards but the linux-driver api did not support all the functionality
+needed. It was missing:
+- nvme-fc: didn't support the reception of NVME LS's and the ability to
+  transmit responses to an LS.
+- nvmet-fc: didn't support the ability to send an NVME LS request. It
+  also did not support a method for the transport to specify a remote
+  port for an LS.
+
+This patch adds the missing functionality. Specifically the patch set:
+- Updates the header with the FC-NVME-2 standard out for final approval.
+- Refactors data structure names that used to be dependent on role (ls
+  requests were specific to nvme; ls responses were specific to nvmet)
+  to generic names that can be used by both nvme-fc and nvmet-fc.
+- Modifies the nvme-fc transport template with interfaces to receive
+  NVME LS's and for the transport to then request LS responses to be
+  sent.
+- Modifies the nvmet-fc transport template with:
+  - The current NVME LS receive interface was modified to supply a
+    handle to indentify the remote port the LS as received from. If
+    the LS creates an association, the handle may be used to initiate
+    NVME LS requests to the remote port. An interface was put in place
+    to invalidate the handle on connectivity losses.
+  - Interfaces for the transport to request an NVME LS request to be
+    performed as well as to abort that LS in cases of error/teardown. 
+- The nvme-fc transport was modified to follow the standard:
+  - Disconnect association logic was revised to send Disconnect LS as
+    soon as all ABTS's were transmit rather than waiting for the ABTS
+    process to fully complete.
+  - Disconnect LS reception is supported, with reception initiating
+    controller reset and reconnect.
+  - Disconnect LS responses will not be transmit until association
+    termination has transmit the Disconnect LS.
+- The nvmet-fc transport was modified to follow the standard:
+  - Disconnect assocation logic was revised to transmit a Disconnect LS
+    request as soon as all ABTS's have been transmit. In the past, no
+    Disconnect LS had been transmit.
+  - Disconnect LS responses will not be sent until the Disconnect LS
+    request has been transmit.
+- nvme-fcloop: was updated with interfaces to allow testing of the
+  transports.
+- Along the way, cleanups and slight corrections were made to the
+  transports.
+- The lpfc driver was modified to support the new transport interfaces
+  for both the nvme and nvmet transports.  As much of the functionality
+  was already present, but specific to one side of the transport,
+  existing code was refactored to create common routines. Addition of
+  the new interfaces was able to slip in rather easily with the common
+  routines.
+
+This code was cut against the for-5.7 branch.
+
+I'll work with Martin to minimize any work to merge these lpfc mods 
+with lpfc changes in the scsi tree.
+
+V2 changes:
+  Split out 2 fixes into patches sent separately
+    a typo & fcloop deallocation of context
+  Patches slightly reordered
+  Include fix to Connection disconnect LS spotted by Hannes (patch1)
+  Combined header/nvme-fc/nvmet-fc/lpfc sync to api name change into
+    1 patch (patch2)
+  Convert assoc_active patch converted to use test_and_set/clear.
+    Converted other flag field to use same bit routines.  (patch 6)
+  Split common definitions patch into host and target patches
+    (patches 8 & 9)
+  Remove unused local variable writedataactive (patch 11)
+  Replaced c++ style comment (patch 14)
+  Moved location of lsdir field (patch 15)
+  Removed atomic stats from lpfc that aren't necessary
+    (patches 24 & 26)
+  Add reviewed by's from Sagi, Hannes, Himanshu
+
+
+-- james
+
+
+
+James Smart (26):
+  nvme-fc: Sync header to FC-NVME-2 rev 1.08
+  nvme-fc and nvmet-fc: revise LLDD api for LS reception and LS request
+  nvme-fc nvmet-fc: refactor for common LS definitions
+  nvmet-fc: Better size LS buffers
+  nvme-fc: Ensure private pointers are NULL if no data
+  nvme-fc: convert assoc_active flag to bit op
+  nvme-fc: Update header and host for common definitions for LS handling
+  nvmet-fc: Update target for common definitions for LS handling
+  nvme-fc: Add Disconnect Association Rcv support
+  nvmet-fc: add LS failure messages
+  nvmet-fc: perform small cleanups on unneeded checks
+  nvmet-fc: track hostport handle for associations
+  nvmet-fc: rename ls_list to ls_rcv_list
+  nvmet-fc: Add Disconnect Association Xmt support
+  nvme-fcloop: refactor to enable target to host LS
+  nvme-fcloop: add target to host LS request support
+  lpfc: Refactor lpfc nvme headers
+  lpfc: Refactor nvmet_rcv_ctx to create lpfc_async_xchg_ctx
+  lpfc: Commonize lpfc_async_xchg_ctx state and flag definitions
+  lpfc: Refactor NVME LS receive handling
+  lpfc: Refactor Send LS Request support
+  lpfc: Refactor Send LS Abort support
+  lpfc: Refactor Send LS Response support
+  lpfc: nvme: Add Receive LS Request and Send LS Response support to
+    nvme
+  lpfc: nvmet: Add support for NVME LS request hosthandle
+  lpfc: nvmet: Add Send LS Request and Abort LS Request support
+
+ drivers/nvme/host/fc.c             | 569 ++++++++++++++++++++------
+ drivers/nvme/host/fc.h             | 227 +++++++++++
+ drivers/nvme/target/fc.c           | 798 ++++++++++++++++++++++++++----------
+ drivers/nvme/target/fcloop.c       | 155 ++++++-
+ drivers/scsi/lpfc/lpfc.h           |   2 +-
+ drivers/scsi/lpfc/lpfc_attr.c      |   3 -
+ drivers/scsi/lpfc/lpfc_crtn.h      |   9 +-
+ drivers/scsi/lpfc/lpfc_ct.c        |   1 -
+ drivers/scsi/lpfc/lpfc_debugfs.c   |   5 +-
+ drivers/scsi/lpfc/lpfc_hbadisc.c   |   8 +-
+ drivers/scsi/lpfc/lpfc_init.c      |   7 +-
+ drivers/scsi/lpfc/lpfc_mem.c       |   4 -
+ drivers/scsi/lpfc/lpfc_nportdisc.c |  13 +-
+ drivers/scsi/lpfc/lpfc_nvme.c      | 491 ++++++++++++++--------
+ drivers/scsi/lpfc/lpfc_nvme.h      | 181 +++++++++
+ drivers/scsi/lpfc/lpfc_nvmet.c     | 804 ++++++++++++++++++++++---------------
+ drivers/scsi/lpfc/lpfc_nvmet.h     | 158 --------
+ drivers/scsi/lpfc/lpfc_sli.c       | 126 +++++-
+ include/linux/nvme-fc-driver.h     | 368 ++++++++++++-----
+ include/linux/nvme-fc.h            |  11 +-
+ 20 files changed, 2808 insertions(+), 1132 deletions(-)
+ create mode 100644 drivers/nvme/host/fc.h
+ delete mode 100644 drivers/scsi/lpfc/lpfc_nvmet.h
+
+-- 
+2.16.4
+
 
 _______________________________________________
 linux-nvme mailing list
