@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B8B3199C4B
-	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 18:56:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AFCE5199C46
+	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 18:56:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,69 +11,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=2NcOwpUWCnib3FvSuILrsgPQvUROppwG0xkPoPlZHGU=; b=BIhCKXvDhGvHeomkNzz83UjFse
-	m0DGiqmqek9fjK+2MaHCcr/8EdCGwRdAex5QynmGNyVaXW+f9bPYVZ5O7C2Vpc/OriatFdQ6BH7cc
-	F4Zy89RaBHTaI/Kf19BZlgkqJED+XAyKkhBJ//ZvPrv5bo6INCMV3VcnzONFZ/KNhyUM773/JM5nd
-	lSvnDqxKUEXHxb717+W5NMo8E+CzkN5/3V+bxU6USTZ7aDbZuNmAbYFksJWn4zYP150fK7JszQPLf
-	uMgfmpWjidfnYShRHccTf9Sxxyqe5lrM2Ctz+57GdTmVU1ZbrQvNrU+4srfedFjlz/FzdpiX0lRDF
-	vTmjaCtQ==;
+	bh=XIvaGmbcj8Ipq0hY0nHIrxnD4Hy3yTWx8ZUDr44B8BQ=; b=Mh9Og+pkHMnVcq3QxfjkDWEuxn
+	ecdcVb4Gp3SkUOSLhXthbkfMhddFA/xkedGVagOyUn45gEUanSW446TdqyB+0hSsxUXeA7uUFohUn
+	Bh1uoIZ6VjXVellOslEC0Ufaot0hlwdU/yuws/XoYvVgcqjLQdcE6hvfc+ZIPwhrb/0DppD0i50k4
+	6CX2z823H2NL57TfwbqhAKW8wSfC9fhQ+UzmuVW+87p9q2IeTGhrMbKrd5ZWh8+tWX/EFl8Of/1HX
+	Ts4uzuE2c6XOb3gLU3YZbeowyWrWGwH2QwlZCvnyTJ9J+oS5JY0QvjocuSLyTKiVXHdoEuA7aodlb
+	4Y/0pmpw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJKBz-0002PX-Ov; Tue, 31 Mar 2020 16:56:47 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1jJKBZ-00028g-6Q; Tue, 31 Mar 2020 16:56:21 +0000
+Received: from mail-wr1-f67.google.com ([209.85.221.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJK6N-0004yP-Ci
- for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 16:51:17 +0000
-Received: by mail-wr1-x442.google.com with SMTP id h9so26882697wrc.8
- for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 09:50:59 -0700 (PDT)
+ id 1jJK6P-00050C-F4
+ for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 16:51:15 +0000
+Received: by mail-wr1-f67.google.com with SMTP id m17so26863107wrw.11
+ for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 09:51:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=oKlhc4UtIDks/i2NP1VVjzW0yjcWzvCOmfZNbOe5Q4w=;
- b=JJS8uN9hYPLkLZbZKC0QvM6rjv9vNCJmmvxw6rEMFUMyJN31GbehX20y20924gBZEr
- JVCC+aECNuK91JT/Fzw9w4WAgWRZbsQhF7ywgzpAl19TwQmCYsM110nC+nTSlctDP6GI
- dTcTt1/j6pPxehrA++3gcRHz0CoZOdCGCUqmbrv/R37UG2cya2KPoJVBsidOzZCdpfCW
- 3Fh3+eB8o9NLaXh+LQg+ybXhCRFSTiYQvVTQuc/GTncVw+cvT7V426FXceFM0HrtTVcf
- sVsOdCK1sDXEaBuzYlim7rhKwYeUagbAknkLETLPgdXo/ckKxTfvUGS89O5W+oxIxKYn
- 0pxA==
+ bh=9E1evMY9ZRzgtdnt87txK0iFr11Vac2h+O7cwSFoMP4=;
+ b=QsEEBFeYFXbKVGJBGRDu8mH33EaU1VzOn64eZu7NuUq9H9Lek61C1aLTwK/ryhXmtF
+ +ADXwcnOKqF5rEXzvjseuZf1QGvlPvDroiBwhLWDAg9SOFiiLIJB6nCf3IcjMORDPMrw
+ rCZHZasVdzndKdkUKzZDbN/8wayr8mxS85fLIaoG9OvleGzlwhmxZANrhQUhiDqMtuHT
+ yeDp/1XD50Jf6yZ5AAqMQvaLbnA1UZUSUTLwxvAuw+CjLjbw3eYnbRgnJtk8DITLF9L6
+ wCqu6OJxVBfnk/LE3nNeX4OGRDWy9OgWpZKa4zmH3RytkEwxEjudK6QxDLmT9PBmVWe0
+ lUZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=oKlhc4UtIDks/i2NP1VVjzW0yjcWzvCOmfZNbOe5Q4w=;
- b=UC4gxdZkMeQFYWTbcJ3bKIK4bR5opfMiu1DH7cQILZkQYbbAoMieQRMiwFK8GGD73m
- a4HPLJDeDngdLrR7TR/v01tkfO4gxtqH8U7TIF/HzOR7ec+HYjDvDFvQNQq5rPx95RTd
- Sc61y2fSo0SBpjxac6+PzH/me2wSbGhur9DId6xomHkmn267omlY6OvHtCrRAu91zVav
- 3UGVzTdZVKXNvkWtgosmDhczrdcWKRXNZNop45tM+1LEg0yvZWIZqZvlHCwDG6JnI2MB
- isYtqHaGlU28ZZJi0qIkhbiZpYwqc7Xd+hUC663/L1kIKrDgYYvtUX3QWwq5Car1zmNP
- ocjQ==
-X-Gm-Message-State: ANhLgQ1cb1I27OSYFh4nqjfh4kyZn7DTYwpaJLFtZv96ru2Vyi10OQCg
- Ru7zdSAPBiaVbTT/hcyBdi3yxGUn
-X-Google-Smtp-Source: ADFU+vt6ydA7w+k0MfNSN9yCmo5kybUw8lcOdkhujdKQOfBJFHV2tYebmRSMvXxNlMvQM5FdEXPCuQ==
-X-Received: by 2002:adf:e448:: with SMTP id t8mr22892436wrm.229.1585673457050; 
- Tue, 31 Mar 2020 09:50:57 -0700 (PDT)
+ bh=9E1evMY9ZRzgtdnt87txK0iFr11Vac2h+O7cwSFoMP4=;
+ b=rm9hiJSzWi7p8zVoxPwhoG4EBMag/aiDo8DPXIuLpWsv0OFy5QBvL6wazXsDE/ejiX
+ Ntn3V3N8u7pDxDSentg7tKOd0fYhWQh+ZIxkYeHoeV9dzPfLCOSRH2gbvH5jrrxDTO4z
+ l8pXwHlMepzyOO7+bffW2ikycFGWxqhDVxnKlMimQNF7sMy5rE0V/2ayIYz5mkU6ZlB+
+ PeCoKli1OhJlWyTsEHO8/flj60F5SbxJoogbHpuglOHvWMTJGXJEGP/06TV4jggKiCme
+ UAd1sybCnYCXQZliEBbrStbbTuk65CGs6dOr0erWnLudRYBA2avkN9uktHPrrCE1NQFY
+ UDww==
+X-Gm-Message-State: ANhLgQ1+Vke54BjHZZW6vTCqb4VT69eymOvqy9iJgb523S8ydfDOWN/V
+ wYoZJgEurb+i/eH6jHKdcPJw0Cxy
+X-Google-Smtp-Source: ADFU+vs+D2/OoDHlX9hBUc5vJCkQ+fJj7yPsMHby//LMy5J6F4AyiAtuUsq33GAWbX4fnQLI4lRr7Q==
+X-Received: by 2002:a5d:4602:: with SMTP id t2mr23254014wrq.347.1585673459019; 
+ Tue, 31 Mar 2020 09:50:59 -0700 (PDT)
 Received: from localhost.localdomain.localdomain ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id r14sm2711582wmg.0.2020.03.31.09.50.55
+ by smtp.gmail.com with ESMTPSA id r14sm2711582wmg.0.2020.03.31.09.50.57
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 31 Mar 2020 09:50:56 -0700 (PDT)
+ Tue, 31 Mar 2020 09:50:58 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2 21/26] lpfc: Refactor Send LS Request support
-Date: Tue, 31 Mar 2020 09:50:06 -0700
-Message-Id: <20200331165011.15819-22-jsmart2021@gmail.com>
+Subject: [PATCH v2 22/26] lpfc: Refactor Send LS Abort support
+Date: Tue, 31 Mar 2020 09:50:07 -0700
+Message-Id: <20200331165011.15819-23-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.16.4
 In-Reply-To: <20200331165011.15819-1-jsmart2021@gmail.com>
 References: <20200331165011.15819-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_095059_478377_A0228426 
-X-CRM114-Status: GOOD (  25.40  )
+X-CRM114-CacheID: sfid-20200331_095101_517606_036350C9 
+X-CRM114-Status: GOOD (  22.57  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:442 listed in]
- [list.dnswl.org]
+ no trust [209.85.221.67 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [209.85.221.67 listed in wl.mailspike.net]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider [jsmart2021[at]gmail.com]
  0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
@@ -105,440 +106,198 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Currently, the ability to send an NVME LS request is limited to the nvme
+Send LS Abort support is needed when Send LS Request is supported.
+
+Currently, the ability to abort an NVME LS request is limited to the nvme
 (host) side of the driver.  In preparation of both the nvme and nvmet sides
-support Send LS Request, rework the existing send ls_req and ls_req
-completion routines such that there is common code that can be used by
-both sides.
+supporting Send LS Abort, rework the existing ls_req abort routines such
+that there is common code that can be used by both sides.
+
+While refactoring it was seen the logic in the abort routine was incorrect.
+It attempted to abort all NVME LS's on the indicated port. As such, the
+routine was reworked to abort only the NVME LS request that was specified.
 
 Signed-off-by: Paul Ely <paul.ely@broadcom.com>
 Signed-off-by: James Smart <jsmart2021@gmail.com>
 Reviewed-by: Hannes Reinecke <hare@suse.de>
 ---
- drivers/scsi/lpfc/lpfc_nvme.c | 289 +++++++++++++++++++++++++-----------------
- drivers/scsi/lpfc/lpfc_nvme.h |  13 ++
- 2 files changed, 184 insertions(+), 118 deletions(-)
+ drivers/scsi/lpfc/lpfc_nvme.c | 125 +++++++++++++++++++++++++-----------------
+ drivers/scsi/lpfc/lpfc_nvme.h |   2 +
+ 2 files changed, 77 insertions(+), 50 deletions(-)
 
 diff --git a/drivers/scsi/lpfc/lpfc_nvme.c b/drivers/scsi/lpfc/lpfc_nvme.c
-index daded70ce7b6..e93636986c6f 100644
+index e93636986c6f..c6082c65d902 100644
 --- a/drivers/scsi/lpfc/lpfc_nvme.c
 +++ b/drivers/scsi/lpfc/lpfc_nvme.c
-@@ -410,43 +410,43 @@ lpfc_nvme_handle_lsreq(struct lpfc_hba *phba,
- 	return 1;
+@@ -790,83 +790,108 @@ lpfc_nvme_ls_req(struct nvme_fc_local_port *pnvme_lport,
  }
  
--static void
--lpfc_nvme_cmpl_gen_req(struct lpfc_hba *phba, struct lpfc_iocbq *cmdwqe,
--		       struct lpfc_wcqe_complete *wcqe)
-+/**
-+ * __lpfc_nvme_ls_req_cmp - Generic completion handler for a NVME
-+ *        LS request.
-+ * @phba: Pointer to HBA context object
-+ * @vport: The local port that issued the LS
-+ * @cmdwqe: Pointer to driver command WQE object.
-+ * @wcqe: Pointer to driver response CQE object.
-+ *
-+ * This function is the generic completion handler for NVME LS requests.
-+ * The function updates any states and statistics, calls the transport
-+ * ls_req done() routine, then tears down the command and buffers used
-+ * for the LS request.
-+ **/
-+void
-+__lpfc_nvme_ls_req_cmp(struct lpfc_hba *phba,  struct lpfc_vport *vport,
-+			struct lpfc_iocbq *cmdwqe,
-+			struct lpfc_wcqe_complete *wcqe)
- {
--	struct lpfc_vport *vport = cmdwqe->vport;
--	struct lpfc_nvme_lport *lport;
--	uint32_t status;
- 	struct nvmefc_ls_req *pnvme_lsreq;
- 	struct lpfc_dmabuf *buf_ptr;
- 	struct lpfc_nodelist *ndlp;
-+	uint32_t status;
- 
- 	pnvme_lsreq = (struct nvmefc_ls_req *)cmdwqe->context2;
-+	ndlp = (struct lpfc_nodelist *)cmdwqe->context1;
- 	status = bf_get(lpfc_wcqe_c_status, wcqe) & LPFC_IOCB_STATUS_MASK;
- 
--	if (vport->localport) {
--		lport = (struct lpfc_nvme_lport *)vport->localport->private;
--		if (lport) {
--			atomic_inc(&lport->fc4NvmeLsCmpls);
--			if (status) {
--				if (bf_get(lpfc_wcqe_c_xb, wcqe))
--					atomic_inc(&lport->cmpl_ls_xb);
--				atomic_inc(&lport->cmpl_ls_err);
--			}
--		}
--	}
--
--	ndlp = (struct lpfc_nodelist *)cmdwqe->context1;
- 	lpfc_printf_vlog(vport, KERN_INFO, LOG_NVME_DISC,
--			 "6047 nvme cmpl Enter "
--			 "Data %px DID %x Xri: %x status %x reason x%x "
--			 "cmd:x%px lsreg:x%px bmp:x%px ndlp:x%px\n",
-+			 "6047 NVMEx LS REQ %px cmpl DID %x Xri: %x "
-+			 "status %x reason x%x cmd:x%px lsreg:x%px bmp:x%px "
-+			 "ndlp:x%px\n",
- 			 pnvme_lsreq, ndlp ? ndlp->nlp_DID : 0,
- 			 cmdwqe->sli4_xritag, status,
- 			 (wcqe->parameter & 0xffff),
- 			 cmdwqe, pnvme_lsreq, cmdwqe->context3, ndlp);
- 
--	lpfc_nvmeio_data(phba, "NVME LS  CMPL: xri x%x stat x%x parm x%x\n",
-+	lpfc_nvmeio_data(phba, "NVMEx LS CMPL: xri x%x stat x%x parm x%x\n",
- 			 cmdwqe->sli4_xritag, status, wcqe->parameter);
- 
- 	if (cmdwqe->context3) {
-@@ -459,7 +459,7 @@ lpfc_nvme_cmpl_gen_req(struct lpfc_hba *phba, struct lpfc_iocbq *cmdwqe,
- 		pnvme_lsreq->done(pnvme_lsreq, status);
- 	else
- 		lpfc_printf_vlog(vport, KERN_ERR, LOG_NVME_DISC,
--				 "6046 nvme cmpl without done call back? "
-+				 "6046 NVMEx cmpl without done call back? "
- 				 "Data %px DID %x Xri: %x status %x\n",
- 				pnvme_lsreq, ndlp ? ndlp->nlp_DID : 0,
- 				cmdwqe->sli4_xritag, status);
-@@ -470,6 +470,31 @@ lpfc_nvme_cmpl_gen_req(struct lpfc_hba *phba, struct lpfc_iocbq *cmdwqe,
- 	lpfc_sli_release_iocbq(phba, cmdwqe);
- }
- 
-+static void
-+lpfc_nvme_ls_req_cmp(struct lpfc_hba *phba, struct lpfc_iocbq *cmdwqe,
-+		       struct lpfc_wcqe_complete *wcqe)
-+{
-+	struct lpfc_vport *vport = cmdwqe->vport;
-+	struct lpfc_nvme_lport *lport;
-+	uint32_t status;
-+
-+	status = bf_get(lpfc_wcqe_c_status, wcqe) & LPFC_IOCB_STATUS_MASK;
-+
-+	if (vport->localport) {
-+		lport = (struct lpfc_nvme_lport *)vport->localport->private;
-+		if (lport) {
-+			atomic_inc(&lport->fc4NvmeLsCmpls);
-+			if (status) {
-+				if (bf_get(lpfc_wcqe_c_xb, wcqe))
-+					atomic_inc(&lport->cmpl_ls_xb);
-+				atomic_inc(&lport->cmpl_ls_err);
-+			}
-+		}
-+	}
-+
-+	__lpfc_nvme_ls_req_cmp(phba, vport, cmdwqe, wcqe);
-+}
-+
- static int
- lpfc_nvme_gen_req(struct lpfc_vport *vport, struct lpfc_dmabuf *bmp,
- 		  struct lpfc_dmabuf *inp,
-@@ -571,13 +596,6 @@ lpfc_nvme_gen_req(struct lpfc_vport *vport, struct lpfc_dmabuf *bmp,
- 
- 
- 	/* Issue GEN REQ WQE for NPORT <did> */
--	lpfc_printf_vlog(vport, KERN_INFO, LOG_ELS,
--			 "6050 Issue GEN REQ WQE to NPORT x%x "
--			 "Data: x%x x%x wq:x%px lsreq:x%px bmp:x%px "
--			 "xmit:%d 1st:%d\n",
--			 ndlp->nlp_DID, genwqe->iotag,
--			 vport->port_state,
--			genwqe, pnvme_lsreq, bmp, xmit_len, first_len);
- 	genwqe->wqe_cmpl = cmpl;
- 	genwqe->iocb_cmpl = NULL;
- 	genwqe->drvrTimeout = tmo + LPFC_DRVR_TIMEOUT;
-@@ -589,105 +607,108 @@ lpfc_nvme_gen_req(struct lpfc_vport *vport, struct lpfc_dmabuf *bmp,
- 
- 	rc = lpfc_sli4_issue_wqe(phba, &phba->sli4_hba.hdwq[0], genwqe);
- 	if (rc) {
--		lpfc_printf_vlog(vport, KERN_ERR, LOG_ELS,
-+		lpfc_printf_vlog(vport, KERN_ERR, LOG_NVME_DISC | LOG_ELS,
- 				 "6045 Issue GEN REQ WQE to NPORT x%x "
--				 "Data: x%x x%x\n",
-+				 "Data: x%x x%x  rc x%x\n",
- 				 ndlp->nlp_DID, genwqe->iotag,
--				 vport->port_state);
-+				 vport->port_state, rc);
- 		lpfc_sli_release_iocbq(phba, genwqe);
- 		return 1;
- 	}
-+
-+	lpfc_printf_vlog(vport, KERN_INFO, LOG_NVME_DISC | LOG_ELS,
-+			 "6050 Issue GEN REQ WQE to NPORT x%x "
-+			 "Data: oxid: x%x state: x%x wq:x%px lsreq:x%px "
-+			 "bmp:x%px xmit:%d 1st:%d\n",
-+			 ndlp->nlp_DID, genwqe->sli4_xritag,
-+			 vport->port_state,
-+			 genwqe, pnvme_lsreq, bmp, xmit_len, first_len);
- 	return 0;
- }
- 
-+
  /**
-- * lpfc_nvme_ls_req - Issue an Link Service request
+- * lpfc_nvme_ls_abort - Issue an Link Service request
 - * @lpfc_pnvme: Pointer to the driver's nvme instance data
 - * @lpfc_nvme_lport: Pointer to the driver's local port data
 - * @lpfc_nvme_rport: Pointer to the rport getting the @lpfc_nvme_ereq
-+ * __lpfc_nvme_ls_req - Generic service routine to issue an NVME LS request
-+ * @vport: The local port issuing the LS
-+ * @ndlp: The remote port to send the LS to
++ * __lpfc_nvme_ls_abort - Generic service routine to abort a prior
++ *         NVME LS request
++ * @vport: The local port that issued the LS
++ * @ndlp: The remote port the LS was sent to
 + * @pnvme_lsreq: Pointer to LS request structure from the transport
   *
 - * Driver registers this routine to handle any link service request
 - * from the nvme_fc transport to a remote nvme-aware port.
-+ * Routine validates the ndlp, builds buffers and sends a GEN_REQUEST
-+ * WQE to perform the LS operation.
++ * The driver validates the ndlp, looks for the LS, and aborts the
++ * LS if found.
   *
-  * Return value :
-  *   0 - Success
+- * Return value :
+- *   0 - Success
 - *   TODO: What are the failure codes.
-+ *   non-zero: various error codes, in form of -Exxx
++ * Returns:
++ * 0 : if LS found and aborted
++ * non-zero: various error conditions in form -Exxx
   **/
--static int
--lpfc_nvme_ls_req(struct nvme_fc_local_port *pnvme_lport,
--		 struct nvme_fc_remote_port *pnvme_rport,
--		 struct nvmefc_ls_req *pnvme_lsreq)
+-static void
+-lpfc_nvme_ls_abort(struct nvme_fc_local_port *pnvme_lport,
+-		   struct nvme_fc_remote_port *pnvme_rport,
+-		   struct nvmefc_ls_req *pnvme_lsreq)
 +int
-+__lpfc_nvme_ls_req(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
-+		      struct nvmefc_ls_req *pnvme_lsreq,
-+		      void (*gen_req_cmp)(struct lpfc_hba *phba,
-+				struct lpfc_iocbq *cmdwqe,
-+				struct lpfc_wcqe_complete *wcqe))
++__lpfc_nvme_ls_abort(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
++			struct nvmefc_ls_req *pnvme_lsreq)
  {
--	int ret = 0;
 -	struct lpfc_nvme_lport *lport;
--	struct lpfc_nvme_rport *rport;
 -	struct lpfc_vport *vport;
+-	struct lpfc_hba *phba;
 -	struct lpfc_nodelist *ndlp;
--	struct ulp_bde64 *bpl;
- 	struct lpfc_dmabuf *bmp;
-+	struct ulp_bde64 *bpl;
-+	int ret;
- 	uint16_t ntype, nstate;
+-	LIST_HEAD(abort_list);
++	struct lpfc_hba *phba = vport->phba;
+ 	struct lpfc_sli_ring *pring;
+ 	struct lpfc_iocbq *wqe, *next_wqe;
++	bool foundit = false;
  
--	/* there are two dma buf in the request, actually there is one and
--	 * the second one is just the start address + cmd size.
--	 * Before calling lpfc_nvme_gen_req these buffers need to be wrapped
--	 * in a lpfc_dmabuf struct. When freeing we just free the wrapper
--	 * because the nvem layer owns the data bufs.
--	 * We do not have to break these packets open, we don't care what is in
--	 * them. And we do not have to look at the resonse data, we only care
--	 * that we got a response. All of the caring is going to happen in the
--	 * nvme-fc layer.
--	 */
--
 -	lport = (struct lpfc_nvme_lport *)pnvme_lport->private;
--	rport = (struct lpfc_nvme_rport *)pnvme_rport->private;
--	if (unlikely(!lport) || unlikely(!rport))
--		return -EINVAL;
--
+-	if (unlikely(!lport))
+-		return;
 -	vport = lport->vport;
+-	phba = vport->phba;
 -
 -	if (vport->load_flag & FC_UNLOADING)
--		return -ENODEV;
+-		return;
 -
--	/* Need the ndlp.  It is stored in the driver's rport. */
--	ndlp = rport->ndlp;
- 	if (!ndlp || !NLP_CHK_NODE_ACT(ndlp)) {
--		lpfc_printf_vlog(vport, KERN_ERR, LOG_NODE | LOG_NVME_IOERR,
--				 "6051 Remoteport x%px, rport has invalid ndlp. "
--				 "Failing LS Req\n", pnvme_rport);
-+		lpfc_printf_vlog(vport, KERN_ERR,
-+				 LOG_NVME_DISC | LOG_NODE | LOG_NVME_IOERR,
-+				 "6051 NVMEx LS REQ: Bad NDLP x%px, Failing "
-+				 "LS Req\n",
-+				 ndlp);
- 		return -ENODEV;
- 	}
- 
--	/* The remote node has to be a mapped nvme target or an
--	 * unmapped nvme initiator or it's an error.
--	 */
- 	ntype = ndlp->nlp_type;
- 	nstate = ndlp->nlp_state;
- 	if ((ntype & NLP_NVME_TARGET && nstate != NLP_STE_MAPPED_NODE) ||
- 	    (ntype & NLP_NVME_INITIATOR && nstate != NLP_STE_UNMAPPED_NODE)) {
--		lpfc_printf_vlog(vport, KERN_ERR, LOG_NODE | LOG_NVME_IOERR,
--				 "6088 DID x%06x not ready for "
--				 "IO. State x%x, Type x%x\n",
--				 pnvme_rport->port_id,
--				 ndlp->nlp_state, ndlp->nlp_type);
-+		lpfc_printf_vlog(vport, KERN_ERR,
-+				 LOG_NVME_DISC | LOG_NODE | LOG_NVME_IOERR,
-+				 "6088 NVMEx LS REQ: Fail DID x%06x not "
-+				 "ready for IO. Type x%x, State x%x\n",
-+				 ndlp->nlp_DID, ntype, nstate);
- 		return -ENODEV;
- 	}
--	bmp = kmalloc(sizeof(struct lpfc_dmabuf), GFP_KERNEL);
-+
-+	/*
-+	 * there are two dma buf in the request, actually there is one and
-+	 * the second one is just the start address + cmd size.
-+	 * Before calling lpfc_nvme_gen_req these buffers need to be wrapped
-+	 * in a lpfc_dmabuf struct. When freeing we just free the wrapper
-+	 * because the nvem layer owns the data bufs.
-+	 * We do not have to break these packets open, we don't care what is
-+	 * in them. And we do not have to look at the resonse data, we only
-+	 * care that we got a response. All of the caring is going to happen
-+	 * in the nvme-fc layer.
-+	 */
-+
-+	bmp = kmalloc(sizeof(*bmp), GFP_KERNEL);
- 	if (!bmp) {
- 
--		lpfc_printf_vlog(vport, KERN_ERR, LOG_NVME_DISC,
--				 "6044 Could not find node for DID %x\n",
+-	ndlp = lpfc_findnode_did(vport, pnvme_rport->port_id);
+ 	if (!ndlp) {
+-		lpfc_printf_vlog(vport, KERN_ERR, LOG_NVME_ABTS,
+-				 "6049 Could not find node for DID %x\n",
 -				 pnvme_rport->port_id);
--		return 2;
-+		lpfc_printf_vlog(vport, KERN_ERR,
-+				 LOG_NVME_DISC | LOG_NVME_IOERR,
-+				 "6044 NVMEx LS REQ: Could not alloc LS buf "
-+				 "for DID %x\n",
-+				 ndlp->nlp_DID);
-+		return -ENOMEM;
+-		return;
++		lpfc_printf_log(phba, KERN_ERR,
++				LOG_NVME_DISC | LOG_NODE |
++					LOG_NVME_IOERR | LOG_NVME_ABTS,
++				"6049 NVMEx LS REQ Abort: Bad NDLP x%px DID "
++				"x%06x, Failing LS Req\n",
++				ndlp, ndlp ? ndlp->nlp_DID : 0);
++		return -EINVAL;
  	}
--	INIT_LIST_HEAD(&bmp->list);
-+
- 	bmp->virt = lpfc_mbuf_alloc(vport->phba, MEM_PRI, &(bmp->phys));
- 	if (!bmp->virt) {
--		lpfc_printf_vlog(vport, KERN_ERR, LOG_NVME_DISC,
--				 "6042 Could not find node for DID %x\n",
--				 pnvme_rport->port_id);
-+		lpfc_printf_vlog(vport, KERN_ERR,
-+				 LOG_NVME_DISC | LOG_NVME_IOERR,
-+				 "6042 NVMEx LS REQ: Could not alloc mbuf "
-+				 "for DID %x\n",
-+				 ndlp->nlp_DID);
- 		kfree(bmp);
--		return 3;
-+		return -ENOMEM;
- 	}
-+
-+	INIT_LIST_HEAD(&bmp->list);
-+
- 	bpl = (struct ulp_bde64 *)bmp->virt;
- 	bpl->addrHigh = le32_to_cpu(putPaddrHigh(pnvme_lsreq->rqstdma));
- 	bpl->addrLow = le32_to_cpu(putPaddrLow(pnvme_lsreq->rqstdma));
-@@ -702,37 +723,69 @@ lpfc_nvme_ls_req(struct nvme_fc_local_port *pnvme_lport,
- 	bpl->tus.f.bdeSize = pnvme_lsreq->rsplen;
- 	bpl->tus.w = le32_to_cpu(bpl->tus.w);
  
 -	/* Expand print to include key fields. */
- 	lpfc_printf_vlog(vport, KERN_INFO, LOG_NVME_DISC,
--			 "6149 Issue LS Req to DID 0x%06x lport x%px, "
--			 "rport x%px lsreq x%px rqstlen:%d rsplen:%d "
--			 "%pad %pad\n",
--			 ndlp->nlp_DID, pnvme_lport, pnvme_rport,
--			 pnvme_lsreq, pnvme_lsreq->rqstlen,
--			 pnvme_lsreq->rsplen, &pnvme_lsreq->rqstdma,
--			 &pnvme_lsreq->rspdma);
--
--	atomic_inc(&lport->fc4NvmeLsRequests);
-+			"6149 NVMEx LS REQ: Issue to DID 0x%06x lsreq x%px, "
-+			"rqstlen:%d rsplen:%d %pad %pad\n",
-+			ndlp->nlp_DID, pnvme_lsreq, pnvme_lsreq->rqstlen,
-+			pnvme_lsreq->rsplen, &pnvme_lsreq->rqstdma,
-+			&pnvme_lsreq->rspdma);
+-	lpfc_printf_vlog(vport, KERN_INFO, LOG_NVME_ABTS,
+-			 "6040 ENTER.  lport x%px, rport x%px lsreq x%px rqstlen:%d "
+-			 "rsplen:%d %pad %pad\n",
+-			 pnvme_lport, pnvme_rport,
++	lpfc_printf_vlog(vport, KERN_INFO, LOG_NVME_DISC | LOG_NVME_ABTS,
++			 "6040 NVMEx LS REQ Abort: Issue LS_ABORT for lsreq "
++			 "x%p rqstlen:%d rsplen:%d %pad %pad\n",
+ 			 pnvme_lsreq, pnvme_lsreq->rqstlen,
+ 			 pnvme_lsreq->rsplen, &pnvme_lsreq->rqstdma,
+ 			 &pnvme_lsreq->rspdma);
  
--	/* Hardcode the wait to 30 seconds.  Connections are failing otherwise.
--	 * This code allows it all to work.
--	 */
- 	ret = lpfc_nvme_gen_req(vport, bmp, pnvme_lsreq->rqstaddr,
--				pnvme_lsreq, lpfc_nvme_cmpl_gen_req,
--				ndlp, 2, 30, 0);
-+				pnvme_lsreq, gen_req_cmp, ndlp, 2,
-+				LPFC_NVME_LS_TIMEOUT, 0);
- 	if (ret != WQE_SUCCESS) {
--		atomic_inc(&lport->xmt_ls_err);
--		lpfc_printf_vlog(vport, KERN_ERR, LOG_NVME_DISC,
--				 "6052 EXIT. issue ls wqe failed lport x%px, "
--				 "rport x%px lsreq x%px Status %x DID %x\n",
--				 pnvme_lport, pnvme_rport, pnvme_lsreq,
--				 ret, ndlp->nlp_DID);
-+		lpfc_printf_vlog(vport, KERN_ERR,
-+				 LOG_NVME_DISC | LOG_NVME_IOERR,
-+				 "6052 NVMEx REQ: EXIT. issue ls wqe failed "
-+				 "lsreq x%px Status %x DID %x\n",
-+				 pnvme_lsreq, ret, ndlp->nlp_DID);
- 		lpfc_mbuf_free(vport->phba, bmp->virt, bmp->phys);
- 		kfree(bmp);
--		return ret;
-+		return -EIO;
+ 	/*
+-	 * Lock the ELS ring txcmplq and build a local list of all ELS IOs
+-	 * that need an ABTS.  The IOs need to stay on the txcmplq so that
+-	 * the abort operation completes them successfully.
++	 * Lock the ELS ring txcmplq and look for the wqe that matches
++	 * this ELS. If found, issue an abort on the wqe.
+ 	 */
+ 	pring = phba->sli4_hba.nvmels_wq->pring;
+ 	spin_lock_irq(&phba->hbalock);
+ 	spin_lock(&pring->ring_lock);
+ 	list_for_each_entry_safe(wqe, next_wqe, &pring->txcmplq, list) {
+-		/* Add to abort_list on on NDLP match. */
+-		if (lpfc_check_sli_ndlp(phba, pring, wqe, ndlp)) {
++		if (wqe->context2 == pnvme_lsreq) {
+ 			wqe->iocb_flag |= LPFC_DRIVER_ABORTED;
+-			list_add_tail(&wqe->dlist, &abort_list);
++			foundit = true;
++			break;
+ 		}
  	}
+ 	spin_unlock(&pring->ring_lock);
++
++	if (foundit)
++		lpfc_sli_issue_abort_iotag(phba, pring, wqe);
+ 	spin_unlock_irq(&phba->hbalock);
  
--	/* Stub in routine and return 0 for now. */
-+	return 0;
+-	/* Abort the targeted IOs and remove them from the abort list. */
+-	list_for_each_entry_safe(wqe, next_wqe, &abort_list, dlist) {
++	if (foundit)
++		return 0;
++
++	lpfc_printf_vlog(vport, KERN_INFO, LOG_NVME_DISC | LOG_NVME_ABTS,
++			 "6213 NVMEx LS REQ Abort: Unable to locate req x%p\n",
++			 pnvme_lsreq);
++	return 1;
 +}
 +
 +/**
-+ * lpfc_nvme_ls_req - Issue an NVME Link Service request
++ * lpfc_nvme_ls_abort - Abort a prior NVME LS request
 + * @lpfc_nvme_lport: Transport localport that LS is to be issued from.
 + * @lpfc_nvme_rport: Transport remoteport that LS is to be sent to.
 + * @pnvme_lsreq - the transport nvme_ls_req structure for the LS
 + *
-+ * Driver registers this routine to handle any link service request
-+ * from the nvme_fc transport to a remote nvme-aware port.
-+ *
-+ * Return value :
-+ *   0 - Success
-+ *   non-zero: various error codes, in form of -Exxx
++ * Driver registers this routine to abort a NVME LS request that is
++ * in progress (from the transports perspective).
 + **/
-+static int
-+lpfc_nvme_ls_req(struct nvme_fc_local_port *pnvme_lport,
-+		 struct nvme_fc_remote_port *pnvme_rport,
-+		 struct nvmefc_ls_req *pnvme_lsreq)
++static void
++lpfc_nvme_ls_abort(struct nvme_fc_local_port *pnvme_lport,
++		   struct nvme_fc_remote_port *pnvme_rport,
++		   struct nvmefc_ls_req *pnvme_lsreq)
 +{
 +	struct lpfc_nvme_lport *lport;
-+	struct lpfc_nvme_rport *rport;
 +	struct lpfc_vport *vport;
++	struct lpfc_hba *phba;
++	struct lpfc_nodelist *ndlp;
 +	int ret;
 +
 +	lport = (struct lpfc_nvme_lport *)pnvme_lport->private;
-+	rport = (struct lpfc_nvme_rport *)pnvme_rport->private;
-+	if (unlikely(!lport) || unlikely(!rport))
-+		return -EINVAL;
-+
++	if (unlikely(!lport))
++		return;
 +	vport = lport->vport;
++	phba = vport->phba;
++
 +	if (vport->load_flag & FC_UNLOADING)
-+		return -ENODEV;
++		return;
 +
-+	atomic_inc(&lport->fc4NvmeLsRequests);
++	ndlp = lpfc_findnode_did(vport, pnvme_rport->port_id);
 +
-+	ret = __lpfc_nvme_ls_req(vport, rport->ndlp, pnvme_lsreq,
-+				 lpfc_nvme_ls_req_cmp);
-+	if (ret)
-+		atomic_inc(&lport->xmt_ls_err);
-+
- 	return ret;
++	ret = __lpfc_nvme_ls_abort(vport, ndlp, pnvme_lsreq);
++	if (!ret)
+ 		atomic_inc(&lport->xmt_ls_abort);
+-		spin_lock_irq(&phba->hbalock);
+-		list_del_init(&wqe->dlist);
+-		lpfc_sli_issue_abort_iotag(phba, pring, wqe);
+-		spin_unlock_irq(&phba->hbalock);
+-	}
  }
  
+ /* Fix up the existing sgls for NVME IO. */
 diff --git a/drivers/scsi/lpfc/lpfc_nvme.h b/drivers/scsi/lpfc/lpfc_nvme.h
-index 7525b12b06c8..65df27bbb7bb 100644
+index 65df27bbb7bb..3ebcf885cac5 100644
 --- a/drivers/scsi/lpfc/lpfc_nvme.h
 +++ b/drivers/scsi/lpfc/lpfc_nvme.h
-@@ -80,6 +80,12 @@ struct lpfc_nvme_fcpreq_priv {
- 	struct lpfc_io_buf *nvme_buf;
- };
- 
-+/*
-+ * set NVME LS request timeouts to 30s. It is larger than the 2*R_A_TOV
-+ * set by the spec, which appears to have issues with some devices.
-+ */
-+#define LPFC_NVME_LS_TIMEOUT		30
-+
- 
- #define LPFC_NVMET_DEFAULT_SEGS		(64 + 1)	/* 256K IOs */
- #define LPFC_NVMET_RQE_MIN_POST		128
-@@ -225,6 +231,13 @@ struct lpfc_async_xchg_ctx {
- 
- 
- /* routines found in lpfc_nvme.c */
-+int __lpfc_nvme_ls_req(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
-+		struct nvmefc_ls_req *pnvme_lsreq,
-+		void (*gen_req_cmp)(struct lpfc_hba *phba,
-+				struct lpfc_iocbq *cmdwqe,
-+				struct lpfc_wcqe_complete *wcqe));
-+void __lpfc_nvme_ls_req_cmp(struct lpfc_hba *phba,  struct lpfc_vport *vport,
-+		struct lpfc_iocbq *cmdwqe, struct lpfc_wcqe_complete *wcqe);
+@@ -238,6 +238,8 @@ int __lpfc_nvme_ls_req(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
+ 				struct lpfc_wcqe_complete *wcqe));
+ void __lpfc_nvme_ls_req_cmp(struct lpfc_hba *phba,  struct lpfc_vport *vport,
+ 		struct lpfc_iocbq *cmdwqe, struct lpfc_wcqe_complete *wcqe);
++int __lpfc_nvme_ls_abort(struct lpfc_vport *vport,
++		struct lpfc_nodelist *ndlp, struct nvmefc_ls_req *pnvme_lsreq);
  
  /* routines found in lpfc_nvmet.c */
  int lpfc_nvme_unsol_ls_issue_abort(struct lpfc_hba *phba,
