@@ -2,8 +2,8 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E83F9199C1B
-	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 18:51:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E61A199C1E
+	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 18:52:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -11,68 +11,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=SXXRN1h+/o3euJwTpiLPrQQw8r6pK3kZcsF9a810/jM=; b=qwapVtmY2pB8QjxlbsorJhL5Io
-	xLsVef6T8Y131j+onxpaU15vsr7iEDLEOdtJN3Na3Jv0Iqw6aReEw5XhoEHyDsekQKYioH+ECAzP5
-	Tvc6v92EwJlkR5/1JbMxzx2gtsZjqnAFm2/DDs+pHkkcyxtubutnrvv0wDLwj1u1yDDGD/BSWdWw/
-	fFBtg0s26ISXVcTJ7oXyoRrgx1wEobosSGOGCeytYvYOH8Rk7S9QTXjMcuDeumPjv5v+Jsd+cCefK
-	6GzpF0+HGDnmYym1mJJ09zWYiAwFzIUfG5iv/reOEgyBtd0pEGS1jG8qysChBeVB21VzGq4JjbO5x
-	Hi83sg4g==;
+	bh=5f2lMS0Wi8ZeSh+XGVmNtWmjlmrwF+XizIlYyr7i/dE=; b=EA/qNzVIQ014NGaDnIliajP+PA
+	pt3d7Vhs0KpOBVpvMw0jrxKoGjtSYdqcWo6B9WracVv5RAdnIWBGYwgCUkhhsM9hXdli5gBOHBfwM
+	VPYa1URjkvH8tbVhWxQuIgjlG35x2HHtAoMcr6ynd44VqmTNOKvyQLncAIhJAcYtuXaJN1desdm/Y
+	2wFQm4M8l9TXElM9SomXVzQgZWNh5stsnhEp0RYZTIqzV8Edu11mfBtGAHFq4luiCjANQaAlDhKUF
+	16gkx2O87GGi3EFk5LvbglKnMsqU8G8KVd07o6Y9eZ2sxWOGZP1UvHuCrm8xc/nMn+L3E8MUapWEN
+	70Y6+ZxA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJK74-0005LZ-Ic; Tue, 31 Mar 2020 16:51:42 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jJK7b-0005dM-AQ; Tue, 31 Mar 2020 16:52:15 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJK5s-0004OT-Ad
+ id 1jJK5t-0004TJ-Oa
  for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 16:50:31 +0000
-Received: by mail-wm1-x342.google.com with SMTP id j19so3616223wmi.2
- for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 09:50:27 -0700 (PDT)
+Received: by mail-wr1-x443.google.com with SMTP id u10so26901336wro.7
+ for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 09:50:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=ilMafgc5WW4V5422uWmZvYBCZ6324nhtMgtQvK6TPbM=;
- b=P5Vc/z36rHtyFCXdv1LV8sD8X/y/uXevS06Ojc26SCYczHf7+XLPKR21J6sDa6zPNe
- oTmrhpRET6aeDTzA8Q02OKqAhEryEzo4z3bKfBAacV7TuTtnSjmyAzpCCOC7DAcJuTTH
- pdaRFN65t4ymRpOXn0LYccoiplOY4lprRaMqZFphDXWU3fV4B/nhyuaewkKHgk7plwL9
- NvQVJFMZR86Ro5OzyKXZHzbSRtPb8ep1jqOZuhmk5xXxx1PELF/+w7WFoU2ciMzl1YDN
- u9dcj9BYCAotTr7a0iT/Msz+CDH+hA8Y+9EwQG/Kgll8OIl47RNW5SglBhr/SV5FL17G
- 5nWQ==
+ bh=ZOxCm7lXq1NUk8hGjYfn5tR2cnOG5hOmBYSCGq9S8lo=;
+ b=SIXTiOl52J51xHwN9gBnZ3t3/yAE2uRasAcnqqJ/cw7uWSxaKbdL1BdXzQrhUSl4uC
+ Kv+u6jVWYUm6qDWljaKHg2zaPNezkzBBAry+p71vUdqO2Us6dkTvXymEUmeoR65c3c+p
+ CXGXL/5TLf9NcMgbFKt+Rb8o9GE7H6iySjqpKSHPHdHKKBpcVf0KN8jRvTLKcDbMHhBu
+ 7ogh91YtaVIDcXkDreWn93/f9S13+238pcRbwRiUBfxPO0HYt0tJxtiCcaeCfmm0MFUL
+ dmZgrnrnlKVWetajqWcinRKbM82H27+eikDO80yJNlPJsx3WNLaVSmcV+aOxiupKYlaZ
+ 9VyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=ilMafgc5WW4V5422uWmZvYBCZ6324nhtMgtQvK6TPbM=;
- b=puvzfjdCIoBTgbA0Lsah9RwWPMfPCl+t0cma4uTrToT1VZK8q8orGaE3weM9KByp3X
- KSrwUYa9bRmi0G1CfAJRa9KOLSZuoucPJNxOQeqBwcGh2nYXaB6BIch+901GXX/C/KvC
- +t1FhrTo7ldPcHspd01efyDtMeEJKq3fMWRq42ioKVKaxBurEGqm8LBqpVSSnIHTu5zY
- 60KyCbz54WwCr55KnqAlXqHw3J0duE2Z2nRPIzXfaQHdfTz7/k7sK3dtxST+p890egjK
- QRQ1pwIQk1QPGeEgUqoOUb63vFbvsrHU/w+ECLuswCGryzqe9r9J0awIGMRuTDQEvk8a
- WX7w==
-X-Gm-Message-State: ANhLgQ1dWFB3hNbOGkSwJb5IuYnrX2IjQdrmHI6LYpoll1VxcEyhUHBH
- 6V2v7kFvwsXHcPrmz2W4r5KhUqle
-X-Google-Smtp-Source: ADFU+vup+AWTBPvfeqtfNWighgP+N7VRJY/qXkRD6pQRrXonwRClnW/fd09u0hoU8ER4hUbOYCkT1Q==
-X-Received: by 2002:a1c:4987:: with SMTP id w129mr4602035wma.168.1585673426174; 
- Tue, 31 Mar 2020 09:50:26 -0700 (PDT)
+ bh=ZOxCm7lXq1NUk8hGjYfn5tR2cnOG5hOmBYSCGq9S8lo=;
+ b=C9kqh+H5TgeS6BqlbJfNL1vbFpK8w7hbFSze/rzJKRmQ6B2m56jD6F0mG0suPP6Xbn
+ OV2cuDDCHUROfv65CJE/gdEEyioNYAVUZjDLo7Vyzo/6xzEoooaQeoB1MCF+LXrZwOkK
+ WUhmpxyb+VqqEPE9gyW6z9U4O39nM1Vc8PUBEQ29rW8DkoXTcB+ibeOBjYE69K82T9t8
+ +IhFHWIqLeqdmFWpWU5tZ5X3lgvMbBOKprKc0fD5KmJhGwTx/MB+BGeHWhyfPh8/Y83q
+ nhliMWF9wcke9GI9RayNbsCu/IuK4JInr413nolBB0u/5hy5U0eKGooKnrOsN546nNSl
+ BKnQ==
+X-Gm-Message-State: ANhLgQ2WVebb8M9F9FzZoyjF1b5a77JZ/fNXMLP+wV+EnSABh1UB1WWp
+ 2Ik9N5xqLY+/fH+YZZDOznROIUWJ
+X-Google-Smtp-Source: ADFU+vvRp+w9PSB2bd6L3KUH7d5f/GfvMq7muOU/DYiy1f+MVxo9LqE5C/wk9npZk+IoMfLDa3/yNA==
+X-Received: by 2002:adf:e60c:: with SMTP id p12mr9644145wrm.219.1585673427706; 
+ Tue, 31 Mar 2020 09:50:27 -0700 (PDT)
 Received: from localhost.localdomain.localdomain ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id r14sm2711582wmg.0.2020.03.31.09.50.24
+ by smtp.gmail.com with ESMTPSA id r14sm2711582wmg.0.2020.03.31.09.50.26
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 31 Mar 2020 09:50:25 -0700 (PDT)
+ Tue, 31 Mar 2020 09:50:27 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH v2 04/26] nvmet-fc: Better size LS buffers
-Date: Tue, 31 Mar 2020 09:49:49 -0700
-Message-Id: <20200331165011.15819-5-jsmart2021@gmail.com>
+Subject: [PATCH v2 05/26] nvme-fc: Ensure private pointers are NULL if no data
+Date: Tue, 31 Mar 2020 09:49:50 -0700
+Message-Id: <20200331165011.15819-6-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.16.4
 In-Reply-To: <20200331165011.15819-1-jsmart2021@gmail.com>
 References: <20200331165011.15819-1-jsmart2021@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_095028_444500_EF4A4046 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20200331_095029_832243_21407470 
+X-CRM114-Status: GOOD (  13.96  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:443 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider [jsmart2021[at]gmail.com]
@@ -105,222 +105,193 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Current code uses NVME_FC_MAX_LS_BUFFER_SIZE (2KB) when allocating
-buffers for LS requests and responses. This is considerable overkill
-for what is actually defined.
+Ensure that when allocations are done, and the lldd options indicate
+no private data is needed, that private pointers will be set to NULL
+(catches driver error that forgot to set private data size).
 
-Rework code to have unions for all possible requests and responses
-and size based on the unions.  Remove NVME_FC_MAX_LS_BUFFER_SIZE.
+Slightly reorg the allocations so that private data follows allocations
+for LS request/response buffers. Ensures better alignments for the buffers
+as well as the private pointer.
 
 Signed-off-by: James Smart <jsmart2021@gmail.com>
 Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 Reviewed-by: Hannes Reinecke <hare@suse.de>
+Reviewed-by: Himanshu Madhani <himanshu.madhani@oracle.com>
 ---
- drivers/nvme/host/fc.h   | 15 ++++++++++++++
- drivers/nvme/target/fc.c | 53 +++++++++++++++++++++---------------------------
- 2 files changed, 38 insertions(+), 30 deletions(-)
+ drivers/nvme/host/fc.c   | 81 ++++++++++++++++++++++++++++++------------------
+ drivers/nvme/target/fc.c |  5 ++-
+ 2 files changed, 54 insertions(+), 32 deletions(-)
 
-diff --git a/drivers/nvme/host/fc.h b/drivers/nvme/host/fc.h
-index d2861cdd58ee..08fa88381d45 100644
---- a/drivers/nvme/host/fc.h
-+++ b/drivers/nvme/host/fc.h
-@@ -16,6 +16,21 @@
-  * ******************  FC-NVME LS HANDLING ******************
-  */
+diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
+index bfbd1c2c1638..8281e5dae93b 100644
+--- a/drivers/nvme/host/fc.c
++++ b/drivers/nvme/host/fc.c
+@@ -396,7 +396,10 @@ nvme_fc_register_localport(struct nvme_fc_port_info *pinfo,
+ 	newrec->ops = template;
+ 	newrec->dev = dev;
+ 	ida_init(&newrec->endp_cnt);
+-	newrec->localport.private = &newrec[1];
++	if (template->local_priv_sz)
++		newrec->localport.private = &newrec[1];
++	else
++		newrec->localport.private = NULL;
+ 	newrec->localport.node_name = pinfo->node_name;
+ 	newrec->localport.port_name = pinfo->port_name;
+ 	newrec->localport.port_role = pinfo->port_role;
+@@ -705,7 +708,10 @@ nvme_fc_register_remoteport(struct nvme_fc_local_port *localport,
+ 	newrec->remoteport.localport = &lport->localport;
+ 	newrec->dev = lport->dev;
+ 	newrec->lport = lport;
+-	newrec->remoteport.private = &newrec[1];
++	if (lport->ops->remote_priv_sz)
++		newrec->remoteport.private = &newrec[1];
++	else
++		newrec->remoteport.private = NULL;
+ 	newrec->remoteport.port_role = pinfo->port_role;
+ 	newrec->remoteport.node_name = pinfo->node_name;
+ 	newrec->remoteport.port_name = pinfo->port_name;
+@@ -1153,18 +1159,23 @@ nvme_fc_connect_admin_queue(struct nvme_fc_ctrl *ctrl,
+ 	int ret, fcret = 0;
  
-+union nvmefc_ls_requests {
-+	struct fcnvme_ls_cr_assoc_rqst		rq_cr_assoc;
-+	struct fcnvme_ls_cr_conn_rqst		rq_cr_conn;
-+	struct fcnvme_ls_disconnect_assoc_rqst	rq_dis_assoc;
-+	struct fcnvme_ls_disconnect_conn_rqst	rq_dis_conn;
-+} __aligned(128);	/* alignment for other things alloc'd with */
-+
-+union nvmefc_ls_responses {
-+	struct fcnvme_ls_rjt			rsp_rjt;
-+	struct fcnvme_ls_cr_assoc_acc		rsp_cr_assoc;
-+	struct fcnvme_ls_cr_conn_acc		rsp_cr_conn;
-+	struct fcnvme_ls_disconnect_assoc_acc	rsp_dis_assoc;
-+	struct fcnvme_ls_disconnect_conn_acc	rsp_dis_conn;
-+} __aligned(128);	/* alignment for other things alloc'd with */
-+
- static inline void
- nvme_fc_format_rsp_hdr(void *buf, u8 ls_cmd, __be32 desc_len, u8 rqst_ls_cmd)
- {
-diff --git a/drivers/nvme/target/fc.c b/drivers/nvme/target/fc.c
-index 1f3118a3b0a3..66de6bd8f4fd 100644
---- a/drivers/nvme/target/fc.c
-+++ b/drivers/nvme/target/fc.c
-@@ -22,9 +22,6 @@
- 
- #define NVMET_LS_CTX_COUNT		256
- 
--/* for this implementation, assume small single frame rqst/rsp */
--#define NVME_FC_MAX_LS_BUFFER_SIZE		2048
--
- struct nvmet_fc_tgtport;
- struct nvmet_fc_tgt_assoc;
- 
-@@ -37,8 +34,8 @@ struct nvmet_fc_ls_iod {
- 	struct nvmet_fc_tgtport		*tgtport;
- 	struct nvmet_fc_tgt_assoc	*assoc;
- 
--	u8				*rqstbuf;
--	u8				*rspbuf;
-+	union nvmefc_ls_requests	*rqstbuf;
-+	union nvmefc_ls_responses	*rspbuf;
- 	u16				rqstdatalen;
- 	dma_addr_t			rspdma;
- 
-@@ -340,15 +337,16 @@ nvmet_fc_alloc_ls_iodlist(struct nvmet_fc_tgtport *tgtport)
- 		iod->tgtport = tgtport;
- 		list_add_tail(&iod->ls_list, &tgtport->ls_list);
- 
--		iod->rqstbuf = kcalloc(2, NVME_FC_MAX_LS_BUFFER_SIZE,
--			GFP_KERNEL);
-+		iod->rqstbuf = kzalloc(sizeof(union nvmefc_ls_requests) +
-+				       sizeof(union nvmefc_ls_responses),
-+				       GFP_KERNEL);
- 		if (!iod->rqstbuf)
- 			goto out_fail;
- 
--		iod->rspbuf = iod->rqstbuf + NVME_FC_MAX_LS_BUFFER_SIZE;
-+		iod->rspbuf = (union nvmefc_ls_responses *)&iod->rqstbuf[1];
- 
- 		iod->rspdma = fc_dma_map_single(tgtport->dev, iod->rspbuf,
--						NVME_FC_MAX_LS_BUFFER_SIZE,
-+						sizeof(*iod->rspbuf),
- 						DMA_TO_DEVICE);
- 		if (fc_dma_mapping_error(tgtport->dev, iod->rspdma))
- 			goto out_fail;
-@@ -361,7 +359,7 @@ nvmet_fc_alloc_ls_iodlist(struct nvmet_fc_tgtport *tgtport)
- 	list_del(&iod->ls_list);
- 	for (iod--, i--; i >= 0; iod--, i--) {
- 		fc_dma_unmap_single(tgtport->dev, iod->rspdma,
--				NVME_FC_MAX_LS_BUFFER_SIZE, DMA_TO_DEVICE);
-+				sizeof(*iod->rspbuf), DMA_TO_DEVICE);
- 		kfree(iod->rqstbuf);
- 		list_del(&iod->ls_list);
+ 	lsop = kzalloc((sizeof(*lsop) +
+-			 ctrl->lport->ops->lsrqst_priv_sz +
+-			 sizeof(*assoc_rqst) + sizeof(*assoc_acc)), GFP_KERNEL);
++			 sizeof(*assoc_rqst) + sizeof(*assoc_acc) +
++			 ctrl->lport->ops->lsrqst_priv_sz), GFP_KERNEL);
+ 	if (!lsop) {
++		dev_info(ctrl->ctrl.device,
++			"NVME-FC{%d}: send Create Association failed: ENOMEM\n",
++			ctrl->cnum);
+ 		ret = -ENOMEM;
+ 		goto out_no_memory;
  	}
-@@ -379,7 +377,7 @@ nvmet_fc_free_ls_iodlist(struct nvmet_fc_tgtport *tgtport)
+-	lsreq = &lsop->ls_req;
  
- 	for (i = 0; i < NVMET_LS_CTX_COUNT; iod++, i++) {
- 		fc_dma_unmap_single(tgtport->dev,
--				iod->rspdma, NVME_FC_MAX_LS_BUFFER_SIZE,
-+				iod->rspdma, sizeof(*iod->rspbuf),
- 				DMA_TO_DEVICE);
- 		kfree(iod->rqstbuf);
- 		list_del(&iod->ls_list);
-@@ -1262,10 +1260,8 @@ static void
- nvmet_fc_ls_create_association(struct nvmet_fc_tgtport *tgtport,
- 			struct nvmet_fc_ls_iod *iod)
- {
--	struct fcnvme_ls_cr_assoc_rqst *rqst =
--				(struct fcnvme_ls_cr_assoc_rqst *)iod->rqstbuf;
--	struct fcnvme_ls_cr_assoc_acc *acc =
--				(struct fcnvme_ls_cr_assoc_acc *)iod->rspbuf;
-+	struct fcnvme_ls_cr_assoc_rqst *rqst = &iod->rqstbuf->rq_cr_assoc;
-+	struct fcnvme_ls_cr_assoc_acc *acc = &iod->rspbuf->rsp_cr_assoc;
- 	struct nvmet_fc_tgt_queue *queue;
- 	int ret = 0;
+-	lsreq->private = (void *)&lsop[1];
+-	assoc_rqst = (struct fcnvme_ls_cr_assoc_rqst *)
+-			(lsreq->private + ctrl->lport->ops->lsrqst_priv_sz);
++	assoc_rqst = (struct fcnvme_ls_cr_assoc_rqst *)&lsop[1];
+ 	assoc_acc = (struct fcnvme_ls_cr_assoc_acc *)&assoc_rqst[1];
++	lsreq = &lsop->ls_req;
++	if (ctrl->lport->ops->lsrqst_priv_sz)
++		lsreq->private = &assoc_acc[1];
++	else
++		lsreq->private = NULL;
  
-@@ -1313,7 +1309,7 @@ nvmet_fc_ls_create_association(struct nvmet_fc_tgtport *tgtport,
- 			"Create Association LS failed: %s\n",
- 			validation_errors[ret]);
- 		iod->lsrsp->rsplen = nvme_fc_format_rjt(acc,
--				NVME_FC_MAX_LS_BUFFER_SIZE, rqst->w0.ls_cmd,
-+				sizeof(*acc), rqst->w0.ls_cmd,
- 				FCNVME_RJT_RC_LOGIC,
- 				FCNVME_RJT_EXP_NONE, 0);
- 		return;
-@@ -1348,10 +1344,8 @@ static void
- nvmet_fc_ls_create_connection(struct nvmet_fc_tgtport *tgtport,
- 			struct nvmet_fc_ls_iod *iod)
- {
--	struct fcnvme_ls_cr_conn_rqst *rqst =
--				(struct fcnvme_ls_cr_conn_rqst *)iod->rqstbuf;
--	struct fcnvme_ls_cr_conn_acc *acc =
--				(struct fcnvme_ls_cr_conn_acc *)iod->rspbuf;
-+	struct fcnvme_ls_cr_conn_rqst *rqst = &iod->rqstbuf->rq_cr_conn;
-+	struct fcnvme_ls_cr_conn_acc *acc = &iod->rspbuf->rsp_cr_conn;
- 	struct nvmet_fc_tgt_queue *queue;
- 	int ret = 0;
+ 	assoc_rqst->w0.ls_cmd = FCNVME_LS_CREATE_ASSOCIATION;
+ 	assoc_rqst->desc_list_len =
+@@ -1262,18 +1273,23 @@ nvme_fc_connect_queue(struct nvme_fc_ctrl *ctrl, struct nvme_fc_queue *queue,
+ 	int ret, fcret = 0;
  
-@@ -1404,7 +1398,7 @@ nvmet_fc_ls_create_connection(struct nvmet_fc_tgtport *tgtport,
- 			"Create Connection LS failed: %s\n",
- 			validation_errors[ret]);
- 		iod->lsrsp->rsplen = nvme_fc_format_rjt(acc,
--				NVME_FC_MAX_LS_BUFFER_SIZE, rqst->w0.ls_cmd,
-+				sizeof(*acc), rqst->w0.ls_cmd,
- 				(ret == VERR_NO_ASSOC) ?
- 					FCNVME_RJT_RC_INV_ASSOC :
- 					FCNVME_RJT_RC_LOGIC,
-@@ -1437,9 +1431,9 @@ nvmet_fc_ls_disconnect(struct nvmet_fc_tgtport *tgtport,
- 			struct nvmet_fc_ls_iod *iod)
- {
- 	struct fcnvme_ls_disconnect_assoc_rqst *rqst =
--			(struct fcnvme_ls_disconnect_assoc_rqst *)iod->rqstbuf;
-+						&iod->rqstbuf->rq_dis_assoc;
- 	struct fcnvme_ls_disconnect_assoc_acc *acc =
--			(struct fcnvme_ls_disconnect_assoc_acc *)iod->rspbuf;
-+						&iod->rspbuf->rsp_dis_assoc;
- 	struct nvmet_fc_tgt_assoc *assoc;
- 	int ret = 0;
+ 	lsop = kzalloc((sizeof(*lsop) +
+-			 ctrl->lport->ops->lsrqst_priv_sz +
+-			 sizeof(*conn_rqst) + sizeof(*conn_acc)), GFP_KERNEL);
++			 sizeof(*conn_rqst) + sizeof(*conn_acc) +
++			 ctrl->lport->ops->lsrqst_priv_sz), GFP_KERNEL);
+ 	if (!lsop) {
++		dev_info(ctrl->ctrl.device,
++			"NVME-FC{%d}: send Create Connection failed: ENOMEM\n",
++			ctrl->cnum);
+ 		ret = -ENOMEM;
+ 		goto out_no_memory;
+ 	}
+-	lsreq = &lsop->ls_req;
  
-@@ -1484,7 +1478,7 @@ nvmet_fc_ls_disconnect(struct nvmet_fc_tgtport *tgtport,
- 			"Disconnect LS failed: %s\n",
- 			validation_errors[ret]);
- 		iod->lsrsp->rsplen = nvme_fc_format_rjt(acc,
--				NVME_FC_MAX_LS_BUFFER_SIZE, rqst->w0.ls_cmd,
-+				sizeof(*acc), rqst->w0.ls_cmd,
- 				(ret == VERR_NO_ASSOC) ?
- 					FCNVME_RJT_RC_INV_ASSOC :
- 					FCNVME_RJT_RC_LOGIC,
-@@ -1522,7 +1516,7 @@ nvmet_fc_xmt_ls_rsp_done(struct nvmefc_ls_rsp *lsrsp)
- 	struct nvmet_fc_tgtport *tgtport = iod->tgtport;
+-	lsreq->private = (void *)&lsop[1];
+-	conn_rqst = (struct fcnvme_ls_cr_conn_rqst *)
+-			(lsreq->private + ctrl->lport->ops->lsrqst_priv_sz);
++	conn_rqst = (struct fcnvme_ls_cr_conn_rqst *)&lsop[1];
+ 	conn_acc = (struct fcnvme_ls_cr_conn_acc *)&conn_rqst[1];
++	lsreq = &lsop->ls_req;
++	if (ctrl->lport->ops->lsrqst_priv_sz)
++		lsreq->private = (void *)&conn_acc[1];
++	else
++		lsreq->private = NULL;
  
- 	fc_dma_sync_single_for_cpu(tgtport->dev, iod->rspdma,
--				NVME_FC_MAX_LS_BUFFER_SIZE, DMA_TO_DEVICE);
-+				sizeof(*iod->rspbuf), DMA_TO_DEVICE);
- 	nvmet_fc_free_ls_iod(tgtport, iod);
- 	nvmet_fc_tgtport_put(tgtport);
- }
-@@ -1534,7 +1528,7 @@ nvmet_fc_xmt_ls_rsp(struct nvmet_fc_tgtport *tgtport,
+ 	conn_rqst->w0.ls_cmd = FCNVME_LS_CREATE_CONNECTION;
+ 	conn_rqst->desc_list_len = cpu_to_be32(
+@@ -1387,19 +1403,23 @@ nvme_fc_xmt_disconnect_assoc(struct nvme_fc_ctrl *ctrl)
  	int ret;
  
- 	fc_dma_sync_single_for_device(tgtport->dev, iod->rspdma,
--				  NVME_FC_MAX_LS_BUFFER_SIZE, DMA_TO_DEVICE);
-+				  sizeof(*iod->rspbuf), DMA_TO_DEVICE);
+ 	lsop = kzalloc((sizeof(*lsop) +
+-			 ctrl->lport->ops->lsrqst_priv_sz +
+-			 sizeof(*discon_rqst) + sizeof(*discon_acc)),
+-			GFP_KERNEL);
+-	if (!lsop)
+-		/* couldn't sent it... too bad */
++			sizeof(*discon_rqst) + sizeof(*discon_acc) +
++			ctrl->lport->ops->lsrqst_priv_sz), GFP_KERNEL);
++	if (!lsop) {
++		dev_info(ctrl->ctrl.device,
++			"NVME-FC{%d}: send Disconnect Association "
++			"failed: ENOMEM\n",
++			ctrl->cnum);
+ 		return;
++	}
  
- 	ret = tgtport->ops->xmt_ls_rsp(&tgtport->fc_target_port, iod->lsrsp);
- 	if (ret)
-@@ -1548,8 +1542,7 @@ static void
- nvmet_fc_handle_ls_rqst(struct nvmet_fc_tgtport *tgtport,
- 			struct nvmet_fc_ls_iod *iod)
- {
--	struct fcnvme_ls_rqst_w0 *w0 =
--			(struct fcnvme_ls_rqst_w0 *)iod->rqstbuf;
-+	struct fcnvme_ls_rqst_w0 *w0 = &iod->rqstbuf->rq_cr_assoc.w0;
+-	lsreq = &lsop->ls_req;
+-
+-	lsreq->private = (void *)&lsop[1];
+-	discon_rqst = (struct fcnvme_ls_disconnect_assoc_rqst *)
+-			(lsreq->private + ctrl->lport->ops->lsrqst_priv_sz);
++	discon_rqst = (struct fcnvme_ls_disconnect_assoc_rqst *)&lsop[1];
+ 	discon_acc = (struct fcnvme_ls_disconnect_assoc_acc *)&discon_rqst[1];
++	lsreq = &lsop->ls_req;
++	if (ctrl->lport->ops->lsrqst_priv_sz)
++		lsreq->private = (void *)&discon_acc[1];
++	else
++		lsreq->private = NULL;
  
- 	iod->lsrsp->nvme_fc_private = iod;
- 	iod->lsrsp->rspbuf = iod->rspbuf;
-@@ -1580,7 +1573,7 @@ nvmet_fc_handle_ls_rqst(struct nvmet_fc_tgtport *tgtport,
- 		break;
- 	default:
- 		iod->lsrsp->rsplen = nvme_fc_format_rjt(iod->rspbuf,
--				NVME_FC_MAX_LS_BUFFER_SIZE, w0->ls_cmd,
-+				sizeof(*iod->rspbuf), w0->ls_cmd,
- 				FCNVME_RJT_RC_INVAL, FCNVME_RJT_EXP_NONE, 0);
- 	}
+ 	discon_rqst->w0.ls_cmd = FCNVME_LS_DISCONNECT_ASSOC;
+ 	discon_rqst->desc_list_len = cpu_to_be32(
+@@ -1785,15 +1805,17 @@ nvme_fc_init_aen_ops(struct nvme_fc_ctrl *ctrl)
+ 	struct nvme_fc_fcp_op *aen_op;
+ 	struct nvme_fc_cmd_iu *cmdiu;
+ 	struct nvme_command *sqe;
+-	void *private;
++	void *private = NULL;
+ 	int i, ret;
  
-@@ -1627,7 +1620,7 @@ nvmet_fc_rcv_ls_req(struct nvmet_fc_target_port *target_port,
- 	struct nvmet_fc_tgtport *tgtport = targetport_to_tgtport(target_port);
- 	struct nvmet_fc_ls_iod *iod;
+ 	aen_op = ctrl->aen_ops;
+ 	for (i = 0; i < NVME_NR_AEN_COMMANDS; i++, aen_op++) {
+-		private = kzalloc(ctrl->lport->ops->fcprqst_priv_sz,
++		if (ctrl->lport->ops->fcprqst_priv_sz) {
++			private = kzalloc(ctrl->lport->ops->fcprqst_priv_sz,
+ 						GFP_KERNEL);
+-		if (!private)
+-			return -ENOMEM;
++			if (!private)
++				return -ENOMEM;
++		}
  
--	if (lsreqbuf_len > NVME_FC_MAX_LS_BUFFER_SIZE)
-+	if (lsreqbuf_len > sizeof(union nvmefc_ls_requests))
- 		return -E2BIG;
+ 		cmdiu = &aen_op->cmd_iu;
+ 		sqe = &cmdiu->sqe;
+@@ -1824,9 +1846,6 @@ nvme_fc_term_aen_ops(struct nvme_fc_ctrl *ctrl)
  
- 	if (!nvmet_fc_tgtport_get(tgtport))
+ 	aen_op = ctrl->aen_ops;
+ 	for (i = 0; i < NVME_NR_AEN_COMMANDS; i++, aen_op++) {
+-		if (!aen_op->fcp_req.private)
+-			continue;
+-
+ 		__nvme_fc_exit_request(ctrl, aen_op);
+ 
+ 		kfree(aen_op->fcp_req.private);
+diff --git a/drivers/nvme/target/fc.c b/drivers/nvme/target/fc.c
+index 66de6bd8f4fd..66a60a218994 100644
+--- a/drivers/nvme/target/fc.c
++++ b/drivers/nvme/target/fc.c
+@@ -1047,7 +1047,10 @@ nvmet_fc_register_targetport(struct nvmet_fc_port_info *pinfo,
+ 
+ 	newrec->fc_target_port.node_name = pinfo->node_name;
+ 	newrec->fc_target_port.port_name = pinfo->port_name;
+-	newrec->fc_target_port.private = &newrec[1];
++	if (template->target_priv_sz)
++		newrec->fc_target_port.private = &newrec[1];
++	else
++		newrec->fc_target_port.private = NULL;
+ 	newrec->fc_target_port.port_id = pinfo->port_id;
+ 	newrec->fc_target_port.port_num = idx;
+ 	INIT_LIST_HEAD(&newrec->tgt_list);
 -- 
 2.16.4
 
