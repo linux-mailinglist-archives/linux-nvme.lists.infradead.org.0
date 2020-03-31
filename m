@@ -2,91 +2,98 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B69EE199A2E
-	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 17:48:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 89CD0199A4E
+	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 17:52:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eQOdnZ2w/bV5S0O74iv+T5nUrjw69OKRR7TkS7jOqSY=; b=i66Ne9yU8x5dWI
-	rstU+lbonZOSfSox1HqgWtYKY9h3VQDkkGrx/BkorUyxdk6vuNZVyV0xp21Dlbk9/qmr9pwFUCtQ6
-	272om2mxSGiOBHZRx+QLRoBQZkSa1SFe0uIJBXyutYeJ0CXlAHHQ8/KgzIjyhlEPfKiR6vvGklM2h
-	exndeqf+XcFUlbWYQ/2dwgRTRusak0h8RBZsXVksnPAlyWzECmuhAv6lqrCJeDPnkK1xmq3eQYH5m
-	W/q25CN8u3Iq5r1+cSAz5d6dL/OOVGfMNa/1gC9FYtYv7N3tX/I/kFRMDB10mCRfq26mDZlrXcPVR
-	yn4Nkh8yV0kuKBMeKFAw==;
+	List-Owner; bh=Bj21EpZwfrb9HZEsGMHytCW8xfdP6fWCPfdUqdjgNNY=; b=smW1mX+CzC8k+u
+	ChIAnLzwB8nv+MqBMxKP/aKNg6HysdSn23jM6rE61NtYAcSHoHvBnDXZgWqk5jU1X//7CZozrkFxc
+	OO7/BdUGZ3vxRW52SZ6noY/fsF9Ys7/Gtod9J/10XLTftWzjjw2u1+zsSA3llRVPqhPIS3I/fgC5u
+	1fLqX1HT1Nw0kSA+1NBTluxx/kthM8bd3wrvLpwUULzmAW2JyF9/XkHcnFtp/Tsmq0FaxqJ/5i4HF
+	AONLDIPNDL52jfkOaVHxvl3RCaMy6ZBvUoFSuezSpu06kVoTQocCkr1Yl/2EmXpq8LgROJ+3NCzTN
+	zhmj6e+NCHulm0azwOxQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJJ7P-0006Dk-V3; Tue, 31 Mar 2020 15:47:59 +0000
-Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843])
+	id 1jJJBH-0002hS-LD; Tue, 31 Mar 2020 15:51:59 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJJ7K-0006CN-3X
- for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 15:47:55 +0000
-Received: by mail-qt1-x843.google.com with SMTP id t17so18673986qtn.12
- for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 08:47:53 -0700 (PDT)
+ id 1jJJB1-0002cv-1R
+ for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 15:51:44 +0000
+Received: by mail-qk1-x742.google.com with SMTP id h14so23518148qke.5
+ for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 08:51:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=S+cb3bISW4bZmT92F1j7Pnq/uvLuSPQAD/l0XluG3es=;
- b=CZ/zV+JpODQPLEkTvr5bV1RtBpJRe9fHt7rTi1ZlaBgKVi9+wGb7JWDMSyVv0LFEsD
- o7PNPQNrt5OdGEe2WyyKKey7Y+vGvDbN3ZH4ABhpa4VnHcXwOIxT7GUBNx/KZLCkmWEk
- lrVuQgPUpgsHRfGXRvtQO3g0TW5D0OAiH81tJGPLzmcM0WGR4NBc/+UWiH2Z1VKmj6Gp
- mUinuOWxNArJRaIiJVjAmIbvhJuf9+2XxQZh8Bx8SBloKhJWEPzEszXl58bmi8CifTLw
- nT3J0bmpXMxgKhC6fTOKnt6huiA+8g/NT10Ysn2FSkTRzgZBVwIgHoorZyCh5XjndMoQ
- EmHQ==
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=Cw3Eh01JFPi8BMIikV3NbP3KCc0IWLFrVC/r+JOBGd8=;
+ b=qr5/dccWdp9TcfXD7AQm7YO7pfp2jr9W5meVcYfS3ee7ORl14fhtMqp24mEz3V//yV
+ oCvp/JGHSpVTWxB15h0c4Tw4O8c1eid8vCrasK7pLmAxllaXl7JMxoiUl1ZOaAqtK57r
+ UMthNrTT0vql6RAOKLEgwD7eh66Fi4BszDDk6REcQ0sqcE7dN72eZLVR7G7/5UzmKZba
+ OmLFFwYl+GFCNz04bRJLRvd1MTzSsngAaRY0p5NnLVAkllK4quqmspn/6m+08ObMrl/E
+ W3tgCwzmxzN6zKhpLMiWVQkk5u4DBqjeRqjREusjH7t5/6gJ0PyqmnXM9Cg8igKeYqAI
+ odmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=S+cb3bISW4bZmT92F1j7Pnq/uvLuSPQAD/l0XluG3es=;
- b=o5TvnBTLgQPD0jXsLSyThGdHNR5wkJt4MKmgHZNFFfGb5lSr8OXH+2UV/mAalFhDJQ
- EsIVIGZ5grGBTjoCB3+Pmk3g4SrHTlw4AxuMNIC3jH61Ll238+d86rmFTFgVg6NyD2u5
- UemvVkET1nsHyc6ObonBObnlcqbmwlkKw1GCNSvQimquq3DfG5FnQsswcdezuacZsTjn
- AoqS8tsSGeAn/vgkQupoKTav2VjUeHRaLNt9cHZaYH3YKJhKdEIbrYYJlEvLQjjoxuHc
- pVoAuVa4a4NjZ8qt3x135uS/QkwvSfUNRAXP9IprNF4aosUT7DJfSUvXQGQGpcRCAMV3
- U5nw==
-X-Gm-Message-State: ANhLgQ36CjIjTSFiNBFLBJVpAYPsnIyuD3DbuuLHc7bl0W6P9XzrXmEl
- +PfZref1HIz3Ev71jEkNEtZz3pLtfj92f3Kwi8Q=
-X-Google-Smtp-Source: ADFU+vueFmwtyA1v+7pm/DjQa8uSCIHLcdiNP3fePAGUXFX+W1vqv3fkaAD0xsN2YQXUI2KJCFntt5b47zvPrwXIakg=
-X-Received: by 2002:ac8:18c3:: with SMTP id o3mr5923041qtk.49.1585669672947;
- Tue, 31 Mar 2020 08:47:52 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to;
+ bh=Cw3Eh01JFPi8BMIikV3NbP3KCc0IWLFrVC/r+JOBGd8=;
+ b=gTFn6azGGdjEjzazk7vh45o5STVec2mNrmsSPRY2xnmy5ifmMFGAQHBhR/gYV5vPAW
+ xot//pDTpQksLdUrKXbJZFjAaeACElGPskUbBNrpt9RJO5odrACz51KlQa/JmbGIDc9d
+ xEmTRoehK9v4q0dfjByB0G8PWIzqTC3SZXWtqWSUTbaKcLGywsNECUa484+Wdyza3FoM
+ Ef3DSHXNkwsU9rAEvw9+S+f5gftThwvhRL88ZjHP93X6e0kYBKQbVXs8Hi7va8gxZS06
+ Mc9liAEolkXpBe/pC0YXtcJhPelmjqfVIMfuCzZ2+PwMkYOYeVr3/bllSAuSyu1ebf6F
+ LkDw==
+X-Gm-Message-State: ANhLgQ0xM44zDirwKFaLOphcFgSM+6yzvuANxFSDS7pfIPd0S5Ka037R
+ RV3NvsAjkX+rdnOuLjMhec8=
+X-Google-Smtp-Source: ADFU+vseiSMDCCMUSqV42NlgSPKMidOk1UFamFIexPEWiz7tGJMgVKMgaJDPmj7yocflFhcqlI5dWw==
+X-Received: by 2002:a05:620a:a86:: with SMTP id
+ v6mr5450463qkg.156.1585669901806; 
+ Tue, 31 Mar 2020 08:51:41 -0700 (PDT)
+Received: from localhost ([2620:10d:c091:480::b946])
+ by smtp.gmail.com with ESMTPSA id o13sm14130529qtk.12.2020.03.31.08.51.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 31 Mar 2020 08:51:41 -0700 (PDT)
+Date: Tue, 31 Mar 2020 11:51:39 -0400
+From: Tejun Heo <tj@kernel.org>
+To: Weiping Zhang <zwp10758@gmail.com>
+Subject: Re: [PATCH v5 0/4] Add support Weighted Round Robin for blkcg and nvme
+Message-ID: <20200331155139.GT162390@mtj.duckdns.org>
 References: <cover.1580786525.git.zhangweiping@didiglobal.com>
  <20200204154200.GA5831@redsun51.ssa.fujisawa.hgst.com>
  <CAA70yB5qAj8YnNiPVD5zmPrrTr0A0F3v2cC6t2S1Fb0kiECLfw@mail.gmail.com>
  <CAA70yB62_6JD_8dJTGPjnjJfyJSa1xqiCVwwNYtsTCUXQR5uCA@mail.gmail.com>
  <20200331143635.GS162390@mtj.duckdns.org>
-In-Reply-To: <20200331143635.GS162390@mtj.duckdns.org>
-From: Weiping Zhang <zwp10758@gmail.com>
-Date: Tue, 31 Mar 2020 23:47:41 +0800
-Message-ID: <CAA70yB51=VQrL+2wC+DL8cYmGVACb2_w5UHc4XFn7MgZjUJaeg@mail.gmail.com>
-Subject: Re: [PATCH v5 0/4] Add support Weighted Round Robin for blkcg and nvme
-To: Tejun Heo <tj@kernel.org>
+ <CAA70yB51=VQrL+2wC+DL8cYmGVACb2_w5UHc4XFn7MgZjUJaeg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAA70yB51=VQrL+2wC+DL8cYmGVACb2_w5UHc4XFn7MgZjUJaeg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_084754_147971_2AC0F75D 
-X-CRM114-Status: GOOD (  18.18  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20200331_085143_112942_CE330F1B 
+X-CRM114-Status: GOOD (  10.78  )
+X-Spam-Score: 0.4 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.1 points)
+ Content analysis details:   (0.4 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:843 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:742 listed in]
  [list.dnswl.org]
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [zwp10758[at]gmail.com]
- 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
- in digit [zwp10758[at]gmail.com]
+ provider [htejun[at]gmail.com]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,52 +111,38 @@ Cc: Jens Axboe <axboe@kernel.dk>, Bart Van Assche <bvanassche@acm.org>,
  cgroups@vger.kernel.org, Keith Busch <kbusch@kernel.org>, "Nadolski,
  Edmund" <edmund.nadolski@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
  Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-VGVqdW4gSGVvIDx0akBrZXJuZWwub3JnPiDkuo4yMDIw5bm0M+aciDMx5pel5ZGo5LqMIOS4i+WN
-iDEwOjM25YaZ6YGT77yaCj4KPiBIZWxsbywgV2VpcGluZy4KPgo+IE9uIFR1ZSwgTWFyIDMxLCAy
-MDIwIGF0IDAyOjE3OjA2UE0gKzA4MDAsIFdlaXBpbmcgWmhhbmcgd3JvdGU6Cj4gPiBSZWNlbnRs
-eSBJIGRvIHNvbWUgY2dyb3VwIGlvIHdlaWdodCB0ZXN0aW5nLAo+ID4gaHR0cHM6Ly9naXRodWIu
-Y29tL2R1Ymxpby9pb3RyYWNrL3dpa2kvY2dyb3VwLWlvLXdlaWdodC10ZXN0Cj4gPiBJIHRoaW5r
-IGEgcHJvcGVyIGlvIHdlaWdodCBwb2xpY3kKPiA+IHNob3VsZCBjb25zaWRlciBoaWdoIHdlaWdo
-dCBjZ3JvdXAncyBpb3BzLCBsYXRlbmN5IGFuZCBhbHNvIHRha2Ugd2hvbGUKPiA+IGRpc2sncyB0
-aHJvdWdocHV0Cj4gPiBpbnRvIGFjY291bnQsIHRoYXQgaXMgdG8gc2F5LCB0aGUgcG9saWN5IHNo
-b3VsZCBkbyBtb3JlIGNhcmZ1bGx5IHRyYWRlCj4gPiBvZmYgYmV0d2VlbiBjZ3JvdXAncwo+ID4g
-SU8gcGVyZm9ybWFuY2UgYW5kIHdob2xlIGRpc2sncyB0aHJvdWdocHV0LiBJIGtub3cgb25lIHBv
-bGljeSBjYW5ub3QKPiA+IGRvIGFsbCB0aGluZ3MgcGVyZmVjdGx5LAo+ID4gYnV0IGZyb20gdGhl
-IHRlc3QgcmVzdWx0IG52bWUtd3JyIGNhbiB3b3JrIHdlbGwuCj4KPiBUaGF0J3Mgdy9vIGlvY29z
-dCBRb1MgdGFyZ2V0cyBjb25maWd1cmVkLCByaWdodD8gaW9jb3N0IHNob3VsZCBiZSBhYmxlIHRv
-Cj4gYWNoaWV2ZSBzaW1pbGFyIHJlc3VsdHMgYXMgd3JyIHdpdGggUW9TIGNvbmZpZ3VyZWQuCj4K
-WWVzLCBJIGhhdmUgbm90IHNldCBRb3MgdGFyZ2V0Lgo+ID4gRnJvbSB0aGUgZm9sbG93aW5nIHRl
-c3QgcmVzdWx0LCBudm1lLXdyciB3b3JrIHdlbGwgZm9yIGJvdGggY2dyb3VwJ3MKPiA+IGxhdGVu
-Y3ksIGlvcHMsIGFuZCB3aG9sZQo+ID4gZGlzaydzIHRocm91Z2hwdXQuCj4KPiBBcyBJIHdyb3Rl
-IGJlZm9yZSwgdGhlIGlzc3VlcyBJIHNlZSB3aXRoIHdyciBhcmUgdGhlIGZvbGxvd2luZ3MuCj4K
-PiAqIEhhcmR3YXJlIGRlcGVuZGVudC4gU29tZSB3aWxsIHdvcmsgb2sgb3IgZXZlbiBmYW50YXN0
-aWMuIE1hbnkgb3RoZXJzIHdpbGwgZG8KPiAgIGhvcnJpYmx5Lgo+Cj4gKiBMYWNrIG9mIGNvbmZp
-Z3VyYXRpb24gZ3JhbnVsYXJpdHkuIFdlIGNhbid0IGNvbmZpZ3VyZSBpdCBncmFudWxhciBlbm91
-Z2ggdG8KPiAgIHNlcnZlIGhpZXJhcmNoaWNhbCBjb25maWd1cmF0aW9uLgo+Cj4gKiBMaWtlbHkg
-bm90IGEgaHVnZSBwcm9ibGVtIHdpdGggdGhlIGRlZXAgUUQgb2YgbnZtZXMgYnV0IGxhY2sgb2Yg
-cXVldWUgZGVwdGgKPiAgIGNvbnRyb2wgY2FuIGxlYWQgdG8gbG9zcyBvZiBsYXRlbmN5IGNvbnRy
-b2wgYW5kIHRodXMgbG9zcyBvZiBwcm90ZWN0aW9uIGZvcgo+ICAgbG93IGNvbmN1cnJlbmN5IHdv
-cmtsb2FkcyB3aGVuIHBpdGNoZWQgYWdhaW5zdCB3b3JrbG9hZHMgd2hpY2ggY2FuIHNhdHVyYXRl
-Cj4gICBRRC4KPgo+IEFsbCB0aGF0IHNhaWQsIGdpdmVuIHRoZSBmZWF0dXJlIGlzIGF2YWlsYWJs
-ZSwgSSBkb24ndCBzZWUgYW55IHJlYXNvbiB0byBub3QKPiBhbGxvdyB0byB1c2UgaXQsIGJ1dCBJ
-IGRvbid0IHRoaW5rIGl0IGZpdHMgdGhlIGNncm91cCBpbnRlcmZhY2UgbW9kZWwgZ2l2ZW4gdGhl
-Cj4gaGFyZHdhcmUgZGVwZW5kZW5jeSBhbmQgY29hcnNlIGdyYW51bGFyaXR5LiBGb3IgdGhlc2Ug
-Y2FzZXMsIEkgdGhpbmsgdGhlIHJpZ2h0Cj4gdGhpbmcgdG8gZG8gaXMgdXNpbmcgY2dyb3VwcyB0
-byBwcm92aWRlIHRhZ2dpbmcgaW5mb3JtYXRpb24gLSBpZS4gYnVpbGQgYQo+IGRlZGljYXRlZCBp
-bnRlcmZhY2Ugd2hpY2ggdGFrZXMgY2dyb3VwIGZkIG9yIGlubyBhcyB0aGUgdGFnIGFuZCBhc3Nv
-Y2lhdGUKPiBjb25maWd1cmF0aW9ucyB0aGF0IHdheS4gVGhlcmUgYWxyZWFkeSBhcmUgb3RoZXIg
-dXNlIGNhc2VzIHdoaWNoIHVzZSBjZ3JvdXAgdGhpcwo+IHdheSAoZS5nLiBwZXJmKS4KPgpEbyB5
-b3UgbWVhbnMgZHJvcCB0aGUgImlvLndyciIgb3IgImJsa2lvLndyciIgaW4gY2dyb3VwLCBhbmQg
-dXNlIGEKZGVkaWNhdGVkIGludGVyZmFjZQpsaWtlIC9kZXYveHh4IG9yIC9wcm9jL3h4eD8KCkkg
-c2VlIHRoZSBwZXJmIGNvZGU6CnN0cnVjdCBmZCBmID0gZmRnZXQoZmQpCnN0cnVjdCBjZ3JvdXBf
-c3Vic3lzX3N0YXRlICpjc3MgPQpjc3NfdHJ5Z2V0X29ubGluZV9mcm9tX2RpcihmLmZpbGUtPmZf
-cGF0aC5kZW50cnksCiAgICAgICAgJnBlcmZfZXZlbnRfY2dycF9zdWJzeXMpOwoKTG9va3MgY2Fu
-IGJlIGFwcGxpZWQgdG8gYmxvY2sgY2dyb3VwIGluIHNhbWUgd2F5LgoKVGhhbmtzIHlvdXIgaGVs
-cC4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4
-LW52bWUgbWFpbGluZyBsaXN0CmxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+Hello,
+
+On Tue, Mar 31, 2020 at 11:47:41PM +0800, Weiping Zhang wrote:
+> Do you means drop the "io.wrr" or "blkio.wrr" in cgroup, and use a
+> dedicated interface
+> like /dev/xxx or /proc/xxx?
+
+Yes, something along that line. Given that it's nvme specific, it'd be best if
+the interface reflects that too - e.g. through a file under
+/sys/block/nvme*/device/. Jens, Christoph, what do you guys think?
+
+> I see the perf code:
+> struct fd f = fdget(fd)
+> struct cgroup_subsys_state *css =
+> css_tryget_online_from_dir(f.file->f_path.dentry,
+>         &perf_event_cgrp_subsys);
+> 
+> Looks can be applied to block cgroup in same way.
+
+Yeah, either fd or ino can be used to identify a cgroup.
+
+Thanks.
+
+-- 
+tejun
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
