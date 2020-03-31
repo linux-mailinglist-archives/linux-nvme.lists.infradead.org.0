@@ -2,64 +2,66 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E744199A72
-	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 17:56:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E1C1C1999E4
+	for <lists+linux-nvme@lfdr.de>; Tue, 31 Mar 2020 17:37:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Fo1HpOvb0Q8Bpv/yxJFPDB4mAJsoHDPk5NV+ImRo8VE=; b=r3wI69VFJp2t+IOmcGwyiplkb
-	k9wqImT8rf9TNkJ/acxtJBYXCNnpRxGPZTZNuJaJPi2bA56G/CWceJY8CuWE6y8VdTdir0sR8HWgI
-	i614MbQDn0gZO68R6pmJAdw48c6hvR4dzoSpn4/y/4ROJFRqqbC4pDPZqBV6lOLN2MDrFyeudsXWJ
-	Yt7EKoEjyWtzRzWt16gHxnbwQnCv6LwfFOL82oQ4GfGh8UA1KasbEqdBW4ip/LYBrtYwVZZIshD3a
-	kH1ipumZ6G4ZrFmot0OHDPA37K29Y23GaumaEVP0vcu4UmWQDyBWq3f4J41utORxondJ3sf2V61Qw
-	lHhsLa4sA==;
+	 bh=2hv7JF6cQX4m8k/34/0Bt7QmHUEUpz+vKPYYz/lUWiU=; b=ahr+2VHcO8qAVE6sj8PJybjbr
+	XJ9APKTTsiPn4htTraYJDAjAgwos3onkYf3FdpKYxhQMmea5WkS5aB7l70MznjmiGhH9aRM5VbAVh
+	QuTKrKYG9EZKtOU4OiwISimPK7CAjb7NB2BZfkI1dlOxmKWarmR1tgnMoRcoSJtOjm3ekpVDRVXFe
+	XoRaMElgZap8rFyfFazjPwHoD4tc2wNEkiLkgXd1MK+I7f/PQn3pr1DmDmWPOO5BMLWmH9gIk7bFO
+	p9YVh1W1LJughmYWZU4QBlDET330A4NpzOF2sjIMdqnGZY9qmNxFdICpXnEUypxk5DKLoQJXbC/fJ
+	RqVqchHBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJJFM-0008UQ-HR; Tue, 31 Mar 2020 15:56:12 +0000
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42])
+	id 1jJIxU-0003Fq-Rd; Tue, 31 Mar 2020 15:37:44 +0000
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJJDA-0004Tx-SJ
- for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 15:54:03 +0000
-Received: by mail-qv1-xf42.google.com with SMTP id g4so11063143qvo.12
- for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 08:53:55 -0700 (PDT)
+ id 1jJIxJ-0003EE-P3
+ for linux-nvme@lists.infradead.org; Tue, 31 Mar 2020 15:37:35 +0000
+Received: by mail-pl1-x644.google.com with SMTP id a23so8261433plm.1
+ for <linux-nvme@lists.infradead.org>; Tue, 31 Mar 2020 08:37:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=6FahT8x90WNHEEj3oMiZ/ShKhSZD8ajLBlpxau/7+rU=;
- b=obQKA52V+aibNLR7ijxuIcGBoA6P2Jr4R6YdarkbEj60cnP08xZnf8tFcb7prYuVQK
- vSaZgdHxMbxpWCCB8X+9gljqaKIWv8mK3rC37kxEi3hMS+fol5ysxO3s86DYH6G6Z6Ia
- dwWLEOiwLuCNkpxJd3cbRHnlRrZno9LBSqVSUo8q8lO8IG6lkI0Zc07nP0E4AraUE7l0
- pzsssu9ZuqhsFBdv0Qpeivm7yO0cSI1YM49nD6aHDrCyEzbVfEkv9bNX9FkiR4vB5oQM
- FrdBCGVQQm2pqZJSo6UulPImEcGvX52rbTFLkU8aDmkQ9Rse5ocb3lMrAOa3UNnPIONY
- Bzjg==
+ bh=AIJaewX8GfCCNVseZs66fzOQB91yKeoYu4/Ep9E7PaI=;
+ b=fqwdL2HD2ynty7HmKt6Q3mkGsMmztvgSpfY+9rj4EbEx5K0xOstNlgD4sRPPsBmYMI
+ jQKKxax+vROKD5bu9sAeDbd9SnI7PNjoRkgpU/kSRQuKYZd8CQBxMtAaiZNtx7e/g7sO
+ iHIIBtHxmfl30ClUbVBx1Y11p+y3Z/x4wE8aieLplXMtvHRD9c20+cjdpKQCWiWRi31Q
+ KTeLk20vCrEMcjKJDzFmHUdJ+R6nAIX7QapbnZBjHaJKOR046qwZhnawaCHRCOdZ1cqU
+ 97oNBCqUPnWr/nEaSvkYVfZJNoQPAJZj+eZtxhSqHnOTQO2xa+1prgPegntk7xFihScP
+ VC5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-transfer-encoding
  :content-language;
- bh=6FahT8x90WNHEEj3oMiZ/ShKhSZD8ajLBlpxau/7+rU=;
- b=W8zIYhG2NDD5xT1SfqyyX1R3Kl2Gtr+Wei1GHnsbiY6qezhIleFl4Ds5uVldy273Zt
- QdCRn4fOV5555bT607gCBuyFlDuvK0bT40ZL0H2kVvTkT5Zc7mJslmlVtoY6VQw9whH4
- 2yFHJLo7QpAeQ/ZpYoB4cuYeoVKg64GUU/bz5zpcHXbQLBzk7cwqSIZJH8TvVhcfwG34
- Bhx9VJDCinPAOVnK7kCOlhsRybblzEg61gP4T+qM7w/gXKvog9sDQYxOgDdCut+tES/U
- Z8R1onDX7ionyDqW2Cq+MHzP+xF0ZqgpMeYhYy+VyVZxEIqAdEjoy25H8G+2zUn/3RWE
- XIWw==
-X-Gm-Message-State: ANhLgQ1UbXMsxdPX88EXv/awl5v50dTA3LX6vPSZFa4BBmB1tjsT+b0p
- dK7pDBpQJeAnBnLWJMOtsmSGjzEZ
-X-Google-Smtp-Source: APiQypKejXVVSk70bM7Kz1AwJxT32HiTMDJNu9AaEukwpa+Inc8Lv9B5MNiRM6mgILrcauM5QKaRpA==
-X-Received: by 2002:aa7:8a99:: with SMTP id a25mr5110325pfc.76.1585668294930; 
- Tue, 31 Mar 2020 08:24:54 -0700 (PDT)
+ bh=AIJaewX8GfCCNVseZs66fzOQB91yKeoYu4/Ep9E7PaI=;
+ b=FxWAYUY8Dzzu8ZUbTU7ETY2u1L+M+DYFcPjsCVKD23RgIy3Iz8px08kXvQOtcU5VTA
+ ZRLV6PF+ilNIcS+xYtTV4HM7YpyWCWN1/cbA6n2zr7cvWgqlFjqWdN5eZOco70p6dAGV
+ C6sB5LKDmcXw5UeYg/fo5EK4yrckgL3Eb2jUvHwJVxU/jVP0LoqPEfpYHew4A14PiByQ
+ Sl8/sXwvz3TU+hdk9aZRsfcy89lwr9tFbsUQxsS4nCapiFmiO++/VTDaoUuQY0UpYeN3
+ HQZV4dVFD2ZDyQLgQy8rqFwF6AA7WMKcgcxvuyGHJa969butIs/u9nX5yMz+NJoJSYm2
+ 0WFQ==
+X-Gm-Message-State: AGi0PubV9m9DzUMSUGiUDuuL+Ev6FA+GMV71Nbjza3DojYlf4KlfGWWp
+ WJVjQdarviYRAjXlURAj0rU=
+X-Google-Smtp-Source: APiQypKjy8p0X5p701s5Kmd7nfiCE0gP6442ZhQ46+pvCrU9CIXn/YOOhpfWscoL/0CTifCg23RbAQ==
+X-Received: by 2002:a17:90a:218e:: with SMTP id
+ q14mr4578731pjc.37.1585669052603; 
+ Tue, 31 Mar 2020 08:37:32 -0700 (PDT)
 Received: from ?IPv6:240b:10:2720:5510:a182:288:3ffa:432a?
  ([240b:10:2720:5510:a182:288:3ffa:432a])
- by smtp.gmail.com with ESMTPSA id y4sm583215pfo.39.2020.03.31.08.24.52
+ by smtp.gmail.com with ESMTPSA id x4sm12683810pfi.202.2020.03.31.08.37.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 31 Mar 2020 08:24:54 -0700 (PDT)
+ Tue, 31 Mar 2020 08:37:32 -0700 (PDT)
 Subject: Re: [PATCH] block, nvme: Increase max segments parameter setting value
-To: Keith Busch <kbusch@kernel.org>
-References: <BYAPR04MB4965BAF4C0300E1206B049A586F00@BYAPR04MB4965.namprd04.prod.outlook.com>
+To: Joshi <joshiiitr@gmail.com>
+References: <20200323182324.3243-1-ikegami.t@gmail.com>
+ <BYAPR04MB4965BAF4C0300E1206B049A586F00@BYAPR04MB4965.namprd04.prod.outlook.com>
  <cff52955-e55c-068a-44a6-8ed4edc0696f@gmail.com>
  <20200324000237.GB15091@redsun51.ssa.fujisawa.hgst.com>
  <6b73db44-ca3f-4285-0c91-dc1b1a5ca9f1@gmail.com>
@@ -69,25 +71,25 @@ References: <BYAPR04MB4965BAF4C0300E1206B049A586F00@BYAPR04MB4965.namprd04.prod.
  <a0e7a985-a726-8e16-d29c-eb38a919e18e@gmail.com>
  <CACVXFVMsPstD2ZLnozC8-RsaJ7EMZK9+d47Q+1Z0coFOw3vMhg@mail.gmail.com>
  <cc1534d1-34f6-ffdb-27bd-73590ab30437@gmail.com>
- <20200330135323.GA32604@C02WT3WMHTD6>
+ <CA+1E3rJV2-qig0mj9s1rVZo-iScXiPqiuLF+EDszET6vtounTw@mail.gmail.com>
 From: Tokunori Ikegami <ikegami.t@gmail.com>
-Message-ID: <6c35a4f9-af19-feff-6be0-d9c023d6c6b7@gmail.com>
-Date: Wed, 1 Apr 2020 00:24:50 +0900
+Message-ID: <b93e02fe-ce91-a2ee-2373-cc6bf8366da0@gmail.com>
+Date: Wed, 1 Apr 2020 00:37:28 +0900
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200330135323.GA32604@C02WT3WMHTD6>
+In-Reply-To: <CA+1E3rJV2-qig0mj9s1rVZo-iScXiPqiuLF+EDszET6vtounTw@mail.gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_085356_934479_A5210FEF 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20200331_083733_824239_2A7F6596 
+X-CRM114-Status: GOOD (  10.81  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:f42 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:644 listed in]
  [list.dnswl.org]
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
  provider [ikegami.t[at]gmail.com]
@@ -111,30 +113,35 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
- Ming Lei <tom.leiming@gmail.com>,
+Cc: Keith Busch <kbusch@kernel.org>, Ming Lei <tom.leiming@gmail.com>,
+ "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
  Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
  "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-SGksCgpPbiAyMDIwLzAzLzMwIDIyOjUzLCBLZWl0aCBCdXNjaCB3cm90ZToKPiBPbiBNb24sIE1h
-ciAzMCwgMjAyMCBhdCAwNjoxNTo0MVBNICswOTAwLCBUb2t1bm9yaSBJa2VnYW1pIHdyb3RlOgo+
-PiBCdXQgdGhlcmUgaXMgYSBjYXNlIHRoYXQgdGhlIGNvbW1hbmQgZGF0YSBsZW5ndGggaXMgbGlt
-aXRlZCBieSA1MTJLQi4KPj4gSSBhbSBub3Qgc3VyZSBhYm91dCB0aGlzIGNvbmRpdGlvbiBzbyBu
-ZWVkZWQgbW9yZSBpbnZlc3RpZ2F0aW9uLgo+IFlvdXIgbWVtb3J5IGlzIHRvbyBmcmFnbWVudGVk
-LiBZb3UgbmVlZCBtb3JlIHBoeXNpY2FsbHkgY29udGlndW91cwo+IG1lbW9yeSBvciB5b3UnbGwg
-aGl0IHRoZSBzZWdtZW50IGxpbWl0IGJlZm9yZSB5b3UgaGl0IHRoZSBsZW5ndGgKPiBsaW1pdC4g
-VHJ5IGFsbG9jYXRpbmcgaHVnZSBwYWdlcy4KClRoYW5rIHlvdSBzbyBtdWNoIGZvciB5b3VyIGFk
-dmlzZS4KSSBoYXZlIGNvbmZpcm1lZCB0aGF0IHRoZSA1MTJLQiBjYXNlIGlzIGxpbWl0ZWQgYnkg
-dGhlIDEyNyBzZWdtZW50cyAKY2hlY2sgYmVsb3cgaW4gbGxfbmV3X2h3X3NlZ21lbnQoKS4KCiDC
-oMKgwqAgaWYgKHJlcS0+bnJfcGh5c19zZWdtZW50cyArIG5yX3BoeXNfc2VncyA+IApxdWV1ZV9t
-YXhfc2VnbWVudHMocmVxLT5xKSkgewoKQWxzbyBjb25maXJtZWQgdGhhdCB0aGUgNE1CIGxpbWl0
-IHdvcmtzIGNvcnJlY3RseSB3aXRoIHRoZSBtZW1vcnkgCmNvbmRpdGlvbiBub3QgZnJhZ21lbnRl
-ZCB0b28gbXVjaC4KSSB3aWxsIGRvIGFiYW5kb24gdGhlIHBhdGNoIHRvIGluY3JlYXNlIG1heCBz
-ZWdtZW50cyBhcyBsaW1pdGVkIDRNQiBub3cgCmJ5IE5WTWUgUENJZSBkcml2ZXIuCgpSZWdhcmRz
-LApJa2VnYW1pCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KbGludXgtbnZtZSBtYWlsaW5nIGxpc3QKbGludXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+Hi,
+
+On 2020/03/31 23:13, Joshi wrote:
+> Hi Ikegami,
+>
+> Are you actually able to bump up the max segments with the original patch?
+No as you mentioned currently it is limited by NVME_MAX_SEGS.
+On the older kernel version it was not limited by the value but limited 
+by USHRT_MAX.
+So it was able to change the limit by the patch.
+
+As Keith-san also mentioned currently it is limited by the 4MB and 127 
+segments as you mentioned by the NVMe PCIe driver.
+So I will do abandon the patch to increase max segments.
+
+Regards,
+Ikegami
+
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
