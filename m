@@ -2,84 +2,73 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D81C319B715
-	for <lists+linux-nvme@lfdr.de>; Wed,  1 Apr 2020 22:35:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CF9619B739
+	for <lists+linux-nvme@lfdr.de>; Wed,  1 Apr 2020 22:43:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=z1fMvao11i+d0UZrbIxXcd2/3fEWA/mH8uzwOCutGXo=; b=bXkHT/6xKwKSP64JEb6xFokez
-	2eTOBpaaIGYRfvNZEcwxWI0CHI3xyeXmnjYKoaD42/3/BVIAPqY7hRllxJpUxesfnJapcaq0LT4qx
-	k8/OQd8lYbgsroUemexnmu5BtlF6c+j8Li+6UzDD4vni0CHuIpmV50JSWfbdjK2HzwnHKw9okBC52
-	ufWh7uGrEChdB8S/ZuoQLaDbMTzaedfRp0ExmU7Qyjw145J86zwn6vsvvvrwD1hXrbCauD5vJx+88
-	DQj0iJFuFIT6sRy0RuK05RVFI4RzZxY9xSiRv0/oenBmUxJl8wcJZvLWF3ErreB21q3vq/bKevG+d
-	xi1HYUahg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Oinhx1D+Bxo+LTTNiG7j+/SJEpVP9uSLxCFE1Acar0k=; b=VR7nj9hhLxEoAv
+	mq/9zwtxSpUqrU1henJ8KUz1pG30W8KyGpGq8MI+eVCFEwo/CLlQbCKXrWV6pho0Hv3/2gKNV0fZx
+	p64qsJHVCHp8RofuXnuZYoYhwRnvUFUGdVRqUoIyrYYIpMeHvb7UuwrWdoOpf01sdF3IlJeQq+2Fs
+	A4wKLpU3QiSQSffuL1HLxdT9NpecpVlNlNf1QKyxg9lg0P84FI5+mopQ/J4tXovMbJNoOo+AhUq7J
+	TrUuOKdtQbhupWFTsxrnFeU4wdwCQULOYfqSJKdZXt++bxryitsVg2pIiaM4kYGA+oaz/hr3VMgZ8
+	44HNJ6WwRLc/gmGT70Kg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJk50-0002cl-S3; Wed, 01 Apr 2020 20:35:18 +0000
-Received: from mail-pg1-f177.google.com ([209.85.215.177])
+	id 1jJkDD-0006gV-Lg; Wed, 01 Apr 2020 20:43:47 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJk4w-0002c3-BO
- for linux-nvme@lists.infradead.org; Wed, 01 Apr 2020 20:35:15 +0000
-Received: by mail-pg1-f177.google.com with SMTP id t24so703200pgj.7
- for <linux-nvme@lists.infradead.org>; Wed, 01 Apr 2020 13:35:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=nWpDQmZNg8zKVk12QskQ7NNS05C4fI/JmZBKLdKyu8Q=;
- b=lBXgIlvR6kgaZew4iIkDsEOSA8OGz0LblmQ6PRd1rC9pEbDDNx9msHxmgOUEDlGT0F
- WZeDE9a7to5L/ld59bCkn6dep8jC1BfrjvkXgPuhfsIhP4tDzyLo1igG2OfkDRtj6GDv
- 3WTGsNpjPpmdqZR218SiepEQQqwXCCSGTZdIhqW7PUKF9K5lAMBoJeB5PTG2v9yP7KEf
- HTYfakoEztk1D5ZuPhEEuZL559ks25kF5+7Drs9f+xgTGIkhvVbsbs/bkD7I2Y0vQc5I
- 9SDwUZzONAGt5q7yU0hUtu3mfFp2Tx2I6KbnCd/zULlJ91hlZEQJ8/goM2Qdi5htgIxq
- PeJQ==
-X-Gm-Message-State: ANhLgQ09m1MEHKX46yeR0TkatisjVHlZXWtdXhPdg+qrKWKCHcRg3poI
- dbtNRvtFq5NuTIV1/j1AashYF6ce
-X-Google-Smtp-Source: ADFU+vs3knuq5g0CdNYDBiacFn1MPeDItGiSqm8k8/3DL9iHZU7bD4RHXxysKUSeAoBJWBrxgXThuA==
-X-Received: by 2002:a63:cf03:: with SMTP id j3mr24187992pgg.433.1585773313094; 
- Wed, 01 Apr 2020 13:35:13 -0700 (PDT)
-Received: from ?IPv6:2601:647:4802:9070:a836:db4c:a7ac:3d7c?
- ([2601:647:4802:9070:a836:db4c:a7ac:3d7c])
- by smtp.gmail.com with ESMTPSA id s39sm2332629pjb.10.2020.04.01.13.35.12
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 01 Apr 2020 13:35:12 -0700 (PDT)
-Subject: Re: [PATCH] nvmetcli: Correct xrange usage for py3
-To: Tony Asleson <tasleson@redhat.com>, linux-nvme@lists.infradead.org
-References: <20200401191316.54355-1-tasleson@redhat.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <3ddf95f2-5f4e-21b1-e8d1-fac8e7af195b@grimberg.me>
-Date: Wed, 1 Apr 2020 13:35:11 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Firefox/60.0 Thunderbird/60.9.0
+ id 1jJkD9-0006gC-HZ
+ for linux-nvme@lists.infradead.org; Wed, 01 Apr 2020 20:43:44 +0000
+Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B4E6A20784;
+ Wed,  1 Apr 2020 20:43:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1585773823;
+ bh=+x6ISKCPt3l2GHxP2YUa+4FUFuEaRZZZe42OGiQSjvc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=d06gCX/PLbakmPtdqgeY/i+g/bT15qDiWenn3BLVJO6Ac2OTWApIRDqyG+5soHQUP
+ T03kp9GfnQphB37lq2bVCnco2MUbhxyXVim5VJ6Z04L9G+pSovD3KV7z9hu/vZ7dNd
+ 0953nPuAfApicfFo06P/5lZlTEI1tTXQO4jSIczU=
+Date: Thu, 2 Apr 2020 05:43:36 +0900
+From: Keith Busch <kbusch@kernel.org>
+To: Sagi Grimberg <sagi@grimberg.me>
+Subject: Re: [PATCH rfc 2/2] fabrics: allow user to pass hostname instead of
+ traddr
+Message-ID: <20200401204336.GA16884@redsun51.ssa.fujisawa.hgst.com>
+References: <20200324090324.24459-1-sagi@grimberg.me>
+ <20200324090324.24459-3-sagi@grimberg.me>
+ <20200401193908.GB1144965@dhcp-10-100-145-180.wdl.wdc.com>
+ <66d26b09-7a9f-cd2c-c2c4-e7e311271f5d@grimberg.me>
 MIME-Version: 1.0
-In-Reply-To: <20200401191316.54355-1-tasleson@redhat.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <66d26b09-7a9f-cd2c-c2c4-e7e311271f5d@grimberg.me>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200401_133514_388665_B08DE9E2 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20200401_134343_606545_97CD8115 
+X-CRM114-Status: GOOD (  20.44  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.215.177 listed in list.dnswl.org]
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [sagigrim[at]gmail.com]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.215.177 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,12 +80,62 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+On Wed, Apr 01, 2020 at 01:33:40PM -0700, Sagi Grimberg wrote:
+> 
+> > > Some users would like to use well known hostnames instead
+> > > of remembering ip addresses. So, allow users to pass --hostname
+> > > and we will attempt to resolve against the DNS.
+> > > 
+> > > Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+> > > ---
+> > >   fabrics.c | 75 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> > >   1 file changed, 75 insertions(+)
+> > > 
+> > > diff --git a/fabrics.c b/fabrics.c
+> > > index a7d628b1f0c9..7bd95c4b0d10 100644
+> > > --- a/fabrics.c
+> > > +++ b/fabrics.c
+> > > @@ -33,6 +33,10 @@
+> > >   #include <sys/stat.h>
+> > >   #include <stddef.h>
+> > > +#include <sys/types.h>
+> > > +#include <arpa/inet.h>
+> > > +#include <netdb.h>
+> > > +
+> > >   #include "util/parser.h"
+> > >   #include "nvme-ioctl.h"
+> > >   #include "nvme-status.h"
+> > > @@ -60,6 +64,7 @@ static struct config {
+> > >   	char *nqn;
+> > >   	char *transport;
+> > >   	char *traddr;
+> > > +	char *hostname;
+> > >   	char *trsvcid;
+> > >   	char *host_traddr;
+> > >   	char *hostnqn;
+> > > @@ -857,6 +862,54 @@ static int build_options(char *argstr, int max_len, bool discover)
+> > >   	return 0;
+> > >   }
+> > 
+> > The code looks fine.
+> > 
+> > I realize 'hostname' in this context is referring to the remote host and
+> > resolves the target's transport address, but it just sounds potentially
+> > confusing given we have "host_traddr". I'm not sure of a better name,
+> > though, so if this is normal convention, then okay.
+> 
+> We could do it like ssh that can accept either IP or hostname (we check
+> if string is IP and if not, resort to name resolution)
+> 
+> Is that preferable?
+
+Yah, that option sounds more appealing to me.
 
 _______________________________________________
 linux-nvme mailing list
