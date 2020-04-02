@@ -2,42 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A29019BE16
-	for <lists+linux-nvme@lfdr.de>; Thu,  2 Apr 2020 10:51:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BC68E19BE1A
+	for <lists+linux-nvme@lfdr.de>; Thu,  2 Apr 2020 10:52:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sL2lnZg5sAmFMnNPG6UvRweu9OkexXe38VHXzpAqtH0=; b=rlgpdnhcReVm1O
-	xygJ1fAhr8WJOPrxwXkMpbsZQLasUFv3aPgeIJu1q5NrSLn7L8eLMrxD+ZXH+09uetUN1BMyTMbN+
-	Y+SeXSUv3zk6jfJmg6kuEgAKNNR1AzPJeJLqAXclfSfq6kdIrJmgVPbaw782ifHkxVMjV6HFf5pSE
-	X7tz3pw/1uh3Wgn2w/w8S94FpHJRBNbxRwkAnEp4Ggm6ply7bDmTpU4IWKxC/D9m6kZJsaaEUvU3O
-	O70WXNJ2x9sxOFDL5/VBrnS7xqiTs4WtoW6qXFE/8QTeiArNvwLnt6L1iRh2WPRgVp2+yChdi0coy
-	xx2NUeSwtBeFY6GFv6tg==;
+	List-Owner; bh=Ell1OW+Pz78hBjZSXg/8MPl/jXceE3oswLxY65dF5pQ=; b=pdqSLwkcPDJBGP
+	BvdMSfbyWntA2KRKj/BQbQbtHP+HUdE7I8jcNRIadbgGXM54yLy0uYjTgpNytX608MrKx/ew0VqWV
+	sFUfaHtjbMa9A+BkU5hT2pOcSJXrwzUZAmfoSG2iPPx+RH8ksfqhGtTgV3GuYz0aVW5oU3oWu6Ysv
+	ZaErtq/PFtQT2WEtmn50h5pf0bfo6851/nQionTsL+5wsHUMdhqtDdURHAKWkGZdorYyYGknqaIkT
+	neJd3GCpktNJDJ+NrQgKEewva3Q6GyHJc5ZVLqncVmybSAUU0EQ5U9+WJqu5Tg8eZHk/32jQQVRXy
+	eHvUoSO8Pe4wh+K3ZxNQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJvZj-0001T5-PX; Thu, 02 Apr 2020 08:51:47 +0000
+	id 1jJvab-0001hK-Tj; Thu, 02 Apr 2020 08:52:41 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJvZe-0001Sh-5f
- for linux-nvme@lists.infradead.org; Thu, 02 Apr 2020 08:51:44 +0000
+ id 1jJvaX-0001h2-Mj
+ for linux-nvme@lists.infradead.org; Thu, 02 Apr 2020 08:52:38 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id B39F868C4E; Thu,  2 Apr 2020 10:51:39 +0200 (CEST)
-Date: Thu, 2 Apr 2020 10:51:39 +0200
+ id 9EF9768C4E; Thu,  2 Apr 2020 10:52:35 +0200 (CEST)
+Date: Thu, 2 Apr 2020 10:52:35 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH] nvmet: fix NULL dereference when removing a referral
-Message-ID: <20200402085139.GA18984@lst.de>
-References: <20200401231627.23553-1-sagi@grimberg.me>
+Subject: Re: [PATCH v2] nvme: inherit stable pages constraint in the mpath
+ stack device
+Message-ID: <20200402085235.GA19091@lst.de>
+References: <20200402054443.14950-1-sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200401231627.23553-1-sagi@grimberg.me>
+In-Reply-To: <20200402054443.14950-1-sagi@grimberg.me>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_015142_368461_DA13A2D6 
-X-CRM114-Status: UNSURE (   6.62  )
+X-CRM114-CacheID: sfid-20200402_015237_887565_E44DC07A 
+X-CRM114-Status: UNSURE (   6.65  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
@@ -59,14 +60,16 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, Tony Asleson <tasleson@redhat.com>,
- Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org
+Cc: Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Applied to nvme-5.7 with a little indentation fix.
+Thanks,
+
+applied to nvme-5.7.
 
 _______________________________________________
 linux-nvme mailing list
