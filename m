@@ -2,43 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED8F919D062
-	for <lists+linux-nvme@lfdr.de>; Fri,  3 Apr 2020 08:43:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FF3F19D064
+	for <lists+linux-nvme@lfdr.de>; Fri,  3 Apr 2020 08:47:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zVIeTIJ8tVc6YuVHowg1iNvI4BE3GJpRi+ev2Wb9R+M=; b=NQ1AsomgTt6kgM
-	eBGRgL3LaphtvMPkY1E5Yxhmu9ojUP/zpYysK3/oLJwqYIHL6hVxreTxifedNKDwoiNqA8uvf4/Sf
-	4dorUWSmCm+tLhFnciWCQGqPc4GQ1Sp04O9VRSCzXSs+BiCwTXJ4ySFiYAJ4cBjpJkLK19AkI0vlb
-	Mie+KGJiuA3LV1sSNNTOjhtltmu2WspPfnIs3yBIYOkI97htq1t4UYw5n4NCDjtDIe11SCG7HaXnX
-	rMUUk2FfPGWNpYaKgoWXw2Ko7UJY0627y+WdkOt2IOZ8vh12vUYnL25ig7dx0BHz8QFvbMnLSdVam
-	Qt/Su9Z7V7C2i5gWHCVg==;
+	List-Owner; bh=Ell1OW+Pz78hBjZSXg/8MPl/jXceE3oswLxY65dF5pQ=; b=InqTNnw8bhQw6A
+	GyKA5WFPLnQ8cnpIBtuGbGsd+Xgx1qh5d6XAQ97ua++GgZQgOU53HerlmoBW7rwYEDnWzWUBJOGLo
+	vqOvYpj9KCRu45f1rmOhsdf00jAth/cpNI5om6/0euJMyhgZErnO1FmqF6Ppx1PQAABqViVuiZGx6
+	+hgB111E1dtAyEyZMU0D3BNfdD0JWEVUbksOflvygMXBDzEpauXA9OdCKwS3PewCtBhDmWMN1LUw4
+	pm2BFzYVIjmybzbaK3XBZJ08ghvOnzR0W/0Q4B96uzOu51Ymh54bMWS+Bn5T0kXprqVvBeb19l4sE
+	vCz0kIP0/RWnFFF+FSTg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKG3F-0001wF-Vd; Fri, 03 Apr 2020 06:43:37 +0000
+	id 1jKG6R-00050F-74; Fri, 03 Apr 2020 06:46:55 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKG3C-0001vv-7e
- for linux-nvme@lists.infradead.org; Fri, 03 Apr 2020 06:43:35 +0000
+ id 1jKG6N-0004ze-Az
+ for linux-nvme@lists.infradead.org; Fri, 03 Apr 2020 06:46:52 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id E9AE468B05; Fri,  3 Apr 2020 08:43:31 +0200 (CEST)
-Date: Fri, 3 Apr 2020 08:43:31 +0200
+ id 959F768B05; Fri,  3 Apr 2020 08:46:48 +0200 (CEST)
+Date: Fri, 3 Apr 2020 08:46:48 +0200
 From: Christoph Hellwig <hch@lst.de>
-To: Anthony Iliopoulos <ailiop@suse.com>
-Subject: Re: [PATCH] nvmet: add revalidation support to bdev and file
- backed namespaces
-Message-ID: <20200403064331.GA23270@lst.de>
-References: <20200402193052.19935-1-ailiop@suse.com>
+To: Sagi Grimberg <sagi@grimberg.me>
+Subject: Re: [PATCH v2] nvmet-rdma: fix bonding failover possible NULL deref
+Message-ID: <20200403064648.GA23485@lst.de>
+References: <20200402154853.14108-1-sagi@grimberg.me>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200402193052.19935-1-ailiop@suse.com>
+In-Reply-To: <20200402154853.14108-1-sagi@grimberg.me>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_234334_422834_E95D8EB6 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20200402_234651_525371_EAE22FDC 
+X-CRM114-Status: UNSURE (   6.99  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -59,58 +59,17 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- Christoph Hellwig <hch@lst.de>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
- Sagi Grimberg <sagi@grimberg.me>
+Cc: Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
+ Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
+ Alex Lyakas <alex@zadara.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Apr 02, 2020 at 09:30:52PM +0200, Anthony Iliopoulos wrote:
-> Add support for detecting capacity changes on nvmet blockdev and file
-> backed namespaces. This allows for emulating and testing online resizing
-> of nvme devices and filesystems on top.
-> 
-> Signed-off-by: Anthony Iliopoulos <ailiop@suse.com>
+Thanks,
 
-I vaguely remember seeing a very similar patch before, is this a repost?
-
-> +void nvmet_bdev_ns_revalidate(struct nvmet_ns *ns)
-> +{
-> +	loff_t size;
-> +
-> +	size = i_size_read(ns->bdev->bd_inode);
-> +
-> +	if (ns->size != size)
-> +		ns->size = size;
-
-This can be:
-
-	ns->size = i_size_read(ns->bdev->bd_inode);
-
-> +void nvmet_file_ns_revalidate(struct nvmet_ns *ns)
-> +{
-> +	struct kstat stat;
-> +
-> +	if (!ns->file)
-> +		return;
-
-Shouldn't this always be non-NULL?
-
-> +
-> +	if (vfs_getattr(&ns->file->f_path,
-> +			&stat, STATX_SIZE, AT_STATX_FORCE_SYNC))
-> +		return;
-
-Use up the full line:
-
-	if (vfs_getattr(&ns->file->f_path, &stat, STATX_SIZE,
-			AT_STATX_FORCE_SYNC))
-
-Also shouldn't there be error handling?  If we can't stat the file
-the namespace is toast.
+applied to nvme-5.7.
 
 _______________________________________________
 linux-nvme mailing list
