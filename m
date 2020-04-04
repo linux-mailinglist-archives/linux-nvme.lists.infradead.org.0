@@ -2,137 +2,52 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDB5719DF6C
-	for <lists+linux-nvme@lfdr.de>; Fri,  3 Apr 2020 22:32:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B81F419E327
+	for <lists+linux-nvme@lfdr.de>; Sat,  4 Apr 2020 09:04:53 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=i2QRzGuxBq1ex0Rc+V3WuU6+yiW0b6vs584LbNv+pFQ=; b=cfUj6dBsa7bXJd
-	2w66BYbEcNDIsSnZ1fhiMXvG7ET1AnxgZyh0SVQUw5QMFiQbycJp+sj8a5XoUMg/Pvdw3pEqayhUB
-	ITO1vdFxbj+zNTgf4uy0rH6ym984WY16CktXROLz+vaLVnnZWrYX2NrtyrRSc3JEcdrPUUQxYkOv/
-	RlHaiaUXNpiyELD4EY5X6ZfSyIG7yj9i/EeYgXs92CbABxYxGAXOCvVmE4Ykv2spZo7FgCQOldhnR
-	jblZkcwd55brOezS9u+GZeeLcmm7i6Y+dTWgau9xkfG6d3sp9n0FyOiCbVqOFjHppao8uaUBJbpB6
-	8Q/GEDWgdOO6RnjT4Nkg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5bvRvskzsanTRmtsT3kyoOn3s0XT+6JZq9VN7Fle10E=; b=G7TDm/Rnc45qas
+	iAfrwCIDOjFUCko4otkMfxuVxT4YGJ5kC7doWErKcjj10eawlXnoWnilhiRdoJN2Bs959agf6sLol
+	zMXU34dEwQ1cfWdKCHRvB4CQPdQJlFnEZnXAauL2XVe46tbdUDdH7GCkwqn7FJSJ2/2OvC3h8I2DB
+	ErpRezxjvjG2qcjGHVwRnCXneyjQt/glcvL4RYk43QnVSWKRaKENBJK1+d1Ei2b0Rd/0nXK6lNHb8
+	+9arVQHdrPquov+0BB52Kot5lzmSOcmSoIN/O5/nGELXcOpDg+EWGKO8dQtxYhNQ3G0iaYjIYQXaI
+	axgZ+8kdWdiv9BLPmffw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKSzd-0000Xv-5H; Fri, 03 Apr 2020 20:32:45 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1jKcrF-0004Vd-Cw; Sat, 04 Apr 2020 07:04:45 +0000
+Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKSzZ-0000WG-57
- for linux-nvme@lists.infradead.org; Fri, 03 Apr 2020 20:32:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1585945960; x=1617481960;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=ylG8HtgSwNNAsvhFRzAb+4W0lWFHYX3md4drwkGNgtg=;
- b=U3Z7I/qSn5JAelTG2XTmKobMqaaW13XTKpph1i0aCPkVaMAbrBlOuEHf
- 4a5QPwh4jIyTO8S27YdP1ebzBtqtR/PV9sOpK7frs7SfzTBKcUm2gr2kg
- 5bh6pvQOi7KZkuKcWh/yTkzNDGYv4HQisM2U8Qbnex1ys6V0F77BgeO6b
- 3Gp3sztKe8hgk+uOMVoxwBdAZzs090voyfeQlxY03WKAGZ6IphVq6r0C0
- aEOJpB6+OUCJafBpUXKFw6LlLba+ZFBFTuYrQnyEMnQ+aLm+9UhOocn5H
- mi40JpWvXPGx++Y6vIxT+L7QQ+c6sUT0JKVqWzeu3dGej76OialWeyRLa w==;
-IronPort-SDR: MfkCdQnleznSwbWjy2dARuMlINjU48IjJXfEfJMG8rPmtei5A6Eqx8o+YBdpXQvFcoEKUp8Du3
- 3f/n3kVjMd/CFm7RPeayQ9kJkOWRDHivBI+AvH5NDtB9Jrupm9wjziKUmpC9JpcjFxA4ZXJlM1
- UFfmWiok0wRZs12B6Ie24r3q5nhUwsXGgkAa+YEuAuH9AQK1JFwdLnzrJD7C4aoCjgUavGNatC
- MwpoHfWm6TvM9XA3VCschQ7Mmzx3j3e3lqaxU+LIpLzlATZw4l3fOcDl5lBxoPFHVZpPZdjq0V
- KBU=
-X-IronPort-AV: E=Sophos;i="5.72,341,1580745600"; d="scan'208";a="243053733"
-Received: from mail-bn8nam12lp2172.outbound.protection.outlook.com (HELO
- NAM12-BN8-obe.outbound.protection.outlook.com) ([104.47.55.172])
- by ob1.hgst.iphmx.com with ESMTP; 04 Apr 2020 04:32:39 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LL/d/CvF+Jbhpo0cEK9UJrJD45iyT7d+Hm1jl537FTIW7v1VTkJcW74pQlNCzk7GFQuKxDmigOadORh3uQ9sXv9BZa9NdT1dkAq2AV0OG2zQtVmiSxCe+rIUr5zRsEVZbsn2hSGlsgfVMz4PT4X+X3z92TgW8ILNxdf8vRLpUjOVE3Z3I92iacCu6E9QglIvgYTWNH9qv9NPibEzEeX1vG8HcaT+F+QNh8ORudRd4OZcJwRbgEydFPmpVtimQ7ScS1SYOJlhdgRRJvEuJUYonIMMDiIXcw/nE23W6iN3ULLYvynbvUzWdaEC0sJL77zYbCJleY5J0tpFByHSTRUi5Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ylG8HtgSwNNAsvhFRzAb+4W0lWFHYX3md4drwkGNgtg=;
- b=katweua2Sb38hUSYuAqKbxcRnJEW7GCYbf3vu4RxBgsug1alWl7LcTiXfOr09cWrKVYmGMl6z4yqwDak9PbSlCuhJbsJqMiRWxKMBpopIB89d2YtX0OJ2b8fPDKQJLOxnrXwdi+g0NvajK2/SZGQqGPif/zV+vWYy1EdMszmbYn5aO3BYpN/dgW/CdrDQHUFnehr/jxKLdIyIaPLqWZGXbjzaSGDqhf9cnSu22dShRqpCe6Ppjnir4Ee8pVeuZohpcG4TeSPNZW/cNdDWvZrQpybLCX81tC2CvgwmoL/F6A+hLlawvm8Q2g3FPGSVHij0sTyo8b1lQRayW6JdPrqbg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ylG8HtgSwNNAsvhFRzAb+4W0lWFHYX3md4drwkGNgtg=;
- b=eEBu1XLkDWHfENEUV7ZZqR2odHLqA7ZbMVm8qZowBg+mFJmOQ31tO0tJ0fdydHx+bpTbRgvEB0JAYIReWb4ILHteMtKxUZGJ3x4Ok+dybEbyKFHUhge6NuyzzvjIaGaP3q4zDZxqZASNa0/W8z0TdoolmQyRD9pDn0IhwXtWpts=
-Received: from BYAPR04MB4965.namprd04.prod.outlook.com (2603:10b6:a03:4d::25)
- by BYAPR04MB4296.namprd04.prod.outlook.com (2603:10b6:a02:fa::27)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2856.18; Fri, 3 Apr
- 2020 20:32:38 +0000
-Received: from BYAPR04MB4965.namprd04.prod.outlook.com
- ([fe80::d826:82b2:764f:9733]) by BYAPR04MB4965.namprd04.prod.outlook.com
- ([fe80::d826:82b2:764f:9733%7]) with mapi id 15.20.2878.018; Fri, 3 Apr 2020
- 20:32:38 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Anthony Iliopoulos <ailiop@suse.com>, Christoph Hellwig <hch@lst.de>, Sagi
- Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH] nvmet: add revalidation support to bdev and file backed
- namespaces
-Thread-Topic: [PATCH] nvmet: add revalidation support to bdev and file backed
- namespaces
-Thread-Index: AQHWCSVL06kuVSKmBEqONSGslHKI9A==
-Date: Fri, 3 Apr 2020 20:32:38 +0000
-Message-ID: <BYAPR04MB4965EDFD23CEC6422BE4523A86C70@BYAPR04MB4965.namprd04.prod.outlook.com>
-References: <20200402193052.19935-1-ailiop@suse.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.45.62]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: a1ddf8ce-9533-4e6f-b20f-08d7d80e267a
-x-ms-traffictypediagnostic: BYAPR04MB4296:
-x-microsoft-antispam-prvs: <BYAPR04MB4296FC77E8D3B62C5680F0B586C70@BYAPR04MB4296.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:5236;
-x-forefront-prvs: 0362BF9FDB
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR04MB4965.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(4636009)(39860400002)(346002)(366004)(136003)(376002)(396003)(478600001)(4744005)(55016002)(110136005)(4326008)(54906003)(316002)(186003)(7696005)(66556008)(86362001)(53546011)(33656002)(52536014)(8936002)(66446008)(5660300002)(8676002)(66946007)(66476007)(76116006)(6506007)(81166006)(71200400001)(64756008)(26005)(9686003)(2906002)(81156014);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: c9cpWM3OqsL37p3YwT2vJz2f+IhxoQiidGIaMiVM2xpg0yY833kU8qYpbXKnJEboXw+n9iHk0gU3lXS0gpg5dDQLTMYxNK+PeNGp9LvK9AWc4YBznaLt/AgfbiSsI0jw/PFBShU9BRSdI7K9CrTZiXvwPqDXV5bBLaphzw41hXTnGmSWxiuQ+iZwSABNZhZtiwpuEEBHqceJLtumB/aVM59WDAypXm2PNDqCxM0zgXSEIjeMJLsWjw/hAjHglb+GDPf3BMl2zC3sELrc5wmu4EUeiN1pHc1UrdihPTunJag14g4Zfl1vi6sK9RIaYDCKy/hCAuqgeNp6thHEQy0TF2p46xOmhgvflCOBd9iGNAX/uvUK4honfN4t7IoHFeQepriX3RylDKfE1LMzQg4Qiz1fiJc+qDgo0RkUOt/NG3pCJQVTkOWYmO4rMqHsaqYU
-x-ms-exchange-antispam-messagedata: Ko7m3DXITTVB/LAYA5khRsnVSvGApbtrD6CsqUKDH5JGdfSomrKBqPBGpxF/a1RqfZgskaSHGmpPGjZVgxYAFT7Q7QfOdzlDKHssLbXT0j/iPS0Vz2AbBuSXBCaNmLJ+jYAcxdhieTvRC9aheWi96g==
-x-ms-exchange-transport-forked: True
+ id 1jKcrC-0004VJ-3K
+ for linux-nvme@lists.infradead.org; Sat, 04 Apr 2020 07:04:43 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 736A868C4E; Sat,  4 Apr 2020 09:04:37 +0200 (CEST)
+Date: Sat, 4 Apr 2020 09:04:37 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCHv2] nvme: define constants for identification values
+Message-ID: <20200404070437.GA14423@lst.de>
+References: <20200403175346.1571822-1-kbusch@kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a1ddf8ce-9533-4e6f-b20f-08d7d80e267a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Apr 2020 20:32:38.2081 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 7Ls3/VWuE3mGVr0U3JfCCRPNLJEGNyA7kuFjktVUMp8vzydGc0AdG+/UsSM1cmGrleU1Ek/YBRs37vNSL5+MbyPtshbMKubBrlyzqaOAjTY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB4296
+Content-Disposition: inline
+In-Reply-To: <20200403175346.1571822-1-kbusch@kernel.org>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_133241_207794_46AC58E8 
-X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-CacheID: sfid-20200404_000442_287880_104F1834 
+X-CRM114-Status: UNSURE (   7.45  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.5 (--)
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.141.245 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,23 +59,22 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Cc: hch@lst.de, linux-nvme@lists.infradead.org, sagi@grimberg.me
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 04/02/2020 12:31 PM, Anthony Iliopoulos wrote:
-> Add support for detecting capacity changes on nvmet blockdev and file
-> backed namespaces. This allows for emulating and testing online resizing
-> of nvme devices and filesystems on top.
->
-> Signed-off-by: Anthony Iliopoulos<ailiop@suse.com>
-> ---
+On Fri, Apr 03, 2020 at 10:53:46AM -0700, Keith Busch wrote:
+> Improve code readability by defining the specification's constants that
+> the driver is using when decoding identification payloads.
+> 
+> Signed-off-by: Keith Busch <kbusch@kernel.org>
 
-Please ignore my duplicate comments from other, I try not to read
-other's comments before the review.
+I can't say I find this an improvement - the bit values allow you
+to jump straight to the spec, while the names need a translation
+(either to the actual bit or the spec name without underscores and co
+first).
 
 _______________________________________________
 linux-nvme mailing list
