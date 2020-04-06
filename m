@@ -2,32 +2,32 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90B2819F5A8
-	for <lists+linux-nvme@lfdr.de>; Mon,  6 Apr 2020 14:14:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6103E19F5A9
+	for <lists+linux-nvme@lfdr.de>; Mon,  6 Apr 2020 14:14:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xQrAkvWL/htt1Pz5WuRi7ba7QvlPlnBIAK8SoHb2w8Y=; b=H6E4b67MNBqHjq
-	lZbTkTlplCE9nD+dMSBTqFmNuhQbcWh3w9bb1WnZZH027xQ+oem8fiz6RueY20//fvz5/+mcSGFma
-	pGc3cg+TsuUb41AU+6q/XTgylxtkS70DD8miBaeC5SSmlG5c9fi0D4RmGexfBlXuJLIOPe3k33LL/
-	6DjwYbvj+lTTG8LDqNsfuB5wzCLRo/PoJsRG2YvOQkYhnkd5oRSLSM9CdkWu7Lco2alm4H7WpprQ3
-	DIDXx6nS2VEJoX9GIosKFKKN2RtIU9QkImF0U6gCL0OlCuVcJGrkXH+l7gPi3nDAyyZWTMgeQzzTC
-	VagM+Xenw7QqyWKXVk7Q==;
+	List-Owner; bh=63qyyU/Z10PdthlGVmoOUIPZjnlQ/N9NBkPFlfpnLt8=; b=doSVRgfxbTkV22
+	yEEeowpW/oSsStegCXAM6/YhiqX37gmCOjBWHcn85swUsEiAeRJWhPqpacM6w4voAyR9ex0exHKLr
+	knpLNn06/a0Ylzv0gMjSkL1ue0aC04jDtgGXjcUs+hjbl6aiYqlb0uFE4qaeYQ3LepndDxB8qE+A4
+	0oEB+4maf8A4G7eGF/fjGGJ9RsYRyWTl6gUorFuFrpoV6r4Bvx0fdiLF4VM1B11zpOTr+XqM5YRo0
+	gTpYDdaBsrPiiLPFuOHpbfMIQUVJuSUxHDNnUO0yI0uuVznnHjyRcyTAz9aug9X4+pP+SP+RudHNz
+	jtKs4hKy7v0GKFoVdoeg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLQdt-0004G2-W2; Mon, 06 Apr 2020 12:14:17 +0000
+	id 1jLQe4-0004Vq-94; Mon, 06 Apr 2020 12:14:28 +0000
 Received: from [2001:4bb8:180:5765:7ca0:239a:fe26:fec2] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLQdY-00046v-UV; Mon, 06 Apr 2020 12:13:57 +0000
+ id 1jLQdb-00048s-Gy; Mon, 06 Apr 2020 12:13:59 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Keith Busch <kbusch@kernel.org>,
 	Sagi Grimberg <sagi@grimberg.me>
-Subject: [PATCH 1/5] nvme: refine the Qemu Identify CNS quirk
-Date: Mon,  6 Apr 2020 14:13:48 +0200
-Message-Id: <20200406121352.1151026-2-hch@lst.de>
+Subject: [PATCH 2/5] nvme: clean up nvme_scan_work
+Date: Mon,  6 Apr 2020 14:13:49 +0200
+Message-Id: <20200406121352.1151026-3-hch@lst.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200406121352.1151026-1-hch@lst.de>
 References: <20200406121352.1151026-1-hch@lst.de>
@@ -49,49 +49,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Add a helper to check if we can use Identify CNS values > 1, and refine
-the Qemu quirk to not apply to reported versions larger than 1.1, as the
-Qemu implementation had been fixed by then.
+Move the check for the supported CNS value into nvme_scan_ns_list, and
+limit the life time of the identify controller allocation.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/nvme/host/core.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ drivers/nvme/host/core.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 05aa3525ef06..01889905875b 100644
+index 01889905875b..5fcc35f74eac 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -1027,6 +1027,19 @@ void nvme_stop_keep_alive(struct nvme_ctrl *ctrl)
- }
- EXPORT_SYMBOL_GPL(nvme_stop_keep_alive);
+@@ -3736,6 +3736,9 @@ static int nvme_scan_ns_list(struct nvme_ctrl *ctrl, unsigned nn)
+ 	unsigned num_lists = DIV_ROUND_UP_ULL((u64)nn, 1024);
+ 	int ret = 0;
  
-+/*
-+ * In NVMe 1.0 the CNS field was just a binary controller or namespace
-+ * flag, thus sending any new CNS opcodes has a big chance of not working.
-+ * Qemu unfortunately had that bug after reporting a 1.1 version compliance
-+ * (but not for any later version).
-+ */
-+static bool nvme_ctrl_limited_cns(struct nvme_ctrl *ctrl)
-+{
-+	if (ctrl->quirks & NVME_QUIRK_IDENTIFY_CNS)
-+		return ctrl->vs < NVME_VS(1, 2, 0);
-+	return ctrl->vs < NVME_VS(1, 1, 0);
-+}
++	if (nvme_ctrl_limited_cns(ctrl))
++		return -EOPNOTSUPP;
 +
- static int nvme_identify_ctrl(struct nvme_ctrl *dev, struct nvme_id_ctrl **id)
- {
- 	struct nvme_command c = { };
-@@ -3812,8 +3825,7 @@ static void nvme_scan_work(struct work_struct *work)
+ 	ns_list = kzalloc(NVME_IDENTIFY_DATA_SIZE, GFP_KERNEL);
+ 	if (!ns_list)
+ 		return -ENOMEM;
+@@ -3822,17 +3825,14 @@ static void nvme_scan_work(struct work_struct *work)
+ 
+ 	if (nvme_identify_ctrl(ctrl, &id))
+ 		return;
++	nn = le32_to_cpu(id->nn);
++	kfree(id);
  
  	mutex_lock(&ctrl->scan_lock);
- 	nn = le32_to_cpu(id->nn);
--	if (ctrl->vs >= NVME_VS(1, 1, 0) &&
--	    !(ctrl->quirks & NVME_QUIRK_IDENTIFY_CNS)) {
-+	if (!nvme_ctrl_limited_cns(ctrl)) {
- 		if (!nvme_scan_ns_list(ctrl, nn))
- 			goto out_free_id;
- 	}
+-	nn = le32_to_cpu(id->nn);
+-	if (!nvme_ctrl_limited_cns(ctrl)) {
+-		if (!nvme_scan_ns_list(ctrl, nn))
+-			goto out_free_id;
+-	}
+-	nvme_scan_ns_sequential(ctrl, nn);
+-out_free_id:
++	if (nvme_scan_ns_list(ctrl, nn) != 0)
++		nvme_scan_ns_sequential(ctrl, nn);
+ 	mutex_unlock(&ctrl->scan_lock);
+-	kfree(id);
++
+ 	down_write(&ctrl->namespaces_rwsem);
+ 	list_sort(NULL, &ctrl->namespaces, ns_cmp);
+ 	up_write(&ctrl->namespaces_rwsem);
 -- 
 2.25.1
 
