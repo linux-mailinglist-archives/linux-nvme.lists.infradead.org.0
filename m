@@ -2,32 +2,32 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6103E19F5A9
-	for <lists+linux-nvme@lfdr.de>; Mon,  6 Apr 2020 14:14:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E10819F5AB
+	for <lists+linux-nvme@lfdr.de>; Mon,  6 Apr 2020 14:14:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=63qyyU/Z10PdthlGVmoOUIPZjnlQ/N9NBkPFlfpnLt8=; b=doSVRgfxbTkV22
-	yEEeowpW/oSsStegCXAM6/YhiqX37gmCOjBWHcn85swUsEiAeRJWhPqpacM6w4voAyR9ex0exHKLr
-	knpLNn06/a0Ylzv0gMjSkL1ue0aC04jDtgGXjcUs+hjbl6aiYqlb0uFE4qaeYQ3LepndDxB8qE+A4
-	0oEB+4maf8A4G7eGF/fjGGJ9RsYRyWTl6gUorFuFrpoV6r4Bvx0fdiLF4VM1B11zpOTr+XqM5YRo0
-	gTpYDdaBsrPiiLPFuOHpbfMIQUVJuSUxHDNnUO0yI0uuVznnHjyRcyTAz9aug9X4+pP+SP+RudHNz
-	jtKs4hKy7v0GKFoVdoeg==;
+	List-Owner; bh=UOvbnh4BzrGITpNl5JjEJCyyB3PPfdYUdni8NvO0nZg=; b=Fx5mLa5RX7JBxm
+	FSWrJszjigicOkchR21B8haiT4khg0XZd9hZZpmXShsKliLpTEhDJbAVk8/C/j180B21W3aL8grlG
+	B36b5s6NIS+qUVhxTqBdWnN+aJBiZRsH8XvRACTvwi3e5WW4/yVGR9BU7n6uOp5FSQHZ90q5v4ZKN
+	ds9MWKycDgSi2VlXDgFWyy9R6lEIXk+PnnQO7xpGNRL+xpy6ed2D3P69TN2Xl5PQsX1NXSCC5ztqe
+	1EfeWBKAs27CcU7/vqjzEf4MLLtTiLGtm9BfHXby6H7oO/esqCzfo0aun8aFpu3usceD+OOO/iVhw
+	aFF8napCvBbCqIvZJIXA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLQe4-0004Vq-94; Mon, 06 Apr 2020 12:14:28 +0000
+	id 1jLQeG-0004fp-UQ; Mon, 06 Apr 2020 12:14:40 +0000
 Received: from [2001:4bb8:180:5765:7ca0:239a:fe26:fec2] (helo=localhost)
  by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLQdb-00048s-Gy; Mon, 06 Apr 2020 12:13:59 +0000
+ id 1jLQde-0004B1-2D; Mon, 06 Apr 2020 12:14:02 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: Keith Busch <kbusch@kernel.org>,
 	Sagi Grimberg <sagi@grimberg.me>
-Subject: [PATCH 2/5] nvme: clean up nvme_scan_work
-Date: Mon,  6 Apr 2020 14:13:49 +0200
-Message-Id: <20200406121352.1151026-3-hch@lst.de>
+Subject: [PATCH 3/5] nvme: factor out a nvme_ns_remove_by_nsid helper
+Date: Mon,  6 Apr 2020 14:13:50 +0200
+Message-Id: <20200406121352.1151026-4-hch@lst.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200406121352.1151026-1-hch@lst.de>
 References: <20200406121352.1151026-1-hch@lst.de>
@@ -49,51 +49,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Move the check for the supported CNS value into nvme_scan_ns_list, and
-limit the life time of the identify controller allocation.
+Factor out a pice of deeply indented and logicaly separate piece of code
+from nvme_scan_ns_list.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/nvme/host/core.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/nvme/host/core.c | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 01889905875b..5fcc35f74eac 100644
+index 5fcc35f74eac..ffa1d62eaeb1 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -3736,6 +3736,9 @@ static int nvme_scan_ns_list(struct nvme_ctrl *ctrl, unsigned nn)
+@@ -3697,6 +3697,16 @@ static void nvme_ns_remove(struct nvme_ns *ns)
+ 	nvme_put_ns(ns);
+ }
+ 
++static void nvme_ns_remove_by_nsid(struct nvme_ctrl *ctrl, u32 nsid)
++{
++	struct nvme_ns *ns = nvme_find_get_ns(ctrl, nsid);
++
++	if (ns) {
++		nvme_ns_remove(ns);
++		nvme_put_ns(ns);
++	}
++}
++
+ static void nvme_validate_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+ {
+ 	struct nvme_ns *ns;
+@@ -3730,7 +3740,6 @@ static void nvme_remove_invalid_namespaces(struct nvme_ctrl *ctrl,
+ 
+ static int nvme_scan_ns_list(struct nvme_ctrl *ctrl, unsigned nn)
+ {
+-	struct nvme_ns *ns;
+ 	__le32 *ns_list;
+ 	unsigned i, j, nsid, prev = 0;
  	unsigned num_lists = DIV_ROUND_UP_ULL((u64)nn, 1024);
- 	int ret = 0;
+@@ -3755,13 +3764,8 @@ static int nvme_scan_ns_list(struct nvme_ctrl *ctrl, unsigned nn)
  
-+	if (nvme_ctrl_limited_cns(ctrl))
-+		return -EOPNOTSUPP;
-+
- 	ns_list = kzalloc(NVME_IDENTIFY_DATA_SIZE, GFP_KERNEL);
- 	if (!ns_list)
- 		return -ENOMEM;
-@@ -3822,17 +3825,14 @@ static void nvme_scan_work(struct work_struct *work)
+ 			nvme_validate_ns(ctrl, nsid);
  
- 	if (nvme_identify_ctrl(ctrl, &id))
- 		return;
-+	nn = le32_to_cpu(id->nn);
-+	kfree(id);
- 
- 	mutex_lock(&ctrl->scan_lock);
--	nn = le32_to_cpu(id->nn);
--	if (!nvme_ctrl_limited_cns(ctrl)) {
--		if (!nvme_scan_ns_list(ctrl, nn))
--			goto out_free_id;
--	}
--	nvme_scan_ns_sequential(ctrl, nn);
--out_free_id:
-+	if (nvme_scan_ns_list(ctrl, nn) != 0)
-+		nvme_scan_ns_sequential(ctrl, nn);
- 	mutex_unlock(&ctrl->scan_lock);
--	kfree(id);
-+
- 	down_write(&ctrl->namespaces_rwsem);
- 	list_sort(NULL, &ctrl->namespaces, ns_cmp);
- 	up_write(&ctrl->namespaces_rwsem);
+-			while (++prev < nsid) {
+-				ns = nvme_find_get_ns(ctrl, prev);
+-				if (ns) {
+-					nvme_ns_remove(ns);
+-					nvme_put_ns(ns);
+-				}
+-			}
++			while (++prev < nsid)
++				nvme_ns_remove_by_nsid(ctrl, prev);
+ 		}
+ 		nn -= j;
+ 	}
 -- 
 2.25.1
 
