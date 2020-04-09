@@ -2,52 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8053F1A37C7
-	for <lists+linux-nvme@lfdr.de>; Thu,  9 Apr 2020 18:09:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5EEA51A37C9
+	for <lists+linux-nvme@lfdr.de>; Thu,  9 Apr 2020 18:09:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=l1aGz3OMdCll2ALGcftdy1tOZ7XSeJlGvY26aj5ylNk=; b=HMZSZPqv0USiZZ
-	JGGc/mqQ1bLhew9vh9xO9k8IbeQk2QEMsoWjkS7cTA6bo0IONlS+QNcud/whXEiGebvB6vG5fXln1
-	ldDkOjVU4p6zu12Ic1H3usgfAJnIandsd//ERn8kVWt/ZDkOLRg1CdRAJ2RRyt2RpZb39B3oxeL2K
-	w1hl+XF0TjnYPe7/bp2C5bcZIWScYOywGh0g5Ivkh8kPTjfcTOinZ5htLZPd4/xErxXHkuJE6cdof
-	SuaYRiXS5TyXlI5XYFXelpNJ00yfh5YfnUOgg/uACvcZNGRvdBs857AE94PQyRy6PiWLRCcXbBxic
-	IVo43on5EEtXSxxhvNng==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YW859UIdqfTqliiF/aqcOhs0wx/Qo/j3pOpfnaoQvOU=; b=QwEyJ5sBNI9l98
+	YLm/BMdeDSGZloY4uIj8bbUA3GzAO3hHXD4GXBukgwmAgWTJpKcwCmk5VlYRGrXr00k8gUjoTcFKI
+	WuoiQSS+HLyk89HBUa4mXyCpP1YctQO0Q6sCMtPMWuKbFlQXVIae8x2ThhWscB+dgcu3dFGTEDrpq
+	AFFoij9uMfxj6d0ci28BkofcF0kgEhRE6qDqs4Hvo9Yea9+KCwh968S2KGRrt78dVURYdIi73EHWT
+	R6UG+9Ffkt/5e1KWchxgSCYLH4QWKS4q0ZvwCbbU0/BKWc27MzwXrME/Koj1Zhky7fFJNofJBWSS/
+	jAOQrCjiL4Jt6YpvOVrQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMZjz-0001S2-M7; Thu, 09 Apr 2020 16:09:19 +0000
+	id 1jMZkJ-0001iQ-Vz; Thu, 09 Apr 2020 16:09:39 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMZjq-0001Pj-Bn
+ id 1jMZjq-0001Pz-Kj
  for linux-nvme@lists.infradead.org; Thu, 09 Apr 2020 16:09:12 +0000
 Received: from dhcp-10-100-145-180.wdl.wdc.com (unknown [199.255.45.60])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 78B9D20771;
+ by mail.kernel.org (Postfix) with ESMTPSA id 0A8A72087E;
  Thu,  9 Apr 2020 16:09:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586448549;
- bh=iKWof8b0exp4bjgAolQIwP9IWPfjfT6BA8MFz7/71rA=;
- h=From:To:Cc:Subject:Date:From;
- b=FL/oT+8lRe7FSHAuoBY0OKE4ix838+pLeYYp0asJi+qmJW6zI4N4wi3kaWYjrYGP2
- bXc2/WNAZK23st819dnQSbtuzOAzyWD38VjR3HVMKt5K4s7Vv4sAV6XlRTN+HVVGxd
- xpCWBdmxlj+Tu4h8p7BG8r/vqAr8bmawZwBjVe6s=
+ s=default; t=1586448550;
+ bh=H6tPIUgEVgLHyPf1zRhcNrN6u0CHS2qkpeZEQpaDepE=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=hb077R+xQOzPiTMW7MdhznHdvZL6zZvVcJkgAxgddjgH/q3Nl4Sa8VlaxsA09QHIc
+ 4BSO22/fGoPkQY/P+xRpKFL2doxeXa1uYjWaHlRtBV6CqGYLrUN9TqXqdqCVrklNBk
+ rV38v8Y7Syuozf9dLXaZDuJAiT9aapTqNkimgXCM=
 From: Keith Busch <kbusch@kernel.org>
 To: linux-nvme@lists.infradead.org,
 	hch@lst.de,
 	sagi@grimberg.me
-Subject: [PATCH 00/10] namespace settings updates
-Date: Thu,  9 Apr 2020 09:08:58 -0700
-Message-Id: <20200409160908.1889471-1-kbusch@kernel.org>
+Subject: [PATCH 01/10] nvme: unlink head after removing last namespace
+Date: Thu,  9 Apr 2020 09:08:59 -0700
+Message-Id: <20200409160908.1889471-2-kbusch@kernel.org>
 X-Mailer: git-send-email 2.24.1
+In-Reply-To: <20200409160908.1889471-1-kbusch@kernel.org>
+References: <20200409160908.1889471-1-kbusch@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200409_090910_419714_FDF2497E 
-X-CRM114-Status: UNSURE (   6.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200409_090910_692368_BE5E5246 
+X-CRM114-Status: GOOD (  11.95  )
 X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-5.2 points)
@@ -82,25 +83,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-A collection of fixes and rearrangments to setting up namespaces.
+The driver had been unlinking the namespace head from the subsystem's
+list only after the last reference was released, and outside of the
+list's subsys->lock protection.
 
-Keith Busch (10):
-  nvme: unlink head after removing last namespace
-  nvme: release namespace head reference on error
-  nvme: always search for namespace head
-  nvme: save namespace head shared property
-  nvme: don't directly update multipath queue settings
-  nvme-multipath: set bdi capabilities once
-  nvme: revalidate after verifying identifiers
-  nvme: consolidate chunk_sectors settings
-  nvme: revalidate namespace stream parameters
-  nvme: consolodate io settings
+There is no reason to track an empty head, so unlink the entry from the
+subsystem's list when the last namespace using that head is removed and
+with the mutex lock protecting the list update. The next namespace to
+attach reusing the previous NSID will allocate a new head rather than
+find the old head with mismatched identifiers.
 
- drivers/nvme/host/core.c      | 116 +++++++++++++++++-----------------
- drivers/nvme/host/multipath.c |   8 +++
- drivers/nvme/host/nvme.h      |   2 +-
- 3 files changed, 67 insertions(+), 59 deletions(-)
+Signed-off-by: Keith Busch <kbusch@kernel.org>
+---
+ drivers/nvme/host/core.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 5de3b993525b..ba621f9229e5 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -433,7 +433,6 @@ static void nvme_free_ns_head(struct kref *ref)
+ 
+ 	nvme_mpath_remove_disk(head);
+ 	ida_simple_remove(&head->subsys->ns_ida, head->instance);
+-	list_del_init(&head->entry);
+ 	cleanup_srcu_struct(&head->srcu);
+ 	nvme_put_subsystem(head->subsys);
+ 	kfree(head);
+@@ -3414,7 +3413,6 @@ static int __nvme_check_ids(struct nvme_subsystem *subsys,
+ 
+ 	list_for_each_entry(h, &subsys->nsheads, entry) {
+ 		if (nvme_ns_ids_valid(&new->ids) &&
+-		    !list_empty(&h->list) &&
+ 		    nvme_ns_ids_equal(&new->ids, &h->ids))
+ 			return -EINVAL;
+ 	}
+@@ -3658,6 +3656,8 @@ static void nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+  out_unlink_ns:
+ 	mutex_lock(&ctrl->subsys->lock);
+ 	list_del_rcu(&ns->siblings);
++	if (list_empty(&ns->head->list))
++		list_del_init(&ns->head->entry);
+ 	mutex_unlock(&ctrl->subsys->lock);
+ 	nvme_put_ns_head(ns->head);
+  out_free_id:
+@@ -3677,7 +3677,10 @@ static void nvme_ns_remove(struct nvme_ns *ns)
+ 
+ 	mutex_lock(&ns->ctrl->subsys->lock);
+ 	list_del_rcu(&ns->siblings);
++	if (list_empty(&ns->head->list))
++		list_del_init(&ns->head->entry);
+ 	mutex_unlock(&ns->ctrl->subsys->lock);
++
+ 	synchronize_rcu(); /* guarantee not available in head->list */
+ 	nvme_mpath_clear_current_path(ns);
+ 	synchronize_srcu(&ns->head->srcu); /* wait for concurrent submissions */
 -- 
 2.24.1
 
