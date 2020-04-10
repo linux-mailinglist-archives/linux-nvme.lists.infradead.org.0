@@ -2,84 +2,82 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC6A11A4331
-	for <lists+linux-nvme@lfdr.de>; Fri, 10 Apr 2020 09:51:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 21A4E1A44D0
+	for <lists+linux-nvme@lfdr.de>; Fri, 10 Apr 2020 11:57:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=z1fMvao11i+d0UZrbIxXcd2/3fEWA/mH8uzwOCutGXo=; b=Oxxgh5gEd9NbKN7RDHUJuDBmH
-	ruKge3jcDnZe0EU04fp/ur5qYwzfUc5AlPWY0DFMs4ey4ZYBdwcg3AS1QYBVd7EINUWAhooQDWeIM
-	Mh5XFOQE/YVc2uSdDZ2nAtJGypjiGyTV0o0QajIPXmYdDL9qa783u+0eWB/WBIxNO/xKf5Mx/xEdv
-	2vGag1oXIsqmezh8is0Y/nCy91rxh6W48rquYpe+grpFaIDHNYSbn1IDff2cKx4GK/tx5Xcpph5jx
-	r9HcugBaPDtyNPDQ/dXcm/wFblDKe8YMArq+lOj7nqw+TaykZC+S6rsImhLpYclYBRdL51vRnMjrU
-	v8cziC3jw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=W/mb5ywX0ZJeWZaVIlA/Tz8gy0IpE5lWcoLzzxgTXUA=; b=SGv/ts/vEdvUZE
+	RIgyQ8xMMw/nPMlTU7siNjuMRGlAPp0eGrQrfrW+mPE5KevVEnKR0LMiN6FDLnyJ0DAH8CIb8DpKP
+	YSw2tgVbNuUDjGDuVrFe3SHVRHrLFaxYYrliCH3h62Pq+pUP/tA8LUsdrC0WL0jLLbVj6qNvvqFNE
+	ZvKDB8MDr7vE3PhEnMoCddoQ+BBD5cLnNjtPNU3u2koC1C2UD6r60p90e3a3ViivYldTVyfG3sgkW
+	9wP4YxMJcT/sHWTeLtfSUj2pJRXOEq8K+AFTDNPgREOZ5O1d1O4/zOlDa6CO1e11CKH9gcROMZonE
+	RtcvaQzBUVqULCNj5ABg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMoRB-0000jB-6u; Fri, 10 Apr 2020 07:50:53 +0000
-Received: from mail-wr1-f66.google.com ([209.85.221.66])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMoR6-0000ik-2J
- for linux-nvme@lists.infradead.org; Fri, 10 Apr 2020 07:50:49 +0000
-Received: by mail-wr1-f66.google.com with SMTP id s8so1379659wrt.7
- for <linux-nvme@lists.infradead.org>; Fri, 10 Apr 2020 00:50:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=nWpDQmZNg8zKVk12QskQ7NNS05C4fI/JmZBKLdKyu8Q=;
- b=htbvBnsiHVtNcwUXBkuMxP+gx3flx2Le4l0DvmsVf+20G2OilyNPzEztk6NciYgoB2
- p7j7+IWuhAIvqyaW2bkZBApB8yDv0bKtSIAGjUDXvHmEMkTTeSmEOx+yHdX8IDZc4PjI
- FwojdVDixmvEA5gL586VQypOQM4XDz6efAO5v+nxV1y3KsRuUzGksnnkaQj7TtNTaYpr
- pnhDhz03NpNuIBK2Lp7r3y/EP03QAtv3ujqDHw4Yv/GjOLmxX1frB/p2M+4m88JTnqrf
- 2FI0SH2xbpuQwAe1LCaAo6Pd6ua/DhqNaJI7mpmByTO+lx/UJ2DQa9JeJ2LXsZRNMu1x
- P5Lg==
-X-Gm-Message-State: AGi0PuYgwBFbGqdDc5Gw7InFSNUDvPxyV+zwvaqNr14Julg8e6usfLmr
- Zox5YlIFE06+Jk8jV+9ev9fZ7Ugm
-X-Google-Smtp-Source: APiQypJgse5lUI/ZX+pk2KYY1JWg/arUgZ14v73unTw4U5UCCI+7p+f6Zy72oCti50xw1euKGtD5pA==
-X-Received: by 2002:adf:ee83:: with SMTP id b3mr3130667wro.425.1586505046618; 
- Fri, 10 Apr 2020 00:50:46 -0700 (PDT)
-Received: from ?IPv6:2601:647:4802:9070:9052:1641:fbba:d9ee?
- ([2601:647:4802:9070:9052:1641:fbba:d9ee])
- by smtp.gmail.com with ESMTPSA id a10sm1817294wrm.87.2020.04.10.00.50.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Apr 2020 00:50:46 -0700 (PDT)
-Subject: Re: [PATCH 09/10] nvme: revalidate namespace stream parameters
-To: Keith Busch <kbusch@kernel.org>, linux-nvme@lists.infradead.org, hch@lst.de
-References: <20200409160908.1889471-1-kbusch@kernel.org>
- <20200409160908.1889471-10-kbusch@kernel.org>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <43f977b8-1095-12a4-0f18-7b2a6b5e6409@grimberg.me>
-Date: Fri, 10 Apr 2020 00:50:43 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Firefox/68.0 Thunderbird/68.4.1
+	id 1jMqPB-00051p-RF; Fri, 10 Apr 2020 09:56:57 +0000
+Received: from mx2.didichuxing.com ([36.110.17.22] helo=bsf01.didichuxing.com)
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat
+ Linux)) id 1jMqP5-0004vA-0Z
+ for linux-nvme@lists.infradead.org; Fri, 10 Apr 2020 09:56:53 +0000
+X-ASG-Debug-ID: 1586512596-0e4088309a73ad10001-VMfPqL
+Received: from mail.didiglobal.com (localhost [172.20.36.244]) by
+ bsf01.didichuxing.com with ESMTP id CyEDTr7iYTe0msHO;
+ Fri, 10 Apr 2020 17:56:36 +0800 (CST)
+X-Barracuda-Envelope-From: zhangweiping@didiglobal.com
+Received: from 192.168.3.9 (172.22.50.20) by BJSGEXMBX03.didichuxing.com
+ (172.20.15.133) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 10 Apr
+ 2020 17:56:36 +0800
+Date: Fri, 10 Apr 2020 17:56:31 +0800
+From: weiping zhang <zhangweiping@didichuxing.com>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCH 1/2] nvme: make sure write/poll_queues less or equal then
+ cpu count
+Message-ID: <20200410095619.GA4128@192.168.3.9>
+X-ASG-Orig-Subj: Re: [PATCH 1/2] nvme: make sure write/poll_queues less or
+ equal then cpu count
+References: <cover.1586447291.git.zhangweiping@didiglobal.com>
+ <134d9a5fbcf54c1efb8ffa33a5439cd48094925c.1586447291.git.zhangweiping@didiglobal.com>
+ <20200409172250.GA1889561@dhcp-10-100-145-180.wdl.wdc.com>
 MIME-Version: 1.0
-In-Reply-To: <20200409160908.1889471-10-kbusch@kernel.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200409172250.GA1889561@dhcp-10-100-145-180.wdl.wdc.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Originating-IP: [172.22.50.20]
+X-ClientProxiedBy: BJEXCAS06.didichuxing.com (172.20.36.207) To
+ BJSGEXMBX03.didichuxing.com (172.20.15.133)
+X-Barracuda-Connect: localhost[172.20.36.244]
+X-Barracuda-Start-Time: 1586512596
+X-Barracuda-URL: https://bsf01.didichuxing.com:443/cgi-mod/mark.cgi
+X-Virus-Scanned: by bsmtpd at didichuxing.com
+X-Barracuda-Scan-Msg-Size: 1229
+X-Barracuda-BRTS-Status: 1
+X-Barracuda-Bayes: INNOCENT GLOBAL 0.0000 1.0000 -2.0210
+X-Barracuda-Spam-Score: -2.02
+X-Barracuda-Spam-Status: No,
+ SCORE=-2.02 using global scores of TAG_LEVEL=1000.0
+ QUARANTINE_LEVEL=1000.0 KILL_LEVEL=1000.0 tests=
+X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.81088
+ Rule breakdown below
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_005048_105667_8F6616CC 
-X-CRM114-Status: UNSURE (   7.95  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20200410_025651_247753_11EDD681 
+X-CRM114-Status: GOOD (  10.43  )
+X-Spam-Score: 0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.221.66 listed in list.dnswl.org]
+ no trust [36.110.17.22 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [sagigrim[at]gmail.com]
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
- [209.85.221.66 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,12 +89,43 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: hch@infradead.org, axboe@kernel.dk, linux-nvme@lists.infradead.org,
+ sagi@grimberg.me, Weiping Zhang <zhangweiping@didiglobal.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+On Thu, Apr 09, 2020 at 10:22:50AM -0700, Keith Busch wrote:
+> On Thu, Apr 09, 2020 at 11:57:35PM +0800, Weiping Zhang wrote:
+> > Check module parameter write/poll_queues before use, if user
+> > change them to larger than system cpu count, it will trigger a
+> > warning.
+> > 
+> > Reproduce:
+> > 
+> > echo $((`nproc`+1)) > /sys/module/nvme/parameters/write_queues
+> > echo 1 > /sys/block/nvme0n1/device/reset_controller
+> 
+> I don't think it is safe to allow these parameters to be runtime writeable
+> with the current code: the driver allocates space for queues during probe,
+> so you may end up with out of bounds access if you increase the number
+> of queues the driver creates after that.
+
+Yes, if user change these parameter larger than the number allocated in
+nvme_probe, then nvme_create_io_queues->nvme_alloc_queue will touch the
+memory out of boundary.
+
+I think we allow user change it dynamically, just make sure the total
+io queue count will not larger than allocated.
+
+If user really want to adjust io queue when use multiple tagset map,
+they need set enough queue when load nvme moduler. Then they can
+tune the queue count for each tag map.
+
+I send a seperate patch to fix this.
+
+Thanks
 
 _______________________________________________
 linux-nvme mailing list
