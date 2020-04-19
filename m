@@ -2,78 +2,78 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA3261AFF0A
-	for <lists+linux-nvme@lfdr.de>; Mon, 20 Apr 2020 01:54:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE1501AFF09
+	for <lists+linux-nvme@lfdr.de>; Mon, 20 Apr 2020 01:54:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wMCH9h1OuNVtE7cXEAtBUE7lQ3KMqMFEF2X3leazrME=; b=pczCsgWCNjq+g8
-	F64OzwcyxC2TcYyNQ9B/Xh1GZQaJ0f//2p0N2+zisMjViAeOX2qJuJ1RJFt3G/pLjqW33gT+deKFL
-	OB5TJ/Hyj+JV/G0i/QJpDFXbCh/77LMmJvyuDbPK8aKurNQwBBq8VjMgQIGiwDkFfJhjk+Im1F7m6
-	itbiqypCMz6rM04j3f8wKd7c4ifuwEYwEkrQV1MvkcYIZk79LWhVRQEgFvSn47Lg0HjObjnmy70jb
-	8vA8+QQYusdHX+he5XZVc10KtGkO2YG7SCvyc8Rq/mInkz/HaNSB7dPyqaQWyZCDwOZ0mPWkWMHmc
-	3ChUcMY0rLAFW3m1Zn+w==;
+	List-Owner; bh=7asrV2CIzy2hY81vtnCIRf7M5gZqMh7vgl6ZT9GTI0M=; b=Q3A75CDWWXOTqZ
+	TLywsctffcim1SfE2tIIQFC37FqH0TASfSBV5CXDhBRAxSLWRkJsymbvHvKI7AzISvFq58Avs4xs+
+	nK4L4MVBwiJ7FGiqjbUHwmQuxGhQTgwymseT0qDbyZwVL0DjB5Rwj0cmXN3qShr8kWtUJhWy6aljp
+	xCrIeUpmnWvWwS3m9trzbGrEQgCqwWmCxtGoUiwC/oqepfXxy3hjhz6/ooGCFodUVXurtQaHQIYvx
+	DdT+uRiqyxkgcNyCGiopxNJrEzebpnJD49PG4LCs9rpq0rEHmBDcxWvdrcH2v+25D5EBWAF/FckDt
+	/yd559GkA89aWe0HjTLw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQJlS-0001hC-29; Sun, 19 Apr 2020 23:54:18 +0000
-Received: from esa6.hgst.iphmx.com ([216.71.154.45])
+	id 1jQJlI-0001Ui-Pf; Sun, 19 Apr 2020 23:54:08 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQJkm-0001EX-PE
- for linux-nvme@lists.infradead.org; Sun, 19 Apr 2020 23:53:44 +0000
+ id 1jQJkm-0001Dr-7M
+ for linux-nvme@lists.infradead.org; Sun, 19 Apr 2020 23:53:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
  t=1587340416; x=1618876416;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=afl7ciT/1mLpaL08ubd3GevvZW5wXTO7ATmTiI2XlA8=;
- b=lnCak/hugxFfJYu9AMAU9zf68p+2+YO4dX2S5hpv9jd+NY1jEH86LYNk
- jvnsWLFjdpPQFU8iwlhM51LNnuSaTA/fQMSiQGcN1+QQPqYuRJPlCRk4g
- NOHXiQimGII1bBvISsa0vEE/m4SqtOtCDhnEG6xR+uUaq0E+8Qy6YJxD9
- K5xe4uEjrJG2NIpQEQj/QnFd9DIBgnoI8atWRGrtrX9a6j+E65fVMIukJ
- P1W/SBRWB1Zv2yOrCNpxrW3PWiGQmaASaOKMdaLwnrAkBSKrtV4OmlNq7
- 9xbS6w8ZEdirDAN94jzPVHfY/NabAk4h+nlezyAUu7HaNVUeNb4+SGjtl w==;
-IronPort-SDR: x2oz8h0qMW+mIvd3AAdm5Kdp2Py4J05vvq1w9KlFc97kutP4hPPepKiaVLPpFL2kf6jhVGlITE
- ltSR1+mzs5iv32guuKICEPRjh7UdWWGX7+gGxoVavGPdohlZPJmeOGTQZAdP4SesJPkZMScMS/
- xDHU3gJbnbCQuIAoYTl6Eh+QwbOFWKTqLRi4351TXmI20Ts6qjX3Iu1SWBJdurht+O37Dc6RUB
- gWSiYk4DZULpWxqFB29LbtmBuwwI5H4mdP77B0EsdJGiizUANzcDYmyoWkY5Qyacm7jQdT/bvM
- Rf4=
-X-IronPort-AV: E=Sophos;i="5.72,404,1580745600"; d="scan'208";a="137097008"
+ bh=+2T2mYHM9oQ2XeDR4rLoAnHbqFrdjN4AcU02Yoo4r9Q=;
+ b=I+ot1Cy1YzOJ71TXBoWflS8EGDDSa9H2x1MDTNpkpl92IxiPPQKNhhv4
+ Ve8l4PrwTHc1kXG+8MJx5S+GaSP6NgeVCW5u6Vd60x4yikhqougQDuQC7
+ K966/eS7eHojR6tpGfXNOb3ry6hTdxTCWMhcrzniyUF/EvuCGOXE2OfYt
+ wz7LhiDw0n+Nb3Qyy4BJXiX5kcg4NxnzVnI9quRGyz/sYs0BJIn+8xbZp
+ RffFhV6pQjgBu7aQM0s5P30VspGU5UhajGkUruHUhZKtUSWqbEV8Qecrh
+ IPZGNXycOLjBSt/8abaZV3OlPDbXdpKHElhsoDtSTTK9yz6gA/IbDv9Lv Q==;
+IronPort-SDR: s28UTJsFT3CUWEV+TtdWlMJLYaS6OLVyhX+hkRK4MgBn/zmcdSd8sWgeUMkj1N6py/a/3PsbhB
+ ax2nL4su6w/CawRgT1dws28K1Pjw8LjqqWy/iV96aDmThroB9QQcB5wgvC0JJ0UWhQpVox/DLW
+ u9VY+G3UkH2lUdB3kvRhS/dZz0qUBIasCiC8qYvEl9g0wM7/iFyOlexWIoDo1vVdQcrg4aPyCJ
+ O2oAaCMFknvYXoxfSyJJah9QvLKRt095Fsl4zpaAT2YGMM0Ku5dfpTcLLAu0FITQRHR/75hAUs
+ caY=
+X-IronPort-AV: E=Sophos;i="5.72,404,1580745600"; d="scan'208";a="135668491"
 Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
  ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 20 Apr 2020 07:53:26 +0800
-IronPort-SDR: 5mh2vUJEbunnYqbSur/ILeyfYPP/2dRDG+zYH5MrqDoXJn7E0culH4HmXGP8jFQ/9nUs89tL5m
- gr57Vz9or7Dwp/zY+zt8VpJXh03YzE+kk=
+ by ob1.hgst.iphmx.com with ESMTP; 20 Apr 2020 07:53:34 +0800
+IronPort-SDR: lfKdGoxKLE5W2a49D6Rl52dqprxpqGiPRa1+1lHIdTOBzlYsxxcr9dDd/5rGRWP6bEnVrigRYG
+ lDxIOsTpaAPvf/8aAMzolWusUF+PjbZSM=
 Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
  by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Apr 2020 16:43:47 -0700
-IronPort-SDR: xp/xSaB42Sbpd5v1LURgOjDpif7ekT7+r8DFItWcbc0q8MUbeLB+6OrwRN0mlvT08di5RnT39+
- 6STMQb9q1mYw==
+ 19 Apr 2020 16:43:55 -0700
+IronPort-SDR: zM+7+xTE/OryIt5V8F6J1UqWyA9ZJ9LX2KtGaroH1StP0BlaPjp3JUZJ/SBJSnE9IP+/VD6DEs
+ olx6+CNsTnsg==
 WDCIronportException: Internal
 Received: from iouring.labspan.wdc.com (HELO iouring.sc.wdc.com)
  ([10.6.138.107])
- by uls-op-cesaip02.wdc.com with ESMTP; 19 Apr 2020 16:53:26 -0700
+ by uls-op-cesaip02.wdc.com with ESMTP; 19 Apr 2020 16:53:34 -0700
 From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 5/6] nvmet: centralize port enable access for configfs
-Date: Sun, 19 Apr 2020 16:52:41 -0700
-Message-Id: <20200419235242.60355-6-chaitanya.kulkarni@wdc.com>
+Subject: [PATCH 6/6] nvmet: align addrfam list to spec
+Date: Sun, 19 Apr 2020 16:52:42 -0700
+Message-Id: <20200419235242.60355-7-chaitanya.kulkarni@wdc.com>
 X-Mailer: git-send-email 2.24.0
 In-Reply-To: <20200419235242.60355-1-chaitanya.kulkarni@wdc.com>
 References: <20200419235242.60355-1-chaitanya.kulkarni@wdc.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200419_165336_925143_AFBC6341 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20200419_165336_362094_CDC4922F 
+X-CRM114-Status: GOOD (  14.63  )
 X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.154.45 listed in list.dnswl.org]
+ medium trust [216.71.154.42 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
@@ -101,146 +101,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The configfs attributes which are supposed to set when port is disable
-such as addr[addrfam|portid|traddr|treq|trsvcid|inline_data_size|trtype]
-has repetitive check and generic error message printing.
+With reference to the NVMeOF Specification (page 44, Figure 38)
+discovery log page entry provides address family field. We do set the
+transport type field but the adrfam field is not set when using loop
+transport and also it doesn't have support in the nvme-cli. So when
+reading discovery log page with a loop transport it leads to confusing
+output.
 
-This patch creates centralize helper to check and print an error
-message that also accepts caller as a parameter with added
-locking. This makes error message easy to parse for the user, removes
-the duplicate code, uses appropriate locks and makes it available for
-futures such scenarios.
+As per the spec for adrfam value 254 is reserved for Intra Host
+Transport i.e. loopback), we add a required macro in the protocol
+header file, set default port disc addr entry's adrfam to
+NVMF_ADDR_FAMILY_MAX, and update nvmet_addr_family configfs array for
+show/store attribute.
+
+Without this patch, setting adrfam to (ipv4/ipv6/ib/fc/loop/" ") we get
+following output for nvme discover command from nvme-cli which is
+confusing.
+#grep -e adrfam -e trtype without_adrfam_loop_patch.log
+trtype:  loop
+adrfam:  ipv4
+trtype:  loop
+adrfam:  ipv6
+trtype:  loop
+adrfam:  infiniband
+trtype:  loop
+adrfam:  fibre-channel
+trtype:  loop		# ${CFGFS_HOME}/nvmet/ports/1/addr_adrfam = loop
+adrfam:  pci            # <----- pci for loop
+trtype:  loop		# ${CFGFS_HOME}/nvmet/ports/1/addr_adrfam = " "
+adrfam:  pci            # <----- pci for unrecognized
+
+This patch fixes above output :-
+# grep -e adrfam -e trtype with_adrfam_loop_patch.log
+trtype:  loop
+adrfam:  ipv4
+trtype:  loop
+adrfam:  ipv6
+trtype:  loop
+adrfam:  infiniband
+trtype:  loop
+adrfam:  fibre-channel
+trtype:  loop           # ${CFGFS_HOME}/nvmet/ports/1/addr_adrfam = loop
+adrfam:  loop           # <----- loop for loop
+trtype:  loop		# ${CFGFS_HOME}/config/nvmet/ports/adrfam = " "
+adrfam:  unrecognized   # <----- unrecognized when invalid value
 
 Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
 ---
- drivers/nvme/target/configfs.c | 58 ++++++++++++++++++----------------
- 1 file changed, 30 insertions(+), 28 deletions(-)
+ drivers/nvme/target/configfs.c | 14 ++++++++------
+ include/linux/nvme.h           |  2 ++
+ 2 files changed, 10 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
-index 883348f7699a..80a7b669b581 100644
+index 80a7b669b581..42486f86787a 100644
 --- a/drivers/nvme/target/configfs.c
 +++ b/drivers/nvme/target/configfs.c
-@@ -40,6 +40,29 @@ static const struct nvmet_type_name_map nvmet_addr_family[] = {
- 	{ NVMF_ADDR_FAMILY_FC,	"fc" },
+@@ -33,11 +33,12 @@ static struct nvmet_type_name_map nvmet_transport[] = {
  };
  
-+static bool nvmet_is_port_enabled(struct nvmet_port *p, const char *caller)
-+{
-+	bool enabled;
-+
-+	/*
-+	 * Right now port->enabled is accessed in follwoing two code paths
-+	 * which are protected by the nvmet_config_sem :-
-+	 * 1. nvmet_subsys allow/drop link() -> nvmet_port_enable/disable()
-+	 *    setting port->enabled true/false respectively.
-+	 * 2. nvmet_referral_enable/disable() -> nvmet_port_enable/disable()
-+	 *    setting port->enabled true/false respectively.
-+	 * Use read nvmet_config_sem when reading enable condition.
-+	 */
-+	down_read(&nvmet_config_sem);
-+	enabled = p->enabled;
-+	up_read(&nvmet_config_sem);
-+
-+	if (enabled)
-+		pr_err("Disable port '%u' before changing attribute in %s\n",
-+				le16_to_cpu(p->disc_addr.portid), caller);
-+	return enabled;
-+}
-+
- /*
-  * nvmet_port Generic ConfigFS definitions.
-  * Used in any place in the ConfigFS tree that refers to an address.
-@@ -63,11 +86,8 @@ static ssize_t nvmet_addr_adrfam_store(struct config_item *item,
- 	struct nvmet_port *port = to_nvmet_port(item);
- 	int i;
+ static const struct nvmet_type_name_map nvmet_addr_family[] = {
+-	{ NVMF_ADDR_FAMILY_PCI,	"pcie" },
+-	{ NVMF_ADDR_FAMILY_IP4,	"ipv4" },
+-	{ NVMF_ADDR_FAMILY_IP6,	"ipv6" },
+-	{ NVMF_ADDR_FAMILY_IB,	"ib" },
+-	{ NVMF_ADDR_FAMILY_FC,	"fc" },
++	{ NVMF_ADDR_FAMILY_PCI,		"pcie" },
++	{ NVMF_ADDR_FAMILY_IP4,		"ipv4" },
++	{ NVMF_ADDR_FAMILY_IP6,		"ipv6" },
++	{ NVMF_ADDR_FAMILY_IB,		"ib" },
++	{ NVMF_ADDR_FAMILY_FC,		"fc" },
++	{ NVMF_ADDR_FAMILY_LOOP,	"loop" },
+ };
  
--	if (port->enabled) {
--		pr_err("Cannot modify address while enabled\n");
--		pr_err("Disable the address before modifying\n");
-+	if (nvmet_is_port_enabled(port, __func__))
- 		return -EACCES;
--	}
+ static bool nvmet_is_port_enabled(struct nvmet_port *p, const char *caller)
+@@ -91,7 +92,7 @@ static ssize_t nvmet_addr_adrfam_store(struct config_item *item,
  
  	for (i = 1; i < ARRAY_SIZE(nvmet_addr_family); i++) {
  		if (sysfs_streq(page, nvmet_addr_family[i].name)) {
-@@ -102,11 +122,8 @@ static ssize_t nvmet_addr_portid_store(struct config_item *item,
- 		return -EINVAL;
+-			port->disc_addr.adrfam = i;
++			port->disc_addr.adrfam = nvmet_addr_family[i].type;
+ 			return count;
+ 		}
  	}
+@@ -1347,6 +1348,7 @@ static struct config_group *nvmet_ports_make(struct config_group *group,
+ 	port->inline_data_size = -1;	/* < 0 == let the transport choose */
  
--	if (port->enabled) {
--		pr_err("Cannot modify address while enabled\n");
--		pr_err("Disable the address before modifying\n");
-+	if (nvmet_is_port_enabled(port, __func__))
- 		return -EACCES;
--	}
  	port->disc_addr.portid = cpu_to_le16(portid);
- 	return count;
- }
-@@ -132,11 +149,8 @@ static ssize_t nvmet_addr_traddr_store(struct config_item *item,
- 		return -EINVAL;
- 	}
++	port->disc_addr.adrfam = NVMF_ADDR_FAMILY_MAX;
+ 	port->disc_addr.treq = NVMF_TREQ_DISABLE_SQFLOW;
+ 	config_group_init_type_name(&port->group, name, &nvmet_port_type);
  
--	if (port->enabled) {
--		pr_err("Cannot modify address while enabled\n");
--		pr_err("Disable the address before modifying\n");
-+	if (nvmet_is_port_enabled(port, __func__))
- 		return -EACCES;
--	}
+diff --git a/include/linux/nvme.h b/include/linux/nvme.h
+index 3d5189f46cb1..2d978d0cbde6 100644
+--- a/include/linux/nvme.h
++++ b/include/linux/nvme.h
+@@ -38,6 +38,8 @@ enum {
+ 	NVMF_ADDR_FAMILY_IP6	= 2,	/* IP6 */
+ 	NVMF_ADDR_FAMILY_IB	= 3,	/* InfiniBand */
+ 	NVMF_ADDR_FAMILY_FC	= 4,	/* Fibre Channel */
++	NVMF_ADDR_FAMILY_LOOP	= 254,	/* Reserved for host usage */
++	NVMF_ADDR_FAMILY_MAX,
+ };
  
- 	if (sscanf(page, "%s\n", port->disc_addr.traddr) != 1)
- 		return -EINVAL;
-@@ -172,11 +186,8 @@ static ssize_t nvmet_addr_treq_store(struct config_item *item,
- 	u8 treq = port->disc_addr.treq & ~NVME_TREQ_SECURE_CHANNEL_MASK;
- 	int i;
- 
--	if (port->enabled) {
--		pr_err("Cannot modify address while enabled\n");
--		pr_err("Disable the address before modifying\n");
-+	if (nvmet_is_port_enabled(port, __func__))
- 		return -EACCES;
--	}
- 
- 	for (i = 0; i < ARRAY_SIZE(nvmet_addr_treq); i++) {
- 		if (sysfs_streq(page, nvmet_addr_treq[i].name)) {
-@@ -210,11 +221,8 @@ static ssize_t nvmet_addr_trsvcid_store(struct config_item *item,
- 		pr_err("Invalid value '%s' for trsvcid\n", page);
- 		return -EINVAL;
- 	}
--	if (port->enabled) {
--		pr_err("Cannot modify address while enabled\n");
--		pr_err("Disable the address before modifying\n");
-+	if (nvmet_is_port_enabled(port, __func__))
- 		return -EACCES;
--	}
- 
- 	if (sscanf(page, "%s\n", port->disc_addr.trsvcid) != 1)
- 		return -EINVAL;
-@@ -237,11 +245,8 @@ static ssize_t nvmet_param_inline_data_size_store(struct config_item *item,
- 	struct nvmet_port *port = to_nvmet_port(item);
- 	int ret;
- 
--	if (port->enabled) {
--		pr_err("Cannot modify inline_data_size while port enabled\n");
--		pr_err("Disable the port before modifying\n");
-+	if (nvmet_is_port_enabled(port, __func__))
- 		return -EACCES;
--	}
- 	ret = kstrtoint(page, 0, &port->inline_data_size);
- 	if (ret) {
- 		pr_err("Invalid value '%s' for inline_data_size\n", page);
-@@ -279,11 +284,8 @@ static ssize_t nvmet_addr_trtype_store(struct config_item *item,
- 	struct nvmet_port *port = to_nvmet_port(item);
- 	int i;
- 
--	if (port->enabled) {
--		pr_err("Cannot modify address while enabled\n");
--		pr_err("Disable the address before modifying\n");
-+	if (nvmet_is_port_enabled(port, __func__))
- 		return -EACCES;
--	}
- 
- 	for (i = 0; i < ARRAY_SIZE(nvmet_transport); i++) {
- 		if (sysfs_streq(page, nvmet_transport[i].name)) {
+ /* Transport Type codes for Discovery Log Page entry TRTYPE field */
 -- 
 2.22.1
 
