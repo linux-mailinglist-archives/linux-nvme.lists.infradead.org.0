@@ -2,140 +2,119 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED7BE1AFF24
-	for <lists+linux-nvme@lfdr.de>; Mon, 20 Apr 2020 02:20:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D2EB11B0CE8
+	for <lists+linux-nvme@lfdr.de>; Mon, 20 Apr 2020 15:39:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=jZ01sdwWxFmNKNXbOKiMhWQkpTr444DDKNbx7LGIt2I=; b=DhnUYiq/g+Nv2m
-	JBVBUghRvMmA2j7lJLqwJaSSiNuyhSN9v5xBHEtxcIe+uQRYPHtHnKM7T8+JosGWD6YYOiiLQ1TVD
-	r+gLAJlbAU9juAwMxWxQcl0e79668diQq/coYnY0uqI3v29OpBm2k9d4mjcfMnlwT/FCozxEZKdzS
-	bUWY8SJ/oCV+r58CMXfGzMs/Z3EntHl7k9r0g3DmZPHPZIgHA1mFdphB64ibRfj6vZPkCvS9igUV6
-	sCwlRlXsZdWOhvGtHKPH7NqbUZxwynUq5K+oHGNBGnsp1VbC49UdBfi0hDdglhmIujSsKATWT/dGo
-	/JKXSvcrjEIXgOizqiiA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FL9JDgrif8LEN6iF5DgQ7DEtoVolJXYzkORa5PYQWC8=; b=PxOTo0Sw/oeAHQ
+	oISrWCr4/8G4f8Hc5+Qcqs5IvlAlnnd4mxpdmbCWgI02c0B6tW39L+Y+7iNIP4hlyAi2j3O3oEWEB
+	nPiwCAXxWo5WgR6gJcLgFvAt1ERt7Yd3CbmSoZVJdjIFCCQIyP+Xn9I1LZ9mz41C2lzNk6JpW7aB/
+	geFrjDD4r0IRPbEqDwzOdf+IP0nyDqunHPwypvBY5+BfMNqQSxc48g8rKNMzhRcJUJ4LryS2BcHoi
+	6BJuGEuvtkoU1jdif0/vWpL9llPkntAuZ428+FhuLYENYh8RBPudVZYbclg48d7WU6w5XtqJnwODy
+	sBXmhuqvYJ1NT4lSH6/A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQKB2-00034O-In; Mon, 20 Apr 2020 00:20:44 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1jQWdX-0004Z8-Du; Mon, 20 Apr 2020 13:38:59 +0000
+Received: from mail-eopbgr20065.outbound.protection.outlook.com ([40.107.2.65]
+ helo=EUR02-VE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQKAw-00033m-DM
- for linux-nvme@lists.infradead.org; Mon, 20 Apr 2020 00:20:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1587342071; x=1618878071;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=+fLRVHXHrai/aQIKsazYXN99/F78Z8KgXnrDq2bU3QQ=;
- b=XYuge+7zaZB7q7TeCILuVNocZozTDVc+x+EnOJDa4UzEsQh0zE0Yd4yM
- MOk86/+ADfDFUhvIzm0qvc8U7HTHiFxDt1iAmHntwTz2IasPn5FeR4gXe
- DHg1a4ddf67n81SZ9H8KW3yXexirNXDq0jO7wwF+g/7ELzajcv1YGKyB2
- 0MRvxdq3bUF5DCMYJ+M+e8knEIoiboQI/Ktz06l9N2ZLJkak+r2wi3Mmu
- /f+2Ax5GI8LXL51OJu9lW7cLnsx2vSZvgSIv8Pho8sAtVjJiCEFUDVUYZ
- ZArQTGZo56+GlJ2Wp2Nw9h1kdR/k4sezKg5gDGAHdaFQ571zeX09Cv9Hb g==;
-IronPort-SDR: cvAze5mIrS/H9jKn+5ZfCTFsysediLtb3Qleafo8dCJ4C+1DUm6iQZ5WA4hxjUS5DQsfoBLmcZ
- 3HkJDItmADvtUQ3vBCXmvNIDPIXm2yvWlP8ywifeHBDc+Cg5Jm5zOpKJWCoklkWPI1qlUINnhX
- 7SFWsVRq1SOp84gPxCRs8Rqvwioab3OqF5rS6fSxpAgfbwrTSRC+edf8CKclSQnZM6BdH9Jx+L
- aD6FXM++BqX0zdLktYRy3HZ76LToUeu7vTrUARqf3SLt7/rjZm3lrli6GZJbVvHISz7KAQ9ZR4
- BCo=
-X-IronPort-AV: E=Sophos;i="5.72,405,1580745600"; d="scan'208";a="238117978"
-Received: from mail-dm6nam12lp2174.outbound.protection.outlook.com (HELO
- NAM12-DM6-obe.outbound.protection.outlook.com) ([104.47.59.174])
- by ob1.hgst.iphmx.com with ESMTP; 20 Apr 2020 08:21:10 +0800
+ id 1jQWav-0001JK-Ua
+ for linux-nvme@lists.infradead.org; Mon, 20 Apr 2020 13:36:20 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=objKvvs/lsUOjfJpn/uqeYeplbDXc4bbxXI4bHw/Kw7aRvghbv+9PvlPCOSiP1JB2jUp/tCbAileX4xGj1zg0YVbdf94Tuc74gBili2xltPiClxxIKkuvD93l0jkGWOED0YRBb2/lxTb6JSQdqN2rCSfwqKG2Xot9jzHObbBmJzy9KWZM1f5z4jklTVpf2KetzwSWVktGlGx3rZLwx8gWsRRQg6eud+eSJKP0UFQZosyQwCvAKiveEIdUJu3CGu/VsSHnpIkgOHSkUrq7xUSsNwUb4j1zDH9IvBWlz9xM9/F52zCLHzvnoEblboDfnZdESc9A8TO0kVO4Pz3SrLH0w==
+ b=Iura5vkVbMH03LdyBXKq8kFUuGJdA7K2pQkw/ZhPMJsMbHKDHElHeu++TQiKicY5p86/Vks9zsFs7hyxLzx63x+OO5noXh4+l+JSYthxD95jk5d+dxwfnhvBsvJMM5dTsjXDoEo/VYPXHjszJ8ngan2I4nnAEnvA4oIvdS8YPC7I4NLCMCZGKEL3HcfmVR62RyIYRmJud1MbeepN8k3R8M7uqJSW1zzyYOt/CM4xvOb5qGoq5mCOiOEr+saCGd4LoEE1TXJCfSX6MtgZ7s6iJu43SVkEyWUrnBCcsTbSd9Ew7ZTvbwZrpMFDWsecbrvU/5lWcBNtZfT/pCAjKbDjSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+fLRVHXHrai/aQIKsazYXN99/F78Z8KgXnrDq2bU3QQ=;
- b=Y4zNDptEXdyROkT7pBRB6sVF5Y+PTjZSrRyXACosepBK6hffKUum4AOnB5LbsWwvAgdqqRm70/X3ZGhHVVNfLlPWwxWe5AeLxDv2GzCexXpzGuJm75yqLQvGsRO3sUIa6HgU/SpjMbPEwkND+HO31wSTK2m1JvPCCZTnts5KvVnAQINndi60WRCLEHCKdTkTQuUUurENbk2WYsycLYgY46DTKPIYfGBKyQjig+QYsXi0XPrT4PmIipPpNhL4+RpmQWftzSA6BFbhMHhrZXNiGZ4qnwfu0/XOhl/KIXgyQB3SFkgel9SJP7a4CtNh/RNdv98ZkEiYBvJNyjxo7vgP/w==
+ bh=gGNCD4qjTfkp0JwbP3TeB+wDtVy35k2UTDEasETrYw8=;
+ b=jEhmsud3MNeYxf7PROpdetMBVYM+olOuURjrfF7pNQ8QbHGdG8jtYpZVHO6gK0iMoVNCj1Q4WOxxnkl4dopQ+yyfnKt2dot6BszEd7uPqGAYSMCv1sZMtugK1QORzh8k3WoZ5HJAi6NlMAhKq69EzqYUjgnkdID5SK/NhwSL1XxWwtWTs5vvVMYuQhJT9ypmg/wKYzvSSU5VhkLLHG+J/tqArFh+Bsw1oInoV9gHvtQHKbMlhpBW2czzF3LP2//OS78hXaQfVQK91ph1TNeEhBqh376oaJn/0JuiaFEiBjdyh02JjsIwp9uYscjL+yoU8BRDTq55Qpvoi6eQQpeZxg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
+ dkim=pass header.d=mellanox.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+fLRVHXHrai/aQIKsazYXN99/F78Z8KgXnrDq2bU3QQ=;
- b=papooZcDQ3AwSFrpnuqArdaQQCH3+Ysvts5gjA7CKqVP9SlS5vl0rBFxsxuH0f4Zxczi/q4qxC8E8x8OKybKC5Opqn7aClxzucMA4Ge8WxTObme8z9Q68+n7iY1MpmuElv0Vr4Aeo5nahOiFdqlgLfCfRYPv20dAHty6jrOn2Nk=
-Received: from BYAPR04MB4965.namprd04.prod.outlook.com (2603:10b6:a03:4d::25)
- by BYAPR04MB5303.namprd04.prod.outlook.com (2603:10b6:a03:c3::27)
- with Microsoft SMTP Server (version=TLS1_2,
+ bh=gGNCD4qjTfkp0JwbP3TeB+wDtVy35k2UTDEasETrYw8=;
+ b=OPIUq1wpMVQeIyKFMM8HcFgDwrTj3b9XrIfnI6RZ7rj2jN4bSnQDtOj0118BKCkQ4N9Cbz1XH6xxbu0K9PoAc/3UK4YgXophjRaiNv75JJHTXsXgLu1BjGX0zUm8UWx2jGL/MwUn9TcPMznTswt2sMzDGA8b1nxTKMEO10ooCbs=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=leonro@mellanox.com; 
+Received: from AM6PR05MB6408.eurprd05.prod.outlook.com (2603:10a6:20b:b8::23)
+ by AM6PR05MB4808.eurprd05.prod.outlook.com (2603:10a6:20b:f::15) with
+ Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.29; Mon, 20 Apr
- 2020 00:20:36 +0000
-Received: from BYAPR04MB4965.namprd04.prod.outlook.com
- ([fe80::28be:e964:37e5:44b6]) by BYAPR04MB4965.namprd04.prod.outlook.com
- ([fe80::28be:e964:37e5:44b6%6]) with mapi id 15.20.2921.027; Mon, 20 Apr 2020
- 00:20:36 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Anthony Iliopoulos <ailiopoulos@suse.com>
-Subject: Re: [PATCH V2 2/2] nvmet: add per ns thread to generate AEN
-Thread-Topic: [PATCH V2 2/2] nvmet: add per ns thread to generate AEN
-Thread-Index: AQHWDVyGx1h1rDwyCECcI/Bh3Diljg==
-Date: Mon, 20 Apr 2020 00:20:35 +0000
-Message-ID: <BYAPR04MB49650EE959D09629F5BDB22286D40@BYAPR04MB4965.namprd04.prod.outlook.com>
-References: <20200408041633.20632-1-chaitanya.kulkarni@wdc.com>
- <20200408041633.20632-3-chaitanya.kulkarni@wdc.com>
- <5e54afaa-7de5-a89e-5740-88df15c52bba@grimberg.me>
- <20200408095500.GD1329@technoir>
- <SN6PR04MB4973222BC905A09B9CA0E55586C00@SN6PR04MB4973.namprd04.prod.outlook.com>
- <20200408170820.GE1329@technoir>
- <DM6PR04MB4972225DA024170AF54CFE0086C00@DM6PR04MB4972.namprd04.prod.outlook.com>
- <FCC6B6BD-FF42-4589-BEC3-56C0885C32EF@suse.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Chaitanya.Kulkarni@wdc.com; 
-x-originating-ip: [199.255.45.62]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 460a2425-0749-46d3-8208-08d7e4c0a5ab
-x-ms-traffictypediagnostic: BYAPR04MB5303:
-x-microsoft-antispam-prvs: <BYAPR04MB5303044D24B0159914E3689686D40@BYAPR04MB5303.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-forefront-prvs: 03793408BA
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR04MB4965.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(4636009)(366004)(346002)(396003)(136003)(376002)(39860400002)(54906003)(81156014)(8936002)(71200400001)(8676002)(7696005)(5660300002)(86362001)(33656002)(6506007)(316002)(2906002)(53546011)(26005)(6916009)(52536014)(4326008)(9686003)(55016002)(66476007)(66556008)(64756008)(76116006)(66946007)(66446008)(478600001)(186003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 3vm1lt4d8u0PS85/mC2ZkfrRdpvKVCaA2jK+XotOZ74yjewxUFZvp+SNCQhO2OWoaDI6bjMtZtlyqyJJI9tHwfQGnN7ai7J/eDck0p4/Fdzv3/GJPvtIupUu/h8qxhjD10crNHgCpvSq4YeIhBnxeR8QhityM1yHGFMPRixOS1ILiFREpT0NDQPSvBiu+iv2Hfn9r7WFm92qba/j8fw9pRstMRxqovbbo1B18JdHaR5QFKwyw4An4M1s1GkYpTUcRl2+tazQwhThbZPbE4XWXB31f8Ix+jIUssQe17CoGIwGTC3YQn6D5+jOA32SmBmvMVtip7xKl+Hu1CIANLwhVQxfXFxv7Hv47G6kXnmC34F17NFNxE8/O85ds2E60htG3UjRkM/oj7HgI9Z7ihRBgY/f1PDI8mTOUB0dXioenFLy6+NJILhM0VBRYviL41Y8
-x-ms-exchange-antispam-messagedata: EDqY5z4KqJHC0MQN4kNFrIYU0BaOrHB1qlncGJZeBI5TuUj3mSnbL0yvbBcm8JJtTZS2tANSj3bu+AQFN8DqU/xYQSe6ZYUi8GsW8pusGpwwdB5GpdyZQPNKK3qWZFkIqEVjXRGVNZUaG9d3Hyj7XA==
-x-ms-exchange-transport-forked: True
+ 2020 13:36:10 +0000
+Received: from AM6PR05MB6408.eurprd05.prod.outlook.com
+ ([fe80::1466:c39b:c016:3301]) by AM6PR05MB6408.eurprd05.prod.outlook.com
+ ([fe80::1466:c39b:c016:3301%4]) with mapi id 15.20.2921.030; Mon, 20 Apr 2020
+ 13:36:10 +0000
+Date: Mon, 20 Apr 2020 16:36:07 +0300
+From: Leon Romanovsky <leonro@mellanox.com>
+To: Doug Ledford <dledford@redhat.com>, Jason Gunthorpe <jgg@mellanox.com>
+Subject: Re: [PATCH rdma-next v2 0/7] Add Enhanced Connection Established (ECE)
+Message-ID: <20200420133607.GD121146@unreal>
+References: <20200413141538.935574-1-leon@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200413141538.935574-1-leon@kernel.org>
+X-ClientProxiedBy: AM4PR0202CA0003.eurprd02.prod.outlook.com
+ (2603:10a6:200:89::13) To AM6PR05MB6408.eurprd05.prod.outlook.com
+ (2603:10a6:20b:b8::23)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 460a2425-0749-46d3-8208-08d7e4c0a5ab
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Apr 2020 00:20:35.9499 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: SHxkuhK2Tn9xPi4nE8ROUBcqJB9a0LTTonR+KTZTPFwAJVE3NeZWLg9ZYjMMLQzXnUb8wm/9TNK/iHCMejWlJJ4Ii6KSl5EH3qeBDssfnYg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5303
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from localhost (2a00:a040:183:2d::a43) by
+ AM4PR0202CA0003.eurprd02.prod.outlook.com (2603:10a6:200:89::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.26 via Frontend
+ Transport; Mon, 20 Apr 2020 13:36:10 +0000
+X-Originating-IP: [2a00:a040:183:2d::a43]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: c6af76cb-dc96-47d8-42b7-08d7e52fc98d
+X-MS-TrafficTypeDiagnostic: AM6PR05MB4808:|AM6PR05MB4808:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <AM6PR05MB4808F309E1722C3B8B31B692B0D40@AM6PR05MB4808.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-Forefront-PRVS: 03793408BA
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM6PR05MB6408.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10009020)(7916004)(4636009)(366004)(52116002)(5660300002)(9686003)(33656002)(66476007)(66556008)(6636002)(54906003)(66946007)(2906002)(7416002)(4326008)(6486002)(110136005)(6666004)(498600001)(8936002)(8676002)(81156014)(6496006)(966005)(86362001)(186003)(1076003)(16526019)(33716001);
+ DIR:OUT; SFP:1101; 
+Received-SPF: None (protection.outlook.com: mellanox.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: IVnxZVHgp7XU2ouhlePyLgMQO885hkrwbJG2SBzF6+QC42ucs2eb2m44csy+NfRqkvIaQ04/Jds1+7GjIviQNGJlf4Sq7yrc1VFd1a/MOEwF36N4va3wxwYQ/1V8bu00ky+pSBxLcOSruGvNImMq3Q8u10uspAqYIiAoS4Eiscc1BFz9EqfH9bK6SMVOEXnlyoq8VobwxYOiuHWy7HHZlscgkiB0oJd+NeQVrkidfmLV4eLbXY/A578pKsSpw1LrT4tlR94zHyHHwii4J/v8X/aZRTO7W9wH7FEg8AMeTVFTqHRqm9ewq1WPut0NVafrf16t2U9GnvZdK00+1T0IFxbGuCwIDxniCMK88AamOkYGCPQpP1eQvN/Jkul7+osVukc2XV3ZjqvhdJ8Wu5OYhagahOpUA0PeCwF6LzjYGCfCa3fnWZWj7ZBshUGQbKRtEPp4aEXcETrkj3mPx74/+7hjmzU3Z5LYcn1/taAEodZDScYaFHJQi3Tw71AkhV2wXvfj5lrmwDzm7SHd8yOnnw==
+X-MS-Exchange-AntiSpam-MessageData: f6lSVV8SHc77YCs4gXCEooUYWMuG8HPkrmvh07t5Kc2mkDgUwGq4MO1/Yri7jV61y9l8OG75MLZ+EBOAbsScA1l2BLFjAs0eYfLUhA/xanv0utRgb+XfIQhGCawfKadvXBJz98R6DsdvKiPStDPkOCTw3f+DamiIFVfnkSoYWbQ=
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c6af76cb-dc96-47d8-42b7-08d7e52fc98d
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Apr 2020 13:36:10.5745 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2O0UApw/z6QB4VTepkJV7qek7q5tNoT4ybOZn9Rfhq27pmQ0T60z5LYzRFGYjS42ec2k8P4DVcsPgOqDuryAtw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR05MB4808
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200419_172038_503593_3300BFF3 
-X-CRM114-Status: GOOD (  13.14  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200420_063618_247804_38F6CA76 
+X-CRM114-Status: GOOD (  10.62  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [40.107.2.65 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,42 +126,58 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- "hch@lst.de" <hch@lst.de>
+Cc: rds-devel@oss.oracle.com, Bart Van Assche <bvanassche@acm.org>,
+ Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>, linux-rdma@vger.kernel.org,
+ netdev@vger.kernel.org, Santosh Shilimkar <santosh.shilimkar@oracle.com>,
+ linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
+ target-devel@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 04/09/2020 02:41 AM, Anthony Iliopoulos wrote:
-> I was primarily thinking of blktests, where loop blockdev is used for
-> testing bdev-backed namespaces. For testing filesystem resizing on top
-> of nvmet (which was my use-case), it really makes no difference whether
-> the ns is bdev or file-backed.
+On Mon, Apr 13, 2020 at 05:15:31PM +0300, Leon Romanovsky wrote:
+> From: Leon Romanovsky <leonro@mellanox.com>
 >
-For testing we can getaway with file backend, it will exercise same
-code path.
-> I'm just pointing out that if the loop blockdev is the only kind of
-> resizable backing used for nvmet-bdev, then the maintenance kthread will
-> only solve half of the problem: userspace would still need to issue a
-> capacity change ioctl to the loop blockdev after resizing its underlying
-> file, before the kthread could see any changes.
+> Changelog:
+>  v2:
+>  * Rebased on latest rdma-next and removed already accepted patches.
+>  * Updated all rdma_reject in-kernel users to provide reject reason.
+>  v1: Dropped field_avail patch in favor of mass conversion to use function
+>      which already exists in the kernel code.
+>  https://lore.kernel.org/lkml/20200310091438.248429-1-leon@kernel.org
+>  v0: https://lore.kernel.org/lkml/20200305150105.207959-1-leon@kernel.org
 >
-For nvmet it expects generic block deivce or generic backend, we should
-avoid to rely on such functionality if we can and this is for testing 
-case I'd use filebackend than loop device, since it uses same code path,
-and easy to setup test with minimum steps.
-> But I suppose there may exist other use-cases I am unaware of, given
-> that if the ultimate backing is a file, then connecting this to a loop
-> blockdev and doing a bdev-backed nvmet instead of a file-backed one
-> directly to the backing file, doesn't bring any benefit.
+> Enhanced Connection Established or ECE is new negotiation scheme
+> introduced in IBTA v1.4 to exchange extra information about nodes
+> capabilities and later negotiate them at the connection establishment
+> phase.
 >
-Yes, I don't see any benefit yet except adding another level of 
-indirection. (and possibly crypto support, but that can be solved
-by using ext4 and user based per file encryption).
+> The RDMA-CM messages (REQ, REP, SIDR_REQ and SIDR_REP) were extended
+> to carry two fields, one new and another gained new functionality:
+>  * VendorID is a new field that indicates that common subset of vendor
+>    option bits are supported as indicated by that VendorID.
+>  * AttributeModifier already exists, but overloaded to indicate which
+>    vendor options are supported by this VendorID.
+>
+> This is kernel part of such functionality which is responsible to get data
+> from librdmacm and properly create and handle RDMA-CM messages.
+>
+> Thanks
+>
+> Leon Romanovsky (7):
+>   RDMA/cm: Add Enhanced Connection Establishment (ECE) bits
+>   RDMA/uapi: Add ECE definitions to UCMA
+>   RDMA/ucma: Extend ucma_connect to receive ECE parameters
+>   RDMA/ucma: Deliver ECE parameters through UCMA events
+>   RDMA/cm: Send and receive ECE parameter over the wire
+>   RDMA/cma: Connect ECE to rdma_accept
+>   RDMA/cma: Provide ECE reject reason
 
+PR: https://github.com/linux-rdma/rdma-core/pull/745
 
+Thanks
 
 _______________________________________________
 linux-nvme mailing list
