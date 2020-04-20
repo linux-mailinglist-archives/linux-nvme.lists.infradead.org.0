@@ -2,69 +2,71 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 305451B123C
-	for <lists+linux-nvme@lfdr.de>; Mon, 20 Apr 2020 18:48:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B8C551B1965
+	for <lists+linux-nvme@lfdr.de>; Tue, 21 Apr 2020 00:27:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8rpxM9WsWEf7+nxlTTjM333uOSPojvj6DzTWBV6DZ5k=; b=USmwwsFRAt+qbX
-	8M1128IyTvqpbCr2fSUPhsQwukDS73AAIHduao5u9nGpEdCQUcoBwdhbBzAT/3Etne5XHdIZh7C9k
-	Akx7Undg+7+A998Oe4sVREV318cCm5NdObkQDvZe44aulMPzjkypM8oTvFkAerzdXlnR0jOPbyf7o
-	cD+EXF59IcI/cRDElXpuiQYyTM5kvH7wQzImuWhSA8qWDizi31v5eXaPFkBZ3+Tj2gf4mehGwIcya
-	Wxq2g2D3d5aVc6eRgEicBOgVPa8aJzCFHyx8vfz/Q+ZGeyDiToT3Anme2TFG5j6o/qzGPC4Dttce+
-	PeV5zeWd0SnGCcQ6il9g==;
+	List-Owner; bh=bEssgq0/3X1QPQjavu06DeSOqUJVPcjtjTtgHdMsuyw=; b=a4CB3Y9R4j3tar
+	ZylxdEMKuQs7txeUp9eaeFgebMSBYVKTwA9EcEoMjsc2/lEF08wknNKs6THwbsB1co86I8y7hIRJA
+	zFjD4l0uUE30NxGigicYLXlLti8amo+8fWeF1bFeaQ6XqABK71fQWAElhm5k8Y/zxtANmWqbaBavl
+	q45PFz6LvJpEcs4sz1cNmYLuussOR7S6i4GjuBrDqaPTjb19/SkEDX6xZbsAvAtxukDV9wmtOP6pv
+	v4SrAZ7UrLHbE6wVl+/EdH528/QwWL8010+fDhCjCCoQtjB/xQijjYsEeRoCy26hl8WVfuRFfV2vt
+	cRlA9W/GPKnG+tzYQCdg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQZan-0001lY-RA; Mon, 20 Apr 2020 16:48:21 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1jQesW-0001bQ-Jx; Mon, 20 Apr 2020 22:27:00 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQZZk-0000RB-LN
- for linux-nvme@lists.infradead.org; Mon, 20 Apr 2020 16:47:19 +0000
-Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
- by ale.deltatee.com with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <gunthorp@deltatee.com>)
- id 1jQZZb-0008F9-BL; Mon, 20 Apr 2020 10:47:10 -0600
-Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
- (envelope-from <gunthorp@deltatee.com>)
- id 1jQZZa-0005e0-Kv; Mon, 20 Apr 2020 10:47:06 -0600
-From: Logan Gunthorpe <logang@deltatee.com>
-To: linux-kernel@vger.kernel.org,
-	linux-nvme@lists.infradead.org
-Date: Mon, 20 Apr 2020 10:47:00 -0600
-Message-Id: <20200420164700.21620-10-logang@deltatee.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200420164700.21620-1-logang@deltatee.com>
+ id 1jQesS-0001aA-L7
+ for linux-nvme@lists.infradead.org; Mon, 20 Apr 2020 22:26:57 +0000
+Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 3ABAA2078C;
+ Mon, 20 Apr 2020 22:26:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1587421614;
+ bh=EWVzh88DNd4xeWlsexuidhZpIDlePK+hTSyEl1GX/8o=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=s8rq4igMfXXijc389ELBl5dQwloilfDDQMohpJXxaRWtdIKgyDc07+5kh8co+PUup
+ r+6Z54NwOW5xZFGmhIX/9UUU37s4Z7yGbgpCmN8isJapDDS3+dQdMBqGLYl1Dfqq65
+ pk9gQ+cFF7aXKSpcYIsxq7I56fqA6ULGH895zwsI=
+Date: Tue, 21 Apr 2020 07:26:46 +0900
+From: Keith Busch <kbusch@kernel.org>
+To: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [PATCH v12 1/9] nvme-core: Clear any SGL flags in passthru
+ commands
+Message-ID: <20200420222646.GA11115@redsun51.ssa.fujisawa.hgst.com>
 References: <20200420164700.21620-1-logang@deltatee.com>
+ <20200420164700.21620-2-logang@deltatee.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 172.16.1.31
-X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- hch@lst.de, sagi@grimberg.me, kbusch@kernel.org, axboe@fb.com,
- Chaitanya.Kulkarni@wdc.com, maxg@mellanox.com, sbates@raithlin.com,
- logang@deltatee.com
-X-SA-Exim-Mail-From: gunthorp@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-6.5 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- MYRULES_FREE,MYRULES_NO_TEXT autolearn=no autolearn_force=no
- version=3.4.2
-Subject: [PATCH v12 9/9] nvmet-configfs: Introduce passthru configfs interface
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+Content-Disposition: inline
+In-Reply-To: <20200420164700.21620-2-logang@deltatee.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_094716_724032_8ADCA38B 
-X-CRM114-Status: GOOD (  13.21  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20200420_152656_724605_E76416E2 
+X-CRM114-Status: GOOD (  14.92  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,164 +79,48 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
- Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
+ Jens Axboe <axboe@fb.com>, Max Gurtovoy <maxg@mellanox.com>,
+ Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-When CONFIG_NVME_TARGET_PASSTHRU as 'passthru' directory will
-be added to each subsystem. The directory is similar to a namespace
-and has two attributes: device_path and enable. The user must set the
-path to the nvme controller's char device and write '1' to enable the
-subsystem to use passthru.
+On Mon, Apr 20, 2020 at 10:46:52AM -0600, Logan Gunthorpe wrote:
+> The host driver should decide whether to use SGLs or PRPs and they
+> currently assume the flags are cleared after the call to
+> nvme_setup_cmd(). However, passed-through commands may erroneously
+> set these bits; so clear them for all cases.
+> 
+> Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
+> Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+> ---
+>  drivers/nvme/host/core.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+> index 91c1bd659947..f5283b300e87 100644
+> --- a/drivers/nvme/host/core.c
+> +++ b/drivers/nvme/host/core.c
+> @@ -756,6 +756,8 @@ blk_status_t nvme_setup_cmd(struct nvme_ns *ns, struct request *req,
+>  	case REQ_OP_DRV_IN:
+>  	case REQ_OP_DRV_OUT:
+>  		memcpy(cmd, nvme_req(req)->cmd, sizeof(*cmd));
+> +		/* passthru commands should let the driver set the SGL flags */
+> +		cmd->common.flags &= ~NVME_CMD_SGL_ALL;
+>  		break;
 
-Any given subsystem is prevented from enabling both a regular namespace
-and the passthru device. If one is enabled, enabling the other will
-produce an error.
+Is this really necessary? The passthrough handler currently rejects user
+commands that set command flags:
 
-Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
-Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
----
- drivers/nvme/target/configfs.c | 99 ++++++++++++++++++++++++++++++++++
- drivers/nvme/target/nvmet.h    |  1 +
- 2 files changed, 100 insertions(+)
-
-diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
-index e0ce6e5feb3a..59eb52a0d06c 100644
---- a/drivers/nvme/target/configfs.c
-+++ b/drivers/nvme/target/configfs.c
-@@ -613,6 +613,103 @@ static const struct config_item_type nvmet_namespaces_type = {
- 	.ct_owner		= THIS_MODULE,
- };
- 
-+#ifdef CONFIG_NVME_TARGET_PASSTHRU
-+
-+static ssize_t nvmet_passthru_device_path_show(struct config_item *item,
-+		char *page)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+
-+	return snprintf(page, PAGE_SIZE, "%s\n", subsys->passthru_ctrl_path);
-+}
-+
-+static ssize_t nvmet_passthru_device_path_store(struct config_item *item,
-+		const char *page, size_t count)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+	size_t len;
-+	int ret;
-+
-+	mutex_lock(&subsys->lock);
-+
-+	ret = -EBUSY;
-+	if (subsys->passthru_ctrl)
-+		goto out_unlock;
-+
-+	ret = -EINVAL;
-+	len = strcspn(page, "\n");
-+	if (!len)
-+		goto out_unlock;
-+
-+	kfree(subsys->passthru_ctrl_path);
-+	ret = -ENOMEM;
-+	subsys->passthru_ctrl_path = kstrndup(page, len, GFP_KERNEL);
-+	if (!subsys->passthru_ctrl_path)
-+		goto out_unlock;
-+
-+	mutex_unlock(&subsys->lock);
-+
-+	return count;
-+out_unlock:
-+	mutex_unlock(&subsys->lock);
-+	return ret;
-+}
-+CONFIGFS_ATTR(nvmet_passthru_, device_path);
-+
-+static ssize_t nvmet_passthru_enable_show(struct config_item *item,
-+		char *page)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+
-+	return sprintf(page, "%d\n", subsys->passthru_ctrl ? 1 : 0);
-+}
-+
-+static ssize_t nvmet_passthru_enable_store(struct config_item *item,
-+		const char *page, size_t count)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+	bool enable;
-+	int ret = 0;
-+
-+	if (strtobool(page, &enable))
-+		return -EINVAL;
-+
-+	if (enable)
-+		ret = nvmet_passthru_ctrl_enable(subsys);
-+	else
-+		nvmet_passthru_ctrl_disable(subsys);
-+
-+	return ret ? ret : count;
-+}
-+CONFIGFS_ATTR(nvmet_passthru_, enable);
-+
-+static struct configfs_attribute *nvmet_passthru_attrs[] = {
-+	&nvmet_passthru_attr_device_path,
-+	&nvmet_passthru_attr_enable,
-+	NULL,
-+};
-+
-+static const struct config_item_type nvmet_passthru_type = {
-+	.ct_attrs		= nvmet_passthru_attrs,
-+	.ct_owner		= THIS_MODULE,
-+};
-+
-+static void nvmet_add_passthru_group(struct nvmet_subsys *subsys)
-+{
-+	config_group_init_type_name(&subsys->passthru_group,
-+				    "passthru", &nvmet_passthru_type);
-+	configfs_add_default_group(&subsys->passthru_group,
-+				   &subsys->group);
-+}
-+
-+#else /* CONFIG_NVME_TARGET_PASSTHRU */
-+
-+static void nvmet_add_passthru_group(struct nvmet_subsys *subsys)
-+{
-+}
-+
-+#endif /* CONFIG_NVME_TARGET_PASSTHRU */
-+
- static int nvmet_port_subsys_allow_link(struct config_item *parent,
- 		struct config_item *target)
- {
-@@ -1047,6 +1144,8 @@ static struct config_group *nvmet_subsys_make(struct config_group *group,
- 	configfs_add_default_group(&subsys->allowed_hosts_group,
- 			&subsys->group);
- 
-+	nvmet_add_passthru_group(subsys);
-+
- 	return &subsys->group;
- }
- 
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index 76c3a7cb9c89..d40452e50212 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -243,6 +243,7 @@ struct nvmet_subsys {
- #ifdef CONFIG_NVME_TARGET_PASSTHRU
- 	struct nvme_ctrl	*passthru_ctrl;
- 	char			*passthru_ctrl_path;
-+	struct config_group	passthru_group;
- #endif /* CONFIG_NVME_TARGET_PASSTHRU */
- };
- 
--- 
-2.20.1
-
+static int nvme_user_cmd(struct nvme_ctrl *ctrl, struct nvme_ns *ns,
+			struct nvme_passthru_cmd __user *ucmd)
+{
+	...
+	if (cmd.flags)
+		return -EINVAL;
 
 _______________________________________________
 linux-nvme mailing list
