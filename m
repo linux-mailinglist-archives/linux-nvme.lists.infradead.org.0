@@ -2,119 +2,66 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2EB11B0CE8
-	for <lists+linux-nvme@lfdr.de>; Mon, 20 Apr 2020 15:39:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 871511B1243
+	for <lists+linux-nvme@lfdr.de>; Mon, 20 Apr 2020 18:49:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FL9JDgrif8LEN6iF5DgQ7DEtoVolJXYzkORa5PYQWC8=; b=PxOTo0Sw/oeAHQ
-	oISrWCr4/8G4f8Hc5+Qcqs5IvlAlnnd4mxpdmbCWgI02c0B6tW39L+Y+7iNIP4hlyAi2j3O3oEWEB
-	nPiwCAXxWo5WgR6gJcLgFvAt1ERt7Yd3CbmSoZVJdjIFCCQIyP+Xn9I1LZ9mz41C2lzNk6JpW7aB/
-	geFrjDD4r0IRPbEqDwzOdf+IP0nyDqunHPwypvBY5+BfMNqQSxc48g8rKNMzhRcJUJ4LryS2BcHoi
-	6BJuGEuvtkoU1jdif0/vWpL9llPkntAuZ428+FhuLYENYh8RBPudVZYbclg48d7WU6w5XtqJnwODy
-	sBXmhuqvYJ1NT4lSH6/A==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:Message-Id:Date:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sfC+GEArP1lQfq/Ggm6Yk2O21MuNFyX+zO77V9/wKzs=; b=MULrgMJU0nQJTw
+	iw0TanFpK50oT/4mEE0DHxt+tgi+J30ct5+s+uXDC2qrysT5Wq6XlAAMF00B+7hdLHXwG7mkrDwAy
+	B/5ya+ElefLpZqqf6kOP95uYwmZ79L5/ELVcOJzF/CdjzCj+HMsqA0eeOG6vJkKldE+ZvQLHlhip3
+	5xU1onSp4iLj7ImkPxKgLk6FJ6Wy+a5YtTXF+198mLFLYBi75mPfQzI4mqYAxFpTxW7GDB+/SUfB3
+	CPA2+K1+tgpF0Jhbi8Ia+acEiJllBd7b1AJpf/6XFctL8j2JSBc4hDz6vk+nrPJjn080IfpcpRSpW
+	TMS6g9PRgpCZGiTO96kg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQWdX-0004Z8-Du; Mon, 20 Apr 2020 13:38:59 +0000
-Received: from mail-eopbgr20065.outbound.protection.outlook.com ([40.107.2.65]
- helo=EUR02-VE1-obe.outbound.protection.outlook.com)
+	id 1jQZc2-0004Fq-D7; Mon, 20 Apr 2020 16:49:38 +0000
+Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQWav-0001JK-Ua
- for linux-nvme@lists.infradead.org; Mon, 20 Apr 2020 13:36:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Iura5vkVbMH03LdyBXKq8kFUuGJdA7K2pQkw/ZhPMJsMbHKDHElHeu++TQiKicY5p86/Vks9zsFs7hyxLzx63x+OO5noXh4+l+JSYthxD95jk5d+dxwfnhvBsvJMM5dTsjXDoEo/VYPXHjszJ8ngan2I4nnAEnvA4oIvdS8YPC7I4NLCMCZGKEL3HcfmVR62RyIYRmJud1MbeepN8k3R8M7uqJSW1zzyYOt/CM4xvOb5qGoq5mCOiOEr+saCGd4LoEE1TXJCfSX6MtgZ7s6iJu43SVkEyWUrnBCcsTbSd9Ew7ZTvbwZrpMFDWsecbrvU/5lWcBNtZfT/pCAjKbDjSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gGNCD4qjTfkp0JwbP3TeB+wDtVy35k2UTDEasETrYw8=;
- b=jEhmsud3MNeYxf7PROpdetMBVYM+olOuURjrfF7pNQ8QbHGdG8jtYpZVHO6gK0iMoVNCj1Q4WOxxnkl4dopQ+yyfnKt2dot6BszEd7uPqGAYSMCv1sZMtugK1QORzh8k3WoZ5HJAi6NlMAhKq69EzqYUjgnkdID5SK/NhwSL1XxWwtWTs5vvVMYuQhJT9ypmg/wKYzvSSU5VhkLLHG+J/tqArFh+Bsw1oInoV9gHvtQHKbMlhpBW2czzF3LP2//OS78hXaQfVQK91ph1TNeEhBqh376oaJn/0JuiaFEiBjdyh02JjsIwp9uYscjL+yoU8BRDTq55Qpvoi6eQQpeZxg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
- dkim=pass header.d=mellanox.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gGNCD4qjTfkp0JwbP3TeB+wDtVy35k2UTDEasETrYw8=;
- b=OPIUq1wpMVQeIyKFMM8HcFgDwrTj3b9XrIfnI6RZ7rj2jN4bSnQDtOj0118BKCkQ4N9Cbz1XH6xxbu0K9PoAc/3UK4YgXophjRaiNv75JJHTXsXgLu1BjGX0zUm8UWx2jGL/MwUn9TcPMznTswt2sMzDGA8b1nxTKMEO10ooCbs=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=leonro@mellanox.com; 
-Received: from AM6PR05MB6408.eurprd05.prod.outlook.com (2603:10a6:20b:b8::23)
- by AM6PR05MB4808.eurprd05.prod.outlook.com (2603:10a6:20b:f::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.29; Mon, 20 Apr
- 2020 13:36:10 +0000
-Received: from AM6PR05MB6408.eurprd05.prod.outlook.com
- ([fe80::1466:c39b:c016:3301]) by AM6PR05MB6408.eurprd05.prod.outlook.com
- ([fe80::1466:c39b:c016:3301%4]) with mapi id 15.20.2921.030; Mon, 20 Apr 2020
- 13:36:10 +0000
-Date: Mon, 20 Apr 2020 16:36:07 +0300
-From: Leon Romanovsky <leonro@mellanox.com>
-To: Doug Ledford <dledford@redhat.com>, Jason Gunthorpe <jgg@mellanox.com>
-Subject: Re: [PATCH rdma-next v2 0/7] Add Enhanced Connection Established (ECE)
-Message-ID: <20200420133607.GD121146@unreal>
-References: <20200413141538.935574-1-leon@kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200413141538.935574-1-leon@kernel.org>
-X-ClientProxiedBy: AM4PR0202CA0003.eurprd02.prod.outlook.com
- (2603:10a6:200:89::13) To AM6PR05MB6408.eurprd05.prod.outlook.com
- (2603:10a6:20b:b8::23)
+ id 1jQZZk-0000Rb-QD
+ for linux-nvme@lists.infradead.org; Mon, 20 Apr 2020 16:47:23 +0000
+Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
+ by ale.deltatee.com with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <gunthorp@deltatee.com>)
+ id 1jQZZb-0008F0-BL; Mon, 20 Apr 2020 10:47:12 -0600
+Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
+ (envelope-from <gunthorp@deltatee.com>)
+ id 1jQZZZ-0005da-Na; Mon, 20 Apr 2020 10:47:05 -0600
+From: Logan Gunthorpe <logang@deltatee.com>
+To: linux-kernel@vger.kernel.org,
+	linux-nvme@lists.infradead.org
+Date: Mon, 20 Apr 2020 10:46:51 -0600
+Message-Id: <20200420164700.21620-1-logang@deltatee.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from localhost (2a00:a040:183:2d::a43) by
- AM4PR0202CA0003.eurprd02.prod.outlook.com (2603:10a6:200:89::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.26 via Frontend
- Transport; Mon, 20 Apr 2020 13:36:10 +0000
-X-Originating-IP: [2a00:a040:183:2d::a43]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: c6af76cb-dc96-47d8-42b7-08d7e52fc98d
-X-MS-TrafficTypeDiagnostic: AM6PR05MB4808:|AM6PR05MB4808:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <AM6PR05MB4808F309E1722C3B8B31B692B0D40@AM6PR05MB4808.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
-X-Forefront-PRVS: 03793408BA
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM6PR05MB6408.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10009020)(7916004)(4636009)(366004)(52116002)(5660300002)(9686003)(33656002)(66476007)(66556008)(6636002)(54906003)(66946007)(2906002)(7416002)(4326008)(6486002)(110136005)(6666004)(498600001)(8936002)(8676002)(81156014)(6496006)(966005)(86362001)(186003)(1076003)(16526019)(33716001);
- DIR:OUT; SFP:1101; 
-Received-SPF: None (protection.outlook.com: mellanox.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: IVnxZVHgp7XU2ouhlePyLgMQO885hkrwbJG2SBzF6+QC42ucs2eb2m44csy+NfRqkvIaQ04/Jds1+7GjIviQNGJlf4Sq7yrc1VFd1a/MOEwF36N4va3wxwYQ/1V8bu00ky+pSBxLcOSruGvNImMq3Q8u10uspAqYIiAoS4Eiscc1BFz9EqfH9bK6SMVOEXnlyoq8VobwxYOiuHWy7HHZlscgkiB0oJd+NeQVrkidfmLV4eLbXY/A578pKsSpw1LrT4tlR94zHyHHwii4J/v8X/aZRTO7W9wH7FEg8AMeTVFTqHRqm9ewq1WPut0NVafrf16t2U9GnvZdK00+1T0IFxbGuCwIDxniCMK88AamOkYGCPQpP1eQvN/Jkul7+osVukc2XV3ZjqvhdJ8Wu5OYhagahOpUA0PeCwF6LzjYGCfCa3fnWZWj7ZBshUGQbKRtEPp4aEXcETrkj3mPx74/+7hjmzU3Z5LYcn1/taAEodZDScYaFHJQi3Tw71AkhV2wXvfj5lrmwDzm7SHd8yOnnw==
-X-MS-Exchange-AntiSpam-MessageData: f6lSVV8SHc77YCs4gXCEooUYWMuG8HPkrmvh07t5Kc2mkDgUwGq4MO1/Yri7jV61y9l8OG75MLZ+EBOAbsScA1l2BLFjAs0eYfLUhA/xanv0utRgb+XfIQhGCawfKadvXBJz98R6DsdvKiPStDPkOCTw3f+DamiIFVfnkSoYWbQ=
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c6af76cb-dc96-47d8-42b7-08d7e52fc98d
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Apr 2020 13:36:10.5745 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 2O0UApw/z6QB4VTepkJV7qek7q5tNoT4ybOZn9Rfhq27pmQ0T60z5LYzRFGYjS42ec2k8P4DVcsPgOqDuryAtw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR05MB4808
+X-SA-Exim-Connect-IP: 172.16.1.31
+X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
+ hch@lst.de, sagi@grimberg.me, kbusch@kernel.org, axboe@fb.com,
+ Chaitanya.Kulkarni@wdc.com, maxg@mellanox.com, sbates@raithlin.com,
+ logang@deltatee.com
+X-SA-Exim-Mail-From: gunthorp@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-6.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ MYRULES_NO_TEXT autolearn=no autolearn_force=no version=3.4.2
+Subject: [PATCH v12 0/9] nvmet: add target passthru commands support
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_063618_247804_38F6CA76 
-X-CRM114-Status: GOOD (  10.62  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200420_094717_143210_DBCBF347 
+X-CRM114-Status: GOOD (  24.79  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [40.107.2.65 listed in list.dnswl.org]
+ no trust [207.54.116.67 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,58 +73,221 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: rds-devel@oss.oracle.com, Bart Van Assche <bvanassche@acm.org>,
- Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>, linux-rdma@vger.kernel.org,
- netdev@vger.kernel.org, Santosh Shilimkar <santosh.shilimkar@oracle.com>,
- linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>,
- target-devel@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Sagi Grimberg <sagi@grimberg.me>
+Cc: Sagi Grimberg <sagi@grimberg.me>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
+ Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>,
+ Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
+ Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Mon, Apr 13, 2020 at 05:15:31PM +0300, Leon Romanovsky wrote:
-> From: Leon Romanovsky <leonro@mellanox.com>
->
-> Changelog:
->  v2:
->  * Rebased on latest rdma-next and removed already accepted patches.
->  * Updated all rdma_reject in-kernel users to provide reject reason.
->  v1: Dropped field_avail patch in favor of mass conversion to use function
->      which already exists in the kernel code.
->  https://lore.kernel.org/lkml/20200310091438.248429-1-leon@kernel.org
->  v0: https://lore.kernel.org/lkml/20200305150105.207959-1-leon@kernel.org
->
-> Enhanced Connection Established or ECE is new negotiation scheme
-> introduced in IBTA v1.4 to exchange extra information about nodes
-> capabilities and later negotiate them at the connection establishment
-> phase.
->
-> The RDMA-CM messages (REQ, REP, SIDR_REQ and SIDR_REP) were extended
-> to carry two fields, one new and another gained new functionality:
->  * VendorID is a new field that indicates that common subset of vendor
->    option bits are supported as indicated by that VendorID.
->  * AttributeModifier already exists, but overloaded to indicate which
->    vendor options are supported by this VendorID.
->
-> This is kernel part of such functionality which is responsible to get data
-> from librdmacm and properly create and handle RDMA-CM messages.
->
-> Thanks
->
-> Leon Romanovsky (7):
->   RDMA/cm: Add Enhanced Connection Establishment (ECE) bits
->   RDMA/uapi: Add ECE definitions to UCMA
->   RDMA/ucma: Extend ucma_connect to receive ECE parameters
->   RDMA/ucma: Deliver ECE parameters through UCMA events
->   RDMA/cm: Send and receive ECE parameter over the wire
->   RDMA/cma: Connect ECE to rdma_accept
->   RDMA/cma: Provide ECE reject reason
+Hi,
 
-PR: https://github.com/linux-rdma/rdma-core/pull/745
+This is v12 of the passthru patchset. Since last time this was submitted
+the get/set features were audited to ensure only appropriate features get
+passed through. The one that showed particular concern was the
+HOST_BEHAVIOR feature which I've solved by emulating and failing
+if the target host requests different behaviour than the device's host.
 
-Thanks
+Below, I'll reiterrate some points I made previously that haven't been
+responded to:
+
+I don't think cloning the ctrl_id or the subsysnqn is a good idea.
+I sent an email trying to explain why here[1] but there was no response.
+In short, I think cloning the ctrl_id will break multipathing over
+fabrics and copying the subsysnqn only has the effect of breaking
+loopback; the user can always copy the underlying subsysnqn if it
+makes sense for their overall system.
+
+I maintain overriding the CMIC bit in the ctrl id is necessary to
+allow multipath over fabrics even if the underlying device did
+not support multipath.
+
+I also think the black list for admin commands is appropriate, and I
+added it based on Sagi's feedback[2]. There are plenty of commands that
+may be dangerous like firmware update and format NVM commands, and NS
+attach commands won't work out of the box because we don't copy the
+ctrl_id. It seems like there's more commands to be careful of than ones
+that are that are obviously acceptable. So, I think the prudent course
+is blacklisting by default until someone has a usecase and can show
+the command is safe seems and makes sense. For our present use cases,
+the identify, log page and vendor specific commands are all that we
+care about.
+
+A git branch is available here and is based on v5.7-rc1:
+
+https://github.com/sbates130272/linux-p2pmem nvmet_passthru_v12
+
+Thanks,
+
+Logan
+
+[1] https://lore.kernel.org/linux-block/247eca47-c3bc-6452-fb19-f7aa27b05a60@deltatee.com/
+[2] https://lore.kernel.org/linux-block/e4430207-7def-8776-0289-0d58689dc0cd@grimberg.me/
+
+--
+
+v12 Changes:
+  1. Rebased onto v5.7-rc1
+  2. Collected Sagi's Reviewed-by tags
+  3. Per Sagi's feedback implement an whitelist for set/get features and
+     audit the features for whether they are suitable to be passed-through
+
+v11 Changes:
+  1. Rebased onto v5.6-rc2
+  2. Collected Max's Reviewed-By tag
+
+v10 Changes:
+  1. Rebased onto v5.5-rc1
+  2. Disable all exports in core nvme if CONFIG_NVME_TARGET_PASSTHRU is
+     not set and put them near the end of the file with a big fat
+     comment (per Christoph)
+  3. Don't fake up the vs field: pass it through as is and bump
+     it to 1.2.1 if it is below that (per Christoph)
+  4. Rework how passthru requests are submitted into the core
+     with proper nvme_passthru_start/end handling (per Christoph)
+  5. Rework how commands are parsed with passthru hooks in
+     parse_admin_cmd() and nvmet_parse_io_cmd() (per Christoph)
+  6. Rework commands are handled so they are only done in a work
+     item if absolutely necessary (per Christoph)
+  7. The data_len hack was dropped as a patchset was introduced to
+     remove data_len altogether (per Christoph)
+  8. The passthru accounting changes are now in v5.5-rc1
+  9. A large number of other minor cleanups that were pointed out by
+     Christoph
+
+v9 Changes:
+  1. Rebased onto v5.4-rc2 (required adjusting nvme_identify_ns() usage)
+  2. Collected Sagi's Reviewed-By Tags
+  3. Squashed seperate Kconfig patch into passthru patch (Per Sagi)
+  4. Set REQ_FUA for flush requests and remove special casing
+     on RQF_IO_STAT (Per Sagi)
+
+v8 Changes:
+  1. Rebased onto v5.3-rc6
+  2. Collected Max's Reviewed-By tags
+  3. Converted admin command black-list to a white-list, but
+     allow all vendor specific commands. With this, we feel
+     it's safe to allow multiple connections from hosts.
+     (As per Sagi's feedback)
+
+v7 Changes:
+  1. Rebased onto v5.3-rc2
+  2. Rework nvme_ctrl_get_by_path() to use filp_open() instead of
+     the cdev changes that were in v6. (Per Al)
+  3. Override the cmic bit to allow multipath and allow
+     multiple connections from the same hostnqn. (At the same
+     time I cleaned up the method of rejecting multiple connections.)
+     See Patch 8)
+  4. Found a bug when used with the tcp transport (See Patch 10)
+
+v6 Changes:
+  1. Rebased onto v5.3-rc1
+  2. Rework configfs interface to simply be a passthru directory
+     within the existing subsystem. The directory is similar to
+     and consistent with a namespace directory.
+  3. Have the configfs take a path instead of a bare controller name
+  4. Renamed the main passthru file to io-cmd-passthru.c for consistency
+     with the file and block-dev methods.
+  5. Cleaned up all the CONFIG_NVME_TARGET_PASSTHRU usage to remove
+     all the inline #ifdefs
+  6. Restructured nvmet_passthru_make_request() a bit for clearer code
+  7. Moved nvme_find_get_ns() call into nvmet_passthru_execute_cmd()
+     seeing calling it in nvmet_req_init() causes a lockdep warning
+     due to nvme_find_get_ns() being able to sleep.
+  8. Added a check in nvmet_passthru_execute_cmd() to ensure we don't
+     violate queue_max_segments or queue_max_hw_sectors and overrode
+     mdts to ensure hosts don't intentionally submit commands
+     that will exceed these limits.
+  9. Reworked the code which ensures there's only one subsystem per
+     passthru controller to use an xarray instead of a list as this is
+     simpler and more easily fixed some bugs triggered by disabling
+     subsystems that weren't enabled.
+ 10. Removed the overide of the target cntlid with the passthru cntlid;
+     this seemed like a really bad idea especially in the presence of
+     mixed systems as you could end up with two ctrlrs with the same
+     cntlid. For now, commands that depend on cntlid are black listed.
+ 11. Implement block accounting for passthru so the target can track
+     usage using /proc/diskstats
+ 12. A number of other minor bug fixes and cleanups
+
+v5 Changes (not sent to list, from Chaitanya):
+  1. Added workqueue for admin commands.
+  2. Added kconfig option for the pass-thru feature.
+  3. Restructure the parsing code according to your suggestion,
+     call nvmet_xxx_parse_cmd() from nvmet_passthru_parse_cmd().
+  4. Use pass-thru instead of pt.
+  5. Several cleanups and add comments at the appropriate locations.
+  6. Minimize the code for checking pass-thru ns across all the subsystems.
+  7. Removed the delays in the ns related admin commands since I was
+     not able to reproduce the previous bug.
+
+v4 Changes:
+  1. Add request polling interface to the block layer.
+  2. Use request polling interface in the NVMEoF target passthru code
+     path.
+  3. Add checks suggested by Sagi for creating one target ctrl per
+     passthru ctrl.
+  4. Don't enable the namespace if it belongs to the configured passthru
+     ctrl.
+  5. Adjust the code latest kernel.
+
+v3 Changes:
+  1. Split the addition of passthru command handlers and integration
+     into two different patches since we add guards to create one target
+     controller per passthru controller. This way it will be easier to
+     review the code.
+  2. Adjust the code for 4.18.
+
+v2 Changes:
+  1. Update the new nvme core controller find API naming and
+     changed the string comparison of the ctrl.
+  2. Get rid of the newly added #defines for target ctrl values.
+  3. Use the newly added structure members in the same patch where
+     they are used. Aggregate the passthru command handling support
+     and integration with nvmet-core into one patch.
+  4. Introduce global NVMe Target subsystem list for connected and
+     not connected subsystems on the target side.
+  5. Add check when configuring the target ns and target
+     passthru ctrl to allow only one target controller to be created
+     for one passthru subsystem.
+  6. Use the passthru ctrl cntlid when creating the
+     target controller.
+
+--
+
+Chaitanya Kulkarni (1):
+  nvmet-passthru: Introduce NVMet passthru Kconfig option
+
+Logan Gunthorpe (8):
+  nvme-core: Clear any SGL flags in passthru commands
+  nvme: Create helper function to obtain command effects
+  nvme: Move nvme_passthru_[start|end]() calls to common helper
+  nvme-core: Introduce nvme_ctrl_get_by_path()
+  nvme: Export existing nvme core functions
+  nvmet-passthru: Add passthru code to process commands
+  nvmet-passthru: Add enable/disable helpers
+  nvmet-configfs: Introduce passthru configfs interface
+
+ drivers/nvme/host/core.c        | 229 +++++++------
+ drivers/nvme/host/nvme.h        |  14 +
+ drivers/nvme/target/Kconfig     |  12 +
+ drivers/nvme/target/Makefile    |   1 +
+ drivers/nvme/target/admin-cmd.c |   7 +-
+ drivers/nvme/target/configfs.c  | 103 ++++++
+ drivers/nvme/target/core.c      |  13 +-
+ drivers/nvme/target/nvmet.h     |  52 +++
+ drivers/nvme/target/passthru.c  | 547 ++++++++++++++++++++++++++++++++
+ include/linux/nvme.h            |   4 +
+ 10 files changed, 889 insertions(+), 93 deletions(-)
+ create mode 100644 drivers/nvme/target/passthru.c
+
+
+base-commit: 8f3d9f354286745c751374f5f1fcafee6b3f3136
+--
+2.20.1
 
 _______________________________________________
 linux-nvme mailing list
