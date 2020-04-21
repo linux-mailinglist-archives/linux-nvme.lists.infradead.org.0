@@ -2,43 +2,44 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E43021B2B30
-	for <lists+linux-nvme@lfdr.de>; Tue, 21 Apr 2020 17:31:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC4261B2B36
+	for <lists+linux-nvme@lfdr.de>; Tue, 21 Apr 2020 17:33:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x8Wp5iXM5sUVkdxKW31hLjfDp9t+4wjQfteZKPaFkYo=; b=V5ydsaPx1Y52na
-	jwO0v9q7pms+wRlVpGFjpqCMYXA1+AH8sTz0OEFITmSm6atNKDkaO/1RHW1rMGhRAiJtgdxtLPxR+
-	WeDhyfh41Jwu4c4b1RlK89CvMlxtKRah9rEfOJzaMMyArMUClp9vh+lBOVuvJenp2jvQjEuAqyj/c
-	EnGFrOzs2JBDM+6NAgDOAjRcvK/SsWHkUDeGPakgYBJyqulU6LDvCWFrpsFhIlGc4L6BLj1bqpHpJ
-	nh44eBxBoySfpFSbaUmyCk770fvIxC3KtpIEpqZ5pHx9OuUFOUZ6lLo0WmExhcgK0Sfa3StfwsrCf
-	DPP8PxGW0wO2F9q+h2YQ==;
+	List-Owner; bh=GRqbhnxbwsFPhKORlKdoFw7bYm89lVa5n/n3bldIUo4=; b=WHqoKNiswXv0r/
+	LSUz3Dpgig8+95ghcTBiQxkNopr2/LEDyuqmtjigRHnDK5udqNR07qrQseDwqrUtwvkfQImzagCjf
+	JXtUm51Ru41uYFjQF4bJwV+5MVq3ox+H5GsBXqPx4+ura2JRDhBmpWQ1i79CDJ4VMTGEMgfMB8Nh7
+	BPKCHIZA9OcRA/pVTydgyTlg1Y7hLxcehloX9mEW1NHGZwaSMfhdKGl16GrcnC5ofJq+NofyyYg49
+	ZJPLCeG/yrLNu3YGZxHNI+GLcEf4N9Ia65McPdZ2gxz3ICnuKNVhhouaprpwzbdqc/7UKmDVTx/uN
+	raDRlOmyXRJ+NIhgreiA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQurP-00080h-46; Tue, 21 Apr 2020 15:30:55 +0000
+	id 1jQuuD-0000P8-1x; Tue, 21 Apr 2020 15:33:49 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQurI-0007vx-7h
- for linux-nvme@lists.infradead.org; Tue, 21 Apr 2020 15:30:50 +0000
+ id 1jQuu8-0000OH-2z
+ for linux-nvme@lists.infradead.org; Tue, 21 Apr 2020 15:33:45 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 63CD368C4E; Tue, 21 Apr 2020 17:30:45 +0200 (CEST)
-Date: Tue, 21 Apr 2020 17:30:45 +0200
+ id 3A05E68C4E; Tue, 21 Apr 2020 17:33:40 +0200 (CEST)
+Date: Tue, 21 Apr 2020 17:33:39 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Max Gurtovoy <maxg@mellanox.com>
-Subject: Re: [PATCH 14/17] nvmet: Add metadata/T10-PI support
-Message-ID: <20200421153045.GE10837@lst.de>
+Subject: Re: [PATCH 15/17] nvmet: Add metadata support for block devices
+Message-ID: <20200421153339.GF10837@lst.de>
 References: <20200327171545.98970-1-maxg@mellanox.com>
- <20200327171545.98970-16-maxg@mellanox.com>
+ <20200327171545.98970-17-maxg@mellanox.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200327171545.98970-16-maxg@mellanox.com>
+In-Reply-To: <20200327171545.98970-17-maxg@mellanox.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200421_083048_448378_708F042E 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20200421_083344_281457_379A302D 
+X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.0 points)
@@ -69,64 +70,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> +	/*
-> +	 * Max command capsule size is sqe + single page of in-capsule data.
-> +	 * Disable inline data for Metadata capable controllers.
-> +	 */
->  	id->ioccsz = cpu_to_le32((sizeof(struct nvme_command) +
-> -				  req->port->inline_data_size) / 16);
-> +				  req->port->inline_data_size *
-> +				  !ctrl->pi_support) / 16);
+On Fri, Mar 27, 2020 at 08:15:43PM +0300, Max Gurtovoy wrote:
+> -	if (!nvmet_check_transfer_len(req, nvmet_rw_data_len(req)))
+> +	if (!nvmet_check_transfer_len(req,
+> +				      nvmet_rw_data_len(req) + req->md_len))
 
-Can we de-obsfucated this a little?
+Shouldn't we also calculate the actual metadata length on the fly here?
 
-	cmd_capsule_size = sizeof(struct nvme_command);
-	if (!ctrl->pi_support)
-		cmd_capsule_size += req->port->inline_data_size;
-	id->ioccsz = cpu_to_le32(cmd_capsule_size / 16);
+>  	blk_start_plug(&plug);
+> +	if (req->use_md)
 
-> +	if (ctrl->subsys->pi_support && ctrl->port->pi_enable) {
-> +		if (ctrl->port->pi_capable) {
-> +			ctrl->pi_support = true;
-> +			pr_info("controller %d T10-PI enabled\n", ctrl->cntlid);
-> +		} else {
-> +			ctrl->pi_support = false;
-> +			pr_warn("T10-PI is not supported on controller %d\n",
-> +				ctrl->cntlid);
-> +		}
+Can't we use a non-NULL req->md_sg or non-null req->md_sg_cnt as a
+metadata supported indicator and remove the use_md flag?  Maybe wrap
+them in a helper function that also checks for blk integrity support
+using IS_ENABLED and we can skip the stubs as well.
 
-I think the printks are a little verbose.  Also why can we set
-ctrl->port->pi_enable if ctrl->port->pi_capable is false?  Shoudn't
-we reject that earlier?  In that case this could simply become:
-
-	ctrl->pi_support = ctrl->subsys->pi_support && ctrl->port->pi_enable;
-
-> +#ifdef CONFIG_BLK_DEV_INTEGRITY
-> +static inline u32 nvmet_rw_md_len(struct nvmet_req *req)
-> +{
-> +	return ((u32)le16_to_cpu(req->cmd->rw.length) + 1) * req->ns->ms;
-> +}
-> +
-> +static inline bool nvmet_ns_has_pi(struct nvmet_ns *ns)
-> +{
-> +	return ns->md_type && ns->ms == sizeof(struct t10_pi_tuple);
-> +}
-> +#else
-> +static inline u32 nvmet_rw_md_len(struct nvmet_req *req)
-> +{
-> +	return 0;
-
-Do we really need a stub for nvmet_rw_md_len?  Also for nvmet_ns_has_pi
-we could probably reword it as:
-
-static inline bool nvmet_ns_has_pi(struct nvmet_ns *ns)
-{
-	if (!IS_ENABLED(CONFIG_BLK_DEV_INTEGRITY))
-		return false;
-	return ns->pi_type && ns->metadata_size == sizeof(struct t10_pi_tuple);
-}
-
-and avoid the need for a stub as well.
 
 _______________________________________________
 linux-nvme mailing list
