@@ -2,69 +2,86 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86D161B1998
-	for <lists+linux-nvme@lfdr.de>; Tue, 21 Apr 2020 00:34:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C0521B1DAC
+	for <lists+linux-nvme@lfdr.de>; Tue, 21 Apr 2020 06:51:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wNY8TgWTVsl/ivLqMLzHup5uS83Qza9eJutDIxMoKDE=; b=ebX9xBBn/40bDx
-	9rfFAGlcZQaV9IzrgF2sCNizP0i3qDaSxfePI+Mx2GJX9G0Fa+5rwCyaG8mIHKKLydZ/EkvFVZZQk
-	srr5t7Lqgfn36wquPlsNNpomwtWuAKp5Lbl2BDas5XDE7Z8/+AsL3r1cOclpM0PSPKsqrJwLg+BfT
-	wrBd+14dQY9Rw+PPBsZmL/yEgBit1nrZxxhFp8AOZCfD2fLuaJLLEtR6knq0jBK8HAcCKDApQQnm+
-	CQvfbOFL2EeyZowcbogtTLlxUo/yfuEfzGhbXVFTTdKIRp4IhA2E8WtnQmOKC4NvxGltnMEEFQCh8
-	vmLaGh2ZB9g+JzA/NTHw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=S1mJCXv9d3hD8Ec1q2GPRvOt9h2eHpbKGXkOy2dRzto=; b=mOvLm1qlXwIYyo
+	oGKHaetty+yIKuG8lX0kdknlx1VyIqqrpxwwLYTazV9QBv9hiNo4tyaG7J1xIm2ZUpse7yQnshyQc
+	3gk86wZrzVZ5Kyw6T2WH+e1rxnF4tHoB8kWTlIgmRqmbnQEaY5ZODj02f6VDTmbSqeYksOFw1Ki31
+	h7uriOnwj83NgeO7J0ZGyj0R7OHLLNhk9oH5f3oDf7Ox4fhaqmv5nHa3OpBJbQryUIb73sDa48QTo
+	2KSZhGhZ01TIcBHEKRGXwRMGnbQLtJecPuWlRoIZwJeGk1cg8EyHrh8gcNzJKM7krsVJ+y3l6vgFk
+	GpyuCSQHysfXMd+puiPA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQezo-0007u9-Mz; Mon, 20 Apr 2020 22:34:32 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
+	id 1jQksh-00020w-H1; Tue, 21 Apr 2020 04:51:35 +0000
+Received: from youngberry.canonical.com ([91.189.89.112])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQezj-0007sT-Hm
- for linux-nvme@lists.infradead.org; Mon, 20 Apr 2020 22:34:28 +0000
-Received: from guinness.priv.deltatee.com ([172.16.1.162])
- by ale.deltatee.com with esmtp (Exim 4.92)
- (envelope-from <logang@deltatee.com>)
- id 1jQezX-00056i-9U; Mon, 20 Apr 2020 16:34:16 -0600
-To: Keith Busch <kbusch@kernel.org>
-References: <20200420164700.21620-1-logang@deltatee.com>
- <20200420164700.21620-2-logang@deltatee.com>
- <20200420222646.GA11115@redsun51.ssa.fujisawa.hgst.com>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <ce687c5d-eb19-e9b5-e03a-97dd2a04b4ea@deltatee.com>
-Date: Mon, 20 Apr 2020 16:34:14 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <20200420222646.GA11115@redsun51.ssa.fujisawa.hgst.com>
-Content-Language: en-CA
-X-SA-Exim-Connect-IP: 172.16.1.162
-X-SA-Exim-Rcpt-To: sbates@raithlin.com, maxg@mellanox.com,
- Chaitanya.Kulkarni@wdc.com, axboe@fb.com, sagi@grimberg.me, hch@lst.de,
- linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
- kbusch@kernel.org
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [PATCH v12 1/9] nvme-core: Clear any SGL flags in passthru
- commands
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+ id 1jQksc-0001yz-0W
+ for linux-nvme@lists.infradead.org; Tue, 21 Apr 2020 04:51:31 +0000
+Received: from mail-pj1-f72.google.com ([209.85.216.72])
+ by youngberry.canonical.com with esmtps
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <kai.heng.feng@canonical.com>) id 1jQksV-0005qV-Sp
+ for linux-nvme@lists.infradead.org; Tue, 21 Apr 2020 04:51:24 +0000
+Received: by mail-pj1-f72.google.com with SMTP id bt3so2184721pjb.4
+ for <linux-nvme@lists.infradead.org>; Mon, 20 Apr 2020 21:51:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=BLtq2QdjOzCrJMLFZ+hejhyptyhEVzibl60GGDinzt4=;
+ b=FJW/y3XPStOq4NA5hNsbsNw/qnDBhdQcoDi1eRlAsbqoXT364wU4vyZtwRHIpO2kbz
+ wBDmZNjBnkfu6vbWhf+KHIAriKUdf4vgO0z7RAs6IVcA7B4bHHYjP0wwe10ynK9OiSX2
+ rtqN2zFmVjAB1qcKllYYbn9CFiJQyhc3FS61PuF7OEOtQ9MpcpeLTVYUiEtUwyASMGPA
+ QpPiKbyurVGowGM+gG4EhhAfbXSAJsbKdg4fxeFU/siVk4bb6indADklf6zKWQRikYA/
+ Jw9lcLPj1/P8hdCN56BHH5W9srWePCoNab7opxGRdChO4KkLgjStMH5PDkixhFzNCwKh
+ 8vzg==
+X-Gm-Message-State: AGi0PuZlRxSzjNmsuV7T7EPkPxTeig1VGCwksXppfSLwsIWl9BPmrzkN
+ amJ0Excuz37rPm2IAy9q14Yjn6RAsNhJbuKFRhbCuT9pvkRjTt+h3MpyhDRAPvttvkJl6tRkWpq
+ 0jFFjE+IyTlqNXuMFCelM/J394HzINgEyrI/btdiQBDBt
+X-Received: by 2002:a17:90a:7349:: with SMTP id
+ j9mr3358499pjs.196.1587444682538; 
+ Mon, 20 Apr 2020 21:51:22 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJDvmMZav1WQf4l8MDQtC6CWJ9V2og5hui0h4wbn2cbAwgyAaVGbvnQ6aHap5W2YJ/VGNCNOQ==
+X-Received: by 2002:a17:90a:7349:: with SMTP id
+ j9mr3358482pjs.196.1587444682263; 
+ Mon, 20 Apr 2020 21:51:22 -0700 (PDT)
+Received: from [192.168.1.208] (220-133-187-190.HINET-IP.hinet.net.
+ [220.133.187.190])
+ by smtp.gmail.com with ESMTPSA id mq6sm1074269pjb.38.2020.04.20.21.51.19
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 20 Apr 2020 21:51:21 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.80.23.2.2\))
+Subject: Re: [PATCH] nvme/pci: Use Discard instead of Write Zeroes on SK hynix
+ SC300
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+In-Reply-To: <20200417125929.GA5053@lst.de>
+Date: Tue, 21 Apr 2020 12:51:18 +0800
+Message-Id: <33565F7F-307C-408C-861D-72517F564967@canonical.com>
+References: <20200417083641.28205-1-kai.heng.feng@canonical.com>
+ <20200417125929.GA5053@lst.de>
+To: Christoph Hellwig <hch@lst.de>
+X-Mailer: Apple Mail (2.3608.80.23.2.2)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_153427_586589_B49AA32C 
-X-CRM114-Status: GOOD (  15.05  )
-X-Spam-Score: -0.0 (/)
+X-CRM114-CacheID: sfid-20200420_215130_192451_2E777C21 
+X-CRM114-Status: GOOD (  11.34  )
+X-Spam-Score: -5.0 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-5.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.54.116.67 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [91.189.89.112 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [91.189.89.112 listed in wl.mailspike.net]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,11 +93,10 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, Stephen Bates <sbates@raithlin.com>,
- Jens Axboe <axboe@fb.com>, Max Gurtovoy <maxg@mellanox.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: Sagi Grimberg <sagi@grimberg.me>, open list <linux-kernel@vger.kernel.org>,
+ "open list:NVM EXPRESS DRIVER" <linux-nvme@lists.infradead.org>,
+ Jens Axboe <axboe@fb.com>, linux-stable <stable@vger.kernel.org>,
+ Keith Busch <kbusch@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
@@ -88,45 +104,22 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 
 
-On 2020-04-20 4:26 p.m., Keith Busch wrote:
-> On Mon, Apr 20, 2020 at 10:46:52AM -0600, Logan Gunthorpe wrote:
->> The host driver should decide whether to use SGLs or PRPs and they
->> currently assume the flags are cleared after the call to
->> nvme_setup_cmd(). However, passed-through commands may erroneously
->> set these bits; so clear them for all cases.
->>
->> Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
->> Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
->> ---
->>  drivers/nvme/host/core.c | 2 ++
->>  1 file changed, 2 insertions(+)
->>
->> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
->> index 91c1bd659947..f5283b300e87 100644
->> --- a/drivers/nvme/host/core.c
->> +++ b/drivers/nvme/host/core.c
->> @@ -756,6 +756,8 @@ blk_status_t nvme_setup_cmd(struct nvme_ns *ns, struct request *req,
->>  	case REQ_OP_DRV_IN:
->>  	case REQ_OP_DRV_OUT:
->>  		memcpy(cmd, nvme_req(req)->cmd, sizeof(*cmd));
->> +		/* passthru commands should let the driver set the SGL flags */
->> +		cmd->common.flags &= ~NVME_CMD_SGL_ALL;
->>  		break;
+> On Apr 17, 2020, at 20:59, Christoph Hellwig <hch@lst.de> wrote:
 > 
-> Is this really necessary? The passthrough handler currently rejects user
-> commands that set command flags:
+> On Fri, Apr 17, 2020 at 04:36:41PM +0800, Kai-Heng Feng wrote:
+>> After commit 6e02318eaea5 ("nvme: add support for the Write Zeroes
+>> command"), SK hynix SC300 becomes very slow with the following error
+>> message:
+>> [  224.567695] blk_update_request: operation not supported error, dev nvme1n1, sector 499384320 op 0x9:(WRITE_ZEROES) flags 0x1000000 phys_seg 0 prio class 0]
+>> 
+>> Use quirk NVME_QUIRK_DEALLOCATE_ZEROES to workaround this issue.
+> 
+> Do you have a written guarantee from SK Hynix that it will always zero
+> all blocks discarded?
 
-Yes, the flags coming from the passthru target's host (in subsequent
-patches in this series) may have these set and we need to clear them
-somewhere. The passthru code submits the requests directly using
-blk_execute_rq_nowait() and thus the check in nvme_user_cmd() doesn't apply.
+Raised the issue to SK Hynix and waiting for their reply...
 
-If I recall correctly, we had originally cleared the flags in the target
-code, but Christoph had suggested it should be done more generally in
-nvme_setup_cmd().
-
-Logan
-
+Kai-Heng
 _______________________________________________
 linux-nvme mailing list
 linux-nvme@lists.infradead.org
