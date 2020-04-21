@@ -2,52 +2,90 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9139F1B2B4D
-	for <lists+linux-nvme@lfdr.de>; Tue, 21 Apr 2020 17:38:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 133621B2BAB
+	for <lists+linux-nvme@lfdr.de>; Tue, 21 Apr 2020 17:53:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OWf2QqaVxRlY8H6TQ+wHmHJCrTqr8i8j27mLt4hzxKE=; b=u3kFyo5xLOLYQ3
-	/AXNnr9QnWd1mTTGgDdFVXz+M5OhtT3G9/nVbVv64f1O39KuMdvoo70LeMNfUkNyAGolv3voePUAR
-	mGYuyG6flzSjckVwMA9qDkgEG00cWYj9u+cMXYauetG3lqFPdzf8w3Ewsd1eaAA5BgoiYkmfRvDea
-	h8RpMtPDs/iFrsifJMQfKkj9cN8tjWoeObD1mZG8+4DRWMOngQepnuQxPwpX/Ysfm+SsQvh2aBzbb
-	Uisa05BOcGd7ZrKvTza6lERpHorIkwawqTev64ZHA9G5hOVaPqldYywu30uNvn+ASJ8keSXlWa+hi
-	ZoHskjKxZw321BT4m8ww==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Kpw3VGGPwuDM07nXVDdzJWJm/iuN/1ly3Krt2TDG2g4=; b=LbEjO8CRi2nICs18/ei1ZMBdc
+	a+R9k0SR/MVdk04is58lCcQwUPO8HstRx6SM3wFwjdDIuQaseIhSk6d9Vl60dR3+rk278WUbW9wTd
+	n13rkhAJ0QoZhcAZj/qlpAJmEtVvZoIt06jOTsZ7rqI0iqXLzq+X0xD7tuYX3+7ASuhdTJkhNEtLb
+	IPy2KevwXjQzPY7AzdQa6wGtLpF/3IozXO910NvN4VlGbhe1LHNxAJvg9mwyNOPqhNFzgQryhNhYu
+	ypQYVIt660PWNUnsh0zvgBXmejXG2pvpUpdE2LKm1rxeh81tj/czdGyA/OL3d4Ry6ab6XSXHcYxs0
+	0WXJ4+GQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQuyS-0003tL-Lj; Tue, 21 Apr 2020 15:38:12 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1jQvDC-0007hV-Ii; Tue, 21 Apr 2020 15:53:26 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQuy3-0003m8-Dn
- for linux-nvme@lists.infradead.org; Tue, 21 Apr 2020 15:37:48 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 7AF7968C4E; Tue, 21 Apr 2020 17:37:44 +0200 (CEST)
-Date: Tue, 21 Apr 2020 17:37:44 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Max Gurtovoy <maxg@mellanox.com>
-Subject: Re: [PATCH 17/17] nvmet-rdma: Add metadata/T10-PI support
-Message-ID: <20200421153744.GG10837@lst.de>
+ id 1jQvD7-0007fr-VR
+ for linux-nvme@lists.infradead.org; Tue, 21 Apr 2020 15:53:23 +0000
+Received: by mail-pf1-x443.google.com with SMTP id y25so6759879pfn.5
+ for <linux-nvme@lists.infradead.org>; Tue, 21 Apr 2020 08:53:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=mZBPY1fpy9btZ9cr9GZUKUH9M5h2ZIyQ7J4HV3xTWCw=;
+ b=FW5h68Svi9Ufjpxyf3s3/7ona7add8+nQd0A3NBa97f4w8EnOEnfVPOdVbD5KDQ8Vk
+ hwONtmV5SURT1kW23Nl8io0wpFT3d7XubNF9FPyLa+X2eICDG6hjvsckZlR4O/IRmHdF
+ Wfu0MAg1g1OMrc+NQmT8EYJNy1aiXd3ghNGPU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=mZBPY1fpy9btZ9cr9GZUKUH9M5h2ZIyQ7J4HV3xTWCw=;
+ b=dBixMysWVZSAt51B5lwhwtsX030n3UF51l8a9D181dQdb3lIyo2cgvgoWpxrpwMmDK
+ SlPDlckJsgnWOoafuSd8NoW63Qwa93gs186L18AAayYWmzJw5NKP3X5Ux7K85j7nCtcm
+ KMdxuUxPQ5qBPcFrpLcZoGfIQB3HPVh668Hz3FTJShBtngpb18eaBCvOwfbgjUFqJa8O
+ 4booabQUSO6yDMjg9aWeUHwDvYhHGP1mRnrc01LUHJHxNF3TvGvAK8sdZ1tdbULOd0sW
+ IcfsWwMCGggtSpVZHAJ9WsSdhJZ8eSGKGFftxQiq3IXEWnvZvptqUuwCnp142soFBT4q
+ TDFA==
+X-Gm-Message-State: AGi0PuZ0s/7ZwyGyRtr77HXowm/RHrz/mPY5WXO6vpro45viyMrxkM7U
+ gy3bi7nDVDa8rSRDfFqOGp6P4A==
+X-Google-Smtp-Source: APiQypLWDAdreOGwS/27Ss480aYwHAHQjOkV4IZCra7nzmwsx4VJBYQT2i9Rd5F5OBuOY5GVKL77fA==
+X-Received: by 2002:a63:f843:: with SMTP id v3mr22778575pgj.421.1587484401053; 
+ Tue, 21 Apr 2020 08:53:21 -0700 (PDT)
+Received: from [10.230.185.141] ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id i18sm2784894pjx.33.2020.04.21.08.53.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Apr 2020 08:53:20 -0700 (PDT)
+Subject: Re: [PATCH 01/17] nvme: introduce namespace features flag
+To: Christoph Hellwig <hch@lst.de>, Max Gurtovoy <maxg@mellanox.com>
 References: <20200327171545.98970-1-maxg@mellanox.com>
- <20200327171545.98970-19-maxg@mellanox.com>
+ <20200327171545.98970-3-maxg@mellanox.com> <20200421115912.GB26432@lst.de>
+From: James Smart <james.smart@broadcom.com>
+Message-ID: <1ffeee50-9c96-495f-b82b-bf3873e95183@broadcom.com>
+Date: Tue, 21 Apr 2020 08:53:18 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200327171545.98970-19-maxg@mellanox.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
+In-Reply-To: <20200421115912.GB26432@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200421_083747_630119_8E854E98 
-X-CRM114-Status: GOOD (  12.80  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200421_085322_015139_F8BF1612 
+X-CRM114-Status: GOOD (  11.59  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ no trust [2607:f8b0:4864:20:0:0:0:443 listed in]
+ [list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,62 +98,35 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: axboe@kernel.dk, jsmart2021@gmail.com, sagi@grimberg.me,
- martin.petersen@oracle.com, shlomin@mellanox.com, linux-rdma@vger.kernel.org,
+ martin.petersen@oracle.com, idanb@mellanox.com, linux-rdma@vger.kernel.org,
  israelr@mellanox.com, vladimirk@mellanox.com, linux-nvme@lists.infradead.org,
- idanb@mellanox.com, jgg@mellanox.com, oren@mellanox.com, kbusch@kernel.org,
- hch@lst.de
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ shlomin@mellanox.com, jgg@mellanox.com, oren@mellanox.com, kbusch@kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
->  /* Assume mpsmin == device_page_size == 4KB */
->  #define NVMET_RDMA_MAX_MDTS			8
-> +#define NVMET_RDMA_MAX_MD_MDTS			5
-
-Can you spell out METADATA everywhere?
-
-> +#ifdef CONFIG_BLK_DEV_INTEGRITY
-> +	/* Data Out / RDMA WRITE */
-> +	r->write_cqe.done = nvmet_rdma_write_data_done;
-> +#endif
->  	return 0;
->  
->  out_free_rsp:
-> @@ -498,6 +507,138 @@ static void nvmet_rdma_process_wr_wait_list(struct nvmet_rdma_queue *queue)
->  	spin_unlock(&queue->rsp_wr_wait_lock);
->  }
->  
-> +#ifdef CONFIG_BLK_DEV_INTEGRITY
-
-Any chance we could use IS_ENABLED() instead of all these ifdefs?
-
-> +	/*
-> +	 * At the moment we hard code those, but in the future
-> +	 * we will take them from cmd.
-> +	 */
-
-Same weird comment as on the host side.
-
-> +	struct nvme_command *cmd = req->cmd;
-> +	struct blk_integrity *bi = bdev_get_integrity(req->ns->bdev);
-> +	u16 control = le16_to_cpu(cmd->rw.control);
-> +
-> +	WARN_ON(bi == NULL);
-
-No need for this WARN_ON either I think.
-
-> +	port->pi_capable = ndev->device->attrs.device_cap_flags &
-> +			IB_DEVICE_INTEGRITY_HANDOVER ? true : false;
-
-No need for the ? :, but then again personally I'd prefer a good old:
-
-	if (ndev->device->attrs.device_cap_flags & IB_DEVICE_INTEGRITY_HANDOVER)
-		port->pi_capable = true;
-
-anyway.
-
-_______________________________________________
-linux-nvme mailing list
-linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNC8yMS8yMDIwIDQ6NTkgQU0sIENocmlzdG9waCBIZWxsd2lnIHdyb3RlOgo+IE9uIEZyaSwg
+TWFyIDI3LCAyMDIwIGF0IDA4OjE1OjI5UE0gKzAzMDAsIE1heCBHdXJ0b3ZveSB3cm90ZToKPj4g
+RnJvbTogSXNyYWVsIFJ1a3NoaW4gPGlzcmFlbHJAbWVsbGFub3guY29tPgo+Pgo+PiBDZW50cmFs
+aXplIGFsbCB0aGUgbWV0YWRhdGEgY2hlY2tzIHRvIG9uZSBwbGFjZSBhbmQgbWFrZSB0aGUgY29k
+ZSBtb3JlCj4+IHJlYWRhYmxlLiBJbnRyb2R1Y2UgYSBuZXcgZW51bSBudm1lX25zX2ZlYXR1cmVz
+IGZvciB0aGF0IG1hdHRlci4KPj4gVGhlIGZlYXR1cmVzIGZsYWcgZGVzY3JpcHRpb246Cj4+ICAg
+LSBOVk1FX05TX0VYVF9MQkFTIC0gTlZNZSBuYW1lc3BhY2Ugc3VwcG9ydHMgZXh0ZW5kZWQgTEJB
+IGZvcm1hdC4KPj4gICAtIE5WTUVfTlNfTURfSE9TVF9TVVBQT1JURUQgLSBOVk1lIG5hbWVzcGFj
+ZSBzdXBwb3J0cyBnZXR0aW5nIG1ldGFkYXRhCj4+ICAgICBmcm9tIGhvc3QncyBibG9jayBsYXll
+ci4KPj4gICAtIE5WTUVfTlNfTURfQ1RSTF9TVVBQT1JURUQgLSBOVk1lIG5hbWVzcGFjZSBzdXBw
+b3J0cyBtZXRhZGF0YSBhY3Rpb25zCj4+ICAgICBieSB0aGUgY29udHJvbGxlciAoZ2VuZXJhdGUv
+c3RyaXApLgo+IFNvIHdob2xlIEkgbGlrZSB0aGUgLT5mZWF0dXJlcyBmbGFnLCB0aGUgZGVmaW50
+aW9uIG9mIHRoZXNlIHR3bwo+IG1ldGFkYXRhIHJlbGF0ZWQgZmVhdHVyZXMgcmVhbGx5IGNvbmZ1
+c2VzIG1lLgo+Cj4gSGVyZSBhcmUgbXkgdmFndWUgaWRlYXMgdG8gaW1wcm92ZSB0aGUgc2l0dWF0
+aW9uOgo+CgpDYXJlIHRvIGxvb2sgYXQgYW55IG9mIHRoZSBSRkMgaXRlbXMgSSBwb3N0ZWQgb24g
+Mi8yNCAtIHdoaWNoIGRvZXMgCnRoaW5ncyBhIGxpdHRsZSBkaWZmZXJlbnRseSA/wqDCoCBQZXJo
+YXBzIGZpbmQgYSBjb21tb24gZ3JvdW5kIHdpdGggTWF4J3MgCnBhdGNoZXMuCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL3BpcGVybWFpbC9saW51eC1udm1lLzIwMjAtRmVicnVhcnkvMDI5MDY2
+Lmh0bWwKCkdyYW50ZWQgSSd2ZSB0d2Vha2VkIHdoYXQgSSBzZW50IGEgbGl0dGxlIGFzIHRoZXJl
+IHdhcyBubyBuZWVkIHRvIG1ha2UgCm52bWVfbnNfaGFzX3BpIGFjY2Vzc2libGUgdG8gdGhlIHRy
+YW5zcG9ydC4KCi0tIGphbWVzCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KbGludXgtbnZtZSBtYWlsaW5nIGxpc3QKbGludXgtbnZtZUBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtbnZtZQo=
