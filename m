@@ -2,43 +2,43 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E7751B3A1E
-	for <lists+linux-nvme@lfdr.de>; Wed, 22 Apr 2020 10:31:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CDD2A1B3A23
+	for <lists+linux-nvme@lfdr.de>; Wed, 22 Apr 2020 10:32:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x5tLXA2aWy1U0MH08LBIEAYuTuup5Hc1jOt/VRqF8jw=; b=FPYcuBtOl3LMgN
-	FYA4RgU87rOJEnCkqH2S1H5UYMEcz3SH1ZCvs3L4sBqP1xqGH1a2OhWDV17JXUtj0u5do6F4XrWw6
-	rGKSqh3P4ASBHEn+fOxKAZfqUBSGRuKra+TBAbcOr3UeU7zNyRN3AVQ8rtaovRDFNGiECaGsvBehU
-	vAjQrFLghNARKjXfM0g4pKCoKnSl1ZR/1PjqqzSizr96Oz7hHP/SB1ZBu2dAt3Qg03fGpunA+yu2s
-	WmYmxhLHV6bzZ7w9o8ybVAmVxRDDBAFuRDg+sFVK2EdvDNKf6MPMthCzgrd8Nq/djPo2u9WkWoeMQ
-	v9P6ukzdGCkKurowEBoA==;
+	List-Owner; bh=0HlSG/C2JnAcX1yiQkAknGpYZpxOD81UpZwXntrw9gA=; b=ri4XZ1vUty3RAn
+	1ijNsdxDGFiK0SCO4+Jiz3oG+zPnkJkTEpATFVkBAW24RcRTHvhoh6gapubkpCetOxvzsxruAJPcS
+	LBFY0YWHTMq4WYVHTdovG1jsjU6NsyPnirByvrs8xbnYjIGLJnrxO/1ovZyBA1Okw05tRLasz56tq
+	Ad23/OzZfLBOrpDO85MDFxY7gltzv7/c+ZypP9jzrbRThbrUARFugsg06oA9HJhAKj2Dsfy7wsHDK
+	kOcAYziOvaYAR6ZOsX5rSC5VuktesQO2MOKO4bZEzFfbtl6ZWDJLQPoRRy1ku056FZoQAlw2dmZkl
+	B9ByKMIS6zfkcLAZNB8Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRAmp-0005lN-D1; Wed, 22 Apr 2020 08:31:15 +0000
+	id 1jRAnw-0006Kt-II; Wed, 22 Apr 2020 08:32:24 +0000
 Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRAml-0005kJ-RU
- for linux-nvme@lists.infradead.org; Wed, 22 Apr 2020 08:31:13 +0000
+ id 1jRAnh-000680-Tj
+ for linux-nvme@lists.infradead.org; Wed, 22 Apr 2020 08:32:11 +0000
 Received: by verein.lst.de (Postfix, from userid 2407)
- id 789C468C4E; Wed, 22 Apr 2020 10:31:09 +0200 (CEST)
-Date: Wed, 22 Apr 2020 10:31:09 +0200
+ id 1AF7368C7B; Wed, 22 Apr 2020 10:32:08 +0200 (CEST)
+Date: Wed, 22 Apr 2020 10:32:07 +0200
 From: Christoph Hellwig <hch@lst.de>
 To: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-Subject: Re: [PATCH 3/6] nvmet: use type-name map for ana states
-Message-ID: <20200422083109.GA25341@lst.de>
+Subject: Re: [PATCH 5/6] nvmet: centralize port enable access for configfs
+Message-ID: <20200422083207.GB25341@lst.de>
 References: <20200419235242.60355-1-chaitanya.kulkarni@wdc.com>
- <20200419235242.60355-4-chaitanya.kulkarni@wdc.com>
+ <20200419235242.60355-6-chaitanya.kulkarni@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200419235242.60355-4-chaitanya.kulkarni@wdc.com>
+In-Reply-To: <20200419235242.60355-6-chaitanya.kulkarni@wdc.com>
 User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_013112_041284_D1DEEC09 
-X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-CacheID: sfid-20200422_013210_112781_D3BCBC81 
+X-CRM114-Status: UNSURE (   7.08  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
@@ -66,16 +66,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Sun, Apr 19, 2020 at 04:52:39PM -0700, Chaitanya Kulkarni wrote:
-> Now that we have a generic type to name map for configfs, get rid of
-> the nvmet_ana_state_names structure and replace it with
-> nvmet_type_name_map. This also now allows us to get rid of the found
-> goto label which exists in current code and align code with
-> for-loop-compare-success-return pattern.
+> +static bool nvmet_is_port_enabled(struct nvmet_port *p, const char *caller)
+> +{
+> +	bool enabled;
+> +
+> +	/*
+> +	 * Right now port->enabled is accessed in follwoing two code paths
+> +	 * which are protected by the nvmet_config_sem :-
+> +	 * 1. nvmet_subsys allow/drop link() -> nvmet_port_enable/disable()
+> +	 *    setting port->enabled true/false respectively.
+> +	 * 2. nvmet_referral_enable/disable() -> nvmet_port_enable/disable()
+> +	 *    setting port->enabled true/false respectively.
+> +	 * Use read nvmet_config_sem when reading enable condition.
+> +	 */
+> +	down_read(&nvmet_config_sem);
+> +	enabled = p->enabled;
+> +	up_read(&nvmet_config_sem);
 
-I actually much prefer the goto that keeps the success path out
-of deep indentation.  Same for the other patch that does the same
-move.
+Taking a lock around checking a single scalar value is rather pointless.
 
 _______________________________________________
 linux-nvme mailing list
