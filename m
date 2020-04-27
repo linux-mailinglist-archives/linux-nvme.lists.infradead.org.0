@@ -2,56 +2,88 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8F9E1B96F6
-	for <lists+linux-nvme@lfdr.de>; Mon, 27 Apr 2020 08:06:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BCF51BA3A6
+	for <lists+linux-nvme@lfdr.de>; Mon, 27 Apr 2020 14:35:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=99vFl7PstqhptSOsAA99mIB60TyBCb8l/lxxGjQqdss=; b=UBy62iiRWW5M7+
-	oGy1OdLNfMlKjqXAhjgsh8JAs089SWJtM9YTbZqs0waJLA8i+RZ0i+d4q22o8/4rF9fJtflbHHmOC
-	H9S0fyej/PZIUv8ukHzSr5ARtrGDF9E61WKJDdJEqH9vWWmCty+S8zRK7Xhg7sYc2FZLrSP8Kvxge
-	h3LdXDuVYIPdFHBXIHI4n1S8tVBinoOyWoeeH4OUjwoO35m62Ln8uSjnnesGIEhpCGqV0O+6Ab1hd
-	SFy5VEkSwIFr6HXW4TWOW28wUwmI4AP1muF3yHVBsOTGCpVjk9LQnHTCM0RD3GjKtBTmlXEQdamZD
-	J3kd93S84sDKgNuXeMSg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PmKxYeO4q5iZME4GiekylbBnRsi0kncUzrF4URPAuB8=; b=THVr4QrVyPVWO4
+	pT1zs+pa2tewcONa/KyhGBBWdM4U4PVFOeqMWE9o8FvP0CEKIe34dqK8cVFQcJfhcTc17OxjVE7uA
+	yY7GBPOpWqklfVAxhLFBUEAsDPO7KhaqWvF1waffxp/GPAxibF6ND+fvkh+151CCfd67kYkgVaqgZ
+	vLqri2fRhpkx8GDohkOT1eyuWkphIPEXx3eMa22nDhgZ7g3+eddyfZ6BqbrVp0XN56MydjMQ670kO
+	A7y7Krjjk84IA/PAbnOV6LurTIFfjJhZLz66P+5fclGWPNCdBPFgqQipoUO90ky2XMqS679W2CvtS
+	/IvgMr00K57yV/2zEK9A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jSwuL-00065C-Ci; Mon, 27 Apr 2020 06:06:21 +0000
-Received: from verein.lst.de ([213.95.11.211])
+	id 1jT2yR-0006lx-Cx; Mon, 27 Apr 2020 12:34:59 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jSwuH-00063v-8s
- for linux-nvme@lists.infradead.org; Mon, 27 Apr 2020 06:06:18 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 9565668CEE; Mon, 27 Apr 2020 08:06:14 +0200 (CEST)
-Date: Mon, 27 Apr 2020 08:06:14 +0200
-From: Christoph Hellwig <hch@lst.de>
-To: Max Gurtovoy <maxg@mellanox.com>
-Subject: Re: [PATCH 14/17] nvmet: Add metadata/T10-PI support
-Message-ID: <20200427060614.GB16186@lst.de>
-References: <20200327171545.98970-1-maxg@mellanox.com>
- <20200327171545.98970-16-maxg@mellanox.com> <20200421153045.GE10837@lst.de>
- <0c6caf5b-693b-74af-670e-7df9c7f9c829@mellanox.com>
- <20200424071433.GE24059@lst.de>
- <9da15ad2-ed9c-9a00-4781-b57712835b3b@mellanox.com>
+ id 1jT2yN-0006kW-4p
+ for linux-nvme@lists.infradead.org; Mon, 27 Apr 2020 12:34:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1587990894; x=1619526894;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=VFhl5pd1bt6CpJr4PfxQxrl9uO26lhYUX26RETwc4cw=;
+ b=Xzq65UimawuJ77zGzKMappairV8EVHBXhC7zkDikB7h1QMVfnUxP0ljb
+ Uo1ijgNDBpcixQxAtW+JVThSBaj42Ic0+Zy6PfzpORrcXNYHTj0v2x7tF
+ Eqfl34QcGPGIg69sHIHahY+aakjIsft4CH3UjYXabBWrMbp0qpls2qptB
+ Hgu41Z2o8OZOaYJTnsGowVrigbepVj6z6l0tA8AoiD8aaI7gx2aDEY4k8
+ GZ8P8Nr4IU3r1M9pLWtmZKOcVHcivwoA/bh7+niDOl6ukdaP59zSJKrEW
+ RhWUCc3lAy84tbp422qh4DOLHMusoEbqZanmy5D9gTdJD49HwoKTpZmMt g==;
+IronPort-SDR: HaoYwIFyc4OqVJjvqjhRzc8nUcGKUx3jOgtKS4OusPjXqAsPk5z+l0MDM7E4hrxu1p7UbUksos
+ RFfnykPDwSlZlvAeGmnxmRZXeb6nwoU2ldmDo5PuUALkJJmPZjYhY6EvyXmR6+KomAPiGWj1mW
+ B4pTmmF8e6gKbdianunRUwvTeLBvFekmMDby/CA1CSRJNnPyNrHvZy6lU872DLMLcSyIhHVkv6
+ CXcx5ieWkpXLyzCSZKNuCt6rO0sLYDkrpoxfRVwi8QB4dtipt0gQ4MUu0iScgAuUrvDrcVi/EU
+ KnU=
+X-IronPort-AV: E=Sophos;i="5.73,324,1583164800"; d="scan'208";a="245018832"
+Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
+ ([199.255.45.14])
+ by ob1.hgst.iphmx.com with ESMTP; 27 Apr 2020 20:34:51 +0800
+IronPort-SDR: +m6ajJH9rmnPEkcoE4do01VQL+ZvouqsIl9fvfW0G1SRwy8ucEtyQmNlFzC/M8Hu4Q5LZjCm29
+ +VKQoW6vL+b1AQLqJa3Sw9iLcNNndUPaQ=
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2020 05:25:32 -0700
+IronPort-SDR: joVpwLHLD6k+JizYgH/iGyPlWfrkPSlUPtw35O+L9V3zdtYTZtit5oZ5/epw7Pjc43LN0IvG4Z
+ Dz+PMn7H5Bzw==
+WDCIronportException: Internal
+Received: from th5m0yyf2.ad.shared (HELO localhost.hgst.com) ([10.86.56.126])
+ by uls-op-cesaip01.wdc.com with ESMTP; 27 Apr 2020 05:34:46 -0700
+From: Niklas Cassel <niklas.cassel@wdc.com>
+To: Keith Busch <kbusch@kernel.org>, Jens Axboe <axboe@fb.com>,
+ Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+ Igor Konopko <igor.j.konopko@intel.com>,
+ =?UTF-8?q?Matias=20Bj=C3=B8rling?= <mb@lightnvm.io>,
+ =?UTF-8?q?Javier=20Gonz=C3=A1lez?= <javier@cnexlabs.com>
+Subject: [PATCH] nvme: prevent double free in nvme_alloc_ns() error handling
+Date: Mon, 27 Apr 2020 14:34:41 +0200
+Message-Id: <20200427123443.520469-1-niklas.cassel@wdc.com>
+X-Mailer: git-send-email 2.25.3
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <9da15ad2-ed9c-9a00-4781-b57712835b3b@mellanox.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200426_230617_463674_E0503393 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200427_053455_196779_8E58BE51 
+X-CRM114-Status: GOOD (  10.21  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [68.232.141.245 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,56 +95,49 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@kernel.dk, jsmart2021@gmail.com, sagi@grimberg.me,
- martin.petersen@oracle.com, shlomin@mellanox.com, linux-rdma@vger.kernel.org,
- israelr@mellanox.com, vladimirk@mellanox.com, linux-nvme@lists.infradead.org,
- idanb@mellanox.com, jgg@mellanox.com, oren@mellanox.com, kbusch@kernel.org,
- Christoph Hellwig <hch@lst.de>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Jens Axboe <axboe@kernel.dk>, Niklas Cassel <niklas.cassel@wdc.com>,
+ linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Sun, Apr 26, 2020 at 01:50:05PM +0300, Max Gurtovoy wrote:
->>>> I think the printks are a little verbose.  Also why can we set
->>>> ctrl->port->pi_enable if ctrl->port->pi_capable is false?  Shoudn't
->>>> we reject that earlier?  In that case this could simply become:
->>>>
->>>> 	ctrl->pi_support =3D ctrl->subsys->pi_support && ctrl->port->pi_enabl=
-e;
->>> for that we'll need to check pi_capable during add_port process and dis=
-able
->>> pi_enable bit if user set it.
->> Which seems pretty sensible.  In fact I think the configfs write for
->> pi enable should fail if we don't have the capability.
->
-> The port is not enabled so it's not possible currently.
->
-> But we can disable it afterwards (in nvmet_enable_port) :
->
-> +=A0=A0=A0=A0=A0=A0 /* If the transport didn't set pi_capable, then disab=
-le it. */
-> +=A0=A0=A0=A0=A0=A0 if (!port->pi_capable)
-> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 port->pi_enable =3D false;
+When jumping to the out_put_disk label, we will call put_disk(), which will
+trigger a call to disk_release(), which calls blk_put_queue().
 
-I don't think we should allow users to enable invalid configurations
-and silently clear flags, but reject flags as soon as we can - write
-to the attribute where possible, else during enable.
+Later in the cleanup code, we do blk_cleanup_queue(), which will also call
+blk_put_queue().
 
-> how about:
->
-> -=A0=A0=A0=A0=A0=A0 pr_info("creating controller %d for subsystem %s for =
-NQN %s.\n",
-> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ctrl->cntlid, ctrl->subsys->s=
-ubsysnqn, ctrl->hostnqn);
-> +=A0=A0=A0=A0=A0=A0 pr_info("creating controller %d for subsystem %s for =
-NQN %s%s.\n",
-> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ctrl->cntlid, ctrl->subsys->s=
-ubsysnqn, ctrl->hostnqn,
-> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 ctrl->pi_support ? " T10-PI i=
-s enabled" : "");
+Putting the queue twice is incorrect, and will generate a KASAN splat.
 
-Ok.
+Set the disk->queue pointer to NULL, before calling put_disk(), so that the
+first call to blk_put_queue() will not free the queue.
+
+The second call to blk_put_queue() uses another pointer to the same queue,
+so this call will still free the queue.
+
+Fixes: 85136c010285 ("lightnvm: simplify geometry enumeration")
+Signed-off-by: Niklas Cassel <niklas.cassel@wdc.com>
+---
+ drivers/nvme/host/core.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 91c1bd659947..f2adea96b04c 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -3642,6 +3642,8 @@ static void nvme_alloc_ns(struct nvme_ctrl *ctrl, unsigned nsid)
+ 
+ 	return;
+  out_put_disk:
++	/* prevent double queue cleanup */
++	ns->disk->queue = NULL;
+ 	put_disk(ns->disk);
+  out_unlink_ns:
+ 	mutex_lock(&ctrl->subsys->lock);
+-- 
+2.25.3
+
 
 _______________________________________________
 linux-nvme mailing list
