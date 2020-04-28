@@ -2,66 +2,70 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 477C41BB2F6
-	for <lists+linux-nvme@lfdr.de>; Tue, 28 Apr 2020 02:33:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 149581BB4C2
+	for <lists+linux-nvme@lfdr.de>; Tue, 28 Apr 2020 05:37:34 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BS4bylHaJWTDNk1VR747b332acEj/tnyyU5gqTJWj2M=; b=KMATJo/Wv0eYDQ
-	ztk7qfd0OTszbupq4CV2JIP8RWT4oqPjclFAHGtpQ2O0i+EmWM7QHynigYQOhWukSWD8xebX5X8St
-	OTNthXBWElBi2u+GeQoHfp7kmk68sPjHn8E8ULBkZ/mVYBz8mEqj0/9GeqVJCRP430ghcxEoHn67s
-	GrDJsFvG6dJLH5jQIlE1h0l3yH7lcmp5w4a4/HlvGHyiegf+cIN9yCiPje+G83cFpXMM+lEAtKPUk
-	FBvK/bJigFufjpn33h+l/JzutxPhh/g2x53WxQ9jj72ZrHAn/qjF3iPCJNo5Q7JYqFGjzDQMU1RkR
-	STMtQOLY8wTjtDMAMqUQ==;
+	List-Owner; bh=QxCpCRmP8dhz3bgFdlL21HYEIOouH/RKL//npNbLJPA=; b=Bvs3yd1hmjDeDR
+	gaw9aEgTGTSDZaHuwFNGcJl7J/9bHDuOvpDerFksNzHyMW0BLoF8vIuF9F6F7xgJhc7mDWdU6tdCj
+	+0rw3exOfe8BHnlVRoVOsUtqJ8AyFd7/OMNqLPFWjdmcywoKHiQuVAuy6vR0YhTPGFpefy2IFGpg3
+	m67xQ8+qRrQUF9saszGytKLJxp0D15BlkNViY/j3Yu8cPJEej8rjYDZqrZKVIVKRIsbo8CM7bI9Yv
+	ukchaT/g3xWUxfxW12sBTha8OCOoudElAHvyRKBb8+lTPOz80L070YbfT1osJ3OsyQbpUWPk8Uest
+	stKgl5tA0L5o82oj9KJQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTEBP-0000lp-FG; Tue, 28 Apr 2020 00:33:07 +0000
-Received: from mga06.intel.com ([134.134.136.31])
+	id 1jTH3l-0008PY-N7; Tue, 28 Apr 2020 03:37:25 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTEB9-0000iQ-Hv
- for linux-nvme@lists.infradead.org; Tue, 28 Apr 2020 00:32:52 +0000
-IronPort-SDR: jwMasN3MXOpIeZQPw3Eqfryr/6ETTtFyQf0AfE5kxLE8mgmtDMh0skRZ5vOq6mOA5AwCQTBGDM
- UKCTuNiOnvGA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2020 17:32:50 -0700
-IronPort-SDR: S6siCG9eoW2gDi2go+lBLTfZ0I6oOsSrhS7as1w04pGxOS2bxIxLT4+UTXar1EAtw952ZV1v7r
- GTUljKNc4dnA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,325,1583222400"; d="scan'208";a="367331794"
-Received: from linux.intel.com ([10.54.29.200])
- by fmsmga001.fm.intel.com with ESMTP; 27 Apr 2020 17:32:49 -0700
-Received: from debox1-hc.jf.intel.com (debox1-hc.jf.intel.com [10.54.75.159])
- by linux.intel.com (Postfix) with ESMTP id C52EB58081E;
- Mon, 27 Apr 2020 17:32:49 -0700 (PDT)
-From: "David E. Box" <david.e.box@linux.intel.com>
-To: rjw@rjwysocki.net, lenb@kernel.org, bhelgaas@google.com, kbusch@kernel.org,
- axboe@fb.com, hch@lst.de, sagi@grimberg.me
-Subject: [PATCH 2/2] drivers/nvme: Add support for ACPI StorageD3Enable
- property
-Date: Mon, 27 Apr 2020 17:32:14 -0700
-Message-Id: <20200428003214.3764-3-david.e.box@linux.intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200428003214.3764-1-david.e.box@linux.intel.com>
-References: <20200428003214.3764-1-david.e.box@linux.intel.com>
+ id 1jTH3i-0008P0-Fq
+ for linux-nvme@lists.infradead.org; Tue, 28 Apr 2020 03:37:23 +0000
+Received: from keith-busch (unknown [8.36.226.102])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A9D36206D9;
+ Tue, 28 Apr 2020 03:37:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588045041;
+ bh=v9eFiobOpoDAWCLAyLnQK9hJvFUVVX796NEexuY0JxU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=2C6grf4PVeWztUQBTehhw0giH8TuhR8pItE9jvU0CE/wsuQhanBvhA4nXOqW8t0KK
+ 3JXzrp8GLKtcLLuEz2Oa7Gs2i2HyvPUi3/DYmVlHRdDNOfwJNtiFqILZQsnX0h3dUB
+ IMyKBzQyKdx63arOBoeYFrfkEGfjF/uPAL7MZJuw=
+Date: Mon, 27 Apr 2020 21:37:19 -0600
+From: Keith Busch <kbusch@kernel.org>
+To: Jeff Johnson <jeff.johnson@aeoncomputing.com>
+Subject: Re: Pinning nvme interrupts to a single cpu?
+Message-ID: <20200428033718.GA5085@keith-busch>
+References: <CAFCYAscnovJyA0cKeHVxS20+zGgMj4P5ECb95aZE8=o=Wh+5bg@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAFCYAscnovJyA0cKeHVxS20+zGgMj4P5ECb95aZE8=o=Wh+5bg@mail.gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200427_173251_635679_37F1F782 
-X-CRM114-Status: GOOD (  12.33  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200427_203722_548510_F56B8911 
+X-CRM114-Status: UNSURE (   8.29  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [134.134.136.31 listed in list.dnswl.org]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,57 +77,20 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-nvme@lists.infradead.org, linux-acpi@vger.kernel.org,
- "David E. Box" <david.e.box@linux.intel.com>,
- Dan Williams <dan.j.williams@intel.com>
+Cc: linux-nvme@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-NVMe storage power management during suspend-to-idle, particularly on
-laptops, has been inconsistent with some devices working with D3 while
-others must rely on NVMe APST in order for power savings to be realized.
-Currently the default is to use APST unless quirked to do otherwise.
-However newer platforms, like Intel Comet Lake systems, may require NVMe
-drives to use D3 in order for the PCIe ports to be properly power managed.
-To make it easier for drivers to choose, these platforms may supply a
-special "StorageD3Enable" _DSD property under the root port that the device
-is attached to. If supplied, the driver must use D3 in order for the
-platform to realize the deepest power savings in suspend-to-idle.
+On Mon, Apr 27, 2020 at 05:10:47PM -0700, Jeff Johnson wrote:
+> Is it possible to limit nvme interrupts to a single cpu, rather than
+> spread them across many?
 
-Add check of StorageD3Enable property during probe to use D3 as specified
-by platform firmware.
-
-Acked-by: Dan Williams <dan.j.williams@intel.com>
-Link: https://docs.microsoft.com/en-us/windows-hardware/design/component-guidelines/power-management-for-storage-hardware-devices-intro
-Signed-off-by: David E. Box <david.e.box@linux.intel.com>
----
- drivers/nvme/host/pci.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 4e79e412b276..4d67735975f6 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -2777,6 +2777,13 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 
- 	quirks |= check_vendor_combination_bug(pdev);
- 
-+	/*
-+	 * Platform requires storage device to use D3 for kernel managed
-+	 * suspend.
-+	 */
-+	if (pdev->storage_d3)
-+		quirks |= NVME_QUIRK_SIMPLE_SUSPEND;
-+
- 	/*
- 	 * Double check that our mempool alloc size will cover the biggest
- 	 * command we support.
--- 
-2.20.1
-
+The managed interrupts provided by the irq subsystem that the nvme
+driver uses doesn't allow altering the cpu affinity. The only way to
+have all interrupts handled by a single cpu is to have only one nvme IO
+queue, but you don't get to choose the cpu.
 
 _______________________________________________
 linux-nvme mailing list
