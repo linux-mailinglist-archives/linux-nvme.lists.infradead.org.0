@@ -2,91 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06D601BBB43
-	for <lists+linux-nvme@lfdr.de>; Tue, 28 Apr 2020 12:33:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 205571BBEAB
+	for <lists+linux-nvme@lfdr.de>; Tue, 28 Apr 2020 15:13:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NBW7748kv09q2lZyfp7u++HdPrn1bq/adIz8rF9XleM=; b=Azog6pz3R/jTjmPbLue3Zm8d1
-	lXt0x4Xx3rV0LV0vi+RBdVVCJamJU6747o+5R0HAr6/PwMsqK7ZPrWY4dAQyPnRbjuLRtIubV5Ieq
-	olqGVzDTKTQBgZdXcIOBca0GoVq9POxGvuEAVq5ksOZRLYnG4sfApnN7+b4lsYqsfDvFgMeihITTk
-	cqL3SyTh0LHf+v/yitEIr5Sa5ga3shJHZ/SppgT6QF3dTb4Y85TZvwHlZIwVo94RMxluLlAvqVIbg
-	qB2l3QWbY4JVjJNjGwKKIUpYXHFvjLvipuFIfiToKajDHmHkO6o2DDFfM39wnhdx1RRh9XVEsyWcD
-	N0r3uk/DQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GIipd8FNbWF5oWP1uZY7ibYw7wMPbJ386IZ5Y106LuY=; b=kmTHqrGRpLtnYh
+	deSFgB76VzhNvb120h02AmQux8GzFM4KV4mowFBCGBgvcT5GKRPXs/bJkoarS4L9rpvC9XWiEqM2o
+	6gl8DmcBlJZxELyJ+nbAYXPhfYOra4VDxKE1ddmDopf4ld+2XJ12d6PoKNUGknGY01iBICtSi+53h
+	NXKDwLlcFCrVqJ45ZQdnWIUKV86D6JfxXSmJZf2QjGJMEccuuAZHm3oT8ICtYZA0wgsCMmGxJtASE
+	gxuYcWbfh6Gt6q85GoWzUrZr7+9nGjXvC/gc1+24vBpTdwhYdEvHkv9UEv2pMDLuNturdWRUieaDK
+	480F0gaPzVl3G5z+8XPw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTNXs-0004td-Ez; Tue, 28 Apr 2020 10:32:56 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTNXo-0004sr-Ig
- for linux-nvme@lists.infradead.org; Tue, 28 Apr 2020 10:32:54 +0000
-Received: by mail-wr1-x444.google.com with SMTP id d15so22400319wrx.3
- for <linux-nvme@lists.infradead.org>; Tue, 28 Apr 2020 03:32:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=javigon-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=AXbiHKswDMgt8rbtX7mZPHUHWcmhaf3PNptTH7f7SYs=;
- b=ST57LC3kF7eIqJdj03lQTNsNn5Ok+/tjEP9i+P/j7W9mhC7e4ig2ci/TvRNkrdH/gv
- tPSFyDRYzMfiQLrQcppDnYsKYajS6Xrr741febcQjxcbLgtZ/78c2LblD9cQN8Sgry8e
- n6/wRPIuYArrvUgoEaaTceqcGXRujm9C/fTCLcU96VADhG0Tmk0MlqM4zDpZpqLGAwkE
- ZcJKtA3xTY9SC/K6IGJWpjPp918Pi4wzXhpjpKxEHp20KtqOwK/FRCvXmgDcAbyk82Ng
- sow52dVMlkzZiUIHGCdu6AB1gpEbhWPw8l8vUAsOoxtUpgbJNdYcrg07XBEQGcF+/wmi
- HEEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=AXbiHKswDMgt8rbtX7mZPHUHWcmhaf3PNptTH7f7SYs=;
- b=fvcPkmhG2vZhTWfW9svXX/lKmWIzeqeE8lztAeePK7LMnyfycxUsbMklyu5yKmUpus
- pNKFbfpt1uFkSzQmDxkvOZlvYffTQ3kvKCMnp9tvQGTKSkj/uv3G1yXcAT7k3UmPx41T
- X9v8wxjAlEbkz9RdgcYmFV7hnl1nKDAueNZVYltHGm/BUKZBz21mUgBtgZ7049LZ5h4b
- kmhKQqZrD5xznD0q+Y8QQ3LQiihDa+QU4ez4BVVzRzmpT5h4IMM94WzSC012I5kdfzij
- 7xSkaAlM79LrTVhzYbymnq0lgKCLNBivKPIzYp3B/AjhYSG11IZB2WTRh23kng+ICznV
- 5IDA==
-X-Gm-Message-State: AGi0Pub8bTEkqZsbXmgf43xos3ukCqNGofZ4fKbt85yqZYy2+G1u5BtV
- bDEua9x6Dt51/A+2ccofOhrUUg==
-X-Google-Smtp-Source: APiQypK6ZDksNp73FYMuOOqRaJtjM5HLTyKxvbHE/CUIs+juS4qvPRGTGQA9zTzOYsc/IiHC7i9y7A==
-X-Received: by 2002:adf:f990:: with SMTP id f16mr30076642wrr.33.1588069970704; 
- Tue, 28 Apr 2020 03:32:50 -0700 (PDT)
-Received: from localhost (ip-5-186-121-52.cgn.fibianet.dk. [5.186.121.52])
- by smtp.gmail.com with ESMTPSA id l5sm24606831wrm.66.2020.04.28.03.32.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Apr 2020 03:32:50 -0700 (PDT)
-Date: Tue, 28 Apr 2020 12:32:49 +0200
-From: Javier =?utf-8?B?R29uesOhbGV6?= <javier@javigon.com>
-To: Niklas Cassel <Niklas.Cassel@wdc.com>
-Subject: Re: [PATCH] nvme: prevent double free in nvme_alloc_ns() error
- handling
-Message-ID: <20200428103249.nrs2lhi2f5oakyrh@mpHalley.local>
-References: <20200427123443.520469-1-niklas.cassel@wdc.com>
- <20200427180311.nssquibbak5ib4oo@mpHalley.localdomain>
- <20200427182245.GA547726@localhost.localdomain>
- <20200428070651.qbsyivvaakflipr4@mpHalley.localdomain>
- <20200428074935.GA584449@localhost.localdomain>
+	id 1jTQ2t-0004H5-TI; Tue, 28 Apr 2020 13:13:07 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jTQ1X-0003HW-Sc
+ for linux-nvme@lists.infradead.org; Tue, 28 Apr 2020 13:11:48 +0000
+Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ maxg@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 28 Apr 2020 16:11:36 +0300
+Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
+ [10.209.102.136])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 03SDBZYt028635;
+ Tue, 28 Apr 2020 16:11:35 +0300
+From: Max Gurtovoy <maxg@mellanox.com>
+To: maxg@mellanox.com, linux-nvme@lists.infradead.org, kbusch@kernel.org,
+ hch@lst.de, sagi@grimberg.me, martin.petersen@oracle.com,
+ jsmart2021@gmail.com, axboe@kernel.dk
+Subject: [PATCH 00/15 V6] nvme-rdma/nvmet-rdma: Add metadata/T10-PI support
+Date: Tue, 28 Apr 2020 16:11:20 +0300
+Message-Id: <20200428131135.211521-1-maxg@mellanox.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200428074935.GA584449@localhost.localdomain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200428_033252_665976_F860F0ED 
-X-CRM114-Status: GOOD (  28.18  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200428_061144_368152_807FD20E 
+X-CRM114-Status: GOOD (  12.20  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
- [list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,119 +62,132 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
- Matias =?utf-8?B?QmrDuHJsaW5n?= <mb@lightnvm.io>,
- Christoph Hellwig <hch@lst.de>, Igor Konopko <igor.j.konopko@intel.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: vladimirk@mellanox.com, shlomin@mellanox.com, israelr@mellanox.com,
+ idanb@mellanox.com, oren@mellanox.com, nitzanc@mellanox.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gMjguMDQuMjAyMCAwNzo0OSwgTmlrbGFzIENhc3NlbCB3cm90ZToKPk9uIFR1ZSwgQXByIDI4
-LCAyMDIwIGF0IDA5OjA2OjUxQU0gKzAyMDAsIEphdmllciBHb256w6FsZXogd3JvdGU6Cj4+IENB
-VVRJT046IFRoaXMgZW1haWwgb3JpZ2luYXRlZCBmcm9tIG91dHNpZGUgb2YgV2VzdGVybiBEaWdp
-dGFsLiBEbyBub3QgY2xpY2sgb24gbGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cyB1bmxlc3MgeW91
-IHJlY29nbml6ZSB0aGUgc2VuZGVyIGFuZCBrbm93IHRoYXQgdGhlIGNvbnRlbnQgaXMgc2FmZS4K
-Pj4KPj4KPj4gT24gMjcuMDQuMjAyMCAxODoyMiwgTmlrbGFzIENhc3NlbCB3cm90ZToKPj4gPiBP
-biBNb24sIEFwciAyNywgMjAyMCBhdCAwODowMzoxMVBNICswMjAwLCBKYXZpZXIgR29uesOhbGV6
-IHdyb3RlOgo+PiA+ID4gT24gMjcuMDQuMjAyMCAxNDozNCwgTmlrbGFzIENhc3NlbCB3cm90ZToK
-Pj4gPiA+ID4gV2hlbiBqdW1waW5nIHRvIHRoZSBvdXRfcHV0X2Rpc2sgbGFiZWwsIHdlIHdpbGwg
-Y2FsbCBwdXRfZGlzaygpLCB3aGljaCB3aWxsCj4+ID4gPiA+IHRyaWdnZXIgYSBjYWxsIHRvIGRp
-c2tfcmVsZWFzZSgpLCB3aGljaCBjYWxscyBibGtfcHV0X3F1ZXVlKCkuCj4+ID4gPiA+Cj4+ID4g
-PiA+IExhdGVyIGluIHRoZSBjbGVhbnVwIGNvZGUsIHdlIGRvIGJsa19jbGVhbnVwX3F1ZXVlKCks
-IHdoaWNoIHdpbGwgYWxzbyBjYWxsCj4+ID4gPiA+IGJsa19wdXRfcXVldWUoKS4KPj4gPiA+ID4K
-Pj4gPiA+ID4gUHV0dGluZyB0aGUgcXVldWUgdHdpY2UgaXMgaW5jb3JyZWN0LCBhbmQgd2lsbCBn
-ZW5lcmF0ZSBhIEtBU0FOIHNwbGF0Lgo+PiA+ID4gPgo+PiA+ID4gPiBTZXQgdGhlIGRpc2stPnF1
-ZXVlIHBvaW50ZXIgdG8gTlVMTCwgYmVmb3JlIGNhbGxpbmcgcHV0X2Rpc2soKSwgc28gdGhhdCB0
-aGUKPj4gPiA+ID4gZmlyc3QgY2FsbCB0byBibGtfcHV0X3F1ZXVlKCkgd2lsbCBub3QgZnJlZSB0
-aGUgcXVldWUuCj4+ID4gPiA+Cj4+ID4gPiA+IFRoZSBzZWNvbmQgY2FsbCB0byBibGtfcHV0X3F1
-ZXVlKCkgdXNlcyBhbm90aGVyIHBvaW50ZXIgdG8gdGhlIHNhbWUgcXVldWUsCj4+ID4gPiA+IHNv
-IHRoaXMgY2FsbCB3aWxsIHN0aWxsIGZyZWUgdGhlIHF1ZXVlLgo+PiA+ID4gPgo+PiA+ID4gPiBG
-aXhlczogODUxMzZjMDEwMjg1ICgibGlnaHRudm06IHNpbXBsaWZ5IGdlb21ldHJ5IGVudW1lcmF0
-aW9uIikKPj4gPiA+ID4gU2lnbmVkLW9mZi1ieTogTmlrbGFzIENhc3NlbCA8bmlrbGFzLmNhc3Nl
-bEB3ZGMuY29tPgo+PiA+ID4gPiAtLS0KPj4gPiA+ID4gZHJpdmVycy9udm1lL2hvc3QvY29yZS5j
-IHwgMiArKwo+PiA+ID4gPiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspCj4+ID4gPiA+
-Cj4+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL252bWUvaG9zdC9jb3JlLmMgYi9kcml2ZXJz
-L252bWUvaG9zdC9jb3JlLmMKPj4gPiA+ID4gaW5kZXggOTFjMWJkNjU5OTQ3Li5mMmFkZWE5NmIw
-NGMgMTAwNjQ0Cj4+ID4gPiA+IC0tLSBhL2RyaXZlcnMvbnZtZS9ob3N0L2NvcmUuYwo+PiA+ID4g
-PiArKysgYi9kcml2ZXJzL252bWUvaG9zdC9jb3JlLmMKPj4gPiA+ID4gQEAgLTM2NDIsNiArMzY0
-Miw4IEBAIHN0YXRpYyB2b2lkIG52bWVfYWxsb2NfbnMoc3RydWN0IG52bWVfY3RybCAqY3RybCwg
-dW5zaWduZWQgbnNpZCkKPj4gPiA+ID4KPj4gPiA+ID4gICAgICAgcmV0dXJuOwo+PiA+ID4gPiAg
-b3V0X3B1dF9kaXNrOgo+PiA+ID4gPiArICAgICAgLyogcHJldmVudCBkb3VibGUgcXVldWUgY2xl
-YW51cCAqLwo+PiA+ID4gPiArICAgICAgbnMtPmRpc2stPnF1ZXVlID0gTlVMTDsKPj4gPiA+ID4g
-ICAgICAgcHV0X2Rpc2sobnMtPmRpc2spOwo+PiA+ID4gPiAgb3V0X3VubGlua19uczoKPj4gPiA+
-ID4gICAgICAgbXV0ZXhfbG9jaygmY3RybC0+c3Vic3lzLT5sb2NrKTsKPj4gPiA+ID4gLS0KPj4g
-PiA+ID4gMi4yNS4zCj4+ID4gPiA+Cj4+ID4gPiBXaGF0IGFib3V0IGRlbGF5aW5nIHRoZSBhc3Np
-Z25tZW50IG9mIG5zLT5kaXNrPwo+PiA+ID4KPj4gPiA+IGRpZmYgLS1naXQgaS9kcml2ZXJzL252
-bWUvaG9zdC9jb3JlLmMgdy9kcml2ZXJzL252bWUvaG9zdC9jb3JlLmMKPj4gPiA+IGluZGV4IGE0
-ZDhjOTBlZTdjYy4uNmRhNGE5Y2VkOTQ1IDEwMDY0NAo+PiA+ID4gLS0tIGkvZHJpdmVycy9udm1l
-L2hvc3QvY29yZS5jCj4+ID4gPiArKysgdy9kcml2ZXJzL252bWUvaG9zdC9jb3JlLmMKPj4gPiA+
-IEBAIC0zNTQxLDcgKzM1NDEsNiBAQCBzdGF0aWMgaW50IG52bWVfYWxsb2NfbnMoc3RydWN0IG52
-bWVfY3RybCAqY3RybCwgdW5zaWduZWQgbnNpZCkKPj4gPiA+ICAgICAgICAgZGlzay0+cXVldWUg
-PSBucy0+cXVldWU7Cj4+ID4gPiAgICAgICAgIGRpc2stPmZsYWdzID0gZmxhZ3M7Cj4+ID4gPiAg
-ICAgICAgIG1lbWNweShkaXNrLT5kaXNrX25hbWUsIGRpc2tfbmFtZSwgRElTS19OQU1FX0xFTik7
-Cj4+ID4gPiAtICAgICAgIG5zLT5kaXNrID0gZGlzazsKPj4gPiA+Cj4+ID4gPiAgICAgICAgIF9f
-bnZtZV9yZXZhbGlkYXRlX2Rpc2soZGlzaywgaWQpOwo+PiA+ID4KPj4gPiA+IEBAIC0zNTUzLDYg
-KzM1NTIsOCBAQCBzdGF0aWMgaW50IG52bWVfYWxsb2NfbnMoc3RydWN0IG52bWVfY3RybCAqY3Ry
-bCwgdW5zaWduZWQgbnNpZCkKPj4gPiA+ICAgICAgICAgICAgICAgICB9Cj4+ID4gPiAgICAgICAg
-IH0KPj4gPiA+Cj4+ID4gPiArICAgICAgIG5zLT5kaXNrID0gZGlzazsKPj4gPiA+ICsKPj4gPgo+
-PiA+IEhlbGxvIEphdmllciEKPj4gPgo+PiA+Cj4+ID4gVGhlIG9ubHkgY2FzZSB3aGVyZSB3ZSBq
-dW1wIHRvIHRoZSBvdXRfcHV0X2Rpc2sgbGFiZWwsIGlzIGlmIHRoZQo+PiA+IG52bWVfbnZtX3Jl
-Z2lzdGVyKCkgY2FsbCBmYWlsZWQuCj4+ID4KPj4gPiBJbiB0aGF0IGNhc2UsIHdlIHdhbnQgdG8g
-dW5kbyB0aGUgYWxsb2NfZGlza19ub2RlKCkgb3BlcmF0aW9uLCBpLmUuLAo+PiA+IGRlY3JlYXNl
-IHRoZSByZWZjb3VudC4KPj4gPgo+PiA+IElmIHdlIGRvbid0IHNldCAibnMtPmRpc2sgPSBkaXNr
-OyIgYmVmb3JlIHRoZSBjYWxsIHRvIG52bWVfbnZtX3JlZ2lzdGVyKCksCj4+ID4gdGhlbiwgaWYg
-cmVnaXN0ZXIgZmFpbHMsIGFuZCB3ZSBqdW1wIHRvIHRoZSBwdXRfZGlzayhucy0+ZGlzaykgbGFi
-ZWwsCj4+ID4gbnMtPmRpc2sgd2lsbCBiZSBOVUxMLCBzbyB0aGUgcmVjb3VudCB3aWxsIG5vdCBi
-ZSBkZWNyZWFzZWQsIHNvIEkgYXNzdW1lCj4+ID4gdGhhdCB0aGlzIG1lbW9yeSB3b3VsZCB0aGVu
-IGJlIGEgbWVtb3J5IGxlYWsuCj4+ID4KPj4gPgo+PiA+IEkgdGhpbmsgdGhhdCB0aGUgcHJvYmxl
-bSBpcyB0aGF0IHRoZSBibG9jayBmdW5jdGlvbnMgYXJlIGEgYml0IG1lc3N5Lgo+PiA+IE1vc3Qg
-ZHJpdmVycyBzZWVtIHRvIGRvIGJsa19jbGVhbnVwX3F1ZXVlKCkgZmlyc3QgYW5kIHRoZW4gZG8g
-cHV0X2Rpc2soKSwKPj4gPiBidXQgc29tZSBkcml2ZXJzIGRvIGl0IGluIHRoZSBvcHBvc2l0ZSB3
-YXksIHNvIEkgdGhpbmsgdGhhdCB3ZSBtaWdodCBoYXZlCj4+ID4gc29tZSBtb3JlIHVzZS1hZnRl
-ci1mcmVlIGJ1Z3MgaW4gc29tZSBvZiB0aGVzZSBkcml2ZXJzIHRoYXQgZG8gaXQgaW4gdGhlCj4+
-ID4gb3Bwb3NpdGUgd2F5Lgo+PiA+Cj4+Cj4+IEhpIE5pa2xhcywKPj4KPj4gWWVzLCB0aGUgb3V0
-X3B1dF9kaXNrIGxhYmVsIHdhcyBpbnRyb2R1Y2VkIGF0IHRoZSBzYW1lIHRpbWUgYXMgdGhlCj4+
-IExpZ2h0TlZNIGVudHJ5IHBvaW50LiBXZSBjYW4gZG8gYSBiZXR0ZXIgam9iIGF0IHNlcGFyYXRp
-bmcgdGhlIGNsZWFudXAKPj4gZnVuY3Rpb25zLCBidXQgYXMgZmFyIGFzIEkgY2FuIHNlZSBucy0+
-ZGlzayBpcyBub3QgdXNlZCBpbiB0aGUgTGlnaHROVk0KPj4gaW5pdGlhbGl6YXRpb24sIHNvIGRl
-bGF5aW5nIHRoZSBpbml0aWFsaXphdGlvbiBzaG91bGQgYmUgb2suIFBhcnQgb2YKPj4gdGhpcyBz
-aG91bGQgYmUgYWxzbyBjaGFuZ2luZyB0aGUgb3V0X3B1dF9kaXNrIHRvIHB1dF9kaXNrKGRpc2sp
-Lgo+Cj5IZWxsbyBKYXZpZXIsCj4KPgo+SWYgSSB1bmRlcnN0YW5kIGNvcnJlY3RseSwgeW91IGFy
-ZSBzdWdnZXN0aW5nIHRoaXM6Cj4KPi0tLSBhL2RyaXZlcnMvbnZtZS9ob3N0L2NvcmUuYwo+Kysr
-IGIvZHJpdmVycy9udm1lL2hvc3QvY29yZS5jCj5AQCAtMzYxNiw3ICszNjE2LDYgQEAgc3RhdGlj
-IHZvaWQgbnZtZV9hbGxvY19ucyhzdHJ1Y3QgbnZtZV9jdHJsICpjdHJsLCB1bnNpZ25lZCBuc2lk
-KQo+ICAgICAgICBkaXNrLT5xdWV1ZSA9IG5zLT5xdWV1ZTsKPiAgICAgICAgZGlzay0+ZmxhZ3Mg
-PSBmbGFnczsKPiAgICAgICAgbWVtY3B5KGRpc2stPmRpc2tfbmFtZSwgZGlza19uYW1lLCBESVNL
-X05BTUVfTEVOKTsKPi0gICAgICAgbnMtPmRpc2sgPSBkaXNrOwo+Cj4gICAgICAgIF9fbnZtZV9y
-ZXZhbGlkYXRlX2Rpc2soZGlzaywgaWQpOwo+Cj5AQCAtMzYyOCw2ICszNjI3LDggQEAgc3RhdGlj
-IHZvaWQgbnZtZV9hbGxvY19ucyhzdHJ1Y3QgbnZtZV9jdHJsICpjdHJsLCB1bnNpZ25lZCBuc2lk
-KQo+ICAgICAgICAgICAgICAgIH0KPiAgICAgICAgfQo+Cj4rICAgICAgIG5zLT5kaXNrID0gZGlz
-azsKPisKPiAgICAgICAgZG93bl93cml0ZSgmY3RybC0+bmFtZXNwYWNlc19yd3NlbSk7Cj4gICAg
-ICAgIGxpc3RfYWRkX3RhaWwoJm5zLT5saXN0LCAmY3RybC0+bmFtZXNwYWNlcyk7Cj4gICAgICAg
-IHVwX3dyaXRlKCZjdHJsLT5uYW1lc3BhY2VzX3J3c2VtKTsKPkBAIC0zNjQyLDcgKzM2NDMsNyBA
-QCBzdGF0aWMgdm9pZCBudm1lX2FsbG9jX25zKHN0cnVjdCBudm1lX2N0cmwgKmN0cmwsIHVuc2ln
-bmVkIG5zaWQpCj4KPiAgICAgICAgcmV0dXJuOwo+ICBvdXRfcHV0X2Rpc2s6Cj4tICAgICAgIHB1
-dF9kaXNrKG5zLT5kaXNrKTsKPisgICAgICAgcHV0X2Rpc2soZGlzayk7Cj4gIG91dF91bmxpbmtf
-bnM6Cj4gICAgICAgIG11dGV4X2xvY2soJmN0cmwtPnN1YnN5cy0+bG9jayk7Cj4gICAgICAgIGxp
-c3RfZGVsX3JjdSgmbnMtPnNpYmxpbmdzKTsKPgo+Cj5UaGF0IHdvdWxkIG5vdCBzb2x2ZSB0aGUg
-ZG91YmxlIGZyZWUgZXJyb3Igd2hlbiB0aGUgcmVnaXN0cmF0aW9uIGZhaWxzLAo+c2luY2UgZGlz
-ay0+cXVldWUgaXMgc3RpbGwgc2V0LCBzbyB0aGlzIGNhbGwgd2lsbCBzdGlsbCBmcmVlIHRoZSBx
-dWV1ZS4KPgo+TGF0ZXIgaW4gdGhlIGNsZWFudXAgY29kZSBibGtfY2xlYW51cF9xdWV1ZShucy0+
-cXVldWUpOwo+aXMgY2FsbGVkLCB3aGljaCB3aWxsIHN0aWxsIHRyeSB0byBmcmVlIHdoYXQgaXMg
-YWxyZWFkeSBmcmVlZC4KPgo+VG8gcmVtb3ZlIHRoZSBkb3VibGUgZnJlZSBieSBkZWxheWluZyBh
-c3NpZ25tZW50cywgd2Ugd291bGQgbmVlZCB0bwo+ZGVsYXkgdGhlIGFzc2lnbm1lbnQgb2YgZGlz
-ay0+cXVldWUgdW50aWwgYWZ0ZXIgdGhlIExpZ2h0TlZNIGVudHJ5IHBvaW50LAo+YnV0IEkgZG9u
-J3QgdGhpbmsgdGhhdCBpcyBwb3NzaWJsZSwgc2luY2UgX19udm1lX3JldmFsaWRhdGVfZGlzaygp
-LCB3aGljaAo+aXMgY2FsbGVkIGJlZm9yZSB0aGUgTGlnaHROVk0gZW50cnkgcG9pbnQgdXNlcyBk
-aXNrLT5xdWV1ZS4KPgo+Q2hyaXN0b3BoIHNhaWQgdGhhdCBoZSB3b3VsZCBjbGVhbiB1cCB0aGlz
-IG1lc3Mgd2l0aCBiZXR0ZXIgYmxvY2sgbGF5ZXIKPkFQSXMuIFNvIHBlcmhhcHMgdGhlIGZpeCB0
-aGF0IGlzIGFscmVhZHkgcXVldWVkIGlzIGdvb2QgZW5vdWdoIHVudGlsIHRoZW4uCj4KCk1ha2Vz
-IHNlbnNlLiBJIHNlZSBzb21lIHRoaW5ncyBoYXZlIGNoYW5nZWQgaW4gdGhpcyBwYXRoIHNpbmNl
-IEkgbGFzdApsb29rZWQgYXQgaXQuCgpUaGFua3MhCkphdmllcgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtbnZtZSBtYWlsaW5nIGxpc3QKbGlu
-dXgtbnZtZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbnZtZQo=
+Hello Sagi, Christoph, Keith, Martin, James and Co
+
+This patchset adds metadata (T10-PI) support for NVMeoF/RDMA host side
+and target side, using signature verbs API. This set starts with a few
+preparation commits to the NVMe host core layer. It continues with
+NVMeoF/RDMA host implementation and preparations to NVMe target core
+layer. The patchset ends with NVMeoF/RDMA target implementation.
+
+In V6 I mainly did some updates for host side configuration and removed
+the NVMe cli patch. For the initial mode, we'll use T10-PI/metadata for
+capable devices and act according to target controller and namespaces
+configuration. I also used James's suggestion of making nvme_ns_has_pi
+accessible and implemented Christoph's suggestions for ease the code in
+NVMe host core. Code looks more simple and readable now and hopefully we
+can continue with the review and the merge it soon.
+
+Configuration:
+Host:
+ - same as before
+
+Target:
+ - echo 1 > /config/nvmet/subsystems/${NAME}/attr_pi_enable
+ - echo 1 > /config/nvmet/ports/${PORT_NUM}/param_pi_enable
+
+The code was tested using Mellanox's ConnectX-4/ConnectX-5 HCAs.
+This series applies on top of nvme_5.8 branch cleanly.
+
+Changes from v5:
+ - rebased over nvme_5.8
+ - configure RDMA controllers for T10-PI by default (if capable)
+ - removed RW api patch for exporting single MR length (will add it in the future if needed)
+ - Implemented Christoph's suggestions for NVMe host core
+ - fail enabling target port in case of PI capability mismatch (from Christoph)
+ 
+Changes from v4:
+ - removed get_mdts patches (merged)
+ - added enum nvme_ns_features instead of defines (patch 1/17)
+ - rename pi/prot to md (patches 2/17 + 6/17 + 8/17 + 9/17 + 10/17)
+ - another rebase
+
+Changes from v3:
+ - Added Reviewed-by signatures
+ - New RDMA/rw patch (Patch 17/19)
+ - Add mdts setting op for controllers (Patches 14/19, 18/19)
+ - Rename NVME_NS_DIX_SUPPORTED to NVME_NS_MD_HOST_SUPPORTED and
+   NVME_NS_DIF_SUPPORTED to NVME_NS_MD_CTRL_SUPPORTED (Patch 01/19)
+ - Split "nvme: Introduce namespace features flag" patch (patch 02/19)
+ - Rename nvmet_rdma_set_diff_domain to nvmet_rdma_set_sig_domain
+   and nvme_rdma_set_diff_domain to nvme_rdma_set_sig_domain
+   (Patches 08/19, 19/19)
+ - Remove ns parameter from nvme_rdma_set_sig_domain/nvmet_rdma_set_sig_domain
+   functions (patch 08/19, 19/19)
+ - Rebase over nvme-5.7 branch
+
+Changes from v2:
+ - Convert the virtual start sector (which passed to bip_set_seed function)
+   to be in integrity interval units (Patch 14/15)
+ - Clarify some commit messages
+
+Changes from v1:
+ - Added Reviewed-by signatures
+ - Added namespace features flag (Patch 01/15)
+ - Remove nvme_ns_has_pi function (Patch 01/15)
+ - Added has_pi field to struct nvme_request (Patch 01/15)
+ - Subject change for patch 02/15
+ - Fix comment for PCI metadata (Patch 03/15)
+ - Rebase over "nvme: Avoid preallocating big SGL for data" patchset
+ - Introduce NVME_INLINE_PROT_SG_CNT flag (Patch 05/15)
+ - Introduce nvme_rdma_sgl structure (Patch 06/15)
+ - Remove first_sgl pointer from struct nvme_rdma_request (Patch 06/15)
+ - Split nvme-rdma patches (Patches 06/15, 07/15)
+ - Rename is_protected to use_pi (Patch 07/15)
+ - Refactor nvme_rdma_get_max_fr_pages function (Patch 07/15)
+ - Added ifdef CONFIG_BLK_DEV_INTEGRITY (Patches 07/15, 09/15, 13/15,
+   14/15, 15/15)
+ - Added port configfs pi_enable (Patch 14/15)
+
+Israel Rukshin (9):
+  nvme: introduce NVME_INLINE_MD_SG_CNT
+  nvme-rdma: introduce nvme_rdma_sgl structure
+  nvmet: add metadata characteristics for a namespace
+  nvmet: rename nvmet_rw_len to nvmet_rw_data_len
+  nvmet: rename nvmet_check_data_len to nvmet_check_transfer_len
+  nvme: add Metadata Capabilities enumerations
+  nvmet: add metadata/T10-PI support
+  nvmet: add metadata support for block devices
+  nvmet-rdma: add metadata/T10-PI support
+
+James Smart (1):
+  nvme: make nvme_ns_has_pi accessible to transports
+
+Max Gurtovoy (5):
+  nvme: introduce namespace features flag
+  nvme: introduce NVME_NS_METADATA_SUPPORTED flag
+  nvme: enforce extended LBA format for fabrics metadata
+  nvme: introduce max_integrity_segments ctrl attribute
+  nvme-rdma: add metadata/T10-PI support
+
+ drivers/nvme/host/core.c          |  83 ++++++---
+ drivers/nvme/host/nvme.h          |  18 +-
+ drivers/nvme/host/pci.c           |   6 +
+ drivers/nvme/host/rdma.c          | 358 ++++++++++++++++++++++++++++++++------
+ drivers/nvme/target/admin-cmd.c   |  40 +++--
+ drivers/nvme/target/configfs.c    |  61 +++++++
+ drivers/nvme/target/core.c        | 115 +++++++++---
+ drivers/nvme/target/discovery.c   |   8 +-
+ drivers/nvme/target/fabrics-cmd.c |  16 +-
+ drivers/nvme/target/io-cmd-bdev.c | 116 +++++++++++-
+ drivers/nvme/target/io-cmd-file.c |   6 +-
+ drivers/nvme/target/nvmet.h       |  27 ++-
+ drivers/nvme/target/rdma.c        | 234 +++++++++++++++++++++++--
+ include/linux/nvme.h              |   6 +
+ 14 files changed, 947 insertions(+), 147 deletions(-)
+
+-- 
+1.8.3.1
+
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
