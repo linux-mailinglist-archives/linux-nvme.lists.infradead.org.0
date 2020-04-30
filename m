@@ -1,72 +1,36 @@
 Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
-Received: from bombadil.infradead.org (unknown [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 509511C05B1
-	for <lists+linux-nvme@lfdr.de>; Thu, 30 Apr 2020 21:08:32 +0200 (CEST)
+Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D26951C08A9
+	for <lists+linux-nvme@lfdr.de>; Thu, 30 Apr 2020 22:59:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T6jCbyeiG6uqpShD6X96NKGgRZsW37D7qFx7IyURnHU=; b=LhKtfaT77nz2Nw
-	bhGTotjyjCWwQKo6Vh/5c/r3oZa5cxuGbJWR02or3Xag2SKlWYcq9MFG9c1UAoTl4me5Hyd3w6PzN
-	MH1v/xIyROg811AptIb57ZWT+pUfFhUICIZ/h61W8kKb3l/Cc8b3B0DNSK/EeoyhYthXAfH1hSqC9
-	D7mblBYpVjYtqJpHIHIisjCYMEWe5SZd9wmHaPp1icHNWRV0TZTYEhc5D+fp86gn7DyOYqE8MD3/a
-	CXzgrIRMyV+FF+oZp3XHWCILHO3BfLHaEbAS2uepdKZGxmFTfdRhdWHc2Nktw1tWR+RY9JcAJFIMV
-	ESYiO5Iw0XmOIN+ntQdw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Z8RT6iZG7SGs7qfMBUM8CE0uU1SUJXXFCkqS7SdLKK0=; b=A5aZMBHJwWyN3+
+	ADNnFvUt2jBtCukENEYaR1JW0ahjLWxcMUUcRSwpS8UVGOD2nUfwhH1p45kYMWJC/tddhHoNH7bcm
+	MhY6ZZ3lJmDSaFOAfNJsfY4PgEWjiwIo6IbgXVGf8FYSFV9cQNTyJL1PPUMsTqcl4vxDzlXLuvc2p
+	DMllClFrIPZP/9BxMQp8TSKFgTCCuz+mj8gZ6/JquKm1Turmd93eWChuJHS6MPgEkZaluJBCma2rp
+	BpRoxzgV6cwcTY6TkShIlpZG0PSSGJHV42lviCRpOfxGpcKy1BwxD/TMQh1xk9bVanH+9zaHluF5T
+	vCz2g+EsVNhoNKVamMDg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jUEXT-0004Se-2l; Thu, 30 Apr 2020 19:08:03 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jUEXM-0004Px-Gn
- for linux-nvme@lists.infradead.org; Thu, 30 Apr 2020 19:07:57 +0000
-Received: from redsun51.ssa.fujisawa.hgst.com (unknown [199.255.47.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C18372054F;
- Thu, 30 Apr 2020 19:07:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588273675;
- bh=Pa/Wej8Kd/IThPq7GSKi2Y9RxpLeQLi81hfS2+lYD+A=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=M5NwhNBw8eryKNJ7tTcsyvbXp1ngk/TybQ3Ku0lBydEtbZVh3TKyiVx8GzgBzTpDA
- cFq4DTcHiSnxIBNIlD60anl47ijz065sFSbF8/3H/k+GBVQTwzbsOsk4vh3Ycn+Q5Z
- a51++xP98mzqQsWUYyG95iy0VIiib1uQHJqGKaFk=
-Date: Fri, 1 May 2020 04:07:48 +0900
-From: Keith Busch <kbusch@kernel.org>
-To: Dongli Zhang <dongli.zhang@oracle.com>
-Subject: Re: [PATCH 2/3] nvme-pci: remove cached shadow doorbell offsets
-Message-ID: <20200430190748.GA25039@redsun51.ssa.fujisawa.hgst.com>
-References: <20200427235243.2268765-1-kbusch@kernel.org>
- <20200427235243.2268765-2-kbusch@kernel.org>
- <16621645-8183-33d7-14d1-8d4c9375e55c@oracle.com>
+	id 1jUGHR-0000tH-HL; Thu, 30 Apr 2020 20:59:37 +0000
+Received: from [2601:647:4802:9070:7c3c:3588:d5ec:d94e]
+ (helo=bombadil.infradead.org)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jUGHN-0000st-Hg; Thu, 30 Apr 2020 20:59:33 +0000
+From: Sagi Grimberg <sagi@grimberg.me>
+To: Christoph Hellwig <hch@lst.de>, Keith Busch <kbusch@kernel.org>,
+ linux-nvme@lists.infradead.org
+Subject: [PATCH 1/3] nvme-tcp: use bh_lock in data_ready
+Date: Thu, 30 Apr 2020 13:59:32 -0700
+Message-Id: <20200430205932.30968-1-sagi@grimberg.me>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <16621645-8183-33d7-14d1-8d4c9375e55c@oracle.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200430_120756_610250_17B872CC 
-X-CRM114-Status: GOOD (  10.10  )
-X-Spam-Score: -5.2 (-----)
-X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,26 +42,41 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: hch@lst.de, linux-nvme@lists.infradead.org, sagi@grimberg.me
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, Apr 29, 2020 at 11:36:52PM -0700, Dongli Zhang wrote:
-> Hi Keith,
-> 
-> On 4/27/20 4:52 PM, Keith Busch wrote:
-> > Real nvme hardware doesn't support the shadow doorbell feature. Remove
-> 
-> I used to test with nvme emulated by qemu and NVME_CTRL_OACS_DBBUF_SUPP is not
-> set yet.
-> 
-> Would you please share which emulator would support NVME_CTRL_OACS_DBBUF_SUPP?
+data_ready may be invoked from send context or from
+softirq, so need bh locking for that.
 
-Sorry, there is no freely available implementation that I'm aware of.
-I think qemu could benefit from this feature, and there had been some
-implementation attempts, but nothing that ever made it upstream.
+Fixes: 3f2304f8c6d6 ("nvme-tcp: add NVMe over TCP host driver")
+Signed-off-by: Sagi Grimberg <sagi@grimberg.me>
+---
+ drivers/nvme/host/tcp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index c15a92163c1f..4862fa962011 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -794,11 +794,11 @@ static void nvme_tcp_data_ready(struct sock *sk)
+ {
+ 	struct nvme_tcp_queue *queue;
+ 
+-	read_lock(&sk->sk_callback_lock);
++	read_lock_bh(&sk->sk_callback_lock);
+ 	queue = sk->sk_user_data;
+ 	if (likely(queue && queue->rd_enabled))
+ 		queue_work_on(queue->io_cpu, nvme_tcp_wq, &queue->io_work);
+-	read_unlock(&sk->sk_callback_lock);
++	read_unlock_bh(&sk->sk_callback_lock);
+ }
+ 
+ static void nvme_tcp_write_space(struct sock *sk)
+-- 
+2.20.1
+
 
 _______________________________________________
 linux-nvme mailing list
