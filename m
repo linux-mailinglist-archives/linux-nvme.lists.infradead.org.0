@@ -2,49 +2,48 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B81FF1C3F3B
-	for <lists+linux-nvme@lfdr.de>; Mon,  4 May 2020 17:59:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CEDD71C3F44
+	for <lists+linux-nvme@lfdr.de>; Mon,  4 May 2020 18:01:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=prJ1jcxXzL7eM0Ee28xaI/pYF/XhovPhHbQZliBOous=; b=TyWuxDr3ePMDLE
-	/9YWArRQ0Qdrgi0obol8OVFxhxztRegHgJEyi/sQeAHfGoi2NajeCQeHlC2su+C9Kh1ZHlaDGCmZc
-	ZXuI1DcXzAUKP+/rNdG4LcFYyzkWnJE87IQlOn2u5n8ZdKFvzefcOwC89MbltS+CJEsfNwKIYCpBJ
-	ck2PrBHUvIcvKfrJ1uDg4+T8u0s+BunfM1p0a8K06fy+BaGLO8UWCAkkMjQNEikEvI9VJUTs06Y8q
-	11rE0gITC9OoMtbRgII+9AaDm8fDM3KuZfbaRHtjaqwON5yJjWIqjgVTBzp7Y9Y4Su0Xkl+c4Zikz
-	4QMuvbjAieMjgxu7f6PA==;
+	List-Owner; bh=L85nHCF2imEE4KiXZI5DvPpo1sGFnj+2ph2Ox5FoQ1k=; b=m6pkPmRSon1CeW
+	ROeZ4eCt2itWu/jTwnVOVN62C2s6CbAsef2GEWh6VPevU57rULHnk5R3QsEUiNt8bqt74k6KQltuL
+	E9WYb+lgDwloFOWs8aO0zokrdLwoAZGm+2sZkZX7lMoQeCFsXu7NXCws/rcvHa3JiVgFhTk6q8lTR
+	H4mgadPwYfI9fHTAf8bXV++TZijcFVDICZs2KNJ60GX5jsEXQ2mmrWrt7zvXwiYw2RiTSK8g8oJFY
+	tn3qg1uliXH1ZZJtfHO+YrKAq6h/+/z8hOgwbo39YEDyiaGmfbSasiYLKGoY6EFFbx7rFIvmUfhtC
+	Fwc4T0yyU7rEL6UCxwXA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVdVT-0002PO-AU; Mon, 04 May 2020 15:59:47 +0000
+	id 1jVdX7-0006zU-JD; Mon, 04 May 2020 16:01:29 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVdTr-00011E-9f
- for linux-nvme@lists.infradead.org; Mon, 04 May 2020 15:58:10 +0000
-Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ id 1jVdTs-00011n-Hh
+ for linux-nvme@lists.infradead.org; Mon, 04 May 2020 15:58:13 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 4 May 2020 18:57:56 +0300
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 044FvtCG017882;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 044FvtCH017882;
  Mon, 4 May 2020 18:57:55 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: maxg@mellanox.com, linux-nvme@lists.infradead.org, kbusch@kernel.org,
  hch@lst.de, sagi@grimberg.me, martin.petersen@oracle.com,
  jsmart2021@gmail.com, axboe@kernel.dk
-Subject: [PATCH 04/16] nvme: make nvme_ns_has_pi accessible to transports
-Date: Mon,  4 May 2020 18:57:43 +0300
-Message-Id: <20200504155755.221125-5-maxg@mellanox.com>
+Subject: [PATCH 05/16] nvme: introduce max_integrity_segments ctrl attribute
+Date: Mon,  4 May 2020 18:57:44 +0300
+Message-Id: <20200504155755.221125-6-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200504155755.221125-1-maxg@mellanox.com>
 References: <20200504155755.221125-1-maxg@mellanox.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200504_085807_751846_94B372CD 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200504_085808_984520_E4881C8B 
+X-CRM114-Status: GOOD (  10.44  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -72,70 +71,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-From: James Smart <jsmart2021@gmail.com>
+This patch doesn't change any logic, and is needed as a preparation
+for adding PI support for fabrics drivers that will use an extended
+LBA format for metadata and will support more than 1 integrity segment.
 
-Move the nvme_ns_has_pi() inline from core.c to the nvme.h header.
-This allows use by the transports.
-
-Signed-off-by: James Smart <jsmart2021@gmail.com>
-[maxg: added a comment for nvme_ns_has_pi()]
 Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
-Reviewed-by: Israel Rukshin <israelr@mellanox.com>
+Signed-off-by: Israel Rukshin <israelr@mellanox.com>
+Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
+Reviewed-by: Martin K. Petersen <martin.petersen@oracle.com>
 Reviewed-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/nvme/host/core.c | 6 ------
- drivers/nvme/host/nvme.h | 7 +++++++
- 2 files changed, 7 insertions(+), 6 deletions(-)
+ drivers/nvme/host/core.c | 11 +++++++----
+ drivers/nvme/host/nvme.h |  1 +
+ drivers/nvme/host/pci.c  |  6 ++++++
+ 3 files changed, 14 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index 4b7faf9..94d2549 100644
+index 94d2549..89b1bfcb 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -19,7 +19,6 @@
- #include <linux/pr.h>
- #include <linux/ptrace.h>
- #include <linux/nvme_ioctl.h>
--#include <linux/t10-pi.h>
- #include <linux/pm_qos.h>
- #include <asm/unaligned.h>
- 
-@@ -204,11 +203,6 @@ static void nvme_delete_ctrl_sync(struct nvme_ctrl *ctrl)
- 	nvme_put_ctrl(ctrl);
+@@ -1690,7 +1690,8 @@ static int nvme_getgeo(struct block_device *bdev, struct hd_geometry *geo)
  }
  
--static inline bool nvme_ns_has_pi(struct nvme_ns *ns)
--{
--	return ns->pi_type && ns->ms == sizeof(struct t10_pi_tuple);
--}
--
- static blk_status_t nvme_error_status(u16 status)
+ #ifdef CONFIG_BLK_DEV_INTEGRITY
+-static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type)
++static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type,
++				u32 max_integrity_segments)
  {
- 	switch (status & 0x7ff) {
+ 	struct blk_integrity integrity;
+ 
+@@ -1713,10 +1714,11 @@ static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type)
+ 	}
+ 	integrity.tuple_size = ms;
+ 	blk_integrity_register(disk, &integrity);
+-	blk_queue_max_integrity_segments(disk->queue, 1);
++	blk_queue_max_integrity_segments(disk->queue, max_integrity_segments);
+ }
+ #else
+-static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type)
++static void nvme_init_integrity(struct gendisk *disk, u16 ms, u8 pi_type,
++				u32 max_integrity_segments)
+ {
+ }
+ #endif /* CONFIG_BLK_DEV_INTEGRITY */
+@@ -1892,7 +1894,8 @@ static void nvme_update_disk_info(struct gendisk *disk,
+ 	if (ns->ms) {
+ 		if (IS_ENABLED(CONFIG_BLK_DEV_INTEGRITY) &&
+ 		    (ns->features & NVME_NS_METADATA_SUPPORTED))
+-			nvme_init_integrity(disk, ns->ms, ns->pi_type);
++			nvme_init_integrity(disk, ns->ms, ns->pi_type,
++					    ns->ctrl->max_integrity_segments);
+ 		else if (!nvme_ns_has_pi(ns))
+ 			capacity = 0;
+ 	}
 diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 0dda145..0f5fa85 100644
+index 0f5fa85..6c7e76c 100644
 --- a/drivers/nvme/host/nvme.h
 +++ b/drivers/nvme/host/nvme.h
-@@ -16,6 +16,7 @@
- #include <linux/fault-inject.h>
- #include <linux/rcupdate.h>
- #include <linux/wait.h>
-+#include <linux/t10-pi.h>
+@@ -229,6 +229,7 @@ struct nvme_ctrl {
+ 	u32 page_size;
+ 	u32 max_hw_sectors;
+ 	u32 max_segments;
++	u32 max_integrity_segments;
+ 	u16 crdt[3];
+ 	u16 oncs;
+ 	u16 oacs;
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index eef5d6a..a9b124a 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -2539,6 +2539,12 @@ static void nvme_reset_work(struct work_struct *work)
+ 		goto out;
+ 	}
  
- #include <trace/events/block.h>
- 
-@@ -399,6 +400,12 @@ struct nvme_ns {
- 
- };
- 
-+/* NVMe ns supports metadata actions by the controller (generate/strip) */
-+static inline bool nvme_ns_has_pi(struct nvme_ns *ns)
-+{
-+	return ns->pi_type && ns->ms == sizeof(struct t10_pi_tuple);
-+}
++	/*
++	 * We do not support an SGL for metadata (yet), so we are limited to a
++	 * single integrity segment for the separate metadata pointer.
++	 */
++	dev->ctrl.max_integrity_segments = 1;
 +
- struct nvme_ctrl_ops {
- 	const char *name;
- 	struct module *module;
+ 	result = nvme_init_identify(&dev->ctrl);
+ 	if (result)
+ 		goto out;
 -- 
 1.8.3.1
 
