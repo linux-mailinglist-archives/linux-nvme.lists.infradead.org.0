@@ -2,79 +2,114 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48DC71C3520
-	for <lists+linux-nvme@lfdr.de>; Mon,  4 May 2020 10:59:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D97E1C3AC0
+	for <lists+linux-nvme@lfdr.de>; Mon,  4 May 2020 15:01:56 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gh0E4jJmRbVwrAzxZpbjg2xtDqJBdxStGQVnlvh17fI=; b=t3V5KdS2ijycZ7
-	b+TI5ncHClqlZKMTgUZ4hwsSo9FO9c7LWQlkufy8E506hT8+26f5BnzFfankPtJyaxUhATg5PTnGQ
-	aiM/w1Eo3M1mjByA/YP6nUAxvm8rIEwuFp+obhh4D2kMwqM3l/rN2TQijJikW75l3Y8KRlVpOzDkg
-	vWuaUBtcMUir4DNhnlVO1UB1qSS9n4Zg21ApK+7iOHsk9RCwTKBsSqIH6vRutEDBrDw9Nu8zi0NBl
-	GUbb1o2QwJ+HYP2nzjumf64usnIkTx8mD09rJPE2wK4atF1vHVzhEYaaCutwruZkXGq0JHOyLy4Ke
-	tiq0E96u10cZ+Fub3iWw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=a7m4/DGbZI8QY/en0fveTStTXr8uQZmG6HRmjrp1HO8=; b=Tiydfie95wMCAuUvVKeo3Ci+Q
+	N76NdjhTveF0ty4JNtuynrMcLQqd1Bd+jgH7SIz5xPil3ufo7oNECNulugmGTLxEf2q9MKxvd55oH
+	3S4Blhk80jL+x4/pztCS5guNMdEcd28giPj0C17RLIyBnL8lc4Jb7HoO1JWQojyUgx/pg2N9FTTxX
+	2xC67qq5UR30g54IagxOBmyph0InDG+QHpHBOP6bpwN/ziQ8xdwixhk/3rVr4IjLpqb3Q62ZRd50c
+	dSEXHVptDiZBc7MDPpbTnHF7/y0C6WGhdFP6fFbM/q6p7yhbXVgOBu38ANmNeQ87IYj7Pnyc0aTGi
+	lUmC9bSSQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVWw9-0005gO-If; Mon, 04 May 2020 08:58:53 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1jVajC-0006b1-My; Mon, 04 May 2020 13:01:46 +0000
+Received: from mail-eopbgr80087.outbound.protection.outlook.com ([40.107.8.87]
+ helo=EUR04-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVWux-0004qi-4Z
- for linux-nvme@lists.infradead.org; Mon, 04 May 2020 08:57:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1588582662; x=1620118662;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=wkym75H8Rnb/1E63CMVhyaCi/+TxNLAd83t7dH7ZovA=;
- b=LKDMd5bAUH/1S7e2uyQscrRpnMJO+eaHuxT6ZVuHDG8by19+ytAv+4dy
- OaWwvWwXA22vxFWTsqD3fFz9bnXLRbWLzXgldTWXVWqy6jDJEIad70JLn
- bFTyWk3X+f3B7lBNToO7WqyeN9Fq8HP66nNaGzhRErKT75CrpavL4s+k7
- nvXhzn9Z4sXTAhKsH7g7BVt4hmNX63WO86pkzX+oOe29TNJs8wpCYboX6
- jCL8Lvx3F2e/qbV9+ENVg+qhD/dvLxZAZgNRW6Bt3MR0EptfCCpfkdflV
- HX17cxwN2DvAzykXoicmuPxY+I0GiOmSXY+H/ZMJ8Q2SnUQAfyPZC51aA g==;
-IronPort-SDR: n2qFHuL81wuzfToblCSnYya8QQdQcuo1uqZhTOqYRH949VrktmsefpFvWm02nOJP8ZHnAmBiRs
- c2Nm6PtcTNzJsa7z2Zzl6z+uwNmiPWGWOIMNkaHTbSu7HE4bonIEiUGSsDekcAU1pc2JUlv3Dq
- hWG5kEFabbs3B+bCcL+FjOWFKKQ1x2Er/Hr4atFbw6uaEXHT8YR8O4LUyp6w3Dzkj8UZOzuLB/
- Iuru3DY/Kc042M3pHhuIxSt1I6L+RAkDXaE2IQ9qA+2Tiek+PGRJywD6+vCCJ2iI8Zd7/mIwGV
- cHM=
-X-IronPort-AV: E=Sophos;i="5.73,351,1583164800"; d="scan'208";a="239470255"
-Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
- ([199.255.45.15])
- by ob1.hgst.iphmx.com with ESMTP; 04 May 2020 16:57:41 +0800
-IronPort-SDR: hryZKPgpgKLcjfFd1soLBnUykvBPsV7wE1M5qFpPBndKLZDnoC6YQgZDWmJOAPMZ16TNjs05Us
- NUMxno/wyW0v01/vX0FlvAOSwoWDO6st8=
-Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
- by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 May 2020 01:47:34 -0700
-IronPort-SDR: BptLO4gbk68L06lCa9jcHWKofJ8K0eIXh8PPmvc0Xr75st1ryVbcIZqcESK6G8oem8D1UIXs7b
- 8M9a6JXHgL1g==
-WDCIronportException: Internal
-Received: from iouring.labspan.wdc.com (HELO iouring.sc.wdc.com)
- ([10.6.138.107])
- by uls-op-cesaip01.wdc.com with ESMTP; 04 May 2020 01:57:37 -0700
-From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
-To: linux-nvme@lists.infradead.org
-Subject: [PATCH V2 6/6] nvmet: align addrfam list to spec
-Date: Mon,  4 May 2020 01:56:48 -0700
-Message-Id: <20200504085648.15549-7-chaitanya.kulkarni@wdc.com>
-X-Mailer: git-send-email 2.24.0
-In-Reply-To: <20200504085648.15549-1-chaitanya.kulkarni@wdc.com>
-References: <20200504085648.15549-1-chaitanya.kulkarni@wdc.com>
+ id 1jVae0-0006wZ-89
+ for linux-nvme@lists.infradead.org; Mon, 04 May 2020 12:56:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=frsp1//iNsHIS5hj3hn9xlVOpOQisY7XUuVuYWZJYxvRNkQmpPNFK8V2Uw/GzAwOaM5blb02mNaIgnD0+fr6jBr+29htMtEMl1yrJJq4cJFAYXnfNfIlp1Bo2M3kBA0IcVdu6YUUHgKWKdMDECsiQVbHPFcX/ZSz6/MYua6taRaJEkB41k1rUEmn0inf12sI5w9+EIq3r1zKmBaMlyl+fklTaKp4fZ/bRtBwoDaiSK7BjWCagRIGCkb6DTc4/xGLJVpftNsirC5Z9QWwyvk48xXO1ix0wirbAsSHrzDe9RqACe0t4cNDhRlxqG0yXwAo+B8Eh6Rv6vGAZRHryJYVBg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/pK7yeJe0hkRuFFefF9PnGNMcMecWy4WHQr7H8EeHXM=;
+ b=O/tV5GuL06x7p75OE0WWXEfP3/8/pJPS3PylF1AJQxyE6isU4dfVAB91WHWRdlONqtg35IemWFQEfSlpH1un2uU5s8ztOLcwg2OF9O7Dft+ATKFBHYEmbb8IkbodlU+wLyJs2rm22q6f/ZXsjhu0ISUHOpJHqT3eCRYSif95sJitKMtaOz2U5IlUlbsxFkNOkpAp1T57k8UIC7F3CfZitEqGH5gyRuHtTE482VdHhrv9u5bZZW1az/lM2DqjunV7+kUKky+i3FonyiXxhkqVu3WmAL9hQqJxdIHZNqrB+wDZdw7vi8AVPWlVuLT36L56ZD6t47nAUZiOGgBDgUggng==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
+ dkim=pass header.d=mellanox.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/pK7yeJe0hkRuFFefF9PnGNMcMecWy4WHQr7H8EeHXM=;
+ b=UnugNHGzy8ByNlF7aXPW+meIAfnsZMWGWS+u9BF4MrmVOkjvLszdelJdKi3qJL8KD7reBpgCelaMdRALq+y89cbPqWEFBKm4pcdfU/fN4vf9msOwlYGh/WyqT9I0BNMp2Zsh+HK+seNJ4E+nIrNbj8BtKtAjwDDDlZjtLWf1zYg=
+Authentication-Results: lists.infradead.org; dkim=none (message not signed)
+ header.d=none;lists.infradead.org; dmarc=none action=none
+ header.from=mellanox.com;
+Received: from AM0PR05MB5810.eurprd05.prod.outlook.com (2603:10a6:208:11f::18)
+ by AM0PR05MB6081.eurprd05.prod.outlook.com (2603:10a6:208:123::29)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.27; Mon, 4 May
+ 2020 12:56:18 +0000
+Received: from AM0PR05MB5810.eurprd05.prod.outlook.com
+ ([fe80::408a:27c1:55f8:eed4]) by AM0PR05MB5810.eurprd05.prod.outlook.com
+ ([fe80::408a:27c1:55f8:eed4%5]) with mapi id 15.20.2958.029; Mon, 4 May 2020
+ 12:56:18 +0000
+Subject: Re: [PATCH v4] nvme: align io queue count with allocted nvme_queue in
+ nvme_probe
+To: Weiping Zhang <zhangweiping@didiglobal.com>, hch@infradead.org,
+ axboe@kernel.dk, kbusch@kernel.org, sagi@grimberg.me
+References: <20200502072937.GA12656@192.168.3.9>
+From: Max Gurtovoy <maxg@mellanox.com>
+Message-ID: <635b65b5-f44c-95cb-e9db-3e1d638f9ed3@mellanox.com>
+Date: Mon, 4 May 2020 15:56:14 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
+In-Reply-To: <20200502072937.GA12656@192.168.3.9>
+Content-Language: en-US
+X-ClientProxiedBy: LO2P265CA0221.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:600:b::17) To AM0PR05MB5810.eurprd05.prod.outlook.com
+ (2603:10a6:208:11f::18)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [10.0.0.3] (89.139.203.251) by
+ LO2P265CA0221.GBRP265.PROD.OUTLOOK.COM (2603:10a6:600:b::17) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2958.20 via Frontend Transport; Mon, 4 May 2020 12:56:17 +0000
+X-Originating-IP: [89.139.203.251]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: e5ee0e8c-c9a9-4200-c558-08d7f02a8974
+X-MS-TrafficTypeDiagnostic: AM0PR05MB6081:
+X-Microsoft-Antispam-PRVS: <AM0PR05MB6081786FBD720A3FD171DBCFB6A60@AM0PR05MB6081.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:792;
+X-Forefront-PRVS: 03932714EB
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: EBVMVdKdX0LeGAqG9841csiqo/x4DUARjfrQ5jGOjobhre17OXR2Hy+8k2s7vUveNxclT2zIUA6j+yeNViVItaDvS+HhOhgjHmsuRDp9S4U58fGJSFaUcdSDVto9iKlahEHied/v/hKgy4d3zRuEJxzyFjqgiic/FPAO6wB8jYQBXhU17rEXfZlo1gOw/lvfZmuDXs4eljaNldexNSte8rENMJzt3zOrjhqYpULZo6jYEXqp6pFDsHepp9E/UvKIikG2WsmDPCbN2ePOlYVnmwa/KGQ9XAw8+jHgwpfGuBmvlCIdE1xa+EyUVtbmPj5eGuGfcjj/zJUdmgVrWRvAG8P8dS172GPu8d2bMgfwETugON+j2JkdnmFNG81pagGdk/q4MBfAhRsDWQoGSHpLGmL/mzbFTirK+smTvuoc3pHJC5m41phyKulkF8ED7B5X
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM0PR05MB5810.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(346002)(376002)(39860400002)(366004)(396003)(136003)(4326008)(52116002)(2906002)(66946007)(66556008)(66476007)(31686004)(478600001)(316002)(16576012)(6666004)(5660300002)(36756003)(6486002)(8936002)(8676002)(31696002)(2616005)(956004)(86362001)(26005)(53546011)(16526019)(186003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: MvHFzIAyBBIg2Z33FKlZGpKRoW+gcXg7fsAcFl30XN3O+c56hCRtXkuGvmXemiT+Oyb3M/W4+QRHShqBd7OZTzm83a7jZdVbKaYQfYyy0ilT6NEvEMNDuoPFjJgrWdADonMc2eqqgN0EtEx9Mg9JyU/C0qa9dE8rV162xMOW42R3trCvyXKnJK7EQ1cxw8nXXILQNcI4JVRcz4Pw1//pVNfWVXdCmiHEZzo1Igy/f5GFo9Nkp/1DgaI9SbF0UTw/E317ST6FXlYhxu4NspEVVIA7p3F3giyp1oYKr+aNhcO56DvR51CVth1AjVJDnkpu5Dx6jw7wKC11OHwRrgBx6xpbXOW7VUlJxjAo8WCOAJ4E05p9UGrj4Vk8jViHhuE6weSyoS1pWWJxo25oZoWvzdr6wDWDWGIp0zWBK1MEZvK5bGXPz2BBe0mIZNQfrRjW+cwick+MF83JsumB+H+Kgy9vzS0ANDYKwsZ5Cb1r3o5BXgaooU3ZJSBcJPinPyQBR3P6lfI3cCMTYyMF6i8vyC3+395z6HTjwUGigxxwfioQ0no0H7/f91ES4+RqGFduswZ1eGIr9Tut2hqI0Y76oeTa6Mq/SKc8ZWL5x1x2udiLefTishym2k0rc/MPYPrDYQyNWaa0gtTwmA78eKK8L4uA5XalZGcWjLVFyi8fXydwia02+EIo+zNiAhz939X2HlBS+Qh7B8aAVNdBu/P31oL5L8jctuD7r7M7MdW9hlCap9U8666qx1er5d+qr7bZmSVu8H3kkdBzdbHAYrjVDogWfqXCG6GNsgQcbbjAgcA=
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e5ee0e8c-c9a9-4200-c558-08d7f02a8974
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 May 2020 12:56:18.5916 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: VVMYnsnI3vpBaeef+VDWaOpwSKztfGzhQYWxSZP7GCOgId7HUbrnMmPAhxUFAH8unDKqB9FlkyVkI/x9SZridg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB6081
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200504_015739_265670_007CEB06 
-X-CRM114-Status: GOOD (  14.44  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200504_055624_361992_639180DE 
+X-CRM114-Status: GOOD (  16.15  )
+X-Spam-Score: -0.9 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.9 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [68.232.143.124 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.7 RCVD_IN_DNSWL_LOW      RBL: Sender listed at https://www.dnswl.org/,
+ low trust [40.107.8.87 listed in list.dnswl.org]
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [40.107.8.87 listed in wl.mailspike.net]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -83,6 +118,7 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ 0.0 MSGID_FROM_MTA_HEADER  Message-Id was added by a relay
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,116 +130,66 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: hch@lst.de, Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
- sagi@grimberg.me
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-nvme@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-With reference to the NVMeOF Specification (page 44, Figure 38)
-discovery log page entry provides address family field. We do set the
-transport type field but the adrfam field is not set when using loop
-transport and also it doesn't have support in the nvme-cli. So when
-reading discovery log page with a loop transport it leads to confusing
-output.
 
-As per the spec for adrfam value 254 is reserved for Intra Host
-Transport i.e. loopback), we add a required macro in the protocol
-header file, set default port disc addr entry's adrfam to
-NVMF_ADDR_FAMILY_MAX, and update nvmet_addr_family configfs array for
-show/store attribute.
+On 5/2/2020 10:29 AM, Weiping Zhang wrote:
+> Since the commit 147b27e4bd0 "nvme-pci: allocate device queues storage space at probe"
+> nvme_alloc_queue will not alloc struct nvme_queue any more.
+> If user change write/poll_queues to larger than the number of
+> allocated queue in nvme_probe, nvme_alloc_queue will touch
+> the memory out of boundary.
+>
+> This patch add nr_allocated_queues for struct nvme_dev to record how
+> many queues alloctaed in nvme_probe, then nvme driver will not use
+> more queues than nr_allocated_queues when user update queue count
+> and do a controller reset.
+>
+> Since global module parameter can be changed at rumtime, so it's not
+> safe to use these two parameter directly in the following functions:
+> nvme_dbbuf_dma_alloc
+> nvme_dbbuf_dma_free
+> nvme_calc_irq_sets
+> nvme_setup_io_queues
+>
+> This patch also add nr_write_queues, nr_poll_queues for struct nvme_dev,
+> that allow reload module parameter(write_queues and poll_queues) when
+> reset controller.
+>
+> By now, nvme pci driver allow user change io queue count for each
+> type(write, read, poll) within nr_allocated_queue, that's to say, if
+> user want to change queue dynamically by reset controller, they should
+> setup io queues as many as possiable when load nvme module, and then
+> tune io queue count for each type.
+>
+> Signed-off-by: Weiping Zhang <zhangweiping@didiglobal.com>
+> ---
+> Changes since V3:
+>   * drop sysfs interface and reload module parameter when reset controller
+>   * convert int to unsigned int and place new added variable at the end of
+>     struct nvme_dev
+>
+> Changes since V2:
+>   * fix typo in commit message.
+>   * don't show /sys/block/<nvme_disk>/device/io_queues_reload for fabric.
+>
+> Changes since V1:
+>   * don't use module parameter nvme_dbbuf_dma_free, nvme_dbbuf_dma_alloc
+>          and nvme_calc_irq_sets.
+>   * add per-controller sysfs file io_queues_reload to enable/disable
+>          reload global module parameter.
+>
+>   drivers/nvme/host/pci.c | 53 +++++++++++++++++++++++------------------
+>   1 file changed, 30 insertions(+), 23 deletions(-)
 
-Without this patch, setting adrfam to (ipv4/ipv6/ib/fc/loop/" ") we get
-following output for nvme discover command from nvme-cli which is
-confusing.
-trtype:  loop
-adrfam:  ipv4
-trtype:  loop
-adrfam:  ipv6
-trtype:  loop
-adrfam:  infiniband
-trtype:  loop
-adrfam:  fibre-channel
-trtype:  loop		# ${CFGFS_HOME}/nvmet/ports/1/addr_adrfam = loop
-adrfam:  pci            # <----- pci for loop
-trtype:  loop		# ${CFGFS_HOME}/nvmet/ports/1/addr_adrfam = " "
-adrfam:  pci            # <----- pci for unrecognized
+Looks good,
 
-This patch fixes above output :-
-trtype:  loop
-adrfam:  ipv4
-trtype:  loop
-adrfam:  ipv6
-trtype:  loop
-adrfam:  infiniband
-trtype:  loop
-adrfam:  fibre-channel
-trtype:  loop           # ${CFGFS_HOME}/nvmet/ports/1/addr_adrfam = loop
-adrfam:  loop           # <----- loop for loop
-trtype:  loop		# ${CFGFS_HOME}/config/nvmet/ports/adrfam = " "
-adrfam:  unrecognized   # <----- unrecognized when invalid value
+Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 
-Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
----
- drivers/nvme/target/configfs.c | 14 ++++++++------
- include/linux/nvme.h           |  2 ++
- 2 files changed, 10 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
-index 20779587eefe..ae8fb4489a10 100644
---- a/drivers/nvme/target/configfs.c
-+++ b/drivers/nvme/target/configfs.c
-@@ -33,11 +33,12 @@ static struct nvmet_type_name_map nvmet_transport[] = {
- };
- 
- static const struct nvmet_type_name_map nvmet_addr_family[] = {
--	{ NVMF_ADDR_FAMILY_PCI,	"pcie" },
--	{ NVMF_ADDR_FAMILY_IP4,	"ipv4" },
--	{ NVMF_ADDR_FAMILY_IP6,	"ipv6" },
--	{ NVMF_ADDR_FAMILY_IB,	"ib" },
--	{ NVMF_ADDR_FAMILY_FC,	"fc" },
-+	{ NVMF_ADDR_FAMILY_PCI,		"pcie" },
-+	{ NVMF_ADDR_FAMILY_IP4,		"ipv4" },
-+	{ NVMF_ADDR_FAMILY_IP6,		"ipv6" },
-+	{ NVMF_ADDR_FAMILY_IB,		"ib" },
-+	{ NVMF_ADDR_FAMILY_FC,		"fc" },
-+	{ NVMF_ADDR_FAMILY_LOOP,	"loop" },
- };
- 
- static bool nvmet_is_port_enabled(struct nvmet_port *p, const char *caller)
-@@ -83,7 +84,7 @@ static ssize_t nvmet_addr_adrfam_store(struct config_item *item,
- 	return -EINVAL;
- 
- found:
--	port->disc_addr.adrfam = i;
-+	port->disc_addr.adrfam = nvmet_addr_family[i].type;
- 	return count;
- }
- 
-@@ -1338,6 +1339,7 @@ static struct config_group *nvmet_ports_make(struct config_group *group,
- 	port->inline_data_size = -1;	/* < 0 == let the transport choose */
- 
- 	port->disc_addr.portid = cpu_to_le16(portid);
-+	port->disc_addr.adrfam = NVMF_ADDR_FAMILY_MAX;
- 	port->disc_addr.treq = NVMF_TREQ_DISABLE_SQFLOW;
- 	config_group_init_type_name(&port->group, name, &nvmet_port_type);
- 
-diff --git a/include/linux/nvme.h b/include/linux/nvme.h
-index 3d5189f46cb1..2d978d0cbde6 100644
---- a/include/linux/nvme.h
-+++ b/include/linux/nvme.h
-@@ -38,6 +38,8 @@ enum {
- 	NVMF_ADDR_FAMILY_IP6	= 2,	/* IP6 */
- 	NVMF_ADDR_FAMILY_IB	= 3,	/* InfiniBand */
- 	NVMF_ADDR_FAMILY_FC	= 4,	/* Fibre Channel */
-+	NVMF_ADDR_FAMILY_LOOP	= 254,	/* Reserved for host usage */
-+	NVMF_ADDR_FAMILY_MAX,
- };
- 
- /* Transport Type codes for Discovery Log Page entry TRTYPE field */
--- 
-2.22.1
 
 
 _______________________________________________
