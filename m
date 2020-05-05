@@ -2,83 +2,88 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFF5F1C68DF
-	for <lists+linux-nvme@lfdr.de>; Wed,  6 May 2020 08:27:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DC701C637A
+	for <lists+linux-nvme@lfdr.de>; Tue,  5 May 2020 23:54:00 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s6MNIOMPLpL+2QN9Vlb8Ypj4WloqN416+XyXQEV7ZMw=; b=Bq4tWQfetjVo3q
-	5EZ1eC0r+EBH/GcBOSOXEF7Hw04jr+9mUy+71x2qJf9rf9LQTZLBSOVIJjFWxjTXuBJBBQn/v6Wax
-	Uxz71mu8RZARc/ux039pNXOdTEqenajGKOtNrttn1jNTBNlCnvVyRIuux9/xPflLeIJ42lO350Xss
-	VVR8fFbBS3RO3XrbIwcnJoUbos0Urxsr15qy+d5RH+Hc6YzPcTk7xqlDAis+Lq3vtuO53DdzncKLg
-	esDnm3lcrcA6pF5RjhA8wnzdYUdijQce+gB3oTBtN6+QA1XOnJ5Z/7IX18xvTVt/mfQyy/U8xo1Ts
-	G4SxlugQyPPhmS7E1IMQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=7dIaduUrejKsWkJeRtemc1XNe7t+Trlq9xYO3qVa7Q8=; b=hTuymt1zSKbYhSZAK5hy7T+V6
+	PCNJouGOzqFtd9T0z/VDFUtJOYYdsm2nulrXGKSCvoWlWG3KBfy1JA+4mu5mPHn6C7d4QHDUq4DHi
+	5u3p1q6HehZe8Rlgnd5XwTV8qVnG2b+1E7+B1yi6A2VVLtTQ0LnS+YUzUs2jq1jxRytwwxB7/7F1V
+	KiRlL0DVd1sLOKJxP/SUkpWJpSEPA9CB8uGoa0TG05YT9Kf66s9xTv642KMZdyvnHMqexfo60UW6P
+	wAsv1Qixyee91MmLjUDBdI9NDA1wD5jl0yUGxohPeVD6lt4paicLC8cQ1DVaF8bsfMNRfERw4xaML
+	xWkb5JqgA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWDWL-0001Le-RO; Wed, 06 May 2020 06:27:05 +0000
-Received: from smtp.cryptz.com ([24.229.7.147])
+	id 1jW5Vd-0005wQ-E4; Tue, 05 May 2020 21:53:49 +0000
+Received: from mail-pj1-f66.google.com ([209.85.216.66])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jW4AE-0005Nt-2a
- for linux-nvme@lists.infradead.org; Tue, 05 May 2020 20:27:39 +0000
-X-Spam-Status: No
-DKIM-Filter: OpenDKIM Filter v2.11.0 SMTP.Cryptz.com 49Grdq1j6PzGsLQf
-X-AllBits-MailScanner-eFa-Watermark: 1589314701.6051@xI6y3ax+/iTWonaPWI8TwQ
-X-AllBits-MailScanner-eFa-From: galbitz@all-bits.com
-X-AllBits-MailScanner-eFa: Found to be clean
-X-AllBits-MailScanner-eFa-ID: 49GrdR3Wf0zGsLQf
-X-AllBits-MailScanner-eFa-Information: Please contact cryptz@cryptz.com for
- more information
-Received: from Mail.Cryptz.Com ([10.10.10.19] [10.10.10.19])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (no client certificate requested)
- by SMTP.Cryptz.com (MailScanner Milter) with SMTP id 49GrdR3Wf0zGsLQf
- for <linux-nvme@lists.infradead.org>; Tue,  5 May 2020 16:18:20 -0400 (EDT)
-DMARC-Filter: OpenDMARC Filter v1.3.2 SMTP.Cryptz.com 49GrdR3Wf0zGsLQf
-Authentication-Results: SMTP.Cryptz.com;
- dmarc=none (p=none dis=none) header.from=All-Bits.com
-Authentication-Results: SMTP.Cryptz.com;
- spf=fail smtp.mailfrom=GAlbitz@All-Bits.com
-DKIM-Filter: OpenDKIM Filter v2.11.0 SMTP.Cryptz.com 49GrdR3Wf0zGsLQf
-Received: from FROST.PSC.Net (10.10.10.18) by GLAZE.PSC.Net (10.10.10.19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.595.3; Tue, 5 May 2020
- 16:18:18 -0400
-Received: from FROST.PSC.Net ([fe80::4988:c04c:dcc6:f34f]) by FROST.PSC.Net
- ([fe80::4988:c04c:dcc6:f34f%15]) with mapi id 15.02.0595.003; Tue, 5 May 2020
- 16:18:18 -0400
-From: Grant Albitz <GAlbitz@All-Bits.com>
-To: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Subject: NVMET Target with esxi 7
-Thread-Topic: NVMET Target with esxi 7
-Thread-Index: AQHWH72r2sq5DQXIv0Kj735jydy+waiTitUA//++XSqABquJ8A==
-Date: Tue, 5 May 2020 20:18:18 +0000
-Message-ID: <f9460444e88440c280df5c277383dd73@All-Bits.com>
-References: <a28d8b24ece54f8db6e21c78f0bb5aab@All-Bits.com>,
- <711adc2d-dda7-d58f-0884-2c6578e6c333@mellanox.com>
- <4ae82f486cac431caa6928e56fe5e452@All-Bits.com>
-In-Reply-To: <4ae82f486cac431caa6928e56fe5e452@All-Bits.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.10.10.21]
+ id 1jW5VY-0005vq-9r
+ for linux-nvme@lists.infradead.org; Tue, 05 May 2020 21:53:45 +0000
+Received: by mail-pj1-f66.google.com with SMTP id 7so1644709pjo.0
+ for <linux-nvme@lists.infradead.org>; Tue, 05 May 2020 14:53:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=IsuiGAC9VV8j1Ygk78Mhqhb6TIdQ1+EA/LSLRrTLKWg=;
+ b=XR5QhrB2Zz0ImsCRLi9qXLoIWQLbUelrSm6KfiHrXYEzS5dXTaYBc+hXTz5/Jh4i/Z
+ cgbNVgpMPH1UeHuD2ZvYB7eU/1f4ZBmmt8gnJdi9W1TwN2QbZ7INz+PIZG6BGMH05AX6
+ DDyQlMOTqNicxTYZJLu/hR3rNpfc8eGRCxknYWfyHMJ8cTCicG/x3mM/1aQ0PS6GpErP
+ /vJdrBdV9BSN51zhhyaygC23Zv3u1wElX2cqATwLYh7xIkM/4qheEDLNpkMkvcWvo3Ld
+ rwVGk8/vi1VCEV6zgFrCBA+zeFB1lQ3cFIhwodfJ/EtTem5VZrN7TwqD9CPI2IFR56jP
+ ovsg==
+X-Gm-Message-State: AGi0Pua2kxwrpSOwkh1o+c2jWUEdJPQuN97zfns2gYHkQwqxITfB2Kn9
+ lwbGkJgGESrXo0m3xB2qQOEp0Qhj
+X-Google-Smtp-Source: APiQypK1UC4m2mPNpDIdgMliGtpDI7Uyhw9BAwCxc1SWDBIrdRknBXJgCuCOruxbBgLQASraWVLoIQ==
+X-Received: by 2002:a17:90a:a402:: with SMTP id
+ y2mr5669147pjp.24.1588715623012; 
+ Tue, 05 May 2020 14:53:43 -0700 (PDT)
+Received: from ?IPv6:2601:647:4802:9070:d961:5538:b3d0:7e07?
+ ([2601:647:4802:9070:d961:5538:b3d0:7e07])
+ by smtp.gmail.com with ESMTPSA id 138sm901pfz.31.2020.05.05.14.53.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 May 2020 14:53:42 -0700 (PDT)
+Subject: Re: [PATCH 1/2] nvme-tcp: set MSG_SENDPAGE_NOTLAST with MSG_MORE when
+ we have more to send
+To: Christoph Hellwig <hch@lst.de>
+References: <20200505052002.14924-1-sagi@grimberg.me>
+ <20200505060907.GA3995@lst.de>
+ <f0f28e18-c432-8343-f7a7-79cb3159b43c@grimberg.me>
+ <20200505102354.GB15038@lst.de>
+From: Sagi Grimberg <sagi@grimberg.me>
+Message-ID: <6abf2183-ea1e-d1e0-360c-5d74b75c3690@grimberg.me>
+Date: Tue, 5 May 2020 14:53:40 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Firefox/68.0 Thunderbird/68.7.0
 MIME-Version: 1.0
-X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
+In-Reply-To: <20200505102354.GB15038@lst.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200505_132738_205152_170F419D 
-X-CRM114-Status: UNSURE (   4.57  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200505_145344_342573_15B66F43 
+X-CRM114-Status: GOOD (  13.69  )
+X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [209.85.216.66 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
+ mail domains are different
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [209.85.216.66 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
-X-Mailman-Approved-At: Tue, 05 May 2020 23:27:03 -0700
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [sagigrim[at]gmail.com]
+ 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
+ EnvelopeFrom freemail headers are different
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,16 +95,45 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Keith Busch <kbusch@kernel.org>,
+ Mark Wunderlich <mark.wunderlich@intel.com>,
+ Anil Vasudevan <anil.vasudevan@intel.com>, linux-nvme@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
- Hello,
 
-I was trying to configure vmware to connect to nvmet based target. I did not have much luck. VMwares official stance is a very small vendor list. I did see the recent additions such as metadata info. I was curious if anyone developing nvmet was willing/able to test nvmet as a datastore target for vmware to possibly add this functionality. At the moment I am not sure if there are a large number of reasons its not working or a very small check.
+>>>> We can signal the stack that this is not the last page coming and the
+>>>> stack can build a larger tso segment, so go ahead and use it.
+>>>
+>>> Maybe you wan a little helper that returns the flags based on a last
+>>> flag?  Something like:
+>>>
+>>> static int nvme_tcp_msg_flags(bool last_page)
+>>> {
+>>> 	if (last_page)
+>>> 		return MSG_DONTWAIT | MSG_MORE | MSG_SENDPAGE_NOTLAST;
+>>> 	return MSG_DONTWAIT | MSG_EOR;
+>>> }
+>>
+>> You have it reversed, the flag here probably means more...
+>>
+>> Let me see if it is useful to have, will let you know...
+>>
+>>>
+>>> or do we have a case where we don't want to set EOR?  At least the
+>>> target seems to currently have such a case.
+>>
+>> As a design goal, we try to tell the stack explicitly if we have more
+>> to send and if not we want to push it down to reduce latency. So
+>> I think we need to have it in the target as well.
+> 
+> What I mean is that nvmet_try_send_data and nvmet_try_send_ddgst may set
+> neither MS_MORE nor MSG_EOR.  Is that intentional?
 
-
+nvmet_try_send_data should set MSG_EOR if it doesn't have more to send
+and also nvmet_try_send_ddgst. So its not intentional.
 
 _______________________________________________
 linux-nvme mailing list
