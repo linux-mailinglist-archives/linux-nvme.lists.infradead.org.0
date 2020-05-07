@@ -2,58 +2,88 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CC111C9A3F
-	for <lists+linux-nvme@lfdr.de>; Thu,  7 May 2020 21:01:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D827E1C9BA4
+	for <lists+linux-nvme@lfdr.de>; Thu,  7 May 2020 22:07:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yG8DcMBUj8z7ZjoJCZZMSlakIUJ+a+XvPUbaojdXYxY=; b=qqzZ8QDNJzVmOw
-	Ty3ol5WiXIEZn781QURWTQKZFQIW7w8Cln0EWQZd++KBTRv+EDr2snBEbV9Gbo+7oZSu4LvqGXzt3
-	89AAjvMu+C7h2Um0513DAA5JY5MpfuhWQaHTY652tA1gujn1uT9MR+XfvsOyJGraM1Ts335IYjPnM
-	TxHX+IqBvFC7FeFtz7335s2CunB4t3zW14+I6C4NXu+0TSbedPhHDNkGT6ACMqvR25qB/+FzJqWiO
-	W4aUu0jXB836Pnl3SEbqCi3DWef3MfypEM/VX6VwSei35XSFbJnYCToQ1F1EmvQLMwMrah50fHaZ3
-	TMrMRpjtN9mQxOLYwcxA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lv9Ek1xJd8mshrMwVIkNzP205vgx49ylCSrUC4MgtOI=; b=XxGvXW5f5jKq5l
+	k27HVYlJwJnNt1SXGvWChQc6l6qe+BPMYITAHI5EK1PQW3axzRV5Hvi8QDhq1weg8KLbqrewprYeI
+	6ESqfeb4ejvjm6dww7F4h3sOQFLf7sLilMnajuDbYERuei3Mlwc7YwPiP9dYZ5OtKz9s0cYP3OU0T
+	5YJ5h3Jhg+Ag6Wg/1keWdNio4gCYY+T4+mB9B/oC2snS1vEDhKJqKf9Ewowp9UlZCe3pF2sa7XDez
+	5v31TisUmYjWh4BXP4aj9zKRW1VMXuX6TdpBmI9gzoQIW67gZrzidkMC32LzHl4MhAWHOakkV0DSS
+	2XF2/Jr3xc2jCZV9yQ3g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWllW-0006Y3-7g; Thu, 07 May 2020 19:01:02 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jWmna-0008C6-7r; Thu, 07 May 2020 20:07:14 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWll2-0006KT-HG
- for linux-nvme@lists.infradead.org; Thu, 07 May 2020 19:00:36 +0000
-Received: from embeddedor (unknown [189.207.59.248])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B29A82083B;
- Thu,  7 May 2020 19:00:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588878032;
- bh=vqJy/QdKw35OLtNYsWencYwBw6xfJHLkvdoR1KZvG2Y=;
- h=Date:From:To:Cc:Subject:From;
- b=njVHXHugzubO28Cq9yVWXC+p3zNNWfcdhlqsxU7Kj7RN4RhwpOIzMoj0+F3acc6Wz
- bvZ5oSljRbdqy/yQvoaOnmcrVD0qgAvHLrG4UX89b0u1NvCYAfimzyOXPeAWS3VRU4
- Ja5/DwrnsboW5B9geywoVFa4H0dM9WFtAckEkAY0=
-Date: Thu, 7 May 2020 14:04:58 -0500
-From: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-To: James Smart <james.smart@broadcom.com>
-Subject: [PATCH] nvme-fc: Replace zero-length array with flexible-array
-Message-ID: <20200507190458.GA15557@embeddedor>
+ id 1jWmnW-0008Bf-13
+ for linux-nvme@lists.infradead.org; Thu, 07 May 2020 20:07:11 +0000
+Received: by mail-wm1-x344.google.com with SMTP id 188so7907582wmc.2
+ for <linux-nvme@lists.infradead.org>; Thu, 07 May 2020 13:07:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=78smtdaLuPseZ+/6yVajTxkk/bcdpg1VP4IF4Z1xiqM=;
+ b=eOTbxaUOllMeTAhF47MjeTbUz6lOkLpP3eYG6H7yBak+sB+KIAbl5OEOPKPXvyE4D5
+ FqdSII4CK2b7s3ZO7+YJMGOoGEDfJLiadptGifHrf7a+YjaKV164OsrCc5+3my439cbV
+ 2PNdrFvA0NYQuVn4CGd69eqZTeBTd8e5H90OECn+luNgERd/zH8ltD+b2JZU5YCkiOvG
+ S4mQLTNFH03cggnn5Sw+/SSyZiMWng61EUE6cdtvtvO1Q4l7840DD1woD3pNKIWKWOm0
+ 1ww+vDTrlErb/Puejr7u38VKc9osGsHLNRr5C3pDnlmg45z++QPZFvfX2OWXcbeyRUv+
+ exNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=78smtdaLuPseZ+/6yVajTxkk/bcdpg1VP4IF4Z1xiqM=;
+ b=LQPmvl5tGaIn5WlcwkppuAp7tNqvwOjlPv1Z105BgXGb+GaknsRsgnM+oLcYo1CKPo
+ INZcl/4LeluIIsVU5k9jkd7tFUqo0tl3MTW6xj0qvZ4SEJK555IGfsn2NLyGVG1lciGV
+ Pjwh2WJQH3Y0pYmAAlb6g7c6GTWDXxDYy+6Mf3RwEj+WHo+wwC6hJIPIyctAp8/+giv5
+ JMgbsuCkQbaJIr910Di5JB4KBU9m/3DqgF/RbrWjv441i6S0vADFqCwdFFwXGQvCe7t9
+ 8JYxWxQ0KT4gOotjJGDGVHAC+p3qnOkoWyosUxIXxclsgQXtER2fT7uB62mQxEaeSHwK
+ WRTw==
+X-Gm-Message-State: AGi0PuYM6L/ALwhEChY3W3CKREf8yAoVqmomWptJrQDTvsH5oT/zJEsY
+ ug1F1GVVKPJ98oE5qbplEg==
+X-Google-Smtp-Source: APiQypJkbCfcD3gohElvFp/T+/xwF1MRY/SHZoj3OgsgwBevQBd/8JW105hbmYRZbK/RBzyizt7iIg==
+X-Received: by 2002:a1c:2ed3:: with SMTP id u202mr9640315wmu.77.1588882027585; 
+ Thu, 07 May 2020 13:07:07 -0700 (PDT)
+Received: from avx2 ([46.53.250.199])
+ by smtp.gmail.com with ESMTPSA id 13sm4502428wmk.4.2020.05.07.13.07.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 May 2020 13:07:06 -0700 (PDT)
+Date: Thu, 7 May 2020 23:07:04 +0300
+From: Alexey Dobriyan <adobriyan@gmail.com>
+To: Keith Busch <kbusch@kernel.org>
+Subject: [PATCH] nvme-pci: fix "slimmer CQ head update"
+Message-ID: <20200507200704.GA16009@avx2>
+References: <20200228184519.GA2281@avx2>
+ <20200229055351.GA542920@dhcp-10-100-145-180.wdl.wdc.com>
+ <defb25c5-5ae5-5ff9-66db-efb129bd7743@huawei.com>
+ <20200506124701.GA54933@C02WT3WMHTD6> <20200506132429.GA21451@avx2>
+ <20200506144434.GB54933@C02WT3WMHTD6>
+ <20200507155852.GB2621480@dhcp-10-100-145-180.wdl.wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20200507155852.GB2621480@dhcp-10-100-145-180.wdl.wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_120032_591687_18CFAF45 
-X-CRM114-Status: GOOD (  13.57  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200507_130710_067921_92158468 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
+ [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [adobriyan[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
@@ -62,7 +92,6 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,66 +103,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org
+Cc: axboe@fb.com, John Garry <john.garry@huawei.com>, hch@lst.de,
+ linux-nvme@lists.infradead.org, sagi@grimberg.me
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The current codebase makes use of the zero-length array language
-extension to the C90 standard, but the preferred mechanism to declare
-variable-length types such as these ones is a flexible array member[1][2],
-introduced in C99:
+Pre-incrementing ->cq_head can't be done in memory because OOB value
+can be observed by another context.
 
-struct foo {
-        int stuff;
-        struct boo array[];
-};
+This devalues space savings compared to original code :-\
 
-By making use of the mechanism above, we will get a compiler warning
-in case the flexible array does not occur last in the structure, which
-will help us prevent some kind of undefined behavior bugs from being
-inadvertently introduced[3] to the codebase from now on.
+	$ ./scripts/bloat-o-meter ../vmlinux-000 ../obj/vmlinux
+	add/remove: 0/0 grow/shrink: 0/4 up/down: 0/-32 (-32)
+	Function                                     old     new   delta
+	nvme_poll_irqdisable                         464     456      -8
+	nvme_poll                                    455     447      -8
+	nvme_irq                                     388     380      -8
+	nvme_dev_disable                             955     947      -8
 
-Also, notice that, dynamic memory allocations won't be affected by
-this change:
+But the code is minimal now: one read for head, one read for q_depth,
+one increment, one comparison, single instruction phase bit update and
+one write for new head.
 
-"Flexible array members have incomplete type, and so the sizeof operator
-may not be applied. As a quirk of the original implementation of
-zero-length arrays, sizeof evaluates to zero."[1]
-
-sizeof(flexible-array-member) triggers a warning because flexible array
-members have incomplete type[1]. There are some instances of code in
-which the sizeof operator is being incorrectly/erroneously applied to
-zero-length arrays and the result is zero. Such instances may be hiding
-some bugs. So, this work (flexible-array member conversions) will also
-help to get completely rid of those sorts of issues.
-
-This issue was found with the help of Coccinelle.
-
-[1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
-[2] https://github.com/KSPP/linux/issues/21
-[3] commit 76497732932f ("cxgb3/l2t: Fix undefined behaviour")
-
-Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
+Signed-off-by: Alexey Dobriyan <adobriyan@gmail.com>
+Reported-by: John Garry <john.garry@huawei.com>
+Tested-by: John Garry <john.garry@huawei.com>
+Fixes: e2a366a4b0feaeb ("nvme-pci: slimmer CQ head update")
 ---
- drivers/nvme/host/fc.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/nvme/host/fc.c b/drivers/nvme/host/fc.c
-index 7dfc4a2ecf1e..887537d1243f 100644
---- a/drivers/nvme/host/fc.c
-+++ b/drivers/nvme/host/fc.c
-@@ -96,7 +96,7 @@ struct nvme_fc_fcp_op {
- struct nvme_fcp_op_w_sgl {
- 	struct nvme_fc_fcp_op	op;
- 	struct scatterlist	sgl[NVME_INLINE_SG_CNT];
--	uint8_t			priv[0];
-+	uint8_t			priv[];
- };
+ drivers/nvme/host/pci.c |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -973,9 +973,13 @@ static inline void nvme_handle_cqe(struct nvme_queue *nvmeq, u16 idx)
  
- struct nvme_fc_lport {
-
+ static inline void nvme_update_cq_head(struct nvme_queue *nvmeq)
+ {
+-	if (++nvmeq->cq_head == nvmeq->q_depth) {
++	u16 tmp = nvmeq->cq_head + 1;
++
++	if (tmp == nvmeq->q_depth) {
+ 		nvmeq->cq_head = 0;
+ 		nvmeq->cq_phase ^= 1;
++	} else {
++		nvmeq->cq_head = tmp;
+ 	}
+ }
+ 
 
 _______________________________________________
 linux-nvme mailing list
