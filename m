@@ -2,75 +2,54 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE89C1C8D16
-	for <lists+linux-nvme@lfdr.de>; Thu,  7 May 2020 15:56:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 52CA21C8D46
+	for <lists+linux-nvme@lfdr.de>; Thu,  7 May 2020 16:03:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jSFTvjfgRbdf1OCU2aqpRNE12xZhZIBlZBLlmokpUxI=; b=phsVAa7nXor/AH+I0OdCsqz4E
-	kJSBfS/YadAYCtufXzxgmV7XqRqEzUeWvOz5GZbXwWsAGMkNny54EYGySX3ZhfMTxeaqxqyW5C9ei
-	+jUgFJORILp2TiZ095el+T3eA9N9av+Kf5sLDVt8qvMedDeaR1mSZqeXqkDNd2j/fL4X2Stct87Ip
-	wKUSyt2ndMPQM7RBiw5CaylO0FQfWJ136Vdi9gQ/KHYiHXUYecWCcNCwiQWlbjdJJSl4885yasS4Z
-	BrEqm/ldTGceTdiFUVB+zZJDXYdt55AISXmED91QC0XnllenTAmY0oC8WYlf1QtR69ow1i3n+x9kg
-	M2FOfcgTg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=VNTYU5s2t01IKC99gyw3FrRSM2Ku3FEd7JIqdKeYJN8=; b=imj
+	nGK+POasn8W+JCq6xOp3TKIpB20OmhDd5zoEWvuPfX763XIcCONwcfHkJzPcw0w2T9kRTbpzlbv84
+	WnkwMAXzNzygelxv8VfZ23ZotLUaqtPNIVUdlF53pSp0PX/5Rh3TUYoPqSqY/t/C+0nLeIB1M+1Gx
+	wmLx4qwfHAd+y1e2cEat0vV9yzlG55kDkRacTua3vKlhWobT+/dTKbl8XVGbRVB6K4/G6V0opzkfH
+	nXRHYLCIAvA75Xe4vwGoPdqYQMmLRkRJNbMmbxU28winnYTE7Y2MP7TmffhfzN/XZVpDqDRjn2Spb
+	WLb1bWOVkHEzk1dMl3YVCYXoYXFuWPQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWh0v-0001yS-ET; Thu, 07 May 2020 13:56:37 +0000
-Received: from lhrrgout.huawei.com ([185.176.76.210] helo=huawei.com)
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWh0r-0001xq-2v
- for linux-nvme@lists.infradead.org; Thu, 07 May 2020 13:56:34 +0000
-Received: from lhreml724-chm.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id 08D1BE16426FCBE6F999;
- Thu,  7 May 2020 14:56:26 +0100 (IST)
-Received: from [127.0.0.1] (10.47.3.227) by lhreml724-chm.china.huawei.com
- (10.201.108.75) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1913.5; Thu, 7 May 2020
- 14:56:25 +0100
-Subject: Re: [PATCH] nvme-pci: slimmer CQ head update
-To: Robin Murphy <robin.murphy@arm.com>, Will Deacon <will@kernel.org>
-References: <20200228184519.GA2281@avx2>
- <20200229055351.GA542920@dhcp-10-100-145-180.wdl.wdc.com>
- <defb25c5-5ae5-5ff9-66db-efb129bd7743@huawei.com>
- <20200506124701.GA54933@C02WT3WMHTD6> <20200506132429.GA21451@avx2>
- <2ecb88b5-b585-52ed-bb84-5b486868743a@huawei.com>
- <20200506143519.GA570@lst.de>
- <4155a814-798c-0c7e-5433-daf719c0345c@huawei.com>
- <20200506163104.GD12919@willie-the-truck>
- <3453193c-424b-1e4c-16be-279088612c68@arm.com>
- <efc85e9a-93a6-989b-b8d7-db83b5d74b96@huawei.com>
- <6673a108-c572-12ff-7ddd-b88147829615@huawei.com>
- <4dae5990-e81b-8b33-dafc-ee47e4f06b6a@arm.com>
-From: John Garry <john.garry@huawei.com>
-Message-ID: <e1643b53-d362-0b5e-573f-72f0ea249ebf@huawei.com>
-Date: Thu, 7 May 2020 14:55:37 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.2
-MIME-Version: 1.0
-In-Reply-To: <4dae5990-e81b-8b33-dafc-ee47e4f06b6a@arm.com>
-Content-Language: en-US
-X-Originating-IP: [10.47.3.227]
-X-ClientProxiedBy: lhreml703-chm.china.huawei.com (10.201.108.52) To
- lhreml724-chm.china.huawei.com (10.201.108.75)
-X-CFilter-Loop: Reflected
+	id 1jWh7N-0007J0-3d; Thu, 07 May 2020 14:03:17 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jWh6k-0006oU-Hv
+ for linux-nvme@lists.infradead.org; Thu, 07 May 2020 14:02:42 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ yorayz@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 7 May 2020 17:02:26 +0300
+Received: from dev-l-vrt-071.mtl.labs.mlnx (dev-l-vrt-071.mtl.labs.mlnx
+ [10.134.71.1])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 047E2QSS022772;
+ Thu, 7 May 2020 17:02:26 +0300
+From: Yoray Zack <yorayz@mellanox.com>
+To: Sagi Grimberg <sagi@grimberg.me>, Keith Busch <kbusch@kernel.org>,
+ Christoph Hellwig <hch@lst.de>
+Subject: [PATCH 0/3] Add nvme-tcp hpda support
+Date: Thu,  7 May 2020 17:02:01 +0300
+Message-Id: <1588860124-40089-1-git-send-email-yorayz@mellanox.com>
+X-Mailer: git-send-email 1.8.3.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_065633_272788_7803182B 
-X-CRM114-Status: GOOD (  10.94  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200507_070239_170872_CB09C931 
+X-CRM114-Status: UNSURE (   7.36  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [185.176.76.210 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
- [185.176.76.210 listed in wl.mailspike.net]
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,32 +61,38 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: sagi@grimberg.me, linux-nvme@lists.infradead.org,
- Alexey Dobriyan <adobriyan@gmail.com>, axboe@fb.com,
- Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Yoray Zack <yorayz@mellanox.com>, Boris Pismenny <borisp@mellanox.com>,
+ linux-nvme@lists.infradead.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gMDcvMDUvMjAyMCAxMjowNCwgUm9iaW4gTXVycGh5IHdyb3RlOgo+PiBbwqAgMTc3LjEzMjgx
-MF0gRE1BLUFQSTogbnZtZSAwMDAwOjg1OjAwLjA6IGRldmljZSBkcml2ZXIgdHJpZXMgdG8gZnJl
-ZSAKPj4gRE1BIG1lbW9yCj4+IHkgaXQgaGFzIG5vdCBhbGxvY2F0ZWQgW2RldmljZSBhZGRyZXNz
-PTB4MDAwMDAwMDBlZjM3MTAwMF0gW3NpemU9NDA5NiAKPj4gYnl0ZXNdCj4gWy4uLl0KPj4gW8Kg
-IDE3Ny4yNzYzMjJdwqAgZGVidWdfZG1hX3VubWFwX3BhZ2UrMHg2Yy8weDc4Cj4+IFvCoCAxNzcu
-MjgwNDg3XcKgIG52bWVfdW5tYXBfZGF0YSsweDdjLzB4MjNjCj4+IFvCoCAxNzcuMjg0MzA1XcKg
-IG52bWVfcGNpX2NvbXBsZXRlX3JxKzB4MjgvMHg1OAo+IAo+IE9LLCBzbyB0aGVyZSdzIGNsZWFy
-bHkgc29tZXRoaW5nIGFtaXNzIHRoZXJlLiBJIHdvdWxkIGhhdmUgc3VnZ2VzdGVkIAo+IG5leHQg
-c3RpY2tpbmcgdGhlIFNNTVUgaW4gcGFzc3Rocm91Z2ggdG8gaGVscCBmb2N1cyBvbiB0aGUgRE1B
-IEFQSSAKPiBkZWJ1Z2dpbmcsIGJ1dCBzaW5jZSB0aGF0ICJETUEgYWRkcmVzcyIgbG9va3Mgc3Vz
-cGljaW91c2x5IGxpa2UgYSAKPiBwaHlzaWNhbCBhZGRyZXNzIHJhdGhlciB0aGFuIGFuIElPVkEs
-IEkgc3VzcGVjdCB0aGF0IHRoaW5ncyBtaWdodCAKPiBzdWRkZW5seSBhcHBlYXIgdG8gYmUgd29y
-a2luZyBmaW5lIGlmIHlvdSBkby4uLgoKT0ssIHNlZW1zIHNlbnNpYmxlLiBIb3dldmVyIGl0IGxv
-b2tzIGxpa2UgdGhpcyBndXkgdHJpZ2dlcnMgdGhlIGlzc3VlOgoKMzI0YjQ5NGMyODYyIG52bWUt
-cGNpOiBSZW1vdmUgdHdvLXBhc3MgY29tcGxldGlvbnMKCldpdGggY2FycnlpbmcgdGhlIHJldmVy
-dCBvZiAkc3ViamVjdCwgaXQncyBhIHF1aWNrIGJpc2VjdCB0byB0aGF0IHBhdGNoLiAKSSBhbHdh
-eXMgZ2V0IHRoZSBSQ1UgY3B1IHN0YWxsIHdhcm5pbmcsIHdoaWNoIG9ic2N1cmVzIHRoaW5nIGEg
-Yml0LgoKQ2hlZXJzLApKb2huCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpsaW51eC1udm1lIG1haWxpbmcgbGlzdApsaW51eC1udm1lQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1udm1lCg==
+Given the padding defined by user-space, the host driver will
+send the requested hpda to the target which will support that
+on nvme/tcp c2h capsules. The host will parse the capsules
+according to the padding.
+
+The request hpda is 0's based value in units of dwords in the range 0  to 31
+(e.g., values 0, 1, and 2 correspond to 4 byte, 8 byte, and 12 byte alignment)).
+
+Yoray Zack (3):
+  nvme-fabrics: Add support for padding alignment (pda) option on tcp
+  nvme-tcp: Add target padding support
+  nvme-tcp: Add Host hpda support
+
+ drivers/nvme/host/fabrics.c | 14 ++++++++++++++
+ drivers/nvme/host/fabrics.h |  4 ++++
+ drivers/nvme/host/tcp.c     | 21 +++++++++++++++++++--
+ drivers/nvme/target/tcp.c   | 24 ++++++++++++++----------
+ 4 files changed, 51 insertions(+), 12 deletions(-)
+
+-- 
+1.8.3.1
+
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
