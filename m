@@ -2,87 +2,77 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFB391CB267
-	for <lists+linux-nvme@lfdr.de>; Fri,  8 May 2020 17:00:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 855391CB2EF
+	for <lists+linux-nvme@lfdr.de>; Fri,  8 May 2020 17:34:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7ykBo/fHKeLdhcYbhF9IxYszVnTn1EJpaq5z9aXS6JQ=; b=p1s/0cf4MkKIOPSTvwARkL0c5
-	4kLJn9Do34o0VedeAlhfmAJQNv71c8/i6JnYbbiZDTvqydq4M49EcWPUd1xKzDyy4hSKNc7u0aWf3
-	NAXPA0Xt7OPRqPBAkO+Jm0gh+syU4rJ5zV1ioaMHQhV3A1qH0sA6pS4oQ1qTSZPWlx0c5umEUzTpg
-	ooYBDzEFrF3LaTZrHE5y95Z+67radbKyj1uuSmevkFnznvI4G0o5c0k/URJ4DrbrnAe05oxUjS5k3
-	yUMP1IkCMxCmCdM4e3f1OWyGZPbnh51nz8jOPxTpDGYp7Van4yKFI2r8mDnRmM8/7wH4uALENVw8H
-	ggs1AuRPg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KjhJJXjRFDXrsBDTRAfPzSgOxKkRTIMrtPjnb2AmqNk=; b=lTVx9YK2bFCLd7
+	F6PIZL5IDdeCUQkihIPBpNTYJ4BEo4sLyyPKmuUHl+2ZCYevdE8H9OU6KqbVbeLE63Jv5GXZa+enz
+	FbnfOwqT27oTm3colXEhr485icdzyhoCj9TSHMBbLG1FYb10CG88Y5iktPTb1w1Zp9XLyWoof/4Oh
+	730k+tgaSK95DKS1IGQkb654AMlDUG/px3L9JUBZwW3nREvo2fk+RHJ/XD8+g1Di0FWtI00QqZEnD
+	J7pjjs3eAecREuYUwKPUhHx9A60SWJkgYuiazAnxPgs7Z5qmudt7tRIkpNL9xOSWP/uHgSQdZ2Hzr
+	nM+420oJsCijxeoa07qg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jX4UF-0005BU-5I; Fri, 08 May 2020 15:00:27 +0000
-Received: from mail-pj1-f68.google.com ([209.85.216.68])
+	id 1jX50u-000071-0f; Fri, 08 May 2020 15:34:12 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jX4U7-00050C-80
- for linux-nvme@lists.infradead.org; Fri, 08 May 2020 15:00:20 +0000
-Received: by mail-pj1-f68.google.com with SMTP id hi11so4368745pjb.3
- for <linux-nvme@lists.infradead.org>; Fri, 08 May 2020 08:00:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Dz6VDMJyuK1XyYzHok3ECv+IhtOi6HIeZ8ha28uAo00=;
- b=FZVOQpF0+cE8eNRd1QVNZeyGR8ACQ9fp0FW6mvkDBFaSj34LLLi3f4MmtEnAE1vHzP
- 5OZ6AagAUXAigIOgIGtaZNctSqwsaekOSHv5BkQH3n3R3wyFpFtauB+Dn3El/hK47wXb
- zqXPNJ1vEMfv8UoxDvUop4LXxlktB/hJRpZC77bS8ttsIW6iKgcb7/R44kPDmpWjwtgH
- FMkRpTN2NBlxFwtiZaK5kvUuCxYFZkTIvjSMlF+KnXAe8am4ThhXHDqXnpPSYqJiRqZ9
- YX9+z02Qk/sqgE+vwoiTJq12jYpGLrzZDL790EtPsrhSb9QfELcrMdZ0m740/0q9uAzH
- jHzg==
-X-Gm-Message-State: AGi0PubX7Nl+Z5D3Fniwb4/SMO8NkIXXEYHTWaOjmTdqhRnnmdB1CZQj
- iWOKjuxPTAlKluKkg7wlFf4dl6KL
-X-Google-Smtp-Source: APiQypIsjzeuX4fw+Z+JnAa383ZiJh9weevQUvRB/oH+/E47GSLRJRBPmcX6gDisdsh7V4L10BiZZA==
-X-Received: by 2002:a17:90a:35f0:: with SMTP id
- r103mr5904560pjb.167.1588950015814; 
- Fri, 08 May 2020 08:00:15 -0700 (PDT)
-Received: from ?IPv6:2601:647:4802:9070:bc73:49fb:3114:443?
- ([2601:647:4802:9070:bc73:49fb:3114:443])
- by smtp.gmail.com with ESMTPSA id h64sm2165475pfe.42.2020.05.08.08.00.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 May 2020 08:00:15 -0700 (PDT)
-Subject: Re: [PATCH 0/3] Add nvme-tcp hpda support
-To: Yoray Zack <yorayz@mellanox.com>, Keith Busch <kbusch@kernel.org>,
- Christoph Hellwig <hch@lst.de>
-References: <1588860124-40089-1-git-send-email-yorayz@mellanox.com>
- <0cffbf28-0e40-e1f1-219d-330c0fe43ffc@grimberg.me>
- <AM0PR05MB579359570CF4A3F5207AB093A3A20@AM0PR05MB5793.eurprd05.prod.outlook.com>
-From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <17eb4c83-ca8e-46f7-21ee-06b19595a2c8@grimberg.me>
-Date: Fri, 8 May 2020 08:00:13 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Firefox/68.0 Thunderbird/68.7.0
+ id 1jX50p-000069-Tp
+ for linux-nvme@lists.infradead.org; Fri, 08 May 2020 15:34:09 +0000
+Received: from dhcp-10-100-145-180.wdl.wdc.com (unknown [199.255.45.60])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8474621841;
+ Fri,  8 May 2020 15:34:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588952047;
+ bh=VSVspwCcRw4BQSWmpInNSpbzTtFGf73Mv6Ows2oeCBQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=eMSZtxHpgKjz1vYGjtxy3fTwgEjuHbKsENO/29FsJfTXhi/npHbaHXaEOcUzZbeA+
+ FZrmBa0tLmKaVRnoUFhEDSoP3OwztqSQPzrJHxCDqsEMyvFg9sj1IotzQfAPzt2SLo
+ wzUwDxEKHUdAqH8V7DepJ11dLpStaseCsegS/A/8=
+Date: Fri, 8 May 2020 08:34:04 -0700
+From: Keith Busch <kbusch@kernel.org>
+To: Will Deacon <will@kernel.org>
+Subject: Re: [PATCH] nvme-pci: slimmer CQ head update
+Message-ID: <20200508153404.GA2622778@dhcp-10-100-145-180.wdl.wdc.com>
+References: <e1643b53-d362-0b5e-573f-72f0ea249ebf@huawei.com>
+ <20200507142352.GA2621422@dhcp-10-100-145-180.wdl.wdc.com>
+ <8b297620-c72b-2184-36cb-032f5cfda05c@huawei.com>
+ <20200507153506.GA2621480@dhcp-10-100-145-180.wdl.wdc.com>
+ <9e04eebc-a55b-ac7e-3cb3-9c65f084ee6c@arm.com>
+ <20200507173545.GC2621480@dhcp-10-100-145-180.wdl.wdc.com>
+ <20200507174429.GA4466@willie-the-truck>
+ <20200507180612.GD2621480@dhcp-10-100-145-180.wdl.wdc.com>
+ <20200508114020.GA16247@willie-the-truck>
+ <20200508140733.GE2621480@dhcp-10-100-145-180.wdl.wdc.com>
 MIME-Version: 1.0
-In-Reply-To: <AM0PR05MB579359570CF4A3F5207AB093A3A20@AM0PR05MB5793.eurprd05.prod.outlook.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200508140733.GE2621480@dhcp-10-100-145-180.wdl.wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200508_080019_312519_69DDB148 
-X-CRM114-Status: GOOD (  13.45  )
-X-Spam-Score: 0.5 (/)
+X-CRM114-CacheID: sfid-20200508_083407_990963_6FC445D6 
+X-CRM114-Status: GOOD (  12.33  )
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.5 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.216.68 listed in list.dnswl.org]
- 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
- provider [sagigrim[at]gmail.com]
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
- mail domains are different
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.216.68 listed in wl.mailspike.net]
- 0.2 FREEMAIL_FORGED_FROMDOMAIN 2nd level domains in From and
- EnvelopeFrom freemail headers are different
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,40 +84,48 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Boris Pismenny <borisp@mellanox.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
+Cc: sagi@grimberg.me, John Garry <john.garry@huawei.com>,
+ linux-nvme@lists.infradead.org, Alexey Dobriyan <adobriyan@gmail.com>,
+ axboe@fb.com, Robin Murphy <robin.murphy@arm.com>,
+ Christoph Hellwig <hch@lst.de>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-
->>> Given the padding defined by user-space, the host driver will send the
->>> requested hpda to the target which will support that on nvme/tcp c2h
->>> capsules. The host will parse the capsules according to the padding.
->>>
->>> The request hpda is 0's based value in units of dwords in the range 0
->>> to 31 (e.g., values 0, 1, and 2 correspond to 4 byte, 8 byte, and 12 byte
->> alignment)).
->>
->> Thanks Yoray for the contribution!
->>
->> Can you share a bit on the use case you are adding this for? Curious to learn
->> about it.
+On Fri, May 08, 2020 at 07:07:33AM -0700, Keith Busch wrote:
+> On Fri, May 08, 2020 at 12:40:20PM +0100, Will Deacon wrote:
+> > Without a barrier on the read side, something like the following might be
+> > able to happen:
+> > 
+> > 	CPU				NVME
+> > 	Read stale data
+> > 					Write data
+> > 					Write phase bit
+> > 	Read phase bit
+> > 
+> > So you need a dma_rmb() on the CPU side to prevent that reordering, and
+> > ensure that the phase bit is read first.
 > 
-> Hi Sagi,
-> 
-> I am adding these changes because :
-> 
-> A.   This is part of the nvme over tcp spec
+> I hadn't mentioned the driver CQE reads use 'volatile' access, reading
+> phase first, then command id some time after.
 
-There are several stuff that are part of the veriaty of the nvme specs
-which we implement, we usually want a reason to add it. Not against it,
-but would like additions to come from a real need.
+Well, maybe that doesn't mean anything. We're using conditional control
+dependencies, like this pseudo code:
 
-> B.    We testing future hardware that needs to know how to handle it
+	if (READ_ONCE(cqe->phase) is new phase) {
+		...
+		command_id = READ_ONCE(cqe->command_id)
+		...
+	}
 
-OK, but is it required by the device?
+But according to Documentation/memory-barriers.txt:
+
+  (*) Control dependencies can order prior loads against later stores.
+      However, they do -not- guarantee any other sort of ordering:
+      Not prior loads against later loads
+
+So a read barrier would be necessary if that's how it is.
 
 _______________________________________________
 linux-nvme mailing list
