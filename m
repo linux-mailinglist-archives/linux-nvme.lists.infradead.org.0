@@ -2,74 +2,69 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DAAB1CB559
-	for <lists+linux-nvme@lfdr.de>; Fri,  8 May 2020 19:06:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 88D6C1CB8C2
+	for <lists+linux-nvme@lfdr.de>; Fri,  8 May 2020 22:04:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zyT0loNnP6j9TBHfDNAsDdQcWn6J0Uvm6uXWm1czDWg=; b=EjueekX8HhP6gnakteNBLjjuN
-	X7MmDJEQOiBNiwjWVtazCOz1q/GElni1hutffQ8lEMzkRvrfYb+vUlgkIr2D/h34YYxNGQ7YeHnp8
-	jqPc7TGfo6qwhuhfrCPEHuQF6ZfwAOx9BXG90K/mqRqOWDVyf1DkSP/xVWAb+9IM0Oeg4fLSwx2qo
-	EfRaKrRDECU/us1mhhppMy8c16KDdi8KZNbtjDIMmMOctJHUnQc2xH4sfknacXcsOXW4sU7UVIO+K
-	3x95EgsbM31b93Y+XNBkkLJDzCCiCnQD5uqBeTN6Fu/IddoQRXVzDqXBOLRyXGetKYe3qsJ6nEg5T
-	hZiVdsV3g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Q6sQ8csO5kM0MEEnBVH3ne+P97GmzcuGnQPCoQrC8LI=; b=D2UE/RbSi8y+u9
+	e0pj4SpIQf8RHFgxZQPwNuh4icAmPgBNFHEsJZD48m/72pkY2YghGmdqpl1DU61sz9wd62M32lX4K
+	oNm3kHzjkiZYMHKO3KKqCli+zFtCJZVy8F1a7JzqgHFMXkHphIeMtBFiVxT8ydkK65VBjKypX1jrO
+	zuN1LknA6iSx6QLaIONIF4YMRPsGD1qRT9AzxSyQG6wVLQidAfZUzvf37SyysFHu/25TPlWE/WDjM
+	Fr1KgQ2EWJQNotEWA7da8KERRjDASGI0oj+kC6uk90y3vrWNIA1zbNwH6tisdVhOFGBT45zevzZL6
+	UXq/8VlVn5YgjJIBFzFg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jX6Rt-0002cx-Lp; Fri, 08 May 2020 17:06:09 +0000
-Received: from lhrrgout.huawei.com ([185.176.76.210] helo=huawei.com)
+	id 1jX9EF-0007p9-04; Fri, 08 May 2020 20:04:15 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jX6Rp-0002bu-D1
- for linux-nvme@lists.infradead.org; Fri, 08 May 2020 17:06:07 +0000
-Received: from lhreml724-chm.china.huawei.com (unknown [172.18.7.108])
- by Forcepoint Email with ESMTP id 988EB6CA4AF0B6B426D1;
- Fri,  8 May 2020 18:05:45 +0100 (IST)
-Received: from [127.0.0.1] (10.47.2.116) by lhreml724-chm.china.huawei.com
- (10.201.108.75) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1913.5; Fri, 8 May 2020
- 18:05:44 +0100
-Subject: Re: [PATCH] nvme-pci: slimmer CQ head update
-To: Keith Busch <kbusch@kernel.org>
-References: <20200506163104.GD12919@willie-the-truck>
- <3453193c-424b-1e4c-16be-279088612c68@arm.com>
- <efc85e9a-93a6-989b-b8d7-db83b5d74b96@huawei.com>
- <6673a108-c572-12ff-7ddd-b88147829615@huawei.com>
- <4dae5990-e81b-8b33-dafc-ee47e4f06b6a@arm.com>
- <e1643b53-d362-0b5e-573f-72f0ea249ebf@huawei.com>
- <20200507142352.GA2621422@dhcp-10-100-145-180.wdl.wdc.com>
- <8b297620-c72b-2184-36cb-032f5cfda05c@huawei.com>
- <20200507153506.GA2621480@dhcp-10-100-145-180.wdl.wdc.com>
- <6b573185-c6a5-501c-7db2-befacefa3701@huawei.com>
- <20200508161621.GB2622778@dhcp-10-100-145-180.wdl.wdc.com>
-From: John Garry <john.garry@huawei.com>
-Message-ID: <21739628-85bd-8fe5-fc37-b7cc6de96fd1@huawei.com>
-Date: Fri, 8 May 2020 18:04:55 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.2
+ id 1jX9EB-0007oa-BH
+ for linux-nvme@lists.infradead.org; Fri, 08 May 2020 20:04:12 +0000
+Received: from dhcp-10-100-145-180.wdl.wdc.com (unknown [199.255.45.60])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id C2E8920A8B;
+ Fri,  8 May 2020 20:04:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588968250;
+ bh=/EHlRgMX3Yqz9EqlzWRzEhU+FK8zcTLH1KAjtEYrMjU=;
+ h=From:To:Cc:Subject:Date:From;
+ b=kIWlJgI/9iO+7wEkc19v9ZGS0zyoKo3wnSBv377KIU8SUkZI8ngJQgvLH0T8xr2vN
+ g4GLUcsPhN83qYZiKHIIX935fqUAopXhkz3Go/QXJ2RsVgVzi3zqH5uVUISYrZ9WSl
+ iY44tIQF8dQygDAFUjVJPItpzdidqcGtxtG4BbJo=
+From: Keith Busch <kbusch@kernel.org>
+To: linux-nvme@lists.infradead.org,
+	hch@lst.de,
+	sagi@grimberg.me
+Subject: [PATCH] nvme-pci: dma read memory barrier for completions
+Date: Fri,  8 May 2020 13:04:06 -0700
+Message-Id: <20200508200406.2814437-1-kbusch@kernel.org>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-In-Reply-To: <20200508161621.GB2622778@dhcp-10-100-145-180.wdl.wdc.com>
-Content-Language: en-US
-X-Originating-IP: [10.47.2.116]
-X-ClientProxiedBy: lhreml721-chm.china.huawei.com (10.201.108.72) To
- lhreml724-chm.china.huawei.com (10.201.108.75)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200508_100605_588865_AEBA133C 
-X-CRM114-Status: GOOD (  14.13  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200508_130411_408140_46E39272 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -5.2 (-----)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-5.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [185.176.76.210 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
- [185.176.76.210 listed in wl.mailspike.net]
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [198.145.29.99 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,43 +76,51 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: sagi@grimberg.me, Robin Murphy <robin.murphy@arm.com>,
- "luojiaxing@huawei.com" <luojiaxing@huawei.com>,
- linux-nvme@lists.infradead.org, Alexey Dobriyan <adobriyan@gmail.com>,
- axboe@fb.com, Will Deacon <will@kernel.org>, Christoph Hellwig <hch@lst.de>
+Cc: Keith Busch <kbusch@kernel.org>, John Garry <john.garry@huawei.com>,
+ Will Deacon <will@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 08/05/2020 17:16, Keith Busch wrote:
-> On Thu, May 07, 2020 at 04:41:01PM +0100, John Garry wrote:
->> I have an FAE contact, who I can ask. That may take a few days.
-> 
-> John,
-> 
-> In the meantime could you see if the following resolves your
-> observation?
-> 
-> ---
-> diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-> index e13c370de830..8e96ec6eed61 100644
-> --- a/drivers/nvme/host/pci.c
-> +++ b/drivers/nvme/host/pci.c
-> @@ -989,6 +989,7 @@ static inline int nvme_process_cq(struct nvme_queue *nvmeq)
->   
->   	while (nvme_cqe_pending(nvmeq)) {
->   		found++;
-> +		dma_rmb();
->   		nvme_handle_cqe(nvmeq, nvmeq->cq_head);
->   		nvme_update_cq_head(nvmeq);
->   	}
-> --
+Control dependencies do not guarantee load order across the condition,
+allowing a CPU to predict and speculate memory reads.
 
-Yeah, it looks much better now. 5 minutes running without issue, as 
-opposed to 5 seconds in with a crash.
+Commit 324b494c2862 inlined verifying a new completion with its
+handling. At least one architecture was observed to access the contents
+out of order, resulting in the driver using stale data for the
+completion.
 
-I'll test more when I return to work on Monday.
+Add a dma read barrier before reading the completion queue entry and
+after the condition its contents depend on to ensure the read order is
+determinsitic.
+
+Reported-by: John Garry <john.garry@huawei.com>
+Suggested-by: Will Deacon <will@kernel.org>
+Signed-off-by: Keith Busch <kbusch@kernel.org>
+---
+ drivers/nvme/host/pci.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index e13c370de830..3726dc780d15 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -989,6 +989,11 @@ static inline int nvme_process_cq(struct nvme_queue *nvmeq)
+ 
+ 	while (nvme_cqe_pending(nvmeq)) {
+ 		found++;
++		/*
++		 * load-load control dependency between phase and the rest of
++		 * the cqe requires a full read memory barrier
++		 */
++		dma_rmb();
+ 		nvme_handle_cqe(nvmeq, nvmeq->cq_head);
+ 		nvme_update_cq_head(nvmeq);
+ 	}
+-- 
+2.24.1
+
 
 _______________________________________________
 linux-nvme mailing list
