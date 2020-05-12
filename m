@@ -2,97 +2,85 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 392A11CE954
-	for <lists+linux-nvme@lfdr.de>; Tue, 12 May 2020 01:50:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 07EFD1CF18F
+	for <lists+linux-nvme@lfdr.de>; Tue, 12 May 2020 11:27:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=f0p5QgtCPTM1HKfjPQ8eeI2zddSo4wpb7VzNOZCm5hQ=; b=Gsy428JonqiBXx7UIT5PRFYMg
-	+13gIx7Ww8R1EV3GXY8Y6jhyNOqF5OiTJDMjOzOfYVUixnATxnMG4IqeFggxCVHi7fq+WqUHbxIc9
-	KT1S3dbfDz3baJvQkMuZ4xzFm2cplGB/HJz4RhMMGLc+deAczjG0Uk3LFh7HJDirltSZYZXHnTWef
-	07VLFCcD3C3KtifkCJDjaYAJPVtSMbKTXwWCfujA61RFpXxnvAoNlsQh8HPDKxWU7BmT9ZRUUF/Tq
-	qUfNCb8L0DsRM7YVswmheTX8W2nUnimuUAWwbcJZk0DtFoAAggmlvlhnN8pja5LtuPwQv/nrEEyId
-	wH7bG/GHA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=uBprUM7hbMCJuqfjUdEpbDvpaV5IYRVJKYm49JJDz3c=; b=Nm4
+	1kQStwL/JuyX4EDEolCTL0Ahzb6PCEbtSeajH6GgbXzqrXD61RssczhSconIHjr+hdj/aOCCs1Juj
+	55SrJrtkRwgjdnTI0VOHpjGCvb0rXtTq6y2TNpWKGuXEJT8hqvFs82qE2/GxJ+/ibSaVUFm9aaW8L
+	/Lgzn8DMhPL8kPSn4VfYqYtnNfFBLkUzfs36ZLxDwSFXD4YNWSUnVrIsmmhJImmiRWAUQnB5P7d35
+	RzVvBTGr+0P1wq0WOJ0UivTQ4fANLAi6R9NCF+c6wmqMlS8OcZ+dsRdQUeXCwUPf1KAUZmuL+gbQy
+	JK0UQyhKU58UELaSEQsEjYf73FiUgcg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYIBi-00082W-Ak; Mon, 11 May 2020 23:50:22 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1jYRCJ-0002pU-S0; Tue, 12 May 2020 09:27:35 +0000
+Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYIBd-00082B-KR
- for linux-nvme@lists.infradead.org; Mon, 11 May 2020 23:50:19 +0000
-Received: by mail-wr1-x444.google.com with SMTP id x17so13146336wrt.5
- for <linux-nvme@lists.infradead.org>; Mon, 11 May 2020 16:50:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=helNngrhqVpI2EXfi1Sz4Y9niXnhFln1FptnUrgVDsk=;
- b=d7c3JAWhs5iuO7hqkiPeV5iCmIgiPFbR01nS6qJDM4VGnFzcoZ22Nt9FHF1OBstrMg
- Aw16EprCFaVxfFgB1bumnc3KHQYUHh27oD7WrbiDCdiaO7i6WUvUAp/oMI2m0+BEXX1b
- PprIgOWO1AeM/BQU8HJQDfueKoSO64kHsTKuQ=
+ id 1jYRCE-0002of-Ts
+ for linux-nvme@lists.infradead.org; Tue, 12 May 2020 09:27:32 +0000
+Received: by mail-qv1-xf2f.google.com with SMTP id z9so3913824qvi.12
+ for <linux-nvme@lists.infradead.org>; Tue, 12 May 2020 02:27:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=8LgU6Ubw/EnY9IJENxh2ISFRJ9CwHsYvJHAtfBK9kNo=;
+ b=t+3TTTt+NF6+dOgfIxF2LYDq7TadtnS3XaAwUGkBjyXM2N9kcL6F66nMUO43rGrYpi
+ P+hz7mjQDHvZc7SEQCemoKVX6IZR2ttkRaBwpPZ3jh2Tr78j6IUQBsKvuU1oddkFnHWd
+ D5+Omq4rB5/sCz7EdpPiPpbR6B5RHd9Be0gy4M1IomV8BdWYgUuh6oY8vjloWABSj2zX
+ heukNFzMEw70hmTUl1b6VENxyvwox8AMTQKqxAUp9x4Lu5t7+ADTWR9Cz2iKQyuUF02j
+ IzFs7BevU/s4shBRMB/3NlWh8aeSlgSOUu3ijJS0//U0nL2qhWYbnt7WqvUWsEbDSHzu
+ HewA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=helNngrhqVpI2EXfi1Sz4Y9niXnhFln1FptnUrgVDsk=;
- b=sWkMEBm9UuFZORQvfjtSSdM/ZLvzeWnL8LKOjHLayH4DHAMtUXny+ntDlNwYPvMKGt
- XbHnT+cZK/nsOTyQki/saizjxteZlupr/HEwRz9BOmDCJuco+vtJCc8eed3MWoAw6Xvt
- lXf0e9pSUz3d9Xr9cnRkZG8p5X7IkcaUAL7irsTlQwI78EextYX8fs0FMcnrfBcB2T59
- ZzRu41oHgP2Fw0ng1wehzW0VVKh/JARcYQbddD3nZ5fqQZw8/SyvI8E+zSocDAfpMdn0
- WuRCVlSg6uZcmBeU6Y6y+It+gAoZWiE+5drZVgvP94biqqi31DAfy5Y2QDdgaRIAh496
- fnFw==
-X-Gm-Message-State: AGi0PubC83VO6bjfdPYJxzoTKfnLcyNyFeHnV8sd1hoEb8DfReFRBxY6
- K3/fbbGHMlAtEAlX83zpfzwuIA==
-X-Google-Smtp-Source: APiQypK9ZCY+VvW2eHij+biZQ45UQx2mQe9v0kjAsVPET/Zf8w8HwyF17G1NzviVDTLx3xXHVGodcw==
-X-Received: by 2002:a05:6000:1083:: with SMTP id
- y3mr11031050wrw.425.1589241015601; 
- Mon, 11 May 2020 16:50:15 -0700 (PDT)
-Received: from [10.230.128.89] ([192.19.228.250])
- by smtp.gmail.com with ESMTPSA id 5sm28630712wmz.16.2020.05.11.16.50.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 May 2020 16:50:14 -0700 (PDT)
-Subject: Re: [PATCH 03/16] nvme: introduce NVME_NS_METADATA_SUPPORTED flag
-To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org,
- kbusch@kernel.org, hch@lst.de, sagi@grimberg.me, martin.petersen@oracle.com,
- jsmart2021@gmail.com, axboe@kernel.dk
-References: <20200504155755.221125-1-maxg@mellanox.com>
- <20200504155755.221125-4-maxg@mellanox.com>
- <e21354ca-a7bb-cf2d-d427-c8410c797a49@broadcom.com>
- <71c7458e-81cd-7200-2e1b-3563cdddd5ad@mellanox.com>
- <62322680-afeb-142e-c10b-b4f2d4c419a3@broadcom.com>
- <1b03c314-2e57-5135-6875-a2d37ecf5e20@mellanox.com>
-From: James Smart <james.smart@broadcom.com>
-Message-ID: <cca0ab45-7dde-c461-b20f-d44f58a8a117@broadcom.com>
-Date: Mon, 11 May 2020 16:50:09 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=8LgU6Ubw/EnY9IJENxh2ISFRJ9CwHsYvJHAtfBK9kNo=;
+ b=hn8py2i6HroZ84OBK6A5sz7+/h4XkSrcHL9k/YyhtSG05PrX/BnS4FwgutURXQ2qku
+ h9+ci2yKEP3vOHGW6XLYwspAk26XG70dduxraOKQO/4G2o9nwu6d6SAi4yAdnvw8ZmKT
+ EnWoReWy+ss0XyxoxCXzhuQfS6ISPuFAYc4hkAIbcPZnIPvKk+mH9bxDhdXfE1ezOJgu
+ zvk0zhw+a/eguGAMb3/Vmd1Z8b2Cod23LeoEklXQWsbgGUe5oteD4j0mVMuIxaJ8Srmi
+ k6WgXMIiQjJePH65LjGb9mgXY82cO8J4DOdukRdttkqcr7hzFx8ZCihY7BLNjKhLhLKd
+ +sdQ==
+X-Gm-Message-State: AOAM5320D6OUPKhk1vV7uC6ivQdT4+DrgK2DVA48LEzEe8+EWhjNyVCR
+ M0I9EixQU5o62o2a+cQEzkT5JNxFP8Y7j9HgEo+TmPK67sw=
+X-Google-Smtp-Source: ABdhPJwLrJ5B2aKcdyFk8XJsoK/GfePWam/ZvVn+deBn2Tv4AQCZ+urm+zpZlVwk0uw/kXsThWTc40/Soot2cY1d6+s=
+X-Received: by 2002:a05:6214:1ec:: with SMTP id
+ c12mr6063838qvu.11.1589275649003; 
+ Tue, 12 May 2020 02:27:29 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1b03c314-2e57-5135-6875-a2d37ecf5e20@mellanox.com>
-Content-Language: en-US
+From: Peter Walker <peter.walker9520@gmail.com>
+Date: Tue, 12 May 2020 11:27:18 +0200
+Message-ID: <CAGkZ3m9UE_T2RDM=TLTERopuA+AjHenH_9AkTYF8f5R52W5_FQ@mail.gmail.com>
+Subject: Problems in Samsung PM1733 SRIOV
+To: linux-nvme@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_165017_672590_82565B05 
-X-CRM114-Status: GOOD (  16.66  )
-X-Spam-Score: -0.4 (/)
+X-CRM114-CacheID: sfid-20200512_022730_989831_7ABF7E49 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.4 points)
+ Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:444 listed in]
+ no trust [2607:f8b0:4864:20:0:0:0:f2f listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ 0.2 FREEMAIL_ENVFROM_END_DIGIT Envelope-from freemail username ends
+ in digit [peter.walker9520[at]gmail.com]
+ 0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
+ provider [peter.walker9520[at]gmail.com]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.2 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,49 +92,88 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: vladimirk@mellanox.com, idanb@mellanox.com, israelr@mellanox.com,
- shlomin@mellanox.com, oren@mellanox.com, nitzanc@mellanox.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-CgpPbiA1LzcvMjAyMCAyOjAyIEFNLCBNYXggR3VydG92b3kgd3JvdGU6Cj4KPiBPbiA1LzYvMjAy
-MCAxMTo0NCBQTSwgSmFtZXMgU21hcnQgd3JvdGU6Cj4+Cj4+IExldCBtZSByZXdvcmQgdGhpcyBz
-bmlwcGV0IHdpdGggd2hhdCB0aGUgZmxhZyByZWFsbHkgbWVhbnM6Cj4+Cj4+IGlmIChJU19FTkFC
-TEVEKENPTkZJR19CTEtfREVWX0lOVEVHUklUWSkgJiYgKG5zLT5jdHJsLT5vcHMtPmZsYWdzICYg
-Cj4+IE5WTUVfRl9NRVRBREFUQV9TVVBQT1JURUQpICYmICEobnMtPmZlYXR1cmVzICYgTlZNRV9O
-U19FWFRfTEJBUykpCj4+IMKgIG52bWVfaW5pdF9pbnRlZ3JpdHkoLi4uLMKgIG5zLT5waV90eXBl
-KQo+PiBlbHNlIGlmICghbnZtZV9uc19oYXNfcGkobnMpKQo+PiDCoMKgIGNhcGFjaXR5PTAuCj4+
-Cj4+IFRoaXMgbGVhdmVzIHRoZSBjYXNlcyB3aGVyZSBjYXBhY2l0eSBpcyBub3QgemVybydkLCB0
-aHVzIHRoZXJlIG1heSBiZSAKPj4gaW8gYXR0ZW1wdGVkIHRvIHRoZSBuczoKPj4gYSBrZXJuZWwg
-dy9vIENPTkZJR19CTEtfREVWX0lOVEVHUklUWSBlbmFibGVkLCBhbmQgdGhlIG5zIHdhcyAKPj4g
-Zm9ybWF0dGVkIGZvciBwaS4KPgo+IENvbnRyb2xsZXIgd2lsbCBnZW5lcmF0ZSBpdC4KCk9rIC0g
-U28gd2hhdCB5b3UgbWVhbnQgd2FzOiBvdGhlciBjb2RlIHdpbGwgbG9vayBmb3IgdGhlIGludGVn
-cml0eSBycSwgCmFuZCBpZiBub3Qgc2V0IHdpbGwgc2V0IFBSQUNUIHRvIGhhdmUgY29udHJvbGxl
-ciBnZW5lcmF0ZSBpdC4KCkFncmVlLsKgIEkgd2FzIHRoaW5raW5nIHRoYXQgaXQgd291bGQgYmUg
-YmV0dGVyIHRvIHZhbGlkYXRlIHdoYXQgd2FzIApnb2luZyB0byBoYXBwZW4gYXQgdGhpcyBwb2lu
-dCwgYnV0IHlvdSBhcmUgY29ycmVjdC4KCj4KPgo+PiBhIGtlcm5lbCB3LyBDT05GSUdfQkxLX0RF
-Vl9JTlRFR1JJVFksIHRoZSBucyB3YXMgZm9ybWF0dGVkIGZvciBwaSwgCj4+IGJ1dCB0aGUgdHJh
-bnNwb3J0IGhhcyBubyBpZGVhIGFib3V0IGEgc2VwYXJhdGUgYnVmZmVyLgo+Cj4gSWYgdGhlIHRy
-YW5zcG9ydCBzdXBwb3J0cyBNRVRBREFUQSwgaXQgbXVzdCBoYXZlIGFuIGlkZWEgYWJvdXQgCj4g
-c2VwYXJhdGUgYW5kIG5vbi1zZXBhcmF0ZSBtb2Rlcy4KCkFncmVlIC0gaWYgdHJhbnNwb3J0IGRv
-ZXNuJ3Qgc2V0IGl0cyBvcHMgZmxhZywgdGhlbiB0aGUgbmV3IGZsYWcgd2lsbCAKbmV2ZXIgYmUg
-c2V0LCB0aHVzIGl0IHdpbGwgbm90IGhhdmUgYSBibGsgaW50ZWdyaXR5IHJxIHN0cnVjdCwgc28g
-aXQnbGwgCmZhbGwgaW50byBQUkFDVD4KCj4KPgo+PiBhIGtlcm5lbCB3LyBDT05GSUdfQkxLX0RF
-Vl9JTlRFR1JJVFksIHRoZSBucyB3YXMgZm9ybWF0dGVkIGZvciBwaSwgCj4+IHRoZSB0cmFuc3Bv
-cnQga25vd3MgaG93IHRvIDIgZG8gYnVmZmVycywgYnV0IHRoZSBjb250cm9sbGVyIHJlcXVpcmVz
-IAo+PiBleHRlbmRlZCBMQkFTLgo+Cj4gSW4gdGhpcyBwb2ludCBvZiB0aW1lIChwYXRjaCAzLzE2
-KSBvbmx5IFBDSSB0cmFuc3BvcnQgc3VwcG9ydHMgdGhlIAo+IG1ldGFkYXRhIGZlYXR1cmUgYW5k
-IGl0IGNhbid0IGNvbnZlcnQgZnJvbSAyIGJ1ZmZlcnMgdG8gZXh0ZW5kZWQgbW9kZS4KPgo+IFNv
-IGluIGNhc2UgeW91IGdldCBhIHdyaXRlL3JlYWQgY29tbWFuZCBmcm9tIGJsb2NrIGxheWVyICh3
-aXRob3V0IAo+IG1ldGFkYXRhIG9mIGNvdXJzZSksIHRoZSBjb3JlIGxheWVyIHdpbGwgc2VlIHRo
-YXQgdGhlIG5zICJoYXMgcGkiIGFuZCAKPiB3aWxsIHNldCB0aGUgUFJBQ1QgYml0IHNvIHRoYXQg
-dGhlIFNTRCBjb250cm9sbGVyIHdpbGwgZ2VuZXJhdGUvc3RyaXAgCj4gdGhlIG1ldGFkYXRhLgoK
-QWdyZWUuCgpMZXRzIG1vdmUgb24uIEkndmUgYmVlbiBhIGxpdHRsZSBzaG9ydCBvZiB0aW1lLiBJ
-IHNob3VsZCByZXZpZXcgdGhlIAptZWF0aWVyIHBhdGNoLCBwYXRjaCA2LCB0b21vcnJvdyBzb21l
-dGltZS4KCnNvLi4uClJldmlld2VkLWJ5OsKgIEphbWVzIFNtYXJ0IDxqYW1lcy5zbWFydEBicm9h
-ZGNvbS5jb20+CgoKLS0gamFtZXMKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmxpbnV4LW52bWUgbWFpbGluZyBsaXN0CmxpbnV4LW52bWVAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LW52bWUK
+Hello All,
+
+I am using Samsung PM1733 and testing the SRIOV feature of the device.
+There were some problems while enabling VFs.
+
+dmesg logs while booting system are as follows:
+
+# dmesg | grep nvme
+[    1.471488] nvme nvme0: pci function 0000:2d:00.0
+[    1.685264] nvme nvme0: Shutdown timeout set to 10 seconds
+[    1.694565] nvme nvme0: 8/0/0 default/read/poll queues
+[    1.695383] nvme0n1: detected capacity change from 0 to
+214748364800
+
+# dmesg | grep "0000:2d:00.0"
+[    0.326083] pci 0000:2d:00.0: [144d:a824] type 00 class 0x010802
+[    0.326105] pci 0000:2d:00.0: reg 0x10: [mem 0xe1000000-0xe1007fff 64bit]
+[    0.326134] pci 0000:2d:00.0: reg 0x30: [mem 0xffff0000-0xffffffff
+pref]
+[    0.326368] pci 0000:2d:00.0: reg 0x20c: [mem 0x00000000-0x00007fff
+64bit]
+[    0.326370] pci 0000:2d:00.0: VF(n) BAR0 space: [mem
+0x00000000-0x000fffff 64bit] (contains BAR0 for 32 VFs)
+[    0.326517] pci 0000:2d:00.0: 31.504 Gb/s available PCIe bandwidth,
+limited by 8 GT/s x4 link at 0000:2c:00.0 (capable of 63.012 Gb/s with
+16 GT/s x4 link)
+[    0.348295] pci 0000:2d:00.0: can't claim BAR 6 [mem
+0xffff0000-0xffffffff pref]: no compatible bridge window
+[    0.348542] pci 0000:2d:00.0: BAR 6: assigned [mem
+0xe1010000-0xe101ffff pref]
+[    0.348545] pci 0000:2d:00.0: BAR 7: no space for [mem size 0x00100000 64bit]
+[    0.348546] pci 0000:2d:00.0: BAR 7: failed to assign [mem size
+0x00100000 64bit]
+[    0.348581] pci 0000:2d:00.0: BAR 6: assigned [mem
+0xe1200000-0xe120ffff pref]
+[    0.348583] pci 0000:2d:00.0: BAR 0: assigned [mem
+0xe1210000-0xe1217fff 64bit]
+[    0.348590] pci 0000:2d:00.0: BAR 7: assigned [mem
+0xe1218000-0xe1317fff 64bit]
+[    0.490257] pci 0000:2d:00.0: Adding to iommu group 36
+[    1.471488] nvme nvme0: pci function 0000:2d:00.0
+
+
+Then I am enabling VFs with the below command:
+
+# echo 3 > /sys/bus/pci/devices/0000\:2d\:00.0/sriov_numvfs
+
+Then, the kernel tries to initialize the 3 new nvme VF devices (i.e.,
+/dev/nvme1, /dev/nvm2 and /dev/nvme3).
+However, initialization aborted with the below message.
+
+# dmesg
+[  200.776161] pci 0000:2d:00.1: [144d:a824] type 00 class 0x010802
+[  200.776785] pci 0000:2d:00.1: Adding to iommu group 37
+[  200.777073] nvme nvme1: pci function 0000:2d:00.1
+[  200.777149] nvme 0000:2d:00.1: enabling device (0000 -> 0002)
+[  200.777204] pci 0000:2d:00.2: [144d:a824] type 00 class 0x010802
+[  200.778805] pci 0000:2d:00.2: Adding to iommu group 38
+[  200.779193] nvme nvme2: pci function 0000:2d:00.2
+[  200.779224] nvme 0000:2d:00.2: enabling device (0000 -> 0002)
+[  200.779284] pci 0000:2d:00.3: [144d:a824] type 00 class 0x010802
+[  200.780146] pci 0000:2d:00.3: Adding to iommu group 39
+[  200.780430] nvme nvme3: pci function 0000:2d:00.3
+[  200.780460] nvme 0000:2d:00.3: enabling device (0000 -> 0002)
+[  231.336804] nvme nvme1: Device not ready; aborting initialisation
+[  231.336807] nvme nvme2: Device not ready; aborting initialisation
+[  231.336812] nvme nvme2: Removing after probe failure status: -19
+[  231.336828] nvme nvme1: Removing after probe failure status: -19
+[  231.344759] nvme nvme3: Device not ready; aborting initialisation
+[  231.344778] nvme nvme3: Removing after probe failure status: -19
+
+Please let me know if I am missing something while enabling VFs here.
+
+Thanks,
+Peter
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
