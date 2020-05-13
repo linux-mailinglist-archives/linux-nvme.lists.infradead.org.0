@@ -2,135 +2,59 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 983891D0AA1
-	for <lists+linux-nvme@lfdr.de>; Wed, 13 May 2020 10:16:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 339CF1D0A76
+	for <lists+linux-nvme@lfdr.de>; Wed, 13 May 2020 10:05:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=LSQRiVWjnJRIP9jJwB+gcQPowW35h/YL0JvNJEOM1/Q=; b=YjDt2mvs0sU+ao
-	r6SG2MOcQD97G+YhOrOmVzQ3jusxgjaKTE09At6JNlfPcMYBwUrKB4xZb1N33BWTBtW+JHf8x2wYC
-	0u427N6uo73u8ZldGqlYKunMoo76Uo1iRhYO2WykhvqXex2s6iASQR/oSlU4MepHSx+l0M8zL5Gt0
-	9OAS0MvnFIILGJW3hEA8HWjIGKyZjuFIGXbYAG2APfUSJIq9wcCIdZFnq+kRNdKpHSdJvYe+vH36z
-	WLUvepSSv7kVlMqe9n/4CffUeAGOFbWDR/PmNS7PjC3NKJpMNVWVQDjG69qizkXsssIL8xPQueiVU
-	/BpXKeDQbuE5moyp+W7g==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aJz+UjZX7HRG+LbkVF42JJ0pqR4/ZcmN/P07kBT7+Xo=; b=i1/yq3mltX7o7V
+	YHLbB6kP/kSRsgasnqlqQ8LyyBC1lG5I+eMfafMAEz9SD+1DGMS1L0Ujkyjhrx+NoI5wHV28lGcJ6
+	tIOjZpCJoICDxd1jajp9X3m4eIoJnrprpfd1+sk61eSPiMl7EDUpOpjSJmFWUeWTWX9JHuaff5wqK
+	O0ocNZddzcR4lsSBAb0MV/v9LzdPKvxlJxkOP9EJjp2zaJ33FYLO/YWCXjp1veOI2ulK1xT6T6Xdk
+	I70lfC8U3vxoAHqX9jUJuhqbNAobRSSc24dRIkSfscB2fA32oik4Ji22tx/a0/jbSiu5HvVUlXkzN
+	ymQzsL9u7QLd5hSv21zQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYmYr-0007OU-Rt; Wed, 13 May 2020 08:16:17 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1jYmNm-0005eL-6H; Wed, 13 May 2020 08:04:50 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190] helo=huawei.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYmYn-0007Nl-6n
- for linux-nvme@lists.infradead.org; Wed, 13 May 2020 08:16:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1589357774; x=1620893774;
- h=from:to:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=PlLGYXw8t4C/9oTWXvj13OF9S22iRMEd16NfUqRMTPk=;
- b=ZbKQOK9hvnPDXITN86ULqidjBqMJgRmhRVWbRn3PffbRhL2QsR3Gohvx
- kogvW5SW1jfQ5h1vCbsFBRZjzNPU0WG9thb5L3pVexx3GidJNtcDnIFtQ
- AAYHGepHN5ryPts59RUL/aXDMGeVQgcODGXScM0yB5tMmjGGsdo9ea5s3
- UmSrJkrivd4g4VGuu+jjF2PCP3nFn4e73b+y5BJFCrkZ1j8+3N9N1VFKh
- jSpFoDjbPpkT9b6Kshdj62M42qQsEXSyecnIXiKxkAUhTlw4F5FBg5Ic/
- hWyDAVR3EucB5NQfdfmWZFq2mcSh4HhhVj9i8/oSz02U/TREFHxAKNjiu A==;
-IronPort-SDR: BrAw9BJnmESClpSdmt7H6lAlk6e7SMEsl9nxbT0pE11xehSZPnG+Nw9M/Rrv5qMrLmNMqhAyBC
- tUGcDCeWo1W48U2zEoUrmYTtudccDvgp25VynPY9u6zzFn4ti6rkeN0IidXaf1jXLmrsnsPYMz
- iq32yTRHZeV69weDEahSDgT27zIWnWH44WIad58lkKOm9RFv6ho+X4yvE3ENyovc/LpYSJ3DBY
- fEEkI8ObA2dZyZxd91wvuuvQUkcRdehykYKfvPUTRbh0X3x6661nTzs+rLxSX9ELqvK2T+6C4P
- 2GE=
-X-IronPort-AV: E=Sophos;i="5.73,387,1583164800"; d="scan'208";a="137902310"
-Received: from mail-mw2nam12lp2045.outbound.protection.outlook.com (HELO
- NAM12-MW2-obe.outbound.protection.outlook.com) ([104.47.66.45])
- by ob1.hgst.iphmx.com with ESMTP; 13 May 2020 16:16:12 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=E3uOOjtGbeIFeuMIxDesQrGisRYw8zaF2oj0GQqRHvYMy0CA8YfPt0Wps91CdkZ4deVD+iEMHIEb+1CAYviGjcyt7G47XxMaj1Z+2YCtnuw4GrAEaKtRjvcThVo6s4reol/xvCOqlil89YsLuGTi40/50g98GyM7bVSpcP9Q9cVDeBfVHpEVJDsOxsDREaYkOURKGlgqb7mDiNZ/sci0NbKqgUhQarkR4tSwDps4DG+tShw/Zw8+zw9fXwymeYiEiOtAuO2UtKa41TTvfRVQHBaWiabnKjd9sOt+vhtc/ttuPdBb7sAyDQsezgb0uSDSujNQfdY/Cbq+2ttQPH7W/w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4wpK88DmDxpX9FnOJ0xAYNz5nW0tScaWX0O7Fcod3qs=;
- b=S+BJNXztiYtXfXiVK7LNkfamAD3U7ar8yhuXRGcslx5X3EvgB0wu7JRijQX3hIIW4aDSmbPj9uihyQ0MaxY+GsqVvcqZ7xUtbe+Rye3KjoVo2lFk7DYYmpR9j5bA/gFt8IRR2q44p38M3i78eJ12yXu5Zt8/1E6gUSgkF3Azfg5EAXR8OSY3G1EwbcEPGOA1eSr7WaCF6QNITV4QPGRR8Dhz/+186hVw3Rnb8Vr6ASlIM0xQ32A1yoc0tbEpeV/WQXnX3ekgVYJXJBaQTr3TIHAIhcTrAPsLTQuhnuAndlzVZeKc5m9PaJtQu8LWoKCbqIgYr5NR/yb4DhmKYx0t1w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4wpK88DmDxpX9FnOJ0xAYNz5nW0tScaWX0O7Fcod3qs=;
- b=FG/Ym5Q9HV4tRGop9FNVZTj0ig6PSop/A91zuR3zesH0S0RvXVRoXsWmwms5OxbLwIhnFDzvdmAZZ0fhL6ediZJyz7HRX8LVaUqFJpw2qoK/5kvCO7NexKibmfNtLtfkdfwmLC02esd2l23TOT1XTud9rRPZNha1izDjmyEpPY8=
-Received: from BYAPR04MB4965.namprd04.prod.outlook.com (2603:10b6:a03:4d::25)
- by BYAPR04MB5400.namprd04.prod.outlook.com (2603:10b6:a03:cb::28)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3000.20; Wed, 13 May
- 2020 08:16:10 +0000
-Received: from BYAPR04MB4965.namprd04.prod.outlook.com
- ([fe80::4d72:27c:c075:c5e6]) by BYAPR04MB4965.namprd04.prod.outlook.com
- ([fe80::4d72:27c:c075:c5e6%7]) with mapi id 15.20.3000.016; Wed, 13 May 2020
- 08:16:10 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Christoph Hellwig <hch@lst.de>, "linux-nvme@lists.infradead.org"
- <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH] nvmet: mark nvmet_ana_state static
-Thread-Topic: [PATCH] nvmet: mark nvmet_ana_state static
-Thread-Index: AQHWKHkiXfXHHa8s2k6DpG0K1//JuQ==
-Date: Wed, 13 May 2020 08:16:10 +0000
-Message-ID: <BYAPR04MB496515288062F84FA3E612D686BF0@BYAPR04MB4965.namprd04.prod.outlook.com>
-References: <20200512161926.1822603-1-hch@lst.de>
- <962c56fe-4530-43bf-4f95-c732b74b09c3@mellanox.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: lst.de; dkim=none (message not signed)
- header.d=none;lst.de; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [75.54.103.196]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: b068523d-8716-4fe1-5aa1-08d7f715e4f8
-x-ms-traffictypediagnostic: BYAPR04MB5400:
-x-microsoft-antispam-prvs: <BYAPR04MB5400B0E68F31AE70AFE6C19886BF0@BYAPR04MB5400.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:296;
-x-forefront-prvs: 0402872DA1
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: yJg8mD6gkobQyAaUVazjc8dZ2xcBW+4AtPaln5uLA1DhZ6k2TUl1m38B8dgq3d84enNp7kTLZKaV8hdCaYPZGhh5BB0Ss6TLSPYjKq8aNyfnQjp2Bk0rAOBN9Y35/mFR754G49QWAdHuu5sLytlRSnWSADwmSYRCa6tXG+stvIQ88lc8ed5cBJY+gFu54jchvmxj1DrURqomIOWEtNqmiDegTu9hXfq4gHoDS4Vc0e2bXuRFd171qOWkOldWEEABlXmyWhrjCKg+hSfeuf+sj/SQRj4Da7aczM3SjTlFpP6fyAGB97ieJWBabP3066XQy1faiQs7lXnzntIWS7bjU9nU0IBNoJlVL5yL6Y5xhF5VLmGPpgFpdQ8wUMqGbMXkMHTCAMMovi1USawXqipWVJB612gyuJd1gYD2z42F5iUTSLqoZzpDvHB/EVNxmxPYMwT/ymTEb1X0FLuISAaS+0xzr0oVIlNb4Ikdbkcl8b9WAHtOlK/zdm2gVdDE1FEUIW/ejZaHTSJrWxzzWaMtDg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR04MB4965.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(366004)(136003)(39860400002)(346002)(396003)(376002)(33430700001)(110136005)(52536014)(186003)(26005)(6506007)(9686003)(53546011)(71200400001)(7696005)(55016002)(8936002)(4744005)(478600001)(33440700001)(76116006)(33656002)(316002)(2906002)(66476007)(66446008)(66556008)(64756008)(8676002)(66946007)(86362001)(5660300002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: vAiS0+Rh25nyvksWegB6Q5tD6ono+MSra4boMC17Yb8E+baOEeIfOev0db+0nCK0FenvPqKV3TSBiuWe79SHIuiDaldPLDtRxW20104Ja1Qr2vgMAdS1TU5ng1xZ9mPhL5bYmO6F6xJeiOVXsQRyqkKBfl5jHAY4wI/Qpr81kl9xqr6avo1UU5qT4pp7voenW/Ndy1jMaSWixzOVg6pYLyH0/d7vUUy1iW8HVAEP57iPMt0VWIoebvlCbDhkZ+5giGz21Io512R+F9nKVtArdVRvv86/Ra8euDZy8jwIK8OQ3WFy6hn0UbbrBdrWDzRyWhx7y8+EtfUU9Z091sdUfF/j0k8JaB3jO/b5L9lTbQXhWSmOg7nLqV5QubvxDT7kiP+9DM2p+8sZwdKt+HWnCs6qCAujbD6WW2iOxInPIlzR6NHj7JTUvWhI+YQjuTjgSmZafMi/mbIV0Jyx8rzFOP6u1B87z0OJw9ZrDG90Wd0=
-x-ms-exchange-transport-forked: True
+ id 1jYmNb-0005Vv-Fj
+ for linux-nvme@lists.infradead.org; Wed, 13 May 2020 08:04:42 +0000
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 74CA9CF991E077D90F12;
+ Wed, 13 May 2020 16:04:37 +0800 (CST)
+Received: from huawei.com (10.175.124.27) by DGGEMS409-HUB.china.huawei.com
+ (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Wed, 13 May 2020
+ 16:04:30 +0800
+From: Wu Bo <wubo40@huawei.com>
+To: <kbusch@kernel.org>, <axboe@fb.com>, <hch@lst.de>, <sagi@grimberg.me>
+Subject: [RESENT PATCH V2] nvme/core:disable streams when get stream params
+ failed
+Date: Wed, 13 May 2020 16:18:13 +0800
+Message-ID: <1589357893-551688-1-git-send-email-wubo40@huawei.com>
+X-Mailer: git-send-email 1.8.3.1
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b068523d-8716-4fe1-5aa1-08d7f715e4f8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 May 2020 08:16:10.2980 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: MahSc0374xgWpk0I/nOTxVI2uascGdSDIyipMJHKIhdUfq2cVe1G1b1egzaBVJkZCj9+yMttJtNoSiU7tQlWk5Y1hIL0jQ31DBrfln1VnDo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5400
+X-Originating-IP: [10.175.124.27]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200513_011613_333550_D029D2E7 
-X-CRM114-Status: GOOD (  11.48  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200513_010439_700196_6AD2495F 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.144 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ medium trust [45.249.212.190 listed in list.dnswl.org]
+ 0.0 RCVD_IN_MSPIKE_H4      RBL: Very Good reputation (+4)
+ [45.249.212.190 listed in wl.mailspike.net]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,36 +66,55 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
+Cc: linfeilong@huawei.com, wubo40@huawei.com, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, liuzhiqiang26@huawei.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-> On 5/12/2020 7:19 PM, Christoph Hellwig wrote:
->> Signed-off-by: Christoph Hellwig <hch@lst.de>
->> ---
->>    drivers/nvme/target/configfs.c | 2 +-
->>    1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
->> index 19bd5e1c681ce..24eb4cf53b4f5 100644
->> --- a/drivers/nvme/target/configfs.c
->> +++ b/drivers/nvme/target/configfs.c
->> @@ -1146,7 +1146,7 @@ static const struct config_item_type nvmet_referrals_type = {
->>    	.ct_group_ops	= &nvmet_referral_group_ops,
->>    };
->>    
->> -struct nvmet_type_name_map nvmet_ana_state[] = {
->> +static struct nvmet_type_name_map nvmet_ana_state[] = {
->>    	{ NVME_ANA_OPTIMIZED,		"optimized" },
->>    	{ NVME_ANA_NONOPTIMIZED,	"non-optimized" },
->>    	{ NVME_ANA_INACCESSIBLE,	"inaccessible" },
-> 
-> 
+After enable nvme streams, then if get stream params failed, 
+We should disable streams before return error in 
+nvme_configure_directives() function.
 
-Looks good.
+Signed-off-by: Wu Bo <wubo40@huawei.com>
+---
+ drivers/nvme/host/core.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-Reviewed-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index f3c037f..29bef53 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -553,19 +553,22 @@ static int nvme_configure_directives(struct nvme_ctrl *ctrl)
+ 
+ 	ret = nvme_get_stream_params(ctrl, &s, NVME_NSID_ALL);
+ 	if (ret)
+-		return ret;
++		goto out_disable_stream;
+ 
+ 	ctrl->nssa = le16_to_cpu(s.nssa);
+ 	if (ctrl->nssa < BLK_MAX_WRITE_HINTS - 1) {
+ 		dev_info(ctrl->device, "too few streams (%u) available\n",
+ 					ctrl->nssa);
+-		nvme_disable_streams(ctrl);
+-		return 0;
++		goto out_disable_stream;
+ 	}
+ 
+ 	ctrl->nr_streams = min_t(unsigned, ctrl->nssa, BLK_MAX_WRITE_HINTS - 1);
+ 	dev_info(ctrl->device, "Using %u streams\n", ctrl->nr_streams);
+ 	return 0;
++
++out_disable_stream:
++	nvme_disable_streams(ctrl);
++	return ret;
+ }
+ 
+ /*
+-- 
+1.8.3.1
+
 
 _______________________________________________
 linux-nvme mailing list
