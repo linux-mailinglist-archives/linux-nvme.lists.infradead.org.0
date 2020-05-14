@@ -2,39 +2,39 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1F8C1D3852
-	for <lists+linux-nvme@lfdr.de>; Thu, 14 May 2020 19:32:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 713A51D383F
+	for <lists+linux-nvme@lfdr.de>; Thu, 14 May 2020 19:31:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
 	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aqLQDrkH+X/z+8tKsgkpuiRw9cNwEqVxdFTnw086R4M=; b=sKZjzgiLJUpL3P
-	YKKDbhn0ErGTwJbcBU/CHHtTPQhsqJu38n6DftJ4Fu7TEmYRiKlV40PKKpP+2SpAuAmlBL7zQgyhO
-	Mt4NOdBlTfbXVU9ycjBB4P7YHzVSll01MLBBBqzKlrHg6qgEFtH383eR0ojps5z99FXIfjIz+NGhM
-	tC3qbI7cEe0vpnzmFsgV1hvsk20HMYQUAUmEKJimYfqmYUjb02Z7pvoVKBXUD2ATOAz2MSgv5S82r
-	/qSqS6RVTmllLCU7mJ4WiHWy7xbb/StJgU5lkaW+yZiQfG4mNQ8aUeZEmtb0VneDGLKqmCVQI43Sy
-	3ohB15Fy3LNTZMxr1K2g==;
+	List-Owner; bh=TXZyQbhBdVXZ4LFWA5NW05IqSwMctzo7PlqLhHDluXQ=; b=H1UoZdWT4Q9RHT
+	zcjEgI5Uwi3Q7yYH65jtvlnWOwEpI+g6TJQ8llcGAMTPAheV5TxXj7N+h2ok2kNRncQEarI9z6A6z
+	q9l/029Q3tidX04WKYNaP1otXyFyuLzzHi3BXYfEyU3eiFZf9KNLjBsJUDxCoHJst4DunKMSC6WBD
+	Xv8CG4Ue85NWP+WNpliHIWTmYOn71jkb23j4FGvZGo/cl3hTNLEhcKuERKoUducy1bHWIi+LAwszu
+	cc+qIig1nlsSokLxhb4UpYfm0xijZX7G/m7YPVN3ZzZiZyoika8X65lF2H6vMF1sPBvSd5fqFw7Zw
+	3eX1XVXfUE1iiAVoMQMA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZHii-0001WH-6F; Thu, 14 May 2020 17:32:32 +0000
+	id 1jZHhi-0000d2-ON; Thu, 14 May 2020 17:31:30 +0000
 Received: from ale.deltatee.com ([207.54.116.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZHZh-0005OP-Lh
+ id 1jZHZh-0005It-9B
  for linux-nvme@lists.infradead.org; Thu, 14 May 2020 17:23:17 +0000
 Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
  by ale.deltatee.com with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <gunthorp@deltatee.com>)
- id 1jZHZV-00021i-Ty; Thu, 14 May 2020 11:23:12 -0600
+ id 1jZHZV-00021o-Ty; Thu, 14 May 2020 11:23:06 -0600
 Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
  (envelope-from <gunthorp@deltatee.com>)
- id 1jZHZU-0001gr-6D; Thu, 14 May 2020 11:23:00 -0600
+ id 1jZHZU-0001gu-B1; Thu, 14 May 2020 11:23:00 -0600
 From: Logan Gunthorpe <logang@deltatee.com>
 To: linux-kernel@vger.kernel.org,
 	linux-nvme@lists.infradead.org
-Date: Thu, 14 May 2020 11:22:45 -0600
-Message-Id: <20200514172253.6445-2-logang@deltatee.com>
+Date: Thu, 14 May 2020 11:22:46 -0600
+Message-Id: <20200514172253.6445-3-logang@deltatee.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200514172253.6445-1-logang@deltatee.com>
 References: <20200514172253.6445-1-logang@deltatee.com>
@@ -50,13 +50,12 @@ X-Spam-Level:
 X-Spam-Status: No, score=-6.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
  MYRULES_NO_TEXT,URIBL_BLOCKED autolearn=no autolearn_force=no
  version=3.4.2
-Subject: [PATCH v13 1/9] nvme-core: Clear any SGL flags in passthru commands
+Subject: [PATCH v13 2/9] nvme: Create helper function to obtain command effects
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_102313_827020_18CF4BCA 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200514_102313_844734_3FD61CC0 
+X-CRM114-Status: GOOD (  11.03  )
 X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.0 points)
@@ -85,30 +84,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The host driver should decide whether to use SGLs or PRPs and they
-currently assume the flags are cleared after the call to
-nvme_setup_cmd(). However, passed-through commands may erroneously
-set these bits; so clear them for all cases.
+Separate the code to obtain command effects from the code
+to start a passthru request and open code nvme_known_admin_effects()
+in the new helper.
+
+The new helper function will be necessary for nvmet passthru
+code to determine if we need to change out of interrupt context
+to handle the effects.
 
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
 ---
- drivers/nvme/host/core.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/nvme/host/core.c | 39 ++++++++++++++++++++++-----------------
+ 1 file changed, 22 insertions(+), 17 deletions(-)
 
 diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index f3c037f5a9ba..d22859543e4b 100644
+index d22859543e4b..5062a83c3634 100644
 --- a/drivers/nvme/host/core.c
 +++ b/drivers/nvme/host/core.c
-@@ -756,6 +756,8 @@ blk_status_t nvme_setup_cmd(struct nvme_ns *ns, struct request *req,
- 	case REQ_OP_DRV_IN:
- 	case REQ_OP_DRV_OUT:
- 		memcpy(cmd, nvme_req(req)->cmd, sizeof(*cmd));
-+		/* passthru commands should let the driver set the SGL flags */
-+		cmd->common.flags &= ~NVME_CMD_SGL_ALL;
- 		break;
- 	case REQ_OP_FLUSH:
- 		nvme_setup_flush(ns, cmd);
+@@ -1317,22 +1317,8 @@ static int nvme_submit_io(struct nvme_ns *ns, struct nvme_user_io __user *uio)
+ 			metadata, meta_len, lower_32_bits(io.slba), NULL, 0);
+ }
+ 
+-static u32 nvme_known_admin_effects(u8 opcode)
+-{
+-	switch (opcode) {
+-	case nvme_admin_format_nvm:
+-		return NVME_CMD_EFFECTS_CSUPP | NVME_CMD_EFFECTS_LBCC |
+-					NVME_CMD_EFFECTS_CSE_MASK;
+-	case nvme_admin_sanitize_nvm:
+-		return NVME_CMD_EFFECTS_CSE_MASK;
+-	default:
+-		break;
+-	}
+-	return 0;
+-}
+-
+-static u32 nvme_passthru_start(struct nvme_ctrl *ctrl, struct nvme_ns *ns,
+-								u8 opcode)
++static u32 nvme_command_effects(struct nvme_ctrl *ctrl, struct nvme_ns *ns,
++				u8 opcode)
+ {
+ 	u32 effects = 0;
+ 
+@@ -1348,7 +1334,26 @@ static u32 nvme_passthru_start(struct nvme_ctrl *ctrl, struct nvme_ns *ns,
+ 
+ 	if (ctrl->effects)
+ 		effects = le32_to_cpu(ctrl->effects->acs[opcode]);
+-	effects |= nvme_known_admin_effects(opcode);
++
++	switch (opcode) {
++	case nvme_admin_format_nvm:
++		effects |= NVME_CMD_EFFECTS_CSUPP | NVME_CMD_EFFECTS_LBCC |
++			NVME_CMD_EFFECTS_CSE_MASK;
++		break;
++	case nvme_admin_sanitize_nvm:
++		effects |= NVME_CMD_EFFECTS_CSE_MASK;
++		break;
++	default:
++		break;
++	}
++
++	return effects;
++}
++
++static u32 nvme_passthru_start(struct nvme_ctrl *ctrl, struct nvme_ns *ns,
++			       u8 opcode)
++{
++	u32 effects = nvme_command_effects(ctrl, ns, opcode);
+ 
+ 	/*
+ 	 * For simplicity, IO to all namespaces is quiesced even if the command
 -- 
 2.20.1
 
