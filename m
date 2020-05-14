@@ -2,67 +2,40 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 715791D3856
-	for <lists+linux-nvme@lfdr.de>; Thu, 14 May 2020 19:32:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 669631D3D9C
+	for <lists+linux-nvme@lfdr.de>; Thu, 14 May 2020 21:35:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8rpxM9WsWEf7+nxlTTjM333uOSPojvj6DzTWBV6DZ5k=; b=AQUTlWKd3YUY3+
-	bN8nqMLr3OG7KcDJ07vbM9pMtLuQAbsjf6KujA5gp9pMCm4cSzd9/F55Nnx8qGRWe2Qbm+2dxWWGm
-	AfkWkHIh3Y5L1YR3dkhr4VYEWuTjSzhOs4kJEnQ2nWwuUHXOHWSQ6W4W1QLrEE1lU+KPMxV1Ma7gj
-	QQB8CJAE4XtJb8/ZYnGoyhP1sweUZN4i9oIAsoTGxuCzS4dkd4kLq/A082HNpHK5LGby17NjzsUlh
-	fFiep9foNFnjCFpUOoFr0g5TIIwFvEn0nIi9GIAaNFM3Tojwl81uuO5lSrVsy2G/5QFelzKhX7AK3
-	c+cNJx04cUq0SCtIESeQ==;
+	List-Owner; bh=+NxbKGuQFQtmrlfoN+og4wrEQ4ehjFfeo9grr67vX+g=; b=ZQZ4MSYrmqubOT
+	68yKRAFmvxq6BjyJLUF89w9QYyOO6KF2PzOe2pNTfC4KFN2hV0D9mqLGVjLclxeEBPy/mFhMTz2uv
+	edkX2cBntnh24jK6R67NuGG95k/wH3Tb36xg54419nwwO87lhukU4O/2dJ521/77IRHODKOEZNxaT
+	xne2IdhP6XBTNetQVCx3dbdYb5wQbJtM8rjACcOGgVABMUxum79TBtrLBYMps+QDdEdpDOARnaGAu
+	OSvKgPyxhbe7/sHC/gCUfWuMrafUDwBzqOuM/mqw7RcmJLiUIZDCdSi5GS4Sa39TtxYkR9rAzRmaG
+	q0vzwCGCd/GUkcDgLDow==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZHiy-0001wE-VD; Thu, 14 May 2020 17:32:49 +0000
-Received: from ale.deltatee.com ([207.54.116.67])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZHZh-0005OR-MS
- for linux-nvme@lists.infradead.org; Thu, 14 May 2020 17:23:18 +0000
-Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
- by ale.deltatee.com with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <gunthorp@deltatee.com>)
- id 1jZHZV-00021v-Tz; Thu, 14 May 2020 11:23:12 -0600
-Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.92)
- (envelope-from <gunthorp@deltatee.com>)
- id 1jZHZV-0001hF-4e; Thu, 14 May 2020 11:23:01 -0600
-From: Logan Gunthorpe <logang@deltatee.com>
-To: linux-kernel@vger.kernel.org,
-	linux-nvme@lists.infradead.org
-Date: Thu, 14 May 2020 11:22:53 -0600
-Message-Id: <20200514172253.6445-10-logang@deltatee.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200514172253.6445-1-logang@deltatee.com>
-References: <20200514172253.6445-1-logang@deltatee.com>
+	id 1jZJdl-0003fe-LU; Thu, 14 May 2020 19:35:33 +0000
+Received: from willy by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
+ Hat Linux)) id 1jZJdf-0003fM-JH; Thu, 14 May 2020 19:35:27 +0000
+Date: Thu, 14 May 2020 12:35:27 -0700
+From: Matthew Wilcox <willy@infradead.org>
+To: David Laight <David.Laight@aculab.com>
+Subject: Re: [Ocfs2-devel] remove kernel_setsockopt and kernel_getsockopt
+Message-ID: <20200514193527.GB16070@bombadil.infradead.org>
+References: <20200513062649.2100053-1-hch@lst.de>
+ <ecc165c33962d964d518c80de605af632eee0474.camel@perches.com>
+ <756758e8f0e34e2e97db470609f5fbba@AcuMS.aculab.com>
+ <20200514101838.GA12548@lst.de>
+ <a76440f7305c4653877ff2abff499f4e@AcuMS.aculab.com>
+ <20200514103450.GA12901@lst.de>
+ <c2034daa0a23454abb5e5c5714807735@AcuMS.aculab.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 172.16.1.31
-X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-nvme@lists.infradead.org,
- hch@lst.de, sagi@grimberg.me, kbusch@kernel.org, axboe@fb.com,
- Chaitanya.Kulkarni@wdc.com, maxg@mellanox.com, sbates@raithlin.com,
- logang@deltatee.com
-X-SA-Exim-Mail-From: gunthorp@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-6.5 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- MYRULES_FREE,MYRULES_NO_TEXT,URIBL_BLOCKED autolearn=no
- autolearn_force=no version=3.4.2
-Subject: [PATCH v13 9/9] nvmet-configfs: Introduce passthru configfs interface
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_102313_934142_BC543C4B 
-X-CRM114-Status: GOOD (  13.20  )
-X-Spam-Score: -0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
- -0.0 SPF_PASS               SPF: sender matches SPF record
+Content-Disposition: inline
+In-Reply-To: <c2034daa0a23454abb5e5c5714807735@AcuMS.aculab.com>
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,165 +47,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>,
- Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- Stephen Bates <sbates@raithlin.com>, Jens Axboe <axboe@fb.com>,
- Keith Busch <kbusch@kernel.org>, Max Gurtovoy <maxg@mellanox.com>,
- Logan Gunthorpe <logang@deltatee.com>, Christoph Hellwig <hch@lst.de>
+Cc: Marcelo Ricardo Leitner <marcelo.leitner@gmail.com>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Eric Dumazet <edumazet@google.com>,
+ "target-devel@vger.kernel.org" <target-devel@vger.kernel.org>,
+ "linux-afs@lists.infradead.org" <linux-afs@lists.infradead.org>,
+ "drbd-dev@lists.linbit.com" <drbd-dev@lists.linbit.com>,
+ "linux-cifs@vger.kernel.org" <linux-cifs@vger.kernel.org>,
+ "rds-devel@oss.oracle.com" <rds-devel@oss.oracle.com>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
+ 'Christoph Hellwig' <hch@lst.de>,
+ "cluster-devel@redhat.com" <cluster-devel@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>,
+ "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
+ Ying Xue <ying.xue@windriver.com>, Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>,
+ "ceph-devel@vger.kernel.org" <ceph-devel@vger.kernel.org>,
+ "linux-nfs@vger.kernel.org" <linux-nfs@vger.kernel.org>,
+ Neil Horman <nhorman@tuxdriver.com>,
+ Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Vlad Yasevich <vyasevich@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Jon Maloy <jmaloy@redhat.com>,
+ "linux-sctp@vger.kernel.org" <linux-sctp@vger.kernel.org>,
+ 'Joe Perches' <joe@perches.com>, "David S. Miller" <davem@davemloft.net>,
+ "ocfs2-devel@oss.oracle.com" <ocfs2-devel@oss.oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-When CONFIG_NVME_TARGET_PASSTHRU as 'passthru' directory will
-be added to each subsystem. The directory is similar to a namespace
-and has two attributes: device_path and enable. The user must set the
-path to the nvme controller's char device and write '1' to enable the
-subsystem to use passthru.
+On Thu, May 14, 2020 at 11:11:34AM +0000, David Laight wrote:
+> From: 'Christoph Hellwig'
+> > Sent: 14 May 2020 11:35
+> > On Thu, May 14, 2020 at 10:26:41AM +0000, David Laight wrote:
+> > > From: Christoph Hellwig
+> > > > Only for those were we have users, and all those are covered.
+> > >
+> > > What do we tell all our users when our kernel SCTP code
+> > > no longer works?
+> > 
+> > We only care about in-tree modules, just like for every other interface
+> > in the kernel.
+> 
+> Even if our management agreed to release the code and the code
+> layout matched the kernel guidelines you still wouldn't want
+> two large drivers that implement telephony functionality
+> for hardware that very few people actually have.
 
-Any given subsystem is prevented from enabling both a regular namespace
-and the passthru device. If one is enabled, enabling the other will
-produce an error.
-
-Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
-Reviewed-by: Sagi Grimberg <sagi@grimberg.me>
----
- drivers/nvme/target/configfs.c | 99 ++++++++++++++++++++++++++++++++++
- drivers/nvme/target/nvmet.h    |  1 +
- 2 files changed, 100 insertions(+)
-
-diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
-index e0ce6e5feb3a..59eb52a0d06c 100644
---- a/drivers/nvme/target/configfs.c
-+++ b/drivers/nvme/target/configfs.c
-@@ -613,6 +613,103 @@ static const struct config_item_type nvmet_namespaces_type = {
- 	.ct_owner		= THIS_MODULE,
- };
- 
-+#ifdef CONFIG_NVME_TARGET_PASSTHRU
-+
-+static ssize_t nvmet_passthru_device_path_show(struct config_item *item,
-+		char *page)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+
-+	return snprintf(page, PAGE_SIZE, "%s\n", subsys->passthru_ctrl_path);
-+}
-+
-+static ssize_t nvmet_passthru_device_path_store(struct config_item *item,
-+		const char *page, size_t count)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+	size_t len;
-+	int ret;
-+
-+	mutex_lock(&subsys->lock);
-+
-+	ret = -EBUSY;
-+	if (subsys->passthru_ctrl)
-+		goto out_unlock;
-+
-+	ret = -EINVAL;
-+	len = strcspn(page, "\n");
-+	if (!len)
-+		goto out_unlock;
-+
-+	kfree(subsys->passthru_ctrl_path);
-+	ret = -ENOMEM;
-+	subsys->passthru_ctrl_path = kstrndup(page, len, GFP_KERNEL);
-+	if (!subsys->passthru_ctrl_path)
-+		goto out_unlock;
-+
-+	mutex_unlock(&subsys->lock);
-+
-+	return count;
-+out_unlock:
-+	mutex_unlock(&subsys->lock);
-+	return ret;
-+}
-+CONFIGFS_ATTR(nvmet_passthru_, device_path);
-+
-+static ssize_t nvmet_passthru_enable_show(struct config_item *item,
-+		char *page)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+
-+	return sprintf(page, "%d\n", subsys->passthru_ctrl ? 1 : 0);
-+}
-+
-+static ssize_t nvmet_passthru_enable_store(struct config_item *item,
-+		const char *page, size_t count)
-+{
-+	struct nvmet_subsys *subsys = to_subsys(item->ci_parent);
-+	bool enable;
-+	int ret = 0;
-+
-+	if (strtobool(page, &enable))
-+		return -EINVAL;
-+
-+	if (enable)
-+		ret = nvmet_passthru_ctrl_enable(subsys);
-+	else
-+		nvmet_passthru_ctrl_disable(subsys);
-+
-+	return ret ? ret : count;
-+}
-+CONFIGFS_ATTR(nvmet_passthru_, enable);
-+
-+static struct configfs_attribute *nvmet_passthru_attrs[] = {
-+	&nvmet_passthru_attr_device_path,
-+	&nvmet_passthru_attr_enable,
-+	NULL,
-+};
-+
-+static const struct config_item_type nvmet_passthru_type = {
-+	.ct_attrs		= nvmet_passthru_attrs,
-+	.ct_owner		= THIS_MODULE,
-+};
-+
-+static void nvmet_add_passthru_group(struct nvmet_subsys *subsys)
-+{
-+	config_group_init_type_name(&subsys->passthru_group,
-+				    "passthru", &nvmet_passthru_type);
-+	configfs_add_default_group(&subsys->passthru_group,
-+				   &subsys->group);
-+}
-+
-+#else /* CONFIG_NVME_TARGET_PASSTHRU */
-+
-+static void nvmet_add_passthru_group(struct nvmet_subsys *subsys)
-+{
-+}
-+
-+#endif /* CONFIG_NVME_TARGET_PASSTHRU */
-+
- static int nvmet_port_subsys_allow_link(struct config_item *parent,
- 		struct config_item *target)
- {
-@@ -1047,6 +1144,8 @@ static struct config_group *nvmet_subsys_make(struct config_group *group,
- 	configfs_add_default_group(&subsys->allowed_hosts_group,
- 			&subsys->group);
- 
-+	nvmet_add_passthru_group(subsys);
-+
- 	return &subsys->group;
- }
- 
-diff --git a/drivers/nvme/target/nvmet.h b/drivers/nvme/target/nvmet.h
-index 76c3a7cb9c89..d40452e50212 100644
---- a/drivers/nvme/target/nvmet.h
-+++ b/drivers/nvme/target/nvmet.h
-@@ -243,6 +243,7 @@ struct nvmet_subsys {
- #ifdef CONFIG_NVME_TARGET_PASSTHRU
- 	struct nvme_ctrl	*passthru_ctrl;
- 	char			*passthru_ctrl_path;
-+	struct config_group	passthru_group;
- #endif /* CONFIG_NVME_TARGET_PASSTHRU */
- };
- 
--- 
-2.20.1
-
+Oh, good point, we'll change the policy for all modules and make every
+interface in the kernel stable from now on to cater to your special case.
 
 _______________________________________________
 linux-nvme mailing list
