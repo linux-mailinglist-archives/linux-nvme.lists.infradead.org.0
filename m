@@ -2,70 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E7071D98F1
-	for <lists+linux-nvme@lfdr.de>; Tue, 19 May 2020 16:07:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 319DF1D98F3
+	for <lists+linux-nvme@lfdr.de>; Tue, 19 May 2020 16:07:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kckE7yMUyj+3kh+eoyyfBqKg1Dyq7R+Rfm8ATjBhQU0=; b=PQJ1r++qPuoIDh
-	j62llNu3xvipnGwtG6vWUAmx7VZ38+s902MddKf4GxoegeHxCu9Mc9RKLLsxpRdNCSH7xY04kolGa
-	1/ERpeTflsPIFIexFRexVl5s5bJm6dZ5lf7H8O2R/7gIEjEVLualfyNx9g875vfA070b/n5B9wJvI
-	VEP61Jkg9AQO1ZXx5Z8nRpKggIs7cSTRe+z8+oU5y2YoKeJK25UbWEZ4Eb62Cund5hKPa5gQehDZ6
-	2Lrxg/b8i7DMuVyBkvWI4sShjtlaY0i/96qByFC8nPg+R2+5KWNYhosD9jLUfr7DFlK0bTmIcHNUj
-	C9or048LnDa0i0+OV51A==;
+	List-Owner; bh=ggRGUgfVu4eBJ/2/NQBk1tRsrK5QljE8Kz6nWidK1D8=; b=MkpTHYkiKPOAq0
+	mFn4KirHP83cPt+f6rr0bCerJ/Uc4Vl3ZNAEimWmJrdGBIn96NC4Tneqyn9q+93iDbNsRi3hfOFlX
+	lxARCUnZVJ8mu5B4Ay7SBpTbyF51cPaefT6ltqO6XGLetcYCHMxP8GsjVt+73ANa7ojO0WgfIDz1+
+	a2sRO6rCr69ToYYFlkp3I0qB5YnALqQ/Eez5tE2vN5SyVflEnkrK+LhvZM/MM53pBbOS42jqsrF7w
+	c4i81k+wVB8zzSLlQdEkCbcl3S0p9l0UFiudz5RDdXM5+/+QevIZRvG3kaKujfZDT108tgJGpMkpR
+	4BxQVZOTPoP7/ZTwID9Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jb2to-00028x-9K; Tue, 19 May 2020 14:07:16 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jb2sx-0001Z6-Gs
- for linux-nvme@bombadil.infradead.org; Tue, 19 May 2020 14:06:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=KVfwceqOfUpTXqxur0nZPqLz28I7+NRNiqBNJyVUAzk=; b=fP+HHQmOwdmXt01TDNPmp+E8jQ
- mC94IhQmqpTs+JFJQv+45lPZdaplPZSmKsf8deNUeDKB2JdhQibYden/xshqQh55lYrtGTk0SIRTX
- jTFkjxYwKfERSMdTSXT5Kiz1i6MiMEDepdB5mwNEibfzVGJiKf/vycYcL9FsvmeXUXcRnXfQc8fE6
- bqv/b6PYoauPBdQXKzP8ylnMWeuhcJziHbhJVw7Q/SioadHCtbvvXTgSRWibC4Wo4hzWBv5Wu5ot9
- Kd2HlXjAiYV6RS9D6QkPyxDJT8iV64VkQUwqumK2LMG/IsbBgDkStD+Bv6tkiTduZeyyXBSwDdiQm
- SC4DHkxQ==;
+	id 1jb2uB-0002Wa-5b; Tue, 19 May 2020 14:07:39 +0000
 Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by casper.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jb2so-0004WZ-Dx
- for linux-nvme@lists.infradead.org; Tue, 19 May 2020 14:06:21 +0000
-Received: from Internal Mail-Server by MTLPINE1 (envelope-from
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jb2so-0001QA-UJ
+ for linux-nvme@lists.infradead.org; Tue, 19 May 2020 14:06:25 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
  maxg@mellanox.com)
  with ESMTPS (AES256-SHA encrypted); 19 May 2020 17:06:04 +0300
 Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
  [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 04JE63xo006590;
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 04JE63xp006590;
  Tue, 19 May 2020 17:06:04 +0300
 From: Max Gurtovoy <maxg@mellanox.com>
 To: sagi@grimberg.me, linux-nvme@lists.infradead.org, kbusch@kernel.org,
  hch@lst.de, martin.petersen@oracle.com, jsmart2021@gmail.com,
  axboe@kernel.dk
-Subject: [PATCH 07/16] nvme: introduce NVME_INLINE_METADATA_SG_CNT
-Date: Tue, 19 May 2020 17:05:54 +0300
-Message-Id: <20200519140603.166576-8-maxg@mellanox.com>
+Subject: [PATCH 08/16] nvme-rdma: introduce nvme_rdma_sgl structure
+Date: Tue, 19 May 2020 17:05:55 +0300
+Message-Id: <20200519140603.166576-9-maxg@mellanox.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200519140603.166576-1-maxg@mellanox.com>
 References: <20200519140603.166576-1-maxg@mellanox.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200519_150616_133448_98204547 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
-X-Spam-Report: SpamAssassin version 3.4.4 on casper.infradead.org summary:
- Content analysis details:   (-1.9 points, 5.0 required)
+X-CRM114-CacheID: sfid-20200519_070615_479288_6F1069F7 
+X-CRM114-Status: GOOD (  11.35  )
+X-Spam-Score: -0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
- [score: 0.0000]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
@@ -82,8 +65,8 @@ List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
 Cc: vladimirk@mellanox.com, shlomin@mellanox.com, israelr@mellanox.com,
- James Smart <james.smart@broadcom.com>, idanb@mellanox.com, oren@mellanox.com,
- Max Gurtovoy <maxg@mellanox.com>, nitzanc@mellanox.com
+ idanb@mellanox.com, oren@mellanox.com, Max Gurtovoy <maxg@mellanox.com>,
+ nitzanc@mellanox.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
@@ -91,37 +74,128 @@ Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
 From: Israel Rukshin <israelr@mellanox.com>
 
-SGL size of metadata is usually small. Thus, 1 inline sg should cover
-most cases. The macro will be used for pre-allocate a single SGL entry
-for metadata. The preallocation of small inline SGLs depends on SG_CHAIN
-capability so if the ARCH doesn't support SG_CHAIN, use the runtime
-allocation for the SGL. This patch is a preparation for adding metadata
-(T10-PI) over fabric support.
+Remove first_sgl pointer from struct nvme_rdma_request and use pointer
+arithmetic instead. The inline scatterlist, if exists, will be located
+right after the nvme_rdma_request. This patch is needed as a preparation
+for adding PI support.
 
 Signed-off-by: Israel Rukshin <israelr@mellanox.com>
-Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
-Reviewed-by: Martin K. Petersen <martin.petersen@oracle.com>
+Reviewed-by: Max Gurtovoy <maxg@mellanox.com>
 Reviewed-by: Christoph Hellwig <hch@lst.de>
-Reviewed-by: James Smart <james.smart@broadcom.com>
 ---
- drivers/nvme/host/nvme.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/nvme/host/rdma.c | 41 ++++++++++++++++++++++++-----------------
+ 1 file changed, 24 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/nvme/host/nvme.h b/drivers/nvme/host/nvme.h
-index 6c7e76c..7c2e6d4 100644
---- a/drivers/nvme/host/nvme.h
-+++ b/drivers/nvme/host/nvme.h
-@@ -31,8 +31,10 @@
+diff --git a/drivers/nvme/host/rdma.c b/drivers/nvme/host/rdma.c
+index cac8a93..4086874 100644
+--- a/drivers/nvme/host/rdma.c
++++ b/drivers/nvme/host/rdma.c
+@@ -48,6 +48,11 @@ struct nvme_rdma_qe {
+ 	u64			dma;
+ };
  
- #ifdef CONFIG_ARCH_NO_SG_CHAIN
- #define  NVME_INLINE_SG_CNT  0
-+#define  NVME_INLINE_METADATA_SG_CNT  0
- #else
- #define  NVME_INLINE_SG_CNT  2
-+#define  NVME_INLINE_METADATA_SG_CNT  1
- #endif
++struct nvme_rdma_sgl {
++	int			nents;
++	struct sg_table		sg_table;
++};
++
+ struct nvme_rdma_queue;
+ struct nvme_rdma_request {
+ 	struct nvme_request	req;
+@@ -58,12 +63,10 @@ struct nvme_rdma_request {
+ 	refcount_t		ref;
+ 	struct ib_sge		sge[1 + NVME_RDMA_MAX_INLINE_SEGMENTS];
+ 	u32			num_sge;
+-	int			nents;
+ 	struct ib_reg_wr	reg_wr;
+ 	struct ib_cqe		reg_cqe;
+ 	struct nvme_rdma_queue  *queue;
+-	struct sg_table		sg_table;
+-	struct scatterlist	first_sgl[];
++	struct nvme_rdma_sgl	data_sgl;
+ };
  
- extern struct workqueue_struct *nvme_wq;
+ enum nvme_rdma_queue_flags {
+@@ -1158,8 +1161,9 @@ static void nvme_rdma_unmap_data(struct nvme_rdma_queue *queue,
+ 		req->mr = NULL;
+ 	}
+ 
+-	ib_dma_unmap_sg(ibdev, req->sg_table.sgl, req->nents, rq_dma_dir(rq));
+-	sg_free_table_chained(&req->sg_table, NVME_INLINE_SG_CNT);
++	ib_dma_unmap_sg(ibdev, req->data_sgl.sg_table.sgl, req->data_sgl.nents,
++			rq_dma_dir(rq));
++	sg_free_table_chained(&req->data_sgl.sg_table, NVME_INLINE_SG_CNT);
+ }
+ 
+ static int nvme_rdma_set_sg_null(struct nvme_command *c)
+@@ -1178,7 +1182,7 @@ static int nvme_rdma_map_sg_inline(struct nvme_rdma_queue *queue,
+ 		int count)
+ {
+ 	struct nvme_sgl_desc *sg = &c->common.dptr.sgl;
+-	struct scatterlist *sgl = req->sg_table.sgl;
++	struct scatterlist *sgl = req->data_sgl.sg_table.sgl;
+ 	struct ib_sge *sge = &req->sge[1];
+ 	u32 len = 0;
+ 	int i;
+@@ -1203,8 +1207,8 @@ static int nvme_rdma_map_sg_single(struct nvme_rdma_queue *queue,
+ {
+ 	struct nvme_keyed_sgl_desc *sg = &c->common.dptr.ksgl;
+ 
+-	sg->addr = cpu_to_le64(sg_dma_address(req->sg_table.sgl));
+-	put_unaligned_le24(sg_dma_len(req->sg_table.sgl), sg->length);
++	sg->addr = cpu_to_le64(sg_dma_address(req->data_sgl.sg_table.sgl));
++	put_unaligned_le24(sg_dma_len(req->data_sgl.sg_table.sgl), sg->length);
+ 	put_unaligned_le32(queue->device->pd->unsafe_global_rkey, sg->key);
+ 	sg->type = NVME_KEY_SGL_FMT_DATA_DESC << 4;
+ 	return 0;
+@@ -1225,7 +1229,8 @@ static int nvme_rdma_map_sg_fr(struct nvme_rdma_queue *queue,
+ 	 * Align the MR to a 4K page size to match the ctrl page size and
+ 	 * the block virtual boundary.
+ 	 */
+-	nr = ib_map_mr_sg(req->mr, req->sg_table.sgl, count, NULL, SZ_4K);
++	nr = ib_map_mr_sg(req->mr, req->data_sgl.sg_table.sgl, count, NULL,
++			  SZ_4K);
+ 	if (unlikely(nr < count)) {
+ 		ib_mr_pool_put(queue->qp, &queue->qp->rdma_mrs, req->mr);
+ 		req->mr = NULL;
+@@ -1272,17 +1277,18 @@ static int nvme_rdma_map_data(struct nvme_rdma_queue *queue,
+ 	if (!blk_rq_nr_phys_segments(rq))
+ 		return nvme_rdma_set_sg_null(c);
+ 
+-	req->sg_table.sgl = req->first_sgl;
+-	ret = sg_alloc_table_chained(&req->sg_table,
+-			blk_rq_nr_phys_segments(rq), req->sg_table.sgl,
++	req->data_sgl.sg_table.sgl = (struct scatterlist *)(req + 1);
++	ret = sg_alloc_table_chained(&req->data_sgl.sg_table,
++			blk_rq_nr_phys_segments(rq), req->data_sgl.sg_table.sgl,
+ 			NVME_INLINE_SG_CNT);
+ 	if (ret)
+ 		return -ENOMEM;
+ 
+-	req->nents = blk_rq_map_sg(rq->q, rq, req->sg_table.sgl);
++	req->data_sgl.nents = blk_rq_map_sg(rq->q, rq,
++					    req->data_sgl.sg_table.sgl);
+ 
+-	count = ib_dma_map_sg(ibdev, req->sg_table.sgl, req->nents,
+-			      rq_dma_dir(rq));
++	count = ib_dma_map_sg(ibdev, req->data_sgl.sg_table.sgl,
++			      req->data_sgl.nents, rq_dma_dir(rq));
+ 	if (unlikely(count <= 0)) {
+ 		ret = -EIO;
+ 		goto out_free_table;
+@@ -1311,9 +1317,10 @@ static int nvme_rdma_map_data(struct nvme_rdma_queue *queue,
+ 	return 0;
+ 
+ out_unmap_sg:
+-	ib_dma_unmap_sg(ibdev, req->sg_table.sgl, req->nents, rq_dma_dir(rq));
++	ib_dma_unmap_sg(ibdev, req->data_sgl.sg_table.sgl, req->data_sgl.nents,
++			rq_dma_dir(rq));
+ out_free_table:
+-	sg_free_table_chained(&req->sg_table, NVME_INLINE_SG_CNT);
++	sg_free_table_chained(&req->data_sgl.sg_table, NVME_INLINE_SG_CNT);
+ 	return ret;
+ }
+ 
 -- 
 1.8.3.1
 
