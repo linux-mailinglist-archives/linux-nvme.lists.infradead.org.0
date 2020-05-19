@@ -2,55 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E5C11D98BD
-	for <lists+linux-nvme@lfdr.de>; Tue, 19 May 2020 16:01:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 03A5B1D98FC
+	for <lists+linux-nvme@lfdr.de>; Tue, 19 May 2020 16:08:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:To:Subject:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OgQgE1xaQ7Gy0mcRcVHmqWUrG4SlglZFTOCkYd5mHsY=; b=C7TGVBXll1c9++KMSq6V9ShhJq
-	5bv/GxJBCGizIR+Yes175LedXYzxnqu5NrbRnVx3SdoPfOZrOlfyYfhpFnXcDUyyJyjTAwm2qyo04
-	kPdZBbEBbQXEuGNJy327bk/ar8fNF9I6zRktbt6aAzkb627p5juTEG5l7+FcNtmMI6qDxpljQ33NM
-	m9DRMyIodzCHp8o26sluOw5gapOAAg4kGFphe5qeFh+2sd99AnFE5qMh53nghvGiXjiCCZ0NdJly/
-	Aptu5dW7BPG7FATEHL5GGOmRESM6Snjyr7zodFbSrW75I7zleGKgntjut5GhDy0VC9GsSeoAC3h1J
-	Ok+136iA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wSb3kt7OE+1RIYFswcs5N4DuodyE6FqJLKtXrc6esf8=; b=Mwfs3UKUYUGNGH
+	QnQauAnMs8pIR+tY6dfsnuCUkGaotZLQA5/itUw1DGBpzZiVZqreb6ylFqUiiDry20tb5z3bX5yhH
+	K6MpA+LElrO4dsyOAwDPia6hR2YMXgS+Yz2wHSOPNmj2dw3EMldwFElnvE5akaZMLOZH/dAS+24bO
+	F+RAK6aReYvIlPoHOU5vWzyT8GX9xExN6JkX3VimxFiojo+rVbXqn1VjYQSdLOXjypMZvixwoEZrB
+	zfs33ZXnwFkXMhnLfF0YG/sidHGqxhxMxxk2fGNmER5xiwNHqrJSOhXumZEJaQuYeVkC4T+sawaz8
+	OwHEAuCNDUDpNoc0DnZw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jb2nh-0005ZR-FR; Tue, 19 May 2020 14:00:57 +0000
-Received: from mx2.suse.de ([195.135.220.15])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jb2nd-0005Yx-3c
- for linux-nvme@lists.infradead.org; Tue, 19 May 2020 14:00:54 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 4DE58ABE2;
- Tue, 19 May 2020 14:00:52 +0000 (UTC)
-From: Hannes Reinecke <hare@suse.de>
-Subject: RFC: FC-NVMe boot from SAN
-To: James Smart <james.smart@broadcom.com>
-Message-ID: <a3175c29-4fcc-ec4d-842b-d45645695ab0@suse.de>
-Date: Tue, 19 May 2020 16:00:48 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+	id 1jb2v1-0003Fh-Cl; Tue, 19 May 2020 14:08:31 +0000
+Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jb2so-0001Q9-SA
+ for linux-nvme@lists.infradead.org; Tue, 19 May 2020 14:06:27 +0000
+Received: from Internal Mail-Server by MTLPINE2 (envelope-from
+ maxg@mellanox.com)
+ with ESMTPS (AES256-SHA encrypted); 19 May 2020 17:06:03 +0300
+Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
+ [10.209.102.136])
+ by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 04JE63xh006590;
+ Tue, 19 May 2020 17:06:03 +0300
+From: Max Gurtovoy <maxg@mellanox.com>
+To: sagi@grimberg.me, linux-nvme@lists.infradead.org, kbusch@kernel.org,
+ hch@lst.de, martin.petersen@oracle.com, jsmart2021@gmail.com,
+ axboe@kernel.dk
+Subject: [PATCH 00/16 v8] nvme-rdma/nvmet-rdma: Add metadata/T10-PI support
+Date: Tue, 19 May 2020 17:05:47 +0300
+Message-Id: <20200519140603.166576-1-maxg@mellanox.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200519_070053_441588_129FA9F7 
-X-CRM114-Status: GOOD (  18.77  )
-X-Spam-Score: -2.3 (--)
+X-CRM114-CacheID: sfid-20200519_070615_481588_301B198C 
+X-CRM114-Status: GOOD (  11.93  )
+X-Spam-Score: -0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.3 points)
+ Content analysis details:   (-0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [195.135.220.15 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [195.135.220.15 listed in wl.mailspike.net]
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,72 +62,143 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Robert Friend <rfriend@marvell.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: vladimirk@mellanox.com, shlomin@mellanox.com, israelr@mellanox.com,
+ idanb@mellanox.com, oren@mellanox.com, Max Gurtovoy <maxg@mellanox.com>,
+ nitzanc@mellanox.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-SGkgYWxsLAoKSSd2ZSBoYWQgZGlzY3Vzc2lvbnMgd2l0aCB2YXJpb3VzIHZlbmRvcnMgb24gaG93
-IHdlIGNvdWxkIGVuYWJsZSBGQy1OVk1lIApib290IGZyb20gU0FOLiBSYXRpb25hbGUgaXMgdGhh
-dCB0cmFkaXRpb25hbCBGQyBIQkFzIGhhdmUgaGFkIHRoZSAKY2FwYWJpbGl0aWVzIHRvIGJvb3Qg
-ZnJvbSBTQU4sIHNvIGZvciBmZWF0dXJlIHBhcml0eSBhbmQgY3VzdG9tZXIgCnJlcXVlc3RzIEZD
-LU5WTWUgSEJBcyB3b3VsZCBuZWVkIHRvIGJvb3QgZnJvbSBTQU4sIHRvby4KCldoaWxlIHRoaXMg
-aXMgbm90IGEgdGVjaG5pY2FsIHByb2JsZW0gKGp1c3QgYWRkIG52bWUtY2xpIHRvIHRoZSBpbml0
-cmQpLCAKdGhlIGFkbWluaXN0cmF0aXZlIHByb2JsZW0gb2YgY29ycmVjdGx5IHNldHRpbmcgdXAg
-dGhlIE5WTWUgY29udHJvbGxlciAKcmVtYWlucyBvcGVuLgoKRm9yIHRoZSBpbml0aWFsIGRpc2Nv
-dmVyeSBudm1lLWNsaSByZXF1aXJlcyBhIGhvc3QgTlFOIGFuZCBhIGhvc3QgSUQ7IAp0aGVzZSB2
-YWx1ZXMgZGVmaW5lIHdoaWNoIG5hbWVzcGFjZXMgd2lsbCBiZSB2aXNpYmxlIGZyb20gdGhlIHRh
-cmdldC4KV2hlbiBib290aW5nIGZyb20gU0FOIHdlIGhhdmUgdGhlIHByb2JsZW0gdGhhdCB0aGUg
-TlZNZSBjb25uZWN0aW9ucyBuZWVkIAp0byBiZSBlc3RhYmxpc2hlZCBmcm9tIHR3byBkaXN0aW5j
-dCBlbnZpcm9ubWVudHM6Ci0gVUVGSSBib290IGVudmlyb25tZW50IGZvciBjcmVhdGluZyB0aGUg
-aW5pdGlhbCBjb25uZWN0aW9uIGFuZCBsb2FkIHRoZSAKa2VybmVsIC8gYm9vdGxvYWRlcgotIExp
-bnV4IGRyYWN1dCwgZm9yIGNyZWF0aW5nIHRoZSBjb25uZWN0aW9uIGZvciB0aGUgcm9vdCBmcyBh
-bmQgYm9vdCB0aGUgCnN5c3RlbS4KCkFzIGl0IHN0YW5kcyB0aGVyZSBjdXJyZW50bHkgaXMgbm8g
-bWVjaGFuaXNtIHRvIHRyYW5zZmVyIHRoZSBOVk1lIApwYXJhbWV0ZXJzIGZyb20gb25lIGVudmly
-b25tZW50IHRvIHRoZSBvdGhlci4gWWV0IHRoZXNlIHBhcmFtZW50ZXJzIG5lZWQgCnRvIGJlIGlk
-ZW50aWNhbCAob3IgbmVlZCB0byByZXN1bHQgaW4gdGhlIHNhbWUgbmFtZXNwYWNlcyB0byBiZSB2
-aXNpYmxlKQpmb3IgYSBzdWNjZXNzZnVsIGJvb3QgZnJvbSBTQU4uCgpUbyBmYWNpbGl0YXRlIHRo
-aXMgaGVyZSdzIGEgcHJvcG9zYWwgaG93IHdlIGNvdWxkIGF0dGVtcHQgYm9vdCBmcm9tIFNBTjoK
-ClN0ZXAgMSkgUmVxdWlyZSB0aGUgYWRtaW4gdG8gcHJvdmlkZSBpZGVudGljYWwgcGFyYW1ldGVy
-cyBpbiBib3RoIAplbnZpcm9ubWVudHMuIFRoaXMgaXMgcHJldHR5IG9idmlvdXMsIGJ1dCB0aGVu
-IGl0IHdvdWxkIHJlcXVpcmUgdGhlIAphZG1pbiB0byBlaXRoZXIgdXNlIHRoZSBwYXJhbWV0ZXJz
-IGZyb20gdGhlIFVFRkkgYm9vdCBlbnZpcm9ubWVudCB0byAKY3JlYXRlIHRoZSAvZXRjL252bWUv
-aG9zdG5xbiBhbmQgL2V0Yy9ob3N0aWQgb24gdGhlIExpbnV4IHNpZGUsIG9yIHVzZSAKdGhlIExp
-bnV4IHBhcmFtZXRlcnMgdG8gaW5pdGlhbGl6ZSB0aGUgVUVGSSBib290IGVudmlyb21lbnQuCkFz
-IEkgY2FuJ3QgbWFrZSBhbnkgYXNzdW1wdGlvbnMgYWJvdXQgdGhlIGNhcGFiaWxpdGllcyBvZiB0
-aGUgVUVGSSBib290CmVudmlyb25tZW50IEkgY2Fubm90IG1ha2UgcmVjb21tZW5kYXRpb25zIGVp
-dGhlciB3YXkuClRoaXMgc3RlcCBoYXMgdGhlIGFkdmFudGFnZSBvZiByZXF1aXJpbmcgbGl0dGxl
-IHRvIG5vbmUgbW9kaWZpY2F0aW9ucwp0byB0aGUgZXhpc3RpbmcgdG9vbGluZywgYnV0IHRoZSBi
-aWcgZGlzYWR2YW50YWdlIG9mIHBsYWNpbmcgdGhlIGJ1cmRlbgpvbiB0aGUgYWRtaW4uCgpTdGVw
-IDIpIEFncmVlIG9uIGEgY29tbW9uIG1ldGhvZCBmb3IgZ2VuZXJhdGluZyB0aGUgTlZNZSBwYXJh
-bWV0ZXJzLgpGb3IgbnZtZS1jbGkgd2UgYWxyZWFkeSB1c2UgdGhlIHN5c3RlbSBVVUlEIHRvIGdl
-bmVyYXRlIAovZXRjL252bWUvaG9zdG5xbjsgd2UgY291bGQgc2ltaWxhcmx5IHVzZSB0aGUgc3lz
-dGVtIFVVSUQgdG8gZ2VuZXJhdGUgCi9ldGMvbnZtZS9ob3N0aWQsIHRvby4gUmVjb21tZW5kYXRp
-b24gdG8gdGhlIFVFRkkgYm9vdCBST00gdmVuZG9ycyB3b3VsZCBub3cKdG8gZm9sbG93IHN1aXQs
-IHJlc3VsdGluZyBpbiBpZGVudGljYWwgcGFyYW1ldGVycyBpbiBib3RoIGVudmlyb21lbnRzLgpU
-aGlzIGFnYWluIHJlcXVpcmVzIGJhc2ljYWxseSBubyBtb2RpZmljYXRpb25zIHRvIHRoZSBleGlz
-dGluZyB0b29saW5nLApidXQgaGFzIHRoZSBkcmF3YmFjayB0aGF0IG9uZSBjYW5ub3QgZWFzaWx5
-IGNoYW5nZSB0aGVzZSBwYXJhbWV0ZXJzLgoKU3RlcCAzKSBBZ3JlZSBvbiBhIHNldCBvZiBVRUZJ
-IGJvb3QgdmFyaWFibGVzIHRvIHN0b3JlIHRoZSBwYXJhbWV0ZXJzClVFRkkgYWxyZWFkeSBoYXMg
-YSBzZXQgb2YgdmFyaWFibGVzLCB3aGljaCB0byBteSBrbm93bGVkZ2UgY2FuIGJlIApjcmVhdGVk
-IGJ5IHRoZSBVRUZJIGJvb3QgUk9NIGFuZCBhcmUgcGVyc2lzdGVudCBiZXR3ZWVuIGJvdGggCmVu
-dmlyb25tZW50cywgcG9zc2libHkgZXZlbiBhY3Jvc3MgcmVib290cy4gUmVjb21tZW5kYXRpb24g
-aXMgdG8KYWdyZWUgb24gYSBzZXQgb2YgVUVGSSB2YXJpYWJsZXMgd2hpY2ggYXJlIGFjY2Vzc2li
-bGUgZnJvbSBib3RoIAplbnZpcm9ubWVudHMsIGFsbG93aW5nIHVzIHRvIHBhc3MgaW5mb3JtYXRp
-b24gYmFjayBhbmQgZm9ydGguClRoaXMgb2J2aW91c2x5IHJlcXVpcmVzIHRoZSBtb3N0IGludGVy
-YWN0aW9uLCBhbmQgYWxzbyBidXktaW4gZnJvbSB0aGUgClVFRkkgb3JnYW5pc2F0aW9uLCB0b28u
-CgpIZW5jZSBJIHdvdWxkIHByb3Bvc2UgdGhpcyBhcyB0aGUgZmluYWwgc3RlcCBvbmNlIFN0ZXAg
-MSkgYW5kIFN0ZXAgMikgCmhhdmUgYmVlbiBhZ3JlZWQgdXBvbi4KCkFzIHVzdWFsLCBmZWVkYmFj
-ayBhbmQgY29tbWVudHMgYXJlIHdlbGNvbWUuCgpBbmQgaWYgeW91IGZpbmQgdGhhdCB0aGUgbGlu
-dXggbnZtZSBtYWlsaW5nIGxpc3QgaXMgbm90IHRoZSBhcHByb3ByaWF0ZSAKdmVudWUgdG8gZGlz
-Y3VzcyB0aGlzIHBsZWFzZSBwb2ludCBtZSB0aGUgYSBiZXR0ZXIgc3VpdGVkIG9uZS4KCkNoZWVy
-cywKCkhhbm5lcwotLSAKRHIuIEhhbm5lcyBSZWluZWNrZSAgICAgICAgICAgIFRlYW1sZWFkIFN0
-b3JhZ2UgJiBOZXR3b3JraW5nCmhhcmVAc3VzZS5kZSAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICArNDkgOTExIDc0MDUzIDY4OApTVVNFIFNvZnR3YXJlIFNvbHV0aW9ucyBHbWJILCBNYXhm
-ZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJlcmcKSFJCIDM2ODA5IChBRyBOw7xybmJlcmcpLCBHZXNj
-aMOkZnRzZsO8aHJlcjogRmVsaXggSW1lbmTDtnJmZmVyCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1udm1lIG1haWxpbmcgbGlzdApsaW51eC1u
-dm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1udm1lCg==
+Hello Sagi, Christoph, Keith, Martin, Jens, James and Co
+
+This patchset adds metadata (T10-PI) support for NVMeoF/RDMA host side
+and target side, using signature verbs API. This set starts with a few
+preparation commits to the the block layer and NVMe host core layer. It
+continues with NVMeoF/RDMA host implementation and preparations to NVMe
+target core layer. The patchset ends with NVMeoF/RDMA target
+implementation.
+
+In V8 I mainly added Reviewed-by signatures from Martin, Christoph and James.
+Also fixed a bug in apptag assignment and escape option (from Martin).
+
+Configuration:
+Host:
+ - same as before
+
+Target:
+ - echo 1 > /config/nvmet/subsystems/${NAME}/attr_pi_enable
+ - echo 1 > /config/nvmet/ports/${PORT_NUM}/param_pi_enable
+
+The code was tested using Mellanox's ConnectX-4/ConnectX-5 HCAs.
+This series applies on top of nvme_5.8 branch cleanly.
+
+Changes from v7:
+ - added "Reviewed-by" (Martin/James/Christoph)
+ - fix apptag (patch 9/16, 16/16 - Martin)
+ - rebased over nvme_5.8
+
+Changes from v6:
+ - added preparation patch for genhd.h
+ - added "Reviewed-by" (Christoph) to patches 2, 3, 4, 6, 10, 13
+ - refactor nvme-rdma/nvmet-rdma code according to Christoph suggestions
+ - rename md to metadata to make code more readable
+ 
+Changes from v5:
+ - rebased over nvme_5.8
+ - configure RDMA controllers for T10-PI by default (if capable)
+ - removed RW api patch for exporting single MR length (will add it in the future if needed)
+ - Implemented Christoph's suggestions for NVMe host core
+ 
+Changes from v4:
+ - removed get_mdts patches (merged)
+ - added enum nvme_ns_features instead of defines (patch 1/17)
+ - rename pi/prot to md (patches 2/17 + 6/17 + 8/17 + 9/17 + 10/17)
+ - another rebase
+
+Changes from v3:
+ - Added Reviewed-by signatures
+ - New RDMA/rw patch (Patch 17/19)
+ - Add mdts setting op for controllers (Patches 14/19, 18/19)
+ - Rename NVME_NS_DIX_SUPPORTED to NVME_NS_MD_HOST_SUPPORTED and
+   NVME_NS_DIF_SUPPORTED to NVME_NS_MD_CTRL_SUPPORTED (Patch 01/19)
+ - Split "nvme: Introduce namespace features flag" patch (patch 02/19)
+ - Rename nvmet_rdma_set_diff_domain to nvmet_rdma_set_sig_domain
+   and nvme_rdma_set_diff_domain to nvme_rdma_set_sig_domain
+   (Patches 08/19, 19/19)
+ - Remove ns parameter from nvme_rdma_set_sig_domain/nvmet_rdma_set_sig_domain
+   functions (patch 08/19, 19/19)
+ - Rebase over nvme-5.7 branch
+
+Changes from v2:
+ - Convert the virtual start sector (which passed to bip_set_seed function)
+   to be in integrity interval units (Patch 14/15)
+ - Clarify some commit messages
+
+Changes from v1:
+ - Added Reviewed-by signatures
+ - Added namespace features flag (Patch 01/15)
+ - Remove nvme_ns_has_pi function (Patch 01/15)
+ - Added has_pi field to struct nvme_request (Patch 01/15)
+ - Subject change for patch 02/15
+ - Fix comment for PCI metadata (Patch 03/15)
+ - Rebase over "nvme: Avoid preallocating big SGL for data" patchset
+ - Introduce NVME_INLINE_PROT_SG_CNT flag (Patch 05/15)
+ - Introduce nvme_rdma_sgl structure (Patch 06/15)
+ - Remove first_sgl pointer from struct nvme_rdma_request (Patch 06/15)
+ - Split nvme-rdma patches (Patches 06/15, 07/15)
+ - Rename is_protected to use_pi (Patch 07/15)
+ - Refactor nvme_rdma_get_max_fr_pages function (Patch 07/15)
+ - Added ifdef CONFIG_BLK_DEV_INTEGRITY (Patches 07/15, 09/15, 13/15,
+   14/15, 15/15)
+ - Added port configfs pi_enable (Patch 14/15)
+
+
+Israel Rukshin (9):
+  nvme: introduce NVME_INLINE_METADATA_SG_CNT
+  nvme-rdma: introduce nvme_rdma_sgl structure
+  nvmet: add metadata characteristics for a namespace
+  nvmet: rename nvmet_rw_len to nvmet_rw_data_len
+  nvmet: rename nvmet_check_data_len to nvmet_check_transfer_len
+  nvme: add Metadata Capabilities enumerations
+  nvmet: add metadata/T10-PI support
+  nvmet: add metadata support for block devices
+  nvmet-rdma: add metadata/T10-PI support
+
+James Smart (1):
+  nvme: make nvme_ns_has_pi accessible to transports
+
+Max Gurtovoy (6):
+  block: always define struct blk_integrity in genhd.h
+  nvme: introduce namespace features flag
+  nvme: introduce NVME_NS_METADATA_SUPPORTED flag
+  nvme: introduce max_integrity_segments ctrl attribute
+  nvme: enforce extended LBA format for fabrics metadata
+  nvme-rdma: add metadata/T10-PI support
+
+ drivers/nvme/host/core.c          |  83 +++++++---
+ drivers/nvme/host/lightnvm.c      |   5 +-
+ drivers/nvme/host/nvme.h          |  17 +-
+ drivers/nvme/host/pci.c           |   6 +
+ drivers/nvme/host/rdma.c          | 321 ++++++++++++++++++++++++++++++++++----
+ drivers/nvme/target/admin-cmd.c   |  40 +++--
+ drivers/nvme/target/configfs.c    |  58 +++++++
+ drivers/nvme/target/core.c        | 122 +++++++++++----
+ drivers/nvme/target/discovery.c   |   8 +-
+ drivers/nvme/target/fabrics-cmd.c |  15 +-
+ drivers/nvme/target/io-cmd-bdev.c | 113 +++++++++++++-
+ drivers/nvme/target/io-cmd-file.c |   6 +-
+ drivers/nvme/target/nvmet.h       |  33 +++-
+ drivers/nvme/target/rdma.c        | 238 +++++++++++++++++++++++++---
+ include/linux/genhd.h             |   4 -
+ include/linux/nvme.h              |   6 +
+ 16 files changed, 934 insertions(+), 141 deletions(-)
+
+-- 
+1.8.3.1
+
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
