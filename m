@@ -2,105 +2,55 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 318F61DB27B
-	for <lists+linux-nvme@lfdr.de>; Wed, 20 May 2020 13:58:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9F1B1DB612
+	for <lists+linux-nvme@lfdr.de>; Wed, 20 May 2020 16:18:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6lOFtTgl3OLKwKk/QPXAl4fIYctntMwC11DQX2dmVmw=; b=AqTjkdzkCl6Rze
-	8s/wy8QH/bLBx/ifwRZjUWzbT1DeTM2v1KR30DijKqfjgXkuYFMssr2ATHjYE0jqX/EOAxYuj4Hd0
-	sp2oZrKpNFnCrz/buLoNYpznjsQNQuny0j/m+fGYyF0ZJtqzLJKpREle4O+hxKzYWT5GnWZiuiW6/
-	Fs231FaPK1M+Qu7j6DqDPh/THMfmnMa0oA5daz0t/1AWEUN9B+ufD2gU35Kepq4LLMwID9LpS0gM3
-	xNJdoQtQqtDl6TfV4iDK1Ub+TtCFVEh5vfVWR9983XmlUNqXQFvbzlvG39PCzUkgMWKS3nJAlNmt3
-	UMbUsH+2HyLMnR8psdNQ==;
+	List-Owner; bh=0pdMPwnDHIJAaI8tpaehVVzfrYiHGdyOCpW5X3nv420=; b=pCnlIbOaJM/2Rj
+	acaESZHl4qMe3JkBXx9FljIz2SZXKZXvFZEZGB+azOaRfM/5LEb/EhHh/5EKoHP6UFDuCLooHaUH/
+	LJKu6WLFMFIZ4ptlwB7gfxTmBigjF/JQX8Jb0Mr/3FFx8RncVFf1FTq6T3dG/U1gDmarYo3U5Vo6p
+	26JkHYxC39ol6Zl/oceMrbyXgCCjOS3HhfeyYTyHsTsCsLoCGwYocnvEeuStJde2lHt/Lx1xs6zA9
+	HxqZnyvgpAPFsbcMccoMVzB+Igadq4mvuY86/g/wrbv3fmaXiQ+sYrmzWMI0Ay3B/ki1bdwggMjOY
+	vTCUfh3wxxslYewMPiHQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbNML-00086I-Ff; Wed, 20 May 2020 11:58:05 +0000
-Received: from merlin.infradead.org ([205.233.59.134])
+	id 1jbPYN-0004NG-4b; Wed, 20 May 2020 14:18:39 +0000
+Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbNM3-0007ze-AL
- for linux-nvme@bombadil.infradead.org; Wed, 20 May 2020 11:57:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=GBME5VSXnFGx9scGEIfsYchYGWKkURWlktqEtdC0dks=; b=ji7Se44GvlphNE/iQG2tL0ovvt
- s3lLqfF4aLjgw9gqBpXPbZpnYcspD1OGVR41zM508OyunyfX9eW1YjR4luHx9Ynj982LnSlF5NmxO
- Q9AMM1toVgJO6gHERGW7FtkrHPK9uB3D77cPo2m8+I1g1MgQS3oAKqFYz/WjhRtSRnU/0mzu5aPtE
- pk+uE7AWhDwsRxhROQ8vF1RfRc7cpModqGFt/5yLNB9yBzqN7iIarbi5i7oIh7GYsqIu4fY2//Gka
- 2zhUZ+z/XfHrvQEGuF8DvVIRaW37llRiIKCrJncmN2Rk/cY4YI/k4loBpNaUjJUFBzhPC0CQNGFDH
- tGflkHkQ==;
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
- helo=us-smtp-1.mimecast.com)
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbNM2-0007Nf-4I
- for linux-nvme@lists.infradead.org; Wed, 20 May 2020 11:57:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589975847;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GBME5VSXnFGx9scGEIfsYchYGWKkURWlktqEtdC0dks=;
- b=B5byfl2JPPHSXSgqs/6VWGHdOu3U85SrHSRJ1Pf9IGEyZL6363YaaDry16MKkw9lbKy+Jv
- 2CU/3txpY9pV9Aom5KKCqW4nOZIHR8gPvQBmYsX70qdo/syEDUOyXwLXTX9ybO8k+8bP8U
- 0zawvq8P2To9qTXtSqf52mtF9Qs5voQ=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589975865;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GBME5VSXnFGx9scGEIfsYchYGWKkURWlktqEtdC0dks=;
- b=M5WqtuvizLY374VRJ2I5VJ2EbEQHQ/zsVsNHEG8k6nxrjWeTCrQgYvzUl0u+w//Vwyltxz
- SHwfo/gDgAgZpx+xFdzS3rGrmlHM/vfPxUhWgK+2yth25ZhlAe9yqpTqeyu48l9qw9g7jA
- Cfm5fDwZ3muaKWGsugLf6S4S4C19ZYU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-301-47cSIoHyM5KUADO2tn_ssQ-1; Wed, 20 May 2020 07:57:25 -0400
-X-MC-Unique: 47cSIoHyM5KUADO2tn_ssQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 62BBA18FF660;
- Wed, 20 May 2020 11:57:24 +0000 (UTC)
-Received: from localhost (ovpn-12-81.pek2.redhat.com [10.72.12.81])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8DFA8707B8;
- Wed, 20 May 2020 11:57:23 +0000 (UTC)
-From: Ming Lei <ming.lei@redhat.com>
-To: Jens Axboe <axboe@kernel.dk>, linux-block@vger.kernel.org,
- linux-nvme@lists.infradead.org, Christoph Hellwig <hch@lst.de>
-Subject: [PATCH 3/3] nvme-pci: make nvme reset more reliable
-Date: Wed, 20 May 2020 19:56:55 +0800
-Message-Id: <20200520115655.729705-4-ming.lei@redhat.com>
-In-Reply-To: <20200520115655.729705-1-ming.lei@redhat.com>
-References: <20200520115655.729705-1-ming.lei@redhat.com>
+ id 1jbPYI-0004Mo-3F; Wed, 20 May 2020 14:18:36 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id 9508368C4E; Wed, 20 May 2020 16:18:30 +0200 (CEST)
+Date: Wed, 20 May 2020 16:18:30 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Joe Perches <joe@perches.com>
+Subject: Re: [PATCH 20/33] ipv4: add ip_sock_set_recverr
+Message-ID: <20200520141830.GA28867@lst.de>
+References: <20200513062649.2100053-1-hch@lst.de>
+ <20200513062649.2100053-21-hch@lst.de>
+ <0ee5acfaca4cf32d4efad162046b858981a4dae3.camel@perches.com>
+ <20200514103025.GB12680@lst.de>
+ <9992a1fe768a0b1e9bb9470d2728ba25dbe042db.camel@perches.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Spam-Note: CRM114 invocation failed
-X-Spam-Score: -0.2 (/)
-X-Spam-Report: SpamAssassin version 3.4.4 on merlin.infradead.org summary:
- Content analysis details:   (-0.2 points)
+Content-Disposition: inline
+In-Reply-To: <9992a1fe768a0b1e9bb9470d2728ba25dbe042db.camel@perches.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200520_071834_825703_1B33F7E3 
+X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.211.31.120 listed in list.dnswl.org]
+ no trust [213.95.11.211 listed in list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [207.211.31.120 listed in wl.mailspike.net]
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,126 +62,35 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, Keith Busch <kbusch@kernel.org>,
- Max Gurtovoy <maxg@mellanox.com>, Alan Adamson <alan.adamson@oracle.com>,
- Ming Lei <ming.lei@redhat.com>
+Cc: Marcelo Ricardo Leitner <marcelo.leitner@gmail.com>,
+ linux-nvme@lists.infradead.org, Eric Dumazet <edumazet@google.com>,
+ target-devel@vger.kernel.org, linux-afs@lists.infradead.org,
+ drbd-dev@lists.linbit.com, linux-cifs@vger.kernel.org,
+ rds-devel@oss.oracle.com, linux-rdma@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>, cluster-devel@redhat.com,
+ Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, linux-block@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, ceph-devel@vger.kernel.org,
+ linux-nfs@vger.kernel.org, Neil Horman <nhorman@tuxdriver.com>,
+ Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, netdev@vger.kernel.org,
+ Vlad Yasevich <vyasevich@gmail.com>, linux-kernel@vger.kernel.org,
+ Jon Maloy <jmaloy@redhat.com>, linux-sctp@vger.kernel.org,
+ Ying Xue <ying.xue@windriver.com>, "David S. Miller" <davem@davemloft.net>,
+ ocfs2-devel@oss.oracle.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-During waiting for in-flight IO completion in reset handler, timeout
-or controller failure still may happen, then the controller is deleted
-and all inflight IOs are failed. This way is too violent.
+On Thu, May 14, 2020 at 04:51:26AM -0700, Joe Perches wrote:
+> > Mostly to keep it symmetric with the sockopt.  I could probably remove
+> > a few arguments in the series if we want to be strict.
+> 
+> My preference would use strict and add
+> arguments only when necessary.
 
-Improve the reset handling by replacing nvme_wait_freeze with query
-& check controller. If all ns queues are frozen, the controller is reset
-successfully, otherwise check and see if the controller has been disabled.
-If yes, break from the current recovery and schedule a fresh new reset.
-
-This way avoids to failing IO & removing controller unnecessarily.
-
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Sagi Grimberg <sagi@grimberg.me>
-Cc: Keith Busch <kbusch@kernel.org>
-Cc: Max Gurtovoy <maxg@mellanox.com>
-Signed-off-by: Ming Lei <ming.lei@redhat.com>
----
- drivers/nvme/host/pci.c | 37 ++++++++++++++++++++++++++++++-------
- 1 file changed, 30 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index ce0d1e79467a..b5aeed33a634 100644
---- a/drivers/nvme/host/pci.c
-+++ b/drivers/nvme/host/pci.c
-@@ -24,6 +24,7 @@
- #include <linux/io-64-nonatomic-lo-hi.h>
- #include <linux/sed-opal.h>
- #include <linux/pci-p2pdma.h>
-+#include <linux/delay.h>
- 
- #include "trace.h"
- #include "nvme.h"
-@@ -1235,9 +1236,6 @@ static enum blk_eh_timer_return nvme_timeout(struct request *req, bool reserved)
- 	 * shutdown, so we return BLK_EH_DONE.
- 	 */
- 	switch (dev->ctrl.state) {
--	case NVME_CTRL_CONNECTING:
--		nvme_change_ctrl_state(&dev->ctrl, NVME_CTRL_DELETING);
--		/* fall through */
- 	case NVME_CTRL_DELETING:
- 		dev_warn_ratelimited(dev->ctrl.device,
- 			 "I/O %d QID %d timeout, disable controller\n",
-@@ -2393,7 +2391,8 @@ static void nvme_dev_disable(struct nvme_dev *dev, bool shutdown)
- 		u32 csts = readl(dev->bar + NVME_REG_CSTS);
- 
- 		if (dev->ctrl.state == NVME_CTRL_LIVE ||
--		    dev->ctrl.state == NVME_CTRL_RESETTING) {
-+		    dev->ctrl.state == NVME_CTRL_RESETTING ||
-+		    dev->ctrl.state == NVME_CTRL_CONNECTING) {
- 			freeze = true;
- 			nvme_start_freeze(&dev->ctrl);
- 		}
-@@ -2504,12 +2503,29 @@ static void nvme_remove_dead_ctrl(struct nvme_dev *dev)
- 		nvme_put_ctrl(&dev->ctrl);
- }
- 
-+static bool nvme_wait_freeze_and_check(struct nvme_dev *dev)
-+{
-+	bool frozen;
-+
-+	while (true) {
-+		frozen = nvme_frozen(&dev->ctrl);
-+		if (frozen)
-+			break;
-+		if (!dev->online_queues)
-+			break;
-+		msleep(5);
-+	}
-+
-+	return frozen;
-+}
-+
- static void nvme_reset_work(struct work_struct *work)
- {
- 	struct nvme_dev *dev =
- 		container_of(work, struct nvme_dev, ctrl.reset_work);
- 	bool was_suspend = !!(dev->ctrl.ctrl_config & NVME_CC_SHN_NORMAL);
- 	int result;
-+	bool reset_done = true;
- 
- 	if (WARN_ON(dev->ctrl.state != NVME_CTRL_RESETTING)) {
- 		result = -ENODEV;
-@@ -2606,8 +2622,9 @@ static void nvme_reset_work(struct work_struct *work)
- 		nvme_free_tagset(dev);
- 	} else {
- 		nvme_start_queues(&dev->ctrl);
--		nvme_wait_freeze(&dev->ctrl);
--		nvme_dev_add(dev);
-+		reset_done = nvme_wait_freeze_and_check(dev);
-+		if (reset_done)
-+			nvme_dev_add(dev);
- 		nvme_unfreeze(&dev->ctrl);
- 	}
- 
-@@ -2622,7 +2639,13 @@ static void nvme_reset_work(struct work_struct *work)
- 		goto out;
- 	}
- 
--	nvme_start_ctrl(&dev->ctrl);
-+	/* New error happens during reset, so schedule a new reset */
-+	if (!reset_done) {
-+		dev_warn(dev->ctrl.device, "new error during reset\n");
-+		nvme_reset_ctrl(&dev->ctrl);
-+	} else {
-+		nvme_start_ctrl(&dev->ctrl);
-+	}
- 	return;
- 
-  out_unlock:
--- 
-2.25.2
-
+In a few cases that would create confusion as the arguments are rather
+overloaded.  But for a lot of the cases where it doesn't and there isn't
+really much use for other arguments I've done that now.
 
 _______________________________________________
 linux-nvme mailing list
