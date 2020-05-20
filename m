@@ -2,40 +2,36 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EC8F1DAA7D
-	for <lists+linux-nvme@lfdr.de>; Wed, 20 May 2020 08:18:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EC6CE1DAA88
+	for <lists+linux-nvme@lfdr.de>; Wed, 20 May 2020 08:20:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gPSFCDYmeyFZStxetaJTJSM2k1VtiMqA+eFTgwRFWug=; b=TGxzu731g09V7q
-	M/q0IOMqgEqwBFcbeUud7CQmDvava+TCbAqKZsijz1PQ9j8Ya2WyLlOhNJ4DtyI8iwCJpWLgXT7SS
-	os1tsdtgckpY2ibyOt2lgIlLYwdQ39A4EZxu7CbgXutFs2R/Vu/kq7FaSnXdhXIO08QBu2WmP8WqD
-	8NzUncSsNwmoB7TAsGk2/C7MYwk/ngIVAfJP+vUBkNVtp4PLltb9EbrM3evpcuuw9DzYOZZqSGlk9
-	0IUBnNBnL6SfFkmUG8qg8OPsvTGPcwDoHaSGMU2US8vRzf+F/NJc+TD8N29FpRWboC0dsyVPTIp5M
-	56OWQBlVI81elxQ+80Gw==;
+	List-Owner; bh=ZY1STDT4h/N2n3MN6KVLLh0uS9lpJLkF5Fd3EAHoN5o=; b=QMEf1WMdy15ec9
+	IFKgcXl3EVk9i/hQC6W+D1ksx7FkA45zzLaKKJx2hjGhzeHritXEdv4XWxVf2oJRgypF2BXvWz4Ei
+	QUTcr89dn6Mp19asyJwwrscmLkvLjrCNEkZ3mM4Q5TnECEUzSxFBTgeN5DQYwmEdvrLKLAYW4EKxL
+	YirN4BEVZ092+vKYJzVyhAGNYpra09vO7/OcX5LLAflnEWQ4RI+7dntQC3yzTj3OPsL3ajAi10OO3
+	Wz6lXjT6RlreHqcCoZKsrgH3nRszVLscLtQ1plqIRpdF1B0uRX4eGHmvudOlVKrnDNiGzg9onLIKx
+	BfgF84sgavUvg7qiwigQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbI3z-0008QT-Uh; Wed, 20 May 2020 06:18:47 +0000
+	id 1jbI5N-0002CZ-Ls; Wed, 20 May 2020 06:20:13 +0000
 Received: from hch by bombadil.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1jbI3v-0008QA-UY; Wed, 20 May 2020 06:18:43 +0000
-Date: Tue, 19 May 2020 23:18:43 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Sagi Grimberg <sagi@grimberg.me>
-Subject: Re: [PATCH v2 2/2] nvmet: avoid memleak by freeing any remaining
- aens in nvmet_async_events_free
-Message-ID: <20200520061843.GB18308@infradead.org>
+ Hat Linux)) id 1jbI5H-0001oe-8q; Wed, 20 May 2020 06:20:07 +0000
+Date: Tue, 19 May 2020 23:20:07 -0700
+From: "hch@infradead.org" <hch@infradead.org>
+To: David Milburn <dmilburn@redhat.com>
+Subject: Re: [PATCH v2 0/2] nvmet: fixup processing async events
+Message-ID: <20200520062007.GC18308@infradead.org>
 References: <1589828396-144513-1-git-send-email-dmilburn@redhat.com>
- <1589828396-144513-3-git-send-email-dmilburn@redhat.com>
- <388242d3-5ccc-d694-c7a0-ac489f63f26a@grimberg.me>
- <ced87004-a580-853f-2a27-e3acb789637e@redhat.com>
- <a47fb849-df48-1d7e-d34a-269257487393@grimberg.me>
- <37746101-6300-4364-079d-c6850d2d55d5@grimberg.me>
+ <BYAPR04MB4965E89E9794EC5D80D830BC86B90@BYAPR04MB4965.namprd04.prod.outlook.com>
+ <d5453672-54b1-b456-506e-5bf69adc9e43@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <37746101-6300-4364-079d-c6850d2d55d5@grimberg.me>
+In-Reply-To: <d5453672-54b1-b456-506e-5bf69adc9e43@redhat.com>
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,31 +43,23 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: hch@infradead.org, David Milburn <dmilburn@redhat.com>, dwagner@suse.de,
- chaitanya.kulkarni@wdc.com, linux-nvme@lists.infradead.org
+Cc: "hch@infradead.org" <hch@infradead.org>,
+ "dwagner@suse.de" <dwagner@suse.de>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
+ Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Tue, May 19, 2020 at 01:51:38PM -0700, Sagi Grimberg wrote:
-> Umm, and this section needs to be removed now of course...
-> 
-> The loop here needs to be:
-> --
->         mutex_lock(&ctrl->lock);
->         while (ctrl->nr_async_event_cmds) {
->                 aen = list_first_entry(&ctrl->async_events,
->                                 struct nvmet_async_event, entry);
->                 list_del(&aen->entry);
->                 kfree(aen);
->                 req = ctrl->async_event_cmds[--ctrl->nr_async_event_cmds];
->         }
->         mutex_unlock(&ctrl->lock);
-> --
+On Tue, May 19, 2020 at 02:17:39PM -0500, David Milburn wrote:
+> We have only tested with rdma.
 
-->nr_async_event_cmds has nothing to do with the number of entries on
-->async_events
+I you want to reproduce it I think we'd need to do something like:
+
+ - generated lots of aens
+ - shut down the admin connection
+
 
 _______________________________________________
 linux-nvme mailing list
