@@ -2,90 +2,95 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A2A01DBB35
-	for <lists+linux-nvme@lfdr.de>; Wed, 20 May 2020 19:23:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A88B1DBB65
+	for <lists+linux-nvme@lfdr.de>; Wed, 20 May 2020 19:27:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VaJ3e5Wva6u3XeVlRB7Zq05Zci8Vlr11HmHul072xh0=; b=THhYjd3C1ELCMisQ103Tvh66H
-	lSViUZ5BVjiSf75XqHx/+dppkdwJDQ0Ph7xDkZorTnyoojxQ1Jwfew/qc8gwrNN0WECEvFMPRLelC
-	6CQyvE06vfOgoUUCk7NCTx4+q4JoL36P5BPYEUPKhUJAN8c48asGB34L2fQ8hS7+nCUHUFzJ9hctS
-	KPuQZf+E1GNHGJBQ8AG8yUHHKY9paQlXVyTQ9IR27C8MayVPygVojFers54xuWRodRrMZa9mX8egY
-	WCy/cyYkMufXg6clnrfuWdK73fNMYiIo/JfTitqL4G5gy2uRDUSNcs8qrvzJruncxTjmBlRzGa+nK
-	gbFOyyvUw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bceEiF2stXgVMlgVyfeXqlPsG6qTr0g7o8gcFIRl+uA=; b=ODsNcJ6cwJQNut
+	Xhmqsxt+UyMIywTJZ+xwa77TpDL8sR4VsAL9YnLrDvtWMuIx8EWQNAgkHsQFPhylK8QlGgvg514pe
+	F9yFd6S+7W7XXHaWiXInyAwc1XbYwuxabf76o+x9lCiQGt+cuLhRN1a0afMRxEZ8gCeDJMtsJ5fxX
+	9aeTAwAvjgePgJoQ0Lly5XFva9LlDXv06AE4OE9Hj7jazvE4c358a4LmXKZrsx2dgHA+Zt0EMp36i
+	YdMVY42F+EN7I0zFzfrRnjN5g9tVJabBOOh4BtqgUrC7nDbILgnlmHTOZ+3u5+hddwTlh4x0JeNae
+	MKhmVDvIg5xLXqvVZjMg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbSR3-0000bU-3Q; Wed, 20 May 2020 17:23:17 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
- helo=us-smtp-1.mimecast.com)
+	id 1jbSUy-0004es-Ut; Wed, 20 May 2020 17:27:20 +0000
+Received: from aserp2120.oracle.com ([141.146.126.78])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbSQy-0000aq-LK
- for linux-nvme@lists.infradead.org; Wed, 20 May 2020 17:23:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589995390;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DCjdOMTssUEwrdR+kksZof+T09119kJHdMwXjoHB0aQ=;
- b=IaTvj7WLMer6up9ZjqAVwoLkXwTNf/7RMOwG49KkENsc8IyIhjYZZaMXez+11Y3P4jBRZp
- 6lFIVul8JzilBF42mZWgUv1AHnlTmXM5EaWtFm5//JNF1wyEBO6ufwc8Qzcb5cIP8ESbVC
- 90yOZhIJs4c2CGqDE35ugit7f6BNztI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-215-J01nKWBfPcGwwM4Jxwqtlg-1; Wed, 20 May 2020 13:23:04 -0400
-X-MC-Unique: J01nKWBfPcGwwM4Jxwqtlg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5D0CB8014D7;
- Wed, 20 May 2020 17:23:03 +0000 (UTC)
-Received: from [10.3.112.120] (ovpn-112-120.phx2.redhat.com [10.3.112.120])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9F57C82A33;
- Wed, 20 May 2020 17:23:02 +0000 (UTC)
-Subject: Re: [PATCH v2 2/2] nvmet: avoid memleak by freeing any remaining aens
- in nvmet_async_events_free
-To: Sagi Grimberg <sagi@grimberg.me>, Christoph Hellwig <hch@infradead.org>
-References: <1589828396-144513-1-git-send-email-dmilburn@redhat.com>
- <1589828396-144513-3-git-send-email-dmilburn@redhat.com>
- <388242d3-5ccc-d694-c7a0-ac489f63f26a@grimberg.me>
- <20200520061613.GA18308@infradead.org>
- <0018af56-e3f9-8730-3c57-c4f19e478014@grimberg.me>
- <20200520070330.GA26871@infradead.org>
- <d353aa1a-cef3-d2f6-66de-92cc18cd97aa@grimberg.me>
- <20200520071526.GA7008@infradead.org>
- <c0379f95-246a-3fd6-9ec9-4ee814562c8d@grimberg.me>
- <41bae172-289e-1407-93a6-4147491a346c@redhat.com>
- <c3bef33b-f786-e4db-afbc-89e49c159c23@grimberg.me>
-From: David Milburn <dmilburn@redhat.com>
-Message-ID: <5f3d5126-ceb5-370d-37e2-667640bfff95@redhat.com>
-Date: Wed, 20 May 2020 12:23:02 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ id 1jbSUt-0004eU-VR
+ for linux-nvme@lists.infradead.org; Wed, 20 May 2020 17:27:17 +0000
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KHLmlw057334;
+ Wed, 20 May 2020 17:26:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=8E10J9hyMeSWQhnzgnLeIdPpQQ8bIsX6JlzvTTdcxkY=;
+ b=wT/MbRNNtw/kkvehr5QzzEVLr2YZOw8D34nsR43XiDanl1UPhLkn3Zt8SeVrzIZxOWGE
+ k/BwE/mve5sZJi2hKXlK53NonKI8O1ZhLO+OU64WMIeGTfl0V9nlnX97LIYrcQ90Squ2
+ Sx/VgvNRkI2PWr8fUV9N/SJpe9oksmRhgHCA0Q3G1nEIXABVr/eq0RI/RS3XEAJibafM
+ u4GZC2sVB+EUbppZaAqUvZJVpjPXNZIQOFvmWZL/sAn+DnpvInHyPS6EBa8WXP0FzbZa
+ lKItjfYySNdTQpk3cozyoUf2XQlT+wCpoaU7y+NF8Kii79zfJTmjcU7m0fK/+e5KuZm9 QQ== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by aserp2120.oracle.com with ESMTP id 31284m4dnc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 20 May 2020 17:26:43 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04KHN9mi180259;
+ Wed, 20 May 2020 17:24:43 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3020.oracle.com with ESMTP id 312t387gg2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 20 May 2020 17:24:43 +0000
+Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04KHOf9B027223;
+ Wed, 20 May 2020 17:24:41 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 20 May 2020 10:24:41 -0700
+Date: Wed, 20 May 2020 20:24:33 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Christoph Hellwig <hch@infradead.org>
+Subject: Re: [PATCH resend] scsi: lpfc: Fix a use after free in
+ lpfc_nvme_unsol_ls_handler()
+Message-ID: <20200520172433.GD30374@kadam>
+References: <yq1y2purqt1.fsf@oracle.com> <20200515101903.GJ3041@kadam>
+ <20200520165557.GA9700@infradead.org>
 MIME-Version: 1.0
-In-Reply-To: <c3bef33b-f786-e4db-afbc-89e49c159c23@grimberg.me>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+In-Reply-To: <20200520165557.GA9700@infradead.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9627
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ spamscore=0 mlxlogscore=968
+ phishscore=0 mlxscore=0 malwarescore=0 suspectscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005200140
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9627
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ mlxscore=0
+ cotscore=-2147483648 impostorscore=0 malwarescore=0 mlxlogscore=999
+ lowpriorityscore=0 phishscore=0 spamscore=0 bulkscore=0 adultscore=0
+ priorityscore=1501 clxscore=1011 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2005200140
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_102312_776705_D757F534 
-X-CRM114-Status: GOOD (  16.23  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200520_102716_103491_628AD64E 
+X-CRM114-Status: GOOD (  11.93  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [207.211.31.120 listed in list.dnswl.org]
- 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [207.211.31.120 listed in wl.mailspike.net]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [141.146.126.78 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -93,7 +98,10 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [141.146.126.78 listed in wl.mailspike.net]
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -106,34 +114,25 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: chaitanya.kulkarni@wdc.com, dwagner@suse.de, linux-nvme@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Jens Axboe <axboe@kernel.dk>, Dick Kennedy <dick.kennedy@broadcom.com>,
+ linux-scsi@vger.kernel.org, "Martin K. Petersen" <martin.petersen@oracle.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>, kernel-janitors@vger.kernel.org,
+ James Smart <james.smart@broadcom.com>, linux-nvme@lists.infradead.org,
+ Paul Ely <paul.ely@broadcom.com>, Hannes Reinecke <hare@suse.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gMDUvMjAvMjAyMCAxMjoxOSBQTSwgU2FnaSBHcmltYmVyZyB3cm90ZToKPiAKPj4gSGkgQ2hy
-aXN0b3BoLCBTYWdpLAo+Pgo+PiBPbiAwNS8yMC8yMDIwIDAzOjA2IEFNLCBTYWdpIEdyaW1iZXJn
-IHdyb3RlOgo+Pj4KPj4+Pj4gOikgSSBndWVzcyB0aGUgcGFuZGVtaWMgZ290IHRvIG1lLi4uCj4+
-Pj4+Cj4+Pj4+IFRoaW5ncyBtYWtlIGEgbG90IG1vcmUgc2Vuc2Ugbm93LiBCdXQgZG9uJ3Qgd2Ug
-bmVlZCB0byBtb3ZlIHRoZSBhZW5zCj4+Pj4+IGZyZWUgdG8gYWZ0ZXIgd2UgcmVtb3ZlIHRoZSBj
-b250cm9sbGVyIGZyb20gdGhlIHN1YnN5cy0+Y3RybHM/Cj4+Pj4KPj4+PiBZZXMuwqAgSSBhbHNv
-IHRoaW5rIHdlIGNhbiBjbGVhbiB1cCBhIGZldyB0aGluZ3MgaGVyZS7CoCBIb3cgYWJvdXQgSSAK
-Pj4+PiBhcHBseQo+Pj4+IHRoZSBzZXJpZXMgZnJvbSBEYXZpZCBub3cgYW5kIHNlbmQgYSBmZXcg
-YWRkaXRpb25hbCBmaXh1cHMgb24gdG9wPwo+Pj4KPj4+IFNvdW5kcyBnb29kCj4+Pgo+Pgo+PiBZ
-aSB3YXMgYWJsZSB0byByZXByb2R1Y2UgdGhlIG1lbWxlYWsgdXNpbmcgdGhlIHYyIG9mIHRoZSBw
-YXRjaCBzZXJpZXMKPj4gc2luY2UgbnZtZXRfYXN5bmNfZXZlbnRzX2ZyZWUoKSByYW4gYmVmb3Jl
-IG52bWV0X2FkZF9hc3luY19ldmVudCgpLgo+Pgo+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9waXBlcm1haWwvbGludXgtbnZtZS8yMDIwLU1heS8wMzA1MTIuaHRtbAo+Pgo+PiBXaXRoIFNh
-Z2kncyBwYXRjaCBiZWxvdywgSSBkbyBzZWUgYWZ0ZXIgbnZtZXRfYWRkX2FzeW5jX2V2ZW50KCks
-Cj4+IG52bWV0X2FzeW5jX2V2ZW50c19wcm9jZXNzIHB1bGxzIHRoZSByZXF1ZXN0LCBkZWNyZW1l
-bnRzCj4+IGN0cmwtPm5yX2FzeW5jX2V2ZW50X2NtZHMgdG8gMCwgYW5kIGZyZWVzIHRoZSBhZW4s
-Cj4+IGFuZCBubyBtZW1vcnkgbGVhay4KPj4KPj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-cGlwZXJtYWlsL2xpbnV4LW52bWUvMjAyMC1NYXkvMDMwNTQ4Lmh0bWwKPiAKPiBJIGRvbid0IHRo
-aW5rIHRoYXQgcGF0Y2ggIzEgaXMgcmVxdWlyZWQgdG8gZml4IHRoZSBpc3N1ZSwgY2FuIHlvdQo+
-IGNvbmZpcm0gdGhhdD8gQ2hyaXN0b3BoIHNhaWQgaGUgaGFzIHNvbWUgbW9yZSBjbGVhbmluZyB1
-cCBpbiB0aGlzCj4gYXJlYS4KClllcywgdGhhdCBpcyBjb3JyZWN0LCB3aGVuIEkgdGVzdGVkIHlv
-dXIgY2hhbmdlIEkgZGlkIG5vdCBhcHBseQpwYXRjaCAxLgoKVGhhbmtzLApEYXZpZAoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LW52bWUgbWFp
-bGluZyBsaXN0CmxpbnV4LW52bWVAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW52bWUK
+On Wed, May 20, 2020 at 09:55:57AM -0700, Christoph Hellwig wrote:
+> James, can you review this patch?
+
+He already reviewed it in a different thread.  I copied his R-b tag.
+
+regards,
+dan carpenter
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
