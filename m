@@ -2,80 +2,79 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80C951DBD79
-	for <lists+linux-nvme@lfdr.de>; Wed, 20 May 2020 21:00:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FD5E1DBD7E
+	for <lists+linux-nvme@lfdr.de>; Wed, 20 May 2020 21:00:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fJbjwohAc7BOUHZrDpvLdid3j9xl6MQv779rqbJQGn0=; b=avKsFmNmt4N6wY
-	Q8aHJ6dzj/rIObMZjwZ9vuM8eLXOqVOvbDVoyv/Kq6o33z1fHEfJE++GyeAr71ZhT8nKvaHqtIvPK
-	l1g6quZRdjnVQt+oqH66Sxm96LHgCLvi5r+hsZ/sn9q2my9he5tmBWEuAgP2pL5zxxgpVwC+19u03
-	jLZp6ALFsfvR+RGDMoC/U+6PC9jrLqLgnl76x4+wIjJ32QqA77Iaepth+A4mhNfovM/nFKhaPOZzZ
-	Acenp5cp2SwBIjqeFz4ZY3F77y6tG7ECNxpYqiAFtHjQoGgTbnXWKRpqRd2sHpLkFJ4/+2XSKaBPf
-	AQ4iOeHFmCzzfx7JetTQ==;
+	List-Owner; bh=J8rh/ZGnrLeGJexmfjgLpEUdO+xMdx+kts2771u+5kI=; b=qh6yzII7f6acP9
+	kfDP9/SRZETz1FhBQ+t+RA8OA5nD8oPi6HWWBwn+H7kdcCpOaHMZAYfYCkyfo3076p6mL2PdOBGpV
+	0EJdFhV2G9QD6zK1JnuLXbWDMuwj+SeXceyEp/Atva0r7RiiLnYboTF/WSPESHH5tvqeVDUrELQ/0
+	xL6r/Mrgy+Zarh1UMMZBL/o0vpRNYfH+GnxcOCZDSrMS1PDxGBH4wyecivwghcJS/YsOs7RpildcJ
+	irMOmWaSppxpijThBLaun6TGBXtWXFtgHd+pm5fiCd9OIBVzWDtLuWbBsFmRv5d8VVnQ4X166UlQd
+	QThSsm5SN1vpYjtwLU1Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jbTwe-0001vp-Mj; Wed, 20 May 2020 19:00:00 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jbTxI-0004pN-8S; Wed, 20 May 2020 19:00:40 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jbTwU-0001t9-I9
- for linux-nvme@lists.infradead.org; Wed, 20 May 2020 18:59:53 +0000
-Received: by mail-wm1-x342.google.com with SMTP id n5so4028266wmd.0
- for <linux-nvme@lists.infradead.org>; Wed, 20 May 2020 11:59:50 -0700 (PDT)
+ id 1jbTwX-0001tl-DX
+ for linux-nvme@lists.infradead.org; Wed, 20 May 2020 18:59:54 +0000
+Received: by mail-wm1-x344.google.com with SMTP id h4so3476429wmb.4
+ for <linux-nvme@lists.infradead.org>; Wed, 20 May 2020 11:59:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9XznIvAR7bDiKtKJMgdilzMAzpTq9fw9qWshfkg00WA=;
- b=c2v677ZGK91kZ/Rcz2CeDe5ceLjERgAeHQprZlhB0BGlLmR4PLd/n3GYuTqPhbMJPP
- Z0qsPv7x0IWzhf8ao1Qm8shIROhCgepiZddpNzgLS1L+UdyG/n2MzGP1QbzSo2/URPQJ
- ivR6LxZGihjHz+0KnW3JHHfsMJjkSCpdhIyabJ226RI44xgfLwFaf9IiAzTCxj1owS7e
- 4d2pv5ISR+/LDGlm1JduhYzaQUFPmMe0OZ+NvuV3s+x3CgLqj4gYgchc2LZL19/WcxTa
- T/3xO8fUoemLciM+nBpeXJvvXZoGdaVVHhbj/WTPVXpvtmzG3cwEMlMfAXIR+p+vEMRo
- esnw==
+ bh=fnshiy6ihG9QhaGP6naqQpz00mp02JHtZheI8F1kYaM=;
+ b=LMx+SdcVWNgrCI/SwL9uv/KpzlE4nNYpyDC/Qs7GCtcpfMqszET3vUOSHYZm+a7TsB
+ kCrRw4lPadNsy8pHZ5KYrPz8pgw6MKPiE9HYHPivG4fHIEQty7nYzEwEvQqTZGd23ZHU
+ mKHJf+EIof99d3ATX3LwiH5lc8Q65OyANQT6gDDp9HrefEI+p/uAIjmDUaZSUCifdB4H
+ HLcK573YuYicChl3CkLBGuESoFktARC7HkR1uLhe5Irc/DlglckvI/CB+Ci5v0O8PKW2
+ DWzaZtyWHa2VFVx5MOPi7U/rPyejQYbORcyQ1r8ktBdvcaOMuWN1z0873Vn8OnfbrTTy
+ XTTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9XznIvAR7bDiKtKJMgdilzMAzpTq9fw9qWshfkg00WA=;
- b=QIT1O6dvZ9GQAY1WLIp3JaIoVuqI93qwJ5wKzn0t24TyV9pyT5IqkKir8DBqmsOKdJ
- y9dckTf2tPSB7NJnhvDaFZMklTQRbeEoM9kQIsbSVomjwdRLS7TyFl8M/+K4ny8lyUiW
- W3mOVON7XwuUgYaIkvc49sXMpmloGH0RPIFRkq5J1EgNMgvB7K/7HlgKQIzLHTnub4/f
- 4CUMyldxH/siP+zJihA6Podj085InjXEyjMG2R3wd5Umci86ca2mtiFjGygtZY77yDM8
- K9/cKnsYgB9Dz9CJ1+FaItD/VF/CfqVTS8t4EvNxEZ2yrwHDZfF8wfuoBHQPFv2olWdp
- bvrQ==
-X-Gm-Message-State: AOAM533LQNuo0feRjZ25cq1M04Mj96v6bplEAg9ac1kd/eImDJ6WV3Dz
- aehCYW4LkJh3pcuq8U7iXaXdjqtx
-X-Google-Smtp-Source: ABdhPJwu8XZia8JwprTLIrZXGEdQqEAyuKu+UEXw1dUK/7VHyuWf7pfCFsuhPSqbONiSVioPIWDyDw==
-X-Received: by 2002:a1c:307:: with SMTP id 7mr5798016wmd.104.1590001188791;
- Wed, 20 May 2020 11:59:48 -0700 (PDT)
+ bh=fnshiy6ihG9QhaGP6naqQpz00mp02JHtZheI8F1kYaM=;
+ b=d9qzDsrpjyocuZ2S9NJRz03Bw/cMpgyOpfzuqmkyv2ve7xm6QBwfWimbLIKodDcidx
+ deHQOMuMST/ZmHadUlKIBX3tKkvh/hs+k7maEol8J8djhMz2CQZ19PF+IVboj1b+6LDa
+ yXo25if6jMR7Retx3VJ0T6t+URHCjLq09qbVTpdGedPplaBQZ5Wjfk6fCUNAc08QXx6a
+ 3wFF8GXLN3T9TuwF1uyO4YVh9NA7ZEvljwowcvvTkHBt58ECKlnSSugJOkUHaJipY1+5
+ lQrQQJclnGDKPcsNPzn3RB7EqfKLH73yBFAFEkueZRImWty0yMMh8Qlyep8Y1UxTtU98
+ 0jFw==
+X-Gm-Message-State: AOAM532cxsp02fXv5FBhfLuRDcEzViVMLpMdZZksGzuJVj/AmQR+M9I4
+ o9ECVhGfyp23GuHAU0Dq2aYGAx/i
+X-Google-Smtp-Source: ABdhPJxTXt+BUKcH00voKpAxp/kIhKxbelcXyVkcM2PQ+e7817YIs0PeHaSR8i7UnQp3Yhugozz8pw==
+X-Received: by 2002:a7b:c8d2:: with SMTP id f18mr5658325wml.174.1590001192003; 
+ Wed, 20 May 2020 11:59:52 -0700 (PDT)
 Received: from localhost.localdomain.localdomain (ip68-5-85-189.oc.oc.cox.net.
  [68.5.85.189])
- by smtp.gmail.com with ESMTPSA id c19sm3896483wrb.89.2020.05.20.11.59.45
+ by smtp.gmail.com with ESMTPSA id c19sm3896483wrb.89.2020.05.20.11.59.49
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 20 May 2020 11:59:48 -0700 (PDT)
+ Wed, 20 May 2020 11:59:51 -0700 (PDT)
 From: James Smart <jsmart2021@gmail.com>
 To: linux-nvme@lists.infradead.org
-Subject: [PATCH 2/3] lpfc: fix axchg pointer reference after free and double
- frees
-Date: Wed, 20 May 2020 11:59:28 -0700
-Message-Id: <20200520185929.48779-3-jsmart2021@gmail.com>
+Subject: [PATCH 3/3] lpfc: Fix return value in __lpfc_nvme_ls_abort
+Date: Wed, 20 May 2020 11:59:29 -0700
+Message-Id: <20200520185929.48779-4-jsmart2021@gmail.com>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <20200520185929.48779-1-jsmart2021@gmail.com>
 References: <20200520185929.48779-1-jsmart2021@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200520_115951_738764_E6E9811D 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20200520_115953_454127_CF4D5341 
+X-CRM114-Status: GOOD (  12.86  )
 X-Spam-Score: 0.1 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.1 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ no trust [2a00:1450:4864:20:0:0:0:344 listed in]
  [list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 FREEMAIL_FROM          Sender email is commonly abused enduser mail
@@ -111,81 +110,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-The axchg structure is a structure allocated early in the
-lpfc_nvme_unsol_ls_handler() to represent the newly received exchange.
-Upon error, the out_fail path in the routine unconditionally frees the
-pointer, yet subsequently passes the pointer to the abort routine.
-Additionally, the abort routine, lpfc_nvme_unsol_ls_issue_abort(), also
-has a failure path that will attempt to delete the pointer on error.
+A static checker reported the following issue:
+  drivers/scsi/lpfc/lpfc_nvmet.c:1366 lpfc_nvmet_ls_abort()
+  warn: 'ret' can be either negative or positive
 
-Fix these errors by:
-- Removing the unconditional free so that it stays valid if passed
-  to the abort routine.
-- Revise the abort routine to not free the pointer. Instead, return
-  a success/failure status. Note: if success, the later completion of
-  the abort frees the structure.
-- Back in the unsol_ls_handler() error path, if the abort routine was
-  skipped (thus no possible reference) or the abort routine returned
-  error, free the pointer.
+The comment indicates a non-zero value indicates error in the
+form of -Exxx, but the code is returning "1".
 
-Fixes: 3a8070c567aa ("lpfc: Refactor NVME LS receive handling")
+Fix the code to return -EINVAL to be compliant to comment.
+
+Fixes: e96a22b0b7c2 ("lpfc: Refactor Send LS Abort support")
 Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
 Signed-off-by: Dick Kennedy <dick.kennedy@broadcom.com>
 Signed-off-by: James Smart <jsmart2021@gmail.com>
 ---
- drivers/scsi/lpfc/lpfc_nvmet.c |  3 +--
- drivers/scsi/lpfc/lpfc_sli.c   | 10 ++++++----
- 2 files changed, 7 insertions(+), 6 deletions(-)
+ drivers/scsi/lpfc/lpfc_nvme.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/scsi/lpfc/lpfc_nvmet.c b/drivers/scsi/lpfc/lpfc_nvmet.c
-index bccf9da302ee..32eb5e873e9b 100644
---- a/drivers/scsi/lpfc/lpfc_nvmet.c
-+++ b/drivers/scsi/lpfc/lpfc_nvmet.c
-@@ -3598,10 +3598,9 @@ lpfc_nvme_unsol_ls_issue_abort(struct lpfc_hba *phba,
- 	abts_wqeq->context2 = NULL;
- 	abts_wqeq->context3 = NULL;
- 	lpfc_sli_release_iocbq(phba, abts_wqeq);
--	kfree(ctxp);
- 	lpfc_printf_log(phba, KERN_ERR, LOG_NVME_ABTS,
- 			"6056 Failed to Issue ABTS. Status x%x\n", rc);
--	return 0;
-+	return 1;
+diff --git a/drivers/scsi/lpfc/lpfc_nvme.c b/drivers/scsi/lpfc/lpfc_nvme.c
+index 21bbccf0dc31..b46ba70f78da 100644
+--- a/drivers/scsi/lpfc/lpfc_nvme.c
++++ b/drivers/scsi/lpfc/lpfc_nvme.c
+@@ -895,7 +895,7 @@ __lpfc_nvme_ls_abort(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
+ 	lpfc_printf_vlog(vport, KERN_INFO, LOG_NVME_DISC | LOG_NVME_ABTS,
+ 			 "6213 NVMEx LS REQ Abort: Unable to locate req x%p\n",
+ 			 pnvme_lsreq);
+-	return 1;
++	return -EINVAL;
  }
  
- /**
-diff --git a/drivers/scsi/lpfc/lpfc_sli.c b/drivers/scsi/lpfc/lpfc_sli.c
-index 1aaf40081e21..9e21c4f3b009 100644
---- a/drivers/scsi/lpfc/lpfc_sli.c
-+++ b/drivers/scsi/lpfc/lpfc_sli.c
-@@ -2813,7 +2813,7 @@ lpfc_nvme_unsol_ls_handler(struct lpfc_hba *phba, struct lpfc_iocbq *piocb)
- 	struct lpfc_async_xchg_ctx *axchg = NULL;
- 	char *failwhy = NULL;
- 	uint32_t oxid, sid, did, fctl, size;
--	int ret;
-+	int ret = 1;
- 
- 	d_buf = piocb->context2;
- 
-@@ -2897,14 +2897,16 @@ lpfc_nvme_unsol_ls_handler(struct lpfc_hba *phba, struct lpfc_iocbq *piocb)
- 			(phba->nvmet_support) ? "T" : "I", ret);
- 
- out_fail:
--	kfree(axchg);
- 
- 	/* recycle receive buffer */
- 	lpfc_in_buf_free(phba, &nvmebuf->dbuf);
- 
- 	/* If start of new exchange, abort it */
--	if (fctl & FC_FC_FIRST_SEQ && !(fctl & FC_FC_EX_CTX))
--		lpfc_nvme_unsol_ls_issue_abort(phba, axchg, sid, oxid);
-+	if (axchg && (fctl & FC_FC_FIRST_SEQ && !(fctl & FC_FC_EX_CTX)))
-+		ret = lpfc_nvme_unsol_ls_issue_abort(phba, axchg, sid, oxid);
-+
-+	if (ret)
-+		kfree(axchg);
- }
- 
- /**
+ static int
 -- 
 2.26.1
 
