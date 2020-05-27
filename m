@@ -2,62 +2,92 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04E9E1E2F3C
-	for <lists+linux-nvme@lfdr.de>; Tue, 26 May 2020 21:45:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D7D901E3434
+	for <lists+linux-nvme@lfdr.de>; Wed, 27 May 2020 02:57:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z7UyAJMJ+/ggdfZcxf4rnaZ8fg0WFtFuIF4Ly4DD1PI=; b=pjPvPT1mFmx2jL
-	gT4ssw9jHonsdksoi5Z76PD27TnY5g8g16mzy75rtxuzN2GNBp7DvUOy0aTJxg6dJisqqAXktdMSJ
-	3tI+04bSpi/cpyQhPyBLS9iC6OlfwhfXP98W0yKL0pgX+gvWKsRO/9BEqR08neq5iwFM/0cHboRiW
-	vzMr1igEj36pf+Vjyo3kWtKAqOUh0iJ9kiCV4UKq8/cVJI9jzQEA6pjaWYN+mUvIckIqDXmPBEnHz
-	wfzF1l5d6WikE2k46QJnr2NBl8/w/9xaXseNLj1gswfFP1BnHONkv4jgooLlg4w2/CGHuMM6bEHed
-	qDM/3oZSPpQk3qopIuAw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=8h83yTdRsjsF/vqBqzVufsoPbyMKmhZHPe3q2xhGUus=; b=d/a
+	ZuXTFPF+O9jvUqyr6zsiN+RAQGX6bzkU4wASlxfqgNQP2iotpQiegka7DyAh4hojHcfThPzHpav7P
+	THgcyM0dVA/fVWb2+ocf8C9RqoUx9zPV/t3OiGkFaV2i2vr3alT8mvwtPPWb+7FzvyzuagkjvKX8f
+	GOxoabNIUNhNlPyYSNnMUKC4rND35YZUFPOnghRmTa4z5mCYHS+jgrHw3Rr8mZ8r1L6Oko3bnoHeN
+	po1v1QP+3Wat/HnQHUzjNcDoVoVTo94JyoWCNJiaD9JziTdv2MItzfUSc9BrsdZ2E+Ic+8zJOJsCx
+	KE99DsUiEHXUTNxGySA3G/AtvCL/V2Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jdfVb-0006KI-6D; Tue, 26 May 2020 19:45:07 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jdkNq-0005lK-Fj; Wed, 27 May 2020 00:57:26 +0000
+Received: from userp2130.oracle.com ([156.151.31.86])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jdfVR-0006Ju-UU
- for linux-nvme@lists.infradead.org; Tue, 26 May 2020 19:44:59 +0000
-Received: from dhcp-10-100-145-180.wdl.wdc.com (unknown [199.255.45.60])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 030B52086A;
- Tue, 26 May 2020 19:44:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1590522296;
- bh=yoFEZymRM/om2uVZpH37wTMiTh5QaVDYJIRCNKs8Az8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=SBef1ux4oZU7dWJRDgYPfK/taa6vb6WaxT6vnaru/2NLrUKh9P9J5D3Z0AMO08Rni
- Cuusb+cqb36z+e0MMdk3sPYLvO7PcKysew5fDeNaTT/IOEESc7gz8oaly3uXIuEWPg
- CesLHh31gW+pSE0gXA3/l00gyjw30yWdoYEBmVAA=
-Date: Tue, 26 May 2020 12:44:54 -0700
-From: Keith Busch <kbusch@kernel.org>
-To: Zhouhua Liu <liuzhouhua@huawei.com>
-Subject: Re: [PATCH V2] nvme-cli: Add huawei vendor id as filter in command
- "nvme huawei list"
-Message-ID: <20200526194454.GA3429867@dhcp-10-100-145-180.wdl.wdc.com>
-References: <3a4b9e11-c653-2d81-98e4-09be9b0ab584@huawei.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3a4b9e11-c653-2d81-98e4-09be9b0ab584@huawei.com>
+ id 1jdkNn-0005kv-02
+ for linux-nvme@lists.infradead.org; Wed, 27 May 2020 00:57:24 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04R0perx174744;
+ Wed, 27 May 2020 00:57:08 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id; s=corp-2020-01-29;
+ bh=1SQ1TOvRAmYsofH3JFqW3Rc6f8U9dMkKKaEe8wf3ncM=;
+ b=KfxK3k9T+tF0DbyAyrZPMsc3tSZ8kQ8UjABz3bnGiYTn7RocXdQTOoSzKjODQ9NA5Uqc
+ l0W10pO8Lqzs7wgbCUx2em/zw+Ls0JVv9U7w14/bvJOFG0NmzA5A87XHtcHL3rb4j551
+ 2cpo1cn4qIa86/9+FqypHRphPJ/qQ+6dFHQvWm7Y3aYLRLDU8k2FqnDKbVcyoE9XCN3G
+ w9uT4GwMBjHoUz/NHhmB9f4gjFcHzTQNQ+wmAGqhlL4RAZGkSmnU/9TJ2wwflfIRPP4X
+ dn0Xc2PgZNj68Sjh4N7PJ6weFZfhT1XSy2M+9r6lEu3VzoIqVhoNiPFpZAKIFp51LIlx VA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by userp2130.oracle.com with ESMTP id 316u8qvrq8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 27 May 2020 00:57:08 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04R0rYnC093329;
+ Wed, 27 May 2020 00:57:08 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3020.oracle.com with ESMTP id 317dktetjr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 27 May 2020 00:57:08 +0000
+Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 04R0v6qU007389;
+ Wed, 27 May 2020 00:57:07 GMT
+Received: from localhost.localdomain (/10.211.9.80)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 26 May 2020 17:57:06 -0700
+From: Dongli Zhang <dongli.zhang@oracle.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH 1/1] nvme-pci: avoid race between nvme_reap_pending_cqes() and
+ nvme_poll()
+Date: Tue, 26 May 2020 17:49:55 -0700
+Message-Id: <20200527004955.19463-1-dongli.zhang@oracle.com>
+X-Mailer: git-send-email 2.17.1
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9633
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ malwarescore=0 bulkscore=0
+ spamscore=0 suspectscore=1 mlxscore=0 adultscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2005270001
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9633
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxscore=0
+ priorityscore=1501 spamscore=0 cotscore=-2147483648 suspectscore=1
+ phishscore=0 clxscore=1011 mlxlogscore=999 bulkscore=0 adultscore=0
+ lowpriorityscore=0 impostorscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2005270001
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200526_124458_001611_84CAE86F 
-X-CRM114-Status: UNSURE (   7.81  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200526_175723_170112_A6DBB54C 
+X-CRM114-Status: GOOD (  18.96  )
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [156.151.31.86 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 RCVD_IN_MSPIKE_H2      RBL: Average reputation (+2)
+ [156.151.31.86 listed in wl.mailspike.net]
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
  envelope-from domain
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
@@ -65,6 +95,8 @@ X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  valid
  -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
  author's domain
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
+ lines
  -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -77,23 +109,74 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Kangwenhong <kangwenhong@huawei.com>, wangzan <wangzan@huawei.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- Chaitanya.Kulkarni@wdc.com,
- "Wangchong \(Michael\)" <Michael.wangchong@huawei.com>
+Cc: kbusch@kernel.org, axboe@fb.com, sagi@grimberg.me,
+ linux-kernel@vger.kernel.org, hch@lst.de
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, May 22, 2020 at 11:40:40AM +0800, Zhouhua Liu wrote:
-> This patch V2 is to add huawei vendor id as filter in command "nvme huawei list".
-> And comparing with the last patch, I have remove the symbol \ to comply with coding style.
-> 
-> Signed-off-by: Zhouhua Liu <liuzhouhua@huawei.com>
+There may be a race between nvme_reap_pending_cqes() and nvme_poll(), e.g.,
+when doing live reset while polling the nvme device.
 
-I've hand applied this with a more appropriate commit message (no need
-to mention version changes there), and fixed tabs/spaces. Thanks!
+      CPU X                        CPU Y
+                               nvme_poll()
+nvme_dev_disable()
+-> nvme_stop_queues()
+-> nvme_suspend_io_queues()
+-> nvme_suspend_queue()
+                               -> spin_lock(&nvmeq->cq_poll_lock);
+-> nvme_reap_pending_cqes()
+   -> nvme_process_cq()        -> nvme_process_cq()
+
+In the above scenario, the nvme_process_cq() for the same queue may be
+running on both CPU X and CPU Y concurrently.
+
+It is much more easier to reproduce the issue when CONFIG_PREEMPT is
+enabled in kernel. When CONFIG_PREEMPT is disabled, it would take longer
+time for nvme_stop_queues()-->blk_mq_quiesce_queue() to wait for grace
+period.
+
+This patch protects nvme_process_cq() with nvmeq->cq_poll_lock in
+nvme_reap_pending_cqes().
+
+Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+---
+ drivers/nvme/host/pci.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index 3726dc780d15..cc46e250fcac 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -1382,16 +1382,19 @@ static void nvme_disable_admin_queue(struct nvme_dev *dev, bool shutdown)
+ 
+ /*
+  * Called only on a device that has been disabled and after all other threads
+- * that can check this device's completion queues have synced. This is the
+- * last chance for the driver to see a natural completion before
+- * nvme_cancel_request() terminates all incomplete requests.
++ * that can check this device's completion queues have synced, except
++ * nvme_poll(). This is the last chance for the driver to see a natural
++ * completion before nvme_cancel_request() terminates all incomplete requests.
+  */
+ static void nvme_reap_pending_cqes(struct nvme_dev *dev)
+ {
+ 	int i;
+ 
+-	for (i = dev->ctrl.queue_count - 1; i > 0; i--)
++	for (i = dev->ctrl.queue_count - 1; i > 0; i--) {
++		spin_lock(&dev->queues[i].cq_poll_lock);
+ 		nvme_process_cq(&dev->queues[i]);
++		spin_unlock(&dev->queues[i].cq_poll_lock);
++	}
+ }
+ 
+ static int nvme_cmb_qdepth(struct nvme_dev *dev, int nr_io_queues,
+-- 
+2.17.1
+
 
 _______________________________________________
 linux-nvme mailing list
