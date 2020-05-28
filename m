@@ -2,54 +2,33 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 984781E5548
-	for <lists+linux-nvme@lfdr.de>; Thu, 28 May 2020 06:59:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 336B51E5562
+	for <lists+linux-nvme@lfdr.de>; Thu, 28 May 2020 07:13:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FlyFberYhZr+1X9QfkQvX4pZC3n11D/J68RKhza3S8A=; b=sNUqHfjX/5rE57
-	yD2o/DGJP+igRrWRGXiIuN7ZPclA3dPU2x/V+E9fvRItrQ+Pv1XuOaZZf8Rgl3UPXMA6eq7gbAGv2
-	HEb2MXiC1Do8OGywOsq1OgNgUVmEtTd0R0fMfN0YmaF/1CoscYTiG9Ff5KdO0rSOHl3kvvJRAQuRP
-	9OfYaqIW9Llt9E9Vs8r+w9BhCso0fTcylY0f6TrJ1h94JcmtQka6mndRmBhvJjMbddhkcX7qNFnln
-	xTzzNm0r7OFF2EPeHjdtHLsnY/XR7ZUq/9VRR3C5WcE7kfpsd5jAJahgx4e3Lx8y4QOMkik/WKKGG
-	8R3l9pGITvBjBSLUPBUg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=N7QGD6Rh1FUKRQRmqO8CP2LNJggjf7V8jBWcJkrsxuU=; b=KF2lE6n/6kqUJM
+	/W4hPsfAmbzP6W88ftVY3KvYjLpxM2Icc3XpVICu3+Maz/ByLcqMON5Ku+hZGEN1GdZaodS00tXNk
+	slf7UvuSoSsER9v16QbhJx4jCCCP/tAGq0yHfXWILYRf5VTJqRzlDVk2LrXncPBVB0Sg4ls9DaKZc
+	SdYjXz/3KsogT4u4vBY3KWTQU3Gc166mZqupPhCwpUZe4/FdQjk0fTkxYptykvRZtDehWnJbWdZT1
+	IlEtdN8GP2HyCVR9nW126bChtP9aWTMe8bJH2nS604tqnb5XIQncp7ZWYDXQ08+pcHul+vgj1ISLg
+	ssYKZD6vkAAXmh6LTYuw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeAdS-0000u6-E2; Thu, 28 May 2020 04:59:18 +0000
-Received: from verein.lst.de ([213.95.11.211])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeAdO-0000tp-80
- for linux-nvme@lists.infradead.org; Thu, 28 May 2020 04:59:15 +0000
-Received: by verein.lst.de (Postfix, from userid 2407)
- id 54A3768B05; Thu, 28 May 2020 06:59:12 +0200 (CEST)
-Date: Thu, 28 May 2020 06:59:11 +0200
+	id 1jeAqx-0001cz-4v; Thu, 28 May 2020 05:13:15 +0000
+Received: from p4fdb1ad2.dip0.t-ipconnect.de ([79.219.26.210] helo=localhost)
+ by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat
+ Linux)) id 1jeAqN-0001QR-LQ; Thu, 28 May 2020 05:12:40 +0000
 From: Christoph Hellwig <hch@lst.de>
-To: Alan Adamson <alan.adamson@oracle.com>
-Subject: Re: [PATCH] nvme: cancel requests for real
-Message-ID: <20200528045911.GB28678@lst.de>
-References: <20200527190913.3461503-1-kbusch@kernel.org>
- <cb108e7e-d386-883c-4d4a-64e517891220@grimberg.me>
- <b8a076a3-62e9-a878-f11d-7116b1848caf@oracle.com>
+To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+Subject: remove most callers of kernel_setsockopt v3
+Date: Thu, 28 May 2020 07:12:08 +0200
+Message-Id: <20200528051236.620353-1-hch@lst.de>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <b8a076a3-62e9-a878-f11d-7116b1848caf@oracle.com>
-User-Agent: Mutt/1.5.17 (2007-11-01)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200527_215914_437181_016C7EF0 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
-X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [213.95.11.211 listed in list.dnswl.org]
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,33 +40,47 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>, axboe@kernel.dk,
- Sagi Grimberg <sagi@grimberg.me>, linux-nvme@lists.infradead.org, hch@lst.de
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: linux-cifs@vger.kernel.org, rds-devel@oss.oracle.com,
+ cluster-devel@redhat.com, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, Jon Maloy <jmaloy@redhat.com>,
+ linux-rdma@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ target-devel@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
+ linux-nfs@vger.kernel.org, Ying Xue <ying.xue@windriver.com>,
+ Alexey Kuznetsov <kuznet@ms2.inr.ac.ru>, ceph-devel@vger.kernel.org,
+ linux-afs@lists.infradead.org, ocfs2-devel@oss.oracle.com,
+ drbd-dev@lists.linbit.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Wed, May 27, 2020 at 01:39:21PM -0700, Alan Adamson wrote:
-> --- a/block/blk-timeout.c
-> +++ b/block/blk-timeout.c
-> @@ -22,10 +22,10 @@ static int __init setup_fail_io_timeout(char *str)
->
-> int blk_should_fake_timeout(struct request_queue *q)
-> {
-> -=A0=A0=A0=A0=A0=A0 if (!test_bit(QUEUE_FLAG_FAIL_IO, &q->queue_flags))
-> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 0;
-> -
-> -=A0=A0=A0=A0=A0=A0 return should_fail(&fail_io_timeout, 1);
-> +=A0=A0=A0=A0=A0=A0 if (test_bit(QUEUE_FLAG_FAIL_IO, &q->queue_flags) &&
-> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 !blk_queue_quiesced(q))
-> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return should_fail(&fail_io_t=
-imeout, 1);
-> +=A0=A0=A0=A0=A0=A0 return 0;
-> }
+Hi Dave,
 
-While that is way better than the loop I think this encodes too way too
-many assumptions.
+this series removes most callers of the kernel_setsockopt functions, and
+instead switches their users to small functions that implement setting a
+sockopt directly using a normal kernel function call with type safety and
+all the other benefits of not having a function call.
+
+In some cases these functions seem pretty heavy handed as they do
+a lock_sock even for just setting a single variable, but this mirrors
+the real setsockopt implementation unlike a few drivers that just set
+set the fields directly.
+
+
+Changes since v2:
+ - drop the separately merged kernel_getopt_removal
+ - drop the sctp patches, as there is conflicting cleanup going on
+ - add an additional ACK for the rxrpc changes
+
+Changes since v1:
+ - use ->getname for sctp sockets in dlm
+ - add a new ->bind_add struct proto method for dlm/sctp
+ - switch the ipv6 and remaining sctp helpers to inline function so that
+   the ipv6 and sctp modules are not pulled in by any module that could
+   potentially use ipv6 or sctp connections
+ - remove arguments to various sock_* helpers that are always used with
+   the same constant arguments
 
 _______________________________________________
 linux-nvme mailing list
