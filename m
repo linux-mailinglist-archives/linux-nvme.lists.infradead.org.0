@@ -2,69 +2,53 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E76A91E806B
-	for <lists+linux-nvme@lfdr.de>; Fri, 29 May 2020 16:38:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A4221E80B1
+	for <lists+linux-nvme@lfdr.de>; Fri, 29 May 2020 16:43:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wwZgF6Xj3kCZQmCkEA4/lBDDflWKBK04pjZgbQLOZOs=; b=tzH1gjzfBNyR39
-	zfPs17RpniC/YzDCPyRpzmk0DYJqZRmr1hT2BfoWZO8qTMOh7uf4ciDWQdAvcOSiPJ8YDjwMTENOh
-	bhiAuOfYLp6EbisUmu79fjDc1TXSDOblozBL1aoCAwOtH6pJCJABDZJiHKgPXSybgRBkQFD7M3/kN
-	gFPOrDK9vpcIxJz+a7mjglJwZT503NeSylUyDlybhZdwl7U8M9Ir7Uegnlghuv45BzepfE3rnsz/q
-	EzhCb8qtqdVKywDRjuZSnrPv/BKH0bs15kMHvXhXhbkNK7gR75iUVRr2bN+o3tzzWd5R+yqUpa6IL
-	n2CUJrFe11Rfrtc+eyBw==;
+	List-Owner; bh=DHSGsSq8PeXVKtgA71lDJ9b0nR8aAWOjDlg5Sq3r1jk=; b=i8gLzGkIjw2NbP
+	UXIsk8CHkADYOpRmWxgoOclcbW4bPxrIDFqLmhMndUQCFw9vP2aGfl0gBq6xsuYQIxSiU127qk5L/
+	KIyYCZNlC4RpG+Y/SRmC1LUR5Jm2AK0g0SWq/nv1CG0Iq55GyTUDHZlKM+Qy8sqpSljFYocKiIqGn
+	QMKKDdTYcfN2g9EFlThu0BZqWq0etWAAfSax/pzpL4FaEDNnBRZ/1yVM9Gf+xYmDMjDCVB8ZpJCpO
+	I6Ww+Sl9+X5ov+5KqcOksNtc+Ee6pH1zKmakQ/m7Fh4ABOcOqD+jJQuuVqqVHVlNzF12LbK91SLTp
+	K2cc/8QgSEXORe/HVgTw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeg9D-0003ol-K3; Fri, 29 May 2020 14:38:11 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jegCQ-00071N-Ai; Fri, 29 May 2020 14:41:30 +0000
+Received: from verein.lst.de ([213.95.11.211])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeg8q-0003cc-AK
- for linux-nvme@lists.infradead.org; Fri, 29 May 2020 14:37:49 +0000
-Received: from dhcp-10-100-145-180.wdl.wdc.com (unknown [199.255.45.60])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6C6CA20814;
- Fri, 29 May 2020 14:37:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1590763068;
- bh=H5Holb5ECxic2kwSWoJ+5oUahBN+4rFGAhnvcBXaHvI=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=WzAHDExdSDIn4DtjuZbGQNoSF7cuYcJOGHDABqhYY54ZK+D8yS64S/rlhGcrjs84v
- UxAe3kCc54StPfnEuWtDELee0Yjrpv1ZIxtiD/aV+KbopzgkXot11ISztdDZr91M1z
- BszKZJL4rMLre+5ws4Sx8DIHYaZCglCFLnta4GsQ=
-From: Keith Busch <kbusch@kernel.org>
-To: linux-nvme@lists.infradead.org, hch@lst.de, sagi@grimberg.me,
- linux-block@vger.kernel.org, axboe@kernel.dk
-Subject: [PATCHv3 2/2] nvme: force complete cancelled requests
-Date: Fri, 29 May 2020 07:37:44 -0700
-Message-Id: <20200529143744.3545429-3-kbusch@kernel.org>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200529143744.3545429-1-kbusch@kernel.org>
+ id 1jegCL-000704-1R
+ for linux-nvme@lists.infradead.org; Fri, 29 May 2020 14:41:26 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+ id B6DA768BFE; Fri, 29 May 2020 16:41:21 +0200 (CEST)
+Date: Fri, 29 May 2020 16:41:21 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: Keith Busch <kbusch@kernel.org>
+Subject: Re: [PATCHv3 1/2] blk-mq: export blk_mq_force_complete_rq
+Message-ID: <20200529144121.GA4987@lst.de>
 References: <20200529143744.3545429-1-kbusch@kernel.org>
+ <20200529143744.3545429-2-kbusch@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200529143744.3545429-2-kbusch@kernel.org>
+User-Agent: Mutt/1.5.17 (2007-11-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200529_073748_370847_4E6B0BA0 
-X-CRM114-Status: GOOD (  10.15  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200529_074125_231868_80D5FA2C 
+X-CRM114-Status: UNSURE (   6.55  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [213.95.11.211 listed in list.dnswl.org]
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,40 +60,19 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Keith Busch <kbusch@kernel.org>,
- Johannes Thumshirn <johannes.thumshirn@wdc.com>, alan.adamson@oracle.com,
- Ming Lei <ming.lei@redhat.com>
+Cc: axboe@kernel.dk, sagi@grimberg.me, linux-nvme@lists.infradead.org,
+ linux-block@vger.kernel.org, alan.adamson@oracle.com, hch@lst.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Use blk_mq_foce_complete_rq() to bypass fake timeout error injection so
-that request reclaim may proceed.
+On Fri, May 29, 2020 at 07:37:43AM -0700, Keith Busch wrote:
+> For when drivers have a need to bypass error injection.
 
-Reviewed-by: Johannes Thumshirn <johannes.thumshirn@wdc.com>
-Reviewed-by: Ming Lei <ming.lei@redhat.com>
-Signed-off-by: Keith Busch <kbusch@kernel.org>
----
- drivers/nvme/host/core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-index ba860efd250d..891e9461bfae 100644
---- a/drivers/nvme/host/core.c
-+++ b/drivers/nvme/host/core.c
-@@ -310,7 +310,7 @@ bool nvme_cancel_request(struct request *req, void *data, bool reserved)
- 		return true;
- 
- 	nvme_req(req)->status = NVME_SC_HOST_ABORTED_CMD;
--	blk_mq_complete_request(req);
-+	blk_mq_force_complete_rq(req);
- 	return true;
- }
- EXPORT_SYMBOL_GPL(nvme_cancel_request);
--- 
-2.24.1
-
+The subject doesn't quite match the content, and the commit log in
+general could be a little more verbose.  The changes itself look
+fine to me.
 
 _______________________________________________
 linux-nvme mailing list
