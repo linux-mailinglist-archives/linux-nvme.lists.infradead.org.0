@@ -2,66 +2,65 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA41D1E73C4
-	for <lists+linux-nvme@lfdr.de>; Fri, 29 May 2020 05:43:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DDE01E73D3
+	for <lists+linux-nvme@lfdr.de>; Fri, 29 May 2020 05:45:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DFnd4BeBXwW0heNEjiF3CxCupzDNI2UsaxehMrBqykY=; b=ulz9VNrWiiz3dl
-	GSMdynsqAFJrJFoEsoupySxTxpOiRIaxWPcM33wVw4UgEhAPLJo6+9jdukdcrGqo8vbjyaG0NMHob
-	2ec+beS1IUdfavxfNn48D7ngV+e12unA9cNkcfC/VHRcC4RbTWxyJp3aKOwQZbYbV8hsyvJP9MT0j
-	O8t35m0IVnIwSp6zsTUFBqcPvlyWcD+YIrfM9qRY0xYe58UReX6IbwqMsH3Qc2ryqjcX/wR30qGzy
-	VZpGm/SLh0Yv+PB1dpNSsXV6Qo6KwfaYn0/Rgpc20DPCUTFGlktax4+fRIsVyZlZeAMs/W57mwukL
-	eQUGc0pl4zMhnA732+Zg==;
+	List-Owner; bh=hSpQOLWCjQKoYoRldqsf0IhhcQ/lGfl1T7/3KQkLKOM=; b=YKhqIOyaSYZ9GR
+	YRXS692xkfxejw8bTjpylxnIEU/3sjkGhfL9GoN1FvvAIIcCC3ERArjJyfMU6CYyLfQwj6EKDbPY6
+	Jv+WF6fyh+AYZPZVtti064k7vOES5U7NpAqvGEN4RsybqeI4vhLP3BSjjy0AZAzMzEuo2oduartFx
+	OQ1PkO3lvuMXsN+mvtiAbauU0hxT9mzbF79T1Mb0Evcrh3uo9DSArnY3obaXOZjvSJLD8DOaXLwr4
+	nz9j0kdiFWvs4e03X8ZDAI9OIPmrzgsv25/P2LPkplYG9GksS6p9qySPgVbmLJ9qQhsGpZnv8xBfD
+	UT+kolvtVhtlb15ao9Sg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jeVvT-0001vF-GV; Fri, 29 May 2020 03:43:19 +0000
+	id 1jeVx6-0002Ds-Mp; Fri, 29 May 2020 03:45:00 +0000
 Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jeVvO-0001uU-Mh
- for linux-nvme@lists.infradead.org; Fri, 29 May 2020 03:43:15 +0000
-Received: by mail-wm1-x344.google.com with SMTP id u13so1610329wml.1
- for <linux-nvme@lists.infradead.org>; Thu, 28 May 2020 20:43:14 -0700 (PDT)
+ id 1jeVx0-0002Bm-Iu
+ for linux-nvme@lists.infradead.org; Fri, 29 May 2020 03:44:55 +0000
+Received: by mail-wm1-x344.google.com with SMTP id k26so1623407wmi.4
+ for <linux-nvme@lists.infradead.org>; Thu, 28 May 2020 20:44:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zVd4Mrs1U/5A2IfnCC8X5EEtHjPOE7HxiGZ1sl3wvYI=;
- b=NTNbrma41jWb9ZxdhkCC2cNhYh29W7WYsx5CnIfy0X82s6PEJc8ev12p2Ui0F74tM+
- QSrhatHaEmpCZJ8uosoqWhazybAtGUSJeecjXouuf3HMo51gyCz4R0EmHGOxTkw6mJLu
- InFoAWgn+5/tj+jtgBOLJFSC6coaxNgy9FpcoHHf3LIUYPj0mxwUx54V4MoBk68p08bb
- U+PIMfIJZ9Z2xA7OUzD+wVcGXWKaPjb0p9hle6wZ9CtK7VNi3eGbw3iBgPOoyS/tYRZ7
- iXtlRaZMYiw0TK4aOcWSC1alWil8zbK/CjgBrQO9cwl6CRCFop/w4+YgO6Zv9hJ+w4Hr
- /41Q==
+ :cc; bh=+u6mMZSLimZl0GywaUQnKdRzfuv7lLKSy19l3gA5aXU=;
+ b=kWqg1F/Ov75DwlTBnYhlLLQr9+8g20a/Z1UtG8VIPv7wOcmYunemTHdc7kqgsHcBD1
+ 8gvngbETYilY/8Fv/N6L6e9gOuDdNbxyxkPkWdFNmRSF3igjf9Ce/zF7QBsJouJluTVx
+ hC/XQ1VVC9/482y2P3tYKEFzs7qq7V95O7C8tnb7vDxDzzKi+s/FeXoRd0uksXywhIoQ
+ cQs9Q3UOfCwuZZ5AlY/V5VsvQaUEBlpLn7r+sr4857qmD7BrthkMwRlBLSvYBcsQsNRK
+ w6++VW3aW9WTy0LDlbzkPXao0gyNILIAKCKiT/piN8pKnFc8tZIgxNxSw59dJbP4RdLI
+ 6ZyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zVd4Mrs1U/5A2IfnCC8X5EEtHjPOE7HxiGZ1sl3wvYI=;
- b=hm2c0pExx4QrJ711wvI8QenkRX5VESqlOC1QH68zQiFBGrBnLmQm0s6RXcwVIAlxQw
- ueQF0su/KPDHMxm0eXzlfOOTqKC0uNrb4gnAT9Xv7QfyGvSEFk9M23HTuc3sIM5kUsu0
- hHetPRmjzwZryz27CGjx9QjNse/hfrO9d5ekDLKh/dLR2pc186kP2ZVXlCIvwG3bZwT/
- bDQyI3q3qb7eIVRJZO9787/cIGDyAZwfY/g22RPuZpmqZuoW2FYe8ZAUzyboy2yOUkSh
- /6++nF7ZtAsp5Q2ynjOHVF41Uf5/zocTvwN+lcBQFlq9qr/q74XKS6frCYyoJlvJtIEq
- UsQA==
-X-Gm-Message-State: AOAM5307w9SoXHJDvDRH3CUErxRBaqau5/pMsHNYrJRRZWkMCDKj/nKz
- klCe0opZ29WtxPq9334ugZaytlq/DOtuGo11SIM=
-X-Google-Smtp-Source: ABdhPJxHB+sKYUh9DfAl0ytD3Fg6TyhqqVHefR8XB+OU7FR6SA4N5F73MJUDnCyS4z2o6nxZSW/e3697tJHqe40OWrg=
-X-Received: by 2002:a1c:6243:: with SMTP id w64mr6251862wmb.162.1590723792990; 
- Thu, 28 May 2020 20:43:12 -0700 (PDT)
+ bh=+u6mMZSLimZl0GywaUQnKdRzfuv7lLKSy19l3gA5aXU=;
+ b=i1LRm2jcbQ/0FDvI7BSPZcwz6Kg9Fk+rRl62JDUWPYc1G8SWcCkZuECBm/U7AaYc1D
+ IOCQBvBiOFUO4fPtWSb5AmOff2NtwESoAihmvyXH3uYZ2thqE5Hp32pRvo54YogXlu+I
+ /p9fa5klz37jE2vyKl0nz9VZgvlmBe5xHjr0qPjicJmk5KbfS4fzPR0JWMAIqg2jGpbQ
+ NBWsWgMzGsSlqpOPSLOJBzeXls9YKSoO8jgk3rjyLLDgOsExVMv+vOVnTVRE9ZcFCcHZ
+ i2CnizbKGuIbp2pf1FQpxVVZ8b/r2nzDPYv8qYAK8MEhrPi7CB4RSh3Kb2KqqVS1zs7L
+ mfbA==
+X-Gm-Message-State: AOAM533AZOmvnfmSR/mMiYbSpF7FU9dvzxAhQdtWUnJAVYWu6H9gtU7a
+ CRNpuhc2Y2ob0WhoqqP9znRXuzszQ/WG4ZUz4ys=
+X-Google-Smtp-Source: ABdhPJyxD6HpdHMYbOLK5MKbh2lMWfZML7uJP7IfC8iuNxn/mxHI9L6PlL1AnUz9n6/ABz1O05hb7dlUXQrUghmMCEg=
+X-Received: by 2002:a1c:ddc1:: with SMTP id u184mr6070547wmg.115.1590723893290; 
+ Thu, 28 May 2020 20:44:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200528153441.3501777-1-kbusch@kernel.org>
- <20200528153441.3501777-2-kbusch@kernel.org>
-In-Reply-To: <20200528153441.3501777-2-kbusch@kernel.org>
+References: <20200528151931.3501506-1-kbusch@kernel.org>
+In-Reply-To: <20200528151931.3501506-1-kbusch@kernel.org>
 From: Ming Lei <tom.leiming@gmail.com>
-Date: Fri, 29 May 2020 11:43:02 +0800
-Message-ID: <CACVXFVNTMeyM7RrBuirSUXPZvDT3QvdoxDJBc4RYBuUdX2kJYQ@mail.gmail.com>
-Subject: Re: [PATCHv3 2/2] nvme: cancel requests for real
+Date: Fri, 29 May 2020 11:44:42 +0800
+Message-ID: <CACVXFVMosTsw5vD=y848umB4UkK3pgnNPjvULBHtp9C40XgYJA@mail.gmail.com>
+Subject: Re: [PATCHv2 1/2] blk-mq: export __blk_mq_complete_request
 To: Keith Busch <kbusch@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200528_204314_741322_9E4B033F 
-X-CRM114-Status: GOOD (  14.09  )
+X-CRM114-CacheID: sfid-20200528_204454_624660_8693D4D3 
+X-CRM114-Status: GOOD (  13.70  )
 X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (-0.2 points)
@@ -92,44 +91,60 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Sagi Grimberg <sagi@grimberg.me>,
- Johannes Thumshirn <johannes.thumshirn@wdc.com>,
- linux-nvme <linux-nvme@lists.infradead.org>,
- linux-block <linux-block@vger.kernel.org>, Christoph Hellwig <hch@lst.de>
+Cc: linux-block <linux-block@vger.kernel.org>, Jens Axboe <axboe@kernel.dk>,
+ Christoph Hellwig <hch@lst.de>, linux-nvme <linux-nvme@lists.infradead.org>,
+ Sagi Grimberg <sagi@grimberg.me>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, May 28, 2020 at 11:35 PM Keith Busch <kbusch@kernel.org> wrote:
+On Thu, May 28, 2020 at 11:19 PM Keith Busch <kbusch@kernel.org> wrote:
 >
-> Once the driver decides to cancel requests, the concept of those
-> requests timing out ceases to exist. Use __blk_mq_complete_request() to
-> bypass fake timeout error injection so that request reclaim may
-> proceed.
+> For when drivers have a need to bypass error injection.
 >
-> Reviewed-by: Johannes Thumshirn <johannes.thumshirn@wdc.com>
 > Signed-off-by: Keith Busch <kbusch@kernel.org>
 > ---
->  drivers/nvme/host/core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  block/blk-mq.c         | 3 ++-
+>  include/linux/blk-mq.h | 1 +
+>  2 files changed, 3 insertions(+), 1 deletion(-)
 >
-> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index ba860efd250d..f65a0b6cd988 100644
-> --- a/drivers/nvme/host/core.c
-> +++ b/drivers/nvme/host/core.c
-> @@ -310,7 +310,7 @@ bool nvme_cancel_request(struct request *req, void *data, bool reserved)
->                 return true;
->
->         nvme_req(req)->status = NVME_SC_HOST_ABORTED_CMD;
-> -       blk_mq_complete_request(req);
-> +       __blk_mq_complete_request(req);
->         return true;
+> diff --git a/block/blk-mq.c b/block/blk-mq.c
+> index cac11945f602..3c61faf63e15 100644
+> --- a/block/blk-mq.c
+> +++ b/block/blk-mq.c
+> @@ -556,7 +556,7 @@ static void __blk_mq_complete_request_remote(void *data)
+>         q->mq_ops->complete(rq);
 >  }
->  EXPORT_SYMBOL_GPL(nvme_cancel_request);
+>
+> -static void __blk_mq_complete_request(struct request *rq)
+> +void __blk_mq_complete_request(struct request *rq)
+>  {
+>         struct blk_mq_ctx *ctx = rq->mq_ctx;
+>         struct request_queue *q = rq->q;
+> @@ -602,6 +602,7 @@ static void __blk_mq_complete_request(struct request *rq)
+>         }
+>         put_cpu();
+>  }
+> +EXPORT_SYMBOL(__blk_mq_complete_request);
+>
+>  static void hctx_unlock(struct blk_mq_hw_ctx *hctx, int srcu_idx)
+>         __releases(hctx->srcu)
+> diff --git a/include/linux/blk-mq.h b/include/linux/blk-mq.h
+> index d7307795439a..cfe7eac3764e 100644
+> --- a/include/linux/blk-mq.h
+> +++ b/include/linux/blk-mq.h
+> @@ -494,6 +494,7 @@ void blk_mq_requeue_request(struct request *rq, bool kick_requeue_list);
+>  void blk_mq_kick_requeue_list(struct request_queue *q);
+>  void blk_mq_delay_kick_requeue_list(struct request_queue *q, unsigned long msecs);
+>  bool blk_mq_complete_request(struct request *rq);
+> +void __blk_mq_complete_request(struct request *rq);
+>  bool blk_mq_bio_list_merge(struct request_queue *q, struct list_head *list,
+>                            struct bio *bio, unsigned int nr_segs);
+>  bool blk_mq_queue_stopped(struct request_queue *q);
+> --
 
-Looks reaonable,
-
+Looks fine:
 Reviewed-by: Ming Lei <ming.lei@redhat.com>
 
 -- 
