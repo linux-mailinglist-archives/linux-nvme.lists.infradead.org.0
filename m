@@ -2,77 +2,76 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78BF81ED744
-	for <lists+linux-nvme@lfdr.de>; Wed,  3 Jun 2020 22:21:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A0C01ED7BA
+	for <lists+linux-nvme@lfdr.de>; Wed,  3 Jun 2020 23:01:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IHbz5TsTvJ24+NreIoD2kdPVlU1/5C9bS81twgn8APU=; b=AI9sGuGTHjO5TVakAQiMNp4Vn
-	u5FO+qefNXU5pjbOtakhGRScPI7/DHbVxuHYmG3syWW/IEBja2ojC+exAxbAFs9YOVUKf3Zznfkp3
-	7/0ODHZPa7zX+PpOad+NSyHACbkA+C6sZ5EvjlWUbcKk5XuwPQBFFGxLDkv/k9YJlEbhXlrc5/0lx
-	ZCGvWKK/LpVW0nixuSluN/Gygyb9+OMQbbO7SleCVqbxabC7Ran6I2QWr0Tqdc2jxSR/J4wYH6OMH
-	6RMfIt3ER8TtqVYbcOaLKFyJP/CW7n57ZEtbQnlg0NYlDKr/WETr7eFwdhlgwxQ3AkRO1g3rNyYri
-	qQhPUmxDg==;
+	 bh=TcM4QP7KJZXZ6PpSq9aY9zo0bdVvqUzQwkr2JNCyLWs=; b=h9xZjTMmJnRkx11oaX3O/kDtC
+	rjQRr4zE1ycwjIFr0uVHSTkNWXeVtv4Ppq1fxKqxZdR2QCkH7qglaZTZlvwX3vTvnaZ/n7AvuPVi8
+	V45VlHVtqVJ7lF8wxAqLSxXPlTlhiTBn4iucOh/bu7s304UmO3LwIHBC3lQWaXQOsH04cbSGrmFJc
+	Ijx32knfEbNjcg2/2RF4Ym42QJrl6qQXynhhw/kGGDjd8udyOwQeZ6dh88Wc/Eh4Se3W8xtkUN1y+
+	uSdlzvWi/s7pBYXfMK/+COcoSJs1i8gn3ktCbMap6otwSg9UGCli5osplxa330iWY0gHsMT/PlDVV
+	zqON90DTg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgZsp-00041x-Tv; Wed, 03 Jun 2020 20:21:07 +0000
-Received: from mail-pl1-f195.google.com ([209.85.214.195])
+	id 1jgaW8-0005fH-0K; Wed, 03 Jun 2020 21:01:44 +0000
+Received: from mail-pf1-f196.google.com ([209.85.210.196])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgZsk-000410-Uu
- for linux-nvme@lists.infradead.org; Wed, 03 Jun 2020 20:21:04 +0000
-Received: by mail-pl1-f195.google.com with SMTP id m7so1211846plt.5
- for <linux-nvme@lists.infradead.org>; Wed, 03 Jun 2020 13:21:02 -0700 (PDT)
+ id 1jgaW2-0005eN-Vh
+ for linux-nvme@lists.infradead.org; Wed, 03 Jun 2020 21:01:40 +0000
+Received: by mail-pf1-f196.google.com with SMTP id s23so1014324pfh.7
+ for <linux-nvme@lists.infradead.org>; Wed, 03 Jun 2020 14:01:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=+KhrMhcJSvItbb/04gtqwcqQ9SN2qd7j6u0HCMyKS6E=;
- b=Rtg2SNgjyg+WWpTylVrZsSEMGyK8vVAR7T0c8JFspRancF4tEYvrAePr7vKqYYtYMS
- Fym6A0fzhjFVyP/jSRrD2z1JFBkcKWoiMAdG4ae4K0D/MHPNeQe7xsNrg4OaeKRvjtO6
- FGMU72Y0s9Wwr9z4UotUDZI8Y3dC5NOyl49iG516U0UXG6QWex6ZzBjtzbhK2AbzkODi
- wzuQXGKhcLnHdCvg137QXhojm7fo4KPPSdvv5LPnvemKtOdMq6RexuSYZjnQPj73WCSC
- HHwOGIRYhpwP1TtIMBXMPnuqM1AZvw6gEAoo8wbVZtCaB0RzjaHAwFL7YNQ39hoX+NCs
- IL2Q==
-X-Gm-Message-State: AOAM531MIVlL6rUBjl1KzahZSzubkqIj33UB/Xv97U2EB/fi1ELdj7Lh
- 7o8mQCGZZANEEOsRQ6/Xup4=
-X-Google-Smtp-Source: ABdhPJxVJ6fKvvQLHhYWVAMYD7pVSO/io0/PxaM9nu1B0AvOKXyI09cS3qhkXjSHQzhZaT5FsY6wCA==
-X-Received: by 2002:a17:902:e9d2:: with SMTP id
- 18mr1538395plk.56.1591215661730; 
- Wed, 03 Jun 2020 13:21:01 -0700 (PDT)
+ bh=oBP1cl/SCRQmE7ucinddH3TyiMapleL5BWlwlPqWTKk=;
+ b=ISrtFMSFvp2LGbetYxCtvtLIwBO97e95Z8GOelI0zMvuB32jaOTyJKjipKKEp918++
+ kQNrwEpfpR1JnOGTqRwmtZg1XWOy39aDwGp4jPUoO1iUNU2BihZpZIkGUL8mEj08zgjg
+ ZefNMynRlev4rCU4UO7s7VWjy4pRuxHpUMKfSpqTVDIUBWIDDw3la2UNNrU5RcHEAsVD
+ 4vx+o2zSpO+V1nN/j6Udr2emDnbbjH/REcIwDx4eTTIkvEeiQT+clCkYu8H1UGyxr2mf
+ QBO7mpcVI7w/NSbrdtxMe5R3ji6cZU6PVV6VfQdO/GMKufVZ7YlSdP9WpAOU7ZNOTauH
+ LCuQ==
+X-Gm-Message-State: AOAM531mAKBt1+9nR642d1n91i66YNig0gyXIjPe6I+tGv9QpNjeJs0O
+ yVCIdEjV/WUWNwnzBzw6MdVkeW/rALA=
+X-Google-Smtp-Source: ABdhPJzaKRvZBjdYUC/bl/EwL/OUjV8n89jtGjAfQu8VGAWjjxuYoO8Ldz11MGc6VP/+Vf/MNl1LOA==
+X-Received: by 2002:a65:6496:: with SMTP id e22mr1232727pgv.63.1591218094997; 
+ Wed, 03 Jun 2020 14:01:34 -0700 (PDT)
 Received: from ?IPv6:2601:647:4802:9070:5409:1488:6d95:bdff?
  ([2601:647:4802:9070:5409:1488:6d95:bdff])
- by smtp.gmail.com with ESMTPSA id s18sm2536776pfm.90.2020.06.03.13.20.59
+ by smtp.gmail.com with ESMTPSA id b74sm2262105pga.31.2020.06.03.14.01.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Jun 2020 13:21:00 -0700 (PDT)
-Subject: Re: [PATCH 1/1] nvmet-tcp: constify static struct nvmet_fabrics_ops
-To: Max Gurtovoy <maxg@mellanox.com>, linux-nvme@lists.infradead.org,
- kbusch@kernel.org, hch@lst.de
-References: <20200601170520.15207-1-maxg@mellanox.com>
+ Wed, 03 Jun 2020 14:01:34 -0700 (PDT)
+Subject: Re: blktests test nvme/003 fails
+To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
+ Bart Van Assche <bvanassche@acm.org>
+References: <a2b9e92a-f499-b54c-a275-c08a23467866@acm.org>
+ <BYAPR04MB49651040C77627E3A70FF86886880@BYAPR04MB4965.namprd04.prod.outlook.com>
 From: Sagi Grimberg <sagi@grimberg.me>
-Message-ID: <8b4e296b-7978-e5a8-e391-94bc8bfe2657@grimberg.me>
-Date: Wed, 3 Jun 2020 13:20:57 -0700
+Message-ID: <fddde27a-eb61-7031-a067-5538e0fe3243@grimberg.me>
+Date: Wed, 3 Jun 2020 14:01:30 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200601170520.15207-1-maxg@mellanox.com>
+In-Reply-To: <BYAPR04MB49651040C77627E3A70FF86886880@BYAPR04MB4965.namprd04.prod.outlook.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200603_132102_994401_003BCA3B 
-X-CRM114-Status: UNSURE (   8.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200603_140139_022513_90362932 
+X-CRM114-Status: GOOD (  29.36  )
 X-Spam-Score: 0.5 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
  Content analysis details:   (0.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
  -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [209.85.214.195 listed in list.dnswl.org]
+ no trust [209.85.210.196 listed in list.dnswl.org]
  0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
- [209.85.214.195 listed in wl.mailspike.net]
+ [209.85.210.196 listed in wl.mailspike.net]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.2 HEADER_FROM_DIFFERENT_DOMAINS From and EnvelopeFrom 2nd level
  mail domains are different
@@ -93,13 +92,116 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: israelr@mellanox.com, nitzanc@mellanox.com
+Cc: "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Acked-by: Sagi Grimberg <sagi@grimberg.me>
+
+
+On 6/3/20 1:43 AM, Chaitanya Kulkarni wrote:
+> Bart,
+> 
+> (+Sagi)
+> 
+> On 5/27/20 4:55 PM, Bart Van Assche wrote:
+>> Hi,
+>>
+>> This morning I updated my local copy of Jens' for-next branch. Since
+>> that update test nvme/003 fails. Is this perhaps a regression? This
+>> is what appears in the system log if I run that test:
+> 
+> Can you please let me know if the following patch fixes your problem ?
+> 
+>   From e2b5e0bc63d6544feda4354c92c6c9fab11a3649 Mon Sep 17 00:00:00 2001
+> From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+> Date: Wed, 3 Jun 2020 01:31:26 -0700
+> Subject: [PATCH] nvmet: free outstanding host AEN req
+> 
+> In function nvmet_async_event_process() we only process AENs iff
+> there is an open slot on the ctrl->async_event_cmds[] && aen
+> event list posted by the target is not empty. This keeps host
+> posted AEN outstanding if target generated AEN list is empty.
+> We do cleanup the target generated entries from the aen list in
+> nvmet_ctrl_free()-> nvmet_async_events_free() but we don't
+> process AEN posted by the host. This leads to following problem :-
+> 
+> admin sq at the time of nvmet_sq_destroy() holds an extra percpu
+> reference(atomic value = 1), so in the following code path after
+> switching to atomic rcu, release function (nvmet_sq_free()) is not
+> getting called which blocks the sq->free_done in nvmet_sq_destroy() :-
+> 
+> nvmet_sq_destroy()
+>    percpu_ref_kill_and_confirm()
+>    - __percpu_ref_switch_mode()
+>    --  __percpu_ref_switch_to_atomic()
+>    ---   call_rcu() -> percpu_ref_switch_to_atomic_rcu()
+>    ----     /* calls switch callback */
+>    - percpu_ref_put()
+>    -- percpu_ref_put_many(ref, 1)
+>    --- else if (unlikely(atomic_long_sub_and_test(nr, &ref->count)))
+>    ----	ref->release(ref); <---- Not called.
+> 
+> This results in indefinite hang:-
+> 
+>    780 void nvmet_sq_destroy(struct nvmet_sq *sq)
+> ...
+>    789         if (ctrl && ctrl->sqs && ctrl->sqs[0] == sq) {
+>    790                 nvmet_async_events_process(ctrl, status);
+>    791                 percpu_ref_put(&sq->ref);
+>    792         }
+>    793         percpu_ref_kill_and_confirm(&sq->ref, nvmet_confirm_sq);
+>    794         wait_for_completion(&sq->confirm_done);
+>    795         wait_for_completion(&sq->free_done); <-- Hang here
+> 
+> Which breaks the further disconnect sequence. This problem seems to be
+> introduced after commit 64f5e9cdd711b ("nvmet: fix memory leak when removing
+> namespaces and controllers concurrently").
+> 
+> This patch processes the ctrl->async_event_cmd[] until there are no cmds
+> available in array irrespective of aen list if empty or not and uses aen
+> list entry if available.
+> 
+> Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+> ---
+>    drivers/nvme/target/core.c | 16 ++++++++++------
+>    1 file changed, 10 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/nvme/target/core.c b/drivers/nvme/target/core.c
+> index 6392bcd30bd7..40d80b785ecf 100644
+> --- a/drivers/nvme/target/core.c
+> +++ b/drivers/nvme/target/core.c
+> @@ -135,15 +135,19 @@ static void nvmet_async_events_process(struct
+> nvmet_ctrl *ctrl, u16 status)
+>    	struct nvmet_req *req;
+> 
+>    	mutex_lock(&ctrl->lock);
+> -	while (ctrl->nr_async_event_cmds && !list_empty(&ctrl->async_events)) {
+> -		aen = list_first_entry(&ctrl->async_events,
+> -				       struct nvmet_async_event, entry);
+> +	while (ctrl->nr_async_event_cmds) {
+>    		req = ctrl->async_event_cmds[--ctrl->nr_async_event_cmds];
+> -		if (status == 0)
+> +		aen = NULL;
+> +		if (!list_empty(&ctrl->async_events))
+> +			aen = list_first_entry(&ctrl->async_events,
+> +				       struct nvmet_async_event, entry);
+
+Just use list_first_entry_or_null
+
+> +		if (status == 0 && aen)
+>    			nvmet_set_result(req, nvmet_async_event_result(aen));
+> 
+> -		list_del(&aen->entry);
+> -		kfree(aen);
+> +		if (aen) {
+> +			list_del(&aen->entry);
+> +			kfree(aen);
+> +		}
+
+You already condition aen when setting the result, just free it after
+you use it.
 
 _______________________________________________
 linux-nvme mailing list
