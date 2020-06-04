@@ -2,69 +2,59 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 165971EE53A
-	for <lists+linux-nvme@lfdr.de>; Thu,  4 Jun 2020 15:23:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AE4D51EE59A
+	for <lists+linux-nvme@lfdr.de>; Thu,  4 Jun 2020 15:48:20 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1RISpBfilhTO6RhDMQzMkk+bl6wIjFuiKxK06yU//mQ=; b=W/LvZhykfrFt06
-	RzhQhJduV95HlzTPFMJqvdX/lJRaRkBkJnqVi4fPgmysojmSu5IqRcd2YeUsHAIPubw6Jywk5N6xS
-	9F0PpdkCNCj2rDrUBbzyZdp+fGBEbTGq3AHSh9qYtSzaMm6M81O/pRHWvOhTt0oUWe0O0B+OtNsZc
-	CrRuOSwu5cGcVSAYZbbxzmIgniAyxUbdlb2QM75314mZ4+GMOuaO3N9xbHrR5w3Vb8W++RgeTaY1g
-	+zdM8zeG7Q+pHhc46yarmpu2gNXvBWQoWfqEqQb6dUUot5BgrpVBxQqxbdNj8sHf7RYstrCicFaoR
-	KOrEe3If+KcizX/fVYRg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Qq0HKFGn7La0UQisUkha6xalKvQFRmADcVDeEicftjA=; b=UNHyn7IWX3OhR5fqm8vuSI34V
+	XuO2w0wCqzyVcFJDCOrsxElhHp2dEMgeWhdJQ3wyzJIQ6Teiy212d32MtIBR60q791oVQHpxNTmub
+	6a/inZzya5KEr1WxGyDFF0VVddgiAQXVhfUBIaaQRWNRvKGVfXaEfGkhAVq/UJgjjPEWp7VJ66I3J
+	apudBfGNentMtR8Amx7HsG069Buvt4ijQe1Ic1ykF8+UmjMP14CoJhd/R6ZS7skHxSIcRKyUSx9l+
+	nERtESkXQ8ZuWOjD6ih6lEdV/DTuNu6HtdAsrqyPKDk8Ta6gaFIqFhK7W51KGpCvqNLsS+8x3Y9xb
+	ukUQPt7kw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jgppq-0001Gf-8p; Thu, 04 Jun 2020 13:23:06 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jgqE9-00045Y-1J; Thu, 04 Jun 2020 13:48:13 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jgppm-0001G9-6B
- for linux-nvme@lists.infradead.org; Thu, 04 Jun 2020 13:23:03 +0000
-Received: from dhcp-10-100-145-180.wdl.wdc.com (unknown [199.255.45.60])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id CFB8E207DF;
- Thu,  4 Jun 2020 13:23:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591276981;
- bh=WCrgd5DvCA9X0Fts4kRjDoBSvnReKLjWH56d/ZxJ9VE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ZiWl7zaxZRCTMZGJJBP9urIt9ArdsApSXDJCKnFzWSvphd6NwO0fRas4qrTrpjT9j
- lh83zMu2gL6K93kmJHdRbGM0z29Apg4nQaeqxQ6fUvyUJ2+k03xqNYb22hoX159C+G
- mXsLIm5fQBD2929xkZZRMAzMW4qi3QlWloKgS+sU=
-Date: Thu, 4 Jun 2020 06:22:59 -0700
-From: Keith Busch <kbusch@kernel.org>
-To: Hannes Reinecke <hare@suse.de>
+ id 1jgqE4-00044N-GP
+ for linux-nvme@lists.infradead.org; Thu, 04 Jun 2020 13:48:09 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id EC176AC5B;
+ Thu,  4 Jun 2020 13:48:06 +0000 (UTC)
 Subject: Re: [PATCH 1/2] nvme: check for NVME_CTRL_LIVE in nvme_report_ns_ids()
-Message-ID: <20200604132259.GA146361@dhcp-10-100-145-180.wdl.wdc.com>
+To: Keith Busch <kbusch@kernel.org>
 References: <20200604115602.78446-1-hare@suse.de>
  <20200604115602.78446-2-hare@suse.de>
+ <20200604132259.GA146361@dhcp-10-100-145-180.wdl.wdc.com>
+From: Hannes Reinecke <hare@suse.de>
+Message-ID: <79298b5a-857d-60dd-91c7-058182b39b0e@suse.de>
+Date: Thu, 4 Jun 2020 15:48:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200604115602.78446-2-hare@suse.de>
+In-Reply-To: <20200604132259.GA146361@dhcp-10-100-145-180.wdl.wdc.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200604_062302_249285_DCD01E50 
-X-CRM114-Status: GOOD (  13.96  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200604_064808_694041_7EAD92CF 
+X-CRM114-Status: GOOD (  23.31  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [195.135.220.15 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,56 +69,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
 Cc: Keith Busch <keith.busch@wdc.com>, Daniel Wagner <daniel.wagner@suse.com>,
  Christoph Hellwig <hch@lst.de>, linux-nvme@lists.infradead.org,
  Sagi Grimberg <sagi@grimberg.me>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Jun 04, 2020 at 01:56:01PM +0200, Hannes Reinecke wrote:
-> When a controller reset happens during scanning nvme_identify_ns()
-> will be aborted, but the subsequent call to nvme_identify_ns_descs()
-> will stall as it will only be completed once the controller reconnect
-> is finished.
-
-If nvme_identify_ns() is aborted, shouldn't we not proceed to the next
-command? It looks like the code already does that, from nvme_alloc_ns():
-
-	ret = nvme_identify_ns(ctrl, nsid, &id);
-	if (ret)
-		goto out_free_queue;
-
-And then from nvme_revalidate_disk():
-
-	ret = nvme_identify_ns(ctrl, ns->head->ns_id, &id);
-	if (ret)
-		goto out;
-
-Those are the only two paths to nvme_identify_ns_descs(), so it looks
-like nvme_identify_ns() must be successful in order to get there.
-
-> But as the reconnect waits for scanning to complete the particular
-> namespace will deadlock and never reconnected again.
-
-The fix looks a bit fragile. What if the controller is reset immediately
-after the check for live? It'd be safer such that reconnect didn't have
-to wait for scan_work, no?  The pci transport has no such dependency,
-for example.
-
-> diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
-> index 569671e264b5..b811787505f7 100644
-> --- a/drivers/nvme/host/core.c
-> +++ b/drivers/nvme/host/core.c
-> @@ -1792,7 +1792,7 @@ static int nvme_report_ns_ids(struct nvme_ctrl *ctrl, unsigned int nsid,
->  		memcpy(ids->eui64, id->eui64, sizeof(id->eui64));
->  	if (ctrl->vs >= NVME_VS(1, 2, 0))
->  		memcpy(ids->nguid, id->nguid, sizeof(id->nguid));
-> -	if (ctrl->vs >= NVME_VS(1, 3, 0))
-> +	if (ctrl->vs >= NVME_VS(1, 3, 0) && ctrl->state == NVME_CTRL_LIVE)
->  		return nvme_identify_ns_descs(ctrl, nsid, ids);
->  	return 0;
->  }
-
-_______________________________________________
-linux-nvme mailing list
-linux-nvme@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-nvme
+T24gNi80LzIwIDM6MjIgUE0sIEtlaXRoIEJ1c2NoIHdyb3RlOgo+IE9uIFRodSwgSnVuIDA0LCAy
+MDIwIGF0IDAxOjU2OjAxUE0gKzAyMDAsIEhhbm5lcyBSZWluZWNrZSB3cm90ZToKPj4gV2hlbiBh
+IGNvbnRyb2xsZXIgcmVzZXQgaGFwcGVucyBkdXJpbmcgc2Nhbm5pbmcgbnZtZV9pZGVudGlmeV9u
+cygpCj4+IHdpbGwgYmUgYWJvcnRlZCwgYnV0IHRoZSBzdWJzZXF1ZW50IGNhbGwgdG8gbnZtZV9p
+ZGVudGlmeV9uc19kZXNjcygpCj4+IHdpbGwgc3RhbGwgYXMgaXQgd2lsbCBvbmx5IGJlIGNvbXBs
+ZXRlZCBvbmNlIHRoZSBjb250cm9sbGVyIHJlY29ubmVjdAo+PiBpcyBmaW5pc2hlZC4KPiAKPiBJ
+ZiBudm1lX2lkZW50aWZ5X25zKCkgaXMgYWJvcnRlZCwgc2hvdWxkbid0IHdlIG5vdCBwcm9jZWVk
+IHRvIHRoZSBuZXh0Cj4gY29tbWFuZD8gSXQgbG9va3MgbGlrZSB0aGUgY29kZSBhbHJlYWR5IGRv
+ZXMgdGhhdCwgZnJvbSBudm1lX2FsbG9jX25zKCk6Cj4gCj4gCXJldCA9IG52bWVfaWRlbnRpZnlf
+bnMoY3RybCwgbnNpZCwgJmlkKTsKPiAJaWYgKHJldCkKPiAJCWdvdG8gb3V0X2ZyZWVfcXVldWU7
+Cj4gCj4gQW5kIHRoZW4gZnJvbSBudm1lX3JldmFsaWRhdGVfZGlzaygpOgo+IAo+IAlyZXQgPSBu
+dm1lX2lkZW50aWZ5X25zKGN0cmwsIG5zLT5oZWFkLT5uc19pZCwgJmlkKTsKPiAJaWYgKHJldCkK
+PiAJCWdvdG8gb3V0Owo+IAo+IFRob3NlIGFyZSB0aGUgb25seSB0d28gcGF0aHMgdG8gbnZtZV9p
+ZGVudGlmeV9uc19kZXNjcygpLCBzbyBpdCBsb29rcwo+IGxpa2UgbnZtZV9pZGVudGlmeV9ucygp
+IG11c3QgYmUgc3VjY2Vzc2Z1bCBpbiBvcmRlciB0byBnZXQgdGhlcmUuCj4gCgpUcnVlLiBCdXQg
+aWYgdGhlIGNvbnRyb2xsZXIgaXMgZW50ZXJpbmcgcmVzZXQganVhdCBfYWZ0ZXJfIHRoZSBjYWxs
+IHRvIApudm1lX2lkZW50aWZ5X25zKCkgdGhlcmUgd29uJ3QgYmUgYW55IEkvTyB0byBhYm9ydCwg
+YW5kIHRoZSBzY2FubmluZyAKY29kZSB3aWxsIHByb2NlZWQgdG8gY2FsbCBudm1lX3JlcG9ydF9u
+c19pZHMoKSBleHBvc2luZyB0aGlzIGlzc3VlLgoKPj4gQnV0IGFzIHRoZSByZWNvbm5lY3Qgd2Fp
+dHMgZm9yIHNjYW5uaW5nIHRvIGNvbXBsZXRlIHRoZSBwYXJ0aWN1bGFyCj4+IG5hbWVzcGFjZSB3
+aWxsIGRlYWRsb2NrIGFuZCBuZXZlciByZWNvbm5lY3RlZCBhZ2Fpbi4KPiAKPiBUaGUgZml4IGxv
+b2tzIGEgYml0IGZyYWdpbGUuIFdoYXQgaWYgdGhlIGNvbnRyb2xsZXIgaXMgcmVzZXQgaW1tZWRp
+YXRlbHkKPiBhZnRlciB0aGUgY2hlY2sgZm9yIGxpdmU/IEl0J2QgYmUgc2FmZXIgc3VjaCB0aGF0
+IHJlY29ubmVjdCBkaWRuJ3QgaGF2ZQo+IHRvIHdhaXQgZm9yIHNjYW5fd29yaywgbm8/ICBUaGUg
+cGNpIHRyYW5zcG9ydCBoYXMgbm8gc3VjaCBkZXBlbmRlbmN5LAo+IGZvciBleGFtcGxlLgo+IApP
+aCwgdGhhdCB3b3VsZG4ndCBtYXR0ZXI7IG9uY2UgdGhlIGNvbnRyb2xsZXIgaXMgcmVzZXQgKGll
+IGVudGVycyBhIApub24tTElWRSBzdGF0ZSkgYWxsIG91dHN0YW5kaW5nIEkvTyBpcyBhYm9ydGVk
+LgoKVGhlIHBvaW50IGhlcmUgaXMgdGhhdCBvbmx5IF9vdXRzdGFuZGluZ18gSS9PIGlzIGFib3J0
+ZWQuCklmIHRoZSBzY2FuIHRocmVhZCBjb250aW51ZXMgc2VuZGluZyBJL08gYWZ0ZXIgdGhhdCB0
+aGluZ3Mgc3RhbGwuCgpBbmQgSSBjYW4ndCByZWFsbHkgc2VlIGhvdyB3ZSBzaG91bGQgYmUgYWJs
+ZSB0byBkZWNvdXBsZSB0aGUgc2NhbiB0aHJlYWQgCmZyb20gcmVzZXQ7IGJvdGggd2lsbCBiZSBt
+b2RpZnlpbmcgdGhlIG5hbWVzcGFjZSBzdGF0ZSAob3IgZXZlbiAKcHJlc2VuY2UpLCBzbyB3ZSBo
+YXZlIHRvIGZsdXNoIG9uZSBvZiB0aGVtIHRvIGF2b2lkIHVzIGhhdmluZyB0byBsb2NrIAplYWNo
+IGFuZCBldmVyeSBtb2RpZmljYXRpb24gYW5kIGtpbGxpbmcgcGVyZm9ybWFuY2UuCgpDaGVlcnMs
+CgpIYW5uZXMKLS0gCkRyLiBIYW5uZXMgUmVpbmVja2UgICAgICAgICAgICBUZWFtbGVhZCBTdG9y
+YWdlICYgTmV0d29ya2luZwpoYXJlQHN1c2UuZGUgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgKzQ5IDkxMSA3NDA1MyA2ODgKU1VTRSBTb2Z0d2FyZSBTb2x1dGlvbnMgR21iSCwgTWF4ZmVs
+ZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnCkhSQiAzNjgwOSAoQUcgTsO8cm5iZXJnKSwgR2VzY2jD
+pGZ0c2bDvGhyZXI6IEZlbGl4IEltZW5kw7ZyZmZlcgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KbGludXgtbnZtZSBtYWlsaW5nIGxpc3QKbGludXgtbnZt
+ZUBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtbnZtZQo=
