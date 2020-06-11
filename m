@@ -2,129 +2,80 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AC7D1F7101
-	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jun 2020 01:45:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E1AE81F7104
+	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jun 2020 01:47:17 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=j63GvfCfYJBFxcxtLR5YwderLw56t3lvhQzx7/4cUyM=; b=PmCzQjA1x1GiZZ
-	fqHM65yMgJ+fuGdtRiNA3teZr44DIpyy0GDwfqzLz/40Tl6gfSarYILqmvM7mAXWzovkidyNmwxjM
-	BvQIT4JS81HZl7fJnVFAmPrii3KpOvTrTt88uOEqpssQtwaq3PZpRtUJfD/S++/AFLPIzNs/RNn4o
-	cRn/gHCxS5+PG/OgJxYXRApPLiol3F8HE+E6b/RimpbnxpZodoTJwlo81k16U8YOh5jce0yoJYE3h
-	7iBLO2Qb7kLhkEyMqSr7matK3uC/59iqTYz/RtOZuZMhG0sQbDLcLixwlTvF1/wTwT6+GqvkeZk/l
-	XdOcp2apYK4nD8iquWuA==;
+	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2uCqPyqcqJJDpbLSIko6i4RRDUAmRHyAhUsVym7Ip/M=; b=U9ykiNGIy5ZWad
+	RvVzqpnpPLb4aB+M/GWw5hB4GPjjO1ITgk+NYqIuI/X8LKU9iQiV9Q3E9RUgQBiMEeNXZMKjZOPTa
+	x9whZPaQEDUGuofaMI0n2uSVj1aZU4/XrT9NJEOEJmnDXBIRwj9eHPyecXzJjBwLohJMsBdgApAB+
+	EntrC9vQkmAg2MBCfETtIjwBMtululYlLpPuNFD+Wi/jF6KxLPuaxtCO71ljGmam5WBb277TnMs38
+	i1EDm3fa4W/bMfAOi0zdXttqWm+rKVaDQOK5znHm6HhgI2GzIM7P1PzZ1mRqsbG9KhE+11YS6xiNW
+	rPZvDcR7uzJfTZiASoRA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjWt0-0002cv-CK; Thu, 11 Jun 2020 23:45:30 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1jjWub-0003BF-R7; Thu, 11 Jun 2020 23:47:09 +0000
+Received: from ale.deltatee.com ([204.191.154.188])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjWsj-0002X3-3w
- for linux-nvme@lists.infradead.org; Thu, 11 Jun 2020 23:45:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1591919114; x=1623455114;
- h=from:to:cc:subject:date:message-id:references:
- content-transfer-encoding:mime-version;
- bh=cPTgLV5CC9NTl4nebD3xyo8aaz2Hwve8wWwj8P6Rj2A=;
- b=JXeYJbwE2P3QcyGh8jdXBbdYqHxpfm8wns95yeY+ctM1yEUZoiaw2iXL
- CuND0lkNSnCoKmcEXY7/74t0xdexAwMeYNFMc85nXz6xEKlbrOzUmn037
- ND0Ia/m0GxkgZ4mjOF+iWRl8e2igSHWmiPBsr0yciuum64mvBNgHsZ48I
- VkdjcbFc+udUWGy8yu0GaEbQaTzDHTOH1gmhjwRXe+U24oRO2KNSjjbG6
- uFOBrg9KiYzMgme1ssrLaCJeh/OyqJjRbvZAA8frjeWyyOfSNtI5jmSGg
- xZdth+t0XPLSmc96JFogqN0T2A4L2L47wUAfXXobNukxzCRBFb4ybryLa Q==;
-IronPort-SDR: 0bNYIaWd2fCdD/22Ewy5GJjA9xefX5xy9Ot/QEpHuOqDGWjyNOADhzpUZLBL/PShcaUjaZq7c2
- Z8e8gQNiHDLY3R3wlO5CzEVy3VIEObkvFZ3Iz/wEkIY9Xop7fHpC/Usraddm99zTAghvSKf5+F
- YG8mWVtssSrk4jbEjO/iDPKLbYJJ6eJHVbKHxJ83E09LeJsVqM/4kt+qSjbtTgPOP4B+44SKDd
- WMIP0crMlkNHvPE79pBZqHR0zjJpZVUkgfvpGHcyO3oeOczXORjacFPCDbYFpM6wu86x8kYhMs
- Euk=
-X-IronPort-AV: E=Sophos;i="5.73,501,1583164800"; d="scan'208";a="144102326"
-Received: from mail-dm6nam11lp2170.outbound.protection.outlook.com (HELO
- NAM11-DM6-obe.outbound.protection.outlook.com) ([104.47.57.170])
- by ob1.hgst.iphmx.com with ESMTP; 12 Jun 2020 07:45:12 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VVLdKv37OWf2Fev+B93bnOLtihliyKfU0rAE+wLwXPTSeAt2XhDgIpRog/1ECGo0jGMDgc5uXB4dCjr/viFEjKhJtFKFQmfvjlrAkbdldzCeSe21q01VhEjLiphsv73zgKvXQovzGdLQJ6IFYjQt5USFbkszCzTpk/v6wY+QRDvMh+QMuQIapzBTQclcmGyMSZ2QDk8jJ6KZakQcXJBlyUrsewZG+ohVALdBCvxElul3VSruAOkr80lVbN/NYU8HrP4XFlOJ8i8K3pFftA/tFXgBK8dbdBf2sVUhDuhdgUgPftVL73SnnNdDchssjVIlOmZwdBSIWmGAO4s3wTmhSg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QEc40JkD51XLAAOw0tSEu2Dei9rEyk/UV18o8I14lqc=;
- b=OFlFU5wTKO2Eqp695WnerqOPOWot5RP7xeFZrgwgWm+JTB3EW0BOPL4tp2evK5y3wOfp50jbOIXBBKyKgWvpF2qmkicgi1Jx+3SHCipOoWqgSWi9nRthFvxVG6LT3FJN50YvDJJ0PhudGtD05iXjNbQA9j8URjx/KTfsQ3CnBq7AHPivTu89lrgvo4odAFnw2mRq9Nt7cvuO2z0J7auYA6naWGbsAy1aLuBvqXL+4+quwGr6bGrDOhGHu/SByjRvuE2IGSu9K30x+i2GBJtaX2BGXZ08nQ2zL+/V/vJpp6WzHiO4Z9jz8Jg8ERZOKpsy/VW7C/zqZ7k0rVjHPwQ9lA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QEc40JkD51XLAAOw0tSEu2Dei9rEyk/UV18o8I14lqc=;
- b=xWnc5/QyCXKU0euFfkKmHXksp340IYf3QwDdRGbNfYkF2C4pBuga+j1C38qIx/ZWCFn+dtifdxFCP+6iywcQlHrPGhUhWB3Y+PdsrEdmpxjgab9KZ6oqLCdVtPLMt0Ow+R9dGY+7VYZ80FnljaoSYmdKKwW4JyqDvj6uYy3KNPg=
-Received: from BYAPR04MB4965.namprd04.prod.outlook.com (2603:10b6:a03:4d::25)
- by BY5PR04MB7122.namprd04.prod.outlook.com (2603:10b6:a03:222::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3088.23; Thu, 11 Jun
- 2020 23:45:10 +0000
-Received: from BYAPR04MB4965.namprd04.prod.outlook.com
- ([fe80::4d72:27c:c075:c5e6]) by BYAPR04MB4965.namprd04.prod.outlook.com
- ([fe80::4d72:27c:c075:c5e6%7]) with mapi id 15.20.3066.023; Thu, 11 Jun 2020
- 23:45:10 +0000
-From: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>
-To: Logan Gunthorpe <logang@deltatee.com>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "linux-nvme@lists.infradead.org"
- <linux-nvme@lists.infradead.org>
-Subject: Re: [PATCH v13 7/9] nvmet-passthru: Add passthru code to process
- commands
-Thread-Topic: [PATCH v13 7/9] nvmet-passthru: Add passthru code to process
- commands
-Thread-Index: AQHWKhRpuphoSoz88kOAfqTRprM+0g==
-Date: Thu, 11 Jun 2020 23:45:10 +0000
-Message-ID: <BYAPR04MB4965379CE8694F52D684993386800@BYAPR04MB4965.namprd04.prod.outlook.com>
+ id 1jjWuV-0003Ab-RL
+ for linux-nvme@lists.infradead.org; Thu, 11 Jun 2020 23:47:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=deltatee.com; s=20200525; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=gV9QoHt8EYvoGCRmgXIoNP2+LNt+D1Ofl05Ii0wSJgE=; b=FkEOcxMSQTZ7+vgRXN3priANPV
+ P8kEefsc8sUN3ssFd8os7kKyVrXhuQFyr2tdlCspviSAdVUqUDmJ45OyszmwhlUs9s+L7h5CpU8Ly
+ jm8B4zi/dnj5S6e8SiDmOoMSupAMqvhKKEs4Gwx2zYCIi8spOjFtNRHY3OYNp6SZdJzg+HW1GhFXF
+ DgazrnVGdBmTP35H9W1MDEVqOvRjmJcqnnJzvOnyjBNXAea1MdjOi4WBB6IU8W+B+UQIbUXn1AtyF
+ /lsOhUfrkpBEH8gM6HfS+NUJh2EKQ4ZGHnb43wj8yuDabFtMeF+2wIYrNrCQb0NBwufoy39Uv6PL9
+ Q6UI9qIA==;
+Received: from s01060023bee90a7d.cg.shawcable.net ([24.64.145.4]
+ helo=[192.168.0.10])
+ by ale.deltatee.com with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <logang@deltatee.com>)
+ id 1jjWuO-0002NJ-Ai; Thu, 11 Jun 2020 17:46:57 -0600
+To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
 References: <20200514172253.6445-1-logang@deltatee.com>
  <20200514172253.6445-8-logang@deltatee.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: deltatee.com; dkim=none (message not signed)
- header.d=none;deltatee.com; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [199.255.45.62]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: f4457c2b-e649-44cb-b625-08d80e617adc
-x-ms-traffictypediagnostic: BY5PR04MB7122:
-x-microsoft-antispam-prvs: <BY5PR04MB7122ED35404176B527E391FA86800@BY5PR04MB7122.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-forefront-prvs: 0431F981D8
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: p/oAlTREwX64c7RffJBYif0WBg6ldrIx8n1VBARMkA7at3TOnrKE+tpi1+L8duKeDNsIL+zZtD/JqKKwZP1Dp2xDpoCNVCNIbBuSntQxr4K7Av0PQJgpsJUi+ZP7zPgO2y3H7MqF5Pb+etDC/xZ8UkllN9Rz2QbR5DHn0rBbpbcseDeHGxT5a6YjWu9rBAlOuba3hdhNUlByt7T2l9FADMsAlwotCSwNB/LE1/nootc9Sk4Lf+tUIK5H9JW4aZSoJcHY1YFnN7lzqkHzAwx8iX02O0dtONIkyk+5Tqpo79chhen3DoMqq5y5uAi/dQwb
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR04MB4965.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(346002)(396003)(376002)(136003)(366004)(39860400002)(66556008)(8676002)(8936002)(76116006)(66946007)(66476007)(64756008)(2906002)(66446008)(33656002)(86362001)(55016002)(83380400001)(186003)(26005)(6506007)(71200400001)(53546011)(9686003)(316002)(4326008)(7696005)(478600001)(54906003)(5660300002)(52536014)(110136005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: nern+YkBdfYGsMDmmvmhOBG26z9YggaoeUUjPVHcRifgTikahnqHXdHtQfJVuhnyQLTAjvpIgJ/S+9QKDSAIePYvlY4Es11KJQjTqs6MLM0+rCt58qhKSjdSruWwpx1KJyu0FFcp5Jba9Rr9gZis0HTEd8j0EnMOiTVMItvA16VuuAA9kfPbUL8JltT7QH+qFJMU20qUOnWXFrj2uYLP2r1oEFcbIoU7hbve6aVXgey24CShLrHle76Vnwe1g1Axtsjciwb8Elyikdl5QdsYE61CUeczUgmPfrz2vZsmmZh/gNtUXa8T41neDaXi5mjODc58AMQ2jQdbynlTO3lrym+nFuh+beLqBM7wyL0xXaoErwTIqKhvZRWUNmSEDIA9zzksZ68GwKN2P63+jJr/xS8lkc35ePOmyZFoGYfDQyObivGHkGm5oPuxe1tmJnh1Wxgl27eZVW/qGx3Qu3qYsL0oiWXQUiuZh6IC6iFmHmo=
-x-ms-exchange-transport-forked: True
+ <BYAPR04MB4965379CE8694F52D684993386800@BYAPR04MB4965.namprd04.prod.outlook.com>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <cbe637ec-e80c-def1-2453-70059715e19c@deltatee.com>
+Date: Thu, 11 Jun 2020 17:46:54 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f4457c2b-e649-44cb-b625-08d80e617adc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jun 2020 23:45:10.6887 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: eA96pe/ru1glYskqQwM9cMTKfuFJo0tHCkPutklJmlE3JhvaPNwenSO9kv1jvhp/xUfr+sybDlBDKJEo6dV45hTYcjE+/IxgJ75Z/m7wIDY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR04MB7122
+In-Reply-To: <BYAPR04MB4965379CE8694F52D684993386800@BYAPR04MB4965.namprd04.prod.outlook.com>
+Content-Language: en-US
+X-SA-Exim-Connect-IP: 24.64.145.4
+X-SA-Exim-Rcpt-To: sbates@raithlin.com, maxg@mellanox.com, axboe@fb.com,
+ kbusch@kernel.org, sagi@grimberg.me, hch@lst.de,
+ linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Chaitanya.Kulkarni@wdc.com
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+ GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: [PATCH v13 7/9] nvmet-passthru: Add passthru code to process
+ commands
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200611_164513_244935_DD67DD59 
-X-CRM114-Status: GOOD (  13.03  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20200611_164703_888433_78579C5B 
+X-CRM114-Status: GOOD (  17.43  )
+X-Spam-Score: -0.2 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-2.5 points)
+ Content analysis details:   (-0.2 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
- medium trust [216.71.153.141 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -153,71 +104,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On 5/14/20 10:23 AM, Logan Gunthorpe wrote:
-> +
-> +static void nvmet_passthru_execute_cmd(struct nvmet_req *req)
-> +{
-> +	struct nvme_ctrl *ctrl = nvmet_req_passthru_ctrl(req);
-> +	struct nvme_ns *ns = NULL;
-> +	struct request *rq = NULL;
-> +	struct request_queue *q;
-> +	u32 effects;
-> +	u16 status;
-> +	int ret;
-> +
-> +	if (likely(req->sq->qid != 0)) {
-> +		u32 nsid = le32_to_cpu(req->cmd->common.nsid);
-> +
-> +		ns = nvme_find_get_ns(ctrl, nsid);
-> +		if (unlikely(!ns)) {
-> +			pr_err("failed to get passthru ns nsid:%u\n", nsid);
-> +			status = NVME_SC_INVALID_NS | NVME_SC_DNR;
-> +			goto fail_out;
-> +		}
-> +	}
-> +
-> +	if (ns)
-> +		q = ns->queue;
-> +	else
-> +		q = ctrl->admin_q;
 
-Is it possible to avoid explicit if.. else in fast path given that the
-condition exists and we can take an advantage of that, how about
-following ?
 
-diff --git a/drivers/nvme/target/passthru.c b/drivers/nvme/target/passthru.c
-index 9e71fdfbdbb3..4f8e022d254c 100644
---- a/drivers/nvme/target/passthru.c
-+++ b/drivers/nvme/target/passthru.c
-@@ -84,9 +84,9 @@ static int nvmet_passthru_map_sg(struct nvmet_req 
-*req, struct request *rq)
-  static void nvmet_passthru_execute_cmd(struct nvmet_req *req)
-  {
-         struct nvme_ctrl *ctrl = nvmet_req_passthru_ctrl(req);
-+       struct request_queue *q = ctrl->admin_q;
-         struct nvme_ns *ns = NULL;
-         struct request *rq = NULL;
--       struct request_queue *q;
-         u32 effects;
-         u16 status;
-         int ret;
-@@ -100,12 +100,8 @@ static void nvmet_passthru_execute_cmd(struct 
-nvmet_req *req)
-                         status = NVME_SC_INVALID_NS | NVME_SC_DNR;
-                         goto fail_out;
-                 }
--       }
--
--       if (ns)
-                 q = ns->queue;
--       else
--               q = ctrl->admin_q;
-+       }
+On 2020-06-11 5:45 p.m., Chaitanya Kulkarni wrote:
+> On 5/14/20 10:23 AM, Logan Gunthorpe wrote:
+>> +
+>> +static void nvmet_passthru_execute_cmd(struct nvmet_req *req)
+>> +{
+>> +	struct nvme_ctrl *ctrl = nvmet_req_passthru_ctrl(req);
+>> +	struct nvme_ns *ns = NULL;
+>> +	struct request *rq = NULL;
+>> +	struct request_queue *q;
+>> +	u32 effects;
+>> +	u16 status;
+>> +	int ret;
+>> +
+>> +	if (likely(req->sq->qid != 0)) {
+>> +		u32 nsid = le32_to_cpu(req->cmd->common.nsid);
+>> +
+>> +		ns = nvme_find_get_ns(ctrl, nsid);
+>> +		if (unlikely(!ns)) {
+>> +			pr_err("failed to get passthru ns nsid:%u\n", nsid);
+>> +			status = NVME_SC_INVALID_NS | NVME_SC_DNR;
+>> +			goto fail_out;
+>> +		}
+>> +	}
+>> +
+>> +	if (ns)
+>> +		q = ns->queue;
+>> +	else
+>> +		q = ctrl->admin_q;
+> 
+> Is it possible to avoid explicit if.. else in fast path given that the
+> condition exists and we can take an advantage of that, how about
+> following ?
+> 
+> diff --git a/drivers/nvme/target/passthru.c b/drivers/nvme/target/passthru.c
+> index 9e71fdfbdbb3..4f8e022d254c 100644
+> --- a/drivers/nvme/target/passthru.c
+> +++ b/drivers/nvme/target/passthru.c
+> @@ -84,9 +84,9 @@ static int nvmet_passthru_map_sg(struct nvmet_req 
+> *req, struct request *rq)
+>   static void nvmet_passthru_execute_cmd(struct nvmet_req *req)
+>   {
+>          struct nvme_ctrl *ctrl = nvmet_req_passthru_ctrl(req);
+> +       struct request_queue *q = ctrl->admin_q;
+>          struct nvme_ns *ns = NULL;
+>          struct request *rq = NULL;
+> -       struct request_queue *q;
+>          u32 effects;
+>          u16 status;
+>          int ret;
+> @@ -100,12 +100,8 @@ static void nvmet_passthru_execute_cmd(struct 
+> nvmet_req *req)
+>                          status = NVME_SC_INVALID_NS | NVME_SC_DNR;
+>                          goto fail_out;
+>                  }
+> -       }
+> -
+> -       if (ns)
+>                  q = ns->queue;
+> -       else
+> -               q = ctrl->admin_q;
+> +       }
+> 
+>          rq = nvme_alloc_request(q, req->cmd, BLK_MQ_REQ_NOWAIT, 
+> NVME_QID_ANY);
+>          if (IS_ERR(rq)) {
+> 
 
-         rq = nvme_alloc_request(q, req->cmd, BLK_MQ_REQ_NOWAIT, 
-NVME_QID_ANY);
-         if (IS_ERR(rq)) {
 
+This makes sense. Will fix for the next revision.
+
+Thanks,
+
+Logan
 
 _______________________________________________
 linux-nvme mailing list
