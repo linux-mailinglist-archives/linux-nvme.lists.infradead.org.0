@@ -2,80 +2,77 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1AE81F7104
-	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jun 2020 01:47:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 282DB1F71A1
+	for <lists+linux-nvme@lfdr.de>; Fri, 12 Jun 2020 03:17:32 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2uCqPyqcqJJDpbLSIko6i4RRDUAmRHyAhUsVym7Ip/M=; b=U9ykiNGIy5ZWad
-	RvVzqpnpPLb4aB+M/GWw5hB4GPjjO1ITgk+NYqIuI/X8LKU9iQiV9Q3E9RUgQBiMEeNXZMKjZOPTa
-	x9whZPaQEDUGuofaMI0n2uSVj1aZU4/XrT9NJEOEJmnDXBIRwj9eHPyecXzJjBwLohJMsBdgApAB+
-	EntrC9vQkmAg2MBCfETtIjwBMtululYlLpPuNFD+Wi/jF6KxLPuaxtCO71ljGmam5WBb277TnMs38
-	i1EDm3fa4W/bMfAOi0zdXttqWm+rKVaDQOK5znHm6HhgI2GzIM7P1PzZ1mRqsbG9KhE+11YS6xiNW
-	rPZvDcR7uzJfTZiASoRA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=clTgt5PGs6C9MMsxsteux70NrQ9pPFAxw+2bkNldpUU=; b=TwYl7xt1CQeh2n
+	G9jNg4BfchltTRKZet1ZBK9y4L25FwBbpzb875M5EmL4/W/1LFnq/fOH0ik+XZBSpyTN+1JkHjIlO
+	AEIQ4Z1KWLnJhT5nJugNY8WDPiDI1k361Fctdvd1ohQbNIi91CqHbdGQ8iYmMea2G2+MlZE+yaNUH
+	YZ3XwiUQGv9QYIh7rTtWRrguRTxtcWms/iickqWxYhfj38AXc/JujBetniTg21KaO6pGksXbs99Jp
+	qgxoexPf/SWbEPUKHYHwXnpslquz/fzF+lsafRCPHOwqaGdwqSxhQ1V/wZCZpIYH+L8KHlVg4AKPL
+	WSYriZjozgSL5L5QSWKw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jjWub-0003BF-R7; Thu, 11 Jun 2020 23:47:09 +0000
-Received: from ale.deltatee.com ([204.191.154.188])
+	id 1jjYJu-000322-Rx; Fri, 12 Jun 2020 01:17:22 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jjWuV-0003Ab-RL
- for linux-nvme@lists.infradead.org; Thu, 11 Jun 2020 23:47:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=deltatee.com; s=20200525; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=gV9QoHt8EYvoGCRmgXIoNP2+LNt+D1Ofl05Ii0wSJgE=; b=FkEOcxMSQTZ7+vgRXN3priANPV
- P8kEefsc8sUN3ssFd8os7kKyVrXhuQFyr2tdlCspviSAdVUqUDmJ45OyszmwhlUs9s+L7h5CpU8Ly
- jm8B4zi/dnj5S6e8SiDmOoMSupAMqvhKKEs4Gwx2zYCIi8spOjFtNRHY3OYNp6SZdJzg+HW1GhFXF
- DgazrnVGdBmTP35H9W1MDEVqOvRjmJcqnnJzvOnyjBNXAea1MdjOi4WBB6IU8W+B+UQIbUXn1AtyF
- /lsOhUfrkpBEH8gM6HfS+NUJh2EKQ4ZGHnb43wj8yuDabFtMeF+2wIYrNrCQb0NBwufoy39Uv6PL9
- Q6UI9qIA==;
-Received: from s01060023bee90a7d.cg.shawcable.net ([24.64.145.4]
- helo=[192.168.0.10])
- by ale.deltatee.com with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <logang@deltatee.com>)
- id 1jjWuO-0002NJ-Ai; Thu, 11 Jun 2020 17:46:57 -0600
-To: Chaitanya Kulkarni <Chaitanya.Kulkarni@wdc.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>
-References: <20200514172253.6445-1-logang@deltatee.com>
- <20200514172253.6445-8-logang@deltatee.com>
- <BYAPR04MB4965379CE8694F52D684993386800@BYAPR04MB4965.namprd04.prod.outlook.com>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <cbe637ec-e80c-def1-2453-70059715e19c@deltatee.com>
-Date: Thu, 11 Jun 2020 17:46:54 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ id 1jjYJq-00031d-Sv
+ for linux-nvme@lists.infradead.org; Fri, 12 Jun 2020 01:17:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1591924638; x=1623460638;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=n2fhHT1kuwyTgMERc9GPUgH+A68lC8mnNdKRjsPC9fk=;
+ b=l8n8Jvh0sSr1MHNbQQgcbaaTVqwJQRmzMbI1Zo331Mrdz3wCqvSj4hi+
+ STK3YEs7TMEWU7wAT0bfaTa5lZobkW0YddIAd4b28kHM6EzP6bTc7RrZL
+ G8xEdb2R56n8CVUH8MGrM8Qolb8GBZz1zJJ/1ELaO5H+ndZb18T9vJSAd
+ /EqUaQ0rcMsB9WrS+jKhmIylTd2y8RGU2sgDTF84e6BnrrqU8zu9AX6Rg
+ frQTNNwq9fhoGMZ2v0lYQ67tmgef25+mAXsBmIAGruYlft6PX48a7Xwo7
+ dcMrb8HZAayFeLSuuodPKeRj1iiPO+wpV4UuuMuiPDA37ieVFgFz+L37e A==;
+IronPort-SDR: IIlZKY76DIPAACRihWrzKU8j8hRPtCJGiF0btdO3p3PzbilrXwJ3Gag4ujtkBJ3gT9eIqm8ozS
+ iWqUOqpH73FcX+ptnlnyVNJelvRarzCXzM3XtiZ7JpM3kYCgFKpGzzGGKbRO43XVOH/KqqE91R
+ 0m/ik8QkUanl6xY+4y/QJ0MDL8kiqpMKz9EqsiZbgKFYl79D9VWk022kfYrudOaZdrXRYSuk9i
+ WUY1ZkNsL9a3whehVkNW9vkoE25Zb+jV4sQ0DU0H+uwjBWT+y80oJPsbi49KAlhSPWHE3taNXX
+ TB4=
+X-IronPort-AV: E=Sophos;i="5.73,501,1583164800"; d="scan'208";a="139782063"
+Received: from uls-op-cesaip01.wdc.com (HELO uls-op-cesaep01.wdc.com)
+ ([199.255.45.14])
+ by ob1.hgst.iphmx.com with ESMTP; 12 Jun 2020 09:17:15 +0800
+IronPort-SDR: me+6MfCMr3nRK44xO+cHWXYJuxnHVNBZgL2O+wW+Zh6VHbys9dLcy7KZxW++e1sEMLqUK542ic
+ l6vYKD43olLJZ+Fj2HPWOKyP9YbK10DA0=
+Received: from uls-op-cesaip01.wdc.com ([10.248.3.36])
+ by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jun 2020 18:06:39 -0700
+IronPort-SDR: lLy91OzLg71P60Nz4kRhjrPie5ZdWr8GfmquIXBWJ725ULBXe+NUohVcGGEjm/rzqTM6Sye8Hz
+ kq0kYnyBbvpA==
+WDCIronportException: Internal
+Received: from iouring.labspan.wdc.com (HELO iouring.sc.wdc.com)
+ ([10.6.138.107])
+ by uls-op-cesaip01.wdc.com with ESMTP; 11 Jun 2020 18:17:16 -0700
+From: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+To: linux-nvme@lists.infradead.org
+Subject: [PATCH] nvmet: use unsigned type for u64
+Date: Thu, 11 Jun 2020 18:16:59 -0700
+Message-Id: <20200612011659.11247-1-chaitanya.kulkarni@wdc.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-In-Reply-To: <BYAPR04MB4965379CE8694F52D684993386800@BYAPR04MB4965.namprd04.prod.outlook.com>
-Content-Language: en-US
-X-SA-Exim-Connect-IP: 24.64.145.4
-X-SA-Exim-Rcpt-To: sbates@raithlin.com, maxg@mellanox.com, axboe@fb.com,
- kbusch@kernel.org, sagi@grimberg.me, hch@lst.de,
- linux-nvme@lists.infradead.org, linux-kernel@vger.kernel.org,
- Chaitanya.Kulkarni@wdc.com
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
- GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [PATCH v13 7/9] nvmet-passthru: Add passthru code to process
- commands
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200611_164703_888433_78579C5B 
-X-CRM114-Status: GOOD (  17.43  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20200611_181719_020057_703C1F2F 
+X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.2 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.42 listed in list.dnswl.org]
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
@@ -96,89 +93,53 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Sagi Grimberg <sagi@grimberg.me>, Stephen Bates <sbates@raithlin.com>,
- Jens Axboe <axboe@fb.com>, Keith Busch <kbusch@kernel.org>,
- Max Gurtovoy <maxg@mellanox.com>, Christoph Hellwig <hch@lst.de>
+Cc: hch@lst.de, Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>,
+ sagi@grimberg.me
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
+In function nvmet_subsys_atte_version_show() which uses the NVME_XXX()
+macros related to version (of type u64) get rid of the int type cast
+when printing subsys version and use appropriate format specifier for
+u64.
 
+Signed-off-by: Chaitanya Kulkarni <chaitanya.kulkarni@wdc.com>
+---
+ drivers/nvme/target/configfs.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-On 2020-06-11 5:45 p.m., Chaitanya Kulkarni wrote:
-> On 5/14/20 10:23 AM, Logan Gunthorpe wrote:
->> +
->> +static void nvmet_passthru_execute_cmd(struct nvmet_req *req)
->> +{
->> +	struct nvme_ctrl *ctrl = nvmet_req_passthru_ctrl(req);
->> +	struct nvme_ns *ns = NULL;
->> +	struct request *rq = NULL;
->> +	struct request_queue *q;
->> +	u32 effects;
->> +	u16 status;
->> +	int ret;
->> +
->> +	if (likely(req->sq->qid != 0)) {
->> +		u32 nsid = le32_to_cpu(req->cmd->common.nsid);
->> +
->> +		ns = nvme_find_get_ns(ctrl, nsid);
->> +		if (unlikely(!ns)) {
->> +			pr_err("failed to get passthru ns nsid:%u\n", nsid);
->> +			status = NVME_SC_INVALID_NS | NVME_SC_DNR;
->> +			goto fail_out;
->> +		}
->> +	}
->> +
->> +	if (ns)
->> +		q = ns->queue;
->> +	else
->> +		q = ctrl->admin_q;
-> 
-> Is it possible to avoid explicit if.. else in fast path given that the
-> condition exists and we can take an advantage of that, how about
-> following ?
-> 
-> diff --git a/drivers/nvme/target/passthru.c b/drivers/nvme/target/passthru.c
-> index 9e71fdfbdbb3..4f8e022d254c 100644
-> --- a/drivers/nvme/target/passthru.c
-> +++ b/drivers/nvme/target/passthru.c
-> @@ -84,9 +84,9 @@ static int nvmet_passthru_map_sg(struct nvmet_req 
-> *req, struct request *rq)
->   static void nvmet_passthru_execute_cmd(struct nvmet_req *req)
->   {
->          struct nvme_ctrl *ctrl = nvmet_req_passthru_ctrl(req);
-> +       struct request_queue *q = ctrl->admin_q;
->          struct nvme_ns *ns = NULL;
->          struct request *rq = NULL;
-> -       struct request_queue *q;
->          u32 effects;
->          u16 status;
->          int ret;
-> @@ -100,12 +100,8 @@ static void nvmet_passthru_execute_cmd(struct 
-> nvmet_req *req)
->                          status = NVME_SC_INVALID_NS | NVME_SC_DNR;
->                          goto fail_out;
->                  }
-> -       }
-> -
-> -       if (ns)
->                  q = ns->queue;
-> -       else
-> -               q = ctrl->admin_q;
-> +       }
-> 
->          rq = nvme_alloc_request(q, req->cmd, BLK_MQ_REQ_NOWAIT, 
-> NVME_QID_ANY);
->          if (IS_ERR(rq)) {
-> 
+diff --git a/drivers/nvme/target/configfs.c b/drivers/nvme/target/configfs.c
+index 419e0d4ce79b..cdec47de89ed 100644
+--- a/drivers/nvme/target/configfs.c
++++ b/drivers/nvme/target/configfs.c
+@@ -862,14 +862,14 @@ static ssize_t nvmet_subsys_attr_version_show(struct config_item *item,
+ 	struct nvmet_subsys *subsys = to_subsys(item);
+ 
+ 	if (NVME_TERTIARY(subsys->ver))
+-		return snprintf(page, PAGE_SIZE, "%d.%d.%d\n",
+-				(int)NVME_MAJOR(subsys->ver),
+-				(int)NVME_MINOR(subsys->ver),
+-				(int)NVME_TERTIARY(subsys->ver));
+-
+-	return snprintf(page, PAGE_SIZE, "%d.%d\n",
+-			(int)NVME_MAJOR(subsys->ver),
+-			(int)NVME_MINOR(subsys->ver));
++		return snprintf(page, PAGE_SIZE, "%llu.%llu.%llu\n",
++				NVME_MAJOR(subsys->ver),
++				NVME_MINOR(subsys->ver),
++				NVME_TERTIARY(subsys->ver));
++
++	return snprintf(page, PAGE_SIZE, "%llu.%llu\n",
++			NVME_MAJOR(subsys->ver),
++			NVME_MINOR(subsys->ver));
+ }
+ 
+ static ssize_t nvmet_subsys_attr_version_store(struct config_item *item,
+-- 
+2.27.0
 
-
-This makes sense. Will fix for the next revision.
-
-Thanks,
-
-Logan
 
 _______________________________________________
 linux-nvme mailing list
