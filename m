@@ -2,94 +2,56 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7115C1FB43C
-	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jun 2020 16:26:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5AB661FB443
+	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jun 2020 16:27:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eK5qOREmOD+5Hy+i8dEXoRRdwES1wW60c5ne5Oc119Y=; b=acNLVLtfdzPyL2YT/dGF8QBjm
-	3zax7QMF0xnlN/JShv7FHzIw3Q1UX3o3pLTbn/FQ8J+C90vgbkINq8BqJ6n2YBNkDjGjuh0dttBid
-	C5X8n7GAE35TpAgH9aTVcSuZ1wdunZLb1nExNyxOw7v3keeqrR5gqrOX6/TUWXVAhszNQSdegqJ8D
-	Ra3v+lNwJxyB4dFftn0AtnFORCBZ09VfoWYk1d0wuzxtVh8hTpZe/9nRKcPkrHNu2AButBz/B6Z+Z
-	RRlPcc5tyDXVVQNPHzem0zTE472/mApPc7V2LYOSg4KcD5CVPMeH4mT55ttynA+RCsfE1c/X5a6XU
-	PzyO8Jx9g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TBcRw7a5czQ1d9m7J/lDZNNX5N2ASPqgN/85LRx227E=; b=edABS3K9Z2utbD
+	GtetL/f8+yy/Mcfyr4HVXhlyx+BbUk2WdujphoKw3G4GGLXhUO7yyKpdEksYebuhB2KDJm/MLp5Qp
+	9jCjZkUgsR738aDEXejzfYLv6Dn/S8LdQGI0Z71o0u3as7kLz+u+PjhFoCC9uZCcdDwpqEJlRVWM4
+	8GrLSyQ7YoWEhwsJ39YFeHotjW/0ZQTrRBGFEOMgqGs+Yc8MAl2Zvo7BpI5YP0VOr3US1oJUNJh43
+	Xb69mUe/JmRn+5OaxDjmYGMK1TFY4YoRNrBcNg1g0xTSGIsKVtRVckiKGRaEKL5WvSSK7V3tCgbi7
+	yKjrosOu8F6c8+LvN2yA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlCXp-0000lU-Ot; Tue, 16 Jun 2020 14:26:33 +0000
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
+	id 1jlCYB-00010e-Mh; Tue, 16 Jun 2020 14:26:55 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlCO0-0004y5-5v
- for linux-nvme@lists.infradead.org; Tue, 16 Jun 2020 14:16:26 +0000
-Received: by mail-ej1-x641.google.com with SMTP id n24so21716194ejd.0
- for <linux-nvme@lists.infradead.org>; Tue, 16 Jun 2020 07:16:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=javigon-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=6PWDuPTkrXleyY02khhPslJk/OM89kQqOYof8Xt9yHk=;
- b=Njo0oUKYpM2x8GPJ/D8RopLES3YBM9Ix48tYOprYcVt+9EfKZKDy/sDD+L+kUL1eXT
- 01RzLC7T0Vyldau9ODEXV1VChCqNyjpYhYo5hVYs/63kEJnXdlnA2ZUCP3E085YpX82K
- wxLm0Q3yyOyVUKrMNMMTGbyrMD0j4H87G/8N9mlWtjljv4YUGDpzvSVS71kUeSdoLI2i
- r4rQYNoa9xihIoa04PASggkKg0n6Qlr3q9N6ubkdOVt1hgwYPU6h7cPcDYg+EbwyuMZg
- wdKIl548fehCeffn6M9HiBDKHxtusnfDMwA/YJ1NllMaerBMmk/YoNJIHxsa45kBiEIS
- 7r8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=6PWDuPTkrXleyY02khhPslJk/OM89kQqOYof8Xt9yHk=;
- b=UHcLv6AgJcg0y3TyWReeLQq9hBw0fbxdcKlXjRahlZ8RPfcMYqGU55bw8p3YyLLvpD
- nqbllBI/0rJl9Ixx5RJ/zQ5N966hCcUysHCW/BhBMR0xkHVUDpig7NG+ZSw7QhWLFASq
- OsCWCQcc7SOFP1xlqiwP5Z0J1uXJ2GtbtYR4fib+NIpvm6xZsMdr+IirkujEagbi5k23
- xyMNQl9ethduWzGtwtAZ221Nb51qOCWjG/zPATtdAismD0eUcoqWukpu2S+uDmRJ2jKl
- dgY4nrC6vJ86dfmQJ7K7rpsJt3cLkuXFn+SkLoLU0MOPxfbTpRgItdCTeUPuvtjIM9fC
- 71fA==
-X-Gm-Message-State: AOAM532Ubpl3qvWEYtfsxBlaZoWo7UL92RN4sOEWQrdAFlGCli75hIm5
- 44BLDeUqPCQm1aN6glUotkaO1Q==
-X-Google-Smtp-Source: ABdhPJzhsm7I9PyI7ohWJAAIdecI/C9wgCHgZ2I9lCFpLr7leG+zZv2BlHmNSY9Jc1GLRrPO8EuR7w==
-X-Received: by 2002:a17:906:69c3:: with SMTP id
- g3mr3152625ejs.47.1592316982230; 
- Tue, 16 Jun 2020 07:16:22 -0700 (PDT)
-Received: from localhost (ip-5-186-127-235.cgn.fibianet.dk. [5.186.127.235])
- by smtp.gmail.com with ESMTPSA id z38sm6863582ede.96.2020.06.16.07.16.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jun 2020 07:16:21 -0700 (PDT)
-Date: Tue, 16 Jun 2020 16:16:20 +0200
-From: Javier =?utf-8?B?R29uesOhbGV6?= <javier@javigon.com>
-To: Damien Le Moal <Damien.LeMoal@wdc.com>
-Subject: Re: [PATCH 5/5] nvme: support for zoned namespaces
-Message-ID: <20200616141620.omqf64up523of35t@MacBook-Pro.localdomain>
+ id 1jlCQV-00077Z-EK
+ for linux-nvme@lists.infradead.org; Tue, 16 Jun 2020 14:19:03 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id 14ACFABE4;
+ Tue, 16 Jun 2020 14:19:01 +0000 (UTC)
+Date: Tue, 16 Jun 2020 16:18:55 +0200
+From: Daniel Wagner <dwagner@suse.de>
+To: Keith Busch <keith.busch@wdc.com>
+Subject: Re: [PATCH 2/5] null_blk: introduce zone capacity for zoned device
+Message-ID: <20200616141855.4opiywhfbo7sa7nu@beryllium.lan>
 References: <20200615233424.13458-1-keith.busch@wdc.com>
- <20200615233424.13458-6-keith.busch@wdc.com>
- <20200616104142.zxw25txhsg2eyhsb@mpHalley.local>
- <d433450a-6e18-217c-d133-ea367d8936be@lightnvm.io>
- <20200616120018.en337lcs5y2jh5ne@mpHalley.local>
- <cf899cd9-c3de-7436-84d4-744c0988a6c9@lightnvm.io>
- <20200616122448.4e3slfghv4cojafq@mpHalley.local>
- <CY4PR04MB3751CC8FE4BDFC256F9E9CD1E79D0@CY4PR04MB3751.namprd04.prod.outlook.com>
+ <20200615233424.13458-3-keith.busch@wdc.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CY4PR04MB3751CC8FE4BDFC256F9E9CD1E79D0@CY4PR04MB3751.namprd04.prod.outlook.com>
+In-Reply-To: <20200615233424.13458-3-keith.busch@wdc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_071624_295303_7D0F3F64 
-X-CRM114-Status: GOOD (  16.75  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20200616_071859_751840_C29C83FB 
+X-CRM114-Status: GOOD (  15.37  )
+X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (0.0 points)
+ Content analysis details:   (-2.3 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2a00:1450:4864:20:0:0:0:641 listed in]
- [list.dnswl.org]
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [195.135.220.15 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
+ 0.0 RCVD_IN_MSPIKE_H3      RBL: Good reputation (+3)
+ [195.135.220.15 listed in wl.mailspike.net]
+ 0.0 RCVD_IN_MSPIKE_WL      Mailspike good senders
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,94 +63,56 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Niklas Cassel <Niklas.Cassel@wdc.com>,
- Ajay Joshi <Ajay.Joshi@wdc.com>, Sagi Grimberg <sagi@grimberg.me>,
- Keith Busch <Keith.Busch@wdc.com>, Dmitry Fomichev <Dmitry.Fomichev@wdc.com>,
- Aravind Ramesh <Aravind.Ramesh@wdc.com>,
- "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
- "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
- Hans Holmberg <Hans.Holmberg@wdc.com>,
- Matias =?utf-8?B?QmrDuHJsaW5n?= <mb@lightnvm.io>,
- Christoph Hellwig <hch@lst.de>, Matias Bjorling <Matias.Bjorling@wdc.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Jens Axboe <axboe@kernel.dk>, Damien Le Moal <damien.lemoal@wdc.com>,
+ Sagi Grimberg <sagi@grimberg.me>, Aravind Ramesh <aravind.ramesh@wdc.com>,
+ linux-nvme@lists.infradead.org, linux-block@vger.kernel.org,
+ Christoph Hellwig <hch@lst.de>,
+ Matias =?utf-8?B?QmrDuHJsaW5n?= <matias.bjorling@wdc.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-T24gMTYuMDYuMjAyMCAxMjozNSwgRGFtaWVuIExlIE1vYWwgd3JvdGU6Cj5PbiAyMDIwLzA2LzE2
-IDIxOjI0LCBKYXZpZXIgR29uesOhbGV6IHdyb3RlOgo+PiBPbiAxNi4wNi4yMDIwIDE0OjA2LCBN
-YXRpYXMgQmrDuHJsaW5nIHdyb3RlOgo+Pj4gT24gMTYvMDYvMjAyMCAxNC4wMCwgSmF2aWVyIEdv
-bnrDoWxleiB3cm90ZToKPj4+PiBPbiAxNi4wNi4yMDIwIDEzOjE4LCBNYXRpYXMgQmrDuHJsaW5n
-IHdyb3RlOgo+Pj4+PiBPbiAxNi8wNi8yMDIwIDEyLjQxLCBKYXZpZXIgR29uesOhbGV6IHdyb3Rl
-Ogo+Pj4+Pj4gT24gMTYuMDYuMjAyMCAwODozNCwgS2VpdGggQnVzY2ggd3JvdGU6Cj4+Pj4+Pj4g
-QWRkIHN1cHBvcnQgZm9yIE5WTSBFeHByZXNzIFpvbmVkIE5hbWVzcGFjZXMgKFpOUykgQ29tbWFu
-ZCBTZXQgZGVmaW5lZAo+Pj4+Pj4+IGluIE5WTSBFeHByZXNzIFRQNDA1My4gWm9uZWQgbmFtZXNw
-YWNlcyBhcmUgZGlzY292ZXJlZCBiYXNlZCBvbiB0aGVpcgo+Pj4+Pj4+IENvbW1hbmQgU2V0IElk
-ZW50aWZpZXIgcmVwb3J0ZWQgaW4gdGhlIG5hbWVzcGFjZXMgTmFtZXNwYWNlCj4+Pj4+Pj4gSWRl
-bnRpZmljYXRpb24gRGVzY3JpcHRvciBsaXN0LiBBIHN1Y2Nlc3NmdWxseSBkaXNjb3ZlcmVkIFpv
-bmVkCj4+Pj4+Pj4gTmFtZXNwYWNlIHdpbGwgYmUgcmVnaXN0ZXJlZCB3aXRoIHRoZSBibG9jayBs
-YXllciBhcyBhIGhvc3QgbWFuYWdlZAo+Pj4+Pj4+IHpvbmVkIGJsb2NrIGRldmljZSB3aXRoIFpv
-bmUgQXBwZW5kIGNvbW1hbmQgc3VwcG9ydC4gQSBuYW1lc3BhY2UgdGhhdAo+Pj4+Pj4+IGRvZXMg
-bm90IHN1cHBvcnQgYXBwZW5kIGlzIG5vdCBzdXBwb3J0ZWQgYnkgdGhlIGRyaXZlci4KPj4+Pj4+
-Cj4+Pj4+PiBXaHkgYXJlIHdlIGVuZm9yY2luZyB0aGUgYXBwZW5kIGNvbW1hbmQ/IEFwcGVuZCBp
-cyBvcHRpb25hbCBvbiB0aGUKPj4+Pj4+IGN1cnJlbnQgWk5TIHNwZWNpZmljYXRpb24sIHNvIHdl
-IHNob3VsZCBub3QgbWFrZSB0aGlzIG1hbmRhdG9yeSBpbiB0aGUKPj4+Pj4+IGltcGxlbWVudGF0
-aW9uLiBTZWUgc3BlY2lmaWNzIGJlbG93Lgo+Pj4+Cj4+Pj4+Cj4+Pj4+IFRoZXJlIGlzIGFscmVh
-ZHkgZ2VuZXJhbCBzdXBwb3J0IGluIHRoZSBrZXJuZWwgZm9yIHRoZSB6b25lIGFwcGVuZAo+Pj4+
-PiBjb21tYW5kLiBGZWVsIGZyZWUgdG8gc3VibWl0IHBhdGNoZXMgdG8gZW11bGF0ZSB0aGUgc3Vw
-cG9ydC4gSXQgaXMKPj4+Pj4gb3V0c2lkZSB0aGUgc2NvcGUgb2YgdGhpcyBwYXRjaHNldC4KPj4+
-Pj4KPj4+Pgo+Pj4+IEl0IGlzIGZpbmUgdGhhdCB0aGUga2VybmVsIHN1cHBvcnRzIGFwcGVuZCwg
-YnV0IHRoZSBaTlMgc3BlY2lmaWNhdGlvbgo+Pj4+IGRvZXMgbm90IGltcG9zZSB0aGUgaW1wbGVt
-ZW50YXRpb24gZm9yIGFwcGVuZCwgc28gdGhlIGRyaXZlciBzaG91bGQgbm90Cj4+Pj4gZG8gdGhh
-dCBlaXRoZXIuCj4+Pj4KPj4+PiBaTlMgU1NEcyB0aGF0IGNob29zZSB0byBsZWF2ZSBhcHBlbmQg
-YXMgYSBub24taW1wbGVtZW50ZWQgb3B0aW9uYWwKPj4+PiBjb21tYW5kIHNob3VsZCBub3QgcmVs
-eSBvbiBlbXVsYXRlZCBTVyBzdXBwb3J0LCBzcGVjaWFsbHkgd2hlbgo+Pj4+IHRyYWRpdGlvbmFs
-IHdyaXRlcyB3b3JrIHZlcnkgZmluZSBmb3IgYSBsYXJnZSBwYXJ0IG9mIGN1cnJlbnQgWk5TIHVz
-ZQo+Pj4+IGNhc2VzLgo+Pj4+Cj4+Pj4gUGxlYXNlLCByZW1vdmUgdGhpcyB2aXJ0dWFsIGNvbnN0
-cmFpbnQuCj4+Pgo+Pj4gVGhlIFpvbmUgQXBwZW5kIGNvbW1hbmQgaXMgbWFuZGF0b3J5IGZvciB6
-b25lZCBibG9jayBkZXZpY2VzLiBQbGVhc2UKPj4+IHNlZSBodHRwczovL2x3bi5uZXQvQXJ0aWNs
-ZXMvODE4NzA5LyBmb3IgdGhlIGJhY2tncm91bmQuCj4+Cj4+IEkgZG8gbm90IHNlZSBhbnl3aGVy
-ZSBpbiB0aGUgYmxvY2sgbGF5ZXIgdGhhdCBhcHBlbmQgaXMgbWFuZGF0b3J5IGZvcgo+PiB6b25l
-ZCBkZXZpY2VzLiBBcHBlbmQgaXMgZW11bGF0ZWQgb24gWkJDLCBidXQgYmV5b25kIHRoYXQgdGhl
-cmUgaXMgbm8KPj4gbWFuZGF0b3J5IGJpdHMuIFBsZWFzZSBleHBsYWluLgo+Cj5UaGlzIGlzIHRv
-IGFsbG93IGEgc2luZ2xlIHdyaXRlIElPIHBhdGggZm9yIGFsbCB0eXBlcyBvZiB6b25lZCBibG9j
-ayBkZXZpY2UgZm9yCj5oaWdoZXIgbGF5ZXJzLCBlLmcgZmlsZSBzeXN0ZW1zLiBUaGUgb24tZ29p
-bmcgcmUtd29yayBvZiBidHJmcyB6b25lIHN1cHBvcnQgZm9yCj5pbnN0YW5jZSBub3cgcmVsaWVz
-IDEwMCUgb24gem9uZSBhcHBlbmQgYmVpbmcgc3VwcG9ydGVkLiBUaGF0IHNpZ25pZmljYW50bHkK
-PnNpbXBsaWZpZXMgdGhlIGZpbGUgc3lzdGVtIHN1cHBvcnQgYW5kIG1vcmUgaW1wb3J0YW50bHkg
-cmVtb3ZlIHRoZSBuZWVkIGZvcgo+bG9ja2luZyBhcm91bmQgYmxvY2sgYWxsb2NhdGlvbiBhbmQg
-QklPIGlzc3VpbmcsIGFsbG93aW5nIHRvIHByZXNlcnZlIGEgZnVsbHkKPmFzeW5jaHJvbm91cyB3
-cml0ZSBwYXRoIHRoYXQgY2FuIGluY2x1ZGUgd29ya3F1ZXVlcyBmb3IgZWZmaWNpZW50IENQVSB1
-c2FnZSBvZgo+dGhpbmdzIGxpa2UgZW5jcnlwdGlvbiBhbmQgY29tcHJlc3Npb24uIFdpdGhvdXQg
-em9uZSBhcHBlbmQsIGZpbGUgc3lzdGVtIHdvdWxkCj5laXRoZXIgKDEpIGhhdmUgdG8gcmVqZWN0
-IHRoZXNlIGRyaXZlcyB0aGF0IGRvIG5vdCBzdXBwb3J0IHpvbmUgYXBwZW5kLCBvciAoMikKPmlt
-cGxlbWVudCAyIGRpZmZlcmVudCB3cml0ZSBJTyBwYXRoIChzbG93ZXIgcmVndWxhciB3cml0ZSBh
-bmQgem9uZSBhcHBlbmQpLiBOb25lCj5vZiB0aGVzZSBvcHRpb25zIGFyZSBpZGVhbCwgdG8gc2F5
-IHRoZSBsZWFzdC4KPgo+U28gdGhlIGFwcHJvYWNoIGlzOiBtYW5kYXRlIHpvbmUgYXBwZW5kIHN1
-cHBvcnQgZm9yIFpOUyBkZXZpY2VzLiBUbyBhbGxvdyBvdGhlcgo+Wk5TIGRyaXZlcywgYW4gZW11
-bGF0aW9uIHNpbWlsYXIgdG8gU0NTSSBjYW4gYmUgaW1wbGVtZW50ZWQsIHdpdGggdGhhdCBlbXVs
-YXRpb24KPmlkZWFsbHkgY29tYmluZWQgdG8gd29yayBmb3IgYm90aCB0eXBlcyBvZiBkcml2ZXMg
-aWYgcG9zc2libGUuCgpFbmZvcmNpbmcgUUQ9MSBiZWNvbWVzIGEgcHJvYmxlbSBvbiBkZXZpY2Vz
-IHdpdGggbGFyZ2Ugem9uZXMuIEluCmEgWk5TIGRldmljZSB0aGF0IGhhcyBzbWFsbGVyIHpvbmVz
-IHRoaXMgc2hvdWxkIG5vdCBiZSBhIHByb2JsZW0uCgpXb3VsZCB5b3UgYWdyZWUgdGhhdCBpdCBp
-cyBwb3NzaWJsZSB0byBoYXZlIGEgd3JpdGUgcGF0aCB0aGF0IHJlbGllcyBvbgpRRD0xLCB3aGVy
-ZSB0aGUgRlMgLyBhcHBsaWNhdGlvbiBoYXMgdGhlIHJlc3BvbnNpYmlsaXR5IGZvciBlbmZvcmNp
-bmcKdGhpcz8gRG93biB0aGUgcm9hZCB0aGlzIFFEIGNhbiBiZSBpbmNyZWFzZWQgaWYgdGhlIGRl
-dmljZSBpcyBhYmxlIHRvCmJ1ZmZlciB0aGUgd3JpdGVzLgoKSSB3b3VsZCBiZSBPSyB3aXRoIHNv
-bWUgRlMgaW1wbGVtZW50YXRpb25zIHRvIHJlbHkgb24gYXBwZW5kIGFuZCBpbXBvc2UKdGhlIGNv
-bnN0cmFpbnQgdGhhdCBhcHBlbmQgaGFzIHRvIGJlIHN1cHBvcnRlZCAoYW5kIGl0IHdvdWxkIGJl
-IG91ciBqb2IKdG8gY2hhbmdlIHRoYXQpLCBidXQgSSB3b3VsZCBsaWtlIHRvIGF2b2lkIHRoZSBk
-cml2ZXIgcmVqZWN0aW5nCmluaXRpYWxpemluZyB0aGUgZGV2aWNlIGJlY2F1c2UgY3VycmVudCBG
-UyBpbXBsZW1lbnRhdGlvbnMgaGF2ZQppbXBsZW1lbnRlZCB0aGlzIGxvZ2ljLgoKV2UgY2FuIGFn
-cmVlIHRoYXQgYSBudW1iZXIgb2YgaW5pdGlhbCBjdXN0b21lcnMgd2lsbCB1c2UgdGhlc2UgZGV2
-aWNlcwpyYXcsIHVzaW5nIHRoZSBpbi1rZXJuZWwgSS9PIHBhdGgsIGJ1dCB3aXRob3V0IGEgRlMg
-b24gdG9wLgoKVGhvdWdodHM/Cgo+IGFuZCBub3RlIHRoYXQKPnRoaXMgZW11bGF0aW9uIHdvdWxk
-IHJlcXVpcmUgdGhlIGRyaXZlIHRvIGJlIG9wZXJhdGVkIHdpdGggbXEtZGVhZGxpbmUgdG8gZW5h
-YmxlCj56b25lIHdyaXRlIGxvY2tpbmcgZm9yIHByZXNlcnZpbmcgd3JpdGUgY29tbWFuZCBvcmRl
-ci4gV2hpbGUgb24gYSBIREQgdGhlCj5wZXJmb3JtYW5jZSBwZW5hbHR5IGlzIG1pbmltYWwsIGl0
-IHdpbGwgbGlrZWx5IGJlIHNpZ25pZmljYW50IG9uIGEgU1NELgoKRXhhY3RseSBteSBjb25jZXJu
-LiBJIGRvIG5vdCB3YW50IFpOUyBTU0RzIHRvIGJlIGltcGFjdGVkIGJ5IHRoaXMgdHlwZQpvZiBk
-ZXNpZ24gZGVjaXNpb24gYXQgdGhlIGRyaXZlciBsZXZlbC4KClRoYW5rcywKSmF2aWVyCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1udm1lIG1h
-aWxpbmcgbGlzdApsaW51eC1udm1lQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1udm1lCg==
+On Tue, Jun 16, 2020 at 08:34:21AM +0900, Keith Busch wrote:
+> From: Aravind Ramesh <aravind.ramesh@wdc.com>
+> 
+> Allow emulation of a zoned device with a per zone capacity smaller than
+> the zone size as as defined in the Zoned Namespace (ZNS) Command Set
+> specification. The zone capacity defaults to the zone size if not
+> specified and must be smaller than the zone size otherwise.
+> 
+> Signed-off-by: Aravind Ramesh <aravind.ramesh@wdc.com>
+
+Just a little nitpick.
+
+Reviewed-by: Daniel Wagner <dwagner@suse.de>
+
+> ---
+>  drivers/block/null_blk.h       |  2 ++
+>  drivers/block/null_blk_main.c  |  9 ++++++++-
+>  drivers/block/null_blk_zoned.c | 17 +++++++++++++++--
+>  3 files changed, 25 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/block/null_blk.h b/drivers/block/null_blk.h
+> index 81b311c9d781..7eadf190528c 100644
+> --- a/drivers/block/null_blk.h
+> +++ b/drivers/block/null_blk.h
+> @@ -44,11 +44,13 @@ struct nullb_device {
+>  	unsigned int nr_zones;
+>  	struct blk_zone *zones;
+>  	sector_t zone_size_sects;
+> +	sector_t zone_capacity_sects;
+>  
+>  	unsigned long size; /* device size in MB */
+>  	unsigned long completion_nsec; /* time in ns to complete a request */
+>  	unsigned long cache_size; /* disk cache size in MB */
+>  	unsigned long zone_size; /* zone size in MB if device is zoned */
+> +	unsigned long zone_capacity; /* zone cap in MB if device is zoned */
+
+Maybe also use zone capacity in the comment instead of the abbreviation?
+
+
+_______________________________________________
+linux-nvme mailing list
+linux-nvme@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-nvme
