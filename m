@@ -2,57 +2,89 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 785921FAC8B
-	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jun 2020 11:35:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FB371FADDB
+	for <lists+linux-nvme@lfdr.de>; Tue, 16 Jun 2020 12:26:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N+i46L5/2KvAmRVB1uR/SxiTRddNwCUYmduGp0QEz0Y=; b=IQ86w+Ts1eQmAI
-	g5/EMTsQAefxhRYWcUA3XaQpYWVBaUb0xi5SwXMDZtJ4/V74VEoatbLBKRzZlt8VgNoS/72lGJqIW
-	CGJAgMuzngdqv1YMxQ0ySNV1E3KhxW52h5sG0ksT9tyIfo3yXUrPNKbstb4tPRoVYNE/qa2itqGIm
-	vVrqMrpvOWB8lojPHWZI4XkqzohCq/hTHl8JfrkmJ1NQlHU3LQJgrC0eZpLsRvobeT94BEoRYdiqm
-	K8HjiAAMhF/EkPH0r31fKbzqIDtZ/JVToeT5uqvYqSp12AV+gqRmrk+BapJOXZbjvAkpZMqlN2cTg
-	osvMT6Zl8ZUVUY3PLwOg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4n26jsdWibeaTp3qwzyqU8lKO7ndjMxBBQalZlcO0KY=; b=eYFvxIaryDgxs3
+	KCQbqjsjxw7v7wQwWX7KxjViwc84iVR6i+xxJV/XwXJDEd9lQ1iFe/VAmbgZ8cguwF4udBnjw9Kzu
+	n54FpK2c43EM0n0HgZGHfas4xKRWnJ8MxkRgagyGsTBCnG/JaLlAlmHLRKrtA+tL9JyVe0YS7OMzs
+	FRCEyXjS3Jzch9q7hfAMgTv8l2RzqMueB5YdsrbiTs9Y3nwV/F9dtXOrPrVU0MO0PuPA4JEbSb+0K
+	6uSch1xtd1RT6KAIWkc+y6KEKW5AHcu8xXk4vEt17bnBlh8sBV7cbz88cAdfp4KCDt6siRpWyxabN
+	ojeMuj5OQLEZlaB1NeKg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jl803-0006yd-Iz; Tue, 16 Jun 2020 09:35:23 +0000
-Received: from mail-il-dmz.mellanox.com ([193.47.165.129] helo=mellanox.co.il)
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jl7zG-0006YP-PP
- for linux-nvme@lists.infradead.org; Tue, 16 Jun 2020 09:34:40 +0000
-Received: from Internal Mail-Server by MTLPINE1 (envelope-from
- maxg@mellanox.com) with SMTP; 16 Jun 2020 12:34:26 +0300
-Received: from mtr-vdi-031.wap.labs.mlnx. (mtr-vdi-031.wap.labs.mlnx
- [10.209.102.136])
- by labmailer.mlnx (8.13.8/8.13.8) with ESMTP id 05G9YPqp030330;
- Tue, 16 Jun 2020 12:34:26 +0300
-From: Max Gurtovoy <maxg@mellanox.com>
-To: sagi@grimberg.me, linux-nvme@lists.infradead.org, kbusch@kernel.org,
- hch@lst.de, james.smart@broadcom.com
-Subject: [PATCH 5/5 v2] nvme-loop: initialize tagset numa value to the value
- of the ctrl
-Date: Tue, 16 Jun 2020 12:34:25 +0300
-Message-Id: <20200616093425.169309-5-maxg@mellanox.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20200616093425.169309-1-maxg@mellanox.com>
-References: <20200616093425.169309-1-maxg@mellanox.com>
+	id 1jl8n9-0001Ff-SZ; Tue, 16 Jun 2020 10:26:07 +0000
+Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jl8n5-0001FA-93
+ for linux-nvme@lists.infradead.org; Tue, 16 Jun 2020 10:26:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1592303162; x=1623839162;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=k2wrTtH2GzrGLfrzfk/gBGspC7SuqBmLlC4focXFTlU=;
+ b=H1qbQ23HNMNG7xr3JNI8kejM1M0Judc90hDGZmrRAItpOEc237ZDAra9
+ bdE1YnunDdl7Pwxizbm6JJsd78fG8AMJaW8/ZhhckhtRAhbi0kLo6lwJL
+ Jtg4r79VfNt24l2uzhENei6r8/kWLMtDnYKC+9h+PxUkkEWDiDcH+0hFp
+ LJRbdL0lboSj+HqQ5poy9W1iXXjHiBjxBxxpsr54XUipS6Yqcg0A8O8wz
+ eyvjfYAdxXuY6wu/OQdY/QH40nz6Qff3dJDqzRPH8MKZLdZDlU/Oc8DUv
+ xPcdH7J3iNGsnGCJerqnyGEPU2htYYnm/u3lNOomwAS7XNAvsSCM2xdGo g==;
+IronPort-SDR: vEiHtMNk7req2RYNmwHN0jBlUZaoPBGP3nFfWc0dzOs9BrOPHTNXXkTqPq3cEQ9jKDBqcC3JoE
+ TVP0HCNWX0nbnwlUwA5x3JvGo8MrddcCLiJCDTTxZpXHWb/peMlrk74OUF4FI2iz3eai+Glnvi
+ QL/wiHRy/x+TWgUD5QyzPjBGyAP7nW+NmFLxT7c6GMJqQAgp4a1F1SgTDxeVkJAXTgv+9eaTx1
+ 1/J6OoReuXNd/eE1JJD4DQEmBxJtw7CougJ6WRVb6CWvHkXv4F192pk/g9WHlCpOggL0tqQmtc
+ zao=
+X-IronPort-AV: E=Sophos;i="5.73,518,1583164800"; d="scan'208";a="140116378"
+Received: from h199-255-45-15.hgst.com (HELO uls-op-cesaep02.wdc.com)
+ ([199.255.45.15])
+ by ob1.hgst.iphmx.com with ESMTP; 16 Jun 2020 18:25:59 +0800
+IronPort-SDR: feq1LkXG6p8QQBuUl68hxrhTmlwBJhZVpviYTJJ8ZNCOLhMiQexNZP6VQimCfD3XmAEHUxd+xb
+ eu4JmU1P9XITjX8cakiSyP9YMufb/XjFA=
+Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
+ by uls-op-cesaep02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jun 2020 03:14:42 -0700
+IronPort-SDR: Ds8ZpyQ1PDwkBGREw3CK27qrIdNAtRYofgjQkj3QsRgzQ3Byrn7Pe1AbLOoVBnTiJLKfPrmEOs
+ Y8Sji87WubWw==
+WDCIronportException: Internal
+Received: from 31yhj72.ad.shared (HELO localhost.hgst.com) ([10.86.58.100])
+ by uls-op-cesaip02.wdc.com with ESMTP; 16 Jun 2020 03:25:55 -0700
+From: Niklas Cassel <niklas.cassel@wdc.com>
+To: Jonathan Corbet <corbet@lwn.net>, Jens Axboe <axboe@kernel.dk>,
+ Keith Busch <kbusch@kernel.org>, Christoph Hellwig <hch@lst.de>,
+ Sagi Grimberg <sagi@grimberg.me>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>
+Subject: [PATCH 0/2] Export max open zones and max active zones to sysfs
+Date: Tue, 16 Jun 2020 12:25:44 +0200
+Message-Id: <20200616102546.491961-1-niklas.cassel@wdc.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200616_023435_316546_3CF41CEE 
-X-CRM114-Status: UNSURE (   7.30  )
+X-CRM114-CacheID: sfid-20200616_032603_408805_D00F36B7 
+X-CRM114-Status: UNSURE (   8.95  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.0 (/)
+X-Spam-Score: -2.5 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-0.0 points)
+ Content analysis details:   (-2.5 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [216.71.154.42 listed in list.dnswl.org]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay
- lines
+ -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
+ envelope-from domain
+ -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
+ author's domain
+ 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
+ valid
+ -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,45 +96,57 @@ List-Post: <mailto:linux-nvme@lists.infradead.org>
 List-Help: <mailto:linux-nvme-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-nvme>,
  <mailto:linux-nvme-request@lists.infradead.org?subject=subscribe>
-Cc: Max Gurtovoy <maxg@mellanox.com>, israelr@mellanox.com,
- shlomin@mellanox.com
+Cc: Niklas Cassel <niklas.cassel@wdc.com>, linux-scsi@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-nvme@lists.infradead.org, linux-block@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-Both admin's and drive's tagsets should be set according the numa
-node of the controller.
+Export max open zones and max active zones to sysfs.
 
-Signed-off-by: Max Gurtovoy <maxg@mellanox.com>
----
- drivers/nvme/target/loop.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+This patch series depends on the Zoned Namespace Command Set series:
+https://lore.kernel.org/linux-nvme/20200615233424.13458-1-keith.busch@wdc.com/
 
-diff --git a/drivers/nvme/target/loop.c b/drivers/nvme/target/loop.c
-index 0d54e73..6344e73 100644
---- a/drivers/nvme/target/loop.c
-+++ b/drivers/nvme/target/loop.c
-@@ -340,7 +340,7 @@ static int nvme_loop_configure_admin_queue(struct nvme_loop_ctrl *ctrl)
- 	ctrl->admin_tag_set.ops = &nvme_loop_admin_mq_ops;
- 	ctrl->admin_tag_set.queue_depth = NVME_AQ_MQ_TAG_DEPTH;
- 	ctrl->admin_tag_set.reserved_tags = 2; /* connect + keep-alive */
--	ctrl->admin_tag_set.numa_node = NUMA_NO_NODE;
-+	ctrl->admin_tag_set.numa_node = ctrl->ctrl.numa_node;
- 	ctrl->admin_tag_set.cmd_size = sizeof(struct nvme_loop_iod) +
- 		NVME_INLINE_SG_CNT * sizeof(struct scatterlist);
- 	ctrl->admin_tag_set.driver_data = ctrl;
-@@ -512,7 +512,7 @@ static int nvme_loop_create_io_queues(struct nvme_loop_ctrl *ctrl)
- 	ctrl->tag_set.ops = &nvme_loop_mq_ops;
- 	ctrl->tag_set.queue_depth = ctrl->ctrl.opts->queue_size;
- 	ctrl->tag_set.reserved_tags = 1; /* fabric connect */
--	ctrl->tag_set.numa_node = NUMA_NO_NODE;
-+	ctrl->tag_set.numa_node = ctrl->ctrl.numa_node;
- 	ctrl->tag_set.flags = BLK_MQ_F_SHOULD_MERGE;
- 	ctrl->tag_set.cmd_size = sizeof(struct nvme_loop_iod) +
- 		NVME_INLINE_SG_CNT * sizeof(struct scatterlist);
+
+All zoned block devices in the kernel utilize the "zoned block device
+support" (CONFIG_BLK_DEV_ZONED).
+
+The Zoned Namespace Command Set Specification defines two different
+resource limits: Max Open Resources and Max Active Resources.
+
+The ZAC and ZBC standards define a MAXIMUM NUMBER OF OPEN SEQUENTIAL WRITE
+REQUIRED ZONES field.
+
+
+Since the ZNS Max Open Resources field has the same purpose as the ZAC/ZBC
+field, (the ZNS field is 0's based, the ZAC/ZBC field isn't), create a
+common "max_open_zones" definition in the sysfs documentation, and export
+both the ZNS field and the ZAC/ZBC field according to this new common
+definition.
+
+The ZNS Max Active Resources field does not have an equivalent field in
+ZAC/ZBC, however, since both ZAC/ZBC and ZNS utilize the "zoned block
+device support" in the kernel, create a "max_active_zones" definition in
+the sysfs documentation, similar to "max_open_zones", and export it
+according to this new definition. For ZAC/ZBC devices, this field will be
+exported as 0, meaning "no limit".
+
+
+Niklas Cassel (2):
+  block: add max_open_zones to blk-sysfs
+  block: add max_active_zones to blk-sysfs
+
+ Documentation/block/queue-sysfs.rst | 14 ++++++++++
+ block/blk-sysfs.c                   | 27 +++++++++++++++++++
+ drivers/nvme/host/zns.c             |  2 ++
+ drivers/scsi/sd_zbc.c               |  5 ++++
+ include/linux/blkdev.h              | 40 +++++++++++++++++++++++++++++
+ 5 files changed, 88 insertions(+)
+
 -- 
-1.8.3.1
+2.26.2
 
 
 _______________________________________________
