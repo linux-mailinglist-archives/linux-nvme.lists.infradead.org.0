@@ -2,46 +2,45 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 409121FF4DD
-	for <lists+linux-nvme@lfdr.de>; Thu, 18 Jun 2020 16:37:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40F941FF5A6
+	for <lists+linux-nvme@lfdr.de>; Thu, 18 Jun 2020 16:50:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w/8Gfd2Ng16ePx1eHocu/7DbovVUu5lolFemXil/rw4=; b=i5lPoxLPq2Xt1c
-	CVG7S5I8TbiNbZpS9mC+du3cHShz4UUXDJ/dJV7XdT/2wXxCeTnBGPqTTtB/WvIQT5oWhXYjqO/uK
-	htIQIj1LMfLICoJhZCYvhU629vQ1C9jk1OdmrArU+L4ooykHIBzdIb+DwCkkiakk6D9XAjVbI0W7T
-	auDBHzKoEijv19z0tKJv29T+GT7XUIgBfoVRC6V0T84VN3xZRrujX2zncN5V/9cmoEFszh3wYbaJH
-	zT/Y8LpYw9yLZNYijpa8RGruBopmiIDtRrq+tVuzVB4wbynrbCWTa4h5rlMTn3LfIl6c82bnBiShO
-	sniXQyz251cJxVYNSoTA==;
+	List-Owner; bh=omYySMAZho78/MT9RFE1dMGxaoGOpMUuh0GJ2BOssxE=; b=Wtl1gEE0GW3YnE
+	Tv7vIG4ppPjf9UUNmi6jUhPNuwlh5EtJBC7EEwiL+sV3PYUelm779Sxixl2bINAjnS1oB6xpJW/lY
+	tN+UbbpbeFUVR4t+QMAwkDNkT9GjjxFTNqVR+UaBuJn2HQfK7yNUFzMiNeRyuCaPiUkeGRaIJ3odO
+	nNo+ZnIkNGm9kI75qfumR1xfcu59G9bqSBONpZQkb+auRW5M/Q7bcX8E7xSqq62lTE9N+k8KPZDK4
+	y9OBTEPO0kn6WIxOm2FSdpq+0Eav3WIvak69EAW0EQsn7dtnd3rwYwxqR+LGjsilanNzQRWSNLAe4
+	l2ItvoqEH0HmSm0+2KFQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jlvfV-0008Tg-Uo; Thu, 18 Jun 2020 14:37:29 +0000
+	id 1jlvs4-0002r5-LY; Thu, 18 Jun 2020 14:50:28 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jlvfQ-0008Sy-OI
- for linux-nvme@lists.infradead.org; Thu, 18 Jun 2020 14:37:25 +0000
+ id 1jlvrz-0002qS-8f
+ for linux-nvme@lists.infradead.org; Thu, 18 Jun 2020 14:50:24 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id BA57BACF9;
- Thu, 18 Jun 2020 14:37:19 +0000 (UTC)
-Date: Thu, 18 Jun 2020 16:37:19 +0200
+ by mx2.suse.de (Postfix) with ESMTP id 30632AD63;
+ Thu, 18 Jun 2020 14:50:21 +0000 (UTC)
+Date: Thu, 18 Jun 2020 16:50:21 +0200
 From: Daniel Wagner <dwagner@suse.de>
 To: Christoph Hellwig <hch@lst.de>
 Subject: Re: [PATCH 02/12] blk-mq: factor out a helper to reise the block
  softirq
-Message-ID: <20200618143719.aakeh5ciazsg23gv@beryllium.lan>
+Message-ID: <20200618145021.7bl7naiix5gf5bag@beryllium.lan>
 References: <20200611064452.12353-1-hch@lst.de>
  <20200611064452.12353-3-hch@lst.de>
- <20200618143404.ro2kviia72qy6niv@beryllium.lan>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200618143404.ro2kviia72qy6niv@beryllium.lan>
+In-Reply-To: <20200611064452.12353-3-hch@lst.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200618_073724_933718_461CA0DA 
-X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-CacheID: sfid-20200618_075023_451614_FEB565BE 
+X-CRM114-Status: UNSURE (   9.19  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.3 (--)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
@@ -73,12 +72,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Thu, Jun 18, 2020 at 04:34:04PM +0200, Daniel Wagner wrote:
-> Couldn't this be folded into the previous condition, e.g
+On Thu, Jun 11, 2020 at 08:44:42AM +0200, Christoph Hellwig wrote:
+> Add a helper to deduplicate the logic that raises the block softirq.
 > 
-> 	if (ccpu == cpu || shared || raised_blk_irq(ccpu, req))
+> Signed-off-by: Christoph Hellwig <hch@lst.de>
 
-to answer my own question, patch #3 does addresses this :)
+Reviewed-by: Daniel Wagner <dwagner@suse.de>
 
 _______________________________________________
 linux-nvme mailing list
