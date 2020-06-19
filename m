@@ -2,45 +2,66 @@ Return-Path: <linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org>
 X-Original-To: lists+linux-nvme@lfdr.de
 Delivered-To: lists+linux-nvme@lfdr.de
 Received: from bombadil.infradead.org (bombadil.infradead.org [IPv6:2607:7c80:54:e::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFC4C201A33
-	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jun 2020 20:22:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 24624201A5E
+	for <lists+linux-nvme@lfdr.de>; Fri, 19 Jun 2020 20:25:57 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RYS5pNDo56oh7fZ0admqdaTu0G1fyrqTUGOafIB/iX0=; b=cK42svUzSp7WKP
-	RtmRMZB0cB1tXgGByaZzoPCeyBTL9OHOnlVBXdne9MlmyLG13+JM/4GJKPpafw/ZQpbqxSxBebbbz
-	qrFHnEFAhqUnC8zsOxxndDuqqB0orHd+rjjWK3Z+YLxY8h6QYyTVBO8o1gpo/5MZCKVToJmB0YQjS
-	oxJRbLRqJIQ7HsrenMmScTv38NRQFVvbmHGMAYi8YmbaFGKUfXIjj9uF1AXBYYCS+yFfUXyfeI3FW
-	jpdIMxymcksfl0+aAeG/x8/PjUsDW2iw0d2MZ/jTbEZfjXL3WT0wQDvsCj9I+OFotyNl/72f1FXFO
-	a68MhQpj5y+WeXF3N4fQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Ie1HeLw2vVVGLPrhnyia7smbXpoiQoWAi3CmF4sdBeE=; b=QHxr6/0g+BeeduCz2Kovqoh07
+	ehCFJuTjAUjt6q2gyoTqU3XCyxzDxtz8hdW2osxnBYx1OnE7L6qlKDZSAXU5BW2/49JUb9XffzBXx
+	lzUe7g4U9FLy59jo+INjNBtk3QQ7SY97azyiCFZeUFySs+IngTvPQ0ZBEJGC5Vz4wF91e+fFZzJBH
+	uJWm1W6Sv1cGNNeAaVT86kU136qWoRcIVRBivrdfsr3a9KbpMk5VQRJIllWb9BOsFe1kLefw1/u8S
+	59FQdbU2EAr3Pw6YMZQQfMfEajweT4AQsV8jTQCKdh+oyam5/sLT+Ls9WW//SH0yaYc/bqQAGd/fZ
+	KwaTPzsFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jmLee-0003Ea-HJ; Fri, 19 Jun 2020 18:22:20 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jmLi2-0006Xh-35; Fri, 19 Jun 2020 18:25:50 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jmLeZ-0003EE-Oc
- for linux-nvme@lists.infradead.org; Fri, 19 Jun 2020 18:22:16 +0000
-Received: from dhcp-10-100-145-180.wdl.wdc.com (unknown [199.255.45.60])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 445772100A;
- Fri, 19 Jun 2020 18:22:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592590935;
- bh=sO1tNhh3e+H0Mph8Xj5gmDOr9peS5JMM3LsxxuGWdHs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=OhwZqNrXmVPcl9l3tUlzhvoTPOGuE6xy/V6Kv+l93pn4bhcykz5y8z89z2wn4XPj4
- EADVGAlGvMEMTASS2c3tU+h91Y9HN2Qh9beiUOB2owj875nPHW3GmkdaW3w6F+NZbz
- rFOfXzHRRfPlo8PfcwwlxxKIu8s3eT11TYAOpiZ4=
-Date: Fri, 19 Jun 2020 11:22:12 -0700
-From: Keith Busch <kbusch@kernel.org>
-To: Heiner Litz <hlitz@ucsc.edu>
+ id 1jmLhx-0006XJ-1A
+ for linux-nvme@lists.infradead.org; Fri, 19 Jun 2020 18:25:46 +0000
+Received: by mail-wm1-x342.google.com with SMTP id f185so9953548wmf.3
+ for <linux-nvme@lists.infradead.org>; Fri, 19 Jun 2020 11:25:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=lightnvm-io.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=V51fa+JnxcBTxEQyN+hbyfp/TDZpfijc/JikllL3zuA=;
+ b=fr0xb02JTxNqgcy7gLvuFHwJ5HbOjTSbskCgotnroFgAZ++YVS74HA5gl3vQdHtzxZ
+ Cf8vruM3RitqaJHomEJoHV2TW2dpevtnYFITcIgRC70M9xACuQdordLUl6B2gxGIUFkQ
+ Tiun0fIECyhTR+bjmpK4KCK+cof/hcdO24DW3h2OqHQJYZ2eSlg95bMMZp8zdBH0+HNY
+ rYjRmCsOUIeVmtCzpFZhtUsJ5cJbIeSXZuGCLyybmlE675cCIxKxe+jwCLQpcczCnwEM
+ ruIyddu6BWri9YVFEa+ODf7Zh0giW1Rpt9qZjcwQuoGA1qTXvSqetkQlksqcbhaWwldE
+ 9E0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=V51fa+JnxcBTxEQyN+hbyfp/TDZpfijc/JikllL3zuA=;
+ b=BmTjMD5ZS6vk9ozsatAy5CakyNgcoU13sBr34BvAIiOGFqXXrgNj+cddnm0PtBiYDE
+ zvMVhIU+6fKWmiz9wOX2O+fCHVk1DqXrAZs2RzymK2e/B5Y/3kEXV4cWDHuSE6kFF/Wa
+ ZhR4ALRR0levrgYDkhDHTWqiloOKu4CmDx6d+Xzm6OuTtQJGWmOMtFMgjeU7ZnO5VyTJ
+ X/4mlW9otaNiNEy6aP9Oz5+zCeroSAyantao1iObCE9nk6gr7DQNmumtDEJQQn1Rks71
+ 3Aj51F5QXBvED1zF7k6ajGQPBwf/VerCkWfOhzSY5S5oYfAJTRxDcJhXEA1bOHlex1eY
+ jpwQ==
+X-Gm-Message-State: AOAM531kYlsLp5+Trr7cPHJFoNjc2O4GEKgUgV0+Q36GZNsAZdZ3Sl+G
+ CXIZPsagD2XlwGVGZgCzCIANKA==
+X-Google-Smtp-Source: ABdhPJz36QKLxdCCqVrkY2TQQ2V6wXtUPnO2kQPIUoA09WguDWNX0Exc+Fm/5JnHpWq7O9v1EIo9Fg==
+X-Received: by 2002:a7b:c0d9:: with SMTP id s25mr5271639wmh.175.1592591143836; 
+ Fri, 19 Jun 2020 11:25:43 -0700 (PDT)
+Received: from [10.0.0.6] (xb932c246.cust.hiper.dk. [185.50.194.70])
+ by smtp.gmail.com with ESMTPSA id o15sm7588292wmm.31.2020.06.19.11.25.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 19 Jun 2020 11:25:43 -0700 (PDT)
 Subject: Re: [PATCH 5/5] nvme: support for zoned namespaces
-Message-ID: <20200619182212.GA1284056@dhcp-10-100-145-180.wdl.wdc.com>
-References: <20200618015526.GA1138429@dhcp-10-100-145-180.wdl.wdc.com>
+To: Heiner Litz <hlitz@ucsc.edu>, Keith Busch <kbusch@kernel.org>
+References: <20200617194013.3wlz2ajnb6iopd4k@mpHalley.local>
+ <CAJbgVnVo53vLYHRixfQmukqFKKgzP5iPDwz87yanqKvSsYBvCg@mail.gmail.com>
+ <20200618015526.GA1138429@dhcp-10-100-145-180.wdl.wdc.com>
  <CAJbgVnVKqDobpX8iwqRVeDqvmfdEd-uRzNFC2z5U03X9E3Pi_w@mail.gmail.com>
  <CY4PR04MB3751E6A6D6F04285CAB18514E79B0@CY4PR04MB3751.namprd04.prod.outlook.com>
  <CAJbgVnVnqGQiLx1PctDhAKkjLXRKFwr00tdTPJjkaXZDc+V6Bg@mail.gmail.com>
@@ -50,29 +71,30 @@ References: <20200618015526.GA1138429@dhcp-10-100-145-180.wdl.wdc.com>
  <CAJbgVnUd3U3G=RjpcCuWO+HT9pBP3zasdQfG7h-+PEk0=n4npw@mail.gmail.com>
  <20200619181024.GA1284046@dhcp-10-100-145-180.wdl.wdc.com>
  <CAJbgVnWru+wRRsJ4KB2DiVPRNfMV39uYNSCi2Y=6d+_GOQO8iw@mail.gmail.com>
+From: =?UTF-8?Q?Matias_Bj=c3=b8rling?= <mb@lightnvm.io>
+Message-ID: <61101beb-de48-7556-160f-cfd45bf72868@lightnvm.io>
+Date: Fri, 19 Jun 2020 20:25:42 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
 In-Reply-To: <CAJbgVnWru+wRRsJ4KB2DiVPRNfMV39uYNSCi2Y=6d+_GOQO8iw@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200619_112215_820912_9F969FBF 
-X-CRM114-Status: GOOD (  15.08  )
-X-Spam-Score: -5.2 (-----)
+X-CRM114-CacheID: sfid-20200619_112545_073073_ECCA0FD3 
+X-CRM114-Status: GOOD (  16.50  )
+X-Spam-Score: 0.0 (/)
 X-Spam-Report: SpamAssassin version 3.4.4 on bombadil.infradead.org summary:
- Content analysis details:   (-5.2 points)
+ Content analysis details:   (0.0 points)
  pts rule name              description
  ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [198.145.29.99 listed in list.dnswl.org]
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [2a00:1450:4864:20:0:0:0:342 listed in]
+ [list.dnswl.org]
+ 0.0 SPF_NONE               SPF: sender does not publish an SPF Record
  0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
  0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
  valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.0 DKIMWL_WL_HIGH         DKIMwl.org - Whitelisted High sender
 X-BeenThere: linux-nvme@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,43 +111,46 @@ Cc: Jens Axboe <axboe@kernel.dk>, Niklas Cassel <Niklas.Cassel@wdc.com>,
  Sagi Grimberg <sagi@grimberg.me>, Keith Busch <Keith.Busch@wdc.com>,
  Dmitry Fomichev <Dmitry.Fomichev@wdc.com>,
  Aravind Ramesh <Aravind.Ramesh@wdc.com>,
- Javier =?iso-8859-1?Q?Gonz=E1lez?= <javier@javigon.com>,
+ =?UTF-8?Q?Javier_Gonz=c3=a1lez?= <javier@javigon.com>,
  "linux-nvme@lists.infradead.org" <linux-nvme@lists.infradead.org>,
  "linux-block@vger.kernel.org" <linux-block@vger.kernel.org>,
- Hans Holmberg <Hans.Holmberg@wdc.com>,
- Matias =?iso-8859-1?Q?Bj=F8rling?= <mb@lightnvm.io>,
- Judy Brock <judy.brock@samsung.com>, Christoph Hellwig <hch@lst.de>,
- Matias Bjorling <Matias.Bjorling@wdc.com>
-Content-Type: text/plain; charset="us-ascii"
+ Hans Holmberg <Hans.Holmberg@wdc.com>, Judy Brock <judy.brock@samsung.com>,
+ Christoph Hellwig <hch@lst.de>, Matias Bjorling <Matias.Bjorling@wdc.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "linux-nvme" <linux-nvme-bounces@lists.infradead.org>
 Errors-To: linux-nvme-bounces+lists+linux-nvme=lfdr.de@lists.infradead.org
 
-On Fri, Jun 19, 2020 at 11:17:02AM -0700, Heiner Litz wrote:
-> > On Fri, Jun 19, 2020 at 11:08:26AM -0700, Heiner Litz wrote:
-> > > Hi Matias,
-> > > no, I am rather saying that the Linux kernel has a deficit or at least
-> > > is not a good fit for ZNS because it cannot enforce in-order delivery.
-> >
-> > FYI, the nvme protocol can't even enforce in-order delivery, so calling
-> > out linux for this is a moot point.
-> 
+On 19/06/2020 20.17, Heiner Litz wrote:
+>> On Fri, Jun 19, 2020 at 11:08:26AM -0700, Heiner Litz wrote:
+>>> Hi Matias,
+>>> no, I am rather saying that the Linux kernel has a deficit or at least
+>>> is not a good fit for ZNS because it cannot enforce in-order delivery.
+>> FYI, the nvme protocol can't even enforce in-order delivery, so calling
+>> out linux for this is a moot point.
 > How does it work in SPDK then? I had understood that SPDK supported
 > QD>1 for ZNS devices.
+It doesn't. Out of order delivery is not guaranteed in NVMe.
 > I am not saying that Linux is the only problem. The fact remains that
 > out of order delivery is not a good fit for an interface that requires
 > sequential writes.
 
-The nvme protocol is absoltely clear that multiple commands outstanding
-simultaneosly can be executed in any order. This is further made
-difficult if you're dispatching these commands across multiple queues.
-If SPDK is dispatching multiple commands and expecting them to execute
-in order, then they're doing it wrong.
+That why zone append was introduced in ZNS. It removes this constraint, 
+and makes it such that any process (or host) can write to a specific 
+zone. It's neat! That is why the command was introduced.
 
-Further, you're not even guranteed the first write in a sequence will be
-successful. If you've already dispatched a subsequent write, and the
-first one fails, the second one may also fail when it's not at the wrong
-write pointer.
+It is not only Linux specific - it applies to everyone that wants to use 
+it. It is solving a fundamental distributed system problem, as it 
+removes the need for fine-grained coordinating between process or host. 
+It allows the SSD to coordinate data placement, which historically has 
+been done by the host. It is awesome!
+
+>
+>>> The requirement of sequential writes basically imposes this
+>>> requirement. Append essentially a Linux specific fix on the ZNS level
+>>> and that enforcing ordering would be a cleaner way to enable QD>1.
+
+
 
 _______________________________________________
 linux-nvme mailing list
